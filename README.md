@@ -1,21 +1,7 @@
 # Multi Sonicator I/O Controller - Project Summary
 
 **Project Lead:** Stephen Boyett  
-**Hardware Advisor:** Josh#### **Back Panel Design**
-
-```text
-┌─────────────────────────────────────────────────────────────────────┐
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐              │
-│  │ POWER INPUT │    │ SERIAL COMM │    │   COOLING   │              │
-│  │             │    │             │    │    VENTS    │              │
-│  │   24VDC     │    │ TO MAIN     │    │             │              │
-│  │ Screw Term  │    │ AUTO BOX    │    │ ┌─┐ ┌─┐ ┌─┐ │              │
-│  └─────────────┘    │   DB9 Male  │    │ │ │ │ │ │ │ │              │
-│                     └─────────────┘    │ └─┘ └─┘ └─┘ │              │
-│                                        └─────────────┘              │
-│  Model: CAN-SON-CTRL-4    Cannasol Technologies    Made in USA      │
-└─────────────────────────────────────────────────────────────────────┘
-```any:** Cannasol Technologies  
+**Hardware Advisor:** Josh
 **Document Date:** January 2025  
 **Target Delivery:** 2 weeks from project start  
 
@@ -86,8 +72,8 @@ The Multi Sonicator I/O Controller project extends Cannasol Technologies' propri
    │ (Slave ID = 1)  │                │ (Slave ID = 2)                      │
    └─────────────────┘                │                                     │
                                       │ ┌─────────────────────────────────┐ │
-                                      │ │ DB9 #1  DB9 #2  DB9 #3  DB9 #4 │ │
-                                      │ │  (to)   (to)    (to)    (to)   │ │
+                                      │ │ DB9 #1  DB9 #2  DB9 #3  DB9 #4  │ │
+                                      │ │  (to)   (to)    (to)    (to)    │ │
                                       │ │ Son#1   Son#2   Son#3   Son#4   │ │
                                       │ └─────────────────────────────────┘ │
                                       └─────────────────────────────────────┘
