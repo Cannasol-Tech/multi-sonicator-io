@@ -37,7 +37,7 @@ Define the full MODBUS register map for the Multi Sonicator I/O Controller to ex
    - System uptime (seconds)
    - Error code
    - Last fault timestamp
-   - Slave ID
+   - Slave ID (default: 2)
 
 6. **Create Register Map Header**
    - File: `include/modbus_map.h`

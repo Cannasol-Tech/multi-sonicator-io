@@ -25,7 +25,7 @@ Implement the MODBUS RTU slave communication protocol over UART to allow PLCs or
    - Implement as optimized static method (e.g., `modbus_crc.h`)
 
 4. **Slave ID Configuration**
-   - Define a default Slave ID (e.g., 0x01)
+   - Define a default Slave ID (e.g., 0x02)
    - Optionally support reading ID from DIP switch or EEPROM
 
 5. **Register Map Stub**

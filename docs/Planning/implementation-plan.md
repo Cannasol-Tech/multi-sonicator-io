@@ -67,7 +67,7 @@ Implementation plan for the Multi Sonicator I/O Controller, an industrial automa
 - [ ] Configure UART for 115200 baud
 - [ ] Create register mapping structure
 - [ ] Implement CRC-16 calculation
-- [ ] Add slave ID configuration
+- [ ] Add slave ID configuration (default: 2)
 - [ ] Test with MODBUS master simulator
 - **Status:** ⬜ PENDING
 - **Assigned:** AI Agent

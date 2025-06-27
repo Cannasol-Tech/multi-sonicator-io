@@ -15,7 +15,7 @@ Prepare the Multi Sonicator I/O Controller system for delivery by creating produ
    - Save as `build/sonicator_firmware_vX.Y.hex`
 
 2. **Configuration Files**
-   - Generate default configuration template for Slave ID, unit count
+   - Generate default configuration template for Slave ID (default: 2), unit count
    - Store config options in EEPROM or header file
    - Include in delivery ZIP under `config/`
 

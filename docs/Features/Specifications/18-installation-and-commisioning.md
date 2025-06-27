@@ -18,10 +18,10 @@ Guide the field installation, on-site configuration, and acceptance testing proc
 2. **Initial Power-On Test**
    - Validate diagnostic LED pattern on boot
    - Confirm 5V/12V stages are within range
-   - Confirm PLC detects MODBUS device with correct Slave ID
+   - Confirm PLC detects MODBUS device with correct Slave ID (should be 2)
 
 3. **Configuration for Production**
-   - Set Slave ID and enable channels via config file or DIP switch
+   - Set Slave ID (default: 2) and enable channels via config file or DIP switch
    - Test HMI controls for amplitude, start/stop, and reset
    - Confirm correct signal mapping to each sonicator
 
