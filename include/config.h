@@ -41,8 +41,8 @@
 #define MCU_VOLTAGE 5.0
 
 // System limitations
-#define MAX_SONICATORS 4
-#define MODBUS_SLAVE_ID 1
+#define MAX_SONICATORS 4          // Maximum number of sonicators supported
+#define MODBUS_SLAVE_ID 2          // MODBUS RTU slave address
 #define MODBUS_BAUD_RATE 115200
 
 // Safety timing requirements
