@@ -180,8 +180,8 @@ typedef struct {
     uint8_t frequency_lock_pin;          ///< Frequency lock input
     uint8_t start_output_pin;            ///< Start control output
     uint8_t reset_output_pin;            ///< Overload reset output
-    uint8_t dac_i2c_address;             ///< I2C address for amplitude DAC
-    uint8_t adc_i2c_address;             ///< I2C address for power ADC
+    uint8_t pwm_amplitude_pin;           ///< PWM pin for amplitude control
+    uint8_t adc_power_pin;               ///< Built-in ADC pin for power monitoring
     uint8_t adc_channel;                 ///< ADC channel for power monitoring
     uint8_t status_led_pin;              ///< Individual status LED pin
 } sonicator_hardware_config_t;
@@ -262,6 +262,6 @@ typedef void (*error_notification_callback_t)(error_code_t error_code, const cha
 // Timing constraints
 #define MAX_ACCEPTABLE_LOOP_TIME_US       5000   // 5ms max loop time
 #define MIN_MODBUS_RESPONSE_TIME_US       1000   // 1ms min response time
-#define MAX_MODBUS_RESPONSE_TIME_US       50000  // 50ms max response time
+#define MAX_MODBUS_RESPONSE_TIME_US       50000  // MODBUS bottleneck - system responds faster
 
 #endif // TYPES_H

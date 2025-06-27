@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Implement the `SafetyMonitor` system to ensure fast (<50μs) detection and response to critical events including overloads and emergency stops. This module acts as the first line of defense in preventing hardware damage and ensuring operator safety.
+Implement the `SafetyMonitor` system to ensure fast (faster than MODBUS protocol requirements) detection and response to critical events including overloads and emergency stops. This module acts as the first line of defense in preventing hardware damage and ensuring operator safety.
 
 ---
 
@@ -49,7 +49,7 @@ Implement the `SafetyMonitor` system to ensure fast (<50μs) detection and respo
 
 ### Acceptance Criteria
 
-- [ ] Emergency stop is triggered in <50μs (measured)
+- [ ] Emergency stop is triggered faster than MODBUS protocol requirements (measured)
 - [ ] All outputs disabled upon safety event
 - [ ] Each overload input is monitored and logged
 - [ ] Watchdog is active and resets on lockup

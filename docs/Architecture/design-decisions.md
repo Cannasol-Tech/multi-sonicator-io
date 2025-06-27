@@ -100,18 +100,6 @@
     - More complex troubleshooting (power and communication mixed)
     - Non-standard approach for automation system expansion
 
-#### **Option #2:** Dedicated 24VDC industrial power supply
-
-**Advantages:**
-    - Complete isolation from main machine
-    - Can be designed for optimal EMI performance
-
-**Disadvantages:**
-    - Additional cost and complexity
-    - Requires separate safety certification
-    - More components to maintain and potentially fail
-    - Customer prefers integrated solution
-
 #### **Option #3:** Power through DB9 sonicator connectors
 
 **Disadvantages:**
@@ -142,7 +130,7 @@
     - Industrial temperature stability for Cannasol's operating environment
     - Consistent with professional embedded system design practices
     - Same approach used by Arduino, ESP32, and all industrial control systems
-    - Enables accurate timing for safety-critical overload protection (50µs response time)
+    - Enables accurate timing for safety-critical overload protection (faster than MODBUS protocol requirements)
 
 **Disadvantages:**
     - Additional $1.50 component cost
@@ -231,7 +219,7 @@
     - Overload Reset (Pin 2): Isolated relay output for reset control
     - Frequency Lock (Pin 3): Optocoupler input with timeout detection
     - Frequency Output (Pin 4): High-speed optocoupler output, 30V NPN drive
-    - Amplitude Control (Pin 5): 12-bit DAC (MCP4725) with 0-10V scaling
+    - Amplitude Control (Pin 8): PWM output with RC filter and op-amp scaling to 0-10V
     - Start Control (Pin 7): Isolated relay output for sonicator enable
 
 **Advantages:**

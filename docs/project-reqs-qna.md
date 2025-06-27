@@ -12,7 +12,7 @@
 
 ### 3. Budget
 
-- **Development Budget**: $200
+- **Development Budget**: $400
 - **Target Unit Cost**: As much as we can get
 
 ### 4. Market Context
@@ -28,7 +28,7 @@ This is an extension to the Automation System for Cannasol Technologies, it will
 
 ### 6. Performance Requirements
 
-- **Response Time**: As fast as possible for all I/O
+- **Response Time**: Faster than MODBUS communication protocol requirements so the bottleneck is the MODBUS
 - **Amplitude Control**: 12-bit resolution works
 - **Frequency Output**: 100Hz accuracy (first three digits only)
   - Example: frequency of 19876 could be output as 19900
@@ -140,7 +140,7 @@ This is an extension to the Automation System for Cannasol Technologies, it will
 ### **4. ATmega32A GPIO Pin Allocation**
 
 **Q:** Sufficient pins for all interfaces?
-**A:** 32 pins total vs 31 pins required = sufficient capacity. Need to add a diagram of the ATmega32A with all pins labeled to confirm capabilities.
+**A:** 40 pins total vs 39 pins required = sufficient capacity. Need to add a diagram of the ATmega32A with all pins labeled to confirm capabilities.
 
 ### **5. Frequency Measurement Implementation**
 
@@ -160,10 +160,10 @@ This is an extension to the Automation System for Cannasol Technologies, it will
 
 ### **7. Real-Time Performance Requirements**
 
-**Q:** Can 50µs response time be achieved?
+**Q:** Can response time faster than MODBUS protocol requirements be achieved?
 **A:**
 
-- Change response time requirement to 50 milliseconds
+- Response time requirement: faster than MODBUS communication protocol requirements so the bottleneck is the MODBUS
 - Interrupt priority scheme not yet defined
 - MODBUS communication will be the bottleneck and primary time constraint
 

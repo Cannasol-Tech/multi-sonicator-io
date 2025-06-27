@@ -225,34 +225,34 @@ struct MainAutomationBoxInterface {
                    GND──┤7    34├──PA6 (ADC6) - Sonicator 3 Power Monitor
                  XTAL2──┤8    33├──PA7 (ADC7) - Sonicator 4 Power Monitor
                  XTAL1──┤9    32├──AREF
-    I2C SDA (DACs/ADCs)──┤10   31├──GND
-    I2C SCL (DACs/ADCs)──┤11   30├──AVCC
+         PWM Filter 1──┤10   31├──GND
+         PWM Filter 2──┤11   30├──AVCC
            Son1_OverLD──┤12   29├──PC7 - Son4_FreqLock
           Son1_FreqOut──┤13   28├──PC6 - Son4_OverLD  
            Son1_FreqLk──┤14   27├──PC5 - Son3_FreqLock
         Son1_StartCtrl──┤15   26├──PC4 - Son3_FreqOut
           Son2_OverLD──┤16   25├──PC3 - Son3_OverLD
          Son2_FreqOut──┤17   24├──PC2 - Son3_StartCtrl
-          Son2_FreqLk──┤18   23├──PC1 - PC1 (SDA) *Used for I2C*
-       Son2_StartCtrl──┤19   22├──PC0 - PC0 (SCL) *Used for I2C*
+          Son2_FreqLk──┤18   23├──PC1 - PWM Filter 4
+       Son2_StartCtrl──┤19   22├──PC0 - PWM Filter 3
               VCC──┤20   21├──GND
                          └─────────┘
 
 Pin Usage Summary:
 - UART (MODBUS): PD0 (RX), PD1 (TX) = 2 pins
-- I2C (DACs/ADCs): PC0 (SCL), PC1 (SDA) = 2 pins  
+- PWM Outputs: PB3, PD5, PD6, PD7 (mapped to PC0,PC1,PD5,PD6,PD7) = 4 pins  
 - Crystal: XTAL1, XTAL2 = 2 pins
 - Power/Ground: VCC, GND, AVCC, AREF = 4 pins
 - Reset: RESET = 1 pin
 - Sonicator Interfaces: 24 pins (6 pins × 4 sonicators)
-- Reserved ADC: 4 pins (PA0-PA3 for future expansion)
+- Built-in ADC: PA4-PA7 for power monitoring = 4 pins
 - TOTAL: 39 pins used out of 40 available (1 pin unused)
 
 Interface Pin Mapping:
-Son1: PD2(OverLD), PD3(FreqOut), PD4(FreqLk), PD5(Start), + I2C DAC + ADC
-Son2: PD6(OverLD), PD7(FreqOut), PB0(FreqLk), PB1(Start), + I2C DAC + ADC  
-Son3: PC3(OverLD), PC4(FreqOut), PC5(FreqLk), PC2(Start), + I2C DAC + ADC
-Son4: PC6(OverLD), PB2(FreqOut), PC7(FreqLk), PB3(Start), + I2C DAC + ADC
+Son1: PD2(OverLD), PD3(FreqOut), PD4(FreqLk), PD5(Start), PB3(PWM), PA4(ADC)
+Son2: PD6(OverLD), PD7(FreqOut), PB0(FreqLk), PB1(Start), PD5(PWM), PA5(ADC)  
+Son3: PC3(OverLD), PC4(FreqOut), PC5(FreqLk), PC2(Start), PD6(PWM), PA6(ADC)
+Son4: PC6(OverLD), PB2(FreqOut), PC7(FreqLk), PB3(Start), PD7(PWM), PA7(ADC)
 ```
 
 ```cpp
@@ -448,11 +448,13 @@ struct StatusFlags {
 | **Load Caps** | 22pF Ceramic | Generic C0G | ±5%, 50V rating | Same |
 | **Power Reg** | Buck Converter | LM2596 Module | 24V→12V, 3A capacity | DB9 input regulation |
 | **Linear Reg** | 5V Regulator | LM7805 | 12V→5V, 1A capacity | Final voltage regulation |
-| **DAC** | 12-bit I2C | MCP4725 × 4 | 0-10V amplitude control | **4 units for individual control** |
-| **ADC** | 16-bit I2C | ADS1115 × 2 | Power monitoring (Pin 5) | **New: Power measurement** |
-| **Freq Counter** | Timer Input | ATmega32A Timer1 | Frequency measurement (Pin 4) | **New: Frequency monitoring** |
+| **PWM Filter** | 1kΩ Resistor | CF14JT1K00CT-ND | 1/4W, 5% | **4x for PWM filters** |
+| **PWM Filter** | 10µF Capacitor | 1276-1119-1-ND | 16V, X7R ceramic | **4x for PWM filters** |
+| **Op-Amps** | Dual Op-Amp | LM358N × 2 | 0-10V amplitude scaling | **2 units for PWM scaling** |
+| **Gain Resistors** | 10kΩ 1% | S10KQCT-ND | For op-amp gain setting | **8x for precise gain** |
+| **Freq Counter** | Timer Input | ATmega32A Timer1 | Frequency measurement (Pin 4) | **Built-in frequency monitoring** |
 | **Optocouplers** | High-speed | 6N137 × 8 | Signal isolation | **8 units: 4 inputs + 4 outputs** |
-| **Relay Drivers** | Low-side | ULN2003 × 2 | Overload reset control | **New: Pin 2 control** |
+| **Relay Drivers** | Low-side | ULN2003 × 2 | Overload reset control | **Pin 2 control** |
 | **Connectors** | DB9 Male | Standard × 5 | Industrial grade | **4 sonicator interfaces + 1 main automation box (comm+power)** |
 | **ISP Programmer** | AVR Programmer | USBasp or AVR-ISP-MK2 | Dedicated ISP programmer | **Professional programming tool** |
 
@@ -523,7 +525,7 @@ Disadvantages:
 
 ### Key Software Features
 
-- **Real-time Control:** 50ms response time for safety functions
+- **Real-time Control:** Response time faster than the MODBUS communication protocol requirements so the bottleneck is the MODBUS
 - **Modular Architecture:** Easily extensible for additional sonicators
 - **Error Handling:** Comprehensive fault detection and recovery
 - **MODBUS Compliance:** Full RTU protocol implementation
@@ -663,7 +665,7 @@ Firebase/Mobile App Updates:
 
 | Category | Budget Allocation | Actual Estimate |
 |----------|------------------|-----------------|
-| **Components** | $200 | $180 |
+| **Components** | $400 | $180 |
 | **PCB Fabrication** | $75 | $65 |
 | **Enclosure** | $50 | $45 |
 | **ISP Programmer** | $25 | $20 |
@@ -683,7 +685,7 @@ Firebase/Mobile App Updates:
 
 ### Return on Investment
 
-- **Development Investment:** $400 + 2 weeks labor (budget increased from initial $200)
+- **Development Investment:** $400 + 2 weeks labor
 - **Production Margin:** $400-600 per unit (high-value industrial equipment)
 - **Annual Volume:** 12 units projected
 - **Annual Revenue Potential:** $6,000-9,600
@@ -695,7 +697,7 @@ Firebase/Mobile App Updates:
 
 ### Technical Performance
 
-- **Response Time:** <50ms for safety-critical functions
+- **Response Time:** Faster than MODBUS protocol requirements (MODBUS is the bottleneck)
 - **Accuracy:** Frequency output ±100Hz (first three digits precision, e.g., 19876 Hz displayed as 19900 Hz)
 - **Power Efficiency:** <42mA @ 24VDC via DB9 (within DB9 current limitations)
 - **Reliability:** >99.9% uptime during continuous operation

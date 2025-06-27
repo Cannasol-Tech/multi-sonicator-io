@@ -28,7 +28,7 @@
  * - Overload reset control
  * - Real-time power monitoring
  * - Frequency monitoring and lock detection
- * - Safety monitoring with <50μs response time
+ * - Safety monitoring with response time faster than MODBUS protocol requirements
  * - Runtime statistics and fault logging
  */
 class SonicatorInterface {

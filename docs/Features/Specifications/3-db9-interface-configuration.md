@@ -28,7 +28,7 @@ Map and validate the electrical connections and signal conditioning logic betwee
 
 5. **Timing and Edge Validation**
    - Verify timing alignment with oscilloscope
-   - Confirm sonicator reacts to control signals with expected latency
+   - Confirm sonicator reacts to control signals faster than MODBUS protocol requirements
 
 ---
 

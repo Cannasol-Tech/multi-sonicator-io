@@ -22,10 +22,10 @@ Implement core low-level hardware interfaces for the Multi Sonicator I/O Control
    - Sample analog values from frequency/power sense pins
    - Create polling and interrupt sampling modes
 
-4. **DAC Interface**
-   - Select between SPI/I2C based DAC model (likely MCP4725 or MCP4921)
-   - Create `DacDriver` interface to write amplitude control signals
-   - Support 0–10V conversion via external amplifier circuit
+4. **PWM Amplitude Control**
+   - Configure Timer1 and Timer2 for PWM generation on pins PB3, PD5-7
+   - Create RC filters for each PWM output (1kΩ + 10µF)
+   - Use op-amp circuits for 0–10V amplitude scaling
 
 5. **Hardware Abstraction Layer (HAL)**
    - Create a `HardwareInterface` module that abstracts all above layers

@@ -1,6 +1,14 @@
 /**
  * @file config.h
- * @brief Multi Sonicator I/O Controller - System Configuration
+ * @brief Multi Sonicator // UART Communication
+#define UART_RX_PIN 14    // PD0 (Physical pin 14)
+#define UART_TX_PIN 15    // PD1 (Physical pin 15)
+
+// I2C Interface (Available for Future Expansion)
+#define I2C_SDA_PIN 22    // PC1 (Physical pin 22) - Not currently used
+#define I2C_SCL_PIN 21    // PC0 (Physical pin 21) - Not currently used
+
+// Crystal Oscillatoroller - System Configuration
  * @author Cannasol Technologies
  * @date 2025-06-27
  * @version 1.0.0
@@ -50,7 +58,7 @@
 #define UART_RX_PIN 14    // PD0 (Physical pin 14)
 #define UART_TX_PIN 15    // PD1 (Physical pin 15)
 
-// I2C Communication (DACs and ADCs)
+// I2C Interface (Available for Future Expansion)
 #define I2C_SDA_PIN 22    // PC1 (Physical pin 22)
 #define I2C_SCL_PIN 21    // PC0 (Physical pin 21)
 
@@ -103,18 +111,20 @@
 #define SON4_RESET_PIN        6    // PB5 (Physical pin 6)  - Output
 
 // ============================================================================
-// I2C DEVICE ADDRESSES  
+// PWM CONFIGURATION FOR AMPLITUDE CONTROL
 // ============================================================================
 
-// DAC Addresses (MCP4725) for Amplitude Control (0-10V)
-#define DAC_SONICATOR_1_ADDR  0x60
-#define DAC_SONICATOR_2_ADDR  0x61  
-#define DAC_SONICATOR_3_ADDR  0x62
-#define DAC_SONICATOR_4_ADDR  0x63
+// PWM Pin Assignments for Amplitude Control (0-10V via RC filter + op-amp)
+#define PWM_SONICATOR_1_PIN   3   // PB3 (Timer2/OC2A)
+#define PWM_SONICATOR_2_PIN   5   // PD5 (Timer0/OC0B)  
+#define PWM_SONICATOR_3_PIN   6   // PD6 (Timer0/OC0A)
+#define PWM_SONICATOR_4_PIN   11  // PB3 (Timer2/OC2A) - Alternative pin
 
-// ADC Addresses (ADS1115) for Power Monitoring
-#define ADC_BANK_1_ADDR       0x48   // Sonicators 1 & 2
-#define ADC_BANK_2_ADDR       0x49   // Sonicators 3 & 4
+// Built-in ADC Pin Assignments for Power Monitoring
+#define ADC_SONICATOR_1_PIN   A4  // PA4 (ADC4) - Built-in ADC
+#define ADC_SONICATOR_2_PIN   A5  // PA5 (ADC5) - Built-in ADC
+#define ADC_SONICATOR_3_PIN   A6  // PA6 (ADC6) - Built-in ADC
+#define ADC_SONICATOR_4_PIN   A7  // PA7 (ADC7) - Built-in ADC
 
 // ============================================================================
 // CT2000 SONICATOR SPECIFICATIONS
@@ -238,8 +248,8 @@ typedef enum {
     ERROR_SONICATOR_OVERLOAD = 3,
     ERROR_FREQUENCY_LOCK_LOST = 4,
     ERROR_POWER_OUT_OF_RANGE = 5,
-    ERROR_I2C_DAC_FAILURE = 6,
-    ERROR_I2C_ADC_FAILURE = 7,
+    ERROR_PWM_AMPLITUDE_FAILURE = 6,
+    ERROR_ADC_POWER_FAILURE = 7,
     ERROR_WATCHDOG_TIMEOUT = 8,
     ERROR_EMERGENCY_STOP = 9,
     ERROR_SYSTEM_FAULT = 10

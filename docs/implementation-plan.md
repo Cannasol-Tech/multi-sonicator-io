@@ -39,7 +39,7 @@ Implementation plan for the Multi Sonicator I/O Controller, an industrial automa
 - [ ] Create GPIO abstraction layer
 - [ ] Implement digital I/O for control signals
 - [ ] Configure ADC for analog inputs
-- [ ] Set up DAC communication (I2C/SPI)
+- [ ] Set up PWM amplitude control (4 channels with RC filters and op-amp scaling)
 - [ ] Create hardware abstraction layer (HAL)
 - [ ] Test signal isolation
 - **Status:** ⬜ PENDING
@@ -119,10 +119,10 @@ Implementation plan for the Multi Sonicator I/O Controller, an industrial automa
 
 - [ ] Implement SafetyMonitor class
 - [ ] Create interrupt-driven emergency stop
-- [ ] Add overload detection (<50μs response)
+- [ ] Add overload detection (response faster than MODBUS protocol)
 - [ ] Implement watchdog timer
 - [ ] Create fail-safe output states
-- [ ] Test safety response times
+- [ ] Test safety response times (verify faster than MODBUS protocol)
 - **Status:** ⬜ PENDING
 - **Assigned:** AI Agent
 - **Dependencies:** 4.2
@@ -211,7 +211,7 @@ Implementation plan for the Multi Sonicator I/O Controller, an industrial automa
 
 - [ ] Perform EMI testing
 - [ ] Execute thermal stress tests
-- [ ] Validate timing requirements
+- [ ] Validate timing requirements (faster than MODBUS protocol)
 - [ ] Test with actual sonicators
 - [ ] Complete acceptance testing
 - **Status:** ⬜ PENDING
@@ -322,7 +322,7 @@ Implementation plan for the Multi Sonicator I/O Controller, an industrial automa
 
 - [ ] All 4 sonicators controllable simultaneously
 - [ ] MODBUS communication reliable at 115200 baud
-- [ ] Emergency stop response < 50 microseconds
+- [ ] Emergency stop response faster than MODBUS protocol requirements
 - [ ] System uptime > 99.9%
 - [ ] All safety tests passed
 - [ ] Customer acceptance achieved
