@@ -2,9 +2,9 @@
 
 ## **Controller Hardware Connection**
 
-> This decision refers to how we will be connecting the controller to the main Automation System that this controller is extending 
+> This decision refers to how we will be connecting the controller to the main Automation System that this controller is extending
 
-### Design Choices
+### Controller Connection Design Choices
 
 #### **SELECTED Option #1:** Serial DB9 connection to main automation system
 
@@ -43,7 +43,7 @@
     - Potential for ground loops and isolation issues
     - Non-standard approach for automation system expansion
 
-#### **Option #3:** Connect to the ESP32 chip over IoT ESP-NOW protocol 
+#### **Option #3:** Connect to the ESP32 chip over IoT ESP-NOW protocol
 
 > This would require switching chips to be another ESP32 chip and separate power supply
 
@@ -56,7 +56,7 @@
 
 > This decision refers to how we will power the ATmega32A controller and sonicator interface circuits
 
-### Design Choices
+### Power Supply Design Choices
 
 #### **SELECTED Option #1:** Dedicated 24VDC industrial power supply
 
@@ -120,7 +120,7 @@
 
 > This decision refers to the timing reference for the ATmega32A microcontroller
 
-### Design Choices
+### Clock Source Design Choices
 
 #### **SELECTED Option #1:** External 16MHz crystal oscillator - Production Grade
 
@@ -157,6 +157,7 @@
 **Decision Rationale:** Even ESP32-DevKitC V4 with "advanced internal oscillators" uses external 40MHz crystal. Industrial sonicator control demands crystal precision for frequency accuracy, communication reliability, and safety compliance.
 
 **Accuracy Comparison:**
+
 - External 16MHz crystal: ±20ppm = ±0.002% accuracy
 - ATmega32A internal oscillator: ±10% = ±100,000ppm accuracy  
 - Crystal is 5,000x more accurate than internal oscillator
@@ -165,7 +166,7 @@
 
 > This decision refers to how we will transfer data between the multi sonicator controller device and the main automation system (HMI/PLC + ESP32 for cloud connection → mobile app )
 
-### Design Choices
+### Communication Protocol Design Choices
 
 #### **SELECTED Option #1:** MODBUS RTU over isolated UART connection
 
@@ -188,7 +189,7 @@
 
 #### **Option #2:** Custom simple communication protocol over serial connection
 
-**Advantages:** 
+**Advantages:**
     - Could be simpler to implement than MODBUS for basic applications
     - Potentially lower overhead for simple commands
 
@@ -216,7 +217,7 @@
 
 > This decision refers to how we will interface with individual sonicators through DB9 connections
 
-### Design Choices
+### Sonicator Interface Design Choices
 
 #### **SELECTED Option #1:** Dedicated interface circuit per sonicator with isolation
 
@@ -248,7 +249,7 @@
 
 > This decision refers to the overall organization and structure of the embedded software
 
-### Design Choices
+### Software Architecture Design Choices
 
 #### **SELECTED Option #1:** Object-oriented modular architecture with single-responsibility classes
 
@@ -288,7 +289,7 @@
 
 > This decision refers to the printed circuit board layout and component organization
 
-### Design Choices
+### PCB Design Choices
 
 #### **SELECTED Option #1:** Professional 4-layer PCB with proper signal integrity
 
@@ -324,7 +325,7 @@
 
 > This decision refers to the mechanical housing and installation method
 
-### Design Choices
+### Enclosure Design Choices
 
 #### **SELECTED Option #1:** IP65 die-cast aluminum enclosure with DIN rail mounting
 
@@ -355,7 +356,7 @@
 
 > This decision refers to how we will verify the system meets requirements
 
-### Design Choices
+### Testing Strategy Design Choices
 
 #### **SELECTED Option #1:** Comprehensive automated testing with HIL (Hardware-in-Loop)
 
@@ -384,7 +385,7 @@
 
 > This decision refers to the documentation and regulatory requirements
 
-### Design Choices
+### Documentation Design Choices
 
 #### **SELECTED Option #1:** Full industrial documentation package with regulatory compliance
 
@@ -414,7 +415,7 @@
 
 > This decision refers to how the system will be manufactured and assembled
 
-### Design Choices
+### Manufacturing Design Choices
 
 #### **SELECTED Option #1:** Contract manufacturing with local assembly and test
 

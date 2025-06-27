@@ -99,10 +99,6 @@ The Multi Sonicator I/O Controller project extends Cannasol Technologies' propri
                                       └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘
 ```
 
-### Physical Controller Layout
->
-> Layout of the physical controller
-
 ## Physical Controller Layout
 
 Layout of the physical controller
@@ -206,7 +202,7 @@ struct CT2000Interface {
 
 ### ATmega32A Pin Allocation Diagram
 
-```
+```text
                     ATmega32A-PU (DIP-40) Pin Assignment
                          ┌─────────┐
                     PB0──┤1    40├──PA0 (ADC0) - Reserved
@@ -249,7 +245,7 @@ Son2: PD6(OverLD), PD7(FreqOut), PB0(FreqLk), PB1(Start), + I2C DAC + ADC
 Son3: PC3(OverLD), PC4(FreqOut), PC5(FreqLk), PC2(Start), + I2C DAC + ADC
 Son4: PC6(OverLD), PB2(FreqOut), PC7(FreqLk), PB3(Start), + I2C DAC + ADC
 
-```
+```text
 
 ```cpp
 // Inside the Multi Sonicator I/O Controller enclosure:
@@ -278,7 +274,7 @@ private:
 
 #### **Physical Installation Diagram**
 
-```
+```text
 Industrial Control Cabinet:
 ┌─────────────────────────────────────────────────────────────────────┐
 │  ┌─────────────────┐                                                │
@@ -328,7 +324,7 @@ Industrial Control Cabinet:
 
 #### **Enclosure Mounting Options**
 
-```
+```text
 Option 1: DIN Rail Mount (Recommended)
 ┌─────────────────────────────────────────┐
 │ ┌─────────────────────────────────────┐ │
@@ -444,7 +440,7 @@ struct SonicatorStatus {
 
 #### **Option 1: Dedicated ISP Programmer (Recommended for Production)**
 
-```
+```text
 Hardware Required:
 - USBasp Programmer (~$8-15) OR
 - Atmel AVR-ISP-MK2 (~$35) OR  
@@ -460,7 +456,7 @@ Advantages:
 
 #### **Option 2: Arduino UNO R4 WiFi as ISP (Current Fallback)**
 
-```
+```text
 Hardware Required:
 - Arduino UNO R4 WiFi (already available)
 - Load ArduinoISP sketch onto Arduino
@@ -579,7 +575,7 @@ Layout of the physical controller
 │  │   Female    │  │   Female    │  │   Female    │  │   Female    │ │
 │  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘ │
 │                                                                     │
-│  [1] [2] [3] [4]   Individual Sonicator Status LEDs                │
+│   [1]   [2]   [3]   [4]   Individual Sonicator Status LEDs          │
 │                                                                     │
 │  Serial: ____________                              [PROGRAMMING]    │
 │                                                       [PORT]        │
