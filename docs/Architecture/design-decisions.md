@@ -6,26 +6,51 @@
 
 ### Design Choices
 
-#### **SELECTED Option #1:** Wired connection through multi-conductor extension cable from main motherboard
+#### **SELECTED Option #1:** Serial DB9 connection to main automation system
 
-> Use a professional 12-conductor shielded cable to deliver power and communication from the main machine motherboard to our adapter box
+> Use the existing DB9 serial interface from the main automation system for communication, with separate power supply for the controller
 
-    - This will connect to the main machine's power supply and communication systems through a robust industrial cable
-    - We will receive +24V, +12V, +5V, and ground over heavy-gauge conductors 
-    - UART communication will use dedicated signal conductors with proper isolation
-    - Additional conductors available for emergency stop, status feedback, and future expansion (SPI bus)
-    - Professional Molex Mini-Fit Jr. connectors on both ends for reliable industrial connection
-    - Cable protection through liquid-tight flexible conduit for EMI shielding and physical protection
+    - Communication through standard DB9 serial connection (RS-232 or RS-485)
+    - MODBUS RTU protocol over serial interface for industrial compatibility
+    - Dedicated power supply for the sonicator controller (24VDC industrial supply)
+    - DB9 connection provides robust industrial communication standard
+    - Compatible with existing automation system serial interfaces
+    - Enables remote monitoring and control through established communication infrastructure
 
-**Decision Rationale:** 
-- Leverages existing qualified power infrastructure
-- Professional integration with customer's machine
-- Scalable and maintainable design
-- Meets industrial reliability standards
+**DB9 Serial Interface Specifications:**
+    - Protocol: MODBUS RTU over RS-232/RS-485
+    - Baud Rate: 115200 bps (configurable)
+    - Data Format: 8N1 (8 data bits, no parity, 1 stop bit)
+    - Flow Control: None (protocol-based handshaking)
+    - Cable: Shielded twisted pair, industrial grade
+    - Maximum Distance: 1200m (RS-485) / 15m (RS-232)
 
-#### **Backup Option:** Connect to the ESP32 chip over IoT ESP-NOW protocol 
+**Decision Rationale:**
 
-> This would require switching chips to be another ESP32 chip and separate power supply.
+- Integrates with existing automation system communication infrastructure
+- Standard industrial communication method
+- Proven reliability in industrial environments
+- Separate power supply provides isolation and flexibility
+- Compatible with existing HMI/SCADA systems
+
+#### **Option #2:** Multi-conductor extension cable from main motherboard
+
+> Use a professional 12-conductor shielded cable to deliver power and communication from the main machine motherboard
+
+**Disadvantages:**
+    - Requires custom cable and connector design
+    - More complex integration with existing system
+    - Potential for ground loops and isolation issues
+    - Non-standard approach for automation system expansion
+
+#### **Option #3:** Connect to the ESP32 chip over IoT ESP-NOW protocol 
+
+> This would require switching chips to be another ESP32 chip and separate power supply
+
+**Disadvantages:**
+    - Wireless reliability issues in industrial environment
+    - Not suitable for real-time control applications
+    - EMI susceptibility near high-power sonicators
 
 ## **Power Supply Architecture**
 
@@ -33,21 +58,42 @@
 
 ### Design Choices
 
-#### **SELECTED Option #1:** Main motherboard power with local regulation in adapter box
+#### **SELECTED Option #1:** Dedicated 24VDC industrial power supply
 
 **Advantages:**
-    - Leverages existing qualified power supply from main machine
-    - No additional UL/CE certification required for power supply component
-    - Consistent with machine's power management and safety systems
-    - Local regulation provides clean, isolated power for sensitive circuits
-    - Cost effective - no separate power supply purchase needed
+    - Complete electrical isolation from main automation system
+    - Eliminates ground loops and interference issues
+    - Standard industrial power supply with UL/CE certification
+    - Local regulation provides clean, stable power for sensitive circuits
+    - Easy troubleshooting and maintenance (separate power system)
+    - Flexible installation - can be located near sonicator controller
+    - No dependency on main system power architecture
 
 **Implementation:**
-    - Input: +24V from main motherboard via extension cable
-    - Local regulation: 24V → 12V (LM2596) → 5V (LM7805) cascade
+    - Input: 120/240VAC industrial power supply → 24VDC output
+    - Local regulation: 24V → 12V (LM2596) → 5V (LM7805) cascade  
     - Separate analog and digital supplies for clean operation
-    - EMI filtering and protection at adapter box input
-    - Isolated communication to prevent ground loops
+    - EMI filtering and protection at controller input
+    - Power supply redundancy option for critical applications
+
+#### **Option #2:** DB9 power distribution from main automation system
+
+**Disadvantages:**
+    - Mixes power and communication on same connector (poor practice)
+    - Potential for ground loops and EMI coupling
+    - Limited current capacity per DB9 pin (1-3A maximum)
+    - Complex troubleshooting (power and communication failures linked)
+    - Non-standard approach for industrial automation
+    - Reduced connector reliability due to high current on signal pins
+
+#### **Option #3:** Main motherboard power with extension cable
+
+**Disadvantages:**
+    - Requires custom cable design and integration
+    - Potential for ground loops between systems
+    - Dependency on main system power architecture
+    - More complex troubleshooting (power and communication mixed)
+    - Non-standard approach for automation system expansion
 
 #### **Option #2:** Dedicated external power supply
 
@@ -133,11 +179,12 @@
     - Compatible with existing HMI and SCADA systems
 
 **Implementation Details:**
-    - Physical layer: Isolated UART at 115200 baud (RS-485 option for longer distances)
+    - Physical layer: Isolated UART at 115200 baud over DB9 serial connection
     - Protocol: MODBUS RTU (binary encoding for efficiency)
     - Device addressing: Each sonicator controller gets unique slave address
     - Register mapping: Standardized holding registers for control and status
     - Error handling: CRC-16 validation with automatic retry logic
+    - Cable: Shielded twisted pair for noise immunity in industrial environment
 
 #### **Option #2:** Custom simple communication protocol over serial connection
 
@@ -246,10 +293,10 @@
 #### **SELECTED Option #1:** Professional 4-layer PCB with proper signal integrity
 
 **Layer Stack-up:**
-    - Layer 1: Component placement and high-speed signals
-    - Layer 2: Ground plane (uninterrupted)
-    - Layer 3: Power planes (+5V, +12V, -12V)
-    - Layer 4: Low-speed signals and additional routing
+    - Layer 1: Component placement and signal routing
+    - Layer 2: Ground plane (uninterrupted for signal integrity)
+    - Layer 3: Power planes (+5V, +12V, -12V distribution)
+    - Layer 4: Secondary signal routing and additional connections
 
 **Design Rules:**
     - Crystal placement: <10mm from ATmega32A with ground guard
@@ -320,11 +367,11 @@
     - Environmental Testing: Temperature, humidity, vibration per industrial standards
 
 **Test Equipment:**
-    - Sonicator simulator for automated testing
+    - Sonicator simulator for automated regression testing
     - Signal generator for frequency accuracy verification
     - Oscilloscope for timing and signal integrity analysis
-    - Environmental chamber for temperature testing
-    - EMI chamber for regulatory compliance testing
+    - Environmental chamber for temperature and humidity testing
+    - EMI test equipment for regulatory compliance verification
 
 **Advantages:**
     - Catches defects early in development cycle
@@ -398,8 +445,8 @@
 
 | Category | Selected Option | Key Rationale |
 |----------|----------------|---------------|
-| **Connection** | Multi-conductor cable from main motherboard | Professional integration, leverages existing infrastructure |
-| **Power Supply** | Main board power with local regulation | Cost effective, reliable, no additional certification |
+| **Connection** | Serial DB9 to main automation system | Standard industrial communication, reliable, isolated |
+| **Power Supply** | Dedicated 24VDC industrial supply | Complete isolation, standard approach, easy maintenance |
 | **Clock Source** | External 16MHz crystal (Production grade) | Industrial precision, reliable communication, safety compliance |
 | **Communication** | MODBUS RTU over isolated UART | Industry standard, team familiarity, robust error handling |
 | **Sonicator Interface** | Dedicated isolated circuits per sonicator | Fault isolation, safety compliance, individual control |
