@@ -5,15 +5,18 @@ This document provides complete instructions for setting up the AVR development 
 ## Hardware Requirements
 
 ### Target Hardware
+
 - **Microcontroller:** ATmega32A (DIP-40 package)
 - **Crystal:** 16MHz external crystal oscillator
 - **Power Supply:** 5V regulated (from 24V→12V→5V stages)
 
 ### ISP Programmer
+
 - **Arduino Uno R4 WiFi** configured as ISP programmer
 - USB cable for connection to development computer
 
 ### Additional Hardware
+
 - Breadboard or development board
 - Jumper wires for ISP connections
 - 10µF capacitor for Arduino reset bypass
@@ -39,6 +42,7 @@ Connect Arduino Uno R4 WiFi to ATmega32A as follows:
 ### PlatformIO Installation
 
 1. **Install Visual Studio Code**
+
    ```bash
    # Download from https://code.visualstudio.com/
    ```
@@ -50,6 +54,7 @@ Connect Arduino Uno R4 WiFi to ATmega32A as follows:
    - Install the extension
 
 3. **Verify Installation**
+
    ```bash
    pio --version
    ```
@@ -59,16 +64,19 @@ Connect Arduino Uno R4 WiFi to ATmega32A as follows:
 If using Arduino IDE instead of PlatformIO:
 
 1. **Install Arduino IDE 2.x**
+
    ```bash
    # Download from https://www.arduino.cc/en/software
    ```
 
 2. **Add MightyCore Board Package**
    - File → Preferences
-   - Additional Board Manager URLs: 
-     ```
+   - Additional Board Manager URLs:
+
+     ```text
      https://mcudude.github.io/MightyCore/package_MCUdude_MightyCore_index.json
      ```
+
    - Tools → Board → Boards Manager
    - Search for "MightyCore" and install
 
@@ -79,6 +87,7 @@ Before programming the ATmega32A, you must flash the Arduino Uno R4 WiFi with IS
 1. **Connect Arduino Uno R4 WiFi via USB**
 
 2. **Flash ArduinoISP Sketch**
+
    ```bash
    # In Arduino IDE:
    # File → Examples → 11.ArduinoISP → ArduinoISP
@@ -93,12 +102,14 @@ Before programming the ATmega32A, you must flash the Arduino Uno R4 WiFi with IS
 ## Project Setup
 
 ### Clone Repository
+
 ```bash
 git clone <repository-url>
 cd multi-sonicator-io
 ```
 
 ### PlatformIO Build and Upload
+
 ```bash
 # Build the project
 pio run
@@ -124,6 +135,7 @@ avrdude -C ~/.platformio/packages/tool-avrdude/avrdude.conf \
 ```
 
 **Fuse Explanations:**
+
 - **LFUSE = 0xFF:** External crystal oscillator, slow rising power
 - **HFUSE = 0xD9:** JTAG disabled, SPI enabled, watchdog disabled  
 - **EFUSE = 0xFF:** Default extended fuse settings
@@ -133,6 +145,7 @@ avrdude -C ~/.platformio/packages/tool-avrdude/avrdude.conf \
 ### Basic Blink Test
 
 1. **Upload Blink Example**
+
    ```cpp
    // Test code in src/main.cpp
    #include <Arduino.h>
@@ -152,6 +165,7 @@ avrdude -C ~/.platformio/packages/tool-avrdude/avrdude.conf \
    ```
 
 2. **Build and Upload**
+
    ```bash
    pio run --target upload
    ```

@@ -8,14 +8,15 @@
 
 #### **SELECTED Option #1:** Serial DB9 connection to main automation system
 
-> Use the existing DB9 serial interface from the main automation system for communication, with separate power supply for the controller
+> Use the existing DB9 serial interface from the main automation system for both communication and power delivery
 
     - Communication through standard DB9 serial connection (RS-232 or RS-485)
     - MODBUS RTU protocol over serial interface for industrial compatibility
-    - Dedicated power supply for the sonicator controller (24VDC industrial supply)
+    - Power delivered via DB9 connection from main automation system (24VDC via Pin 1)
     - DB9 connection provides robust industrial communication standard
     - Compatible with existing automation system serial interfaces
     - Enables remote monitoring and control through established communication infrastructure
+    - Single cable solution reduces installation complexity
 
 **DB9 Serial Interface Specifications:**
     - Protocol: MODBUS RTU over RS-232/RS-485
@@ -30,7 +31,8 @@
 - Integrates with existing automation system communication infrastructure
 - Standard industrial communication method
 - Proven reliability in industrial environments
-- Separate power supply provides isolation and flexibility
+- DB9 power delivery eliminates need for separate power supply
+- Single cable solution reduces installation complexity and cost
 - Compatible with existing HMI/SCADA systems
 
 #### **Option #2:** Multi-conductor extension cable from main motherboard
@@ -45,12 +47,13 @@
 
 #### **Option #3:** Connect to the ESP32 chip over IoT ESP-NOW protocol
 
-> This would require switching chips to be another ESP32 chip and separate power supply
+> This would require switching chips to be another ESP32 chip and providing separate power supply
 
 **Disadvantages:**
     - Wireless reliability issues in industrial environment
     - Not suitable for real-time control applications
     - EMI susceptibility near high-power sonicators
+    - Requires separate power supply increasing complexity
 
 ## **Power Supply Architecture**
 
@@ -58,33 +61,35 @@
 
 ### Power Supply Design Choices
 
-#### **SELECTED Option #1:** Dedicated 24VDC industrial power supply
+#### **SELECTED Option #1:** DB9 power delivery from main automation system
 
 **Advantages:**
-    - Complete electrical isolation from main automation system
-    - Eliminates ground loops and interference issues
-    - Standard industrial power supply with UL/CE certification
+    - Single cable solution for communication and power
+    - Uses existing infrastructure from main automation system
+    - Eliminates need for separate power supply installation
+    - Reduces component count and installation complexity
+    - Standard DB9 connections provide reliable power delivery
     - Local regulation provides clean, stable power for sensitive circuits
-    - Easy troubleshooting and maintenance (separate power system)
-    - Flexible installation - can be located near sonicator controller
-    - No dependency on main system power architecture
+    - Simplified wiring and reduced cost
+    - No separate power supply certification or installation required
 
 **Implementation:**
-    - Input: 120/240VAC industrial power supply → 24VDC output
+    - Input: +24VDC via DB9 Pin 1 from Main Automation Box
+    - Power ground via DB9 Pin 4 return
     - Local regulation: 24V → 12V (LM2596) → 5V (LM7805) cascade  
     - Separate analog and digital supplies for clean operation
-    - EMI filtering and protection at controller input
-    - Power supply redundancy option for critical applications
+    - EMI filtering and protection at DB9 power input
+    - Conservative power budget design (42mA @ 24VDC)
 
-#### **Option #2:** DB9 power distribution from main automation system
+#### **Option #2:** Separate dedicated 24VDC industrial power supply
 
 **Disadvantages:**
-    - Mixes power and communication on same connector (poor practice)
-    - Potential for ground loops and EMI coupling
-    - Limited current capacity per DB9 pin (1-3A maximum)
-    - Complex troubleshooting (power and communication failures linked)
-    - Non-standard approach for industrial automation
-    - Reduced connector reliability due to high current on signal pins
+    - Requires separate power supply installation and certification
+    - Increased component count and cost
+    - Additional electrical connections and potential failure points
+    - More complex installation requiring separate power feed
+    - Higher total system cost including power supply and installation
+    - Requires separate EMI compliance for power supply
 
 #### **Option #3:** Main motherboard power with extension cable
 
@@ -95,7 +100,7 @@
     - More complex troubleshooting (power and communication mixed)
     - Non-standard approach for automation system expansion
 
-#### **Option #2:** Dedicated external power supply
+#### **Option #2:** Dedicated 24VDC industrial power supply
 
 **Advantages:**
     - Complete isolation from main machine
