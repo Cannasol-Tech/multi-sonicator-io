@@ -100,7 +100,7 @@
     - More complex troubleshooting (power and communication mixed)
     - Non-standard approach for automation system expansion
 
-#### **Option #3:** Power through DB9 sonicator connectors
+#### **Option #4:** Power through DB9 sonicator connectors
 
 **Disadvantages:**
     - Mixes power and signal on same connector (poor practice)
@@ -440,7 +440,7 @@
 | Category | Selected Option | Key Rationale |
 |----------|----------------|---------------|
 | **Connection** | Serial DB9 to main automation system | Standard industrial communication, reliable, isolated |
-| **Power Supply** | Dedicated 24VDC industrial supply | Complete isolation, standard approach, easy maintenance |
+| **Power Supply** | DB9 power delivery from main automation system | Single cable solution, reduced complexity, standard DB9 interface |
 | **Clock Source** | External 16MHz crystal (Production grade) | Industrial precision, reliable communication, safety compliance |
 | **Communication** | MODBUS RTU over isolated UART | Industry standard, team familiarity, robust error handling |
 | **Sonicator Interface** | Dedicated isolated circuits per sonicator | Fault isolation, safety compliance, individual control |
