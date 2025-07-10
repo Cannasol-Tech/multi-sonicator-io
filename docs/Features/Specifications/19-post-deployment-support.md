@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Establish procedures for monitoring, maintaining, and enhancing the Multi Sonicator I/O Controller system after delivery. Provide mechanisms for field support, firmware updates, and feedback-based improvements.
+Establish procedures for monitoring, maintaining, and enhancing the Multi-Sonicator I/O Controller system after delivery. Provide mechanisms for field support, firmware updates, and feedback-based improvements.
 
 ---
 

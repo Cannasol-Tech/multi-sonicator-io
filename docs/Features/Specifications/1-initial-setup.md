@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Establish the complete development environment and directory structure required for the Multi Sonicator I/O Controller firmware and embedded systems development. This phase ensures the AVR microcontroller environment is ready and documented for sustainable development.
+Establish the complete development environment and directory structure required for the Multi-Sonicator I/O Controller firmware and embedded systems development. This phase ensures the AVR microcontroller environment is ready and documented for sustainable development.
 
 ---
 

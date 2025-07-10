@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Implement the MODBUS RTU slave communication protocol over UART to allow PLCs or HMIs to control and monitor the Multi Sonicator I/O Controller. This module forms the basis of external system integration.
+Implement the MODBUS RTU slave communication protocol over UART to allow PLCs or HMIs to control and monitor the Multi-Sonicator I/O Controller. This module forms the basis of external system integration.
 
 ---
 

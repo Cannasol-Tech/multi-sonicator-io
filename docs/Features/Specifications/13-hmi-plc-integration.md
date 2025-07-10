@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Define and implement the interface between the Multi Sonicator I/O Controller and the customer’s existing HMI/PLC system using MODBUS RTU. This includes control signal mapping, screen design, and sequence automation.
+Define and implement the interface between the Multi-Sonicator I/O Controller and the customer’s existing HMI/PLC system using MODBUS RTU. This includes control signal mapping, screen design, and sequence automation.
 
 ---
 

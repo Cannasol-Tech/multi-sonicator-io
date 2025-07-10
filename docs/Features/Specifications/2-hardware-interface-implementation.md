@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Implement core low-level hardware interfaces for the Multi Sonicator I/O Controller, including GPIO control, analog I/O (ADC/DAC), and signal isolation to safely interact with CT2000 sonicators.
+Implement core low-level hardware interfaces for the Multi-Sonicator I/O Controller, including GPIO control, analog I/O (ADC/DAC), and signal isolation to safely interact with CT2000 sonicators.
 
 ---
 

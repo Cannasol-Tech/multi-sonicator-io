@@ -1,16 +1,16 @@
-# Multi Sonicator I/O Controller - Project Summary
+# Multi-Sonicator I/O Controller - Project Summary
 
 **Project Lead:** Stephen Boyett  
 **Hardware Advisor:** Josh (CEO)  
 **Company:** Cannasol Technologies  
-**Document Date:** June 2025  
-**Target Delivery:** 2 weeks from project start  
+**Document Date:** December 2024  
+**Target Delivery:** Initial prototype - July 2025  
 
 ---
 
 ## Executive Summary
 
-The Multi Sonicator I/O Controller project extends Cannasol Technologies' proprietary automation system to control up to 4 CT2000 sonicators simultaneously. This industrial-grade controller replaces single-sonicator control with a scalable multi-unit system, enabling increased production capacity for nano-emulsion processing in the cannabis and nutraceutical industries.
+The Multi-Sonicator I/O Controller project extends Cannasol Technologies' proprietary automation system to control up to 4 CT2000 sonicators simultaneously. This industrial-grade controller replaces single-sonicator control with a scalable multi-unit system, enabling increased production capacity for nano-emulsion processing in the cannabis and nutraceutical industries.
 
 **Key Deliverables:**
 
@@ -68,7 +68,7 @@ The Multi Sonicator I/O Controller project extends Cannasol Technologies' propri
               │                                      │
               ▼                                      ▼
    ┌─────────────────┐                ┌─────────────────────────────────────┐
-   │ Velocio 1630c   │                │ Multi Sonicator I/O Controller      │
+   │ Velocio 1630c   │                │ Multi-Sonicator I/O Controller      │
    │ PLC             │                │ (ATmega32A)                         │
    │ (Slave ID = 1)  │                │ (Slave ID = 2)                      │
    └─────────────────┘                │                                     │
@@ -232,7 +232,7 @@ Son4: PC6(OverLD), PB2(FreqOut), PC7(FreqLk), PB3(Start), PD7(PWM), PA7(ADC)
 ```
 
 ```cpp
-// Inside the Multi Sonicator I/O Controller enclosure:
+// Inside the Multi-Sonicator I/O Controller enclosure:
 class MultiSonicatorController {
 private:
     ATmega32A microcontroller;           // Main processing unit
@@ -266,7 +266,7 @@ Industrial Control Cabinet:
 │  │ • Velocio PLC   │                                                │
 │  │ • HMI System    │                                                │
 │  │ • ESP32 WiFi    │         ┌─────────────────────────────────────┐│
-│  │ • 24VDC Supply  │◄────────┤ Multi Sonicator I/O Controller     ││
+│  │ • 24VDC Supply  │◄────────┤ Multi-Sonicator I/O Controller     ││
 │  │ [Spare DB9]     │ DB9 Cable│ Model: CAN-SON-CTRL-4              ││
 │  └─────────────────┘(Comm+Pwr)│                                     ││
 │                               │ DIN Rail Mounted                   ││
@@ -719,7 +719,7 @@ Firebase/Mobile App Updates:
 
 ## Conclusion
 
-The Multi Sonicator I/O Controller project represents a strategic expansion of Cannasol Technologies' automation capabilities, enabling 4x production capacity increase while leveraging existing infrastructure investments. The technical approach balances industrial reliability requirements with rapid development timeline and budget constraints.
+The Multi-Sonicator I/O Controller project represents a strategic expansion of Cannasol Technologies' automation capabilities, enabling 4x production capacity increase while leveraging existing infrastructure investments. The technical approach balances industrial reliability requirements with rapid development timeline and budget constraints.
 
 **Key Success Factors:**
 

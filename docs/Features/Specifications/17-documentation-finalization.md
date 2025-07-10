@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Complete and polish all system documentation needed for installation, usage, support, maintenance, and compliance handoff. This ensures the Multi Sonicator I/O Controller is fully supportable post-deployment.
+Complete and polish all system documentation needed for installation, usage, support, maintenance, and compliance handoff. This ensures the Multi-Sonicator I/O Controller is fully supportable post-deployment.
 
 ---
 

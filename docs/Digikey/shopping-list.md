@@ -1,4 +1,4 @@
-# DigiKey Shopping List - Multi Sonicator I/O Controller
+# DigiKey Shopping List - Multi-Sonicator I/O Controller
 
 ## Core Microcontroller Components
 

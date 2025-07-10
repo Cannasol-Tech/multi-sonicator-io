@@ -1,6 +1,6 @@
 # Development Environment Setup
 
-This document provides complete instructions for setting up the AVR development environment for the Multi Sonicator I/O Controller project.
+This document provides complete instructions for setting up the AVR development environment for the Multi-Sonicator I/O Controller project.
 
 ## Hardware Requirements
 

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Prepare the Multi Sonicator I/O Controller system for delivery by creating production firmware builds, documentation, configuration files, and troubleshooting tools.
+Prepare the Multi-Sonicator I/O Controller system for delivery by creating production firmware builds, documentation, configuration files, and troubleshooting tools.
 
 ---
 

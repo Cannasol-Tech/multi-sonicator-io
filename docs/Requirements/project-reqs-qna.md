@@ -1,14 +1,14 @@
-# Multi Sonicator I/O Controller - Project Requirements Q&A
+# Multi-Sonicator I/O Controller - Project Requirements Q&A
 
 ## **Business Context**
 
 ### 1. Project Name/Codename
 
-**Multi Sonicator I/O Controller**
+**Multi-Sonicator I/O Controller**
 
 ### 2. Timeline
 
-**Target delivery date: 2 weeks from now**
+**Target delivery date: July 2025**
 
 ### 3. Budget
 
