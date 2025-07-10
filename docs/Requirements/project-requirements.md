@@ -432,11 +432,27 @@ struct StatusFlags {
 | **Optocouplers** | High-speed | 6N137 × 8 | Signal isolation | **8 units: 4 inputs + 4 outputs** |
 | **Relay Drivers** | Low-side | ULN2003 × 2 | Overload reset control | **Pin 2 control** |
 | **Connectors** | DB9 Male | Standard × 4 | Industrial grade | **4 sonicator interfaces** |
-| **ISP Programmer** | AVR Programmer | USBasp or AVR-ISP-MK2 | Dedicated ISP programmer | **Professional programming tool** |
+| **ISP Programmer** | AVR Programmer | Arduino Uno R4 WiFi as ISP (primary) or USBasp (alternative) | In-system programmer | **Development and production programming** |
 
 ### Programming Options
 
-#### **Option 1: Dedicated ISP Programmer (Recommended for Production)**
+#### **Primary Option: Arduino UNO R4 WiFi as ISP (Development)**
+
+```markdown
+Hardware Required:
+- Arduino UNO R4 WiFi (already available in development setup)
+- Load ArduinoISP sketch onto Arduino
+- 10µF capacitor for reset bypass during programming
+
+Advantages:
+- Uses existing development hardware
+- No additional cost for prototyping
+- Well-documented Arduino framework integration
+- Supported by PlatformIO out of the box
+- Good for iterative development and testing
+```
+
+#### **Alternative Option: Dedicated ISP Programmer (Production)**
 
 ```markdown
 Hardware Required:
@@ -445,24 +461,12 @@ Hardware Required:
 - Atmel-ICE (~$125 - professional grade)
 
 Advantages:
-- Dedicated programming tool
-- Faster programming cycles
+- Dedicated programming tool for production
+- Faster programming cycles in manufacturing
 - Professional development approach
-- No need to sacrifice Arduino UNO R4 WiFi
-- Reliable for production programming
+- No need to tie up Arduino hardware for programming
+- More reliable for high-volume production programming
 ```
-
-#### **Option 2: Arduino UNO R4 WiFi as ISP (Current Fallback)**
-
-```markdown
-Hardware Required:
-- Arduino UNO R4 WiFi (already available)
-- Load ArduinoISP sketch onto Arduino
-
-Advantages:
-- Uses existing hardware
-- No additional cost
-- Good for prototyping
 
 Disadvantages:
 - Ties up Arduino UNO R4 WiFi
