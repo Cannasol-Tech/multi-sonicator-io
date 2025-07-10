@@ -219,4 +219,4 @@ The Multi-Sonicator I/O Controller project demonstrates **exceptional budget man
 
 *Budget Analysis prepared: December 10, 2024*  
 *Project: Multi-Sonicator I/O Controller*  
-*Version: 1.0*
+*Version: 0.1.0*

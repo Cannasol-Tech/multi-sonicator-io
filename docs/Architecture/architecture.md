@@ -161,6 +161,6 @@ HMI System (MODBUS Master)
 
 ---
 
-**Architecture Version**: 1.0  
+**Architecture Version**: 0.1.0  
 **Last Updated**: December 2024  
 **Review Status**: Approved for implementation
