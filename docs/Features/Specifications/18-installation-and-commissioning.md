@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Guide the field installation, on-site configuration, and acceptance testing process for deploying the Multi Sonicator I/O Controller at the customer facility. Ensure a smooth, verified transition to production use.
+Guide the field installation, on-site configuration, and acceptance testing process for deploying the Multi-Sonicator I/O Controller at the customer facility. Ensure a smooth, verified transition to production use.
 
 ---
 

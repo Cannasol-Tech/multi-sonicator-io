@@ -1,16 +1,16 @@
-# Multi Sonicator I/O Controller - Project Summary
+# Multi-Sonicator I/O Controller - Project Summary
 
 **Project Lead:** Stephen Boyett  
 **Hardware Advisor:** Josh (CEO)  
 **Company:** Cannasol Technologies  
-**Document Date:** June 2025  
-**Target Delivery:** 2 weeks from project start  
+**Document Date:** December 2024  
+**Target Delivery:** Initial prototype - July 2025  
 
 ---
 
 ## Executive Summary
 
-The Multi Sonicator I/O Controller project extends Cannasol Technologies' proprietary automation system to control up to 4 CT2000 sonicators simultaneously. This industrial-grade controller replaces single-sonicator control with a scalable multi-unit system, enabling increased production capacity for nano-emulsion processing in the cannabis and nutraceutical industries.
+The Multi-Sonicator I/O Controller project extends Cannasol Technologies' proprietary automation system to control up to 4 CT2000 sonicators simultaneously. This industrial-grade controller replaces single-sonicator control with a scalable multi-unit system, enabling increased production capacity for nano-emulsion processing in the cannabis and nutraceutical industries.
 
 **Key Deliverables:**
 
@@ -68,7 +68,7 @@ The Multi Sonicator I/O Controller project extends Cannasol Technologies' propri
               │                                      │
               ▼                                      ▼
    ┌─────────────────┐                ┌─────────────────────────────────────┐
-   │ Velocio 1630c   │                │ Multi Sonicator I/O Controller      │
+   │ Velocio 1630c   │                │ Multi-Sonicator I/O Controller      │
    │ PLC             │                │ (ATmega32A)                         │
    │ (Slave ID = 1)  │                │ (Slave ID = 2)                      │
    └─────────────────┘                │                                     │
@@ -232,7 +232,7 @@ Son4: PC6(OverLD), PB2(FreqOut), PC7(FreqLk), PB3(Start), PD7(PWM), PA7(ADC)
 ```
 
 ```cpp
-// Inside the Multi Sonicator I/O Controller enclosure:
+// Inside the Multi-Sonicator I/O Controller enclosure:
 class MultiSonicatorController {
 private:
     ATmega32A microcontroller;           // Main processing unit
@@ -266,7 +266,7 @@ Industrial Control Cabinet:
 │  │ • Velocio PLC   │                                                │
 │  │ • HMI System    │                                                │
 │  │ • ESP32 WiFi    │         ┌─────────────────────────────────────┐│
-│  │ • 24VDC Supply  │◄────────┤ Multi Sonicator I/O Controller     ││
+│  │ • 24VDC Supply  │◄────────┤ Multi-Sonicator I/O Controller     ││
 │  │ [Spare DB9]     │ DB9 Cable│ Model: CAN-SON-CTRL-4              ││
 │  └─────────────────┘(Comm+Pwr)│                                     ││
 │                               │ DIN Rail Mounted                   ││
@@ -432,11 +432,27 @@ struct StatusFlags {
 | **Optocouplers** | High-speed | 6N137 × 8 | Signal isolation | **8 units: 4 inputs + 4 outputs** |
 | **Relay Drivers** | Low-side | ULN2003 × 2 | Overload reset control | **Pin 2 control** |
 | **Connectors** | DB9 Male | Standard × 4 | Industrial grade | **4 sonicator interfaces** |
-| **ISP Programmer** | AVR Programmer | USBasp or AVR-ISP-MK2 | Dedicated ISP programmer | **Professional programming tool** |
+| **ISP Programmer** | AVR Programmer | Arduino Uno R4 WiFi as ISP (primary) or USBasp (alternative) | In-system programmer | **Development and production programming** |
 
 ### Programming Options
 
-#### **Option 1: Dedicated ISP Programmer (Recommended for Production)**
+#### **Primary Option: Arduino UNO R4 WiFi as ISP (Development)**
+
+```markdown
+Hardware Required:
+- Arduino UNO R4 WiFi (already available in development setup)
+- Load ArduinoISP sketch onto Arduino
+- 10µF capacitor for reset bypass during programming
+
+Advantages:
+- Uses existing development hardware
+- No additional cost for prototyping
+- Well-documented Arduino framework integration
+- Supported by PlatformIO out of the box
+- Good for iterative development and testing
+```
+
+#### **Alternative Option: Dedicated ISP Programmer (Production)**
 
 ```markdown
 Hardware Required:
@@ -445,24 +461,12 @@ Hardware Required:
 - Atmel-ICE (~$125 - professional grade)
 
 Advantages:
-- Dedicated programming tool
-- Faster programming cycles
+- Dedicated programming tool for production
+- Faster programming cycles in manufacturing
 - Professional development approach
-- No need to sacrifice Arduino UNO R4 WiFi
-- Reliable for production programming
+- No need to tie up Arduino hardware for programming
+- More reliable for high-volume production programming
 ```
-
-#### **Option 2: Arduino UNO R4 WiFi as ISP (Current Fallback)**
-
-```markdown
-Hardware Required:
-- Arduino UNO R4 WiFi (already available)
-- Load ArduinoISP sketch onto Arduino
-
-Advantages:
-- Uses existing hardware
-- No additional cost
-- Good for prototyping
 
 Disadvantages:
 - Ties up Arduino UNO R4 WiFi
@@ -719,7 +723,7 @@ Firebase/Mobile App Updates:
 
 ## Conclusion
 
-The Multi Sonicator I/O Controller project represents a strategic expansion of Cannasol Technologies' automation capabilities, enabling 4x production capacity increase while leveraging existing infrastructure investments. The technical approach balances industrial reliability requirements with rapid development timeline and budget constraints.
+The Multi-Sonicator I/O Controller project represents a strategic expansion of Cannasol Technologies' automation capabilities, enabling 4x production capacity increase while leveraging existing infrastructure investments. The technical approach balances industrial reliability requirements with rapid development timeline and budget constraints.
 
 **Key Success Factors:**
 
@@ -734,8 +738,8 @@ The Multi Sonicator I/O Controller project represents a strategic expansion of C
 
 **Document Control:**
 
-- **Version:** 1.0
+- **Version:** 0.1.0
 - **Author:** Stephen Boyett (Lead Developer)
 - **Reviewer:** Josh (CEO)
-- **Next Review:** Project completion (2 weeks)
+- **Next Review:** February 2025 (post-prototype completion)
 - **Distribution:** Development team, stakeholders

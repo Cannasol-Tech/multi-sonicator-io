@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Define the full MODBUS register map for the Multi Sonicator I/O Controller to expose hardware states, control values, and diagnostics through MODBUS RTU interface. This enables seamless integration with HMI, PLC, or SCADA systems.
+Define the full MODBUS register map for the Multi-Sonicator I/O Controller to expose hardware states, control values, and diagnostics through MODBUS RTU interface. This enables seamless integration with HMI, PLC, or SCADA systems.
 
 ---
 

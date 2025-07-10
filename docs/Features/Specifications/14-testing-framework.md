@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Establish a full testing strategy for the Multi Sonicator I/O Controller firmware, including unit tests, hardware-in-loop (HIL) tests, integration validation, and regression testing.
+Establish a full testing strategy for the Multi-Sonicator I/O Controller firmware, including unit tests, hardware-in-loop (HIL) tests, integration validation, and regression testing.
 
 ---
 

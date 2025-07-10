@@ -28,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ATmega32A pin mapping for DB9 interfaces
 - Support for up to 4 sonicator units
 
-## [0.1.0] - 2025-06-27
+## [0.1.0] - 2024-12-10
 
 ### Added
 - Project initialization
