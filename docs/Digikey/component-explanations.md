@@ -13,7 +13,7 @@
 - Needed for precise timing in frequency measurements
 - Without it: Communication errors, timing drift, unreliable operation
 
-### 22pF Capacitors × 2 (399-41511-ND)
+### 22pF Capacitors × 2 (399-4151-ND)
 
 **What it does:** Forms oscillator circuit with the crystal  
 **Why we need it:**
