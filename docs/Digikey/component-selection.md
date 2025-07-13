@@ -14,7 +14,7 @@
 
 | Category | Component | Part Number | Specifications | Notes |
 |----------|-----------|-------------|----------------|-------|
-| **Crystal** | 16MHz External | CTS ATS16A-E | ±20ppm, HC-49S, 20pF load | No change |
+| **Crystal** | 16MHz External | BC1005CT-ND | ±20ppm, HC-49S, 20pF load | No change |
 | **Load Caps** | 22pF Ceramic | Generic C0G | ±5%, 50V rating | No change |
 | **Power Reg** | Buck Converter | LM2596 Module | 24V→12V, 3A capacity | No change |
 | **Linear Reg** | 5V Regulator | LM7805 | 12V→5V, 1A capacity | No change |
