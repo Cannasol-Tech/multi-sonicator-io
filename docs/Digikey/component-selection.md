@@ -32,6 +32,9 @@
 | Category | Component | Part Number | Specifications | Notes |
 |----------|-----------|-------------|----------------|-------|
 | **PWM Filter** | 10 µF 25 V Aluminum | P5148-ND | CAP ALUM 10UF 20% 25V RADIAL TH | **Was on shopping list but is aluminum** | ?  
+| **PWM Filter** | 10µF Capacitor | 1276-1119-1-ND | CAP ALUM 47UF 20% 35V RADIAL TH | **NEW: 4x for PWM filters** |
+| ** Power Reg** | Buck Converter | LM2596S-12/NOPB-ND | IC REG BUCK 12V 3A TO263 | **On shopping list same specs as 945-3489-ND, one should be backup** |
+
 
 
 ### Removed Components (Cost Savings)
