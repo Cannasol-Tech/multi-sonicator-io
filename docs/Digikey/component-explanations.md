@@ -204,7 +204,7 @@
 - Communication error indicator
 - Without them: Can't see problems visually
 
-### Yellow LEDs × 4 (160-1128-ND)
+### Yellow LEDs × 4 (160-1133-ND) -- AI ordered -> (red) (160-1128-ND)
 
 **What it does:** Warning indicators  
 **Why we need it:**
