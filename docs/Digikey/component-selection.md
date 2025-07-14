@@ -14,7 +14,7 @@
 
 | Category | Component | Part Number | Specifications | Notes |
 |----------|-----------|-------------|----------------|-------|
-| **Crystal** | 16MHz External | BC1005CT-ND | ±20ppm, HC-49S, 20pF load | No change |
+| **Crystal** | 16MHz External | BC1005CT-ND | ±20ppm, HC-49S, 20pF load | No change |  
 | **Load Caps** | 22pF Ceramic | Generic C0G | ±5%, 50V rating | No change |
 | **Power Reg** | Buck Converter | LM2596 Module | 24V→12V, 3A capacity | No change |
 | **Linear Reg** | 5V Regulator | LM7805 | 12V→5V, 1A capacity | No change |
@@ -27,6 +27,11 @@
 | **Connectors** | DB9 Female | Standard × 4 | Industrial grade | No change |
 | **Connectors** | DB9 Male | Standard × 1 | To main automation box | No change |
 | **ISP Header** | 2x3 Pin Header | 952-2120-ND | For programming | No change |
+
+### Backup Componenents 
+| Category | Component | Part Number | Specifications | Notes |
+|----------|-----------|-------------|----------------|-------|
+| **Crystal** | 16MHz External | ECS-160-20-46X | ±20ppm, HC-49S, 20pF load | No change |  
 
 ### Removed Components (Cost Savings)
 
