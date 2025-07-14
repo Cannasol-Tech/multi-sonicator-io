@@ -12,7 +12,7 @@
 ### Crystal Oscillator Circuit
 
 - **16MHz Crystal** (HC-49/S package)
-  - DigiKey P/N: `CTX1088-ND` (ECS-160-20-46X)
+  - DigiKey P/N: `BC1005CT-ND` (ECS-160-20-46X)
   - Qty: 1
   - Unit Price: ~$0.50
 
