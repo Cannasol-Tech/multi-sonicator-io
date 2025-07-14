@@ -17,7 +17,7 @@
 | **Crystal** | 16MHz External | ECS-160-20-46X | ±20ppm, HC-49S, 20pF load | No change |  
 | **Load Caps** | 22pF Ceramic | BC1005CT-ND | ±5%, 50V rating | No change |
 | **Power Reg** | Buck Converter | 945-3489-ND | 24V→12V, 3A capacity | No change |
-| **Linear Reg** | 5V Regulator | LM7805 | 12V→5V, 1A capacity | No change |
+| **Linear Reg** | 5V Regulator | LM7805CT-ND | 12V→5V, 1A capacity | No change |
 | **PWM Filter** | 1kΩ Resistor | CF14JT1K00CT-ND | 1/4W, 5% | **NEW: 4x for PWM filters** |
 | **PWM Filter** | 10µF Capacitor | 1276-1119-1-ND | 16V, X7R ceramic | **NEW: 4x for PWM filters** |
 | **Op-Amps** | Dual Op-Amp | LM358N × 2 | 0-10V amplitude scaling | **REDUCED: Only 2 needed** |
