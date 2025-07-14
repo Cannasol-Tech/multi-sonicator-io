@@ -28,6 +28,11 @@
 | **Connectors** | DB9 Male | Standard × 1 | To main automation box | No change |
 | **ISP Header** | 2x3 Pin Header | 952-2120-ND | For programming | No change |
 
+### Components on `shopping-list.md`
+| Category | Component | Part Number | Specifications | Notes |
+|----------|-----------|-------------|----------------|-------|
+| **PWM Filter** | 10 µF 25 V Aluminum | P5148-ND | CAP ALUM 10UF 20% 25V RADIAL TH | **Was on shopping list but is aluminum** | ?  
+
 
 ### Removed Components (Cost Savings)
 
