@@ -338,7 +338,7 @@ Revolutionary approach: 1 RGB LED replaces 12 individual LEDs
                 C1       │       C2
                ┤├────────┼────────┤├
                22pF      │        22pF
-           BC1003CT-ND   │    BC1003CT-ND
+           BC1005CT-ND   │    BC1005CT-ND
                          │
                     ┌────┴────┐
                     │ 16MHz   │
@@ -358,7 +358,7 @@ Revolutionary approach: 1 RGB LED replaces 12 individual LEDs
 
 Component Values:
 - Crystal: 16MHz HC-49/S - 3001-ECS-160-20-46X-ND
-- Load Capacitors: 22pF C0G ceramic - BC1003CT-ND
+- Load Capacitors: 22pF C0G ceramic - BC1005CT-ND
 - Accuracy: ±20ppm (5000× better than internal RC)
 - Required for accurate UART communication at 115200 baud
 - Essential for precise sonicator frequency measurements
@@ -393,7 +393,7 @@ Socket Benefits:
 - **ATmega32A-PU Microcontroller**: Already owned, 40-pin DIP
 - **40-pin DIP Socket**: AE9998-ND ($1.00)
 - **16MHz Crystal**: 3001-ECS-160-20-46X-ND ($0.65)
-- **22pF Load Capacitors**: BC1003CT-ND ($0.12 each, qty 2)
+- **22pF Load Capacitors**: BC1005CT-ND ($0.23 each, qty 2)
 
 ### **Power Supply (Pre-conditioned 24VDC Input)**
 - **LM2596S Buck Converter**: LM2596S-12/NOPB-ND ($5.50)

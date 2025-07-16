@@ -5,7 +5,7 @@
 **Industrial automation controller for simultaneous control of up to 4 CT2000 sonicators**
 
 - **Target Cost:** Under $400 budget
-- **Actual Cost:** $169 (58% under budget)
+- **Actual Cost:** $178 (56% under budget)
 - **Assembly:** 100% through-hole, hand-solderable
 - **Design Life:** 25+ years with all-ceramic capacitors
 - **Power:** Pre-conditioned 24VDC from main automation system
@@ -63,11 +63,13 @@
   - Essential for precise sonicator frequency measurements
   - Industrial temperature stability
 
-#### **22pF Crystal Load Capacitors - BC1003CT-ND**
+#### **22pF Crystal Load Capacitors - BC1005CT-ND**
 
-- **Qty:** 2 | **Cost:** $0.12 each
+- **Qty:** 2 | **Cost:** $0.23 each
 - **Package:** Radial ceramic through-hole
 - **Role:** Forms oscillator circuit with crystal for proper frequency
+- **Description:** CAP CER 22PF 50V C0G/NP0 RADIAL
+- **Detailed Description:** 22 pF ±5% 50V Ceramic Capacitor C0G, NP0 Radial
 - **Why Chosen:**
   - C0G dielectric for temperature stability
   - Matches ATmega32A’s specified load capacitance
@@ -395,7 +397,7 @@
 | Component Category            | Quantity     | Unit Cost                          | Total Cost                | Purpose                 |
 | ----------------------------- | ------------ | ---------------------------------- | ------------------------- | ----------------------- |
 | **Microcontroller**     | 1            | $0.00                              | $0.00                     | Already owned           |
-| **Crystal Circuit**     | 3            | $0.30 avg                          | $0.89                     | Timing reference        |
+| **Crystal Circuit**     | 3            | $0.37 avg                          | $1.11                     | Timing reference        |
 | **Power Regulators**    | 2            | $3.18 avg                          | $6.35                     | Power conversion        |
 | **Capacitors**          | 20           | $0.69 avg                          | $13.86                    | Filtering & decoupling  |
 | **Sonicator Interface** | 22           | $0.55 avg                          | $12.05                    | PWM control & isolation |
@@ -420,7 +422,7 @@
 
 ```csv
 3001-ECS-160-20-46X-ND, 1
-BC1003CT-ND, 2
+BC1005CT-ND, 2
 LM2596S-12/NOPB-ND, 1
 LM7805ACT-ND, 1
 445-173297-1-ND, 8
