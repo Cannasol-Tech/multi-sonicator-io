@@ -113,9 +113,9 @@
 
 #### **Power Supply Capacitors - Essential Filtering Only**
 
-**10µF Ceramic Capacitors - BC1168CT-ND**
+**10µF Ceramic Capacitors - 445-173297-1-ND**
 
-- **Qty:** 8 | **Cost:** $0.45 each
+- **Qty:** 8 | **Cost:** $1.39 each
 - **Package:** X7R ceramic, radial through-hole
 - **Role:** Local power decoupling + PWM filtering
 - **Allocation:** 4× PWM filters + 4× local power decoupling
@@ -125,9 +125,9 @@
   - Temperature stable operation
   - Critical for clean PWM output and stable power
 
-**0.1µF Ceramic Decoupling Capacitors - BC1148CT-ND**
+**0.1µF Ceramic Decoupling Capacitors - BC1101CT-ND**
 
-- **Qty:** 10 | **Cost:** $0.15 each
+- **Qty:** 10 | **Cost:** $0.25 each
 - **Package:** X7R ceramic, radial through-hole
 - **Role:** High-frequency decoupling for all ICs
 - **Why Chosen:**
@@ -397,7 +397,7 @@
 | **Microcontroller**     | 1            | $0.00                              | $0.00                     | Already owned           |
 | **Crystal Circuit**     | 3            | $0.30 avg                          | $0.89                     | Timing reference        |
 | **Power Regulators**    | 2            | $3.18 avg                          | $6.35                     | Power conversion        |
-| **Capacitors**          | 20           | $0.27 avg                          | $5.34                     | Filtering & decoupling  |
+| **Capacitors**          | 20           | $0.69 avg                          | $13.86                    | Filtering & decoupling  |
 | **Sonicator Interface** | 22           | $0.55 avg                          | $12.05                    | PWM control & isolation |
 | **Connectors**          | 8            | $1.44 avg                          | $11.50                    | System connectivity     |
 | **Status Indication**   | 4            | $0.26 avg                          | $1.05                     | System status display   |
@@ -405,13 +405,13 @@
 | **Assembly Hardware**   | 1            | $1.00                              | $1.00                     | Mounting & programming  |
 | **Cables**              | 6            | $10.00 avg                         | $60.00                    | External connections    |
 | **Development**         | 1            | $10.00                             | $10.00                    | Prototyping support     |
-| **TOTAL**               | **79** | **$2.14 avg**|**$169** | **Complete system** |                         |
+| **TOTAL**               | **79** | **$2.25 avg**|**$178** | **Complete system** |                         |
 
 ### **Budget Performance**
 
 - **Budget Allocated:** $400
-- **Actual Cost:** $169
-- **Under Budget:** $231 (58% savings)
+- **Actual Cost:** $178
+- **Under Budget:** $222 (56% savings)
 - **Cost per Function:** $42.25 per sonicator channel
 
 ---
@@ -423,8 +423,8 @@
 BC1003CT-ND, 2
 LM2596S-12/NOPB-ND, 1
 LM7805ACT-ND, 1
-BC1168CT-ND, 8
-BC1148CT-ND, 10
+445-173297-1-ND, 8
+BC1101CT-ND, 10
 516-1601-5-ND, 8
 497-2344-5-ND, 2
 296-1395-5-ND, 2

@@ -65,7 +65,7 @@ PWM Pin ────────[1kΩ]─────┬────┤───
 
 Component Values:
 - R1: 1kΩ (PWM filter resistor) - CF14JT1K00CT-ND
-- C1: 10µF ceramic X7R (PWM filter capacitor) - BC1168CT-ND
+- C1: 10µF ceramic X7R (PWM filter capacitor) - 445-173297-1-ND
 - U1A: LM358N (1/2 of dual op-amp) - 296-1395-5-ND
 - Feedback/Gain resistors: 10kΩ 1% precision - S10KQCT-ND
 - Gain: 2x (10kΩ/10kΩ + 1)
@@ -174,8 +174,8 @@ DB9 Power Input                +12V Output           +5V Output
      │                  │              C3            │   │
      │     C1           │             ┤├────────────┼───┤
      ├────┤├────────────┼─────────────10µF X7R      │   │
-     │    10µF X7R      │             BC1168CT-ND   │   │
-     │    BC1168CT-ND   │                           │   │
+     │    10µF X7R      │             445-173297-1-ND   │   │
+     │    445-173297-1-ND   │                           │   │
     ─┴─                ─┴─                         ─┴─ ─┴─
     GND                GND                         GND GND
 
@@ -186,9 +186,9 @@ DB9 Power Input Connections:
 - No input protection needed (handled by main system)
 
 Ceramic Capacitor Decoupling (All-Ceramic Design):
-- C2: 10µF ceramic X7R at 12V rail - BC1168CT-ND
-- C4: 10µF ceramic X7R at 5V rail - BC1168CT-ND
-- C5-C14: 0.1µF ceramic X7R at each IC - BC1148CT-ND (10 total)
+- C2: 10µF ceramic X7R at 12V rail - 445-173297-1-ND
+- C4: 10µF ceramic X7R at 5V rail - 445-173297-1-ND
+- C5-C14: 0.1µF ceramic X7R at each IC - BC1101CT-ND (10 total)
 - 25+ year design life with ceramic-only approach
 - No bulk filtering needed due to pre-conditioned input
 ```
@@ -398,8 +398,8 @@ Socket Benefits:
 ### **Power Supply (Pre-conditioned 24VDC Input)**
 - **LM2596S Buck Converter**: LM2596S-12/NOPB-ND ($5.50)
 - **LM7805CT Linear Regulator**: LM7805ACT-ND ($0.85)
-- **10µF Ceramic Capacitors**: BC1168CT-ND ($0.45 each, qty 8)
-- **0.1µF Ceramic Decoupling**: BC1148CT-ND ($0.15 each, qty 10)
+- **10µF Ceramic Capacitors**: 445-173297-1-ND ($1.39 each, qty 8)
+- **0.1µF Ceramic Decoupling**: BC1101CT-ND ($0.25 each, qty 10)
 
 ### **Sonicator Interface (4 Channels)**
 - **6N137 Optocouplers**: 516-1601-5-ND ($1.00 each, qty 8)
