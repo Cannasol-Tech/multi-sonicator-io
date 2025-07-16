@@ -425,7 +425,7 @@ struct StatusFlags {
 | **Power Reg** | Buck Converter | LM2596 Module | 24V→12V, 3A capacity | Same |
 | **Linear Reg** | 5V Regulator | LM7805 | 12V→5V, 1A capacity | Same |
 | **PWM Filter** | 1kΩ Resistor | CF14JT1K00CT-ND | 1/4W, 5% | **4x for PWM filters** |
-| **PWM Filter** | 10µF Capacitor | 1276-1119-1-ND | 16V, X7R ceramic | **4x for PWM filters** |
+| **PWM Filter** | 10µF Capacitor | 445-173297-1-ND | 50V, X7R ceramic | **4x for PWM filters** |
 | **Op-Amps** | Dual Op-Amp | LM358N × 2 | 0-10V amplitude scaling | **2 units for PWM scaling** |
 | **Gain Resistors** | 10kΩ 1% | S10KQCT-ND | For op-amp gain setting | **8x for precise gain** |
 | **Freq Counter** | Timer Input | ATmega32A Timer1 | Frequency measurement (Pin 4) | **Built-in frequency monitoring** |
