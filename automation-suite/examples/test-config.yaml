@@ -1,0 +1,23 @@
+# Example Test Configuration
+
+execution:
+  parallel: false
+  max_workers: 4
+  continue_on_failure: true
+  timeout_per_scenario: 300
+
+reporting:
+  detailed_output: true
+  save_logs: true
+  output_format: "json"
+
+simulation:
+  enabled: true
+  fault_injection: true
+  random_delays: false
+
+# Environment-specific settings
+environment:
+  ci_mode: true
+  hardware_available: false
+  log_level: "INFO"

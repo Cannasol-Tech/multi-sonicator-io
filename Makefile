@@ -245,3 +245,49 @@ upload:
 help-%:
 	@echo "$(YELLOW)Help for target: $*$(NC)"
 	@make -n $* 2>/dev/null || echo "$(RED)Target '$*' not found$(NC)"
+
+#==============================================================================
+# Automation Suite Targets
+#==============================================================================
+
+## Setup automation suite dependencies
+automation-setup:
+	@echo "$(YELLOW)Setting up automation suite...$(NC)"
+	@$(PYTHON) automation-suite/run.py setup
+
+## Run hardware detection
+automation-detect:
+	@echo "$(YELLOW)Running hardware detection...$(NC)"
+	@$(PYTHON) automation-suite/run.py detect
+
+## Run performance benchmarks
+automation-benchmark:
+	@echo "$(YELLOW)Running performance benchmarks...$(NC)"
+	@$(PYTHON) automation-suite/run.py benchmark --config automation-suite/examples/performance-config.yaml
+
+## Run test scenarios
+automation-test:
+	@echo "$(YELLOW)Running automation test scenarios...$(NC)"
+	@$(PYTHON) automation-suite/run.py test --scenarios automation-suite/examples/integration-scenarios.yaml
+
+## Generate documentation with automation suite
+automation-docs:
+	@echo "$(YELLOW)Generating documentation...$(NC)"
+	@$(PYTHON) automation-suite/run.py docs --formats markdown html
+
+## Run complete automation pipeline
+automation-all: automation-setup
+	@echo "$(YELLOW)Running complete automation pipeline...$(NC)"
+	@$(PYTHON) automation-suite/run.py all --config automation-suite/examples/performance-config.yaml
+
+## Force simulation mode for automation tools
+automation-simulate:
+	@echo "$(YELLOW)Running automation in simulation mode...$(NC)"
+	@$(PYTHON) automation-suite/run.py detect --force-simulation
+	@$(PYTHON) automation-suite/run.py test --scenarios automation-suite/examples/integration-scenarios.yaml
+
+## Clean automation suite generated files
+automation-clean:
+	@echo "$(YELLOW)Cleaning automation suite files...$(NC)"
+	@rm -f hardware_detection.json performance_report.json test_results.json automation_summary.json
+	@rm -rf generated-docs/ automation-suite/generated-docs/
