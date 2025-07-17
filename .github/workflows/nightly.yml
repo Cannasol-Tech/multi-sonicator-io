@@ -30,10 +30,20 @@ jobs:
           pio test -e test_desktop --verbose --junit-output-path test_results/nightly_unit_tests.xml || true
           pio test -e test_desktop --filter test_simulation_integration --verbose --junit-output-path test_results/nightly_simulation_tests.xml || true
       
-      - name: Run Memory Usage Analysis
+      - name: Run Performance Benchmarks
         run: |
-          pio run -e production --verbose > build_output.txt 2>&1 || true
-          echo "Memory usage analysis would be performed here"
+          echo "Running performance benchmarks..."
+          python scripts/ci/performance_benchmark.py --build-iterations 1 --test-iterations 1
+          
+      - name: Run Memory Leak Detection
+        run: |
+          echo "Running memory leak detection..."
+          python scripts/ci/memory_leak_detector.py --static-only
+          
+      - name: Generate Documentation
+        run: |
+          echo "Generating documentation..."
+          python scripts/generate_docs.py --api-only
       
       - name: Run Performance Benchmarks
         run: |
@@ -69,3 +79,6 @@ jobs:
             test_results/
             nightly_report.md
             build_output.txt
+            performance_report.json
+            memory_report.json
+            docs/generated/

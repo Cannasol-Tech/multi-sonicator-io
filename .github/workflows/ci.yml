@@ -188,6 +188,10 @@ jobs:
       - name: Generate Build Report
         run: |
           python scripts/ci/generate_reports.py --build-dir .pio/build --output-dir reports
+          
+      - name: Generate Documentation
+        run: |
+          python scripts/generate_docs.py --output reports/docs
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
         with:
