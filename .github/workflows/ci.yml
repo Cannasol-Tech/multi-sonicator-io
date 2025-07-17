@@ -117,11 +117,12 @@ jobs:
         run: |
           mkdir -p test_results
           if [[ "${{ needs.detect-hardware.outputs.hardware_available }}" == "true" ]]; then
-            echo "Hardware integration tests would run here"
+            echo "Running hardware integration tests..."
+            pio test -e test_embedded --verbose --junit-output-path test_results/hardware_integration_tests.xml || true
           else
-            echo "Simulation integration tests would run here"
-            # For now, just run the desktop tests again as placeholder
-            pio test -e test_desktop --junit-output-path test_results/integration_tests.xml || true
+            echo "Running simulation integration tests..."
+            pio test -e test_desktop --filter test_simulation_integration --verbose --junit-output-path test_results/simulation_integration_tests.xml || true
+            pio test -e test_desktop --filter test_virtual_sonicator --verbose --junit-output-path test_results/virtual_sonicator_tests.xml || true
           fi
       - name: Upload Integration Test Results
         uses: actions/upload-artifact@v3

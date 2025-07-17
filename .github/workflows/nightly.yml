@@ -27,7 +27,8 @@ jobs:
       - name: Run Extended Unit Tests
         run: |
           mkdir -p test_results
-          pio test -e test_desktop --verbose --junit-output-path test_results/nightly_tests.xml || true
+          pio test -e test_desktop --verbose --junit-output-path test_results/nightly_unit_tests.xml || true
+          pio test -e test_desktop --filter test_simulation_integration --verbose --junit-output-path test_results/nightly_simulation_tests.xml || true
       
       - name: Run Memory Usage Analysis
         run: |
