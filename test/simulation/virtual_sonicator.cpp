@@ -117,7 +117,7 @@ void VirtualSonicator::updateFrequency(float dt) {
     }
     
     // Lose frequency lock if too far from nominal
-    if (abs(actual_frequency - SONICATOR_FREQ_NOMINAL) > SONICATOR_FREQ_TOLERANCE) {
+    if (std::abs(actual_frequency - SONICATOR_FREQ_NOMINAL) > SONICATOR_FREQ_TOLERANCE) {
         is_frequency_locked = false;
     }
 }
