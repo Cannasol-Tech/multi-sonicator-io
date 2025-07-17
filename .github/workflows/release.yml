@@ -1,0 +1,108 @@
+name: Release Management
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (e.g., v1.0.0)'
+        required: true
+        default: 'v1.0.0'
+
+env:
+  ARTIFACT_NAME: multi-sonicator-firmware
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      
+      - name: Install PlatformIO
+        run: |
+          python -m pip install --upgrade pip
+          pip install platformio
+      
+      - name: Build Release Firmware
+        run: |
+          pio run -e production
+      
+      - name: Generate Documentation
+        run: |
+          mkdir -p docs/release
+          echo "# Multi-Sonicator Firmware Release ${{ github.ref_name }}" > docs/release/README.md
+          echo "" >> docs/release/README.md
+          echo "## Build Information" >> docs/release/README.md
+          echo "- Version: ${{ github.ref_name }}" >> docs/release/README.md
+          echo "- Commit: ${{ github.sha }}" >> docs/release/README.md
+          echo "- Build Date: $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> docs/release/README.md
+          echo "" >> docs/release/README.md
+          echo "## Files" >> docs/release/README.md
+          echo "- \`firmware.hex\` - Production firmware binary" >> docs/release/README.md
+          echo "- \`manifest.json\` - Build manifest and metadata" >> docs/release/README.md
+      
+      - name: Generate Release Manifest
+        run: |
+          cat > manifest.json << EOF
+          {
+            "version": "${{ github.ref_name }}",
+            "commit": "${{ github.sha }}",
+            "build_date": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "target": "atmega32a",
+            "firmware": {
+              "file": "firmware.hex",
+              "size": "$(stat -c%s .pio/build/production/firmware.hex 2>/dev/null || echo 0)",
+              "md5": "$(md5sum .pio/build/production/firmware.hex | cut -d' ' -f1)"
+            },
+            "configuration": {
+              "max_sonicators": 4,
+              "modbus_slave_id": 2,
+              "modbus_baud_rate": 115200
+            }
+          }
+          EOF
+      
+      - name: Create Release Archive
+        run: |
+          mkdir -p release
+          cp .pio/build/production/firmware.hex release/
+          cp manifest.json release/
+          cp docs/release/README.md release/
+          tar -czf multi-sonicator-${{ github.ref_name }}.tar.gz -C release .
+      
+      - name: Generate Changelog
+        run: |
+          echo "# Changelog for ${{ github.ref_name }}" > CHANGELOG_RELEASE.md
+          echo "" >> CHANGELOG_RELEASE.md
+          echo "## Changes" >> CHANGELOG_RELEASE.md
+          git log --oneline --since="$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo 'HEAD~10')" >> CHANGELOG_RELEASE.md || echo "- Initial release" >> CHANGELOG_RELEASE.md
+      
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref_name }}
+          release_name: Multi-Sonicator Firmware ${{ github.ref_name }}
+          body_path: CHANGELOG_RELEASE.md
+          draft: false
+          prerelease: false
+      
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: multi-sonicator-${{ github.ref_name }}.tar.gz
+          asset_name: multi-sonicator-${{ github.ref_name }}.tar.gz
+          asset_content_type: application/gzip
