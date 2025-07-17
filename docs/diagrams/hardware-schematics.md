@@ -343,9 +343,8 @@ Revolutionary approach: 1 RGB LED replaces 12 individual LEDs
                     ┌────┴────┐
                     │ 16MHz   │
                     │ Crystal │
-                    │ 3001-   │
-                    │ ECS-160-│
-                    │ 20-46X  │
+                    │ XC1759- │
+                    │ ND      │
                     └────┬────┘
                          │
                     ┌────┴───┐
@@ -357,9 +356,9 @@ Revolutionary approach: 1 RGB LED replaces 12 individual LEDs
                         GND
 
 Component Values:
-- Crystal: 16MHz HC-49/S - 3001-ECS-160-20-46X-ND
+- Crystal: 16MHz HC-46/X - XC1759-ND
 - Load Capacitors: 22pF C0G ceramic - BC1005CT-ND
-- Accuracy: ±20ppm (5000× better than internal RC)
+- Accuracy: ±30ppm (better than internal RC oscillator)
 - Required for accurate UART communication at 115200 baud
 - Essential for precise sonicator frequency measurements
 ```
@@ -392,7 +391,7 @@ Socket Benefits:
 ### **Core Processing**
 - **ATmega32A-PU Microcontroller**: Already owned, 40-pin DIP
 - **40-pin DIP Socket**: AE9998-ND ($1.00)
-- **16MHz Crystal**: 3001-ECS-160-20-46X-ND ($0.65)
+- **16MHz Crystal**: XC1759-ND ($0.37)
 - **22pF Load Capacitors**: BC1005CT-ND ($0.23 each, qty 2)
 
 ### **Power Supply (Pre-conditioned 24VDC Input)**
@@ -427,6 +426,6 @@ Socket Benefits:
 5. **Professional Socket**: Enables easy programming and service
 6. **Precision Components**: 1% resistors for accurate analog scaling
 
-**Total Component Cost: $169 (58% under $400 budget)**
+**Total Component Cost: $177 (56% under $400 budget)**
 **Component Count: 79 total (29% reduction from original design)**
 **Assembly: 100% through-hole for hand soldering**
