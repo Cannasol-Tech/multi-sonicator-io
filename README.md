@@ -57,6 +57,36 @@ pio run --target upload
 - **[Feature Specifications](docs/Features/Specifications/)** - Detailed feature implementations
 - **[Installation Guide](docs/Features/Specifications/18-installation-and-commissioning.md)** - Deployment and commissioning
 
+### CI/CD Generated Documentation & Reports
+
+The CI/CD pipeline automatically generates comprehensive documentation and test reports. Access the latest results:
+
+#### 📊 **Pipeline Results & Reports**
+- **[Latest CI Pipeline Results](../../actions/workflows/ci.yml)** - Build status, test results, and artifacts
+- **[Nightly Test Reports](../../actions/workflows/nightly.yml)** - Extended testing, performance benchmarks, and memory analysis
+- **[Release Pipeline](../../actions/workflows/release.yml)** - Release builds and automated documentation
+
+#### 📚 **Generated Documentation** (Available in CI Artifacts)
+- **API Reference Documentation** - Auto-generated from source code comments
+- **User Manual** - Operating procedures and safety guidelines
+- **Simulation Framework Guide** - Testing without hardware
+- **Implementation Summary** - Technical architecture details
+
+#### 📈 **Performance & Quality Reports** (Available in Nightly Artifacts)
+- **Performance Benchmarks** (`performance_report.json`) - Build times and execution metrics
+- **Memory Analysis** (`memory_report.json`) - Memory usage and leak detection
+- **Test Coverage Reports** - Unit and integration test coverage
+- **Build Output Logs** (`build_output.txt`) - Detailed compilation results
+
+#### 🔗 **How to Access Generated Results**
+1. Go to **[Actions tab](../../actions)** in this repository
+2. Click on the latest workflow run (CI, Nightly, or Release)
+3. Scroll to **Artifacts** section at the bottom
+4. Download the artifact package (e.g., `nightly-test-results-YYYYMMDD`)
+5. Extract and view the generated documentation and reports
+
+> **Note**: Generated documentation is updated automatically on every commit and available as downloadable artifacts from the GitHub Actions workflows.
+
 ## Project Structure
 
 ```

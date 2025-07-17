@@ -76,6 +76,13 @@ test_results/
 coverage/
 docs/_build/
 docs/.doctrees/
+reports/
+
+# CI/CD artifacts
+build_output.txt
+nightly_report.md
+manifest.json
+*.tar.gz
 
 # Temporary and backup files
 tmp/
@@ -85,3 +92,13 @@ temp/
 *~
 backup/
 *.backup
+
+# Automation suite generated files
+automation-suite/generated-docs/
+automation-suite/reports/
+automation-suite/*.json
+automation-suite/*.log
+automation-suite/temp/
+hardware_detection.json
+performance_report.json
+test_results.json

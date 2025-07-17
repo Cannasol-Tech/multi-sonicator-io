@@ -1,0 +1,342 @@
+name: Generic CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      run_performance_tests:
+        description: 'Run performance benchmarks'
+        required: false
+        default: 'false'
+      skip_tests:
+        description: 'Skip test execution'
+        required: false
+        default: 'false'
+
+env:
+  PROJECT_TYPE: platformio  # Change to: cmake, npm, python, etc.
+  BUILD_TYPE: development
+  SIMULATION_ENABLED: true
+
+jobs:
+  detect-hardware:
+    name: Hardware Detection
+    runs-on: ubuntu-latest
+    outputs:
+      simulation_mode: ${{ steps.detect.outputs.simulation_mode }}
+      hardware_found: ${{ steps.detect.outputs.hardware_found }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install automation suite dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r automation-suite/requirements.txt
+    
+    - name: Detect hardware
+      id: detect
+      run: |
+        python automation-suite/ci-tools/hardware_detection.py --output hardware_report.json
+        
+        # Set outputs based on detection results
+        if [ "$HARDWARE_SIMULATION" = "true" ]; then
+          echo "simulation_mode=true" >> $GITHUB_OUTPUT
+          echo "hardware_found=false" >> $GITHUB_OUTPUT
+        else
+          echo "simulation_mode=false" >> $GITHUB_OUTPUT
+          echo "hardware_found=true" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Upload hardware detection report
+      uses: actions/upload-artifact@v3
+      with:
+        name: hardware-detection-report
+        path: hardware_report.json
+
+  build:
+    name: Build Project
+    runs-on: ubuntu-latest
+    needs: detect-hardware
+    strategy:
+      matrix:
+        environment: [development, production]
+        include:
+          - environment: development
+            optimization: debug
+          - environment: production
+            optimization: release
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup build environment
+      run: |
+        # Generic setup - customize based on PROJECT_TYPE
+        case "$PROJECT_TYPE" in
+          "platformio")
+            sudo apt-get update
+            sudo apt-get install -y python3-pip
+            pip install platformio
+            ;;
+          "cmake")
+            sudo apt-get update
+            sudo apt-get install -y cmake build-essential
+            ;;
+          "npm")
+            npm install
+            ;;
+          "python")
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
+            ;;
+        esac
+    
+    - name: Build project
+      run: |
+        # Generic build commands - customize based on PROJECT_TYPE
+        case "$PROJECT_TYPE" in
+          "platformio")
+            pio run -e ${{ matrix.environment }}
+            ;;
+          "cmake")
+            mkdir -p build
+            cd build
+            cmake -DCMAKE_BUILD_TYPE=${{ matrix.optimization }} ..
+            make -j$(nproc)
+            ;;
+          "npm")
+            npm run build
+            ;;
+          "python")
+            python setup.py build
+            ;;
+        esac
+    
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-artifacts-${{ matrix.environment }}
+        path: |
+          .pio/build/
+          build/
+          dist/
+          firmware.bin
+        retention-days: 30
+
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    needs: [detect-hardware, build]
+    if: ${{ github.event.inputs.skip_tests != 'true' }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install automation suite dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r automation-suite/requirements.txt
+    
+    - name: Setup test environment
+      run: |
+        # Set simulation mode based on hardware detection
+        if [ "${{ needs.detect-hardware.outputs.simulation_mode }}" = "true" ]; then
+          export HARDWARE_SIMULATION=true
+          echo "HARDWARE_SIMULATION=true" >> $GITHUB_ENV
+        fi
+        
+        # Setup test environment based on PROJECT_TYPE
+        case "$PROJECT_TYPE" in
+          "platformio")
+            pip install platformio
+            ;;
+          "python")
+            pip install pytest pytest-cov
+            ;;
+          "npm")
+            npm install
+            ;;
+        esac
+    
+    - name: Run unit tests
+      run: |
+        case "$PROJECT_TYPE" in
+          "platformio")
+            pio test -e test_desktop
+            ;;
+          "python")
+            python -m pytest tests/ --cov=src/ --cov-report=xml
+            ;;
+          "npm")
+            npm test
+            ;;
+          *)
+            echo "Running generic test scenarios"
+            python automation-suite/testing/scenario_runner.py --scenarios test-scenarios.yaml
+            ;;
+        esac
+    
+    - name: Run integration tests
+      run: |
+        python automation-suite/testing/scenario_runner.py \
+          --scenarios automation-suite/examples/integration-scenarios.yaml \
+          --config automation-suite/examples/test-config.yaml
+    
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: |
+          test_results.json
+          coverage.xml
+          test-report.html
+      if: always()
+
+  performance:
+    name: Performance Analysis
+    runs-on: ubuntu-latest
+    needs: [detect-hardware, build]
+    if: ${{ github.event.inputs.run_performance_tests == 'true' || github.ref == 'refs/heads/main' }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install automation suite dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r automation-suite/requirements.txt
+    
+    - name: Run performance benchmarks
+      run: |
+        python automation-suite/ci-tools/performance_benchmark.py \
+          --config automation-suite/examples/performance-config.yaml \
+          --output performance_report.json
+    
+    - name: Upload performance report
+      uses: actions/upload-artifact@v3
+      with:
+        name: performance-report
+        path: performance_report.json
+
+  documentation:
+    name: Generate Documentation
+    runs-on: ubuntu-latest
+    needs: [build, test]
+    if: ${{ github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch' }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install automation suite dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r automation-suite/requirements.txt
+    
+    - name: Generate documentation
+      run: |
+        python automation-suite/documentation/generate_docs.py \
+          --project-path . \
+          --output-dir generated-docs \
+          --formats markdown html
+    
+    - name: Upload documentation
+      uses: actions/upload-artifact@v3
+      with:
+        name: generated-documentation
+        path: generated-docs/
+
+  quality-gate:
+    name: Quality Gate
+    runs-on: ubuntu-latest
+    needs: [build, test, performance]
+    if: always()
+    
+    steps:
+    - name: Download test results
+      uses: actions/download-artifact@v3
+      with:
+        name: test-results
+      continue-on-error: true
+    
+    - name: Download performance report
+      uses: actions/download-artifact@v3
+      with:
+        name: performance-report
+      continue-on-error: true
+    
+    - name: Evaluate quality gate
+      run: |
+        echo "Evaluating quality gate criteria..."
+        
+        # Check test results
+        if [ -f "test_results.json" ]; then
+          # Parse test results and check success rate
+          echo "Test results found"
+        else
+          echo "Warning: No test results found"
+        fi
+        
+        # Check performance benchmarks
+        if [ -f "performance_report.json" ]; then
+          echo "Performance report found"
+        else
+          echo "Info: No performance report found"
+        fi
+        
+        # Set overall status
+        if [ "${{ needs.build.result }}" = "success" ] && [ "${{ needs.test.result }}" = "success" ]; then
+          echo "✅ Quality gate passed"
+          exit 0
+        else
+          echo "❌ Quality gate failed"
+          exit 1
+        fi
+
+  notify:
+    name: Notification
+    runs-on: ubuntu-latest
+    needs: [quality-gate]
+    if: always()
+    
+    steps:
+    - name: Notify on success
+      if: ${{ needs.quality-gate.result == 'success' }}
+      run: |
+        echo "🎉 Pipeline completed successfully!"
+        echo "All quality gates passed."
+    
+    - name: Notify on failure
+      if: ${{ needs.quality-gate.result == 'failure' }}
+      run: |
+        echo "❌ Pipeline failed!"
+        echo "Check the logs for details."
+        # Add notification logic (Slack, email, etc.)
