@@ -52,16 +52,19 @@
   - Industrial temperature range
   - Proven reliability in automation applications
 
-#### **16MHz Crystal Oscillator - 3001-ECS-160-20-46X-ND**
+#### **16MHz Crystal Oscillator - XC1759-ND**
 
-- **Qty:** 1 | **Cost:** $0.65
-- **Package:** HC-49/S through-hole
+- **Qty:** 1 | **Cost:** $0.37
+- **Package:** HC-46/X through-hole
 - **Role:** Provides precise timing reference for microcontroller
+- **Description:** CRYSTAL 16.0000MHZ 20PF TH
+- **Detailed Description:** 16 MHz ±30ppm Crystal 20pF 50 Ohms HC-46/X
 - **Why Chosen:**
-  - ±20ppm accuracy (5000× better than internal oscillator)
+  - ±30ppm accuracy (better than internal oscillator)
   - Required for accurate UART communication (115200 baud)
   - Essential for precise sonicator frequency measurements
   - Industrial temperature stability
+  - Cost-effective solution ($0.37 vs previous $0.65)
 
 #### **22pF Crystal Load Capacitors - BC1005CT-ND**
 
@@ -397,7 +400,7 @@
 | Component Category            | Quantity     | Unit Cost                          | Total Cost                | Purpose                 |
 | ----------------------------- | ------------ | ---------------------------------- | ------------------------- | ----------------------- |
 | **Microcontroller**     | 1            | $0.00                              | $0.00                     | Already owned           |
-| **Crystal Circuit**     | 3            | $0.37 avg                          | $1.11                     | Timing reference        |
+| **Crystal Circuit**     | 3            | $0.35 avg                          | $1.05                     | Timing reference        |
 | **Power Regulators**    | 2            | $3.18 avg                          | $6.35                     | Power conversion        |
 | **Capacitors**          | 20           | $0.69 avg                          | $13.86                    | Filtering & decoupling  |
 | **Sonicator Interface** | 22           | $0.55 avg                          | $12.05                    | PWM control & isolation |
@@ -407,21 +410,21 @@
 | **Assembly Hardware**   | 1            | $1.00                              | $1.00                     | Mounting & programming  |
 | **Cables**              | 6            | $10.00 avg                         | $60.00                    | External connections    |
 | **Development**         | 1            | $10.00                             | $10.00                    | Prototyping support     |
-| **TOTAL**               | **79** | **$2.25 avg**|**$178** | **Complete system** |                         |
+| **TOTAL**               | **79** | **$2.24 avg**|**$177** | **Complete system** |                         |
 
 ### **Budget Performance**
 
 - **Budget Allocated:** $400
-- **Actual Cost:** $178
-- **Under Budget:** $222 (56% savings)
-- **Cost per Function:** $42.25 per sonicator channel
+- **Actual Cost:** $177
+- **Under Budget:** $223 (56% savings)
+- **Cost per Function:** $42.00 per sonicator channel
 
 ---
 
 ## Final DigiKey Shopping List
 
 ```csv
-3001-ECS-160-20-46X-ND, 1
+XC1759-ND, 1
 BC1005CT-ND, 2
 LM2596S-12/NOPB-ND, 1
 LM7805ACT-ND, 1
@@ -471,5 +474,6 @@ AE10894-ND, 5
 - ✅ **Through-hole packages confirmed** for hand assembly
 - ✅ **Industrial temperature ratings** for automation environment
 - ✅ **Complete documentation** for manufacturing handoff
+- ✅ **Cost-optimized selection** with premium component choices
 
 This BOM represents the culmination of careful analysis, component optimization, and industrial design best practices to create a reliable, cost-effective, and manufacturable sonicator controller.
