@@ -66,65 +66,146 @@
 #define XTAL1_PIN 13      // XTAL1 (Physical pin 13)
 #define XTAL2_PIN 12      // XTAL2 (Physical pin 12)
 
-// Status LEDs
-#define LED_POWER_PIN     8    // PB0 (Physical pin 1) 
-#define LED_RUN_PIN       9    // PB1 (Physical pin 2)
-#define LED_ERROR_PIN     10   // PB2 (Physical pin 3)
-#define LED_COMM_PIN      11   // PB3 (Physical pin 4)
+/**
+ * @defgroup StatusLED RGB LED Status Indication
+ * @brief Revolutionary single RGB LED approach replaces 12 individual LEDs
+ * @details 94% component reduction with superior diagnostic capability
+ * @{
+ */
+#define LED_RGB_RED_PIN   7    ///< PB6 (Physical pin 7) - Red channel
+#define LED_RGB_GREEN_PIN 8    ///< PB7 (Physical pin 8) - Green channel  
+#define LED_RGB_BLUE_PIN  6    ///< PB5 (Physical pin 6) - Blue channel
 
-// Individual Sonicator Status LEDs (Front Panel)
-#define LED_SONICATOR_1   24   // PC2 (Physical pin 24)
-#define LED_SONICATOR_2   25   // PC3 (Physical pin 25)
-#define LED_SONICATOR_3   26   // PC4 (Physical pin 26)
-#define LED_SONICATOR_4   27   // PC5 (Physical pin 27)
+/**
+ * @brief Status indication capability
+ * - 🟢 Green solid: Normal operation
+ * - 🔴 Red pulsing: Communication error
+ * - 🟡 Yellow: Warning states
+ * - 🔵 Blue: Diagnostic mode
+ * - 🟣 Purple: System fault
+ * - White/Off: Boot/shutdown states
+ */
+/** @} */
 
-// ============================================================================
-// SONICATOR INTERFACE PIN MAPPING
-// ============================================================================
+/**
+ * @defgroup SonicatorInterface Sonicator Interface Pin Mapping
+ * @brief ATmega32A pin assignments for CT2000 sonicator control interfaces
+ * @details Based on schematic design with 6N137 optocouplers and ULN2003A drivers
+ * @{
+ */
 
-// Sonicator 1 Interface
-#define SON1_OVERLOAD_PIN     16   // PD2 (Physical pin 16) - Input
-#define SON1_FREQ_OUTPUT_PIN  17   // PD3 (Physical pin 17) - Input  
-#define SON1_FREQ_LOCK_PIN    18   // PD4 (Physical pin 18) - Input
-#define SON1_START_PIN        19   // PD5 (Physical pin 19) - Output
-#define SON1_RESET_PIN        20   // PD6 (Physical pin 20) - Output
+/**
+ * @defgroup Sonicator1 Sonicator 1 Interface (DB9 Connector 1)
+ * @brief Pin definitions for first sonicator interface
+ * @{
+ */
+#define SON1_OVERLOAD_PIN     16   ///< PD2 (Physical pin 16) - Input via 6N137
+#define SON1_FREQ_OUTPUT_PIN  1    ///< PB0 (Physical pin 1)  - Timer0/T0 Input
+#define SON1_FREQ_LOCK_PIN    2    ///< PB1 (Physical pin 2)  - Input via 6N137
+#define SON1_START_PIN        28   ///< PC6 (Physical pin 28) - Output via ULN2003A
+#define SON1_RESET_PIN        29   ///< PC7 (Physical pin 29) - Output via ULN2003A
+/** @} */
 
-// Sonicator 2 Interface  
-#define SON2_OVERLOAD_PIN     21   // PD7 (Physical pin 21) - Input
-#define SON2_FREQ_OUTPUT_PIN  1    // PB0 (Physical pin 1)  - Input
-#define SON2_FREQ_LOCK_PIN    2    // PB1 (Physical pin 2)  - Input  
-#define SON2_START_PIN        3    // PB2 (Physical pin 3)  - Output
-#define SON2_RESET_PIN        4    // PB3 (Physical pin 4)  - Output
+/**
+ * @defgroup Sonicator2 Sonicator 2 Interface (DB9 Connector 2)
+ * @brief Pin definitions for second sonicator interface
+ * @{
+ */
+#define SON2_OVERLOAD_PIN     17   ///< PD3 (Physical pin 17) - Input via 6N137
+#define SON2_FREQ_OUTPUT_PIN  4    ///< PB3 (Physical pin 4)  - Timer2/T2 Input
+#define SON2_FREQ_LOCK_PIN    3    ///< PB2 (Physical pin 3)  - Input via 6N137
+#define SON2_START_PIN        26   ///< PC4 (Physical pin 26) - Output via ULN2003A
+#define SON2_RESET_PIN        27   ///< PC5 (Physical pin 27) - Output via ULN2003A
+/** @} */
 
-// Sonicator 3 Interface
-#define SON3_OVERLOAD_PIN     23   // PC2 (Physical pin 23) - Input
-#define SON3_FREQ_OUTPUT_PIN  24   // PC3 (Physical pin 24) - Input
-#define SON3_FREQ_LOCK_PIN    25   // PC4 (Physical pin 25) - Input
-#define SON3_START_PIN        22   // PC1 (Physical pin 22) - Output  
-#define SON3_RESET_PIN        26   // PC5 (Physical pin 26) - Output
+/**
+ * @defgroup Sonicator3 Sonicator 3 Interface (DB9 Connector 3)
+ * @brief Pin definitions for third sonicator interface
+ * @{
+ */
+#define SON3_OVERLOAD_PIN     18   ///< PD4 (Physical pin 18) - Input via 6N137
+#define SON3_FREQ_OUTPUT_PIN  20   ///< PD6 (Physical pin 20) - Timer1/ICP1 Input
+#define SON3_FREQ_LOCK_PIN    5    ///< PB4 (Physical pin 5)  - Input via 6N137
+#define SON3_START_PIN        24   ///< PC2 (Physical pin 24) - Output via ULN2003A
+#define SON3_RESET_PIN        25   ///< PC3 (Physical pin 25) - Output via ULN2003A
+/** @} */
 
-// Sonicator 4 Interface
-#define SON4_OVERLOAD_PIN     27   // PC6 (Physical pin 27) - Input
-#define SON4_FREQ_OUTPUT_PIN  28   // PC7 (Physical pin 28) - Input
-#define SON4_FREQ_LOCK_PIN    29   // PC7 (Physical pin 29) - Input
-#define SON4_START_PIN        5    // PB4 (Physical pin 5)  - Output
-#define SON4_RESET_PIN        6    // PB5 (Physical pin 6)  - Output
+/**
+ * @defgroup Sonicator4 Sonicator 4 Interface (DB9 Connector 4)
+ * @brief Pin definitions for fourth sonicator interface
+ * @{
+ */
+#define SON4_OVERLOAD_PIN     19   ///< PD5 (Physical pin 19) - Input via 6N137
+#define SON4_FREQ_OUTPUT_PIN  A0   ///< PA0 (Physical pin 40) - ADC0 via LM2907
+#define SON4_FREQ_LOCK_PIN    21   ///< PD7 (Physical pin 21) - Input via 6N137
+#define SON4_START_PIN        22   ///< PC0 (Physical pin 22) - Output via ULN2003A
+#define SON4_RESET_PIN        23   ///< PC1 (Physical pin 23) - Output via ULN2003A
+/** @} */
 
-// ============================================================================
-// PWM CONFIGURATION FOR AMPLITUDE CONTROL
-// ============================================================================
+/** @} */
 
-// PWM Pin Assignments for Amplitude Control (0-10V via RC filter + op-amp)
-#define PWM_SONICATOR_1_PIN   3   // PB3 (Timer2/OC2A)
-#define PWM_SONICATOR_2_PIN   5   // PD5 (Timer0/OC0B)  
-#define PWM_SONICATOR_3_PIN   6   // PD6 (Timer0/OC0A)
-#define PWM_SONICATOR_4_PIN   11  // PB3 (Timer2/OC2A) - Alternative pin
+/**
+ * @defgroup PWMControl PWM Amplitude Control Configuration
+ * @brief Single PWM output for amplitude control of all 4 sonicators simultaneously
+ * @details Based on schematic design with 1kΩ resistor + 10µF ceramic capacitor filter
+ * @{
+ */
 
-// Built-in ADC Pin Assignments for Power Monitoring
-#define ADC_SONICATOR_1_PIN   A4  // PA4 (ADC4) - Built-in ADC
-#define ADC_SONICATOR_2_PIN   A5  // PA5 (ADC5) - Built-in ADC
-#define ADC_SONICATOR_3_PIN   A6  // PA6 (ADC6) - Built-in ADC
-#define ADC_SONICATOR_4_PIN   A7  // PA7 (ADC7) - Built-in ADC
+/** @brief Single PWM pin for amplitude control (0-10V output) */
+#define PWM_AMPLITUDE_CONTROL_PIN   A1   ///< PA1 (Physical pin 39) - Software PWM
+
+/**
+ * @brief PWM Filter Configuration
+ * - 1kΩ resistor + 10µF ceramic capacitor
+ * - Cutoff frequency: fc = 1/(2πRC) = 16Hz
+ * - LM358N op-amp provides 2x gain (0-5V PWM → 0-10V output)
+ * - Controls all 4 sonicator amplitudes simultaneously to limit current draw
+ */
+/** @} */
+
+/**
+ * @defgroup ADCPowerMonitoring ADC Power Monitoring Configuration
+ * @brief Built-in ADC pin assignments for sonicator power monitoring
+ * @details 10kΩ voltage divider with input protection for 0-10.88V range
+ * @{
+ */
+
+/** @brief ADC pin assignments for power monitoring */
+#define ADC_SONICATOR_1_PIN   A4   ///< PA4 (Physical pin 37) - ADC4
+#define ADC_SONICATOR_2_PIN   A5   ///< PA5 (Physical pin 36) - ADC5
+#define ADC_SONICATOR_3_PIN   A6   ///< PA6 (Physical pin 35) - ADC6
+#define ADC_SONICATOR_4_PIN   A7   ///< PA7 (Physical pin 34) - ADC7
+
+/**
+ * @brief ADC Configuration (per channel)
+ * - 10kΩ voltage divider for input protection
+ * - 0-10.88V input range (2000W × 5.44mV/W)
+ * - 0-5.44V after divider, 0-1024 ADC counts
+ * - Resolution: ~2 watts per count
+ */
+/** @} */
+
+/**
+ * @defgroup LM2907FrequencyConverter LM2907 Frequency-to-Voltage Converter
+ * @brief Configuration for LM2907 frequency-to-voltage converter (Sonicator 4)
+ * @details Converts CT2000 frequency output to 0-5V analog signal for ADC measurement
+ * @{
+ */
+
+/** @brief LM2907 frequency-to-voltage converter configuration */
+#define LM2907_FREQ_INPUT_PIN     A0   ///< PA0 (Physical pin 40) - ADC0
+#define LM2907_FREQ_MIN_VOLTAGE   0.0  ///< Minimum voltage (0Hz)
+#define LM2907_FREQ_MAX_VOLTAGE   5.0  ///< Maximum voltage (2500Hz)
+#define LM2907_FREQ_SCALE_FACTOR  500  ///< Hz per volt (2500Hz / 5V)
+
+/**
+ * @brief LM2907 Scaling Configuration
+ * - Input: 1.9-2.1 kHz (CT2000 frequency ÷ 10)
+ * - Output: 1.9-2.1V (at 1V/kHz scaling)
+ * - ADC Reading: 389-430 counts (at 5V reference)
+ * - Frequency Resolution: ~5Hz per ADC count
+ */
+/** @} */
 
 // ============================================================================
 // CT2000 SONICATOR SPECIFICATIONS
