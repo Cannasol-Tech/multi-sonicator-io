@@ -32,6 +32,18 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Dependencies:** 1.1
 - **Estimated:** 4 hours
 
+### 1.3 Emulator Bring-up (simulavr)
+
+- [ ] Produce ELF build suitable for simulavr (ensure debug symbols)
+- [ ] Run simulavr with UART PTY bridge for MODBUS testing
+- [ ] Connect MODBUS master simulator to PTY and verify basic FC03/FC06
+- [ ] Add minimal CI job to smoke-test simulavr startup and one read/write
+- [ ] Document procedure in `docs/simulation_framework.md`
+- **Status:** ⬜ PENDING
+- **Assigned:** AI Agent
+- **Dependencies:** 1.1
+- **Estimated:** 6 hours
+
 ## Phase 2: Core Hardware Interfaces (Target: 2025-01-30)
 
 ### 2.1 Hardware Interface Implementation (`2-hardware-interface-implementation.md`)
