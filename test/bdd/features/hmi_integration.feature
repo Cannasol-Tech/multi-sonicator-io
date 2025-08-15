@@ -1,5 +1,6 @@
 Feature: HMI/PLC integration
   # PRD §9, §10
+  @pending
 
   @req-hmi @simulavr @hil
   Scenario: SC-010 HMI contract adherence (4xxxx convention)

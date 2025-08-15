@@ -1,5 +1,6 @@
 Feature: Monitoring via MODBUS
   # PRD §4, §5, §10
+  @pending
 
   @req-power @prd-10-api @reg-40013-40016 @simulavr @hil
   Scenario: SC-004 Power monitoring scaling

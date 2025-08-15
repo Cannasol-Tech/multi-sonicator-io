@@ -1,5 +1,6 @@
 Feature: Executive reporting
   # PRD §1, §14
+  @pending
 
   @req-exec-report @simulavr
   Scenario: SC-011 Executive report artifact

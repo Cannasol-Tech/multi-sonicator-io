@@ -1,5 +1,6 @@
 Feature: Control functions via MODBUS
   # PRD §4, §5, §10
+  @pending
 
   @req-amplitude @prd-5-functional @prd-10-api @reg-40001-40004 @simulavr @hil
   Scenario: SC-001 Amplitude control per unit

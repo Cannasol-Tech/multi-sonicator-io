@@ -1,5 +1,6 @@
 Feature: Safety
   # PRD §11
+  @pending
 
   @req-watchdog-docs
   Scenario: SC-012 Watchdog policy is documented

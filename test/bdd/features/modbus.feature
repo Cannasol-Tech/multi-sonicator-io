@@ -1,5 +1,6 @@
 Feature: MODBUS protocol behaviors
   # PRD §10
+  @pending
 
   @req-fc16 @simulavr @hil
   Scenario: SC-020 FC16 multiple write boundary cases

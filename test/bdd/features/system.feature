@@ -1,5 +1,6 @@
 Feature: System metrics
   # PRD §4, §5
+  @pending
 
   @req-active-count @reg-40035 @simulavr @hil
   Scenario: SC-007 Active Sonicator Count

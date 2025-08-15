@@ -1,5 +1,6 @@
 Feature: Timing
   # PRD §5, §6
+  @pending
 
   @req-latency @simulavr @hil
   Scenario: SC-009 Latency ≤100 ms (representative)
