@@ -306,6 +306,31 @@ The simulation framework generates detailed logs for analysis:
 - External hardware interfaces
 - Cloud-based simulation services
 
+## MCU-level simulation (simulavr)
+
+While the host simulation above models the external world (CT2000 behavior, scenarios, and MODBUS), you can also run the actual ATmega32A firmware under an MCU emulator for timing/ISR validation.
+
+- **Tool**: simulavr (ATmega32A compatible)
+- **Use it for**: ISR behavior, UART/MODBUS timing, cooperative `taskLoop()` cadence, watchdog interactions.
+- **Use host simulation for**: Rich CT2000 behavior, fault injection, scenario orchestration.
+
+### Setup
+1. Install simulavr (via your package manager or source).
+2. Build firmware ELF:
+   - `make build-prod` (produces `.pio/build/production/firmware.elf`)
+3. Run simulavr (example):
+   ```bash
+   # Replace options as needed
+   simulavr -d atmega32 -f .pio/build/production/firmware.elf
+   ```
+
+Notes:
+- UART/PTY bridging: you can direct the emulated UART to a pseudo-terminal and attach your MODBUS simulator to that PTY (configure per your simulavr installation).
+- GPIO stimulus: start simple (fixed pins), and scale up by piping GPIO events from a lightweight adapter if needed.
+
+### Makefile helpers
+Run `make help` to see available targets. Helper targets are provided to build the ELF and print run tips.
+
 ## Conclusion
 
 The Multi-Sonicator hardware simulation framework provides comprehensive testing capabilities without requiring physical hardware. It enables rapid development cycles, thorough testing coverage, and reliable CI/CD pipeline execution while maintaining compatibility with real hardware systems.

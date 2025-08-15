@@ -278,6 +278,18 @@
 #define REG_SONICATOR_3_OVERLOAD_COUNT 40033
 #define REG_SONICATOR_4_OVERLOAD_COUNT 40034
 
+/**
+ * @name Active Sonicator Summary Registers
+ * @brief System-level summary of currently running sonicators
+ * @details
+ *  - REG_ACTIVE_SONICATOR_COUNT: Number of sonicators actively running (0-4)
+ *  - REG_ACTIVE_SONICATOR_MASK:  Bitmask of running units (bit0=S1 .. bit3=S4)
+ *  - Both are Read-Only holding registers and should reflect changes within
+ *    100 ms of any start/stop or reset event.
+ */
+#define REG_ACTIVE_SONICATOR_COUNT    40035  ///< RO: 0-4 currently running
+#define REG_ACTIVE_SONICATOR_MASK     40036  ///< RO: bitmask of running units
+
 // ============================================================================
 // TIMING AND PERFORMANCE CONSTANTS
 // ============================================================================

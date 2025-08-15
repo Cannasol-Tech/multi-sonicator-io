@@ -390,6 +390,23 @@ struct SonicatorStatus {
 | 40027-40030 | Runtime Counters | R | uint32 | Individual sonicator runtime |
 | 40031-40034 | Overload Counters | R | uint16 | Overload event counts |
 
+| 40035 | Active Sonicator Count | R | uint16 (0-4) | Number of sonicators currently running |
+| 40036 | Active Sonicator Mask | R | uint16 (bits 0-3) | Bitmask: S1..S4 running = 1 |
+
+##### Integrator Notes (Velocio/HMITool)
+
+- Addressing: Docs use holding-register style (4xxxx). Some dialogs expect 0-based raw offset (e.g., 40001 → offset 0). Confirm HMITool field type and enter accordingly.
+- RTU Settings: 115200 8N1, Slave ID = 2.
+- Suggested Polling:
+  - Power/Frequency (40013–40020): 5–10 Hz
+  - Status/Mask/Count (40021–40024, 40035–40036): 10–20 Hz
+  - Runtimes (40027–40030): 1 Hz
+- Write Semantics:
+  - Start/Stop (40005–40008): 0=Stop, 1=Start (level-based)
+  - Overload Reset (40009–40012): Pulse 1 then 0 (one-shot)
+- Frequency Scaling: CT2000 pin 4 provides freq ÷ 10. Registers report Hz; HMI display should show Hz (internal scaling handled in firmware).
+- Latency Targets: Register reflection ≤100 ms; E‑stop/Overload reset path ≤100 ms end-to-end.
+
 #### **Status Flags Bitfield Definition**
 
 ```cpp
@@ -554,6 +571,54 @@ Firebase/Mobile App Updates:
 - **Auto-Detection:** Controller identifies connected sonicator count
 - **Fallback Mode:** Continues operation if individual sonicators fault
 - **Upgrade Path:** Existing installations can add controller without system changes
+
+---
+
+## Reporting Deliverables (Executive Functionality Report)
+
+This project MUST publish Executive Functionality artifacts conforming to `docs/executive-report-standard.md`.
+
+- **Required (per release/tag):**
+  - `final/executive-report.json` (schema v1.0.0)
+    - Includes acceptance scenario results covering MVP features:
+      - Control 4 sonicators from one automation box
+      - Per unit: amplitude control, start/stop, overload reset
+      - Monitoring: power, frequency, overload, frequency lock
+      - System: Active Sonicator Count (`REG_ACTIVE_SONICATOR_COUNT`), Mask (`REG_ACTIVE_SONICATOR_MASK`)
+    - Summary totals and timestamps per the standard
+
+- **Optional (recommended):**
+  - `final/coverage-summary.json` (overall coverage totals)
+  - `final/unit-test-summary.json` (unit test aggregates)
+  - `final/executive-report.md` (human-readable summary)
+
+- **Publishing process (CI):**
+  - Artifacts are attached to the GitHub Release for the commit/tag
+  - Filenames MUST use the `final/` prefix and correct content types
+  - JSON MUST include `version`, `owner`, `repo`, `releaseTag`, `commit`, `createdAt`
+
+- **Acceptance Criteria:**
+  - A tagged release contains `final/executive-report.json` that validates against the standard
+  - Scenarios mapped to PRD requirements demonstrate pass/fail with durations
+  - If optional files are present, they follow the shapes in the standard
+
+---
+
+### Acceptance Criteria — Active Sonicator Registers
+
+- **Register Contract**
+  - `REG_ACTIVE_SONICATOR_COUNT` (40035) returns integer 0–4
+  - `REG_ACTIVE_SONICATOR_MASK` (40036) returns bitmask with bits 0–3 for Sonicators 1–4
+- **Latency**
+  - Values reflect state changes (start/stop/reset/overload clear) within ≤100 ms
+- **Consistency**
+  - Count equals the number of set bits in Mask at all times
+  - Per-unit `REG_SONICATOR_[1..4]_STATUS` bit0 (running) aligns with Mask bits
+- **Error Handling**
+  - During comm faults, registers maintain last-known-good until status indicates recovery (document fault semantics in PRD)
+- **Test Evidence (Documentation-only phase)**
+  - Executive report scenarios enumerate transitions 0→N and N→0 and assert expected values
+  - No firmware change in this phase; scenarios define acceptance expected outcomes
 
 ---
 

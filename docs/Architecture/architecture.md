@@ -86,6 +86,35 @@ HMI System (MODBUS Master)
 - Configuration management
 - Firmware update support
 
+### 6. Runtime Scheduling (Cooperative taskLoop)
+
+**Approach**: A lightweight cooperative scheduler built on a timer tick and a centralized dispatcher function named `taskLoop()`. This formalizes the common `millis()` pattern without introducing RTOS complexity.
+
+**Runs in ISRs (minimal work only)**
+- UART RX/TX: MODBUS bytes to/from ring buffers; no parsing in ISR.
+- Timer tick (e.g., 1 ms): increments system time; marks tasks due.
+- Frequency capture: count edges from CT2000 ÷10 output.
+- ADC EOC: push raw samples to a small buffer.
+- Optional pin-change: latch E‑stop/overload immediately for safety.
+
+**Runs in taskLoop() (cooperative, non-blocking)**
+- Parse MODBUS frames and execute reads/writes via the register map.
+- Compute frequency and power from buffered data; apply filters.
+- Update status flags and Active Count/Mask.
+- Apply outputs (start/stop level, overload reset pulse, amplitude PWM/DAC).
+- Housekeeping (runtime counters, diagnostics, watchdog kick at a safe point).
+
+**Task rates (aligned with requirements)**
+- Power & Frequency: 5–10 Hz (100–200 ms)
+- Status/Mask/Count: 10–20 Hz (50–100 ms)
+- Runtime Counters: 1 Hz
+- MODBUS parsing: dispatched every tick but bounded per cycle
+
+**Why this design**
+- Meets ≤100 ms reflection and safety latency targets with low jitter.
+- Centralizes timing, improves testability/traceability, and avoids duplicated `if (millis() - last >= period)` code across modules.
+- No RTOS stacks or preemption; fits ATmega32A (32 KB Flash, 2 KB SRAM).
+
 ## Module Dependencies
 
 ```
@@ -158,6 +187,94 @@ HMI System (MODBUS Master)
 - **ISP Programming**: Arduino Uno R4 WiFi as in-system programmer
 - **Serial Debug**: UART-based debugging and diagnostics
 - **Hardware Testing**: Built-in self-test and diagnostic routines
+
+### HIL Test Harness (arduino_test_wrapper.ino)
+
+The HIL harness validates end-to-end behavior by electrically interfacing a USB‑connected Arduino wrapper to the ATmega32A DUT headers.
+
+```
+Host (Behave/pytest) ⇄ USB Serial ⇄ Arduino Wrapper (arduino_test_wrapper.ino)
+                                             ⇅ Harness (GPIO/ADC/Counter)
+                                        ATmega32A DUT (Sonicator Controller)
+```
+
+**Pin mapping (conceptual; see `include/config.h` for authoritative pins)**
+
+| Function | DUT Signal | Wrapper Role |
+|----------|------------|--------------|
+| Overload (per unit) | Digital input from CT2000 | Drive to DUT or sense, per test |
+| Frequency out ÷10 (per unit) | Digital pulse | Generate pulse trains at target Hz |
+| Frequency Lock (per unit) | Digital | Drive/sense lock state |
+| Start (per unit) | Digital output to CT2000 | Sense DUT output (level) |
+| Overload Reset (per unit) | Digital output to CT2000 | Sense pulse one-shot |
+| Power (per unit) | Analog (≈5.44 mV/W) | Provide calibrated analog level; readback optional |
+| Amplitude (per unit) | Analog/PWM to CT2000 | Measure PWM/DAC via wrapper ADC |
+
+Notes:
+- Wrapper exposes a simple serial command protocol (documented in the wrapper source) to stimulate inputs and assert observed outputs.
+- Safety-first: default lines to safe states; E‑stop/overload cannot be bypassed.
+
+#### Optional Smart I/O Extender
+
+To increase I/O headroom and improve timing fidelity, an auxiliary ATmega can act as a smart extender controlled by the Uno R4 wrapper.
+
+- **Link**: UART between Uno R4 (host) and Extender (DUT‑side controller). Simple framed text or compact binary protocol.
+- **Extender roles**:
+  - Generate 4× frequency ÷10 waveforms (timer‑driven) to stimulate DUT.
+  - Drive Overload and Freq‑Lock lines per unit.
+  - Source Power analog levels (PWM+RC or onboard DAC if available).
+  - Sense Start/Reset lines with pulse latching and report state.
+- **Minimal host↔extender protocol** (example):
+  - `X SET OVERLOAD <unit> <0|1>`
+  - `X SET FLOCK <unit> <0|1>`
+  - `X SET FREQ <unit> <Hz>`
+  - `X SET POWER <unit> <watts>`
+  - `X READ START <unit>` → `X RESP START <unit> <0|1>`
+  - `X READ RESET_PULSE <unit>` → `X RESP RESET_PULSE <unit> <0|1>`
+  - `X INFO` → `X RESP INFO <version> <mapping_checksum>`
+- **Pin groups on extender (conceptual mapping to DUT signals; see `include/config.h`)**
+  - Outputs → DUT inputs: Overload[4], FreqLock[4], Freq[4]
+  - Inputs ← DUT outputs: Start[4], Reset[4]
+  - Analog: Power[4] sources, Amplitude monitor (1) via divider
+
+Notes:
+- Keeps Uno focused on host protocol and CLI; extender ensures accurate timers and ample GPIO.
+- If not needed, tests can serialize frequency checks on Uno‑only setup.
+
+##### Concrete Pin Maps
+
+###### Profile A — Uno‑only, per‑unit harness
+Test one sonicator channel at a time by moving a small 6–7 wire harness between S1..S4.
+
+| Role | Uno R4 Pin | Direction | Notes |
+|------|------------|-----------|-------|
+| Overload (selected unit) | D6 | Out | Drive DUT input (simulate CT2000 overload) |
+| Freq Lock (selected unit) | D7 | Out | Drive DUT input |
+| Frequency ÷10 (selected unit) | D3 | Out | Timer‑based square wave generator |
+| Power analog source (selected unit) | D5 (PWM) | Out | PWM+RC to analog; calibrate to W via PRD scale |
+| Start (selected unit) | D8 | In | Sense DUT output (level) |
+| Reset (selected unit) | D9 | In | Sense pulse; latch in firmware |
+| Amplitude 0–10 V (shared) | A0 | In (ADC) | Measure DUT amplitude output via divider |
+| GND reference | GND | — | Common ground |
+
+Notes:
+- Move this harness to headers for S1, S2, S3, S4 to run identical tests per unit.
+- See `include/config.h` for authoritative DUT pin roles; this mapping is wrapper‑side only.
+
+###### Profile B — Uno + Smart I/O Extender (full parallel)
+Uno focuses on host protocol; extender provides all DUT‑side signals.
+
+| Role | Uno R4 Pin | Direction | Notes |
+|------|------------|-----------|-------|
+| Host↔Extender UART TX/RX | (e.g.) D10/D11 | TX/RX | Dedicated UART link (choose per wiring); native USB used for host |
+| Optional extender reset | D12 | Out | Reset line to extender MCU |
+
+Extender (conceptual groups; exact pins tbd on extender):
+- Outputs → DUT inputs: Overload[4], FreqLock[4], Freq[4], Power[4]
+- Inputs ← DUT outputs: Start[4], Reset[4]
+- Analog: Amplitude monitor (1) via divider
+
+The extender mirrors the same command set (SET/READ/INFO) over the UART link.
 
 ---
 
