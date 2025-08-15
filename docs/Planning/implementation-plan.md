@@ -88,9 +88,11 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 
 ### 3.2 MODBUS Register Mapping (`5-modbus-register-mapping.md`)
 
-- [ ] Define register addresses for all I/O
+- [ ] Mirror register addresses from `docs/Requirements/project-requirements.md` into `include/config.h` (requirements doc is authoritative)
 - [ ] Implement read holding registers (0x03)
 - [ ] Implement write multiple registers (0x10)
+- [ ] Enforce ≤100 ms state-to-register reflection; add tests (native/simulavr) to verify
+- [ ] Add CI consistency check between PRD/requirements and `include/config.h` to prevent drift
 - [ ] Create scaling for analog values
 - [ ] Document register map
 - **Status:** ⬜ PENDING
@@ -188,10 +190,11 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - [ ] Implement buffering for offline
 - [ ] Add data compression
 - [ ] Test cloud synchronization
-- **Status:** ⬜ PENDING
+- **Status:** ⏸ DEFERRED (Moved to Future Enhancements per PRD v1.0.0)
 - **Assigned:** AI Agent
 - **Dependencies:** 6.2
 - **Estimated:** 8 hours
+ - **Note:** Not part of MVP scope; leave tasks here for future planning only.
 
 ### 7.2 HMI and PLC Integration (`13-hmi-plc-integration.md`)
 
@@ -202,18 +205,18 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - [ ] Document PLC interface
 - **Status:** ⬜ PENDING
 - **Assigned:** Human + AI Agent
-- **Dependencies:** 7.1
+- **Dependencies:** 3.2
 - **Estimated:** 10 hours
 
 ## Phase 8: Testing and Validation (Target: 2025-02-18)
 
 ### 8.1 Testing Framework (`14-testing-framework.md`)
 
-- [ ] Create unit test suite
-- [ ] Implement HIL test procedures
-- [ ] Add integration tests
-- [ ] Create regression test suite
-- [ ] Document test procedures
+- [ ] Define Behave (BDD) scenarios covering every requirement in `docs/Requirements/prd-v1.0.0.md`
+- [ ] Provide two execution profiles: Simulavr (emulation) and HIL (arduino_test_wrapper)
+- [ ] Implement HIL test procedures and harness integration
+- [ ] Add unit tests (native) and integration tests (MODBUS handlers, timing)
+- [ ] Establish regression suite and document procedures
 - **Status:** ⬜ PENDING
 - **Assigned:** AI Agent
 - **Dependencies:** 7.2
@@ -230,6 +233,16 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Assigned:** Human + AI Agent
 - **Dependencies:** 8.1
 - **Estimated:** 16 hours
+
+### 8.3 Executive Report Artifacts (`exec-report-artifacts.md`)
+
+- [ ] Generate `final/executive-report.json` per `docs/executive-report-standard.md` on tagged builds
+- [ ] Validate schema in CI and publish artifacts
+- [ ] Include optional `final/coverage-summary.json` and `final/unit-test-summary.json`
+- **Status:** ⬜ PENDING
+- **Assigned:** AI Agent
+- **Dependencies:** 8.1
+- **Estimated:** 4 hours
 
 ## Phase 9: Deployment Preparation (Target: 2025-07-20)
 
@@ -310,7 +323,6 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - EMI test chamber (or service)
 - Thermal chamber
 - PLC with HMI for integration
-- Firebase test project
 
 ## Risk Mitigation
 
