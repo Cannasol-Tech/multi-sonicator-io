@@ -1,0 +1,28 @@
+# Emulation test environment
+# - Ubuntu base with simulavr installed
+# - Python tooling (venv, pip), PlatformIO, Behave
+
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    curl \
+    git \
+    make \
+    python3 \
+    python3-venv \
+    python3-pip \
+    simulavr \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install PlatformIO (CLI)
+RUN pip3 install --no-cache-dir platformio
+
+# Default workdir will be set by Makefile's docker run command
+
+# Show versions for debug
+RUN python3 --version && pip3 --version && pio --version && simulavr --version || true
+
+CMD ["bash"]

@@ -6,7 +6,8 @@
 # Usage: make [target]
 # Run 'make help' to see all available targets.
 
-.PHONY: help clean setup test test-unit test-simulation test-embedded build build-dev build-prod docs reports performance memory-check version all
+.PHONY: help clean setup test test-unit test-simulation test-embedded build build-dev build-prod docs reports performance memory-check version all \
+        emu-venv emu-test emu-stop emu-docker-build emu-docker-test
 
 # Default target
 .DEFAULT_GOAL := help
@@ -229,6 +230,63 @@ check-env: check-python check-pio
 tree:
 	@echo "$(YELLOW)Project structure:$(NC)"
 	@tree -I '.git|.pio|__pycache__|*.pyc|node_modules' || ls -la
+
+#==============================================================================
+# Emulation (simulavr) and BDD
+#==============================================================================
+
+EMU_VENV=.venv-emu
+EMU_PY=$(EMU_VENV)/bin/python
+EMU_PIP=$(EMU_VENV)/bin/pip
+EMU_BEHAVE=$(EMU_VENV)/bin/behave
+
+## Prepare Python venv for emulation tests
+emu-venv:
+	@echo "$(YELLOW)Creating emulation venv...$(NC)"
+	@test -d $(EMU_VENV) || python3 -m venv $(EMU_VENV)
+	@$(EMU_PIP) install --upgrade pip
+	@$(EMU_PIP) install -r scripts/emulation/requirements-emulation.txt
+	@echo "$(GREEN)Emulation venv ready$(NC)"
+
+## Run emulation BDD tests using simulavr in venv
+emu-test: emu-venv
+	@echo "$(YELLOW)Running emulation tests (simulavr) ...$(NC)"
+	@which simulavr >/dev/null 2>&1 || { echo "$(RED)simulavr not found in PATH. Install simulavr first.$(NC)"; exit 1; }
+	@set -e; \
+	ELF_RUN_CMD="$(EMU_PY) scripts/emulation/run_simulavr.py"; \
+	# start emulator in background
+	$$ELF_RUN_CMD & \
+	EMU_PID=$$!; \
+	echo "simulavr PID: $$EMU_PID"; \
+	sleep 2; \
+	# run Behave with simulavr profile; pending scenarios are skipped by default
+	$(EMU_BEHAVE) -D profile=simulavr || STATUS=$$?; \
+	# stop emulator
+	kill $$EMU_PID 2>/dev/null || true; \
+	wait $$EMU_PID 2>/dev/null || true; \
+	if [ -n "$$STATUS" ]; then exit $$STATUS; fi
+	@echo "$(GREEN)Emulation tests complete$(NC)"
+
+## Stop any stray emulators
+emu-stop:
+	@pkill -f "simulavr" 2>/dev/null || true
+	@echo "$(GREEN)Terminated any running simulavr processes$(NC)"
+
+## Build Docker image for emulation tests (Ubuntu with simulavr)
+emu-docker-build:
+	@echo "$(YELLOW)Building emulation Docker image...$(NC)"
+	@docker build -f scripts/emulation/Dockerfile.emu -t msio-emu:latest .
+	@echo "$(GREEN)Emulation Docker image built$(NC)"
+
+## Run emulation tests inside Docker
+emu-docker-test: emu-docker-build
+	@echo "$(YELLOW)Running emulation tests in Docker...$(NC)"
+	@docker run --rm -t \
+	  -v $$(pwd):/workspace \
+	  -w /workspace \
+	  msio-emu:latest \
+	  bash -lc "python3 -m venv .venv-emu && . .venv-emu/bin/activate && pip install -r scripts/emulation/requirements-emulation.txt && python3 scripts/emulation/run_simulavr.py & PID=\$$!; sleep 2; behave -D profile=simulavr; kill \$$PID; wait \$$PID || true"
+	@echo "$(GREEN)Docker emulation tests complete$(NC)"
 
 ## Monitor serial output (requires hardware)
 monitor:
