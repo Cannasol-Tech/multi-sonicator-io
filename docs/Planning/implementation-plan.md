@@ -32,6 +32,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Dependencies:** None
 - **Estimated:** 2 hours
 
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
+
 ### 1.2 Hardware Validation Setup
 
 - [ ] Test ISP programmer functionality
@@ -44,6 +46,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Dependencies:** 1.1
 - **Estimated:** 4 hours
 
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
+
 ### 1.3 Emulator Bring-up (simulavr)
 
 - [ ] Produce ELF build suitable for simulavr (ensure debug symbols)
@@ -55,6 +59,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Assigned:** AI Agent
 - **Dependencies:** 1.1
 - **Estimated:** 6 hours
+
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
 
 ## Phase 2: Core Hardware Interfaces (Target: 2025-01-30)
 
@@ -71,6 +77,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Dependencies:** 1.2
 - **Estimated:** 8 hours
 
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
+
 ### 2.2 DB9 Interface Configuration (`3-db9-interface-configuration.md`)
 
 - [ ] Map DB9 pinouts to microcontroller
@@ -82,6 +90,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Assigned:** AI Agent
 - **Dependencies:** 2.1
 - **Estimated:** 6 hours
+
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
 
 ## Phase 3: Communication Infrastructure (Target: 2025-02-05)
 
@@ -98,6 +108,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Dependencies:** 2.1
 - **Estimated:** 12 hours
 
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
+
 ### 3.2 MODBUS Register Mapping (`5-modbus-register-mapping.md`)
 
 - [ ] Mirror register addresses from `docs/Requirements/project-requirements.md` into `include/config.h` (requirements doc is authoritative)
@@ -111,6 +123,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Assigned:** AI Agent
 - **Dependencies:** 3.1
 - **Estimated:** 6 hours
+
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
 
 ## Phase 4: Sonicator Control Logic (Target: 2025-02-08)
 
@@ -127,6 +141,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Dependencies:** 2.2, 3.2
 - **Estimated:** 10 hours
 
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
+
 ### 4.2 Multi-Unit Orchestration (`7-multi-unit-orchestration.md`)
 
 - [ ] Create SystemController class
@@ -138,6 +154,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Assigned:** AI Agent
 - **Dependencies:** 4.1
 - **Estimated:** 8 hours
+
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
 
 ## Phase 5: Safety and Monitoring (Target: 2025-02-10)
 
@@ -154,6 +172,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Dependencies:** 4.2
 - **Estimated:** 12 hours
 
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
+
 ### 5.2 Alarm and Event Management (`9-alarm-and-event-management.md`)
 
 - [ ] Create alarm detection logic
@@ -165,6 +185,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Assigned:** AI Agent
 - **Dependencies:** 5.1
 - **Estimated:** 6 hours
+
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
 
 ## Phase 6: Diagnostics and Monitoring (Target: 2025-02-12)
 
@@ -181,6 +203,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Dependencies:** 5.2
 - **Estimated:** 8 hours
 
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
+
 ### 6.2 Performance Monitoring (`11-performance-monitoring.md`)
 
 - [ ] Add CPU usage monitoring
@@ -192,6 +216,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Assigned:** AI Agent
 - **Dependencies:** 6.1
 - **Estimated:** 4 hours
+
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
 
 ## Phase 7: System Integration (Target: 2025-02-14)
 
@@ -208,6 +234,9 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Estimated:** 8 hours
  - **Note:** Not part of MVP scope; leave tasks here for future planning only.
 
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
+ - **Note:** Not part of MVP scope; leave tasks here for future planning only.
+
 ### 7.2 HMI and PLC Integration (`13-hmi-plc-integration.md`)
 
 - [ ] Update PLC ladder logic
@@ -219,6 +248,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Assigned:** Human + AI Agent
 - **Dependencies:** 3.2
 - **Estimated:** 10 hours
+
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
 
 ## Phase 8: Testing and Validation (Target: 2025-02-18)
 
@@ -234,6 +265,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Dependencies:** 7.2
 - **Estimated:** 12 hours
 
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
+
 ### 8.2 System Validation (`15-system-validation.md`)
 
 - [ ] Perform EMI testing
@@ -246,6 +279,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Dependencies:** 8.1
 - **Estimated:** 16 hours
 
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
+
 ### 8.3 Executive Report Artifacts (`exec-report-artifacts.md`)
 
 - [ ] Generate `final/executive-report.json` per `docs/executive-report-standard.md` on tagged builds
@@ -255,6 +290,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Assigned:** AI Agent
 - **Dependencies:** 8.1
 - **Estimated:** 4 hours
+
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
 
 ## Phase 9: Deployment Preparation (Target: 2025-07-20)
 
@@ -270,6 +307,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Dependencies:** 8.2
 - **Estimated:** 6 hours
 
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
+
 ### 9.2 Documentation Finalization (`17-documentation-finalization.md`)
 
 - [ ] Complete API documentation
@@ -281,6 +320,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Assigned:** AI Agent
 - **Dependencies:** 9.1
 - **Estimated:** 8 hours
+
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
 
 ## Phase 10: Customer Delivery (Target: 2025-07-25)
 
@@ -296,6 +337,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Dependencies:** 9.2
 - **Estimated:** 8 hours
 
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
+
 ### 10.2 Post-Deployment Support (`19-post-deployment-support.md`)
 
 - [ ] Monitor initial operation
@@ -307,6 +350,8 @@ Implementation plan for the Multi-Sonicator I/O Controller, an industrial automa
 - **Assigned:** Human + AI Agent
 - **Dependencies:** 10.1
 - **Estimated:** Ongoing
+
+- [ ] Complete Definition of Done for this feature (doxygen on all functions/units, acceptance tests emulation+HIL, coverage ≥85%, CI green, docs/traceability updated)
 
 ## Resource Requirements
 
