@@ -4,6 +4,18 @@
 
 Implementation plan for the Multi-Sonicator I/O Controller, an industrial automation module that enables simultaneous control and monitoring of up to four CT2000 sonicators via isolated DB9 interfaces, MODBUS RTU communication, and Firebase integration.
 
+## Definition of Done
+
+- [ ] __Doxygen documentation__: Every function, class, and module/unit in `src/` and `include/` must have complete doxygen-style comments (purpose, params, returns, error cases, timing/constraints where applicable). Public headers are authoritative.
+- [ ] __Acceptance tests per feature__: For each PRD feature, provide acceptance tests in both environments:
+  - Emulation: Behave BDD scenarios runnable under the `simulavr` profile and passing.
+  - Hardware-in-the-Loop (HIL): Behave BDD scenarios runnable under the `hil` profile and passing.
+- [ ] __Test coverage__: Unit + integration tests achieve ≥85% line coverage; all tests must pass 100% locally and in CI.
+- [ ] __CI status__: All CI jobs green, including build, BDD (emulation at minimum on PRs), artifacts (executive report), and drift checks.
+- [ ] __Documentation updated__: Register map, architecture notes, and any operational manuals updated to reflect the implementation; PRD-to-Scenario traceability maintained.
+- [ ] __Code quality__: No duplicated logic; modular and reusable components; single source of truth for configs and mappings.
+- [ ] __Version control__: Changes committed with descriptive messages; PR raised and approved prior to merge.
+
 ## Phase 1: Foundation Setup (Target: 2025-01-15)
 
 ### 1.1 Initial Project Setup (`1-initial-setup.md`)
