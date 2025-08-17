@@ -21,14 +21,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-dev \
     swig \
     cmake \
-    simulavr \
-    python3-pysimulavr \
     socat \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python deps for emulation tests (PlatformIO, Behave, PySerial, Pymodbus)
+# Create an isolated venv for Python tooling (avoids PEP 668 issues)
 COPY scripts/emulation/requirements-emulation.txt /tmp/requirements-emulation.txt
-RUN pip3 install --no-cache-dir -r /tmp/requirements-emulation.txt
+RUN python3 -m venv /opt/venv \
+    && /opt/venv/bin/pip install --upgrade pip \
+    && /opt/venv/bin/pip install --no-cache-dir -r /tmp/requirements-emulation.txt
+
+# Make venv tools available on PATH (pio, behave, etc.)
+ENV PATH="/opt/venv/bin:${PATH}"
 
 # Prepare simavr (buserror) from source for UART PTY support (not yet wired)
 RUN git clone --depth 1 https://github.com/buserror/simavr /opt/simavr \
@@ -41,9 +44,21 @@ RUN git clone --depth 1 https://github.com/buserror/simavr /opt/simavr \
 
 # Default workdir will be set by Makefile's docker run command
 
-# Build SimulAVR with Python bindings (pysimulavr)
-# Use distro package for pysimulavr to avoid build flakiness
-ENV PYTHONPATH=""
+# Build SimulAVR with Python bindings (pysimulavr) from upstream (full clone to satisfy cmake Git info)
+# Configure CMake to build only the Python bindings and disable tests/docs to avoid missing check targets
+RUN git clone https://git.savannah.nongnu.org/git/simulavr.git /opt/simulavr-src \
+    && git -C /opt/simulavr-src fetch --tags --force --prune \
+    # Bypass GetGitInfo.cmake by injecting fixed version to avoid CMake string REPLACE error in minimal environments
+    && sed -i 's/^get_git_info()/set(SIMULAVR_VERSION_MAJOR 1)\nset(SIMULAVR_VERSION_MINOR 1)\nset(SIMULAVR_VERSION_PATCH 0)/' /opt/simulavr-src/CMakeLists.txt \
+    # Avoid Debian packaging subdir and brittle check deps on minimal images
+    && sed -i "s/^add_subdirectory(\\s*debian\\s*)/# add_subdirectory(debian)/" /opt/simulavr-src/CMakeLists.txt \
+    && sed -i '/add_dependencies(.*check.*/ s/^/# /' /opt/simulavr-src/CMakeLists.txt || true \
+    && sed -i 's/^add_dependencies( *check/# add_dependencies(check/' /opt/simulavr-src/CMakeLists.txt || true \
+    && make -C /opt/simulavr-src python -j$(nproc) \
+    && make -C /opt/simulavr-src build -j$(nproc)
+
+# Expose pysimulavr module to Python
+ENV PYTHONPATH="/opt/simulavr-src/build/pysimulavr"
 
 # Show versions for debug
 RUN python3 --version && pip3 --version && pio --version && simulavr --version || true

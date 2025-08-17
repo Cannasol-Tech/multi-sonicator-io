@@ -105,3 +105,17 @@ void test_error_codes() {
     TEST_ASSERT_EQUAL_INT(9, ERROR_EMERGENCY_STOP);
     TEST_ASSERT_EQUAL_INT(10, ERROR_SYSTEM_FAULT);
 }
+
+// Unity harness for this suite
+void setUp() {}
+void tearDown() {}
+
+int main() {
+    UNITY_BEGIN();
+    RUN_TEST(test_config_constants);
+    RUN_TEST(test_pin_definitions);
+    RUN_TEST(test_sonicator_limits);
+    RUN_TEST(test_modbus_registers);
+    RUN_TEST(test_error_codes);
+    return UNITY_END();
+}

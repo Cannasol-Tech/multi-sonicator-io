@@ -10,5 +10,5 @@ Feature: Safety
   @req-estop @hil
   Scenario: SC-014 Emergency stop register behavior
     Given the system is initialized
-    When I stimulate estop to 1
+    When I trigger emergency stop
     Then holding register 40026 should equal 1 within 50 ms

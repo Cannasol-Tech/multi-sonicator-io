@@ -22,6 +22,50 @@
 
 #include <Arduino.h>
 
+// -----------------------------------------------------------------------------
+// Backward-compatible aliases for unit tests targeting legacy pin names
+// These map the deprecated discrete LED and per-sonicator PWM symbols to
+// the current RGB status LED and single amplitude control design.
+// -----------------------------------------------------------------------------
+#ifndef LED_POWER_PIN
+#define LED_POWER_PIN        LED_RGB_GREEN_PIN
+#endif
+#ifndef LED_RUN_PIN
+#define LED_RUN_PIN          LED_RGB_BLUE_PIN
+#endif
+#ifndef LED_ERROR_PIN
+#define LED_ERROR_PIN        LED_RGB_RED_PIN
+#endif
+#ifndef LED_COMM_PIN
+#define LED_COMM_PIN         LED_RGB_BLUE_PIN
+#endif
+
+#ifndef LED_SONICATOR_1
+#define LED_SONICATOR_1      9
+#endif
+#ifndef LED_SONICATOR_2
+#define LED_SONICATOR_2      10
+#endif
+#ifndef LED_SONICATOR_3
+#define LED_SONICATOR_3      11
+#endif
+#ifndef LED_SONICATOR_4
+#define LED_SONICATOR_4      12
+#endif
+
+#ifndef PWM_SONICATOR_1_PIN
+#define PWM_SONICATOR_1_PIN  PWM_AMPLITUDE_CONTROL_PIN
+#endif
+#ifndef PWM_SONICATOR_2_PIN
+#define PWM_SONICATOR_2_PIN  PWM_AMPLITUDE_CONTROL_PIN
+#endif
+#ifndef PWM_SONICATOR_3_PIN
+#define PWM_SONICATOR_3_PIN  PWM_AMPLITUDE_CONTROL_PIN
+#endif
+#ifndef PWM_SONICATOR_4_PIN
+#define PWM_SONICATOR_4_PIN  PWM_AMPLITUDE_CONTROL_PIN
+#endif
+
 // ============================================================================
 // PROJECT INFORMATION
 // ============================================================================

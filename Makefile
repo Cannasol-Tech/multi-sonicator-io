@@ -7,7 +7,7 @@
 # Run 'make help' to see all available targets.
 
 .PHONY: help clean setup test test-unit test-simulation test-embedded build build-dev build-prod docs reports performance memory-check version all \
-        emu-venv emu-test emu-stop emu-docker-build emu-docker-test
+        emu-venv emulation-venv emu-test emu-stop emu-docker-build emu-docker-test test-emulation emu-cli
 
 # Default target
 .DEFAULT_GOAL := help
@@ -27,8 +27,13 @@ TEST_RESULTS_DIR = test_results
 REPORTS_DIR = reports
 DOCS_DIR = docs
 
-# Python interpreter
-PYTHON = python
+# Python interpreter (prefer python3, fallback to python)
+PYTHON_BIN := $(shell command -v python3 2>/dev/null || command -v python 2>/dev/null)
+ifeq ($(PYTHON_BIN),)
+  PYTHON := python3
+else
+  PYTHON := $(PYTHON_BIN)
+endif
 
 # PlatformIO command
 # Resolve PlatformIO as:
@@ -52,6 +57,9 @@ help:
 	@echo "  setup           - Setup development environment"
 	@echo "  clean           - Clean build artifacts and temporary files"
 	@echo "  version         - Display current project version"
+	@echo "  check-deps      - Check required tooling (python, PlatformIO, optional: simulavr)"
+	@echo "  install-pio     - Install PlatformIO via pipx/pip"
+	@echo "  bootstrap       - Show how to install prerequisites"
 	@echo ""
 	@echo "$(GREEN)Testing:$(NC)"
 	@echo "  test-all        - Run all tests (unit + emulation)"
@@ -127,25 +135,25 @@ clean:
 test: test-unit test-simulation
 
 ## Run unit tests on desktop
-test-unit:
+test-unit: check-pio
 	@echo "$(YELLOW)Running unit tests...$(NC)"
 	@$(PIO) test -e test_desktop
 	@echo "$(GREEN)Unit tests complete$(NC)"
 
 ## Run hardware simulation tests
-test-simulation:
+test-simulation: check-pio
 	@echo "$(YELLOW)Running hardware simulation tests...$(NC)"
 	@$(PIO) test -e test_desktop --filter test_virtual_sonicator
 	@echo "$(GREEN)Simulation tests complete$(NC)"
 
 ## Run all simulation test suites (virtual + integration)
-test-simulation-all:
+test-simulation-all: check-pio
 	@echo "$(YELLOW)Running ALL simulation test suites...$(NC)"
 	@$(PIO) test -e test_desktop --filter test_virtual_sonicator test_simulation_integration
 	@echo "$(GREEN)All simulation suites complete$(NC)"
 
 ## Run only the integration simulation tests
-test-simulation-integration:
+test-simulation-integration: check-pio
 	@echo "$(YELLOW)Running simulation integration tests...$(NC)"
 	@$(PIO) test -e test_desktop --filter test_simulation_integration
 	@echo "$(GREEN)Simulation integration tests complete$(NC)"
@@ -242,14 +250,53 @@ version: version-current
 
 # Additional utility targets
 
-## Check PlatformIO installation
+## Check PlatformIO installation (set AUTO_INSTALL_PIO=1 to attempt install)
 check-pio:
-	@which $(PIO) > /dev/null || (echo "$(RED)PlatformIO not found. Install with: pip install platformio$(NC)" && exit 1)
-	@echo "$(GREEN)PlatformIO found: $$($(PIO) --version)$(NC)"
+	@if ! which $(PIO) >/dev/null 2>&1; then \
+		if [ "$(AUTO_INSTALL_PIO)" = "1" ]; then \
+			echo "$(YELLOW)PlatformIO not found. Attempting installation...$(NC)"; \
+			if which pipx >/dev/null 2>&1; then \
+				echo "Using pipx"; pipx install platformio || true; \
+			else \
+				echo "Using pip --user"; python3 -m pip install --user platformio || true; \
+			fi; \
+		else \
+			echo "$(RED)PlatformIO not found. Install with: pipx install platformio || python3 -m pip install --user platformio$(NC)"; exit 1; \
+		fi; \
+	fi; \
+	$(PIO) --version >/dev/null 2>&1 && echo "$(GREEN)PlatformIO found: $$($(PIO) --version)$(NC)"
 
-## Check Python dependencies
+## Check optional simulavr
+check-simulavr:
+	@which simulavr >/dev/null 2>&1 && echo "$(GREEN)simulavr found: $$(simulavr --version 2>/dev/null || echo installed)$(NC)" || echo "$(YELLOW)simulavr not found (optional). Install with: brew install simulavr$(NC)"
+
+## Aggregate dependency check
+check-deps: check-python check-pio check-simulavr
+	@echo "$(GREEN)Dependency check complete$(NC)"
+
+## Explicitly install PlatformIO (non-interactive)
+install-pio:
+	@echo "$(YELLOW)Installing PlatformIO...$(NC)"
+	@if which pipx >/dev/null 2>&1; then \
+		pipx install platformio; \
+	else \
+		python3 -m pip install --user platformio; \
+	fi
+
+## Bootstrap developer machine with basic prerequisites (non-destructive)
+bootstrap:
+	@echo "$(YELLOW)Bootstrap instructions:$(NC)"
+	@echo "1) Ensure Python3 is installed (e.g., brew install python)"
+	@echo "2) Install PlatformIO: pipx install platformio  (or)  python3 -m pip install --user platformio"
+	@echo "3) Optional: brew install simulavr (for emulation targets)"
+
+## Check Python availability and print version
 check-python:
-	@which $(PYTHON) > /dev/null || (echo "$(RED)Python not found$(NC)" && exit 1)
+	@if ! command -v $(PYTHON) >/dev/null 2>&1; then \
+		echo "$(RED)Python not found$(NC)"; \
+		echo "Install with Homebrew: brew install python"; \
+		exit 1; \
+	fi
 	@echo "$(GREEN)Python found: $$($(PYTHON) --version)$(NC)"
 
 ## Environment check
@@ -277,6 +324,9 @@ emulation-venv:
 	@$(EMU_PIP) install --upgrade pip
 	@$(EMU_PIP) install -r scripts/emulation/requirements-emulation.txt
 	@echo "$(GREEN)Emulation venv ready$(NC)"
+
+## Back-compat alias for venv target used by other rules
+emu-venv: emulation-venv
 
 ## Build firmware ELF for simulavr (development env)
 simulavr-build-elf:
@@ -308,6 +358,11 @@ emu-test: emu-venv
 	wait $$EMU_PID 2>/dev/null || true; \
 	if [ -n "$$STATUS" ]; then exit $$STATUS; fi
 	@echo "$(GREEN)Emulation tests complete$(NC)"
+
+## Run the Python-based simulavr CLI directly (foreground)
+emu-cli: emu-venv
+	@echo "$(YELLOW)Starting pysimulavr CLI (foreground)... Ctrl+C to stop$(NC)"
+	@$(EMU_PY) scripts/emulation/cli.py
 
 ## Run Behave BDD against simulavr using venv (full suite)
 bdd-simulavr: emu-venv
@@ -367,17 +422,38 @@ emu-docker-test: emu-docker-build
 	  -v $$(pwd):/workspace \
 	  -w /workspace \
 	  msio-emu:latest \
-	  bash -lc "python3 -m venv .venv-emu && . .venv-emu/bin/activate && pip install -r scripts/emulation/requirements-emulation.txt && python3 scripts/emulation/simavr/cli.py & PID=\$$!; sleep 2; behave -D profile=simulavr test/bdd; kill \$$PID; wait \$$PID || true"
+	  bash -lc "set -euo pipefail; \
+            python3 -m venv .venv-emu; \
+            . .venv-emu/bin/activate; \
+            python -m pip install --upgrade pip; \
+            python -m pip install -r scripts/emulation/requirements-emulation.txt; \
+            .venv-emu/bin/python scripts/emulation/cli.py & PID=\$$!; \
+            sleep 2; \
+            .venv-emu/bin/behave -D profile=simulavr test/bdd; \
+            kill \$$PID 2>/dev/null || true; \
+            wait \$$PID || true"
 	@echo "$(GREEN)Docker emulation tests complete$(NC)"
+
+## Alias matching help text
+test-emulation: emu-docker-test
 
 ## Run only the smoke BDD in Docker (fast check)
 emu-docker-test-smoke: emu-docker-build
 	@echo "$(YELLOW)Running emulation SMOKE test in Docker...$(NC)"
 	@docker run --rm -t \
-	  -v $$(pwd):/workspace \
+	  -v $$\(pwd\):/workspace \
 	  -w /workspace \
 	  msio-emu:latest \
-	  bash -lc "python3 -m venv .venv-emu && . .venv-emu/bin/activate && pip install -r scripts/emulation/requirements-emulation.txt && python3 scripts/emulation/simavr/cli.py & PID=\$$!; sleep 2; behave -D profile=simulavr -t @smoke test/bdd; kill \$$PID; wait \$$PID || true"
+	  bash -lc "set -euo pipefail; \
+            python3 -m venv .venv-emu; \
+            . .venv-emu/bin/activate; \
+            python -m pip install --upgrade pip; \
+            python -m pip install -r scripts/emulation/requirements-emulation.txt; \
+            .venv-emu/bin/python scripts/emulation/cli.py & PID=\$$!; \
+            sleep 2; \
+            .venv-emu/bin/behave -D profile=simulavr -t @smoke test/bdd; \
+            kill \$$PID 2>/dev/null || true; \
+            wait \$$PID || true"
 	@echo "$(GREEN)Docker emulation SMOKE test complete$(NC)"
 
 ## Monitor serial output (requires hardware)

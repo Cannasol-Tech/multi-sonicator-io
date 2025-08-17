@@ -87,3 +87,17 @@ void test_db9_pin_mapping() {
     TEST_ASSERT_EQUAL_INT(8, DB9_AMPLITUDE_CONTROL);
     TEST_ASSERT_EQUAL_INT(9, DB9_EMITTER_COMMON);
 }
+
+// Unity harness for this suite
+void setUp() {}
+void tearDown() {}
+
+int main() {
+    UNITY_BEGIN();
+    RUN_TEST(test_system_initialization);
+    RUN_TEST(test_sonicator_states);
+    RUN_TEST(test_system_modes);
+    RUN_TEST(test_safety_events);
+    RUN_TEST(test_db9_pin_mapping);
+    return UNITY_END();
+}

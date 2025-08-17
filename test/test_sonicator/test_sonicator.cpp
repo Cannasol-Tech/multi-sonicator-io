@@ -135,3 +135,18 @@ void test_frequency_measurement_validation() {
     TEST_ASSERT_EQUAL_INT(20, SONICATOR_FREQ_TOLERANCE);
     TEST_ASSERT_EQUAL_INT(10, FREQUENCY_DIVIDER);
 }
+
+// Unity harness for this suite
+void setUp() {}
+void tearDown() {}
+
+int main() {
+    UNITY_BEGIN();
+    RUN_TEST(test_sonicator_pins);
+    RUN_TEST(test_sonicator_hardware_config);
+    RUN_TEST(test_sonicator_status_init);
+    RUN_TEST(test_amplitude_validation);
+    RUN_TEST(test_power_measurement_validation);
+    RUN_TEST(test_frequency_measurement_validation);
+    return UNITY_END();
+}

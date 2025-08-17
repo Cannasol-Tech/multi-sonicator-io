@@ -20,15 +20,23 @@ PIO_ENV = "development"
 ELF_RELATIVE = Path(".pio") / "build" / PIO_ENV / "firmware.elf"
 
 
-def check_tool(name: str) -> None:
-    if shutil.which(name) is None:
-        print(f"ERROR: Required tool '{name}' not found in PATH.")
-        sys.exit(1)
+def resolve_pio_cmd() -> list[str]:
+    """Resolve PlatformIO invocation.
+
+    Order: 'pio' -> 'platformio' -> 'python3 -m platformio'.
+    Returns the command list suitable for subprocess.run.
+    """
+    if shutil.which("pio"):
+        return ["pio"]
+    if shutil.which("platformio"):
+        return ["platformio"]
+    # Fallback to module execution
+    return [sys.executable or "python3", "-m", "platformio"]
 
 
 def build_elf() -> Path:
     print("[pysimulavr-runner] Building ELF via PlatformIO...")
-    cmd = ["platformio", "run", "-e", PIO_ENV]
+    cmd = resolve_pio_cmd() + ["run", "-e", PIO_ENV]
     proc = subprocess.run(cmd, cwd=PROJECT_ROOT)
     if proc.returncode != 0:
         print("ERROR: PlatformIO build failed.")
@@ -42,8 +50,6 @@ def build_elf() -> Path:
 
 
 def main() -> int:
-    check_tool("platformio")
-
     elf = build_elf()
 
     print("[pysimulavr-runner] Launching pysimulavr with UART PTY at", DEFAULT_SYMLINK)
