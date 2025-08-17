@@ -78,7 +78,7 @@ jobs:
             exit 1
           fi
       - name: Upload Test Results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: unit-test-results
@@ -125,7 +125,7 @@ jobs:
             pio test -e test_desktop --filter test_virtual_sonicator --verbose --junit-output-path test_results/virtual_sonicator_tests.xml || true
           fi
       - name: Upload Integration Test Results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: integration-test-results
@@ -225,7 +225,7 @@ jobs:
         run: |
           python scripts/generate_docs.py --output reports/docs
       - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.ARTIFACT_NAME }}-${{ github.sha }}
           path: |
@@ -240,7 +240,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ${{ env.ARTIFACT_NAME }}-${{ github.sha }}
       - name: Stage to Latest
