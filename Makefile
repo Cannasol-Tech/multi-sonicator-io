@@ -1,6 +1,6 @@
 # Multi-Sonicator I/O Controller Makefile
-# 
-# This Makefile provides convenient targets for building, testing, and 
+#
+# This Makefile provides convenient targets for building, testing, and
 # generating documentation for the Multi-Sonicator project.
 #
 # Usage: make [target]
@@ -31,7 +31,16 @@ DOCS_DIR = docs
 PYTHON = python
 
 # PlatformIO command
-PIO = pio
+# Resolve PlatformIO as:
+# 1) 'pio' if present
+# 2) 'platformio' if present
+# 3) fallback to 'python3 -m platformio'
+PIO_BIN := $(shell command -v pio 2>/dev/null || command -v platformio 2>/dev/null)
+ifeq ($(PIO_BIN),)
+  PIO := python3 -m platformio
+else
+  PIO := $(PIO_BIN)
+endif
 
 ## Display this help message
 help:
@@ -45,9 +54,12 @@ help:
 	@echo "  version         - Display current project version"
 	@echo ""
 	@echo "$(GREEN)Testing:$(NC)"
-	@echo "  test            - Run all tests (unit + simulation)"
+	@echo "  test-all        - Run all tests (unit + emulation)"
 	@echo "  test-unit       - Run unit tests on desktop"
+	@echo "  test-emulation  - Run emulation tests in Docker"
 	@echo "  test-simulation - Run hardware simulation tests"
+	@echo "  test-simulation-all - Run all simulation test suites"
+	@echo "  test-simulation-integration - Run integration simulation tests"
 	@echo "  test-embedded   - Run embedded tests (requires hardware)"
 	@echo "  test-verbose    - Run tests with verbose output"
 	@echo ""
@@ -72,6 +84,12 @@ help:
 	@echo "  all             - Build everything and run all tests"
 	@echo "  ci              - Run CI pipeline locally"
 	@echo "  pre-commit      - Run pre-commit checks"
+	@echo ""
+	@echo "$(GREEN)Emulation & BDD:$(NC)"
+	@echo "  simulavr-build-elf   - Build firmware ELF for emulation"
+	@echo "  simulavr-run         - Run simulavr with built ELF"
+	@echo "  bdd-simulavr         - Run Behave BDD against simulavr (requires PTY wiring)"
+	@echo "  bdd-smoke            - Run smoke-tagged BDD against simulavr"
 	@echo ""
 	@echo "$(YELLOW)Examples:$(NC)"
 	@echo "  make setup      # First time setup"
@@ -119,6 +137,18 @@ test-simulation:
 	@echo "$(YELLOW)Running hardware simulation tests...$(NC)"
 	@$(PIO) test -e test_desktop --filter test_virtual_sonicator
 	@echo "$(GREEN)Simulation tests complete$(NC)"
+
+## Run all simulation test suites (virtual + integration)
+test-simulation-all:
+	@echo "$(YELLOW)Running ALL simulation test suites...$(NC)"
+	@$(PIO) test -e test_desktop --filter test_virtual_sonicator test_simulation_integration
+	@echo "$(GREEN)All simulation suites complete$(NC)"
+
+## Run only the integration simulation tests
+test-simulation-integration:
+	@echo "$(YELLOW)Running simulation integration tests...$(NC)"
+	@$(PIO) test -e test_desktop --filter test_simulation_integration
+	@echo "$(GREEN)Simulation integration tests complete$(NC)"
 
 ## Run embedded tests (requires hardware)
 test-embedded:
@@ -241,31 +271,75 @@ EMU_PIP=$(EMU_VENV)/bin/pip
 EMU_BEHAVE=$(EMU_VENV)/bin/behave
 
 ## Prepare Python venv for emulation tests
-emu-venv:
+emulation-venv:
 	@echo "$(YELLOW)Creating emulation venv...$(NC)"
 	@test -d $(EMU_VENV) || python3 -m venv $(EMU_VENV)
 	@$(EMU_PIP) install --upgrade pip
 	@$(EMU_PIP) install -r scripts/emulation/requirements-emulation.txt
 	@echo "$(GREEN)Emulation venv ready$(NC)"
 
+## Build firmware ELF for simulavr (development env)
+simulavr-build-elf:
+	@echo "$(YELLOW)Building firmware ELF for simulavr...$(NC)"
+	@$(PIO) run -e development
+	@ls -l .pio/build/development/firmware.elf 2>/dev/null || echo "$(RED)ELF not found. Build may have failed.$(NC)"
+
+## Run simulavr with built ELF (no UART PTY wiring yet)
+simulavr-run:
+	@echo "$(YELLOW)Launching simulavr runner...$(NC)"
+	@which simulavr >/dev/null 2>&1 || { echo "$(RED)simulavr not found in PATH. Install simulavr first.$(NC)"; exit 1; }
+	@$(PYTHON) scripts/emulation/simavr/run_simulavr.py
+
 ## Run emulation BDD tests using simulavr in venv
 emu-test: emu-venv
 	@echo "$(YELLOW)Running emulation tests (simulavr) ...$(NC)"
 	@which simulavr >/dev/null 2>&1 || { echo "$(RED)simulavr not found in PATH. Install simulavr first.$(NC)"; exit 1; }
 	@set -e; \
-	ELF_RUN_CMD="$(EMU_PY) scripts/emulation/run_simulavr.py"; \
+	ELF_RUN_CMD="$(EMU_PY) scripts/emulation/simavr/run_simulavr.py"; \
 	# start emulator in background
 	$$ELF_RUN_CMD & \
 	EMU_PID=$$!; \
 	echo "simulavr PID: $$EMU_PID"; \
 	sleep 2; \
 	# run Behave with simulavr profile; pending scenarios are skipped by default
-	$(EMU_BEHAVE) -D profile=simulavr || STATUS=$$?; \
+	$(EMU_BEHAVE) -D profile=simulavr test/bdd || STATUS=$$?; \
 	# stop emulator
 	kill $$EMU_PID 2>/dev/null || true; \
 	wait $$EMU_PID 2>/dev/null || true; \
 	if [ -n "$$STATUS" ]; then exit $$STATUS; fi
 	@echo "$(GREEN)Emulation tests complete$(NC)"
+
+## Run Behave BDD against simulavr using venv (full suite)
+bdd-simulavr: emu-venv
+	@echo "$(YELLOW)Running BDD (Behave) against simulavr...$(NC)"
+	@which simulavr >/dev/null 2>&1 || { echo "$(RED)simulavr not found in PATH. Install simulavr first.$(NC)"; exit 1; }
+	@set -e; \
+	ELF_RUN_CMD="$(EMU_PY) scripts/emulation/simavr/run_simulavr.py"; \
+	$$ELF_RUN_CMD & \
+	EMU_PID=$$!; \
+	echo "simulavr PID: $$EMU_PID"; \
+	sleep 2; \
+	$(EMU_BEHAVE) -D profile=simulavr test/bdd || STATUS=$$?; \
+	kill $$EMU_PID 2>/dev/null || true; \
+	wait $$EMU_PID 2>/dev/null || true; \
+	if [ -n "$$STATUS" ]; then exit $$STATUS; fi
+	@echo "$(GREEN)BDD (simulavr) complete$(NC)"
+
+## Run only @smoke-tagged BDD scenarios against simulavr
+bdd-smoke: emu-venv
+	@echo "$(YELLOW)Running BDD SMOKE against simulavr...$(NC)"
+	@which simulavr >/dev/null 2>&1 || { echo "$(RED)simulavr not found in PATH. Install simulavr first.$(NC)"; exit 1; }
+	@set -e; \
+	ELF_RUN_CMD="$(EMU_PY) scripts/emulation/simavr/run_simulavr.py"; \
+	$$ELF_RUN_CMD & \
+	EMU_PID=$$!; \
+	echo "simulavr PID: $$EMU_PID"; \
+	sleep 2; \
+	$(EMU_BEHAVE) -D profile=simulavr -t @smoke test/bdd || STATUS=$$?; \
+	kill $$EMU_PID 2>/dev/null || true; \
+	wait $$EMU_PID 2>/dev/null || true; \
+	if [ -n "$$STATUS" ]; then exit $$STATUS; fi
+	@echo "$(GREEN)BDD SMOKE (simulavr) complete$(NC)"
 
 ## Stop any stray emulators
 emu-stop:
@@ -278,6 +352,14 @@ emu-docker-build:
 	@docker build -f scripts/emulation/Dockerfile.emu -t msio-emu:latest .
 	@echo "$(GREEN)Emulation Docker image built$(NC)"
 
+## Build pysimulavr module using tools/simulavr (Docker builder)
+simulavr-python-build:
+	@echo "$(YELLOW)Building pysimulavr with Docker...$(NC)"
+	@docker build -f tools/simulavr/Dockerfile.optionA -t msio-simulavr-builder:latest tools/simulavr
+	@docker run --rm -t -v $$(pwd):/workspace msio-simulavr-builder:latest
+	@echo "$(GREEN)pysimulavr build finished. Module under ./simulavr/build/pysimulavr$(NC)"
+
+
 ## Run emulation tests inside Docker
 emu-docker-test: emu-docker-build
 	@echo "$(YELLOW)Running emulation tests in Docker...$(NC)"
@@ -285,8 +367,18 @@ emu-docker-test: emu-docker-build
 	  -v $$(pwd):/workspace \
 	  -w /workspace \
 	  msio-emu:latest \
-	  bash -lc "python3 -m venv .venv-emu && . .venv-emu/bin/activate && pip install -r scripts/emulation/requirements-emulation.txt && python3 scripts/emulation/run_simulavr.py & PID=\$$!; sleep 2; behave -D profile=simulavr; kill \$$PID; wait \$$PID || true"
+	  bash -lc "python3 -m venv .venv-emu && . .venv-emu/bin/activate && pip install -r scripts/emulation/requirements-emulation.txt && python3 scripts/emulation/simavr/cli.py & PID=\$$!; sleep 2; behave -D profile=simulavr test/bdd; kill \$$PID; wait \$$PID || true"
 	@echo "$(GREEN)Docker emulation tests complete$(NC)"
+
+## Run only the smoke BDD in Docker (fast check)
+emu-docker-test-smoke: emu-docker-build
+	@echo "$(YELLOW)Running emulation SMOKE test in Docker...$(NC)"
+	@docker run --rm -t \
+	  -v $$(pwd):/workspace \
+	  -w /workspace \
+	  msio-emu:latest \
+	  bash -lc "python3 -m venv .venv-emu && . .venv-emu/bin/activate && pip install -r scripts/emulation/requirements-emulation.txt && python3 scripts/emulation/simavr/cli.py & PID=\$$!; sleep 2; behave -D profile=simulavr -t @smoke test/bdd; kill \$$PID; wait \$$PID || true"
+	@echo "$(GREEN)Docker emulation SMOKE test complete$(NC)"
 
 ## Monitor serial output (requires hardware)
 monitor:

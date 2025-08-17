@@ -757,7 +757,7 @@ This project MUST publish Executive Functionality artifacts conforming to `docs/
 - **PLC Communication:** Reliable MODBUS operation with existing Velocio system
 - **HMI Integration:** Intuitive multi-sonicator control interface
 - **Mobile App:** Real-time monitoring and control capabilities
-- **Backward Compatibility:** Graceful single-sonicator operation mode
+- **Backward Compatibility:** Graceful single-sonicator operation mode when only one sonicator is connected and when multi-sonicator-io is not connected
 
 ---
 

@@ -170,6 +170,50 @@ HMI System (MODBUS Master)
 - **EMI Immunity**: Shielded interfaces and proper grounding
 - **Watchdog Protection**: Hardware watchdog prevents system lockup
 
+### PCB Layout Rules (ATmega32A, 16 MHz, ADC, PWM 0–10 V, RS‑485)
+
+- **Short return paths**
+  - Use a solid, continuous ground plane; avoid routing signals across plane splits.
+  - Keep signal/return vertically aligned (microstrip/stripline) to minimize loop area.
+  - If a split must be crossed, add a nearby ground stitching via to provide a local return.
+
+- **Analog/Digital ground strategy**
+  - Keep analog front‑end (LM358, ADC dividers, LM2907) over an analog ground region.
+  - Tie AGND↔DGND at a single point near MCU AGND/AREF. Prefer 0 Ω link; a ferrite bead (FB) is acceptable if HF isolation helps.
+  - Filter AVCC with FB + 100 nF + 1 µF close to the pin; route AREF cleanly with its cap (e.g., 100 nF) to AGND.
+
+- **Decoupling and bulk**
+  - 100 nF X7R at every IC VCC pin, placed as close as possible with a direct via to the ground plane.
+  - Add 1 µF per IC cluster/rail and 10–47 µF bulk per rail near connectors/regulators.
+  - LM358/analog path: 100 nF at power pins + 1 µF nearby. Keep feedback loops short and quiet.
+
+- **Edge‑rate control (EMI reduction)**
+  - Add series resistors (≈33–68 Ω) at noisy GPIO/PWM sources to damp ringing and slow edges.
+  - Keep PWM switching node compact; place RC filter and op‑amp (0–10 V path) close to the source.
+  - Add RC snubbers only where scope shows persistent overshoot/ringing.
+
+- **Clock and crystal routing**
+  - Keep crystal loop tiny and symmetric; place load caps next to pins; avoid long traces and vias.
+  - Keep high‑speed digital away from the crystal/AREF area.
+
+- **RS‑485/MODBUS physical layer**
+  - Place TVS, common‑mode choke, and 120 Ω termination near the connector; keep the differential pair tightly coupled.
+  - Provide bias resistors per RS‑485 segment rules; observe cable length and topology constraints.
+
+- **Connector I/O and cabling**
+  - Use 360° shield termination where applicable; consider ferrite beads on cable egress.
+  - Keep high‑di/dt paths (drivers, switching regulators) away from analog inputs and connectors.
+
+- **Ground stitching and zones**
+  - Fence noisy regions with stitching vias; stitch grounds around board edges and near connector transitions.
+  - Avoid creating unintended current loops with multiple AGND↔DGND ties.
+
+- **Verification checklist**
+  - Probe VCC at IC pins under load; confirm low ripple and minimal ringing.
+  - Measure ADC noise floor with inputs shorted; verify improvement with AVCC/AREF filtering.
+  - Scope PWM/GPIO rise/fall and overshoot at the load; tune series R/snubbers as needed.
+  - Perform a pre‑scan for radiated EMI (30 MHz–1 GHz) to catch dominant harmonics early.
+
 ### Modular Design
 - **Scalable Architecture**: Support for 1-4 sonicators with identical interfaces
 - **Reusable Components**: Common code base for all sonicator interfaces

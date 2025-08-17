@@ -7,10 +7,17 @@ def before_all(context):
     if context.profile not in ("simulavr", "hil"):
         context.profile = "simulavr"
 
-    # Place to initialize shared resources later (serial ports, PTYs, etc.)
+    # Initialize shared resources (populated later by emulator runner)
     context.shared = {}
+
+    # Stable serial symlink path that emulator runner will create, e.g. /dev/pts/N -> /tmp/tty-msio
+    if context.profile == "simulavr":
+        context.serial_port = "/tmp/tty-msio"
+    else:
+        # In HIL, the steps should set this to the detected hardware port
+        context.serial_port = None
 
 
 def after_all(context):
-    # Cleanup resources if we add any in the future
+    # Cleanup resources if we add any in the future (e.g., stop emulator)
     pass

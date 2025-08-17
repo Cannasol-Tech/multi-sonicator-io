@@ -131,6 +131,38 @@ jobs:
           name: integration-test-results
           path: test_results/
 
+  bdd-sim-emulation:
+    needs: [unit-tests]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install simulavr and build deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y simulavr
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install PlatformIO (for ELF build)
+        run: |
+          python -m pip install --upgrade pip
+          pip install platformio
+      - name: Run BDD smoke against simulavr
+        env:
+          # Ensure non-interactive; keep logs concise
+          CI: true
+        run: |
+          make bdd-smoke
+      - name: Archive BDD artifacts (optional)
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: bdd-smoke-logs
+          path: |
+            .pio/build/development/firmware.elf
+            test_results/
+
   build-firmware:
     needs: [unit-tests, integration-tests]
     runs-on: ubuntu-latest

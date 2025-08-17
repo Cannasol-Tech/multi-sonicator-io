@@ -1,8 +1,8 @@
 # Emulation test environment
-# - Ubuntu base with simulavr installed
+# - Debian base with simulavr + pysimulavr installed
 # - Python tooling (venv, pip), PlatformIO, Behave
 
-FROM ubuntu:22.04
+FROM debian:bookworm-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -11,16 +11,39 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     git \
     make \
+    build-essential \
+    pkg-config \
+    libelf-dev \
+    libreadline-dev \
     python3 \
     python3-venv \
     python3-pip \
+    python3-dev \
+    swig \
+    cmake \
     simulavr \
+    python3-pysimulavr \
+    socat \
     && rm -rf /var/lib/apt/lists/*
 
-# Install PlatformIO (CLI)
-RUN pip3 install --no-cache-dir platformio
+# Install Python deps for emulation tests (PlatformIO, Behave, PySerial, Pymodbus)
+COPY scripts/emulation/requirements-emulation.txt /tmp/requirements-emulation.txt
+RUN pip3 install --no-cache-dir -r /tmp/requirements-emulation.txt
+
+# Prepare simavr (buserror) from source for UART PTY support (not yet wired)
+RUN git clone --depth 1 https://github.com/buserror/simavr /opt/simavr \
+    && make -C /opt/simavr/simavr -j$(nproc)
+
+# Skip simmsio board build for now (pending port to latest simavr API)
+# COPY scripts/emulation/boards/simmsio /opt/simmsio
+# RUN make -C /opt/simmsio SIMAVR_DIR=/opt/simavr -j$(nproc) \
+#     && install -m 0755 /opt/simmsio/simmsio /usr/local/bin/simmsio
 
 # Default workdir will be set by Makefile's docker run command
+
+# Build SimulAVR with Python bindings (pysimulavr)
+# Use distro package for pysimulavr to avoid build flakiness
+ENV PYTHONPATH=""
 
 # Show versions for debug
 RUN python3 --version && pip3 --version && pio --version && simulavr --version || true
