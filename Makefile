@@ -7,7 +7,7 @@
 # Run 'make help' to see all available targets.
 
 .PHONY: help clean setup test test-unit test-simulation test-embedded build build-dev build-prod docs reports performance memory-check version all \
-        emu-venv emulation-venv emu-test emu-stop emu-docker-build emu-docker-test test-emulation emu-cli
+        emu-stop emu-docker-build emu-docker-test test-emulation test-acceptance test-hil test-hil-if-available test-all
 
 # Default target
 .DEFAULT_GOAL := help
@@ -62,13 +62,11 @@ help:
 	@echo "  bootstrap       - Show how to install prerequisites"
 	@echo ""
 	@echo "$(GREEN)Testing:$(NC)"
-	@echo "  test-all        - Run all tests (unit + emulation)"
-	@echo "  test-unit       - Run unit tests on desktop"
-	@echo "  test-emulation  - Run emulation tests in Docker"
-	@echo "  test-simulation - Run hardware simulation tests"
-	@echo "  test-simulation-all - Run all simulation test suites"
-	@echo "  test-simulation-integration - Run integration simulation tests"
-	@echo "  test-embedded   - Run embedded tests (requires hardware)"
+	@echo "  test-all        - Run all tests (unit + acceptance + HIL)"
+	@echo "  test-unit       - Run unit tests on desktop (PlatformIO + Unity)"
+	@echo "  test-acceptance - Run acceptance tests in simulavr emulator"
+	@echo "  test-hil        - Run HIL tests on real hardware (when available)"
+	@echo "  test-emulation  - Alias for test-acceptance"
 	@echo "  test-verbose    - Run tests with verbose output"
 	@echo ""
 	@echo "$(GREEN)Building:$(NC)"
@@ -127,43 +125,51 @@ clean:
 	@rm -rf $(TEST_RESULTS_DIR)
 	@rm -rf $(REPORTS_DIR)
 	@rm -rf .coverage
+	@rm -rf .venv-emu  # Remove any leftover venv directories
 	@find . -name "*.pyc" -delete
 	@find . -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
 	@echo "$(GREEN)Clean complete$(NC)"
 
-## Run all tests (unit + simulation)
-test: test-unit test-simulation
+## Run all tests (unit + acceptance + HIL when available)
+test-all: test-unit test-acceptance test-hil-if-available
 
-## Run unit tests on desktop
+## Legacy alias for backwards compatibility
+test: test-unit test-acceptance
+
+## Run unit tests on desktop (PlatformIO + Unity)
 test-unit: check-pio
 	@echo "$(YELLOW)Running unit tests...$(NC)"
 	@$(PIO) test -e test_desktop
 	@echo "$(GREEN)Unit tests complete$(NC)"
 
-## Run hardware simulation tests
+## Run acceptance tests in simulavr emulator (BDD) - Docker-based
+test-acceptance: emu-docker-test
+
+## Run HIL tests on real hardware (when available)
+test-hil:
+	@echo "$(YELLOW)Running HIL tests on real hardware...$(NC)"
+	@$(PYTHON) $(SCRIPTS_DIR)/detect_hardware.py || (echo "$(RED)No hardware detected. Use 'make test-acceptance' instead$(NC)" && exit 1)
+	@which behave >/dev/null 2>&1 || { echo "$(RED)behave not found. Install with: pip install behave$(NC)"; exit 1; }
+	@behave -D profile=hil test/acceptance
+	@echo "$(GREEN)HIL tests complete$(NC)"
+
+## Run HIL tests only if hardware is available (no error if not)
+test-hil-if-available:
+	@echo "$(YELLOW)Checking for hardware for HIL tests...$(NC)"
+	@if $(PYTHON) $(SCRIPTS_DIR)/detect_hardware.py >/dev/null 2>&1; then \
+		echo "$(GREEN)Hardware detected, running HIL tests...$(NC)"; \
+		which behave >/dev/null 2>&1 || { echo "$(RED)behave not found. Install with: pip install behave$(NC)"; exit 1; }; \
+		behave -D profile=hil test/acceptance; \
+		echo "$(GREEN)HIL tests complete$(NC)"; \
+	else \
+		echo "$(YELLOW)No hardware detected, skipping HIL tests$(NC)"; \
+	fi
+
+## Legacy simulation tests (kept for backwards compatibility)
 test-simulation: check-pio
 	@echo "$(YELLOW)Running hardware simulation tests...$(NC)"
 	@$(PIO) test -e test_desktop --filter test_virtual_sonicator
 	@echo "$(GREEN)Simulation tests complete$(NC)"
-
-## Run all simulation test suites (virtual + integration)
-test-simulation-all: check-pio
-	@echo "$(YELLOW)Running ALL simulation test suites...$(NC)"
-	@$(PIO) test -e test_desktop --filter test_virtual_sonicator test_simulation_integration
-	@echo "$(GREEN)All simulation suites complete$(NC)"
-
-## Run only the integration simulation tests
-test-simulation-integration: check-pio
-	@echo "$(YELLOW)Running simulation integration tests...$(NC)"
-	@$(PIO) test -e test_desktop --filter test_simulation_integration
-	@echo "$(GREEN)Simulation integration tests complete$(NC)"
-
-## Run embedded tests (requires hardware)
-test-embedded:
-	@echo "$(YELLOW)Running embedded tests...$(NC)"
-	@$(PYTHON) $(SCRIPTS_DIR)/detect_hardware.py || (echo "$(RED)No hardware detected. Use 'make test-simulation' instead$(NC)" && exit 1)
-	@$(PIO) test -e test_embedded
-	@echo "$(GREEN)Embedded tests complete$(NC)"
 
 ## Run tests with verbose output
 test-verbose:
@@ -309,24 +315,8 @@ tree:
 	@tree -I '.git|.pio|__pycache__|*.pyc|node_modules' || ls -la
 
 #==============================================================================
-# Emulation (simulavr) and BDD
+# Emulation (simulavr) and BDD - Docker-based
 #==============================================================================
-
-EMU_VENV=.venv-emu
-EMU_PY=$(EMU_VENV)/bin/python
-EMU_PIP=$(EMU_VENV)/bin/pip
-EMU_BEHAVE=$(EMU_VENV)/bin/behave
-
-## Prepare Python venv for emulation tests
-emulation-venv:
-	@echo "$(YELLOW)Creating emulation venv...$(NC)"
-	@test -d $(EMU_VENV) || python3 -m venv $(EMU_VENV)
-	@$(EMU_PIP) install --upgrade pip
-	@$(EMU_PIP) install -r scripts/emulation/requirements-emulation.txt
-	@echo "$(GREEN)Emulation venv ready$(NC)"
-
-## Back-compat alias for venv target used by other rules
-emu-venv: emulation-venv
 
 ## Build firmware ELF for simulavr (development env)
 simulavr-build-elf:
@@ -340,61 +330,7 @@ simulavr-run:
 	@which simulavr >/dev/null 2>&1 || { echo "$(RED)simulavr not found in PATH. Install simulavr first.$(NC)"; exit 1; }
 	@$(PYTHON) scripts/emulation/simavr/run_simulavr.py
 
-## Run emulation BDD tests using simulavr in venv
-emu-test: emu-venv
-	@echo "$(YELLOW)Running emulation tests (simulavr) ...$(NC)"
-	@which simulavr >/dev/null 2>&1 || { echo "$(RED)simulavr not found in PATH. Install simulavr first.$(NC)"; exit 1; }
-	@set -e; \
-	ELF_RUN_CMD="$(EMU_PY) scripts/emulation/simavr/run_simulavr.py"; \
-	# start emulator in background
-	$$ELF_RUN_CMD & \
-	EMU_PID=$$!; \
-	echo "simulavr PID: $$EMU_PID"; \
-	sleep 2; \
-	# run Behave with simulavr profile; pending scenarios are skipped by default
-	$(EMU_BEHAVE) -D profile=simulavr test/bdd || STATUS=$$?; \
-	# stop emulator
-	kill $$EMU_PID 2>/dev/null || true; \
-	wait $$EMU_PID 2>/dev/null || true; \
-	if [ -n "$$STATUS" ]; then exit $$STATUS; fi
-	@echo "$(GREEN)Emulation tests complete$(NC)"
 
-## Run the Python-based simulavr CLI directly (foreground)
-emu-cli: emu-venv
-	@echo "$(YELLOW)Starting pysimulavr CLI (foreground)... Ctrl+C to stop$(NC)"
-	@$(EMU_PY) scripts/emulation/cli.py
-
-## Run Behave BDD against simulavr using venv (full suite)
-bdd-simulavr: emu-venv
-	@echo "$(YELLOW)Running BDD (Behave) against simulavr...$(NC)"
-	@which simulavr >/dev/null 2>&1 || { echo "$(RED)simulavr not found in PATH. Install simulavr first.$(NC)"; exit 1; }
-	@set -e; \
-	ELF_RUN_CMD="$(EMU_PY) scripts/emulation/simavr/run_simulavr.py"; \
-	$$ELF_RUN_CMD & \
-	EMU_PID=$$!; \
-	echo "simulavr PID: $$EMU_PID"; \
-	sleep 2; \
-	$(EMU_BEHAVE) -D profile=simulavr test/bdd || STATUS=$$?; \
-	kill $$EMU_PID 2>/dev/null || true; \
-	wait $$EMU_PID 2>/dev/null || true; \
-	if [ -n "$$STATUS" ]; then exit $$STATUS; fi
-	@echo "$(GREEN)BDD (simulavr) complete$(NC)"
-
-## Run only @smoke-tagged BDD scenarios against simulavr
-bdd-smoke: emu-venv
-	@echo "$(YELLOW)Running BDD SMOKE against simulavr...$(NC)"
-	@which simulavr >/dev/null 2>&1 || { echo "$(RED)simulavr not found in PATH. Install simulavr first.$(NC)"; exit 1; }
-	@set -e; \
-	ELF_RUN_CMD="$(EMU_PY) scripts/emulation/simavr/run_simulavr.py"; \
-	$$ELF_RUN_CMD & \
-	EMU_PID=$$!; \
-	echo "simulavr PID: $$EMU_PID"; \
-	sleep 2; \
-	$(EMU_BEHAVE) -D profile=simulavr -t @smoke test/bdd || STATUS=$$?; \
-	kill $$EMU_PID 2>/dev/null || true; \
-	wait $$EMU_PID 2>/dev/null || true; \
-	if [ -n "$$STATUS" ]; then exit $$STATUS; fi
-	@echo "$(GREEN)BDD SMOKE (simulavr) complete$(NC)"
 
 ## Stop any stray emulators
 emu-stop:
@@ -423,35 +359,27 @@ emu-docker-test: emu-docker-build
 	  -w /workspace \
 	  msio-emu:latest \
 	  bash -lc "set -euo pipefail; \
-            python3 -m venv .venv-emu; \
-            . .venv-emu/bin/activate; \
-            python -m pip install --upgrade pip; \
-            python -m pip install -r scripts/emulation/requirements-emulation.txt; \
-            .venv-emu/bin/python scripts/emulation/cli.py & PID=\$$!; \
+            python scripts/emulation/cli.py & PID=\$$!; \
             sleep 2; \
-            .venv-emu/bin/behave -D profile=simulavr test/bdd; \
+            behave -D profile=simulavr test/acceptance; \
             kill \$$PID 2>/dev/null || true; \
             wait \$$PID || true"
 	@echo "$(GREEN)Docker emulation tests complete$(NC)"
 
 ## Alias matching help text
-test-emulation: emu-docker-test
+test-emulation: test-acceptance
 
 ## Run only the smoke BDD in Docker (fast check)
 emu-docker-test-smoke: emu-docker-build
 	@echo "$(YELLOW)Running emulation SMOKE test in Docker...$(NC)"
 	@docker run --rm -t \
-	  -v $$\(pwd\):/workspace \
+	  -v $$(pwd):/workspace \
 	  -w /workspace \
 	  msio-emu:latest \
 	  bash -lc "set -euo pipefail; \
-            python3 -m venv .venv-emu; \
-            . .venv-emu/bin/activate; \
-            python -m pip install --upgrade pip; \
-            python -m pip install -r scripts/emulation/requirements-emulation.txt; \
-            .venv-emu/bin/python scripts/emulation/cli.py & PID=\$$!; \
+            python scripts/emulation/cli.py & PID=\$$!; \
             sleep 2; \
-            .venv-emu/bin/behave -D profile=simulavr -t @smoke test/bdd; \
+            behave -D profile=simulavr -t @smoke test/acceptance; \
             kill \$$PID 2>/dev/null || true; \
             wait \$$PID || true"
 	@echo "$(GREEN)Docker emulation SMOKE test complete$(NC)"

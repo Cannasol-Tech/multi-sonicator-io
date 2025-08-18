@@ -171,15 +171,18 @@ Sample user stories (docs-only acceptance now):
 ## 13. Testing Strategy
 
 - Documentation phase: define acceptance scenarios to populate the Executive Report.
-- Acceptance tests: Python Behave scenarios mapped to PRD requirements; execute against Simulavr-based simulation harness.
-- Unit tests: pytest for C/C++ wrapper/host-side utilities and Python tooling.
+- Test types and locations:
+  - Unit testing — PlatformIO native tests in `test/unit/`.
+  - Acceptance testing — Behave BDD tests in `test/acceptance/` mapped to PRD requirements; executes against Simulavr-based simulation harness.
+  - Hardware testing (HIL) — Behave BDD tests running on actual hardware using the Arduino-based test wrapper under `test/hardware/arduino_test_wrapper/`.
+- Additional tooling: pytest for C/C++ wrapper/host-side utilities and Python tooling.
 - Coverage goal: ≥90% overall when code phase proceeds; maintain trend reports in CI.
 - CI gates: GitHub Actions to validate artifacts, enforce schemas for `final/executive-report.json` (and optional coverage/test summaries), and block releases on validation failure per `docs/executive-report-standard.md`.
 
 ### 13.1 Hardware-in-the-Loop (HIL) Testing — `arduino_test_wrapper.ino`
 
 - **Purpose**: Provide a USB‑serial controllable Arduino sketch that electrically interfaces to the ATmega32A target, driving/reading all relevant pins to validate the full MODBUS contract and control/monitoring semantics end‑to‑end.
-- **Wrapper**: `ArduinoISP/arduino_test_wrapper.ino` (naming/location subject to repo finalization) exposes a simple command protocol over serial for Behave/pytest to:
+- **Wrapper**: `test/hardware/arduino_test_wrapper/arduino_test_wrapper.ino` exposes a simple command protocol over serial for Behave/pytest to:
   - Stimulate inputs (e.g., overload, frequency ÷10, frequency lock)
   - Read outputs (start/stop, reset pulse observation, amplitude PWM/DAC via ADC on wrapper)
   - Proxy MODBUS traffic if required or leave MODBUS master duties to the test host
