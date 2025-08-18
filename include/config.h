@@ -143,11 +143,11 @@
  * @brief Pin definitions for first sonicator interface
  * @{
  */
-#define SON1_OVERLOAD_PIN     16   ///< PD2 (Physical pin 16) - Input via 6N137
-#define SON1_FREQ_OUTPUT_PIN  1    ///< PB0 (Physical pin 1)  - Timer0/T0 Input
-#define SON1_FREQ_LOCK_PIN    2    ///< PB1 (Physical pin 2)  - Input via 6N137
-#define SON1_START_PIN        28   ///< PC6 (Physical pin 28) - Output via ULN2003A
-#define SON1_RESET_PIN        29   ///< PC7 (Physical pin 29) - Output via ULN2003A
+#define SON1_OVERLOAD_PIN     20   ///< PD6 (Physical pin 20) - Input via 6N137
+#define SON1_FREQ_OUTPUT_PIN  4    ///< PB3 (Physical pin 4)  - FREQ ÷10 input
+#define SON1_FREQ_LOCK_PIN    8    ///< PB7 (Physical pin 8)  - Input via 6N137
+#define SON1_START_PIN        22   ///< PC0 (Physical pin 22) - Output via ULN2003A
+#define SON1_RESET_PIN        23   ///< PC1 (Physical pin 23) - Output via ULN2003A
 /** @} */
 
 /**
@@ -155,11 +155,11 @@
  * @brief Pin definitions for second sonicator interface
  * @{
  */
-#define SON2_OVERLOAD_PIN     17   ///< PD3 (Physical pin 17) - Input via 6N137
-#define SON2_FREQ_OUTPUT_PIN  4    ///< PB3 (Physical pin 4)  - Timer2/T2 Input
-#define SON2_FREQ_LOCK_PIN    3    ///< PB2 (Physical pin 3)  - Input via 6N137
-#define SON2_START_PIN        26   ///< PC4 (Physical pin 26) - Output via ULN2003A
-#define SON2_RESET_PIN        27   ///< PC5 (Physical pin 27) - Output via ULN2003A
+#define SON2_OVERLOAD_PIN     19   ///< PD5 (Physical pin 19) - Input via 6N137
+#define SON2_FREQ_OUTPUT_PIN  3    ///< PB2 (Physical pin 3)  - FREQ ÷10 input
+#define SON2_FREQ_LOCK_PIN    7    ///< PB6 (Physical pin 7)  - Input via 6N137
+#define SON2_START_PIN        24   ///< PC2 (Physical pin 24) - Output via ULN2003A
+#define SON2_RESET_PIN        25   ///< PC3 (Physical pin 25) - Output via ULN2003A
 /** @} */
 
 /**
@@ -168,10 +168,10 @@
  * @{
  */
 #define SON3_OVERLOAD_PIN     18   ///< PD4 (Physical pin 18) - Input via 6N137
-#define SON3_FREQ_OUTPUT_PIN  20   ///< PD6 (Physical pin 20) - Timer1/ICP1 Input
-#define SON3_FREQ_LOCK_PIN    5    ///< PB4 (Physical pin 5)  - Input via 6N137
-#define SON3_START_PIN        24   ///< PC2 (Physical pin 24) - Output via ULN2003A
-#define SON3_RESET_PIN        25   ///< PC3 (Physical pin 25) - Output via ULN2003A
+#define SON3_FREQ_OUTPUT_PIN  2    ///< PB1 (Physical pin 2)  - FREQ ÷10 input
+#define SON3_FREQ_LOCK_PIN    6    ///< PB5 (Physical pin 6)  - Input via 6N137
+#define SON3_START_PIN        26   ///< PC4 (Physical pin 26) - Output via ULN2003A
+#define SON3_RESET_PIN        27   ///< PC5 (Physical pin 27) - Output via ULN2003A
 /** @} */
 
 /**
@@ -179,11 +179,11 @@
  * @brief Pin definitions for fourth sonicator interface
  * @{
  */
-#define SON4_OVERLOAD_PIN     19   ///< PD5 (Physical pin 19) - Input via 6N137
-#define SON4_FREQ_OUTPUT_PIN  A0   ///< PA0 (Physical pin 40) - ADC0 via LM2907
-#define SON4_FREQ_LOCK_PIN    21   ///< PD7 (Physical pin 21) - Input via 6N137
-#define SON4_START_PIN        22   ///< PC0 (Physical pin 22) - Output via ULN2003A
-#define SON4_RESET_PIN        23   ///< PC1 (Physical pin 23) - Output via ULN2003A
+#define SON4_OVERLOAD_PIN     17   ///< PD3 (Physical pin 17) - Input via 6N137
+#define SON4_FREQ_OUTPUT_PIN  1    ///< PB0 (Physical pin 1)  - FREQ ÷10 input
+#define SON4_FREQ_LOCK_PIN    5    ///< PB4 (Physical pin 5)  - Input via 6N137
+#define SON4_START_PIN        28   ///< PC6 (Physical pin 28) - Output via ULN2003A
+#define SON4_RESET_PIN        29   ///< PC7 (Physical pin 29) - Output via ULN2003A
 /** @} */
 
 /** @} */
@@ -196,7 +196,7 @@
  */
 
 /** @brief Single PWM pin for amplitude control (0-10V output) */
-#define PWM_AMPLITUDE_CONTROL_PIN   A1   ///< PA1 (Physical pin 39) - Software PWM
+#define PWM_AMPLITUDE_CONTROL_PIN   21   ///< PD7 (Physical pin 21) - AMP_C per schematic
 
 /**
  * @brief PWM Filter Configuration
@@ -215,10 +215,10 @@
  */
 
 /** @brief ADC pin assignments for power monitoring */
-#define ADC_SONICATOR_1_PIN   A4   ///< PA4 (Physical pin 37) - ADC4
-#define ADC_SONICATOR_2_PIN   A5   ///< PA5 (Physical pin 36) - ADC5
-#define ADC_SONICATOR_3_PIN   A6   ///< PA6 (Physical pin 35) - ADC6
-#define ADC_SONICATOR_4_PIN   A7   ///< PA7 (Physical pin 34) - ADC7
+#define ADC_SONICATOR_1_PIN   A4   ///< PA4 (Physical pin 36) - ADC4
+#define ADC_SONICATOR_2_PIN   A5   ///< PA5 (Physical pin 35) - ADC5
+#define ADC_SONICATOR_3_PIN   A6   ///< PA6 (Physical pin 34) - ADC6
+#define ADC_SONICATOR_4_PIN   A7   ///< PA7 (Physical pin 33) - ADC7
 
 /**
  * @brief ADC Configuration (per channel)
