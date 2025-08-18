@@ -79,11 +79,6 @@ Note: DB9-0 is the communications connector back to the main automation system (
 - **AMPLITUDE_ALL**: PD7 (Pin 21) labeled AMP_C.
 - **OVERLOAD 1..4**: PD6 (Pin 20), PD5 (Pin 19), PD4 (Pin 18), PD3 (Pin 17) for S1..S4.
 
-## Open discrepancies to resolve (doc ↔ `include/config.h`)
-- **Amplitude control**: Schematic shows PD7 (Pin 21, `AMP_C`), but `config.h` defines `PWM_AMPLITUDE_CONTROL_PIN` = A1/PA1 (Pin 39).
-- **Frequency lock pins**: Schematic indicates PB4..PB7 for FREQ_LOCK_4..1, while `config.h` maps `SONx_FREQ_LOCK_PIN` to PB1, PB2, PB4, PD7 respectively.
-- **Overload pins**: Schematic indicates OL_1..4 at PD6, PD5, PD4, PD3 while `config.h` uses PD2..PD5.
-
 ## Actions on Approval
 - Update `include/config.h` to match matrix, with doxygen comments citing this file and PRD sections.
 - Update `test/hardware/arduino_test_wrapper/arduino_test_wrapper.ino` constants to match Wrapper Pins.

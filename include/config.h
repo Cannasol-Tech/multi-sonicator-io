@@ -24,20 +24,19 @@
 
 // -----------------------------------------------------------------------------
 // Backward-compatible aliases for unit tests targeting legacy pin names
-// These map the deprecated discrete LED and per-sonicator PWM symbols to
-// the current RGB status LED and single amplitude control design.
+// Map legacy LED_* symbols to the single STATUS_LED_PIN
 // -----------------------------------------------------------------------------
 #ifndef LED_POWER_PIN
-#define LED_POWER_PIN        LED_RGB_GREEN_PIN
+#define LED_POWER_PIN        STATUS_LED_PIN
 #endif
 #ifndef LED_RUN_PIN
-#define LED_RUN_PIN          LED_RGB_BLUE_PIN
+#define LED_RUN_PIN          STATUS_LED_PIN
 #endif
 #ifndef LED_ERROR_PIN
-#define LED_ERROR_PIN        LED_RGB_RED_PIN
+#define LED_ERROR_PIN        STATUS_LED_PIN
 #endif
 #ifndef LED_COMM_PIN
-#define LED_COMM_PIN         LED_RGB_BLUE_PIN
+#define LED_COMM_PIN         STATUS_LED_PIN
 #endif
 
 #ifndef LED_SONICATOR_1
@@ -110,26 +109,8 @@
 #define XTAL1_PIN 13      // XTAL1 (Physical pin 13)
 #define XTAL2_PIN 12      // XTAL2 (Physical pin 12)
 
-/**
- * @defgroup StatusLED RGB LED Status Indication
- * @brief Revolutionary single RGB LED approach replaces 12 individual LEDs
- * @details 94% component reduction with superior diagnostic capability
- * @{
- */
-#define LED_RGB_RED_PIN   7    ///< PB6 (Physical pin 7) - Red channel
-#define LED_RGB_GREEN_PIN 8    ///< PB7 (Physical pin 8) - Green channel  
-#define LED_RGB_BLUE_PIN  6    ///< PB5 (Physical pin 6) - Blue channel
-
-/**
- * @brief Status indication capability
- * - 🟢 Green solid: Normal operation
- * - 🔴 Red pulsing: Communication error
- * - 🟡 Yellow: Warning states
- * - 🔵 Blue: Diagnostic mode
- * - 🟣 Purple: System fault
- * - White/Off: Boot/shutdown states
- */
-/** @} */
+// Status LED (single LED terminal)
+#define STATUS_LED_PIN 16 // PD2 (Physical pin 16) - LED-TERM
 
 /**
  * @defgroup SonicatorInterface Sonicator Interface Pin Mapping
