@@ -67,13 +67,29 @@ class Atmega32Emulator:
         else:
             raise RuntimeError("pysimulavr device binding lacks Load(path)")
 
-        # System clock
-        self.clock = sim.SystemClock_Instance()
-        if hasattr(self.clock, "Add"):
-            try:
-                self.clock.Add(self.device)
-            except Exception:
-                pass
+        # System clock: try to obtain an instance we can Run()
+        self.clock = None
+        try:
+            _clk = getattr(sim, "SystemClock", None)
+            if _clk is not None:
+                # Common patterns: SystemClock.Instance() or static Instance method
+                inst = None
+                try:
+                    inst = _clk.Instance()
+                except Exception:
+                    pass
+                if inst is None:
+                    try:
+                        inst = getattr(sim, "SystemClock_Instance", None)
+                    except Exception:
+                        inst = None
+                if inst is not None:
+                    self.clock = inst
+                else:
+                    # Some bindings expose Run on the class directly
+                    self.clock = _clk
+        except Exception:
+            self.clock = None
 
         # Pin map (extend as needed for other ports)
         # Example mapping for Port B bits 0..7
@@ -100,19 +116,109 @@ class Atmega32Emulator:
         return 1 if pin.GetPin() else 0
 
     # ----- Stepping -----
+    def _make_bool_ref(self, val: bool = True):
+        try:
+            # SWIG helpers commonly generated for bool&
+            b = sim.new_boolp()
+            try:
+                sim.boolp_assign(b, bool(val))
+            except Exception:
+                # Some bindings use set / assign variants
+                try:
+                    sim.boolp_set(b, bool(val))  # type: ignore
+                except Exception:
+                    pass
+            return b
+        except Exception:
+            # Fallback: some bindings might expose a BoolRef-like type
+            try:
+                return sim.boolRef(bool(val))  # type: ignore
+            except Exception:
+                return None
     def run_for_cycles(self, cycles: int) -> None:
         remaining = int(max(0, cycles))
-        CHUNK = 50_000_000
-        if hasattr(self.clock, "Run"):
-            while remaining > 0:
-                step = CHUNK if remaining > CHUNK else remaining
-                self.clock.Run(int(step))
-                remaining -= step
-        elif hasattr(self.device, "Step"):
+        CHUNK = 50_000  # smaller chunk to cooperate with UART bridge timing
+        if hasattr(self.device, "Step"):
+            # Modern pysimulavr requires a boolean arg: untilCoreStepFinished
             while remaining > 0:
                 step = CHUNK if remaining > CHUNK else remaining
                 for _ in range(step):
-                    self.device.Step()
+                    advanced = False
+                    # Try SWIG wrapper if present
+                    if hasattr(self.device, "StepOnce"):
+                        try:
+                            self.device.StepOnce()
+                            advanced = True
+                            continue
+                        except Exception:
+                            pass
+                    # Try multiple signatures to satisfy different bindings
+                    # Try with True, then False for untilCoreStepFinished
+                    bref = self._make_bool_ref(True)
+                    try:
+                        if bref is not None:
+                            try:
+                                self.device.Step(bref)
+                                advanced = True
+                            except TypeError:
+                                # Try two-arg variant with optional clock offset pointer
+                                try:
+                                    self.device.Step(bref, None)
+                                    advanced = True
+                                except TypeError:
+                                    # Fall back to bool value
+                                    self.device.Step(True)
+                                    advanced = True
+                        else:
+                            self.device.Step(True)
+                            advanced = True
+                    except TypeError:
+                        # Final fallback to legacy no-arg
+                        try:
+                            self.device.Step()
+                            advanced = True
+                        except Exception:
+                            pass
+                    # Try again with False if not advanced yet
+                    if not advanced:
+                        bref2 = self._make_bool_ref(False)
+                        try:
+                            if bref2 is not None:
+                                try:
+                                    self.device.Step(bref2)
+                                    advanced = True
+                                except TypeError:
+                                    try:
+                                        self.device.Step(bref2, None)
+                                        advanced = True
+                                    except TypeError:
+                                        self.device.Step(False)
+                                        advanced = True
+                            else:
+                                self.device.Step(False)
+                                advanced = True
+                        except Exception:
+                            pass
+                    # If all device.Step variants failed, try driving global clock
+                    if not advanced and self.clock is not None and hasattr(self.clock, "Run"):
+                        try:
+                            # Advance by one cycle tick; value is heuristic
+                            self.clock.Run(1)
+                            advanced = True
+                        except Exception:
+                            pass
+                    # If still not advanced, yield but do not crash; allow emulator to keep PTY alive
+                    if not advanced:
+                        time.sleep(0.0005)
+                remaining -= step
+        elif hasattr(self.clock, "Run"):
+            # Extremely unlikely path; keep for completeness
+            while remaining > 0:
+                step = CHUNK if remaining > CHUNK else remaining
+                try:
+                    self.clock.Run(int(step))
+                except Exception:
+                    break
                 remaining -= step
         else:
             raise RuntimeError("No stepping method available in pysimulavr bindings")

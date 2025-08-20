@@ -9,8 +9,14 @@ import time
 
 try:
     from pymodbus.client import ModbusSerialClient
+    # pymodbus>=3 uses explicit framers; fall back gracefully if missing
+    try:
+        from pymodbus.framer.rtu_framer import ModbusRtuFramer
+    except Exception:  # pragma: no cover
+        ModbusRtuFramer = None  # type: ignore
 except Exception:  # pragma: no cover - runtime env inside Docker
     ModbusSerialClient = None
+    ModbusRtuFramer = None  # type: ignore
 
 
 def _profile(context) -> str:
@@ -23,9 +29,9 @@ def _ensure_serial(context) -> str:
     Skips the scenario if unavailable.
     """
     port = getattr(context, "serial_port", None)
-    if not port:
-        context.scenario.skip("serial_port not set in context")
-        return None
+    # Default for simulavr profile: use emulator symlink
+    if not port and _profile(context) == "simulavr":
+        port = "/tmp/tty-msio"
     # Wait up to 2s for symlink to appear
     deadline = time.time() + 2.0
     while time.time() < deadline and not os.path.exists(port):
@@ -50,15 +56,27 @@ def _get_client(context) -> ModbusSerialClient:
     client = shared.get("modbus_client")
     if client and getattr(client, "connected", False):
         return client
-    client = ModbusSerialClient(
-        method="rtu",
+    # Construct client with RTU framer when available (pymodbus>=3)
+    kwargs = dict(
         port=port,
         baudrate=19200,
         parity="N",
         stopbits=1,
         bytesize=8,
         timeout=0.2,
+        exclusive=False,
     )
+    if ModbusRtuFramer is not None:
+        kwargs["framer"] = ModbusRtuFramer
+    # Prefer setting default unit/slave at client level for widest compatibility
+    # Some versions accept 'unit', others 'slave'; try both via setattr after init
+    client = ModbusSerialClient(**kwargs)
+    # Best-effort default unit/slave ID = 1
+    for attr in ("unit_id", "unit", "slave"):
+        try:
+            setattr(client, attr, 1)
+        except Exception:
+            pass
     if not client.connect():
         context.scenario.skip(f"unable to connect Modbus client on {port}")
         return None
@@ -105,7 +123,7 @@ def step_write_register(context, address, value):
     if not client:
         return
     idx = _hr_index(address)
-    rr = client.write_register(address=idx, value=value, unit=1)
+    rr = client.write_register(address=idx, value=value)
     if getattr(rr, "isError", lambda: False)():
         raise AssertionError(f"Modbus write failed: addr={address} idx={idx} value={value} resp={rr}")
 
@@ -119,7 +137,7 @@ def step_expect_register_value(context, address, value, ms):
     deadline = time.time() + (ms / 1000.0)
     last = None
     while time.time() < deadline:
-        rr = client.read_holding_registers(address=idx, count=1, unit=1)
+        rr = client.read_holding_registers(address=idx, count=1)
         if not getattr(rr, "isError", lambda: True)() and getattr(rr, "registers", None):
             last = rr.registers[0]
             if last == value:
@@ -137,7 +155,22 @@ def step_stimulate_signal(context, signal, state):
 @when("I set input {signal} for unit {unit:d} to {state_word}")
 def step_set_input_state_unit(context, signal, unit, state_word):
     value = _normalize_assert_state(state_word)
-    context.scenario.skip(f"pending: input stimulation for unit={unit} not implemented yet")
+    if _profile(context) != "simulavr":
+        context.scenario.skip("pending: input stimulation only implemented for simulavr profile")
+        return
+    client = _get_client(context)
+    if not client:
+        return
+    # Map 'running' input to control registers 40005..40008
+    if str(signal).strip().lower() == "running":
+        address = 40004 + int(unit)  # 40005 -> unit 1
+        idx = _hr_index(address)
+        rr = client.write_register(address=idx, value=int(value))
+        if getattr(rr, "isError", lambda: False)():
+            raise AssertionError(f"Failed to write running state: unit={unit} value={value} resp={rr}")
+        return
+    # For other signals, keep pending until mapped
+    context.scenario.skip(f"pending: input '{signal}' mapping not implemented for simulavr")
 
 
 @when("I drive input {signal} for unit {unit:d} {level_word}")
@@ -148,8 +181,26 @@ def step_drive_input_level_unit(context, signal, unit, level_word):
 
 @then("status flag bit {bit:d} for unit {unit:d} is {state}")
 def step_status_flag(context, bit, unit, state):
-    # TODO: Inspect simulated status bits.
-    context.scenario.skip("pending: status flag check via simulavr not implemented yet")
+    if _profile(context) != "simulavr":
+        context.scenario.skip("pending: status flag check only implemented for simulavr profile")
+        return
+    client = _get_client(context)
+    if not client:
+        return
+    desired = _normalize_assert_state(state)
+    # Status flags per unit at 40021..40024 (bitfield). unit 1 => 40021
+    address = 40020 + int(unit)
+    idx = _hr_index(address)
+    deadline = time.time() + 0.1
+    last = None
+    while time.time() < deadline:
+        rr = client.read_holding_registers(address=idx, count=1)
+        if not getattr(rr, "isError", lambda: True)() and getattr(rr, "registers", None):
+            last = rr.registers[0]
+            if ((last >> int(bit)) & 1) == desired:
+                return
+        time.sleep(0.01)
+    raise AssertionError(f"Status bit{bit} for unit {unit} expected {desired} within 100 ms, last={last}")
 
 
 # Natural-language aliases for clearer test intent
@@ -207,3 +258,9 @@ def step_simulate_power_reading(context, value):
 @when("I simulate frequency reading of {value:d}")
 def step_simulate_frequency_reading(context, value):
     step_stimulate_signal(context, signal="frequency", state=str(value))
+
+
+@then("the CI pipeline generates a valid executive report")
+def step_exec_report_generated(context):
+    # Placeholder until CI artifact step is implemented
+    context.scenario.skip("pending: executive report generation validation not implemented")

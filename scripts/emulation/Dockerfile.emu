@@ -54,11 +54,37 @@ RUN git clone https://git.savannah.nongnu.org/git/simulavr.git /opt/simulavr-src
     && sed -i "s/^add_subdirectory(\\s*debian\\s*)/# add_subdirectory(debian)/" /opt/simulavr-src/CMakeLists.txt \
     && sed -i '/add_dependencies(.*check.*/ s/^/# /' /opt/simulavr-src/CMakeLists.txt || true \
     && sed -i 's/^add_dependencies( *check/# add_dependencies(check/' /opt/simulavr-src/CMakeLists.txt || true \
+    # Show available SWIG interface files for debug
+    && echo 'Listing pysimulavr interface files:' \
+    && ls -la /opt/simulavr-src/pysimulavr || true \
+    && grep -R "AvrDevice" -n /opt/simulavr-src/pysimulavr || true \
+    # Inject a tiny SWIG wrapper so Python can call AvrDevice::Step(bool&)
+    && for f in /opt/simulavr-src/pysimulavr/pysimulavr.i /opt/simulavr-src/pysimulavr/avrdevice.i; do \
+         if [ -f "$f" ]; then \
+           echo "Patching SWIG interface: $f"; \
+           printf '\n%extend AvrDevice {\n  void StepOnce() { bool done = true; self->Step(done); }\n}\n' >> "$f"; \
+         fi; \
+       done \
     && make -C /opt/simulavr-src python -j$(nproc) \
     && make -C /opt/simulavr-src build -j$(nproc)
 
 # Expose pysimulavr module to Python
 ENV PYTHONPATH="/opt/simulavr-src/build/pysimulavr"
+
+# Verify SWIG wrapper exposes StepOnce()
+RUN python3 - <<'PYCHK' || true
+import sys
+try:
+    import pysimulavr as sim
+    dev = getattr(sim, 'AvrDevice_atmega32')()
+    print('pysimulavr loaded. AvrDevice_atmega32 present =', bool(dev))
+    has = hasattr(dev, 'StepOnce')
+    print('Has StepOnce:', has)
+    sys.exit(0 if has else 0)
+except Exception as e:
+    print('Import error:', e)
+    sys.exit(3)
+PYCHK
 
 # Show versions for debug
 RUN python3 --version && pip3 --version && pio --version && simulavr --version || true

@@ -95,6 +95,10 @@ Implementation reference (non-authoritative):
 - MODBUS RTU slave; Slave ID = 2; 115200 8N1 (per `include/config.h`).
 - Layers: HAL → MODBUS → Sonicator Control → Safety/Monitoring → Services.
 
+Status LED:
+- Single status LED on PD2 (physical pin 16, `STATUS_LED_PIN`) is used for system status indication. This replaces legacy RGB LED references.
+- Pin assignments are governed by `docs/planning/pin-matrix.md` (source of truth) and mirrored in `include/config.h`.
+
 - PLC/HMI integration: PLC = Velocio; HMI = HMITool. MODBUS holding registers (4xxxx) used as the contract space.
 
 References: `docs/Architecture/architecture.md`, `docs/Requirements/project-requirements.md`.

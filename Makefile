@@ -7,7 +7,8 @@
 # Run 'make help' to see all available targets.
 
 .PHONY: help clean setup test test-unit test-simulation test-embedded build build-dev build-prod docs reports performance memory-check version all \
-        emu-stop emu-docker-build emu-docker-test test-emulation test-acceptance test-hil test-hil-if-available test-all
+        emu-stop emu-docker-build emu-docker-test test-emulation test-acceptance test-hil test-hil-if-available test-all \
+        emu-docker-run emu-docker-run-smoke emu-docker-smoke-seq
 
 # Default target
 .DEFAULT_GOAL := help
@@ -96,6 +97,7 @@ help:
 	@echo "  simulavr-run         - Run simulavr with built ELF"
 	@echo "  bdd-simulavr         - Run Behave BDD against simulavr (requires PTY wiring)"
 	@echo "  bdd-smoke            - Run smoke-tagged BDD against simulavr"
+	@echo "  emu-docker-smoke-seq - Start emulator container, wait for PTY, run smoke, show logs on failure"
 	@echo ""
 	@echo "$(YELLOW)Examples:$(NC)"
 	@echo "  make setup      # First time setup"
@@ -347,23 +349,25 @@ emu-docker-build:
 simulavr-python-build:
 	@echo "$(YELLOW)Building pysimulavr with Docker...$(NC)"
 	@docker build -f tools/simulavr/Dockerfile.optionA -t msio-simulavr-builder:latest tools/simulavr
-	@docker run --rm -t -v $$(pwd):/workspace msio-simulavr-builder:latest
 	@echo "$(GREEN)pysimulavr build finished. Module under ./simulavr/build/pysimulavr$(NC)"
 
 
 ## Run emulation tests inside Docker
 emu-docker-test: emu-docker-build
 	@echo "$(YELLOW)Running emulation tests in Docker...$(NC)"
-	@docker run --rm -t \
+	@docker run --rm -t --privileged \
 	  -v $$(pwd):/workspace \
 	  -w /workspace \
 	  msio-emu:latest \
 	  bash -lc "set -euo pipefail; \
-            python scripts/emulation/cli.py & PID=\$$!; \
-            sleep 2; \
-            behave -D profile=simulavr test/acceptance; \
+            /opt/venv/bin/python scripts/emulation/cli.py > /tmp/emu.log 2>&1 & PID=\$$!; \
+            for i in $$(seq 1 90); do [ -e /tmp/tty-msio ] && break; sleep 1; done; \
+            if [ ! -e /tmp/tty-msio ]; then echo 'Emulator PTY not ready after 90s'; tail -n 200 /tmp/emu.log || true; ps aux || true; exit 1; fi; \
+            /opt/venv/bin/behave -D profile=simulavr test/acceptance || STATUS=\$$?; STATUS=\$${STATUS:-0}; \
+            if [ \$$STATUS -ne 0 ]; then echo '--- emulator log (last 200) ---'; tail -n 200 /tmp/emu.log || true; ps aux || true; fi; \
             kill \$$PID 2>/dev/null || true; \
-            wait \$$PID || true"
+            wait \$$PID || true; \
+            exit \$$STATUS"
 	@echo "$(GREEN)Docker emulation tests complete$(NC)"
 
 ## Alias matching help text
@@ -377,12 +381,83 @@ emu-docker-test-smoke: emu-docker-build
 	  -w /workspace \
 	  msio-emu:latest \
 	  bash -lc "set -euo pipefail; \
-            python scripts/emulation/cli.py & PID=\$$!; \
-            sleep 2; \
-            behave -D profile=simulavr -t @smoke test/acceptance; \
+            /opt/venv/bin/python scripts/emulation/cli.py & PID=\$$!; \
+            for i in $$(seq 1 90); do [ -e /tmp/tty-msio ] && break; sleep 1; done; \
+            /opt/venv/bin/behave -D profile=simulavr -t @smoke test/acceptance; \
             kill \$$PID 2>/dev/null || true; \
             wait \$$PID || true"
 	@echo "$(GREEN)Docker emulation SMOKE test complete$(NC)"
+
+# Run-only variants: do not build/pull; use existing local image
+## Run emulation tests in Docker without rebuilding image
+emu-docker-run:
+	@echo "$(YELLOW)Running emulation tests in Docker (no rebuild)...$(NC)"
+	@docker image inspect msio-emu:latest >/dev/null 2>&1 || { echo "$(RED)Image msio-emu:latest not found locally. Run 'make emu-docker-build' first.$(NC)"; exit 1; }
+	@docker run --rm -t --privileged -v $$(pwd):/workspace -w /workspace msio-emu:latest bash -lc 'set -euo pipefail; /opt/venv/bin/python scripts/emulation/cli.py > /tmp/emu.log 2>&1 & PID=$$!; for i in $$(seq 1 90); do [ -e /tmp/tty-msio ] && break; sleep 1; done; if [ ! -e /tmp/tty-msio ]; then echo "Emulator PTY not ready after 90s"; tail -n 200 /tmp/emu.log || true; ps aux || true; exit 1; fi; /opt/venv/bin/behave -D profile=simulavr test/acceptance || STATUS=$$?; STATUS=$${STATUS:-0}; if [ $$STATUS -ne 0 ]; then echo "--- emulator log (last 200) ---"; tail -n 200 /tmp/emu.log || true; ps aux || true; fi; kill $$PID 2>/dev/null || true; wait $$PID || true; exit $$STATUS'
+	@echo "$(GREEN)Docker emulation tests (no rebuild) complete$(NC)"
+
+## Run only the smoke BDD in Docker without rebuilding image
+emu-docker-run-smoke:
+	@echo "$(YELLOW)Running emulation SMOKE test in Docker (no rebuild)...$(NC)"
+	@docker image inspect msio-emu:latest >/dev/null 2>&1 || { echo "$(RED)Image msio-emu:latest not found locally. Run 'make emu-docker-build' first.$(NC)"; exit 1; }
+	@docker run --rm -t --privileged -v $$\(pwd\):/workspace -w /workspace msio-emu:latest bash -lc 'set -euo pipefail; /opt/venv/bin/python scripts/emulation/cli.py > /tmp/emu.log 2>&1 & PID=$$!; for i in $$(seq 1 90); do [ -e /tmp/tty-msio ] && break; sleep 1; done; if [ ! -e /tmp/tty-msio ]; then echo "Emulator PTY not ready after 90s"; tail -n 200 /tmp/emu.log || true; ps aux || true; exit 1; fi; /opt/venv/bin/behave -D profile=simulavr -t @smoke test/acceptance || STATUS=$$?; STATUS=$${STATUS:-0}; if [ $$STATUS -ne 0 ]; then echo "--- emulator log (last 200) ---"; tail -n 200 /tmp/emu.log || true; ps aux || true; fi; kill $$PID 2>/dev/null || true; wait $$PID || true; exit $$STATUS'
+	@echo "$(GREEN)Docker emulation SMOKE test (no rebuild) complete$(NC)"
+
+## Start emulator container, wait for PTY, run smoke, show logs on failure, cleanup
+emu-docker-smoke-seq:
+	@echo "$(YELLOW)Starting emulator container and running SMOKE...$(NC)"
+	@docker image inspect msio-emu:latest >/dev/null 2>&1 || { echo "$(RED)Image msio-emu:latest not found locally. Run 'make emu-docker-build' first.$(NC)"; exit 1; }
+	@docker rm -f msio-emu >/dev/null 2>&1 || true
+	@docker run -d --privileged --name msio-emu -v $(shell pwd):/workspace -w /workspace msio-emu:latest \
+		bash -lc "/opt/venv/bin/python scripts/emulation/cli.py > /tmp/emu.log 2>&1" >/dev/null
+	@echo "Waiting for PTY /tmp/tty-msio ..."
+	@for i in $$(seq 1 90); do docker exec msio-emu bash -lc '[ -e /tmp/tty-msio ]' && break; sleep 1; done; \
+	 if ! docker exec msio-emu bash -lc '[ -e /tmp/tty-msio ]'; then \
+	   echo "$(RED)Emulator PTY not ready after 90s$(NC)"; \
+	   echo "--- emulator log (last 200) ---"; \
+	   docker exec msio-emu bash -lc 'tail -n 200 /tmp/emu.log || true; ps aux || true'; \
+	   docker rm -f msio-emu >/dev/null 2>&1 || true; \
+	   exit 1; \
+	 fi
+	@echo "$(GREEN)PTY is ready. Running smoke...$(NC)"
+	@docker exec msio-emu bash -lc '/opt/venv/bin/behave -D profile=simulavr -t @smoke test/acceptance' || STATUS=$$?; STATUS=$${STATUS:-0}; \
+	 if [ $$STATUS -ne 0 ]; then \
+	   echo "--- emulator log (last 200) ---"; \
+	   docker exec msio-emu bash -lc 'tail -n 200 /tmp/emu.log || true; ps aux || true'; \
+	 fi; \
+	 docker rm -f msio-emu >/dev/null 2>&1 || true; \
+	 exit $$STATUS
+
+## Start emulator container with UART↔Modbus bridge, wait for PTY, run smoke, show logs on failure, cleanup
+emu-docker-smoke-seq-bridge:
+	@echo "$(YELLOW)Starting emulator container with UART↔Modbus bridge and running SMOKE...$(NC)"
+	@docker image inspect msio-emu:latest >/dev/null 2>&1 || { echo "$(RED)Image msio-emu:latest not found locally. Run 'make emu-docker-build' first.$(NC)"; exit 1; }
+	@docker rm -f msio-emu >/dev/null 2>&1 || true
+	@docker run -d --privileged --name msio-emu -e EMU_BRIDGE=1 -v $(shell pwd):/workspace -w /workspace msio-emu:latest \
+		bash -lc "/opt/venv/bin/python scripts/emulation/cli.py > /tmp/emu.log 2>&1" >/dev/null
+	@echo "Waiting for PTY /tmp/tty-msio ..."
+	@for i in $$(seq 1 90); do docker exec msio-emu bash -lc '[ -e /tmp/tty-msio ]' && break; sleep 1; done; \
+	 if ! docker exec msio-emu bash -lc '[ -e /tmp/tty-msio ]'; then \
+	   echo "$(RED)Emulator PTY not ready after 90s$(NC)"; \
+	   echo "--- emulator log (last 200) ---"; \
+	   docker exec msio-emu bash -lc 'tail -n 200 /tmp/emu.log || true; ps aux || true'; \
+	   docker rm -f msio-emu >/dev/null 2>&1 || true; \
+	   exit 1; \
+	 fi
+	@echo "$(GREEN)PTY is ready. Running smoke...$(NC)"
+	@docker exec msio-emu bash -lc '/opt/venv/bin/behave -D profile=simulavr -t @smoke test/acceptance' || STATUS=$$?; STATUS=$${STATUS:-0}; \
+	 if [ $$STATUS -ne 0 ]; then \
+	   echo "--- emulator log (last 200) ---"; \
+	   docker exec msio-emu bash -lc 'tail -n 200 /tmp/emu.log || true; ps aux || true'; \
+	 fi; \
+	 docker rm -f msio-emu >/dev/null 2>&1 || true; \
+	 exit $$STATUS
+
+## Run the SMOKE with RTU server fallback (no rebuild)
+emu-docker-run-smoke-rtu:
+	@echo "$(YELLOW)Running emulation SMOKE test in Docker with RTU fallback (no rebuild)...$(NC)"
+	@docker image inspect msio-emu:latest >/dev/null 2>&1 || { echo "$(RED)Image msio-emu:latest not found locally. Run 'make emu-docker-build' first.$(NC)"; exit 1; }
+	@docker run --rm -t --privileged -e EMU_MODE=rtu-server -v $$(pwd):/workspace -w /workspace msio-emu:latest bash -lc 'set -euo pipefail; /opt/venv/bin/python scripts/emulation/cli.py > /tmp/emu.log 2>&1 & PID=$$!; for i in $$(seq 1 30); do [ -e /tmp/tty-msio ] && break; sleep 1; done; if [ ! -e /tmp/tty-msio ]; then echo "RTU server PTY not ready after 30s"; tail -n 200 /tmp/emu.log || true; ps aux || true; exit 1; fi; /opt/venv/bin/behave -D profile=simulavr -t @smoke test/acceptance || STATUS=$$?; STATUS=$${STATUS:-0}; if [ $$STATUS -ne 0 ]; then echo "--- emulator log (last 200) ---"; tail -n 200 /tmp/emu.log || true; ps aux || true; fi; kill $$PID 2>/dev/null || true; wait $$PID || true; exit $$STATUS'
 
 ## Monitor serial output (requires hardware)
 monitor:

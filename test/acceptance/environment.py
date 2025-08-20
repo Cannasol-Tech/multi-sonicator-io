@@ -21,3 +21,20 @@ def before_all(context):
 def after_all(context):
     # Cleanup resources if we add any in the future (e.g., stop emulator)
     pass
+
+
+def before_scenario(context, scenario):
+    # Enforce skipping of @pending scenarios regardless of CLI tag filters
+    if "pending" in getattr(scenario, "effective_tags", set()):
+        scenario.skip("pending: scenario not implemented yet")
+
+
+def after_scenario(context, scenario):
+    # Ensure any Modbus client opened by steps is closed to release serial lock
+    m = getattr(context, "modbus", None)
+    try:
+        if m is not None:
+            m.close()
+    finally:
+        if hasattr(context, "modbus"):
+            delattr(context, "modbus")

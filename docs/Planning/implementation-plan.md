@@ -24,8 +24,8 @@ Policy: One [CURRENT-TASK] at a time. Tests mandatory; CI must be green. Doxygen
 
 ## Epics and Tasks
 
-- #0: Pin Assignment Finalization [ ] (est: 4 days) [CURRENT-TASK]
-  - #0.1: Draft single pin matrix from schematics/hardware + `include/config.h` → `docs/planning/pin-matrix.md` [ ] (est: 1 day)
+- #0: Pin Assignment Finalization [ ] (est: 4 days)
+  - #0.1: Draft single pin matrix from schematics/hardware + `include/config.h` → `docs/planning/pin-matrix.md` [x] (est: 1 day)
   - #0.2: Cross-check PRD signals vs hardware (Overload, Freq ÷10, Freq Lock, Start, Reset, Power, Amplitude) and electrical constraints [ ] (est: 1 day)
   - #0.3: Align `include/config.h` with matrix; add doxygen comments and links to PRD sections [ ] (est: 1 day)
   - #0.4: Update HIL wrapper pins/README to match matrix [ ] (est: 1 day)
@@ -52,6 +52,16 @@ Policy: One [CURRENT-TASK] at a time. Tests mandatory; CI must be green. Doxygen
 
 - #4: Acceptance Tests (Simulavr) [ ] (est: 6 days)
   - #4.1: Stable Simulavr harness build/run (`scripts/emulation/`, `tools/simulavr/`) [ ] (est: 2 days)
+    - #4.1.a: Docker run-only targets to avoid rebuilds [x]
+    - #4.1.b: PTY readiness guard and abort on missing `/tmp/tty-msio` [x]
+    - #4.1.c: SWIG StepOnce() wrapper injection to unblock `AvrDevice::Step(bool&)` [ ]
+      - Note: Upstream `pysimulavr` currently does not export `StepOnce`; we will not rely on it.
+    - #4.1.c2: Harden stepping path in pysimulavr runner (multi-signature `Step(...)`, `SystemClock.Run` fallback; non-crash) [x]
+      - Implemented in `scripts/emulation/simavr/pysimulavr_emulator.py`.
+    - #4.1.d: Rebuild emulator image and verify `StepOnce` exists in container [x]
+      - Non-fatal check added in `scripts/emulation/Dockerfile.emu`; `StepOnce` missing but build succeeds.
+    - #4.1.e: Smoke scenarios passing on main simulavr path [ ] [CURRENT-TASK]
+    - #4.1.f: RTU fallback server smoke path passing (unit=2 binding; register indices aligned) [x]
   - #4.2: Behave features US‑001..003 mapped to PRD; step defs for register IO [ ] (est: 2 days)
   - #4.3: Timing asserts (≤100 ms reflection), status flag transitions (40021–40024) [ ] (est: 2 days)
 

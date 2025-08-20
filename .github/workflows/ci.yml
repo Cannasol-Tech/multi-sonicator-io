@@ -148,12 +148,20 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install platformio
-      - name: Run BDD smoke against simulavr
+      - name: Build emulation Docker image (Makefile)
+        run: |
+          make emu-docker-build
+      - name: Run BDD smoke via Makefile (simulavr)
         env:
           # Ensure non-interactive; keep logs concise
           CI: true
         run: |
-          make bdd-smoke
+          make emu-docker-test-smoke
+      - name: Run full acceptance via Makefile (simulavr)
+        env:
+          CI: true
+        run: |
+          make test-acceptance
       - name: Archive BDD artifacts (optional)
         if: always()
         uses: actions/upload-artifact@v3

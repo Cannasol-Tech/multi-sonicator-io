@@ -45,6 +45,7 @@ HMI System (MODBUS Master)
 - PWM generation for amplitude control
 - UART communication handling
 - Timer management for precise timing
+ - Status LED (PD2) driver for unified system indication per `docs/planning/pin-matrix.md` (`STATUS_LED_PIN`)
 
 ### 2. Communication Layer
 **Purpose**: Handles MODBUS RTU protocol implementation
@@ -85,6 +86,7 @@ HMI System (MODBUS Master)
 - Event logging and alarm management
 - Configuration management
 - Firmware update support
+ - Status LED policy: single LED on PD2 (physical pin 16) reflects system states (e.g., boot, error, running) replacing legacy RGB scheme
 
 ### 6. Runtime Scheduling (Cooperative taskLoop)
 

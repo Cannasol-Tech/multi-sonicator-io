@@ -92,23 +92,23 @@
   - Overload handling races if resets are not sequenced correctly per unit.
   - Analog noise affecting power-sense scaling and amplitude control accuracy.
 - Open Questions
-  - Final pin assignments per unit/header—pending `docs/planning/pin-matrix.md` sign-off.
   - Exact MODBUS register layout and scaling conventions—confirm with PLC team.
   - Required telemetry cadence and acceptable command latency—confirm in HMI spec.
+  - HIL wrapper serial protocol details and harness wiring pin numbers on the Arduino side—finalize alongside lab bring-up.
 - Areas Needing Further Research
   - Best-practice filtering for FREQ_DIV10 and analog smoothing without lagging control.
 
 ## Appendices
 - References
   - PRD: `docs/Requirements/prd-v1.0.0.md`
-  - Pin Matrix: `docs/planning/pin-matrix.md`
-  - Implementation Plan: `docs/Planning/implementation-plan.md`
+  - Pin Matrix: `docs/planning/pin-matrix.md` (FINALIZED)
+  - Implementation Plan: `docs/planning/implementation-plan.md` (TBD)
   - CI: `.github/workflows/ci.yml`
 
 ## Next Steps
 - Immediate Actions
-  1. Finalize and approve `docs/planning/pin-matrix.md`.
-  2. Synchronize `include/config.h` pins and document with doxygen.
+  1. Confirm pin matrix is finalized and keep `include/config.h` in sync (COMPLETED). Maintain as single source of truth.
+  2. Document STATUS LED on PD2 (physical pin 16) and remove legacy RGB references across docs (COMPLETED).
   3. Implement per-unit I/O services and MODBUS register map.
-  4. Build HIL tests and acceptance scenarios; ensure CI is green.
+  4. Build HIL wrapper protocol and acceptance scenarios; ensure CI is green.
   5. Schedule PLC/HMI demo for MVP acceptance.

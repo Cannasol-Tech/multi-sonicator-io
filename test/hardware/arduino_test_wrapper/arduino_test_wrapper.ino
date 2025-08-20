@@ -31,8 +31,8 @@
 #include <Arduino.h>
 
 // Pin mappings from host Arduino to DUT harness headers.
-// These are placeholders to be wired per harness; names align to docs/planning/pin-matrix.md
-// DB9-1..DB9-4 (per sonicator), DB9-0 for comms, LED-TERM for status LED.
+// Uno R4 WiFi single-channel harness (S1 only). See docs/planning/pin-matrix.md.
+// DB9-1 for S1, DB9-0 for comms, LED-TERM for status LED.
 
 struct SonPins {
   uint8_t OVERLOAD_IN;   // Drives opto input seen by DUT PDx (active level per harness)
@@ -43,26 +43,23 @@ struct SonPins {
   uint8_t POWER_ADC;     // Reads analog proxy for power sense if loopbacked
 };
 
-// Placeholder assignments (choose actual Arduino pins when wiring harness)
-static SonPins S[4] = {
-  /* S1 (DB9-1) */ {2, 3, 4, 5, 6, A0},
-  /* S2 (DB9-2) */ {7, 8, 9, 10, 11, A1},
-  /* S3 (DB9-3) */ {12, 13, A2, A3, A4, A5},
-  /* S4 (DB9-4) */ {A6, A7, A8, A9, A10, A11}
+// Single channel (S1) mapping per pin-matrix
+static SonPins S[1] = {
+  /* S1 (DB9-1) */ {2, 3, 4, 5, 6, A0}
 };
 
-// Shared amplitude line to DUT AMP_C (PD7) — single control across all channels
-static const uint8_t PIN_AMPLITUDE_ALL = 44; // placeholder PWM-capable pin recommended
+// Shared amplitude line to DUT AMP_C (PD7)
+static const uint8_t PIN_AMPLITUDE_ALL = 9; // PWM-capable pin (Uno R4 WiFi)
 
-// System comms (DB9-0) to DUT UART
-static const uint8_t PIN_UART_RXD_TO_DUT = 45; // drives DUT PD0 via level/interface (DB9-0 Pin 8)
-static const uint8_t PIN_UART_TXD_FROM_DUT = 46; // reads DUT PD1 (DB9-0 Pin 9)
+// System comms (DB9-0) to DUT UART (optional for wrapper functions)
+static const uint8_t PIN_UART_RXD_TO_DUT = 10; // drives DUT PD0 via level/interface (DB9-0 Pin 8)
+static const uint8_t PIN_UART_TXD_FROM_DUT = 11; // reads DUT PD1 (DB9-0 Pin 9)
 
 // Status LED 2-pin terminal (LED-TERM)
-static const uint8_t PIN_STATUS_LED = 47; // drives LED terminal if needed for tests
+static const uint8_t PIN_STATUS_LED = 12; // drives LED terminal if needed for tests
 
 static void setSafeDefaults() {
-  for (int i = 0; i < 4; ++i) {
+  for (int i = 0; i < 1; ++i) {
     pinMode(S[i].OVERLOAD_IN, OUTPUT);   digitalWrite(S[i].OVERLOAD_IN, LOW);
     pinMode(S[i].FREQ_DIV10_IN, OUTPUT); digitalWrite(S[i].FREQ_DIV10_IN, LOW);
     pinMode(S[i].FREQ_LOCK_IN, OUTPUT);  digitalWrite(S[i].FREQ_LOCK_IN, LOW);

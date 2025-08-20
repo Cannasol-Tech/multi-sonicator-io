@@ -527,6 +527,18 @@ Disadvantages:
 - **MODBUS Compliance:** Full RTU protocol implementation
 - **Diagnostic Logging:** System status and fault reporting
 
+#### Build & Test Workflow Requirements (Make targets)
+
+- Every testing workflow MUST expose a corresponding Makefile target:
+  - make test-unit → Runs unit tests locally and in CI
+  - make test-acceptance → Runs BDD acceptance tests (simulation or HIL via profiles)
+  - make test-hardware → Runs hardware-in-the-loop tests against connected DUT
+- CI and local developers SHALL invoke tests via these Make targets (not raw tool CLIs) to keep parity.
+- Acceptance Criteria:
+  - The project Makefile defines the three targets above and they succeed on supported environments.
+  - CI workflows call only these targets to run tests.
+  - Documentation (README/CONTRIBUTING) references these targets for developers.
+
 ---
 
 ## Integration Requirements

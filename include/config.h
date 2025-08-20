@@ -1,20 +1,13 @@
 /**
  * @file config.h
- * @brief Multi Sonicator // UART Communication
-#define UART_RX_PIN 14    // PD0 (Physical pin 14)
-#define UART_TX_PIN 15    // PD1 (Physical pin 15)
-
-// I2C Interface (Available for Future Expansion)
-#define I2C_SDA_PIN 22    // PC1 (Physical pin 22) - Not currently used
-#define I2C_SCL_PIN 21    // PC0 (Physical pin 21) - Not currently used
-
-// Crystal Oscillatoroller - System Configuration
+ * @brief Multi Sonicator I/O Controller configuration
  * @author Cannasol Technologies
  * @date 2025-06-27
  * @version 1.0.0
- * 
- * Configuration constants and compile-time settings for the 
- * Multi Sonicator I/O Controller (Model: CAN-SON-CTRL-4)
+ * @details
+ * Configuration constants and compile-time settings for the
+ * Multi Sonicator I/O Controller (Model: CAN-SON-CTRL-4).
+ * See docs/planning/pin-matrix.md for canonical pin assignments.
  */
 
 #ifndef CONFIG_H
@@ -115,7 +108,8 @@
 /**
  * @defgroup SonicatorInterface Sonicator Interface Pin Mapping
  * @brief ATmega32A pin assignments for CT2000 sonicator control interfaces
- * @details Based on schematic design with 6N137 optocouplers and ULN2003A drivers
+ * @details Based on schematic design with 6N137 optocouplers and ULN2003A drivers.
+ * See also: docs/planning/pin-matrix.md (source of truth) and PRD sections.
  * @{
  */
 

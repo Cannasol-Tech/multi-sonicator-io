@@ -2,7 +2,7 @@
 
 Source of truth for pin assignments. Changes here must be reflected in `include/config.h` and the HIL wrapper under `test/hardware/arduino_test_wrapper/`.
 
-Status: DRAFT — to be reviewed and signed off before firmware implementation (Gate for Plan Task #0)
+Status: DRAFT — Single-channel Uno R4 WiFi HIL harness prototype (untested). To be reviewed and signed off before firmware implementation (Gate for Plan Task #0)
 
 ## Legend
 - DUT: ATmega32A pin identifier (port/pin and header reference)
@@ -17,49 +17,49 @@ Status: DRAFT — to be reviewed and signed off before firmware implementation (
 
 | # | DUT Pin (Port/Pad) | Header Ref | Signal        | Dir    | Scale/Notes                       | Wrapper Pin | Test Point |
 |---|---------------------|------------|---------------|--------|----------------------------------|-------------|------------|
-| 1 | PB3 (Pin 4)         | DB9-1 Pin 4| FREQ_DIV10_1  | IN     | ÷10 frequency (S1)               | TBD         | TBD        |
-| 2 | PB7 (Pin 8)         | DB9-1 Pin 3| FREQ_LOCK_1   | IN     | FLCK_1 via opto                  | TBD         | TBD        |
-| 3 | PD6 (Pin 20)        | DB9-1 Pin 1| OVERLOAD_1    | IN     | OL_1 via opto                    | TBD         | TBD        |
-| 4 | PC0 (Pin 22)        | DB9-1 Pin 7| START_1       | OUT    | ULN2003A open-collector          | TBD         | TBD        |
-| 5 | PC1 (Pin 23)        | DB9-1 Pin 2| RESET_1       | OUT    | ULN2003A open-collector          | TBD         | TBD        |
-| 6 | PA4/A4 (Pin 36)     | DB9-1 Pin 5| POWER_SENSE_1 | ANALOG | 5.44 mV/W scaling                | TBD         | TBD        |
-| 7 | PD7 (Pin 21)        | DB9-1 Pin 8| AMPLITUDE_ALL | OUT    | Shared AMP_C (0–10V), common     | TBD         | TBD        |
+| 1 | PB3 (Pin 4)         | DB9-1 Pin 4| FREQ_DIV10_1  | IN     | ÷10 frequency (S1)               | D3          | TBD        |
+| 2 | PB7 (Pin 8)         | DB9-1 Pin 3| FREQ_LOCK_1   | IN     | FLCK_1 via opto                  | D4          | TBD        |
+| 3 | PD6 (Pin 20)        | DB9-1 Pin 1| OVERLOAD_1    | IN     | OL_1 via opto                    | D2          | TBD        |
+| 4 | PC0 (Pin 22)        | DB9-1 Pin 7| START_1       | OUT    | ULN2003A open-collector          | D5          | TBD        |
+| 5 | PC1 (Pin 23)        | DB9-1 Pin 2| RESET_1       | OUT    | ULN2003A open-collector          | D6          | TBD        |
+| 6 | PA4/A4 (Pin 36)     | DB9-1 Pin 5| POWER_SENSE_1 | ANALOG | 5.44 mV/W scaling                | A0          | TBD        |
+| 7 | PD7 (Pin 21)        | DB9-1 Pin 8| AMPLITUDE_ALL | OUT    | Shared AMP_C (0–10V), common     | D9 (PWM)    | TBD        |
 
 ### Sonicator 2
 
 | # | DUT Pin (Port/Pad) | Header Ref | Signal        | Dir    | Scale/Notes                       | Wrapper Pin | Test Point |
 |---|---------------------|------------|---------------|--------|----------------------------------|-------------|------------|
-| 1 | PB2 (Pin 3)         | DB9-2 Pin 4| FREQ_DIV10_2  | IN     | ÷10 frequency (S2)               | TBD         | TBD        |
-| 2 | PB6 (Pin 7)         | DB9-2 Pin 3| FREQ_LOCK_2   | IN     | FLCK_2 via opto                  | TBD         | TBD        |
-| 3 | PD5 (Pin 19)        | DB9-2 Pin 1| OVERLOAD_2    | IN     | OL_2 via opto                    | TBD         | TBD        |
-| 4 | PC2 (Pin 24)        | DB9-2 Pin 7| START_2       | OUT    | ULN2003A open-collector          | TBD         | TBD        |
-| 5 | PC3 (Pin 25)        | DB9-2 Pin 2| RESET_2       | OUT    | ULN2003A open-collector          | TBD         | TBD        |
-| 6 | PA5/A5 (Pin 35)     | DB9-2 Pin 5| POWER_SENSE_2 | ANALOG | 5.44 mV/W scaling                | TBD         | TBD        |
-| 7 | PD7 (Pin 21)        | DB9-2 Pin 8| AMPLITUDE_ALL | OUT    | Shared AMP_C (0–10V), common     | TBD         | TBD        |
+| 1 | PB2 (Pin 3)         | DB9-2 Pin 4| FREQ_DIV10_2  | IN     | ÷10 frequency (S2)               | N/A (Uno R4 single-channel) | N/A |
+| 2 | PB6 (Pin 7)         | DB9-2 Pin 3| FREQ_LOCK_2   | IN     | FLCK_2 via opto                  | N/A | N/A |
+| 3 | PD5 (Pin 19)        | DB9-2 Pin 1| OVERLOAD_2    | IN     | OL_2 via opto                    | N/A | N/A |
+| 4 | PC2 (Pin 24)        | DB9-2 Pin 7| START_2       | OUT    | ULN2003A open-collector          | N/A | N/A |
+| 5 | PC3 (Pin 25)        | DB9-2 Pin 2| RESET_2       | OUT    | ULN2003A open-collector          | N/A | N/A |
+| 6 | PA5/A5 (Pin 35)     | DB9-2 Pin 5| POWER_SENSE_2 | ANALOG | 5.44 mV/W scaling                | N/A | N/A |
+| 7 | PD7 (Pin 21)        | DB9-2 Pin 8| AMPLITUDE_ALL | OUT    | Shared AMP_C (0–10V), common     | N/A | N/A |
 
 ### Sonicator 3
 
 | # | DUT Pin (Port/Pad) | Header Ref | Signal        | Dir    | Scale/Notes                       | Wrapper Pin | Test Point |
 |---|---------------------|------------|---------------|--------|----------------------------------|-------------|------------|
-| 1 | PB1 (Pin 2)         | DB9-3 Pin 4| FREQ_DIV10_3  | IN     | ÷10 frequency (S3)               | TBD         | TBD        |
-| 2 | PB5 (Pin 6)         | DB9-3 Pin 3| FREQ_LOCK_3   | IN     | FLCK_3 via opto                  | TBD         | TBD        |
-| 3 | PD4 (Pin 18)        | DB9-3 Pin 1| OVERLOAD_3    | IN     | OL_3 via opto                    | TBD         | TBD        |
-| 4 | PC4 (Pin 26)        | DB9-3 Pin 7| START_3       | OUT    | ULN2003A open-collector          | TBD         | TBD        |
-| 5 | PC5 (Pin 27)        | DB9-3 Pin 2| RESET_3       | OUT    | ULN2003A open-collector          | TBD         | TBD        |
-| 6 | PA6/A6 (Pin 34)     | DB9-3 Pin 5| POWER_SENSE_3 | ANALOG | 5.44 mV/W scaling                | TBD         | TBD        |
-| 7 | PD7 (Pin 21)        | DB9-3 Pin 8| AMPLITUDE_ALL | OUT    | Shared AMP_C (0–10V), common     | TBD         | TBD        |
+| 1 | PB1 (Pin 2)         | DB9-3 Pin 4| FREQ_DIV10_3  | IN     | ÷10 frequency (S3)               | N/A | N/A |
+| 2 | PB5 (Pin 6)         | DB9-3 Pin 3| FREQ_LOCK_3   | IN     | FLCK_3 via opto                  | N/A | N/A |
+| 3 | PD4 (Pin 18)        | DB9-3 Pin 1| OVERLOAD_3    | IN     | OL_3 via opto                    | N/A | N/A |
+| 4 | PC4 (Pin 26)        | DB9-3 Pin 7| START_3       | OUT    | ULN2003A open-collector          | N/A | N/A |
+| 5 | PC5 (Pin 27)        | DB9-3 Pin 2| RESET_3       | OUT    | ULN2003A open-collector          | N/A | N/A |
+| 6 | PA6/A6 (Pin 34)     | DB9-3 Pin 5| POWER_SENSE_3 | ANALOG | 5.44 mV/W scaling                | N/A | N/A |
+| 7 | PD7 (Pin 21)        | DB9-3 Pin 8| AMPLITUDE_ALL | OUT    | Shared AMP_C (0–10V), common     | N/A | N/A |
 
 ### Sonicator 4
 
 | # | DUT Pin (Port/Pad) | Header Ref | Signal        | Dir    | Scale/Notes                       | Wrapper Pin | Test Point |
 |---|---------------------|------------|---------------|--------|----------------------------------|-------------|------------|
-| 1 | PB0 (Pin 1)         | DB9-4 Pin 4| FREQ_DIV10_4  | IN     | ÷10 frequency (S4)               | TBD         | TBD        |
-| 2 | PB4 (Pin 5)         | DB9-4 Pin 3| FREQ_LOCK_4   | IN     | FLCK_4 via opto                  | TBD         | TBD        |
-| 3 | PD3 (Pin 17)        | DB9-4 Pin 1| OVERLOAD_4    | IN     | OL_4 via opto                    | TBD         | TBD        |
-| 4 | PC6 (Pin 28)        | DB9-4 Pin 7| START_4       | OUT    | ULN2003A open-collector          | TBD         | TBD        |
-| 5 | PC7 (Pin 29)        | DB9-4 Pin 2| RESET_4       | OUT    | ULN2003A open-collector          | TBD         | TBD        |
-| 6 | PA7/A7 (Pin 33)     | DB9-4 Pin 5| POWER_SENSE_4 | ANALOG | 5.44 mV/W scaling                | TBD         | TBD        |
-| 7 | PD7 (Pin 21)        | DB9-4 Pin 8| AMPLITUDE_ALL | OUT    | Shared AMP_C (0–10V), common     | TBD         | TBD        |
+| 1 | PB0 (Pin 1)         | DB9-4 Pin 4| FREQ_DIV10_4  | IN     | ÷10 frequency (S4)               | N/A | N/A |
+| 2 | PB4 (Pin 5)         | DB9-4 Pin 3| FREQ_LOCK_4   | IN     | FLCK_4 via opto                  | N/A | N/A |
+| 3 | PD3 (Pin 17)        | DB9-4 Pin 1| OVERLOAD_4    | IN     | OL_4 via opto                    | N/A | N/A |
+| 4 | PC6 (Pin 28)        | DB9-4 Pin 7| START_4       | OUT    | ULN2003A open-collector          | N/A | N/A |
+| 5 | PC7 (Pin 29)        | DB9-4 Pin 2| RESET_4       | OUT    | ULN2003A open-collector          | N/A | N/A |
+| 6 | PA7/A7 (Pin 33)     | DB9-4 Pin 5| POWER_SENSE_4 | ANALOG | 5.44 mV/W scaling                | N/A | N/A |
+| 7 | PD7 (Pin 21)        | DB9-4 Pin 8| AMPLITUDE_ALL | OUT    | Shared AMP_C (0–10V), common     | N/A | N/A |
 
 ### Common / System
 
@@ -67,9 +67,9 @@ Note: DB9-0 is the communications connector back to the main automation system (
 
 | # | DUT Pin (Port/Pad) | Header Ref | Signal     | Dir | Scale/Notes        | Wrapper Pin | Test Point |
 |---|---------------------|------------|------------|-----|--------------------|-------------|------------|
-| 1 | PD0 (Pin 14)        | DB9-0 Pin 8| UART_RXD   | IN  | MODBUS RTU RX     | TBD         | TBD        |
-| 2 | PD1 (Pin 15)        | DB9-0 Pin 9| UART_TXD   | OUT | MODBUS RTU TX     | TBD         | TBD        |
-| 3 | PD2 (Pin 16)        | LED-TERM   | STATUS_LED | OUT | Status LED drive  | TBD         | LED-TERM   |
+| 1 | PD0 (Pin 14)        | DB9-0 Pin 8| UART_RXD   | IN  | MODBUS RTU RX     | D10 (drive to DUT RX) | TBD |
+| 2 | PD1 (Pin 15)        | DB9-0 Pin 9| UART_TXD   | OUT | MODBUS RTU TX     | D11 (read from DUT TX)| TBD |
+| 3 | PD2 (Pin 16)        | LED-TERM   | STATUS_LED | OUT | Status LED drive  | D12         | LED-TERM   |
 
 ## Schematic-derived mappings (from screenshot)
 - **FREQ_DIV10_4..1**: PB0 (Pin 1), PB1 (Pin 2), PB2 (Pin 3), PB3 (Pin 4) mapped to header 1–4 (S4→S1).
