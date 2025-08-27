@@ -31,8 +31,8 @@
 #include <Arduino.h>
 
 // Pin mappings from host Arduino to DUT harness headers.
-// Uno R4 WiFi single-channel harness (S1 only). See docs/planning/pin-matrix.md.
-// DB9-1 for S1, DB9-0 for comms, LED-TERM for status LED.
+// Uno R4 WiFi single-channel harness (S4 ONLY). See docs/planning/pin-matrix.md.
+// This matches the sonicator-harness.ino implementation - only S4 is physically connected.
 
 struct SonPins {
   uint8_t OVERLOAD_IN;   // Drives opto input seen by DUT PDx (active level per harness)
@@ -43,12 +43,17 @@ struct SonPins {
   uint8_t POWER_ADC;     // Reads analog proxy for power sense if loopbacked
 };
 
-// Single channel (S1) mapping per pin-matrix
-static SonPins S[1] = {
-  /* S1 (DB9-1) */ {2, 3, 4, 5, 6, A0}
+// Single channel (S4) mapping per pin-matrix - matches sonicator-harness.ino
+static SonPins S4_PINS = {
+  /* OVERLOAD_IN */   A2,  // OVERLOAD_4 (Harness -> DUT)
+  /* FREQ_DIV10_IN */ 7,   // FREQ_DIV10_4 (Harness -> DUT)
+  /* FREQ_LOCK_IN */  8,   // FREQ_LOCK_4 (Harness -> DUT)
+  /* START_OUT */     A3,  // START_4 (DUT -> Harness)
+  /* RESET_OUT */     A4,  // RESET_4 (DUT -> Harness)
+  /* POWER_ADC */     A1   // POWER_SENSE_4 (analog)
 };
 
-// Shared amplitude line to DUT AMP_C (PD7)
+// Shared amplitude line to DUT AMP_C (PD7) - matches sonicator-harness.ino
 static const uint8_t PIN_AMPLITUDE_ALL = 9; // PWM-capable pin (Uno R4 WiFi)
 
 // System comms (DB9-0) to DUT UART (optional for wrapper functions)
@@ -59,14 +64,15 @@ static const uint8_t PIN_UART_TXD_FROM_DUT = 11; // reads DUT PD1 (DB9-0 Pin 9)
 static const uint8_t PIN_STATUS_LED = 12; // drives LED terminal if needed for tests
 
 static void setSafeDefaults() {
-  for (int i = 0; i < 1; ++i) {
-    pinMode(S[i].OVERLOAD_IN, OUTPUT);   digitalWrite(S[i].OVERLOAD_IN, LOW);
-    pinMode(S[i].FREQ_DIV10_IN, OUTPUT); digitalWrite(S[i].FREQ_DIV10_IN, LOW);
-    pinMode(S[i].FREQ_LOCK_IN, OUTPUT);  digitalWrite(S[i].FREQ_LOCK_IN, LOW);
-    pinMode(S[i].START_OUT, OUTPUT);     digitalWrite(S[i].START_OUT, LOW);
-    pinMode(S[i].RESET_OUT, OUTPUT);     digitalWrite(S[i].RESET_OUT, LOW);
-    pinMode(S[i].POWER_ADC, INPUT);
-  }
+  // Configure S4 pins (only physically implemented unit)
+  pinMode(S4_PINS.OVERLOAD_IN, OUTPUT);   digitalWrite(S4_PINS.OVERLOAD_IN, LOW);
+  pinMode(S4_PINS.FREQ_DIV10_IN, OUTPUT); digitalWrite(S4_PINS.FREQ_DIV10_IN, LOW);
+  pinMode(S4_PINS.FREQ_LOCK_IN, OUTPUT);  digitalWrite(S4_PINS.FREQ_LOCK_IN, LOW);
+  pinMode(S4_PINS.START_OUT, INPUT_PULLUP);  // Read DUT output
+  pinMode(S4_PINS.RESET_OUT, INPUT_PULLUP);  // Read DUT output
+  pinMode(S4_PINS.POWER_ADC, INPUT);
+
+  // Configure shared pins
   pinMode(PIN_AMPLITUDE_ALL, OUTPUT);    analogWrite(PIN_AMPLITUDE_ALL, 0);
   pinMode(PIN_UART_RXD_TO_DUT, OUTPUT);  digitalWrite(PIN_UART_RXD_TO_DUT, HIGH); // idle high if via level shifter
   pinMode(PIN_UART_TXD_FROM_DUT, INPUT);
@@ -77,21 +83,75 @@ static void handleLine(String line) {
   line.trim();
   if (line.length() == 0) return;
 
-  // Very simple stub: recognize PING for smoke
+  // Parse command
   if (line.equalsIgnoreCase("PING")) {
     Serial.println("OK PONG");
     return;
   }
 
-  // TODO: parse and implement protocol as described above
-  Serial.println("ERR UNIMPLEMENTED");
+  if (line.equalsIgnoreCase("INFO")) {
+    Serial.println("OK HIL-Wrapper/0.1.0 S4-ONLY");
+    return;
+  }
+
+  // SET commands for S4 only
+  if (line.startsWith("SET OVERLOAD 4 ")) {
+    int value = line.substring(15).toInt();
+    digitalWrite(S4_PINS.OVERLOAD_IN, value ? HIGH : LOW);
+    Serial.println("OK");
+    return;
+  }
+
+  if (line.startsWith("SET FREQ 4 ")) {
+    // For now, just acknowledge - frequency generation would need timer setup
+    Serial.println("OK");
+    return;
+  }
+
+  if (line.startsWith("SET LOCK 4 ")) {
+    int value = line.substring(11).toInt();
+    digitalWrite(S4_PINS.FREQ_LOCK_IN, value ? HIGH : LOW);
+    Serial.println("OK");
+    return;
+  }
+
+  // READ commands for S4
+  if (line.equalsIgnoreCase("READ STATUS 4")) {
+    bool start = !digitalRead(S4_PINS.START_OUT);  // Active low with pullup
+    bool reset = !digitalRead(S4_PINS.RESET_OUT);  // Active low with pullup
+    bool overload = digitalRead(S4_PINS.OVERLOAD_IN);
+    bool locked = digitalRead(S4_PINS.FREQ_LOCK_IN);
+
+    Serial.print("OK RUN=");
+    Serial.print(start ? "1" : "0");
+    Serial.print(" OVL=");
+    Serial.print(overload ? "1" : "0");
+    Serial.print(" LOCK=");
+    Serial.println(locked ? "1" : "0");
+    return;
+  }
+
+  if (line.equalsIgnoreCase("READ POWER 4")) {
+    int adc = analogRead(S4_PINS.POWER_ADC);
+    Serial.print("OK POWER=");
+    Serial.println(adc);
+    return;
+  }
+
+  // Commands for non-implemented units (S1-S3)
+  if (line.startsWith("SET OVERLOAD ") && (line.indexOf(" 1 ") > 0 || line.indexOf(" 2 ") > 0 || line.indexOf(" 3 ") > 0)) {
+    Serial.println("ERR UNIT_NOT_IMPLEMENTED");
+    return;
+  }
+
+  Serial.println("ERR UNKNOWN_COMMAND");
 }
 
 void setup() {
   Serial.begin(115200);
   while (!Serial) { ; }
   setSafeDefaults();
-  Serial.println("OK WRAPPER_READY");
+  Serial.println("OK WRAPPER_READY S4-ONLY");
 }
 
 void loop() {

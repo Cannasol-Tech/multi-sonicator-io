@@ -6,6 +6,7 @@ Plan owner: Stephen Boyett (approval required before each phase)
 Policy: One [CURRENT-TASK] at a time. Tests mandatory; CI must be green. Doxygen comments for all public APIs. Single source of truth for register map (PRD + `include/config.h`).
 
 ## Project Structure (repo-aware)
+
 - firmware/
   - src/, include/ (keep `include/config.h`)
   - PlatformIO stays at repo root for now (`platformio.ini`)
@@ -100,6 +101,7 @@ Note: Estimates are placeholders; adjust based on discovery.
 
 """
 Note: Remember to update this plan after each completed task or subtask by:
+
   1. Checking off [ ] to [x].
   2. Removing [CURRENT-TASK] from the completed item.
   3. Adding [CURRENT-TASK] to the next active task or subtask.

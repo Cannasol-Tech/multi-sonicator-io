@@ -14,10 +14,48 @@ def _pending(msg: str = "Pending step implementation"):
 # Only register HIL steps when explicitly enabled to avoid ambiguity with simulavr steps
 if os.environ.get("BEHAVE_ENABLE_HIL_STEPS", "0") == "1":
     # Background
+    import sys
+    from serial.tools import list_ports  # type: ignore
+    try:
+        from scripts.hil_serial import HilSerial
+    except Exception:  # pragma: no cover
+        HilSerial = None  # type: ignore
+
+    def _find_wrapper_port() -> Optional[str]:
+        port = os.environ.get("HIL_WRAPPER_PORT")
+        if port and os.path.exists(port):
+            return port
+        candidates = []
+        for p in list_ports.comports():
+            desc = (p.description or "").lower()
+            dev = p.device
+            score = 0
+            if "arduino" in desc or "uno" in desc or "mega" in desc:
+                score += 5
+            if "usbserial" in dev or "usbmodem" in dev:
+                score += 3
+            if any(k in desc for k in ("ch340", "ftdi")):
+                score += 2
+            if sys.platform == "darwin" and dev.startswith("/dev/cu."):
+                score += 1
+            candidates.append((score, dev))
+        candidates.sort(reverse=True)
+        return candidates[0][1] if candidates else None
+
     @given("the HIL wrapper is connected and ready")
     def step_hil_ready(context: Context):
-        # TODO: detect serial port and issue PING to wrapper
-        _pending("Connect to wrapper serial and verify 'OK WRAPPER_READY' and 'OK PONG'")
+        assert HilSerial is not None, "pyserial not installed or scripts.hil_serial import failed"
+        port = _find_wrapper_port()
+        assert port, "Could not auto-detect HIL wrapper serial port. Set HIL_WRAPPER_PORT=/dev/tty..."
+        context.serial_port = port
+        hs = HilSerial(port)
+        hs.open()
+        try:
+            resp = hs.command("PING")
+            assert resp and resp.startswith("OK"), f"Unexpected PING response: {resp}"
+        finally:
+            hs.close()
+        context.hil_port = port
 
 
     @given("the DUT is powered and at safe defaults")

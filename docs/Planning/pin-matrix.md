@@ -5,6 +5,7 @@ Source of truth for pin assignments. Changes here must be reflected in `include/
 Status: DRAFT — Single-channel Uno R4 WiFi HIL harness prototype (untested). To be reviewed and signed off before firmware implementation (Gate for Plan Task #0)
 
 ## Legend
+
 - DUT: ATmega32A pin identifier (port/pin and header reference)
 - Signal: Functional name (e.g., OVERLOAD, FREQ_DIV10, FREQ_LOCK, START, RESET, POWER_SENSE, AMPLITUDE_CTRL)
 - Dir: Direction from DUT perspective (IN/OUT/ANALOG)
@@ -17,13 +18,13 @@ Status: DRAFT — Single-channel Uno R4 WiFi HIL harness prototype (untested). T
 
 | # | DUT Pin (Port/Pad) | Header Ref | Signal        | Dir    | Scale/Notes                       | Wrapper Pin | Test Point |
 |---|---------------------|------------|---------------|--------|----------------------------------|-------------|------------|
-| 1 | PB3 (Pin 4)         | DB9-1 Pin 4| FREQ_DIV10_1  | IN     | ÷10 frequency (S1)               | D3          | TBD        |
-| 2 | PB7 (Pin 8)         | DB9-1 Pin 3| FREQ_LOCK_1   | IN     | FLCK_1 via opto                  | D4          | TBD        |
-| 3 | PD6 (Pin 20)        | DB9-1 Pin 1| OVERLOAD_1    | IN     | OL_1 via opto                    | D2          | TBD        |
-| 4 | PC0 (Pin 22)        | DB9-1 Pin 7| START_1       | OUT    | ULN2003A open-collector          | D5          | TBD        |
-| 5 | PC1 (Pin 23)        | DB9-1 Pin 2| RESET_1       | OUT    | ULN2003A open-collector          | D6          | TBD        |
-| 6 | PA4/A4 (Pin 36)     | DB9-1 Pin 5| POWER_SENSE_1 | ANALOG | 5.44 mV/W scaling                | A0          | TBD        |
-| 7 | PD7 (Pin 21)        | DB9-1 Pin 8| AMPLITUDE_ALL | OUT    | Shared AMP_C (0–10V), common     | D9 (PWM)    | TBD        |
+| 1 | PB3 (Pin 4)         | DB9-1 Pin 4| FREQ_DIV10_1  | IN     | ÷10 frequency (S1)               | N/A         | TBD        |
+| 2 | PB7 (Pin 8)         | DB9-1 Pin 3| FREQ_LOCK_1   | IN     | FLCK_1 via opto                  | N/A         | TBD        |
+| 3 | PD6 (Pin 20)        | DB9-1 Pin 1| OVERLOAD_1    | IN     | OL_1 via opto                    | N/A         | TBD        |
+| 4 | PC0 (Pin 22)        | DB9-1 Pin 7| START_1       | OUT    | ULN2003A open-collector          | N/A         | TBD        |
+| 5 | PC1 (Pin 23)        | DB9-1 Pin 2| RESET_1       | OUT    | ULN2003A open-collector          | N/A         | TBD        |
+| 6 | PA4/A4 (Pin 36)     | DB9-1 Pin 5| POWER_SENSE_1 | ANALOG | 5.44 mV/W scaling                | N/A         | TBD        |
+| 7 | PD7 (Pin 21)        | DB9-1 Pin 8| AMPLITUDE_ALL | OUT    | Shared AMP_C (0–10V), common     | N/A         | TBD        |
 
 ### Sonicator 2
 
@@ -53,13 +54,14 @@ Status: DRAFT — Single-channel Uno R4 WiFi HIL harness prototype (untested). T
 
 | # | DUT Pin (Port/Pad) | Header Ref | Signal        | Dir    | Scale/Notes                       | Wrapper Pin | Test Point |
 |---|---------------------|------------|---------------|--------|----------------------------------|-------------|------------|
-| 1 | PB0 (Pin 1)         | DB9-4 Pin 4| FREQ_DIV10_4  | IN     | ÷10 frequency (S4)               | N/A | N/A |
-| 2 | PB4 (Pin 5)         | DB9-4 Pin 3| FREQ_LOCK_4   | IN     | FLCK_4 via opto                  | N/A | N/A |
-| 3 | PD3 (Pin 17)        | DB9-4 Pin 1| OVERLOAD_4    | IN     | OL_4 via opto                    | N/A | N/A |
-| 4 | PC6 (Pin 28)        | DB9-4 Pin 7| START_4       | OUT    | ULN2003A open-collector          | N/A | N/A |
-| 5 | PC7 (Pin 29)        | DB9-4 Pin 2| RESET_4       | OUT    | ULN2003A open-collector          | N/A | N/A |
-| 6 | PA7/A7 (Pin 33)     | DB9-4 Pin 5| POWER_SENSE_4 | ANALOG | 5.44 mV/W scaling                | N/A | N/A |
-| 7 | PD7 (Pin 21)        | DB9-4 Pin 8| AMPLITUDE_ALL | OUT    | Shared AMP_C (0–10V), common     | N/A | N/A |
+| 1 | PB0 (Pin 1)         | DB9-4 Pin 4| FREQ_DIV10_4  | IN     | ÷10 frequency (S4)               | D7          | TBD        |
+| 2 | PB4 (Pin 5)         | DB9-4 Pin 3| FREQ_LOCK_4   | IN     | FLCK_4 via opto                  | D8          | TBD        |
+| 3 | PD3 (Pin 17)        | DB9-4 Pin 1| OVERLOAD_4    | IN     | OL_4 via opto                    | A2          | TBD        |
+| 4 | PC6 (Pin 28)        | DB9-4 Pin 7| START_4       | OUT    | ULN2003A open-collector          | A3          | TBD        |
+| 5 | PC7 (Pin 29)        | DB9-4 Pin 2| RESET_4       | OUT    | ULN2003A open-collector          | A4          | TBD        |
+| 6 | PA7/A7 (Pin 33)     | DB9-4 Pin 5| POWER_SENSE_4 | ANALOG | 5.44 mV/W scaling                | A1          | TBD        |
+| 7 | PD7 (Pin 21)        | DB9-4 Pin 8| AMPLITUDE_ALL | OUT    | Shared AMP_C (0–10V), common     | D9 (PWM)    | TBD        |
+| 8 | — (Wrapper tap)     | —          | AMPLITUDE_MON_4| ANALOG | RC tap of AMPLITUDE_ALL for ADC  | A0          | TBD        |
 
 ### Common / System
 
@@ -72,12 +74,15 @@ Note: DB9-0 is the communications connector back to the main automation system (
 | 3 | PD2 (Pin 16)        | LED-TERM   | STATUS_LED | OUT | Status LED drive  | D12         | LED-TERM   |
 
 ## Schematic-derived mappings (from screenshot)
+
 - **FREQ_DIV10_4..1**: PB0 (Pin 1), PB1 (Pin 2), PB2 (Pin 3), PB3 (Pin 4) mapped to header 1–4 (S4→S1).
 - **FREQ_LOCK_4..1**: PB4 (Pin 5), PB5 (Pin 6), PB6 (Pin 7), PB7 (Pin 8) for S4..S1.
 - **START/RESET (1..4)**: START_n on PC6/4/2/0 (Pins 28/26/24/22). RESET_n on PC7/5/3/1 (Pins 29/27/25/23).
 - **POWER_SENSE 1..4**: PA4/A4 (Pin 36), PA5/A5 (Pin 35), PA6/A6 (Pin 34), PA7/A7 (Pin 33).
 - **AMPLITUDE_ALL**: PD7 (Pin 21) labeled AMP_C.
 - **OVERLOAD 1..4**: PD6 (Pin 20), PD5 (Pin 19), PD4 (Pin 18), PD3 (Pin 17) for S1..S4.
+
+Note (UNO R4 WiFi wrapper): avoid Arduino D0/D1 (USB serial) and D10–D13 (SPI/ICSP). The S4 wrapper mapping above complies with this.
 
 ## Actions on Approval
 - Update `include/config.h` to match matrix, with doxygen comments citing this file and PRD sections.
