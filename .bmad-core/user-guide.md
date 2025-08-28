@@ -77,7 +77,7 @@ graph TD
 
 **Critical Transition Point**: Once the PO confirms document alignment, you must switch from web UI to IDE to begin the development workflow:
 
-1. **Copy Documents to Project**: Ensure `docs/prd.md` and `docs/architecture.md` are in your project's docs folder (or a custom location you can specify during installation)
+1. **Copy Documents to Project**: Ensure `docs/planning/prd.md` and `docs/architecture.md` are in your project's docs folder (or a custom location you can specify during installation)
 2. **Switch to IDE**: Open your project in your preferred Agentic IDE
 3. **Document Sharding**: Use the PO agent to shard the PRD and then the Architecture
 4. **Begin Development**: Start the Core Development Cycle that follows
@@ -85,7 +85,7 @@ graph TD
 #### Planning Artifacts (Standard Paths)
 
 ```text
-PRD              → docs/prd.md
+PRD              → docs/planning/prd.md
 Architecture     → docs/architecture.md
 Sharded Epics    → docs/epics/
 Sharded Stories  → docs/stories/
