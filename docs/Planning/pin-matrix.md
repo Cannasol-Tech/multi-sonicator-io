@@ -38,7 +38,7 @@ Status: DRAFT — Single-channel Uno R4 WiFi HIL harness prototype (untested). T
 | 6 | PA5/A5 (Pin 35)     | DB9-2 Pin 5| POWER_SENSE_2 | ANALOG | 5.44 mV/W scaling                | N/A | N/A |
 | 7 | PD7 (Pin 21)        | DB9-2 Pin 8| AMPLITUDE_ALL | OUT    | Shared AMP_C (0–10V), common     | N/A | N/A |
 
-### Sonicator 3 - Unverified
+### Sonicator 3 - Verified by Product Owner
 
 | # | DUT Pin (Port/Pad) | Header Ref | Signal        | Dir    | Scale/Notes                       | Wrapper Pin | Test Point |
 |---|---------------------|------------|---------------|--------|----------------------------------|-------------|------------|
@@ -50,7 +50,7 @@ Status: DRAFT — Single-channel Uno R4 WiFi HIL harness prototype (untested). T
 | 6 | PA6/A6 (Pin 34)     | DB9-3 Pin 5| POWER_SENSE_3 | ANALOG | 5.44 mV/W scaling                | N/A | N/A |
 | 7 | PD7 (Pin 21)        | DB9-3 Pin 8| AMPLITUDE_ALL | OUT    | Shared AMP_C (0–10V), common     | N/A | N/A |
 
-### Sonicator 4 - Unverified
+### Sonicator 4 - Verified by Product Owner
 
 | # | DUT Pin (Port/Pad) | Header Ref | Signal        | Dir    | Scale/Notes                       | Wrapper Pin | Test Point |
 |---|---------------------|------------|---------------|--------|----------------------------------|-------------|------------|
@@ -61,7 +61,6 @@ Status: DRAFT — Single-channel Uno R4 WiFi HIL harness prototype (untested). T
 | 5 | PC1 (Pin 23)        | DB9-4 Pin 2| RESET_4       | OUT    | ULN2003A open-collector          | A4          | TBD        |
 | 6 | PA7/A7 (Pin 33)     | DB9-4 Pin 5| POWER_SENSE_4 | ANALOG | 5.44 mV/W scaling                | A1          | TBD        |
 | 7 | PD7 (Pin 21)        | DB9-4 Pin 8| AMPLITUDE_ALL | OUT    | Shared AMP_C (0–10V), common     | D9 (PWM)    | TBD        |
-| 8 | — (Wrapper tap)     | —          | AMPLITUDE_MON_4| ANALOG | RC tap of AMPLITUDE_ALL for ADC  | A0          | TBD        |
 
 ### Common / System
 
@@ -72,17 +71,6 @@ Note: DB9-0 is the communications connector back to the main automation system (
 | 1 | PD0 (Pin 14)        | DB9-0 Pin 8| UART_RXD   | IN  | MODBUS RTU RX     | D10 (drive to DUT RX) | TBD |
 | 2 | PD1 (Pin 15)        | DB9-0 Pin 9| UART_TXD   | OUT | MODBUS RTU TX     | D11 (read from DUT TX)| TBD |
 | 3 | PD2 (Pin 16)        | LED-TERM   | STATUS_LED | OUT | Status LED drive  | D12         | LED-TERM   |
-
-## Schematic-derived mappings (from screenshot)
-
-- **FREQ_DIV10_4..1**: PB0 (Pin 1), PB1 (Pin 2), PB2 (Pin 3), PB3 (Pin 4) mapped to header 1–4 (S4→S1).
-- **FREQ_LOCK_4..1**: PB4 (Pin 5), PB5 (Pin 6), PB6 (Pin 7), PB7 (Pin 8) for S4..S1.
-- **START/RESET (1..4)**: START_n on PC6/4/2/0 (Pins 28/26/24/22). RESET_n on PC7/5/3/1 (Pins 29/27/25/23).
-- **POWER_SENSE 1..4**: PA4/A4 (Pin 36), PA5/A5 (Pin 35), PA6/A6 (Pin 34), PA7/A7 (Pin 33).
-- **AMPLITUDE_ALL**: PD7 (Pin 21) labeled AMP_C.
-- **OVERLOAD 1..4**: PD6 (Pin 20), PD5 (Pin 19), PD4 (Pin 18), PD3 (Pin 17) for S1..S4.
-
-Note (UNO R4 WiFi wrapper): avoid Arduino D0/D1 (USB serial) and D10–D13 (SPI/ICSP). The S4 wrapper mapping above complies with this.
 
 ## Actions on Approval
 
