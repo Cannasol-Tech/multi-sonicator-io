@@ -304,7 +304,7 @@ Identifies and assesses implementation risks:
 Creates comprehensive test strategies including:
 
 - Test scenarios for each acceptance criterion
-- Appropriate test level recommendations (unit vs integration vs E2E)
+- Appropriate test level recommendations (unit vs acceptance vs integration vs E2E)
 - Risk-based prioritization (P0/P1/P2)
 - Test data requirements and mock strategies
 - Execution strategies for CI/CD integration
@@ -352,7 +352,7 @@ Validates non-functional requirements:
 When you run `@qa *review {story}`, Quinn performs:
 
 - **Requirements Traceability**: Maps every acceptance criterion to its validating tests
-- **Test Level Analysis**: Ensures appropriate testing at unit, integration, and E2E levels
+- **Test Level Analysis**: Ensures appropriate testing at unit, acceptance, integration, and E2E levels
 - **Coverage Assessment**: Identifies gaps and redundant test coverage
 - **Active Refactoring**: Improves code quality directly when safe
 - **Quality Gate Decision**: Issues PASS/CONCERNS/FAIL status based on findings
@@ -411,7 +411,7 @@ Quinn enforces these test quality principles:
 - **No Hard Waits**: Dynamic waiting strategies only
 - **Stateless & Parallel-Safe**: Tests run independently
 - **Self-Cleaning**: Tests manage their own test data
-- **Appropriate Test Levels**: Unit for logic, integration for interactions, E2E for journeys
+- **Appropriate Test Levels**: Unit for logic, acceptance for verifying requirements, integration for interactions and edge-cases, E2E for journeys
 - **Explicit Assertions**: Keep assertions in tests, not helpers
 
 ### Gate Status Meanings
@@ -483,7 +483,7 @@ Define which files the dev agent should always load:
 
 ```yaml
 devLoadAlwaysFiles:
-  - docs/architecture/coding-standards.md
+  - docs/standards/coding-style.md
   - docs/architecture/tech-stack.md
   - docs/architecture/project-structure.md
 ```

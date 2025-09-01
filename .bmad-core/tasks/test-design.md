@@ -14,13 +14,13 @@ required:
 
 ## Purpose
 
-Design a complete test strategy that identifies what to test, at which level (unit/integration/e2e), and why. This ensures efficient test coverage without redundancy while maintaining appropriate test boundaries.
+Design a complete test strategy that identifies what to test, at which level (unit/integration/acceptance), and why. This ensures efficient test coverage without redundancy while maintaining appropriate test boundaries.
 
 ## Dependencies
 
 ```yaml
 data:
-  - test-levels-framework.md # Unit/Integration/E2E decision criteria
+  - test-levels-framework.md # Unit/Integration/Acceptance decision criteria
   - test-priorities-matrix.md # P0/P1/P2/P3 classification system
 ```
 
@@ -43,7 +43,7 @@ Quick rules:
 
 - **Unit**: Pure logic, algorithms, calculations
 - **Integration**: Component interactions, DB operations
-- **E2E**: Critical user journeys, compliance
+- **Acceptance**: ALWAYS BDD/Gherkin scenarios mapping to PRD requirements (implemented via Playwright, API, or integration testing)
 
 ### 3. Assign Priorities
 
@@ -65,7 +65,7 @@ test_scenario:
   id: '{epic}.{story}-{LEVEL}-{SEQ}'
   requirement: 'AC reference'
   priority: P0|P1|P2|P3
-  level: unit|integration|e2e
+  level: unit|integration|acceptance
   description: 'What is being tested'
   justification: 'Why this level was chosen'
   mitigates_risks: ['RISK-001'] # If risk profile exists
@@ -97,7 +97,7 @@ Designer: Quinn (Test Architect)
 - Total test scenarios: X
 - Unit tests: Y (A%)
 - Integration tests: Z (B%)
-- E2E tests: W (C%)
+- Acceptance tests: W (C%) [BDD/Gherkin scenarios with Playwright/API/Integration implementation]
 - Priority distribution: P0: X, P1: Y, P2: Z
 
 ## Test Scenarios by Acceptance Criteria
@@ -110,7 +110,7 @@ Designer: Quinn (Test Architect)
 | ------------ | ----------- | -------- | ------------------------- | ------------------------ |
 | 1.3-UNIT-001 | Unit        | P0       | Validate input format     | Pure validation logic    |
 | 1.3-INT-001  | Integration | P0       | Service processes request | Multi-component flow     |
-| 1.3-E2E-001  | E2E         | P1       | User completes journey    | Critical path validation |
+| 1.3-ACC-001  | Acceptance  | P1       | User completes journey    | PRD requirement validation |
 
 [Continue for all ACs...]
 
@@ -122,7 +122,7 @@ Designer: Quinn (Test Architect)
 
 1. P0 Unit tests (fail fast)
 2. P0 Integration tests
-3. P0 E2E tests
+3. P0 Acceptance tests (BDD/Gherkin scenarios with implementation methods)
 4. P1 tests in order
 5. P2+ as time permits
 ```
@@ -137,7 +137,7 @@ test_design:
   by_level:
     unit: Y
     integration: Z
-    e2e: W
+    acceptance: W
   by_priority:
     p0: A
     p1: B
@@ -167,7 +167,7 @@ Before finalizing, verify:
 
 ## Key Principles
 
-- **Shift left**: Prefer unit over integration, integration over E2E
+- **Shift left**: Prefer unit over integration, integration over acceptance
 - **Risk-based**: Focus on what could go wrong
 - **Efficient coverage**: Test once at the right level
 - **Maintainability**: Consider long-term test maintenance

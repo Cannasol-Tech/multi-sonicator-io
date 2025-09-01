@@ -5,18 +5,28 @@ prd:
   prdFile: docs/prd.md
   prdVersion: v4
   prdSharded: true
-  prdShardedLocation: docs/planning/prd
+  prdShardedLocation: docs/prd-shards
   epicFilePattern: epic-{n}*.md
 architecture:
-  architectureFile: docs/architecture.md
+  architectureFile: docs/architecture/overview.md
   architectureVersion: v4
   architectureSharded: true
   architectureShardedLocation: docs/architecture
-customTechnicalDocuments: null
+customTechnicalDocuments:
+  - docs/features
 devLoadAlwaysFiles:
-  - docs/architecture/coding-standards.md
+  - docs/standards/coding-style.md
   - docs/architecture/tech-stack.md
   - docs/architecture/source-tree.md
 devDebugLog: .ai/debug-log.md
 devStoryLocation: docs/stories
+testing:
+  standard: sw-testing-standard.md
+  unitCoverageThreshold: 90
+  reportFormats:
+    - functionality-report.json
+    - executive-report.json
+  supplementaryGuidance:
+    - test-levels-framework.md
+    - test-priorities-matrix.md
 slashPrefix: BMad

@@ -99,7 +99,7 @@ Note: We don't need every file listed - just the important ones.]]
 
 [[LLM: Testing ensures the implementation actually works. Check:
 
-1. Test approach is specified (unit, integration, e2e)
+1. Test approach is specified (unit, integration, acceptance)
 2. Key test scenarios are listed
 3. Success criteria are measurable
 4. Special test considerations are noted

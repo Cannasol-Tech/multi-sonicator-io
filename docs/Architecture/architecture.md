@@ -10,7 +10,7 @@ This document outlines the firmware and hardware architecture for the Multi-Soni
 
 The Multi-Sonicator I/O Controller acts as a MODBUS RTU slave device within the existing automation hierarchy:
 
-```
+```markdown
 HMI System (MODBUS Master)
     ├── Velocio 1630c PLC (Slave ID = 1)
     └── Multi-Sonicator Controller (Slave ID = 2)
@@ -23,12 +23,14 @@ HMI System (MODBUS Master)
 ### Hardware Architecture
 
 #### Core Processing Unit
+
 - **Microcontroller**: ATmega32A @ 16MHz (external crystal)
 - **Power Supply**: 24VDC → 12V → 5V cascaded regulation
 - **Communication**: MODBUS RTU over isolated RS-485/RS-232
 - **Programming**: Arduino as ISP (Uno R4 WiFi)
 
 #### Interface Design
+
 - **DB9 Power Delivery**: Single cable solution from main automation system
 - **Sonicator Interfaces**: 4x isolated DB9 connectors with individual control
 - **Signal Isolation**: Galvanic isolation between communication and control circuits
@@ -37,20 +39,24 @@ HMI System (MODBUS Master)
 ## Firmware Architecture
 
 ### 1. Hardware Abstraction Layer (HAL)
+
 **Purpose**: Provides consistent interface to hardware peripherals
 
 **Components**:
+
 - GPIO management for control signals
 - ADC interface for analog feedback
 - PWM generation for amplitude control
 - UART communication handling
 - Timer management for precise timing
- - Status LED (PD2) driver for unified system indication per `docs/planning/pin-matrix.md` (`STATUS_LED_PIN`)
+- Status LED (PD2) driver for unified system indication per `docs/planning/pin-matrix.md` (`STATUS_LED_PIN`)
 
 ### 2. Communication Layer
+
 **Purpose**: Handles MODBUS RTU protocol implementation
 
 **Components**:
+
 - MODBUS RTU slave implementation
 - Register mapping and validation
 - CRC-16 error detection
@@ -58,9 +64,11 @@ HMI System (MODBUS Master)
 - Isolated communication driver
 
 ### 3. Sonicator Control Logic
+
 **Purpose**: Manages individual sonicator operation and coordination
 
 **Components**:
+
 - Sonicator interface classes (4 instances)
 - Multi-unit orchestration and synchronization
 - Amplitude control via PWM + RC filtering
@@ -68,9 +76,11 @@ HMI System (MODBUS Master)
 - State machine management per unit
 
 ### 4. Safety and Monitoring System
+
 **Purpose**: Ensures safe operation and fault detection
 
 **Components**:
+
 - Real-time overload detection
 - Emergency shutdown procedures
 - Safety interlock management
@@ -78,21 +88,24 @@ HMI System (MODBUS Master)
 - Watchdog timer implementation
 
 ### 5. System Services
+
 **Purpose**: Provides diagnostic and maintenance capabilities
 
 **Components**:
+
 - System diagnostics and self-test
 - Performance monitoring and metrics
 - Event logging and alarm management
 - Configuration management
 - Firmware update support
- - Status LED policy: single LED on PD2 (physical pin 16) reflects system states (e.g., boot, error, running) replacing legacy RGB scheme
+- Status LED policy: single LED on PD2 (physical pin 16) reflects system states (e.g., boot, error, running) replacing legacy RGB scheme
 
 ### 6. Runtime Scheduling (Cooperative taskLoop)
 
 **Approach**: A lightweight cooperative scheduler built on a timer tick and a centralized dispatcher function named `taskLoop()`. This formalizes the common `millis()` pattern without introducing RTOS complexity.
 
 **Runs in ISRs (minimal work only)**
+
 - UART RX/TX: MODBUS bytes to/from ring buffers; no parsing in ISR.
 - Timer tick (e.g., 1 ms): increments system time; marks tasks due.
 - Frequency capture: count edges from CT2000 ÷10 output.
@@ -100,6 +113,7 @@ HMI System (MODBUS Master)
 - Optional pin-change: latch E‑stop/overload immediately for safety.
 
 **Runs in taskLoop() (cooperative, non-blocking)**
+
 - Parse MODBUS frames and execute reads/writes via the register map.
 - Compute frequency and power from buffered data; apply filters.
 - Update status flags and Active Count/Mask.
@@ -107,12 +121,14 @@ HMI System (MODBUS Master)
 - Housekeeping (runtime counters, diagnostics, watchdog kick at a safe point).
 
 **Task rates (aligned with requirements)**
+
 - Power & Frequency: 5–10 Hz (100–200 ms)
 - Status/Mask/Count: 10–20 Hz (50–100 ms)
 - Runtime Counters: 1 Hz
 - MODBUS parsing: dispatched every tick but bounded per cycle
 
 **Why this design**
+
 - Meets ≤100 ms reflection and safety latency targets with low jitter.
 - Centralizes timing, improves testability/traceability, and avoids duplicated `if (millis() - last >= period)` code across modules.
 - No RTOS stacks or preemption; fits ATmega32A (32 KB Flash, 2 KB SRAM).
@@ -153,6 +169,7 @@ HMI System (MODBUS Master)
 ### Power Architecture
 
 **Input Power**: 24VDC via DB9 Pin 1 from main automation system
+
 - Conservative power budget: 42mA @ 24VDC (≈1W)
 - Local regulation cascade: 24V → 12V (LM2596) → 5V (LM7805)
 - Separate analog and digital supplies for noise immunity
@@ -161,12 +178,14 @@ HMI System (MODBUS Master)
 ## Design Principles
 
 ### Safety-First Architecture
+
 - **Fail-Safe Operation**: System defaults to safe state on any fault
 - **Real-Time Monitoring**: Continuous monitoring of all critical parameters
 - **Emergency Shutdown**: Immediate shutdown capability for safety events
 - **Isolation**: Galvanic isolation between systems prevents fault propagation
 
 ### Industrial Reliability
+
 - **Robust Communication**: MODBUS RTU with error detection and recovery
 - **Temperature Stability**: External crystal for ±0.002% frequency accuracy
 - **EMI Immunity**: Shielded interfaces and proper grounding
@@ -217,6 +236,7 @@ HMI System (MODBUS Master)
   - Perform a pre‑scan for radiated EMI (30 MHz–1 GHz) to catch dominant harmonics early.
 
 ### Modular Design
+
 - **Scalable Architecture**: Support for 1-4 sonicators with identical interfaces
 - **Reusable Components**: Common code base for all sonicator interfaces
 - **Testable Modules**: Independent testing of each system component
@@ -225,11 +245,13 @@ HMI System (MODBUS Master)
 ## Development Framework
 
 ### Build System
+
 - **PlatformIO**: Cross-platform build system and library manager
 - **Arduino Framework**: Familiar development environment with AVR support
 - **MightyCore**: ATmega32A board package for Arduino compatibility
 
 ### Programming and Debug
+
 - **ISP Programming**: Arduino Uno R4 WiFi as in-system programmer
 - **Serial Debug**: UART-based debugging and diagnostics
 - **Hardware Testing**: Built-in self-test and diagnostic routines
@@ -257,6 +279,7 @@ Host (Behave/pytest) ⇄ USB Serial ⇄ Arduino Wrapper (arduino_test_wrapper.in
 | Amplitude (per unit) | Analog/PWM to CT2000 | Measure PWM/DAC via wrapper ADC |
 
 Notes:
+
 - Wrapper exposes a simple serial command protocol (documented in the wrapper source) to stimulate inputs and assert observed outputs.
 - Safety-first: default lines to safe states; E‑stop/overload cannot be bypassed.
 
@@ -284,12 +307,14 @@ To increase I/O headroom and improve timing fidelity, an auxiliary ATmega can ac
   - Analog: Power[4] sources, Amplitude monitor (1) via divider
 
 Notes:
+
 - Keeps Uno focused on host protocol and CLI; extender ensures accurate timers and ample GPIO.
 - If not needed, tests can serialize frequency checks on Uno‑only setup.
 
 ##### Concrete Pin Maps
 
 ###### Profile A — Uno‑only, per‑unit harness
+
 Test one sonicator channel at a time by moving a small 6–7 wire harness between S1..S4.
 
 | Role | Uno R4 Pin | Direction | Notes |
@@ -304,10 +329,12 @@ Test one sonicator channel at a time by moving a small 6–7 wire harness betwee
 | GND reference | GND | — | Common ground |
 
 Notes:
+
 - Move this harness to headers for S1, S2, S3, S4 to run identical tests per unit.
 - See `include/config.h` for authoritative DUT pin roles; this mapping is wrapper‑side only.
 
 ###### Profile B — Uno + Smart I/O Extender (full parallel)
+
 Uno focuses on host protocol; extender provides all DUT‑side signals.
 
 | Role | Uno R4 Pin | Direction | Notes |
@@ -316,6 +343,7 @@ Uno focuses on host protocol; extender provides all DUT‑side signals.
 | Optional extender reset | D12 | Out | Reset line to extender MCU |
 
 Extender (conceptual groups; exact pins tbd on extender):
+
 - Outputs → DUT inputs: Overload[4], FreqLock[4], Freq[4], Power[4]
 - Inputs ← DUT outputs: Start[4], Reset[4]
 - Analog: Amplitude monitor (1) via divider

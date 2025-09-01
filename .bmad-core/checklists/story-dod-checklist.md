@@ -44,7 +44,7 @@ The goal is quality delivery, not just checking boxes.]]
    [[LLM: Testing proves your code works. Be honest about test coverage]]
    - [ ] All required unit tests as per the story and `Operational Guidelines` Testing Strategy are implemented.
    - [ ] All required integration tests (if applicable) as per the story and `Operational Guidelines` Testing Strategy are implemented.
-   - [ ] All tests (unit, integration, E2E if applicable) pass successfully.
+   - [ ] All tests (unit, acceptance, integration, E2E if applicable) pass successfully.
    - [ ] Test coverage meets project standards (if defined).
 
 4. **Functionality & Verification:**

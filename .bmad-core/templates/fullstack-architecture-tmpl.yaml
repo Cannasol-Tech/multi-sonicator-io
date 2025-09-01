@@ -186,7 +186,7 @@ sections:
           - ["Authentication", "{{auth}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
           - ["Frontend Testing", "{{fe_test}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
           - ["Backend Testing", "{{be_test}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
-          - ["E2E Testing", "{{e2e_test}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
+          - ["Acceptance Testing", "{{acceptance_test}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
           - ["Build Tool", "{{build_tool}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
           - ["Bundler", "{{bundler}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
           - ["IaC Tool", "{{iac_tool}}", "{{version}}", "{{purpose}}", "{{why_chosen}}"]
@@ -689,8 +689,10 @@ sections:
         type: code
         language: text
         template: |
-          E2E Tests
-          /        \
+          Acceptance Tests (PRD Requirements)
+          /                              \
+          E2E UI Automation    BDD/Gherkin Scenarios
+          /                              \
           Integration Tests
           /            \
           Frontend Unit  Backend Unit
@@ -707,11 +709,11 @@ sections:
             type: code
             language: text
             template: "{{backend_test_structure}}"
-          - id: e2e-tests
-            title: E2E Tests
+          - id: acceptance-tests
+            title: Acceptance Tests
             type: code
             language: text
-            template: "{{e2e_test_structure}}"
+            template: "{{acceptance_test_structure}}"
       - id: test-examples
         title: Test Examples
         sections:
@@ -725,11 +727,11 @@ sections:
             type: code
             language: typescript
             template: "{{backend_test_example}}"
-          - id: e2e-test
-            title: E2E Test
+          - id: acceptance-test
+            title: Acceptance Test (E2E UI Automation)
             type: code
             language: typescript
-            template: "{{e2e_test_example}}"
+            template: "{{acceptance_test_example}}"
 
   - id: coding-standards
     title: Coding Standards

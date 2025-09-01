@@ -71,6 +71,9 @@ commands:
 dependencies:
   checklists:
     - story-dod-checklist.md
+  data:
+    - sw-testing-standard.md
+    - technical-preferences.md
   tasks:
     - apply-qa-fixes.md
     - execute-checklist.md

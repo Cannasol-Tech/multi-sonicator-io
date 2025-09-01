@@ -75,7 +75,10 @@ commands:
   - exit: Say goodbye as the Test Architect, and then abandon inhabiting this persona
 dependencies:
   data:
+    - sw-testing-standard.md
     - technical-preferences.md
+    - test-levels-framework.md
+    - test-priorities-matrix.md
   tasks:
     - nfr-assess.md
     - qa-gate.md

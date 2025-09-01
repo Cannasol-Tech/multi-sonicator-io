@@ -14,51 +14,51 @@ Status: DRAFT — Single-channel Uno R4 WiFi HIL harness prototype (untested). T
 - Test Point: Bench header or connector label
 - Header Ref: External connector reference. Each channel uses its own DB9: DB9-1 (S1), DB9-2 (S2), DB9-3 (S3), DB9-4 (S4). System comms use DB9-0. Pin map per channel DB9: Pin1=OVERLOAD, Pin2=RESET, Pin3=FREQ_LOCK, Pin4=FREQ÷10, Pin5=POWER, Pin7=START, Pin8=AMPLITUDE. DB9-0: Pin8=UART_RXD, Pin9=UART_TXD
 
-### Sonicator 1
+### Sonicator 1 - Verified by Product Owner
 
 | # | DUT Pin (Port/Pad) | Header Ref | Signal        | Dir    | Scale/Notes                       | Wrapper Pin | Test Point |
 |---|---------------------|------------|---------------|--------|----------------------------------|-------------|------------|
 | 1 | PB3 (Pin 4)         | DB9-1 Pin 4| FREQ_DIV10_1  | IN     | ÷10 frequency (S1)               | N/A         | TBD        |
 | 2 | PB7 (Pin 8)         | DB9-1 Pin 3| FREQ_LOCK_1   | IN     | FLCK_1 via opto                  | N/A         | TBD        |
 | 3 | PD6 (Pin 20)        | DB9-1 Pin 1| OVERLOAD_1    | IN     | OL_1 via opto                    | N/A         | TBD        |
-| 4 | PC0 (Pin 22)        | DB9-1 Pin 7| START_1       | OUT    | ULN2003A open-collector          | N/A         | TBD        |
-| 5 | PC1 (Pin 23)        | DB9-1 Pin 2| RESET_1       | OUT    | ULN2003A open-collector          | N/A         | TBD        |
+| 4 | PC6 (Pin 28)        | DB9-1 Pin 7| START_1       | OUT    | ULN2003A open-collector          | N/A         | TBD        |
+| 5 | PC7 (Pin 29)        | DB9-1 Pin 2| RESET_1       | OUT    | ULN2003A open-collector          | N/A         | TBD        |
 | 6 | PA4/A4 (Pin 36)     | DB9-1 Pin 5| POWER_SENSE_1 | ANALOG | 5.44 mV/W scaling                | N/A         | TBD        |
 | 7 | PD7 (Pin 21)        | DB9-1 Pin 8| AMPLITUDE_ALL | OUT    | Shared AMP_C (0–10V), common     | N/A         | TBD        |
 
-### Sonicator 2
+### Sonicator 2 - Verified by Product Owner
 
 | # | DUT Pin (Port/Pad) | Header Ref | Signal        | Dir    | Scale/Notes                       | Wrapper Pin | Test Point |
 |---|---------------------|------------|---------------|--------|----------------------------------|-------------|------------|
 | 1 | PB2 (Pin 3)         | DB9-2 Pin 4| FREQ_DIV10_2  | IN     | ÷10 frequency (S2)               | N/A (Uno R4 single-channel) | N/A |
 | 2 | PB6 (Pin 7)         | DB9-2 Pin 3| FREQ_LOCK_2   | IN     | FLCK_2 via opto                  | N/A | N/A |
 | 3 | PD5 (Pin 19)        | DB9-2 Pin 1| OVERLOAD_2    | IN     | OL_2 via opto                    | N/A | N/A |
-| 4 | PC2 (Pin 24)        | DB9-2 Pin 7| START_2       | OUT    | ULN2003A open-collector          | N/A | N/A |
-| 5 | PC3 (Pin 25)        | DB9-2 Pin 2| RESET_2       | OUT    | ULN2003A open-collector          | N/A | N/A |
+| 4 | PC4 (Pin 26)        | DB9-2 Pin 7| START_2       | OUT    | ULN2003A open-collector          | N/A | N/A |
+| 5 | PC5 (Pin 27)        | DB9-2 Pin 2| RESET_2       | OUT    | ULN2003A open-collector          | N/A | N/A |
 | 6 | PA5/A5 (Pin 35)     | DB9-2 Pin 5| POWER_SENSE_2 | ANALOG | 5.44 mV/W scaling                | N/A | N/A |
 | 7 | PD7 (Pin 21)        | DB9-2 Pin 8| AMPLITUDE_ALL | OUT    | Shared AMP_C (0–10V), common     | N/A | N/A |
 
-### Sonicator 3
+### Sonicator 3 - Unverified
 
 | # | DUT Pin (Port/Pad) | Header Ref | Signal        | Dir    | Scale/Notes                       | Wrapper Pin | Test Point |
 |---|---------------------|------------|---------------|--------|----------------------------------|-------------|------------|
 | 1 | PB1 (Pin 2)         | DB9-3 Pin 4| FREQ_DIV10_3  | IN     | ÷10 frequency (S3)               | N/A | N/A |
 | 2 | PB5 (Pin 6)         | DB9-3 Pin 3| FREQ_LOCK_3   | IN     | FLCK_3 via opto                  | N/A | N/A |
 | 3 | PD4 (Pin 18)        | DB9-3 Pin 1| OVERLOAD_3    | IN     | OL_3 via opto                    | N/A | N/A |
-| 4 | PC4 (Pin 26)        | DB9-3 Pin 7| START_3       | OUT    | ULN2003A open-collector          | N/A | N/A |
-| 5 | PC5 (Pin 27)        | DB9-3 Pin 2| RESET_3       | OUT    | ULN2003A open-collector          | N/A | N/A |
+| 4 | PC2 (Pin 24)        | DB9-3 Pin 7| START_3       | OUT    | ULN2003A open-collector          | N/A | N/A |
+| 5 | PC3 (Pin 25)        | DB9-3 Pin 2| RESET_3       | OUT    | ULN2003A open-collector          | N/A | N/A |
 | 6 | PA6/A6 (Pin 34)     | DB9-3 Pin 5| POWER_SENSE_3 | ANALOG | 5.44 mV/W scaling                | N/A | N/A |
 | 7 | PD7 (Pin 21)        | DB9-3 Pin 8| AMPLITUDE_ALL | OUT    | Shared AMP_C (0–10V), common     | N/A | N/A |
 
-### Sonicator 4
+### Sonicator 4 - Unverified
 
 | # | DUT Pin (Port/Pad) | Header Ref | Signal        | Dir    | Scale/Notes                       | Wrapper Pin | Test Point |
 |---|---------------------|------------|---------------|--------|----------------------------------|-------------|------------|
 | 1 | PB0 (Pin 1)         | DB9-4 Pin 4| FREQ_DIV10_4  | IN     | ÷10 frequency (S4)               | D7          | TBD        |
 | 2 | PB4 (Pin 5)         | DB9-4 Pin 3| FREQ_LOCK_4   | IN     | FLCK_4 via opto                  | D8          | TBD        |
 | 3 | PD3 (Pin 17)        | DB9-4 Pin 1| OVERLOAD_4    | IN     | OL_4 via opto                    | A2          | TBD        |
-| 4 | PC6 (Pin 28)        | DB9-4 Pin 7| START_4       | OUT    | ULN2003A open-collector          | A3          | TBD        |
-| 5 | PC7 (Pin 29)        | DB9-4 Pin 2| RESET_4       | OUT    | ULN2003A open-collector          | A4          | TBD        |
+| 4 | PC0 (Pin 22)        | DB9-4 Pin 7| START_4       | OUT    | ULN2003A open-collector          | A3          | TBD        |
+| 5 | PC1 (Pin 23)        | DB9-4 Pin 2| RESET_4       | OUT    | ULN2003A open-collector          | A4          | TBD        |
 | 6 | PA7/A7 (Pin 33)     | DB9-4 Pin 5| POWER_SENSE_4 | ANALOG | 5.44 mV/W scaling                | A1          | TBD        |
 | 7 | PD7 (Pin 21)        | DB9-4 Pin 8| AMPLITUDE_ALL | OUT    | Shared AMP_C (0–10V), common     | D9 (PWM)    | TBD        |
 | 8 | — (Wrapper tap)     | —          | AMPLITUDE_MON_4| ANALOG | RC tap of AMPLITUDE_ALL for ADC  | A0          | TBD        |
@@ -85,12 +85,13 @@ Note: DB9-0 is the communications connector back to the main automation system (
 Note (UNO R4 WiFi wrapper): avoid Arduino D0/D1 (USB serial) and D10–D13 (SPI/ICSP). The S4 wrapper mapping above complies with this.
 
 ## Actions on Approval
+
 - Update `include/config.h` to match matrix, with doxygen comments citing this file and PRD sections.
 - Update `test/hardware/arduino_test_wrapper/arduino_test_wrapper.ino` constants to match Wrapper Pins.
 - Update `test/hardware/README.md` harness diagram and mapping.
 
 ## References
+
 - `docs/Requirements/prd-v1.0.0.md` — Sections 5, 7, 10
 - `include/config.h` — Register map, constants
 - Schematics/Hardware docs — pin headers and electrical characteristics
-

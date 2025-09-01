@@ -5,9 +5,11 @@ Owner: dev (James)
 Created: 2025-08-20
 
 ## Story
+
 Stabilize Docker-based simulavr path by enabling deterministic stepping via a SWIG `StepOnce()` wrapper and validate emulator startup and PTY creation with smoke BDD. In parallel, document and scaffold a single‑channel Arduino Uno R4 WiFi HIL harness to unblock future hardware testing (untested for now).
 
 ## Acceptance Criteria
+
 - Emulator Docker image builds with patched SWIG exposing `StepOnce()`.
 - Running smoke BDD (profile `simulavr`) brings up emulator, creates `/tmp/tty-msio`, and passes smoke scenarios.
 - If emulator fails, `StepOnce()` availability is verified inside the container and logs are captured.
@@ -16,6 +18,7 @@ Stabilize Docker-based simulavr path by enabling deterministic stepping via a SW
 - Documentation clearly states HIL harness is untested and out of CI scope for now.
 
 ## Tasks / Subtasks
+
 - [ ] 1. Rebuild emulator image with SWIG patch
   - [ ] 1.a Verify Dockerfile injection for `StepOnce()`
   - [ ] 1.b Build: `make emu-docker-build`
@@ -29,6 +32,7 @@ Stabilize Docker-based simulavr path by enabling deterministic stepping via a SW
 - [ ] 4. Expand acceptance tests incrementally after emulator stable
 
 ## RTU Fallback Server Notes
+
 - Unit binding: Server bound to Modbus unit/slave `2` to match test client.
 - Register mapping (indices are zero-based internal):
   - Control 40005..40008 → indices 5..8 (writes start/stop units 1..4)
@@ -40,18 +44,22 @@ Stabilize Docker-based simulavr path by enabling deterministic stepping via a SW
 ## Dev Agent Record
 
 ### Debug Log
+
 - 2025-08-20: Created story scaffold. Updated pin matrix and wrapper for single‑channel Uno R4 WiFi. Added README note.
 - 2025-08-20: RTU fallback server stabilized; bound to unit 2 and aligned register indices. Smoke tests for start/stop, count, mask are green.
 
 ### Completion Notes
+
 - Pin matrix and wrapper changes align with `include/config.h` signal names and will remain untested until hardware is available.
 
 ### File List
+
 - Created: `docs/stories/simulavr-stability.md`
 - Updated: `docs/planning/pin-matrix.md`
 - Updated: `test/hardware/arduino_test_wrapper/arduino_test_wrapper.ino`
 - Updated: `test/hardware/README.md`
 
 ### Change Log
+
 - 2025-08-20: Story created; docs and wrapper updated to single-channel HIL.
 - 2025-08-20: Added RTU fallback mapping/unit details; marked plan update task for smoke pass.
