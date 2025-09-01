@@ -46,7 +46,7 @@ pio run --target upload
 ### Project Documentation
 - **[Detailed Project Requirements](docs/Requirements/project-requirements.md)** - Complete technical specifications
 - **[Architecture & Design Decisions](docs/Architecture/design-decisions.md)** - Hardware and software design rationale
-- **[Implementation Plan](docs/Planning/implementation-plan.md)** - Development phases and timeline
+- **[Implementation Plan](docs/planning/implementation-plan.md)** - Development phases and timeline
 
 ### Development Guides
 - **[Environment Setup](docs/Guides/environment-setup.md)** - Development environment configuration

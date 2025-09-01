@@ -2,7 +2,7 @@
 description: Standard for repositories to publish test and coverage results for the Functionality Reports Dashboard
 ---
 
-# Cannasol Functionality Reports — OfficialRepository Release Standard of Procedure Docuementation
+# Cannasol Functionality Reports — Official Repository Release Standard of Procedure Docuementation
 
 This document defines the required artifacts, formats, and process every repository must follow to publish acceptance results (and optional coverage and unit test summaries) consumable by the Functionality Reports Dashboard.  This document is meant to serve as the Overarching **SINGLE-SOURCE-OF-TRUTH** for all official company repositories.  This document dictates and mandates how the projects and repositories should structure their releases so that the functionality-reports user interface can accurately and effectively display the status of the current project.  The Definition of Done for a story should include that this Release Format Standard should be adhered to and a succesful pipeline release occurs with the implemented story.
 

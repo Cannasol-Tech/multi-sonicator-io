@@ -4,11 +4,11 @@
 
 ### 1. Project Name/Codename
 
-**Multi-Sonicator I/O Controller**
+Multi-Sonicator I/O Controller
 
 ### 2. Timeline
 
-**Target delivery date: July 2025**
+Target delivery date: July 2025
 
 ### 3. Budget
 

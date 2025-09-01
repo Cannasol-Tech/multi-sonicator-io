@@ -54,17 +54,21 @@ hardware-sandboxz:
 
 
 ## Testing Make Targets 
-test: 
-   # TODO: Run all of the tests for this project
+test-all: test-unit test-emulation
+	@echo "Running all tests..."
+
+ci-test: test-all
+	@echo "Running CI test suite..."
 
 test-unit: 
-   # TODO: Run all of the unit tests for this project
+	@echo "Running unit tests..."
+	pio test -e test_desktop
 
 test-emulation:
-   # TODO: Run all of the emulation tests for this project
-       # NOTE:  This should be the bdd tests that are written to te st the project requirements ( These are supposed to be able to be ran against the emulator or the device hardware )
+	@echo "Running emulation tests..."
+	behave test/acceptance -D profile=simulavr
 
-test-hardware:
-	# TODO: Run all of the hardware-in-the-loop tests for this project
-	#  NOTE:  This should be the bdd tests that are written to test the project requirements ( These are supposed to be able to be ran against the emulator or the device hardware )
+test-hil:
+	@echo "Running HIL tests..."
+	behave test/acceptance -D profile=hil
 

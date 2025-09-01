@@ -7,7 +7,7 @@
  * @details
  * Configuration constants and compile-time settings for the
  * Multi Sonicator I/O Controller (Model: CAN-SON-CTRL-4).
- * See docs/planning/pin-matrix.md for canonical pin assignments.
+ * See docs/planning/pin-matrix.md — SOLE SOURCE OF TRUTH for hardware pin assignments. This file mirrors the matrix; do not modify mappings here without updating the matrix first.
  */
 
 #ifndef CONFIG_H
@@ -15,35 +15,12 @@
 
 #include <Arduino.h>
 
+// ----------------------------------------------------------------------------
+// See docs/planning/pin-matrix.md — SOLE SOURCE OF TRUTH for hardware pin assignments. This file mirrors the matrix; do not modify mappings here without updating the matrix first.
 // -----------------------------------------------------------------------------
-// Backward-compatible aliases for unit tests targeting legacy pin names
-// Map legacy LED_* symbols to the single STATUS_LED_PIN
-// -----------------------------------------------------------------------------
-#ifndef LED_POWER_PIN
-#define LED_POWER_PIN        STATUS_LED_PIN
-#endif
-#ifndef LED_RUN_PIN
-#define LED_RUN_PIN          STATUS_LED_PIN
-#endif
-#ifndef LED_ERROR_PIN
-#define LED_ERROR_PIN        STATUS_LED_PIN
-#endif
-#ifndef LED_COMM_PIN
-#define LED_COMM_PIN         STATUS_LED_PIN
-#endif
 
-#ifndef LED_SONICATOR_1
-#define LED_SONICATOR_1      9
-#endif
-#ifndef LED_SONICATOR_2
-#define LED_SONICATOR_2      10
-#endif
-#ifndef LED_SONICATOR_3
-#define LED_SONICATOR_3      11
-#endif
-#ifndef LED_SONICATOR_4
-#define LED_SONICATOR_4      12
-#endif
+// Backward-compatible aliases for unit tests targeting legacy pin names
+
 
 #ifndef PWM_SONICATOR_1_PIN
 #define PWM_SONICATOR_1_PIN  PWM_AMPLITUDE_CONTROL_PIN
@@ -109,7 +86,7 @@
  * @defgroup SonicatorInterface Sonicator Interface Pin Mapping
  * @brief ATmega32A pin assignments for CT2000 sonicator control interfaces
  * @details Based on schematic design with 6N137 optocouplers and ULN2003A drivers.
- * See also: docs/planning/pin-matrix.md (source of truth) and PRD sections.
+ * See also: docs/planning/pin-matrix.md (SOLE SOURCE OF TRUTH) and PRD sections.
  * @{
  */
 
@@ -121,8 +98,8 @@
 #define SON1_OVERLOAD_PIN     20   ///< PD6 (Physical pin 20) - Input via 6N137
 #define SON1_FREQ_OUTPUT_PIN  4    ///< PB3 (Physical pin 4)  - FREQ ÷10 input
 #define SON1_FREQ_LOCK_PIN    8    ///< PB7 (Physical pin 8)  - Input via 6N137
-#define SON1_START_PIN        22   ///< PC0 (Physical pin 22) - Output via ULN2003A
-#define SON1_RESET_PIN        23   ///< PC1 (Physical pin 23) - Output via ULN2003A
+#define SON1_START_PIN        28   ///< PC6 (Physical pin 28) - Output via ULN2003A (aligned to pin-matrix)
+#define SON1_RESET_PIN        29   ///< PC7 (Physical pin 29) - Output via ULN2003A (aligned to pin-matrix)
 /** @} */
 
 /**
@@ -133,8 +110,8 @@
 #define SON2_OVERLOAD_PIN     19   ///< PD5 (Physical pin 19) - Input via 6N137
 #define SON2_FREQ_OUTPUT_PIN  3    ///< PB2 (Physical pin 3)  - FREQ ÷10 input
 #define SON2_FREQ_LOCK_PIN    7    ///< PB6 (Physical pin 7)  - Input via 6N137
-#define SON2_START_PIN        24   ///< PC2 (Physical pin 24) - Output via ULN2003A
-#define SON2_RESET_PIN        25   ///< PC3 (Physical pin 25) - Output via ULN2003A
+#define SON2_START_PIN        26   ///< PC4 (Physical pin 26) - Output via ULN2003A (aligned to pin-matrix)
+#define SON2_RESET_PIN        27   ///< PC5 (Physical pin 27) - Output via ULN2003A (aligned to pin-matrix)
 /** @} */
 
 /**
@@ -145,8 +122,8 @@
 #define SON3_OVERLOAD_PIN     18   ///< PD4 (Physical pin 18) - Input via 6N137
 #define SON3_FREQ_OUTPUT_PIN  2    ///< PB1 (Physical pin 2)  - FREQ ÷10 input
 #define SON3_FREQ_LOCK_PIN    6    ///< PB5 (Physical pin 6)  - Input via 6N137
-#define SON3_START_PIN        26   ///< PC4 (Physical pin 26) - Output via ULN2003A
-#define SON3_RESET_PIN        27   ///< PC5 (Physical pin 27) - Output via ULN2003A
+#define SON3_START_PIN        24   ///< PC2 (Physical pin 24) - Output via ULN2003A (aligned to pin-matrix)
+#define SON3_RESET_PIN        25   ///< PC3 (Physical pin 25) - Output via ULN2003A (aligned to pin-matrix)
 /** @} */
 
 /**
@@ -157,8 +134,8 @@
 #define SON4_OVERLOAD_PIN     17   ///< PD3 (Physical pin 17) - Input via 6N137
 #define SON4_FREQ_OUTPUT_PIN  1    ///< PB0 (Physical pin 1)  - FREQ ÷10 input
 #define SON4_FREQ_LOCK_PIN    5    ///< PB4 (Physical pin 5)  - Input via 6N137
-#define SON4_START_PIN        28   ///< PC6 (Physical pin 28) - Output via ULN2003A
-#define SON4_RESET_PIN        29   ///< PC7 (Physical pin 29) - Output via ULN2003A
+#define SON4_START_PIN        22   ///< PC0 (Physical pin 22) - Output via ULN2003A (aligned to pin-matrix)
+#define SON4_RESET_PIN        23   ///< PC1 (Physical pin 23) - Output via ULN2003A (aligned to pin-matrix)
 /** @} */
 
 /** @} */

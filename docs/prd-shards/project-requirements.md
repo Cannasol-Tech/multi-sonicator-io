@@ -190,29 +190,29 @@ struct CT2000Interface {
 ### ATmega32A Pin Allocation Diagram
 
 ```text
-                    ATmega32A-PU (DIP-40) Pin Assignment
-                         ┌─────────┐
-                    PB0──┤1    40├──PA0 (ADC0) - Reserved
-                    PB1──┤2    39├──PA1 (ADC1) - Reserved  
-                    PB2──┤3    38├──PA2 (ADC2) - Reserved
-                    PB3──┤4    37├──PA3 (ADC3) - Reserved
-             RESET──┤5    36├──PA4 (ADC4) - Sonicator 1 Power Monitor
-                   VCC──┤6    35├──PA5 (ADC5) - Sonicator 2 Power Monitor
-                   GND──┤7    34├──PA6 (ADC6) - Sonicator 3 Power Monitor
-                 XTAL2──┤8    33├──PA7 (ADC7) - Sonicator 4 Power Monitor
-                 XTAL1──┤9    32├──AREF
-         PWM Filter 1──┤10   31├──GND
-         PWM Filter 2──┤11   30├──AVCC
-           Son1_OverLD──┤12   29├──PC7 - Son4_FreqLock
-          Son1_FreqOut──┤13   28├──PC6 - Son4_OverLD  
-           Son1_FreqLk──┤14   27├──PC5 - Son3_FreqLock
-        Son1_StartCtrl──┤15   26├──PC4 - Son3_FreqOut
-          Son2_OverLD──┤16   25├──PC3 - Son3_OverLD
-         Son2_FreqOut──┤17   24├──PC2 - Son3_StartCtrl
-          Son2_FreqLk──┤18   23├──PC1 - PWM Filter 4
-       Son2_StartCtrl──┤19   22├──PC0 - PWM Filter 3
-              VCC──┤20   21├──GND
-                         └─────────┘
+ATmega32A-PU (DIP-40) Pin Assignment
+                          ┌───────────┐
+                     PB0──┤1        40├──PA0 (ADC0) - Reserved
+                     PB1──┤2        39├──PA1 (ADC1) - Reserved  
+                     PB2──┤3        38├──PA2 (ADC2) - Reserved
+                     PB3──┤4        37├──PA3 (ADC3) - Reserved
+                     PB4──┤5        36├──PA4 (ADC4) - Sonicator 1 Power Monitor
+                     PB5──┤6        35├──PA5 (ADC5) - Sonicator 2 Power Monitor
+                     PB6──┤7        34├──PA6 (ADC6) - Sonicator 3 Power Monitor
+                     PB7──┤8        33├──PA7 (ADC7) - Sonicator 4 Power Monitor
+                   XTAL1──┤9        32├──AREF
+                   XTAL2──┤10       31├──GND
+                     VCC──┤11       30├──AVCC
+                   RESET──┤12       29├──PC7 - Son4_ResetCtrl
+                     PD0──┤13       28├──PC6 - Son4_StartCtrl
+                     PD1──┤14       27├──PC5 - Son3_ResetCtrl
+                     PD2──┤15       26├──PC4 - Son3_StartCtrl
+                     PD3──┤16       25├──PC3 - Son3_OverloadInd
+                     PD4──┤17       24├──PC2 - Son3_FreqLock
+                     PD5──┤18       23├──PC1 - Son3_FreqOut
+                     PD6──┤19       22├──PC0 - Son3_OverloadInd
+                     PD7──┤20       21├──GND
+                          └───────────┘
 
 Pin Usage Summary:
 - UART (MODBUS): PD0 (RX), PD1 (TX) = 2 pins
@@ -224,11 +224,11 @@ Pin Usage Summary:
 - Built-in ADC: PA4-PA7 for power monitoring = 4 pins
 - TOTAL: 39 pins used out of 40 available (1 pin unused)
 
-Interface Pin Mapping:
-Son1: PD2(OverLD), PD3(FreqOut), PD4(FreqLk), PD5(Start), PB3(PWM), PA4(ADC)
-Son2: PD6(OverLD), PD7(FreqOut), PB0(FreqLk), PB1(Start), PD5(PWM), PA5(ADC)  
-Son3: PC3(OverLD), PC4(FreqOut), PC5(FreqLk), PC2(Start), PD6(PWM), PA6(ADC)
-Son4: PC6(OverLD), PB2(FreqOut), PC7(FreqLk), PB3(Start), PD7(PWM), PA7(ADC)
+Interface Pin Mapping (per docs/planning/pin-matrix.md SOLE SOURCE OF TRUTH):
+Son1: PD6(OverLD), PB3(FreqOut), PB7(FreqLk), PC6(Start), PC7(Reset), PA4(ADC), PD7(PWM-shared)
+Son2: PD5(OverLD), PB2(FreqOut), PB6(FreqLk), PC4(Start), PC5(Reset), PA5(ADC), PD7(PWM-shared)
+Son3: PD4(OverLD), PB1(FreqOut), PB5(FreqLk), PC2(Start), PC3(Reset), PA6(ADC), PD7(PWM-shared)
+Son4: PD3(OverLD), PB0(FreqOut), PB4(FreqLk), PC0(Start), PC1(Reset), PA7(ADC), PD7(PWM-shared)
 ```
 
 ```cpp

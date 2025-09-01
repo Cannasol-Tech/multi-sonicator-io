@@ -1,8 +1,8 @@
 # Pin Matrix — DUT ↔ Signals ↔ Wrapper/HIL
 
-Source of truth for pin assignments. Changes here must be reflected in `include/config.h` and the HIL wrapper under `test/hardware/arduino_test_wrapper/`.
+SOLE SOURCE OF TRUTH for hardware pin assignments. Changes here must be reflected in `include/config.h` and the HIL wrapper under `test/acceptance/sketches/arduino_test_wrapper/`.
 
-Status: DRAFT — Single-channel Uno R4 WiFi HIL harness prototype (untested). To be reviewed and signed off before firmware implementation (Gate for Plan Task #0)
+Status: FINAL — Sole Source of Truth confirmed by Product Owner (Approved). Single-channel Uno R4 WiFi HIL harness prototype is documented; wrapper mapping must mirror this matrix.
 
 ## Legend
 
@@ -75,8 +75,8 @@ Note: DB9-0 is the communications connector back to the main automation system (
 ## Actions on Approval
 
 - Update `include/config.h` to match matrix, with doxygen comments citing this file and PRD sections.
-- Update `test/hardware/arduino_test_wrapper/arduino_test_wrapper.ino` constants to match Wrapper Pins.
-- Update `test/hardware/README.md` harness diagram and mapping.
+- Update `test/acceptance/sketches/arduino_test_wrapper/arduino_test_wrapper.ino` constants to match Wrapper Pins.
+- Update `test/acceptance/README.md` harness diagram and mapping.
 
 ## References
 

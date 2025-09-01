@@ -49,7 +49,7 @@ HMI System (MODBUS Master)
 - PWM generation for amplitude control
 - UART communication handling
 - Timer management for precise timing
-- Status LED (PD2) driver for unified system indication per `docs/planning/pin-matrix.md` (`STATUS_LED_PIN`)
+- Status LED (PD2) driver for unified system indication per `docs/planning/pin-matrix.md` (SOLE SOURCE OF TRUTH) (`STATUS_LED_PIN`)
 
 ### 2. Communication Layer
 
@@ -104,7 +104,7 @@ HMI System (MODBUS Master)
 
 **Approach**: A lightweight cooperative scheduler built on a timer tick and a centralized dispatcher function named `taskLoop()`. This formalizes the common `millis()` pattern without introducing RTOS complexity.
 
-**Runs in ISRs (minimal work only)**
+### Runs in ISRs (minimal work only)
 
 - UART RX/TX: MODBUS bytes to/from ring buffers; no parsing in ISR.
 - Timer tick (e.g., 1 ms): increments system time; marks tasks due.
@@ -135,7 +135,7 @@ HMI System (MODBUS Master)
 
 ## Module Dependencies
 
-```
+```markdown
 ┌─────────────────────────┐
 │   Application Layer     │  ← Multi-unit orchestration, safety logic
 ├─────────────────────────┤
@@ -266,7 +266,7 @@ Host (Behave/pytest) ⇄ USB Serial ⇄ Arduino Wrapper (arduino_test_wrapper.in
                                         ATmega32A DUT (Sonicator Controller)
 ```
 
-**Pin mapping (conceptual; see `include/config.h` for authoritative pins)**
+**Pin mapping (conceptual; see `docs/planning/pin-matrix.md` as SOLE SOURCE OF TRUTH; `include/config.h` mirrors the matrix)**
 
 | Function | DUT Signal | Wrapper Role |
 |----------|------------|--------------|
