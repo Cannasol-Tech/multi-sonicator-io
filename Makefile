@@ -96,6 +96,14 @@ hardware-sandbox:
 
 
 ## Testing Make Targets - Aligned with Software Testing Standard
+
+# Complete test suite per software testing standard (Unit → Acceptance → Integration)
+test: test-unit test-acceptance test-integration
+	@echo "✅ Complete test suite executed per software testing standard"
+	@echo "   - Unit tests: Unity Test Framework with 90% coverage requirement"
+	@echo "   - Acceptance tests: BDD scenarios via Behave + pytest HIL framework"
+	@echo "   - Integration tests: HIL hardware validation"
+
 test-all: test-unit test-hil
 	@echo "Running all tests..."
 
@@ -111,7 +119,7 @@ ci-test: test-unit test-acceptance generate-release-artifacts
 test-unit:
 	@echo "Stage 1: Unit Testing (Unity Test Framework for embedded C/C++ with 90% coverage)..."
 	@echo "Running Unity tests via PlatformIO..."
-	pio test -e test_desktop
+	pio test -e native_test
 	@echo "✅ Unity unit tests completed"
 
 test-acceptance:
