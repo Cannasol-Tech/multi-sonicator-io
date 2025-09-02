@@ -24,31 +24,61 @@ upload:
 	# Upload Arduino Framework firmware to ATmega32A via Arduino as ISP
 	pio run -e atmega32a --target upload
 
-monitor-device: 
-	# TODO:  This make target should evoke a cli (python script) that monitors the serial output coming from the Arduino Test Wrapper / Harness	
+monitor-device:
+	# Monitor serial output from Arduino Test Harness
+	python3 scripts/hil_cli.py monitor
 
-upload-to-device: 
-   # TODO: Upload the ATMEGA32A Firmware to the device using the arduino as an ISP, This should first check to see if the Arduino as ISP script is running on the arduino and if it is - it should tell the user and ask if the user wants to continue to upload again or not 
+upload-to-device:
+	# Upload ATmega32A firmware using Arduino as ISP with safety checks
+	python3 scripts/hil_cli.py upload
 
-upload-harness: 
-	# TODO: This make target should upload the ardunio test harness to the Arduino that is connected to the computer acting as a middle man for the ATMEGA32A chip
+upload-harness:
+	# Upload Arduino Test Harness firmware to Arduino
+	cd test/acceptance/arduino_harness && pio run --target upload
+
+setup-arduino-isp:
+	# Setup Arduino as ISP (auto-upload ArduinoISP sketch if needed)
+	python3 scripts/setup_arduino_isp.py
+
+check-arduino-isp:
+	# Check if Arduino as ISP is ready (no upload)
+	python3 scripts/setup_arduino_isp.py --check-only
 
 hardware-sandbox:
-    # TODO:  This make target should evoke a cli (python script) that interacts with the user until they reach a point to being connected to the hardware in a "sandbox" mode 
-	    # - The sandbox mode should consist of the following: 
-		#     1. The user should be able to send commands to the Arduino Test Wrapper / Harness
-		# 	  2. The python cli should be in a continuous loop with the user able to send "monitor_on" or "monitor_off" commands 
-		#     3. The "monitor_on" and "monitor_off" commands should be able to turn on and off the monitoring of the AtMega32A chip .
-		#     4. When Monitoring is on - the python cli should automatically print the state of all of the monitored pins to the CLI every second 
-		#     5. The python cli should have a "quit" command that will exit the sandbox mode and return the user to the terminal 
-		#     6. The python cli should have a "help" command that will print the list of available commands to the user 
-		#     7. The python cli should have a "status" command that will print the current state of the monitored pins to the CLI 
-		#     8. The python cli should have a "set" command that will allow the user to set the state of the output pins on the AtMega32A chip 
-		#     9. The python cli should have a "reset" command that will reset the AtMega32A chip 
-		#    10. The python cli should have a "upload" command that will upload the ATMEGA32A firmware to the device or emulator 
-		#    11. The python cli should have a "build" command that will build the ATMEGA32A firmware for loading on the device or emulator 
-		#    12. The python cli should have a "clean" command that will clean the ATMEGA32A firmware build - This should wipe all previous builds and generated files so we ensure a clean new build 
-		#    13. When monitoring is turned off -- the CLI should notify the user and suggest turning it on every 15 seconds ( implemented with a count in the main infinite loop )
+	@echo "🔧 Setting up HIL Hardware Sandbox Environment..."
+	@echo "Step 1: Setting up Arduino as ISP (auto-upload if needed)..."
+	@python3 scripts/setup_arduino_isp.py || (echo "❌ Failed to setup Arduino as ISP" && exit 1)
+	@echo "✅ Arduino as ISP is ready"
+	
+	@echo "Step 2: Building latest ATmega32A firmware..."
+	@pio run -e atmega32a_arduino_isp || (echo "❌ Firmware build failed" && exit 1)
+	@echo "✅ ATmega32A firmware build successful"
+	
+	@echo "Step 3: Programming ATmega32A target via Arduino as ISP..."
+	@pio run -e atmega32a_arduino_isp -t upload || (echo "❌ ATmega32A programming failed" && exit 1)
+	@echo "✅ ATmega32A programmed successfully"
+	
+	@echo "Step 4: Switching from Arduino ISP to Test Harness..."
+	@echo "📋 Please perform the following hardware changes:"
+	@echo "   1. Remove the capacitor from Arduino RESET line"  
+	@echo "   2. Connect Arduino Test Harness to target"
+	@echo "   3. Ensure proper pin connections per docs/planning/pin-matrix.md"
+	@read -p "Press Enter when hardware setup is complete..." dummy
+	
+	@echo "Step 5: Uploading Arduino Test Harness firmware..."
+	@cd test/acceptance/arduino_harness && pio run --target upload || (echo "❌ Test harness upload failed" && exit 1)
+	@echo "✅ Arduino Test Harness uploaded successfully"
+	
+	@echo "Step 6: Waiting for Arduino Test Harness to initialize..."
+	@sleep 3
+	
+	@echo "Step 7: Launching HIL Sandbox CLI..."
+	@echo "🎯 HIL Hardware Sandbox is ready!"
+	@echo "   - ATmega32A programmed with latest firmware"
+	@echo "   - Arduino Test Harness loaded and ready"
+	@echo "   - HIL framework connected"
+	@echo ""
+	python3 test/acceptance/hil_framework/sandbox_cli.py
 
 
 ## Testing Make Targets - Aligned with Software Testing Standard
@@ -88,6 +118,47 @@ test-integration:
 		--junit-directory=integration-junit \
 		-D profile=integration \
 		--tags=integration
+
+# HIL Testing Targets
+test-acceptance: test-acceptance-hil
+
+test-acceptance-hil:
+	@echo "🧪 Running BDD acceptance tests with HIL hardware validation..."
+	@python3 scripts/detect_hardware.py --check-arduino || (echo "❌ Hardware required for HIL testing" && exit 1)
+	behave test/acceptance --junit --junit-directory=acceptance-junit --tags=hil -D profile=hil
+
+hil-setup:
+	@echo "🔧 Setting up HIL framework..."
+	cd test && python3 -m pip install -r ../requirements-testing.txt
+	python3 test/acceptance/hil_framework/hil_controller.py --setup
+
+hil-clean:
+	@echo "🧹 Cleaning HIL framework..."
+	python3 test/acceptance/hil_framework/hil_controller.py --cleanup
+
+hil-test-basic:
+	@echo "🔌 Running basic HIL connectivity tests..."
+	behave test/acceptance/features/hil_basic_connectivity.feature -D profile=hil
+
+hil-test-gpio:
+	@echo "🔧 Running HIL GPIO functionality tests..."
+	behave test/acceptance/features/hil_gpio_functionality.feature -D profile=hil
+
+hil-test-adc:
+	@echo "📊 Running HIL ADC verification tests..."
+	behave test/acceptance/features/hil_adc_verification.feature -D profile=hil
+
+hil-test-pwm:
+	@echo "📡 Running HIL PWM generation tests..."
+	behave test/acceptance/features/hil_pwm_generation.feature -D profile=hil
+
+hil-test-modbus:
+	@echo "🔗 Running HIL MODBUS communication tests..."
+	behave test/acceptance/features/hil_modbus_communication.feature -D profile=hil
+
+hil-test-power:
+	@echo "⚡ Running HIL power verification tests..."
+	behave test/acceptance/features/hil_power_verification.feature -D profile=hil
 
 generate-release-artifacts:
 	@echo "Generating release format compliant artifacts..."

@@ -11,17 +11,20 @@ So that **I can develop, test, and deploy ATmega32A firmware efficiently**.
 ## Epic Context
 
 **Epic 1: Foundational Control & Communication**
+
 - Goal: Establish core firmware structure, basic sonicator control, and MODBUS communication layer
 
 ## Story Context
 
 **Technology Stack:**
+
 - ATmega32A microcontroller @ 16MHz external crystal
-- Arduino Framework via PlatformIO 
+- Arduino Framework via PlatformIO
 - Unity Test Framework for unit testing
 - C/C++ for firmware implementation
 
 **Integration Points:**
+
 - PlatformIO build system
 - Arduino as ISP programming interface
 - CI/CD pipeline preparation

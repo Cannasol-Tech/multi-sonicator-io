@@ -1,0 +1,65 @@
+# HIL Framework Configuration
+# Hardware-in-the-Loop testing configuration for ATmega32A multi-sonicator project
+
+hardware:
+  target_mcu: ATmega32A
+  programmer: arduino_as_isp
+  programmer_port: /dev/ttyUSB0
+  target_serial_port: /dev/ttyUSB1
+  
+power_supply:
+  input_voltage: 24.0  # 24V input power
+  regulated_5v: 5.0    # 5V rail for logic
+  regulated_3v3: 3.3   # 3.3V rail if present
+  tolerance: 0.1       # ±0.1V tolerance
+  
+timing:
+  crystal_frequency: 16000000  # 16MHz external crystal
+  serial_baud_rate: 115200     # UART communication
+  
+modbus:
+  slave_id: 2          # MODBUS slave ID for testing
+  baud_rate: 115200    # MODBUS RTU baud rate
+  timeout: 1.0         # Response timeout in seconds
+  
+# Behave integration settings
+behave:
+  profile: hil
+  junit_output: true
+  junit_directory: acceptance-junit
+  hardware_required: true  # All tests require real hardware
+  
+# Test equipment configuration (optional)
+test_equipment:
+  oscilloscope_enabled: false
+  multimeter_enabled: false
+  logic_analyzer_enabled: false
+  
+# Pin mapping from pin matrix (Sonicator 4 - single channel HIL)
+pin_mapping:
+  # Sonicator 4 signals (per pin matrix)
+  FREQ_DIV10_4: D7     # Arduino pin D7 -> ATmega32A PB0
+  FREQ_LOCK_4: D8      # Arduino pin D8 -> ATmega32A PB4  
+  OVERLOAD_4: A2       # Arduino pin A2 -> ATmega32A PD3
+  START_4: A3          # Arduino pin A3 -> ATmega32A PC0
+  RESET_4: A4          # Arduino pin A4 -> ATmega32A PC1
+  POWER_SENSE_4: A1    # Arduino pin A1 -> ATmega32A PA7/A7
+  AMPLITUDE_ALL: D9    # Arduino pin D9 -> ATmega32A PD7 (PWM)
+  
+  # System/Communication pins
+  UART_RXD: D10        # Arduino pin D10 -> ATmega32A PD0 (drive to DUT RX)
+  UART_TXD: D11        # Arduino pin D11 -> ATmega32A PD1 (read from DUT TX)
+  STATUS_LED: D12      # Arduino pin D12 -> ATmega32A PD2
+  
+# Testing parameters
+testing:
+  power_measurement_scaling: 5.44  # mV/W scaling for power sense
+  voltage_tolerance: 0.2           # ±0.2V tolerance for voltage tests
+  timing_tolerance: 0.1            # ±10% tolerance for timing tests
+  adc_reference_voltage: 5.0       # 5V ADC reference
+  
+# Sandbox CLI settings  
+sandbox:
+  monitor_update_rate: 1.0         # Pin monitoring update rate (seconds)
+  suggestion_interval: 15.0        # Monitoring suggestion interval (seconds)
+  command_timeout: 30.0            # Default command timeout (seconds)
