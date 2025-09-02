@@ -7,12 +7,14 @@ Purpose: Drive inputs and observe outputs of the Multi‑Sonicator firmware via 
 ---
 
 ## 1. Transport
+
 - Physical: USB CDC ACM (Arduino‑class wrapper) at 115200‑8N1.
 - Encoding: ASCII command lines terminated with `\n`.
 - Responses: One line per request. Success starts with `OK`, errors start with `ERR`.
 - Timing: End‑to‑end reflection to firmware MODBUS registers ≤100 ms for state/measurements.
 
 ## 2. Command Summary
+
 - `PING` → `OK PONG`
 - `INFO` → `OK <wrapper_version> <build>`
 - `SET START <unit> <0|1>`
@@ -27,12 +29,15 @@ Purpose: Drive inputs and observe outputs of the Multi‑Sonicator firmware via 
 - `READ ANALOG AMP` → `OK AMP=<adc|percent>` (wrapper shall state units capability)
 
 Notes
+
 - Units are 1..4 (S1..S4). Values outside range => `ERR ARG`.
 - Frequencies in Hz (integer). Wrapper implements square‑wave sources per unit input.
 - Where hardware cannot implement a specific stimulus, respond `ERR UNSUPPORTED` and document.
 
 ## 3. Semantics & Mapping
+
 This protocol is for HIL only; firmware external interface remains MODBUS RTU. Mapping expectations used by tests:
+
 - Start/Stop: Firmware holding registers 40005–40008 (0/1). HIL `SET START` drives the equivalent external input path that results in the same register reflection within ≤100 ms.
 - Overload Reset: Firmware 40009–40012 pulse semantics. HIL `SET RESET` applies a reset stimulus; registers clear back to 0 within ≤100 ms.
 - Overload Indication: Status registers 40021–40024 bit1 must mirror HIL `SET OVL` within ≤100 ms.
@@ -42,6 +47,7 @@ This protocol is for HIL only; firmware external interface remains MODBUS RTU. M
 - System Summary: COUNT (40035) and MASK (40036) remain consistent with per‑unit running flags.
 
 ## 4. Errors
+
 - `ERR ARG` → invalid/missing arguments
 - `ERR RANGE` → out‑of‑range value
 - `ERR STATE` → operation not allowed in current state
@@ -49,6 +55,7 @@ This protocol is for HIL only; firmware external interface remains MODBUS RTU. M
 - `ERR HW` → hardware fault in wrapper
 
 ## 5. Examples
+
 ```
 > PING
 OK PONG
@@ -71,12 +78,14 @@ OK
 ```
 
 ## 6. Implementation Notes
+
 - Debounce: Wrapper should debounce GPIO actions to avoid unrealistic chatter.
 - Frequency Source: Use a timer to generate per‑unit square waves; document accuracy.
 - Analog Amplitude: If available, provide DAC/ADC loop to verify amplitude mapping; otherwise respond `ERR UNSUPPORTED`.
 - Logging: Wrapper should log last N commands and errors to assist in debugging.
 
 ## 7. Test Traceability
+
 - Behave HIL steps will call these commands and assert corresponding MODBUS register effects:
   - Start/Stop → 40005–40008 writes; 40021–40024 bit0 run flag
   - Overload/Reset → 40009–40012 pulses; 40021–40024 bit1
@@ -85,6 +94,7 @@ OK
   - Amplitude → 40001–40004 or common mapping per PRD
 
 ## 8. Open Points (to finalize)
+
 - Exact tolerance for frequency measurement and amplitude mapping per PRD/tech AC.
 - Whether amplitude is global or per‑unit in final design; update mapping accordingly.
 - Define analog units for `READ ANALOG AMP` (percent vs raw ADC) and calibration flow.

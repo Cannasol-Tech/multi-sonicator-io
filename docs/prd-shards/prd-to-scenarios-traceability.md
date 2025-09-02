@@ -5,10 +5,12 @@ Authoritative requirements sources: `docs/Requirements/project-requirements.md`,
 Implementation mirror: `include/config.h`
 
 Profiles:
+
 - @simulavr — emulator profile (Phase 1.3)
 - @hil — hardware-in-the-loop profile using `ArduinoISP/arduino_test_wrapper.ino`
 
 Tagging conventions:
+
 - Requirement tags: `@req-<short>` (e.g., `@req-amplitude`, `@req-overload`)
 - PRD reference tags: `@prd-<section>` (e.g., `@prd-5-functional`, `@prd-10-api`)
 - Register tags: `@reg-40001` … `@reg-40036`

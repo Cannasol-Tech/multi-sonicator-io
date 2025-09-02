@@ -126,7 +126,7 @@ def upload_hil_wrapper(arduino_port: str) -> None:
     """Upload HIL wrapper sketch to Arduino."""
     print("Uploading HIL wrapper sketch to Arduino...")
     
-    wrapper_dir = Path("test/hardware/arduino_test_wrapper")
+    wrapper_dir = Path("test/acceptance/sketches/arduino_test_wrapper")
     if not wrapper_dir.exists():
         print(f"ERROR: HIL wrapper directory not found: {wrapper_dir}")
         sys.exit(1)

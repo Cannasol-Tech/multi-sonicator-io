@@ -7,7 +7,7 @@
  *  - Validates MODBUS contract semantics end-to-end via GPIO/ADC interactions and timing assertions.
  *
  * Location:
- *  - test/hardware/arduino_test_wrapper/arduino_test_wrapper.ino
+ *  - test/acceptance/sketches/arduino_test_wrapper/arduino_test_wrapper.ino
  *
  * Protocol (draft):
  *  - Commands are ASCII lines ending with \n. Responses are lines prefixed with "OK " or "ERR ".
@@ -31,7 +31,7 @@
 #include <Arduino.h>
 
 // Pin mappings from host Arduino to DUT harness headers.
-// Uno R4 WiFi single-channel harness (S4 ONLY). See docs/planning/pin-matrix.md.
+// Uno R4 WiFi single-channel harness (S4 ONLY). See docs/planning/pin-matrix.md (SOLE SOURCE OF TRUTH).
 // This matches the sonicator-harness.ino implementation - only S4 is physically connected.
 
 struct SonPins {
@@ -41,16 +41,18 @@ struct SonPins {
   uint8_t START_OUT;     // Reads DUT start (if observed) or drives if simulating external
   uint8_t RESET_OUT;     // Reads DUT reset (if observed) or drives if simulating external
   uint8_t POWER_ADC;     // Reads analog proxy for power sense if loopbacked
+  uint8_t AMPLITUDE_PWM; // PWM output for amplitude control (shared across all sonicators)
 };
 
-// Single channel (S4) mapping per pin-matrix - matches sonicator-harness.ino
+// Single channel (S4) mapping per pin-matrix SOLE SOURCE OF TRUTH
 static SonPins S4_PINS = {
-  /* OVERLOAD_IN */   A2,  // OVERLOAD_4 (Harness -> DUT)
-  /* FREQ_DIV10_IN */ 7,   // FREQ_DIV10_4 (Harness -> DUT)
-  /* FREQ_LOCK_IN */  8,   // FREQ_LOCK_4 (Harness -> DUT)
-  /* START_OUT */     A3,  // START_4 (DUT -> Harness)
-  /* RESET_OUT */     A4,  // RESET_4 (DUT -> Harness)
-  /* POWER_ADC */     A1   // POWER_SENSE_4 (analog)
+  /* OVERLOAD_IN */   A2,  // OVERLOAD_4 (Harness -> DUT PD3 Pin 17)
+  /* FREQ_DIV10_IN */ 7,   // FREQ_DIV10_4 (Harness -> DUT PB0 Pin 1) - D7 per pin-matrix
+  /* FREQ_LOCK_IN */  8,   // FREQ_LOCK_4 (Harness -> DUT PB4 Pin 5) - D8 per pin-matrix
+  /* START_OUT */     A3,  // START_4 (DUT PC0 Pin 22 -> Harness) - A3 per pin-matrix
+  /* RESET_OUT */     A4,  // RESET_4 (DUT PC1 Pin 23 -> Harness) - A4 per pin-matrix
+  /* POWER_ADC */     A1,  // POWER_SENSE_4 (DUT PA7 Pin 33 analog) - A1 per pin-matrix
+  /* AMPLITUDE_PWM */ 9    // AMPLITUDE_ALL (Harness -> DUT PD7 Pin 21) - D9 PWM per pin-matrix
 };
 
 // Shared amplitude line to DUT AMP_C (PD7) - matches sonicator-harness.ino

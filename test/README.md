@@ -12,7 +12,7 @@ The project implements a three-tier testing strategy:
 
 ## Directory Structure
 
-```
+```markdown
 test/
 ├── README.md              # This file
 ├── test_main.cpp          # Unity test runner

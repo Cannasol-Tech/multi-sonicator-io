@@ -78,7 +78,7 @@ The following files are permitted in the root directory:
 All Axovia Flow projects must follow this structure:
 
 ```markdown
-axovia-flow-project/
+<ROOT_DIR>/
 ├── .gitignore          # ✓ ALLOWED
 ├── .gitmodules         # ✓ ALLOWED
 ├── .npmignore          # ✓ ALLOWED

@@ -37,6 +37,7 @@ Version every artifact with a `version` field. Use ISO-8601 timestamps. Enums ar
 ### 4.1 executive-report.json (required)
 
 Minimal shape:
+
 ```json
 {
   "version": "1.0.0",
@@ -68,6 +69,7 @@ Minimal shape:
 ```
 
 Field definitions:
+
 - __version__: Schema version string (e.g., `1.0.0`).
 - __owner__, __repo__: GitHub owner/name.
 - __releaseTag__: Release tag (e.g., `v1.2.3`).
@@ -141,7 +143,6 @@ Field definitions:
 
 ### 5.1 Example GitHub Actions Snippet (bash pseudo-steps)
 
-
 ```yaml
 name: Publish Executive Reports
 on:
@@ -204,7 +205,6 @@ jobs:
 Note:
 
 - On pull requests, prefer uploading JSON files as workflow run artifacts instead of publishing a full release. Reserve release publication for tag pushes (versions) and optionally for merges to `main` that you want to snapshot.
-
 
 ## 6. Validation and Quality Gates
 
