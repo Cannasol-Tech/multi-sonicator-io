@@ -1,5 +1,6 @@
 <!-- DO NOT EDIT: This file is auto-synced from docs/standards/sw-testing-standard.md. Edit the SoT instead. -->
 # Software Testing Official Organization-Wide Standards of Procedures
+>
 > **Note:** This document is the authoritative testing framework for all Axovia Flow Projects
 
 ## Purpose
@@ -13,25 +14,26 @@ This document defines the company's software testing standards, ensuring consist
 ### Three-Stage Testing Approach
 
 1. **Unit Testing**
+
 > **Note:** Mocks are reserved for unit testing only, unless absolutely necessary and explicitly approved by the repository owner.
 
-   * **Preferred Language & Framework by Project Type**:
-     * **Software Projects**: Python (pytest) or Typescript (Jest, Mocha, etc.)
-     * **Embedded/Hardware Projects**: C/C++ (Unity Test Framework)
-     * **Mixed Projects**: Unity for embedded components, pytest for Python components
-   
-   * **Framework Selection**:
-     * **pytest** → Python-based projects and services
-     * **Jest/Mocha** → TypeScript/JavaScript frontend and backend
-     * **Unity** → Embedded C/C++ firmware and hardware projects
-   
-   * **Preferred Location**: `test/unit`
-     * **Note:** If there is a problem with the locations, language, or frameworks, please open an issue in the repository to raise the concern. DO NOT implement any other unit testing framework or language without approval.
-     
-   * **Coverage Requirement:** Minimum **90% coverage**.
-   * **Focus:** Validate individual functions, modules, and components in isolation.
-   * **Method:** Automated unit test frameworks with mocking/stubbing where necessary.
-      * **Integration:** Use `test-levels-framework.md` for detailed decision criteria and examples.
+* **Preferred Language & Framework by Project Type**:
+  * **Software Projects**: Python (pytest) or Typescript (Jest, Mocha, etc.)
+  * **Embedded/Hardware Projects**: C/C++ (Unity Test Framework)
+  * **Mixed Projects**: Unity for embedded components, pytest for Python components
+
+* **Framework Selection**:
+  * **pytest** → Python-based projects and services
+  * **Jest/Mocha** → TypeScript/JavaScript frontend and backend
+  * **Unity** → Embedded C/C++ firmware and hardware projects
+
+* **Preferred Location**: `test/unit`
+  * **Note:** If there is a problem with the locations, language, or frameworks, please open an issue in the repository to raise the concern. DO NOT implement any other unit testing framework or language without approval.
+
+* **Coverage Requirement:** Minimum **90% coverage**.
+* **Focus:** Validate individual functions, modules, and components in isolation.
+* **Method:** Automated unit test frameworks with mocking/stubbing where necessary.
+  * **Integration:** Use `test-levels-framework.md` for detailed decision criteria and examples.
 
 ---
 
@@ -229,10 +231,8 @@ graph TD
     style I fill:#E6E6FA
 ```
 
-
 ---
 
 ✅ **This three-stage standard (Unit → Acceptance → Integration) is the authoritative testing framework for all BMad-Core projects.**
-
 
 <!-- CONDITIONAL TEST MARKER -->

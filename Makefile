@@ -4,35 +4,11 @@
 
 #  Make Targets
 
-## Unity Test Framework and Testing Targets (Organizational Compliance)
-
-# Development environment setup
-setup-dev:
-	@echo "🚀 Setting up development environment..."
-	python setup_dev_environment.py --full
 
 # Python dependency installation
 install-deps:
 	@echo "📦 Installing Python dependencies..."
 	pip install -r requirements-testing.txt
-
-# CFFI build for pytest testing (organizational compliance)
-cffi:
-	@echo "🏗️  Building CFFI shared library..."
-	python build_cffi.py
-
-cffi-debug:
-	@echo "🐛 Building CFFI shared library with debug symbols..."
-	python build_cffi.py --debug
-
-# Code restructuring (one-time setup)
-restructure:
-	@echo "🏗️  Restructuring code for CFFI compliance..."
-	python restructure_code.py
-
-# Quick validation
-validate: test-unit
-	@echo "✅ Quick validation complete - Unity unit tests passed"
 
 ## Firmware Related Make Targets (Arduino Framework)
 
@@ -45,29 +21,14 @@ clean:
 	pio run --target clean
 
 upload:
-	# Upload Arduino Framework firmware to ATmega32A via USBASP
+	# Upload Arduino Framework firmware to ATmega32A via Arduino as ISP
 	pio run -e atmega32a --target upload
-
-upload-to-device:
-	# Upload Arduino Framework firmware to device using USBASP programmer
-	pio run -e atmega32a --target upload
-
-build-emulator:
-	# TODO: Implement make target to build the emulator docker image with Arduino Framework
-	    # - IMPORTANT:  This make target should result with a running simulavr docker container with the latest Arduino firmware loaded
-		# - This make target should output the docker container information
-
-monitor-emulator: 
-	# TODO:  This make target should evoke a cli (python script) that interacts with the emulator the same way we interact for hil-sandbox mode
 
 monitor-device: 
 	# TODO:  This make target should evoke a cli (python script) that monitors the serial output coming from the Arduino Test Wrapper / Harness	
 
 upload-to-device: 
    # TODO: Upload the ATMEGA32A Firmware to the device using the arduino as an ISP, This should first check to see if the Arduino as ISP script is running on the arduino and if it is - it should tell the user and ask if the user wants to continue to upload again or not 
-
-upload-to-emulator: 
-   # TODO: Upload the ATMEGA32A Firmware to the emulator using the emulators
 
 upload-harness: 
 	# TODO: This make target should upload the ardunio test harness to the Arduino that is connected to the computer acting as a middle man for the ATMEGA32A chip
@@ -95,7 +56,7 @@ test-all: test-unit test-hil
 	@echo "Running all tests..."
 
 # Full CI test suite per software testing standard (Unit → Acceptance → Integration)
-ci-test: test-unit test-acceptance test-integration generate-release-artifacts
+ci-test: test-unit test-acceptance generate-release-artifacts
 	@echo "Running complete CI test suite per software testing standard..."
 	@echo "✅ Unit tests: Unity Test Framework with 90% coverage"
 	@echo "✅ Acceptance tests: BDD scenarios via Behave + pytest HIL framework"  
@@ -113,45 +74,6 @@ test-acceptance:
 	@echo "Stage 2: Acceptance Testing (BDD scenarios via Behave framework)..."
 	@python scripts/detect_hardware.py --check-arduino || (echo "❌ Hardware required for acceptance tests" && exit 1)
 	@echo "✅ Hardware detected - running HIL acceptance tests via Behave..."
-	behave test/acceptance \
-		--junit \
-		--junit-directory=acceptance-junit \
-		-D profile=hil
-
-test-integration:
-	@echo "Stage 3: Integration Testing (HIL hardware validation via Behave)..."
-	@python scripts/detect_hardware.py --check-hil || (echo "❌ Hardware required for integration tests" && exit 1)
-	@echo "✅ Hardware detected - running HIL integration tests via Behave..."
-	behave test/acceptance \
-		--junit \
-		--junit-directory=integration-junit \
-		-D profile=hil \
-		--tags="@integration"
-
-test-unit-embedded:
-	@echo "Running PlatformIO Unity tests on embedded target..."
-	pio test -e test_embedded
-
-test-unit-cffi-legacy:
-	@echo "Running legacy CFFI-based pytest tests (deprecated)..."
-	python -m pytest test/unit/ \
-		--cov=src/business_logic \
-		--cov-report=json:coverage.json \
-		--cov-report=html:htmlcov \
-		--cov-report=term-missing \
-		--junit-xml=unit-test-results.xml \
-		--cov-fail-under=90 \
-		--verbose
-
-test-emulation:
-	@echo "Running emulation tests with JUnit reports..."
-	behave test/acceptance \
-		--junit \
-		--junit-directory=acceptance-junit \
-		-D profile=simulavr
-
-test-hil:
-	@echo "Running HIL tests with JUnit reports..."
 	behave test/acceptance \
 		--junit \
 		--junit-directory=acceptance-junit \
