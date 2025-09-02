@@ -1,0 +1,350 @@
+/**
+ * @file test_hal_adc.cpp
+ * @brief Unit tests for ADC Hardware Abstraction Layer
+ * @author Cannasol Technologies
+ * @date 2025-09-02
+ * @version 1.0.0
+ */
+
+#include <unity.h>
+#include "../../src/modules/hal/adc.h"
+#include "../../include/config.h"
+
+// Test environment setup
+void setUp(void) {
+    // Initialize ADC before each test
+    adc_init();
+}
+
+void tearDown(void) {
+    // Clean up after each test
+    // Nothing specific needed for ADC
+}
+
+// ============================================================================
+// INITIALIZATION TESTS
+// ============================================================================
+
+void test_adc_init_success(void) {
+    adc_result_t result = adc_init();
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+}
+
+void test_adc_set_reference_valid(void) {
+    adc_result_t result = adc_set_reference(ADC_REF_VCC);
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+    
+    result = adc_set_reference(ADC_REF_INTERNAL);
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+    
+    result = adc_set_reference(ADC_REF_EXTERNAL);
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+}
+
+void test_adc_set_reference_invalid(void) {
+    adc_result_t result = adc_set_reference((adc_reference_t)99);
+    TEST_ASSERT_EQUAL(ADC_ERROR_INVALID_REF, result);
+}
+
+void test_adc_set_prescaler_valid(void) {
+    adc_result_t result = adc_set_prescaler(ADC_PRESCALER_128);
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+    
+    result = adc_set_prescaler(ADC_PRESCALER_64);
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+}
+
+void test_adc_set_prescaler_invalid(void) {
+    adc_result_t result = adc_set_prescaler((adc_prescaler_t)99);
+    TEST_ASSERT_EQUAL(ADC_ERROR_INVALID_REF, result);
+}
+
+// ============================================================================
+// CHANNEL READING TESTS
+// ============================================================================
+
+void test_adc_read_channel_valid(void) {
+    uint16_t value;
+    
+    // Test all valid channels
+    for (adc_channel_t channel = ADC_CHANNEL_0; channel < ADC_CHANNEL_MAX; channel = (adc_channel_t)(channel + 1)) {
+        adc_result_t result = adc_read_channel(channel, &value);
+        TEST_ASSERT_EQUAL(ADC_OK, result);
+        TEST_ASSERT_TRUE(value <= ADC_MAX_VALUE);
+    }
+}
+
+void test_adc_read_channel_invalid_channel(void) {
+    uint16_t value;
+    adc_result_t result = adc_read_channel(ADC_CHANNEL_MAX, &value);
+    TEST_ASSERT_EQUAL(ADC_ERROR_INVALID_CHANNEL, result);
+}
+
+void test_adc_read_channel_null_pointer(void) {
+    adc_result_t result = adc_read_channel(ADC_CHANNEL_0, nullptr);
+    TEST_ASSERT_EQUAL(ADC_ERROR_INVALID_CHANNEL, result);
+}
+
+void test_adc_start_conversion_valid(void) {
+    adc_result_t result = adc_start_conversion(ADC_CHANNEL_0);
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+}
+
+void test_adc_start_conversion_invalid(void) {
+    adc_result_t result = adc_start_conversion(ADC_CHANNEL_MAX);
+    TEST_ASSERT_EQUAL(ADC_ERROR_INVALID_CHANNEL, result);
+}
+
+void test_adc_conversion_complete(void) {
+    // Start a conversion
+    adc_start_conversion(ADC_CHANNEL_0);
+    
+    bool complete;
+    adc_result_t result = adc_conversion_complete(&complete);
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+    
+    // Wait for completion
+    while (!complete) {
+        adc_conversion_complete(&complete);
+    }
+    
+    // Get result
+    uint16_t value;
+    result = adc_get_result(&value);
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+    TEST_ASSERT_TRUE(value <= ADC_MAX_VALUE);
+}
+
+void test_adc_conversion_complete_null_pointer(void) {
+    adc_result_t result = adc_conversion_complete(nullptr);
+    TEST_ASSERT_EQUAL(ADC_ERROR_INVALID_CHANNEL, result);
+}
+
+// ============================================================================
+// CONVERSION TESTS
+// ============================================================================
+
+void test_adc_to_voltage_valid(void) {
+    float voltage;
+    
+    // Test minimum value
+    adc_result_t result = adc_to_voltage(0, &voltage);
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+    TEST_ASSERT_FLOAT_WITHIN(0.01f, 0.0f, voltage);
+    
+    // Test maximum value
+    result = adc_to_voltage(ADC_MAX_VALUE, &voltage);
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+    TEST_ASSERT_FLOAT_WITHIN(0.1f, ADC_REFERENCE_VOLTAGE, voltage);
+    
+    // Test mid-scale value
+    result = adc_to_voltage(ADC_MAX_VALUE / 2, &voltage);
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+    TEST_ASSERT_FLOAT_WITHIN(0.1f, ADC_REFERENCE_VOLTAGE / 2, voltage);
+}
+
+void test_adc_to_voltage_null_pointer(void) {
+    adc_result_t result = adc_to_voltage(512, nullptr);
+    TEST_ASSERT_EQUAL(ADC_ERROR_INVALID_CHANNEL, result);
+}
+
+void test_adc_to_power_valid(void) {
+    float power_watts;
+    
+    // Test zero power
+    adc_result_t result = adc_to_power(0, &power_watts);
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+    TEST_ASSERT_FLOAT_WITHIN(1.0f, 0.0f, power_watts);
+    
+    // Test known value (approximate)
+    result = adc_to_power(500, &power_watts);
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+    TEST_ASSERT_TRUE(power_watts >= 0.0f);
+    TEST_ASSERT_TRUE(power_watts <= ADC_POWER_MAX_WATTS);
+}
+
+void test_adc_to_power_null_pointer(void) {
+    adc_result_t result = adc_to_power(512, nullptr);
+    TEST_ASSERT_EQUAL(ADC_ERROR_INVALID_CHANNEL, result);
+}
+
+void test_adc_to_frequency_valid(void) {
+    float frequency_hz;
+    
+    // Test zero frequency
+    adc_result_t result = adc_to_frequency(0, &frequency_hz);
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+    TEST_ASSERT_FLOAT_WITHIN(1.0f, 0.0f, frequency_hz);
+    
+    // Test mid-scale frequency
+    result = adc_to_frequency(ADC_MAX_VALUE / 2, &frequency_hz);
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+    TEST_ASSERT_TRUE(frequency_hz >= 0.0f);
+    TEST_ASSERT_TRUE(frequency_hz <= 5000.0f); // Maximum expected frequency
+}
+
+void test_adc_to_frequency_null_pointer(void) {
+    adc_result_t result = adc_to_frequency(512, nullptr);
+    TEST_ASSERT_EQUAL(ADC_ERROR_INVALID_CHANNEL, result);
+}
+
+// ============================================================================
+// SONICATOR POWER MONITORING TESTS
+// ============================================================================
+
+void test_adc_read_sonicator_power_valid(void) {
+    float power_watts;
+    
+    // Test all sonicators
+    for (uint8_t i = 1; i <= MAX_SONICATORS; i++) {
+        adc_result_t result = adc_read_sonicator_power(i, &power_watts);
+        TEST_ASSERT_EQUAL(ADC_OK, result);
+        TEST_ASSERT_TRUE(power_watts >= 0.0f);
+        TEST_ASSERT_TRUE(power_watts <= ADC_POWER_MAX_WATTS);
+    }
+}
+
+void test_adc_read_sonicator_power_invalid(void) {
+    float power_watts;
+    
+    adc_result_t result = adc_read_sonicator_power(0, &power_watts);
+    TEST_ASSERT_EQUAL(ADC_ERROR_INVALID_CHANNEL, result);
+    
+    result = adc_read_sonicator_power(MAX_SONICATORS + 1, &power_watts);
+    TEST_ASSERT_EQUAL(ADC_ERROR_INVALID_CHANNEL, result);
+}
+
+void test_adc_read_sonicator_power_null_pointer(void) {
+    adc_result_t result = adc_read_sonicator_power(1, nullptr);
+    TEST_ASSERT_EQUAL(ADC_ERROR_INVALID_CHANNEL, result);
+}
+
+void test_adc_read_all_power(void) {
+    float power_array[4];
+    
+    adc_result_t result = adc_read_all_power(power_array);
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+    
+    // Verify all readings are valid
+    for (uint8_t i = 0; i < 4; i++) {
+        TEST_ASSERT_TRUE(power_array[i] >= 0.0f);
+        TEST_ASSERT_TRUE(power_array[i] <= ADC_POWER_MAX_WATTS);
+    }
+}
+
+void test_adc_read_all_power_null_pointer(void) {
+    adc_result_t result = adc_read_all_power(nullptr);
+    TEST_ASSERT_EQUAL(ADC_ERROR_INVALID_CHANNEL, result);
+}
+
+void test_adc_read_frequency(void) {
+    float frequency_hz;
+    
+    adc_result_t result = adc_read_frequency(&frequency_hz);
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+    TEST_ASSERT_TRUE(frequency_hz >= 0.0f);
+}
+
+void test_adc_read_frequency_null_pointer(void) {
+    adc_result_t result = adc_read_frequency(nullptr);
+    TEST_ASSERT_EQUAL(ADC_ERROR_INVALID_CHANNEL, result);
+}
+
+// ============================================================================
+// CALIBRATION TESTS
+// ============================================================================
+
+void test_adc_calibrate_valid(void) {
+    adc_result_t result = adc_calibrate(5.0f); // 5V reference
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+}
+
+void test_adc_calibrate_invalid(void) {
+    adc_result_t result = adc_calibrate(0.0f); // Invalid reference
+    TEST_ASSERT_EQUAL(ADC_ERROR_INVALID_REF, result);
+    
+    result = adc_calibrate(-1.0f); // Negative reference
+    TEST_ASSERT_EQUAL(ADC_ERROR_INVALID_REF, result);
+}
+
+// ============================================================================
+// SCALING AND CONSTANTS TESTS
+// ============================================================================
+
+void test_adc_constants_valid(void) {
+    // Test that ADC constants are within expected ranges
+    TEST_ASSERT_TRUE(ADC_RESOLUTION_BITS == 10);
+    TEST_ASSERT_TRUE(ADC_MAX_VALUE == 1023);
+    TEST_ASSERT_FLOAT_WITHIN(0.1f, 5.0f, ADC_REFERENCE_VOLTAGE);
+    TEST_ASSERT_FLOAT_WITHIN(0.1f, 5.44f, ADC_POWER_SCALING_MV_PER_W);
+    TEST_ASSERT_TRUE(ADC_POWER_MAX_WATTS == 2000);
+    TEST_ASSERT_TRUE(ADC_FREQ_SCALE_HZ_PER_V == 500);
+}
+
+void test_adc_power_scaling_accuracy(void) {
+    // Test power scaling calculation accuracy
+    float power_watts;
+    
+    // Test known ADC value that should give specific power
+    // For 1000W: 1000W * 5.44mV/W = 5.44V actual
+    // After divider: 5.44V / 2 = 2.72V at ADC
+    // ADC count: 2.72V / 5V * 1023 = ~557 counts
+    uint16_t test_adc_value = 557;
+    
+    adc_result_t result = adc_to_power(test_adc_value, &power_watts);
+    TEST_ASSERT_EQUAL(ADC_OK, result);
+    
+    // Should be approximately 1000W (within 10% tolerance)
+    TEST_ASSERT_FLOAT_WITHIN(100.0f, 1000.0f, power_watts);
+}
+
+// ============================================================================
+// TEST RUNNER
+// ============================================================================
+
+int main(void) {
+    UNITY_BEGIN();
+    
+    // Initialization tests
+    RUN_TEST(test_adc_init_success);
+    RUN_TEST(test_adc_set_reference_valid);
+    RUN_TEST(test_adc_set_reference_invalid);
+    RUN_TEST(test_adc_set_prescaler_valid);
+    RUN_TEST(test_adc_set_prescaler_invalid);
+    
+    // Channel reading tests
+    RUN_TEST(test_adc_read_channel_valid);
+    RUN_TEST(test_adc_read_channel_invalid_channel);
+    RUN_TEST(test_adc_read_channel_null_pointer);
+    RUN_TEST(test_adc_start_conversion_valid);
+    RUN_TEST(test_adc_start_conversion_invalid);
+    RUN_TEST(test_adc_conversion_complete);
+    RUN_TEST(test_adc_conversion_complete_null_pointer);
+    
+    // Conversion tests
+    RUN_TEST(test_adc_to_voltage_valid);
+    RUN_TEST(test_adc_to_voltage_null_pointer);
+    RUN_TEST(test_adc_to_power_valid);
+    RUN_TEST(test_adc_to_power_null_pointer);
+    RUN_TEST(test_adc_to_frequency_valid);
+    RUN_TEST(test_adc_to_frequency_null_pointer);
+    
+    // Sonicator power monitoring tests
+    RUN_TEST(test_adc_read_sonicator_power_valid);
+    RUN_TEST(test_adc_read_sonicator_power_invalid);
+    RUN_TEST(test_adc_read_sonicator_power_null_pointer);
+    RUN_TEST(test_adc_read_all_power);
+    RUN_TEST(test_adc_read_all_power_null_pointer);
+    RUN_TEST(test_adc_read_frequency);
+    RUN_TEST(test_adc_read_frequency_null_pointer);
+    
+    // Calibration tests
+    RUN_TEST(test_adc_calibrate_valid);
+    RUN_TEST(test_adc_calibrate_invalid);
+    
+    // Scaling and constants tests
+    RUN_TEST(test_adc_constants_valid);
+    RUN_TEST(test_adc_power_scaling_accuracy);
+    
+    return UNITY_END();
+}

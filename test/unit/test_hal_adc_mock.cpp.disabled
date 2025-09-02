@@ -1,0 +1,402 @@
+/**
+ * @file test_hal_adc.cpp
+ * @brief Unit tests for HAL ADC module
+ * @author Cannasol Technologies
+ * @date 2025-09-02
+ * @version 1.0.0
+ * 
+ * Following unity-testing-guide.md patterns for comprehensive ADC testing
+ * with mock objects and proper test organization.
+ */
+
+#include <unity.h>
+
+#ifdef NATIVE_TEST
+#include "../../../src/modules/hal/hal_mock_factory.h"
+#else
+#include "hal_mock_factory.h"
+#endif
+
+// ============================================================================
+// TEST FIXTURES
+// ============================================================================
+
+static MockHalFactory* mock_factory;
+static MockAdcReader* mock_adc;
+
+void setUp(void) {
+    mock_factory = new MockHalFactory();
+    mock_adc = mock_factory->getMockAdc();
+    mock_adc->reset();
+}
+
+void tearDown(void) {
+    delete mock_factory;
+    mock_factory = nullptr;
+    mock_adc = nullptr;
+}
+
+// ============================================================================
+// CORE ADC FUNCTION TESTS
+// ============================================================================
+
+void test_HalAdc_Init_Success_ReturnsTrue() {
+    // Arrange & Act
+    bool result = mock_adc->init();
+    
+    // Assert
+    TEST_ASSERT_TRUE(result);
+    TEST_ASSERT_TRUE(mock_adc->isInitialized());
+}
+
+void test_HalAdc_ReadChannel_ValidChannel_ReturnsSetValue() {
+    // Arrange
+    mock_adc->init();
+    uint8_t channel = 4;
+    uint16_t expected_value = 512;
+    uint16_t actual_value;
+    mock_adc->setChannelValue(channel, expected_value);
+    
+    // Act
+    bool result = mock_adc->readChannel(channel, &actual_value);
+    
+    // Assert
+    TEST_ASSERT_TRUE(result);
+    TEST_ASSERT_EQUAL_UINT16(expected_value, actual_value);
+}
+
+void test_HalAdc_ReadChannel_NotInitialized_ReturnsFalse() {
+    // Arrange
+    uint8_t channel = 4;
+    uint16_t value;
+    
+    // Act
+    bool result = mock_adc->readChannel(channel, &value);
+    
+    // Assert
+    TEST_ASSERT_FALSE(result);
+}
+
+void test_HalAdc_ReadChannel_NullPointer_ReturnsFalse() {
+    // Arrange
+    mock_adc->init();
+    uint8_t channel = 4;
+    
+    // Act
+    bool result = mock_adc->readChannel(channel, nullptr);
+    
+    // Assert
+    TEST_ASSERT_FALSE(result);
+}
+
+void test_HalAdc_StartConversion_ValidChannel_ReturnsTrue() {
+    // Arrange
+    mock_adc->init();
+    uint8_t channel = 5;
+    
+    // Act
+    bool result = mock_adc->startConversion(channel);
+    
+    // Assert
+    TEST_ASSERT_TRUE(result);
+}
+
+void test_HalAdc_IsConversionComplete_Initialized_ReturnsTrue() {
+    // Arrange
+    mock_adc->init();
+    
+    // Act
+    bool result = mock_adc->isConversionComplete();
+    
+    // Assert
+    TEST_ASSERT_TRUE(result);
+}
+
+void test_HalAdc_RawToVoltage_MidScale_ReturnsCorrectVoltage() {
+    // Arrange
+    uint16_t raw_value = 512; // Mid-scale for 10-bit ADC
+    float expected_voltage = 2.5f; // 5V * 512/1023
+    
+    // Act
+    float result = mock_adc->rawToVoltage(raw_value);
+    
+    // Assert
+    TEST_ASSERT_FLOAT_WITHIN(0.01f, expected_voltage, result);
+}
+
+void test_HalAdc_RawToVoltage_FullScale_ReturnsFiveVolts() {
+    // Arrange
+    uint16_t raw_value = 1023; // Full-scale for 10-bit ADC
+    float expected_voltage = 5.0f;
+    
+    // Act
+    float result = mock_adc->rawToVoltage(raw_value);
+    
+    // Assert
+    TEST_ASSERT_FLOAT_WITHIN(0.01f, expected_voltage, result);
+}
+
+// ============================================================================
+// SONICATOR POWER READING TESTS
+// ============================================================================
+
+void test_HalAdc_ReadSonicatorPower_Sonicator1_ReadsChannel4() {
+    // Arrange
+    mock_adc->init();
+    uint8_t sonicator_id = 1;
+    uint16_t raw_value = 272; // Corresponds to ~100W (1.33V / 0.00544 V/W)
+    float power_watts;
+    mock_adc->setChannelValue(4, raw_value); // Sonicator 1 uses ADC channel 4
+    
+    // Act
+    bool result = mock_adc->readSonicatorPower(sonicator_id, &power_watts);
+    
+    // Assert
+    TEST_ASSERT_TRUE(result);
+    TEST_ASSERT_FLOAT_WITHIN(5.0f, 245.0f, power_watts); // ~245W for 1.33V
+}
+
+void test_HalAdc_ReadSonicatorPower_Sonicator2_ReadsChannel5() {
+    // Arrange
+    mock_adc->init();
+    uint8_t sonicator_id = 2;
+    uint16_t raw_value = 544; // Corresponds to ~500W
+    float power_watts;
+    mock_adc->setChannelValue(5, raw_value); // Sonicator 2 uses ADC channel 5
+    
+    // Act
+    bool result = mock_adc->readSonicatorPower(sonicator_id, &power_watts);
+    
+    // Assert
+    TEST_ASSERT_TRUE(result);
+    TEST_ASSERT_FLOAT_WITHIN(10.0f, 490.0f, power_watts);
+}
+
+void test_HalAdc_ReadSonicatorPower_NotInitialized_ReturnsFalse() {
+    // Arrange
+    uint8_t sonicator_id = 1;
+    float power_watts;
+    
+    // Act
+    bool result = mock_adc->readSonicatorPower(sonicator_id, &power_watts);
+    
+    // Assert
+    TEST_ASSERT_FALSE(result);
+}
+
+void test_HalAdc_ReadSonicatorPower_NullPointer_ReturnsFalse() {
+    // Arrange
+    mock_adc->init();
+    uint8_t sonicator_id = 1;
+    
+    // Act
+    bool result = mock_adc->readSonicatorPower(sonicator_id, nullptr);
+    
+    // Assert
+    TEST_ASSERT_FALSE(result);
+}
+
+// ============================================================================
+// FREQUENCY READING TESTS
+// ============================================================================
+
+void test_HalAdc_ReadFrequency_ValidReading_ReturnsFrequency() {
+    // Arrange
+    mock_adc->init();
+    uint16_t raw_value = 256; // Corresponds to ~5kHz
+    float frequency_hz;
+    mock_adc->setChannelValue(0, raw_value); // LM2907 frequency output on channel 0
+    
+    // Act
+    bool result = mock_adc->readFrequency(&frequency_hz);
+    
+    // Assert
+    TEST_ASSERT_TRUE(result);
+    TEST_ASSERT_FLOAT_WITHIN(100.0f, 5000.0f, frequency_hz);
+}
+
+void test_HalAdc_ReadFrequency_NotInitialized_ReturnsFalse() {
+    // Arrange
+    float frequency_hz;
+    
+    // Act
+    bool result = mock_adc->readFrequency(&frequency_hz);
+    
+    // Assert
+    TEST_ASSERT_FALSE(result);
+}
+
+void test_HalAdc_ReadFrequency_NullPointer_ReturnsFalse() {
+    // Arrange
+    mock_adc->init();
+    
+    // Act
+    bool result = mock_adc->readFrequency(nullptr);
+    
+    // Assert
+    TEST_ASSERT_FALSE(result);
+}
+
+// ============================================================================
+// ERROR CONDITION TESTS
+// ============================================================================
+
+void test_HalAdc_ErrorChannel_ReadChannel_ReturnsFalse() {
+    // Arrange
+    mock_adc->init();
+    uint8_t error_channel = 99;
+    uint16_t value;
+    mock_adc->setErrorChannel(error_channel);
+    
+    // Act
+    bool result = mock_adc->readChannel(error_channel, &value);
+    
+    // Assert
+    TEST_ASSERT_FALSE(result);
+}
+
+void test_HalAdc_ErrorChannel_StartConversion_ReturnsFalse() {
+    // Arrange
+    mock_adc->init();
+    uint8_t error_channel = 99;
+    mock_adc->setErrorChannel(error_channel);
+    
+    // Act
+    bool result = mock_adc->startConversion(error_channel);
+    
+    // Assert
+    TEST_ASSERT_FALSE(result);
+}
+
+// ============================================================================
+// SEQUENCE TESTS
+// ============================================================================
+
+void test_HalAdc_AllSonicatorPowerReading_Success_ReadsAllChannels() {
+    // Arrange
+    mock_adc->init();
+    float power_readings[4];
+    
+    // Set up known values for all sonicator power channels
+    mock_adc->setChannelValue(4, 272);  // Sonicator 1: ~245W
+    mock_adc->setChannelValue(5, 544);  // Sonicator 2: ~490W
+    mock_adc->setChannelValue(6, 136);  // Sonicator 3: ~122W
+    mock_adc->setChannelValue(7, 408);  // Sonicator 4: ~368W
+    
+    // Act - Read all sonicator power levels
+    for (uint8_t i = 1; i <= 4; i++) {
+        bool result = mock_adc->readSonicatorPower(i, &power_readings[i-1]);
+        TEST_ASSERT_TRUE(result);
+    }
+    
+    // Assert - Check all readings are reasonable
+    TEST_ASSERT_FLOAT_WITHIN(10.0f, 245.0f, power_readings[0]);
+    TEST_ASSERT_FLOAT_WITHIN(10.0f, 490.0f, power_readings[1]);
+    TEST_ASSERT_FLOAT_WITHIN(10.0f, 122.0f, power_readings[2]);
+    TEST_ASSERT_FLOAT_WITHIN(10.0f, 368.0f, power_readings[3]);
+}
+
+void test_HalAdc_PowerScaling_KnownValues_CorrectCalculation() {
+    // Arrange
+    mock_adc->init();
+    
+    // Test with known voltage that should produce specific power
+    // 2.72V should produce 500W (2.72V / 0.00544 V/W = 500W)
+    uint16_t raw_for_2_72V = (uint16_t)(2.72f * 1023.0f / 5.0f); // ~556
+    mock_adc->setChannelValue(4, raw_for_2_72V);
+    
+    float power_watts;
+    
+    // Act
+    bool result = mock_adc->readSonicatorPower(1, &power_watts);
+    
+    // Assert
+    TEST_ASSERT_TRUE(result);
+    TEST_ASSERT_FLOAT_WITHIN(10.0f, 500.0f, power_watts);
+}
+
+// ============================================================================
+// ARDUINO FRAMEWORK ENTRY POINT
+// ============================================================================
+
+#ifdef ARDUINO
+void setup() {
+    delay(2000);  // Wait for serial connection
+    UNITY_BEGIN();
+    
+    // Core ADC function tests
+    RUN_TEST(test_HalAdc_Init_Success_ReturnsTrue);
+    RUN_TEST(test_HalAdc_ReadChannel_ValidChannel_ReturnsSetValue);
+    RUN_TEST(test_HalAdc_ReadChannel_NotInitialized_ReturnsFalse);
+    RUN_TEST(test_HalAdc_ReadChannel_NullPointer_ReturnsFalse);
+    RUN_TEST(test_HalAdc_StartConversion_ValidChannel_ReturnsTrue);
+    RUN_TEST(test_HalAdc_IsConversionComplete_Initialized_ReturnsTrue);
+    RUN_TEST(test_HalAdc_RawToVoltage_MidScale_ReturnsCorrectVoltage);
+    RUN_TEST(test_HalAdc_RawToVoltage_FullScale_ReturnsFiveVolts);
+    
+    // Sonicator power reading tests
+    RUN_TEST(test_HalAdc_ReadSonicatorPower_Sonicator1_ReadsChannel4);
+    RUN_TEST(test_HalAdc_ReadSonicatorPower_Sonicator2_ReadsChannel5);
+    RUN_TEST(test_HalAdc_ReadSonicatorPower_NotInitialized_ReturnsFalse);
+    RUN_TEST(test_HalAdc_ReadSonicatorPower_NullPointer_ReturnsFalse);
+    
+    // Frequency reading tests
+    RUN_TEST(test_HalAdc_ReadFrequency_ValidReading_ReturnsFrequency);
+    RUN_TEST(test_HalAdc_ReadFrequency_NotInitialized_ReturnsFalse);
+    RUN_TEST(test_HalAdc_ReadFrequency_NullPointer_ReturnsFalse);
+    
+    // Error condition tests
+    RUN_TEST(test_HalAdc_ErrorChannel_ReadChannel_ReturnsFalse);
+    RUN_TEST(test_HalAdc_ErrorChannel_StartConversion_ReturnsFalse);
+    
+    // Sequence tests
+    RUN_TEST(test_HalAdc_AllSonicatorPowerReading_Success_ReadsAllChannels);
+    RUN_TEST(test_HalAdc_PowerScaling_KnownValues_CorrectCalculation);
+    
+    UNITY_END();
+}
+
+void loop() {
+    // Empty loop for Arduino
+}
+
+// ============================================================================
+// NATIVE PLATFORM ENTRY POINT
+// ============================================================================
+
+#else
+int main(int argc, char **argv) {
+    UNITY_BEGIN();
+    
+    // Core ADC function tests
+    RUN_TEST(test_HalAdc_Init_Success_ReturnsTrue);
+    RUN_TEST(test_HalAdc_ReadChannel_ValidChannel_ReturnsSetValue);
+    RUN_TEST(test_HalAdc_ReadChannel_NotInitialized_ReturnsFalse);
+    RUN_TEST(test_HalAdc_ReadChannel_NullPointer_ReturnsFalse);
+    RUN_TEST(test_HalAdc_StartConversion_ValidChannel_ReturnsTrue);
+    RUN_TEST(test_HalAdc_IsConversionComplete_Initialized_ReturnsTrue);
+    RUN_TEST(test_HalAdc_RawToVoltage_MidScale_ReturnsCorrectVoltage);
+    RUN_TEST(test_HalAdc_RawToVoltage_FullScale_ReturnsFiveVolts);
+    
+    // Sonicator power reading tests
+    RUN_TEST(test_HalAdc_ReadSonicatorPower_Sonicator1_ReadsChannel4);
+    RUN_TEST(test_HalAdc_ReadSonicatorPower_Sonicator2_ReadsChannel5);
+    RUN_TEST(test_HalAdc_ReadSonicatorPower_NotInitialized_ReturnsFalse);
+    RUN_TEST(test_HalAdc_ReadSonicatorPower_NullPointer_ReturnsFalse);
+    
+    // Frequency reading tests
+    RUN_TEST(test_HalAdc_ReadFrequency_ValidReading_ReturnsFrequency);
+    RUN_TEST(test_HalAdc_ReadFrequency_NotInitialized_ReturnsFalse);
+    RUN_TEST(test_HalAdc_ReadFrequency_NullPointer_ReturnsFalse);
+    
+    // Error condition tests
+    RUN_TEST(test_HalAdc_ErrorChannel_ReadChannel_ReturnsFalse);
+    RUN_TEST(test_HalAdc_ErrorChannel_StartConversion_ReturnsFalse);
+    
+    // Sequence tests
+    RUN_TEST(test_HalAdc_AllSonicatorPowerReading_Success_ReadsAllChannels);
+    RUN_TEST(test_HalAdc_PowerScaling_KnownValues_CorrectCalculation);
+    
+    return UNITY_END();
+}
+#endif

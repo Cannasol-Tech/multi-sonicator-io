@@ -9,10 +9,12 @@
 #ifndef UNITY_CONFIG_H
 #define UNITY_CONFIG_H
 
-// Memory optimization for ATMEGA32A
+// Memory optimization for ATMEGA32A (only for embedded targets)
+#ifndef NATIVE_TEST
 #define UNITY_EXCLUDE_FLOAT
 #define UNITY_EXCLUDE_DOUBLE
 #define UNITY_EXCLUDE_FLOAT_PRINT
+#endif
 
 // Use 16-bit integers for line numbers to save memory
 #define UNITY_LINE_TYPE uint16_t
