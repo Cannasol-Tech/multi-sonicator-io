@@ -81,8 +81,11 @@
 #define XTAL1_PIN 13      // XTAL1 (Physical pin 13)
 #define XTAL2_PIN 12      // XTAL2 (Physical pin 12)
 
-// Status LED (single LED terminal) - Arduino digitalWrite() compatible
-#define STATUS_LED_PIN 16 // PD2 (Physical pin 16) - LED-TERM
+// Status LED (single LED terminal) - Direct register access
+#define STATUS_LED_PIN 2      // PD2 bit number (Physical pin 16) - LED-TERM
+
+// Serial Communication Configuration
+#define SERIAL_BAUD_RATE 115200  // Debug serial communication speed
 
 /**
  * @defgroup SonicatorInterface Sonicator Interface Pin Mapping

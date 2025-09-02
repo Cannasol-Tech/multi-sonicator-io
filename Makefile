@@ -2,6 +2,12 @@
 # Uses Arduino Framework with PlatformIO for ATmega32A development
 # Unity Tests for Unit Testing, Behave for Acceptance Testing
 
+# Declare phony targets (targets that don't create files)
+.PHONY: build clean upload install-deps test-unit test-acceptance test-all ci-test
+.PHONY: monitor-device upload-to-device upload-harness setup-arduino-isp check-arduino-isp
+.PHONY: hardware-sandbox hil-setup hil-clean hil-test-basic hil-test-gpio hil-test-adc
+.PHONY: hil-test-pwm hil-test-modbus hil-test-power generate-release-artifacts
+
 #  Make Targets
 
 
@@ -22,6 +28,10 @@ clean:
 
 upload:
 	# Upload Arduino Framework firmware to ATmega32A via Arduino as ISP
+	@echo "🔧 Setting up Arduino as ISP (auto-upload if needed)..."
+	@python3 scripts/setup_arduino_isp.py || (echo "❌ Failed to setup Arduino as ISP" && exit 1)
+	@echo "✅ Arduino as ISP is ready"
+	@echo "📤 Uploading firmware to ATmega32A..."
 	pio run -e atmega32a --target upload
 
 monitor-device:
@@ -30,6 +40,10 @@ monitor-device:
 
 upload-to-device:
 	# Upload ATmega32A firmware using Arduino as ISP with safety checks
+	@echo "🔧 Setting up Arduino as ISP (auto-upload if needed)..."
+	@python3 scripts/setup_arduino_isp.py || (echo "❌ Failed to setup Arduino as ISP" && exit 1)
+	@echo "✅ Arduino as ISP is ready"
+	@echo "📤 Uploading firmware via HIL CLI..."
 	python3 scripts/hil_cli.py upload
 
 upload-harness:
@@ -51,11 +65,11 @@ hardware-sandbox:
 	@echo "✅ Arduino as ISP is ready"
 	
 	@echo "Step 2: Building latest ATmega32A firmware..."
-	@pio run -e atmega32a_arduino_isp || (echo "❌ Firmware build failed" && exit 1)
+	@pio run -e atmega32a || (echo "❌ Firmware build failed" && exit 1)
 	@echo "✅ ATmega32A firmware build successful"
-	
+
 	@echo "Step 3: Programming ATmega32A target via Arduino as ISP..."
-	@pio run -e atmega32a_arduino_isp -t upload || (echo "❌ ATmega32A programming failed" && exit 1)
+	@pio run -e atmega32a -t upload || (echo "❌ ATmega32A programming failed" && exit 1)
 	@echo "✅ ATmega32A programmed successfully"
 	
 	@echo "Step 4: Switching from Arduino ISP to Test Harness..."
