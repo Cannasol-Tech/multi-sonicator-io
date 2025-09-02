@@ -14,10 +14,18 @@ This document defines the company's software testing standards, ensuring consist
 1. **Unit Testing**
 > **Note:** Mocks are reserved for unit testing only, unless absolutely necessary and explicitly approved by the repository owner.
 
-   * **Preferred Language**: Python (pytest) or Typescript (Jest, Mocha, etc.)
-   * **Preferred Framework**: pytest or Jest
+   * **Preferred Language & Framework by Project Type**:
+     * **Software Projects**: Python (pytest) or Typescript (Jest, Mocha, etc.)
+     * **Embedded/Hardware Projects**: C/C++ (Unity Test Framework)
+     * **Mixed Projects**: Unity for embedded components, pytest for Python components
+   
+   * **Framework Selection**:
+     * **pytest** → Python-based projects and services
+     * **Jest/Mocha** → TypeScript/JavaScript frontend and backend
+     * **Unity** → Embedded C/C++ firmware and hardware projects
+   
    * **Preferred Location**: `test/unit`
-     - **Note:** If there is a problem with the locations, language, or frameworks, please open an issue in the repository to raise the concern. DO NOT implement any other unit testing framework or language without approval.
+     * **Note:** If there is a problem with the locations, language, or frameworks, please open an issue in the repository to raise the concern. DO NOT implement any other unit testing framework or language without approval.
      
    * **Coverage Requirement:** Minimum **90% coverage**.
    * **Focus:** Validate individual functions, modules, and components in isolation.
@@ -27,7 +35,8 @@ This document defines the company's software testing standards, ensuring consist
 2. **Acceptance Testing**
 
    * **Focus:** Validate that the system meets **business requirements**.
-   * **Method:** Behavior-Driven Development (BDD) style tests (e.g., Gherkin).
+   * **Method:** Behavior-Driven Development (BDD) using pytest + Behave (Gherkin format).
+   * **Framework**: Behave for BDD scenarios, pytest for test execution infrastructure.
    * **Mapping:** All acceptance scenarios must map directly to PRD requirements.
    * **Traceability:** Use `trace-requirements` task for automated mapping.
 

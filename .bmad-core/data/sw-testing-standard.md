@@ -88,7 +88,8 @@ test/hil/               # Hardware-in-the-loop tests
 2. **Acceptance Testing**
 
    * **Focus:** Validate that the system meets **business requirements**.
-   * **Method:** Behavior-Driven Development (BDD) style tests (e.g., Gherkin).
+   * **Method:** Behavior-Driven Development (BDD) using pytest + Behave (Gherkin format).
+   * **Framework**: Behave for BDD scenarios, pytest for test execution infrastructure.
    * **Mapping:** All acceptance scenarios must map directly to PRD requirements.
    * **Traceability:** Use `trace-requirements` task for automated mapping.
 

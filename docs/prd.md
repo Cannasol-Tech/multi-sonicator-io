@@ -47,7 +47,7 @@ The proposed solution is a microcontroller-based multiplexer designed to manage 
 3. **NFR3**: The firmware must be implemented in C with a modular architecture that separates hardware abstraction, communication protocols, and control logic.
 4. **NFR4**: All public functions and data structures in header files must be documented using Doxygen-style comments.
 5. **NFR5**: The system must implement a watchdog timer to ensure it resets to a safe, non-operational state in the event of a software failure.
-6. **NFR6**: The project must achieve a minimum of 85% unit test coverage.
+6. **NFR6**: The project must achieve a minimum of 90% unit test coverage using Unity Test Framework.
 7. **NFR7**: All functional requirements must be verifiable through automated acceptance tests (simulation and/or Hardware-in-the-Loop).
 8. **NFR8**: The MODBUS RTU communication must operate at 115200 baud with an 8N1 frame format.
 9. **NFR9**: Telemetry data (power, frequency) for each unit shall be updated in the MODBUS registers at a minimum frequency of 10Hz.
@@ -68,8 +68,8 @@ The firmware will be a single, monolithic application running on the ATmega32A m
 
 The project will employ a comprehensive testing strategy that includes:
 
-* **Unit Testing**: C++ based tests for individual modules and functions.
-* **Integration/Acceptance Testing**: Behavior-Driven Development (BDD) tests using Behave to validate requirements against a simulated environment.
+* **Unit Testing**: Unity Test Framework (C/C++) for individual modules and functions per organizational embedded standards.
+* **Integration/Acceptance Testing**: Behavior-Driven Development (BDD) tests using pytest + Behave to validate requirements against HIL hardware.
 * **Hardware-in-the-Loop (HIL) Testing**: BDD tests executed against physical hardware using a dedicated test harness to validate end-to-end functionality.
 
 ### 3.4. Additional Technical Assumptions and Requests

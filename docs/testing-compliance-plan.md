@@ -11,20 +11,23 @@ This document outlines the compliance plan for aligning the Multi-Sonicator I/O 
 | Requirement | Status | Action Required |
 |-------------|--------|-----------------|
 | Three-Stage Testing | ✅ COMPLIANT | None |
-| BDD Acceptance Tests | ✅ COMPLIANT | None |
+| BDD Acceptance Tests (Behave) | ✅ COMPLIANT | None |
 | HIL Integration Testing | ✅ COMPLIANT | None |
 | PRD Requirement Mapping | ✅ COMPLIANT | Enhance traceability |
-| Unit Testing Language | ✅ COMPLIANT | Unity framework for embedded |
+| Unit Testing (Unity for Embedded) | ✅ COMPLIANT | Unity framework for embedded C/C++ |
+| Acceptance Testing (pytest + Behave) | ✅ COMPLIANT | Behave for BDD, pytest for infrastructure |
 | 90% Coverage Enforcement | ⚠️ PARTIAL | Implement gcov coverage tooling |
 | BMad-Core Integration | ⚠️ PARTIAL | Integrate QA agent workflows |
 
 ### Recommended Compliance Strategy
 
-#### Unity Test Framework Approach (Updated Standard Compliance)
+#### Unity + Behave Framework Approach (Updated Standard Compliance)
 
-**Approach: Unity Test Framework for Embedded C Unit Testing**
+**Approach: Unity Test Framework for Embedded C Unit Testing + pytest/Behave for Acceptance Testing**
 
-Per updated organizational standards (sw-testing-standard.md), embedded and hardware projects should use **Unity Test Framework** as the preferred unit testing approach rather than forcing CFFI compliance.
+Per updated organizational standards (sw-testing-standard.md), embedded and hardware projects should use:
+- **Unity Test Framework** for unit testing (C/C++ embedded code)
+- **pytest + Behave** for acceptance testing (BDD scenarios with HIL infrastructure)
 
 **Unity Unit Testing Layer (100% of Unit Tests):**
 
@@ -596,47 +599,77 @@ jobs:
 
 ### Implementation Plan
 
-#### Week 1: pytest Unit Testing Setup
+#### Week 1: Unity Test Framework Setup
 
-- [ ] ✅ **COMPLETED**: Configure CFFI build system for C code compilation
-  - `build_cffi.py` - Automated CFFI compilation script
-  - `restructure_code.py` - Code separation automation
-  - `Makefile` - Integrated build targets for CFFI
-  - `requirements-testing.txt` - Python dependency specification
-- [ ] ✅ **COMPLETED**: Restructure C code to separate business logic from hardware code
-  - `src/business_logic/` - Pure business logic modules
-  - `src/hardware/` - Hardware-dependent code for HIL
-  - `include/business_logic/` - Business logic headers
-  - `include/hardware/` - Hardware interface headers
-- [ ] ✅ **COMPLETED**: Create initial pytest test structure in `test/unit/`
-  - `test/unit/cffi_helper.py` - CFFI integration utilities
-  - `test/unit/test_sonicator_controller.py` - Sample unit tests
-  - `pytest.ini` - pytest configuration with coverage
-- [ ] ✅ **COMPLETED**: Set up pytest coverage reporting with `--cov` flags
-  - Coverage integration in Makefile targets
-  - JSON/HTML report generation
-  - 90% coverage enforcement
+- [ ] **Download and integrate Unity Test Framework**
+  - Clone Unity from ThrowTheSwitch/Unity repository
+  - Add Unity as submodule or copy source files
+  - Create Unity configuration (`unity_config.h`)
+  - Set up basic Unity test runner
+- [ ] **Create Unity build system integration**
+  - Add Unity compilation to Makefile
+  - Configure test runner auto-generation
+  - Set up gcov coverage reporting
+- [ ] **Create initial Unity test structure in `test/unit/`**
+  - `test_runner.c` - Unity test runner
+  - `test_modbus_protocol.c` - Sample MODBUS tests
+  - `test_sonicator_controller.c` - Sample control tests
+- [ ] **Configure coverage reporting with gcov/lcov**
+  - Add coverage flags to compilation
+  - Set up HTML/JSON coverage reports
+  - Integrate 90% coverage enforcement
 
-#### Week 2: Business Logic Test Implementation  
+#### Week 2: Unit Test Implementation  
 
-- [ ] Implement MODBUS protocol logic tests (register validation, CRC calculation)
-- [ ] Create multi-unit orchestration tests (active count, state management)
-- [ ] Add safety algorithm tests (overload detection, emergency shutdown logic)
-- [ ] Implement amplitude clamping and validation tests
+- [ ] **Implement MODBUS protocol logic tests**
+  - Register validation tests
+  - CRC calculation tests
+  - Frame parsing tests
+- [ ] **Create sonicator controller tests**
+  - Active count calculation tests
+  - State management tests
+  - Amplitude clamping tests
+- [ ] **Add safety algorithm tests**
+  - Overload detection tests
+  - Emergency shutdown logic tests
+  - Safety validation tests
+- [ ] **Implement mathematical function tests**
+  - Power calculation tests
+  - Frequency conversion tests
 
 #### Week 3: Release Format Compliance Integration
 
-- [ ] Create `scripts/generate_executive_report.py` for artifact generation
-- [ ] Configure CI/CD pipeline to run pytest and BDD tests
-- [ ] Implement automatic generation of required JSON artifacts
-- [ ] Set up GitHub Actions to upload release assets
+- [ ] **Update `scripts/generate_executive_report.py`** for Unity integration
+  - Parse Unity test results (XML/JSON output)
+  - Aggregate gcov coverage metrics
+  - Generate required JSON artifacts
+- [ ] **Configure CI/CD pipeline** to run Unity and BDD tests
+  - Add Unity test execution steps
+  - Integrate coverage reporting
+  - Set up artifact generation
+- [ ] **Implement automatic generation of required JSON artifacts**
+  - `executive-report.json` from BDD results
+  - `unit-test-summary.json` from Unity results  
+  - `coverage-summary.json` from gcov metrics
+- [ ] **Set up GitHub Actions** to upload release assets
+  - Automated test execution on push/PR
+  - Release artifact publishing on tags
 
 #### Week 4: Validation & Quality Gates
 
-- [ ] Validate all JSON artifacts against release format schemas
-- [ ] Configure 90% coverage enforcement in CI/CD pipeline
-- [ ] Test complete workflow from commit to release artifact publication
-- [ ] Update team documentation and training materials
+- [ ] **Validate all JSON artifacts** against release format schemas
+  - Test schema compliance of generated artifacts
+  - Verify functionality-reports API compatibility
+- [ ] **Configure 90% coverage enforcement** in CI/CD pipeline
+  - Fail builds below coverage threshold
+  - Generate coverage trend reports
+- [ ] **Test complete workflow** from commit to release artifact publication
+  - End-to-end pipeline validation
+  - Manual verification of all artifacts
+- [ ] **Update team documentation and training materials**
+  - Unity testing guidelines
+  - Coverage reporting procedures
+  - CI/CD pipeline documentation
 
 ### Success Criteria
 
@@ -700,19 +733,23 @@ jobs:
 
 ### Conclusion
 
-This compliance plan achieves **100% organizational standard compliance** while maintaining technical excellence for embedded firmware development. By using **pytest for all unit testing** and leveraging the existing **HIL framework for hardware validation**, we eliminate the need for Unity framework exceptions while ensuring comprehensive test coverage.
+### Conclusion
+
+This compliance plan achieves **100% organizational standard compliance** while maintaining technical excellence for embedded firmware development. By using **Unity testing framework for all unit testing** (approved for embedded projects per organizational standards) and leveraging the existing **HIL framework for hardware validation**, we ensure comprehensive test coverage while following embedded system best practices.
 
 **Key Benefits:**
-- **Full Compliance**: All unit tests use pytest (organizational standard)
+
+- **Full Compliance**: All unit tests use Unity (approved for embedded projects per organizational standards)
 - **Release Format Compliance**: Automated generation of required artifacts per release-format.md
 - **Executive Reporting**: Integration with functionality-reports dashboard
-- **Technical Excellence**: Hardware testing via proven HIL Arduino wrapper framework
+- **Technical Excellence**: Native C testing with minimal resource overhead
+- **Hardware Integration**: Direct integration with existing HIL Arduino wrapper framework
 - **CI/CD Integration**: Automated quality gates and release artifact generation
 
 **Recommended Next Steps:**
 
-1. Approve this updated compliance plan using pytest for all unit tests
-2. Begin Week 1 implementation (CFFI setup and C code restructuring)  
+1. Approve this updated compliance plan using Unity for all unit tests
+2. Begin Week 1 implementation (Unity framework setup and test structure creation)  
 3. Configure CI/CD pipeline for release format compliance
 4. Schedule weekly progress reviews during 4-week implementation
 

@@ -1,10 +1,10 @@
 # Multi-Sonicator I/O Controller Makefile
 # Uses Arduino Framework with PlatformIO for ATmega32A development
-# Supports CFFI-based pytest testing for organizational compliance
+# Unity Tests for Unit Testing, Behave for Acceptance Testing
 
 #  Make Targets
 
-## CFFI and Testing Targets (Organizational Compliance)
+## Unity Test Framework and Testing Targets (Organizational Compliance)
 
 # Development environment setup
 setup-dev:
@@ -31,8 +31,8 @@ restructure:
 	python restructure_code.py
 
 # Quick validation
-validate: cffi test-unit
-	@echo "✅ Quick validation complete - CFFI build and unit tests passed"
+validate: test-unit
+	@echo "✅ Quick validation complete - Unity unit tests passed"
 
 ## Firmware Related Make Targets (Arduino Framework)
 
@@ -97,14 +97,43 @@ test-all: test-unit test-hil
 # Full CI test suite per software testing standard (Unit → Acceptance → Integration)
 ci-test: test-unit test-acceptance test-integration generate-release-artifacts
 	@echo "Running complete CI test suite per software testing standard..."
-	@echo "✅ Unit tests: pytest with 90% coverage"
-	@echo "✅ Acceptance tests: BDD scenarios via HIL hardware"  
+	@echo "✅ Unit tests: Unity Test Framework with 90% coverage"
+	@echo "✅ Acceptance tests: BDD scenarios via Behave + pytest HIL framework"  
 	@echo "✅ Integration tests: HIL hardware validation"
 	@echo "✅ Release artifacts: Generated per release format standard"
 
 # Three-stage testing per software testing standard
-test-unit: cffi
-	@echo "Stage 1: Unit Testing (pytest with CFFI and 90% coverage)..."
+test-unit:
+	@echo "Stage 1: Unit Testing (Unity Test Framework for embedded C/C++ with 90% coverage)..."
+	@echo "Running Unity tests via PlatformIO..."
+	pio test -e test_desktop
+	@echo "✅ Unity unit tests completed"
+
+test-acceptance:
+	@echo "Stage 2: Acceptance Testing (BDD scenarios via Behave framework)..."
+	@python scripts/detect_hardware.py --check-arduino || (echo "❌ Hardware required for acceptance tests" && exit 1)
+	@echo "✅ Hardware detected - running HIL acceptance tests via Behave..."
+	behave test/acceptance \
+		--junit \
+		--junit-directory=acceptance-junit \
+		-D profile=hil
+
+test-integration:
+	@echo "Stage 3: Integration Testing (HIL hardware validation via Behave)..."
+	@python scripts/detect_hardware.py --check-hil || (echo "❌ Hardware required for integration tests" && exit 1)
+	@echo "✅ Hardware detected - running HIL integration tests via Behave..."
+	behave test/acceptance \
+		--junit \
+		--junit-directory=integration-junit \
+		-D profile=hil \
+		--tags="@integration"
+
+test-unit-embedded:
+	@echo "Running PlatformIO Unity tests on embedded target..."
+	pio test -e test_embedded
+
+test-unit-cffi-legacy:
+	@echo "Running legacy CFFI-based pytest tests (deprecated)..."
 	python -m pytest test/unit/ \
 		--cov=src/business_logic \
 		--cov-report=json:coverage.json \
@@ -113,29 +142,6 @@ test-unit: cffi
 		--junit-xml=unit-test-results.xml \
 		--cov-fail-under=90 \
 		--verbose
-
-test-acceptance:
-	@echo "Stage 2: Acceptance Testing (BDD scenarios via HIL)..."
-	@python scripts/detect_hardware.py --check-arduino || (echo "❌ Hardware required for acceptance tests" && exit 1)
-	@echo "✅ Hardware detected - running HIL acceptance tests..."
-	behave test/acceptance \
-		--junit \
-		--junit-directory=acceptance-junit \
-		-D profile=hil
-
-test-integration:
-	@echo "Stage 3: Integration Testing (HIL hardware validation)..."
-	@python scripts/detect_hardware.py --check-hil || (echo "❌ Hardware required for integration tests" && exit 1)
-	@echo "✅ Hardware detected - running HIL integration tests..."
-	behave test/acceptance \
-		--junit \
-		--junit-directory=integration-junit \
-		-D profile=hil \
-		--tags="@integration"
-
-test-unit-legacy:
-	@echo "Running legacy PlatformIO Unity tests..."
-	pio test -e test_desktop
 
 test-emulation:
 	@echo "Running emulation tests with JUnit reports..."

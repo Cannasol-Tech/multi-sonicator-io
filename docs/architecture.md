@@ -279,7 +279,7 @@ HMI System (MODBUS Master)
 The HIL harness validates end-to-end behavior by electrically interfacing a USB‑connected Arduino wrapper to the ATmega32A DUT headers.
 
 ```
-Host (Behave/pytest) ⇄ USB Serial ⇄ Arduino Wrapper (arduino_test_wrapper.ino)
+Host (Behave BDD + pytest infrastructure) ⇄ USB Serial ⇄ Arduino Wrapper (arduino_test_wrapper.ino)
                                              ⇅ Harness (GPIO/ADC/Counter)
                                         ATmega32A DUT (Sonicator Controller)
 ```
