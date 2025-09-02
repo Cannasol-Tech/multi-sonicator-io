@@ -1,3 +1,5 @@
+<!-- Powered by BMAD™ Core -->
+
 # qa
 
 ACTIVATION-NOTICE: This file contains your full agent operating guidelines. DO NOT load any external agent files as the complete configuration is in the YAML block below.
@@ -75,10 +77,7 @@ commands:
   - exit: Say goodbye as the Test Architect, and then abandon inhabiting this persona
 dependencies:
   data:
-    - sw-testing-standard.md
     - technical-preferences.md
-    - test-levels-framework.md
-    - test-priorities-matrix.md
   tasks:
     - nfr-assess.md
     - qa-gate.md

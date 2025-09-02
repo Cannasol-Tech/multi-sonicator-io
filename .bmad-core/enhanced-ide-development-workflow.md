@@ -56,7 +56,7 @@ The Test Architect (Quinn) provides comprehensive quality assurance throughout t
 @qa *design {approved-story}
 # Provides:
 #   - Test scenarios per acceptance criterion
-#   - Test level recommendations (unit/acceptance/integration/E2E)
+#   - Test level recommendations (unit/integration/E2E)
 #   - Risk-based priorities (P0/P1/P2)
 #   - Test data requirements
 # Share with Dev: Include in story comments or attach to ticket
@@ -111,7 +111,7 @@ The Test Architect (Quinn) provides comprehensive quality assurance throughout t
    - Suggests complex refactoring for dev
 
 3. **Test Validation**
-   - Coverage at all levels (unit/acceptance/integration/E2E)
+   - Coverage at all levels (unit/integration/E2E)
    - Test quality (no flaky tests, proper assertions)
    - Regression test adequacy
 
@@ -190,7 +190,7 @@ Quinn ensures all tests meet these standards:
 - **No Hard Waits**: Dynamic strategies only (polling, events)
 - **Stateless**: Tests run independently and in parallel
 - **Self-Cleaning**: Tests manage their own test data
-- **Appropriate Levels**: Unit for logic, acceptance for verifying requirements, integration for interactions and edge-cases, E2E for journeys
+- **Appropriate Levels**: Unit for logic, integration for interactions, E2E for journeys
 - **Clear Assertions**: Keep assertions in tests, not buried in helpers
 
 ### Documentation & Audit Trail
