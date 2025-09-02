@@ -77,7 +77,7 @@ graph TD
 
 **Critical Transition Point**: Once the PO confirms document alignment, you must switch from web UI to IDE to begin the development workflow:
 
-1. **Copy Documents to Project**: Ensure `docs/planning/prd.md` and `docs/architecture.md` are in your project's docs folder (or a custom location you can specify during installation)
+1. **Copy Documents to Project**: Ensure `docs/prd.md` and `docs/architecture.md` are in your project's docs folder (or a custom location you can specify during installation)
 2. **Switch to IDE**: Open your project in your preferred Agentic IDE
 3. **Document Sharding**: Use the PO agent to shard the PRD and then the Architecture
 4. **Begin Development**: Start the Core Development Cycle that follows
@@ -85,7 +85,7 @@ graph TD
 #### Planning Artifacts (Standard Paths)
 
 ```text
-PRD              → docs/planning/prd.md
+PRD              → docs/prd.md
 Architecture     → docs/architecture.md
 Sharded Epics    → docs/epics/
 Sharded Stories  → docs/stories/
@@ -186,6 +186,32 @@ If you want to do the planning on the web with Claude (Sonnet 4 or Opus), Gemini
 # Interactive installation (recommended)
 npx bmad-method install
 ```
+
+### Codex (CLI & Web)
+
+BMAD integrates with OpenAI Codex via `AGENTS.md` and committed core agent files.
+
+- Two installation modes:
+  - Codex (local only): keeps `.bmad-core/` ignored for local dev.
+    - `npx bmad-method install -f -i codex -d .`
+  - Codex Web Enabled: ensures `.bmad-core/` is tracked so you can commit it for Codex Web.
+    - `npx bmad-method install -f -i codex-web -d .`
+
+- What gets generated:
+  - `AGENTS.md` at the project root with a BMAD section containing
+    - How-to-use with Codex (CLI & Web)
+    - Agent Directory (Title, ID, When To Use)
+    - Detailed per‑agent sections with source path, when-to-use, activation phrasing, and YAML
+    - Tasks with quick usage notes
+  - If a `package.json` exists, helpful scripts are added:
+    - `bmad:refresh`, `bmad:list`, `bmad:validate`
+
+- Using Codex:
+  - CLI: run `codex` in the project root and prompt naturally, e.g., “As dev, implement …”.
+  - Web: commit `.bmad-core/` and `AGENTS.md`, then open the repo in Codex and prompt the same way.
+
+- Refresh after changes:
+  - Re-run the appropriate install mode (`codex` or `codex-web`) to update the BMAD block in `AGENTS.md`.
 
 ## Special Agents
 
@@ -304,7 +330,7 @@ Identifies and assesses implementation risks:
 Creates comprehensive test strategies including:
 
 - Test scenarios for each acceptance criterion
-- Appropriate test level recommendations (unit vs acceptance vs integration vs E2E)
+- Appropriate test level recommendations (unit vs integration vs E2E)
 - Risk-based prioritization (P0/P1/P2)
 - Test data requirements and mock strategies
 - Execution strategies for CI/CD integration
@@ -352,7 +378,7 @@ Validates non-functional requirements:
 When you run `@qa *review {story}`, Quinn performs:
 
 - **Requirements Traceability**: Maps every acceptance criterion to its validating tests
-- **Test Level Analysis**: Ensures appropriate testing at unit, acceptance, integration, and E2E levels
+- **Test Level Analysis**: Ensures appropriate testing at unit, integration, and E2E levels
 - **Coverage Assessment**: Identifies gaps and redundant test coverage
 - **Active Refactoring**: Improves code quality directly when safe
 - **Quality Gate Decision**: Issues PASS/CONCERNS/FAIL status based on findings
@@ -411,7 +437,7 @@ Quinn enforces these test quality principles:
 - **No Hard Waits**: Dynamic waiting strategies only
 - **Stateless & Parallel-Safe**: Tests run independently
 - **Self-Cleaning**: Tests manage their own test data
-- **Appropriate Test Levels**: Unit for logic, acceptance for verifying requirements, integration for interactions and edge-cases, E2E for journeys
+- **Appropriate Test Levels**: Unit for logic, integration for interactions, E2E for journeys
 - **Explicit Assertions**: Keep assertions in tests, not helpers
 
 ### Gate Status Meanings
@@ -483,7 +509,7 @@ Define which files the dev agent should always load:
 
 ```yaml
 devLoadAlwaysFiles:
-  - docs/standards/coding-style.md
+  - docs/architecture/coding-standards.md
   - docs/architecture/tech-stack.md
   - docs/architecture/project-structure.md
 ```
