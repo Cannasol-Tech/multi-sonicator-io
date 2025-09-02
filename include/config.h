@@ -4,9 +4,11 @@
  * @author Cannasol Technologies
  * @date 2025-06-27
  * @version 1.0.0
+ * @framework Arduino Framework (chosen for rapid development and proven libraries)
  * @details
  * Configuration constants and compile-time settings for the
  * Multi Sonicator I/O Controller (Model: CAN-SON-CTRL-4).
+ * Uses Arduino Framework for UART, I2C, PWM, and ADC operations.
  * See docs/planning/pin-matrix.md — SOLE SOURCE OF TRUTH for hardware pin assignments. This file mirrors the matrix; do not modify mappings here without updating the matrix first.
  */
 
@@ -51,7 +53,7 @@
 // Microcontroller specifications
 #define MCU_TYPE "ATmega32A-PU"
 #define MCU_FREQUENCY 16000000L
-#define MCU_VOLTAGE 5.0
+#define MCU_VOLTAGE 5.0           // 5V power to the ATMEGA32
 
 // System limitations
 #define MAX_SONICATORS 4          // Maximum number of sonicators supported
@@ -64,22 +66,22 @@
 #define SAFETY_MONITOR_INTERVAL_MS 10
 
 // ============================================================================
-// PIN DEFINITIONS - ATmega32A (DIP-40)
+// PIN DEFINITIONS - ATmega32A (DIP-40) - Arduino Framework Compatible
 // ============================================================================
 
-// UART Communication (MODBUS RTU)
-#define UART_RX_PIN 14    // PD0 (Physical pin 14)
-#define UART_TX_PIN 15    // PD1 (Physical pin 15)
+// UART Communication (MODBUS RTU) - Arduino Serial uses these automatically
+#define UART_RX_PIN 0     // Arduino pin 0 (PD0, Physical pin 14)
+#define UART_TX_PIN 1     // Arduino pin 1 (PD1, Physical pin 15)
 
-// I2C Interface (Available for Future Expansion)
+// I2C Interface (Available for Future Expansion) - Arduino Wire library compatible
 #define I2C_SDA_PIN 22    // PC1 (Physical pin 22)
 #define I2C_SCL_PIN 21    // PC0 (Physical pin 21)
 
-// Crystal Oscillator
+// Crystal Oscillator (16MHz external - handled by Arduino framework)
 #define XTAL1_PIN 13      // XTAL1 (Physical pin 13)
 #define XTAL2_PIN 12      // XTAL2 (Physical pin 12)
 
-// Status LED (single LED terminal)
+// Status LED (single LED terminal) - Arduino digitalWrite() compatible
 #define STATUS_LED_PIN 16 // PD2 (Physical pin 16) - LED-TERM
 
 /**

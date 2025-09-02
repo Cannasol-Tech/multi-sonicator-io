@@ -6,17 +6,17 @@ This document outlines the complete embedded architecture for multi-sonicator-io
 
 This unified approach combines what would traditionally be separate hardware, firmware, and communication architecture documents, streamlining the development process for embedded systems where these concerns are tightly coupled.
 
-##### Starter Template or Existing Project
+## Starter Template or Existing Project
 
 N/A - This is a custom embedded firmware project built on PlatformIO and Arduino framework for ATmega32A, not derived from a standard embedded starter template or existing codebase. The architecture focuses on industrial control with MODBUS RTU communication and multi-unit sonicator management, which doesn't align with typical embedded starters (e.g., no RTOS frameworks like FreeRTOS or specific MCU SDKs are used beyond Arduino core).
 
-##### Change Log
+## Change Log
 
 | Date | Version | Description | Author |
 |------|---------|-------------|--------|
 | 2025-09-01 | 1.0 | Initial embedded architecture draft (refined from fullstack template based on user feedback) | Winston (Architect) |
 
-# Multi-Sonicator I/O Controller Architecture
+## Multi-Sonicator I/O Controller Architecture
 
 ## Overview
 

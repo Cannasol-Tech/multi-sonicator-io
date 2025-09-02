@@ -3,7 +3,7 @@
 **Industrial automation controller for simultaneous control of up to 4 CT2000 sonicators**
 
 ![Project Status](https://img.shields.io/badge/Status-Development-yellow)
-![Version](https://img.shields.io/badge/Version-0.1.0-blue)
+![Version](https://img.shields.io/badge/Version-1.0.0-blue)
 ![License](https://img.shields.io/badge/License-Proprietary-red)
 
 ## Overview
@@ -44,18 +44,20 @@ pio run --target upload
 ## Documentation
 
 ### Project Documentation
-- **[Detailed Project Requirements](docs/Requirements/project-requirements.md)** - Complete technical specifications
-- **[Architecture & Design Decisions](docs/Architecture/design-decisions.md)** - Hardware and software design rationale
-- **[Implementation Plan](docs/planning/implementation-plan.md)** - Development phases and timeline
+- **[Product Requirements Document](docs/prd.md)** - Complete technical specifications and requirements
+- **[Project Requirements (Detailed)](docs/prd-shards/project-requirements.md)** - Comprehensive project requirements
+- **[Architecture Overview](docs/architecture.md)** - System architecture and design decisions
+- **[Pin Matrix (SOLE SOURCE OF TRUTH)](docs/planning/pin-matrix.md)** - Hardware pin assignments and interface mapping
 
-### Development Guides
-- **[Environment Setup](docs/Guides/environment-setup.md)** - Development environment configuration
-- **[Component Selection](docs/Digikey/component-selection.md)** - Hardware components and sourcing
-- **[Budget Analysis](docs/Budget/budget-analysis.md)** - Cost breakdown and optimization
+### Hardware Documentation
+- **[ATmega32A Information](docs/ATMEGA32A/)** - Microcontroller specifications and pin definitions
+- **[Arduino ISP Setup](docs/ArduinoISP/uno-r3-isp-setup.md)** - Programming setup guide
+- **[Component Selection](docs/Digikey/component-list.md)** - Hardware components and sourcing
 
-### Features & Specifications
-- **[Feature Specifications](docs/Features/Specifications/)** - Detailed feature implementations
-- **[Installation Guide](docs/Features/Specifications/18-installation-and-commissioning.md)** - Deployment and commissioning
+### Development Standards & Testing
+- **[Coding Standards](docs/standards/)** - Development guidelines and best practices
+- **[Testing Framework](docs/Testing/hil-serial-protocol.md)** - Hardware-in-the-loop testing protocol
+- **[Simulation Framework](docs/simulation_framework.md)** - Testing without hardware
 
 ### CI/CD Generated Documentation & Reports
 
@@ -90,32 +92,56 @@ The CI/CD pipeline automatically generates comprehensive documentation and test 
 ## Project Structure
 
 ```
-├── src/                    # Source code
+├── src/                    # Source code (Arduino Framework)
+│   ├── main.cpp           # Main Arduino application (placeholder)
+│   └── modules/           # Modular components
 ├── include/               # Header files
-├── lib/                   # Libraries
-├── test/                  # Unit tests
+│   ├── config.h           # System configuration
+│   └── types.h            # Type definitions
+├── test/                  # Testing framework
+│   ├── unit/              # Unit tests
+│   └── acceptance/        # Hardware-in-the-loop tests
 ├── docs/                  # Documentation
-│   ├── Architecture/      # System architecture
-│   ├── Requirements/      # Project requirements
-│   ├── Features/          # Feature specifications
-│   ├── Guides/           # Development guides
-│   └── Digikey/          # Component information
-└── platformio.ini        # PlatformIO configuration
+│   ├── prd.md             # Product Requirements Document
+│   ├── architecture.md    # System architecture
+│   ├── planning/          # Pin matrix and planning docs
+│   ├── prd-shards/        # Detailed requirements
+│   ├── standards/         # Development standards
+│   ├── ATMEGA32A/         # Microcontroller documentation
+│   ├── ArduinoISP/        # Programming setup
+│   ├── Digikey/           # Component information
+│   └── Testing/           # Test protocols
+├── scripts/               # Build and utility scripts
+├── tools/                 # Development tools
+└── platformio.ini         # PlatformIO configuration
 ```
 
 ## Technical Specifications
 
 - **Microcontroller**: ATmega32A @ 16MHz (external crystal)
+- **Development Framework**: Arduino Framework (chosen for rapid development and proven libraries)
 - **Communication**: MODBUS RTU over RS-485/RS-232
 - **Power**: 24VDC input with local regulation (12V/5V stages)
 - **Interfaces**: 4x DB9 connectors for sonicator control
 - **Programming**: Arduino as ISP (Uno R4 WiFi)
+
+### Arduino Framework Rationale
+
+This project uses the **Arduino Framework** rather than bare metal programming for the following reasons:
+
+- **Rapid Development**: Proven libraries for UART, I2C, PWM, and ADC operations
+- **MODBUS Integration**: Easier implementation of MODBUS RTU communication protocols
+- **Industrial Reliability**: Arduino framework is mature and well-tested in industrial applications
+- **Resource Efficiency**: ATmega32A (32KB flash, 2KB RAM) has sufficient resources for framework overhead
+- **Debugging & Testing**: Better toolchain support and debugging capabilities
+- **Maintainability**: More readable code and easier future modifications
 
 ## Development Status
 
 - [x] Initial project setup and documentation
 - [x] Hardware architecture design
 - [x] Component selection and budgeting
+- [x] Arduino Framework integration and configuration
 - [ ] Firmware development (in progress)
 - [ ] Hardware testing and validation
 - [ ] System integration testing

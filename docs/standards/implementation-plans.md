@@ -6,9 +6,9 @@ An Implementation Plan translates a user story's requirements into a concrete, a
 
 Its primary goals are:
 
-*   **Clarity**: To ensure a shared understanding of the work required before coding begins.
-*   **Visibility**: To provide a visual representation of progress (via checkboxes).
-*   **Traceability**: To link development tasks directly to stories and architectural decisions.
+* **Clarity**: To ensure a shared understanding of the work required before coding begins.
+* **Visibility**: To provide a visual representation of progress (via checkboxes).
+* **Traceability**: To link development tasks directly to stories and architectural decisions.
 
 ## 2. Process
 
@@ -18,9 +18,9 @@ An implementation plan should be created for any user story that involves more t
 
 ### How to Create and Use an Implementation Plan
 
-1.  **Create the File**: Copy the template from `docs/planning/implementation-plan.md` into a new file, typically within the relevant feature or epic directory (e.g., `docs/agile/epics/my-feature/implementation-plan.md`).
+1. **Create the File**: Copy the template from `docs/planning/implementation-plan.md` into a new file, typically within the relevant feature or epic directory (e.g., `docs/agile/epics/my-feature/implementation-plan.md`).
 
-2.  **Break Down the Work**: Under the `Work Breakdown` section, list the specific, small, and testable tasks required to complete the story. Use checkboxes for each task.
+2. **Break Down the Work**: Under the `Work Breakdown` section, list the specific, small, and testable tasks required to complete the story. Use checkboxes for each task.
 
     ```markdown
     - [ ] Task 1: Create the Pydantic model for user state.
@@ -28,7 +28,7 @@ An implementation plan should be created for any user story that involves more t
     - [ ] Task 3: Write unit tests for the new model.
     ```
 
-3.  **Update as You Go**: As you complete each task, check the box in the implementation plan. This provides a real-time, visual status of your progress.
+3. **Update as You Go**: As you complete each task, check the box in the implementation plan. This provides a real-time, visual status of your progress.
 
 ## 3. Implementation Plans vs. Story Checklists
 

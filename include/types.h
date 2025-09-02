@@ -1,12 +1,14 @@
 /**
  * @file types.h
- * @brief Multi Sonicator I/O Controller - Common Type Definitions  
+ * @brief Multi Sonicator I/O Controller - Common Type Definitions
  * @author Cannasol Technologies
  * @date 2025-06-27
  * @version 1.0.0
- * 
+ * @framework Arduino Framework (chosen for rapid development and proven libraries)
+ *
  * Common data structures, enumerations, and type definitions
  * used throughout the Multi Sonicator I/O Controller system.
+ * Optimized for Arduino Framework with ATmega32A microcontroller.
  */
 
 #ifndef TYPES_H

@@ -1,24 +1,30 @@
 # Multi-Sonicator I/O Controller Makefile
+# Uses Arduino Framework with PlatformIO for ATmega32A development
 
+#  Make Targets
 
-#  Make Targets 
+## Firmware Related Make Targets (Arduino Framework)
 
-## Firmware Related Make Targets 
+build:
+	# Build ATmega32A firmware using Arduino Framework via PlatformIO
+	pio run -e atmega32a
 
-build: 
-	# TODO: Implement make target to build the ATMEGA32A Firmware for loading on the device or emulator 
+clean:
+	# Clean Arduino Framework build artifacts
+	pio run --target clean
 
-clean: 
-	# TODO: Implement make target to clean the ATMEGA32A Firmware build - This should wipe all previous builds and generated files so we ensure a clean new build 
+upload:
+	# Upload Arduino Framework firmware to ATmega32A via USBASP
+	pio run -e atmega32a --target upload
 
-upload: 
-	# TODO: Implement make target to upload the ATMEGA32A Firmware to the device or emulator 
-		# - This make target should evoke a cli that will asks the user if they want to upload the firmware to the device or the emulator 
+upload-to-device:
+	# Upload Arduino Framework firmware to device using USBASP programmer
+	pio run -e atmega32a --target upload
 
-build-emulator: 
-	# TODO: Implement make target to build the emulator docker image 
-	    # - IMPORTANT:  This make target should result with a running simulavr docker container with the latest ATMEGA32A firmware loaded 
-		# - This make target should output the docker container information 
+build-emulator:
+	# TODO: Implement make target to build the emulator docker image with Arduino Framework
+	    # - IMPORTANT:  This make target should result with a running simulavr docker container with the latest Arduino firmware loaded
+		# - This make target should output the docker container information
 
 monitor-emulator: 
 	# TODO:  This make target should evoke a cli (python script) that interacts with the emulator the same way we interact for hil-sandbox mode
@@ -35,7 +41,7 @@ upload-to-emulator:
 upload-harness: 
 	# TODO: This make target should upload the ardunio test harness to the Arduino that is connected to the computer acting as a middle man for the ATMEGA32A chip
 
-hardware-sandboxz: 
+hardware-sandbox:
     # TODO:  This make target should evoke a cli (python script) that interacts with the user until they reach a point to being connected to the hardware in a "sandbox" mode 
 	    # - The sandbox mode should consist of the following: 
 		#     1. The user should be able to send commands to the Arduino Test Wrapper / Harness
@@ -53,22 +59,72 @@ hardware-sandboxz:
 		#    13. When monitoring is turned off -- the CLI should notify the user and suggest turning it on every 15 seconds ( implemented with a count in the main infinite loop )
 
 
-## Testing Make Targets 
-test-all: test-unit test-emulation
+## Testing Make Targets - Aligned with Software Testing Standard
+test-all: test-unit test-hil
 	@echo "Running all tests..."
 
-ci-test: test-all
-	@echo "Running CI test suite..."
+# Full CI test suite per software testing standard (Unit → Acceptance → Integration)
+ci-test: test-unit test-acceptance test-integration generate-release-artifacts
+	@echo "Running complete CI test suite per software testing standard..."
+	@echo "✅ Unit tests: pytest with 90% coverage"
+	@echo "✅ Acceptance tests: BDD scenarios via HIL hardware"  
+	@echo "✅ Integration tests: HIL hardware validation"
+	@echo "✅ Release artifacts: Generated per release format standard"
 
+# Three-stage testing per software testing standard
 test-unit: 
-	@echo "Running unit tests..."
+	@echo "Stage 1: Unit Testing (pytest with 90% coverage)..."
+	pytest tests/unit/ \
+		--cov=src \
+		--cov-report=json:coverage.json \
+		--cov-report=html:htmlcov \
+		--junit-xml=unit-test-results.xml \
+		--cov-fail-under=90
+
+test-acceptance:
+	@echo "Stage 2: Acceptance Testing (BDD scenarios via HIL)..."
+	@python scripts/detect_hardware.py --check-arduino || (echo "❌ Hardware required for acceptance tests" && exit 1)
+	@echo "✅ Hardware detected - running HIL acceptance tests..."
+	behave test/acceptance \
+		--junit \
+		--junit-directory=acceptance-junit \
+		-D profile=hil
+
+test-integration:
+	@echo "Stage 3: Integration Testing (HIL hardware validation)..."
+	@python scripts/detect_hardware.py --check-hil || (echo "❌ Hardware required for integration tests" && exit 1)
+	@echo "✅ Hardware detected - running HIL integration tests..."
+	behave test/acceptance \
+		--junit \
+		--junit-directory=integration-junit \
+		-D profile=hil \
+		--tags="@integration"
+
+test-unit-legacy:
+	@echo "Running legacy PlatformIO Unity tests..."
 	pio test -e test_desktop
 
 test-emulation:
-	@echo "Running emulation tests..."
-	behave test/acceptance -D profile=simulavr
+	@echo "Running emulation tests with JUnit reports..."
+	behave test/acceptance \
+		--junit \
+		--junit-directory=acceptance-junit \
+		-D profile=simulavr
 
 test-hil:
-	@echo "Running HIL tests..."
-	behave test/acceptance -D profile=hil
+	@echo "Running HIL tests with JUnit reports..."
+	behave test/acceptance \
+		--junit \
+		--junit-directory=acceptance-junit \
+		-D profile=hil
+
+generate-release-artifacts:
+	@echo "Generating release format compliant artifacts..."
+	python scripts/release/generate_executive_report.py \
+		--acceptance-results=acceptance-junit \
+		--integration-results=integration-junit \
+		--unit-results=unit-test-results.xml \
+		--coverage=coverage.json \
+		--output=final
+	@echo "✅ Release artifacts generated in final/"
 

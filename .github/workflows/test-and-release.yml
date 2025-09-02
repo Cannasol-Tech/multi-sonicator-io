@@ -1,0 +1,205 @@
+name: Test and Release Compliance
+
+on:
+  push:
+    tags: ['v*']
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  test-and-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Need full history for git describe
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pytest-cov cffi behave
+          pip install -r requirements.txt || echo "No requirements.txt found"
+      
+      - name: Set up PlatformIO
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/pip
+            ~/.platformio/.cache
+          key: ${{ runner.os }}-pio
+      
+      - name: Install PlatformIO
+        run: |
+          pip install platformio
+          pio upgrade --dev
+          pio pkg install
+      
+      # 1. Build C code for testing
+      - name: Build testable C modules
+        run: |
+          mkdir -p build
+          # Compile C business logic for CFFI testing
+          gcc -shared -fPIC -DUNIT_TEST \
+            -Isrc -Iinclude \
+            src/modbus_protocol.c \
+            src/sonicator_controller.c \
+            -o build/libsonicator_logic.so
+      
+      # 2. Run pytest unit tests with coverage
+      - name: Run pytest unit tests
+        run: |
+          mkdir -p test-results
+          python -m pytest tests/unit/ \
+            --cov=src/ \
+            --cov-report=json:coverage.json \
+            --cov-report=term \
+            --junitxml=test-results/unit-test-results.xml \
+            --tb=short \
+            -v
+      
+      # 3. Run BDD acceptance tests (simulavr emulation)
+      - name: Run acceptance tests (simulavr)
+        run: |
+          mkdir -p test-results/acceptance
+          # Set up emulation environment
+          pip install -r scripts/emulation/requirements-emulation.txt || true
+          
+          # Build firmware for emulation
+          pio run -e development
+          
+          # Run BDD tests in simulavr
+          behave test/acceptance \
+            --junit \
+            --junit-directory=test-results/acceptance \
+            -D profile=simulavr \
+            --tags=~@pending \
+            --no-capture
+      
+      # 4. Generate required release artifacts
+      - name: Generate release artifacts
+        run: |
+          mkdir -p final/
+          python scripts/generate_executive_report.py \
+            --acceptance-results test-results/acceptance/ \
+            --unit-results test-results/unit-test-results.xml \
+            --coverage coverage.json \
+            --output final/
+      
+      # 5. Validate artifacts against schemas (future enhancement)
+      - name: Validate release artifacts
+        run: |
+          echo "Validating executive-report.json structure..."
+          python -c "
+          import json
+          with open('final/executive-report.json') as f:
+              data = json.load(f)
+              required_fields = ['version', 'owner', 'repo', 'releaseTag', 'commit', 'createdAt', 'summary', 'scenarios']
+              for field in required_fields:
+                  assert field in data, f'Missing required field: {field}'
+              print('✅ executive-report.json structure validated')
+          "
+      
+      # 6. Upload artifacts as workflow artifacts (for PRs)
+      - name: Upload test artifacts
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: test-results-${{ github.sha }}
+          path: |
+            final/
+            test-results/
+            coverage.json
+      
+      # 7. Create release and upload artifacts (only for tags)
+      - name: Create GitHub release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body_path: final/executive-report.md
+          draft: false
+          prerelease: false
+          files: |
+            final/executive-report.json
+            final/coverage-summary.json
+            final/unit-test-summary.json
+            final/executive-report.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      # 8. Quality gates
+      - name: Quality gate - Coverage threshold
+        run: |
+          python -c "
+          import json
+          with open('coverage.json') as f:
+              coverage = json.load(f)
+              pct = coverage['totals']['percent_covered']
+              if pct < 90:
+                  print(f'❌ Coverage {pct:.1f}% below 90% threshold')
+                  exit(1)
+              else:
+                  print(f'✅ Coverage {pct:.1f}% meets 90% threshold')
+          "
+      
+      - name: Quality gate - Test results
+        run: |
+          python -c "
+          import json
+          with open('final/executive-report.json') as f:
+              report = json.load(f)
+              failed = report['summary']['failed']
+              if failed > 0:
+                  print(f'❌ {failed} acceptance tests failed')
+                  exit(1)
+              else:
+                  print('✅ All acceptance tests passed')
+          "
+      
+      # 9. Summary report
+      - name: Test summary
+        if: always()
+        run: |
+          echo "## 🧪 Test Results Summary" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f "final/executive-report.json" ]; then
+            python -c "
+            import json
+            with open('final/executive-report.json') as f:
+                data = json.load(f)
+                summary = data['summary']
+                print(f\"### Acceptance Tests (BDD)\")
+                print(f\"- Total: {summary['total']}\")
+                print(f\"- Passed: {summary['passed']} ✅\")
+                print(f\"- Failed: {summary['failed']} ❌\")
+                print(f\"- Skipped: {summary['skipped']} ⏭️\")
+            " >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          if [ -f "coverage.json" ]; then
+            python -c "
+            import json
+            with open('coverage.json') as f:
+                data = json.load(f)
+                pct = data['totals']['percent_covered']
+                print(f\"### Coverage: {pct:.1f}%\")
+            " >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "### 📊 Release Artifacts Generated" >> $GITHUB_STEP_SUMMARY
+          ls -la final/ | tail -n +2 | while read line; do
+            echo "- \`$(echo $line | awk '{print $9}')\`" >> $GITHUB_STEP_SUMMARY
+          done
