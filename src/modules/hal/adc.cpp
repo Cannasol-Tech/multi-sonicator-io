@@ -7,7 +7,7 @@
  */
 
 #include "adc.h"
-#include "../../include/config.h"
+#include <config.h>
 #include <Arduino.h>
 
 // ============================================================================

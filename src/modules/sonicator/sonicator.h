@@ -13,8 +13,8 @@
 #define SONICATOR_H
 
 #include <Arduino.h>
-#include "../../include/config.h"
-#include "../../include/types.h"
+#include <config.h>
+#include <types.h>
 
 /**
  * @brief Enhanced Sonicator Interface Class
