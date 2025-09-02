@@ -38,13 +38,16 @@ This guide provides step-by-step instructions for setting up an Arduino Uno R4 W
 ### ATmega32A Support Circuitry
 
 #### Crystal Oscillator (16MHz)
+
 - **Pin 12 (XTAL1)**: Connect to 16MHz crystal + 22pF capacitor to GND
 - **Pin 13 (XTAL2)**: Connect to 16MHz crystal + 22pF capacitor to GND
 
 #### Reset Circuit
+
 - **Pin 9 (RESET)**: Connect 10kΩ pull-up resistor to VCC
 
 #### Power Supply
+
 - **Pin 10 (VCC)**: Connect to Arduino 5V
 - **Pin 11 (GND)**: Connect to Arduino GND
 - **Pin 30 (AVCC)**: Connect to VCC (analog power)
@@ -138,6 +141,7 @@ avrdude -c arduino -P /dev/cu.usbmodem2101 -b 19200 -p m32 -v
 ```
 
 **Expected fuse values**:
+
 - **LFUSE**: `0xFF` (external crystal, full swing)
 - **HFUSE**: `0xD9` (JTAG disabled, SPI enabled)  
 - **EFUSE**: `0xFF` (default)
@@ -160,32 +164,40 @@ pio run -e atmega32a_arduino_isp --target upload
 ### Common Issues and Solutions
 
 #### Issue: "Device signature doesn't match"
+
 **Symptoms**: `Expected signature 0x1e9502, got 0x000000`
 **Solutions**:
+
 - Check all ISP wiring connections
 - Verify power supply (5V at ATmega32A)
 - Ensure crystal oscillator is connected properly
 - Check for short circuits
 
 #### Issue: "Can't enter programming mode"
+
 **Symptoms**: `avrdude: initialization failed, rc=-1`
 **Solutions**:
+
 - Add 10µF capacitor between Arduino RESET and GND
 - Check RESET line connection to ATmega32A pin 9
 - Verify Arduino is running ArduinoISP sketch
 - Try different USB port/cable
 
 #### Issue: "Fuse setting failed"
+
 **Symptoms**: Fuse programming errors or wrong values
 **Solutions**:
+
 - Ensure stable power supply
 - Check crystal oscillator frequency (16MHz)
 - Verify ISP wiring integrity
 - Use slower programming speed (`-B 10`)
 
 #### Issue: Upload works but program doesn't run
+
 **Symptoms**: Programming successful but no activity
 **Solutions**:
+
 - Verify fuse settings (especially LFUSE for crystal)
 - Check power supply stability
 - Verify pin assignments in code match hardware
