@@ -14,17 +14,21 @@ This document outlines the compliance plan for aligning the Multi-Sonicator I/O 
 | BDD Acceptance Tests | ✅ COMPLIANT | None |
 | HIL Integration Testing | ✅ COMPLIANT | None |
 | PRD Requirement Mapping | ✅ COMPLIANT | Enhance traceability |
-| Unit Testing Language | ❌ NON-COMPLIANT | Exception request or hybrid approach |
-| 90% Coverage Enforcement | ⚠️ PARTIAL | Implement coverage tooling |
+| Unit Testing Language | ✅ COMPLIANT | Unity framework for embedded |
+| 90% Coverage Enforcement | ⚠️ PARTIAL | Implement gcov coverage tooling |
 | BMad-Core Integration | ⚠️ PARTIAL | Integrate QA agent workflows |
 
 ### Recommended Compliance Strategy
 
-#### Phase 1: pytest-Only Unit Testing Strategy
+#### Unity Test Framework Approach (Updated Standard Compliance)
 
-**Approach: 100% pytest Compliance with CFFI for C Code Testing**
+**Approach: Unity Test Framework for Embedded C Unit Testing**
 
-**Python pytest Layer (100% of Unit Tests):**
+Per updated organizational standards (sw-testing-standard.md), embedded and hardware projects should use **Unity Test Framework** as the preferred unit testing approach rather than forcing CFFI compliance.
+
+**Unity Unit Testing Layer (100% of Unit Tests):**
+
+**Unity Unit Testing Layer (100% of Unit Tests):**
 
 - **MODBUS Protocol Logic**: Register mapping, data validation, CRC calculation
 - **Multi-Unit Orchestration**: 4-sonicator coordination and state management  
@@ -37,23 +41,204 @@ This document outlines the compliance plan for aligning the Multi-Sonicator I/O 
 - **Data Structures**: Buffer management, queue operations
 - **Mathematical Functions**: Power calculations, frequency conversions
 
-**Hardware Testing (No Unit Tests Required):**
+**Hardware Testing (Integration/HIL Level):**
 
 - ✅ **HIL Tests with Arduino Wrapper**: Real hardware register validation
 - ✅ **BDD Acceptance Tests**: End-to-end requirement validation via HIL hardware
-- ✅ **Integration Tests**: Full system behavior on target  hardware
+- ✅ **Integration Tests**: Full system behavior on target hardware
 
 **Release Format Compliance (Required):**
 
 - ✅ **executive-report.json**: BDD/acceptance test results in required format
-- ✅ **coverage-summary.json**: pytest coverage metrics aggregation
-- ✅ **unit-test-summary.json**: pytest unit test results summary
+- ✅ **coverage-summary.json**: gcov coverage metrics aggregation
+- ✅ **unit-test-summary.json**: Unity test results summary
 - ✅ **GitHub Release Assets**: Automated CI/CD pipeline publishing
+
+## Unity Test Framework Implementation
+
+### Directory Structure
+
+```
+test/unit/                    # Unity unit tests
+├── test_runner.c            # Unity test runner (auto-generated)
+├── test_modbus_protocol.c   # MODBUS protocol unit tests
+├── test_sonicator_controller.c # Control logic unit tests
+├── test_safety_algorithms.c # Safety logic unit tests
+├── unity_config.h           # Unity configuration
+└── Makefile                 # Unity build configuration
+
+src/                         # Source code (unchanged)
+├── modbus_protocol.c        # Business logic modules
+├── sonicator_controller.c   # Control algorithms
+├── safety_algorithms.c     # Safety logic
+└── main.c                   # Main firmware
+
+test/acceptance/             # BDD acceptance tests
+├── features/                # Gherkin feature files
+└── steps/                   # Step implementations (HIL)
+```
+
+### Unity Test Example
+
+```c
+// test/unit/test_sonicator_controller.c (Unity - Native C Testing)
+#include "unity.h"
+#include "sonicator_controller.h"
+
+void setUp(void) {
+    // Setup before each test
+}
+
+void tearDown(void) {
+    // Cleanup after each test
+}
+
+void test_active_count_calculation(void) {
+    // Test active sonicator count calculation (FR9)
+    TEST_ASSERT_EQUAL_UINT8(0, calculate_active_count(0b0000)); // No units
+    TEST_ASSERT_EQUAL_UINT8(1, calculate_active_count(0b0001)); // Unit 1 only
+    TEST_ASSERT_EQUAL_UINT8(2, calculate_active_count(0b1010)); // Units 2,4
+    TEST_ASSERT_EQUAL_UINT8(4, calculate_active_count(0b1111)); // All units
+}
+
+void test_amplitude_clamping_logic(void) {
+    // Test amplitude clamping business rule (FR3)
+    TEST_ASSERT_EQUAL_UINT8(20, clamp_amplitude(10));   // Below minimum → clamp to 20%
+    TEST_ASSERT_EQUAL_UINT8(100, clamp_amplitude(150)); // Above maximum → clamp to 100%
+    TEST_ASSERT_EQUAL_UINT8(50, clamp_amplitude(50));   // Valid range → unchanged
+}
+
+void test_modbus_register_validation(void) {
+    // Test MODBUS register address validation logic (FR8)
+    
+    // Amplitude registers (40001-40004)
+    TEST_ASSERT_TRUE(validate_modbus_register_address(40001));
+    TEST_ASSERT_TRUE(validate_modbus_register_address(40004));
+    
+    // Start/Stop registers (40005-40008)  
+    TEST_ASSERT_TRUE(validate_modbus_register_address(40005));
+    
+    // Invalid addresses
+    TEST_ASSERT_FALSE(validate_modbus_register_address(50000));
+    TEST_ASSERT_FALSE(validate_modbus_register_address(30000));
+}
+
+void test_modbus_crc_calculation(void) {
+    // Test MODBUS CRC-16 calculation algorithm
+    uint8_t test_frame[] = {0x01, 0x03, 0x00, 0x01, 0x00, 0x01};
+    uint16_t expected_crc = 0xD5CA; // Known good CRC for this frame
+    
+    uint16_t calculated_crc = calculate_modbus_crc(test_frame, sizeof(test_frame));
+    TEST_ASSERT_EQUAL_HEX16(expected_crc, calculated_crc);
+}
+
+int main(void) {
+    UNITY_BEGIN();
+    
+    RUN_TEST(test_active_count_calculation);
+    RUN_TEST(test_amplitude_clamping_logic);
+    RUN_TEST(test_modbus_register_validation);
+    RUN_TEST(test_modbus_crc_calculation);
+    
+    return UNITY_END();
+}
+```
+
+**Technical Benefits:**
+
+- **Organizational Compliance**: Uses Unity framework (approved for embedded projects)
+- **Native C Testing**: Direct testing without language barriers or complexity
+- **Minimal Resource Usage**: Optimized for embedded systems
+- **Hardware Integration**: Seamless with existing HIL framework
+- **Industry Standard**: Widely adopted in embedded development
 
 **Implementation Strategy:**
 
+## CFFI Build System Architecture
+
+The CFFI build system enables pytest unit testing of C business logic while maintaining organizational compliance. Here's the complete implementation:
+
+### Directory Structure
+
+```
+src/
+├── business_logic/          # Pure logic - for CFFI testing
+│   ├── modbus_protocol.c    # MODBUS business logic
+│   ├── sonicator_controller.c # Control algorithms
+│   └── safety_algorithms.c  # Safety logic
+├── hardware/               # Hardware-dependent - HIL only
+│   └── hardware_interface.c # ATmega32A hardware layer
+└── main.c                  # Main firmware entry point
+
+include/
+├── business_logic/         # Headers for pure logic
+│   ├── modbus_protocol.h
+│   ├── sonicator_controller.h
+│   └── safety_algorithms.h
+└── hardware/              # Headers for hardware layer
+    └── hardware_interface.h
+
+test/unit/                # pytest unit tests
+├── cffi_helper.py         # CFFI integration utilities
+├── test_sonicator_controller.py
+├── test_modbus_protocol.py
+└── test_safety_algorithms.py
+
+build/                     # Build artifacts
+├── libsonicator_logic.so  # CFFI shared library
+└── cffi_definitions.h     # Generated header reference
+```
+
+### Build Process Flow
+
+```mermaid
+graph TD
+    A[C Business Logic] --> B[CFFI Compiler]
+    B --> C[Shared Library .so]
+    C --> D[pytest Unit Tests]
+    
+    E[C Hardware Code] --> F[PlatformIO Build]
+    F --> G[ATmega32A Firmware]
+    G --> H[HIL Tests]
+    
+    D --> I[Coverage Reports]
+    H --> I
+    I --> J[Release Artifacts]
+```
+
+### CFFI Integration Scripts
+
+**1. Build System (`build_cffi.py`)**
+- Compiles C business logic into shared library
+- Generates CFFI header definitions
+- Validates library loading
+- Supports debug and release modes
+
+**2. Code Restructuring (`restructure_code.py`)**
+- Separates business logic from hardware code
+- Creates proper directory structure
+- Generates template implementations
+- Sets up pytest integration files
+
+**3. Makefile Integration**
+```bash
+# Build CFFI shared library
+make cffi
+
+# Run pytest unit tests with coverage
+make test-unit
+
+# Run all tests (unit + acceptance + HIL)
+make test
+
+# Clean all build artifacts
+make clean
+```
+
+### pytest Test Example
+
 ```python
-# tests/unit/test_sonicator_controller.py (pytest - Pure Logic Testing)
+# test/unit/test_sonicator_controller.py (pytest - Pure Logic Testing)
 import pytest
 from cffi import FFI
 from unittest.mock import Mock
@@ -176,7 +361,7 @@ Your project already has `scripts/release/generate_executive_report.py` which ge
 # Updated Makefile targets for release format compliance
 test-unit-with-reports:
     @echo "Running pytest unit tests with coverage and reports..."
-    pytest tests/unit/ 
+    pytest test/unit/ 
         --cov=src 
         --cov-report=json:coverage.json 
         --cov-report=html:htmlcov 
@@ -227,7 +412,7 @@ jobs:
       # 1. Run pytest unit tests with coverage
       - name: Run pytest unit tests
         run: |
-          python -m pytest tests/unit/ \
+          python -m pytest test/unit/ \
             --cov=src/ \
             --cov-report=json:coverage.json \
             --junitxml=unit-test-results.xml \
@@ -413,10 +598,24 @@ jobs:
 
 #### Week 1: pytest Unit Testing Setup
 
-- [ ] Configure CFFI build system for C code compilation
-- [ ] Restructure C code to separate business logic from hardware code
-- [ ] Create initial pytest test structure in `tests/unit/`
-- [ ] Set up pytest coverage reporting with `--cov` flags
+- [ ] ✅ **COMPLETED**: Configure CFFI build system for C code compilation
+  - `build_cffi.py` - Automated CFFI compilation script
+  - `restructure_code.py` - Code separation automation
+  - `Makefile` - Integrated build targets for CFFI
+  - `requirements-testing.txt` - Python dependency specification
+- [ ] ✅ **COMPLETED**: Restructure C code to separate business logic from hardware code
+  - `src/business_logic/` - Pure business logic modules
+  - `src/hardware/` - Hardware-dependent code for HIL
+  - `include/business_logic/` - Business logic headers
+  - `include/hardware/` - Hardware interface headers
+- [ ] ✅ **COMPLETED**: Create initial pytest test structure in `test/unit/`
+  - `test/unit/cffi_helper.py` - CFFI integration utilities
+  - `test/unit/test_sonicator_controller.py` - Sample unit tests
+  - `pytest.ini` - pytest configuration with coverage
+- [ ] ✅ **COMPLETED**: Set up pytest coverage reporting with `--cov` flags
+  - Coverage integration in Makefile targets
+  - JSON/HTML report generation
+  - 90% coverage enforcement
 
 #### Week 2: Business Logic Test Implementation  
 

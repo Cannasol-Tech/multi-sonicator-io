@@ -16,7 +16,7 @@ This document defines the company's software testing standards, ensuring consist
 
    * **Preferred Language**: Python (pytest) or Typescript (Jest, Mocha, etc.)
    * **Preferred Framework**: pytest or Jest
-   * **Preferred Location**: `tests/unit`
+   * **Preferred Location**: `test/unit`
      - **Note:** If there is a problem with the locations, language, or frameworks, please open an issue in the repository to raise the concern. DO NOT implement any other unit testing framework or language without approval.
      
    * **Coverage Requirement:** Minimum **90% coverage**.

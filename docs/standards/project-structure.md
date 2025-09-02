@@ -55,7 +55,7 @@ This document is meant to define the standardized directory structure and archit
 - Build artifacts: `dist/`, `build/`, compiled binaries
 - IDE files: `.vscode/`, `.idea/`, `*.swp`
 - OS files: `.DS_Store`, `Thumbs.db`
-- Test files: Individual test files (use `tests/` directory)
+- Test files: Individual test files (use `test/` directory)
 - Documentation files: Use `docs/` directory structure
 - Configuration files: Use `config/` directory structure
 - Source code: Use `src/` directory structure

@@ -37,7 +37,7 @@ Authoritative Standard — Single Source of Truth
 
 ## F) Repository & Standards Readiness
 - [ ] Relevant standards referenced (sw‑testing‑standard.md, release‑format.md, repository‑auditing.md)
-- [ ] Required templates/stubs added (e.g., tests/acceptance, docs/qa/traces)
+- [ ] Required templates/stubs added (e.g., test/acceptance, docs/qa/traces)
 - [ ] Labels and links prepared for Issue/PR templates (epic/story checklist, PR template expectations)
 
 ## G) Exit Criteria (Mark “Ready for Dev”)

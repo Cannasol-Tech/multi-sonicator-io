@@ -44,7 +44,7 @@ All Axovia Flow projects must adhere to the strict root directory standard:
 - Build artifacts (`dist/`, `build/`, compiled binaries)
 - IDE files (`.vscode/`, `.idea/`, `*.swp`)
 - OS files (`.DS_Store`, `Thumbs.db`)
-- Test files (use `tests/` directory)
+- Test files (use `test/` directory)
 - Documentation files (use `docs/` directory)
 - Configuration files (use `config/` directory)
 - Source code (use `src/` directory)

@@ -1,7 +1,38 @@
 # Multi-Sonicator I/O Controller Makefile
 # Uses Arduino Framework with PlatformIO for ATmega32A development
+# Supports CFFI-based pytest testing for organizational compliance
 
 #  Make Targets
+
+## CFFI and Testing Targets (Organizational Compliance)
+
+# Development environment setup
+setup-dev:
+	@echo "🚀 Setting up development environment..."
+	python setup_dev_environment.py --full
+
+# Python dependency installation
+install-deps:
+	@echo "📦 Installing Python dependencies..."
+	pip install -r requirements-testing.txt
+
+# CFFI build for pytest testing (organizational compliance)
+cffi:
+	@echo "🏗️  Building CFFI shared library..."
+	python build_cffi.py
+
+cffi-debug:
+	@echo "🐛 Building CFFI shared library with debug symbols..."
+	python build_cffi.py --debug
+
+# Code restructuring (one-time setup)
+restructure:
+	@echo "🏗️  Restructuring code for CFFI compliance..."
+	python restructure_code.py
+
+# Quick validation
+validate: cffi test-unit
+	@echo "✅ Quick validation complete - CFFI build and unit tests passed"
 
 ## Firmware Related Make Targets (Arduino Framework)
 
@@ -72,14 +103,16 @@ ci-test: test-unit test-acceptance test-integration generate-release-artifacts
 	@echo "✅ Release artifacts: Generated per release format standard"
 
 # Three-stage testing per software testing standard
-test-unit: 
-	@echo "Stage 1: Unit Testing (pytest with 90% coverage)..."
-	pytest tests/unit/ \
-		--cov=src \
+test-unit: cffi
+	@echo "Stage 1: Unit Testing (pytest with CFFI and 90% coverage)..."
+	python -m pytest test/unit/ \
+		--cov=src/business_logic \
 		--cov-report=json:coverage.json \
 		--cov-report=html:htmlcov \
+		--cov-report=term-missing \
 		--junit-xml=unit-test-results.xml \
-		--cov-fail-under=90
+		--cov-fail-under=90 \
+		--verbose
 
 test-acceptance:
 	@echo "Stage 2: Acceptance Testing (BDD scenarios via HIL)..."

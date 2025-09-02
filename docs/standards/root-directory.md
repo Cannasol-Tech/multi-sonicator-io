@@ -64,7 +64,7 @@ The following files are permitted in the root directory:
 2. **Build artifacts**: `dist/`, `build/`, compiled binaries
 3. **IDE files**: `.vscode/`, `.idea/`, `*.swp`, `*.swo`
 4. **OS files**: `.DS_Store`, `Thumbs.db`, desktop.ini
-5. **Test files**: Individual test files (use `tests/` directory)
+5. **Test files**: Individual test files (use `test/` directory)
 6. **Documentation files**: Use `docs/` directory structure
 7. **Configuration files**: Use `config/` directory structure
 8. **Source code**: Use `src/` directory structure
@@ -90,7 +90,7 @@ All Axovia Flow projects must follow this structure:
 ├── docs/              # Documentation
 ├── scripts/           # Utility scripts
 ├── src/               # Source code
-├── tests/             # Test suites
+├── test/             # Test suites
 └── .bmad-core/        # Framework integration
 ```
 
@@ -107,7 +107,7 @@ For existing projects:
 1. **Audit current root directory** against this standard
 2. **Move prohibited files** to appropriate subdirectories:
    - Source code → `src/`
-   - Tests → `tests/`
+   - Tests → `test/`
    - Documentation → `docs/`
    - Configuration → `config/`
    - Scripts → `scripts/` or `bin/`

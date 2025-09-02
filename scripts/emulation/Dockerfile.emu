@@ -45,7 +45,7 @@ RUN git clone --depth 1 https://github.com/buserror/simavr /opt/simavr \
 # Default workdir will be set by Makefile's docker run command
 
 # Build SimulAVR with Python bindings (pysimulavr) from upstream (full clone to satisfy cmake Git info)
-# Configure CMake to build only the Python bindings and disable tests/docs to avoid missing check targets
+# Configure CMake to build only the Python bindings and disable test/docs to avoid missing check targets
 RUN git clone https://git.savannah.nongnu.org/git/simulavr.git /opt/simulavr-src \
     && git -C /opt/simulavr-src fetch --tags --force --prune \
     # Bypass GetGitInfo.cmake by injecting fixed version to avoid CMake string REPLACE error in minimal environments

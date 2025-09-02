@@ -2,7 +2,7 @@
 
 ## Overview
 
-Unit tests for Multi-Sonicator IO are located in the `tests/unit` directory.
+Unit tests for Multi-Sonicator IO are located in the `test/unit` directory.
 
 ## Unit Testing Framework Defined
 
@@ -19,7 +19,7 @@ Unit tests for Multi-Sonicator IO are located in the `tests/unit` directory.
 
 ## Unit Testing Tech-Stack Defined ( Per Project Basis - Defined during the planning phase. )
 
-- The unit tests are located in the `tests/unit` directory.
+- The unit tests are located in the `test/unit` directory.
 - The unit tests are named according to the `test_{component}_{scenario}` convention.
 - The unit tests are run using the `make test-unit` command.
 - The unit tests are run using the `unity` framework and are written in C/C++.

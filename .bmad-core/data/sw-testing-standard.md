@@ -15,15 +15,75 @@ This document defines the company's software testing standards, ensuring consist
 1. **Unit Testing**
 > **Note:** Mocks are reserved for unit testing only, unless absolutely necessary and explicitly approved by the repository owner.
 
-   * **Preferred Language**: Python (pytest) or Typescript (Jest, Mocha, etc.)
-   * **Preferred Framework**: pytest or Jest
-   * **Preferred Location**: `tests/unit`
-     - **Note:** If there is a problem with the locations, language, or frameworks, please open an issue in the repository to raise the concern. DO NOT implement any other unit testing framework or language without approval.
+   * **Preferred Language & Framework by Project Type**:
+     * **Software Projects**: Python (pytest) or Typescript (Jest, Mocha, etc.)
+     * **Embedded/Hardware Projects**: C/C++ (Unity Test Framework)
+     * **Mixed Projects**: Unity for embedded components, pytest for Python components
+   
+   * **Framework Selection**:
+     * **pytest** → Python-based projects and services
+     * **Jest/Mocha** → TypeScript/JavaScript frontend and backend
+     * **Unity** → Embedded C/C++ firmware and hardware projects
+   
+   * **Preferred Location**: `test/unit`
+     * **Note:** If there is a problem with the locations, language, or frameworks, please open an issue in the repository to raise the concern. DO NOT implement any other unit testing framework or language without approval.
      
    * **Coverage Requirement:** Minimum **90% coverage**.
    * **Focus:** Validate individual functions, modules, and components in isolation.
    * **Method:** Automated unit test frameworks with mocking/stubbing where necessary.
-   * **Integration:** Use `test-levels-framework.md` for detailed decision criteria and examples.
+      * **Integration:** Use `test-levels-framework.md` for detailed decision criteria and examples.
+
+---
+
+## Embedded/Hardware Testing Best Practices
+
+### Unity Test Framework for Embedded Systems
+
+For embedded and hardware projects, Unity Test Framework is the **preferred unit testing approach** due to its:
+
+* **Native C/C++ Support**: Direct testing of embedded C code without language barriers
+* **Minimal Resource Usage**: Optimized for resource-constrained embedded systems
+* **Hardware Integration**: Seamless integration with target hardware and cross-compilation
+* **Industry Standard**: Widely adopted in embedded systems development
+
+### Embedded Testing Architecture
+
+```
+test/unit/               # Unity unit tests
+├── test_runner.c        # Unity test runner
+├── test_module1.c       # Unit tests for module1
+├── test_module2.c       # Unit tests for module2
+└── unity_config.h       # Unity configuration
+
+test/acceptance/         # BDD acceptance tests
+├── features/            # Gherkin feature files
+└── steps/              # Step implementations
+
+test/hil/               # Hardware-in-the-loop tests
+├── hardware_tests.c    # Direct hardware validation
+└── integration/        # Full system integration
+```
+
+### Unity vs CFFI Decision Matrix
+
+| Factor | Unity | CFFI + pytest | Recommendation |
+|--------|-------|----------------|----------------|
+| **Embedded Projects** | ✅ Native | ⚠️ Complex | **Use Unity** |
+| **Resource Constraints** | ✅ Minimal | ❌ Heavy | **Use Unity** |
+| **Hardware Integration** | ✅ Direct | ❌ Wrapper needed | **Use Unity** |
+| **Cross-compilation** | ✅ Native | ⚠️ Complex | **Use Unity** |
+| **Debugging Support** | ✅ Native tools | ⚠️ Limited | **Use Unity** |
+| **Team Expertise** | ✅ C developers | ⚠️ Python required | **Use Unity** |
+
+### Implementation Guidelines
+
+* **Unit Tests**: Use Unity for testing individual C functions and modules
+* **Hardware Tests**: Combine Unity with HIL testing for hardware validation
+* **Acceptance Tests**: Use BDD (Behave) for requirement validation via HIL
+* **Coverage**: Use gcov/lcov for C code coverage reporting
+* **CI/CD**: Integrate Unity tests with automated build pipelines
+
+---
 
 2. **Acceptance Testing**
 

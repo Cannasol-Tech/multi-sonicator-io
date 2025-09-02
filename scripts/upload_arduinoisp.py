@@ -9,7 +9,7 @@ Robust ArduinoISP uploader for Arduino UNO R4 WiFi (or other boards via FQBN).
 Env overrides:
 - ARDUINO_FQBN (default: arduino:renesas_uno:unor4wifi)
 - ARDUINO_PORT (optional, overrides auto-detection)
-- SKETCH_DIR (default: tests/hardware/sketches/ArduinoISP)
+- SKETCH_DIR (default: test/hardware/sketches/ArduinoISP)
 """
 import json
 import os
@@ -20,7 +20,7 @@ from pathlib import Path
 
 FQBN = os.environ.get("ARDUINO_FQBN", "arduino:renesas_uno:unor4wifi")
 PORT_OVERRIDE = os.environ.get("ARDUINO_PORT", "").strip()
-SKETCH_DIR = Path(os.environ.get("SKETCH_DIR", "tests/hardware/sketches/ArduinoISP")).resolve()
+SKETCH_DIR = Path(os.environ.get("SKETCH_DIR", "test/hardware/sketches/ArduinoISP")).resolve()
 
 ARDUINO_CLI = os.environ.get("ARDUINO_CLI", "arduino-cli")
 

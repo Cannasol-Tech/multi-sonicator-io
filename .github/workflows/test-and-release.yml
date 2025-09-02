@@ -61,7 +61,7 @@ jobs:
       - name: Run pytest unit tests
         run: |
           mkdir -p test-results
-          python -m pytest tests/unit/ \
+          python -m pytest test/unit/ \
             --cov=src/ \
             --cov-report=json:coverage.json \
             --cov-report=term \

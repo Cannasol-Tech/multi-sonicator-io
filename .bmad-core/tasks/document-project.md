@@ -164,7 +164,7 @@ project-root/
 │   ├── models/          # Database models (Sequelize)
 │   ├── utils/           # Mixed bag - needs refactoring
 │   └── legacy/          # DO NOT MODIFY - old payment system still in use
-├── tests/               # Jest tests (60% coverage)
+├── test/               # Jest tests (60% coverage)
 ├── scripts/             # Build and deployment scripts
 └── config/              # Environment configs
 ```
@@ -243,7 +243,7 @@ etc...
 ### Current Test Coverage
 
 - Unit Tests: 60% coverage (Jest)
-- Integration Tests: Minimal, in `tests/integration/`
+- Integration Tests: Minimal, in `test/integration/`
 - E2E Tests: None
 - Manual Testing: Primary QA method
 

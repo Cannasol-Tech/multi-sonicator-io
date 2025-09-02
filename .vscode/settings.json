@@ -1,8 +1,20 @@
 {
-  "chat.agent.enabled": true,
-  "chat.agent.maxRequests": 15,
-  "github.copilot.chat.agent.runTasks": true,
-  "chat.mcp.discovery.enabled": true,
-  "github.copilot.chat.agent.autoFix": true,
-  "chat.tools.autoApprove": false
+  "python.defaultInterpreterPath": "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+  "python.testing.pytestEnabled": true,
+  "python.testing.pytestArgs": [
+    "test/unit"
+  ],
+  "python.testing.autoTestDiscoverOnSaveEnabled": true,
+  "files.associations": {
+    "*.h": "c",
+    "*.c": "c"
+  },
+  "C_Cpp.default.includePath": [
+    "${workspaceFolder}/include",
+    "${workspaceFolder}/include/business_logic",
+    "${workspaceFolder}/include/hardware"
+  ],
+  "C_Cpp.default.defines": [
+    "CFFI_TESTING"
+  ]
 }
