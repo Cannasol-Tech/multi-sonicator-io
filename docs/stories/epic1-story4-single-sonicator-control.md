@@ -164,6 +164,13 @@ void sonicator_state_machine(sonicator_t* unit) {
 - [ ] Telemetry updates at required 10Hz rate
 - [ ] Command latency verified <200ms
 - [ ] Unit tests achieve >90% coverage
+- [ ] **HIL verification: Complete sonicator control validated with actual CT2000 unit**
+- [ ] **HIL verification: Amplitude control accuracy verified (±2% of setpoint)**
+- [ ] **HIL verification: Power monitoring accuracy validated with test equipment**
+- [ ] **HIL verification: Frequency measurement accuracy verified**
+- [ ] **HIL verification: State machine transitions tested under real conditions**
+- [ ] **HIL verification: MODBUS integration tested with external master**
+- [ ] **HIL verification: Safety features tested (communication loss, overload)**
 - [ ] Hardware validation on actual CT2000 unit
 - [ ] Communication fault detection tested
 - [ ] Code review completed for safety compliance
@@ -172,6 +179,7 @@ void sonicator_state_machine(sonicator_t* unit) {
 
 ### Prerequisites
 
+- Epic 1 Story 0: HIL Testing Framework & Hardware Verification completed
 - Epic 1 Story 2: Hardware Abstraction Layer (HAL) Implementation completed
 - Epic 1 Story 3: MODBUS RTU Communication Framework completed
 - CT2000 sonicator unit available for testing
@@ -181,7 +189,7 @@ void sonicator_state_machine(sonicator_t* unit) {
 
 - Epic 2: Multi-sonicator management and coordination
 - Epic 2: Safety features and watchdog implementation
-- Epic 3: HIL testing and validation
+- Epic 2: Advanced HIL testing and system validation
 
 ## Risk Assessment
 

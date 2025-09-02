@@ -61,7 +61,7 @@ test/acceptance/         # BDD acceptance tests
 ├── features/            # Gherkin feature files
 └── steps/              # Step implementations
 
-test/hil/               # Hardware-in-the-loop tests
+test/integration/       # Hardware-in-the-loop tests
 ├── hardware_tests.c    # Direct hardware validation
 └── integration/        # Full system integration
 ```

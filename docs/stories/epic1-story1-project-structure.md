@@ -52,7 +52,8 @@ So that **I can develop, test, and deploy ATmega32A firmware efficiently**.
 ## Technical Implementation Details
 
 ### Required Directory Structure
-```
+
+```markdown
 src/
 ├── main.cpp                 # Application entry point
 ├── modules/                 # Modular firmware components
@@ -68,12 +69,14 @@ test/
 ```
 
 ### Core Configuration Files
+
 - `platformio.ini` with ATmega32A settings (✅ Already exists)
 - `config.h` with system constants and pin definitions
 - `types.h` with embedded-specific type definitions
 - Makefile integration for standardized build commands
 
 ### Initial Functionality
+
 - System initialization and watchdog setup
 - Basic GPIO control (status LED on PD2 per pin matrix)
 - Serial communication at 115200 baud for debugging
@@ -87,17 +90,23 @@ test/
 - [ ] Directory structure matches embedded standards
 - [ ] Build documentation updated in README
 - [ ] Initial unit test passes
+- [ ] **HIL verification: Basic connectivity and programming successful**
+- [ ] **HIL verification: LED blink and serial output validated on hardware**
+- [ ] **HIL verification: Build and upload process validated**
 - [ ] Code review completed for structure and standards compliance
 - [ ] Makefile targets functional
 
 ## Dependencies
 
 **Prerequisites:**
+
+- Epic 1 Story 0: HIL Testing Framework & Hardware Verification completed
 - Hardware setup (ATmega32A board, Arduino as ISP)
 - PlatformIO installed and configured
 - Arduino as ISP programmer setup
 
 **Enables Next Stories:**
+
 - Hardware Abstraction Layer implementation
 - MODBUS communication framework
 - Sonicator control interface development

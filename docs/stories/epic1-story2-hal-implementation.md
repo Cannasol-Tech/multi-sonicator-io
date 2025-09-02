@@ -137,6 +137,11 @@ uint32_t timer_get_millis(void);
 - [ ] Timer functions provide accurate timing
 - [ ] Unit tests achieve >90% coverage
 - [ ] Doxygen documentation complete for all public interfaces
+- [ ] **HIL verification: GPIO pin control validated on actual hardware**
+- [ ] **HIL verification: ADC accuracy verified with known reference voltages**
+- [ ] **HIL verification: PWM frequency and duty cycle measured with test equipment**
+- [ ] **HIL verification: UART communication tested with HIL framework**
+- [ ] **HIL verification: Timer accuracy validated with real-time measurements**
 - [ ] Hardware validation on ATmega32A target successful
 - [ ] Code review completed for architecture compliance
 
@@ -144,6 +149,7 @@ uint32_t timer_get_millis(void);
 
 ### Prerequisites
 
+- Epic 1 Story 0: HIL Testing Framework & Hardware Verification completed
 - Epic 1 Story 1: Project Structure & Build System Setup completed
 - Hardware setup with ATmega32A and test equipment
 - Pin matrix documentation finalized

@@ -144,6 +144,11 @@ bool modbus_validate_address(uint16_t address, uint8_t function_code);
 - [ ] Communication loss failsafe tested
 - [ ] Unit tests achieve >90% coverage
 - [ ] Protocol compliance verified with MODBUS testing tools
+- [ ] **HIL verification: MODBUS communication tested with real PLC/HMI simulator**
+- [ ] **HIL verification: Register read/write operations validated on hardware**
+- [ ] **HIL verification: Communication timing requirements verified (<100ms response)**
+- [ ] **HIL verification: Error handling and fault injection tested**
+- [ ] **HIL verification: CRC validation tested with corrupted frames**
 - [ ] Integration tested with simulated PLC master
 - [ ] Code review completed for protocol compliance
 
@@ -151,6 +156,7 @@ bool modbus_validate_address(uint16_t address, uint8_t function_code);
 
 ### Prerequisites
 
+- Epic 1 Story 0: HIL Testing Framework & Hardware Verification completed
 - Epic 1 Story 2: Hardware Abstraction Layer (HAL) Implementation completed
 - UART HAL functional and tested
 - Basic sonicator control structure defined
