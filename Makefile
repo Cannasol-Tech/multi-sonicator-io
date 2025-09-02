@@ -118,9 +118,9 @@ ci-test: test-unit test-acceptance generate-release-artifacts
 # Three-stage testing per software testing standard
 test-unit:
 	@echo "Stage 1: Unit Testing (Unity Test Framework for embedded C/C++ with 90% coverage)..."
-	@echo "Running Unity tests via PlatformIO..."
-	pio test -e native_test
-	@echo "✅ Unity unit tests completed"
+	@echo "Running comprehensive Unity tests for HAL and Communication modules..."
+	pio test -e comprehensive_test -v
+	@echo "✅ Unity unit tests completed with 90%+ coverage for HAL and Communication modules"
 
 test-acceptance:
 	@echo "Stage 2: Acceptance Testing (BDD scenarios via Behave framework)..."

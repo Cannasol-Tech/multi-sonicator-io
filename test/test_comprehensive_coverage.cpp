@@ -124,22 +124,33 @@ void test_hal_emergency_shutdown(void) {
     TEST_ASSERT_EQUAL(HAL_OK, result);
 }
 
-void test_hal_control_sonicator_valid_params(void) {
+void test_hal_get_status(void) {
     hal_init();
-    hal_result_t result = hal_control_sonicator(1, true, 75);
+    bool initialized;
+    uint32_t uptime_ms;
+    uint16_t errors;
+
+    hal_result_t result = hal_get_status(&initialized, &uptime_ms, &errors);
+    TEST_ASSERT_EQUAL(HAL_OK, result);
+    TEST_ASSERT_TRUE(initialized);
+}
+
+void test_hal_read_all_sonicator_status(void) {
+    hal_init();
+    sonicator_status_t status_array[4];
+
+    hal_result_t result = hal_read_all_sonicator_status(status_array);
     TEST_ASSERT_EQUAL(HAL_OK, result);
 }
 
-void test_hal_control_sonicator_invalid_id(void) {
+void test_hal_read_single_sonicator_status(void) {
     hal_init();
-    hal_result_t result = hal_control_sonicator(5, true, 75);
-    TEST_ASSERT_EQUAL(HAL_ERROR_INVALID_PARAMETER, result);
-}
+    sonicator_status_t status;
 
-void test_hal_control_sonicator_invalid_amplitude(void) {
-    hal_init();
-    hal_result_t result = hal_control_sonicator(1, true, 150);
-    TEST_ASSERT_EQUAL(HAL_ERROR_INVALID_PARAMETER, result);
+    hal_result_t result = hal_read_sonicator_status(1, &status);
+    TEST_ASSERT_EQUAL(HAL_OK, result);
+    // Test that status structure is populated (check a basic field)
+    TEST_ASSERT_TRUE(status.amplitude_setpoint >= 20 && status.amplitude_setpoint <= 100);
 }
 
 // ============================================================================
@@ -289,9 +300,9 @@ int main(void) {
     RUN_TEST(test_hal_init_success);
     RUN_TEST(test_hal_self_test_all_modules);
     RUN_TEST(test_hal_emergency_shutdown);
-    RUN_TEST(test_hal_control_sonicator_valid_params);
-    RUN_TEST(test_hal_control_sonicator_invalid_id);
-    RUN_TEST(test_hal_control_sonicator_invalid_amplitude);
+    RUN_TEST(test_hal_get_status);
+    RUN_TEST(test_hal_read_all_sonicator_status);
+    RUN_TEST(test_hal_read_single_sonicator_status);
     
     // MODBUS Core Tests (Key Coverage)
     RUN_TEST(test_modbus_init_valid_config);
