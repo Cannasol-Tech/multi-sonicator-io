@@ -30,15 +30,18 @@ The Multi-Sonicator I/O Controller extends Cannasol Technologies' proprietary au
 
 1. Install PlatformIO with VSCode
 2. Clone this repository
-3. Configure ISP programmer (see [Environment Setup Guide](docs/Guides/environment-setup.md))
+3. Configure ISP programmer (see [Arduino ISP Setup Guide](docs/setup/arduino-isp-setup.md))
 4. Build and upload firmware
 
 ```bash
+# Install Python dependencies
+make install-deps
+
 # Build project
-pio run
+make build
 
 # Upload to target (via Arduino as ISP)
-pio run --target upload
+make upload-to-device
 ```
 
 ## Documentation

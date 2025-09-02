@@ -79,6 +79,16 @@ test-acceptance:
 		--junit-directory=acceptance-junit \
 		-D profile=hil
 
+test-integration:
+	@echo "Stage 3: Integration Testing (HIL hardware validation for embedded systems)..."
+	@python scripts/detect_hardware.py --check-arduino || (echo "❌ Hardware required for integration tests" && exit 1)
+	@echo "✅ Hardware detected - running HIL integration tests..."
+	behave test/acceptance \
+		--junit \
+		--junit-directory=integration-junit \
+		-D profile=integration \
+		--tags=integration
+
 generate-release-artifacts:
 	@echo "Generating release format compliant artifacts..."
 	python scripts/release/generate_executive_report.py \

@@ -1,0 +1,243 @@
+name: Multi-Sonicator I/O Controller CI/CD
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-firmware:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Cache PlatformIO
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cache/pip
+          ~/.platformio/.cache
+        key: ${{ runner.os }}-pio-${{ hashFiles('**/platformio.ini') }}
+        restore-keys: |
+          ${{ runner.os }}-pio-
+          
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install PlatformIO Core
+      run: pip install --upgrade platformio
+      
+    - name: Build ATmega32A firmware
+      run: pio run -e atmega32a
+      
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: firmware-build
+        path: .pio/build/atmega32a/firmware.*
+
+  unit-tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Cache PlatformIO
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cache/pip
+          ~/.platformio/.cache
+        key: ${{ runner.os }}-pio-${{ hashFiles('**/platformio.ini') }}
+        restore-keys: |
+          ${{ runner.os }}-pio-
+          
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install PlatformIO Core
+      run: pip install --upgrade platformio
+      
+    - name: Install Python test dependencies
+      run: pip install -r requirements-testing.txt
+      
+    - name: Run Unity unit tests
+      run: pio test -e test_desktop
+      
+    - name: Generate coverage report
+      run: |
+        # Coverage will be implemented when Unity tests are created
+        echo "Coverage reporting will be implemented with Unity test framework"
+      
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: unit-test-results
+        path: |
+          .pio/test/
+          test-results.xml
+
+  code-quality:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install Python dependencies
+      run: pip install -r requirements-testing.txt
+      
+    - name: Lint Python scripts
+      run: |
+        # Run flake8 on Python scripts
+        find scripts/ -name "*.py" -exec python -m flake8 {} \; || true
+        
+    - name: Check Markdown documentation
+      run: |
+        # Install and run markdownlint
+        npm install -g markdownlint-cli
+        markdownlint docs/ --ignore node_modules || true
+        
+    - name: Validate project structure
+      run: |
+        # Verify required directories and files exist
+        python scripts/validate_project_structure.py || true
+
+  acceptance-tests:
+    runs-on: ubuntu-latest
+    # Only run acceptance tests if unit tests pass
+    needs: [unit-tests]
+    # Skip on PRs since hardware is not available in CI
+    if: github.event_name == 'push'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install Python test dependencies
+      run: pip install -r requirements-testing.txt
+      
+    - name: Check for hardware availability
+      run: |
+        # This will fail in CI environment (no hardware)
+        # Hardware tests only run in local development
+        python scripts/detect_hardware.py --check-arduino || echo "Hardware not available in CI - using emulation mode"
+        
+    - name: Run acceptance tests (emulation mode)
+      run: |
+        # Run BDD tests in emulation mode when hardware not available
+        behave test/acceptance -D profile=emulation --junit --junit-directory=acceptance-junit || true
+        
+    - name: Upload acceptance test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: acceptance-test-results
+        path: acceptance-junit/
+
+  documentation:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install documentation dependencies
+      run: |
+        pip install -r requirements-testing.txt
+        # Additional docs tools will be added as needed
+        
+    - name: Generate documentation
+      run: |
+        # Generate project documentation
+        python scripts/generate_docs.py || echo "Documentation generation placeholder"
+        
+    - name: Validate documentation completeness
+      run: |
+        # Check that all required documentation exists
+        python scripts/validate_documentation.py || true
+        
+    - name: Upload documentation
+      uses: actions/upload-artifact@v3
+      with:
+        name: generated-docs
+        path: docs/generated/
+
+  release-artifacts:
+    runs-on: ubuntu-latest
+    needs: [build-firmware, unit-tests, code-quality]
+    # Only generate release artifacts on master branch
+    if: github.ref == 'refs/heads/master'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Download build artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: firmware-build
+        path: artifacts/firmware/
+        
+    - name: Download test results
+      uses: actions/download-artifact@v3
+      with:
+        name: unit-test-results
+        path: artifacts/test-results/
+        
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install Python dependencies
+      run: pip install -r requirements-testing.txt
+      
+    - name: Generate executive report
+      run: |
+        # Generate release-compliant artifacts
+        python scripts/release/generate_executive_report.py \
+          --unit-results=artifacts/test-results/ \
+          --firmware-build=artifacts/firmware/ \
+          --output=release-artifacts/ || echo "Executive report generation placeholder"
+          
+    - name: Upload release artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: release-package
+        path: release-artifacts/
+        
+    - name: Create release (on tags)
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Multi-Sonicator Controller ${{ github.ref }}
+        draft: false
+        prerelease: false

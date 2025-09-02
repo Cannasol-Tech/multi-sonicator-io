@@ -57,6 +57,47 @@ This document defines the company's software testing standards, ensuring consist
 
 ---
 
+## Standardized Make Targets
+
+All projects must implement the following standardized make targets for consistent test execution:
+
+### Required Make Targets
+
+```bash
+# Unit Testing
+make test-unit
+# - Executes unit tests with coverage reporting
+# - Must achieve ≥90% coverage requirement
+# - Framework: Unity (embedded) or pytest (software)
+
+# Acceptance Testing  
+make test-acceptance
+# - Executes BDD acceptance tests
+# - Framework: pytest + Behave (Gherkin scenarios)
+# - Maps directly to PRD requirements
+
+# Integration Testing
+make test-integration
+# - Hardware projects: HIL or emulation testing
+# - Software projects: E2E automation testing
+# - Validates system workflows and interactions
+
+# Complete Test Suite
+make test
+# - Executes all three test stages in sequence
+# - Equivalent to: make test-unit && make test-acceptance && make test-integration
+# - Primary target for CI/CD pipelines
+```
+
+### Implementation Requirements
+
+* **Exit Codes**: All targets must return proper exit codes (0 = success, non-zero = failure)
+* **Output Format**: Standardized reporting format for CI/CD integration
+* **Coverage Integration**: Unit testing targets must include coverage reporting
+* **Hardware Detection**: Integration targets must detect hardware availability and fallback to emulation
+
+---
+
 ## Test Case Guidelines
 
 * **Behavior Scenarios:** Each test scenario must map clearly to PRD requirements.
