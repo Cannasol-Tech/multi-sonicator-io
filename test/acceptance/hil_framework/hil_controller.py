@@ -5,7 +5,7 @@ HIL Controller - Main controller for Hardware-in-the-Loop testing integration wi
 This module provides the core HIL controller that integrates with the Behave BDD framework
 for acceptance testing with real ATmega32A hardware.
 
-Author: Cannasol Technologies  
+Author: Cannasol Technologies
 License: Proprietary
 """
 
@@ -14,6 +14,7 @@ import sys
 import yaml
 import time
 import logging
+import platform
 from pathlib import Path
 from typing import Dict, Optional, Any
 
@@ -24,7 +25,7 @@ from .logger import HILLogger
 
 class HILController:
     """HIL Controller integrated with Behave acceptance testing framework"""
-    
+
     def __init__(self, config_file='hil_config.yaml'):
         """Initialize HIL test framework with hardware configuration for Behave"""
         self.config_file = config_file
@@ -33,13 +34,13 @@ class HILController:
         self.hardware_interface = None
         self.programmer = None
         self.hardware_ready = False
-        
+
         self.logger.info("HIL Controller initialized")
-        
+
     def _load_config(self) -> Dict[str, Any]:
         """Load HIL configuration from YAML file"""
         config_path = Path(__file__).parent / self.config_file
-        
+
         # Default configuration if file doesn't exist
         default_config = {
             'hardware': {
@@ -69,7 +70,7 @@ class HILController:
                 'hardware_required': True
             }
         }
-        
+
         if config_path.exists():
             try:
                 with open(config_path, 'r') as f:
@@ -78,57 +79,119 @@ class HILController:
                     default_config.update(loaded_config)
             except Exception as e:
                 self.logger.warning(f"Failed to load config file {config_path}: {e}")
-        
-        return default_config
-        
+
+            return default_config
+
+    def _auto_detect_programmer_port(self, configured_port: Optional[str]) -> str:
+        """Resolve the ArduinoISP programmer serial port with platform-aware auto-detect.
+        Preference order:
+        1) If configured_port looks usable and exists, use it.
+        2) On macOS, prefer /dev/cu.usbmodem* then /dev/cu.usbserial*.
+        3) On Linux, prefer /dev/ttyUSB* then /dev/ttyACM*.
+        4) Fallback to HardwareInterface auto-detection (same Arduino) when reasonable.
+        5) Otherwise, return a platform default.
+        """
+        try:
+            # 1) Use configured if present and exists
+            if configured_port and Path(configured_port).exists():
+                self.logger.info(f"Using configured programmer port: {configured_port}")
+                return configured_port
+
+            system = platform.system()
+            candidates = []
+
+            if system == "Darwin":
+                import glob
+                candidates.extend(sorted(glob.glob("/dev/cu.usbmodem*")))
+                candidates.extend(sorted(glob.glob("/dev/cu.usbserial*")))
+            elif system == "Linux":
+                import glob
+                candidates.extend(sorted(glob.glob("/dev/ttyUSB*")))
+                candidates.extend(sorted(glob.glob("/dev/ttyACM*")))
+            elif system == "Windows":
+                # On Windows we can't easily test existence beyond naming; default to COM3 if not specified
+                pass
+
+            # 2) If any candidates found, take the first (stable enough for lab)
+            for port in candidates:
+                if Path(port).exists():
+                    self.logger.info(f"Auto-detected programmer port: {port}")
+                    return port
+
+            # 3) As a heuristic, if hardware_interface already detected a serial port, reuse it
+            if self.hardware_interface and getattr(self.hardware_interface, 'serial_port', None):
+                port = self.hardware_interface.serial_port
+                if system != "Windows" and Path(port).exists():
+                    self.logger.info(f"Reusing hardware interface port for programmer: {port}")
+                    return port
+
+            # 4) Platform default fallback
+            fallbacks = {
+                "Darwin": "/dev/cu.usbmodem2101",
+                "Linux": "/dev/ttyUSB0",
+                "Windows": "COM3",
+            }
+            fallback = fallbacks.get(system, "/dev/ttyUSB0")
+            self.logger.warning(f"No programmer port auto-detected, using fallback: {fallback}")
+            return fallback
+        except Exception as e:
+            self.logger.error(f"Programmer port auto-detect failed: {e}")
+            # Safe fallback
+            return "/dev/ttyUSB0"
+
     def setup_hardware(self) -> bool:
         """Initialize hardware connections and verify basic connectivity"""
         try:
             self.logger.info("Setting up HIL hardware connections...")
-            
+
             # Initialize hardware interface
             serial_port = self.config['hardware']['target_serial_port']
             baud_rate = self.config['timing']['serial_baud_rate']
-            
+
             self.hardware_interface = HardwareInterface(serial_port, baud_rate)
-            
-            # Initialize programmer
-            programmer_port = self.config['hardware']['programmer_port']
+
+            # Initialize programmer with auto-detected port when needed
+            programmer_port = self._auto_detect_programmer_port(self.config['hardware'].get('programmer_port'))
+            # Persist the resolved port back into config for visibility
+            self.config['hardware']['programmer_port'] = programmer_port
             self.programmer = ArduinoISPProgrammer(programmer_port)
-            
+
             # Verify basic connectivity
             if not self.hardware_interface.verify_connection():
                 self.logger.error("Failed to establish hardware interface connection")
                 return False
-                
+
+            # Mark hardware ready once harness connection is up; programmer may be optional for some tests
+            self.hardware_ready = True
+
+            # Try to verify programmer; if it fails, warn but do not fail overall HIL setup
             if not self.programmer.verify_connection():
                 self.logger.error("Failed to establish programmer connection")
-                return False
-                
-            self.hardware_ready = True
-            self.logger.info("HIL hardware setup completed successfully")
+                self.logger.warning("Proceeding without programmer; scenarios that require programming will be skipped or fail later")
+
+            self.logger.info("HIL hardware setup completed successfully (hardware interface ready)")
             return True
-            
+
         except Exception as e:
             self.logger.error(f"Hardware setup failed: {e}")
             return False
-        
+
     def program_firmware(self, firmware_path: str) -> bool:
         """Upload firmware to ATmega32A via Arduino as ISP"""
         try:
             if not self.hardware_ready:
                 self.logger.error("Hardware not ready for firmware programming")
                 return False
-                
+
             self.logger.info(f"Programming firmware: {firmware_path}")
-            
+
             if not Path(firmware_path).exists():
                 self.logger.error(f"Firmware file not found: {firmware_path}")
                 return False
-                
+
             # Program using Arduino as ISP
             success = self.programmer.program_firmware(firmware_path)
-            
+
             if success:
                 self.logger.info("Firmware programming completed successfully")
                 # Wait for target to boot
@@ -137,17 +200,17 @@ class HILController:
             else:
                 self.logger.error("Firmware programming failed")
                 return False
-                
+
         except Exception as e:
             self.logger.error(f"Firmware programming error: {e}")
             return False
-        
+
     def verify_firmware_version(self) -> Optional[str]:
         """Verify firmware version and build information"""
         try:
             if not self.hardware_interface:
                 return None
-                
+
             response = self.hardware_interface.send_command("VERSION")
             if response:
                 self.logger.info(f"Firmware version: {response}")
@@ -155,63 +218,63 @@ class HILController:
             else:
                 self.logger.warning("Could not retrieve firmware version")
                 return None
-                
+
         except Exception as e:
             self.logger.error(f"Version verification error: {e}")
             return None
-        
+
     def run_acceptance_scenario(self, scenario_context: Any) -> bool:
         """Execute Behave scenario with HIL hardware validation"""
         try:
             self.logger.info(f"Running HIL scenario: {scenario_context.scenario.name}")
-            
+
             if not self.hardware_ready:
                 self.logger.error("Hardware not ready for scenario execution")
                 return False
-                
+
             # Scenario execution is handled by step definitions
             # This method provides framework support
             return True
-            
+
         except Exception as e:
             self.logger.error(f"Scenario execution error: {e}")
             return False
-        
+
     def cleanup_hardware(self) -> None:
         """Safe hardware cleanup and disconnect"""
         try:
             self.logger.info("Cleaning up HIL hardware connections...")
-            
+
             if self.hardware_interface:
                 self.hardware_interface.cleanup()
-                
+
             if self.programmer:
                 self.programmer.cleanup()
-                
+
             self.hardware_ready = False
             self.logger.info("HIL hardware cleanup completed")
-            
+
         except Exception as e:
             self.logger.error(f"Hardware cleanup error: {e}")
-            
+
     def get_config(self) -> Dict[str, Any]:
         """Get HIL configuration for test scenarios"""
         return self.config.copy()
-        
+
 
 def main():
     """CLI entry point for HIL controller setup and testing"""
     import argparse
-    
+
     parser = argparse.ArgumentParser(description="HIL Controller CLI")
     parser.add_argument('--setup', action='store_true', help='Setup HIL hardware')
     parser.add_argument('--cleanup', action='store_true', help='Cleanup HIL hardware')
     parser.add_argument('--config', default='hil_config.yaml', help='Config file path')
-    
+
     args = parser.parse_args()
-    
+
     controller = HILController(args.config)
-    
+
     if args.setup:
         success = controller.setup_hardware()
         sys.exit(0 if success else 1)

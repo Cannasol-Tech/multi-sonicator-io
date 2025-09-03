@@ -1,27 +1,5 @@
 /*
- * Arduino Test Harness for ATmega32A HIL Testing
- * 
- * Acts as middleman between Python HIL framework and ATmega32A target.
- * Pin assignments must match docs/planning/pin-matrix.md (SOLE SOURCE OF TRUTH).
- * 
- * This harness provides:
- * - Arduino as ISP programming capability
- * - Real-time pin monitoring and control
- * - Safe sandbox mode for ATmega32A testing
- * - Serial communication with HIL framework
- * 
- * Pin Mapping (from pin matrix - Sonicator 4):
- * - D7  -> ATmega32A PB0 (FREQ_DIV10_4)
- * - D8  -> ATmega32A PB4 (FREQ_LOCK_4)
- * - A2  -> ATmega32A PD3 (OVERLOAD_4)
- * - A3  -> ATmega32A PC0 (START_4)
- * - A4  -> ATmega32A PC1 (RESET_4)
- * - A1  -> ATmega32A PA7 (POWER_SENSE_4)
- * - D9  -> ATmega32A PD7 (AMPLITUDE_ALL - PWM)
- * - D10 -> ATmega32A PD0 (UART_RXD - drive to DUT RX)
- * - D11 -> ATmega32A PD1 (UART_TXD - read from DUT TX)
- * - D12 -> ATmega32A PD2 (STATUS_LED)
- * 
+
  * Author: Cannasol Technologies
  * License: Proprietary
  */
@@ -34,7 +12,7 @@
 #define HIL_HARNESS_DATE __DATE__ " " __TIME__
 
 // Global ATmega interface
-ATmegaInterface atmega;
+ATmegaInterface atmega;   
 
 // Function declarations
 void processCommand(String command);
@@ -78,12 +56,12 @@ void setup() {
     atmega.begin();
     
     // Startup message
-    Serial.println("Arduino Test Harness for ATmega32A HIL Testing");
-    Serial.println("HIL Harness Version: " HIL_HARNESS_VERSION);
-    Serial.println("Build Date: " HIL_HARNESS_DATE);
-    Serial.println("Pin mapping follows docs/planning/pin-matrix.md");
-    Serial.println("Ready for HIL commands. Type HELP for available commands.");
-    Serial.println("OK");
+    Serial.println(F("Arduino Test Harness for ATmega32A HIL Testing"));
+    Serial.print(F("HIL Harness Version: ")); Serial.println(HIL_HARNESS_VERSION);
+    Serial.print(F("Build Date: ")); Serial.println(HIL_HARNESS_DATE);
+    Serial.println(F("Pin mapping follows docs/planning/pin-matrix.md"));
+    Serial.println(F("Ready for HIL commands. Type HELP for available commands."));
+    Serial.println(F("OK"));
 }
 
 void loop() {
@@ -105,13 +83,7 @@ void loop() {
     }
     
     // Suggest monitoring in sandbox mode
-    if (sandbox_mode && !monitoring_enabled) {
-        unsigned long current_time = millis();
-        if (current_time - last_suggestion_time >= 15000) {  // Every 15 seconds
-            Serial.println("💡 Tip: Type 'monitor_on' to enable real-time pin monitoring");
-            last_suggestion_time = current_time;
-        }
-    }
+    // Suggestions disabled to reduce memory usage
     
     // Small delay to prevent overwhelming the system
     delay(10);
@@ -127,7 +99,7 @@ void processCommand(String command) {
     
     // Command routing
     if (cmd == "PING") {
-        Serial.println("PONG");
+        Serial.println(F("PONG"));
     }
     else if (cmd == "HELP") {
         printHelp();
@@ -145,13 +117,13 @@ void processCommand(String command) {
         measurePower();
     }
     else if (cmd == "GPIO_STATUS") {
-        Serial.println("GPIO_OK");
+        Serial.println(F("GPIO_OK"));
     }
     else if (cmd == "ADC_STATUS") {
-        Serial.println("ADC_OK");
+        Serial.println(F("ADC_OK"));
     }
     else if (cmd == "PWM_STATUS") {
-        Serial.println("PWM_OK");
+        Serial.println(F("PWM_OK"));
     }
     else if (cmd == "READ_PIN") {
         handleReadPin(args);

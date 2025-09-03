@@ -18,16 +18,18 @@ from typing import Optional, List
 
 class ArduinoISPProgrammer:
     """Arduino as ISP programmer interface for ATmega32A"""
-    
-    def __init__(self, programmer_port: str = '/dev/ttyUSB0'):
+
+    def __init__(self, programmer_port: str = '/dev/ttyUSB0', avrdude_conf: Optional[str] = None, bitclock: str = '125kHz'):
         """Initialize Arduino ISP programmer"""
         self.programmer_port = programmer_port
         self.logger = logging.getLogger(__name__)
         self.avrdude_cmd = 'avrdude'
-        
+        self.avrdude_conf = avrdude_conf
+        self.bitclock = bitclock
         # ATmega32A programming parameters
         self.target_mcu = 'atmega32'
-        self.programmer_type = 'arduino'
+        # Use stk500v1 to match PlatformIO upload settings for Arduino as ISP
+        self.programmer_type = 'stk500v1'
         self.baud_rate = 19200
         
     def verify_connection(self) -> bool:
@@ -46,12 +48,15 @@ class ArduinoISPProgrammer:
                 return False
                 
             # Test programmer connection
-            cmd = [
-                self.avrdude_cmd,
+            cmd = [self.avrdude_cmd]
+            if self.avrdude_conf:
+                cmd += ['-C', self.avrdude_conf]
+            cmd += [
                 '-c', self.programmer_type,
                 '-p', self.target_mcu,
                 '-P', self.programmer_port,
                 '-b', str(self.baud_rate),
+                '-B', self.bitclock,
                 '-v'
             ]
             
@@ -86,12 +91,15 @@ class ArduinoISPProgrammer:
             self.logger.info(f"Programming firmware: {firmware_path}")
             
             # Construct avrdude command
-            cmd = [
-                self.avrdude_cmd,
+            cmd = [self.avrdude_cmd]
+            if self.avrdude_conf:
+                cmd += ['-C', self.avrdude_conf]
+            cmd += [
                 '-c', self.programmer_type,
                 '-p', self.target_mcu,
                 '-P', self.programmer_port,
                 '-b', str(self.baud_rate),
+                '-B', self.bitclock,
                 '-U', f'flash:w:{firmware_path}:i',
                 '-v'
             ]
@@ -157,12 +165,15 @@ class ArduinoISPProgrammer:
             if not Path(firmware_path).exists():
                 return False
                 
-            cmd = [
-                self.avrdude_cmd,
+            cmd = [self.avrdude_cmd]
+            if self.avrdude_conf:
+                cmd += ['-C', self.avrdude_conf]
+            cmd += [
                 '-c', self.programmer_type,
                 '-p', self.target_mcu,
                 '-P', self.programmer_port,
                 '-b', str(self.baud_rate),
+                '-B', self.bitclock,
                 '-U', f'flash:v:{firmware_path}:i'
             ]
             
@@ -187,12 +198,15 @@ class ArduinoISPProgrammer:
     def erase_chip(self) -> bool:
         """Erase ATmega32A chip"""
         try:
-            cmd = [
-                self.avrdude_cmd,
+            cmd = [self.avrdude_cmd]
+            if self.avrdude_conf:
+                cmd += ['-C', self.avrdude_conf]
+            cmd += [
                 '-c', self.programmer_type,
                 '-p', self.target_mcu,
                 '-P', self.programmer_port,
                 '-b', str(self.baud_rate),
+                '-B', self.bitclock,
                 '-e'
             ]
             

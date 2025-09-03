@@ -1,6 +1,6 @@
-<testsuite name="features.hil_basic_connectivity.Hardware Basic Connectivity" tests="4" errors="4" failures="0" skipped="0" time="0.001229" timestamp="2025-09-03T13:13:32.756961" hostname="Corbans-Mini.home"><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Power supply verification" status="failed" time="0.001045"><error type="AttributeError" message="'NoneType' object has no attribute 'send_command'">
+<testsuite name="features.hil_basic_connectivity.Hardware Basic Connectivity" tests="4" errors="4" failures="0" skipped="0" time="0.002179" timestamp="2025-09-03T17:08:34.118912" hostname="Corbans-Mini.home"><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Power supply verification" status="failed" time="0.001882"><error type="AttributeError" message="'NoneType' object has no attribute 'send_command'">
 <![CDATA[
-Failing step: Given the Arduino test harness is connected ... failed in 0.001s
+Failing step: Given the Arduino test harness is connected ... failed in 0.002s
 Location: test/acceptance/features/hil_basic_connectivity.feature:7
 Traceback (most recent call last):
   File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
@@ -17,7 +17,7 @@ AttributeError: 'NoneType' object has no attribute 'send_command'
 
   @hil @hardware @connectivity
   Scenario: Power supply verification
-    Given the Arduino test harness is connected ... failed in 0.001s
+    Given the Arduino test harness is connected ... failed in 0.002s
     And the ATmega32A target is powered ... skipped in 0.000s
     And the HIL framework is initialized ... skipped in 0.000s
     When I measure the power supply voltages ... skipped in 0.000s
@@ -28,7 +28,7 @@ AttributeError: 'NoneType' object has no attribute 'send_command'
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Programming interface verification" status="failed" time="5.6e-05"><error type="AttributeError" message="'NoneType' object has no attribute 'send_command'">
+</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Programming interface verification" status="failed" time="0.000129"><error type="AttributeError" message="'NoneType' object has no attribute 'send_command'">
 <![CDATA[
 Failing step: Given the Arduino test harness is connected ... failed in 0.000s
 Location: test/acceptance/features/hil_basic_connectivity.feature:7
@@ -58,7 +58,7 @@ AttributeError: 'NoneType' object has no attribute 'send_command'
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Serial communication establishment" status="failed" time="5.4e-05"><error type="AttributeError" message="'NoneType' object has no attribute 'send_command'">
+</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Serial communication establishment" status="failed" time="8.4e-05"><error type="AttributeError" message="'NoneType' object has no attribute 'send_command'">
 <![CDATA[
 Failing step: Given the Arduino test harness is connected ... failed in 0.000s
 Location: test/acceptance/features/hil_basic_connectivity.feature:7
@@ -87,7 +87,7 @@ AttributeError: 'NoneType' object has no attribute 'send_command'
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Arduino Test Harness ping test" status="failed" time="7.4e-05"><error type="AttributeError" message="'NoneType' object has no attribute 'send_command'">
+</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Arduino Test Harness ping test" status="failed" time="8.4e-05"><error type="AttributeError" message="'NoneType' object has no attribute 'send_command'">
 <![CDATA[
 Failing step: Given the Arduino test harness is connected ... failed in 0.000s
 Location: test/acceptance/features/hil_basic_connectivity.feature:7

@@ -1,0 +1,22 @@
+gate_decision: CONCERNS
+review_date: 2025-09-03
+reviewer: QA Agent (Quinn)
+story: epic1-story4-single-sonicator-control
+rationale: |
+  All software logic and unit tests are present and robust. However, HIL verification, hardware validation, and amplitude accuracy tests are not yet marked complete. These are critical for industrial safety and reliability.
+criteria:
+  - MODBUS register mapping and amplitude clamping implemented
+  - Telemetry, status flags, and safety features handled via HAL and MODBUS integration
+  - Unit test suite covers HAL, MODBUS, register validation, and emergency scenarios
+  - HIL verification and hardware validation required for final acceptance
+risks:
+  - Protocol complexity and timing requirements
+  - Amplitude control accuracy
+  - Hardware integration and safety
+mitigations:
+  - Early hardware testing
+  - Calibration and feedback control
+next_steps:
+  - Complete HIL verification
+  - Validate amplitude accuracy with test equipment
+  - Final hardware validation

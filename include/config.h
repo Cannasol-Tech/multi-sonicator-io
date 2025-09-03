@@ -70,8 +70,8 @@
 // ============================================================================
 
 // UART Communication (MODBUS RTU) - Arduino Serial uses these automatically
-#define UART_RX_PIN 0     // Arduino pin 0 (PD0, Physical pin 14)
-#define UART_TX_PIN 1     // Arduino pin 1 (PD1, Physical pin 15)
+#define UART_RX_PIN 0     // PD0 (Physical pin 14) - DB9-0 Pin 8 (MODBUS RTU RX) - See pin-matrix.md
+#define UART_TX_PIN 1     // PD1 (Physical pin 15) - DB9-0 Pin 9 (MODBUS RTU TX) - See pin-matrix.md
 
 // I2C Interface (Available for Future Expansion) - Arduino Wire library compatible
 #define I2C_SDA_PIN 22    // PC1 (Physical pin 22)
@@ -82,7 +82,7 @@
 #define XTAL2_PIN 12      // XTAL2 (Physical pin 12)
 
 // Status LED (single LED terminal) - Direct register access
-#define STATUS_LED_PIN 2      // PD2 bit number (Physical pin 16) - LED-TERM
+#define STATUS_LED_PIN 2      // PD2 (Physical pin 16) - LED-TERM (DB9-0 Pin) - See pin-matrix.md
 
 // Serial Communication Configuration
 #define SERIAL_BAUD_RATE 115200  // Debug serial communication speed
@@ -136,11 +136,11 @@
  * @brief Pin definitions for fourth sonicator interface
  * @{
  */
-#define SON4_OVERLOAD_PIN     17   ///< PD3 (Physical pin 17) - Input via 6N137
-#define SON4_FREQ_OUTPUT_PIN  1    ///< PB0 (Physical pin 1)  - FREQ ÷10 input
-#define SON4_FREQ_LOCK_PIN    5    ///< PB4 (Physical pin 5)  - Input via 6N137
-#define SON4_START_PIN        22   ///< PC0 (Physical pin 22) - Output via ULN2003A (aligned to pin-matrix)
-#define SON4_RESET_PIN        23   ///< PC1 (Physical pin 23) - Output via ULN2003A (aligned to pin-matrix)
+#define SON4_OVERLOAD_PIN     17   ///< PD3 (Physical pin 17) - Input via 6N137 (A2)
+#define SON4_FREQ_OUTPUT_PIN  1    ///< PB0 (Physical pin 1)  - FREQ ÷10 input (D7)
+#define SON4_FREQ_LOCK_PIN    5    ///< PB4 (Physical pin 5)  - Input via 6N137 (D8)
+#define SON4_START_PIN        22   ///< PC0 (Physical pin 22) - Output via ULN2003A (A3)
+#define SON4_RESET_PIN        23   ///< PC1 (Physical pin 23) - Output via ULN2003A (A4)
 /** @} */
 
 /** @} */

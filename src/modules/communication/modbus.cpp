@@ -44,10 +44,10 @@ static uint32_t request_start_time = 0;
 #include "modbus_register_manager.h"
 #define REGMAP() (register_manager_get_map())
 
-// Communication buffers
-static uint8_t rx_buffer[256];
+// Communication buffers (reduced to save RAM)
+static uint8_t rx_buffer[128];
 static uint16_t rx_length = 0;
-static uint8_t tx_buffer[256];
+static uint8_t tx_buffer[128];
 static uint16_t tx_length = 0;
 
 // ============================================================================
@@ -304,7 +304,8 @@ static bool modbus_write_register_internal(uint16_t address, uint16_t value) {
         uint16_t reg_offset = (address - 0x0100) % MODBUS_REG_SONICATOR_STRIDE;
         
         if (sonicator_id < MODBUS_MAX_SONICATORS && reg_offset < 0x10) {
-            uint16_t* son_regs = (uint16_t*)&register_map.sonicators[sonicator_id];
+            modbus_register_map_t* register_map = REGMAP();
+            uint16_t* son_regs = (uint16_t*)&register_map->sonicators[sonicator_id];
             son_regs[reg_offset] = value;
             return true;
         }
@@ -333,8 +334,9 @@ static void modbus_handle_timeout(void) {
     modbus_stats.timeout_errors++;
     modbus_current_state = MODBUS_STATE_TIMEOUT;
     
-    register_map.system_status.system_status |= SYSTEM_STATUS_COMM_FAULT;
-    register_map.system_status.comm_errors++;
+    modbus_register_map_t* register_map = REGMAP();
+    register_map->system_status.system_status |= SYSTEM_STATUS_COMM_FAULT;
+    register_map->system_status.comm_errors++;
     
     if (modbus_config.timeout_callback) {
         modbus_config.timeout_callback();

@@ -4,29 +4,28 @@
 import os
 import sys
 import importlib.util
+import importlib
 
 # Add project root to Python path for proper imports
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
+# Convenience: unify HIL logger on context
+class _NullLogger:
+    def hardware_event(self, *_args, **_kwargs):
+        pass
+    def measurement(self, *_args, **_kwargs):
+        pass
+
+
 def import_hil_modules():
-    """Import HIL modules using direct file imports to avoid path issues"""
-    hil_framework_path = os.path.join(os.path.dirname(__file__), "hil_framework")
-    
-    # Import HardwareInterface
-    hardware_interface_file = os.path.join(hil_framework_path, "hardware_interface.py")
-    spec = importlib.util.spec_from_file_location("hardware_interface", hardware_interface_file)
-    hardware_interface_module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(hardware_interface_module)
-    
-    # Import HILController
-    hil_controller_file = os.path.join(hil_framework_path, "hil_controller.py")
-    spec = importlib.util.spec_from_file_location("hil_controller", hil_controller_file)
-    hil_controller_module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(hil_controller_module)
-    
-    return hardware_interface_module.HardwareInterface, hil_controller_module.HILController
+    """Import HIL modules as a package to support intra-package relative imports"""
+    # Ensure project root on sys.path (already added above)
+    # Import using package path so relative imports in modules work
+    hw_mod = importlib.import_module("test.acceptance.hil_framework.hardware_interface")
+    ctrl_mod = importlib.import_module("test.acceptance.hil_framework.hil_controller")
+    return hw_mod.HardwareInterface, ctrl_mod.HILController
 
 def before_all(context):
     userdata = getattr(context.config, "userdata", {}) or {}
@@ -42,23 +41,27 @@ def before_all(context):
         # Stable serial symlink path that emulator runner will create, e.g. /dev/pts/N -> /tmp/tty-msio
         context.serial_port = "/tmp/tty-msio"
     else:
-        # HIL mode - initialize HIL framework
+        # HIL mode - initialize HIL framework via controller only (single source of truth)
         try:
-            HardwareInterface, HILController = import_hil_modules()
-            
-            context.hardware_interface = HardwareInterface()
+            _HardwareInterface, HILController = import_hil_modules()
+
+            # Create controller and perform setup (controller will create HardwareInterface internally)
             context.hil_controller = HILController()
-            
+            context.hil_logger = getattr(context.hil_controller, 'logger', _NullLogger())
+
             # Setup hardware connections
-            if context.hardware_interface.verify_connection():
+            if context.hil_controller.setup_hardware():
                 context.hardware_ready = True
-                context.serial_port = context.hardware_interface.serial_port
+                # Propagate the controller's hardware interface to context used by steps
+                context.hardware_interface = context.hil_controller.hardware_interface
+                context.serial_port = context.hardware_interface.serial_port if context.hardware_interface else None
                 print("✅ HIL framework initialized successfully")
             else:
                 context.hardware_ready = False
+                context.hardware_interface = None
                 context.serial_port = None
                 print("❌ HIL hardware connection failed")
-                
+
         except Exception as e:
             print(f"❌ HIL framework error: {e}")
             import traceback
@@ -78,7 +81,7 @@ def before_scenario(context, scenario):
     # Enforce skipping of @pending scenarios regardless of CLI tag filters
     if "pending" in getattr(scenario, "effective_tags", set()):
         scenario.skip("pending: scenario not implemented yet")
-        
+
     # HIL-specific scenario setup
     if context.profile == "hil" and hasattr(context, 'hil_controller'):
         if 'hil' in scenario.tags:
@@ -86,7 +89,19 @@ def before_scenario(context, scenario):
             if context.hardware_ready:
                 # Default test firmware - can be overridden by scenario
                 firmware_path = "test_firmware.hex"
-                context.hil_controller.program_firmware(firmware_path)
+                try:
+                    import os
+                    if os.path.exists(firmware_path):
+                        context.hil_controller.program_firmware(firmware_path)
+                    else:
+                        context.hil_controller.logger.info(
+                            f"Firmware file not found: {firmware_path}; skipping auto-program for scenario"
+                        )
+                except Exception as _e:
+                    # Do not hard-fail the scenario at setup time; steps that require programmed DUT will fail
+                    context.hil_controller.logger.warning(
+                        f"Auto-program encountered an error and was skipped: {_e}"
+                    )
                 print(f"🔧 HIL scenario setup: {scenario.name}")
             else:
                 scenario.skip("HIL hardware not available")

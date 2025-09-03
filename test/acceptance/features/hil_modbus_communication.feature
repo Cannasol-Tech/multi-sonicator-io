@@ -68,8 +68,8 @@ Feature: MODBUS RTU Communication Hardware Validation
 
   @hil @modbus @hardware
   Scenario: Sonicator control via MODBUS
-    When I write value 1 to MODBUS register 0x0100 (sonicator 4 start)
+    When I write value 1 to MODBUS register 0x0160 (sonicator 4 start)
     Then pin "START_4" should go HIGH
-    When I write value 0 to MODBUS register 0x0100
+    When I write value 0 to MODBUS register 0x0160
     Then pin "START_4" should go LOW
     And the operation should complete within 50ms

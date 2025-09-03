@@ -81,7 +81,7 @@ hardware-sandbox: check-deps check-pio check-arduino-cli
 	@echo "Step 1: Setting up Arduino as ISP (auto-upload if needed)..."
 	@python3 scripts/setup_arduino_isp.py || (echo "❌ Failed to setup Arduino as ISP" && exit 1)
 	@echo "✅ Arduino as ISP is ready"
-	
+
 	@echo "Step 2: Building latest ATmega32A firmware..."
 	@pio run -e atmega32a || (echo "❌ Firmware build failed" && exit 1)
 	@echo "✅ ATmega32A firmware build successful"
@@ -89,21 +89,21 @@ hardware-sandbox: check-deps check-pio check-arduino-cli
 	@echo "Step 3: Programming ATmega32A target via Arduino as ISP..."
 	@pio run -e atmega32a -t upload || (echo "❌ ATmega32A programming failed" && exit 1)
 	@echo "✅ ATmega32A programmed successfully"
-	
+
 	@echo "Step 4: Switching from Arduino ISP to Test Harness..."
 	@echo "📋 Please perform the following hardware changes:"
-	@echo "   1. Remove the capacitor from Arduino RESET line"  
+	@echo "   1. Remove the capacitor from Arduino RESET line"
 	@echo "   2. Connect Arduino Test Harness to target"
 	@echo "   3. Ensure proper pin connections per docs/planning/pin-matrix.md"
 	@read -p "Press Enter when hardware setup is complete..." dummy
-	
+
 	@echo "Step 5: Uploading Arduino Test Harness firmware..."
 	@cd test/acceptance/arduino_harness && pio run --target upload || (echo "❌ Test harness upload failed" && exit 1)
 	@echo "✅ Arduino Test Harness uploaded successfully"
-	
+
 	@echo "Step 6: Waiting for Arduino Test Harness to initialize..."
 	@sleep 3
-	
+
 	@echo "Step 7: Launching HIL Sandbox CLI..."
 	@echo "🎯 HIL Hardware Sandbox is ready!"
 	@echo "   - ATmega32A programmed with latest firmware"
@@ -129,7 +129,7 @@ test-all: check-deps check-pio test-unit test-acceptance
 ci-test: check-deps check-pio test-unit test-acceptance generate-release-artifacts
 	@echo "Running complete CI test suite per software testing standard..."
 	@echo "✅ Unit tests: Unity Test Framework with 90% coverage"
-	@echo "✅ Acceptance tests: BDD scenarios via Behave + pytest HIL framework"  
+	@echo "✅ Acceptance tests: BDD scenarios via Behave + pytest HIL framework"
 	@echo "✅ Integration tests: HIL hardware validation"
 	@echo "✅ Release artifacts: Generated per release format standard"
 
@@ -144,6 +144,8 @@ test-acceptance: check-deps check-arduino-cli
 	@echo "Stage 2: Acceptance Testing (BDD scenarios via Behave framework)..."
 	@python3 scripts/detect_hardware.py --check-arduino || (echo "❌ Hardware required for acceptance tests" && exit 1)
 	@echo "✅ Hardware detected - running HIL acceptance tests via Behave..."
+		@python3 scripts/setup_arduino_isp.py || (echo "❌ Failed to setup Arduino as ISP" && exit 1)
+
 	PYTHONPATH=. python3 -m behave test/acceptance \
 		--junit \
 		--junit-directory=acceptance-junit \

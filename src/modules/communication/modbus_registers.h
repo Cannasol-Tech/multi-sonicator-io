@@ -59,7 +59,7 @@ extern "C" {
 #define MODBUS_REG_SON_AMPLITUDE_ACT    0x13    ///< Actual amplitude reading
 
 // Maximum sonicator count (based on register range 0x0100-0x041F)
-#define MODBUS_MAX_SONICATORS           32
+#define MODBUS_MAX_SONICATORS           4
 
 // ============================================================================
 // SYSTEM STATUS BIT DEFINITIONS

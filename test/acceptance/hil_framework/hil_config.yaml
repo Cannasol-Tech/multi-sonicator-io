@@ -4,8 +4,8 @@
 hardware:
   target_mcu: ATmega32A
   programmer: arduino_as_isp
-  programmer_port: /dev/ttyUSB0
-  target_serial_port: /dev/ttyUSB1
+  programmer_port: /dev/cu.usbmodem*   # macOS Arduino programmer port pattern
+  target_serial_port: /dev/cu.usbmodem*  # macOS Arduino harness serial port pattern (use cu.* for initiating connections)
   
 power_supply:
   input_voltage: 24.0  # 24V input power

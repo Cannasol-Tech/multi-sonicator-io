@@ -19,8 +19,8 @@ def step_atmega_programmed_with_modbus(context):
     if not hasattr(context, 'hil_controller'):
         assert False, "HIL controller not available"
         
-    # Use MODBUS-enabled firmware
-    firmware_path = "modbus_firmware.hex"
+    # Use MODBUS-enabled firmware built by PlatformIO
+    firmware_path = ".pio/build/atmega32a/firmware.hex"
     success = context.hil_controller.program_firmware(firmware_path)
     assert success, f"Failed to program ATmega32A with MODBUS firmware: {firmware_path}"
     

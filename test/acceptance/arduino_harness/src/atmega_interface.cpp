@@ -12,16 +12,16 @@
 
 // Pin mapping from pin matrix (Sonicator 4 - single channel HIL)
 // Arduino Pin -> ATmega32A Pin (Signal Name)
-#define FREQ_DIV10_4_PIN    7   // D7  -> PB0 (FREQ_DIV10_4)
-#define FREQ_LOCK_4_PIN     8   // D8  -> PB4 (FREQ_LOCK_4)
-#define OVERLOAD_4_PIN      A2  // A2  -> PD3 (OVERLOAD_4)
-#define START_4_PIN         A3  // A3  -> PC0 (START_4)
-#define RESET_4_PIN         A4  // A4  -> PC1 (RESET_4)
-#define POWER_SENSE_4_PIN   A1  // A1  -> PA7 (POWER_SENSE_4)
-#define AMPLITUDE_ALL_PIN   9   // D9  -> PD7 (AMPLITUDE_ALL - PWM)
-#define UART_RXD_PIN        10  // D10 -> PD0 (UART_RXD - drive to DUT RX)
-#define UART_TXD_PIN        11  // D11 -> PD1 (UART_TXD - read from DUT TX)
-#define STATUS_LED_PIN      12  // D12 -> PD2 (STATUS_LED)
+#define FREQ_DIV10_4_PIN    7   // D7  -> PB0 (FREQ_DIV10_4) - See pin-matrix.md
+#define FREQ_LOCK_4_PIN     8   // D8  -> PB4 (FREQ_LOCK_4) - See pin-matrix.md
+#define OVERLOAD_4_PIN      A2  // A2  -> PD3 (OVERLOAD_4) - See pin-matrix.md
+#define START_4_PIN         A3  // A3  -> PC0 (START_4) - See pin-matrix.md
+#define RESET_4_PIN         A4  // A4  -> PC1 (RESET_4) - See pin-matrix.md
+#define POWER_SENSE_4_PIN   A1  // A1  -> PA7 (POWER_SENSE_4) - See pin-matrix.md
+#define AMPLITUDE_ALL_PIN   9   // D9  -> PD7 (AMPLITUDE_ALL - PWM) - See pin-matrix.md
+#define UART_RXD_PIN        10  // D10 -> PD0 (UART_RXD - drive to DUT RX) - See pin-matrix.md
+#define UART_TXD_PIN        11  // D11 -> PD1 (UART_TXD - read from DUT TX) - See pin-matrix.md
+#define STATUS_LED_PIN      12  // D12 -> PD2 (STATUS_LED) - See pin-matrix.md
 
 void ATmegaInterface::begin() {
     sandbox_mode_active = false;
@@ -51,23 +51,23 @@ void ATmegaInterface::begin() {
 }
 
 void ATmegaInterface::initializePins() {
-    // Configure pins according to pin matrix
+    // Configure pins according to pin matrix (see docs/planning/pin-matrix.md)
     // Inputs (from ATmega32A perspective, outputs from Arduino perspective)
-    pinMode(START_4_PIN, OUTPUT);       // START_4 - Arduino drives this
-    pinMode(RESET_4_PIN, OUTPUT);       // RESET_4 - Arduino drives this
-    pinMode(AMPLITUDE_ALL_PIN, OUTPUT); // AMPLITUDE_ALL - Arduino drives PWM
-    pinMode(UART_RXD_PIN, OUTPUT);      // UART_RXD - Arduino drives to DUT RX
-    pinMode(STATUS_LED_PIN, OUTPUT);    // STATUS_LED - Arduino drives this
-    
+    pinMode(START_4_PIN, OUTPUT);       // A3 -> PC0 (START_4)
+    pinMode(RESET_4_PIN, OUTPUT);       // A4 -> PC1 (RESET_4)
+    pinMode(AMPLITUDE_ALL_PIN, OUTPUT); // D9 -> PD7 (AMPLITUDE_ALL - PWM)
+    pinMode(UART_RXD_PIN, OUTPUT);      // D10 -> PD0 (UART_RXD)
+    pinMode(STATUS_LED_PIN, OUTPUT);    // D12 -> PD2 (STATUS_LED)
+
     // Outputs (from ATmega32A perspective, inputs to Arduino)
-    pinMode(FREQ_DIV10_4_PIN, INPUT);   // FREQ_DIV10_4 - Arduino reads this
-    pinMode(FREQ_LOCK_4_PIN, INPUT);    // FREQ_LOCK_4 - Arduino reads this
-    pinMode(OVERLOAD_4_PIN, INPUT);     // OVERLOAD_4 - Arduino reads this
-    pinMode(UART_TXD_PIN, INPUT);       // UART_TXD - Arduino reads from DUT TX
-    
+    pinMode(FREQ_DIV10_4_PIN, INPUT);   // D7 -> PB0 (FREQ_DIV10_4)
+    pinMode(FREQ_LOCK_4_PIN, INPUT);    // D8 -> PB4 (FREQ_LOCK_4)
+    pinMode(OVERLOAD_4_PIN, INPUT);     // A2 -> PD3 (OVERLOAD_4)
+    pinMode(UART_TXD_PIN, INPUT);       // D11 -> PD1 (UART_TXD)
+
     // Analog inputs
-    pinMode(POWER_SENSE_4_PIN, INPUT);  // POWER_SENSE_4 - Arduino reads ADC
-    
+    pinMode(POWER_SENSE_4_PIN, INPUT);  // A1 -> PA7 (POWER_SENSE_4)
+
     // Initialize outputs to safe states
     digitalWrite(START_4_PIN, LOW);
     digitalWrite(RESET_4_PIN, LOW);

@@ -1,8 +1,8 @@
-<testsuite name="features.hil_smoke.HIL Smoke Test" tests="1" errors="0" failures="1" skipped="0" time="9e-05" timestamp="2025-09-03T13:13:32.784371" hostname="Corbans-Mini.home"><testcase classname="features.hil_smoke.HIL Smoke Test" name="HIL-001 Wrapper responds to PING" status="failed" time="9e-05"><failure type="AssertionError" message="context.serial_port not set; check environment.py profile wiring">
+<testsuite name="features.hil_smoke.HIL Smoke Test" tests="1" errors="0" failures="1" skipped="0" time="0.000109" timestamp="2025-09-03T17:08:34.145266" hostname="Corbans-Mini.home"><testcase classname="features.hil_smoke.HIL Smoke Test" name="HIL-001 Wrapper responds to PING" status="failed" time="0.000109"><failure type="AssertionError" message="serial port not available on context; ensure HIL setup initialized or emulator runner created PTY">
 <![CDATA[
 Failing step: And the serial device is available for the harness ... failed in 0.000s
 Location: test/acceptance/features/hil_smoke.feature:10
-Assertion Failed: context.serial_port not set; check environment.py profile wiring]]>
+Assertion Failed: serial port not available on context; ensure HIL setup initialized or emulator runner created PTY]]>
 </failure><system-out>
 <![CDATA[
 @scenario.begin

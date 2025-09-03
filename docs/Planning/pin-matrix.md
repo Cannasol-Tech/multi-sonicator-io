@@ -68,9 +68,9 @@ Note: DB9-0 is the communications connector back to the main automation system (
 
 | # | DUT Pin (Port/Pad) | Header Ref | Signal     | Dir | Scale/Notes        | Wrapper Pin | Test Point |
 |---|---------------------|------------|------------|-----|--------------------|-------------|------------|
-| 1 | PD0 (Pin 14)        | DB9-0 Pin 8| UART_RXD   | IN  | MODBUS RTU RX     | D10 (drive to DUT RX) | TBD |
-| 2 | PD1 (Pin 15)        | DB9-0 Pin 9| UART_TXD   | OUT | MODBUS RTU TX     | D11 (read from DUT TX)| TBD |
-| 3 | PD2 (Pin 16)        | LED-TERM   | STATUS_LED | OUT | Status LED drive  | D12         | LED-TERM   |
+| 1 | PD0 (Pin 14)        | DB9-0 Pin 8| UART_RXD   | IN  | MODBUS RTU RX     | D2 (drive to DUT RX)  | TBD |
+| 2 | PD1 (Pin 15)        | DB9-0 Pin 9| UART_TXD   | OUT | MODBUS RTU TX     | D3 (read from DUT TX) | TBD |
+| 3 | PD2 (Pin 16)        | LED-TERM   | STATUS_LED | OUT | Status LED drive  | D4          | LED-TERM   |
 
 ## Actions on Approval
 

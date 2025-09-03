@@ -7,7 +7,7 @@
  */
 
 #include "uart.h"
-#include "../../include/config.h"
+#include "config.h"
 #include <Arduino.h>
 #include <avr/interrupt.h>
 
@@ -52,41 +52,8 @@ static void calculate_char_time(void);
 // INTERRUPT SERVICE ROUTINES
 // ============================================================================
 
-// USART Receive Complete Interrupt
-ISR(USART_RXC_vect) {
-    uint8_t status = UCSRA;
-    uint8_t data = UDR;
-    
-    // Check for frame or parity errors
-    if (status & (1 << FE)) {
-        frame_error = true;
-    }
-    if (status & (1 << PE)) {
-        parity_error = true;
-    }
-    
-    // Store data in buffer if no overflow
-    uint16_t next_head = next_buffer_index(rx_head, UART_RX_BUFFER_SIZE);
-    if (next_head != rx_tail) {
-        rx_buffer[rx_head] = data;
-        rx_head = next_head;
-        last_rx_time = micros();
-    } else {
-        rx_overflow = true;
-    }
-}
-
-// USART Data Register Empty Interrupt
-ISR(USART_UDRE_vect) {
-    if (tx_head != tx_tail) {
-        UDR = tx_buffer[tx_tail];
-        tx_tail = next_buffer_index(tx_tail, UART_TX_BUFFER_SIZE);
-    } else {
-        // Buffer empty, disable UDRE interrupt
-        UCSRB &= ~(1 << UDRIE);
-        tx_busy = false;
-    }
-}
+// NOTE: When building with Arduino core, we rely on HardwareSerial for UART.
+// The HAL functions below can delegate to Serial to avoid ISR conflicts.
 
 // ============================================================================
 // PUBLIC FUNCTION IMPLEMENTATIONS
@@ -99,7 +66,7 @@ uart_result_t uart_init(void) {
         .parity = UART_PARITY_NONE,
         .stop_bits = UART_STOP_1BIT
     };
-    
+
     return uart_init_config(&default_config);
 }
 
@@ -107,24 +74,30 @@ uart_result_t uart_init_config(const uart_config_t* config) {
     if (config == nullptr) {
         return UART_ERROR_INVALID_CONFIG;
     }
-    
+
     // Calculate baud rate settings
     uint16_t ubrr_value;
     uart_result_t result = calculate_baud_settings(config->baud_rate, &ubrr_value);
     if (result != UART_OK) {
         return result;
     }
-    
+
     // Disable UART during configuration
     UCSRB = 0;
-    
+
     // Set baud rate
     UBRRH = (uint8_t)(ubrr_value >> 8);
     UBRRL = (uint8_t)ubrr_value;
-    
+
     // Configure frame format
     uint8_t ucsrc_value = (1 << URSEL); // Select UCSRC register
-    
+
+    // Initialize Arduino Serial if not already
+    Serial.begin(config->baud_rate);
+    current_baud_rate = config->baud_rate;
+    uart_initialized = true;
+    return UART_OK;
+
     // Data bits
     switch (config->data_bits) {
         case UART_DATA_5BIT:
@@ -146,7 +119,7 @@ uart_result_t uart_init_config(const uart_config_t* config) {
         default:
             return UART_ERROR_INVALID_CONFIG;
     }
-    
+
     // Parity
     switch (config->parity) {
         case UART_PARITY_NONE:
@@ -161,35 +134,35 @@ uart_result_t uart_init_config(const uart_config_t* config) {
         default:
             return UART_ERROR_INVALID_CONFIG;
     }
-    
+
     // Stop bits
     if (config->stop_bits == UART_STOP_2BIT) {
         ucsrc_value |= (1 << USBS);
     }
-    
+
     // Write configuration to UCSRC
     UCSRC = ucsrc_value;
-    
+
     // Enable RX, TX, and RX interrupt
     UCSRB |= (1 << RXEN) | (1 << TXEN) | (1 << RXCIE);
-    
+
     // Initialize buffers
     tx_head = tx_tail = 0;
     rx_head = rx_tail = 0;
-    
+
     // Clear status flags
     tx_busy = false;
     rx_overflow = false;
     frame_error = false;
     parity_error = false;
-    
+
     // Store current baud rate and calculate timing
     current_baud_rate = config->baud_rate;
     calculate_char_time();
-    
+
     // Enable global interrupts if not already enabled
     sei();
-    
+
     uart_initialized = true;
     return UART_OK;
 }
@@ -198,23 +171,23 @@ uart_result_t uart_set_baud_rate(uint32_t baud_rate) {
     if (!uart_initialized) {
         return UART_ERROR_NOT_INITIALIZED;
     }
-    
+
     uint16_t ubrr_value;
     uart_result_t result = calculate_baud_settings(baud_rate, &ubrr_value);
     if (result != UART_OK) {
         return result;
     }
-    
+
     // Wait for transmission to complete
     uart_flush_tx();
-    
+
     // Update baud rate registers
     UBRRH = (uint8_t)(ubrr_value >> 8);
     UBRRL = (uint8_t)ubrr_value;
-    
+
     current_baud_rate = baud_rate;
     calculate_char_time();
-    
+
     return UART_OK;
 }
 
@@ -222,23 +195,9 @@ uart_result_t uart_send_byte(uint8_t data) {
     if (!uart_initialized) {
         return UART_ERROR_NOT_INITIALIZED;
     }
-    
-    if (is_tx_buffer_full()) {
-        return UART_ERROR_BUFFER_FULL;
-    }
-    
-    // Disable interrupts while updating buffer
-    cli();
-    
-    tx_buffer[tx_head] = data;
-    tx_head = next_buffer_index(tx_head, UART_TX_BUFFER_SIZE);
-    
-    // Enable UDRE interrupt to start transmission
-    UCSRB |= (1 << UDRIE);
-    tx_busy = true;
-    
-    sei();
-    
+
+    // Directly use Arduino Serial in Arduino build to save RAM
+    (void)Serial.write(&data, 1);
     return UART_OK;
 }
 
@@ -246,19 +205,16 @@ uart_result_t uart_receive_byte(uint8_t* data) {
     if (!uart_initialized) {
         return UART_ERROR_NOT_INITIALIZED;
     }
-    
+
     if (data == nullptr || is_rx_buffer_empty()) {
         return UART_ERROR_BUFFER_EMPTY;
     }
-    
-    // Disable interrupts while reading buffer
-    cli();
-    
-    *data = rx_buffer[rx_tail];
-    rx_tail = next_buffer_index(rx_tail, UART_RX_BUFFER_SIZE);
-    
-    sei();
-    
+
+    if (Serial.available() <= 0) {
+        return UART_ERROR_BUFFER_EMPTY;
+    }
+
+    *data = (uint8_t)Serial.read();
     return UART_OK;
 }
 
@@ -266,12 +222,12 @@ uart_result_t uart_data_available(bool* available) {
     if (!uart_initialized) {
         return UART_ERROR_NOT_INITIALIZED;
     }
-    
+
     if (available == nullptr) {
         return UART_ERROR_INVALID_CONFIG;
     }
-    
-    *available = !is_rx_buffer_empty();
+
+    *available = (Serial.available() > 0);
     return UART_OK;
 }
 
@@ -279,11 +235,11 @@ uart_result_t uart_get_rx_count(uint16_t* count) {
     if (!uart_initialized) {
         return UART_ERROR_NOT_INITIALIZED;
     }
-    
+
     if (count == nullptr) {
         return UART_ERROR_INVALID_CONFIG;
     }
-    
+
     *count = get_rx_buffer_count();
     return UART_OK;
 }
@@ -292,23 +248,19 @@ uart_result_t uart_send_buffer(const uint8_t* buffer, uint16_t length) {
     if (!uart_initialized) {
         return UART_ERROR_NOT_INITIALIZED;
     }
-    
+
     if (buffer == nullptr) {
         return UART_ERROR_INVALID_CONFIG;
     }
-    
+
     for (uint16_t i = 0; i < length; i++) {
-        // Wait for buffer space if full
-        while (is_tx_buffer_full()) {
-            delay(1);
-        }
-        
+        // Direct write in Arduino build
         uart_result_t result = uart_send_byte(buffer[i]);
         if (result != UART_OK) {
             return result;
         }
     }
-    
+
     return UART_OK;
 }
 
@@ -316,14 +268,14 @@ uart_result_t uart_receive_buffer(uint8_t* buffer, uint16_t max_length, uint16_t
     if (!uart_initialized) {
         return UART_ERROR_NOT_INITIALIZED;
     }
-    
+
     if (buffer == nullptr || received == nullptr) {
         return UART_ERROR_INVALID_CONFIG;
     }
-    
+
     *received = 0;
-    
-    while (*received < max_length && !is_rx_buffer_empty()) {
+
+    while (*received < max_length && Serial.available() > 0) {
         uart_result_t result = uart_receive_byte(&buffer[*received]);
         if (result == UART_OK) {
             (*received)++;
@@ -331,7 +283,7 @@ uart_result_t uart_receive_buffer(uint8_t* buffer, uint16_t max_length, uint16_t
             break;
         }
     }
-    
+
     return UART_OK;
 }
 
@@ -339,25 +291,23 @@ uart_result_t uart_flush_tx(void) {
     if (!uart_initialized) {
         return UART_ERROR_NOT_INITIALIZED;
     }
-    
+
     uint32_t timeout = millis() + UART_TIMEOUT_MS;
-    
-    while (tx_busy && millis() < timeout) {
-        delay(1);
-    }
-    
-    return (tx_busy) ? UART_ERROR_TIMEOUT : UART_OK;
+
+    // In Arduino build, flush the Serial TX buffer
+    Serial.flush();
+    return UART_OK;
 }
 
 uart_result_t uart_flush_rx(void) {
     if (!uart_initialized) {
         return UART_ERROR_NOT_INITIALIZED;
     }
-    
+
     cli();
     rx_head = rx_tail = 0;
     sei();
-    
+
     return UART_OK;
 }
 
@@ -369,38 +319,38 @@ uart_result_t uart_send_modbus_frame(const uint8_t* frame, uint16_t length) {
     if (!uart_initialized) {
         return UART_ERROR_NOT_INITIALIZED;
     }
-    
+
     if (frame == nullptr) {
         return UART_ERROR_INVALID_CONFIG;
     }
-    
+
     // Ensure 3.5 character gap before transmission
     delayMicroseconds(UART_MODBUS_T3_5_US);
-    
+
     // Send frame data
     uart_result_t result = uart_send_buffer(frame, length);
     if (result != UART_OK) {
         return result;
     }
-    
+
     // Wait for transmission to complete
     return uart_flush_tx();
 }
 
-uart_result_t uart_receive_modbus_frame(uint8_t* frame, uint16_t max_length, 
+uart_result_t uart_receive_modbus_frame(uint8_t* frame, uint16_t max_length,
                                        uint16_t* received, uint32_t timeout_ms) {
     if (!uart_initialized) {
         return UART_ERROR_NOT_INITIALIZED;
     }
-    
+
     if (frame == nullptr || received == nullptr) {
         return UART_ERROR_INVALID_CONFIG;
     }
-    
+
     *received = 0;
     uint32_t start_time = millis();
     uint32_t last_char_time = micros();
-    
+
     while (millis() - start_time < timeout_ms) {
         uint8_t data;
         if (uart_receive_byte(&data) == UART_OK) {
@@ -416,7 +366,7 @@ uart_result_t uart_receive_modbus_frame(uint8_t* frame, uint16_t max_length,
             }
         }
     }
-    
+
     return (*received > 0) ? UART_OK : UART_ERROR_TIMEOUT;
 }
 
@@ -424,14 +374,14 @@ uart_result_t uart_modbus_gap_detected(bool* gap_detected) {
     if (!uart_initialized) {
         return UART_ERROR_NOT_INITIALIZED;
     }
-    
+
     if (gap_detected == nullptr) {
         return UART_ERROR_INVALID_CONFIG;
     }
-    
+
     uint32_t idle_time = micros() - last_rx_time;
     *gap_detected = (idle_time > UART_MODBUS_T3_5_US);
-    
+
     return UART_OK;
 }
 
@@ -439,11 +389,11 @@ uart_result_t uart_get_idle_time(uint32_t* time_us) {
     if (!uart_initialized) {
         return UART_ERROR_NOT_INITIALIZED;
     }
-    
+
     if (time_us == nullptr) {
         return UART_ERROR_INVALID_CONFIG;
     }
-    
+
     *time_us = micros() - last_rx_time;
     return UART_OK;
 }
@@ -452,17 +402,17 @@ uart_result_t uart_get_idle_time(uint32_t* time_us) {
 // DIAGNOSTIC FUNCTIONS
 // ============================================================================
 
-uart_result_t uart_get_status(bool* tx_busy_status, bool* rx_overflow_status, 
+uart_result_t uart_get_status(bool* tx_busy_status, bool* rx_overflow_status,
                              bool* frame_error_status, bool* parity_error_status) {
     if (!uart_initialized) {
         return UART_ERROR_NOT_INITIALIZED;
     }
-    
+
     if (tx_busy_status) *tx_busy_status = tx_busy;
     if (rx_overflow_status) *rx_overflow_status = rx_overflow;
     if (frame_error_status) *frame_error_status = frame_error;
     if (parity_error_status) *parity_error_status = parity_error;
-    
+
     return UART_OK;
 }
 
@@ -470,11 +420,11 @@ uart_result_t uart_get_tx_free(uint16_t* free_bytes) {
     if (!uart_initialized) {
         return UART_ERROR_NOT_INITIALIZED;
     }
-    
+
     if (free_bytes == nullptr) {
         return UART_ERROR_INVALID_CONFIG;
     }
-    
+
     *free_bytes = UART_TX_BUFFER_SIZE - get_tx_buffer_count() - 1;
     return UART_OK;
 }
@@ -483,13 +433,13 @@ uart_result_t uart_clear_errors(void) {
     if (!uart_initialized) {
         return UART_ERROR_NOT_INITIALIZED;
     }
-    
+
     cli();
     rx_overflow = false;
     frame_error = false;
     parity_error = false;
     sei();
-    
+
     return UART_OK;
 }
 
@@ -497,11 +447,11 @@ uart_result_t uart_get_char_time(uint16_t* char_time_us_ptr) {
     if (!uart_initialized) {
         return UART_ERROR_NOT_INITIALIZED;
     }
-    
+
     if (char_time_us_ptr == nullptr) {
         return UART_ERROR_INVALID_CONFIG;
     }
-    
+
     *char_time_us_ptr = char_time_us;
     return UART_OK;
 }
@@ -510,14 +460,14 @@ uart_result_t uart_test_loopback(bool* success) {
     if (!uart_initialized) {
         return UART_ERROR_NOT_INITIALIZED;
     }
-    
+
     if (success == nullptr) {
         return UART_ERROR_INVALID_CONFIG;
     }
-    
+
     // Clear buffers
     uart_flush_rx();
-    
+
     // Send test pattern
     uint8_t test_data = 0x55; // Alternating bit pattern
     uart_result_t result = uart_send_byte(test_data);
@@ -525,15 +475,15 @@ uart_result_t uart_test_loopback(bool* success) {
         *success = false;
         return result;
     }
-    
+
     // Wait for transmission and potential reception
     delay(10);
-    
+
     // Check if data was received
     uint8_t received_data;
     result = uart_receive_byte(&received_data);
     *success = (result == UART_OK) && (received_data == test_data);
-    
+
     return UART_OK;
 }
 
@@ -545,18 +495,18 @@ static uart_result_t calculate_baud_settings(uint32_t baud_rate, uint16_t* ubrr_
     if (ubrr_value == nullptr) {
         return UART_ERROR_INVALID_CONFIG;
     }
-    
+
     if (baud_rate < UART_MIN_BAUD || baud_rate > UART_MAX_BAUD) {
         return UART_ERROR_INVALID_BAUD;
     }
-    
+
     // Calculate UBRR value for normal mode (U2X = 0)
     uint32_t ubrr = (F_CPU / (16UL * baud_rate)) - 1;
-    
+
     if (ubrr > 4095) { // 12-bit register
         return UART_ERROR_INVALID_BAUD;
     }
-    
+
     *ubrr_value = (uint16_t)ubrr;
     return UART_OK;
 }

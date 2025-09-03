@@ -5,10 +5,17 @@ import os
 @then("the serial device is available for the harness")
 def step_serial_device_available(context):
     serial_path = getattr(context, "serial_port", None)
-    assert serial_path, "context.serial_port not set; check environment.py profile wiring"
-    # If the symlink isn't present yet, pass with a helpful note (runner will wire it soon)
+    # Fallbacks for HIL profile
+    if not serial_path and getattr(context, "profile", None) == "hil":
+        try:
+            serial_path = getattr(getattr(context, "hil_controller", None), "hardware_interface", None)
+            if serial_path is not None:
+                serial_path = getattr(serial_path, "serial_port", None)
+        except Exception:
+            serial_path = None
+    assert serial_path, "serial port not available on context; ensure HIL setup initialized or emulator runner created PTY"
+    # If the symlink/device isn't present yet, pass with a helpful note (runner will wire it soon)
     if not os.path.exists(serial_path):
-        # Keep smoke green while runner integration lands
         print(f"[serial-smoke] NOTE: {serial_path} not present yet. Skipping open test.")
         return
 

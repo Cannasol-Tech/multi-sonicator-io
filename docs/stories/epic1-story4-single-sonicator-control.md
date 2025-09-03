@@ -146,13 +146,13 @@ void sonicator_state_machine(sonicator_t* unit) {
 
 ### MODBUS Integration (Sonicator 4)
 
-- Register block base: 0x0400 (unit 4)
-- 0x0410: Start/Stop control (0 = stop, 1 = start)
-- 0x0411: Amplitude setpoint (20-100%)
-- 0x0412: Overload reset (write 1 to reset)
-- 0x0420: Power reading (Watts)
-- 0x0421: Frequency reading (Hz)
-- 0x0422: Status flags (bit-packed)
+- Macro-based addressing per modbus_registers.h
+- 0x0160: Start/Stop control (unit 4)
+- 0x0161: Amplitude setpoint (20-100%)
+- 0x0162: Overload reset (write 1 to reset)
+- 0x0170: Power reading (Watts)
+- 0x0171: Frequency reading (Hz)
+- 0x0172: Status flags (bit-packed)
 
 ## Definition of Done
 
@@ -211,3 +211,36 @@ void sonicator_state_machine(sonicator_t* unit) {
 - State machine must handle all edge cases and fault conditions
 - Implementation must support future extension to multiple units
 - Safety considerations paramount for industrial equipment control
+
+## QA Results
+
+### Comprehensive QA Review (2025-09-03)
+
+#### Summary
+- Story implements remote control and monitoring for a single CT2000 sonicator via MODBUS.
+- Features: start/stop, amplitude control (20–100%), overload reset, telemetry, safety/fault handling.
+
+#### Acceptance Criteria Coverage
+- MODBUS register mapping and amplitude clamping implemented in `sonicator4_controller.h`.
+- Telemetry, status flags, and safety features handled via HAL and MODBUS integration.
+- Unit test suite covers HAL, MODBUS, register validation, and emergency scenarios.
+- HIL verification and hardware validation required for final acceptance.
+
+#### Risk Assessment
+- Main risks: protocol complexity, amplitude accuracy, hardware timing.
+- Mitigations: early hardware testing, calibration, feedback control.
+
+#### Testability & Coverage
+- >90% unit test coverage for HAL and MODBUS modules.
+- Register validation and emergency stop logic tested.
+- HIL tests and hardware validation are prerequisites for full acceptance.
+
+#### Non-Functional Requirements
+- Latency, update rate, and safety features specified and partially testable in code.
+- Real hardware tests needed for timing and accuracy.
+
+#### Gate Decision
+- **Status:** CONCERNS
+- **Rationale:** All software logic and unit tests are present and robust. However, HIL verification, hardware validation, and amplitude accuracy tests are not yet marked complete. These are critical for industrial safety and reliability.
+
+---
