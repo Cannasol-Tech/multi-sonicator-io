@@ -7,7 +7,7 @@
  */
 
 #include "hal.h"
-#include "../../include/config.h"
+#include <config.h>
 
 // ============================================================================
 // PRIVATE VARIABLES
@@ -270,8 +270,8 @@ hal_result_t hal_read_sonicator_status(uint8_t sonicator_id, sonicator_status_t*
         return map_adc_error(adc_result);
     }
     
-    // Read frequency (only available for sonicator 1 via LM2907)
-    if (sonicator_id == 1) {
+    // Read frequency (available for Sonicator 4 via LM2907 F-V converter on ADC0)
+    if (sonicator_id == 4) {
         float frequency_hz;
         adc_result = adc_read_frequency(&frequency_hz);
         if (adc_result == ADC_OK) {
@@ -280,9 +280,9 @@ hal_result_t hal_read_sonicator_status(uint8_t sonicator_id, sonicator_status_t*
             status->frequency_hz = 0;
         }
     } else {
-        status->frequency_hz = 0; // Not available for other sonicators
+        status->frequency_hz = 0; // Not measured for other sonicators in current hardware
     }
-    
+
     return HAL_OK;
 }
 

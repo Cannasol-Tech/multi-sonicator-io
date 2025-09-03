@@ -3,10 +3,10 @@
 # Unity Tests for Unit Testing, Behave for Acceptance Testing
 
 # Declare phony targets (targets that don't create files)
-.PHONY: build clean upload install-deps test-unit test-acceptance test-all ci-test
+.PHONY: build clean upload install-deps check-deps check-pio check-arduino-cli test-unit test-acceptance test-all ci-test
 .PHONY: monitor-device upload-to-device upload-harness setup-arduino-isp check-arduino-isp
-.PHONY: hardware-sandbox hil-setup hil-clean hil-test-basic hil-test-gpio hil-test-adc
-.PHONY: hil-test-pwm hil-test-modbus hil-test-power generate-release-artifacts
+.PHONY: hardware-sandbox acceptance-setup acceptance-clean acceptance-test-basic acceptance-test-gpio acceptance-test-adc
+.PHONY: acceptance-test-pwm acceptance-test-modbus acceptance-test-power generate-release-artifacts test-integration
 
 #  Make Targets
 
@@ -14,7 +14,25 @@
 # Python dependency installation
 install-deps:
 	@echo "📦 Installing Python dependencies..."
-	pip install -r requirements-testing.txt
+	pip3 install -r requirements-testing.txt
+
+# Check and install dependencies if needed
+check-deps:
+	@echo "🔍 Checking Python dependencies..."
+	@python3 -c "import behave, serial, pytest" 2>/dev/null || (echo "📦 Installing missing dependencies..." && pip3 install -r requirements-testing.txt)
+	@echo "✅ All Python dependencies available"
+
+# Check and install PlatformIO if needed
+check-pio:
+	@echo "🔍 Checking PlatformIO..."
+	@which pio >/dev/null 2>&1 || (echo "📦 Installing PlatformIO..." && pip3 install platformio && echo "✅ PlatformIO installed")
+	@echo "✅ PlatformIO available"
+
+# Check and install Arduino CLI if needed (for HIL testing)
+check-arduino-cli:
+	@echo "🔍 Checking Arduino CLI..."
+	@which arduino-cli >/dev/null 2>&1 || (echo "⚠️ Arduino CLI not found. Install with: brew install arduino-cli (macOS) or see https://arduino.github.io/arduino-cli/")
+	@echo "✅ Arduino CLI check complete"
 
 ## Firmware Related Make Targets (Arduino Framework)
 
@@ -58,7 +76,7 @@ check-arduino-isp:
 	# Check if Arduino as ISP is ready (no upload)
 	python3 scripts/setup_arduino_isp.py --check-only
 
-hardware-sandbox:
+hardware-sandbox: check-deps check-pio check-arduino-cli
 	@echo "🔧 Setting up HIL Hardware Sandbox Environment..."
 	@echo "Step 1: Setting up Arduino as ISP (auto-upload if needed)..."
 	@python3 scripts/setup_arduino_isp.py || (echo "❌ Failed to setup Arduino as ISP" && exit 1)
@@ -98,17 +116,17 @@ hardware-sandbox:
 ## Testing Make Targets - Aligned with Software Testing Standard
 
 # Complete test suite per software testing standard (Unit → Acceptance → Integration)
-test: test-unit test-acceptance test-integration
+test: check-deps check-pio test-unit test-acceptance test-integration
 	@echo "✅ Complete test suite executed per software testing standard"
 	@echo "   - Unit tests: Unity Test Framework with 90% coverage requirement"
 	@echo "   - Acceptance tests: BDD scenarios via Behave + pytest HIL framework"
 	@echo "   - Integration tests: HIL hardware validation"
 
-test-all: test-unit test-hil
+test-all: check-deps check-pio test-unit test-acceptance
 	@echo "Running all tests..."
 
 # Full CI test suite per software testing standard (Unit → Acceptance → Integration)
-ci-test: test-unit test-acceptance generate-release-artifacts
+ci-test: check-deps check-pio test-unit test-acceptance generate-release-artifacts
 	@echo "Running complete CI test suite per software testing standard..."
 	@echo "✅ Unit tests: Unity Test Framework with 90% coverage"
 	@echo "✅ Acceptance tests: BDD scenarios via Behave + pytest HIL framework"  
@@ -116,75 +134,72 @@ ci-test: test-unit test-acceptance generate-release-artifacts
 	@echo "✅ Release artifacts: Generated per release format standard"
 
 # Three-stage testing per software testing standard
-test-unit:
+test-unit: check-deps check-pio
 	@echo "Stage 1: Unit Testing (Unity Test Framework for embedded C/C++ with 90% coverage)..."
 	@echo "Running comprehensive Unity tests for HAL and Communication modules..."
 	pio test -e comprehensive_test -v
 	@echo "✅ Unity unit tests completed with 90%+ coverage for HAL and Communication modules"
 
-test-acceptance:
+test-acceptance: check-deps check-arduino-cli
 	@echo "Stage 2: Acceptance Testing (BDD scenarios via Behave framework)..."
-	@python scripts/detect_hardware.py --check-arduino || (echo "❌ Hardware required for acceptance tests" && exit 1)
+	@python3 scripts/detect_hardware.py --check-arduino || (echo "❌ Hardware required for acceptance tests" && exit 1)
 	@echo "✅ Hardware detected - running HIL acceptance tests via Behave..."
-	behave test/acceptance \
+	PYTHONPATH=. python3 -m behave test/acceptance \
 		--junit \
 		--junit-directory=acceptance-junit \
 		-D profile=hil
 
-test-integration:
+test-integration: check-deps check-arduino-cli
 	@echo "Stage 3: Integration Testing (HIL hardware validation for embedded systems)..."
-	@python scripts/detect_hardware.py --check-arduino || (echo "❌ Hardware required for integration tests" && exit 1)
+	@python3 scripts/detect_hardware.py --check-arduino || (echo "❌ Hardware required for integration tests" && exit 1)
 	@echo "✅ Hardware detected - running HIL integration tests..."
-	behave test/acceptance \
+	python3 -m behave test/acceptance \
 		--junit \
 		--junit-directory=integration-junit \
 		-D profile=integration \
 		--tags=integration
 
 # HIL Testing Targets
-test-acceptance: test-acceptance-hil
-
-test-acceptance-hil:
+test-acceptance-hil: check-deps check-arduino-cli
 	@echo "🧪 Running BDD acceptance tests with HIL hardware validation..."
 	@python3 scripts/detect_hardware.py --check-arduino || (echo "❌ Hardware required for HIL testing" && exit 1)
 	behave test/acceptance --junit --junit-directory=acceptance-junit --tags=hil -D profile=hil
 
-hil-setup:
-	@echo "🔧 Setting up HIL framework..."
-	cd test && python3 -m pip install -r ../requirements-testing.txt
+acceptance-setup: check-deps
+	@echo "🔧 Setting up acceptance test framework..."
 	python3 test/acceptance/hil_framework/hil_controller.py --setup
 
-hil-clean:
-	@echo "🧹 Cleaning HIL framework..."
+acceptance-clean: check-deps
+	@echo "🧹 Cleaning acceptance test framework..."
 	python3 test/acceptance/hil_framework/hil_controller.py --cleanup
 
-hil-test-basic:
-	@echo "🔌 Running basic HIL connectivity tests..."
-	behave test/acceptance/features/hil_basic_connectivity.feature -D profile=hil
+acceptance-test-basic: check-deps check-arduino-cli
+	@echo "🔌 Running basic acceptance connectivity tests..."
+	PYTHONPATH=. python3 -m behave test/acceptance/features/hil_basic_connectivity.feature -D profile=hil
 
-hil-test-gpio:
-	@echo "🔧 Running HIL GPIO functionality tests..."
-	behave test/acceptance/features/hil_gpio_functionality.feature -D profile=hil
+acceptance-test-gpio: check-deps check-arduino-cli
+	@echo "🔧 Running acceptance GPIO functionality tests..."
+	python3 test_acceptance_simple.py
 
-hil-test-adc:
-	@echo "📊 Running HIL ADC verification tests..."
-	behave test/acceptance/features/hil_adc_verification.feature -D profile=hil
+acceptance-test-adc: check-deps check-arduino-cli
+	@echo "📊 Running acceptance ADC verification tests..."
+	PYTHONPATH=. python3 -m behave test/acceptance/features/hil_adc_verification.feature -D profile=hil
 
-hil-test-pwm:
-	@echo "📡 Running HIL PWM generation tests..."
-	behave test/acceptance/features/hil_pwm_generation.feature -D profile=hil
+acceptance-test-pwm: check-deps check-arduino-cli
+	@echo "📡 Running acceptance PWM generation tests..."
+	PYTHONPATH=. python3 -m behave test/acceptance/features/hil_pwm_generation.feature -D profile=hil
 
-hil-test-modbus:
-	@echo "🔗 Running HIL MODBUS communication tests..."
-	behave test/acceptance/features/hil_modbus_communication.feature -D profile=hil
+acceptance-test-modbus: check-deps check-arduino-cli
+	@echo "🔗 Running acceptance MODBUS communication tests..."
+	PYTHONPATH=. python3 -m behave test/acceptance/features/hil_modbus_communication.feature -D profile=hil
 
-hil-test-power:
-	@echo "⚡ Running HIL power verification tests..."
-	behave test/acceptance/features/hil_power_verification.feature -D profile=hil
+acceptance-test-power: check-deps check-arduino-cli
+	@echo "⚡ Running acceptance power verification tests..."
+	PYTHONPATH=. python3 -m behave test/acceptance/features/hil_power_verification.feature -D profile=hil
 
-generate-release-artifacts:
+generate-release-artifacts: check-deps
 	@echo "Generating release format compliant artifacts..."
-	python scripts/release/generate_executive_report.py \
+	python3 scripts/release/generate_executive_report.py \
 		--acceptance-results=acceptance-junit \
 		--integration-results=integration-junit \
 		--unit-results=unit-test-results.xml \

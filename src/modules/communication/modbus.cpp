@@ -39,8 +39,10 @@ static bool modbus_enabled = false;
 static uint32_t last_communication_time = 0;
 static uint32_t request_start_time = 0;
 
-// Register map storage
-static modbus_register_map_t register_map;
+// Register map storage is owned by Register Manager (single source of truth)
+// Do not maintain a separate copy here; always operate on the shared map.
+#include "modbus_register_manager.h"
+#define REGMAP() (register_manager_get_map())
 
 // Communication buffers
 static uint8_t rx_buffer[256];
@@ -75,15 +77,13 @@ modbus_error_t modbus_init(const modbus_config_t* config) {
     // Initialize statistics
     memset(&modbus_stats, 0, sizeof(modbus_stats));
     
-    // Initialize register map
-    memset(&register_map, 0, sizeof(register_map));
-    
-    // Set initial system status
-    register_map.system_status.system_status = SYSTEM_STATUS_OK;
-    register_map.system_status.active_count = 0;
-    register_map.system_status.active_mask = 0;
-    register_map.system_status.watchdog_status = 1; // Watchdog OK
-    register_map.system_status.comm_errors = 0;
+    // Initialize and access the shared register map via Register Manager
+    register_manager_init();
+    modbus_register_map_t* register_map = REGMAP();
+
+    // Ensure baseline system status sane
+    register_map->system_status.system_status |= SYSTEM_STATUS_OK;
+    register_map->system_status.watchdog_status = 1; // Watchdog OK
     
 #ifndef UNIT_TEST
     // Configure Serial for MODBUS communication
@@ -120,7 +120,9 @@ modbus_state_t modbus_process(void) {
             rx_buffer[rx_length++] = Serial.read();
             delay(1); // Simple inter-character delay
         }
-        
+        // Refresh shared register map pointer in case of reinitialization
+        modbus_register_map_t* register_map = REGMAP();
+
         if (rx_length >= 4) { // Minimum MODBUS frame size
             modbus_current_state = MODBUS_STATE_PROCESSING;
             
@@ -231,13 +233,15 @@ bool modbus_is_enabled(void) {
 static uint16_t modbus_read_register_internal(uint16_t address) {
     // System Status Registers (0x0000-0x000F)
     if (address <= 0x000F) {
-        uint16_t* status_regs = (uint16_t*)&register_map.system_status;
+        modbus_register_map_t* register_map = REGMAP();
+        uint16_t* status_regs = (uint16_t*)&register_map->system_status;
         return status_regs[address];
     }
     
     // Global Control Registers (0x0010-0x001F)
     if (address >= 0x0010 && address <= 0x001F) {
-        uint16_t* control_regs = (uint16_t*)&register_map.global_control;
+        modbus_register_map_t* register_map = REGMAP();
+        uint16_t* control_regs = (uint16_t*)&register_map->global_control;
         return control_regs[address - 0x0010];
     }
     
@@ -247,7 +251,8 @@ static uint16_t modbus_read_register_internal(uint16_t address) {
         uint16_t reg_offset = (address - 0x0100) % MODBUS_REG_SONICATOR_STRIDE;
         
         if (sonicator_id < MODBUS_MAX_SONICATORS) {
-            uint16_t* son_regs = (uint16_t*)&register_map.sonicators[sonicator_id];
+            modbus_register_map_t* register_map = REGMAP();
+            uint16_t* son_regs = (uint16_t*)&register_map->sonicators[sonicator_id];
             return son_regs[reg_offset];
         }
     }
@@ -266,22 +271,26 @@ static uint16_t modbus_read_register_internal(uint16_t address) {
 static bool modbus_write_register_internal(uint16_t address, uint16_t value) {
     // Global Control Registers (0x0010-0x001F)
     if (address >= 0x0010 && address <= 0x001F) {
-        uint16_t* control_regs = (uint16_t*)&register_map.global_control;
+        modbus_register_map_t* register_map = REGMAP();
+        uint16_t* control_regs = (uint16_t*)&register_map->global_control;
         control_regs[address - 0x0010] = value;
         
         // Handle special control commands
         switch (address) {
             case MODBUS_REG_GLOBAL_ENABLE:
                 if (value) {
-                    register_map.system_status.system_status |= SYSTEM_STATUS_OK;
+                    modbus_register_map_t* register_map = REGMAP();
+                    register_map->system_status.system_status |= SYSTEM_STATUS_OK;
                 } else {
-                    register_map.system_status.system_status &= ~SYSTEM_STATUS_OK;
+                    modbus_register_map_t* register_map = REGMAP();
+                    register_map->system_status.system_status &= ~SYSTEM_STATUS_OK;
                 }
                 break;
                 
             case MODBUS_REG_EMERGENCY_STOP:
                 if (value) {
-                    register_map.system_status.system_status |= SYSTEM_STATUS_EMERGENCY_STOP;
+                    modbus_register_map_t* register_map = REGMAP();
+                    register_map->system_status.system_status |= SYSTEM_STATUS_EMERGENCY_STOP;
                 }
                 break;
         }

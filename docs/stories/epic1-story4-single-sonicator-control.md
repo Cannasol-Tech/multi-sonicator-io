@@ -1,6 +1,6 @@
 # Story: Single Sonicator Control Implementation
 
-## Status: Ready for Development
+## Status: InProgress
 
 ## Story
 
@@ -32,19 +32,19 @@ Goal: Establish core firmware structure, basic sonicator control, and MODBUS com
 
 ## Acceptance Criteria
 
-### Control Requirements
+### Control Requirements (Sonicator 4)
 
-1. Start/Stop control functional via MODBUS register 0x0100
-2. Amplitude control (20-100%) functional via MODBUS register 0x0101
+1. Start/Stop control functional via MODBUS register 0x0410
+2. Amplitude control (20-100%) functional via MODBUS register 0x0411
 3. Amplitude setpoint clamped to valid range (20-100%) per FR3
-4. Overload reset command functional via MODBUS register 0x0102
+4. Overload reset command functional via MODBUS register 0x0412
 5. Safe startup state (OFF) on power-up per FR10
 
-### Monitoring Requirements
+### Monitoring Requirements (Sonicator 4)
 
-6. Real-time power measurement (Watts) available in MODBUS register 0x0110
-7. Operating frequency monitoring (Hz) available in MODBUS register 0x0111  
-8. Status flags (Overload, Frequency Lock, COMM_FAULT) in MODBUS register 0x0112
+6. Real-time power measurement (Watts) available in MODBUS register 0x0420
+7. Operating frequency monitoring (Hz) available in MODBUS register 0x0421
+8. Status flags (Overload, Frequency Lock, COMM_FAULT) in MODBUS register 0x0422
 9. Telemetry data updated at minimum 10Hz per NFR9
 10. Communication fault detection when sonicator disconnected per FR7
 
@@ -56,6 +56,8 @@ Goal: Establish core firmware structure, basic sonicator control, and MODBUS com
 14. Safe shutdown on communication loss >1 second per FR11
 
 ## Technical Implementation Details
+
+pin-matrix.md is the sole source of truth for the pin assignments.
 
 ### Sonicator Control Module (`modules/control/sonicator.h`)
 
@@ -142,14 +144,15 @@ void sonicator_state_machine(sonicator_t* unit) {
 }
 ```
 
-### MODBUS Integration
+### MODBUS Integration (Sonicator 4)
 
-- Register 0x0100: Start/Stop control (0 = stop, 1 = start)
-- Register 0x0101: Amplitude setpoint (20-100%)
-- Register 0x0102: Overload reset (write 1 to reset)
-- Register 0x0110: Power reading (Watts)
-- Register 0x0111: Frequency reading (Hz)
-- Register 0x0112: Status flags (bit-packed)
+- Register block base: 0x0400 (unit 4)
+- 0x0410: Start/Stop control (0 = stop, 1 = start)
+- 0x0411: Amplitude setpoint (20-100%)
+- 0x0412: Overload reset (write 1 to reset)
+- 0x0420: Power reading (Watts)
+- 0x0421: Frequency reading (Hz)
+- 0x0422: Status flags (bit-packed)
 
 ## Definition of Done
 

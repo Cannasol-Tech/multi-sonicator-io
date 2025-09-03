@@ -1,0 +1,43 @@
+<testsuite name="features.frequency_and_lock.Frequency measurement and lock status per unit" tests="2" errors="0" failures="2" skipped="0" time="0.000136" timestamp="2025-09-03T13:13:32.748452" hostname="Corbans-Mini.home"><testcase classname="features.frequency_and_lock.Frequency measurement and lock status per unit" name="Frequency and lock reflected within 100 ms -- @1.1 " status="failed" time="5.7e-05"><failure type="NoneType" message="None">
+<![CDATA[
+Failing step: Given unit 1 receives a frequency of 2000 Hz on the ÷10 input ... undefined in 0.000s
+Location: test/acceptance/features/frequency_and_lock.feature:10
+None]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @us-004
+  Scenario Outline: Frequency and lock reflected within 100 ms -- @1.1 
+    Given the HIL wrapper is connected and ready ... passed in 0.000s
+    And the DUT is powered and at safe defaults ... passed in 0.000s
+    Given unit 1 receives a frequency of 2000 Hz on the ÷10 input ... undefined in 0.000s
+    And unit 1 lock input is set to 1 ... undefined in 0.000s
+    Then within 100 ms holding register 40017 is approximately 2000 Hz ... undefined in 0.000s
+    And status flag bit2 for unit 1 equals 1 ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.frequency_and_lock.Frequency measurement and lock status per unit" name="Frequency and lock reflected within 100 ms -- @1.2 " status="failed" time="7.9e-05"><failure type="NoneType" message="None">
+<![CDATA[
+Failing step: Given unit 1 receives a frequency of 0 Hz on the ÷10 input ... undefined in 0.000s
+Location: test/acceptance/features/frequency_and_lock.feature:10
+None]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @us-004
+  Scenario Outline: Frequency and lock reflected within 100 ms -- @1.2 
+    Given the HIL wrapper is connected and ready ... passed in 0.000s
+    And the DUT is powered and at safe defaults ... passed in 0.000s
+    Given unit 1 receives a frequency of 0 Hz on the ÷10 input ... undefined in 0.000s
+    And unit 1 lock input is set to 0 ... undefined in 0.000s
+    Then within 100 ms holding register 40017 is approximately 0 Hz ... undefined in 0.000s
+    And status flag bit2 for unit 1 equals 0 ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

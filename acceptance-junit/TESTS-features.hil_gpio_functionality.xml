@@ -1,0 +1,130 @@
+<testsuite name="features.hil_gpio_functionality.GPIO Hardware Functionality" tests="6" errors="0" failures="6" skipped="0" time="0.000299" timestamp="2025-09-03T13:13:32.761533" hostname="Corbans-Mini.home"><testcase classname="features.hil_gpio_functionality.GPIO Hardware Functionality" name="Digital output control - START_4 pin" status="failed" time="3e-05"><failure type="AssertionError" message="HIL framework not available">
+<![CDATA[
+Failing step: Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+Location: test/acceptance/features/hil_gpio_functionality.feature:7
+Assertion Failed: HIL framework not available]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @hil @hardware @gpio
+  Scenario: Digital output control - START_4 pin
+    Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+    And the GPIO HAL is loaded on the target ... skipped in 0.000s
+    When I set pin "START_4" to HIGH via HIL framework ... skipped in 0.000s
+    Then the pin voltage should be approximately 5.0V ... skipped in 0.000s
+    When I set pin "START_4" to LOW via HIL framework ... skipped in 0.000s
+    Then the pin voltage should be approximately 0.0V ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.hil_gpio_functionality.GPIO Hardware Functionality" name="Digital output control - RESET_4 pin" status="failed" time="5.4e-05"><failure type="AssertionError" message="HIL framework not available">
+<![CDATA[
+Failing step: Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+Location: test/acceptance/features/hil_gpio_functionality.feature:7
+Assertion Failed: HIL framework not available]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @hil @hardware @gpio
+  Scenario: Digital output control - RESET_4 pin
+    Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+    And the GPIO HAL is loaded on the target ... skipped in 0.000s
+    When I set pin "RESET_4" to HIGH via HIL framework ... skipped in 0.000s
+    Then the pin voltage should be approximately 5.0V ... skipped in 0.000s
+    When I set pin "RESET_4" to LOW via HIL framework ... skipped in 0.000s
+    Then the pin voltage should be approximately 0.0V ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.hil_gpio_functionality.GPIO Hardware Functionality" name="Digital input reading - OVERLOAD_4 pin" status="failed" time="3.2e-05"><failure type="AssertionError" message="HIL framework not available">
+<![CDATA[
+Failing step: Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+Location: test/acceptance/features/hil_gpio_functionality.feature:7
+Assertion Failed: HIL framework not available]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @hil @hardware @gpio
+  Scenario: Digital input reading - OVERLOAD_4 pin
+    Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+    And the GPIO HAL is loaded on the target ... skipped in 0.000s
+    Given pin "OVERLOAD_4" is configured as input with pull-up ... skipped in 0.000s
+    When the HIL framework applies 0V to pin "OVERLOAD_4" externally ... skipped in 0.000s
+    Then reading pin "OVERLOAD_4" should return LOW ... skipped in 0.000s
+    When the HIL framework disconnects the external connection ... skipped in 0.000s
+    Then reading pin "OVERLOAD_4" should return HIGH ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.hil_gpio_functionality.GPIO Hardware Functionality" name="Digital input reading - FREQ_LOCK_4 pin" status="failed" time="6.3e-05"><failure type="AssertionError" message="HIL framework not available">
+<![CDATA[
+Failing step: Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+Location: test/acceptance/features/hil_gpio_functionality.feature:7
+Assertion Failed: HIL framework not available]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @hil @hardware @gpio
+  Scenario: Digital input reading - FREQ_LOCK_4 pin
+    Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+    And the GPIO HAL is loaded on the target ... skipped in 0.000s
+    Given pin "FREQ_LOCK_4" is configured as input ... skipped in 0.000s
+    When the HIL framework applies 5V to pin "FREQ_LOCK_4" ... skipped in 0.000s
+    Then reading pin "FREQ_LOCK_4" should return HIGH ... skipped in 0.000s
+    When the HIL framework applies 0V to pin "FREQ_LOCK_4" ... skipped in 0.000s
+    Then reading pin "FREQ_LOCK_4" should return LOW ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.hil_gpio_functionality.GPIO Hardware Functionality" name="Pin state persistence" status="failed" time="3e-05"><failure type="AssertionError" message="HIL framework not available">
+<![CDATA[
+Failing step: Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+Location: test/acceptance/features/hil_gpio_functionality.feature:7
+Assertion Failed: HIL framework not available]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @hil @hardware @gpio
+  Scenario: Pin state persistence
+    Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+    And the GPIO HAL is loaded on the target ... skipped in 0.000s
+    When I set pin "START_4" to HIGH ... skipped in 0.000s
+    And I set pin "RESET_4" to LOW ... skipped in 0.000s
+    And I wait for 5 seconds ... skipped in 0.000s
+    Then pin "START_4" should still be HIGH ... skipped in 0.000s
+    And pin "RESET_4" should still be LOW ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.hil_gpio_functionality.GPIO Hardware Functionality" name="Status LED control" status="failed" time="9.1e-05"><failure type="AssertionError" message="HIL framework not available">
+<![CDATA[
+Failing step: Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+Location: test/acceptance/features/hil_gpio_functionality.feature:7
+Assertion Failed: HIL framework not available]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @hil @hardware @gpio
+  Scenario: Status LED control
+    Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+    And the GPIO HAL is loaded on the target ... skipped in 0.000s
+    When I set pin "STATUS_LED" to HIGH ... skipped in 0.000s
+    Then the status LED should be visible on the hardware ... skipped in 0.000s
+    When I set pin "STATUS_LED" to LOW ... skipped in 0.000s
+    Then the status LED should be off ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

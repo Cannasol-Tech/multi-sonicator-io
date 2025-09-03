@@ -23,7 +23,6 @@ test/
 │   ├── environment.py     # Behave environment configuration
 │   ├── features/          # Gherkin feature files
 │   └── steps/             # Python step implementations
-└── hardware/              # HIL-specific test configurations
 ```
 
 ## 1. Unit Tests (Native PlatformIO + Unity)
@@ -34,22 +33,23 @@ Fast, isolated tests for individual components and business logic.
 
 ```bash
 # Run all unit tests
-pio test -e test_desktop
-
-# Run specific test suite
-pio test -e test_desktop -f test_config
-pio test -e test_desktop -f test_sonicator
-pio test -e test_desktop -f test_system
-
-# Run with verbose output
-pio test -e test_desktop -v
+make test-unit
 ```
 
 ### Unit Test Structure
 
 - **`test_config/`** - Configuration validation tests
 - **`test_sonicator/`** - Sonicator interface component tests
-- **`test_system/`** - System integration and orchestration tests
+- **`test_hal/`** - Hardware Abstraction Layer (HAL) tests
+- **`test_modbus/`** - MODBUS communication layer tests
+- **`test_timer/`** - Timing and scheduling tests
+- **`test_uart/`** - UART communication tests
+- **`test_adc/`** - ADC accuracy tests
+- **`test_pwm/`** - PWM generation tests
+- **`test_gpio/`** - GPIO pin control tests
+- **`test_status_led/`** - Status LED control tests
+- **`test_watchdog/`** - Watchdog timer tests
+- **`test_fault_handling/`** - Fault handling and recovery tests
 - **`test_main.cpp`** - Unity test runner and harness
 
 ## 2. Acceptance Tests (BDD + simulavr Emulator)

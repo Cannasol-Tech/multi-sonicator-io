@@ -1,0 +1,77 @@
+<testsuite name="features.amplitude_control.Amplitude control (common)" tests="4" errors="0" failures="4" skipped="0" time="0.000377" timestamp="2025-09-03T13:13:32.743872" hostname="Corbans-Mini.home"><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range and verify mapping -- @1.1 " status="failed" time="9.7e-05"><failure type="NoneType" message="None">
+<![CDATA[
+Failing step: Then within 100 ms the amplitude output maps to 20 percent within tolerance 2% ... undefined in 0.000s
+Location: test/acceptance/features/amplitude_control.feature:11
+None]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @us-003
+  Scenario Outline: Set amplitude within range and verify mapping -- @1.1 
+    Given the HIL wrapper is connected and ready ... passed in 0.000s
+    And the DUT is powered and at safe defaults ... passed in 0.000s
+    When I write 20 to holding register 40001 ... passed in 0.000s
+    Then within 100 ms the amplitude output maps to 20 percent within tolerance 2% ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range and verify mapping -- @1.2 " status="failed" time="8.6e-05"><failure type="NoneType" message="None">
+<![CDATA[
+Failing step: Then within 100 ms the amplitude output maps to 60 percent within tolerance 2% ... undefined in 0.000s
+Location: test/acceptance/features/amplitude_control.feature:11
+None]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @us-003
+  Scenario Outline: Set amplitude within range and verify mapping -- @1.2 
+    Given the HIL wrapper is connected and ready ... passed in 0.000s
+    And the DUT is powered and at safe defaults ... passed in 0.000s
+    When I write 60 to holding register 40001 ... passed in 0.000s
+    Then within 100 ms the amplitude output maps to 60 percent within tolerance 2% ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range and verify mapping -- @1.3 " status="failed" time="0.000101"><failure type="NoneType" message="None">
+<![CDATA[
+Failing step: Then within 100 ms the amplitude output maps to 100 percent within tolerance 2% ... undefined in 0.000s
+Location: test/acceptance/features/amplitude_control.feature:11
+None]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @us-003
+  Scenario Outline: Set amplitude within range and verify mapping -- @1.3 
+    Given the HIL wrapper is connected and ready ... passed in 0.000s
+    And the DUT is powered and at safe defaults ... passed in 0.000s
+    When I write 100 to holding register 40001 ... passed in 0.000s
+    Then within 100 ms the amplitude output maps to 100 percent within tolerance 2% ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Reject out-of-range amplitude" status="failed" time="9.3e-05"><failure type="NoneType" message="None">
+<![CDATA[
+Failing step: Then the write is rejected or the register value is clamped per spec ... undefined in 0.000s
+Location: test/acceptance/features/amplitude_control.feature:22
+None]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @us-003 @invalid
+  Scenario: Reject out-of-range amplitude
+    Given the HIL wrapper is connected and ready ... passed in 0.000s
+    And the DUT is powered and at safe defaults ... passed in 0.000s
+    When I write 5 to holding register 40001 ... passed in 0.000s
+    Then the write is rejected or the register value is clamped per spec ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

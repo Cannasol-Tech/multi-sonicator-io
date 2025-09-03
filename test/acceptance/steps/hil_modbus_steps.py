@@ -77,12 +77,6 @@ def step_read_modbus_register_with_description(context, address):
     context.hil_logger.measurement(f"MODBUS read 0x{reg_addr:04X}", value if value is not None else "FAIL")
 
 
-@when('I read MODBUS register "{address}" (system status)')
-def step_read_modbus_register_quoted(context, address):
-    """Read MODBUS register (quoted address)"""
-    step_read_modbus_register_with_description(context, address)
-
-
 @when('I write value {value:d} to MODBUS register {address} (global enable)')
 def step_write_modbus_register_with_description(context, value, address):
     """Write value to MODBUS register with description"""

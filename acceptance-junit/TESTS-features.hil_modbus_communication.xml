@@ -1,0 +1,210 @@
+<testsuite name="features.hil_modbus_communication.MODBUS RTU Communication Hardware Validation" tests="9" errors="0" failures="9" skipped="0" time="0.000514" timestamp="2025-09-03T13:13:32.772630" hostname="Corbans-Mini.home"><testcase classname="features.hil_modbus_communication.MODBUS RTU Communication Hardware Validation" name="Read System Status Registers" status="failed" time="0.000214"><failure type="AssertionError" message="HIL controller not available">
+<![CDATA[
+Failing step: Given the ATmega32A is programmed with MODBUS firmware ... failed in 0.000s
+Location: test/acceptance/features/hil_modbus_communication.feature:7
+Assertion Failed: HIL controller not available]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @hil @modbus @hardware
+  Scenario: Read System Status Registers
+    Given the ATmega32A is programmed with MODBUS firmware ... failed in 0.000s
+    And the HIL framework is connected ... undefined in 0.000s
+    And the MODBUS slave ID is set to 2 ... skipped in 0.000s
+    And communication is established at 115200 baud ... skipped in 0.000s
+    When I read MODBUS register 0x0000 (system status) ... skipped in 0.000s
+    Then the register value should be valid ... skipped in 0.000s
+    And the response time should be less than 100ms ... skipped in 0.000s
+    And the CRC should be correct ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.hil_modbus_communication.MODBUS RTU Communication Hardware Validation" name="Write and Verify Control Register" status="failed" time="3.7e-05"><failure type="AssertionError" message="HIL controller not available">
+<![CDATA[
+Failing step: Given the ATmega32A is programmed with MODBUS firmware ... failed in 0.000s
+Location: test/acceptance/features/hil_modbus_communication.feature:7
+Assertion Failed: HIL controller not available]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @hil @modbus @hardware
+  Scenario: Write and Verify Control Register
+    Given the ATmega32A is programmed with MODBUS firmware ... failed in 0.000s
+    And the HIL framework is connected ... undefined in 0.000s
+    And the MODBUS slave ID is set to 2 ... skipped in 0.000s
+    And communication is established at 115200 baud ... skipped in 0.000s
+    When I write value 1 to MODBUS register 0x0010 (global enable) ... skipped in 0.000s
+    Then reading register 0x0010 should return value 1 ... skipped in 0.000s
+    And the register change should be reflected within 100ms ... skipped in 0.000s
+    And the system status should update accordingly ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.hil_modbus_communication.MODBUS RTU Communication Hardware Validation" name="Communication Fault Detection" status="failed" time="3.6e-05"><failure type="AssertionError" message="HIL controller not available">
+<![CDATA[
+Failing step: Given the ATmega32A is programmed with MODBUS firmware ... failed in 0.000s
+Location: test/acceptance/features/hil_modbus_communication.feature:7
+Assertion Failed: HIL controller not available]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @hil @modbus @hardware
+  Scenario: Communication Fault Detection
+    Given the ATmega32A is programmed with MODBUS firmware ... failed in 0.000s
+    And the HIL framework is connected ... undefined in 0.000s
+    And the MODBUS slave ID is set to 2 ... skipped in 0.000s
+    And communication is established at 115200 baud ... skipped in 0.000s
+    Given the MODBUS communication is established ... skipped in 0.000s
+    When I disconnect the communication cable ... skipped in 0.000s
+    And wait for 2 seconds ... skipped in 0.000s
+    Then the system should detect communication fault ... skipped in 0.000s
+    And enter failsafe mode per requirements ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.hil_modbus_communication.MODBUS RTU Communication Hardware Validation" name="Multiple register read operation" status="failed" time="6.5e-05"><failure type="AssertionError" message="HIL controller not available">
+<![CDATA[
+Failing step: Given the ATmega32A is programmed with MODBUS firmware ... failed in 0.000s
+Location: test/acceptance/features/hil_modbus_communication.feature:7
+Assertion Failed: HIL controller not available]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @hil @modbus @hardware
+  Scenario: Multiple register read operation
+    Given the ATmega32A is programmed with MODBUS firmware ... failed in 0.000s
+    And the HIL framework is connected ... undefined in 0.000s
+    And the MODBUS slave ID is set to 2 ... skipped in 0.000s
+    And communication is established at 115200 baud ... skipped in 0.000s
+    When I read MODBUS registers 0x0000 to 0x0003 in sequence ... skipped in 0.000s
+    Then all reads should succeed ... skipped in 0.000s
+    And each response time should be less than 100ms ... skipped in 0.000s
+    And all CRC values should be correct ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.hil_modbus_communication.MODBUS RTU Communication Hardware Validation" name="Register write and immediate readback" status="failed" time="3.9e-05"><failure type="AssertionError" message="HIL controller not available">
+<![CDATA[
+Failing step: Given the ATmega32A is programmed with MODBUS firmware ... failed in 0.000s
+Location: test/acceptance/features/hil_modbus_communication.feature:7
+Assertion Failed: HIL controller not available]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @hil @modbus @hardware
+  Scenario: Register write and immediate readback
+    Given the ATmega32A is programmed with MODBUS firmware ... failed in 0.000s
+    And the HIL framework is connected ... undefined in 0.000s
+    And the MODBUS slave ID is set to 2 ... skipped in 0.000s
+    And communication is established at 115200 baud ... skipped in 0.000s
+    When I write value 0x1234 to MODBUS register 0x0100 ... skipped in 0.000s
+    And immediately read MODBUS register 0x0100 ... skipped in 0.000s
+    Then the read value should be 0x1234 ... skipped in 0.000s
+    And the total operation time should be less than 200ms ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.hil_modbus_communication.MODBUS RTU Communication Hardware Validation" name="Invalid register access handling" status="failed" time="3.2e-05"><failure type="AssertionError" message="HIL controller not available">
+<![CDATA[
+Failing step: Given the ATmega32A is programmed with MODBUS firmware ... failed in 0.000s
+Location: test/acceptance/features/hil_modbus_communication.feature:7
+Assertion Failed: HIL controller not available]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @hil @modbus @hardware
+  Scenario: Invalid register access handling
+    Given the ATmega32A is programmed with MODBUS firmware ... failed in 0.000s
+    And the HIL framework is connected ... undefined in 0.000s
+    And the MODBUS slave ID is set to 2 ... skipped in 0.000s
+    And communication is established at 115200 baud ... skipped in 0.000s
+    When I attempt to read MODBUS register 0xFFFF (invalid address) ... skipped in 0.000s
+    Then I should receive a MODBUS exception response ... skipped in 0.000s
+    And the exception code should indicate illegal address ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.hil_modbus_communication.MODBUS RTU Communication Hardware Validation" name="CRC error handling" status="failed" time="3.1e-05"><failure type="AssertionError" message="HIL controller not available">
+<![CDATA[
+Failing step: Given the ATmega32A is programmed with MODBUS firmware ... failed in 0.000s
+Location: test/acceptance/features/hil_modbus_communication.feature:7
+Assertion Failed: HIL controller not available]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @hil @modbus @hardware
+  Scenario: CRC error handling
+    Given the ATmega32A is programmed with MODBUS firmware ... failed in 0.000s
+    And the HIL framework is connected ... undefined in 0.000s
+    And the MODBUS slave ID is set to 2 ... skipped in 0.000s
+    And communication is established at 115200 baud ... skipped in 0.000s
+    When I send a MODBUS request with invalid CRC ... skipped in 0.000s
+    Then the slave should not respond ... skipped in 0.000s
+    And no register values should change ... skipped in 0.000s
+    When I send the same request with valid CRC ... skipped in 0.000s
+    Then the slave should respond correctly ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.hil_modbus_communication.MODBUS RTU Communication Hardware Validation" name="Communication timeout handling" status="failed" time="3e-05"><failure type="AssertionError" message="HIL controller not available">
+<![CDATA[
+Failing step: Given the ATmega32A is programmed with MODBUS firmware ... failed in 0.000s
+Location: test/acceptance/features/hil_modbus_communication.feature:7
+Assertion Failed: HIL controller not available]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @hil @modbus @hardware
+  Scenario: Communication timeout handling
+    Given the ATmega32A is programmed with MODBUS firmware ... failed in 0.000s
+    And the HIL framework is connected ... undefined in 0.000s
+    And the MODBUS slave ID is set to 2 ... skipped in 0.000s
+    And communication is established at 115200 baud ... skipped in 0.000s
+    When I stop sending MODBUS requests for 5 seconds ... skipped in 0.000s
+    Then the communication fault flag should be set ... skipped in 0.000s
+    When I resume MODBUS communication ... skipped in 0.000s
+    Then the communication fault flag should clear within 1 second ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.hil_modbus_communication.MODBUS RTU Communication Hardware Validation" name="Sonicator control via MODBUS" status="failed" time="3e-05"><failure type="AssertionError" message="HIL controller not available">
+<![CDATA[
+Failing step: Given the ATmega32A is programmed with MODBUS firmware ... failed in 0.000s
+Location: test/acceptance/features/hil_modbus_communication.feature:7
+Assertion Failed: HIL controller not available]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @hil @modbus @hardware
+  Scenario: Sonicator control via MODBUS
+    Given the ATmega32A is programmed with MODBUS firmware ... failed in 0.000s
+    And the HIL framework is connected ... undefined in 0.000s
+    And the MODBUS slave ID is set to 2 ... skipped in 0.000s
+    And communication is established at 115200 baud ... skipped in 0.000s
+    When I write value 1 to MODBUS register 0x0100 (sonicator 4 start) ... skipped in 0.000s
+    Then pin "START_4" should go HIGH ... skipped in 0.000s
+    When I write value 0 to MODBUS register 0x0100 ... skipped in 0.000s
+    Then pin "START_4" should go LOW ... skipped in 0.000s
+    And the operation should complete within 50ms ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

@@ -150,7 +150,8 @@ void test_hal_read_single_sonicator_status(void) {
     hal_result_t result = hal_read_sonicator_status(1, &status);
     TEST_ASSERT_EQUAL(HAL_OK, result);
     // Test that status structure is populated (check a basic field)
-    TEST_ASSERT_TRUE(status.amplitude_setpoint >= 20 && status.amplitude_setpoint <= 100);
+    TEST_ASSERT_TRUE(status.power_watts >= 0.0f);
+    TEST_ASSERT_TRUE(status.frequency_hz > 0);
 }
 
 // ============================================================================

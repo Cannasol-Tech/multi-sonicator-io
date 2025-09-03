@@ -1,0 +1,43 @@
+<testsuite name="features.overload_reset.Overload detection and reset per unit" tests="2" errors="0" failures="2" skipped="0" time="0.000123" timestamp="2025-09-03T13:13:32.790416" hostname="Corbans-Mini.home"><testcase classname="features.overload_reset.Overload detection and reset per unit" name="Overload flag reflects and reset behavior is correct -- @1.1 " status="failed" time="6.8e-05"><failure type="NoneType" message="None">
+<![CDATA[
+Failing step: Given unit 1 overload input is set to 1 ... undefined in 0.000s
+Location: test/acceptance/features/overload_reset.feature:10
+None]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @us-002
+  Scenario Outline: Overload flag reflects and reset behavior is correct -- @1.1 
+    Given the HIL wrapper is connected and ready ... passed in 0.000s
+    And the DUT is powered and at safe defaults ... passed in 0.000s
+    Given unit 1 overload input is set to 1 ... undefined in 0.000s
+    When I write 1 to holding register 40009 to request overload reset ... undefined in 0.000s
+    Then within 100 ms the overload flag bit1 for unit 1 equals 1 ... undefined in 0.000s
+    And starting the unit via register 40005 yields behavior per spec when overload=1 ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.overload_reset.Overload detection and reset per unit" name="Overload flag reflects and reset behavior is correct -- @1.2 " status="failed" time="5.5e-05"><failure type="NoneType" message="None">
+<![CDATA[
+Failing step: Given unit 1 overload input is set to 0 ... undefined in 0.000s
+Location: test/acceptance/features/overload_reset.feature:10
+None]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @us-002
+  Scenario Outline: Overload flag reflects and reset behavior is correct -- @1.2 
+    Given the HIL wrapper is connected and ready ... passed in 0.000s
+    And the DUT is powered and at safe defaults ... passed in 0.000s
+    Given unit 1 overload input is set to 0 ... undefined in 0.000s
+    When I write 1 to holding register 40009 to request overload reset ... undefined in 0.000s
+    Then within 100 ms the overload flag bit1 for unit 1 equals 0 ... undefined in 0.000s
+    And starting the unit via register 40005 yields behavior per spec when overload=0 ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>
