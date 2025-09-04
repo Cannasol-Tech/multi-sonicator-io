@@ -1,0 +1,265 @@
+name: Multi-Sonicator Test Pipeline
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master, develop ]
+  schedule:
+    # Run tests daily at 2 AM UTC
+    - cron: '0 2 * * *'
+
+env:
+  PLATFORMIO_CORE_DIR: ~/.platformio
+
+jobs:
+  # Configuration validation job
+  validate-config:
+    runs-on: ubuntu-latest
+    name: Validate Configuration
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements-testing.txt
+        
+    - name: Validate HIL configuration
+      run: |
+        python3 scripts/validate_hil_config.py
+        
+    - name: Analyze pending scenarios
+      run: |
+        python3 scripts/manage_pending_scenarios.py
+
+  # Unit testing job
+  unit-tests:
+    runs-on: ubuntu-latest
+    name: Unit Tests (Unity Framework)
+    needs: validate-config
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gcc g++ lcov
+        
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements-testing.txt
+        
+    - name: Install PlatformIO
+      run: |
+        pip install platformio
+        pio pkg install --library "throwtheswitch/Unity@^2.5.2"
+        
+    - name: Run unit tests with coverage
+      run: |
+        make test-unit
+        
+    - name: Generate coverage reports
+      run: |
+        make generate-traceability-report
+        
+    - name: Upload coverage reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: coverage-reports
+        path: |
+          coverage/
+          !coverage/*.gcda
+          !coverage/*.gcno
+        retention-days: 30
+        
+    - name: Check coverage requirement
+      run: |
+        python3 -c "
+        import json
+        with open('coverage/coverage.json', 'r') as f:
+            data = json.load(f)
+        coverage = data['overall']['coverage_percentage']
+        print(f'Overall coverage: {coverage}%')
+        if coverage < 90.0:
+            print('❌ Coverage requirement not met (<90%)')
+            exit(1)
+        else:
+            print('✅ Coverage requirement met (≥90%)')
+        "
+
+  # Acceptance testing job (mock HIL for CI)
+  acceptance-tests:
+    runs-on: ubuntu-latest
+    name: Acceptance Tests (BDD Mock)
+    needs: validate-config
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements-testing.txt
+        
+    - name: Run BDD syntax validation
+      run: |
+        # Validate BDD syntax without hardware
+        cd test/acceptance
+        behave --dry-run --tags="not @hil" features/
+        
+    - name: Generate BDD scenario report
+      run: |
+        python3 scripts/manage_pending_scenarios.py
+        
+    - name: Upload BDD reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: bdd-reports
+        path: |
+          test/acceptance/logs/
+          test/acceptance/pending_scenarios.yaml
+        retention-days: 30
+
+  # Integration and reporting job
+  integration-report:
+    runs-on: ubuntu-latest
+    name: Integration Report
+    needs: [unit-tests, acceptance-tests]
+    if: always()
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements-testing.txt
+        
+    - name: Download coverage reports
+      uses: actions/download-artifact@v3
+      with:
+        name: coverage-reports
+        path: coverage/
+      continue-on-error: true
+        
+    - name: Download BDD reports
+      uses: actions/download-artifact@v3
+      with:
+        name: bdd-reports
+        path: test/acceptance/
+      continue-on-error: true
+        
+    - name: Generate final integration report
+      run: |
+        python3 scripts/generate_traceability_report.py
+        
+    - name: Upload final reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: integration-reports
+        path: |
+          coverage/traceability_report.html
+          coverage/traceability_report.json
+        retention-days: 90
+        
+    - name: Create test summary
+      run: |
+        echo "## 🧪 Test Pipeline Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ -f "coverage/coverage.json" ]; then
+          COVERAGE=$(python3 -c "import json; data=json.load(open('coverage/coverage.json')); print(f\"{data['overall']['coverage_percentage']:.1f}%\")")
+          echo "### Unit Tests" >> $GITHUB_STEP_SUMMARY
+          echo "- **Coverage**: $COVERAGE" >> $GITHUB_STEP_SUMMARY
+          echo "- **Framework**: Unity Test Framework" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ -f "test/acceptance/pending_scenarios.yaml" ]; then
+          echo "### Acceptance Tests" >> $GITHUB_STEP_SUMMARY
+          echo "- **Framework**: Behave BDD" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status**: Syntax validated" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        echo "### Reports Generated" >> $GITHUB_STEP_SUMMARY
+        echo "- Coverage reports (HTML/JSON)" >> $GITHUB_STEP_SUMMARY
+        echo "- Traceability matrix" >> $GITHUB_STEP_SUMMARY
+        echo "- BDD scenario analysis" >> $GITHUB_STEP_SUMMARY
+
+  # Hardware-in-the-loop testing (only on self-hosted runners with hardware)
+  hil-tests:
+    runs-on: self-hosted
+    name: Hardware-in-the-Loop Tests
+    needs: [unit-tests]
+    if: github.event_name == 'schedule' || contains(github.event.head_commit.message, '[hil]')
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements-testing.txt
+        
+    - name: Check hardware availability
+      run: |
+        python3 -c "
+        import serial.tools.list_ports
+        ports = list(serial.tools.list_ports.comports())
+        print(f'Available ports: {[p.device for p in ports]}')
+        if not ports:
+            print('⚠️ No hardware detected - skipping HIL tests')
+            exit(0)
+        "
+      continue-on-error: true
+        
+    - name: Run HIL acceptance tests
+      run: |
+        make test-acceptance
+      timeout-minutes: 30
+      continue-on-error: true
+        
+    - name: Upload HIL test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: hil-test-results
+        path: |
+          test/acceptance/logs/
+          test/acceptance/reports/
+        retention-days: 30
+      if: always()

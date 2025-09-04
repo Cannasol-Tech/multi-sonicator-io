@@ -1,11 +1,30 @@
-# HIL Framework Configuration
+# HIL Framework Configuration - Single Source of Truth
 # Hardware-in-the-Loop testing configuration for ATmega32A multi-sonicator project
+# Version: 2.0.0
+# Last Updated: 2025-09-04
+
+# Configuration validation settings
+validation:
+  config_version: "2.0.0"
+  required_sections: ["hardware", "power_supply", "timing", "modbus", "pin_mapping", "testing"]
+  strict_mode: true  # Fail if required settings are missing
 
 hardware:
   target_mcu: ATmega32A
   programmer: arduino_as_isp
   programmer_port: /dev/cu.usbmodem*   # macOS Arduino programmer port pattern
   target_serial_port: /dev/cu.usbmodem*  # macOS Arduino harness serial port pattern (use cu.* for initiating connections)
+
+  # Hardware detection and validation
+  auto_detect_ports: true
+  port_scan_timeout: 10.0  # seconds
+  connection_retry_count: 3
+  connection_retry_delay: 2.0  # seconds
+
+  # Programming settings
+  programming_timeout: 30.0  # seconds
+  verification_enabled: true
+  fuse_verification: true
   
 power_supply:
   input_voltage: 24.0  # 24V input power
@@ -21,6 +40,21 @@ modbus:
   slave_id: 2          # MODBUS slave ID for testing
   baud_rate: 115200    # MODBUS RTU baud rate
   timeout: 1.0         # Response timeout in seconds
+
+  # MODBUS validation and error handling
+  max_retries: 3
+  retry_delay: 0.5     # seconds between retries
+  frame_validation: true
+  crc_validation: true
+
+  # Register map validation
+  register_ranges:
+    system_status: [0x0000, 0x000F]    # Read-only
+    global_control: [0x0010, 0x001F]   # Read/write
+    sonicator_1: [0x0100, 0x010F]      # Per-sonicator registers
+    sonicator_2: [0x0200, 0x020F]
+    sonicator_3: [0x0300, 0x030F]
+    sonicator_4: [0x0400, 0x040F]
   
 # Behave integration settings
 behave:
@@ -51,15 +85,86 @@ pin_mapping:
   UART_TXD: D3         # Arduino pin D3 -> ATmega32A PD1 (read from DUT TX)
   STATUS_LED: D4       # Arduino pin D4 -> ATmega32A PD2
   
-# Testing parameters
+# Testing parameters and validation
 testing:
   power_measurement_scaling: 5.44  # mV/W scaling for power sense
   voltage_tolerance: 0.2           # ±0.2V tolerance for voltage tests
   timing_tolerance: 0.1            # ±10% tolerance for timing tests
   adc_reference_voltage: 5.0       # 5V ADC reference
+
+  # Test execution settings
+  default_test_timeout: 30.0       # seconds
+  setup_delay: 2.0                 # seconds to wait after setup
+  teardown_delay: 1.0              # seconds to wait during teardown
+  measurement_samples: 5           # Number of samples for averaged measurements
+  measurement_delay: 0.1           # seconds between measurement samples
+
+  # Safety limits and validation
+  safety_limits:
+    max_voltage: 30.0              # Maximum safe voltage
+    max_current: 5.0               # Maximum safe current (A)
+    max_power: 150.0               # Maximum safe power (W)
+    max_temperature: 85.0          # Maximum safe temperature (°C)
+
+  # Test result validation
+  result_validation:
+    require_all_measurements: true
+    validate_against_limits: true
+    log_all_measurements: true
+    generate_test_report: true
   
-# Sandbox CLI settings  
+# Sandbox CLI settings
 sandbox:
   monitor_update_rate: 1.0         # Pin monitoring update rate (seconds)
   suggestion_interval: 15.0        # Monitoring suggestion interval (seconds)
   command_timeout: 30.0            # Default command timeout (seconds)
+
+# Error handling and recovery
+error_handling:
+  auto_recovery: true              # Attempt automatic recovery from errors
+  max_recovery_attempts: 3         # Maximum recovery attempts
+  recovery_delay: 5.0              # seconds between recovery attempts
+
+  # Error classification
+  critical_errors:                 # Errors that stop testing immediately
+    - "POWER_FAILURE"
+    - "HARDWARE_DISCONNECT"
+    - "SAFETY_LIMIT_EXCEEDED"
+
+  recoverable_errors:              # Errors that can be recovered from
+    - "COMMUNICATION_TIMEOUT"
+    - "PROGRAMMING_FAILURE"
+    - "MEASUREMENT_ERROR"
+
+  # Recovery strategies
+  recovery_strategies:
+    COMMUNICATION_TIMEOUT: "reset_connection"
+    PROGRAMMING_FAILURE: "retry_programming"
+    MEASUREMENT_ERROR: "recalibrate_sensors"
+
+# Logging and reporting configuration
+logging:
+  level: INFO                      # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  console_output: true
+  file_output: true
+  log_directory: "test/acceptance/logs"
+  log_filename_format: "hil_test_{timestamp}.log"
+
+  # Log categories
+  categories:
+    hardware_events: true          # Log hardware state changes
+    measurements: true             # Log all measurements
+    communications: true           # Log serial/MODBUS communications
+    test_results: true             # Log test pass/fail results
+    performance: true              # Log timing and performance metrics
+
+  # Log rotation
+  max_log_files: 10
+  max_log_size_mb: 50
+
+# Feature flags for experimental features
+feature_flags:
+  advanced_diagnostics: false     # Enable advanced diagnostic features
+  performance_profiling: false    # Enable performance profiling
+  automated_calibration: true     # Enable automated sensor calibration
+  parallel_testing: false         # Enable parallel test execution
