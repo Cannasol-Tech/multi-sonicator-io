@@ -1,19 +1,12 @@
 {
-  "timestamp": "2025-09-04T16:40:13.153418",
+  "timestamp": "2025-09-04T16:52:47.722422",
   "stages": {
-    "Config Validation": {
+    "Final Integration Report": {
       "status": "PASS",
       "return_code": 0,
-      "stdout": "\ud83d\udd0d Checking Python dependencies...\n\u2705 All Python dependencies available\n\ud83d\udd0d Validating HIL configuration integrity...\nHIL Configuration Validation: test/acceptance/hil_framework/hil_config.yaml\n============================================================\n\u2705 Configuration is valid with no issues\n\u2705 Configuration validation complete\n",
+      "stdout": "\ud83d\udd0d Generating comprehensive traceability reports...\n\ud83d\udcc4 Traceability JSON report: /Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/coverage/traceability_report.json\n\ud83d\udcc4 Traceability HTML report: /Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/coverage/traceability_report.html\n\u2705 Traceability report generation complete\n\ud83d\udcc8 Overall Status: \u2705 ROBUST\n",
       "stderr": "",
-      "command": "make validate-config"
-    },
-    "Pending Scenarios Analysis": {
-      "status": "PASS",
-      "return_code": 0,
-      "stdout": "\ud83d\udd0d Scanning BDD feature files for pending scenarios...\n\n\ud83d\udcca Pending Scenarios Analysis:\n   Total Features: 25\n   Total Scenarios: 73\n   Skipped Scenarios: 8\n   Skip Percentage: 11.0%\n\n\ud83d\udccb Skip Reasons:\n   \u2022 Already marked as @pending: 8 scenarios\n",
-      "stderr": "",
-      "command": "python3 scripts/manage_pending_scenarios.py"
+      "command": "python3 scripts/generate_traceability_report.py"
     }
   },
   "overall_status": "PASS"
