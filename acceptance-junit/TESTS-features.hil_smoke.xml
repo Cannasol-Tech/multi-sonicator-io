@@ -1,15 +1,10 @@
-<testsuite name="features.hil_smoke.HIL Smoke Test" tests="1" errors="0" failures="1" skipped="0" time="0.000109" timestamp="2025-09-03T17:08:34.145266" hostname="Corbans-Mini.home"><testcase classname="features.hil_smoke.HIL Smoke Test" name="HIL-001 Wrapper responds to PING" status="failed" time="0.000109"><failure type="AssertionError" message="serial port not available on context; ensure HIL setup initialized or emulator runner created PTY">
-<![CDATA[
-Failing step: And the serial device is available for the harness ... failed in 0.000s
-Location: test/acceptance/features/hil_smoke.feature:10
-Assertion Failed: serial port not available on context; ensure HIL setup initialized or emulator runner created PTY]]>
-</failure><system-out>
+<testsuite name="features.hil_smoke.HIL Smoke Test" tests="1" errors="0" failures="0" skipped="1" time="0.0" timestamp="2025-09-04T11:41:19.486646" hostname="Corbans-Mini.home"><testcase classname="features.hil_smoke.HIL Smoke Test" name="HIL-001 Wrapper responds to PING" status="skipped" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
   Scenario: HIL-001 Wrapper responds to PING
-    Given the HIL wrapper is connected and ready ... passed in 0.000s
-    Then the harness sanity check passes ... passed in 0.000s
-    And the serial device is available for the harness ... failed in 0.000s
+    Given the HIL wrapper is connected and ready ... skipped in 0.000s
+    Then the harness sanity check passes ... skipped in 0.000s
+    And the serial device is available for the harness ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------

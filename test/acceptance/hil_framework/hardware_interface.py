@@ -2,7 +2,27 @@
 
 
 
+from dataclasses import dataclass
 import logging
+from typing import Optional
+
+
+
+@dataclass
+class WRAPPER_PINS:
+    UART_RXD = "D2"
+    UART_TXD = "D3"
+    STATUS_LED = "D4"
+    class SONICATOR_4:
+        FREQ_DIV10_4 = "D7"
+        FREQ_LOCK_4 = "D8"
+        OVERLOAD_4 = "A2"
+        START_4 = "A3"
+        RESET_4 = "A4"
+        POWER_SENSE_4 = "A1"
+        AMPLITUDE_ALL = "D9"
+    
+
 
 class HardwareInterface:
     def __init__(self, serial_port=None, baud_rate=115200):
@@ -13,16 +33,16 @@ class HardwareInterface:
         self.serial_port = serial_port
         # Pin mapping verified against docs/planning/pin-matrix.md (SOLE SOURCE OF TRUTH)
         self.pin_mapping = {
-            'FREQ_DIV10_4': 'D7',
-            'FREQ_LOCK_4': 'D8',
-            'OVERLOAD_4': 'A2',
-            'START_4': 'A3',
-            'RESET_4': 'A4',
-            'POWER_SENSE_4': 'A1',
-            'AMPLITUDE_ALL': 'D9',  # PWM
-            'UART_RXD': 'D2',        # MODBUS RTU RX
-            'UART_TXD': 'D3',        # MODBUS RTU TX
-            'STATUS_LED': 'D4'       # Status LED
+            'FREQ_DIV10_4': WRAPPER_PINS.SONICATOR_4.FREQ_DIV10_4,
+            'FREQ_LOCK_4': WRAPPER_PINS.SONICATOR_4.FREQ_LOCK_4,
+            'OVERLOAD_4': WRAPPER_PINS.SONICATOR_4.OVERLOAD_4,
+            'START_4': WRAPPER_PINS.SONICATOR_4.START_4,
+            'RESET_4': WRAPPER_PINS.SONICATOR_4.RESET_4,
+            'POWER_SENSE_4': WRAPPER_PINS.SONICATOR_4.POWER_SENSE_4,
+            'AMPLITUDE_ALL': WRAPPER_PINS.SONICATOR_4.AMPLITUDE_ALL,  # PWM
+            'UART_RXD': WRAPPER_PINS.UART_RXD,        # MODBUS RTU RX
+            'UART_TXD': WRAPPER_PINS.UART_TXD,        # MODBUS RTU TX
+            'STATUS_LED': WRAPPER_PINS.STATUS_LED       # Status LED
         }
 
     def _find_macos_usb_serial_ports(self) -> list:
@@ -39,6 +59,7 @@ class HardwareInterface:
         for pattern in patterns:
             ports.extend(glob.glob(pattern))
         return sorted(ports)
+    
     def verify_connection(self) -> bool:
         import serial
         import serial.tools.list_ports
@@ -148,4 +169,152 @@ class HardwareInterface:
         except Exception:
             pass
         return False
-    # ...existing code...
+    # --- HIL Harness command helpers and device operations ---
+    def _resolve_pin(self, pin: str) -> str:
+        """Map logical pin name to harness pin name if available."""
+        if not isinstance(pin, str):
+            pin = str(pin)
+        return self.pin_mapping.get(pin, pin)
+
+    def _ensure_serial(self):
+        """Ensure the serial port is open and ready."""
+        if self.serial_connection and getattr(self.serial_connection, 'is_open', False):
+            return self.serial_connection
+        # Attempt reconnect using last known serial_port
+        if self.serial_port:
+            try:
+                import serial, time
+                self.serial_connection = serial.Serial(
+                    port=self.serial_port,
+                    baudrate=self.baud_rate,
+                    timeout=1.0,
+                    write_timeout=1.0,
+                )
+                time.sleep(0.2)
+                return self.serial_connection
+            except Exception as e:
+                self.logger.error(f"Failed to reopen serial on {self.serial_port}: {e}")
+        raise RuntimeError("Serial connection is not open")
+
+    def cleanup(self) -> None:
+        """Close the serial connection cleanly."""
+        try:
+            if self.serial_connection and getattr(self.serial_connection, 'is_open', False):
+                self.serial_connection.close()
+        except Exception:
+            pass
+        finally:
+            self.serial_connection = None
+            self.connected = False
+
+    def send_command(self, command: str, read_timeout: float = 1.0) -> str:
+        """Send a single-line ASCII command to the Arduino Test Harness and return one line of response.
+        Returns empty string on timeout.
+        """
+        try:
+            import time
+            ser = self._ensure_serial()
+            # Drain any residual input quickly
+            try:
+                if ser.in_waiting:
+                    _ = ser.read(ser.in_waiting)
+            except Exception:
+                pass
+            # Send command
+            line = (command.strip() + "\n").encode("ascii", errors="ignore")
+            ser.write(line)
+            ser.flush()
+            # Read one line with a short timeout loop
+            start = time.time()
+            response = b""
+            while time.time() - start < max(0.05, read_timeout):
+                try:
+                    if ser.in_waiting:
+                        response = ser.readline()
+                        break
+                except Exception:
+                    break
+                time.sleep(0.01)
+            try:
+                return response.decode("ascii", errors="ignore").strip()
+            except Exception:
+                return ""
+        except Exception as e:
+            self.logger.debug(f"send_command error: {e}")
+            return ""
+
+    # --- GPIO helpers ---
+    def write_gpio_pin(self, pin: str, state: bool) -> bool:
+        pin_name = self._resolve_pin(pin)
+        cmd = f"WRITE_PIN {pin_name} {'HIGH' if state else 'LOW'}"
+        resp = self.send_command(cmd)
+        return bool(resp and "OK" in resp.upper())
+
+    def read_gpio_pin(self, pin: str) -> bool:
+        pin_name = self._resolve_pin(pin)
+        resp = self.send_command(f"READ_PIN {pin_name}")
+        # Expected format: "PIN <pin> HIGH" or "PIN <pin> LOW"
+        if not resp:
+            return False
+        up = resp.upper()
+        if "HIGH" in up:
+            return True
+        if "LOW" in up:
+            return False
+        # Fallback: treat non-empty as True
+        return False
+
+    # --- ADC helpers ---
+    def read_adc_channel(self, channel: str) -> Optional[int]:
+        ch = self._resolve_pin(channel)
+        resp = self.send_command(f"READ_ADC {ch}")
+        # Expected: "ADC <channel> <value>"
+        if not resp:
+            return None
+        parts = resp.strip().split()
+        if len(parts) >= 3 and parts[0].upper() == "ADC":
+            try:
+                return int(parts[2])
+            except Exception:
+                return None
+        return None
+
+    def adc_to_voltage(self, adc_value: int, reference_voltage: float = 5.0, resolution_bits: int = 10) -> float:
+        try:
+            max_counts = (1 << resolution_bits) - 1
+            return (float(adc_value) / float(max_counts)) * float(reference_voltage)
+        except Exception:
+            return 0.0
+
+    # --- MODBUS helpers via harness passthrough ---
+    def modbus_read_register(self, address: int) -> Optional[int]:
+        try:
+            addr_hex = f"{int(address) & 0xFFFF:04X}"
+            resp = self.send_command(f"MODBUS_READ {addr_hex}")
+            # Harness prints: "MODBUS <addr> <value>" with hex value
+            if not resp:
+                return None
+            parts = resp.strip().split()
+            if len(parts) >= 3 and parts[0].upper() == "MODBUS":
+                try:
+                    return int(parts[2], 16)
+                except Exception:
+                    return None
+            # Some harnesses may just echo the value
+            try:
+                return int(resp.strip(), 16)
+            except Exception:
+                return None
+        except Exception as e:
+            self.logger.debug(f"modbus_read_register error: {e}")
+            return None
+
+    def modbus_write_register(self, address: int, value: int) -> bool:
+        try:
+            addr_hex = f"{int(address) & 0xFFFF:04X}"
+            val_hex = f"{int(value) & 0xFFFF:04X}"
+            resp = self.send_command(f"MODBUS_WRITE {addr_hex} {val_hex}")
+            return bool(resp and "OK" in resp.upper())
+        except Exception as e:
+            self.logger.debug(f"modbus_write_register error: {e}")
+            return False

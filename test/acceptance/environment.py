@@ -28,31 +28,29 @@ def import_hil_modules():
     return hw_mod.HardwareInterface, ctrl_mod.HILController
 
 def before_all(context):
+
+    import yaml
+    config_path = os.path.join(os.path.dirname(__file__), 'hil_framework', 'hil_config.yaml')
+    with open(config_path, 'r') as f:
+        hil_config = yaml.safe_load(f)
+    context.config = hil_config
+
     userdata = getattr(context.config, "userdata", {}) or {}
-    context.profile = userdata.get("profile", "simulavr").lower()
+    context.profile = hil_config.get('behave', {}).get('profile', 'simulavr').lower()
     if context.profile not in ("simulavr", "hil"):
         context.profile = "simulavr"
 
-    # Initialize shared resources (populated later by emulator runner)
     context.shared = {}
 
-    # Profile-specific initialization
     if context.profile == "simulavr":
-        # Stable serial symlink path that emulator runner will create, e.g. /dev/pts/N -> /tmp/tty-msio
         context.serial_port = "/tmp/tty-msio"
     else:
-        # HIL mode - initialize HIL framework via controller only (single source of truth)
         try:
             _HardwareInterface, HILController = import_hil_modules()
-
-            # Create controller and perform setup (controller will create HardwareInterface internally)
-            context.hil_controller = HILController()
+            context.hil_controller = HILController(config_file=config_path)
             context.hil_logger = getattr(context.hil_controller, 'logger', _NullLogger())
-
-            # Setup hardware connections
             if context.hil_controller.setup_hardware():
                 context.hardware_ready = True
-                # Propagate the controller's hardware interface to context used by steps
                 context.hardware_interface = context.hil_controller.hardware_interface
                 context.serial_port = context.hardware_interface.serial_port if context.hardware_interface else None
                 print("✅ HIL framework initialized successfully")
@@ -61,7 +59,6 @@ def before_all(context):
                 context.hardware_interface = None
                 context.serial_port = None
                 print("❌ HIL hardware connection failed")
-
         except Exception as e:
             print(f"❌ HIL framework error: {e}")
             import traceback
@@ -87,15 +84,18 @@ def before_scenario(context, scenario):
         if 'hil' in scenario.tags:
             # Program test firmware for HIL scenarios
             if context.hardware_ready:
-                # Default test firmware - can be overridden by scenario
-                firmware_path = "test_firmware.hex"
+                # Default test firmware - prefer PlatformIO build if available
+                # Order: .pio/build/atmega32a/firmware.hex -> test_firmware.hex
                 try:
                     import os
-                    if os.path.exists(firmware_path):
+                    pio_hex = os.path.join(".pio", "build", "atmega32a", "firmware.hex")
+                    candidates = [pio_hex, "test_firmware.hex"]
+                    firmware_path = next((p for p in candidates if os.path.exists(p)), None)
+                    if firmware_path:
                         context.hil_controller.program_firmware(firmware_path)
                     else:
                         context.hil_controller.logger.info(
-                            f"Firmware file not found: {firmware_path}; skipping auto-program for scenario"
+                            "No firmware artifact found (.pio/.../firmware.hex or test_firmware.hex); skipping auto-program for scenario"
                         )
                 except Exception as _e:
                     # Do not hard-fail the scenario at setup time; steps that require programmed DUT will fail

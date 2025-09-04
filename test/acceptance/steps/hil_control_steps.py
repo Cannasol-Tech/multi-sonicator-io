@@ -25,10 +25,11 @@ def step_adc_subsystem_initialized(context):
 @given('the ADC reference is set to {voltage:f}V')
 def step_adc_reference_set(context, voltage):
     """Set ADC reference voltage"""
-    context.adc_reference = voltage
-    response = context.hardware_interface.send_command(f"ADC_SET_REF {voltage}")
-    assert response and "OK" in response, f"Failed to set ADC reference to {voltage}V"
-    context.hil_logger.hardware_event(f"ADC reference set to {voltage}V")
+    # Use reference voltage from config if not provided
+    ref_voltage = voltage if voltage else context.config['testing']['adc_reference_voltage']
+    response = context.hardware_interface.send_command(f"ADC_SET_REF {ref_voltage}")
+    assert response and "OK" in response, f"Failed to set ADC reference to {ref_voltage}V"
+    context.hil_logger.hardware_event(f"ADC reference set to {ref_voltage}V")
 
 
 @given('the PWM subsystem is initialized')

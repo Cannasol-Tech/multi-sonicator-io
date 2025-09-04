@@ -42,7 +42,7 @@ class HILController:
         config_path = Path(__file__).parent / self.config_file
 
         # Default configuration if file doesn't exist
-        default_config = {
+        config = {
             'hardware': {
                 'target_mcu': 'ATmega32A',
                 'programmer': 'arduino_as_isp',
@@ -76,11 +76,11 @@ class HILController:
                 with open(config_path, 'r') as f:
                     loaded_config = yaml.safe_load(f)
                     # Merge with defaults
-                    default_config.update(loaded_config)
+                    config.update(loaded_config)
             except Exception as e:
                 self.logger.warning(f"Failed to load config file {config_path}: {e}")
 
-            return default_config
+            return config
 
     def _auto_detect_programmer_port(self, configured_port: Optional[str]) -> str:
         """Resolve the ArduinoISP programmer serial port with platform-aware auto-detect.
