@@ -1,7 +1,7 @@
         -:    0:Source:test_communication.c
         -:    0:Graph:test_communication.gcno
         -:    0:Data:test_communication.gcda
-        -:    0:Runs:9
+        -:    0:Runs:10
         -:    0:Programs:1
         -:    1:/**
         -:    2: * @file test_communication.c
@@ -56,159 +56,159 @@
     #####:   51:    test_last_error = error_code;
     #####:   52:}
         -:   53:
-       99:   54:void setUp(void) {
+      110:   54:void setUp(void) {
         -:   55:    // Initialize test configuration
-       99:   56:    test_config.slave_id = MODBUS_SLAVE_ID;
-       99:   57:    test_config.baud_rate = MODBUS_BAUD_RATE;
-       99:   58:    test_config.timeout_ms = MODBUS_TIMEOUT_MS;
-       99:   59:    test_config.read_callback = test_read_callback;
-       99:   60:    test_config.write_callback = test_write_callback;
-       99:   61:    test_config.timeout_callback = test_timeout_callback;
-       99:   62:    test_config.error_callback = test_error_callback;
+      110:   56:    test_config.slave_id = MODBUS_SLAVE_ID;
+      110:   57:    test_config.baud_rate = MODBUS_BAUD_RATE;
+      110:   58:    test_config.timeout_ms = MODBUS_TIMEOUT_MS;
+      110:   59:    test_config.read_callback = test_read_callback;
+      110:   60:    test_config.write_callback = test_write_callback;
+      110:   61:    test_config.timeout_callback = test_timeout_callback;
+      110:   62:    test_config.error_callback = test_error_callback;
         -:   63:
         -:   64:    // Reset test variables
-       99:   65:    test_read_value = 0;
-       99:   66:    test_write_address = 0;
-       99:   67:    test_write_value = 0;
-       99:   68:    test_timeout_called = false;
-       99:   69:    test_error_called = false;
-       99:   70:    test_last_error = MODBUS_OK;
+      110:   65:    test_read_value = 0;
+      110:   66:    test_write_address = 0;
+      110:   67:    test_write_value = 0;
+      110:   68:    test_timeout_called = false;
+      110:   69:    test_error_called = false;
+      110:   70:    test_last_error = MODBUS_OK;
         -:   71:
         -:   72:    // Initialize register manager
-       99:   73:    register_manager_init();
-       99:   74:}
+      110:   73:    register_manager_init();
+      110:   74:}
         -:   75:
-       99:   76:void tearDown(void) {
+      110:   76:void tearDown(void) {
         -:   77:    // Reset MODBUS state
-       99:   78:    modbus_set_enabled(false);
-       99:   79:    modbus_reset_statistics();
-       99:   80:}
+      110:   78:    modbus_set_enabled(false);
+      110:   79:    modbus_reset_statistics();
+      110:   80:}
         -:   81:
         -:   82:// ============================================================================
         -:   83:// MODBUS CORE FUNCTIONALITY TESTS
         -:   84:// ============================================================================
         -:   85:
-        9:   86:void test_modbus_init_valid_config(void) {
-        9:   87:    modbus_error_t result = modbus_init(&test_config);
+       10:   86:void test_modbus_init_valid_config(void) {
+       10:   87:    modbus_error_t result = modbus_init(&test_config);
         -:   88:
-        9:   89:    TEST_ASSERT_EQUAL(MODBUS_OK, result);
-        9:   90:    TEST_ASSERT_TRUE(modbus_is_enabled());
-        9:   91:    TEST_ASSERT_EQUAL(MODBUS_STATE_IDLE, modbus_get_state());
-        9:   92:    COVERAGE_MARK_FUNCTION(modbus_init);
-        9:   93:}
+       10:   89:    TEST_ASSERT_EQUAL(MODBUS_OK, result);
+       10:   90:    TEST_ASSERT_TRUE(modbus_is_enabled());
+       10:   91:    TEST_ASSERT_EQUAL(MODBUS_STATE_IDLE, modbus_get_state());
+       10:   92:    COVERAGE_MARK_FUNCTION(modbus_init);
+       10:   93:}
         -:   94:
-        9:   95:void test_modbus_init_null_config(void) {
-        9:   96:    modbus_error_t result = modbus_init(NULL);
-        9:   97:    TEST_ASSERT_EQUAL(MODBUS_ERROR_INVALID_LENGTH, result);
-        9:   98:    COVERAGE_MARK_BRANCH(1);
-        9:   99:}
+       10:   95:void test_modbus_init_null_config(void) {
+       10:   96:    modbus_error_t result = modbus_init(NULL);
+       10:   97:    TEST_ASSERT_EQUAL(MODBUS_ERROR_INVALID_LENGTH, result);
+       10:   98:    COVERAGE_MARK_BRANCH(1);
+       10:   99:}
         -:  100:
-        9:  101:void test_modbus_init_invalid_slave_id(void) {
-        9:  102:    test_config.slave_id = 0; // Invalid slave ID
-        9:  103:    modbus_error_t result = modbus_init(&test_config);
-        9:  104:    TEST_ASSERT_NOT_EQUAL(MODBUS_OK, result);
-        9:  105:    COVERAGE_MARK_BRANCH(2);
-        9:  106:}
+       10:  101:void test_modbus_init_invalid_slave_id(void) {
+       10:  102:    test_config.slave_id = 0; // Invalid slave ID
+       10:  103:    modbus_error_t result = modbus_init(&test_config);
+       10:  104:    TEST_ASSERT_NOT_EQUAL(MODBUS_OK, result);
+       10:  105:    COVERAGE_MARK_BRANCH(2);
+       10:  106:}
         -:  107:
-        9:  108:void test_modbus_validate_address_system_status(void) {
+       10:  108:void test_modbus_validate_address_system_status(void) {
         -:  109:    // Test system status registers (read-only)
-        9:  110:    TEST_ASSERT_TRUE(modbus_validate_address(0x0000, MODBUS_FC_READ_HOLDING));
-        9:  111:    TEST_ASSERT_TRUE(modbus_validate_address(0x000F, MODBUS_FC_READ_HOLDING));
-        9:  112:    TEST_ASSERT_FALSE(modbus_validate_address(0x0000, MODBUS_FC_WRITE_SINGLE));
-        9:  113:    TEST_ASSERT_FALSE(modbus_validate_address(0x000F, MODBUS_FC_WRITE_SINGLE));
-        9:  114:    COVERAGE_MARK_FUNCTION(modbus_validate_address);
-        9:  115:}
+       10:  110:    TEST_ASSERT_TRUE(modbus_validate_address(0x0000, MODBUS_FC_READ_HOLDING));
+       10:  111:    TEST_ASSERT_TRUE(modbus_validate_address(0x000F, MODBUS_FC_READ_HOLDING));
+       10:  112:    TEST_ASSERT_FALSE(modbus_validate_address(0x0000, MODBUS_FC_WRITE_SINGLE));
+       10:  113:    TEST_ASSERT_FALSE(modbus_validate_address(0x000F, MODBUS_FC_WRITE_SINGLE));
+       10:  114:    COVERAGE_MARK_FUNCTION(modbus_validate_address);
+       10:  115:}
         -:  116:
-        9:  117:void test_modbus_validate_address_global_control(void) {
+       10:  117:void test_modbus_validate_address_global_control(void) {
         -:  118:    // Test global control registers (read/write)
-        9:  119:    TEST_ASSERT_TRUE(modbus_validate_address(0x0010, MODBUS_FC_READ_HOLDING));
-        9:  120:    TEST_ASSERT_TRUE(modbus_validate_address(0x001F, MODBUS_FC_READ_HOLDING));
-        9:  121:    TEST_ASSERT_TRUE(modbus_validate_address(0x0010, MODBUS_FC_WRITE_SINGLE));
-        9:  122:    TEST_ASSERT_TRUE(modbus_validate_address(0x001F, MODBUS_FC_WRITE_SINGLE));
-        9:  123:    COVERAGE_MARK_BRANCH(3);
-        9:  124:}
+       10:  119:    TEST_ASSERT_TRUE(modbus_validate_address(0x0010, MODBUS_FC_READ_HOLDING));
+       10:  120:    TEST_ASSERT_TRUE(modbus_validate_address(0x001F, MODBUS_FC_READ_HOLDING));
+       10:  121:    TEST_ASSERT_TRUE(modbus_validate_address(0x0010, MODBUS_FC_WRITE_SINGLE));
+       10:  122:    TEST_ASSERT_TRUE(modbus_validate_address(0x001F, MODBUS_FC_WRITE_SINGLE));
+       10:  123:    COVERAGE_MARK_BRANCH(3);
+       10:  124:}
         -:  125:
-        9:  126:void test_modbus_validate_address_invalid_range(void) {
+       10:  126:void test_modbus_validate_address_invalid_range(void) {
         -:  127:    // Test invalid address ranges
-        9:  128:    TEST_ASSERT_FALSE(modbus_validate_address(0xFFFF, MODBUS_FC_READ_HOLDING));
-        9:  129:    TEST_ASSERT_FALSE(modbus_validate_address(0x0500, MODBUS_FC_WRITE_SINGLE));
-        9:  130:    COVERAGE_MARK_BRANCH(4);
-        9:  131:}
+       10:  128:    TEST_ASSERT_FALSE(modbus_validate_address(0xFFFF, MODBUS_FC_READ_HOLDING));
+       10:  129:    TEST_ASSERT_FALSE(modbus_validate_address(0x0500, MODBUS_FC_WRITE_SINGLE));
+       10:  130:    COVERAGE_MARK_BRANCH(4);
+       10:  131:}
         -:  132:
-        9:  133:void test_modbus_calculate_crc_known_values(void) {
+       10:  133:void test_modbus_calculate_crc_known_values(void) {
         -:  134:    // Test CRC calculation with known values
-        9:  135:    uint8_t test_data[] = {0x01, 0x03, 0x00, 0x00, 0x00, 0x01};
-        9:  136:    uint16_t calculated_crc = modbus_calculate_crc(test_data, sizeof(test_data));
+       10:  135:    uint8_t test_data[] = {0x01, 0x03, 0x00, 0x00, 0x00, 0x01};
+       10:  136:    uint16_t calculated_crc = modbus_calculate_crc(test_data, sizeof(test_data));
         -:  137:
         -:  138:    // Test that CRC is calculated (not default values)
-        9:  139:    TEST_ASSERT_TRUE(calculated_crc != 0xFFFF);
-        9:  140:    TEST_ASSERT_TRUE(calculated_crc != 0x0000);
-        9:  141:    COVERAGE_MARK_FUNCTION(modbus_calculate_crc);
-        9:  142:}
+       10:  139:    TEST_ASSERT_TRUE(calculated_crc != 0xFFFF);
+       10:  140:    TEST_ASSERT_TRUE(calculated_crc != 0x0000);
+       10:  141:    COVERAGE_MARK_FUNCTION(modbus_calculate_crc);
+       10:  142:}
         -:  143:
-        9:  144:void test_modbus_calculate_crc_empty_data(void) {
-        9:  145:    uint16_t crc = modbus_calculate_crc(NULL, 0);
-        9:  146:    TEST_ASSERT_EQUAL(0xFFFF, crc);
-        9:  147:    COVERAGE_MARK_BRANCH(5);
-        9:  148:}
+       10:  144:void test_modbus_calculate_crc_empty_data(void) {
+       10:  145:    uint16_t crc = modbus_calculate_crc(NULL, 0);
+       10:  146:    TEST_ASSERT_EQUAL(0xFFFF, crc);
+       10:  147:    COVERAGE_MARK_BRANCH(5);
+       10:  148:}
         -:  149:
-        9:  150:void test_modbus_calculate_crc_consistency(void) {
-        9:  151:    uint8_t test_data[] = {0x01, 0x03, 0x00, 0x00, 0x00, 0x01};
-        9:  152:    uint16_t crc1 = modbus_calculate_crc(test_data, sizeof(test_data));
-        9:  153:    uint16_t crc2 = modbus_calculate_crc(test_data, sizeof(test_data));
+       10:  150:void test_modbus_calculate_crc_consistency(void) {
+       10:  151:    uint8_t test_data[] = {0x01, 0x03, 0x00, 0x00, 0x00, 0x01};
+       10:  152:    uint16_t crc1 = modbus_calculate_crc(test_data, sizeof(test_data));
+       10:  153:    uint16_t crc2 = modbus_calculate_crc(test_data, sizeof(test_data));
         -:  154:
-        9:  155:    TEST_ASSERT_EQUAL_UINT16(crc1, crc2);
-        9:  156:    COVERAGE_MARK_BRANCH(6);
-        9:  157:}
+       10:  155:    TEST_ASSERT_EQUAL_UINT16(crc1, crc2);
+       10:  156:    COVERAGE_MARK_BRANCH(6);
+       10:  157:}
         -:  158:
-        9:  159:void test_modbus_enable_disable(void) {
-        9:  160:    modbus_init(&test_config);
+       10:  159:void test_modbus_enable_disable(void) {
+       10:  160:    modbus_init(&test_config);
         -:  161:
-        9:  162:    modbus_set_enabled(true);
-        9:  163:    TEST_ASSERT_TRUE(modbus_is_enabled());
-        9:  164:    TEST_ASSERT_EQUAL(MODBUS_STATE_IDLE, modbus_get_state());
+       10:  162:    modbus_set_enabled(true);
+       10:  163:    TEST_ASSERT_TRUE(modbus_is_enabled());
+       10:  164:    TEST_ASSERT_EQUAL(MODBUS_STATE_IDLE, modbus_get_state());
         -:  165:
-        9:  166:    modbus_set_enabled(false);
-        9:  167:    TEST_ASSERT_FALSE(modbus_is_enabled());
-        9:  168:    COVERAGE_MARK_FUNCTION(modbus_set_enabled);
-        9:  169:}
+       10:  166:    modbus_set_enabled(false);
+       10:  167:    TEST_ASSERT_FALSE(modbus_is_enabled());
+       10:  168:    COVERAGE_MARK_FUNCTION(modbus_set_enabled);
+       10:  169:}
         -:  170:
-        9:  171:void test_modbus_statistics_tracking(void) {
-        9:  172:    modbus_init(&test_config);
+       10:  171:void test_modbus_statistics_tracking(void) {
+       10:  172:    modbus_init(&test_config);
         -:  173:
-        9:  174:    const modbus_statistics_t* stats = modbus_get_statistics();
-        9:  175:    TEST_ASSERT_VALID_POINTER(stats);
+       10:  174:    const modbus_statistics_t* stats = modbus_get_statistics();
+       10:  175:    TEST_ASSERT_VALID_POINTER(stats);
         -:  176:
         -:  177:    // Reset and verify
-        9:  178:    modbus_reset_statistics();
-        9:  179:    TEST_ASSERT_EQUAL(0, stats->requests_received);
-        9:  180:    TEST_ASSERT_EQUAL(0, stats->responses_sent);
-        9:  181:    TEST_ASSERT_EQUAL(0, stats->crc_errors);
-        9:  182:    TEST_ASSERT_EQUAL(0, stats->timeout_errors);
-        9:  183:    COVERAGE_MARK_FUNCTION(modbus_get_statistics);
-        9:  184:}
+       10:  178:    modbus_reset_statistics();
+       10:  179:    TEST_ASSERT_EQUAL(0, stats->requests_received);
+       10:  180:    TEST_ASSERT_EQUAL(0, stats->responses_sent);
+       10:  181:    TEST_ASSERT_EQUAL(0, stats->crc_errors);
+       10:  182:    TEST_ASSERT_EQUAL(0, stats->timeout_errors);
+       10:  183:    COVERAGE_MARK_FUNCTION(modbus_get_statistics);
+       10:  184:}
         -:  185:
         -:  186:// ============================================================================
         -:  187:// MAIN TEST RUNNER
         -:  188:// ============================================================================
         -:  189:
-        9:  190:int main(void) {
-        9:  191:    UNITY_BEGIN();
+       10:  190:int main(void) {
+       10:  191:    UNITY_BEGIN();
         -:  192:
         -:  193:    // MODBUS Core Tests
-        9:  194:    RUN_TEST(test_modbus_init_valid_config);
-        9:  195:    RUN_TEST(test_modbus_init_null_config);
-        9:  196:    RUN_TEST(test_modbus_init_invalid_slave_id);
-        9:  197:    RUN_TEST(test_modbus_validate_address_system_status);
-        9:  198:    RUN_TEST(test_modbus_validate_address_global_control);
-        9:  199:    RUN_TEST(test_modbus_validate_address_invalid_range);
-        9:  200:    RUN_TEST(test_modbus_calculate_crc_known_values);
-        9:  201:    RUN_TEST(test_modbus_calculate_crc_empty_data);
-        9:  202:    RUN_TEST(test_modbus_calculate_crc_consistency);
-        9:  203:    RUN_TEST(test_modbus_enable_disable);
-        9:  204:    RUN_TEST(test_modbus_statistics_tracking);
+       10:  194:    RUN_TEST(test_modbus_init_valid_config);
+       10:  195:    RUN_TEST(test_modbus_init_null_config);
+       10:  196:    RUN_TEST(test_modbus_init_invalid_slave_id);
+       10:  197:    RUN_TEST(test_modbus_validate_address_system_status);
+       10:  198:    RUN_TEST(test_modbus_validate_address_global_control);
+       10:  199:    RUN_TEST(test_modbus_validate_address_invalid_range);
+       10:  200:    RUN_TEST(test_modbus_calculate_crc_known_values);
+       10:  201:    RUN_TEST(test_modbus_calculate_crc_empty_data);
+       10:  202:    RUN_TEST(test_modbus_calculate_crc_consistency);
+       10:  203:    RUN_TEST(test_modbus_enable_disable);
+       10:  204:    RUN_TEST(test_modbus_statistics_tracking);
         -:  205:
-        9:  206:    return UNITY_END();
+       10:  206:    return UNITY_END();
         -:  207:}
         -:  208:
         -:  209:#endif // UNIT_TEST
