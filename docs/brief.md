@@ -6,8 +6,6 @@
 - MVP delivers robust MODBUS RTU integration, per-unit control (amplitude, start/stop, overload reset), and monitoring (power, frequency, overload, frequency lock), with clear HMI integration.
 - Success is validated through executive reporting artifacts and acceptance criteria mapped to the PRD, ensuring a consistent, testable interface contract for PLC/HMI deployments.
 
-<!-- The following sections will be completed interactively -->
-
 ## Problem Statement
 
 - Current state and pain points: Operations rely on manual or single-channel control of CT2000 units, creating bottlenecks and inconsistent outcomes across runs. Telemetry is fragmented, and overload resets are ad hoc rather than standardized via automation.

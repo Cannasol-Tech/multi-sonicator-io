@@ -9,7 +9,9 @@
 #include "timer.h"
 #include "config.h"
 #include <Arduino.h>
+#ifndef NATIVE_TEST
 #include <avr/interrupt.h>
+#endif
 
 // ============================================================================
 // PRIVATE VARIABLES
@@ -47,10 +49,12 @@ static uint32_t modbus_frame_gap_start_time = 0;
 // NOTE: Do not define Timer0 ISR when using Arduino core; use millis() based scheduler instead.
 
 // Timer1 overflow interrupt
+#ifndef NATIVE_TEST
 ISR(TIMER1_OVF_vect) {
     timer_states[TIMER_ID_1].interrupt_count++;
     timer_states[TIMER_ID_1].overflow_count++;
 }
+#endif
 
 // ============================================================================
 // PRIVATE FUNCTION DECLARATIONS

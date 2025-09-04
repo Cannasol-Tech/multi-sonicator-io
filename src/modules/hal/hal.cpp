@@ -83,13 +83,14 @@ hal_result_t hal_self_test(bool* gpio_ok, bool* adc_ok, bool* pwm_ok,
         // Test status LED control
         gpio_result_t gpio_result = gpio_status_led(GPIO_HIGH);
         timer_delay_ms(100);
-        gpio_result |= gpio_status_led(GPIO_LOW);
-        
-        // Test sonicator pin reading (should be pulled up)
-        bool overload_state;
-        gpio_result |= gpio_sonicator_read_overload(1, &overload_state);
-        
-        *gpio_ok = (gpio_result == GPIO_OK);
+        if (gpio_status_led(GPIO_LOW) != GPIO_OK) {
+            *gpio_ok = false;
+        } else {
+            // Test sonicator pin reading (should be pulled up)
+            bool overload_state;
+            gpio_result_t r2 = gpio_sonicator_read_overload(1, &overload_state);
+            *gpio_ok = (gpio_result == GPIO_OK) && (r2 == GPIO_OK);
+        }
     }
     
     // Test ADC subsystem
@@ -100,9 +101,9 @@ hal_result_t hal_self_test(bool* gpio_ok, bool* adc_ok, bool* pwm_ok,
         
         // Test frequency channel reading
         float freq_reading;
-        adc_result |= adc_read_frequency(&freq_reading);
-        
-        *adc_ok = (adc_result == ADC_OK) && (power_reading >= 0.0f) && (freq_reading >= 0.0f);
+        adc_result_t r2 = adc_read_frequency(&freq_reading);
+
+        *adc_ok = (adc_result == ADC_OK) && (r2 == ADC_OK) && (power_reading >= 0.0f) && (freq_reading >= 0.0f);
     }
     
     // Test PWM subsystem

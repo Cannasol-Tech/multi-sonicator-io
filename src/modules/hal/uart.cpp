@@ -9,7 +9,9 @@
 #include "uart.h"
 #include "config.h"
 #include <Arduino.h>
+#ifndef NATIVE_TEST
 #include <avr/interrupt.h>
+#endif
 
 // ============================================================================
 // PRIVATE VARIABLES
@@ -93,10 +95,17 @@ uart_result_t uart_init_config(const uart_config_t* config) {
     uint8_t ucsrc_value = (1 << URSEL); // Select UCSRC register
 
     // Initialize Arduino Serial if not already
+#ifdef NATIVE_TEST
+    // No real Serial in native tests; mark initialized and return
+    current_baud_rate = config->baud_rate;
+    uart_initialized = true;
+    return UART_OK;
+#else
     Serial.begin(config->baud_rate);
     current_baud_rate = config->baud_rate;
     uart_initialized = true;
     return UART_OK;
+#endif
 
     // Data bits
     switch (config->data_bits) {
@@ -161,7 +170,9 @@ uart_result_t uart_init_config(const uart_config_t* config) {
     calculate_char_time();
 
     // Enable global interrupts if not already enabled
+#ifndef NATIVE_TEST
     sei();
+#endif
 
     uart_initialized = true;
     return UART_OK;
@@ -196,9 +207,15 @@ uart_result_t uart_send_byte(uint8_t data) {
         return UART_ERROR_NOT_INITIALIZED;
     }
 
+#ifdef NATIVE_TEST
+    // In native tests, simulate success without real UART
+    (void)data;
+    return UART_OK;
+#else
     // Directly use Arduino Serial in Arduino build to save RAM
     (void)Serial.write(&data, 1);
     return UART_OK;
+#endif
 }
 
 uart_result_t uart_receive_byte(uint8_t* data) {
@@ -210,12 +227,18 @@ uart_result_t uart_receive_byte(uint8_t* data) {
         return UART_ERROR_BUFFER_EMPTY;
     }
 
+#ifdef NATIVE_TEST
+    // No real RX data in native tests
+    (void)data;
+    return UART_ERROR_BUFFER_EMPTY;
+#else
     if (Serial.available() <= 0) {
         return UART_ERROR_BUFFER_EMPTY;
     }
 
     *data = (uint8_t)Serial.read();
     return UART_OK;
+#endif
 }
 
 uart_result_t uart_data_available(bool* available) {
@@ -227,8 +250,13 @@ uart_result_t uart_data_available(bool* available) {
         return UART_ERROR_INVALID_CONFIG;
     }
 
+#ifdef NATIVE_TEST
+    *available = false;
+    return UART_OK;
+#else
     *available = (Serial.available() > 0);
     return UART_OK;
+#endif
 }
 
 uart_result_t uart_get_rx_count(uint16_t* count) {
@@ -275,6 +303,10 @@ uart_result_t uart_receive_buffer(uint8_t* buffer, uint16_t max_length, uint16_t
 
     *received = 0;
 
+#ifdef NATIVE_TEST
+    (void)buffer; (void)max_length; (void)received;
+    return UART_OK;
+#else
     while (*received < max_length && Serial.available() > 0) {
         uart_result_t result = uart_receive_byte(&buffer[*received]);
         if (result == UART_OK) {
@@ -285,6 +317,7 @@ uart_result_t uart_receive_buffer(uint8_t* buffer, uint16_t max_length, uint16_t
     }
 
     return UART_OK;
+#endif
 }
 
 uart_result_t uart_flush_tx(void) {
@@ -294,9 +327,13 @@ uart_result_t uart_flush_tx(void) {
 
     uint32_t timeout = millis() + UART_TIMEOUT_MS;
 
+#ifdef NATIVE_TEST
+    return UART_OK;
+#else
     // In Arduino build, flush the Serial TX buffer
     Serial.flush();
     return UART_OK;
+#endif
 }
 
 uart_result_t uart_flush_rx(void) {
@@ -304,9 +341,13 @@ uart_result_t uart_flush_rx(void) {
         return UART_ERROR_NOT_INITIALIZED;
     }
 
+#ifndef NATIVE_TEST
     cli();
+#endif
     rx_head = rx_tail = 0;
+#ifndef NATIVE_TEST
     sei();
+#endif
 
     return UART_OK;
 }
@@ -434,11 +475,15 @@ uart_result_t uart_clear_errors(void) {
         return UART_ERROR_NOT_INITIALIZED;
     }
 
+#ifndef NATIVE_TEST
     cli();
+#endif
     rx_overflow = false;
     frame_error = false;
     parity_error = false;
+#ifndef NATIVE_TEST
     sei();
+#endif
 
     return UART_OK;
 }

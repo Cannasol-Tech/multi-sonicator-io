@@ -59,6 +59,9 @@ extern uint8_t mock_ADMUX, mock_ADCSRA, mock_ADCL, mock_ADCH;
 #define TOIE1   2
 #define ADEN    7
 #define ADSC    6
+#define ADPS2   2
+#define ADPS1   1
+#define ADPS0   0
 #define REFS1   7
 #define REFS0   6
 #define RXEN    4

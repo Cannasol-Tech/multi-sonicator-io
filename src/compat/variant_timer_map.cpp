@@ -1,3 +1,4 @@
+#ifndef NATIVE_TEST
 #include <Arduino.h>
 
 // Some MightyCore variants may miss the timer mapping symbol in certain PIO configs.
@@ -18,4 +19,5 @@ const uint8_t digital_pin_to_timer_PGM[] PROGMEM = {
 };
 #endif
 }
+#endif
 

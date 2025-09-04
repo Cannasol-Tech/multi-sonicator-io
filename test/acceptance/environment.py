@@ -18,6 +18,35 @@ class _NullLogger:
     def measurement(self, *_args, **_kwargs):
         pass
 
+# Behave hooks for HIL automation
+def before_all(context):
+    """
+    Set up HIL environment, auto-detect Arduino port, verify/load ISP sketch, etc.
+    """
+    context.hil_config = None  # Load from hil_config.yaml
+    context.arduino_port = None  # Auto-detect
+    context.isp_sketch_loaded = False
+    # TODO: Implement auto-detection and setup logic
+    print("[HIL] Initializing hardware-in-the-loop environment...")
+
+def before_feature(context, feature):
+    """
+    Tag scenarios per feature, setup feature-specific HIL state.
+    """
+    print(f"[HIL] Starting feature: {feature.name}")
+
+def before_scenario(context, scenario):
+    """
+    Map scenario to PRD, skip if unimplemented, setup scenario state.
+    """
+    print(f"[HIL] Starting scenario: {scenario.name}")
+
+def after_scenario(context, scenario):
+    """
+    Teardown scenario state, collect logs, etc.
+    """
+    print(f"[HIL] Finished scenario: {scenario.name}")
+
 
 def import_hil_modules():
     """Import HIL modules as a package to support intra-package relative imports"""

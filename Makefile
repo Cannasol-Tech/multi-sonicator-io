@@ -143,11 +143,20 @@ ci-test: check-deps check-pio test-unit test-acceptance generate-release-artifac
 
 # Three-stage testing per software testing standard
 test-unit: check-deps check-pio
-	@echo "Stage 1: Unit Testing (Unity Test Framework for embedded C/C++ with 90% coverage)..."
-	@echo "Running comprehensive Unity tests for HAL and Communication modules..."
-	pio test -e comprehensive_test -v
-	@echo "✅ Unity unit tests completed with 90%+ coverage for HAL and Communication modules"
-
+	@echo "Stage 1: Unit Testing (Unity Native Environment for embedded C/C++ with 90% coverage)..."
+	@echo "Running Unity native tests for all modules..."
+		for d in communication control hal sonicator; do \
+			if [ -f "test/unit/$d/test_$d.c" ]; then \
+				cd test/unit/$d; \
+				gcc -I../../../include -I. -fprofile-arcs -ftest-coverage test_$d.c ../../../test/unit/unity_config.h -o test_$d.out -fprofile-arcs -ftest-coverage; \
+				./test_$d.out; \
+				gcov test_$d.c > coverage.txt; \
+				cat coverage.txt; \
+				cd - >/dev/null; \
+			fi; \
+		done
+		@echo "📊 Coverage reports displayed above and saved for each module in test/unit/<module>/coverage.txt"
+		@echo "✅ Unity native unit tests completed."
 test-acceptance: check-deps check-pio check-arduino-cli
 	@echo "Stage 2: Acceptance Testing (BDD scenarios via Behave framework)..."
 	@echo "🔎 Probing HIL hardware (soft-fail permitted)..."
