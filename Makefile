@@ -239,12 +239,8 @@ test-acceptance: check-deps check-pio check-arduino-cli
 				-D profile=hil \
 				--tags=~@pending; \
 		else \
-			echo "⚠️ HIL hardware not available or setup failed - falling back to minimal simulavr smoke (soft-fail)"; \
-			PYTHONPATH=. python3 -m behave test/acceptance/features/smoke.feature \
-				--junit \
-				--junit-directory=acceptance-junit \
-				-D profile=simulavr \
-				--tags=~@pending; \
+			echo "❌ HIL hardware not available - HIL testing is required"; \
+			exit 1; \
 		fi; \
 	fi
 

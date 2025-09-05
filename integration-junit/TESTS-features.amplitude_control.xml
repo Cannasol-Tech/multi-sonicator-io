@@ -1,9 +1,9 @@
-<testsuite name="features.amplitude_control.Amplitude control (common)" tests="4" errors="0" failures="0" skipped="4" time="0.0" timestamp="2025-09-05T12:14:59.054743" hostname="Corbans-Mini.home"><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range and verify mapping -- @1.1 " status="skipped" time="0"><skipped /><system-out>
+<testsuite name="features.amplitude_control.Amplitude control (common)" tests="4" errors="0" failures="0" skipped="4" time="0.0" timestamp="2025-09-05T16:09:46.632446" hostname="Corbans-Mini.home"><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range for Sonicator 4 and verify mapping -- @1.1 " status="skipped" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @us-003
-  Scenario Outline: Set amplitude within range and verify mapping -- @1.1 
+  Scenario Outline: Set amplitude within range for Sonicator 4 and verify mapping -- @1.1 
     Given the HIL wrapper is connected and ready ... skipped in 0.000s
     And the DUT is powered and at safe defaults ... skipped in 0.000s
     When I write 20 to holding register 40001 ... skipped in 0.000s
@@ -12,12 +12,12 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range and verify mapping -- @1.2 " status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range for Sonicator 4 and verify mapping -- @1.2 " status="skipped" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @us-003
-  Scenario Outline: Set amplitude within range and verify mapping -- @1.2 
+  Scenario Outline: Set amplitude within range for Sonicator 4 and verify mapping -- @1.2 
     Given the HIL wrapper is connected and ready ... skipped in 0.000s
     And the DUT is powered and at safe defaults ... skipped in 0.000s
     When I write 60 to holding register 40001 ... skipped in 0.000s
@@ -26,12 +26,12 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range and verify mapping -- @1.3 " status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range for Sonicator 4 and verify mapping -- @1.3 " status="skipped" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @us-003
-  Scenario Outline: Set amplitude within range and verify mapping -- @1.3 
+  Scenario Outline: Set amplitude within range for Sonicator 4 and verify mapping -- @1.3 
     Given the HIL wrapper is connected and ready ... skipped in 0.000s
     And the DUT is powered and at safe defaults ... skipped in 0.000s
     When I write 100 to holding register 40001 ... skipped in 0.000s
@@ -40,12 +40,12 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Reject out-of-range amplitude" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Reject out-of-range amplitude for Sonicator 4" status="skipped" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @us-003 @invalid
-  Scenario: Reject out-of-range amplitude
+  Scenario: Reject out-of-range amplitude for Sonicator 4
     Given the HIL wrapper is connected and ready ... skipped in 0.000s
     And the DUT is powered and at safe defaults ... skipped in 0.000s
     When I write 5 to holding register 40001 ... skipped in 0.000s

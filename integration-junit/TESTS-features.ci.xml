@@ -1,11 +1,17 @@
-<testsuite name="features.ci.CI drift checks" tests="1" errors="0" failures="0" skipped="1" time="0.0" timestamp="2025-09-05T12:14:59.056010" hostname="Corbans-Mini.home"><testcase classname="features.ci.CI drift checks" name="SC-025 PRD vs include/config.h drift detection" status="skipped" time="0"><skipped /><system-out>
+<testsuite name="features.ci.CI drift checks" tests="1" errors="0" failures="0" skipped="1" time="0.0" timestamp="2025-09-05T16:09:46.633732" hostname="Corbans-Mini.home"><testcase classname="features.ci.CI drift checks" name="SC-025 CI drift check: PRD vs include/config.h" status="skipped" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
-  @req-ci-drift @simulavr
-  Scenario: SC-025 PRD vs include/config.h drift detection
-    Given the system is initialized ... skipped in 0.000s
-    Then the CI drift check passes ... skipped in 0.000s
+  @req-ci-drift @prd-17-risk @simulavr
+  Scenario: SC-025 CI drift check: PRD vs include/config.h
+    Given the CI environment is configured ... skipped in 0.000s
+    And the PRD requirements are documented in project-requirements.md ... skipped in 0.000s
+    And the implementation constants are defined in include/config.h ... skipped in 0.000s
+    When the CI drift check script runs ... skipped in 0.000s
+    Then it should compare PRD requirements against implementation ... skipped in 0.000s
+    And it should flag any mismatches between documentation and code ... skipped in 0.000s
+    And it should block merge if critical drift is detected ... skipped in 0.000s
+    And it should generate a drift report for review ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------

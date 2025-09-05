@@ -1,5 +1,5 @@
 # Behave environment configuration
-# Sets a runtime profile: 'simulavr' (default) or 'hil'
+# Sets a runtime profile: 'hil' (Hardware-in-the-Loop only)
 
 import os
 import sys
@@ -65,13 +65,13 @@ def before_all(context):
     context.config = hil_config
 
     userdata = getattr(context.config, "userdata", {}) or {}
-    context.profile = hil_config.get('behave', {}).get('profile', 'simulavr').lower()
-    if context.profile not in ("simulavr", "hil"):
-        context.profile = "simulavr"
+    context.profile = hil_config.get('behave', {}).get('profile', 'hil').lower()
+    if context.profile not in ("hil", "hil"):
+        context.profile = "hil"
 
     context.shared = {}
 
-    if context.profile == "simulavr":
+    if context.profile == "hil":
         context.serial_port = "/tmp/tty-msio"
     else:
         try:

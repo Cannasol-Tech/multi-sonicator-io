@@ -1,7 +1,7 @@
         -:    0:Source:test_hal.c
         -:    0:Graph:test_hal.gcno
         -:    0:Data:test_hal.gcda
-        -:    0:Runs:9
+        -:    0:Runs:10
         -:    0:Programs:1
         -:    1:/**
         -:    2: * @file test_hal.c
@@ -29,153 +29,153 @@
         -:   24:// TEST FIXTURE SETUP
         -:   25:// ============================================================================
         -:   26:
-       99:   27:void setUp(void) {
+      110:   27:void setUp(void) {
         -:   28:    // Reset HAL state before each test
         -:   29:    // Note: In native environment, this may be mocked
-       99:   30:}
+      110:   30:}
         -:   31:
-       99:   32:void tearDown(void) {
+      110:   32:void tearDown(void) {
         -:   33:    // Clean up after each test
         -:   34:    // Note: In native environment, this may be mocked
-       99:   35:}
+      110:   35:}
         -:   36:
         -:   37:// ============================================================================
         -:   38:// HAL CORE FUNCTIONALITY TESTS
         -:   39:// ============================================================================
         -:   40:
-        9:   41:void test_hal_init_success(void) {
-        9:   42:    hal_result_t result = hal_init();
-        9:   43:    TEST_ASSERT_EQUAL(HAL_OK, result);
-        9:   44:    COVERAGE_MARK_FUNCTION(hal_init);
-        9:   45:}
+       10:   41:void test_hal_init_success(void) {
+       10:   42:    hal_result_t result = hal_init();
+       10:   43:    TEST_ASSERT_EQUAL(HAL_OK, result);
+       10:   44:    COVERAGE_MARK_FUNCTION(hal_init);
+       10:   45:}
         -:   46:
-        9:   47:void test_hal_init_idempotent(void) {
+       10:   47:void test_hal_init_idempotent(void) {
         -:   48:    // Test that multiple init calls are safe
-        9:   49:    TEST_ASSERT_EQUAL(HAL_OK, hal_init());
-        9:   50:    TEST_ASSERT_EQUAL(HAL_OK, hal_init());
-        9:   51:    COVERAGE_MARK_FUNCTION(hal_init_idempotent);
-        9:   52:}
+       10:   49:    TEST_ASSERT_EQUAL(HAL_OK, hal_init());
+       10:   50:    TEST_ASSERT_EQUAL(HAL_OK, hal_init());
+       10:   51:    COVERAGE_MARK_FUNCTION(hal_init_idempotent);
+       10:   52:}
         -:   53:
-        9:   54:void test_hal_self_test_all_modules(void) {
-        9:   55:    hal_init();
+       10:   54:void test_hal_self_test_all_modules(void) {
+       10:   55:    hal_init();
         -:   56:
         -:   57:    bool gpio_ok, adc_ok, pwm_ok, uart_ok, timer_ok;
-        9:   58:    hal_result_t result = hal_self_test(&gpio_ok, &adc_ok, &pwm_ok, &uart_ok, &timer_ok);
+       10:   58:    hal_result_t result = hal_self_test(&gpio_ok, &adc_ok, &pwm_ok, &uart_ok, &timer_ok);
         -:   59:
-        9:   60:    TEST_ASSERT_EQUAL(HAL_OK, result);
-        9:   61:    TEST_ASSERT_VALID_POINTER(&gpio_ok);
-        9:   62:    TEST_ASSERT_VALID_POINTER(&adc_ok);
-        9:   63:    TEST_ASSERT_VALID_POINTER(&pwm_ok);
-        9:   64:    TEST_ASSERT_VALID_POINTER(&uart_ok);
-        9:   65:    TEST_ASSERT_VALID_POINTER(&timer_ok);
-        9:   66:    COVERAGE_MARK_FUNCTION(hal_self_test);
-        9:   67:}
+       10:   60:    TEST_ASSERT_EQUAL(HAL_OK, result);
+       10:   61:    TEST_ASSERT_VALID_POINTER(&gpio_ok);
+       10:   62:    TEST_ASSERT_VALID_POINTER(&adc_ok);
+       10:   63:    TEST_ASSERT_VALID_POINTER(&pwm_ok);
+       10:   64:    TEST_ASSERT_VALID_POINTER(&uart_ok);
+       10:   65:    TEST_ASSERT_VALID_POINTER(&timer_ok);
+       10:   66:    COVERAGE_MARK_FUNCTION(hal_self_test);
+       10:   67:}
         -:   68:
-        9:   69:void test_hal_self_test_null_parameters(void) {
-        9:   70:    hal_init();
+       10:   69:void test_hal_self_test_null_parameters(void) {
+       10:   70:    hal_init();
         -:   71:
         -:   72:    // Test with NULL parameters - should handle gracefully
-        9:   73:    hal_result_t result = hal_self_test(NULL, NULL, NULL, NULL, NULL);
-        9:   74:    TEST_ASSERT_NOT_EQUAL(HAL_OK, result);
-        9:   75:    COVERAGE_MARK_BRANCH(1);
-        9:   76:}
+       10:   73:    hal_result_t result = hal_self_test(NULL, NULL, NULL, NULL, NULL);
+       10:   74:    TEST_ASSERT_NOT_EQUAL(HAL_OK, result);
+       10:   75:    COVERAGE_MARK_BRANCH(1);
+       10:   76:}
         -:   77:
-        9:   78:void test_hal_emergency_shutdown(void) {
-        9:   79:    hal_init();
-        9:   80:    hal_result_t result = hal_emergency_shutdown();
-        9:   81:    TEST_ASSERT_EQUAL(HAL_OK, result);
-        9:   82:    COVERAGE_MARK_FUNCTION(hal_emergency_shutdown);
-        9:   83:}
+       10:   78:void test_hal_emergency_shutdown(void) {
+       10:   79:    hal_init();
+       10:   80:    hal_result_t result = hal_emergency_shutdown();
+       10:   81:    TEST_ASSERT_EQUAL(HAL_OK, result);
+       10:   82:    COVERAGE_MARK_FUNCTION(hal_emergency_shutdown);
+       10:   83:}
         -:   84:
-        9:   85:void test_hal_get_status_valid_parameters(void) {
-        9:   86:    hal_init();
+       10:   85:void test_hal_get_status_valid_parameters(void) {
+       10:   86:    hal_init();
         -:   87:    bool initialized;
         -:   88:    uint32_t uptime_ms;
         -:   89:    uint16_t errors;
         -:   90:
-        9:   91:    hal_result_t result = hal_get_status(&initialized, &uptime_ms, &errors);
-        9:   92:    TEST_ASSERT_EQUAL(HAL_OK, result);
-        9:   93:    TEST_ASSERT_TRUE(initialized);
-        9:   94:    TEST_ASSERT_GREATER_OR_EQUAL_UINT32(0, uptime_ms);
-        9:   95:    COVERAGE_MARK_FUNCTION(hal_get_status);
-        9:   96:}
+       10:   91:    hal_result_t result = hal_get_status(&initialized, &uptime_ms, &errors);
+       10:   92:    TEST_ASSERT_EQUAL(HAL_OK, result);
+       10:   93:    TEST_ASSERT_TRUE(initialized);
+       10:   94:    TEST_ASSERT_GREATER_OR_EQUAL_UINT32(0, uptime_ms);
+       10:   95:    COVERAGE_MARK_FUNCTION(hal_get_status);
+       10:   96:}
         -:   97:
-        9:   98:void test_hal_get_status_null_parameters(void) {
-        9:   99:    hal_init();
+       10:   98:void test_hal_get_status_null_parameters(void) {
+       10:   99:    hal_init();
         -:  100:
         -:  101:    // Test with NULL parameters
-        9:  102:    hal_result_t result = hal_get_status(NULL, NULL, NULL);
-        9:  103:    TEST_ASSERT_NOT_EQUAL(HAL_OK, result);
-        9:  104:    COVERAGE_MARK_BRANCH(2);
-        9:  105:}
+       10:  102:    hal_result_t result = hal_get_status(NULL, NULL, NULL);
+       10:  103:    TEST_ASSERT_NOT_EQUAL(HAL_OK, result);
+       10:  104:    COVERAGE_MARK_BRANCH(2);
+       10:  105:}
         -:  106:
-        9:  107:void test_hal_read_all_sonicator_status(void) {
-        9:  108:    hal_init();
+       10:  107:void test_hal_read_all_sonicator_status(void) {
+       10:  108:    hal_init();
         -:  109:    sonicator_status_t status_array[4];
         -:  110:
-        9:  111:    hal_result_t result = hal_read_all_sonicator_status(status_array);
-        9:  112:    TEST_ASSERT_EQUAL(HAL_OK, result);
+       10:  111:    hal_result_t result = hal_read_all_sonicator_status(status_array);
+       10:  112:    TEST_ASSERT_EQUAL(HAL_OK, result);
         -:  113:
         -:  114:    // Verify status array is populated
-       45:  115:    for (int i = 0; i < 4; i++) {
-       36:  116:        TEST_ASSERT_GREATER_OR_EQUAL_FLOAT(0.0f, status_array[i].power_watts);
-       36:  117:        TEST_ASSERT_GREATER_THAN_UINT16(0, status_array[i].frequency_hz);
-       36:  118:    }
-        9:  119:    COVERAGE_MARK_FUNCTION(hal_read_all_sonicator_status);
-        9:  120:}
+       50:  115:    for (int i = 0; i < 4; i++) {
+       40:  116:        TEST_ASSERT_GREATER_OR_EQUAL_FLOAT(0.0f, status_array[i].power_watts);
+       40:  117:        TEST_ASSERT_GREATER_THAN_UINT16(0, status_array[i].frequency_hz);
+       40:  118:    }
+       10:  119:    COVERAGE_MARK_FUNCTION(hal_read_all_sonicator_status);
+       10:  120:}
         -:  121:
-        9:  122:void test_hal_read_single_sonicator_status_valid_id(void) {
-        9:  123:    hal_init();
+       10:  122:void test_hal_read_single_sonicator_status_valid_id(void) {
+       10:  123:    hal_init();
         -:  124:    sonicator_status_t status;
         -:  125:
-       45:  126:    for (uint8_t id = 1; id <= 4; id++) {
-       36:  127:        hal_result_t result = hal_read_sonicator_status(id, &status);
-       36:  128:        TEST_ASSERT_EQUAL(HAL_OK, result);
-       36:  129:        TEST_ASSERT_GREATER_OR_EQUAL_FLOAT(0.0f, status.power_watts);
-       36:  130:        TEST_ASSERT_GREATER_THAN_UINT16(0, status.frequency_hz);
-       36:  131:    }
-        9:  132:    COVERAGE_MARK_FUNCTION(hal_read_sonicator_status);
-        9:  133:}
+       50:  126:    for (uint8_t id = 1; id <= 4; id++) {
+       40:  127:        hal_result_t result = hal_read_sonicator_status(id, &status);
+       40:  128:        TEST_ASSERT_EQUAL(HAL_OK, result);
+       40:  129:        TEST_ASSERT_GREATER_OR_EQUAL_FLOAT(0.0f, status.power_watts);
+       40:  130:        TEST_ASSERT_GREATER_THAN_UINT16(0, status.frequency_hz);
+       40:  131:    }
+       10:  132:    COVERAGE_MARK_FUNCTION(hal_read_sonicator_status);
+       10:  133:}
         -:  134:
-        9:  135:void test_hal_read_single_sonicator_status_invalid_id(void) {
-        9:  136:    hal_init();
+       10:  135:void test_hal_read_single_sonicator_status_invalid_id(void) {
+       10:  136:    hal_init();
         -:  137:    sonicator_status_t status;
         -:  138:
         -:  139:    // Test invalid IDs
-        9:  140:    TEST_ASSERT_NOT_EQUAL(HAL_OK, hal_read_sonicator_status(0, &status));
-        9:  141:    TEST_ASSERT_NOT_EQUAL(HAL_OK, hal_read_sonicator_status(5, &status));
-        9:  142:    COVERAGE_MARK_BRANCH(3);
-        9:  143:}
+       10:  140:    TEST_ASSERT_NOT_EQUAL(HAL_OK, hal_read_sonicator_status(0, &status));
+       10:  141:    TEST_ASSERT_NOT_EQUAL(HAL_OK, hal_read_sonicator_status(5, &status));
+       10:  142:    COVERAGE_MARK_BRANCH(3);
+       10:  143:}
         -:  144:
-        9:  145:void test_hal_read_single_sonicator_status_null_status(void) {
-        9:  146:    hal_init();
+       10:  145:void test_hal_read_single_sonicator_status_null_status(void) {
+       10:  146:    hal_init();
         -:  147:
-        9:  148:    hal_result_t result = hal_read_sonicator_status(1, NULL);
-        9:  149:    TEST_ASSERT_NOT_EQUAL(HAL_OK, result);
-        9:  150:    COVERAGE_MARK_BRANCH(4);
-        9:  151:}
+       10:  148:    hal_result_t result = hal_read_sonicator_status(1, NULL);
+       10:  149:    TEST_ASSERT_NOT_EQUAL(HAL_OK, result);
+       10:  150:    COVERAGE_MARK_BRANCH(4);
+       10:  151:}
         -:  152:
         -:  153:// ============================================================================
         -:  154:// MAIN TEST RUNNER
         -:  155:// ============================================================================
         -:  156:
-        9:  157:int main(void) {
-        9:  158:    UNITY_BEGIN();
+       10:  157:int main(void) {
+       10:  158:    UNITY_BEGIN();
         -:  159:
         -:  160:    // HAL Core Tests
-        9:  161:    RUN_TEST(test_hal_init_success);
-        9:  162:    RUN_TEST(test_hal_init_idempotent);
-        9:  163:    RUN_TEST(test_hal_self_test_all_modules);
-        9:  164:    RUN_TEST(test_hal_self_test_null_parameters);
-        9:  165:    RUN_TEST(test_hal_emergency_shutdown);
-        9:  166:    RUN_TEST(test_hal_get_status_valid_parameters);
-        9:  167:    RUN_TEST(test_hal_get_status_null_parameters);
-        9:  168:    RUN_TEST(test_hal_read_all_sonicator_status);
-        9:  169:    RUN_TEST(test_hal_read_single_sonicator_status_valid_id);
-        9:  170:    RUN_TEST(test_hal_read_single_sonicator_status_invalid_id);
-        9:  171:    RUN_TEST(test_hal_read_single_sonicator_status_null_status);
+       10:  161:    RUN_TEST(test_hal_init_success);
+       10:  162:    RUN_TEST(test_hal_init_idempotent);
+       10:  163:    RUN_TEST(test_hal_self_test_all_modules);
+       10:  164:    RUN_TEST(test_hal_self_test_null_parameters);
+       10:  165:    RUN_TEST(test_hal_emergency_shutdown);
+       10:  166:    RUN_TEST(test_hal_get_status_valid_parameters);
+       10:  167:    RUN_TEST(test_hal_get_status_null_parameters);
+       10:  168:    RUN_TEST(test_hal_read_all_sonicator_status);
+       10:  169:    RUN_TEST(test_hal_read_single_sonicator_status_valid_id);
+       10:  170:    RUN_TEST(test_hal_read_single_sonicator_status_invalid_id);
+       10:  171:    RUN_TEST(test_hal_read_single_sonicator_status_null_status);
         -:  172:
-        9:  173:    return UNITY_END();
+       10:  173:    return UNITY_END();
         -:  174:}
         -:  175:
         -:  176:#endif // UNIT_TEST

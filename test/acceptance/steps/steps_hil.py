@@ -11,7 +11,7 @@ def _pending(msg: str = "Pending step implementation"):
     raise NotImplementedError(msg)
 
 
-# Only register HIL steps when explicitly enabled to avoid ambiguity with simulavr steps
+# Only register HIL steps when explicitly enabled to avoid ambiguity with hil steps
 if os.environ.get("BEHAVE_ENABLE_HIL_STEPS", "0") == "1":
     # Background
     import sys

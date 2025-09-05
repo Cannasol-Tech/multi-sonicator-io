@@ -1,7 +1,7 @@
 Feature: CI drift checks
   # PRD §17 Risk - Automated validation of PRD vs implementation consistency
 
-  @req-ci-drift @prd-17-risk @simulavr
+  @req-ci-drift @prd-17-risk @hil
   Scenario: SC-025 CI drift check: PRD vs include/config.h
     Given the CI environment is configured
     And the PRD requirements are documented in project-requirements.md

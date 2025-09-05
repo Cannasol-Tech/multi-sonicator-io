@@ -4,11 +4,10 @@ This directory contains the complete testing framework for the Multi-Sonicator I
 
 ## Testing Architecture
 
-The project implements a three-tier testing strategy:
+The project implements a two-tier testing strategy:
 
 1. **Unit Tests** - Fast, isolated component testing using Unity framework
-2. **Acceptance Tests** - BDD scenarios running in simulavr emulator
-3. **Hardware-in-the-Loop (HIL) Tests** - Same BDD scenarios on real hardware
+2. **Hardware-in-the-Loop (HIL) Tests** - BDD scenarios on real hardware using Arduino Test Harness
 
 ## Directory Structure
 
@@ -19,7 +18,7 @@ test/
 ├── test_config/           # Unit tests for configuration
 ├── test_sonicator/        # Unit tests for sonicator interface
 ├── test_system/           # Unit tests for system integration
-├── acceptance/            # BDD acceptance tests (simulavr + HIL)
+├── acceptance/            # BDD acceptance tests (HIL + HIL)
 │   ├── environment.py     # Behave environment configuration
 │   ├── features/          # Gherkin feature files
 │   └── steps/             # Python step implementations
@@ -52,18 +51,18 @@ make test-unit
 - **`test_fault_handling/`** - Fault handling and recovery tests
 - **`test_main.cpp`** - Unity test runner and harness
 
-## 2. Acceptance Tests (BDD + simulavr Emulator)
+## 2. Acceptance Tests (BDD + HIL Emulator)
 
-Behavior-driven development tests running complete scenarios in the simulavr AVR emulator within Docker containers.
+Behavior-driven development tests running complete scenarios in the HIL AVR emulator within Docker containers.
 
 ### Running Acceptance Tests
 
 ```bash
-# Run all acceptance tests in simulavr emulator
-behave test/acceptance -D profile=simulavr
+# Run all acceptance tests in HIL emulator
+behave test/acceptance -D profile=HIL
 
 # Run specific feature
-behave test/acceptance/features/control.feature -D profile=simulavr
+behave test/acceptance/features/control.feature -D profile=HIL
 
 # Run with Docker (recommended)
 make test-emulation
@@ -105,7 +104,7 @@ make test-hil
 
 The BDD framework automatically switches between emulation and hardware based on the profile:
 
-- **`simulavr`** (default) - Uses simulavr emulator in Docker
+- **`HIL`** (default) - Uses HIL emulator in Docker
 - **`hil`** - Uses real hardware when available
 
 Profile selection is handled in `test/acceptance/environment.py`.
@@ -120,7 +119,7 @@ make test-all
 
 # Individual test levels
 make test-unit          # PlatformIO Unity tests
-make test-emulation     # BDD with simulavr
+make test-emulation     # BDD with HIL
 make test-hil           # BDD with hardware
 
 # Continuous integration
@@ -130,12 +129,12 @@ make ci-test            # Full test suite for CI/CD
 ## Test Environments
 
 - **`test_desktop`** - Native desktop environment for unit tests
-- **`simulavr`** - AVR emulator environment for acceptance tests
+- **`HIL`** - AVR emulator environment for acceptance tests
 - **`hil`** - Hardware-in-the-loop environment for real hardware validation
 
 ## Dependencies
 
 - **Unity** - C unit testing framework (via PlatformIO)
 - **Behave** - Python BDD framework for acceptance tests
-- **simulavr** - AVR emulator for hardware simulation
+- **HIL** - AVR emulator for hardware simulation
 - **Docker** - Containerized emulation environment

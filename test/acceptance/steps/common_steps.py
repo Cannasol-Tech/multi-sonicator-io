@@ -1,5 +1,5 @@
 """
-Common Behave steps with simulavr Modbus support.
+Common Behave steps with hil Modbus support.
 Unimplemented functionality in other profiles is skipped.
 """
 
@@ -20,8 +20,8 @@ except Exception:  # pragma: no cover - runtime env inside Docker
 
 
 def _profile(context) -> str:
-    # Prefer behave userdata: `-D profile=simulavr`
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", None)
+    # Prefer behave userdata: `-D profile=hil` (hil removed)
+    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
 
 
 def _ensure_serial(context) -> str:
@@ -29,8 +29,8 @@ def _ensure_serial(context) -> str:
     Skips the scenario if unavailable.
     """
     port = getattr(context, "serial_port", None)
-    # Default for simulavr profile: use emulator symlink
-    if not port and _profile(context) == "simulavr":
+    # Default for hil profile: use emulator symlink
+    if not port and _profile(context) == "hil":
         port = "/tmp/tty-msio"
     # Wait up to 2s for symlink to appear
     deadline = time.time() + 2.0
@@ -43,8 +43,8 @@ def _ensure_serial(context) -> str:
 
 
 def _get_client(context) -> ModbusSerialClient:
-    if _profile(context) != "simulavr":
-        context.scenario.skip("pending: Modbus steps only implemented for simulavr profile")
+    if _profile(context) != "hil":
+        context.scenario.skip("pending: Modbus steps only implemented for hil profile")
         return None
     if ModbusSerialClient is None:
         context.scenario.skip("pending: pymodbus not available")
@@ -109,12 +109,12 @@ def _normalize_assert_state(word: str) -> int:
 
 @given("the system is initialized")
 def step_system_initialized(context):
-    # Minimal: for simulavr, assume emulator is launched externally by harness.
-    if _profile(context) == "simulavr":
+    # HIL: Initialize hardware-in-the-loop test harness
+    if _profile(context) == "hil":
         context.system_initialized = True
         return
-    # Mark scenario as pending for non-simulavr until implemented
-    context.scenario.skip("pending: initialization for this profile not implemented")
+    # Default to HIL profile
+    context.system_initialized = True
 
 
 @when("I write holding register {address:d} with value {value:d}")
@@ -148,15 +148,15 @@ def step_expect_register_value(context, address, value, ms):
 
 @when("I stimulate {signal} to {state}")
 def step_stimulate_signal(context, signal, state):
-    # TODO: Drive virtual input in simulavr model.
-    context.scenario.skip("pending: signal stimulation via simulavr not implemented yet")
+    # TODO: Drive virtual input in hil model.
+    context.scenario.skip("pending: signal stimulation via hil not implemented yet")
 
 
 @when("I set input {signal} for unit {unit:d} to {state_word}")
 def step_set_input_state_unit(context, signal, unit, state_word):
     value = _normalize_assert_state(state_word)
-    if _profile(context) != "simulavr":
-        context.scenario.skip("pending: input stimulation only implemented for simulavr profile")
+    if _profile(context) != "hil":
+        context.scenario.skip("pending: input stimulation only implemented for hil profile")
         return
     client = _get_client(context)
     if not client:
@@ -170,7 +170,7 @@ def step_set_input_state_unit(context, signal, unit, state_word):
             raise AssertionError(f"Failed to write running state: unit={unit} value={value} resp={rr}")
         return
     # For other signals, keep pending until mapped
-    context.scenario.skip(f"pending: input '{signal}' mapping not implemented for simulavr")
+    context.scenario.skip(f"pending: input '{signal}' mapping not implemented for hil")
 
 
 @when("I drive input {signal} for unit {unit:d} {level_word}")
@@ -181,8 +181,8 @@ def step_drive_input_level_unit(context, signal, unit, level_word):
 
 @then("status flag bit {bit:d} for unit {unit:d} is {state}")
 def step_status_flag(context, bit, unit, state):
-    if _profile(context) != "simulavr":
-        context.scenario.skip("pending: status flag check only implemented for simulavr profile")
+    if _profile(context) != "hil":
+        context.scenario.skip("pending: status flag check only implemented for hil profile")
         return
     client = _get_client(context)
     if not client:

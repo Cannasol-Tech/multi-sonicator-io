@@ -1,7 +1,7 @@
         -:    0:Source:test_sonicator.c
         -:    0:Graph:test_sonicator.gcno
         -:    0:Data:test_sonicator.gcda
-        -:    0:Runs:6
+        -:    0:Runs:7
         -:    0:Programs:1
         -:    1:/**
         -:    2: * @file test_sonicator.c
@@ -77,249 +77,249 @@
         -:   72:static sonicator_t test_sonicator;
         -:   73:static sonicator_params_t test_params;
         -:   74:
-      108:   75:void setUp(void) {
+      126:   75:void setUp(void) {
         -:   76:    // Initialize test parameters
-      108:   77:    test_params.frequency_hz = 25000;
-      108:   78:    test_params.amplitude_percent = 50;
-      108:   79:    test_params.power_limit_watts = 100.0f;
-      108:   80:    test_params.timeout_ms = 5000;
+      126:   77:    test_params.frequency_hz = 25000;
+      126:   78:    test_params.amplitude_percent = 50;
+      126:   79:    test_params.power_limit_watts = 100.0f;
+      126:   80:    test_params.timeout_ms = 5000;
         -:   81:
         -:   82:    // Reset sonicator state
-      108:   83:    memset(&test_sonicator, 0, sizeof(test_sonicator));
-      108:   84:}
+      126:   83:    memset(&test_sonicator, 0, sizeof(test_sonicator));
+      126:   84:}
         -:   85:
-      108:   86:void tearDown(void) {
+      126:   86:void tearDown(void) {
         -:   87:    // Clean up after each test
-      108:   88:    sonicator_stop(&test_sonicator);
-      108:   89:}
+      126:   88:    sonicator_stop(&test_sonicator);
+      126:   89:}
         -:   90:
         -:   91:// ============================================================================
         -:   92:// SONICATOR INITIALIZATION TESTS
         -:   93:// ============================================================================
         -:   94:
-        6:   95:void test_sonicator_init_valid_params(void) {
-        6:   96:    sonicator_result_t result = sonicator_init(&test_sonicator, 1, &test_params);
+        7:   95:void test_sonicator_init_valid_params(void) {
+        7:   96:    sonicator_result_t result = sonicator_init(&test_sonicator, 1, &test_params);
         -:   97:
-        6:   98:    TEST_ASSERT_EQUAL(SONICATOR_OK, result);
-        6:   99:    TEST_ASSERT_TRUE(test_sonicator.initialized);
-        6:  100:    TEST_ASSERT_EQUAL(1, test_sonicator.id);
-        6:  101:    TEST_ASSERT_EQUAL(SONICATOR_STATE_IDLE, test_sonicator.state);
-        6:  102:    COVERAGE_MARK_FUNCTION(sonicator_init);
-        6:  103:}
+        7:   98:    TEST_ASSERT_EQUAL(SONICATOR_OK, result);
+        7:   99:    TEST_ASSERT_TRUE(test_sonicator.initialized);
+        7:  100:    TEST_ASSERT_EQUAL(1, test_sonicator.id);
+        7:  101:    TEST_ASSERT_EQUAL(SONICATOR_STATE_IDLE, test_sonicator.state);
+        7:  102:    COVERAGE_MARK_FUNCTION(sonicator_init);
+        7:  103:}
         -:  104:
-        6:  105:void test_sonicator_init_null_sonicator(void) {
-        6:  106:    sonicator_result_t result = sonicator_init(NULL, 1, &test_params);
-        6:  107:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_PARAM, result);
-        6:  108:    COVERAGE_MARK_BRANCH(1);
-        6:  109:}
+        7:  105:void test_sonicator_init_null_sonicator(void) {
+        7:  106:    sonicator_result_t result = sonicator_init(NULL, 1, &test_params);
+        7:  107:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_PARAM, result);
+        7:  108:    COVERAGE_MARK_BRANCH(1);
+        7:  109:}
         -:  110:
-        6:  111:void test_sonicator_init_null_params(void) {
-        6:  112:    sonicator_result_t result = sonicator_init(&test_sonicator, 1, NULL);
-        6:  113:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_PARAM, result);
-        6:  114:    COVERAGE_MARK_BRANCH(2);
-        6:  115:}
+        7:  111:void test_sonicator_init_null_params(void) {
+        7:  112:    sonicator_result_t result = sonicator_init(&test_sonicator, 1, NULL);
+        7:  113:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_PARAM, result);
+        7:  114:    COVERAGE_MARK_BRANCH(2);
+        7:  115:}
         -:  116:
-        6:  117:void test_sonicator_init_invalid_id(void) {
-        6:  118:    sonicator_result_t result = sonicator_init(&test_sonicator, 0, &test_params);
-        6:  119:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_ID, result);
+        7:  117:void test_sonicator_init_invalid_id(void) {
+        7:  118:    sonicator_result_t result = sonicator_init(&test_sonicator, 0, &test_params);
+        7:  119:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_ID, result);
         -:  120:
-        6:  121:    result = sonicator_init(&test_sonicator, 5, &test_params);
-        6:  122:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_ID, result);
-        6:  123:    COVERAGE_MARK_BRANCH(3);
-        6:  124:}
+        7:  121:    result = sonicator_init(&test_sonicator, 5, &test_params);
+        7:  122:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_ID, result);
+        7:  123:    COVERAGE_MARK_BRANCH(3);
+        7:  124:}
         -:  125:
-        6:  126:void test_sonicator_init_invalid_frequency(void) {
-        6:  127:    test_params.frequency_hz = 19999; // Below minimum
-        6:  128:    sonicator_result_t result = sonicator_init(&test_sonicator, 1, &test_params);
-        6:  129:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_FREQUENCY, result);
+        7:  126:void test_sonicator_init_invalid_frequency(void) {
+        7:  127:    test_params.frequency_hz = 19999; // Below minimum
+        7:  128:    sonicator_result_t result = sonicator_init(&test_sonicator, 1, &test_params);
+        7:  129:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_FREQUENCY, result);
         -:  130:
-        6:  131:    test_params.frequency_hz = 40001; // Above maximum
-        6:  132:    result = sonicator_init(&test_sonicator, 1, &test_params);
-        6:  133:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_FREQUENCY, result);
-        6:  134:    COVERAGE_MARK_BRANCH(4);
-        6:  135:}
+        7:  131:    test_params.frequency_hz = 40001; // Above maximum
+        7:  132:    result = sonicator_init(&test_sonicator, 1, &test_params);
+        7:  133:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_FREQUENCY, result);
+        7:  134:    COVERAGE_MARK_BRANCH(4);
+        7:  135:}
         -:  136:
-        6:  137:void test_sonicator_init_invalid_amplitude(void) {
-        6:  138:    test_params.amplitude_percent = 0; // Below minimum
-        6:  139:    sonicator_result_t result = sonicator_init(&test_sonicator, 1, &test_params);
-        6:  140:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_AMPLITUDE, result);
+        7:  137:void test_sonicator_init_invalid_amplitude(void) {
+        7:  138:    test_params.amplitude_percent = 0; // Below minimum
+        7:  139:    sonicator_result_t result = sonicator_init(&test_sonicator, 1, &test_params);
+        7:  140:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_AMPLITUDE, result);
         -:  141:
-        6:  142:    test_params.amplitude_percent = 101; // Above maximum
-        6:  143:    result = sonicator_init(&test_sonicator, 1, &test_params);
-        6:  144:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_AMPLITUDE, result);
-        6:  145:    COVERAGE_MARK_BRANCH(5);
-        6:  146:}
+        7:  142:    test_params.amplitude_percent = 101; // Above maximum
+        7:  143:    result = sonicator_init(&test_sonicator, 1, &test_params);
+        7:  144:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_AMPLITUDE, result);
+        7:  145:    COVERAGE_MARK_BRANCH(5);
+        7:  146:}
         -:  147:
         -:  148:// ============================================================================
         -:  149:// SONICATOR OPERATION TESTS
         -:  150:// ============================================================================
         -:  151:
-        6:  152:void test_sonicator_start_valid_operation(void) {
-        6:  153:    sonicator_init(&test_sonicator, 1, &test_params);
+        7:  152:void test_sonicator_start_valid_operation(void) {
+        7:  153:    sonicator_init(&test_sonicator, 1, &test_params);
         -:  154:
-        6:  155:    sonicator_result_t result = sonicator_start(&test_sonicator);
-        6:  156:    TEST_ASSERT_EQUAL(SONICATOR_OK, result);
-        6:  157:    TEST_ASSERT_EQUAL(SONICATOR_STATE_RUNNING, test_sonicator.state);
-        6:  158:    TEST_ASSERT_TRUE(test_sonicator.active);
-        6:  159:    COVERAGE_MARK_FUNCTION(sonicator_start);
-        6:  160:}
+        7:  155:    sonicator_result_t result = sonicator_start(&test_sonicator);
+        7:  156:    TEST_ASSERT_EQUAL(SONICATOR_OK, result);
+        7:  157:    TEST_ASSERT_EQUAL(SONICATOR_STATE_RUNNING, test_sonicator.state);
+        7:  158:    TEST_ASSERT_TRUE(test_sonicator.active);
+        7:  159:    COVERAGE_MARK_FUNCTION(sonicator_start);
+        7:  160:}
         -:  161:
-        6:  162:void test_sonicator_start_not_initialized(void) {
-        6:  163:    sonicator_result_t result = sonicator_start(&test_sonicator);
-        6:  164:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_NOT_INITIALIZED, result);
-        6:  165:    COVERAGE_MARK_BRANCH(6);
-        6:  166:}
+        7:  162:void test_sonicator_start_not_initialized(void) {
+        7:  163:    sonicator_result_t result = sonicator_start(&test_sonicator);
+        7:  164:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_NOT_INITIALIZED, result);
+        7:  165:    COVERAGE_MARK_BRANCH(6);
+        7:  166:}
         -:  167:
-        6:  168:void test_sonicator_start_already_running(void) {
-        6:  169:    sonicator_init(&test_sonicator, 1, &test_params);
-        6:  170:    sonicator_start(&test_sonicator);
+        7:  168:void test_sonicator_start_already_running(void) {
+        7:  169:    sonicator_init(&test_sonicator, 1, &test_params);
+        7:  170:    sonicator_start(&test_sonicator);
         -:  171:
         -:  172:    // Try to start again
-        6:  173:    sonicator_result_t result = sonicator_start(&test_sonicator);
-        6:  174:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_ALREADY_RUNNING, result);
-        6:  175:    COVERAGE_MARK_BRANCH(7);
-        6:  176:}
+        7:  173:    sonicator_result_t result = sonicator_start(&test_sonicator);
+        7:  174:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_ALREADY_RUNNING, result);
+        7:  175:    COVERAGE_MARK_BRANCH(7);
+        7:  176:}
         -:  177:
-        6:  178:void test_sonicator_stop_valid_operation(void) {
-        6:  179:    sonicator_init(&test_sonicator, 1, &test_params);
-        6:  180:    sonicator_start(&test_sonicator);
+        7:  178:void test_sonicator_stop_valid_operation(void) {
+        7:  179:    sonicator_init(&test_sonicator, 1, &test_params);
+        7:  180:    sonicator_start(&test_sonicator);
         -:  181:
-        6:  182:    sonicator_result_t result = sonicator_stop(&test_sonicator);
-        6:  183:    TEST_ASSERT_EQUAL(SONICATOR_OK, result);
-        6:  184:    TEST_ASSERT_EQUAL(SONICATOR_STATE_IDLE, test_sonicator.state);
-        6:  185:    TEST_ASSERT_FALSE(test_sonicator.active);
-        6:  186:    COVERAGE_MARK_FUNCTION(sonicator_stop);
-        6:  187:}
+        7:  182:    sonicator_result_t result = sonicator_stop(&test_sonicator);
+        7:  183:    TEST_ASSERT_EQUAL(SONICATOR_OK, result);
+        7:  184:    TEST_ASSERT_EQUAL(SONICATOR_STATE_IDLE, test_sonicator.state);
+        7:  185:    TEST_ASSERT_FALSE(test_sonicator.active);
+        7:  186:    COVERAGE_MARK_FUNCTION(sonicator_stop);
+        7:  187:}
         -:  188:
-        6:  189:void test_sonicator_stop_not_running(void) {
-        6:  190:    sonicator_init(&test_sonicator, 1, &test_params);
+        7:  189:void test_sonicator_stop_not_running(void) {
+        7:  190:    sonicator_init(&test_sonicator, 1, &test_params);
         -:  191:
-        6:  192:    sonicator_result_t result = sonicator_stop(&test_sonicator);
-        6:  193:    TEST_ASSERT_EQUAL(SONICATOR_OK, result); // Should be safe to stop when not running
-        6:  194:    COVERAGE_MARK_BRANCH(8);
-        6:  195:}
+        7:  192:    sonicator_result_t result = sonicator_stop(&test_sonicator);
+        7:  193:    TEST_ASSERT_EQUAL(SONICATOR_OK, result); // Should be safe to stop when not running
+        7:  194:    COVERAGE_MARK_BRANCH(8);
+        7:  195:}
         -:  196:
-        6:  197:void test_sonicator_set_frequency_valid_range(void) {
-        6:  198:    sonicator_init(&test_sonicator, 1, &test_params);
+        7:  197:void test_sonicator_set_frequency_valid_range(void) {
+        7:  198:    sonicator_init(&test_sonicator, 1, &test_params);
         -:  199:
-        6:  200:    sonicator_result_t result = sonicator_set_frequency(&test_sonicator, 30000);
-        6:  201:    TEST_ASSERT_EQUAL(SONICATOR_OK, result);
-        6:  202:    TEST_ASSERT_EQUAL(30000, test_sonicator.current_frequency_hz);
-        6:  203:    COVERAGE_MARK_FUNCTION(sonicator_set_frequency);
-        6:  204:}
+        7:  200:    sonicator_result_t result = sonicator_set_frequency(&test_sonicator, 30000);
+        7:  201:    TEST_ASSERT_EQUAL(SONICATOR_OK, result);
+        7:  202:    TEST_ASSERT_EQUAL(30000, test_sonicator.current_frequency_hz);
+        7:  203:    COVERAGE_MARK_FUNCTION(sonicator_set_frequency);
+        7:  204:}
         -:  205:
-        6:  206:void test_sonicator_set_frequency_invalid_range(void) {
-        6:  207:    sonicator_init(&test_sonicator, 1, &test_params);
+        7:  206:void test_sonicator_set_frequency_invalid_range(void) {
+        7:  207:    sonicator_init(&test_sonicator, 1, &test_params);
         -:  208:
-        6:  209:    sonicator_result_t result = sonicator_set_frequency(&test_sonicator, 19999);
-        6:  210:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_FREQUENCY, result);
+        7:  209:    sonicator_result_t result = sonicator_set_frequency(&test_sonicator, 19999);
+        7:  210:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_FREQUENCY, result);
         -:  211:
-        6:  212:    result = sonicator_set_frequency(&test_sonicator, 40001);
-        6:  213:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_FREQUENCY, result);
-        6:  214:    COVERAGE_MARK_BRANCH(9);
-        6:  215:}
+        7:  212:    result = sonicator_set_frequency(&test_sonicator, 40001);
+        7:  213:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_FREQUENCY, result);
+        7:  214:    COVERAGE_MARK_BRANCH(9);
+        7:  215:}
         -:  216:
-        6:  217:void test_sonicator_set_amplitude_valid_range(void) {
-        6:  218:    sonicator_init(&test_sonicator, 1, &test_params);
+        7:  217:void test_sonicator_set_amplitude_valid_range(void) {
+        7:  218:    sonicator_init(&test_sonicator, 1, &test_params);
         -:  219:
-        6:  220:    sonicator_result_t result = sonicator_set_amplitude(&test_sonicator, 75);
-        6:  221:    TEST_ASSERT_EQUAL(SONICATOR_OK, result);
-        6:  222:    TEST_ASSERT_EQUAL(75, test_sonicator.current_amplitude_percent);
-        6:  223:    COVERAGE_MARK_FUNCTION(sonicator_set_amplitude);
-        6:  224:}
+        7:  220:    sonicator_result_t result = sonicator_set_amplitude(&test_sonicator, 75);
+        7:  221:    TEST_ASSERT_EQUAL(SONICATOR_OK, result);
+        7:  222:    TEST_ASSERT_EQUAL(75, test_sonicator.current_amplitude_percent);
+        7:  223:    COVERAGE_MARK_FUNCTION(sonicator_set_amplitude);
+        7:  224:}
         -:  225:
-        6:  226:void test_sonicator_set_amplitude_invalid_range(void) {
-        6:  227:    sonicator_init(&test_sonicator, 1, &test_params);
+        7:  226:void test_sonicator_set_amplitude_invalid_range(void) {
+        7:  227:    sonicator_init(&test_sonicator, 1, &test_params);
         -:  228:
-        6:  229:    sonicator_result_t result = sonicator_set_amplitude(&test_sonicator, 0);
-        6:  230:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_AMPLITUDE, result);
+        7:  229:    sonicator_result_t result = sonicator_set_amplitude(&test_sonicator, 0);
+        7:  230:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_AMPLITUDE, result);
         -:  231:
-        6:  232:    result = sonicator_set_amplitude(&test_sonicator, 101);
-        6:  233:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_AMPLITUDE, result);
-        6:  234:    COVERAGE_MARK_BRANCH(10);
-        6:  235:}
+        7:  232:    result = sonicator_set_amplitude(&test_sonicator, 101);
+        7:  233:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_AMPLITUDE, result);
+        7:  234:    COVERAGE_MARK_BRANCH(10);
+        7:  235:}
         -:  236:
         -:  237:// ============================================================================
         -:  238:// SONICATOR STATUS TESTS
         -:  239:// ============================================================================
         -:  240:
-        6:  241:void test_sonicator_get_status_valid_operation(void) {
-        6:  242:    sonicator_init(&test_sonicator, 1, &test_params);
-        6:  243:    sonicator_start(&test_sonicator);
+        7:  241:void test_sonicator_get_status_valid_operation(void) {
+        7:  242:    sonicator_init(&test_sonicator, 1, &test_params);
+        7:  243:    sonicator_start(&test_sonicator);
         -:  244:
         -:  245:    sonicator_status_t status;
-        6:  246:    sonicator_result_t result = sonicator_get_status(&test_sonicator, &status);
+        7:  246:    sonicator_result_t result = sonicator_get_status(&test_sonicator, &status);
         -:  247:
-        6:  248:    TEST_ASSERT_EQUAL(SONICATOR_OK, result);
-        6:  249:    TEST_ASSERT_EQUAL(test_sonicator.id, status.id);
-        6:  250:    TEST_ASSERT_EQUAL(test_sonicator.state, status.state);
-        6:  251:    TEST_ASSERT_EQUAL(test_sonicator.current_frequency_hz, status.frequency_hz);
-        6:  252:    TEST_ASSERT_EQUAL(test_sonicator.current_amplitude_percent, status.amplitude_percent);
-        6:  253:    COVERAGE_MARK_FUNCTION(sonicator_get_status);
-        6:  254:}
+        7:  248:    TEST_ASSERT_EQUAL(SONICATOR_OK, result);
+        7:  249:    TEST_ASSERT_EQUAL(test_sonicator.id, status.id);
+        7:  250:    TEST_ASSERT_EQUAL(test_sonicator.state, status.state);
+        7:  251:    TEST_ASSERT_EQUAL(test_sonicator.current_frequency_hz, status.frequency_hz);
+        7:  252:    TEST_ASSERT_EQUAL(test_sonicator.current_amplitude_percent, status.amplitude_percent);
+        7:  253:    COVERAGE_MARK_FUNCTION(sonicator_get_status);
+        7:  254:}
         -:  255:
-        6:  256:void test_sonicator_get_status_null_params(void) {
-        6:  257:    sonicator_init(&test_sonicator, 1, &test_params);
+        7:  256:void test_sonicator_get_status_null_params(void) {
+        7:  257:    sonicator_init(&test_sonicator, 1, &test_params);
         -:  258:
-        6:  259:    sonicator_result_t result = sonicator_get_status(&test_sonicator, NULL);
-        6:  260:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_PARAM, result);
+        7:  259:    sonicator_result_t result = sonicator_get_status(&test_sonicator, NULL);
+        7:  260:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_PARAM, result);
         -:  261:
         -:  262:    sonicator_status_t status;
-        6:  263:    result = sonicator_get_status(NULL, &status);
-        6:  264:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_PARAM, result);
-        6:  265:    COVERAGE_MARK_BRANCH(11);
-        6:  266:}
+        7:  263:    result = sonicator_get_status(NULL, &status);
+        7:  264:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_INVALID_PARAM, result);
+        7:  265:    COVERAGE_MARK_BRANCH(11);
+        7:  266:}
         -:  267:
         -:  268:// ============================================================================
         -:  269:// POWER MANAGEMENT TESTS
         -:  270:// ============================================================================
         -:  271:
-        6:  272:void test_sonicator_power_limit_enforcement(void) {
-        6:  273:    sonicator_init(&test_sonicator, 1, &test_params);
-        6:  274:    sonicator_start(&test_sonicator);
+        7:  272:void test_sonicator_power_limit_enforcement(void) {
+        7:  273:    sonicator_init(&test_sonicator, 1, &test_params);
+        7:  274:    sonicator_start(&test_sonicator);
         -:  275:
         -:  276:    // Simulate power measurement exceeding limit
-        6:  277:    test_sonicator.current_power_watts = 105.0f; // Above 100W limit
+        7:  277:    test_sonicator.current_power_watts = 105.0f; // Above 100W limit
         -:  278:
-        6:  279:    sonicator_result_t result = sonicator_check_power_limit(&test_sonicator);
-        6:  280:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_POWER_LIMIT, result);
-        6:  281:    COVERAGE_MARK_FUNCTION(sonicator_check_power_limit);
-        6:  282:}
+        7:  279:    sonicator_result_t result = sonicator_check_power_limit(&test_sonicator);
+        7:  280:    TEST_ASSERT_EQUAL(SONICATOR_ERROR_POWER_LIMIT, result);
+        7:  281:    COVERAGE_MARK_FUNCTION(sonicator_check_power_limit);
+        7:  282:}
         -:  283:
         -:  284:// ============================================================================
         -:  285:// MAIN TEST RUNNER
         -:  286:// ============================================================================
         -:  287:
-        6:  288:int main(void) {
-        6:  289:    UNITY_BEGIN();
+        7:  288:int main(void) {
+        7:  289:    UNITY_BEGIN();
         -:  290:
         -:  291:    // Initialization Tests
-        6:  292:    RUN_TEST(test_sonicator_init_valid_params);
-        6:  293:    RUN_TEST(test_sonicator_init_null_sonicator);
-        6:  294:    RUN_TEST(test_sonicator_init_null_params);
-        6:  295:    RUN_TEST(test_sonicator_init_invalid_id);
-        6:  296:    RUN_TEST(test_sonicator_init_invalid_frequency);
-        6:  297:    RUN_TEST(test_sonicator_init_invalid_amplitude);
+        7:  292:    RUN_TEST(test_sonicator_init_valid_params);
+        7:  293:    RUN_TEST(test_sonicator_init_null_sonicator);
+        7:  294:    RUN_TEST(test_sonicator_init_null_params);
+        7:  295:    RUN_TEST(test_sonicator_init_invalid_id);
+        7:  296:    RUN_TEST(test_sonicator_init_invalid_frequency);
+        7:  297:    RUN_TEST(test_sonicator_init_invalid_amplitude);
         -:  298:
         -:  299:    // Operation Tests
-        6:  300:    RUN_TEST(test_sonicator_start_valid_operation);
-        6:  301:    RUN_TEST(test_sonicator_start_not_initialized);
-        6:  302:    RUN_TEST(test_sonicator_start_already_running);
-        6:  303:    RUN_TEST(test_sonicator_stop_valid_operation);
-        6:  304:    RUN_TEST(test_sonicator_stop_not_running);
-        6:  305:    RUN_TEST(test_sonicator_set_frequency_valid_range);
-        6:  306:    RUN_TEST(test_sonicator_set_frequency_invalid_range);
-        6:  307:    RUN_TEST(test_sonicator_set_amplitude_valid_range);
-        6:  308:    RUN_TEST(test_sonicator_set_amplitude_invalid_range);
+        7:  300:    RUN_TEST(test_sonicator_start_valid_operation);
+        7:  301:    RUN_TEST(test_sonicator_start_not_initialized);
+        7:  302:    RUN_TEST(test_sonicator_start_already_running);
+        7:  303:    RUN_TEST(test_sonicator_stop_valid_operation);
+        7:  304:    RUN_TEST(test_sonicator_stop_not_running);
+        7:  305:    RUN_TEST(test_sonicator_set_frequency_valid_range);
+        7:  306:    RUN_TEST(test_sonicator_set_frequency_invalid_range);
+        7:  307:    RUN_TEST(test_sonicator_set_amplitude_valid_range);
+        7:  308:    RUN_TEST(test_sonicator_set_amplitude_invalid_range);
         -:  309:
         -:  310:    // Status Tests
-        6:  311:    RUN_TEST(test_sonicator_get_status_valid_operation);
-        6:  312:    RUN_TEST(test_sonicator_get_status_null_params);
+        7:  311:    RUN_TEST(test_sonicator_get_status_valid_operation);
+        7:  312:    RUN_TEST(test_sonicator_get_status_null_params);
         -:  313:
         -:  314:    // Power Management Tests
-        6:  315:    RUN_TEST(test_sonicator_power_limit_enforcement);
+        7:  315:    RUN_TEST(test_sonicator_power_limit_enforcement);
         -:  316:
-        6:  317:    return UNITY_END();
+        7:  317:    return UNITY_END();
         -:  318:}
         -:  319:
         -:  320:#endif // UNIT_TEST
