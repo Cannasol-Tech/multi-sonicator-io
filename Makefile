@@ -9,7 +9,7 @@
 .PHONY: acceptance-test-pwm acceptance-test-modbus acceptance-test-power generate-release-artifacts test-integration
 .PHONY: test-unit-communication test-unit-hal test-unit-control test-unit-sonicator validate-config generate-traceability-report manage-pending-scenarios update-pending-scenarios ci-local
 .PHONY: web-ui-install web-ui-dev web-ui-build web-ui-sandbox web-ui-test web-ui-clean
-.PHONY: validate-traceability check-compliance generate-executive-report generate-coverage-report
+.PHONY: validate-traceability check-compliance generate-executive-report generate-coverage-report generate-complete-executive-report
 
 #  Make Targets
 
@@ -332,6 +332,17 @@ generate-coverage-report: check-deps
 		--input=coverage/coverage.json \
 		--output=final/coverage-summary.json
 	@echo "✅ Coverage report generated in final/"
+
+# Generate complete executive report (manual testing with acceptance results)
+generate-complete-executive-report: check-deps
+	@echo "📊 Generating complete executive report (unit + acceptance)..."
+	@mkdir -p final
+	@python3 scripts/generate_complete_executive_report.py \
+		--unit-results=final/executive-report.json \
+		--acceptance-results=final/acceptance-report.json \
+		--output=final
+	@echo "✅ Complete executive report generated in final/"
+	@echo "📋 Note: Ensure acceptance tests have been run manually and acceptance-report.json exists"
 
 ## Web UI Related Make Targets
 

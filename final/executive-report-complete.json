@@ -4,14 +4,14 @@
   "repo": "multi-sonicator-io",
   "releaseTag": "v0.0.0-dev",
   "commit": "9d7b4e5",
-  "createdAt": "2025-09-05T20:48:41.463528Z",
-  "testType": "unit-only",
+  "createdAt": "2025-09-05T20:47:56.813859Z",
+  "testType": "complete-manual",
   "summary": {
-    "total": 4,
-    "passed": 2,
-    "failed": 2,
+    "total": 12,
+    "passed": 9,
+    "failed": 3,
     "skipped": 0,
-    "durationMs": 4000
+    "durationMs": 49000
   },
   "scenarios": [
     {
@@ -101,6 +101,77 @@
           "durationMs": 500
         }
       ]
+    },
+    {
+      "name": "Sonicator power control via MODBUS",
+      "feature": "MODBUS Communication",
+      "status": "passed",
+      "durationMs": 5000,
+      "tags": [
+        "@modbus",
+        "@acceptance"
+      ],
+      "steps": [
+        {
+          "name": "Connect to MODBUS interface",
+          "status": "passed",
+          "durationMs": 1000
+        },
+        {
+          "name": "Send power on command",
+          "status": "passed",
+          "durationMs": 2000
+        },
+        {
+          "name": "Verify sonicator activation",
+          "status": "passed",
+          "durationMs": 2000
+        }
+      ]
+    },
+    {
+      "name": "Frequency control validation",
+      "feature": "Frequency Control",
+      "status": "passed",
+      "durationMs": 6000,
+      "tags": [
+        "@frequency",
+        "@acceptance"
+      ],
+      "steps": [
+        {
+          "name": "Set frequency to 40kHz",
+          "status": "passed",
+          "durationMs": 2000
+        },
+        {
+          "name": "Measure actual frequency",
+          "status": "passed",
+          "durationMs": 4000
+        }
+      ]
+    },
+    {
+      "name": "Emergency stop functionality",
+      "feature": "Safety Controls",
+      "status": "failed",
+      "durationMs": 3000,
+      "tags": [
+        "@safety",
+        "@acceptance"
+      ],
+      "steps": [
+        {
+          "name": "Trigger emergency stop",
+          "status": "passed",
+          "durationMs": 1000
+        },
+        {
+          "name": "Verify immediate shutdown",
+          "status": "failed",
+          "durationMs": 2000
+        }
+      ]
     }
   ],
   "requirements": [
@@ -135,6 +206,46 @@
       "scenarios": [
         "Unit Test Coverage - sonicator"
       ]
+    },
+    {
+      "id": "REQ-MODBUS-001",
+      "title": "MODBUS Communication Interface",
+      "status": "covered",
+      "scenarios": [
+        "Sonicator power control via MODBUS"
+      ]
+    },
+    {
+      "id": "REQ-FREQ-001",
+      "title": "Frequency Control",
+      "status": "covered",
+      "scenarios": [
+        "Frequency control validation"
+      ]
+    },
+    {
+      "id": "REQ-SAFETY-001",
+      "title": "Emergency Stop",
+      "status": "failed",
+      "scenarios": [
+        "Emergency stop functionality"
+      ]
     }
-  ]
+  ],
+  "testBreakdown": {
+    "unit": {
+      "total": 4,
+      "passed": 2,
+      "failed": 2,
+      "skipped": 0,
+      "durationMs": 4000
+    },
+    "acceptance": {
+      "total": 8,
+      "passed": 7,
+      "failed": 1,
+      "skipped": 0,
+      "durationMs": 45000
+    }
+  }
 }
