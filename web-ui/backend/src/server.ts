@@ -4,6 +4,7 @@ import { WebSocketServer } from 'ws'
 import cors from 'cors'
 import { HardwareInterface } from './adapters/HardwareInterface.js'
 import { WebSocketHandler } from './websocket/WebSocketHandler.js'
+import { TestAutomationService } from './services/TestAutomationService.js'
 import { setupRoutes } from './routes/index.js'
 
 const app = express()
@@ -20,11 +21,14 @@ app.use(express.json())
 // Initialize hardware interface
 const hardwareInterface = new HardwareInterface()
 
+// Initialize test automation service
+const testAutomationService = new TestAutomationService()
+
 // Setup routes
-setupRoutes(app, hardwareInterface)
+setupRoutes(app, hardwareInterface, testAutomationService)
 
 // Setup WebSocket handling
-const wsHandler = new WebSocketHandler(hardwareInterface)
+const wsHandler = new WebSocketHandler(hardwareInterface, testAutomationService)
 wss.on('connection', (ws, request) => {
   console.log('New WebSocket connection from:', request.socket.remoteAddress)
   wsHandler.handleConnection(ws)

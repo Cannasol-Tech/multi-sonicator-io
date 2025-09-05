@@ -6,7 +6,7 @@ Web-based interface for the Arduino Test Harness providing interactive testing c
 
 ## Architecture
 
-```
+```markdown
 web-ui/
 ├── frontend/              # React + TypeScript + Vite
 │   ├── src/

@@ -84,7 +84,7 @@ export interface ATmega32ADUT {
 }
 
 export interface WebSocketMessage {
-  type: 'pin_update' | 'connection_status' | 'error' | 'command_response';
+  type: 'pin_update' | 'connection_status' | 'error' | 'command_response' | 'test_progress' | 'test_complete' | 'test_error' | 'test_stopped' | 'initial_state';
   data: any;
   timestamp: number;
 }
@@ -114,4 +114,48 @@ export interface TestSequence {
   description: string;
   steps: HardwareCommand[];
   expectedResults?: any[];
+}
+
+// Test Automation Types
+export interface TestStep {
+  step_type: string;
+  description: string;
+  status: 'pending' | 'running' | 'passed' | 'failed' | 'skipped' | 'error';
+  duration_ms?: number;
+  error_message?: string;
+  pin_interactions: string[];
+}
+
+export interface TestScenario {
+  name: string;
+  description: string;
+  feature_file: string;
+  feature_name?: string;
+  tags: string[];
+  steps: TestStep[];
+  status: 'pending' | 'running' | 'passed' | 'failed' | 'skipped' | 'error';
+  duration_ms?: number;
+  error_message?: string;
+}
+
+export interface TestExecution {
+  execution_id: string;
+  scenarios: TestScenario[];
+  status: 'pending' | 'running' | 'passed' | 'failed' | 'skipped' | 'error';
+  start_time?: number;
+  end_time?: number;
+  total_scenarios: number;
+  passed_scenarios: number;
+  failed_scenarios: number;
+  current_scenario_index: number;
+}
+
+export interface TestAutomationState {
+  availableScenarios: TestScenario[];
+  availableTags: string[];
+  availableFeatures: string[];
+  currentExecution: TestExecution | null;
+  isExecutionInProgress: boolean;
+  selectedScenarios: string[];
+  filterTags: string[];
 }

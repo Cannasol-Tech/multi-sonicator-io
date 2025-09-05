@@ -3,6 +3,7 @@ import { HardwareState } from '../types'
 interface HardwareDiagramProps {
   hardwareState: HardwareState
   onPinClick: (pin: string, action: string, value?: any) => void
+  highlightedPins?: string[]
 }
 
 // Pin connection mapping based on pin-matrix.md (SOLE SOURCE OF TRUTH)
@@ -19,7 +20,7 @@ const PIN_CONNECTIONS = [
   { arduino: 'D12', atmega: 'PD2', signal: 'STATUS_LED', direction: 'OUT', description: 'Status LED' }
 ]
 
-export default function HardwareDiagram({ hardwareState, onPinClick }: HardwareDiagramProps) {
+export default function HardwareDiagram({ hardwareState, onPinClick, highlightedPins = [] }: HardwareDiagramProps) {
   const handlePinClick = (signal: string, currentState: any) => {
     const pinState = hardwareState.pins[signal]
     if (!pinState) return
@@ -208,14 +209,20 @@ export default function HardwareDiagram({ hardwareState, onPinClick }: HardwareD
         }}>
           <h4 className="text-center font-semibold mb-2">Pin Connections</h4>
           
-          {Object.entries(hardwareState.pins).map(([signal, pinState]) => (
-            <div 
-              key={signal}
-              className={`pin-state ${getPinStateClass(pinState.state)}`}
-              onClick={() => handlePinClick(signal, pinState.state)}
-              style={{ cursor: 'pointer' }}
-              title={`${pinState.description || ''}\nClick to ${pinState.direction === 'IN' ? 'toggle' : 'read'}`}
-            >
+          {Object.entries(hardwareState.pins).map(([signal, pinState]) => {
+            const isHighlighted = highlightedPins.includes(signal)
+            return (
+              <div
+                key={signal}
+                className={`pin-state ${getPinStateClass(pinState.state)} ${isHighlighted ? 'highlighted' : ''}`}
+                onClick={() => handlePinClick(signal, pinState.state)}
+                style={{
+                  cursor: 'pointer',
+                  boxShadow: isHighlighted ? '0 0 8px rgba(59, 130, 246, 0.6)' : undefined,
+                  border: isHighlighted ? '2px solid #3b82f6' : undefined
+                }}
+                title={`${pinState.description || ''}\nClick to ${pinState.direction === 'IN' ? 'toggle' : 'read'}`}
+              >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="font-mono text-xs">{pinState.pin}</span>
@@ -236,7 +243,8 @@ export default function HardwareDiagram({ hardwareState, onPinClick }: HardwareD
                 </div>
               </div>
             </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* ATmega32A DUT */}

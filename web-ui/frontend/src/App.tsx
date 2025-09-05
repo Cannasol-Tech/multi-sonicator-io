@@ -1,17 +1,29 @@
 import { useState, useEffect } from 'react'
 import HardwareDiagram from './components/HardwareDiagram'
 import ControlPanel from './components/ControlPanel'
+import TestAutomationPanel from './components/TestAutomationPanel'
+import TestExecutionIndicator from './components/TestExecutionIndicator'
 import Header from './components/Header'
 import HelpSystem from './components/HelpSystem'
 import { useWebSocket } from './hooks/useWebSocket'
 import { useHardwareState } from './hooks/useHardwareState'
 import { usePinHistory } from './hooks/usePinHistory'
+import { useTestAutomation } from './hooks/useTestAutomation'
 
 function App() {
   const [helpVisible, setHelpVisible] = useState(false)
+  const [highlightedPins, setHighlightedPins] = useState<string[]>([])
+  const [activeTab, setActiveTab] = useState<'hardware' | 'testing'>('hardware')
+  const [currentTestExecution, setCurrentTestExecution] = useState<any>(null)
+
   const { connected, sendMessage, lastMessage } = useWebSocket('ws://localhost:3001/ws')
   const { hardwareState, updatePinState, updateMultiplePins, setConnectionStatus } = useHardwareState()
   const { addHistoryEntry } = usePinHistory()
+  const {
+    updateExecutionProgress,
+    handleExecutionComplete,
+    handleExecutionError
+  } = useTestAutomation()
 
   // Handle WebSocket messages
   useEffect(() => {
@@ -49,8 +61,31 @@ function App() {
       case 'error':
         console.error('Hardware error:', lastMessage.data.error)
         break
+
+      case 'test_progress':
+        // Update test execution progress
+        updateExecutionProgress(lastMessage.data)
+        setCurrentTestExecution(lastMessage.data)
+        break
+
+      case 'test_complete':
+        // Handle test execution completion
+        handleExecutionComplete(lastMessage.data)
+        setCurrentTestExecution(lastMessage.data)
+        break
+
+      case 'test_error':
+        // Handle test execution error
+        handleExecutionError(lastMessage.data.error)
+        break
+
+      case 'test_stopped':
+        // Handle test execution stopped
+        handleExecutionComplete(lastMessage.data)
+        setCurrentTestExecution(lastMessage.data)
+        break
     }
-  }, [lastMessage, updatePinState, updateMultiplePins, setConnectionStatus])
+  }, [lastMessage, updatePinState, updateMultiplePins, setConnectionStatus, updateExecutionProgress, handleExecutionComplete, handleExecutionError])
 
   // Update connection status when WebSocket connection changes
   useEffect(() => {
@@ -84,22 +119,60 @@ function App() {
       
       <main className="app-main">
         <div className="app-content">
-          <HardwareDiagram 
+          <HardwareDiagram
             hardwareState={hardwareState}
             onPinClick={handlePinControl}
+            highlightedPins={highlightedPins}
           />
         </div>
-        
-        <ControlPanel
-          hardwareState={hardwareState}
-          onPinControl={handlePinControl}
-          connected={connected}
-        />
+
+        <div className="control-panel">
+          {/* Tab Navigation */}
+          <div className="tab-navigation">
+            <button
+              className={`tab-button ${activeTab === 'hardware' ? 'active' : ''}`}
+              onClick={() => setActiveTab('hardware')}
+            >
+              🔧 Hardware Control
+            </button>
+            <button
+              className={`tab-button ${activeTab === 'testing' ? 'active' : ''}`}
+              onClick={() => setActiveTab('testing')}
+            >
+              🧪 Test Automation
+            </button>
+          </div>
+
+          {/* Tab Content */}
+          <div className="tab-content">
+            {activeTab === 'hardware' && (
+              <ControlPanel
+                hardwareState={hardwareState}
+                onPinControl={handlePinControl}
+                connected={connected}
+              />
+            )}
+
+            {activeTab === 'testing' && (
+              <TestAutomationPanel
+                onPinHighlight={setHighlightedPins}
+                onTestProgress={(execution) => {
+                  console.log('Test progress:', execution)
+                }}
+              />
+            )}
+          </div>
+        </div>
       </main>
 
       <HelpSystem
         visible={helpVisible}
         onClose={() => setHelpVisible(false)}
+      />
+
+      <TestExecutionIndicator
+        execution={currentTestExecution}
+        visible={currentTestExecution !== null}
       />
     </div>
   )

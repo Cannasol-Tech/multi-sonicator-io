@@ -1,5 +1,6 @@
 import { WebSocket } from 'ws'
 import { HardwareInterface } from '../adapters/HardwareInterface.js'
+import { TestAutomationService } from '../services/TestAutomationService.js'
 
 export interface WebSocketMessage {
   type: string
@@ -10,10 +11,13 @@ export interface WebSocketMessage {
 export class WebSocketHandler {
   private clients: Set<WebSocket> = new Set()
   private hardwareInterface: HardwareInterface
+  private testAutomationService?: TestAutomationService
 
-  constructor(hardwareInterface: HardwareInterface) {
+  constructor(hardwareInterface: HardwareInterface, testAutomationService?: TestAutomationService) {
     this.hardwareInterface = hardwareInterface
+    this.testAutomationService = testAutomationService
     this.setupHardwareListeners()
+    this.setupTestAutomationListeners()
   }
 
   private setupHardwareListeners() {
@@ -46,6 +50,48 @@ export class WebSocketHandler {
       this.broadcast({
         type: 'error',
         data: { error },
+        timestamp: Date.now()
+      })
+    })
+  }
+
+  private setupTestAutomationListeners() {
+    if (!this.testAutomationService) {
+      return
+    }
+
+    // Listen for test execution progress updates
+    this.testAutomationService.on('progress_update', (execution) => {
+      this.broadcast({
+        type: 'test_progress',
+        data: execution,
+        timestamp: Date.now()
+      })
+    })
+
+    // Listen for test execution completion
+    this.testAutomationService.on('execution_complete', (execution) => {
+      this.broadcast({
+        type: 'test_complete',
+        data: execution,
+        timestamp: Date.now()
+      })
+    })
+
+    // Listen for test execution errors
+    this.testAutomationService.on('execution_error', (error) => {
+      this.broadcast({
+        type: 'test_error',
+        data: { error },
+        timestamp: Date.now()
+      })
+    })
+
+    // Listen for test execution stopped
+    this.testAutomationService.on('execution_stopped', (execution) => {
+      this.broadcast({
+        type: 'test_stopped',
+        data: execution,
         timestamp: Date.now()
       })
     })
@@ -86,7 +132,9 @@ export class WebSocketHandler {
       data: {
         connected: this.hardwareInterface.isConnected(),
         port: this.hardwareInterface.getSerialPort(),
-        pins: Object.fromEntries(this.hardwareInterface.getPinStates())
+        pins: Object.fromEntries(this.hardwareInterface.getPinStates()),
+        test_execution: this.testAutomationService?.getCurrentExecution() || null,
+        test_in_progress: this.testAutomationService?.isExecutionInProgress() || false
       },
       timestamp: Date.now()
     }
