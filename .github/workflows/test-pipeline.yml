@@ -40,10 +40,10 @@ jobs:
       run: |
         python3 scripts/manage_pending_scenarios.py
 
-  # Unit testing job
+  # Unit testing job - Updated to use make ci
   unit-tests:
     runs-on: ubuntu-latest
-    name: Unit Tests (Unity Framework)
+    name: CI Pipeline (Unit Tests Only)
     needs: validate-config
     
     steps:
@@ -68,24 +68,18 @@ jobs:
     - name: Install PlatformIO
       run: |
         pip install platformio
-        pio pkg install --library "throwtheswitch/Unity@^2.5.2"
         
-    - name: Run unit tests with coverage
+    - name: Run CI Pipeline
       run: |
-        make test-unit
+        make ci
         
-    - name: Generate coverage reports
-      run: |
-        make generate-traceability-report
-        
-    - name: Upload coverage reports
+    - name: Upload CI reports
       uses: actions/upload-artifact@v3
       with:
-        name: coverage-reports
+        name: ci-reports
         path: |
           coverage/
-          !coverage/*.gcda
-          !coverage/*.gcno
+          final/
         retention-days: 30
         
     - name: Check coverage requirement
@@ -103,10 +97,12 @@ jobs:
             print('✅ Coverage requirement met (≥90%)')
         "
 
-  # Acceptance testing job (mock HIL for CI)
-  acceptance-tests:
+  # Acceptance testing job (REMOVED - Manual Only)
+  # Acceptance tests are now run manually only as per issue requirements
+  # This job has been removed to ensure CI pipeline only runs unit tests
+  validate-acceptance-syntax:
     runs-on: ubuntu-latest
-    name: Acceptance Tests (BDD Mock)
+    name: Validate BDD Syntax (No Execution)
     needs: validate-config
     
     steps:
@@ -123,20 +119,20 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements-testing.txt
         
-    - name: Run BDD syntax validation
+    - name: Validate BDD syntax only (no execution)
       run: |
-        # Validate BDD syntax without hardware
+        # Only validate BDD syntax without hardware execution
         cd test/acceptance
-        behave --dry-run --tags="not @hil" features/
+        behave --dry-run features/
         
     - name: Generate BDD scenario report
       run: |
         python3 scripts/manage_pending_scenarios.py
         
-    - name: Upload BDD reports
+    - name: Upload BDD validation reports
       uses: actions/upload-artifact@v3
       with:
-        name: bdd-reports
+        name: bdd-validation-reports
         path: |
           test/acceptance/logs/
           test/acceptance/pending_scenarios.yaml
@@ -146,7 +142,7 @@ jobs:
   integration-report:
     runs-on: ubuntu-latest
     name: Integration Report
-    needs: [unit-tests, acceptance-tests]
+    needs: [unit-tests, validate-acceptance-syntax]
     if: always()
     
     steps:
@@ -163,17 +159,17 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements-testing.txt
         
-    - name: Download coverage reports
+    - name: Download CI reports
       uses: actions/download-artifact@v3
       with:
-        name: coverage-reports
-        path: coverage/
+        name: ci-reports
+        path: ./
       continue-on-error: true
         
-    - name: Download BDD reports
+    - name: Download BDD validation reports
       uses: actions/download-artifact@v3
       with:
-        name: bdd-reports
+        name: bdd-validation-reports
         path: test/acceptance/
       continue-on-error: true
         
@@ -192,7 +188,7 @@ jobs:
         
     - name: Create test summary
       run: |
-        echo "## 🧪 Test Pipeline Summary" >> $GITHUB_STEP_SUMMARY
+        echo "## 🧪 CI Pipeline Summary (Unit Tests Only)" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         
         if [ -f "coverage/coverage.json" ]; then
@@ -200,20 +196,32 @@ jobs:
           echo "### Unit Tests" >> $GITHUB_STEP_SUMMARY
           echo "- **Coverage**: $COVERAGE" >> $GITHUB_STEP_SUMMARY
           echo "- **Framework**: Unity Test Framework" >> $GITHUB_STEP_SUMMARY
+          echo "- **Pipeline**: CI runs unit tests only" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ -f "final/executive-report.json" ]; then
+          echo "### Executive Report" >> $GITHUB_STEP_SUMMARY
+          echo "- **Generated**: ✅ Available in artifacts" >> $GITHUB_STEP_SUMMARY
+          echo "- **Type**: Unit tests only (CI pipeline)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
         fi
         
         if [ -f "test/acceptance/pending_scenarios.yaml" ]; then
           echo "### Acceptance Tests" >> $GITHUB_STEP_SUMMARY
           echo "- **Framework**: Behave BDD" >> $GITHUB_STEP_SUMMARY
-          echo "- **Status**: Syntax validated" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status**: Syntax validated only" >> $GITHUB_STEP_SUMMARY
+          echo "- **Execution**: Manual only (not run in CI)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
         fi
         
         echo "### Reports Generated" >> $GITHUB_STEP_SUMMARY
+        echo "- Executive report (unit tests only)" >> $GITHUB_STEP_SUMMARY
         echo "- Coverage reports (HTML/JSON)" >> $GITHUB_STEP_SUMMARY
-        echo "- Traceability matrix" >> $GITHUB_STEP_SUMMARY
-        echo "- BDD scenario analysis" >> $GITHUB_STEP_SUMMARY
+        echo "- Unit test summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Note" >> $GITHUB_STEP_SUMMARY
+        echo "**Acceptance tests are now run manually only.** This CI pipeline focuses on unit tests for faster feedback and hardware independence." >> $GITHUB_STEP_SUMMARY
 
   # Hardware-in-the-loop testing (only on self-hosted runners with hardware)
   hil-tests:
