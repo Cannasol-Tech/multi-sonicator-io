@@ -1,0 +1,226 @@
+name: Traceability Compliance Validation
+
+on:
+  push:
+    branches: [ master, main, develop ]
+    paths:
+      - 'docs/prd-shards/**'
+      - 'test/acceptance/features/**'
+      - 'docs/Requirements/**'
+      - 'include/config.h'
+  pull_request:
+    branches: [ master, main ]
+    paths:
+      - 'docs/prd-shards/**'
+      - 'test/acceptance/features/**'
+      - 'docs/Requirements/**'
+      - 'include/config.h'
+  schedule:
+    # Run daily at 6 AM UTC to catch drift
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      strict_mode:
+        description: 'Enable strict compliance mode (fail on warnings)'
+        required: false
+        default: 'false'
+        type: boolean
+
+env:
+  PYTHON_VERSION: '3.9'
+
+jobs:
+  validate-traceability:
+    name: Validate PRD-to-Test Traceability
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Full history for drift analysis
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml
+        if [ -f requirements-testing.txt ]; then
+          pip install -r requirements-testing.txt
+        fi
+    
+    - name: Run traceability compliance validation
+      id: validation
+      run: |
+        echo "🚀 Running traceability compliance validation..."
+        python scripts/validate_traceability_compliance.py
+      continue-on-error: true
+    
+    - name: Generate traceability report
+      if: always()
+      run: |
+        echo "📊 Generating comprehensive traceability report..."
+        python scripts/generate_traceability_report.py --audit --ci-mode
+    
+    - name: Upload compliance artifacts
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: traceability-compliance-report
+        path: |
+          coverage/traceability_compliance.json
+          coverage/traceability_compliance_report.md
+          coverage/traceability_report.json
+          coverage/traceability_report.html
+        retention-days: 30
+    
+    - name: Check for critical compliance failures
+      if: always()
+      run: |
+        if [ -f coverage/traceability_compliance.json ]; then
+          COMPLIANCE_STATUS=$(python -c "
+          import json
+          with open('coverage/traceability_compliance.json', 'r') as f:
+              data = json.load(f)
+          print(data.get('compliance_status', 'UNKNOWN'))
+          ")
+          
+          echo "Compliance Status: $COMPLIANCE_STATUS"
+          
+          if [[ "$COMPLIANCE_STATUS" == *"FAILED"* ]]; then
+            echo "❌ CRITICAL: Traceability compliance validation FAILED!"
+            echo "This indicates missing PRD-to-test mappings or critical drift."
+            exit 1
+          elif [[ "$COMPLIANCE_STATUS" == *"CONCERNS"* ]] && [[ "${{ inputs.strict_mode }}" == "true" ]]; then
+            echo "⚠️ WARNING: Compliance concerns detected in strict mode!"
+            exit 1
+          else
+            echo "✅ Traceability compliance validation passed!"
+          fi
+        else
+          echo "❌ ERROR: Compliance validation did not generate results!"
+          exit 1
+        fi
+    
+    - name: Comment PR with compliance status
+      if: github.event_name == 'pull_request' && always()
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          
+          let reportContent = '## 🔍 Traceability Compliance Report\n\n';
+          
+          try {
+            const complianceData = JSON.parse(fs.readFileSync('coverage/traceability_compliance.json', 'utf8'));
+            const status = complianceData.compliance_status;
+            const prdCoverage = complianceData.prd_coverage.coverage_percentage;
+            const criticalPending = complianceData.test_coverage.critical_pending;
+            const driftScore = complianceData.drift_analysis.drift_score;
+            
+            reportContent += `**Status:** ${status}\n`;
+            reportContent += `**PRD Coverage:** ${prdCoverage.toFixed(1)}%\n`;
+            reportContent += `**Critical Pending Tests:** ${criticalPending}\n`;
+            reportContent += `**Drift Score:** ${driftScore}\n\n`;
+            
+            if (complianceData.critical_failures.length > 0) {
+              reportContent += '### ❌ Critical Failures\n';
+              complianceData.critical_failures.forEach(failure => {
+                reportContent += `- ${failure}\n`;
+              });
+              reportContent += '\n';
+            }
+            
+            if (complianceData.warnings.length > 0) {
+              reportContent += '### ⚠️ Warnings\n';
+              complianceData.warnings.forEach(warning => {
+                reportContent += `- ${warning}\n`;
+              });
+              reportContent += '\n';
+            }
+            
+            reportContent += '### 📊 Detailed Reports\n';
+            reportContent += '- [Compliance Report](../actions/runs/${{ github.run_id }})\n';
+            reportContent += '- [Traceability Matrix](../blob/${{ github.head_ref }}/docs/prd-shards/prd-to-scenarios-traceability.md)\n';
+            
+          } catch (error) {
+            reportContent += '❌ **Error:** Could not parse compliance results.\n';
+            reportContent += `Error details: ${error.message}\n`;
+          }
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: reportContent
+          });
+    
+    - name: Fail job on critical compliance issues
+      if: steps.validation.outcome == 'failure'
+      run: |
+        echo "❌ Traceability compliance validation failed!"
+        echo "This prevents merge until compliance issues are resolved."
+        exit 1
+
+  validate-matrix-sync:
+    name: Validate Traceability Matrix Synchronization
+    runs-on: ubuntu-latest
+    needs: validate-traceability
+    if: always()
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Check matrix synchronization
+      run: |
+        echo "🔄 Checking traceability matrix synchronization..."
+        
+        # Check if matrix file exists
+        if [ ! -f "docs/prd-shards/prd-to-scenarios-traceability.md" ]; then
+          echo "❌ ERROR: Traceability matrix file missing!"
+          exit 1
+        fi
+        
+        # Check matrix age vs PRD age
+        MATRIX_AGE=$(stat -c %Y docs/prd-shards/prd-to-scenarios-traceability.md)
+        PRD_AGE=$(find docs/prd-shards -name "*.md" -not -name "prd-to-scenarios-traceability.md" -exec stat -c %Y {} \; | sort -n | tail -1)
+        
+        if [ $MATRIX_AGE -lt $PRD_AGE ]; then
+          echo "⚠️ WARNING: Traceability matrix may be outdated!"
+          echo "Matrix last modified: $(date -d @$MATRIX_AGE)"
+          echo "Latest PRD change: $(date -d @$PRD_AGE)"
+        else
+          echo "✅ Traceability matrix is up-to-date"
+        fi
+        
+        # Validate scenario ID consistency
+        echo "🔍 Validating scenario ID consistency..."
+        
+        # Extract SC-xxx IDs from matrix
+        MATRIX_SCENARIOS=$(grep -o 'SC-[0-9]\+' docs/prd-shards/prd-to-scenarios-traceability.md | sort -u)
+        
+        # Extract SC-xxx IDs from feature files
+        FEATURE_SCENARIOS=$(find test/acceptance/features -name "*.feature" -exec grep -o 'SC-[0-9]\+' {} \; | sort -u)
+        
+        # Compare
+        MISSING_IN_FEATURES=$(comm -23 <(echo "$MATRIX_SCENARIOS") <(echo "$FEATURE_SCENARIOS"))
+        MISSING_IN_MATRIX=$(comm -13 <(echo "$MATRIX_SCENARIOS") <(echo "$FEATURE_SCENARIOS"))
+        
+        if [ -n "$MISSING_IN_FEATURES" ]; then
+          echo "❌ ERROR: Scenarios in matrix but missing in features:"
+          echo "$MISSING_IN_FEATURES"
+          exit 1
+        fi
+        
+        if [ -n "$MISSING_IN_MATRIX" ]; then
+          echo "⚠️ WARNING: Scenarios in features but missing in matrix:"
+          echo "$MISSING_IN_MATRIX"
+        fi
+        
+        echo "✅ Scenario ID consistency validated"

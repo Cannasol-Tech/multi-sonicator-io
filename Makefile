@@ -9,6 +9,7 @@
 .PHONY: acceptance-test-pwm acceptance-test-modbus acceptance-test-power generate-release-artifacts test-integration
 .PHONY: test-unit-communication test-unit-hal test-unit-control test-unit-sonicator validate-config generate-traceability-report manage-pending-scenarios update-pending-scenarios ci-local
 .PHONY: web-ui-install web-ui-dev web-ui-build web-ui-sandbox web-ui-test web-ui-clean
+.PHONY: validate-traceability check-compliance
 
 #  Make Targets
 
@@ -143,8 +144,18 @@ validate-config: check-deps
 # Generate comprehensive traceability and coverage reports
 generate-traceability-report: check-deps
 	@echo "📊 Generating traceability and coverage reports..."
-	@python3 scripts/generate_traceability_report.py
+	@python3 scripts/generate_traceability_report.py --audit
 	@echo "✅ Traceability report generation complete"
+
+# Traceability compliance validation
+validate-traceability: check-deps
+	@echo "🔍 Validating PRD-to-test traceability compliance..."
+	@python3 scripts/validate_traceability_compliance.py
+	@echo "✅ Traceability compliance validation complete"
+
+check-compliance: validate-traceability generate-traceability-report
+	@echo "🎯 Running complete compliance validation..."
+	@echo "✅ All compliance checks passed - ready for enterprise deployment"
 
 # Manage pending BDD scenarios
 manage-pending-scenarios: check-deps

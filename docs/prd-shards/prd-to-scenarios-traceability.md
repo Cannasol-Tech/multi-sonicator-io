@@ -1,5 +1,6 @@
 # PRD-to-Scenarios Traceability Matrix
 
+**Last Updated:** September 5, 2025 - Automated compliance validation implemented
 Source PRD: `docs/Requirements/prd-v1.0.0.md`
 Authoritative requirements sources: `docs/Requirements/project-requirements.md`, `docs/Requirements/project-reqs-qna.md`
 Implementation mirror: `include/config.h`
