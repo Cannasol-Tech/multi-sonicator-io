@@ -9,6 +9,8 @@ This directory contains the unified testing framework for all Acceptance and Int
 - **Hardware-in-the-Loop (HIL) tests** when physical hardware is available.
 - **Emulation tests** when hardware is unavailable (e.g., in a CI pipeline).
 
+**Important**: As of the CI pipeline solidification (Issue #18), acceptance tests are **MANUAL EXECUTION ONLY**. They are not run automatically in CI pipelines to ensure hardware independence and faster CI feedback.
+
 It uses the Behave BDD framework to run the same scenarios against either a real or a simulated hardware target.
 
 Always adhere to the standards outlined in `docs/standards/sw-testing-standard.md`.
@@ -20,6 +22,20 @@ Always adhere to the standards outlined in `docs/standards/sw-testing-standard.m
 - Validate timing and performance requirements.
 - Validate pin-level interactions and timing.
 - Validate PRD Functionality Requirements through BDD Scenarios outlined in the features and steps directories
+
+## Testing Strategy
+
+### CI Pipeline (Automated)
+- **Unit Tests Only**: CI runs only unit tests with 90% coverage validation
+- **BDD Syntax Validation**: CI validates BDD scenario syntax but does not execute tests
+- **Fast Feedback**: Quick validation for pull requests and development workflow
+- **Hardware Independence**: No physical hardware required for CI
+
+### Manual Testing (Required for Release)
+- **Acceptance Tests**: Manual execution of BDD scenarios with HIL hardware
+- **Complete Coverage**: Full test suite execution including HIL scenarios
+- **Release Validation**: Comprehensive testing before releases
+- **Executive Reports**: Generated from manual test execution results
 
 ## Directory Structure
 
