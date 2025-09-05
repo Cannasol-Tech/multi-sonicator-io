@@ -1,0 +1,100 @@
+{
+  "version": "1.0.0",
+  "owner": "Cannasol-Tech",
+  "repo": "multi-sonicator-io",
+  "releaseTag": "v0.0.0-dev",
+  "commit": "9d7b4e5",
+  "createdAt": "2025-09-05T20:50:00.000000Z",
+  "testType": "acceptance-manual",
+  "summary": {
+    "total": 8,
+    "passed": 7,
+    "failed": 1,
+    "skipped": 0,
+    "durationMs": 45000
+  },
+  "scenarios": [
+    {
+      "name": "Sonicator power control via MODBUS",
+      "feature": "MODBUS Communication",
+      "status": "passed",
+      "durationMs": 5000,
+      "tags": ["@modbus", "@acceptance"],
+      "steps": [
+        {
+          "name": "Connect to MODBUS interface",
+          "status": "passed",
+          "durationMs": 1000
+        },
+        {
+          "name": "Send power on command",
+          "status": "passed",
+          "durationMs": 2000
+        },
+        {
+          "name": "Verify sonicator activation",
+          "status": "passed",
+          "durationMs": 2000
+        }
+      ]
+    },
+    {
+      "name": "Frequency control validation",
+      "feature": "Frequency Control",
+      "status": "passed",
+      "durationMs": 6000,
+      "tags": ["@frequency", "@acceptance"],
+      "steps": [
+        {
+          "name": "Set frequency to 40kHz",
+          "status": "passed",
+          "durationMs": 2000
+        },
+        {
+          "name": "Measure actual frequency",
+          "status": "passed",
+          "durationMs": 4000
+        }
+      ]
+    },
+    {
+      "name": "Emergency stop functionality",
+      "feature": "Safety Controls",
+      "status": "failed",
+      "durationMs": 3000,
+      "tags": ["@safety", "@acceptance"],
+      "steps": [
+        {
+          "name": "Trigger emergency stop",
+          "status": "passed",
+          "durationMs": 1000
+        },
+        {
+          "name": "Verify immediate shutdown",
+          "status": "failed",
+          "durationMs": 2000
+        }
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "REQ-MODBUS-001",
+      "title": "MODBUS Communication Interface",
+      "status": "covered",
+      "scenarios": ["Sonicator power control via MODBUS"]
+    },
+    {
+      "id": "REQ-FREQ-001", 
+      "title": "Frequency Control",
+      "status": "covered",
+      "scenarios": ["Frequency control validation"]
+    },
+    {
+      "id": "REQ-SAFETY-001",
+      "title": "Emergency Stop",
+      "status": "failed",
+      "scenarios": ["Emergency stop functionality"]
+    }
+  ]
+}

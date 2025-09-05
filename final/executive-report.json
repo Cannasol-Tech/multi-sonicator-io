@@ -1,0 +1,140 @@
+{
+  "version": "1.0.0",
+  "owner": "Cannasol-Tech",
+  "repo": "multi-sonicator-io",
+  "releaseTag": "v0.0.0-dev",
+  "commit": "485901c",
+  "createdAt": "2025-09-05T20:49:57.345118Z",
+  "testType": "unit-only",
+  "summary": {
+    "total": 4,
+    "passed": 2,
+    "failed": 2,
+    "skipped": 0,
+    "durationMs": 4000
+  },
+  "scenarios": [
+    {
+      "name": "Unit Test Coverage - communication",
+      "feature": "Unit Tests - Communication Module",
+      "status": "failed",
+      "durationMs": 1000,
+      "tags": [
+        "@unit",
+        "@coverage"
+      ],
+      "steps": [
+        {
+          "name": "Test communication module functionality",
+          "status": "failed",
+          "durationMs": 500
+        },
+        {
+          "name": "Verify communication coverage >= 90%",
+          "status": "failed",
+          "durationMs": 500
+        }
+      ]
+    },
+    {
+      "name": "Unit Test Coverage - hal",
+      "feature": "Unit Tests - Hal Module",
+      "status": "passed",
+      "durationMs": 1000,
+      "tags": [
+        "@unit",
+        "@coverage"
+      ],
+      "steps": [
+        {
+          "name": "Test hal module functionality",
+          "status": "passed",
+          "durationMs": 500
+        },
+        {
+          "name": "Verify hal coverage >= 90%",
+          "status": "passed",
+          "durationMs": 500
+        }
+      ]
+    },
+    {
+      "name": "Unit Test Coverage - control",
+      "feature": "Unit Tests - Control Module",
+      "status": "failed",
+      "durationMs": 1000,
+      "tags": [
+        "@unit",
+        "@coverage"
+      ],
+      "steps": [
+        {
+          "name": "Test control module functionality",
+          "status": "failed",
+          "durationMs": 500
+        },
+        {
+          "name": "Verify control coverage >= 90%",
+          "status": "failed",
+          "durationMs": 500
+        }
+      ]
+    },
+    {
+      "name": "Unit Test Coverage - sonicator",
+      "feature": "Unit Tests - Sonicator Module",
+      "status": "passed",
+      "durationMs": 1000,
+      "tags": [
+        "@unit",
+        "@coverage"
+      ],
+      "steps": [
+        {
+          "name": "Test sonicator module functionality",
+          "status": "passed",
+          "durationMs": 500
+        },
+        {
+          "name": "Verify sonicator coverage >= 90%",
+          "status": "passed",
+          "durationMs": 500
+        }
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "REQ-UNIT-COMMUNICATION",
+      "title": "Unit Test Coverage for Communication Module",
+      "status": "failed",
+      "scenarios": [
+        "Unit Test Coverage - communication"
+      ]
+    },
+    {
+      "id": "REQ-UNIT-HAL",
+      "title": "Unit Test Coverage for Hal Module",
+      "status": "covered",
+      "scenarios": [
+        "Unit Test Coverage - hal"
+      ]
+    },
+    {
+      "id": "REQ-UNIT-CONTROL",
+      "title": "Unit Test Coverage for Control Module",
+      "status": "failed",
+      "scenarios": [
+        "Unit Test Coverage - control"
+      ]
+    },
+    {
+      "id": "REQ-UNIT-SONICATOR",
+      "title": "Unit Test Coverage for Sonicator Module",
+      "status": "covered",
+      "scenarios": [
+        "Unit Test Coverage - sonicator"
+      ]
+    }
+  ]
+}
