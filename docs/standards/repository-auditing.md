@@ -5,39 +5,48 @@ Owner: Engineering Productivity / DevSecOps
 Applies to: All repositories under the Axovia-AI organization (and any internal forks)
 
 ## Purpose
+
 Ensure each repository remains compliant, secure, maintainable, and operationally healthy by running a periodic audit against a consistent, documented checklist with clear success criteria and follow-up actions.
 
 ## Scope
+
 - Code repositories (public and private)
 - GitHub settings and policies
 - CI/CD workflows and environments
 - Documentation, testing, security, compliance, and release processes
 
 ## Roles & Responsibilities
+
 - Audit Lead: Coordinates the audit, collects evidence, assembles report
 - Repo Maintainers: Provide context, approve changes, remediate findings
 - DevSecOps: Advises on security configuration and risk acceptance
 - Eng Management: Reviews audit results, prioritizes remediation
 
 ## Frequency
+
 - Standard cadence: Quarterly for active repos; Semi-annual for archived/low-activity repos
 - Triggered audits: Post-incident, before major releases, or after policy updates
 
 ## Success Criteria
+
 - Audit Score ≥ 85/100 OR all Critical/High findings remediated or accepted with time-bound plan
 - No open Critical findings at audit close
 - Evidence and report filed in repository docs or org-wide audit space
 
 ## Preparation
+
 - Ensure you have Maintainer or Admin permissions for settings read (or a designated readout)
 - Clone repo and fetch default branch
 - Collect previous audit report (if any) and open issues/PRs labeled "audit" or "compliance"
 
 ## Audit Checklist
+
 Mark each item:
+
 - [ ] Pass, [ ] Fail, [ ] N/A, notes in report
 
 ### A. Repository Metadata & Hygiene
+
 - [ ] README present, current, with quickstart, architecture overview, and status badges
 - [ ] LICENSE present and correct
 - [ ] CODEOWNERS enforces ownership for critical paths
@@ -50,6 +59,7 @@ Mark each item:
 - [ ] Environment example present (e.g., .env.example) with safe defaults
 
 ### B. Access & Governance
+
 - [ ] Team permissions follow least-privilege; bots scoped minimally
 - [ ] Branch protection rules on default branch (require PRs, approvals, status checks)
 - [ ] Dismiss stale reviews on new commits; require linear history or squash/rebase
@@ -58,6 +68,7 @@ Mark each item:
 - [ ] Security advisories configuration (for public repos)
 
 ### C. CI/CD & Workflow Security
+
 - [ ] All required status checks configured and enforced
 - [ ] Workflow permissions least-privilege (GITHUB_TOKEN permissions set explicitly)
 - [ ] External actions pinned by commit SHA or trusted version
@@ -66,6 +77,7 @@ Mark each item:
 - [ ] CI caches and artifacts policies are safe (no secrets)
 
 ### D. Dependencies & Supply Chain
+
 - [ ] Lockfiles committed (package-lock.json, poetry.lock, Cargo.lock, etc.)
 - [ ] Automated updates configured (Dependabot/Renovate) with sensible batch/schedule
 - [ ] Vulnerability scanning configured (GitHub, OSV-Scanner, Trivy, etc.)
@@ -73,6 +85,7 @@ Mark each item:
 - [ ] License compliance reviewed; incompatible licenses flagged
 
 ### E. Code Quality & Testing
+
 - [ ] Linters and formatters configured and enforced in CI
 - [ ] Test suite exists with meaningful coverage; coverage threshold documented
 - [ ] Flaky tests tracked; quarantine or retry strategy defined
@@ -80,6 +93,7 @@ Mark each item:
 - [ ] Architecture docs exist and are up to date
 
 ### F. Releases & Change Management
+
 - [ ] Semantic Versioning followed; tags match release versions
 - [ ] CHANGELOG maintained with human-readable entries
 - [ ] Release artifacts reproducible; SBOM generated (where applicable)
@@ -87,17 +101,20 @@ Mark each item:
 - [ ] Backport policy defined for supported branches
 
 ### G. Operations & Observability
+
 - [ ] Runtime configs documented; feature flags cataloged
 - [ ] Logging/metrics/tracing approach documented (if applicable)
 - [ ] On-call/runbook links for services
 - [ ] Backup/restore or disaster recovery notes where relevant
 
 ### H. Repository Structure
+
 - [ ] Follows documented project structure standard
 - [ ] Centralized modules/services; avoids duplication and multiple sources of truth
 - [ ] Clear separation of concerns (app, infra, docs, tests)
 
 ## Procedure
+
 1) Plan
    - Confirm scope, stakeholders, and timeline
    - Create an Audit tracking issue in the repo with this checklist
@@ -116,6 +133,7 @@ Mark each item:
    - Re-run targeted checks; update status to Closed when complete
 
 ## Scoring (Guideline)
+
 - Critical: 10 points each
 - High: 5 points each
 - Medium: 2 points each
@@ -123,37 +141,44 @@ Mark each item:
 - Start from 100; subtract per unresolved finding at close. N/A items do not affect score.
 
 ## Reporting
+
 - Location: docs/audits/<yyyy-mm>/repository-audit.md (or org-level audit space)
 - Must include: scope, date, participants, evidence links, checklist outcomes, score, findings table, remediation plan, due dates
 
 ## Smaller-Scale Audits (Targeted)
+
 In addition to the full repository audit, run focused audits as lightweight, higher-cadence checks. Store results under `docs/qa/repo-audits/`.
 
 ### 1) Consistency Audit
+
 - Purpose: Ensure single source of truth, coherent structure, and standards alignment for humans and agents
 - Cadence: After each story; at least daily during active development
 - Scope: Paths/naming, packaging vs. promises (README/Makefile/package.json), standards alignment, prohibited artifacts
 - Outputs: `docs/qa/repo-audits/consistency/repo-consistency-audit-<YYYY-MM-DD>.md`
 
 ### 2) Security Audit
+
 - Purpose: Identify and remediate security risks across code, CI/CD, dependencies, and settings
 - Cadence: Monthly baseline; before releases; after security-impacting changes
 - Scope: Secrets exposure, dependency vulns, workflow security (pinned SHAs, permissions), access controls, container/image scanning
 - Outputs: `docs/qa/repo-audits/security/repo-security-audit-<YYYY-MM-DD>.md`
 
 ### 3) Performance Audit
+
 - Purpose: Detect performance risks in code paths, build pipeline, and runtime configurations
 - Cadence: Before/after major features; monthly baseline
 - Scope: Algorithmic hotspots, N+1/IO, build times and cache efficacy, bundle/image sizes, load/perf test coverage and SLAs
 - Outputs: `docs/qa/repo-audits/performance/repo-performance-audit-<YYYY-MM-DD>.md`
 
 ### 4) Testing Audit
+
 - Purpose: Validate testing strategy and implementation against org standards and PRD alignment
 - Cadence: After major merges; before releases; monthly baseline
 - Scope: Unit coverage thresholds/trends, BDD mapping to PRD, Integration/E2E reliability, flakiness management, report generation/schema validation
 - Outputs: `docs/qa/repo-audits/testing/repo-testing-audit-<YYYY-MM-DD>.md`
 
 ## Remediation SLAs (Default)
+
 - Critical: 7 days
 - High: 14 days
 - Medium: 30 days
@@ -161,10 +186,12 @@ In addition to the full repository audit, run focused audits as lightweight, hig
 (Teams may negotiate based on risk and resourcing.)
 
 ## Recordkeeping
+
 - Store report, evidence (screenshots, logs), and tool outputs
 - Link all remediation issues/PRs from the report and label with `audit`
 
 ## Standard References
+
 - Coding Style: ./coding-style.md
 - Pull Requests: ./pull-requests.md
 - Release Format: ./release-format.md
@@ -174,6 +201,7 @@ In addition to the full repository audit, run focused audits as lightweight, hig
 - Root Directory Layout: ./root-directory.md
 
 ## Recommended Tools & Example Commands
+
 Note: Commands are examples; adapt to language/tooling used in the repo.
 
 - GitHub CLI
@@ -206,11 +234,13 @@ Title: <repo> Repository Audit — <yyyy-mm-dd>
 - Score: <n/100>
 
 #### Summary
+
 - Overall health:
 - Key risks:
 - Immediate actions:
 
 #### Checklist Outcomes
+
 - A. Metadata & Hygiene: <pass/fail summary>
 - B. Access & Governance: <pass/fail summary>
 - C. CI/CD & Workflow Security: <pass/fail summary>
@@ -221,19 +251,21 @@ Title: <repo> Repository Audit — <yyyy-mm-dd>
 - H. Repository Structure: <pass/fail summary>
 
 #### Findings Table
+
 | ID | Severity | Area | Description | Evidence/Link | Owner | Due | Status |
 |----|----------|------|-------------|---------------|-------|-----|--------|
 | 1  | High     | CI   | Example...  | link          | @user | yyyy-mm-dd | Open |
 
 #### Remediation Plan
+
 - [ ] Item 1 — details, acceptance criteria
 - [ ] Item 2 — details, acceptance criteria
 
 #### Approvals
+
 - Maintainer Sign-off: <name/date>
 - DevSecOps Sign-off: <name/date>
 
 ---
 
 Questions or improvements? Open an issue labeled `audit` or propose changes via PR.
-

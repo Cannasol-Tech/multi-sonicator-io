@@ -1,92 +1,87 @@
 # Software Testing Official Organization-Wide Standards of Procedures
 >
-> **Note:** This document is the authoritative testing framework for all Axovia Flow Projects
+> **Note:** This document provides the organizational overview and directs teams to project-specific testing standards.
 
 ## Purpose
 
-This document defines the company's software testing standards, ensuring consistent quality and structured practices across all projects. It applies to both hardware-inclusive and software-only projects and serves as the **primary testing authority** for all BMad-Core workflows.
+This document serves as the central hub for all testing standards within the organization, ensuring consistent quality and structured practices across different project types. It provides the framework that applies to all BMad-Core workflows while directing teams to project-specific testing standards.
+
+## Project-Specific Testing Standards
+
+### By Project Type
+
+| Project Type | Testing Standard Document | Primary Frameworks |
+|--------------|---------------------------|-------------------|
+| **Flutter Applications** | [flutter-testing-standard.md](flutter-testing-standard.md) | `flutter_test` + `mocktail` |
+| **React UI Applications** | [react-testing-standard.md](react-testing-standard.md) | `Jest` + `React Testing Library` |
+| **PlatformIO Embedded** | [platformio-testing-standard.md](platformio-testing-standard.md) | `Unity Test Framework` |
+
+> **Important:** Always refer to your project-specific testing standard for detailed implementation guidance. This document provides the organizational framework only.
 
 ---
 
-## Testing Strategy
+## Universal Testing Strategy
 
-### Three-Stage Testing Approach
+### Three-Stage Foundation
+
+All project types follow this foundational approach, adapted to their specific needs:
 
 1. **Unit Testing**
+   - **Focus**: Individual functions, modules, and components in isolation
+   - **Coverage**: High coverage requirements (varies by project type)
+   - **Mocking**: Permitted and encouraged for external dependencies
+   - **Universal Principle**: Mocks are reserved for unit testing only
 
-> **Note:** Mocks are reserved for unit testing only, unless absolutely necessary and explicitly approved by the repository owner.
+2. **Integration Testing**
+   - **Focus**: System workflows and component interactions
+   - **Coverage**: Critical paths and external integrations
+   - **Mocking**: Generally prohibited (test real interactions)
+   - **Project-Specific**: Implementation varies by technology stack
 
-* **Preferred Language & Framework by Project Type**:
-  * **Software Projects**: Python (pytest) or Typescript (Jest, Mocha, etc.)
-  * **Embedded/Hardware Projects**: C/C++ (Unity Test Framework)
-  * **Mixed Projects**: Unity for embedded components, pytest for Python components
+3. **End-to-End Testing**
+   - **Focus**: Complete user workflows and business scenarios
+   - **Coverage**: Primary user journeys and acceptance criteria
+   - **Mocking**: Prohibited (test complete system)
+   - **Validation**: Real environment testing required
 
-* **Framework Selection**:
-  * **pytest** → Python-based projects and services
-  * **Jest/Mocha** → TypeScript/JavaScript frontend and backend
-  * **Unity** → Embedded C/C++ firmware and hardware projects
+### Project-Specific Adaptations
 
-* **Preferred Location**: `test/unit`
-  * **Note:** If there is a problem with the locations, language, or frameworks, please open an issue in the repository to raise the concern. DO NOT implement any other unit testing framework or language without approval.
-
-* **Coverage Requirement:** Minimum **90% coverage**.
-* **Focus:** Validate individual functions, modules, and components in isolation.
-* **Method:** Automated unit test frameworks with mocking/stubbing where necessary.
-* **Integration:** Use `test-levels-framework.md` for detailed decision criteria and examples.
-
-2. **Acceptance Testing**
-
-   * **Focus:** Validate that the system meets **business requirements**.
-   * **Method:** Behavior-Driven Development (BDD) using pytest + Behave (Gherkin format).
-   * **Framework**: Behave for BDD scenarios, pytest for test execution infrastructure.
-   * **Mapping:** All acceptance scenarios must map directly to PRD requirements.
-   * **Traceability:** Use `trace-requirements` task for automated mapping.
-
-3. **Integration Testing**
-
-   * **Focus:** Validate **system workflows** and interactions beyond unit scope.
-   * **Project-Specific Methodology:**
-
-     * **Hardware Projects** → Integration and Acceptance tests run as:
-
-       * **HIL Testing** if hardware is present.
-       * **Emulation Testing** if hardware is unavailable (pipeline or remote execution).
-     * **Software-Only Projects** → Integration and Acceptance tests run as:
-
-       * **E2E Automation Tests** wherever feasible, covering full workflows.
+- **Flutter**: Unit → Widget → Golden → Integration testing
+- **React**: Unit → Component → Integration → E2E testing
+- **PlatformIO**: Unit → Integration → Hardware-in-the-Loop testing
 
 ---
 
 ## Standardized Make Targets
 
-All projects must implement the following standardized make targets for consistent test execution:
+All projects must implement standardized make targets for consistent execution:
 
-### Required Make Targets
+### Required Targets (Project-Specific Implementation)
 
 ```bash
 # Unit Testing
 make test-unit
-# - Executes unit tests with coverage reporting
-# - Must achieve ≥90% coverage requirement
-# - Framework: Unity (embedded) or pytest (software)
-
-# Acceptance Testing  
-make test-acceptance
-# - Executes BDD acceptance tests
-# - Framework: pytest + Behave (Gherkin scenarios)
-# - Maps directly to PRD requirements
+# - Project-specific unit test execution
+# - Coverage reporting and validation
+# - Framework varies by project type
 
 # Integration Testing
 make test-integration
-# - Hardware projects: HIL or emulation testing
-# - Software projects: E2E automation testing
-# - Validates system workflows and interactions
+# - Component and system integration testing
+# - External dependency validation
+# - Real environment testing
+
+# End-to-End Testing
+make test-e2e
+# - Complete workflow validation
+# - User acceptance scenario testing
+# - Production-like environment testing
 
 # Complete Test Suite
 make test
-# - Executes all three test stages in sequence
-# - Equivalent to: make test-unit && make test-acceptance && make test-integration
+# - Executes all test stages in sequence
 # - Primary target for CI/CD pipelines
+# - Equivalent to: make test-unit && make test-integration && make test-e2e
 ```
 
 ### Implementation Requirements
@@ -94,7 +89,7 @@ make test
 * **Exit Codes**: All targets must return proper exit codes (0 = success, non-zero = failure)
 * **Output Format**: Standardized reporting format for CI/CD integration
 * **Coverage Integration**: Unit testing targets must include coverage reporting
-* **Hardware Detection**: Integration targets must detect hardware availability and fallback to emulation
+* **Project-Specific**: Additional targets defined in project-specific standards
 
 ---
 
@@ -166,6 +161,28 @@ All stories must pass through QA gates that validate:\
 
 ---
 
+## Quality Gates
+
+### Universal Requirements
+
+All stories must pass these quality gates regardless of project type:
+
+- [ ] Unit tests achieve project-specific coverage requirements
+- [ ] Integration tests validate external system interactions
+- [ ] End-to-end tests cover critical user workflows
+- [ ] Test reports generated in standardized format
+- [ ] No prohibited mocking in integration/e2e tests
+
+### Project-Specific Gates
+
+Additional quality gates are defined in each project-specific testing standard:
+
+- **Flutter**: Widget tests, golden tests, cross-platform validation
+- **React**: Component tests, accessibility tests, browser compatibility
+- **PlatformIO**: Hardware-in-the-loop tests, emulation validation
+
+---
+
 ## Supplementary Resources
 
 ### Implementation Guidance
@@ -194,31 +211,54 @@ All stories must pass through QA gates that validate:\
 
 ```mermaid
 graph TD
-    A[Story Development] --> B[Unit Testing]
-    B --> C{90% Coverage?}
-    C -->|No| B
-    C -->|Yes| D[Acceptance Testing]
-    D --> E{BDD Scenarios Pass?}
-    E -->|No| F[Update Requirements/Tests]
-    F --> D
-    E -->|Yes| G{Hardware Project?}
-    G -->|Yes| H[HIL/Emulation Testing]
-    G -->|No| I[E2E Automation Testing]
-    H --> J[Generate Reports]
-    I --> J
-    J --> K[QA Gate Review]
-    K --> L{Gate Decision}
-    L -->|PASS| M[Story Complete]
-    L -->|CONCERNS/FAIL| N[Address Issues]
-    N --> B
-    
-    style M fill:#90EE90
-    style B fill:#ADD8E6
-    style D fill:#FFE4B5
-    style H fill:#E6E6FA
-    style I fill:#E6E6FA
+    A[Story Development] --> B{Project Type?}
+    B -->|Flutter| C[Flutter Testing Standard]
+    B -->|React| D[React Testing Standard]
+    B -->|PlatformIO| E[PlatformIO Testing Standard]
+
+    C --> F[Unit → Widget → Golden → Integration]
+    D --> G[Unit → Component → Integration → E2E]
+    E --> H[Unit → Integration → HIL]
+
+    F --> I[Flutter Quality Gates]
+    G --> J[React Quality Gates]
+    H --> K[PlatformIO Quality Gates]
+
+    I --> L[QA Gate Review]
+    J --> L
+    K --> L
+
+    L --> M{Gate Decision}
+    M -->|PASS| N[Story Complete]
+    M -->|CONCERNS/FAIL| O[Address Issues]
+    O --> B
+
+    style N fill:#90EE90
+    style C fill:#87CEEB
+    style D fill:#98FB98
+    style E fill:#DDA0DD
+    style F fill:#F0E68C
+    style G fill:#ADD8E6
+    style H fill:#FFE4B5
 ```
 
 ---
 
-✅ **This three-stage standard (Unit → Acceptance → Integration) is the authoritative testing framework for all BMad-Core projects.**
+## Implementation Guidance
+
+### Choosing the Right Standard
+
+1. **Identify Project Type**: Determine primary technology stack
+2. **Select Testing Standard**: Use the appropriate project-specific document
+3. **Follow Framework Requirements**: Implement required tools and patterns
+4. **Validate Compliance**: Ensure quality gates are met
+
+### Cross-Project Considerations
+
+- **Monorepos**: May require multiple testing standards
+- **Microservices**: Each service follows its appropriate standard
+- **Full-Stack Projects**: Frontend and backend may use different standards
+
+---
+
+✅ **This organizational framework directs teams to project-specific testing standards. Always refer to your project-specific document for detailed implementation guidance.**

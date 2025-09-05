@@ -6,7 +6,12 @@ from dataclasses import dataclass
 import logging
 from typing import Optional
 
+import glob
 
+import serial
+import serial.tools.list_ports
+import time
+import platform
 
 @dataclass
 class WRAPPER_PINS:
@@ -46,7 +51,6 @@ class HardwareInterface:
         }
 
     def _find_macos_usb_serial_ports(self) -> list:
-        import glob
         patterns = [
             "/dev/tty.usbserial-*",
             "/dev/tty.usbmodem*",
@@ -61,10 +65,7 @@ class HardwareInterface:
         return sorted(ports)
     
     def verify_connection(self) -> bool:
-        import serial
-        import serial.tools.list_ports
-        import time
-        import platform
+
         if self.serial_connection and getattr(self.serial_connection, 'is_open', False):
             try:
                 self.send_command("PING")
@@ -107,17 +108,32 @@ class HardwareInterface:
                     timeout=2.0,
                     write_timeout=2.0
                 )
-                time.sleep(2)
+
+                # TIMING FIX: Extended wait for Arduino initialization
+                self.logger.debug(f"Waiting for Arduino initialization on {port}...")
+                time.sleep(3.0)
+
+                # BUFFER CLEARING FIX: More thorough startup message clearing
                 start = time.time()
-                while time.time() - start < 1.0:
+                startup_messages = []
+                while time.time() - start < 2.0:  # Extended clearing time
                     try:
                         if self.serial_connection.in_waiting:
-                            _ = self.serial_connection.read(self.serial_connection.in_waiting)
+                            data = self.serial_connection.read(self.serial_connection.in_waiting)
+                            if data:
+                                startup_messages.append(data.decode('ascii', errors='ignore'))
                         else:
                             break
                     except Exception:
                         break
-                    time.sleep(0.02)
+                    time.sleep(0.05)  # Slightly longer sleep for stability
+
+                if startup_messages:
+                    self.logger.debug(f"Cleared startup messages: {startup_messages}")
+
+                # Reset buffers to ensure clean state
+                self.serial_connection.reset_input_buffer()
+                self.serial_connection.reset_output_buffer()
                 self.serial_connection.write(("PING\n").encode("utf-8"))
                 self.serial_connection.flush()
                 line = None
@@ -177,7 +193,7 @@ class HardwareInterface:
         return self.pin_mapping.get(pin, pin)
 
     def _ensure_serial(self):
-        """Ensure the serial port is open and ready."""
+        """Ensure the serial port is open and ready with proper Arduino initialization."""
         if self.serial_connection and getattr(self.serial_connection, 'is_open', False):
             return self.serial_connection
         # Attempt reconnect using last known serial_port
@@ -187,10 +203,23 @@ class HardwareInterface:
                 self.serial_connection = serial.Serial(
                     port=self.serial_port,
                     baudrate=self.baud_rate,
-                    timeout=1.0,
-                    write_timeout=1.0,
+                    timeout=2.0,  # Increased timeout for Arduino communication
+                    write_timeout=2.0,
                 )
-                time.sleep(0.2)
+
+                # TIMING FIX: Allow Arduino to initialize after reconnection
+                time.sleep(1.0)  # Increased from 0.2 to 1.0 seconds
+
+                # BUFFER CLEARING FIX: Clear any startup messages
+                try:
+                    if self.serial_connection.in_waiting:
+                        startup_data = self.serial_connection.read(self.serial_connection.in_waiting)
+                        self.logger.debug(f"Cleared startup data on reconnect: {startup_data}")
+                    self.serial_connection.reset_input_buffer()
+                    self.serial_connection.reset_output_buffer()
+                except Exception:
+                    pass
+
                 return self.serial_connection
             except Exception as e:
                 self.logger.error(f"Failed to reopen serial on {self.serial_port}: {e}")
@@ -266,25 +295,79 @@ class HardwareInterface:
 
     # --- ADC helpers ---
     def read_adc_channel(self, channel: str) -> Optional[int]:
-        ch = self._resolve_pin(channel)
-        resp = self.send_command(f"READ_ADC {ch}")
-        # Expected: "ADC <channel> <value>"
-        if not resp:
-            return None
-        parts = resp.strip().split()
-        if len(parts) >= 3 and parts[0].upper() == "ADC":
-            try:
-                return int(parts[2])
-            except Exception:
+        """Read ADC channel using Arduino Test Wrapper commands"""
+        # Map channel names to Arduino wrapper commands
+        if channel in ["POWER_SENSE_4", "POWER_4"]:
+            resp = self.send_command("READ POWER 4")
+            # Expected: "OK POWER=428" format
+            if resp and "POWER=" in resp:
+                try:
+                    power_value = resp.split("POWER=")[1].strip()
+                    return int(power_value)
+                except (IndexError, ValueError):
+                    self.logger.debug(f"Failed to parse power ADC response: {resp}")
+                    return None
+        else:
+            # For other channels, try generic ADC read
+            ch = self._resolve_pin(channel)
+            resp = self.send_command(f"READ ADC {ch}")
+            # Expected: "OK ADC=<value>" format
+            if resp and "ADC=" in resp:
+                try:
+                    adc_value = resp.split("ADC=")[1].strip()
+                    return int(adc_value)
+                except (IndexError, ValueError):
+                    self.logger.debug(f"Failed to parse ADC response: {resp}")
+                    return None
+            else:
+                # If generic ADC command failed, the channel may not be supported
+                self.logger.debug(f"ADC channel {channel} not supported or command failed: {resp}")
                 return None
+
+        self.logger.debug(f"ADC read failed for channel {channel}")
         return None
 
     def adc_to_voltage(self, adc_value: int, reference_voltage: float = 5.0, resolution_bits: int = 10) -> float:
+        """Convert ADC counts to voltage"""
         try:
             max_counts = (1 << resolution_bits) - 1
             return (float(adc_value) / float(max_counts)) * float(reference_voltage)
         except Exception:
             return 0.0
+
+    def voltage_to_adc(self, voltage: float, reference_voltage: float = 5.0, resolution_bits: int = 10) -> int:
+        """Convert voltage to expected ADC counts"""
+        try:
+            max_counts = (1 << resolution_bits) - 1
+            return int((voltage / reference_voltage) * max_counts)
+        except Exception:
+            return 0
+
+    def apply_voltage_to_adc_channel(self, channel: str, voltage: float) -> bool:
+        """Apply voltage to ADC channel (simulation for testing)"""
+        # In a real HIL setup, this would control external voltage sources
+        # For now, we simulate by storing the expected voltage
+        if not hasattr(self, '_simulated_voltages'):
+            self._simulated_voltages = {}
+
+        self._simulated_voltages[channel] = voltage
+        self.logger.debug(f"Simulated voltage {voltage}V applied to channel {channel}")
+        return True
+
+    def read_adc_voltage(self, channel: str, reference_voltage: float = 5.0) -> Optional[float]:
+        """Read ADC channel and convert to voltage"""
+        adc_value = self.read_adc_channel(channel)
+        if adc_value is not None:
+            return self.adc_to_voltage(adc_value, reference_voltage)
+        return None
+
+    def verify_adc_voltage(self, channel: str, expected_voltage: float, tolerance: float = 0.1) -> bool:
+        """Verify ADC channel reads expected voltage within tolerance"""
+        actual_voltage = self.read_adc_voltage(channel)
+        if actual_voltage is None:
+            return False
+
+        return abs(actual_voltage - expected_voltage) <= tolerance
 
     # --- MODBUS helpers via harness passthrough ---
     def modbus_read_register(self, address: int) -> Optional[int]:

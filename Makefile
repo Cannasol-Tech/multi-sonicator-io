@@ -8,6 +8,7 @@
 .PHONY: hardware-sandbox acceptance-setup acceptance-clean acceptance-test-basic acceptance-test-gpio acceptance-test-adc
 .PHONY: acceptance-test-pwm acceptance-test-modbus acceptance-test-power generate-release-artifacts test-integration
 .PHONY: test-unit-communication test-unit-hal test-unit-control test-unit-sonicator validate-config generate-traceability-report manage-pending-scenarios update-pending-scenarios ci-local
+.PHONY: web-ui-install web-ui-dev web-ui-build web-ui-sandbox web-ui-test web-ui-clean
 
 #  Make Targets
 
@@ -293,4 +294,82 @@ generate-release-artifacts: check-deps
 		--coverage=coverage.json \
 		--output=final
 	@echo "✅ Release artifacts generated in final/"
+
+## Web UI Related Make Targets
+
+# Install Web UI dependencies
+web-ui-install:
+	@echo "📦 Installing Web UI dependencies..."
+	@echo "📦 Installing frontend dependencies..."
+	cd web-ui/frontend && npm install
+	@echo "📦 Installing backend dependencies..."
+	cd web-ui/backend && npm install
+	@echo "📦 Installing Python test dependencies..."
+	cd web-ui && python3 -m venv venv && source venv/bin/activate && pip install pytest pytest-asyncio pytest-mock requests websocket-client pytest-cov
+	@echo "✅ Web UI dependencies installed"
+
+# Development mode - start both frontend and backend
+web-ui-dev: check-deps
+	@echo "🚀 Starting Web UI in development mode..."
+	@echo "🔧 Starting backend server..."
+	cd web-ui/backend && npm run dev &
+	@echo "🔧 Starting frontend development server..."
+	cd web-ui/frontend && npm run dev &
+	@echo "✅ Web UI development servers started"
+	@echo "📱 Frontend: http://localhost:3000"
+	@echo "🔌 Backend API: http://localhost:3001/api"
+	@echo "🔗 WebSocket: ws://localhost:3001/ws"
+
+# Production build
+web-ui-build:
+	@echo "🏗️ Building Web UI for production..."
+	@echo "🏗️ Building backend..."
+	cd web-ui/backend && npm run build
+	@echo "🏗️ Building frontend..."
+	cd web-ui/frontend && npm run build
+	@echo "✅ Web UI production build complete"
+
+# Sandbox mode - build firmware, upload to DUT, then start web UI
+web-ui-sandbox: check-deps check-pio check-arduino-cli
+	@echo "🧪 Starting Web UI in sandbox mode..."
+	@echo "🔨 Building latest production firmware..."
+	pio run -e atmega32a
+	@echo "📤 Uploading firmware to ATmega32A (DUT) via Arduino ISP..."
+	pio run -e atmega32a -t upload
+	@echo "⏳ Waiting for firmware to initialize..."
+	sleep 3
+	@echo "🔧 Starting Web UI backend with HIL integration..."
+	cd web-ui/backend && npm run dev &
+	@echo "🔧 Starting Web UI frontend..."
+	cd web-ui/frontend && npm run dev &
+	@echo "⏳ Waiting for servers to start..."
+	sleep 5
+	@echo "✅ Web UI sandbox mode active"
+	@echo "📱 Web Interface: http://localhost:3000"
+	@echo "🔌 Backend API: http://localhost:3001/api"
+	@echo "🔗 WebSocket: ws://localhost:3001/ws"
+	@echo "🎯 Hardware: Arduino Test Wrapper ↔ ATmega32A DUT"
+	@echo "📋 Pin mapping: docs/planning/pin-matrix.md (SOLE SOURCE OF TRUTH)"
+	@echo ""
+	@echo "🚀 Opening web interface in default browser..."
+	@sleep 2
+	@open http://localhost:3000 2>/dev/null || xdg-open http://localhost:3000 2>/dev/null || echo "Please open http://localhost:3000 in your browser"
+
+# Run Web UI tests
+web-ui-test:
+	@echo "🧪 Running Web UI tests..."
+	cd web-ui && source venv/bin/activate && python -m pytest tests/ -v --cov=backend/src --cov-report=term-missing --cov-report=html:htmlcov --cov-fail-under=90
+	@echo "✅ Web UI tests completed"
+
+# Clean Web UI build artifacts
+web-ui-clean:
+	@echo "🧹 Cleaning Web UI build artifacts..."
+	rm -rf web-ui/frontend/dist
+	rm -rf web-ui/frontend/node_modules
+	rm -rf web-ui/backend/dist
+	rm -rf web-ui/backend/node_modules
+	rm -rf web-ui/venv
+	rm -rf web-ui/htmlcov
+	rm -rf web-ui/.pytest_cache
+	@echo "✅ Web UI cleaned"
 

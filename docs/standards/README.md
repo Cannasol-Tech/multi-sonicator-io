@@ -18,7 +18,14 @@ This directory is used for storing all company-wide project standards.  This inc
 ## Standards Index
 
   - [Coding Style Standards](./coding-style.md)
-
   - [Root Directory Standard](./root-directory.md)
   - [Project Structure Standards](./project-structure.md)
   - [Repository Auditing — SOP](./repository-auditing.md)
+  - [SW Testing Standard](./sw-testing-standard.md)
+  - [Flutter Testing Standard](./flutter-testing-standard.md)
+  - [React Testing Standard](./react-specific/react-testing-standard.md)
+  - [PlatformIO Testing Standard](./platformio-specific/platformio-testing-standard.md)
+  - [React Coding Standards](./react-specific/coding-standards.md)
+  - [Flutter Coding Standards](./flutter-specific/coding-standards.md)
+  - [PlatformIO Coding Standards](./platformio-specific/coding-standards.md)
+  

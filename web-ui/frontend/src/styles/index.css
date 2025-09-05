@@ -1,0 +1,257 @@
+/* Multi-Sonicator-IO Web UI - Functionality-First Styles */
+
+:root {
+  /* Color scheme for hardware interface */
+  --color-primary: #2563eb;
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
+  --color-info: #0891b2;
+  
+  /* Pin state colors */
+  --color-pin-high: #22c55e;
+  --color-pin-low: #6b7280;
+  --color-pin-analog: #3b82f6;
+  --color-pin-unknown: #9ca3af;
+  
+  /* Connection status colors */
+  --color-connected: #10b981;
+  --color-disconnected: #ef4444;
+  --color-connecting: #f59e0b;
+  
+  /* Layout */
+  --header-height: 60px;
+  --sidebar-width: 300px;
+  --border-radius: 4px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+}
+
+/* Base layout */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.app-header {
+  height: var(--header-height);
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-lg);
+  flex-shrink: 0;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.app-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Hardware diagram container */
+.hardware-diagram {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  position: relative;
+  overflow: auto;
+}
+
+/* Control panels */
+.control-panel {
+  width: var(--sidebar-width);
+  background: white;
+  border-left: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.control-section {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.control-section h3 {
+  margin-bottom: var(--spacing-sm);
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Connection status */
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.connection-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.connection-indicator.connected {
+  background-color: var(--color-connected);
+}
+
+.connection-indicator.disconnected {
+  background-color: var(--color-disconnected);
+}
+
+.connection-indicator.connecting {
+  background-color: var(--color-connecting);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Pin state indicators */
+.pin-state {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  margin: var(--spacing-xs) 0;
+  border-radius: var(--border-radius);
+  background: #f9fafb;
+  font-size: 12px;
+  font-family: monospace;
+}
+
+.pin-state.high {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.pin-state.low {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.pin-state.analog {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+/* Buttons and controls */
+.btn {
+  padding: var(--spacing-xs) var(--spacing-md);
+  border: 1px solid #d1d5db;
+  border-radius: var(--border-radius);
+  background: white;
+  color: #374151;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+}
+
+.btn:active {
+  background: #f3f4f6;
+}
+
+.btn.primary {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.btn.primary:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+.btn.success {
+  background: var(--color-success);
+  color: white;
+  border-color: var(--color-success);
+}
+
+.btn.danger {
+  background: var(--color-error);
+  color: white;
+  border-color: var(--color-error);
+}
+
+/* Input controls */
+.input {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid #d1d5db;
+  border-radius: var(--border-radius);
+  font-size: 13px;
+  width: 100%;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+/* Help tooltips */
+.help-tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  color: var(--color-info);
+  margin-left: var(--spacing-xs);
+}
+
+.help-tooltip:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1f2937;
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius);
+  font-size: 11px;
+  white-space: nowrap;
+  z-index: 1000;
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Utility classes */
+.text-xs { font-size: 11px; }
+.text-sm { font-size: 12px; }
+.text-base { font-size: 14px; }
+.font-mono { font-family: monospace; }
+.font-semibold { font-weight: 600; }
+.text-gray-500 { color: #6b7280; }
+.text-gray-700 { color: #374151; }
+.mb-2 { margin-bottom: var(--spacing-sm); }
+.mb-4 { margin-bottom: var(--spacing-md); }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: var(--spacing-sm); }

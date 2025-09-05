@@ -1,0 +1,67 @@
+<testsuite name="features.hil_basic_connectivity.Hardware Basic Connectivity" tests="4" errors="0" failures="0" skipped="4" time="0.0" timestamp="2025-09-05T12:14:59.075719" hostname="Corbans-Mini.home"><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Power supply verification" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @hil @hardware @connectivity
+  Scenario: Power supply verification
+    Given the Arduino test harness is connected ... skipped in 0.000s
+    And the ATmega32A target is powered ... skipped in 0.000s
+    And the HIL framework is initialized ... skipped in 0.000s
+    When I measure the power supply voltages ... skipped in 0.000s
+    Then the 24V input should be within tolerance ... skipped in 0.000s
+    And the 5V rail should be 5.0V ± 0.1V ... skipped in 0.000s
+    And the 3.3V rail should be 3.3V ± 0.1V ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Programming interface verification" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @hil @hardware @connectivity
+  Scenario: Programming interface verification
+    Given the Arduino test harness is connected ... skipped in 0.000s
+    And the ATmega32A target is powered ... skipped in 0.000s
+    And the HIL framework is initialized ... skipped in 0.000s
+    When I attempt to program the ATmega32A via Arduino as ISP ... skipped in 0.000s
+    Then the programming should succeed ... skipped in 0.000s
+    And the firmware version should be readable ... skipped in 0.000s
+    And the target should respond to commands ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Serial communication establishment" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @hil @hardware @connectivity
+  Scenario: Serial communication establishment
+    Given the Arduino test harness is connected ... skipped in 0.000s
+    And the ATmega32A target is powered ... skipped in 0.000s
+    And the HIL framework is initialized ... skipped in 0.000s
+    When I establish serial communication with the target ... skipped in 0.000s
+    Then I should receive a valid response ... skipped in 0.000s
+    And the communication should be stable for 10 seconds ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Arduino Test Harness ping test" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @hil @hardware @connectivity
+  Scenario: Arduino Test Harness ping test
+    Given the Arduino test harness is connected ... skipped in 0.000s
+    And the ATmega32A target is powered ... skipped in 0.000s
+    And the HIL framework is initialized ... skipped in 0.000s
+    When I send a ping command to the Arduino Test Harness ... skipped in 0.000s
+    Then I should receive a PONG response ... skipped in 0.000s
+    And the response time should be less than 100ms ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

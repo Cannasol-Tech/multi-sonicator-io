@@ -1,0 +1,27 @@
+<testsuite name="features.timing.Timing" tests="2" errors="0" failures="0" skipped="2" time="0.0" timestamp="2025-09-05T12:14:59.163808" hostname="Corbans-Mini.home"><testcase classname="features.timing.Timing" name="SC-009 Latency ≤100 ms (representative)" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @pending @req-latency @simulavr @hil
+  Scenario: SC-009 Latency ≤100 ms (representative)
+    Given the system is initialized ... skipped in 0.000s
+    When I simulate starting sonicator 1 ... skipped in 0.000s
+    Then holding register 40021 should equal 1 within 100 ms ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.timing.Timing" name="SC-009B Latency matrix (overload reset, frequency)" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @req-latency @simulavr @hil
+  Scenario: SC-009B Latency matrix (overload reset, frequency)
+    Given the system is initialized ... skipped in 0.000s
+    When I write holding register 40009 with value 1 ... skipped in 0.000s
+    Then holding register 40009 should equal 0 within 100 ms ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

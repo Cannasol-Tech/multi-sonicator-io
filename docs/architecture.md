@@ -373,6 +373,7 @@ The extender mirrors the same command set (SET/READ/INFO) over the UART link.
 ## 2. Existing Project Analysis
 
 ### Current Project State
+
 - **Primary Purpose:** Industrial automation controller managing CT2000 sonicator units via MODBUS RTU
 - **Current Tech Stack:** ATmega32A microcontroller, Arduino framework, PlatformIO build system
 - **Architecture Style:** Layered architecture (HAL → Communication → Control Logic → Application)
@@ -380,6 +381,7 @@ The extender mirrors the same command set (SET/READ/INFO) over the UART link.
 - **Key Constraints:** 32KB Flash, 2KB SRAM, 16MHz clock, cooperative scheduling (no RTOS)
 
 ### Available Documentation
+
 - Comprehensive architecture document with detailed layer descriptions
 - MODBUS RTU register map specification
 - PCB layout rules and design principles
@@ -387,6 +389,7 @@ The extender mirrors the same command set (SET/READ/INFO) over the UART link.
 - Power architecture and safety monitoring details
 
 ### Identified Constraints
+
 - **Memory Limits:** 32KB Flash and 2KB SRAM constrain multi-unit state management
 - **Processing Power:** 16MHz ATmega32A must handle 4 concurrent units with 10Hz telemetry
 - **Communication:** MODBUS RTU at 115200 baud with strict timing requirements
@@ -400,18 +403,21 @@ The extender mirrors the same command set (SET/READ/INFO) over the UART link.
 ## 3. Enhancement Scope and Integration Strategy
 
 ### Enhancement Overview
+
 - **Enhancement Type:** Multi-unit firmware enhancement with safety features
 - **Scope:** Extend single-sonicator control to 4 concurrent units with advanced safety monitoring
 - **Integration Impact:** Medium - requires coordination with existing HAL and communication layers
 - **Technical Approach:** Maintain existing cooperative scheduling while adding multi-unit orchestration
 
 ### Integration Approach
+
 - **Code Integration Strategy:** Extend existing Sonicator Control Logic layer with multi-unit orchestration
 - **Database Integration:** No database changes required (embedded system)
 - **API Integration:** Extend existing MODBUS RTU register map with per-unit registers
 - **UI Integration:** No UI changes (industrial PLC/HMI integration remains unchanged)
 
 ### Compatibility Requirements
+
 - **Existing API Compatibility:** Maintain current MODBUS RTU protocol and register structure
 - **Database Schema Compatibility:** N/A (no database)
 - **UI/UX Consistency:** Maintain existing PLC/HMI interface patterns

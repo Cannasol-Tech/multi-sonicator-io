@@ -1,0 +1,61 @@
+<testsuite name="features.start_stop.Start and stop a single sonicator" tests="4" errors="0" failures="0" skipped="4" time="0.0" timestamp="2025-09-05T12:14:59.155773" hostname="Corbans-Mini.home"><testcase classname="features.start_stop.Start and stop a single sonicator" name="Start/Stop reflects in status and system count/mask within 100 ms -- @1.1 " status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @smoke @us-001
+  Scenario Outline: Start/Stop reflects in status and system count/mask within 100 ms -- @1.1 
+    Given the HIL wrapper is connected and ready ... skipped in 0.000s
+    And the DUT is powered and at safe defaults ... skipped in 0.000s
+    When I write 1 to holding register 40005 ... skipped in 0.000s
+    Then within 100 ms the status flag bit0 for unit 1 equals 1 ... skipped in 0.000s
+    And Active Sonicator Count and Mask reflect the running units ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.start_stop.Start and stop a single sonicator" name="Start/Stop reflects in status and system count/mask within 100 ms -- @1.2 " status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @smoke @us-001
+  Scenario Outline: Start/Stop reflects in status and system count/mask within 100 ms -- @1.2 
+    Given the HIL wrapper is connected and ready ... skipped in 0.000s
+    And the DUT is powered and at safe defaults ... skipped in 0.000s
+    When I write 0 to holding register 40005 ... skipped in 0.000s
+    Then within 100 ms the status flag bit0 for unit 1 equals 0 ... skipped in 0.000s
+    And Active Sonicator Count and Mask reflect the running units ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.start_stop.Start and stop a single sonicator" name="Start/Stop reflects in status and system count/mask within 100 ms -- @1.3 " status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @smoke @us-001
+  Scenario Outline: Start/Stop reflects in status and system count/mask within 100 ms -- @1.3 
+    Given the HIL wrapper is connected and ready ... skipped in 0.000s
+    And the DUT is powered and at safe defaults ... skipped in 0.000s
+    When I write 1 to holding register 40006 ... skipped in 0.000s
+    Then within 100 ms the status flag bit0 for unit 2 equals 1 ... skipped in 0.000s
+    And Active Sonicator Count and Mask reflect the running units ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.start_stop.Start and stop a single sonicator" name="Start/Stop reflects in status and system count/mask within 100 ms -- @1.4 " status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @smoke @us-001
+  Scenario Outline: Start/Stop reflects in status and system count/mask within 100 ms -- @1.4 
+    Given the HIL wrapper is connected and ready ... skipped in 0.000s
+    And the DUT is powered and at safe defaults ... skipped in 0.000s
+    When I write 0 to holding register 40006 ... skipped in 0.000s
+    Then within 100 ms the status flag bit0 for unit 2 equals 0 ... skipped in 0.000s
+    And Active Sonicator Count and Mask reflect the running units ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

@@ -1,0 +1,336 @@
+<testsuite name="features.complete_modbus_interface.Complete MODBUS Interface Testing" tests="15" errors="0" failures="0" skipped="15" time="0.0" timestamp="2025-09-05T12:14:59.064002" hostname="Corbans-Mini.home"><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete system status register testing" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @modbus @interface @critical
+  Scenario: Complete system status register testing
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
+    And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
+    And the MODBUS slave ID is configured correctly ... skipped in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given the system is initialized and operational ... skipped in 0.000s
+    When I read the system status registers (0x0000-0x000F) ... skipped in 0.000s
+    Then register 0x0000 should contain the overall system status ... skipped in 0.000s
+    And register 0x0001 should contain the active sonicator count ... skipped in 0.000s
+    And register 0x0002 should contain the active sonicator bitmask ... skipped in 0.000s
+    And register 0x0003 should contain the watchdog status ... skipped in 0.000s
+    And register 0x0004 should contain the communication error count ... skipped in 0.000s
+    And all reserved registers should return zero ... skipped in 0.000s
+    And all reads should complete within 100ms ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Global control register testing" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @modbus @interface @critical
+  Scenario: Global control register testing
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
+    And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
+    And the MODBUS slave ID is configured correctly ... skipped in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given the system is ready for control operations ... skipped in 0.000s
+    When I write to the global control registers (0x0010-0x001F) ... skipped in 0.000s
+    Then writing 1 to register 0x0010 should enable the global system ... skipped in 0.000s
+    And writing 1 to register 0x0011 should trigger emergency stop ... skipped in 0.000s
+    And writing 1 to register 0x0012 should initiate system reset ... skipped in 0.000s
+    And all control actions should be reflected within 100ms ... skipped in 0.000s
+    And reading back the registers should confirm the written values ... skipped in 0.000s
+    And reserved registers should reject writes gracefully ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 1 register interface testing" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @modbus @interface @comprehensive
+  Scenario: Complete sonicator 1 register interface testing
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
+    And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
+    And the MODBUS slave ID is configured correctly ... skipped in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given sonicator 1 is connected and ready ... skipped in 0.000s
+    When I test all sonicator 1 registers (0x0100-0x011F) ... skipped in 0.000s
+    Then writing to register 0x0100 should control start/stop ... skipped in 0.000s
+    And writing to register 0x0101 should set amplitude (20-100%) ... skipped in 0.000s
+    And writing to register 0x0102 should trigger overload reset ... skipped in 0.000s
+    And reading register 0x0110 should return power consumption ... skipped in 0.000s
+    And reading register 0x0111 should return operating frequency ... skipped in 0.000s
+    And reading register 0x0112 should return status flags ... skipped in 0.000s
+    And reading register 0x0113 should return actual amplitude ... skipped in 0.000s
+    And all operations should complete within 100ms ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 2 register interface testing" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @modbus @interface @comprehensive
+  Scenario: Complete sonicator 2 register interface testing
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
+    And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
+    And the MODBUS slave ID is configured correctly ... skipped in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given sonicator 2 is connected and ready ... skipped in 0.000s
+    When I test all sonicator 2 registers (0x0120-0x013F) ... skipped in 0.000s
+    Then writing to register 0x0120 should control start/stop ... skipped in 0.000s
+    And writing to register 0x0121 should set amplitude (20-100%) ... skipped in 0.000s
+    And writing to register 0x0122 should trigger overload reset ... skipped in 0.000s
+    And reading register 0x0130 should return power consumption ... skipped in 0.000s
+    And reading register 0x0131 should return operating frequency ... skipped in 0.000s
+    And reading register 0x0132 should return status flags ... skipped in 0.000s
+    And reading register 0x0133 should return actual amplitude ... skipped in 0.000s
+    And all operations should complete within 100ms ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 3 register interface testing" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @modbus @interface @comprehensive
+  Scenario: Complete sonicator 3 register interface testing
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
+    And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
+    And the MODBUS slave ID is configured correctly ... skipped in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given sonicator 3 is connected and ready ... skipped in 0.000s
+    When I test all sonicator 3 registers (0x0140-0x015F) ... skipped in 0.000s
+    Then writing to register 0x0140 should control start/stop ... skipped in 0.000s
+    And writing to register 0x0141 should set amplitude (20-100%) ... skipped in 0.000s
+    And writing to register 0x0142 should trigger overload reset ... skipped in 0.000s
+    And reading register 0x0150 should return power consumption ... skipped in 0.000s
+    And reading register 0x0151 should return operating frequency ... skipped in 0.000s
+    And reading register 0x0152 should return status flags ... skipped in 0.000s
+    And reading register 0x0153 should return actual amplitude ... skipped in 0.000s
+    And all operations should complete within 100ms ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 4 register interface testing" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @modbus @interface @comprehensive
+  Scenario: Complete sonicator 4 register interface testing
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
+    And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
+    And the MODBUS slave ID is configured correctly ... skipped in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given sonicator 4 is connected and ready ... skipped in 0.000s
+    When I test all sonicator 4 registers (0x0160-0x017F) ... skipped in 0.000s
+    Then writing to register 0x0160 should control start/stop ... skipped in 0.000s
+    And writing to register 0x0161 should set amplitude (20-100%) ... skipped in 0.000s
+    And writing to register 0x0162 should trigger overload reset ... skipped in 0.000s
+    And reading register 0x0170 should return power consumption ... skipped in 0.000s
+    And reading register 0x0171 should return operating frequency ... skipped in 0.000s
+    And reading register 0x0172 should return status flags ... skipped in 0.000s
+    And reading register 0x0173 should return actual amplitude ... skipped in 0.000s
+    And all operations should complete within 100ms ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS function code 03 (Read Holding Registers) testing" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @modbus @interface @validation
+  Scenario: MODBUS function code 03 (Read Holding Registers) testing
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
+    And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
+    And the MODBUS slave ID is configured correctly ... skipped in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given the system has various register values set ... skipped in 0.000s
+    When I use function code 03 to read single registers ... skipped in 0.000s
+    Then all readable registers should return correct values ... skipped in 0.000s
+    When I use function code 03 to read multiple consecutive registers ... skipped in 0.000s
+    Then all values should be returned in the correct order ... skipped in 0.000s
+    And the response should include the correct byte count ... skipped in 0.000s
+    And the CRC should be calculated correctly ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS function code 06 (Write Single Register) testing" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @modbus @interface @validation
+  Scenario: MODBUS function code 06 (Write Single Register) testing
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
+    And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
+    And the MODBUS slave ID is configured correctly ... skipped in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given the system is ready for write operations ... skipped in 0.000s
+    When I use function code 06 to write to writable registers ... skipped in 0.000s
+    Then the register values should be updated correctly ... skipped in 0.000s
+    And the response should echo the written address and value ... skipped in 0.000s
+    And the CRC should be calculated correctly ... skipped in 0.000s
+    When I attempt to write to read-only registers ... skipped in 0.000s
+    Then the system should return an illegal address exception ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS function code 16 (Write Multiple Registers) testing" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @modbus @interface @validation
+  Scenario: MODBUS function code 16 (Write Multiple Registers) testing
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
+    And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
+    And the MODBUS slave ID is configured correctly ... skipped in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given the system is ready for multiple write operations ... skipped in 0.000s
+    When I use function code 16 to write multiple consecutive registers ... skipped in 0.000s
+    Then all register values should be updated correctly ... skipped in 0.000s
+    And the response should confirm the starting address and quantity ... skipped in 0.000s
+    And the CRC should be calculated correctly ... skipped in 0.000s
+    When I attempt to write across read-only boundaries ... skipped in 0.000s
+    Then the system should return an appropriate exception ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS error handling and exception responses" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @modbus @interface @error-handling
+  Scenario: MODBUS error handling and exception responses
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
+    And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
+    And the MODBUS slave ID is configured correctly ... skipped in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given the system is operational ... skipped in 0.000s
+    When I attempt to read from an illegal address ... skipped in 0.000s
+    Then the system should return exception code 02 (Illegal Data Address) ... skipped in 0.000s
+    When I attempt to write an illegal data value ... skipped in 0.000s
+    Then the system should return exception code 03 (Illegal Data Value) ... skipped in 0.000s
+    When I send a request with invalid CRC ... skipped in 0.000s
+    Then the system should not respond (silent error handling) ... skipped in 0.000s
+    When I send a request to the wrong slave ID ... skipped in 0.000s
+    Then the system should not respond ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS communication performance testing" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @modbus @interface @performance
+  Scenario: MODBUS communication performance testing
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
+    And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
+    And the MODBUS slave ID is configured correctly ... skipped in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given the system is under normal operating conditions ... skipped in 0.000s
+    When I perform 100 consecutive read operations ... skipped in 0.000s
+    Then each operation should complete within 100ms ... skipped in 0.000s
+    And no communication errors should occur ... skipped in 0.000s
+    And all responses should have correct CRC values ... skipped in 0.000s
+    When I perform 50 consecutive write operations ... skipped in 0.000s
+    Then each operation should complete within 100ms ... skipped in 0.000s
+    And all register values should be updated correctly ... skipped in 0.000s
+    And the system should maintain stable operation ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS communication stress testing" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @modbus @interface @stress-testing
+  Scenario: MODBUS communication stress testing
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
+    And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
+    And the MODBUS slave ID is configured correctly ... skipped in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given the system is configured for stress testing ... skipped in 0.000s
+    When I perform rapid sequential read/write operations ... skipped in 0.000s
+    Then the system should handle the load without errors ... skipped in 0.000s
+    And response times should remain within specifications ... skipped in 0.000s
+    And no data corruption should occur ... skipped in 0.000s
+    When I perform operations while sonicators are running ... skipped in 0.000s
+    Then MODBUS communication should not interfere with sonicator operation ... skipped in 0.000s
+    And sonicator operation should not affect MODBUS timing ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Legacy MODBUS register mapping compatibility" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @modbus @interface @legacy-compatibility
+  Scenario: Legacy MODBUS register mapping compatibility
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
+    And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
+    And the MODBUS slave ID is configured correctly ... skipped in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given the system supports legacy register addresses ... skipped in 0.000s
+    When I access registers using the 40001-based addressing ... skipped in 0.000s
+    Then register 40001 should map to sonicator 1 amplitude ... skipped in 0.000s
+    And register 40005 should map to sonicator 1 start/stop ... skipped in 0.000s
+    And register 40009 should map to sonicator 1 overload reset ... skipped in 0.000s
+    And all legacy addresses should work correctly ... skipped in 0.000s
+    And the mapping should be consistent with documentation ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Concurrent MODBUS access testing" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @modbus @interface @concurrent-access
+  Scenario: Concurrent MODBUS access testing
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
+    And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
+    And the MODBUS slave ID is configured correctly ... skipped in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given multiple MODBUS masters may access the system ... skipped in 0.000s
+    When I simulate concurrent access from multiple sources ... skipped in 0.000s
+    Then the system should handle requests in order ... skipped in 0.000s
+    And no data corruption should occur ... skipped in 0.000s
+    And all responses should be sent to the correct master ... skipped in 0.000s
+    And the system should maintain data consistency ... skipped in 0.000s
+    And performance should degrade gracefully under load ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Advanced MODBUS function codes" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @pending @modbus @interface @advanced-functions
+  Scenario: Advanced MODBUS function codes
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
+    And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
+    And the MODBUS slave ID is configured correctly ... skipped in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given the system supports extended MODBUS functions ... skipped in 0.000s
+    When I use function code 23 (Read/Write Multiple Registers) ... skipped in 0.000s
+    Then the system should perform atomic read/write operations ... skipped in 0.000s
+    When I use function code 43 (Read Device Identification) ... skipped in 0.000s
+    Then the system should return device identification information ... skipped in 0.000s
+    And vendor name, product code, and version should be included ... skipped in 0.000s
+    And all extended functions should follow MODBUS specifications ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

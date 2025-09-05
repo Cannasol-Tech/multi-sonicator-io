@@ -140,7 +140,9 @@ class HILController:
             return "/dev/ttyUSB0"
 
     def setup_hardware(self) -> bool:
-        """Initialize hardware connections and verify basic connectivity"""
+        """Initialize hardware connections and verify basic connectivity with improved timing"""
+        import time
+
         try:
             self.logger.info("Setting up HIL hardware connections...")
 
@@ -156,10 +158,41 @@ class HILController:
             self.config['hardware']['programmer_port'] = programmer_port
             self.programmer = ArduinoISPProgrammer(programmer_port)
 
-            # Verify basic connectivity
-            if not self.hardware_interface.verify_connection():
-                self.logger.error("Failed to establish hardware interface connection")
+            # TIMING FIX: Allow Arduino to fully initialize before attempting connection
+            self.logger.info("Waiting for Arduino initialization (3 seconds)...")
+            time.sleep(3.0)
+
+            # BUFFER CLEARING FIX: Verify connectivity with retry mechanism
+            connection_attempts = 3
+            for attempt in range(connection_attempts):
+                self.logger.info(f"Connection attempt {attempt + 1}/{connection_attempts}")
+
+                if self.hardware_interface.verify_connection():
+                    self.logger.info("✅ Hardware interface connection established")
+                    break
+
+                if attempt < connection_attempts - 1:
+                    self.logger.info("Connection failed, retrying in 2 seconds...")
+                    time.sleep(2.0)
+            else:
+                self.logger.error("Failed to establish hardware interface connection after all attempts")
                 return False
+
+            # STARTUP MESSAGE FIX: Send dummy command to clear any startup messages
+            try:
+                self.logger.info("Clearing Arduino startup messages...")
+                dummy_response = self.hardware_interface.send_command("PING", read_timeout=1.0)
+                self.logger.debug(f"Dummy command response: {dummy_response}")
+
+                # Verify connection is stable with a second PING
+                verify_response = self.hardware_interface.send_command("PING", read_timeout=2.0)
+                if verify_response and "PONG" in verify_response:
+                    self.logger.info("✅ Arduino communication verified and stable")
+                else:
+                    self.logger.warning(f"Arduino communication may be unstable: {verify_response}")
+
+            except Exception as e:
+                self.logger.warning(f"Startup message clearing failed: {e}")
 
             # Mark hardware ready once harness connection is up; programmer may be optional for some tests
             self.hardware_ready = True

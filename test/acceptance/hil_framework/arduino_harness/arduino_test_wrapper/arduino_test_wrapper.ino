@@ -65,6 +65,10 @@ static const uint8_t PIN_UART_TXD_FROM_DUT = 11; // reads DUT PD1 (DB9-0 Pin 9)
 // Status LED 2-pin terminal (LED-TERM)
 static const uint8_t PIN_STATUS_LED = 12; // drives LED terminal if needed for tests
 
+// Voltage simulation for HIL testing
+float simulated_power_voltage = 0.0;
+bool use_simulated_power = false;
+
 static void setSafeDefaults() {
   // Configure S4 pins (only physically implemented unit)
   pinMode(S4_PINS.OVERLOAD_IN, OUTPUT);   digitalWrite(S4_PINS.OVERLOAD_IN, LOW);
@@ -79,6 +83,13 @@ static void setSafeDefaults() {
   pinMode(PIN_UART_RXD_TO_DUT, OUTPUT);  digitalWrite(PIN_UART_RXD_TO_DUT, HIGH); // idle high if via level shifter
   pinMode(PIN_UART_TXD_FROM_DUT, INPUT);
   pinMode(PIN_STATUS_LED, OUTPUT);       digitalWrite(PIN_STATUS_LED, LOW);
+
+  // Configure additional ADC pins for testing
+  pinMode(A0, INPUT);  // Additional ADC channel
+  pinMode(A2, INPUT);  // Additional ADC channel
+  pinMode(A3, INPUT);  // Additional ADC channel
+  pinMode(6, OUTPUT);  // PWM pin for voltage simulation
+  analogWrite(6, 0);   // Initialize voltage simulation to 0V
 }
 
 static void handleLine(String line) {
@@ -93,6 +104,14 @@ static void handleLine(String line) {
 
   if (line.equalsIgnoreCase("INFO")) {
     Serial.println("OK HIL-Wrapper/0.1.0 S4-ONLY");
+    return;
+  }
+
+  if (line.equalsIgnoreCase("DEBUG")) {
+    Serial.print("OK SIM=");
+    Serial.print(use_simulated_power ? "ON" : "OFF");
+    Serial.print(" VOLT=");
+    Serial.println(simulated_power_voltage);
     return;
   }
 
@@ -134,9 +153,73 @@ static void handleLine(String line) {
   }
 
   if (line.equalsIgnoreCase("READ POWER 4")) {
-    int adc = analogRead(S4_PINS.POWER_ADC);
+    int adc;
+    if (use_simulated_power) {
+      // Return simulated ADC value based on simulated voltage (0-5V -> 0-1023)
+      adc = (int)((simulated_power_voltage / 5.0) * 1023.0);
+    } else {
+      // Read actual ADC value
+      adc = analogRead(S4_PINS.POWER_ADC);
+    }
     Serial.print("OK POWER=");
     Serial.println(adc);
+    return;
+  }
+
+  // Enhanced ADC commands for HIL testing
+  if (line.startsWith("READ ADC ")) {
+    String channel = line.substring(9);
+    channel.trim();
+
+    int pin = -1;
+    if (channel.equalsIgnoreCase("POWER_SENSE_4") || channel.equalsIgnoreCase("A1")) {
+      pin = S4_PINS.POWER_ADC;
+      // Use simulated value if available
+      if (use_simulated_power) {
+        int adc = (int)((simulated_power_voltage / 5.0) * 1023.0);
+        Serial.print("OK ADC=");
+        Serial.println(adc);
+        return;
+      }
+    } else if (channel.equalsIgnoreCase("A0")) {
+      pin = A0;
+    } else if (channel.equalsIgnoreCase("A2")) {
+      pin = A2;
+    } else if (channel.equalsIgnoreCase("A3")) {
+      pin = A3;
+    }
+
+    if (pin >= 0) {
+      int adc = analogRead(pin);
+      Serial.print("OK ADC=");
+      Serial.println(adc);
+    } else {
+      Serial.println("ERR INVALID_ADC_CHANNEL");
+    }
+    return;
+  }
+
+  // Voltage simulation for testing (stores expected values)
+  if (line.startsWith("SET VOLTAGE ")) {
+    // Format: SET VOLTAGE <channel> <voltage>
+    int firstSpace = line.indexOf(' ', 12);
+    if (firstSpace > 0) {
+      String channel = line.substring(12, firstSpace);
+      float voltage = line.substring(firstSpace + 1).toFloat();
+
+      // For HIL testing, we simulate voltage by storing the expected value
+      // and returning it when the ADC is read (since we can't actually apply voltage to ADC input)
+      if (channel.equalsIgnoreCase("POWER_SENSE_4")) {
+        // Store simulated voltage for POWER_SENSE_4 channel
+        simulated_power_voltage = voltage;
+        use_simulated_power = true;
+        Serial.println("OK");
+      } else {
+        Serial.println("ERR UNSUPPORTED_CHANNEL");
+      }
+    } else {
+      Serial.println("ERR INVALID_FORMAT");
+    }
     return;
   }
 
