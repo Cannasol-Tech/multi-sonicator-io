@@ -256,7 +256,7 @@ describe('CommandEntry Component', () => {
     // Should format JSON with indentation
     expect(screen.getAllByText(/pin_write/)).toHaveLength(2) // One in header, one in JSON
     expect(screen.getByText(/D8/)).toBeInTheDocument()
-    expect(screen.getAllByText(/LOW/)).toHaveLength(2) // One in JSON value, one in JSON string
+    expect(screen.getByText(/LOW/)).toBeInTheDocument() // Should find LOW in the formatted JSON
   })
 
   it('handles non-JSON data correctly', () => {

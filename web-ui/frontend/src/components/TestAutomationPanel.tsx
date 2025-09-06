@@ -146,14 +146,22 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
         </div>
       )}
 
-      {/* Test Execution Status */}
+      {/* Enhanced Test Execution Status */}
       {currentExecution && (
-        <div className="execution-status">
+        <div className="execution-status-enhanced">
           <div className="execution-header">
-            <h4>
-              {getStatusIcon(currentExecution.status)} 
-              Test Execution: {currentExecution.execution_id}
-            </h4>
+            <div className="execution-title-section">
+              <h3 className="execution-title">
+                {getStatusIcon(currentExecution.status)}
+                Test Execution
+              </h3>
+              <div className="execution-id">ID: {currentExecution.execution_id}</div>
+              <div className="execution-status-badge">
+                <span className={`status-indicator ${currentExecution.status}`}>
+                  {currentExecution.status.toUpperCase()}
+                </span>
+              </div>
+            </div>
             <div className="execution-controls">
               {!isExecutionInProgress && (
                 <button

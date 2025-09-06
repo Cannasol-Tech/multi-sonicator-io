@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import testAutomationAPI from '../testAutomationAPI'
+import { TestAutomationAPI } from '../testAutomationAPI'
 
 // Mock fetch
 global.fetch = vi.fn()
@@ -11,28 +11,30 @@ describe('Test Automation API', () => {
     vi.mocked(fetch).mockClear()
   })
 
-  describe('getScenarios', () => {
+  describe('getAvailableScenarios', () => {
     it('fetches scenarios successfully', async () => {
-      const mockScenarios = [
-        {
-          id: 'scenario-1',
-          name: 'Basic Pin Test',
-          description: 'Test basic pin operations',
-          feature: 'pin-control.feature',
-          tags: ['@smoke', '@pin'],
-          steps: ['Given the Arduino is connected', 'When I set pin D8 to HIGH']
-        }
-      ]
+      const mockResponse = {
+        scenarios: [
+          {
+            id: 'scenario-1',
+            name: 'Basic Pin Test',
+            description: 'Test basic pin operations',
+            feature: 'pin-control.feature',
+            tags: ['@smoke', '@pin'],
+            steps: ['Given the Arduino is connected', 'When I set pin D8 to HIGH']
+          }
+        ]
+      }
 
       vi.mocked(fetch).mockResolvedValueOnce({
         ok: true,
-        json: async () => mockScenarios,
+        json: async () => mockResponse,
       } as Response)
 
-      const result = await testAutomationAPI.getScenarios()
+      const result = await TestAutomationAPI.getAvailableScenarios()
 
-      expect(fetch).toHaveBeenCalledWith('/api/test-automation/scenarios')
-      expect(result).toEqual(mockScenarios)
+      expect(fetch).toHaveBeenCalledWith('http://localhost:3001/api/test/scenarios')
+      expect(result).toEqual(mockResponse.scenarios)
     })
 
     it('handles fetch errors', async () => {

@@ -223,7 +223,7 @@ describe('useHardwareState', () => {
       expect(result.current.hardwareState.pins).toHaveProperty('PIN2')
     })
 
-    it('does not mutate previous state when updating multiple pins', () => {
+    it('does not mutate previous state when updating multiple pins', async () => {
       const { result } = renderHook(() => useHardwareState())
 
       const initialUpdates = {
@@ -240,7 +240,9 @@ describe('useHardwareState', () => {
         'RESET_4': { state: 'HIGH' }
       }
 
-      act(() => {
+      // Add small delay to ensure different timestamps
+      await act(async () => {
+        await new Promise(resolve => setTimeout(resolve, 1))
         result.current.updateMultiplePins(additionalUpdates)
       })
 

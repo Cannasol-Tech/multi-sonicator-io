@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Single Connection Light-Gold Highlighting - Multi-Sonicator IO</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 900px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #374151;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-clear {
+            background: #6b7280;
+            color: white;
+        }
+
+        .btn-clear:hover {
+            background: #4b5563;
+            transform: translateY(-2px);
+        }
+
+        .status {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .pin-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 30px;
+            align-items: start;
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .pin-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 15px;
+            color: #374151;
+        }
+
+        .pin-item {
+            padding: 12px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 2px solid;
+        }
+
+        .arduino-pin {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            color: #1e40af;
+        }
+
+        .arduino-pin.highlighted {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+            border-color: #ffd700;
+            color: #b45309;
+            transform: scale(1.05);
+            box-shadow: 0 4px 16px rgba(255, 215, 0, 0.4), 0 0 24px rgba(255, 215, 0, 0.2);
+        }
+
+        .connection-item {
+            background: #f3f4f6;
+            border-color: #d1d5db;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+        }
+
+        .connection-item.highlighted {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+            border-color: #ffd700;
+            color: #b45309;
+            transform: scale(1.02);
+            box-shadow: 0 4px 16px rgba(255, 215, 0, 0.4), 0 0 24px rgba(255, 215, 0, 0.2);
+        }
+
+        .atmega-pin {
+            background: #fecaca;
+            border-color: #dc2626;
+            color: #dc2626;
+        }
+
+        .atmega-pin.highlighted {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+            border-color: #ffd700;
+            color: #b45309;
+            transform: scale(1.05);
+            box-shadow: 0 4px 16px rgba(255, 215, 0, 0.4), 0 0 24px rgba(255, 215, 0, 0.2);
+        }
+
+        .arrow {
+            color: #6b7280;
+            font-weight: normal;
+        }
+
+        .status-display {
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .status-display.idle {
+            background: #f8f9fa;
+            color: #6c757d;
+        }
+
+        .status-display.active {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            color: #b45309;
+            border: 2px solid #ffd700;
+        }
+
+        .instructions {
+            padding: 15px;
+            background: #e0f2fe;
+            border-left: 4px solid #0284c7;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            color: #0c4a6e;
+        }
+
+        .feature-highlight {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border: 2px solid #ffd700;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .feature-highlight h3 {
+            color: #b45309;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .feature-highlight p {
+            color: #92400e;
+            margin: 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>✨ Single Connection Light-Gold Highlighting</h1>
+        <p class="subtitle">Enhanced functionality for Multi-Sonicator IO Hardware Diagram</p>
+
+        <div class="controls">
+            <button id="clearBtn" class="btn-clear">🧹 Clear Highlight</button>
+            <span class="status">
+                Currently highlighted: <span id="highlightStatus">None</span>
+            </span>
+        </div>
+
+        <div class="pin-layout">
+            <!-- Arduino Pins (Left) -->
+            <div class="pin-section">
+                <div class="section-title">Arduino Pins</div>
+                <div id="arduinoPins"></div>
+            </div>
+
+            <!-- Connection Bars (Center) -->
+            <div class="pin-section">
+                <div class="section-title">Pin Connections</div>
+                <div id="connections"></div>
+            </div>
+
+            <!-- ATmega Pins (Right) -->
+            <div class="pin-section">
+                <div class="section-title">ATmega Pins</div>
+                <div id="atmegaPins"></div>
+            </div>
+        </div>
+
+        <div id="statusDisplay" class="status-display idle">
+            ⏸️ No connection highlighted. Click on any pin or connection to highlight all three components.
+        </div>
+
+        <div class="instructions">
+            <strong>✨ How it works:</strong> Click on any part of a pin connection (left Arduino pin, center connection bar, or right ATmega pin) 
+            to highlight all three components with beautiful light-gold color. Only one connection can be highlighted at a time. 
+            Click again on any highlighted component to remove the highlighting.
+        </div>
+
+        <div class="feature-highlight">
+            <h3>🎯 New Features</h3>
+            <p>
+                <strong>Single Selection:</strong> Only one connection can be highlighted at a time for clear focus.<br>
+                <strong>Light-Gold Color:</strong> Beautiful shining light-gold color (#FFD700) replaces amber for better visual appeal.<br>
+                <strong>Three-Component Sync:</strong> All three parts (Arduino pin, connection bar, ATmega pin) highlight together.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Mock pin connections data
+        const connections = [
+            { arduino: 'D7', atmega: 'PB0', signal: 'FREQ_DIV10_4', description: 'Frequency ÷10 output' },
+            { arduino: 'D8', atmega: 'PB4', signal: 'FREQ_LOCK_4', description: 'Frequency lock input' },
+            { arduino: 'A2', atmega: 'PD3', signal: 'OVERLOAD_4', description: 'Overload input' },
+            { arduino: 'A3', atmega: 'PC0', signal: 'START_4', description: 'Start output' },
+            { arduino: 'A4', atmega: 'PC1', signal: 'RESET_4', description: 'Reset output' },
+            { arduino: 'A1', atmega: 'PA7', signal: 'POWER_SENSE_4', description: 'Power level sensing' }
+        ];
+
+        let highlightedPin = null; // Only one connection can be highlighted
+
+        // DOM elements
+        const elements = {
+            arduinoPins: document.getElementById('arduinoPins'),
+            connections: document.getElementById('connections'),
+            atmegaPins: document.getElementById('atmegaPins'),
+            clearBtn: document.getElementById('clearBtn'),
+            statusDisplay: document.getElementById('statusDisplay'),
+            highlightStatus: document.getElementById('highlightStatus')
+        };
+
+        function handlePinClick(signal) {
+            if (highlightedPin === signal) {
+                // Remove highlighting if clicking the same connection
+                highlightedPin = null;
+            } else {
+                // Set this as the only highlighted connection
+                highlightedPin = signal;
+            }
+            
+            updateDisplay();
+        }
+
+        function clearHighlight() {
+            highlightedPin = null;
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            // Update Arduino pins
+            elements.arduinoPins.innerHTML = connections.map(conn => {
+                const isHighlighted = highlightedPin === conn.signal;
+                return `
+                    <div class="pin-item arduino-pin ${isHighlighted ? 'highlighted' : ''}" 
+                         onclick="handlePinClick('${conn.signal}')"
+                         title="Arduino pin ${conn.arduino} - Click to ${isHighlighted ? 'remove' : 'add'} highlighting">
+                        ${conn.arduino}
+                    </div>
+                `;
+            }).join('');
+
+            // Update connections
+            elements.connections.innerHTML = connections.map(conn => {
+                const isHighlighted = highlightedPin === conn.signal;
+                return `
+                    <div class="pin-item connection-item ${isHighlighted ? 'highlighted' : ''}" 
+                         onclick="handlePinClick('${conn.signal}')"
+                         title="${conn.description} - Click to ${isHighlighted ? 'remove' : 'add'} highlighting">
+                        <span>${conn.arduino}</span>
+                        <span class="arrow">→</span>
+                        <span>${conn.atmega}</span>
+                    </div>
+                `;
+            }).join('');
+
+            // Update ATmega pins
+            elements.atmegaPins.innerHTML = connections.map(conn => {
+                const isHighlighted = highlightedPin === conn.signal;
+                return `
+                    <div class="pin-item atmega-pin ${isHighlighted ? 'highlighted' : ''}" 
+                         onclick="handlePinClick('${conn.signal}')"
+                         title="ATmega pin ${conn.atmega} - Click to ${isHighlighted ? 'remove' : 'add'} highlighting">
+                        ${conn.atmega}
+                    </div>
+                `;
+            }).join('');
+
+            // Update status
+            if (highlightedPin === null) {
+                elements.highlightStatus.textContent = 'None';
+                elements.statusDisplay.className = 'status-display idle';
+                elements.statusDisplay.textContent = '⏸️ No connection highlighted. Click on any pin or connection to highlight all three components.';
+            } else {
+                const conn = connections.find(c => c.signal === highlightedPin);
+                const connectionName = conn ? `${conn.arduino}↔${conn.atmega}` : highlightedPin;
+                elements.highlightStatus.textContent = connectionName;
+                elements.statusDisplay.className = 'status-display active';
+                elements.statusDisplay.textContent = `✨ Highlighted connection: ${connectionName} with beautiful light-gold color!`;
+            }
+        }
+
+        // Event listeners
+        elements.clearBtn.addEventListener('click', clearHighlight);
+
+        // Initialize display
+        updateDisplay();
+    </script>
+</body>
+</html>
