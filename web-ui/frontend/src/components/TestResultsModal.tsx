@@ -1,4 +1,4 @@
-import { TestExecution, TestScenario, TestStep } from '../types'
+import { TestExecution, TestScenario } from '../types'
 import { TestAutomationAPI } from '../services/testAutomationApi'
 
 interface TestResultsModalProps {

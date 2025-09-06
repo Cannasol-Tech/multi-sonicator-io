@@ -5,8 +5,13 @@ export interface PinState {
   pin: string
   signal: string
   direction: 'IN' | 'OUT' | 'ANALOG'
-  state: 'HIGH' | 'LOW' | number
+  state: 'HIGH' | 'LOW' | number | string  // Allow string for frequency displays
   timestamp: number
+  frequency?: number  // For frequency pins
+  frequencyDisplay?: string  // For frequency pins
+  operatingFrequency?: string  // For frequency pins
+  enabled?: boolean  // For frequency pins
+  isActive?: boolean  // For frequency pins
 }
 
 export interface HardwareCommand {
@@ -34,6 +39,27 @@ export class HardwareInterface extends EventEmitter {
   private pinStates: Map<string, PinState> = new Map()
   private commandQueue: Array<{ command: HardwareCommand; resolve: Function; reject: Function }> = []
   private processingCommand = false
+  private configuration = {
+    sonicator4: {
+      operatingFrequencyKHz: 20.0,  // Default 20kHz
+      outputFrequencyKHz: 2.0,      // 1/10th of operating frequency
+      enabled: true
+    },
+    testHarness: {
+      pinMapping: {
+        FREQ_DIV10_4: 'D7',
+        FREQ_LOCK_4: 'D8',
+        OVERLOAD_4: 'A2',
+        START_4: 'A3',
+        RESET_4: 'A4',
+        POWER_SENSE_4: 'A1',
+        AMPLITUDE_ALL: 'D9',
+        UART_RXD: 'D10',
+        UART_TXD: 'D11',
+        STATUS_LED: 'D12'
+      }
+    }
+  }
 
   constructor() {
     super()
@@ -109,6 +135,18 @@ except ImportError:
                 'UART_TXD': 'LOW',
                 'STATUS_LED': 'LOW'
             }
+            # Frequency generation configuration
+            self.frequency_config = {
+                'FREQ_DIV10_4': {
+                    'frequency_hz': 2000,  # Default 2kHz (20kHz / 10)
+                    'enabled': True,
+                    'last_toggle': time.time(),
+                    'state': False
+                }
+            }
+            # Start frequency generation thread
+            self.frequency_thread = threading.Thread(target=self.frequency_generator, daemon=True)
+            self.frequency_thread.start()
 
         def connect(self):
             print('{"type": "connection", "status": "connected", "port": "mock"}')
@@ -117,10 +155,47 @@ except ImportError:
         def disconnect(self):
             self.connected = False
 
+        def frequency_generator(self):
+            """Generate frequency signals for configured pins"""
+            while True:
+                try:
+                    current_time = time.time()
+                    for signal, config in self.frequency_config.items():
+                        if config['enabled'] and config['frequency_hz'] > 0:
+                            period = 1.0 / config['frequency_hz']
+                            half_period = period / 2.0
+
+                            if current_time - config['last_toggle'] >= half_period:
+                                # Toggle the pin state
+                                config['state'] = not config['state']
+                                config['last_toggle'] = current_time
+
+                                # Update pin state and send update
+                                new_state = 'HIGH' if config['state'] else 'LOW'
+                                self.pin_states[signal] = new_state
+
+                                # Send pin state update
+                                print(json.dumps({"type": "pin_state", "pin": signal, "data": new_state}))
+                                sys.stdout.flush()
+
+                    time.sleep(0.001)  # 1ms sleep for reasonable precision
+                except Exception as e:
+                    print(f"Frequency generator error: {e}")
+                    time.sleep(0.1)
+
         def send_command(self, cmd):
             # Parse command and update mock states
             parts = cmd.split()
-            if len(parts) >= 3 and parts[0] == 'WRITE_PIN':
+            if parts[0] == 'PING':
+                return "PONG - Multi-Sonicator-IO Mock Hardware v1.0"
+            elif len(parts) >= 3 and parts[0] == 'SET_FREQUENCY':
+                signal = parts[1]
+                frequency_hz = float(parts[2])
+                if signal in self.frequency_config:
+                    self.frequency_config[signal]['frequency_hz'] = frequency_hz
+                    print(f"Set {signal} frequency to {frequency_hz}Hz")
+                return "OK"
+            elif len(parts) >= 3 and parts[0] == 'WRITE_PIN':
                 signal = parts[1]
                 state = parts[2]
                 if signal in self.pin_states:
@@ -130,7 +205,27 @@ except ImportError:
                     sys.stdout.flush()
                 return "OK"
             elif len(parts) >= 2 and parts[0] == 'READ_PIN':
-                signal = parts[1]
+                signal_or_pin = parts[1]
+                # Map Arduino pin names to signal names
+                pin_to_signal = {
+                    'D7': 'FREQ_DIV10_4',
+                    'D8': 'FREQ_LOCK_4',
+                    'A2': 'OVERLOAD_4',
+                    'A3': 'START_4',
+                    'A4': 'RESET_4',
+                    'A1': 'POWER_SENSE_4',
+                    'D9': 'AMPLITUDE_ALL',
+                    'D10': 'UART_RXD',
+                    'D11': 'UART_TXD',
+                    'D12': 'STATUS_LED'
+                }
+
+                # Check if it's an Arduino pin name, convert to signal name
+                if signal_or_pin in pin_to_signal:
+                    signal = pin_to_signal[signal_or_pin]
+                else:
+                    signal = signal_or_pin
+
                 if signal in self.pin_states:
                     return str(self.pin_states[signal])
                 return "UNKNOWN"
@@ -138,6 +233,7 @@ except ImportError:
 
 import json
 import time
+import threading
 
 # Initialize HIL hardware interface
 hil = HardwareInterface()
@@ -166,7 +262,17 @@ try:
                     command = cmd["command"]
                     args = cmd.get("args", [])
 
-                    if command == "write_pin" and len(args) >= 2:
+                    if command == "ping":
+                        response = hil.send_command("PING")
+                        print(json.dumps({"type": "response", "data": response}))
+
+                    elif command == "set_frequency" and len(args) >= 2:
+                        signal = args[0]
+                        frequency_hz = args[1]
+                        response = hil.send_command(f"SET_FREQUENCY {signal} {frequency_hz}")
+                        print(json.dumps({"type": "response", "data": response}))
+
+                    elif command == "write_pin" and len(args) >= 2:
                         signal = args[0]
                         state = args[1]
                         response = hil.send_command(f"WRITE_PIN {signal} {state}")
@@ -301,30 +407,55 @@ except Exception as e:
   private updatePinState(pin: string, data: string) {
     // Parse hardware response and update pin state
     const timestamp = Date.now()
-    
+
+    console.log(`Hardware: Updating pin state for ${pin} with data: ${data}`)
+
     // Find pin by Arduino pin name or signal name
     for (const [signal, pinState] of this.pinStates.entries()) {
       if (pinState.pin === pin || signal === pin) {
-        let newState: 'HIGH' | 'LOW' | number = 'LOW'
-        
-        if (data.includes('HIGH')) {
-          newState = 'HIGH'
-        } else if (data.includes('LOW')) {
-          newState = 'LOW'
-        } else if (data.includes('ADC=')) {
-          const match = data.match(/ADC=(\d+)/)
-          if (match) {
-            newState = parseInt(match[1])
+        let newState: 'HIGH' | 'LOW' | number | string = 'LOW'
+
+        // Special handling for frequency pins
+        if (signal === 'FREQ_DIV10_4') {
+          if (this.configuration.sonicator4.enabled) {
+            newState = `${this.configuration.sonicator4.outputFrequencyKHz}kHz`
+          } else {
+            newState = 'OFF'
+          }
+        } else {
+          // Handle direct state values for regular pins
+          if (data === 'HIGH' || data.includes('HIGH')) {
+            newState = 'HIGH'
+          } else if (data === 'LOW' || data.includes('LOW')) {
+            newState = 'LOW'
+          } else if (data.includes('ADC=')) {
+            const match = data.match(/ADC=(\d+)/)
+            if (match) {
+              newState = parseInt(match[1])
+            }
+          } else if (!isNaN(parseInt(data))) {
+            // Handle numeric values (ADC readings)
+            newState = parseInt(data)
           }
         }
-        
+
+        console.log(`Hardware: Pin ${signal} state updated from ${pinState.state} to ${newState}`)
+
         const updatedPin = {
           ...pinState,
           state: newState,
-          timestamp
+          timestamp,
+          // Add frequency information for frequency pins
+          ...(signal === 'FREQ_DIV10_4' && {
+            frequency: this.configuration.sonicator4.outputFrequencyKHz * 1000,
+            frequencyDisplay: `${this.configuration.sonicator4.outputFrequencyKHz}kHz`,
+            operatingFrequency: `${this.configuration.sonicator4.operatingFrequencyKHz}kHz`,
+            enabled: this.configuration.sonicator4.enabled,
+            isActive: this.configuration.sonicator4.enabled && (data === 'HIGH' || data === 'LOW')
+          })
         }
-        
-        this.pinStates.set(signal, updatedPin)
+
+        this.pinStates.set(signal, updatedPin as PinState)
         this.emit('pin_update', signal, updatedPin)
         break
       }
@@ -486,5 +617,61 @@ except Exception as e:
     }
     this.connected = false
     this.emit('disconnected')
+  }
+
+  getConfiguration() {
+    return { ...this.configuration }
+  }
+
+  async updateConfiguration(newConfig: any): Promise<{ success: boolean; config: any }> {
+    try {
+      console.log('Hardware: Updating configuration:', newConfig)
+
+      // Update sonicator frequency configuration
+      if (newConfig.sonicator4?.operatingFrequencyKHz !== undefined) {
+        const operatingFreq = parseFloat(newConfig.sonicator4.operatingFrequencyKHz)
+        if (operatingFreq > 0 && operatingFreq <= 100) { // Reasonable limits
+          this.configuration.sonicator4.operatingFrequencyKHz = operatingFreq
+          this.configuration.sonicator4.outputFrequencyKHz = operatingFreq / 10.0
+
+          console.log(`Hardware: Updated operating frequency to ${operatingFreq}kHz, output frequency to ${operatingFreq / 10.0}kHz`)
+
+          // Send frequency configuration to hardware
+          const command = {
+            command: 'set_frequency',
+            args: [
+              'FREQ_DIV10_4',
+              (operatingFreq * 1000 / 10).toString() // Convert kHz to Hz and divide by 10
+            ],
+            expectResponse: true
+          }
+
+          const result = await this.sendCommand(command)
+          console.log('Hardware: Frequency configuration result:', result)
+
+          // Update the FREQ_DIV10_4 pin state to reflect new frequency
+          this.updatePinState('FREQ_DIV10_4', 'HIGH')
+        }
+      }
+
+      // Update other configuration options as needed
+      if (newConfig.sonicator4?.enabled !== undefined) {
+        this.configuration.sonicator4.enabled = newConfig.sonicator4.enabled
+
+        // Update the FREQ_DIV10_4 pin state to reflect enabled/disabled status
+        this.updatePinState('FREQ_DIV10_4', newConfig.sonicator4.enabled ? 'HIGH' : 'LOW')
+      }
+
+      return {
+        success: true,
+        config: this.configuration
+      }
+    } catch (error) {
+      console.error('Hardware: Error updating configuration:', error)
+      return {
+        success: false,
+        config: this.configuration
+      }
+    }
   }
 }

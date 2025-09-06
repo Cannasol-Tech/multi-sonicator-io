@@ -1,9 +1,5 @@
-import React, { useState, useEffect } from 'react'
-
-interface HardwareState {
-  pins: Record<string, any>
-  connection: { connected: boolean; port: string | null }
-}
+import React, { useState, useEffect, useRef } from 'react'
+import { HardwareState } from '../types'
 
 interface HardwareDiagramProps {
   hardwareState: HardwareState
@@ -11,7 +7,17 @@ interface HardwareDiagramProps {
   highlightedPins?: string[]
 }
 
-const PIN_CONNECTIONS = [
+interface PinConnection {
+  arduino: string
+  atmega: string
+  signal: string
+  direction: 'IN' | 'OUT' | 'ANALOG'
+  description: string
+  arduinoPos?: { x: number; y: number }
+  atmegaPos?: { x: number; y: number }
+}
+
+const PIN_CONNECTIONS: PinConnection[] = [
   { arduino: 'D7', atmega: 'PB0', signal: 'FREQ_DIV10_4', direction: 'IN', description: 'Frequency ÷10 input' },
   { arduino: 'D8', atmega: 'PB4', signal: 'FREQ_LOCK_4', direction: 'IN', description: 'Frequency lock input' },
   { arduino: 'A2', atmega: 'PD3', signal: 'OVERLOAD_4', direction: 'IN', description: 'Overload input' },
@@ -24,105 +30,143 @@ const PIN_CONNECTIONS = [
   { arduino: 'D12', atmega: 'PD2', signal: 'STATUS_LED', direction: 'OUT', description: 'Status LED' }
 ]
 
-export const HardwareDiagram: React.FC = () => {
-  const [hardwareState, setHardwareState] = useState<HardwareState>({
-    pins: {},
-    connection: { connected: false, port: null }
-  })
-  const [highlightedPins, setHighlightedPins] = useState<string[]>([])
+// Wire connection component for visual representation
+const WireConnection: React.FC<{
+  connection: PinConnection
+  isHighlighted: boolean
+  pinState: any
+  containerRef: React.RefObject<HTMLDivElement | null>
+}> = ({ connection, isHighlighted, pinState, containerRef }) => {
+  const [path, setPath] = useState('')
 
   useEffect(() => {
-    // Fetch initial hardware state
-    fetch('/api/pins')
-      .then(res => res.json())
-      .then(data => {
-        setHardwareState(prev => ({ ...prev, pins: data.pins }))
-      })
-      .catch(err => console.error('Failed to fetch pins:', err))
+    if (!containerRef.current) return
 
-    fetch('/api/connection')
-      .then(res => res.json())
-      .then(data => {
-        setHardwareState(prev => ({ ...prev, connection: data }))
-      })
-      .catch(err => console.error('Failed to fetch connection:', err))
+    const container = containerRef.current
+    const arduinoElement = container.querySelector(`[data-pin="${connection.arduino}"]`)
+    const atmegaElement = container.querySelector(`[data-pin="${connection.atmega}"]`)
 
-    // Set up WebSocket for real-time updates
-    const ws = new WebSocket('ws://localhost:3001/ws')
+    if (arduinoElement && atmegaElement) {
+      const containerRect = container.getBoundingClientRect()
+      const arduinoRect = arduinoElement.getBoundingClientRect()
+      const atmegaRect = atmegaElement.getBoundingClientRect()
 
-    ws.onopen = () => {
-      console.log('WebSocket connected')
+      const startX = arduinoRect.right - containerRect.left
+      const startY = arduinoRect.top + arduinoRect.height / 2 - containerRect.top
+      const endX = atmegaRect.left - containerRect.left
+      const endY = atmegaRect.top + atmegaRect.height / 2 - containerRect.top
+
+      // Create curved path for wire appearance
+      const midX = (startX + endX) / 2
+      const curveOffset = Math.abs(endY - startY) * 0.3
+      const controlY1 = startY + (startY < endY ? curveOffset : -curveOffset)
+      const controlY2 = endY + (endY < startY ? curveOffset : -curveOffset)
+
+      const pathData = `M ${startX} ${startY} C ${midX} ${controlY1}, ${midX} ${controlY2}, ${endX} ${endY}`
+      setPath(pathData)
     }
+  }, [connection, containerRef])
 
-    ws.onmessage = (event) => {
-      console.log('WebSocket message received:', event.data)
-      const data = JSON.parse(event.data)
-      if (data.type === 'pin_update') {
-        console.log('Pin update received:', data)
-        setHardwareState(prev => ({
-          ...prev,
-          pins: { ...prev.pins, [data.signal]: data }
-        }))
-      } else if (data.type === 'connection_update') {
-        console.log('Connection update received:', data)
-        setHardwareState(prev => ({ ...prev, connection: data }))
+  const getWireColor = () => {
+    if (isHighlighted) return '#f59e0b'
+    if (connection.direction === 'ANALOG') return '#8b5cf6'
+    if (connection.direction === 'IN') return pinState?.state === 'HIGH' ? '#ef4444' : '#6b7280'
+    if (connection.direction === 'OUT') return pinState?.state === 'HIGH' ? '#10b981' : '#6b7280'
+    return '#6b7280'
+  }
+
+  return (
+    <path
+      d={path}
+      stroke={getWireColor()}
+      strokeWidth={isHighlighted ? "3" : "2"}
+      fill="none"
+      strokeDasharray={connection.direction === 'ANALOG' ? "5,5" : "none"}
+      className={`wire-connection ${isHighlighted ? 'highlighted' : ''}`}
+      style={{
+        filter: isHighlighted ? 'drop-shadow(0 0 4px currentColor)' : 'none',
+        transition: 'all 0.3s ease'
+      }}
+    />
+  )
+}
+
+export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
+  hardwareState,
+  onPinClick,
+  highlightedPins = []
+}) => {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [hoveredConnection, setHoveredConnection] = useState<string | null>(null)
+  const [selectedConnection, setSelectedConnection] = useState<string | null>(null)
+  const [showConnectionDetails, setShowConnectionDetails] = useState(false)
+  const [pingStatus, setPingStatus] = useState<{
+    isLoading: boolean
+    lastPing: number | null
+    responseTime: number | null
+    success: boolean | null
+    message: string
+  }>({
+    isLoading: false,
+    lastPing: null,
+    responseTime: null,
+    success: null,
+    message: 'Not tested'
+  })
+
+
+  // Enhanced pin click handler with visual feedback
+  const handlePinClickWithFeedback = (signal: string, pinState: any) => {
+    setSelectedConnection(signal)
+    handlePinClick(signal, pinState)
+
+    // Clear selection after a delay
+    setTimeout(() => {
+      setSelectedConnection(null)
+    }, 2000)
+  }
+
+  // Connection hover handler with enhanced feedback
+  const handleConnectionHover = (signal: string | null) => {
+    setHoveredConnection(signal)
+    if (signal) {
+      // Add subtle haptic feedback if supported
+      if (navigator.vibrate) {
+        navigator.vibrate(10)
       }
     }
+  }
 
-    ws.onerror = (error) => {
-      console.error('WebSocket error:', error)
-    }
+  // Toggle connection details panel
+  const toggleConnectionDetails = () => {
+    setShowConnectionDetails(!showConnectionDetails)
+  }
 
-    ws.onclose = () => {
-      console.log('WebSocket disconnected')
-    }
-
-    return () => ws.close()
-  }, [])
+  // Remove the old WebSocket setup since it's now handled by props
 
   const handlePinClick = (signal: string, pinState: any) => {
     console.log('Pin clicked:', signal, 'Current state:', pinState.state, 'Direction:', pinState.direction)
 
     if (pinState.direction === 'IN') {
-      // Toggle input pin
-      const newState = pinState.state === 'HIGH' ? 'LOW' : 'HIGH'
-      console.log('Toggling input pin', signal, 'from', pinState.state, 'to', newState)
-
-      fetch(`/api/pins/${signal}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ state: newState })
-      })
-      .then(res => res.json())
-      .then(data => {
-        console.log('Pin control response:', data)
-        if (data.success) {
-          // Update local state immediately for better UX
-          setHardwareState(prev => ({
-            ...prev,
-            pins: {
-              ...prev.pins,
-              [signal]: { ...prev.pins[signal], state: newState, timestamp: Date.now() }
-            }
-          }))
-        }
-      })
-      .catch(err => {
-        console.error('Failed to control pin:', err)
-      })
+      onPinClick(signal, 'toggle')
     } else {
-      // Read output/analog pin
-      console.log('Reading output/analog pin:', signal)
-      fetch(`/api/pins/${signal}`)
-        .then(res => res.json())
-        .then(data => {
-          console.log('Pin read response:', data)
-          setHighlightedPins([signal])
-          setTimeout(() => setHighlightedPins([]), 1000)
-        })
-        .catch(err => {
-          console.error('Failed to read pin:', err)
-        })
+      onPinClick(signal, 'read')
+    }
+  }
+
+  // Get enhanced pin state with additional visual information
+  const getEnhancedPinState = (signal: string) => {
+    const state = getPinState(signal)
+    const connection = PIN_CONNECTIONS.find(c => c.signal === signal)
+    const isActive = highlightedPins.includes(signal) ||
+                    hoveredConnection === signal ||
+                    selectedConnection === signal
+
+    return {
+      ...state,
+      connection,
+      isActive,
+      lastUpdated: (state as any).timestamp ? new Date((state as any).timestamp).toLocaleTimeString() : 'Unknown'
     }
   }
 
@@ -132,184 +176,276 @@ export const HardwareDiagram: React.FC = () => {
     return state
   }
 
-  const getConnectionColor = (direction: string, state: any) => {
-    if (direction === 'ANALOG') return '#8b5cf6' // Purple for analog
-    if (direction === 'IN') return state === 'HIGH' ? '#ef4444' : '#6b7280' // Red for HIGH, gray for LOW
-    if (direction === 'OUT') return state === 'HIGH' ? '#10b981' : '#6b7280' // Green for HIGH, gray for LOW
-    return '#6b7280'
+  const handlePingCommand = async () => {
+    console.log('PING: Starting ping test')
+    setPingStatus(prev => ({ ...prev, isLoading: true, message: 'Testing...' }))
+
+    try {
+      const startTime = Date.now()
+      const response = await fetch('/api/ping', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      })
+
+      const data = await response.json()
+      const clientResponseTime = Date.now() - startTime
+
+      console.log('PING: Response received:', data)
+
+      if (data.success) {
+        setPingStatus({
+          isLoading: false,
+          lastPing: Date.now(),
+          responseTime: data.responseTime || clientResponseTime,
+          success: true,
+          message: data.result?.data || 'Hardware responding'
+        })
+      } else {
+        setPingStatus({
+          isLoading: false,
+          lastPing: Date.now(),
+          responseTime: clientResponseTime,
+          success: false,
+          message: data.error || 'Hardware not responding'
+        })
+      }
+    } catch (error) {
+      console.error('PING: Error:', error)
+      setPingStatus({
+        isLoading: false,
+        lastPing: Date.now(),
+        responseTime: null,
+        success: false,
+        message: 'Network error - cannot reach backend'
+      })
+    }
   }
 
   return (
-    <div className="hardware-diagram" style={{ position: 'relative', minHeight: '600px', padding: '20px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-        
+    <div className="hardware-diagram-enhanced" ref={containerRef}>
+      {/* SVG Overlay for Wire Connections */}
+      <svg className="wire-overlay" style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        pointerEvents: 'none',
+        zIndex: 1
+      }}>
+        {PIN_CONNECTIONS.map(connection => {
+          const enhancedState = getEnhancedPinState(connection.signal)
+          return (
+            <WireConnection
+              key={connection.signal}
+              connection={connection}
+              isHighlighted={enhancedState.isActive}
+              pinState={enhancedState}
+              containerRef={containerRef}
+            />
+          )
+        })}
+      </svg>
+
+      {/* Main Hardware Layout */}
+      <div className="hardware-layout">
         {/* Arduino Test Wrapper */}
-        <div style={{ textAlign: 'center', flex: '0 0 300px' }}>
-          <h3 className="mb-4 font-bold text-lg text-blue-800">Arduino Test Wrapper</h3>
-          <div style={{ position: 'relative' }}>
+        <div className="device-container arduino-container">
+          <div className="device-header">
+            <h3>Arduino Uno R3</h3>
+            <span className="device-subtitle">HIL Test Wrapper</span>
+          </div>
+          <div className="device-image-container">
             <img
               src="/arduino-uno-r3-icon.png"
               alt="Arduino Uno R3"
-              style={{
-                width: '300px',
-                height: 'auto',
-                border: '2px solid #1e40af',
-                borderRadius: '8px',
-                backgroundColor: 'white'
-              }}
-              onLoad={(e) => {
-                const parent = e.currentTarget.parentElement
-                if (parent) {
-                  const overlay = parent.querySelector('.chip-overlay') as HTMLElement
-                  if (overlay) {
-                    overlay.innerHTML = '<div style="color: #1e40af; font-weight: 700; font-size: 24px;">Arduino Uno R3<br/><span style="font-size: 16px;">HIL Test Wrapper</span></div>'
-                  }
-                }
-              }}
+              className="device-image arduino-image"
             />
-            <div
-              className="chip-overlay"
-              style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                textAlign: 'center',
-                pointerEvents: 'none',
-                background: 'rgba(255, 255, 255, 0.9)',
-                padding: '10px',
-                borderRadius: '4px',
-                fontSize: '14px',
-                fontWeight: '700',
-                color: '#1e40af',
-                letterSpacing: '0.5px'
-              }}
-            >
-              HIL TEST WRAPPER
+            <div className="device-pins arduino-pins">
+              {PIN_CONNECTIONS.map(connection => {
+                const enhancedState = getEnhancedPinState(connection.signal)
+                return (
+                  <div
+                    key={connection.arduino}
+                    data-pin={connection.arduino}
+                    className={`pin-indicator arduino-pin ${enhancedState.isActive ? 'highlighted' : ''}`}
+                    onMouseEnter={() => handleConnectionHover(connection.signal)}
+                    onMouseLeave={() => handleConnectionHover(null)}
+                    onClick={() => handlePinClickWithFeedback(connection.signal, enhancedState)}
+                    title={`${connection.arduino} → ${connection.atmega} (${connection.signal})\n${connection.description}\nLast updated: ${enhancedState.lastUpdated}`}
+                  >
+                    <span className="pin-label">{connection.arduino}</span>
+                    <div className={`pin-status ${connection.direction.toLowerCase()}`}>
+                      {enhancedState.state}
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>
 
-        {/* Connection Lines and Pin States */}
-        <div style={{ 
-          display: 'flex', 
-          flexDirection: 'column',
-          gap: '8px',
-          minWidth: '300px'
-        }}>
-          {PIN_CONNECTIONS.map(connection => {
-            const pinState = getPinState(connection.signal)
-            const isHighlighted = highlightedPins.includes(connection.signal)
-            return (
-              <div
-                key={connection.signal}
-                onClick={() => handlePinClick(connection.signal, pinState)}
-                style={{
-                  padding: '8px',
-                  border: `2px solid ${isHighlighted ? '#f59e0b' : '#e5e7eb'}`,
-                  borderRadius: '4px',
-                  backgroundColor: isHighlighted ? '#fef3c7' : 'white',
-                  cursor: 'pointer'
-                }}
+        {/* Connection Info Panel */}
+        <div className="connection-info-panel">
+          <div className="panel-header">
+            <h4>Pin Connections</h4>
+            <div className="panel-controls">
+              <button
+                className="details-toggle"
+                onClick={toggleConnectionDetails}
+                title="Toggle detailed view"
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs">{pinState.pin}</span>
-                    <span className="text-xs">→</span>
-                    <span className="font-mono text-xs">{connection.signal}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className={`text-xs px-1 rounded ${
-                      connection.direction === 'IN' ? 'bg-blue-100 text-blue-800' :
-                      connection.direction === 'OUT' ? 'bg-green-100 text-green-800' :
-                      'bg-purple-100 text-purple-800'
-                    }`}>
-                      {connection.direction}
-                    </span>
-                    <span className={`text-xs font-mono px-1 rounded ${
-                      pinState.state === 'HIGH' ? 'bg-red-100 text-red-800' :
-                      pinState.state === 'LOW' ? 'bg-gray-100 text-gray-800' :
-                      'bg-yellow-100 text-yellow-800'
-                    }`}>
-                      {pinState.state}
-                    </span>
-                  </div>
-                </div>
+                {showConnectionDetails ? '📋' : '📝'}
+              </button>
+              <div className="connection-status">
+                <div className={`status-indicator ${hardwareState.connection.connected ? 'connected' : 'disconnected'}`}></div>
+                <span>{hardwareState.connection.connected ? 'Connected' : 'Disconnected'}</span>
               </div>
-            )
-          })}
+            </div>
+          </div>
+          <div className="connections-list">
+            {PIN_CONNECTIONS.map(connection => {
+              const enhancedState = getEnhancedPinState(connection.signal)
+              return (
+                <div
+                  key={connection.signal}
+                  className={`connection-item ${enhancedState.isActive ? 'highlighted' : ''}`}
+                  onMouseEnter={() => handleConnectionHover(connection.signal)}
+                  onMouseLeave={() => handleConnectionHover(null)}
+                  onClick={() => handlePinClickWithFeedback(connection.signal, enhancedState)}
+                >
+                  <div className="connection-pins">
+                    <span className="arduino-pin-label">{connection.arduino}</span>
+                    <div className="connection-arrow">→</div>
+                    <span className="atmega-pin-label">{connection.atmega}</span>
+                  </div>
+                  <div className="connection-details">
+                    <span className="signal-name">{connection.signal}</span>
+                    <div className="pin-info">
+                      <span className={`direction-badge ${connection.direction.toLowerCase()}`}>
+                        {connection.direction}
+                      </span>
+                      <span className={`state-badge ${String(enhancedState.state || '').toLowerCase() || 'unknown'}`}>
+                        {enhancedState.state || 'UNKNOWN'}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="connection-description">
+                    {connection.description}
+                  </div>
+                  {showConnectionDetails && (
+                    <div className="connection-extended-info">
+                      <div className="info-row">
+                        <span>Last Updated:</span>
+                        <span>{enhancedState.lastUpdated}</span>
+                      </div>
+                      <div className="info-row">
+                        <span>Click Action:</span>
+                        <span>{connection.direction === 'IN' ? 'Toggle State' : 'Read Value'}</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </div>
         </div>
 
         {/* ATmega32A DUT */}
-        <div style={{ textAlign: 'center' }}>
-          <h3 className="mb-4 font-semibold">ATmega32A (DUT)</h3>
-          <div style={{ position: 'relative' }}>
+        <div className="device-container atmega-container">
+          <div className="device-header">
+            <h3>ATmega32A</h3>
+            <span className="device-subtitle">Device Under Test</span>
+          </div>
+          <div className="device-image-container">
             <img
               src="/atmega-32-a-icon.png"
               alt="ATmega32A"
-              style={{
-                width: '250px',
-                height: 'auto',
-                border: '2px solid #dc2626',
-                borderRadius: '8px',
-                backgroundColor: 'white'
-              }}
-              onLoad={(e) => {
-                const parent = e.currentTarget.parentElement
-                if (parent) {
-                  const overlay = parent.querySelector('.chip-overlay') as HTMLElement
-                  if (overlay) {
-                    overlay.innerHTML = '<div style="color: #dc2626; font-weight: 600;">ATmega32A</div>'
-                  }
-                }
-              }}
+              className="device-image atmega-image"
             />
-            <div
-              className="chip-overlay"
-              style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                textAlign: 'center',
-                pointerEvents: 'none',
-                background: 'rgba(255, 255, 255, 0.9)',
-                padding: '8px',
-                borderRadius: '4px',
-                fontSize: '12px',
-                fontWeight: '600',
-                color: '#dc2626',
-                letterSpacing: '0.5px'
-              }}
-            >
-              Sonicator Multiplexer DUT
+            <div className="device-pins atmega-pins">
+              {PIN_CONNECTIONS.map(connection => {
+                const enhancedState = getEnhancedPinState(connection.signal)
+                return (
+                  <div
+                    key={connection.atmega}
+                    data-pin={connection.atmega}
+                    className={`pin-indicator atmega-pin ${enhancedState.isActive ? 'highlighted' : ''}`}
+                    onMouseEnter={() => handleConnectionHover(connection.signal)}
+                    onMouseLeave={() => handleConnectionHover(null)}
+                    title={`${connection.atmega} ← ${connection.arduino} (${connection.signal})\n${connection.description}\nLast updated: ${enhancedState.lastUpdated}`}
+                  >
+                    <span className="pin-label">{connection.atmega}</span>
+                    <div className={`pin-status ${connection.direction.toLowerCase()}`}>
+                      {enhancedState.state}
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
-          
-          {/* DUT Status */}
-          <div style={{ marginTop: '20px', fontSize: '11px' }}>
-            <div className="text-gray-600">Device Under Test</div>
-            <div className={`text-xs ${hardwareState.connection.connected ? 'text-green-600' : 'text-red-600'}`}>
-              {hardwareState.connection.connected ? 'Active' : 'Disconnected'}
-            </div>
+          <div className="device-status">
+            <div className={`status-indicator ${hardwareState.connection.connected ? 'connected' : 'disconnected'}`}></div>
+            <span>{hardwareState.connection.connected ? 'Active' : 'Disconnected'}</span>
           </div>
         </div>
       </div>
 
-      {/* Help Text */}
-      <div style={{
-        marginTop: '40px',
-        background: '#f9fafb',
-        border: '1px solid #e5e7eb',
-        borderRadius: '4px',
-        padding: '12px',
-        fontSize: '12px',
-        color: '#6b7280'
-      }}>
-        <strong>Help:</strong> Click on pin connections to interact. 
-        Input pins (IN) can be toggled HIGH/LOW. 
-        Output pins (OUT) and analog pins (ANALOG) can be read. 
-        Pin mapping based on <code>docs/planning/pin-matrix.md</code> (SOLE SOURCE OF TRUTH).
+      {/* Control Panel */}
+      <div className="control-panel-bottom">
+        {/* PING Test Section */}
+        <div className="ping-test-section">
+          <h4>Hardware Communication Test</h4>
+          <div className="ping-controls">
+            <button
+              onClick={handlePingCommand}
+              disabled={pingStatus.isLoading}
+              className={`ping-button ${pingStatus.isLoading ? 'loading' : ''}`}
+            >
+              {pingStatus.isLoading ? 'Testing...' : 'PING Hardware'}
+            </button>
+            <div className={`ping-status ${
+              pingStatus.success === null ? 'unknown' :
+              pingStatus.success ? 'success' : 'error'
+            }`}>
+              <div className="status-dot"></div>
+              <span>{
+                pingStatus.success === null ? 'Not tested' :
+                pingStatus.success ? 'Connected' : 'Failed'
+              }</span>
+            </div>
+          </div>
+          <div className="ping-details">
+            <div><strong>Status:</strong> {pingStatus.message}</div>
+            {pingStatus.responseTime && (
+              <div><strong>Response Time:</strong> {pingStatus.responseTime}ms</div>
+            )}
+            {pingStatus.lastPing && (
+              <div><strong>Last Test:</strong> {new Date(pingStatus.lastPing).toLocaleTimeString()}</div>
+            )}
+          </div>
+        </div>
+
+        {/* System Info */}
+        <div className="system-info">
+          <div className="info-item">
+            <strong>Backend:</strong> {hardwareState.connection.connected ? 'Connected' : 'Disconnected'}
+          </div>
+          <div className="info-item">
+            <strong>Port:</strong> {hardwareState.connection.port || 'None'}
+          </div>
+          <div className="info-item">
+            <strong>WebSocket:</strong> Active
+          </div>
+        </div>
+
+        {/* Help Text */}
+        <div className="help-text">
+          <strong>Help:</strong> Click on pin connections to interact.
+          Input pins (IN) can be toggled HIGH/LOW.
+          Output pins (OUT) and analog pins (ANALOG) can be read.
+          Pin mapping based on <code>docs/planning/pin-matrix.md</code> (SOLE SOURCE OF TRUTH).
+        </div>
       </div>
     </div>
   )

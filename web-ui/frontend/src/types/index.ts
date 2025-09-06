@@ -5,9 +5,14 @@ export interface PinState {
   pin: string;
   signal: string;
   direction: 'IN' | 'OUT' | 'ANALOG';
-  state: 'HIGH' | 'LOW' | number; // number for analog values
+  state: 'HIGH' | 'LOW' | number | string; // number for analog values, string for frequency displays
   timestamp: number;
   description?: string;
+  frequency?: number;  // For frequency pins
+  frequencyDisplay?: string;  // For frequency pins
+  operatingFrequency?: string;  // For frequency pins
+  enabled?: boolean;  // For frequency pins
+  isActive?: boolean;  // For frequency pins
 }
 
 export interface ConnectionStatus {

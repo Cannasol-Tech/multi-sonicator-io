@@ -10,12 +10,10 @@ interface TestAutomationPanelProps {
 
 export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: TestAutomationPanelProps) {
   const {
-    availableScenarios,
     availableTags,
     currentExecution,
     isExecutionInProgress,
     selectedScenarios,
-    filterTags,
     loading,
     error,
     executeScenarios,

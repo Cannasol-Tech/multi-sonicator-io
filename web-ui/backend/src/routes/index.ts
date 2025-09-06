@@ -148,6 +148,102 @@ export function setupRoutes(app: Express, hardwareInterface: HardwareInterface, 
     })
   })
 
+  // PING hardware to test communication
+  app.post('/api/ping', async (req: Request, res: Response) => {
+    try {
+      console.log('API: PING command requested')
+      const startTime = Date.now()
+
+      if (!hardwareInterface.isConnected()) {
+        return res.status(503).json({
+          success: false,
+          error: 'Hardware not connected',
+          timestamp: Date.now()
+        })
+      }
+
+      const command = {
+        command: 'ping',
+        args: [],
+        expectResponse: true
+      }
+
+      console.log('API: Sending PING command to hardware')
+      const result = await hardwareInterface.sendCommand(command)
+      const responseTime = Date.now() - startTime
+
+      console.log(`API: PING response received in ${responseTime}ms:`, result)
+
+      res.json({
+        success: result.success,
+        responseTime,
+        result,
+        timestamp: Date.now()
+      })
+    } catch (error) {
+      console.error('Error sending PING command:', error)
+      res.status(500).json({
+        success: false,
+        error: 'Failed to send PING command',
+        message: error instanceof Error ? error.message : 'Unknown error',
+        timestamp: Date.now()
+      })
+    }
+  })
+
+  // Get current configuration
+  app.get('/api/config', (req: Request, res: Response) => {
+    try {
+      const config = hardwareInterface.getConfiguration()
+      res.json({
+        success: true,
+        config,
+        timestamp: Date.now()
+      })
+    } catch (error) {
+      console.error('Error getting configuration:', error)
+      res.status(500).json({
+        success: false,
+        error: 'Failed to get configuration',
+        message: error instanceof Error ? error.message : 'Unknown error',
+        timestamp: Date.now()
+      })
+    }
+  })
+
+  // Update configuration
+  app.post('/api/config', async (req: Request, res: Response) => {
+    try {
+      const { config } = req.body
+      console.log('API: Configuration update requested:', config)
+
+      if (!hardwareInterface.isConnected()) {
+        return res.status(503).json({
+          success: false,
+          error: 'Hardware not connected',
+          timestamp: Date.now()
+        })
+      }
+
+      const result = await hardwareInterface.updateConfiguration(config)
+      console.log('API: Configuration update result:', result)
+
+      res.json({
+        success: result.success,
+        config: result.config,
+        timestamp: Date.now()
+      })
+    } catch (error) {
+      console.error('Error updating configuration:', error)
+      res.status(500).json({
+        success: false,
+        error: 'Failed to update configuration',
+        message: error instanceof Error ? error.message : 'Unknown error',
+        timestamp: Date.now()
+      })
+    }
+  })
+
   // Reconnect to hardware
   app.post('/api/connection/reconnect', async (req: Request, res: Response) => {
     try {

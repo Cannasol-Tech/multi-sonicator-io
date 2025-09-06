@@ -13,6 +13,8 @@
   --color-pin-low: #6b7280;
   --color-pin-analog: #3b82f6;
   --color-pin-unknown: #9ca3af;
+  --color-frequency-active: #8b5cf6;
+  --color-frequency-inactive: #9ca3af;
   
   /* Connection status colors */
   --color-connected: #10b981;
@@ -760,6 +762,739 @@
   50% { opacity: 0.7; }
 }
 
+/* Enhanced Hardware Diagram Styles */
+.hardware-diagram-enhanced {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  padding: 20px;
+  overflow: hidden;
+}
+
+.wire-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wire-connection {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.wire-connection.highlighted {
+  filter: drop-shadow(0 0 8px currentColor);
+  animation: wire-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes wire-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.hardware-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  position: relative;
+  z-index: 2;
+  height: 400px;
+}
+
+.device-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.device-container:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.arduino-container {
+  border-top: 4px solid #1e40af;
+  flex: 0 0 280px;
+}
+
+.atmega-container {
+  border-top: 4px solid #dc2626;
+  flex: 0 0 280px;
+}
+
+.device-header {
+  margin-bottom: 16px;
+}
+
+.device-header h3 {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.device-subtitle {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.device-image-container {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.device-image {
+  width: 240px;
+  height: auto;
+  border-radius: 8px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.arduino-image {
+  border: 2px solid #1e40af;
+}
+
+.atmega-image {
+  border: 2px solid #dc2626;
+}
+
+.device-pins {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 20px 10px;
+}
+
+.arduino-pins {
+  align-items: flex-end;
+}
+
+.atmega-pins {
+  align-items: flex-start;
+}
+
+.pin-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 11px;
+  font-weight: 600;
+  min-width: 80px;
+}
+
+.pin-indicator:hover {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
+}
+
+.pin-indicator.highlighted {
+  background: #fef3c7;
+  border: 2px solid #f59e0b;
+  animation: pin-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes pin-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(245, 158, 11, 0.6); }
+  50% { box-shadow: 0 0 16px rgba(245, 158, 11, 0.9); }
+}
+
+.arduino-pin {
+  flex-direction: row-reverse;
+}
+
+.atmega-pin {
+  flex-direction: row;
+}
+
+.pin-label {
+  font-family: monospace;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.pin-status {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.pin-status.in {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.pin-status.out {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.pin-status.analog {
+  background: #f3e8ff;
+  color: #7c3aed;
+}
+
+.device-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.connection-info-panel {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  flex: 1;
+  max-width: 400px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.panel-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.details-toggle {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 6px 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.details-toggle:hover {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+  transform: scale(1.05);
+}
+
+.panel-header h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.connections-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.connection-item {
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #fafafa;
+}
+
+.connection-item:hover {
+  border-color: #3b82f6;
+  background: #f8fafc;
+  transform: translateX(4px);
+}
+
+.connection-item.highlighted {
+  border-color: #f59e0b;
+  background: #fef3c7;
+  box-shadow: 0 4px 8px rgba(245, 158, 11, 0.2);
+}
+
+.connection-pins {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-family: monospace;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.arduino-pin-label {
+  color: #1e40af;
+  background: #dbeafe;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.atmega-pin-label {
+  color: #dc2626;
+  background: #fecaca;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.connection-arrow {
+  color: #64748b;
+  font-weight: 400;
+}
+
+.connection-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.signal-name {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 13px;
+}
+
+.pin-info {
+  display: flex;
+  gap: 6px;
+}
+
+.direction-badge, .state-badge {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.direction-badge.in {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.direction-badge.out {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.direction-badge.analog {
+  background: #f3e8ff;
+  color: #7c3aed;
+}
+
+.state-badge.high {
+  background: #fecaca;
+  color: #dc2626;
+}
+
+.state-badge.low {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.state-badge.unknown {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.connection-description {
+  font-size: 11px;
+  color: #64748b;
+  font-style: italic;
+}
+
+.connection-extended-info {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 10px;
+  color: #64748b;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.info-row span:first-child {
+  font-weight: 500;
+}
+
+.info-row span:last-child {
+  font-family: monospace;
+  background: #f1f5f9;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.control-panel-bottom {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.ping-test-section {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  flex: 0 0 300px;
+}
+
+.ping-test-section h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.ping-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ping-button {
+  padding: 8px 16px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.ping-button:hover:not(.loading) {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.ping-button.loading {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+.ping-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.ping-status.unknown .status-dot {
+  background: #94a3b8;
+}
+
+.ping-status.success .status-dot {
+  background: #10b981;
+}
+
+.ping-status.error .status-dot {
+  background: #ef4444;
+}
+
+.ping-details {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.system-info {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  flex: 1;
+}
+
+.info-item {
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.help-text {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 12px;
+  color: #64748b;
+  flex: 2;
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-indicator.connected {
+  background: #10b981;
+}
+
+.status-indicator.disconnected {
+  background: #ef4444;
+}
+
+/* Responsive Design for Enhanced Hardware Diagram */
+@media (max-width: 1200px) {
+  .hardware-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: auto;
+  }
+
+  .device-container {
+    flex: none;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .connection-info-panel {
+    max-width: none;
+    width: 100%;
+  }
+
+  .control-panel-bottom {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .ping-test-section {
+    flex: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hardware-diagram-enhanced {
+    padding: 16px;
+    min-height: 500px;
+  }
+
+  .device-container {
+    padding: 16px;
+  }
+
+  .device-image {
+    width: 200px;
+  }
+
+  .pin-indicator {
+    min-width: 70px;
+    font-size: 10px;
+  }
+
+  .connection-item {
+    padding: 10px;
+  }
+
+  .connection-pins {
+    font-size: 11px;
+  }
+
+  .signal-name {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hardware-layout {
+    gap: 16px;
+  }
+
+  .device-image {
+    width: 160px;
+  }
+
+  .pin-indicator {
+    min-width: 60px;
+    font-size: 9px;
+    padding: 3px 6px;
+  }
+
+  .device-header h3 {
+    font-size: 16px;
+  }
+
+  .device-subtitle {
+    font-size: 11px;
+  }
+}
+
+/* Enhanced animations and micro-interactions */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.device-container {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.arduino-container {
+  animation-delay: 0.1s;
+}
+
+.connection-info-panel {
+  animation: fadeInUp 0.6s ease-out;
+  animation-delay: 0.2s;
+}
+
+.atmega-container {
+  animation-delay: 0.3s;
+}
+
+/* Wire connection hover effects */
+.wire-connection:hover {
+  stroke-width: 4;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+/* Professional loading states */
+.ping-button.loading::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+/* Enhanced focus states for accessibility */
+.pin-indicator:focus,
+.connection-item:focus,
+.ping-button:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Improved scrollbar styling */
+.connection-info-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.connection-info-panel::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.connection-info-panel::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.connection-info-panel::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+  .hardware-diagram-enhanced {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  }
+
+  .device-container,
+  .connection-info-panel,
+  .ping-test-section,
+  .system-info {
+    background: #334155;
+    color: #f1f5f9;
+  }
+
+  .device-header h3,
+  .panel-header h4,
+  .signal-name {
+    color: #f1f5f9;
+  }
+
+  .device-subtitle,
+  .connection-description,
+  .ping-details,
+  .info-item,
+  .help-text {
+    color: #cbd5e1;
+  }
+
+  .connection-item {
+    background: #475569;
+    border-color: #64748b;
+  }
+
+  .connection-item:hover {
+    background: #52525b;
+    border-color: #3b82f6;
+  }
+}
+
 /* Test Results Modal Styles */
 .modal-overlay {
   position: fixed;
@@ -1001,4 +1736,72 @@
   margin-top: 4px;
   font-size: 11px;
   color: #28a745;
+}
+
+/* Frequency Pin Display Styles */
+.frequency-pin-display {
+  width: 100%;
+}
+
+.pin-state.frequency {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border: 2px solid var(--color-frequency-inactive);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.pin-state.frequency.active {
+  border-color: var(--color-frequency-active);
+  background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.frequency-value {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--color-frequency-active);
+  margin-bottom: 8px;
+}
+
+.pin-state.frequency.inactive .frequency-value {
+  color: var(--color-frequency-inactive);
+}
+
+.frequency-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-frequency-active);
+  border-radius: 50%;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.pin-state.frequency.inactive .pulse-dot {
+  background: var(--color-frequency-inactive);
+  animation: none;
 }
