@@ -199,12 +199,8 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
     }
   }
 
-  const handlePinRead = (signal: string, isAnalog: boolean = false, isPWM: boolean = false) => {
-    if (isPWM) {
-      onPinControl(signal, 'read_pwm')
-    } else {
-      onPinControl(signal, isAnalog ? 'read_adc' : 'read_pin')
-    }
+  const handlePinRead = (signal: string, isAnalog: boolean = false) => {
+    onPinControl(signal, isAnalog ? 'read_adc' : 'read_pin')
   }
 
   const handlePWMSet = () => {

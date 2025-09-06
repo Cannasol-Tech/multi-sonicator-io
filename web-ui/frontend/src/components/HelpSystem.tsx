@@ -14,7 +14,9 @@ const helpContent: Record<string, HelpContent> = {
       'Click on pin connections in the diagram to interact with them',
       'Input pins can be toggled HIGH/LOW to control ATmega32A inputs',
       'Output pins are read-only and show ATmega32A output states',
-      'Analog pins display ADC readings from 0-1023 (0-5V)'
+      'Analog pins display ADC readings from 0-1023 (0-5V)',
+      'PWM pins are continuously monitored and display real-time duty cycles',
+      'Frequency pins support both automatic and manual generation modes'
     ]
   },
   
@@ -49,6 +51,10 @@ const helpContent: Record<string, HelpContent> = {
       'Pin 4: FREQ_DIV10_1 ← PB3 (Pin 4) - ÷10 frequency',
       'Pin 5: POWER_SENSE_1 ← PA4/A4 (Pin 36) - 5.44 mV/W scaling',
       'Pin 7: START_1 ← PC6 (Pin 28) - ULN2003A open-collector',
+      '',
+      '🔄 Continuous Monitoring:',
+      'AMPLITUDE_ALL (D9): PWM duty cycle continuously measured',
+      'FREQ_DIV10_4 (D7): Frequency generation with real-time display',
       'Pin 8: AMPLITUDE_ALL → PD7 (Pin 21) - Shared 0–10V output',
       '',
       '📍 Sonicator 2 (DB9-2):',
@@ -165,19 +171,23 @@ const helpContent: Record<string, HelpContent> = {
       'Connection failed: Check Arduino USB connection and port permissions',
       'Pin not responding: Verify wiring matches pin-matrix.md',
       'ADC readings unstable: Check power supply and ground connections',
-      'PWM not working: Ensure pin supports PWM output',
+      'PWM not updating: Check if ATmega32A is generating PWM signal on PD7',
+      'PWM shows 0%: Verify AMPLITUDE_ALL pin connection and signal generation',
+      'Frequency not generating: Check frequency configuration and enable status',
       'WebSocket errors: Refresh browser and check backend server'
     ]
   },
 
   shortcuts: {
-    title: 'Keyboard Shortcuts & Tips',
-    description: 'Efficiency tips for power users.',
+    title: 'Interface Tips & Best Practices',
+    description: 'Efficiency tips and best practices for using the test harness.',
     examples: [
       'Click pin connections in diagram for quick interaction',
-      'Use "Read All" to refresh all pin states',
-      'Monitor timestamp to verify real-time updates',
-      'Export pin history for debugging and analysis',
+      'PWM values update automatically - no manual refresh needed',
+      'Monitor green pulsing indicators for active continuous monitoring',
+      'Use frequency inline controls for immediate configuration changes',
+      'Monitor timestamps to verify real-time updates',
+      'Check connection status indicator in header before testing',
       'Use browser developer tools for advanced debugging'
     ]
   }

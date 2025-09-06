@@ -235,6 +235,32 @@ const AdvancedControlPanel: React.FC<AdvancedControlPanelProps> = ({
     return presets.filter(preset => preset.category === category)
   }
 
+  // Power Level Control Functions
+  const getCurrentPowerLevel = (): number => {
+    const powerState = hardwareState.pins['POWER_SENSE_4']
+    if (!powerState || typeof powerState.state !== 'number') return 0
+    return Math.round((powerState.state / 1023) * 100) // Convert from 0-1023 to 0-100%
+  }
+
+  const setPowerLevel = (percentage: number) => {
+    const analogValue = Math.round((percentage / 100) * 1023) // Convert from 0-100% to 0-1023
+    onPinClick('POWER_SENSE_4', analogValue.toString())
+  }
+
+  const handlePowerLevelChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const percentage = parseInt(event.target.value)
+    setPowerLevel(percentage)
+  }
+
+  const getPowerStatus = (): string => {
+    const level = getCurrentPowerLevel()
+    if (level === 0) return 'OFF'
+    if (level <= 25) return 'LOW'
+    if (level <= 50) return 'MEDIUM'
+    if (level <= 75) return 'HIGH'
+    return 'MAXIMUM'
+  }
+
   return (
     <div className="advanced-control-panel">
       <div className="control-panel-header">
@@ -408,6 +434,41 @@ const AdvancedControlPanel: React.FC<AdvancedControlPanelProps> = ({
             </div>
           </div>
         )}
+
+        {/* Power Level Control */}
+        <div className="control-section">
+          <div className="section-header">
+            <h4>🔋 Sonicator #4 Power Control</h4>
+            <p>Simulate different power levels for Sonicator #4</p>
+          </div>
+          <div className="power-control">
+            <div className="power-slider-container">
+              <label htmlFor="power-slider">Power Level:</label>
+              <div className="slider-with-display">
+                <input
+                  id="power-slider"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={getCurrentPowerLevel()}
+                  onChange={handlePowerLevelChange}
+                  className="power-slider"
+                />
+                <div className="power-display">
+                  <span className="power-value">{getCurrentPowerLevel()}%</span>
+                  <span className="power-status">{getPowerStatus()}</span>
+                </div>
+              </div>
+            </div>
+            <div className="power-presets">
+              <button onClick={() => setPowerLevel(0)} className="preset-btn off">OFF</button>
+              <button onClick={() => setPowerLevel(25)} className="preset-btn low">25%</button>
+              <button onClick={() => setPowerLevel(50)} className="preset-btn medium">50%</button>
+              <button onClick={() => setPowerLevel(75)} className="preset-btn high">75%</button>
+              <button onClick={() => setPowerLevel(100)} className="preset-btn max">100%</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

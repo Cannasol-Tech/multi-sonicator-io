@@ -7,13 +7,13 @@ import Header from './components/Header'
 import HelpSystem from './components/HelpSystem'
 import SettingsPanel from './components/SettingsPanel'
 import AdvancedControlPanel from './components/AdvancedControlPanel'
-import ArduinoCommandLog from './components/ArduinoCommandLog'
+
 import { useWebSocket } from './hooks/useWebSocket'
 import { useHardwareState } from './hooks/useHardwareState'
 import { usePinHistory } from './hooks/usePinHistory'
 import { useTestAutomation } from './hooks/useTestAutomation'
 import { useKeyboardShortcuts, createAppShortcuts } from './hooks/useKeyboardShortcuts'
-import { useArduinoCommandLog } from './hooks/useArduinoCommandLog'
+
 
 function App() {
   const [helpVisible, setHelpVisible] = useState(false)
@@ -30,6 +30,7 @@ function App() {
     handleExecutionComplete,
     handleExecutionError
   } = useTestAutomation()
+
 
   // Keyboard shortcuts
   const shortcuts = createAppShortcuts({
@@ -122,6 +123,8 @@ function App() {
         handleExecutionComplete(lastMessage.data)
         setCurrentTestExecution(lastMessage.data)
         break
+
+
     }
   }, [lastMessage, updatePinState, updateMultiplePins, setConnectionStatus, updateExecutionProgress, handleExecutionComplete, handleExecutionError])
 
@@ -180,6 +183,8 @@ function App() {
               🧪 Test Automation
             </button>
 
+
+
             <button
               className={`tab-button ${activeTab === 'settings' ? 'active' : ''}`}
               onClick={() => setActiveTab('settings')}
@@ -217,6 +222,8 @@ function App() {
                 }}
               />
             )}
+
+
 
             {activeTab === 'settings' && (
               <SettingsPanel

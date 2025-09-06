@@ -1188,6 +1188,168 @@
   transform: none;
 }
 
+/* Power Control Styles */
+.power-control {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.power-slider-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.power-slider-container label {
+  font-weight: 600;
+  color: #374151;
+  font-size: 14px;
+}
+
+.slider-with-display {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.power-slider {
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+  background: #e5e7eb;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.power-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #3b82f6;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.power-slider::-webkit-slider-thumb:hover {
+  background: #2563eb;
+  transform: scale(1.1);
+}
+
+.power-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #3b82f6;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.power-slider::-moz-range-thumb:hover {
+  background: #2563eb;
+  transform: scale(1.1);
+}
+
+.power-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+}
+
+.power-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.power-status {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.power-presets {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.preset-btn {
+  padding: 8px 16px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.preset-btn.off {
+  background: #f3f4f6;
+  color: #6b7280;
+  border-color: #d1d5db;
+}
+
+.preset-btn.off:hover {
+  background: #e5e7eb;
+  border-color: #9ca3af;
+}
+
+.preset-btn.low {
+  background: #fef3c7;
+  color: #d97706;
+  border-color: #f59e0b;
+}
+
+.preset-btn.low:hover {
+  background: #fde68a;
+  border-color: #d97706;
+}
+
+.preset-btn.medium {
+  background: #fed7aa;
+  color: #ea580c;
+  border-color: #f97316;
+}
+
+.preset-btn.medium:hover {
+  background: #fdba74;
+  border-color: #ea580c;
+}
+
+.preset-btn.high {
+  background: #fecaca;
+  color: #dc2626;
+  border-color: #ef4444;
+}
+
+.preset-btn.high:hover {
+  background: #fca5a5;
+  border-color: #dc2626;
+}
+
+.preset-btn.max {
+  background: #ddd6fe;
+  color: #7c3aed;
+  border-color: #8b5cf6;
+}
+
+.preset-btn.max:hover {
+  background: #c4b5fd;
+  border-color: #7c3aed;
+}
+
 .state-badge.high {
   background: #fecaca;
   color: #dc2626;
@@ -3464,4 +3626,16 @@
     opacity: 1;
     box-shadow: 0 0 6px rgba(245, 158, 11, 0.6);
   }
+}
+
+/* Arduino Command Log Tab */
+.arduino-tab {
+  height: 100%;
+  padding: var(--spacing-md);
+  background: #f8fafc;
+}
+
+.arduino-tab .arduino-command-log {
+  height: calc(100vh - var(--header-height) - 120px);
+  max-height: 600px;
 }
