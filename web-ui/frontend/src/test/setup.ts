@@ -75,7 +75,13 @@ global.fetch = vi.fn().mockImplementation((url: string) => {
           keyboardShortcuts: true,
           autoSave: true,
           notifications: true,
-          operatingFrequencyKHz: 40,
+          sonicator4: {
+            operatingFrequencyKHz: 40.0,
+            outputFrequencyKHz: 4.0,
+            enabled: true,
+            manualMode: false,
+            manualFrequencyKHz: 2.0
+          },
           powerLevel: 50,
           pulseMode: false,
           pulseDurationMs: 100,

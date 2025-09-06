@@ -44,9 +44,41 @@ vi.mock('../hooks/usePinHistory', () => ({
 
 vi.mock('../hooks/useTestAutomation', () => ({
   useTestAutomation: () => ({
+    // State
+    availableScenarios: [],
+    availableTags: ['@smoke', '@integration'],
+    availableFeatures: ['pin-control.feature'],
+    currentExecution: null,
+    isExecutionInProgress: false,
+    selectedScenarios: [],
+    filterTags: [],
+    loading: false,
+    error: null,
+
+    // Actions
+    loadInitialData: vi.fn(),
+    loadScenariosByTags: vi.fn(),
+    executeScenarios: vi.fn(),
+    stopExecution: vi.fn(),
     updateExecutionProgress: vi.fn(),
     handleExecutionComplete: vi.fn(),
-    handleExecutionError: vi.fn()
+    handleExecutionError: vi.fn(),
+    toggleScenarioSelection: vi.fn(),
+    selectAllScenarios: vi.fn(),
+    clearScenarioSelection: vi.fn(),
+    setFilterTags: vi.fn(),
+    clearError: vi.fn(),
+
+    // Computed values
+    getFilteredScenarios: () => [],
+    getScenariosByPins: () => [],
+    getExecutionProgress: () => ({ completed: 0, total: 0, percentage: 0 }),
+    getCurrentStepProgress: () => ({ current: 0, total: 0, percentage: 0 }),
+
+    // Helper functions
+    formatDuration: (ms: number) => `${ms}ms`,
+    getStatusColor: (status: string) => '#000000',
+    getStatusIcon: (status: string) => '⚪'
   })
 }))
 

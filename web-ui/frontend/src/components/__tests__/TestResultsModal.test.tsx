@@ -217,9 +217,10 @@ describe('TestResultsModal', () => {
     expect(screen.getByText('I trigger the test')).toBeInTheDocument()
     expect(screen.getByText('the result should be correct')).toBeInTheDocument()
     
-    // Check pin interactions
-    expect(screen.getByText('Pin Interactions: D7, D8')).toBeInTheDocument()
-    expect(screen.getByText('Pin Interactions: A2')).toBeInTheDocument()
+    // Check pin interactions (now displayed with "Pins:" label)
+    expect(screen.getByText('Pins:')).toBeInTheDocument()
+    expect(screen.getByText('D7, D8')).toBeInTheDocument()
+    expect(screen.getByText('A2')).toBeInTheDocument()
   })
 
   it('should handle export functionality', () => {

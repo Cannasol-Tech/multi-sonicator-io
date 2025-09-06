@@ -121,8 +121,8 @@ describe('TestResultsModal - Dark Theme', () => {
     expect(screen.getByText('@dark-mode')).toBeInTheDocument()
     expect(screen.getByText('@readability')).toBeInTheDocument()
     
-    // Check pin interactions are visible
-    expect(screen.getByText('Pin Interactions:')).toBeInTheDocument()
+    // Check pin interactions are visible (now with "Pins:" label)
+    expect(screen.getByText('Pins:')).toBeInTheDocument()
     expect(screen.getByText('D1, D2')).toBeInTheDocument()
     expect(screen.getByText('A1')).toBeInTheDocument()
   })

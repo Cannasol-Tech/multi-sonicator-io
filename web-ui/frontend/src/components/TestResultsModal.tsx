@@ -5,12 +5,16 @@ interface TestResultsModalProps {
   execution: TestExecution | null
   visible: boolean
   onClose: () => void
+  isLive?: boolean
 }
 
-export default function TestResultsModal({ execution, visible, onClose }: TestResultsModalProps) {
+export default function TestResultsModal({ execution, visible, onClose, isLive = false }: TestResultsModalProps) {
   if (!visible || !execution) {
     return null
   }
+
+  const isExecutionInProgress = execution.status === 'running'
+  const isLiveMode = isLive || isExecutionInProgress
 
   const handleExportResults = () => {
     const results = {
@@ -64,17 +68,49 @@ export default function TestResultsModal({ execution, visible, onClose }: TestRe
         <div className="test-results-modal-header">
           <h2>
             {TestAutomationAPI.getStatusIcon(execution.status)}
-            Test Results: {execution.execution_id}
+            {isLiveMode ? 'Live Test Progress' : 'Test Results'}: {execution.execution_id}
+            {isLiveMode && (
+              <span className="live-indicator">
+                <span className="live-dot"></span>
+                LIVE
+              </span>
+            )}
           </h2>
           <div className="test-results-modal-actions">
-            <button className="test-results-btn-export" onClick={handleExportResults}>
-              📄 Export Results
-            </button>
+            {!isExecutionInProgress && (
+              <button className="test-results-btn-export" onClick={handleExportResults}>
+                📄 Export Results
+              </button>
+            )}
             <button className="test-results-modal-close-button" onClick={onClose}>×</button>
           </div>
         </div>
 
         <div className="test-results-modal-body">
+          {/* Live Progress Indicator */}
+          {isLiveMode && (
+            <div className="live-progress-section">
+              <div className="progress-header">
+                <h3>Execution Progress</h3>
+                <div className="progress-stats">
+                  {execution.current_scenario_index !== undefined && (
+                    <span className="current-scenario">
+                      Scenario {execution.current_scenario_index + 1} of {execution.total_scenarios}
+                    </span>
+                  )}
+                </div>
+              </div>
+              <div className="progress-bar-container">
+                <div
+                  className="progress-bar live"
+                  style={{
+                    width: `${((execution.passed_scenarios + execution.failed_scenarios) / execution.total_scenarios) * 100}%`
+                  }}
+                ></div>
+              </div>
+            </div>
+          )}
+
           {/* Execution Summary */}
           <div className="execution-summary">
             <div className="summary-stats">
@@ -108,20 +144,28 @@ export default function TestResultsModal({ execution, visible, onClose }: TestRe
             <h3>Scenario Results</h3>
             {execution.scenarios.map((scenario, index) => {
               const summary = getScenarioSummary(scenario)
-              
+              const isCurrentScenario = isLiveMode && execution.current_scenario_index === index
+              const isPendingScenario = isLiveMode && execution.current_scenario_index !== undefined && index > execution.current_scenario_index
+
               return (
-                <div key={index} className={`scenario-result ${scenario.status}`}>
+                <div key={index} className={`scenario-result ${scenario.status} ${isCurrentScenario ? 'current' : ''} ${isPendingScenario ? 'pending' : ''}`}>
                   <div className="scenario-header">
                     <div className="scenario-title">
                       <span className="scenario-icon">
-                        {TestAutomationAPI.getStatusIcon(scenario.status)}
+                        {isCurrentScenario && scenario.status === 'running' ? '🔄' : TestAutomationAPI.getStatusIcon(scenario.status)}
                       </span>
                       <span className="scenario-name">{scenario.name}</span>
                       <span className="scenario-feature">({scenario.feature_file})</span>
+                      {isCurrentScenario && (
+                        <span className="current-indicator">RUNNING</span>
+                      )}
+                      {isPendingScenario && (
+                        <span className="pending-indicator">PENDING</span>
+                      )}
                     </div>
                     <div className="scenario-meta">
                       <span className="scenario-duration">
-                        {TestAutomationAPI.formatDuration(scenario.duration_ms)}
+                        {scenario.duration_ms ? TestAutomationAPI.formatDuration(scenario.duration_ms) : (isCurrentScenario ? 'In Progress...' : '')}
                       </span>
                       <span className="scenario-step-count">
                         {summary.passedSteps}/{summary.totalSteps} steps
@@ -148,27 +192,30 @@ export default function TestResultsModal({ execution, visible, onClose }: TestRe
                     {scenario.steps.map((step, stepIndex) => (
                       <div key={stepIndex} className={`step-result ${step.status}`}>
                         <div className="step-header">
-                          <span className="step-icon">
-                            {TestAutomationAPI.getStatusIcon(step.status)}
-                          </span>
-                          <span className="step-type">{step.step_type}</span>
-                          <span className="step-description">{step.description}</span>
-                          {step.duration_ms && (
-                            <span className="step-duration">
-                              {TestAutomationAPI.formatDuration(step.duration_ms)}
+                          <div className="step-main-content">
+                            <span className="step-icon">
+                              {TestAutomationAPI.getStatusIcon(step.status)}
                             </span>
+                            <span className="step-type">{step.step_type}</span>
+                            <span className="step-description">{step.description}</span>
+                            {step.duration_ms && (
+                              <span className="step-duration">
+                                {TestAutomationAPI.formatDuration(step.duration_ms)}
+                              </span>
+                            )}
+                          </div>
+
+                          {step.pin_interactions.length > 0 && (
+                            <div className="step-pins">
+                              <span className="step-pins-label">Pins:</span>
+                              <span className="step-pins-list">{step.pin_interactions.join(', ')}</span>
+                            </div>
                           )}
                         </div>
 
                         {step.error_message && (
                           <div className="step-error">
                             {step.error_message}
-                          </div>
-                        )}
-
-                        {step.pin_interactions.length > 0 && (
-                          <div className="step-pins">
-                            <strong>Pin Interactions:</strong> {step.pin_interactions.join(', ')}
                           </div>
                         )}
                       </div>

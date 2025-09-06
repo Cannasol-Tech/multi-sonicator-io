@@ -562,7 +562,7 @@ The Hardware Control tab has been restored to its beautiful glory with both the 
 
 **Running State:**
 ```
-🌈 Beautiful iridescent progress in action!
+🔄 Test execution in progress...
 [████████████████████████████████████████] 75%
 15 / 20 scenarios (75%)
 Step 3 / 5

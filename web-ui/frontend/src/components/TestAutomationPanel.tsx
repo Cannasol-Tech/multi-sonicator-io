@@ -163,15 +163,14 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
               </div>
             </div>
             <div className="execution-controls">
-              {!isExecutionInProgress && (
-                <button
-                  className="btn-view-results"
-                  onClick={() => setShowResultsModal(true)}
-                  title="View detailed test results"
-                >
-                  📊 View Results
-                </button>
-              )}
+              <button
+                className={`btn-view-results ${isExecutionInProgress ? 'live' : ''}`}
+                onClick={() => setShowResultsModal(true)}
+                disabled={!currentExecution}
+                title={isExecutionInProgress ? "View live test progress" : "View detailed test results"}
+              >
+                {isExecutionInProgress ? '📊 Live Progress' : '📊 View Results'}
+              </button>
               {isExecutionInProgress && (
                 <button
                   className="btn-stop"
@@ -391,6 +390,7 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
         execution={currentExecution}
         visible={showResultsModal}
         onClose={() => setShowResultsModal(false)}
+        isLive={isExecutionInProgress}
       />
     </div>
   )
