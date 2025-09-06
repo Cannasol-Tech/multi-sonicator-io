@@ -65,7 +65,7 @@ The following files are permitted in the root directory:
 3. **IDE files**: `.vscode/`, `.idea/`, `*.swp`, `*.swo`
 4. **OS files**: `.DS_Store`, `Thumbs.db`, desktop.ini
 5. **Test files**: Individual test files (use `test/` directory)
-6. **Documentation files**: Use `docs/` directory structure
+6. **Documentation files**: Use `docs/` directory structure  - Contains important Project Documentation including company Standards, project Architecture, Agile Planning documentation.å
 7. **Configuration files**: Use `config/` directory structure
 8. **Source code**: Use `src/` directory structure
 9. **Scripts**: Use `scripts/` or `bin/` directories

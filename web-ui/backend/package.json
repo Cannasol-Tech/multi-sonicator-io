@@ -1,11 +1,10 @@
 {
   "name": "multi-sonicator-io-backend",
   "version": "1.0.0",
-  "type": "module",
   "main": "dist/server.js",
   "description": "Backend server for Multi-Sonicator-IO Web UI with HIL integration",
   "scripts": {
-    "dev": "nodemon --exec ts-node --esm src/server.ts",
+    "dev": "nodemon --exec ts-node src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
     "test": "echo \"Tests will be implemented with pytest\" && exit 0"

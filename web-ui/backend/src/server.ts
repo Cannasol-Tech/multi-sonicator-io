@@ -2,10 +2,10 @@ import express from 'express'
 import { createServer } from 'http'
 import { WebSocketServer } from 'ws'
 import cors from 'cors'
-import { HardwareInterface } from './adapters/HardwareInterface.js'
-import { WebSocketHandler } from './websocket/WebSocketHandler.js'
-import { TestAutomationService } from './services/TestAutomationService.js'
-import { setupRoutes } from './routes/index.js'
+import { HardwareInterface } from './adapters/HardwareInterface'
+import { WebSocketHandler } from './websocket/WebSocketHandler'
+import { TestAutomationService } from './services/TestAutomationService'
+import { setupRoutes } from './routes/index'
 
 const app = express()
 const server = createServer(app)

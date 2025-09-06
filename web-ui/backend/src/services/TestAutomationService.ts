@@ -33,6 +33,7 @@ export interface TestExecution {
   passed_scenarios: number
   failed_scenarios: number
   current_scenario_index: number
+  error_message?: string
 }
 
 export class TestAutomationService extends EventEmitter {

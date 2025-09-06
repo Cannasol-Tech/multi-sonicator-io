@@ -81,10 +81,10 @@ export class HardwareInterface extends EventEmitter {
         '-c', `
 import sys
 import os
-sys.path.append('${process.cwd()}/test/acceptance/hil_framework')
-sys.path.append('${process.cwd()}/scripts')
+sys.path.insert(0, '${process.cwd()}/test/acceptance')
+sys.path.insert(0, '${process.cwd()}/scripts')
 
-from hardware_interface import HardwareInterface
+from hil_framework.hardware_interface import HardwareInterface
 import json
 import time
 
