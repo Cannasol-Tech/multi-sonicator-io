@@ -1,77 +1,77 @@
-<testsuite name="features.amplitude_control.Amplitude control (common)" tests="4" errors="0" failures="4" skipped="0" time="0.0" timestamp="2025-09-05T20:57:34.774316" hostname="Corbans-Mini.home"><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range for Sonicator 4 and verify mapping -- @1.1 " status="failed" time="0"><failure type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the HIL wrapper is connected and ready ... undefined in 0.000s
-Location: test/acceptance/features/amplitude_control.feature:5
-None]]>
-</failure><system-out>
+<testsuite name="features.amplitude_control.Amplitude control (common)" tests="4" errors="0" failures="0" skipped="4" time="8.134168" timestamp="2025-09-05T21:09:16.506854" hostname="Corbans-Mini.home"><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range for Sonicator 4 and verify mapping -- @1.1 " status="skipped" time="2.04045"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @us-003
   Scenario Outline: Set amplitude within range for Sonicator 4 and verify mapping -- @1.1 
-    Given the HIL wrapper is connected and ready ... undefined in 0.000s
-    And the DUT is powered and at safe defaults ... undefined in 0.000s
-    When I write 20 to holding register 40001 ... undefined in 0.000s
-    Then within 100 ms the amplitude output maps to 20 percent within tolerance 2% ... undefined in 0.000s
+    Given the HIL wrapper is connected and ready ... passed in 0.001s
+    And the DUT is powered and at safe defaults ... passed in 0.000s
+    When I write 20 to holding register 40001 ... skipped in 2.040s
+    Then within 100 ms the amplitude output maps to 20 percent within tolerance 2% ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
+
+Captured stdout:
+✅ HIL wrapper assumed ready (simulation mode)
+✅ DUT assumed powered and at safe defaults (simulation mode)
+
 ]]>
-</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range for Sonicator 4 and verify mapping -- @1.2 " status="failed" time="0"><failure type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the HIL wrapper is connected and ready ... undefined in 0.000s
-Location: test/acceptance/features/amplitude_control.feature:5
-None]]>
-</failure><system-out>
+</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range for Sonicator 4 and verify mapping -- @1.2 " status="skipped" time="2.030818"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @us-003
   Scenario Outline: Set amplitude within range for Sonicator 4 and verify mapping -- @1.2 
-    Given the HIL wrapper is connected and ready ... undefined in 0.000s
-    And the DUT is powered and at safe defaults ... undefined in 0.000s
-    When I write 60 to holding register 40001 ... undefined in 0.000s
-    Then within 100 ms the amplitude output maps to 60 percent within tolerance 2% ... undefined in 0.000s
+    Given the HIL wrapper is connected and ready ... passed in 0.000s
+    And the DUT is powered and at safe defaults ... passed in 0.000s
+    When I write 60 to holding register 40001 ... skipped in 2.031s
+    Then within 100 ms the amplitude output maps to 60 percent within tolerance 2% ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
+
+Captured stdout:
+✅ HIL wrapper assumed ready (simulation mode)
+✅ DUT assumed powered and at safe defaults (simulation mode)
+
 ]]>
-</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range for Sonicator 4 and verify mapping -- @1.3 " status="failed" time="0"><failure type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the HIL wrapper is connected and ready ... undefined in 0.000s
-Location: test/acceptance/features/amplitude_control.feature:5
-None]]>
-</failure><system-out>
+</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range for Sonicator 4 and verify mapping -- @1.3 " status="skipped" time="2.013514"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @us-003
   Scenario Outline: Set amplitude within range for Sonicator 4 and verify mapping -- @1.3 
-    Given the HIL wrapper is connected and ready ... undefined in 0.000s
-    And the DUT is powered and at safe defaults ... undefined in 0.000s
-    When I write 100 to holding register 40001 ... undefined in 0.000s
-    Then within 100 ms the amplitude output maps to 100 percent within tolerance 2% ... undefined in 0.000s
+    Given the HIL wrapper is connected and ready ... passed in 0.000s
+    And the DUT is powered and at safe defaults ... passed in 0.000s
+    When I write 100 to holding register 40001 ... skipped in 2.013s
+    Then within 100 ms the amplitude output maps to 100 percent within tolerance 2% ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
+
+Captured stdout:
+✅ HIL wrapper assumed ready (simulation mode)
+✅ DUT assumed powered and at safe defaults (simulation mode)
+
 ]]>
-</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Reject out-of-range amplitude for Sonicator 4" status="failed" time="0"><failure type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the HIL wrapper is connected and ready ... undefined in 0.000s
-Location: test/acceptance/features/amplitude_control.feature:5
-None]]>
-</failure><system-out>
+</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Reject out-of-range amplitude for Sonicator 4" status="skipped" time="2.049387"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @us-003 @invalid
   Scenario: Reject out-of-range amplitude for Sonicator 4
-    Given the HIL wrapper is connected and ready ... undefined in 0.000s
-    And the DUT is powered and at safe defaults ... undefined in 0.000s
-    When I write 5 to holding register 40001 ... undefined in 0.000s
-    Then the write is rejected or the register value is clamped per spec ... undefined in 0.000s
+    Given the HIL wrapper is connected and ready ... passed in 0.000s
+    And the DUT is powered and at safe defaults ... passed in 0.000s
+    When I write 5 to holding register 40001 ... skipped in 2.049s
+    Then the write is rejected or the register value is clamped per spec ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
+
+Captured stdout:
+✅ HIL wrapper assumed ready (simulation mode)
+✅ DUT assumed powered and at safe defaults (simulation mode)
+
 ]]>
 </system-out></testcase></testsuite>
