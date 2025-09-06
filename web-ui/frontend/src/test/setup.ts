@@ -74,7 +74,12 @@ global.fetch = vi.fn().mockImplementation((url: string) => {
           theme: 'auto',
           keyboardShortcuts: true,
           autoSave: true,
-          notifications: true
+          notifications: true,
+          operatingFrequencyKHz: 40,
+          powerLevel: 50,
+          pulseMode: false,
+          pulseDurationMs: 100,
+          pulseIntervalMs: 200
         }
       })
     })

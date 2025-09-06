@@ -447,20 +447,20 @@ describe('ControlPanel Component', () => {
       render(<ControlPanel {...mockProps} />)
 
       // Should show the description as the main header, not the signal name
-      expect(screen.getByText('Sonicator #4 Frequency Output (output as Hz/10)')).toBeInTheDocument()
-      expect(screen.getByText('Sonicator #4 Frequency Lock Signal')).toBeInTheDocument()
+      expect(screen.getByText('Sonicator #4 Overload Protection Signal')).toBeInTheDocument()
+      expect(screen.getByText('Sonicator #4 Power Sensing (5.44 mV/W scaling)')).toBeInTheDocument()
     })
 
     it('shows signal names and connection info in compact row', () => {
       render(<ControlPanel {...mockProps} />)
 
       // Signal names should still be visible but in the info row
-      expect(screen.getByText('FREQ_DIV10_4')).toBeInTheDocument()
-      expect(screen.getByText('FREQ_LOCK_4')).toBeInTheDocument()
+      expect(screen.getByText('OVERLOAD_4')).toBeInTheDocument()
+      expect(screen.getByText('POWER_SENSE_4')).toBeInTheDocument()
 
       // Connection info should be in compact format
-      expect(screen.getByText('D7 → PB0, Pin 1')).toBeInTheDocument()
-      expect(screen.getByText('D8 → PB4, Pin 5')).toBeInTheDocument()
+      expect(screen.getByText('A2 → PD3, Pin 17')).toBeInTheDocument()
+      expect(screen.getByText('A1 → PA7, Pin 33')).toBeInTheDocument()
     })
 
     it('uses compact parameter card styling', () => {

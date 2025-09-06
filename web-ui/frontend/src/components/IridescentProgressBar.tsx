@@ -125,7 +125,7 @@ export default function IridescentProgressBar({
           marginTop: '8px',
           fontStyle: 'italic'
         }}>
-          🌈 Beautiful iridescent progress in action!
+          🔄 Test execution in progress...
         </div>
       )}
 
