@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import React from 'react'
 import ControlPanel from '../ControlPanel'
+import { HardwareState, PinState } from '../../types'
 
 // Mock WebSocket hook
 const mockSendMessage = vi.fn()
@@ -14,9 +15,39 @@ vi.mock('../../hooks/useWebSocket', () => ({
 }))
 
 describe('ControlPanel Component', () => {
+  const mockPinState: PinState = {
+    pin: 'D7',
+    signal: 'FREQ_DIV10_4',
+    direction: 'OUT',
+    state: 'LOW',
+    timestamp: Date.now(),
+    description: 'Test pin'
+  }
+
+  const mockHardwareState: HardwareState = {
+    connection: {
+      connected: true,
+      port: '/dev/ttyUSB0'
+    },
+    pins: {
+      'FREQ_DIV10_4': mockPinState,
+      'FREQ_LOCK_4': { ...mockPinState, signal: 'FREQ_LOCK_4', pin: 'D8' },
+      'OVERLOAD_4': { ...mockPinState, signal: 'OVERLOAD_4', pin: 'A2', direction: 'IN' },
+      'START_4': { ...mockPinState, signal: 'START_4', pin: 'A3' },
+      'RESET_4': { ...mockPinState, signal: 'RESET_4', pin: 'A4' },
+      'POWER_SENSE_4': { ...mockPinState, signal: 'POWER_SENSE_4', pin: 'A1', direction: 'ANALOG', state: 512 },
+      'AMPLITUDE_ALL': { ...mockPinState, signal: 'AMPLITUDE_ALL', pin: 'D9' },
+      'UART_RXD': { ...mockPinState, signal: 'UART_RXD', pin: 'D10', direction: 'IN' },
+      'UART_TXD': { ...mockPinState, signal: 'UART_TXD', pin: 'D11' },
+      'STATUS_LED': { ...mockPinState, signal: 'STATUS_LED', pin: 'D12' }
+    },
+    lastUpdate: Date.now()
+  }
+
   const mockProps = {
-    connected: true,
-    onSendCommand: vi.fn(),
+    hardwareState: mockHardwareState,
+    onPinControl: vi.fn(),
+    connected: true
   }
 
   beforeEach(() => {
@@ -367,6 +398,76 @@ describe('ControlPanel Component', () => {
       buttons.forEach(button => {
         expect(button).toHaveAttribute('aria-disabled', 'true')
       })
+    })
+  })
+
+  describe('Tabbed Interface', () => {
+    it('renders sub-tab navigation with correct buttons', () => {
+      render(<ControlPanel {...mockProps} />)
+
+      expect(screen.getByText('🔧 Configurable Parameters')).toBeInTheDocument()
+      expect(screen.getByText('📊 Live DUT Monitoring')).toBeInTheDocument()
+    })
+
+    it('shows parameters tab content by default', () => {
+      render(<ControlPanel {...mockProps} />)
+
+      expect(screen.getByText('Configurable Parameters')).toBeInTheDocument()
+      expect(screen.getByText('Click to toggle HIGH/LOW states')).toBeInTheDocument()
+    })
+
+    it('switches to monitoring tab when clicked', () => {
+      render(<ControlPanel {...mockProps} />)
+
+      const monitoringTab = screen.getByText('📊 Live DUT Monitoring')
+      fireEvent.click(monitoringTab)
+
+      expect(screen.getByText('Live DUT Monitoring')).toBeInTheDocument()
+      expect(screen.getByText('Real-time signals from ATmega32A')).toBeInTheDocument()
+    })
+
+    it('applies active class to selected tab', () => {
+      render(<ControlPanel {...mockProps} />)
+
+      const parametersTab = screen.getByText('🔧 Configurable Parameters')
+      const monitoringTab = screen.getByText('📊 Live DUT Monitoring')
+
+      expect(parametersTab).toHaveClass('active')
+      expect(monitoringTab).not.toHaveClass('active')
+
+      fireEvent.click(monitoringTab)
+
+      expect(parametersTab).not.toHaveClass('active')
+      expect(monitoringTab).toHaveClass('active')
+    })
+  })
+
+  describe('Compact Parameter Cards', () => {
+    it('renders parameter descriptions as bold headers', () => {
+      render(<ControlPanel {...mockProps} />)
+
+      // Should show the description as the main header, not the signal name
+      expect(screen.getByText('Sonicator #4 Frequency Output (output as Hz/10)')).toBeInTheDocument()
+      expect(screen.getByText('Sonicator #4 Frequency Lock Signal')).toBeInTheDocument()
+    })
+
+    it('shows signal names and connection info in compact row', () => {
+      render(<ControlPanel {...mockProps} />)
+
+      // Signal names should still be visible but in the info row
+      expect(screen.getByText('FREQ_DIV10_4')).toBeInTheDocument()
+      expect(screen.getByText('FREQ_LOCK_4')).toBeInTheDocument()
+
+      // Connection info should be in compact format
+      expect(screen.getByText('D7 → PB0, Pin 1')).toBeInTheDocument()
+      expect(screen.getByText('D8 → PB4, Pin 5')).toBeInTheDocument()
+    })
+
+    it('uses compact parameter card styling', () => {
+      render(<ControlPanel {...mockProps} />)
+
+      const parameterCards = document.querySelectorAll('.parameter-card-compact')
+      expect(parameterCards.length).toBeGreaterThan(0)
     })
   })
 })

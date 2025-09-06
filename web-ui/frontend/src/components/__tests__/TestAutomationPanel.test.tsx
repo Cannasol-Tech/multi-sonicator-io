@@ -426,4 +426,22 @@ describe('TestAutomationPanel Component', () => {
       })
     })
   })
+
+  describe('Button Styling', () => {
+    it('renders Select All and Clear All buttons with correct classes', async () => {
+      render(<TestAutomationPanel {...mockProps} />)
+
+      await waitFor(() => {
+        const selectAllButton = screen.getByText(/Select All/i)
+        const clearAllButton = screen.getByText(/Clear All/i)
+
+        expect(selectAllButton).toBeInTheDocument()
+        expect(clearAllButton).toBeInTheDocument()
+
+        // Verify they have the correct CSS classes for theme styling
+        expect(selectAllButton).toHaveClass('btn-select-all')
+        expect(clearAllButton).toHaveClass('btn-clear-all')
+      })
+    })
+  })
 })

@@ -12,7 +12,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
   // Pin descriptions and mappings based on docs/planning/pin-matrix.md
   const pinDescriptions: Record<string, { description: string; wrapperPin: string; dutPin: string; physicalPin: string }> = {
     'FREQ_DIV10_4': {
-      description: 'Sonicator #4 Frequency Output (in Hz/10)',
+      description: 'Sonicator #4 Frequency Output (output as Hz/10)',
       wrapperPin: 'D7',
       dutPin: 'PB0',
       physicalPin: '1'
@@ -79,6 +79,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
   const [configLoading, setConfigLoading] = useState(false)
   const [frequencyInput, setFrequencyInput] = useState('20.0')
   const [manualFrequencyInput, setManualFrequencyInput] = useState('2.0')
+  const [activeSubTab, setActiveSubTab] = useState<'parameters' | 'monitoring'>('parameters')
 
   const inputPins = Object.entries(hardwareState.pins).filter(([signal, pin]) => pin.direction === 'IN' || signal === 'POWER_SENSE_4')
   const outputPins = Object.entries(hardwareState.pins).filter(([signal, pin]) => pin.direction === 'OUT' && signal !== 'UART_TXD')
@@ -420,14 +421,26 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
 
   return (
     <div className="control-panel">
+      {/* Sub-tab Navigation */}
+      <div className="sub-tab-navigation">
+        <button
+          className={`sub-tab-button ${activeSubTab === 'parameters' ? 'active' : ''}`}
+          onClick={() => setActiveSubTab('parameters')}
+        >
+          🔧 Configurable Parameters
+        </button>
+        <button
+          className={`sub-tab-button ${activeSubTab === 'monitoring' ? 'active' : ''}`}
+          onClick={() => setActiveSubTab('monitoring')}
+        >
+          📊 Live DUT Monitoring
+        </button>
+      </div>
 
-      {/* Configurable Parameters */}
-      <div className="control-section">
-        <h3>Configurable Parameters</h3>
-        <div className="text-xs mb-4" style={{ color: 'var(--text-tertiary)' }}>
-          Click to toggle HIGH/LOW states
-        </div>
-
+      {/* Sub-tab Content */}
+      <div className="sub-tab-content">
+        {activeSubTab === 'parameters' && (
+          <div className="control-section">
         {/* Sonicator #4 Header */}
         <div className="mb-4">
           <h4 className="sonicator-4-header text-lg font-semibold mb-3 pb-2" style={{
@@ -442,56 +455,56 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
           {inputPins.map(([signal, pinState]) => {
             const pinInfo = pinDescriptions[signal]
             return (
-              <div key={signal} className="parameter-card mb-3 p-3 rounded-lg" style={{
+              <div key={signal} className="parameter-card-compact mb-3 p-3 rounded-lg" style={{
                 background: 'var(--bg-secondary)',
                 border: '1px solid var(--border-color)',
                 transition: 'all 0.3s ease'
               }}>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-mono font-semibold" style={{ color: 'var(--text-primary)' }}>{signal}</span>
-                  <span className="text-xs" style={{ color: 'var(--text-tertiary)' }}>{pinState.pin}</span>
-                </div>
+                {/* Parameter Description as Bold Header */}
+                <div className="parameter-header mb-2">
+                  <h5 className="text-sm font-bold mb-1" style={{ color: 'var(--text-primary)' }}>
+                    {pinInfo ? pinInfo.description : signal}
+                  </h5>
 
-                {pinInfo && (
-                  <div className="mb-2 text-xs space-y-1" style={{ color: 'var(--text-secondary)' }}>
-                    <div><strong style={{ color: 'var(--text-primary)' }}>Parameter:</strong> {pinInfo.description}</div>
-                    <div><strong style={{ color: 'var(--text-primary)' }}>Connection:</strong> {pinInfo.wrapperPin} → {pinInfo.dutPin}, {pinInfo.physicalPin}</div>
-                    <div style={{ color: 'var(--text-tertiary)' }}>Arduino Test Wrapper Pin → ATmega32A Pin, Physical Pin</div>
+                  {/* Compact info row: Signal name and Connection */}
+                  <div className="parameter-info-row flex items-center justify-between text-xs" style={{ color: 'var(--text-secondary)' }}>
+                    <span className="signal-name font-mono" style={{ color: 'var(--text-primary)' }}>
+                      {signal}
+                    </span>
+                    {pinInfo && (
+                      <span className="connection-info" style={{ color: 'var(--text-tertiary)' }}>
+                        {pinInfo.wrapperPin} → {pinInfo.dutPin}, Pin {pinInfo.physicalPin}
+                      </span>
+                    )}
                   </div>
-                )}
+                </div>
 
                 {renderPinState(signal, pinState)}
               </div>
             )
           })}
         </div>
-      </div>
-      {/* Live DUT Monitoring */}
-      <div className="control-section">
-        <h3>Live DUT Monitoring</h3>
-        <div className="text-xs mb-2" style={{ color: 'var(--text-tertiary)' }}>
-          Real-time signals from ATmega32A
-        </div>
-        {outputPins.map(([signal, pinState]) => (
-          <div key={signal} className="mb-2">
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-xs font-mono" style={{ color: 'var(--text-primary)' }}>{signal}</span>
-              <span className="text-xs" style={{ color: 'var(--text-tertiary)' }}>{pinState.pin}</span>
-            </div>
-            {renderPinState(signal, pinState)}
           </div>
-        ))}
+        )}
+
+        {activeSubTab === 'monitoring' && (
+          <div className="control-section">
+            <h3>Live DUT Monitoring</h3>
+            <div className="text-xs mb-2" style={{ color: 'var(--text-tertiary)' }}>
+              Real-time signals from ATmega32A
+            </div>
+            {outputPins.map(([signal, pinState]) => (
+              <div key={signal} className="mb-2">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-xs font-mono" style={{ color: 'var(--text-primary)' }}>{signal}</span>
+                  <span className="text-xs" style={{ color: 'var(--text-tertiary)' }}>{pinState.pin}</span>
+                </div>
+                {renderPinState(signal, pinState)}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
-
-
-
-
-
-
-
-
-
-
 
       {/* System Status */}
       <div className="control-section">

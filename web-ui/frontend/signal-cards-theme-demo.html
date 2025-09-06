@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 Signal Cards Theme Demo - Multi-Sonicator IO</title>
+    <style>
+        /* CSS Variables for Light Theme */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --text-primary: #000000;
+            --text-secondary: #1e293b;
+            --text-tertiary: #475569;
+            --border-color: #e2e8f0;
+            --border-color-hover: #cbd5e1;
+            --color-primary: #2563eb;
+
+            /* Signal direction colors - Light theme */
+            --signal-in-bg: #dbeafe;
+            --signal-in-text: #1e40af;
+            --signal-out-bg: #dcfce7;
+            --signal-out-text: #166534;
+            --signal-analog-bg: #f3e8ff;
+            --signal-analog-text: #7c3aed;
+            --signal-comm-bg: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+            --signal-comm-text: #b45309;
+        }
+
+        /* Dark Theme */
+        .dark-theme {
+            --bg-primary: #1e2938;
+            --bg-secondary: #2a3441;
+            --bg-tertiary: #374151;
+            --text-primary: #e5e7eb;
+            --text-secondary: #d1d5db;
+            --text-tertiary: #9ca3af;
+            --border-color: #374151;
+            --border-color-hover: #4b5563;
+
+            /* Signal direction colors - Dark theme (darkened versions) */
+            --signal-in-bg: #1e3a8a;
+            --signal-in-text: #bfdbfe;
+            --signal-out-bg: #064e3b;
+            --signal-out-text: #6ee7b7;
+            --signal-analog-bg: #581c87;
+            --signal-analog-text: #ddd6fe;
+            --signal-comm-bg: linear-gradient(135deg, #78350f 0%, #92400e 50%, #a16207 100%);
+            --signal-comm-text: #fde68a;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .theme-controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-light {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+        }
+
+        .btn-dark {
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+            color: white;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .demo-info {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .demo-info h2 {
+            color: var(--text-primary);
+            margin-top: 0;
+        }
+
+        .demo-info p {
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .signal-card {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .signal-card:hover {
+            border-color: var(--border-color-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .signal-card h3 {
+            color: var(--text-primary);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .signal-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .direction-badge {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .direction-badge.in {
+            background: var(--signal-in-bg);
+            color: var(--signal-in-text);
+        }
+
+        .direction-badge.out {
+            background: var(--signal-out-bg);
+            color: var(--signal-out-text);
+        }
+
+        .direction-badge.analog {
+            background: var(--signal-analog-bg);
+            color: var(--signal-analog-text);
+        }
+
+        .direction-badge.comm {
+            background: var(--signal-comm-bg);
+            color: var(--signal-comm-text);
+        }
+
+        .pin-status {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+            margin: 2px;
+        }
+
+        .pin-status.in {
+            background: var(--signal-in-bg);
+            color: var(--signal-in-text);
+        }
+
+        .pin-status.out {
+            background: var(--signal-out-bg);
+            color: var(--signal-out-text);
+        }
+
+        .pin-status.analog {
+            background: var(--signal-analog-bg);
+            color: var(--signal-analog-text);
+        }
+
+        .pin-status.comm {
+            background: var(--signal-comm-bg);
+            color: var(--signal-comm-text);
+        }
+
+        .signal-description {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .signal-pins {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .comparison-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .comparison-section h3 {
+            color: var(--text-primary);
+            margin-top: 0;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .theme-example {
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .theme-example h4 {
+            margin-top: 0;
+            color: var(--text-primary);
+        }
+
+        .theme-example.light {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .theme-example.dark {
+            background: #1e2938;
+            color: #e5e7eb;
+        }
+
+        .badge-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .light .badge-showcase .direction-badge.in {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .light .badge-showcase .direction-badge.out {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .light .badge-showcase .direction-badge.analog {
+            background: #f3e8ff;
+            color: #7c3aed;
+        }
+
+        .light .badge-showcase .direction-badge.comm {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+            color: #b45309;
+        }
+
+        .dark .badge-showcase .direction-badge.in {
+            background: #1e3a8a;
+            color: #bfdbfe;
+        }
+
+        .dark .badge-showcase .direction-badge.out {
+            background: #064e3b;
+            color: #6ee7b7;
+        }
+
+        .dark .badge-showcase .direction-badge.analog {
+            background: #581c87;
+            color: #ddd6fe;
+        }
+
+        .dark .badge-showcase .direction-badge.comm {
+            background: linear-gradient(135deg, #78350f 0%, #92400e 50%, #a16207 100%);
+            color: #fde68a;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-info">
+            <h2>🎨 Signal Cards Theme Integration Demo</h2>
+            <p>Test the signal configuration and monitoring cards with both light and dark themes. Notice how the purple, green, blue, and grey colors are appropriately darkened in dark mode while maintaining excellent contrast and readability.</p>
+        </div>
+
+        <div class="theme-controls">
+            <button id="lightBtn" class="btn-light">☀️ Light Theme</button>
+            <button id="darkBtn" class="btn-dark">🌙 Dark Theme</button>
+        </div>
+
+        <div class="cards-grid">
+            <div class="signal-card">
+                <h3>🔌 Input Signals</h3>
+                <div class="signal-badges">
+                    <span class="direction-badge in">INPUT</span>
+                    <span class="direction-badge analog">ANALOG</span>
+                </div>
+                <div class="signal-description">
+                    Input signals from external devices and sensors. These pins receive data and control signals.
+                </div>
+                <div class="signal-pins">
+                    <span class="pin-status in">START_4</span>
+                    <span class="pin-status in">RESET_4</span>
+                    <span class="pin-status analog">POWER_SENSE_4</span>
+                </div>
+            </div>
+
+            <div class="signal-card">
+                <h3>📡 Output Signals</h3>
+                <div class="signal-badges">
+                    <span class="direction-badge out">OUTPUT</span>
+                    <span class="direction-badge analog">PWM</span>
+                </div>
+                <div class="signal-description">
+                    Output signals to control external devices and provide feedback to the system.
+                </div>
+                <div class="signal-pins">
+                    <span class="pin-status out">FREQ_LOCK_4</span>
+                    <span class="pin-status out">OVERLOAD_4</span>
+                    <span class="pin-status analog">FREQ_DIV10_4</span>
+                </div>
+            </div>
+
+            <div class="signal-card">
+                <h3>📊 Analog Monitoring</h3>
+                <div class="signal-badges">
+                    <span class="direction-badge analog">ANALOG</span>
+                    <span class="direction-badge in">SENSOR</span>
+                </div>
+                <div class="signal-description">
+                    Continuous analog signal monitoring for power levels, frequency detection, and system health.
+                </div>
+                <div class="signal-pins">
+                    <span class="pin-status analog">ADC_0</span>
+                    <span class="pin-status analog">ADC_1</span>
+                    <span class="pin-status analog">ADC_2</span>
+                </div>
+            </div>
+
+            <div class="signal-card">
+                <h3>🔗 Communication</h3>
+                <div class="signal-badges">
+                    <span class="direction-badge comm">COMM</span>
+                    <span class="direction-badge in">SERIAL</span>
+                </div>
+                <div class="signal-description">
+                    Serial communication interfaces for data exchange and system control.
+                </div>
+                <div class="signal-pins">
+                    <span class="pin-status comm">TX</span>
+                    <span class="pin-status comm">RX</span>
+                    <span class="pin-status comm">SDA</span>
+                    <span class="pin-status comm">SCL</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-section">
+            <h3>🎨 Theme Color Comparison</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 15px;">
+                Compare how signal colors adapt between light and dark themes. Dark theme uses appropriately darkened colors for better contrast and reduced eye strain.
+            </p>
+            <div class="comparison-grid">
+                <div class="theme-example light">
+                    <h4>☀️ Light Theme</h4>
+                    <div class="badge-showcase">
+                        <span class="direction-badge in">INPUT</span>
+                        <span class="direction-badge out">OUTPUT</span>
+                        <span class="direction-badge analog">ANALOG</span>
+                        <span class="direction-badge comm">COMM</span>
+                    </div>
+                </div>
+                <div class="theme-example dark">
+                    <h4>🌙 Dark Theme</h4>
+                    <div class="badge-showcase">
+                        <span class="direction-badge in">INPUT</span>
+                        <span class="direction-badge out">OUTPUT</span>
+                        <span class="direction-badge analog">ANALOG</span>
+                        <span class="direction-badge comm">COMM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const body = document.body;
+        const lightBtn = document.getElementById('lightBtn');
+        const darkBtn = document.getElementById('darkBtn');
+
+        // Theme switching
+        lightBtn.addEventListener('click', () => {
+            body.classList.remove('dark-theme');
+            lightBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+            darkBtn.style.background = 'linear-gradient(135deg, #374151 0%, #1f2937 100%)';
+        });
+
+        darkBtn.addEventListener('click', () => {
+            body.classList.add('dark-theme');
+            darkBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+            lightBtn.style.background = 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)';
+        });
+    </script>
+</body>
+</html>

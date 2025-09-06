@@ -40,7 +40,7 @@ describe('Test Automation API', () => {
     it('handles fetch errors', async () => {
       vi.mocked(fetch).mockRejectedValueOnce(new Error('Network error'))
 
-      await expect(testAutomationAPI.getScenarios()).rejects.toThrow('Network error')
+      await expect(TestAutomationAPI.getAvailableScenarios()).rejects.toThrow('Network error')
     })
 
     it('handles HTTP errors', async () => {
@@ -50,7 +50,7 @@ describe('Test Automation API', () => {
         statusText: 'Internal Server Error',
       } as Response)
 
-      await expect(testAutomationAPI.getScenarios()).rejects.toThrow('HTTP error! status: 500')
+      await expect(TestAutomationAPI.getAvailableScenarios()).rejects.toThrow('HTTP error! status: 500')
     })
 
     it('handles invalid JSON response', async () => {
@@ -61,38 +61,35 @@ describe('Test Automation API', () => {
         },
       } as Response)
 
-      await expect(testAutomationAPI.getScenarios()).rejects.toThrow('Invalid JSON')
+      await expect(TestAutomationAPI.getAvailableScenarios()).rejects.toThrow('Invalid JSON')
     })
   })
 
   describe('executeScenarios', () => {
     it('starts scenario execution successfully', async () => {
-      const mockResponse = {
-        executionId: 'exec-123',
-        status: 'started',
-        scenarioIds: ['scenario-1', 'scenario-2']
-      }
+      const mockResponse = true
 
       vi.mocked(fetch).mockResolvedValueOnce({
         ok: true,
-        json: async () => mockResponse,
+        json: async () => ({ success: true }),
       } as Response)
 
-      const scenarioIds = ['scenario-1', 'scenario-2']
-      const result = await testAutomationAPI.executeScenarios(scenarioIds)
+      const scenarioNames = ['scenario-1', 'scenario-2']
+      const executionId = 'exec-123'
+      const result = await TestAutomationAPI.executeScenarios(scenarioNames, executionId)
 
-      expect(fetch).toHaveBeenCalledWith('/api/test-automation/execute', {
+      expect(fetch).toHaveBeenCalledWith('http://localhost:3001/api/test/execute', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ scenarioIds })
+        body: JSON.stringify({ scenarios: scenarioNames, execution_id: executionId })
       })
-      expect(result).toEqual(mockResponse)
+      expect(result).toBe(true)
     })
 
     it('validates scenario IDs parameter', async () => {
-      await expect(testAutomationAPI.executeScenarios([])).rejects.toThrow('No scenarios provided')
+      await expect(TestAutomationAPI.executeScenarios([], 'exec-123')).rejects.toThrow('No scenarios provided')
     })
 
     it('handles execution start errors', async () => {
@@ -102,24 +99,18 @@ describe('Test Automation API', () => {
         statusText: 'Bad Request',
       } as Response)
 
-      await expect(testAutomationAPI.executeScenarios(['scenario-1'])).rejects.toThrow('HTTP error! status: 400')
+      await expect(TestAutomationAPI.executeScenarios(['scenario-1'], 'exec-123')).rejects.toThrow('HTTP error! status: 400')
     })
 
     it('includes optional parameters in request', async () => {
-      const mockResponse = { executionId: 'exec-123', status: 'started' }
-      
+      const mockResponse = { success: true }
+
       vi.mocked(fetch).mockResolvedValueOnce({
         ok: true,
         json: async () => mockResponse,
       } as Response)
 
-      const options = {
-        parallel: true,
-        timeout: 30000,
-        tags: ['@smoke']
-      }
-
-      await testAutomationAPI.executeScenarios(['scenario-1'], options)
+      await TestAutomationAPI.executeScenarios(['scenario-1'], 'exec-123')
 
       expect(fetch).toHaveBeenCalledWith('/api/test-automation/execute', {
         method: 'POST',
@@ -146,16 +137,15 @@ describe('Test Automation API', () => {
         json: async () => mockResponse,
       } as Response)
 
-      const result = await testAutomationAPI.stopExecution('exec-123')
+      const result = await TestAutomationAPI.stopExecution()
 
-      expect(fetch).toHaveBeenCalledWith('/api/test-automation/stop/exec-123', {
-        method: 'POST'
+      expect(fetch).toHaveBeenCalledWith('http://localhost:3001/api/test/stop', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        }
       })
-      expect(result).toEqual(mockResponse)
-    })
-
-    it('validates execution ID parameter', async () => {
-      await expect(testAutomationAPI.stopExecution('')).rejects.toThrow('Execution ID is required')
+      expect(result).toBe(true)
     })
 
     it('handles stop execution errors', async () => {
@@ -165,7 +155,7 @@ describe('Test Automation API', () => {
         statusText: 'Not Found',
       } as Response)
 
-      await expect(testAutomationAPI.stopExecution('invalid-id')).rejects.toThrow('HTTP error! status: 404')
+      await expect(TestAutomationAPI.stopExecution()).rejects.toThrow('HTTP error! status: 404')
     })
   })
 
@@ -250,14 +240,12 @@ describe('Test Automation API', () => {
   describe('getExecutionStatus', () => {
     it('fetches execution status successfully', async () => {
       const mockStatus = {
-        executionId: 'exec-123',
-        status: 'running',
-        progress: {
-          total: 5,
-          completed: 2,
-          failed: 0,
-          currentScenario: 'scenario-3'
-        }
+        execution: {
+          id: 'exec-123',
+          status: 'running',
+          scenarios: ['scenario-1', 'scenario-2']
+        },
+        in_progress: true
       }
 
       vi.mocked(fetch).mockResolvedValueOnce({
@@ -265,14 +253,10 @@ describe('Test Automation API', () => {
         json: async () => mockStatus,
       } as Response)
 
-      const result = await testAutomationAPI.getExecutionStatus('exec-123')
+      const result = await TestAutomationAPI.getExecutionStatus()
 
-      expect(fetch).toHaveBeenCalledWith('/api/test-automation/status/exec-123')
+      expect(fetch).toHaveBeenCalledWith('http://localhost:3001/api/test/status')
       expect(result).toEqual(mockStatus)
-    })
-
-    it('validates execution ID parameter', async () => {
-      await expect(testAutomationAPI.getExecutionStatus('')).rejects.toThrow('Execution ID is required')
     })
   })
 

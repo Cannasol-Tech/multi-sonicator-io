@@ -2,15 +2,34 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import React from 'react'
 import HardwareDiagram from '../HardwareDiagram'
+import { HardwareState, PinState } from '../../types'
 
 // Mock hardware state
-const mockHardwareState = {
-  connected: true,
+const mockPinState: PinState = {
+  pin: 'D7',
+  signal: 'FREQ_DIV10_4',
+  direction: 'OUT',
+  state: 'LOW',
+  timestamp: Date.now(),
+  description: 'Test pin'
+}
+
+const mockHardwareState: HardwareState = {
+  connection: {
+    connected: true,
+    port: '/dev/ttyUSB0'
+  },
   pins: {
-    'RESET_4': { state: 'HIGH', direction: 'OUT' as const, timestamp: Date.now() },
-    'D8': { state: 'LOW', direction: 'OUT' as const, timestamp: Date.now() },
-    'D9': { state: 'PWM=128', direction: 'OUT' as const, timestamp: Date.now() },
-    'A0': { state: 'HIGH', direction: 'IN' as const, timestamp: Date.now() },
+    'FREQ_DIV10_4': mockPinState,
+    'FREQ_LOCK_4': { ...mockPinState, signal: 'FREQ_LOCK_4', pin: 'D8' },
+    'OVERLOAD_4': { ...mockPinState, signal: 'OVERLOAD_4', pin: 'A2', direction: 'IN' },
+    'START_4': { ...mockPinState, signal: 'START_4', pin: 'A3' },
+    'RESET_4': { ...mockPinState, signal: 'RESET_4', pin: 'A4', state: 'HIGH' },
+    'POWER_SENSE_4': { ...mockPinState, signal: 'POWER_SENSE_4', pin: 'A1', direction: 'ANALOG', state: 512 },
+    'AMPLITUDE_ALL': { ...mockPinState, signal: 'AMPLITUDE_ALL', pin: 'D9', state: 'PWM=128' },
+    'UART_RXD': { ...mockPinState, signal: 'UART_RXD', pin: 'D10', direction: 'IN' },
+    'UART_TXD': { ...mockPinState, signal: 'UART_TXD', pin: 'D11' },
+    'STATUS_LED': { ...mockPinState, signal: 'STATUS_LED', pin: 'D12' }
   },
   lastUpdate: Date.now()
 }
@@ -18,6 +37,7 @@ const mockHardwareState = {
 describe('HardwareDiagram Component', () => {
   const mockProps = {
     hardwareState: mockHardwareState,
+    onPinClick: vi.fn(),
     highlightedPins: [] as string[],
     onPinHighlight: vi.fn(),
   }
@@ -304,6 +324,35 @@ describe('HardwareDiagram Component', () => {
       expect(() => {
         render(<HardwareDiagram {...mockProps} hardwareState={stateWithInvalidPin} />)
       }).not.toThrow()
+    })
+  })
+
+  describe('Theme-based Styling', () => {
+    it('renders device titles correctly', () => {
+      render(<HardwareDiagram {...mockProps} />)
+
+      const arduinoTitle = screen.getByText('Arduino Uno R3')
+      const atmegaTitle = screen.getByText('ATmega32A')
+
+      expect(arduinoTitle).toBeInTheDocument()
+      expect(atmegaTitle).toBeInTheDocument()
+
+      // Verify the titles are within device-header elements
+      expect(arduinoTitle.closest('.device-header')).toBeInTheDocument()
+      expect(atmegaTitle.closest('.device-header')).toBeInTheDocument()
+    })
+
+    it('renders device titles with proper HTML structure for theme styling', () => {
+      render(<HardwareDiagram {...mockProps} />)
+
+      const arduinoTitle = screen.getByText('Arduino Uno R3')
+      const atmegaTitle = screen.getByText('ATmega32A')
+
+      // Verify they are h3 elements within device-header (required for CSS styling)
+      expect(arduinoTitle.tagName).toBe('H3')
+      expect(atmegaTitle.tagName).toBe('H3')
+      expect(arduinoTitle.parentElement).toHaveClass('device-header')
+      expect(atmegaTitle.parentElement).toHaveClass('device-header')
     })
   })
 })

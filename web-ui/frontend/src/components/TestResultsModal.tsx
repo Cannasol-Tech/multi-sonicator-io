@@ -59,22 +59,22 @@ export default function TestResultsModal({ execution, visible, onClose }: TestRe
   }
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content test-results-modal" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-header">
+    <div className="test-results-modal-overlay" onClick={onClose}>
+      <div className="test-results-modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="test-results-modal-header">
           <h2>
-            {TestAutomationAPI.getStatusIcon(execution.status)} 
+            {TestAutomationAPI.getStatusIcon(execution.status)}
             Test Results: {execution.execution_id}
           </h2>
-          <div className="modal-actions">
-            <button className="btn-export" onClick={handleExportResults}>
+          <div className="test-results-modal-actions">
+            <button className="test-results-btn-export" onClick={handleExportResults}>
               📄 Export Results
             </button>
-            <button className="btn-close" onClick={onClose}>×</button>
+            <button className="test-results-modal-close-button" onClick={onClose}>×</button>
           </div>
         </div>
 
-        <div className="modal-body">
+        <div className="test-results-modal-body">
           {/* Execution Summary */}
           <div className="execution-summary">
             <div className="summary-stats">

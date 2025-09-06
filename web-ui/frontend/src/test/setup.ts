@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import { expect, afterEach } from 'vitest'
+import { expect, afterEach, vi } from 'vitest'
 import { cleanup } from '@testing-library/react'
 
 // Cleanup after each test case (e.g. clearing jsdom)
@@ -14,7 +14,7 @@ global.WebSocket = class MockWebSocket {
   static CLOSING = 2
   static CLOSED = 3
 
-  readyState = MockWebSocket.CONNECTING
+  readyState = MockWebSocket.OPEN  // Start as OPEN to avoid async issues
   url: string
   onopen: ((event: Event) => void) | null = null
   onclose: ((event: CloseEvent) => void) | null = null
@@ -23,13 +23,10 @@ global.WebSocket = class MockWebSocket {
 
   constructor(url: string) {
     this.url = url
-    // Simulate connection opening
-    setTimeout(() => {
-      this.readyState = MockWebSocket.OPEN
-      if (this.onopen) {
-        this.onopen(new Event('open'))
-      }
-    }, 0)
+    // Immediately trigger onopen if set (synchronous for tests)
+    if (this.onopen) {
+      this.onopen(new Event('open'))
+    }
   }
 
   send(data: string | ArrayBufferLike | Blob | ArrayBufferView) {
@@ -65,8 +62,30 @@ const localStorageMock = {
 }
 global.localStorage = localStorageMock as any
 
-// Mock fetch
-global.fetch = vi.fn()
+// Mock fetch with proper responses
+global.fetch = vi.fn().mockImplementation((url: string) => {
+  // Mock configuration endpoint
+  if (url.includes('/api/config')) {
+    return Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve({
+        success: true,
+        config: {
+          theme: 'auto',
+          keyboardShortcuts: true,
+          autoSave: true,
+          notifications: true
+        }
+      })
+    })
+  }
+
+  // Default mock response
+  return Promise.resolve({
+    ok: true,
+    json: () => Promise.resolve({ success: true })
+  })
+})
 
 // Mock matchMedia
 Object.defineProperty(window, 'matchMedia', {

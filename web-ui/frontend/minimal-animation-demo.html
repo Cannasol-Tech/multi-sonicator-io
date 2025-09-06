@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Minimal Animation Demo - View Details Dialog</title>
+    <style>
+        /* CSS Variables for Light Theme */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --text-primary: #000000;
+            --text-secondary: #1e293b;
+            --text-tertiary: #475569;
+            --border-color: #e2e8f0;
+            --border-color-hover: #cbd5e1;
+            --color-primary: #2563eb;
+        }
+
+        /* Dark Theme */
+        .dark-theme {
+            --bg-primary: #1e2938;
+            --bg-secondary: #2a3441;
+            --bg-tertiary: #374151;
+            --text-primary: #e5e7eb;
+            --text-secondary: #d1d5db;
+            --text-tertiary: #9ca3af;
+            --border-color: #374151;
+            --border-color-hover: #4b5563;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .theme-controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-light {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+        }
+
+        .btn-dark {
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+            color: white;
+        }
+
+        .btn-demo {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .demo-info {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .demo-info h2 {
+            color: var(--text-primary);
+            margin-top: 0;
+        }
+
+        .demo-info p {
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* Minimized Connection Details Modal */
+        .connection-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            animation: fadeIn 0.15s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .connection-modal-content {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 20px;
+            width: 800px;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow: hidden;
+            animation: slideInScale 0.2s ease-out;
+            position: relative;
+
+            /* Enhanced glossy effect */
+            background-image:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.2) 30%, rgba(255, 255, 255, 0.4) 70%, rgba(255, 255, 255, 0.1) 100%),
+                linear-gradient(45deg, rgba(255, 255, 255, 0.3) 0%, transparent 40%, rgba(255, 255, 255, 0.15) 60%, transparent 100%),
+                radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 50%);
+
+            box-shadow:
+                0 40px 80px rgba(0, 0, 0, 0.6),
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                0 4px 8px rgba(0, 0, 0, 0.2),
+                inset 0 2px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+
+            border: 1px solid rgba(79, 107, 175, 0.3);
+        }
+
+        /* Subtle glossy shine effect overlay */
+        .connection-modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+            border-radius: 20px 20px 0 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Minimized glossy rim effect */
+        .connection-modal-content::after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            background: linear-gradient(45deg,
+                rgba(255, 255, 255, 0.6) 0%,
+                rgba(255, 255, 255, 0.2) 25%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.2) 75%,
+                rgba(255, 255, 255, 0.6) 100%);
+            border-radius: 21px;
+            z-index: -1;
+            pointer-events: none;
+            animation: shimmer 6s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.35; }
+        }
+
+        @keyframes slideInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.99) translateY(4px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .dark-theme .connection-modal-content {
+            background: rgba(46, 65, 88, 0.85);
+            background-image:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 30%, rgba(255, 255, 255, 0.08) 70%, rgba(255, 255, 255, 0.02) 100%);
+        }
+
+        .dark-theme .connection-modal-content::before {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
+        }
+
+        .dark-theme .connection-modal-content::after {
+            background: linear-gradient(45deg,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0.1) 25%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.1) 75%,
+                rgba(255, 255, 255, 0.3) 100%);
+        }
+
+        .modal-header {
+            padding: 24px 32px 16px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .modal-close-button {
+            background: var(--bg-tertiary);
+            border: none;
+            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-tertiary);
+            transition: all 0.15s ease;
+        }
+
+        .modal-close-button:hover {
+            background: var(--border-color);
+            transform: scale(1.05);
+        }
+
+        .modal-body {
+            padding: 24px 32px;
+            max-height: calc(90vh - 100px);
+            overflow-y: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .modal-section {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            transition: all 0.15s ease;
+        }
+
+        .modal-section:hover {
+            background: rgba(255, 255, 255, 0.5);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            transform: translateY(-0.5px);
+        }
+
+        .dark-theme .modal-section {
+            background: rgba(46, 65, 88, 0.7);
+            border: 1px solid rgba(79, 107, 175, 0.25);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .dark-theme .modal-section:hover {
+            background: rgba(58, 75, 100, 0.8);
+            border-color: rgba(79, 107, 175, 0.5);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        .modal-section h3 {
+            margin: 0 0 12px 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .modal-info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            gap: 12px;
+        }
+
+        .modal-label {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .modal-value {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .comparison-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .comparison-section h3 {
+            color: var(--text-primary);
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-info">
+            <h2>🎬 Minimal Animation Demo</h2>
+            <p>Test the minimized animations in the "View Details" dialog box. Animations are now subtle and focused on enhancing the glossy effect rather than being distracting.</p>
+        </div>
+
+        <div class="theme-controls">
+            <button id="lightBtn" class="btn-light">☀️ Light Theme</button>
+            <button id="darkBtn" class="btn-dark">🌙 Dark Theme</button>
+            <button id="showModalBtn" class="btn-demo">📋 Show View Details Dialog</button>
+        </div>
+
+        <div class="comparison-section">
+            <h3>🎯 Animation Improvements</h3>
+            <ul style="color: var(--text-secondary); line-height: 1.6;">
+                <li><strong>Modal Overlay:</strong> Fade-in reduced from 0.3s to 0.15s</li>
+                <li><strong>Modal Content:</strong> Slide-in animation reduced from scale(0.98) to scale(0.99) and translateY(8px) to translateY(4px)</li>
+                <li><strong>Shimmer Effect:</strong> Duration increased from 3s to 6s, opacity range reduced from 0.3-0.6 to 0.2-0.35</li>
+                <li><strong>Section Hover:</strong> Transition reduced from 0.3s to 0.15s, transform reduced from translateY(-1px) to translateY(-0.5px)</li>
+                <li><strong>Compact Details:</strong> Slide-up animation reduced from 0.3s to 0.15s and translateY(20px) to translateY(8px)</li>
+            </ul>
+        </div>
+
+        <!-- Modal -->
+        <div id="modal" class="connection-modal-overlay hidden">
+            <div class="connection-modal-content">
+                <div class="modal-header">
+                    <h2>📋 FREQ_DIV10_4 - Detailed Information</h2>
+                    <button id="closeModalBtn" class="modal-close-button">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-section">
+                        <h3>🔌 Signal Overview</h3>
+                        <div class="modal-info-item">
+                            <span class="modal-label">Signal Name:</span>
+                            <span class="modal-value">FREQ_DIV10_4</span>
+                        </div>
+                        <div class="modal-info-item">
+                            <span class="modal-label">Direction:</span>
+                            <span class="modal-value">OUTPUT</span>
+                        </div>
+                        <div class="modal-info-item">
+                            <span class="modal-label">Description:</span>
+                            <span class="modal-value">Sonicator #4 Frequency Output (in Hz/10)</span>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>⚙️ Technical Details</h3>
+                        <div class="modal-info-item">
+                            <span class="modal-label">Value Range:</span>
+                            <span class="modal-value">0 Hz - 5000 Hz</span>
+                        </div>
+                        <div class="modal-info-item">
+                            <span class="modal-label">Current Value:</span>
+                            <span class="modal-value">2000 Hz</span>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>🔗 Pin Connections</h3>
+                        <div class="modal-info-item">
+                            <span class="modal-label">Arduino Pin:</span>
+                            <span class="modal-value">D7</span>
+                        </div>
+                        <div class="modal-info-item">
+                            <span class="modal-label">ATmega32A Pin:</span>
+                            <span class="modal-value">PB0</span>
+                        </div>
+                        <div class="modal-info-item">
+                            <span class="modal-label">Physical Pin:</span>
+                            <span class="modal-value">1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const body = document.body;
+        const modal = document.getElementById('modal');
+        const lightBtn = document.getElementById('lightBtn');
+        const darkBtn = document.getElementById('darkBtn');
+        const showModalBtn = document.getElementById('showModalBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        // Theme switching
+        lightBtn.addEventListener('click', () => {
+            body.classList.remove('dark-theme');
+            lightBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+            darkBtn.style.background = 'linear-gradient(135deg, #374151 0%, #1f2937 100%)';
+        });
+
+        darkBtn.addEventListener('click', () => {
+            body.classList.add('dark-theme');
+            darkBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+            lightBtn.style.background = 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)';
+        });
+
+        // Modal controls
+        showModalBtn.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

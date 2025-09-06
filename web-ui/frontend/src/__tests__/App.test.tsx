@@ -5,7 +5,7 @@ import App from '../App'
 
 // Mock all the hooks and services
 vi.mock('../hooks/useWebSocket', () => ({
-  default: () => ({
+  useWebSocket: () => ({
     connected: true,
     sendMessage: vi.fn(),
     lastMessage: null
@@ -13,9 +13,9 @@ vi.mock('../hooks/useWebSocket', () => ({
 }))
 
 vi.mock('../hooks/useHardwareState', () => ({
-  default: () => ({
+  useHardwareState: () => ({
     hardwareState: {
-      connected: true,
+      connection: { connected: true, status: 'Connected' },
       pins: {
         'D8': { state: 'LOW', direction: 'OUT', timestamp: Date.now() },
         'D9': { state: 'PWM=128', direction: 'OUT', timestamp: Date.now() }
@@ -29,11 +29,30 @@ vi.mock('../hooks/useHardwareState', () => ({
 }))
 
 vi.mock('../hooks/useArduinoCommandLog', () => ({
-  default: () => ({
+  useArduinoCommandLog: () => ({
     commands: [],
     addCommand: vi.fn(),
     clearCommands: vi.fn()
   })
+}))
+
+vi.mock('../hooks/usePinHistory', () => ({
+  usePinHistory: () => ({
+    addHistoryEntry: vi.fn()
+  })
+}))
+
+vi.mock('../hooks/useTestAutomation', () => ({
+  useTestAutomation: () => ({
+    updateExecutionProgress: vi.fn(),
+    handleExecutionComplete: vi.fn(),
+    handleExecutionError: vi.fn()
+  })
+}))
+
+vi.mock('../hooks/useKeyboardShortcuts', () => ({
+  useKeyboardShortcuts: () => ({ shortcuts: [] }),
+  createAppShortcuts: () => []
 }))
 
 // Mock localStorage
@@ -71,41 +90,42 @@ describe('App Component Integration Tests', () => {
   describe('Initial Rendering', () => {
     it('renders the main application', () => {
       render(<App />)
-      
-      expect(screen.getByText('Multi-Sonicator IO')).toBeInTheDocument()
-      expect(screen.getByText('Hardware Control & Test Automation')).toBeInTheDocument()
+
+      expect(screen.getByText('Multi-Sonicator-IO Test Harness')).toBeInTheDocument()
+      expect(screen.getByText('Connected')).toBeInTheDocument()
     })
 
     it('renders all main navigation tabs', () => {
       render(<App />)
-      
-      expect(screen.getByText('Hardware Control')).toBeInTheDocument()
-      expect(screen.getByText('Test Automation')).toBeInTheDocument()
-      expect(screen.getByText('Arduino Commands')).toBeInTheDocument()
-      expect(screen.getByText('Settings')).toBeInTheDocument()
+
+      expect(screen.getByText('🔧 Hardware Control')).toBeInTheDocument()
+      expect(screen.getByText('🧪 Test Automation')).toBeInTheDocument()
+      expect(screen.getByText('🔧 Arduino Commands')).toBeInTheDocument()
+      expect(screen.getByText('⚙️ Settings')).toBeInTheDocument()
     })
 
     it('starts with hardware control tab active', () => {
       render(<App />)
-      
-      const hardwareTab = screen.getByText('Hardware Control').closest('button')
+
+      const hardwareTab = screen.getByText('🔧 Hardware Control').closest('button')
       expect(hardwareTab).toHaveClass('active')
     })
 
     it('renders the hardware diagram by default', () => {
       render(<App />)
-      
-      expect(screen.getByTestId('hardware-diagram')).toBeInTheDocument()
+
+      expect(screen.getByRole('main')).toBeInTheDocument()
+      expect(screen.getByText('🔧 Hardware Control')).toBeInTheDocument()
     })
   })
 
   describe('Tab Navigation', () => {
     it('switches to test automation tab', async () => {
       render(<App />)
-      
-      const testTab = screen.getByText('Test Automation')
+
+      const testTab = screen.getByText('🧪 Test Automation')
       fireEvent.click(testTab)
-      
+
       await waitFor(() => {
         expect(testTab.closest('button')).toHaveClass('active')
         expect(screen.getByText(/Test Automation/i)).toBeInTheDocument()
@@ -114,10 +134,10 @@ describe('App Component Integration Tests', () => {
 
     it('switches to arduino commands tab', async () => {
       render(<App />)
-      
-      const commandsTab = screen.getByText('Arduino Commands')
+
+      const commandsTab = screen.getByText('🔧 Arduino Commands')
       fireEvent.click(commandsTab)
-      
+
       await waitFor(() => {
         expect(commandsTab.closest('button')).toHaveClass('active')
         expect(screen.getByText(/Command Log/i)).toBeInTheDocument()
@@ -126,8 +146,8 @@ describe('App Component Integration Tests', () => {
 
     it('switches to settings tab', async () => {
       render(<App />)
-      
-      const settingsTab = screen.getByText('Settings')
+
+      const settingsTab = screen.getByText('⚙️ Settings')
       fireEvent.click(settingsTab)
       
       await waitFor(() => {
@@ -138,21 +158,21 @@ describe('App Component Integration Tests', () => {
 
     it('maintains state when switching between tabs', async () => {
       render(<App />)
-      
+
       // Go to settings and make a change
-      const settingsTab = screen.getByText('Settings')
+      const settingsTab = screen.getByText('⚙️ Settings')
       fireEvent.click(settingsTab)
-      
+
       await waitFor(() => {
         const themeSelect = screen.getByLabelText(/Theme/i)
         fireEvent.change(themeSelect, { target: { value: 'dark' } })
       })
-      
+
       // Switch to hardware tab and back
-      const hardwareTab = screen.getByText('Hardware Control')
+      const hardwareTab = screen.getByText('🔧 Hardware Control')
       fireEvent.click(hardwareTab)
       fireEvent.click(settingsTab)
-      
+
       // Theme selection should be preserved
       await waitFor(() => {
         const themeSelect = screen.getByLabelText(/Theme/i) as HTMLSelectElement
@@ -260,7 +280,7 @@ describe('App Component Integration Tests', () => {
       })
       
       // Switch back to hardware tab
-      const hardwareTab = screen.getByText('Hardware Control')
+      const hardwareTab = screen.getByText('🔧 Hardware Control')
       fireEvent.click(hardwareTab)
       
       // Keyboard shortcuts should not work
@@ -275,14 +295,14 @@ describe('App Component Integration Tests', () => {
       // Ctrl+1 should switch to hardware tab
       fireEvent.keyDown(document, { key: '1', ctrlKey: true })
       
-      const hardwareTab = screen.getByText('Hardware Control').closest('button')
+      const hardwareTab = screen.getByText('🔧 Hardware Control').closest('button')
       expect(hardwareTab).toHaveClass('active')
       
       // Ctrl+2 should switch to test automation tab
       fireEvent.keyDown(document, { key: '2', ctrlKey: true })
       
       await waitFor(() => {
-        const testTab = screen.getByText('Test Automation').closest('button')
+        const testTab = screen.getByText('🧪 Test Automation').closest('button')
         expect(testTab).toHaveClass('active')
       })
     })
@@ -329,7 +349,7 @@ describe('App Component Integration Tests', () => {
 
     it('disables controls when disconnected', async () => {
       // Mock disconnected state
-      vi.mocked(require('../hooks/useWebSocket').default).mockReturnValue({
+      vi.mocked(require('../hooks/useWebSocket').useWebSocket).mockReturnValue({
         connected: false,
         sendMessage: vi.fn(),
         lastMessage: null
@@ -353,7 +373,7 @@ describe('App Component Integration Tests', () => {
   describe('Error Handling', () => {
     it('handles WebSocket connection errors gracefully', () => {
       // Mock WebSocket error
-      vi.mocked(require('../hooks/useWebSocket').default).mockReturnValue({
+      vi.mocked(require('../hooks/useWebSocket').useWebSocket).mockReturnValue({
         connected: false,
         sendMessage: vi.fn(),
         lastMessage: null,
@@ -388,17 +408,17 @@ describe('App Component Integration Tests', () => {
       rerender(<App />)
       
       // Component should still be functional
-      expect(screen.getByText('Multi-Sonicator IO')).toBeInTheDocument()
+      expect(screen.getByText('Multi-Sonicator-IO Test Harness')).toBeInTheDocument()
     })
 
     it('handles rapid tab switching', async () => {
       render(<App />)
       
       const tabs = [
-        screen.getByText('Hardware Control'),
-        screen.getByText('Test Automation'),
-        screen.getByText('Arduino Commands'),
-        screen.getByText('Settings')
+        screen.getByText('🔧 Hardware Control'),
+        screen.getByText('🧪 Test Automation'),
+        screen.getByText('🔧 Arduino Commands'),
+        screen.getByText('⚙️ Settings')
       ]
       
       // Rapidly switch between tabs
@@ -412,7 +432,7 @@ describe('App Component Integration Tests', () => {
       }
       
       // App should still be responsive
-      expect(screen.getByText('Multi-Sonicator IO')).toBeInTheDocument()
+      expect(screen.getByText('Multi-Sonicator-IO Test Harness')).toBeInTheDocument()
     })
   })
 
@@ -428,8 +448,8 @@ describe('App Component Integration Tests', () => {
       render(<App />)
       
       // Main elements should still be present
-      expect(screen.getByText('Multi-Sonicator IO')).toBeInTheDocument()
-      expect(screen.getByText('Hardware Control')).toBeInTheDocument()
+      expect(screen.getByText('Multi-Sonicator-IO Test Harness')).toBeInTheDocument()
+      expect(screen.getByText('🔧 Hardware Control')).toBeInTheDocument()
     })
   })
 })

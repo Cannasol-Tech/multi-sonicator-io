@@ -33,24 +33,24 @@ describe('SettingsPanel Component', () => {
 
     it('renders all settings sections', () => {
       render(<SettingsPanel {...mockProps} />)
-      
-      expect(screen.getByText(/General/i)).toBeInTheDocument()
-      expect(screen.getByText(/Connection/i)).toBeInTheDocument()
-      expect(screen.getByText(/Test Automation/i)).toBeInTheDocument()
-      expect(screen.getByText(/Keyboard Shortcuts/i)).toBeInTheDocument()
+
+      expect(screen.getByText(/🎨 Appearance/i)).toBeInTheDocument()
+      expect(screen.getByText(/⚡ Behavior/i)).toBeInTheDocument()
+      expect(screen.getByText(/📊 Data/i)).toBeInTheDocument()
+      expect(screen.getByText(/⌨️ Shortcuts/i)).toBeInTheDocument()
     })
 
     it('renders navigation menu', () => {
       render(<SettingsPanel {...mockProps} />)
-      
+
       const navItems = screen.getAllByRole('button')
-      const settingsNavItems = navItems.filter(item => 
-        item.textContent?.includes('General') ||
-        item.textContent?.includes('Connection') ||
-        item.textContent?.includes('Test Automation') ||
-        item.textContent?.includes('Keyboard Shortcuts')
+      const settingsNavItems = navItems.filter(item =>
+        item.textContent?.includes('🎨 Appearance') ||
+        item.textContent?.includes('⚡ Behavior') ||
+        item.textContent?.includes('📊 Data') ||
+        item.textContent?.includes('⌨️ Shortcuts')
       )
-      
+
       expect(settingsNavItems.length).toBeGreaterThan(0)
     })
   })
@@ -58,46 +58,46 @@ describe('SettingsPanel Component', () => {
   describe('Navigation', () => {
     it('switches between settings sections', () => {
       render(<SettingsPanel {...mockProps} />)
-      
-      const connectionNav = screen.getByText('Connection')
-      fireEvent.click(connectionNav)
-      
-      expect(connectionNav.closest('button')).toHaveClass('active')
+
+      const behaviorNav = screen.getByText('⚡ Behavior')
+      fireEvent.click(behaviorNav)
+
+      expect(behaviorNav.closest('button')).toHaveClass('active')
     })
 
     it('shows correct content for each section', () => {
       render(<SettingsPanel {...mockProps} />)
-      
-      // Test General section
-      expect(screen.getByText(/Theme/i)).toBeInTheDocument()
-      
-      // Switch to Connection section
-      const connectionNav = screen.getByText('Connection')
-      fireEvent.click(connectionNav)
-      
-      expect(screen.getByText(/WebSocket URL/i)).toBeInTheDocument()
+
+      // Test Appearance section (default)
+      expect(screen.getByText(/Animations/i)).toBeInTheDocument()
+
+      // Switch to Behavior section
+      const behaviorNav = screen.getByText('⚡ Behavior')
+      fireEvent.click(behaviorNav)
+
+      expect(screen.getByText(/Auto Refresh/i)).toBeInTheDocument()
     })
   })
 
-  describe('General Settings', () => {
-    it('renders theme selection', () => {
+  describe('Appearance Settings', () => {
+    it('renders animations toggle', () => {
       render(<SettingsPanel {...mockProps} />)
-      
-      expect(screen.getByLabelText(/Theme/i)).toBeInTheDocument()
+
+      expect(screen.getByLabelText(/Animations/i)).toBeInTheDocument()
     })
 
-    it('renders auto-save option', () => {
+    it('renders compact mode toggle', () => {
       render(<SettingsPanel {...mockProps} />)
-      
-      expect(screen.getByLabelText(/Auto-save/i)).toBeInTheDocument()
+
+      expect(screen.getByLabelText(/Compact Mode/i)).toBeInTheDocument()
     })
 
-    it('saves theme preference', async () => {
+    it('saves animation preference', async () => {
       render(<SettingsPanel {...mockProps} />)
-      
-      const themeSelect = screen.getByLabelText(/Theme/i)
-      fireEvent.change(themeSelect, { target: { value: 'dark' } })
-      
+
+      const animationsToggle = screen.getByLabelText(/Animations/i)
+      fireEvent.click(animationsToggle)
+
       await waitFor(() => {
         expect(mockLocalStorage.setItem).toHaveBeenCalledWith('theme', 'dark')
       })
@@ -318,13 +318,13 @@ describe('SettingsPanel Component', () => {
     it('provides export functionality', () => {
       render(<SettingsPanel {...mockProps} />)
       
-      expect(screen.getByText(/Export Settings/i)).toBeInTheDocument()
+      expect(screen.getByText(/📤 Export/i)).toBeInTheDocument()
     })
 
     it('provides import functionality', () => {
       render(<SettingsPanel {...mockProps} />)
       
-      expect(screen.getByText(/Import Settings/i)).toBeInTheDocument()
+      expect(screen.getByText(/📥 Import/i)).toBeInTheDocument()
     })
 
     it('exports settings as JSON', async () => {
@@ -333,7 +333,7 @@ describe('SettingsPanel Component', () => {
       
       render(<SettingsPanel {...mockProps} />)
       
-      const exportButton = screen.getByText(/Export Settings/i)
+      const exportButton = screen.getByText(/📤 Export/i)
       fireEvent.click(exportButton)
       
       expect(global.URL.createObjectURL).toHaveBeenCalled()
