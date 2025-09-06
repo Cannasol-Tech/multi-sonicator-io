@@ -34,198 +34,180 @@ const createMockCommandPair = (sentOverrides: Partial<ArduinoCommand> = {}, rece
 describe('Arduino Command History Integration Tests', () => {
   beforeEach(() => {
     vi.clearAllMocks()
-    mockGetRecentPairs.mockReturnValue([])
   })
 
-  describe('HardwareDiagram Integration', () => {
-    it('renders ArduinoCommandHistory component within HardwareDiagram', () => {
-      const mockHardwareState = createMockHardwareState()
-      const mockOnPinClick = vi.fn()
+  describe('Component Integration', () => {
+    it('renders with command pairs and displays them correctly', () => {
+      const commandPairs = [
+        createMockCommandPair(
+          { data: 'ENABLE_ALL HIGH' },
+          { data: 'OK - ENABLE_ALL set to HIGH' }
+        ),
+        createMockCommandPair(
+          { data: 'FREQUENCY_ALL 1000', status: 'error', error: 'Invalid frequency' },
+          { data: 'ERROR - Invalid frequency value', status: 'error', error: 'Invalid frequency' }
+        )
+      ]
 
       render(
-        <HardwareDiagram
-          hardwareState={mockHardwareState}
-          onPinClick={mockOnPinClick}
-          highlightedPins={[]}
+        <ArduinoCommandHistory
+          commandPairs={commandPairs}
+          connected={true}
+          maxEntries={5}
         />
       )
 
-      // Should render the Arduino Command History section
+      // Should render header
       expect(screen.getByText('📡 Arduino Communication Log')).toBeInTheDocument()
       expect(screen.getByText('Last 5 Commands & Responses')).toBeInTheDocument()
-    })
 
-    it('displays connection status correctly in command history', () => {
-      const mockHardwareState = createMockHardwareState()
-      const mockOnPinClick = vi.fn()
-
-      render(
-        <HardwareDiagram
-          hardwareState={mockHardwareState}
-          onPinClick={mockOnPinClick}
-          highlightedPins={[]}
-        />
-      )
-
-      // Should show connected status
+      // Should show connection status
       expect(screen.getByText('Live')).toBeInTheDocument()
-      const connectionIndicator = screen.getByText('Live').closest('.connection-indicator')
-      expect(connectionIndicator).toHaveClass('connected')
+
+      // Should display both command pairs
+      expect(screen.getAllByText('📤 SENT')).toHaveLength(2)
+      expect(screen.getAllByText('📥 RECEIVED')).toHaveLength(2)
+
+      // Should display command data
+      expect(screen.getByText('ENABLE_ALL HIGH')).toBeInTheDocument()
+      expect(screen.getByText('OK - ENABLE_ALL set to HIGH')).toBeInTheDocument()
+      expect(screen.getByText('FREQUENCY_ALL 1000')).toBeInTheDocument()
+      expect(screen.getByText('ERROR - Invalid frequency value')).toBeInTheDocument()
+
+      // Should display error message
+      expect(screen.getByText('⚠️ Invalid frequency')).toBeInTheDocument()
+
+      // Should display statistics
+      expect(screen.getByText('📊 Total: 2')).toBeInTheDocument()
+      expect(screen.getByText('✅ Success: 1')).toBeInTheDocument()
+      expect(screen.getByText('❌ Errors: 1')).toBeInTheDocument()
     })
 
-    it('displays disconnected status when hardware is offline', () => {
-      const mockHardwareState = createMockHardwareState()
-      mockHardwareState.connection.connected = false
-      const mockOnPinClick = vi.fn()
+    it('handles different response times and displays appropriate indicators', () => {
+      const commandPairs = [
+        createMockCommandPair({ responseTime: 5 }, { responseTime: 5 }),
+        createMockCommandPair({ responseTime: 50 }, { responseTime: 50 }),
+        createMockCommandPair({ responseTime: 200 }, { responseTime: 200 }),
+        createMockCommandPair({ responseTime: 600 }, { responseTime: 600 })
+      ]
 
       render(
-        <HardwareDiagram
-          hardwareState={mockHardwareState}
-          onPinClick={mockOnPinClick}
-          highlightedPins={[]}
+        <ArduinoCommandHistory
+          commandPairs={commandPairs}
+          connected={true}
+          maxEntries={10}
         />
       )
 
-      // Should show offline status
-      expect(screen.getByText('Offline')).toBeInTheDocument()
-      const connectionIndicator = screen.getByText('Offline').closest('.connection-indicator')
-      expect(connectionIndicator).toHaveClass('disconnected')
+      // Should display different response time indicators
+      expect(screen.getByText('Response: 5ms 🟢')).toBeInTheDocument()
+      expect(screen.getByText('Response: 50ms 🟡')).toBeInTheDocument()
+      expect(screen.getByText('Response: 200ms 🟠')).toBeInTheDocument()
+      expect(screen.getByText('Response: 600ms 🔴')).toBeInTheDocument()
     })
 
-    it('calls useArduinoCommandLog hook with correct parameters', () => {
-      const mockHardwareState = createMockHardwareState()
-      const mockOnPinClick = vi.fn()
+    it('respects maxEntries limit', () => {
+      const commandPairs = Array.from({ length: 10 }, (_, i) =>
+        createMockCommandPair({ data: `Command ${i}` }, { data: `Response ${i}` })
+      )
 
       render(
-        <HardwareDiagram
-          hardwareState={mockHardwareState}
-          onPinClick={mockOnPinClick}
-          highlightedPins={[]}
+        <ArduinoCommandHistory
+          commandPairs={commandPairs}
+          connected={true}
+          maxEntries={3}
         />
       )
 
-      // Verify the hook was called
-      expect(mockUseArduinoCommandLog).toHaveBeenCalledWith({ maxEntries: 50 })
+      // Should only display first 3 commands
+      expect(screen.getByText('Command 0')).toBeInTheDocument()
+      expect(screen.getByText('Command 1')).toBeInTheDocument()
+      expect(screen.getByText('Command 2')).toBeInTheDocument()
+      expect(screen.queryByText('Command 3')).not.toBeInTheDocument()
+
+      // Statistics should reflect all commands passed in (not just displayed)
+      expect(screen.getByText('📊 Total: 10')).toBeInTheDocument()
     })
 
-    it('displays command pairs when provided by the hook', () => {
-      const mockCommandPairs = [
+    it('handles missing received commands gracefully', () => {
+      const commandPairs = [
         {
           sent: {
             direction: 'sent' as const,
-            data: 'SET_PIN_HIGH ENABLE_ALL',
+            data: 'PING',
             timestamp: Date.now(),
             type: 'command' as const,
             id: 'test-1',
-            status: 'success' as const,
-            responseTime: 25
+            status: 'pending' as const
           },
-          received: {
-            direction: 'received' as const,
-            data: 'OK - Pin ENABLE_ALL set to HIGH',
-            timestamp: Date.now() + 25,
-            type: 'response' as const,
-            id: 'test-1',
-            status: 'success' as const,
-            responseTime: 25
-          }
+          received: undefined
         }
       ]
 
-      mockGetRecentPairs.mockReturnValue(mockCommandPairs)
-
-      const mockHardwareState = createMockHardwareState()
-      const mockOnPinClick = vi.fn()
-
       render(
-        <HardwareDiagram
-          hardwareState={mockHardwareState}
-          onPinClick={mockOnPinClick}
-          highlightedPins={[]}
+        <ArduinoCommandHistory
+          commandPairs={commandPairs}
+          connected={true}
+          maxEntries={5}
         />
       )
 
-      // Should display the command pair
+      // Should show sent command
       expect(screen.getByText('📤 SENT')).toBeInTheDocument()
-      expect(screen.getByText('📥 RECEIVED')).toBeInTheDocument()
-      expect(screen.getByText('SET_PIN_HIGH ENABLE_ALL')).toBeInTheDocument()
-      expect(screen.getByText('OK - Pin ENABLE_ALL set to HIGH')).toBeInTheDocument()
+      expect(screen.getByText('PING')).toBeInTheDocument()
+
+      // Should show no response message
+      expect(screen.getByText('No response received')).toBeInTheDocument()
     })
 
-    it('shows no commands message when history is empty', () => {
-      mockGetRecentPairs.mockReturnValue([])
+    it('displays connection status correctly', () => {
+      const commandPairs = [createMockCommandPair()]
 
-      const mockHardwareState = createMockHardwareState()
-      const mockOnPinClick = vi.fn()
-
-      render(
-        <HardwareDiagram
-          hardwareState={mockHardwareState}
-          onPinClick={mockOnPinClick}
-          highlightedPins={[]}
+      // Test connected state
+      const { rerender } = render(
+        <ArduinoCommandHistory
+          commandPairs={commandPairs}
+          connected={true}
+          maxEntries={5}
         />
       )
 
-      // Should show empty state
-      expect(screen.getByText('No commands sent yet')).toBeInTheDocument()
-      expect(screen.getByText('Arduino commands will appear here in real-time')).toBeInTheDocument()
-    })
+      expect(screen.getByText('Live')).toBeInTheDocument()
+      expect(screen.getByText('Live').closest('.connection-indicator')).toHaveClass('connected')
 
-    it('passes correct maxEntries to ArduinoCommandHistory', () => {
-      const mockHardwareState = createMockHardwareState()
-      const mockOnPinClick = vi.fn()
-
-      render(
-        <HardwareDiagram
-          hardwareState={mockHardwareState}
-          onPinClick={mockOnPinClick}
-          highlightedPins={[]}
+      // Test disconnected state
+      rerender(
+        <ArduinoCommandHistory
+          commandPairs={commandPairs}
+          connected={false}
+          maxEntries={5}
         />
       )
 
-      // Verify getRecentPairs was called with maxEntries of 5
-      expect(mockGetRecentPairs).toHaveBeenCalledWith(5)
+      expect(screen.getByText('Offline')).toBeInTheDocument()
+      expect(screen.getByText('Offline').closest('.connection-indicator')).toHaveClass('disconnected')
     })
-  })
 
-  describe('Command Logging Integration', () => {
-    it('integrates with command logging hook correctly', () => {
-      const mockHardwareState = createMockHardwareState()
-      const mockOnPinClick = vi.fn()
+    it('handles click events when onCommandClick is provided', () => {
+      const onCommandClick = vi.fn()
+      const commandPairs = [createMockCommandPair()]
 
       render(
-        <HardwareDiagram
-          hardwareState={mockHardwareState}
-          onPinClick={mockOnPinClick}
-          highlightedPins={[]}
+        <ArduinoCommandHistory
+          commandPairs={commandPairs}
+          connected={true}
+          maxEntries={5}
+          onCommandClick={onCommandClick}
         />
       )
 
-      // Verify the hook integration
-      expect(mockUseArduinoCommandLog).toHaveBeenCalled()
-      expect(mockGetRecentPairs).toHaveBeenCalled()
-    })
+      // Should have clickable class
+      const sentCommand = screen.getByText('SET_PIN_HIGH D2').closest('.command-entry')
+      expect(sentCommand).toHaveClass('clickable')
 
-    it('handles hook returning empty array gracefully', () => {
-      mockGetRecentPairs.mockReturnValue([])
-
-      const mockHardwareState = createMockHardwareState()
-      const mockOnPinClick = vi.fn()
-
-      expect(() => {
-        render(
-          <HardwareDiagram
-            hardwareState={mockHardwareState}
-            onPinClick={mockOnPinClick}
-            highlightedPins={[]}
-          />
-        )
-      }).not.toThrow()
-
-      // Should still render the component
-      expect(screen.getByText('📡 Arduino Communication Log')).toBeInTheDocument()
-      // Should show empty state
-      expect(screen.getByText('No commands sent yet')).toBeInTheDocument()
+      // Should call onClick when clicked
+      sentCommand?.click()
+      expect(onCommandClick).toHaveBeenCalledWith(commandPairs[0].sent)
     })
   })
 })

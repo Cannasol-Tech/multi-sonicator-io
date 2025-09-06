@@ -88,7 +88,7 @@ export interface ATmega32ADUT {
 }
 
 export interface WebSocketMessage {
-  type: 'pin_update' | 'connection_status' | 'error' | 'command_response' | 'test_progress' | 'test_complete' | 'test_error' | 'test_stopped' | 'initial_state';
+  type: 'pin_update' | 'connection_status' | 'error' | 'command_response' | 'test_progress' | 'test_complete' | 'test_error' | 'test_stopped' | 'initial_state' | 'arduino_command_response' | 'arduino_command_sent';
   data: any;
   timestamp: number;
 }

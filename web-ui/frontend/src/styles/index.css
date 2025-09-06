@@ -6485,6 +6485,32 @@
   transform: scale(1.1);
 }
 
+/* Hardware Communication Test Legend */
+.history-legend {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: var(--bg-tertiary);
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.legend-icon {
+  font-size: 14px;
+}
+
+.legend-text {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
 /* Responsive design for smaller screens */
 @media (max-width: 1200px) {
   .test-automation-content {

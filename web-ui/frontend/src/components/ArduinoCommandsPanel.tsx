@@ -172,9 +172,26 @@ export default function ArduinoCommandsPanel({ hardwareState, connected }: Ardui
             {pingHistory.length > 0 && (
               <div className="ping-history">
                 <h5>📊 Recent Communication Tests</h5>
+                <div className="history-legend">
+                  <span className="legend-item">
+                    <span className="legend-icon">🟢</span>
+                    <span className="legend-text">Fast Response (&lt;50ms)</span>
+                  </span>
+                  <span className="legend-item">
+                    <span className="legend-icon">✅❌</span>
+                    <span className="legend-text">Test Result</span>
+                  </span>
+                </div>
                 <div className="history-list">
                   {pingHistory.slice(0, 5).map((entry, index) => (
-                    <div key={index} className={`history-item ${entry.success ? 'success' : 'error'}`}>
+                    <div
+                      key={index}
+                      className={`history-item ${entry.success ? 'success' : 'error'}`}
+                      title={`${entry.success ? 'Communication Test PASSED' : 'Communication Test FAILED'}
+Response Time: ${entry.responseTime}ms (${entry.responseTime < 50 ? 'Excellent' : entry.responseTime < 100 ? 'Good' : entry.responseTime < 500 ? 'Fair' : 'Slow'})
+${entry.error ? 'Error: ' + entry.error : ''}
+Time: ${entry.timestamp.toLocaleString()}`}
+                    >
                       <span className="history-time">
                         {entry.timestamp.toLocaleTimeString()}
                       </span>

@@ -202,7 +202,14 @@ const MOCK_TAGS = ['@smoke', '@pin-control', '@hil', '@power', '@analog', '@freq
 
 // Check if we should use mock data (when backend is not available)
 const shouldUseMockData = () => {
-  return process.env.NODE_ENV === 'development' || process.env.REACT_APP_USE_MOCK_DATA === 'true'
+  // Force mock data if explicitly requested
+  if (process.env.REACT_APP_USE_MOCK_DATA === 'true') {
+    return true
+  }
+
+  // In development, we'll try the backend first and fall back to mock data if it fails
+  // This allows the Stop Execution button to work when backend is available
+  return false
 }
 
 // Mock execution state for development
