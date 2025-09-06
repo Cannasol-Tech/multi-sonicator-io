@@ -34,6 +34,7 @@ web-ui/
 - **Single Page Application**: No navigation, centralized hardware diagram interface
 - **Real-time Pin Monitoring**: Display current state of ALL monitored pins on DUT
 - **Interactive Hardware Diagram**: Visual representation using Arduino and ATmega32A icons
+- **Arduino Command History**: Real-time tracking of the last 5 commands sent and responses received
 - **Sandbox Mode Operation**: Continuous configuration and monitoring loop
 - **Comprehensive Help System**: Context-sensitive help for new users
 - **Hardware Control**: GPIO, ADC, PWM, and power management controls

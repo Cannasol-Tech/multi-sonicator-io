@@ -98,16 +98,21 @@ export function useTestAutomation() {
 
   // Stop current execution
   const stopExecution = useCallback(async () => {
+    console.log('Stop execution button clicked')
     setError(null)
 
     try {
       const success = await TestAutomationAPI.stopExecution()
-      
+      console.log('Stop execution result:', success)
+
       if (success) {
         setState(prev => ({
           ...prev,
           isExecutionInProgress: false
         }))
+        console.log('Execution stopped successfully')
+      } else {
+        console.log('Stop execution returned false - no execution in progress')
       }
 
       return success

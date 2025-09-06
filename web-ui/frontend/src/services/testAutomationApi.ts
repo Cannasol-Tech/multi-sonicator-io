@@ -541,10 +541,12 @@ export class TestAutomationAPI {
   static async stopExecution(): Promise<boolean> {
     // Use mock execution in development or when backend is not available
     if (shouldUseMockData()) {
+      console.log('Using mock execution for stop')
       const mockManager = MockExecutionManager.getInstance()
       return mockManager.stopExecution()
     }
 
+    console.log('Attempting to stop execution via backend API')
     try {
       const response = await fetch(`${API_BASE}/test/stop`, {
         method: 'POST'
@@ -557,6 +559,7 @@ export class TestAutomationAPI {
       }
 
       const data = await response.json()
+      console.log('Stop execution response:', data)
       return data.success
     } catch (error) {
       console.warn('Backend not available, falling back to mock execution stop:', error)
