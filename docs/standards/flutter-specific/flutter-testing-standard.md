@@ -11,17 +11,20 @@ Flutter applications require specialized testing approaches due to their cross-p
 ## Framework Requirements
 
 ### Primary Testing Framework
+
 - **Foundation**: Flutter's built-in testing framework (`flutter_test`) for ALL Flutter testing
 - **Coverage**: Widget tests, unit tests, golden tests (UI consistency), and integration testing foundation
 
 ### Mocking Framework (Unit Tests ONLY)
+
 - **Standard**: Mocktail ^1.0.4 (OFFICIAL - no exceptions)
 - **Scope**: **MOCKING IS ONLY TO BE USED FOR UNIT TESTING**
 - **Prohibition**: Widget tests, integration tests, and golden tests must NOT use mocking
 - **Rationale**: Mocking in non-unit tests defeats the purpose of testing real component interactions
 
-### Specialized Frameworks
-- **BLoC Testing**: `bloc_test` framework permitted when using BLoC pattern for business logic
+### Specialized Testing Frameworks
+
+- **BLoC Testing**: `bloc_test` fra`mework permitted when using BLoC pattern for business logic
 - **Integration Testing**: Flutter's `integration_test` framework for end-to-end testing
 - **Golden Testing**: Flutter's built-in golden test support for visual regression testing
 
@@ -30,6 +33,7 @@ Flutter applications require specialized testing approaches due to their cross-p
 ## Testing Architecture
 
 ### Test Organization Structure
+
 ```
 test/
 ├── unit/                    # Business logic tests (70% of test effort)
@@ -53,6 +57,7 @@ test/
 ```
 
 ### Testing Pyramid Distribution
+
 - **Unit Tests**: 70% - Business logic, models, services, utilities
 - **Widget Tests**: 20% - UI components, user interactions, widget behavior
 - **Integration Tests**: 10% - Critical user flows, platform-specific features
@@ -62,6 +67,7 @@ test/
 ## Framework-Specific Standards
 
 ### 1. Unit Testing
+
 - **Framework**: `flutter_test` + `mocktail` (mocking permitted)
 - **Coverage Requirement**: ≥85% statement coverage
 - **Scope**: Business logic, data models, services, utilities
@@ -98,6 +104,7 @@ void main() {
 ```
 
 ### 2. Widget Testing
+
 - **Framework**: `flutter_test` ONLY (NO mocking)
 - **Coverage Requirement**: ≥70% widget coverage
 - **Scope**: UI components, user interactions, widget rendering
@@ -128,6 +135,7 @@ void main() {
 ```
 
 ### 3. Golden Testing (Visual Regression)
+
 - **Framework**: Flutter's built-in golden test support
 - **Scope**: Critical UI components, visual consistency across platforms
 - **Mocking**: **PROHIBITED** - Test actual visual output
@@ -145,6 +153,7 @@ testWidgets('Login page golden test', (WidgetTester tester) async {
 ```
 
 ### 4. Integration Testing
+
 - **Framework**: Flutter's `integration_test` framework
 - **Scope**: End-to-end user flows, platform-specific features
 - **Mocking**: **PROHIBITED** - Test complete system integration
@@ -223,6 +232,7 @@ make test
 ## Prohibited Practices
 
 ### Strictly Forbidden
+
 - ❌ Using Mockito (use Mocktail exclusively)
 - ❌ Mocking in widget tests (defeats purpose of UI testing)
 - ❌ Mocking in integration tests (defeats purpose of E2E testing)
@@ -231,6 +241,7 @@ make test
 - ❌ Hardcoded test data (use centralized test_data.dart)
 
 ### Required Practices
+
 - ✅ Use Flutter's built-in testing framework as foundation
 - ✅ Use Mocktail exclusively for unit test mocking
 - ✅ Centralize all mocks in `test/helpers/mocks.dart`
@@ -242,12 +253,14 @@ make test
 ## Cross-Platform Considerations
 
 ### Platform-Specific Testing
+
 - **iOS**: Test iOS-specific integrations (Sign in with Apple, etc.)
 - **Android**: Test Android-specific features (back button behavior, etc.)
 - **Web**: Test web-specific interactions and responsive design
 - **Desktop**: Test desktop-specific UI patterns and interactions
 
 ### Test Execution Strategy
+
 - **Unit Tests**: Run on all platforms (business logic is platform-agnostic)
 - **Widget Tests**: Run on primary platform with cross-platform validation
 - **Integration Tests**: Run on each target platform separately

@@ -144,12 +144,22 @@ def save_commit_info(commit_sha):
 def check_standards_status():
     """Check if standards are up to date"""
     log("🔍 Checking company standards status...")
-    
+
     # Get latest commit
     latest_sha = get_latest_commit_sha()
     if not latest_sha:
-        log("❌ Failed to check remote repository", "ERROR")
-        return False
+        if FALLBACK_TO_LOCAL:
+            log("⚠️ Remote repository not available, checking local standards", "WARNING")
+            current_info = get_current_commit_info()
+            if current_info and current_info.get('source') == 'local':
+                log("✅ Using local standards (remote not available)")
+                return True
+            else:
+                log("📥 Local standards sync required")
+                return False
+        else:
+            log("❌ Failed to check remote repository", "ERROR")
+            return False
     
     # Get current local commit
     current_info = get_current_commit_info()
@@ -168,15 +178,51 @@ def check_standards_status():
         log(f"   Latest:  {latest_sha[:8]}")
         return False
 
+def copy_local_standards():
+    """Copy local standards as fallback"""
+    log("📚 Using local standards as fallback...")
+
+    source_path = Path(LOCAL_STANDARDS_PATH)
+    target_path = Path(STANDARDS_TARGET_PATH)
+
+    if not source_path.exists():
+        log(f"❌ Local standards not found at {source_path}", "ERROR")
+        return False
+
+    # Clean target directory
+    if target_path.exists():
+        shutil.rmtree(target_path)
+
+    # Copy local standards
+    shutil.copytree(source_path, target_path)
+
+    # Save info
+    info = {
+        "source": "local",
+        "sync_timestamp": subprocess.check_output(['date', '-u', '+%Y-%m-%dT%H:%M:%SZ']).decode().strip(),
+        "source_path": str(source_path)
+    }
+
+    info_file = target_path / ".sync_info.json"
+    with open(info_file, 'w') as f:
+        json.dump(info, f, indent=2)
+
+    log("✅ Local standards copied successfully")
+    return True
+
 def sync_standards():
     """Sync company standards from central repository"""
-    log("📚 Syncing company standards from Axovia-AI/axovia-flow...")
-    
+    log(f"📚 Syncing company standards from {REPO_OWNER}/{REPO_NAME}...")
+
     # Get latest commit
     latest_sha = get_latest_commit_sha()
     if not latest_sha:
-        log("❌ Failed to get latest commit information", "ERROR")
-        return False
+        if FALLBACK_TO_LOCAL:
+            log("⚠️ Remote repository not available, falling back to local standards", "WARNING")
+            return copy_local_standards()
+        else:
+            log("❌ Failed to get latest commit information", "ERROR")
+            return False
     
     # Create target directory
     target_path = Path(STANDARDS_TARGET_PATH)

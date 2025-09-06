@@ -29,18 +29,74 @@ export function setupRoutes(app: Express, hardwareInterface: HardwareInterface, 
     const { signal } = req.params
     const pinStates = hardwareInterface.getPinStates()
     const pinState = pinStates.get(signal)
-    
+
     if (!pinState) {
       return res.status(404).json({
         error: `Pin signal '${signal}' not found`,
         availablePins: Array.from(pinStates.keys())
       })
     }
-    
+
     res.json({
       pin: pinState,
       timestamp: Date.now()
     })
+  })
+
+  // Control specific pin state
+  app.post('/api/pins/:signal', async (req: Request, res: Response) => {
+    try {
+      const { signal } = req.params
+      const { state } = req.body
+
+      const pinStates = hardwareInterface.getPinStates()
+      const pinState = pinStates.get(signal)
+
+      if (!pinState) {
+        return res.status(404).json({
+          error: `Pin signal '${signal}' not found`,
+          availablePins: Array.from(pinStates.keys())
+        })
+      }
+
+      // Only allow control of input pins
+      if (pinState.direction !== 'IN') {
+        return res.status(400).json({
+          error: `Pin '${signal}' is not an input pin (direction: ${pinState.direction})`,
+          message: 'Only input pins can be controlled'
+        })
+      }
+
+      // Validate state value
+      if (!['HIGH', 'LOW'].includes(state)) {
+        return res.status(400).json({
+          error: 'Invalid state value',
+          message: 'State must be either "HIGH" or "LOW"'
+        })
+      }
+
+      // Send command to hardware
+      const command = {
+        command: 'write_pin',
+        args: [signal, state],
+        expectResponse: true
+      }
+      const result = await hardwareInterface.sendCommand(command)
+
+      res.json({
+        success: true,
+        signal,
+        state,
+        result,
+        timestamp: Date.now()
+      })
+    } catch (error) {
+      console.error('Error controlling pin:', error)
+      res.status(500).json({
+        error: 'Failed to control pin',
+        message: error instanceof Error ? error.message : 'Unknown error'
+      })
+    }
   })
 
   // Send hardware command

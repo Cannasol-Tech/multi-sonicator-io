@@ -50,16 +50,23 @@ make update-standards
 ## Documentation
 
 ### Company Standards
-This project follows Axovia Flow company standards maintained in the central repository:
-- **[Coding Style Standards](.axovia-flow/company-standards/docs/standards/coding-style.md)** - Code formatting and quality guidelines
-- **[Project Structure Standards](.axovia-flow/company-standards/docs/standards/project-structure.md)** - Directory organization and file placement
-- **[Software Testing Standards](.axovia-flow/company-standards/docs/standards/sw-testing-standard.md)** - Testing methodology and requirements
+This project follows Axovia Flow company standards. Standards are automatically synchronized from the central repository (with local fallback):
+
+- **[Coding Style Standards](.axovia-flow/company-standards/coding-style.md)** - Code formatting and quality guidelines
+- **[Project Structure Standards](.axovia-flow/company-standards/project-structure.md)** - Directory organization and file placement
+- **[Software Testing Standards](.axovia-flow/company-standards/sw-testing-standard.md)** - Testing methodology and requirements
 
 **Standards Management:**
 ```bash
-make update-standards    # Update to latest company standards
-make check-standards     # Check if standards are up to date
+make update-standards    # Sync latest standards (remote or local fallback)
+make check-standards     # Check standards status
 ```
+
+**Features:**
+- ✅ **Standards-Only Import**: Downloads only `docs/standards/` (not entire repository)
+- ✅ **Local Fallback**: Uses local standards when remote repository unavailable
+- ✅ **Automatic Sync**: Standards updated during `make install-deps`
+- ✅ **Flexible Configuration**: Easy to change source repository in `scripts/sync_company_standards.py`
 
 ### Project Documentation
 - **[Product Requirements Document](docs/prd.md)** - Complete technical specifications and requirements

@@ -1,12 +1,16 @@
-import { HardwareState } from '../types'
+import React, { useState, useEffect } from 'react'
+
+interface HardwareState {
+  pins: Record<string, any>
+  connection: { connected: boolean; port: string | null }
+}
 
 interface HardwareDiagramProps {
   hardwareState: HardwareState
-  onPinClick: (pin: string, action: string, value?: any) => void
+  onPinClick: (signal: string, action: string, value?: any) => void
   highlightedPins?: string[]
 }
 
-// Pin connection mapping based on pin-matrix.md (SOLE SOURCE OF TRUTH)
 const PIN_CONNECTIONS = [
   { arduino: 'D7', atmega: 'PB0', signal: 'FREQ_DIV10_4', direction: 'IN', description: 'Frequency ÷10 input' },
   { arduino: 'D8', atmega: 'PB4', signal: 'FREQ_LOCK_4', direction: 'IN', description: 'Frequency lock input' },
@@ -20,33 +24,70 @@ const PIN_CONNECTIONS = [
   { arduino: 'D12', atmega: 'PD2', signal: 'STATUS_LED', direction: 'OUT', description: 'Status LED' }
 ]
 
-export default function HardwareDiagram({ hardwareState, onPinClick, highlightedPins = [] }: HardwareDiagramProps) {
-  const handlePinClick = (signal: string, currentState: any) => {
-    const pinState = hardwareState.pins[signal]
-    if (!pinState) return
+export const HardwareDiagram: React.FC = () => {
+  const [hardwareState, setHardwareState] = useState<HardwareState>({
+    pins: {},
+    connection: { connected: false, port: null }
+  })
+  const [highlightedPins, setHighlightedPins] = useState<string[]>([])
 
+  useEffect(() => {
+    // Fetch initial hardware state
+    fetch('/api/pins')
+      .then(res => res.json())
+      .then(data => {
+        setHardwareState(prev => ({ ...prev, pins: data.pins }))
+      })
+      .catch(err => console.error('Failed to fetch pins:', err))
+
+    fetch('/api/connection')
+      .then(res => res.json())
+      .then(data => {
+        setHardwareState(prev => ({ ...prev, connection: data }))
+      })
+      .catch(err => console.error('Failed to fetch connection:', err))
+
+    // Set up WebSocket for real-time updates
+    const ws = new WebSocket('ws://localhost:3001/ws')
+    
+    ws.onmessage = (event) => {
+      const data = JSON.parse(event.data)
+      if (data.type === 'pin_update') {
+        setHardwareState(prev => ({
+          ...prev,
+          pins: { ...prev.pins, [data.signal]: data }
+        }))
+      } else if (data.type === 'connection_update') {
+        setHardwareState(prev => ({ ...prev, connection: data }))
+      }
+    }
+
+    return () => ws.close()
+  }, [])
+
+  const handlePinClick = (signal: string, pinState: any) => {
     if (pinState.direction === 'IN') {
-      // Toggle input pins
-      const newState = currentState === 'HIGH' ? 'LOW' : 'HIGH'
-      onPinClick(signal, 'write_pin', newState)
-    } else if (pinState.direction === 'OUT') {
-      // Read output pins
-      onPinClick(signal, 'read_pin')
-    } else if (pinState.direction === 'ANALOG') {
-      // Read analog pins
-      onPinClick(signal, 'read_adc')
+      // Toggle input pin
+      const newState = pinState.state === 'HIGH' ? 'LOW' : 'HIGH'
+      fetch(`/api/pins/${signal}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ state: newState })
+      })
+    } else {
+      // Read output/analog pin
+      fetch(`/api/pins/${signal}`)
+        .then(res => res.json())
+        .then(data => {
+          setHighlightedPins([signal])
+          setTimeout(() => setHighlightedPins([]), 1000)
+        })
     }
   }
 
-  const getPinStateClass = (state: any) => {
-    if (typeof state === 'number') return 'analog'
-    return state === 'HIGH' ? 'high' : 'low'
-  }
-
-  const formatPinValue = (state: any) => {
-    if (typeof state === 'number') {
-      return `${state} (${((state / 1023) * 5).toFixed(2)}V)`
-    }
+  const getPinState = (signal: string) => {
+    const state = hardwareState.pins[signal]
+    if (!state) return { pin: '?', direction: 'UNKNOWN', state: 'UNKNOWN' }
     return state
   }
 
@@ -58,147 +99,55 @@ export default function HardwareDiagram({ hardwareState, onPinClick, highlighted
   }
 
   return (
-    <div className="hardware-diagram" style={{ position: 'relative', minHeight: '800px', padding: '20px' }}>
-      {/* SVG for connection lines */}
-      <svg
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          pointerEvents: 'none',
-          zIndex: 1
-        }}
-      >
-        <defs>
-          <marker id="arrowhead" markerWidth="10" markerHeight="7"
-                  refX="9" refY="3.5" orient="auto">
-            <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280" />
-          </marker>
-        </defs>
-
-        {/* Connection lines */}
-        {PIN_CONNECTIONS.map((connection, index) => {
-          const pinState = hardwareState.pins[connection.signal]
-          const color = getConnectionColor(connection.direction, pinState?.state)
-          const yOffset = 200 + (index * 45) // Vertical spacing for connections
-
-          return (
-            <g key={connection.signal}>
-              {/* Connection line */}
-              <line
-                x1="450" // Arduino side
-                y1={yOffset}
-                x2="750" // ATmega side
-                y2={yOffset}
-                stroke={color}
-                strokeWidth="3"
-                markerEnd="url(#arrowhead)"
-                opacity="0.8"
-              />
-
-              {/* Signal label */}
-              <text
-                x="600" // Center of line
-                y={yOffset - 8}
-                textAnchor="middle"
-                fontSize="11"
-                fill="#374151"
-                fontWeight="600"
-              >
-                {connection.signal}
-              </text>
-
-              {/* State indicator */}
-              <circle
-                cx="600"
-                cy={yOffset + 15}
-                r="8"
-                fill={color}
-                opacity="0.9"
-              />
-              <text
-                x="600"
-                y={yOffset + 19}
-                textAnchor="middle"
-                fontSize="8"
-                fill="white"
-                fontWeight="bold"
-              >
-                {pinState ? (typeof pinState.state === 'number' ? 'A' : pinState.state.charAt(0)) : '?'}
-              </text>
-            </g>
-          )
-        })}
-      </svg>
-
-      <div style={{
-        display: 'flex',
-        alignItems: 'flex-start',
-        justifyContent: 'space-between',
-        gap: '100px',
-        padding: '40px',
-        maxWidth: '1400px',
-        margin: '0 auto',
-        position: 'relative',
-        zIndex: 2
-      }}>
-
+    <div className="hardware-diagram" style={{ position: 'relative', minHeight: '600px', padding: '20px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        
         {/* Arduino Test Wrapper */}
-        <div style={{ textAlign: 'center', flex: '0 0 400px' }}>
-          <h3 className="mb-6 font-bold text-lg text-blue-800">Arduino Test Wrapper</h3>
-          <div style={{
-            width: '400px',
-            height: '300px',
-            background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
-            border: '3px solid #1e40af',
-            borderRadius: '12px',
-            position: 'relative',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            overflow: 'hidden',
-            boxShadow: '0 10px 25px rgba(30, 64, 175, 0.2)'
-          }}>
+        <div style={{ textAlign: 'center', flex: '0 0 300px' }}>
+          <h3 className="mb-4 font-bold text-lg text-blue-800">Arduino Test Wrapper</h3>
+          <div style={{ position: 'relative' }}>
             <img
               src="/arduino-uno-r3-icon.png"
               alt="Arduino Uno R3"
               style={{
-                maxWidth: '85%',
-                maxHeight: '85%',
-                objectFit: 'contain',
-                filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))'
+                width: '300px',
+                height: 'auto',
+                border: '2px solid #1e40af',
+                borderRadius: '8px',
+                backgroundColor: 'white'
               }}
-              onError={(e) => {
-                // Fallback to text if image fails to load
-                const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
-                const parent = target.parentElement;
+              onLoad={(e) => {
+                const parent = e.currentTarget.parentElement
                 if (parent) {
-                  parent.innerHTML = '<div style="color: #1e40af; font-weight: 700; font-size: 24px;">Arduino Uno R3<br/><span style="font-size: 16px;">HIL Test Wrapper</span></div>';
+                  const overlay = parent.querySelector('.chip-overlay') as HTMLElement
+                  if (overlay) {
+                    overlay.innerHTML = '<div style="color: #1e40af; font-weight: 700; font-size: 24px;">Arduino Uno R3<br/><span style="font-size: 16px;">HIL Test Wrapper</span></div>'
+                  }
                 }
               }}
             />
-            <div style={{
-              position: 'absolute',
-              top: '8px',
-              left: '8px',
-              right: '8px',
-              height: '24px',
-              background: 'rgba(30, 64, 175, 0.95)',
-              borderRadius: '6px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '12px',
-              color: 'white',
-              fontWeight: '700',
-              letterSpacing: '0.5px'
-            }}>
+            <div
+              className="chip-overlay"
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                textAlign: 'center',
+                pointerEvents: 'none',
+                background: 'rgba(255, 255, 255, 0.9)',
+                padding: '10px',
+                borderRadius: '4px',
+                fontSize: '14px',
+                fontWeight: '700',
+                color: '#1e40af',
+                letterSpacing: '0.5px'
+              }}
+            >
               HIL TEST WRAPPER
             </div>
           </div>
+        </div>
 
         {/* Connection Lines and Pin States */}
         <div style={{ 
@@ -207,42 +156,45 @@ export default function HardwareDiagram({ hardwareState, onPinClick, highlighted
           gap: '8px',
           minWidth: '300px'
         }}>
-          <h4 className="text-center font-semibold mb-2">Pin Connections</h4>
-          
-          {Object.entries(hardwareState.pins).map(([signal, pinState]) => {
-            const isHighlighted = highlightedPins.includes(signal)
+          {PIN_CONNECTIONS.map(connection => {
+            const pinState = getPinState(connection.signal)
+            const isHighlighted = highlightedPins.includes(connection.signal)
             return (
               <div
-                key={signal}
-                className={`pin-state ${getPinStateClass(pinState.state)} ${isHighlighted ? 'highlighted' : ''}`}
-                onClick={() => handlePinClick(signal, pinState.state)}
+                key={connection.signal}
+                onClick={() => handlePinClick(connection.signal, pinState)}
                 style={{
-                  cursor: 'pointer',
-                  boxShadow: isHighlighted ? '0 0 8px rgba(59, 130, 246, 0.6)' : undefined,
-                  border: isHighlighted ? '2px solid #3b82f6' : undefined
+                  padding: '8px',
+                  border: `2px solid ${isHighlighted ? '#f59e0b' : '#e5e7eb'}`,
+                  borderRadius: '4px',
+                  backgroundColor: isHighlighted ? '#fef3c7' : 'white',
+                  cursor: 'pointer'
                 }}
-                title={`${pinState.description || ''}\nClick to ${pinState.direction === 'IN' ? 'toggle' : 'read'}`}
               >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="font-mono text-xs">{pinState.pin}</span>
-                  <span className="text-xs">→</span>
-                  <span className="font-mono text-xs">{signal}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className={`text-xs px-1 rounded ${
-                    pinState.direction === 'IN' ? 'bg-blue-100 text-blue-800' :
-                    pinState.direction === 'OUT' ? 'bg-green-100 text-green-800' :
-                    'bg-purple-100 text-purple-800'
-                  }`}>
-                    {pinState.direction}
-                  </span>
-                  <span className="font-mono text-xs font-semibold">
-                    {formatPinValue(pinState.state)}
-                  </span>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-xs">{pinState.pin}</span>
+                    <span className="text-xs">→</span>
+                    <span className="font-mono text-xs">{connection.signal}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className={`text-xs px-1 rounded ${
+                      connection.direction === 'IN' ? 'bg-blue-100 text-blue-800' :
+                      connection.direction === 'OUT' ? 'bg-green-100 text-green-800' :
+                      'bg-purple-100 text-purple-800'
+                    }`}>
+                      {connection.direction}
+                    </span>
+                    <span className={`text-xs font-mono px-1 rounded ${
+                      pinState.state === 'HIGH' ? 'bg-red-100 text-red-800' :
+                      pinState.state === 'LOW' ? 'bg-gray-100 text-gray-800' :
+                      'bg-yellow-100 text-yellow-800'
+                    }`}>
+                      {pinState.state}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
             )
           })}
         </div>
@@ -250,51 +202,45 @@ export default function HardwareDiagram({ hardwareState, onPinClick, highlighted
         {/* ATmega32A DUT */}
         <div style={{ textAlign: 'center' }}>
           <h3 className="mb-4 font-semibold">ATmega32A (DUT)</h3>
-          <div style={{
-            width: '300px',
-            height: '200px',
-            background: '#fef2f2',
-            border: '2px solid #dc2626',
-            borderRadius: '8px',
-            position: 'relative',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            overflow: 'hidden'
-          }}>
+          <div style={{ position: 'relative' }}>
             <img
               src="/atmega-32-a-icon.png"
               alt="ATmega32A"
               style={{
-                maxWidth: '90%',
-                maxHeight: '90%',
-                objectFit: 'contain'
+                width: '250px',
+                height: 'auto',
+                border: '2px solid #dc2626',
+                borderRadius: '8px',
+                backgroundColor: 'white'
               }}
-              onError={(e) => {
-                // Fallback to text if image fails to load
-                const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
-                const parent = target.parentElement;
+              onLoad={(e) => {
+                const parent = e.currentTarget.parentElement
                 if (parent) {
-                  parent.innerHTML = '<div style="color: #dc2626; font-weight: 600;">ATmega32A</div>';
+                  const overlay = parent.querySelector('.chip-overlay') as HTMLElement
+                  if (overlay) {
+                    overlay.innerHTML = '<div style="color: #dc2626; font-weight: 600;">ATmega32A</div>'
+                  }
                 }
               }}
             />
-            <div style={{
-              position: 'absolute',
-              top: '5px',
-              left: '5px',
-              right: '5px',
-              height: '16px',
-              background: 'rgba(220, 38, 38, 0.9)',
-              borderRadius: '4px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '10px',
-              color: 'white',
-              fontWeight: '600'
-            }}>
+            <div
+              className="chip-overlay"
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                textAlign: 'center',
+                pointerEvents: 'none',
+                background: 'rgba(255, 255, 255, 0.9)',
+                padding: '8px',
+                borderRadius: '4px',
+                fontSize: '12px',
+                fontWeight: '600',
+                color: '#dc2626',
+                letterSpacing: '0.5px'
+              }}
+            >
               Sonicator Multiplexer DUT
             </div>
           </div>
@@ -311,10 +257,7 @@ export default function HardwareDiagram({ hardwareState, onPinClick, highlighted
 
       {/* Help Text */}
       <div style={{
-        position: 'absolute',
-        bottom: '20px',
-        left: '20px',
-        right: '20px',
+        marginTop: '40px',
         background: '#f9fafb',
         border: '1px solid #e5e7eb',
         borderRadius: '4px',
@@ -330,3 +273,5 @@ export default function HardwareDiagram({ hardwareState, onPinClick, highlighted
     </div>
   )
 }
+
+export default HardwareDiagram
