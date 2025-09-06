@@ -1,0 +1,35 @@
+2025-09-05 20:56:20,173 - hil_framework - INFO - HIL logging initialized - log file: /Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/test/acceptance/logs/hil_test_20250905_205620.log
+2025-09-05 20:56:20,192 - hil_framework - INFO - HIL Controller initialized
+2025-09-05 20:56:20,192 - hil_framework - INFO - Setting up HIL hardware connections...
+2025-09-05 20:56:20,193 - hil_framework - INFO - Auto-detected programmer port: /dev/cu.usbmodem2101
+2025-09-05 20:56:20,193 - hil_framework - INFO - Waiting for Arduino initialization (3 seconds)...
+2025-09-05 20:56:23,195 - hil_framework - INFO - Connection attempt 1/3
+2025-09-05 20:56:23,199 - hil_framework.hardware_interface - INFO - Candidate Arduino ports to try: ['/dev/cu.usbmodem*', '/dev/cu.usbmodem2101', '/dev/cu.usbmodemF412FA64AC002', '/dev/tty.usbmodem2101', '/dev/tty.usbmodemF412FA64AC002', '/dev/cu.wlan-debug', '/dev/cu.SPH-1', '/dev/cu.1000XM5', '/dev/cu.Y486BT_6B74', '/dev/cu.Bluetooth-Incoming-Port']
+2025-09-05 20:56:23,199 - hil_framework.hardware_interface - INFO - Attempting connection to /dev/cu.usbmodem*
+2025-09-05 20:56:23,199 - hil_framework.hardware_interface - INFO - Attempting connection to /dev/cu.usbmodem2101
+2025-09-05 20:56:28,819 - hil_framework.hardware_interface - INFO - Attempting connection to /dev/cu.usbmodemF412FA64AC002
+2025-09-05 20:56:34,468 - hil_framework.hardware_interface - INFO - Attempting connection to /dev/tty.usbmodem2101
+2025-09-05 20:56:40,101 - hil_framework.hardware_interface - INFO - Attempting connection to /dev/tty.usbmodemF412FA64AC002
+2025-09-05 20:56:45,743 - hil_framework.hardware_interface - INFO - Attempting connection to /dev/cu.wlan-debug
+2025-09-05 20:56:49,957 - hil_framework.hardware_interface - INFO - Attempting connection to /dev/cu.SPH-1
+2025-09-05 20:56:54,180 - hil_framework.hardware_interface - INFO - Attempting connection to /dev/cu.1000XM5
+2025-09-05 20:56:58,398 - hil_framework.hardware_interface - INFO - Attempting connection to /dev/cu.Y486BT_6B74
+2025-09-05 20:57:02,613 - hil_framework.hardware_interface - INFO - Attempting connection to /dev/cu.Bluetooth-Incoming-Port
+2025-09-05 20:57:06,836 - hil_framework.hardware_interface - ERROR - Failed to connect to any Arduino port
+2025-09-05 20:57:06,837 - hil_framework.hardware_interface - ERROR - Available ports:
+2025-09-05 20:57:06,839 - hil_framework.hardware_interface - ERROR -   /dev/cu.wlan-debug - n/a
+2025-09-05 20:57:06,839 - hil_framework.hardware_interface - ERROR -   /dev/cu.SPH-1 - n/a
+2025-09-05 20:57:06,839 - hil_framework.hardware_interface - ERROR -   /dev/cu.1000XM5 - n/a
+2025-09-05 20:57:06,839 - hil_framework.hardware_interface - ERROR -   /dev/cu.Y486BT_6B74 - n/a
+2025-09-05 20:57:06,839 - hil_framework.hardware_interface - ERROR -   /dev/cu.Bluetooth-Incoming-Port - n/a
+2025-09-05 20:57:06,839 - hil_framework.hardware_interface - ERROR -   /dev/cu.usbmodem2101 - IOUSBHostDevice
+2025-09-05 20:57:06,839 - hil_framework.hardware_interface - ERROR -   /dev/cu.usbmodemF412FA64AC002 - UNO WiFi R4 CMSIS-DAP
+2025-09-05 20:57:06,839 - hil_framework - INFO - Connection failed, retrying in 2 seconds...
+2025-09-05 20:57:08,842 - hil_framework - INFO - Connection attempt 2/3
+2025-09-05 20:57:09,852 - hil_framework - INFO - ✅ Hardware interface connection established
+2025-09-05 20:57:09,852 - hil_framework - INFO - Clearing Arduino startup messages...
+2025-09-05 20:57:12,863 - hil_framework - WARNING - Arduino communication may be unstable: 
+2025-09-05 20:57:12,958 - hil_framework.programmer - ERROR - avrdude not available or not working
+2025-09-05 20:57:12,958 - hil_framework - ERROR - Failed to establish programmer connection
+2025-09-05 20:57:12,958 - hil_framework - WARNING - Proceeding without programmer; scenarios that require programming will be skipped or fail later
+2025-09-05 20:57:12,959 - hil_framework - INFO - HIL hardware setup completed successfully (hardware interface ready)
