@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useTestAutomation } from '../hooks/useTestAutomation'
 import { TestScenario, TestExecution } from '../types'
 import TestResultsModal from './TestResultsModal'
+import IridescentProgressBar from './IridescentProgressBar'
 
 interface TestAutomationPanelProps {
   onPinHighlight?: (pins: string[]) => void
@@ -72,6 +73,28 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
     const success = await executeScenarios(selectedScenarios)
     if (!success) {
       alert('Failed to start test execution')
+    }
+  }
+
+  // Handle individual test execution
+  const handleExecuteIndividualTest = async (scenarioName: string) => {
+    const success = await executeScenarios([scenarioName])
+    if (!success) {
+      alert(`Failed to start execution for ${scenarioName}`)
+    }
+  }
+
+  // Handle full acceptance test suite execution
+  const handleExecuteFullSuite = async () => {
+    const allScenarios = getFilteredScenarios().map(scenario => scenario.name)
+    if (allScenarios.length === 0) {
+      alert('No test scenarios available')
+      return
+    }
+
+    const success = await executeScenarios(allScenarios)
+    if (!success) {
+      alert('Failed to start full acceptance test suite execution')
     }
   }
 
@@ -153,46 +176,19 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
             </div>
           </div>
 
-          <div className="execution-progress">
-            <div className="progress-bar">
-              <div
-                className={
-                  currentExecution.status === 'running' ? 'progress-fill iridescent' :
-                  currentExecution.status === 'passed' ? 'progress-fill metallic-blue' :
-                  'progress-fill'
-                }
-                style={{
-                  width: `${executionProgress.percentage}%`,
-                  backgroundColor: (currentExecution.status === 'running' || currentExecution.status === 'passed') ? undefined : getStatusColor(currentExecution.status)
-                }}
-              />
-            </div>
-            <div className="progress-text">
-              {executionProgress.current} / {executionProgress.total} scenarios
-              ({executionProgress.percentage}%)
-            </div>
-          </div>
-
-          {isExecutionInProgress && stepProgress.total > 0 && (
-            <div className="step-progress">
-              <div className="step-progress-bar">
-                <div
-                  className={
-                    currentExecution.status === 'running' ? 'step-progress-fill iridescent' :
-                    currentExecution.status === 'passed' ? 'step-progress-fill metallic-blue' :
-                    'step-progress-fill'
-                  }
-                  style={{
-                    width: `${(stepProgress.current / stepProgress.total) * 100}%`,
-                    background: (currentExecution.status === 'running' || currentExecution.status === 'passed') ? undefined : '#17a2b8'
-                  }}
-                />
-              </div>
-              <div className="step-progress-text">
-                Step {stepProgress.current} / {stepProgress.total}
-              </div>
-            </div>
-          )}
+          <IridescentProgressBar
+            progress={executionProgress.percentage}
+            isRunning={isExecutionInProgress}
+            isComplete={currentExecution.status === 'passed'}
+            totalItems={executionProgress.total}
+            currentItem={executionProgress.current}
+            itemLabel="scenarios"
+            showStepProgress={isExecutionInProgress && stepProgress.total > 0}
+            stepProgress={(stepProgress.current / stepProgress.total) * 100}
+            currentStep={stepProgress.current}
+            totalSteps={stepProgress.total}
+            className="test-execution-progress"
+          />
 
           <div className="execution-stats">
             <span className="stat passed">✅ {currentExecution.passed_scenarios}</span>
@@ -289,6 +285,18 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
                     )}
                   </div>
                 </div>
+                <button
+                  className="btn-execute-individual"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    handleExecuteIndividualTest(scenario.name)
+                  }}
+                  disabled={isExecutionInProgress}
+                  title={`Execute ${scenario.name} individually`}
+                >
+                  ▶️ Run
+                </button>
+                </div>
               </label>
             </div>
           ))}
@@ -297,14 +305,25 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
 
       {/* Execution Controls */}
       <div className="execution-controls">
-        <button
-          className="btn-execute"
-          onClick={handleExecuteTests}
-          disabled={isExecutionInProgress || selectedScenarios.length === 0}
-        >
-          {isExecutionInProgress ? '🔄 Running...' : '▶️ Execute Tests'}
-        </button>
-        
+        <div className="execution-buttons">
+          <button
+            className="btn-execute"
+            onClick={handleExecuteTests}
+            disabled={isExecutionInProgress || selectedScenarios.length === 0}
+          >
+            {isExecutionInProgress ? '🔄 Running...' : '▶️ Execute Selected'}
+          </button>
+
+          <button
+            className="btn-execute-suite"
+            onClick={handleExecuteFullSuite}
+            disabled={isExecutionInProgress}
+            title="Execute entire acceptance test suite"
+          >
+            {isExecutionInProgress ? '🔄 Running...' : '🚀 Full Suite'}
+          </button>
+        </div>
+
         <div className="selected-count">
           {selectedScenarios.length} scenario{selectedScenarios.length !== 1 ? 's' : ''} selected
         </div>

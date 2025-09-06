@@ -4853,6 +4853,201 @@
   color: #6ee7b7;
 }
 
+/* Iridescent Progress Bar Styles */
+@keyframes iridescent-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.progress-fill.iridescent {
+  background: linear-gradient(
+    45deg,
+    #667eea 0%,
+    #764ba2 25%,
+    #f093fb 50%,
+    #f5576c 75%,
+    #4facfe 100%
+  );
+  background-size: 300% 300%;
+  animation: iridescent-flow 3s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill.iridescent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmer 1.8s infinite;
+}
+
+.progress-fill.metallic-blue {
+  background: linear-gradient(
+    45deg,
+    #1e3a8a 0%,
+    #3b82f6 25%,
+    #60a5fa 50%,
+    #93c5fd 75%,
+    #dbeafe 100%
+  );
+  background-size: 200% 200%;
+  animation: metallic-shine 2s ease-in-out infinite;
+}
+
+@keyframes metallic-shine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.step-progress-fill.iridescent {
+  background: linear-gradient(
+    45deg,
+    #667eea 0%,
+    #764ba2 25%,
+    #f093fb 50%,
+    #f5576c 75%,
+    #4facfe 100%
+  );
+  background-size: 300% 300%;
+  animation: iridescent-flow 3s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.step-progress-fill.iridescent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmer 1.8s infinite;
+}
+
+.step-progress-fill.metallic-blue {
+  background: linear-gradient(
+    45deg,
+    #1e3a8a 0%,
+    #3b82f6 25%,
+    #60a5fa 50%,
+    #93c5fd 75%,
+    #dbeafe 100%
+  );
+  background-size: 200% 200%;
+  animation: metallic-shine 2s ease-in-out infinite;
+}
+
+/* Test Automation Panel Styles */
+.execution-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-execute-suite {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.btn-execute-suite:hover:not(:disabled) {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-execute-suite:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-execute-individual {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 12px;
+  margin-left: auto;
+}
+
+.btn-execute-individual:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn-execute-individual:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.scenario-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+}
+
+.scenario-item:hover {
+  border-color: var(--border-color-hover);
+  background: var(--bg-tertiary);
+}
+
+.scenario-item.selected {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.scenario-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  cursor: pointer;
+}
+
+.test-execution-progress {
+  margin: 16px 0;
+}
+
 /* Special styling for the configurable parameters section header */
 .control-section:has(.pin-mapping-container) h3 {
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);

@@ -295,6 +295,7 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [hoveredConnection, setHoveredConnection] = useState<string | null>(null)
+  const [selectedConnection, setSelectedConnection] = useState<string | null>(null)
 
 
 
@@ -309,10 +310,28 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
     }
   }
 
+  // Connection click handler for persistent selection
+  const handleConnectionClick = (signal: string) => {
+    if (selectedConnection === signal) {
+      // Clicking the same connection deselects it
+      setSelectedConnection(null)
+    } else {
+      // Select the new connection
+      setSelectedConnection(signal)
+      // Add stronger haptic feedback for selection
+      if (navigator.vibrate) {
+        navigator.vibrate([50, 50, 50])
+      }
+    }
+  }
+
   // Remove the old WebSocket setup since it's now handled by props
 
   const handlePinClick = (signal: string, pinState: any) => {
     console.log('Pin clicked:', signal, 'Current state:', pinState.state, 'Direction:', pinState.direction)
+
+    // Handle connection selection first
+    handleConnectionClick(signal)
 
     // Check if this is a readonly communication pin
     const connection = PIN_CONNECTIONS.find(c => c.signal === signal)
@@ -333,7 +352,7 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
       }
     }
 
-    // Execute the hardware command
+    // Execute the hardware command (only for non-readonly pins)
     if (pinState.direction === 'IN') {
       onPinClick(signal, 'toggle')
     } else {
@@ -346,12 +365,14 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
     const state = getPinState(signal)
     const connection = PIN_CONNECTIONS.find(c => c.signal === signal)
     const isActive = highlightedPins.includes(signal) ||
-                    hoveredConnection === signal
+                    hoveredConnection === signal ||
+                    selectedConnection === signal
 
     return {
       ...state,
       connection,
       isActive,
+      isSelected: selectedConnection === signal,
       lastUpdated: (state as any).timestamp ? new Date((state as any).timestamp).toLocaleTimeString() : 'Unknown'
     }
   }
@@ -412,10 +433,10 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
                     <div
                       key={connection.arduino}
                       data-pin={connection.arduino}
-                      className={`pin-indicator-large arduino-pin ${enhancedState.isActive ? 'highlighted' : ''} ${connection.readonly ? 'readonly' : ''}`}
+                      className={`pin-indicator-large arduino-pin ${enhancedState.isActive ? 'highlighted' : ''} ${enhancedState.isSelected ? 'selected' : ''} ${connection.readonly ? 'readonly' : ''}`}
                       onMouseEnter={() => handleConnectionHover(connection.signal)}
                       onMouseLeave={() => handleConnectionHover(null)}
-                      onClick={() => !connection.readonly && handlePinClick(connection.signal, enhancedState)}
+                      onClick={() => handlePinClick(connection.signal, enhancedState)}
                       title={`${connection.arduino} → ${connection.atmega} (${connection.signal})\n${connection.description}\n${connection.readonly ? 'READONLY - Communication Pin' : 'Last updated: ' + enhancedState.lastUpdated}`}
                       style={{ cursor: connection.readonly ? 'not-allowed' : 'pointer' }}
                     >
@@ -463,10 +484,10 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
                 return (
                   <div
                     key={connection.signal}
-                    className={`compact-pin-row ${enhancedState.isActive ? 'active' : ''} ${connection.readonly ? 'readonly' : ''}`}
+                    className={`compact-pin-row ${enhancedState.isActive ? 'active' : ''} ${enhancedState.isSelected ? 'selected' : ''} ${connection.readonly ? 'readonly' : ''}`}
                     onMouseEnter={() => handleConnectionHover(connection.signal)}
                     onMouseLeave={() => handleConnectionHover(null)}
-                    onClick={() => !connection.readonly && handlePinClick(connection.signal, enhancedState)}
+                    onClick={() => handlePinClick(connection.signal, enhancedState)}
                   >
                     <span className="wrapper-pin-badge">{connection.arduino}</span>
                     <span className="direction-badge">[{direction}]</span>
@@ -499,7 +520,7 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
                     <div
                       key={connection.atmega}
                       data-pin={connection.atmega}
-                      className={`pin-indicator-large atmega-pin ${enhancedState.isActive ? 'highlighted' : ''}`}
+                      className={`pin-indicator-large atmega-pin ${enhancedState.isActive ? 'highlighted' : ''} ${enhancedState.isSelected ? 'selected' : ''}`}
                       onMouseEnter={() => handleConnectionHover(connection.signal)}
                       onMouseLeave={() => handleConnectionHover(null)}
                       onClick={() => handlePinClick(connection.signal, enhancedState)}
@@ -523,10 +544,10 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
         </div>
 
         {/* Detailed Connection Information Section */}
-        {hoveredConnection && DETAILED_CONNECTION_INFO[hoveredConnection] && (
+        {selectedConnection && DETAILED_CONNECTION_INFO[selectedConnection] && (
           <div className="connection-details-section">
             <div className="connection-details-header">
-              <h3>📋 Connection Details: {hoveredConnection}</h3>
+              <h3>📋 Connection Details: {selectedConnection}</h3>
               <div className="connection-details-subtitle">
                 Detailed information for the selected signal connection
               </div>
@@ -534,7 +555,7 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
 
             <div className="connection-details-content">
               {(() => {
-                const info = DETAILED_CONNECTION_INFO[hoveredConnection]
+                const info = DETAILED_CONNECTION_INFO[selectedConnection]
                 return (
                   <div className="connection-info-grid">
                     {/* Signal Overview */}
