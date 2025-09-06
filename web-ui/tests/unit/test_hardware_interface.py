@@ -212,3 +212,58 @@ class TestHardwareInterface:
         
         assert interface.isConnected() == True
         assert interface.getSerialPort() == '/dev/ttyUSB0'
+
+    def test_adc_parsing_error_handling(self):
+        """Test ADC parsing with invalid data"""
+        from adapters.HardwareInterfacePython import HardwareInterface
+
+        interface = HardwareInterface()
+
+        # Test invalid ADC format - should not crash
+        interface.updatePinState('A1', 'ADC=invalid')
+        pin_states = interface.getPinStates()
+        # State should remain unchanged (default 0)
+        assert pin_states['POWER_SENSE_4']['state'] == 0
+
+        # Test malformed ADC data - should not crash
+        interface.updatePinState('A1', 'ADC')
+        pin_states = interface.getPinStates()
+        # State should remain unchanged
+        assert pin_states['POWER_SENSE_4']['state'] == 0
+
+    def test_python_message_handling_disconnection(self):
+        """Test handling of disconnection messages from Python process"""
+        from adapters.HardwareInterfacePython import HardwareInterface
+
+        interface = HardwareInterface()
+        interface.connected = True  # Start connected
+
+        # Test disconnection message
+        message = {
+            'type': 'connection',
+            'status': 'disconnected'
+        }
+
+        interface.handlePythonMessage(message)
+
+        # Should be disconnected now
+        assert interface.connected == False
+
+    def test_python_message_handling_pin_state(self):
+        """Test handling of pin state messages from Python process"""
+        from adapters.HardwareInterfacePython import HardwareInterface
+
+        interface = HardwareInterface()
+
+        # Test pin state message
+        message = {
+            'type': 'pin_state',
+            'pin': 'D7',
+            'data': 'HIGH'
+        }
+
+        interface.handlePythonMessage(message)
+
+        # Pin state should be updated
+        pin_states = interface.getPinStates()
+        assert pin_states['FREQ_DIV10_4']['state'] == 'HIGH'

@@ -395,3 +395,191 @@ class TestWebSocketHandler:
 
         # Verify send was not called for closed connection
         mock_ws.send.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_hardware_command_read_pin(self, mock_hardware_interface):
+        """Test read_pin hardware command"""
+        from websocket.WebSocketHandlerPython import WebSocketHandler
+
+        handler = WebSocketHandler(mock_hardware_interface)
+        mock_ws = Mock()
+        mock_ws.readyState = 1
+
+        # Mock hardware interface response
+        mock_hardware_interface.sendCommand.return_value = {'success': True, 'data': 'HIGH'}
+
+        read_pin_message = {
+            'type': 'hardware_command',
+            'data': {
+                'command': 'read_pin',
+                'pin': 'D7'
+            }
+        }
+
+        await handler.handleMessage(mock_ws, read_pin_message)
+
+        # Verify hardware command was sent
+        mock_hardware_interface.sendCommand.assert_called_with({
+            'command': 'READ_PIN D7',
+            'expectResponse': True
+        })
+
+    @pytest.mark.asyncio
+    async def test_hardware_command_read_adc(self, mock_hardware_interface):
+        """Test read_adc hardware command"""
+        from websocket.WebSocketHandlerPython import WebSocketHandler
+
+        handler = WebSocketHandler(mock_hardware_interface)
+        mock_ws = Mock()
+        mock_ws.readyState = 1
+
+        # Mock hardware interface response
+        mock_hardware_interface.sendCommand.return_value = {'success': True, 'data': '768'}
+
+        read_adc_message = {
+            'type': 'hardware_command',
+            'data': {
+                'command': 'read_adc',
+                'pin': 'A1'
+            }
+        }
+
+        await handler.handleMessage(mock_ws, read_adc_message)
+
+        # Verify hardware command was sent
+        mock_hardware_interface.sendCommand.assert_called_with({
+            'command': 'READ_ADC A1',
+            'expectResponse': True
+        })
+
+    @pytest.mark.asyncio
+    async def test_hardware_command_read_pwm(self, mock_hardware_interface):
+        """Test read_pwm hardware command"""
+        from websocket.WebSocketHandlerPython import WebSocketHandler
+
+        handler = WebSocketHandler(mock_hardware_interface)
+        mock_ws = Mock()
+        mock_ws.readyState = 1
+
+        # Mock hardware interface response
+        mock_hardware_interface.sendCommand.return_value = {'success': True, 'data': '1000:50'}
+
+        read_pwm_message = {
+            'type': 'hardware_command',
+            'data': {
+                'command': 'read_pwm',
+                'pin': 'D9'
+            }
+        }
+
+        await handler.handleMessage(mock_ws, read_pwm_message)
+
+        # Verify hardware command was sent
+        mock_hardware_interface.sendCommand.assert_called_with({
+            'command': 'READ_PWM D9',
+            'expectResponse': True
+        })
+
+    @pytest.mark.asyncio
+    async def test_hardware_command_set_pwm(self, mock_hardware_interface):
+        """Test set_pwm hardware command"""
+        from websocket.WebSocketHandlerPython import WebSocketHandler
+
+        handler = WebSocketHandler(mock_hardware_interface)
+        mock_ws = Mock()
+        mock_ws.readyState = 1
+
+        # Mock hardware interface response
+        mock_hardware_interface.sendCommand.return_value = {'success': True}
+
+        set_pwm_message = {
+            'type': 'hardware_command',
+            'data': {
+                'command': 'set_pwm',
+                'pin': 'D9',
+                'value': {
+                    'frequency': 2000,
+                    'dutyCycle': 75
+                }
+            }
+        }
+
+        await handler.handleMessage(mock_ws, set_pwm_message)
+
+        # Verify hardware command was sent
+        mock_hardware_interface.sendCommand.assert_called_with({
+            'command': 'SET_PWM D9 2000 75',
+            'expectResponse': True
+        })
+
+    @pytest.mark.asyncio
+    async def test_hardware_command_ping_command(self, mock_hardware_interface):
+        """Test ping hardware command (different from ping message)"""
+        from websocket.WebSocketHandlerPython import WebSocketHandler
+
+        handler = WebSocketHandler(mock_hardware_interface)
+        mock_ws = Mock()
+        mock_ws.readyState = 1
+
+        # Mock hardware interface response
+        mock_hardware_interface.sendCommand.return_value = {'success': True, 'data': 'PONG'}
+
+        ping_command_message = {
+            'type': 'hardware_command',
+            'data': {
+                'command': 'ping'
+            }
+        }
+
+        await handler.handleMessage(mock_ws, ping_command_message)
+
+        # Verify hardware command was sent
+        mock_hardware_interface.sendCommand.assert_called_with({
+            'command': 'PING',
+            'expectResponse': True
+        })
+
+    def test_websocket_mock_attribute_setup(self, mock_hardware_interface):
+        """Test WebSocket mock attribute setup for clients without attributes"""
+        from websocket.WebSocketHandlerPython import WebSocketHandler
+
+        handler = WebSocketHandler(mock_hardware_interface)
+
+        # Create a mock WebSocket without the required attributes
+        mock_ws = Mock()
+        # Remove the attributes to test the setup code
+        if hasattr(mock_ws, 'on'):
+            delattr(mock_ws, 'on')
+        if hasattr(mock_ws, 'send'):
+            delattr(mock_ws, 'send')
+        if hasattr(mock_ws, 'readyState'):
+            delattr(mock_ws, 'readyState')
+
+        # Handle connection - this should set up the missing attributes
+        result_ws = handler.handleConnection(mock_ws)
+
+        # Verify attributes were added
+        assert hasattr(result_ws, 'on')
+        assert hasattr(result_ws, 'send')
+        assert hasattr(result_ws, 'readyState')
+        assert result_ws.readyState == 1
+
+    def test_send_to_client_with_dict_message(self, mock_hardware_interface):
+        """Test sending dict message to client"""
+        from websocket.WebSocketHandlerPython import WebSocketHandler
+
+        handler = WebSocketHandler(mock_hardware_interface)
+        mock_ws = Mock()
+        mock_ws.readyState = 1
+
+        # Test with dict message (should use the else branch on line 146)
+        dict_message = {
+            'type': 'test',
+            'data': 'test_data',
+            'timestamp': 1234567890
+        }
+
+        handler.sendToClient(mock_ws, dict_message)
+
+        # Verify message was sent as JSON
+        mock_ws.send.assert_called_with(json.dumps(dict_message))

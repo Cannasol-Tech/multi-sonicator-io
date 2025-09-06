@@ -198,18 +198,45 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
             className="test-execution-progress"
           />
 
-          <div className="execution-stats">
-            <span className="stat passed">✅ {currentExecution.passed_scenarios}</span>
-            <span className="stat failed">❌ {currentExecution.failed_scenarios}</span>
-            <span className="stat duration">
-              ⏱️ {formatDuration(
-                currentExecution.end_time && currentExecution.start_time
-                  ? currentExecution.end_time - currentExecution.start_time // Both should now be in milliseconds
-                  : currentExecution.start_time
-                    ? Date.now() - currentExecution.start_time // Both in milliseconds
-                    : 0
-              )}
-            </span>
+          <div className="execution-stats-enhanced">
+            <div className="stats-grid">
+              <div className="stat-card passed">
+                <div className="stat-icon">✅</div>
+                <div className="stat-content">
+                  <div className="stat-value">{currentExecution.passed_scenarios}</div>
+                  <div className="stat-label">Passed</div>
+                </div>
+              </div>
+              <div className="stat-card failed">
+                <div className="stat-icon">❌</div>
+                <div className="stat-content">
+                  <div className="stat-value">{currentExecution.failed_scenarios}</div>
+                  <div className="stat-label">Failed</div>
+                </div>
+              </div>
+              <div className="stat-card total">
+                <div className="stat-icon">📊</div>
+                <div className="stat-content">
+                  <div className="stat-value">{currentExecution.total_scenarios}</div>
+                  <div className="stat-label">Total</div>
+                </div>
+              </div>
+              <div className="stat-card duration">
+                <div className="stat-icon">⏱️</div>
+                <div className="stat-content">
+                  <div className="stat-value">
+                    {formatDuration(
+                      currentExecution.end_time && currentExecution.start_time
+                        ? currentExecution.end_time - currentExecution.start_time
+                        : currentExecution.start_time
+                          ? Date.now() - currentExecution.start_time
+                          : 0
+                    )}
+                  </div>
+                  <div className="stat-label">Duration</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
@@ -233,27 +260,32 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
         </div>
       )}
 
-      {/* Scenario Selection */}
-      <div className="scenario-selection">
+      {/* Enhanced Scenario Selection */}
+      <div className="scenario-selection-controls">
         <div className="selection-header">
-          <h4>Test Scenarios ({filteredScenarios.length})</h4>
-          <div className="selection-controls">
-            <button 
+          <h4>📋 Test Scenarios ({filteredScenarios.length})</h4>
+          <div className="selection-buttons">
+            <button
               className="btn-select-all"
               onClick={selectAllScenarios}
               disabled={isExecutionInProgress}
+              title="Select all visible scenarios"
             >
-              Select All
+              ✅ Select All
             </button>
-            <button 
-              className="btn-clear"
+            <button
+              className="btn-clear-all"
               onClick={clearScenarioSelection}
               disabled={isExecutionInProgress}
+              title="Clear all selections"
             >
-              Clear
+              🗑️ Clear All
             </button>
           </div>
         </div>
+      </div>
+
+      <div className="scenario-selection">{/* Container for scenario list */}
 
         <div className="scenario-list">
           {filteredScenarios.map(scenario => (
@@ -310,29 +342,48 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
         </div>
       </div>
 
-      {/* Execution Controls */}
-      <div className="execution-controls">
-        <div className="execution-buttons">
+      {/* Enhanced Execution Controls */}
+      <div className="execution-controls-enhanced">
+        <div className="controls-header">
+          <h4>🚀 Test Execution</h4>
+          <div className="selected-count-badge">
+            <span className="count-number">{selectedScenarios.length}</span>
+            <span className="count-label">scenario{selectedScenarios.length !== 1 ? 's' : ''} selected</span>
+          </div>
+        </div>
+
+        <div className="execution-buttons-grid">
           <button
-            className="btn-execute"
+            className={`btn-execute-primary ${isExecutionInProgress ? 'running' : ''}`}
             onClick={handleExecuteTests}
             disabled={isExecutionInProgress || selectedScenarios.length === 0}
+            title={selectedScenarios.length === 0 ? 'Select scenarios to execute' : 'Execute selected scenarios'}
           >
-            {isExecutionInProgress ? '🔄 Running...' : '▶️ Execute Selected'}
+            <div className="btn-content">
+              <span className="btn-icon">{isExecutionInProgress ? '🔄' : '▶️'}</span>
+              <span className="btn-text">
+                {isExecutionInProgress ? 'Running Tests...' : 'Execute Selected'}
+              </span>
+              {selectedScenarios.length > 0 && !isExecutionInProgress && (
+                <span className="btn-count">({selectedScenarios.length})</span>
+              )}
+            </div>
           </button>
 
           <button
-            className="btn-execute-suite"
+            className={`btn-execute-suite ${isExecutionInProgress ? 'running' : ''}`}
             onClick={handleExecuteFullSuite}
             disabled={isExecutionInProgress}
             title="Execute entire acceptance test suite"
           >
-            {isExecutionInProgress ? '🔄 Running...' : '🚀 Full Suite'}
+            <div className="btn-content">
+              <span className="btn-icon">{isExecutionInProgress ? '🔄' : '🚀'}</span>
+              <span className="btn-text">
+                {isExecutionInProgress ? 'Running Suite...' : 'Full Test Suite'}
+              </span>
+              <span className="btn-count">({getFilteredScenarios().length})</span>
+            </div>
           </button>
-        </div>
-
-        <div className="selected-count">
-          {selectedScenarios.length} scenario{selectedScenarios.length !== 1 ? 's' : ''} selected
         </div>
       </div>
 

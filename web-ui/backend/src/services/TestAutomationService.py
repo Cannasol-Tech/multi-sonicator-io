@@ -192,20 +192,34 @@ class TestAutomationService:
         return scenarios
 
     def _extract_tags_from_previous_lines(self, lines: List[str], current_index: int) -> List[str]:
-        """Extract tags from lines before the scenario"""
+        """Extract tags from lines before the scenario and from feature level"""
         tags = []
-        
-        # Look backwards for tag lines
+
+        # First, look for feature-level tags at the beginning of the file
+        for line in lines:
+            line = line.strip()
+            if line.startswith('@') and not line.startswith('Feature:'):
+                # Extract all tags from this line
+                line_tags = [tag.strip() for tag in line.split() if tag.startswith('@')]
+                tags.extend([tag[1:] for tag in line_tags])  # Remove @ prefix
+            elif line.startswith('Feature:'):
+                break
+
+        # Then look backwards for scenario-level tag lines
         for i in range(current_index - 1, -1, -1):
             line = lines[i].strip()
             if line.startswith('@'):
                 # Extract all tags from this line
                 line_tags = [tag.strip() for tag in line.split() if tag.startswith('@')]
-                tags.extend([tag[1:] for tag in line_tags])  # Remove @ prefix
+                scenario_tags = [tag[1:] for tag in line_tags]  # Remove @ prefix
+                # Add scenario tags that aren't already in the list
+                for tag in scenario_tags:
+                    if tag not in tags:
+                        tags.append(tag)
             elif line and not line.startswith('#'):
                 # Stop at first non-tag, non-comment line
                 break
-                
+
         return tags
 
     def _extract_pin_interactions(self, step_description: str) -> List[str]:
@@ -327,17 +341,19 @@ class TestAutomationService:
         """Execute a single test scenario"""
         scenario.status = TestStatus.RUNNING
         start_time = time.time()
-        
+
         try:
             # For now, simulate test execution
             # In a full implementation, this would use behave or direct HIL calls
+            scenario_failed = False
+
             for step in scenario.steps:
                 step.status = TestStatus.RUNNING
                 self._send_progress_update()
-                
+
                 # Simulate step execution time
-                time.sleep(0.5)
-                
+                time.sleep(0.1)  # Reduced for faster testing
+
                 # For demo purposes, randomly pass/fail some steps
                 import random
                 if random.random() > 0.1:  # 90% pass rate
@@ -347,8 +363,15 @@ class TestAutomationService:
                     step.status = TestStatus.FAILED
                     step.error_message = "Simulated test failure"
                     step.duration_ms = int((time.time() - start_time) * 1000)
-                    break
-                    
+                    scenario_failed = True
+                    # Continue executing remaining steps even if one fails
+
+            # Ensure all steps have a final status (no PENDING steps remain)
+            for step in scenario.steps:
+                if step.status == TestStatus.PENDING or step.status == TestStatus.RUNNING:
+                    step.status = TestStatus.PASSED
+                    step.duration_ms = int((time.time() - start_time) * 1000)
+
             # Determine scenario status
             failed_steps = [s for s in scenario.steps if s.status == TestStatus.FAILED]
             if failed_steps:
@@ -356,11 +379,17 @@ class TestAutomationService:
                 scenario.error_message = f"Failed steps: {len(failed_steps)}"
             else:
                 scenario.status = TestStatus.PASSED
-                
+
         except Exception as e:
             scenario.status = TestStatus.ERROR
             scenario.error_message = str(e)
-            
+            # Ensure all steps have a status even in error case
+            for step in scenario.steps:
+                if step.status == TestStatus.PENDING or step.status == TestStatus.RUNNING:
+                    step.status = TestStatus.ERROR
+                    step.error_message = str(e)
+                    step.duration_ms = int((time.time() - start_time) * 1000)
+
         scenario.duration_ms = int((time.time() - start_time) * 1000)
 
     def _send_progress_update(self):
