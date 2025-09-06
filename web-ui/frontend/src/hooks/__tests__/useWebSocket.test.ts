@@ -265,12 +265,18 @@ describe('useWebSocket', () => {
     it('limits reconnection attempts', async () => {
       const { result } = renderHook(() => useWebSocket('ws://localhost:3005/ws'))
 
+      // Wait for initial connection to complete
+      await act(async () => {
+        await new Promise(resolve => setTimeout(resolve, 10))
+      })
+
       // Test that the hook handles errors gracefully
       await act(async () => {
-        mockWebSocket.readyState = WebSocket.CLOSED
+        mockWebSocket.readyState = 3 // WebSocket.CLOSED
         if (mockWebSocket.onerror) {
           mockWebSocket.onerror(new Event('error'))
         }
+        await new Promise(resolve => setTimeout(resolve, 10))
       })
 
       expect(result.current.error).toBeTruthy()
@@ -375,7 +381,7 @@ describe('useWebSocket', () => {
 
       // Disconnect
       await act(async () => {
-        mockWebSocket.readyState = WebSocket.CLOSED
+        mockWebSocket.readyState = 3 // WebSocket.CLOSED
         if (mockWebSocket.onclose) {
           mockWebSocket.onclose(new CloseEvent('close', { code: 1000 }))
         }

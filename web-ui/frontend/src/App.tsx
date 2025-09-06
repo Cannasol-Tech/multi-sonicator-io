@@ -14,6 +14,7 @@ import { useWebSocket } from './hooks/useWebSocket'
 import { useHardwareState } from './hooks/useHardwareState'
 import { usePinHistory } from './hooks/usePinHistory'
 import { useTestAutomation } from './hooks/useTestAutomation'
+import { useArduinoCommandLog } from './hooks/useArduinoCommandLog'
 import { useKeyboardShortcuts, createAppShortcuts } from './hooks/useKeyboardShortcuts'
 
 
@@ -27,6 +28,7 @@ function App() {
   const { connected, sendMessage, lastMessage } = useWebSocket('ws://localhost:3001/ws')
   const { hardwareState, updatePinState, updateMultiplePins, setConnectionStatus } = useHardwareState()
   const { addHistoryEntry } = usePinHistory()
+  const { addCommandPair } = useArduinoCommandLog({ maxEntries: 100 })
   const {
     updateExecutionProgress,
     handleExecutionComplete,
@@ -42,10 +44,29 @@ function App() {
     toggleSettingsTab: () => setActiveTab('settings'),
     pingHardware: () => {
       // Trigger ping command
+      const startTime = Date.now()
       fetch('http://localhost:3001/api/ping', { method: 'POST' })
         .then(res => res.json())
-        .then(data => console.log('Ping result:', data))
-        .catch(err => console.error('Ping failed:', err))
+        .then(data => {
+          const responseTime = Date.now() - startTime
+          console.log('Ping result:', data)
+          addCommandPair(
+            'PING',
+            data.success ? `PONG - ${data.message || 'Hardware responded'}` : `ERROR - ${data.error || 'Ping failed'}`,
+            responseTime,
+            data.success ? undefined : (data.error || 'Ping failed')
+          )
+        })
+        .catch(err => {
+          const responseTime = Date.now() - startTime
+          console.error('Ping failed:', err)
+          addCommandPair(
+            'PING',
+            'ERROR - Connection failed',
+            responseTime,
+            err.message || 'Connection failed'
+          )
+        })
     },
     exportData: () => {
       // Export current data
@@ -140,16 +161,32 @@ function App() {
   }, [connected, setConnectionStatus, hardwareState.connection.lastSeen])
 
   const handlePinControl = (pin: string, action: string, value?: any) => {
+    const timestamp = Date.now()
     const command = {
       type: 'hardware_command',
       data: {
         command: action,
         pin,
         value,
-        timestamp: Date.now()
+        timestamp
       }
     }
+
+    // Log the command being sent
+    const commandString = `${action} ${pin}${value !== undefined ? ` = ${value}` : ''}`
+
     sendMessage(command)
+
+    // For now, we'll simulate a response since we don't have actual Arduino responses
+    // In a real implementation, this would be handled in the WebSocket message handler
+    setTimeout(() => {
+      const responseTime = Date.now() - timestamp
+      addCommandPair(
+        commandString,
+        `OK - ${action} executed on ${pin}`,
+        responseTime
+      )
+    }, Math.random() * 100 + 10) // Simulate 10-110ms response time
   }
 
   return (

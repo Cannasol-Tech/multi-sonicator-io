@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { HardwareState } from '../types'
+import { useArduinoCommandLog } from '../hooks/useArduinoCommandLog'
+import ArduinoCommandHistory from './ArduinoCommandHistory'
 
 interface HardwareDiagramProps {
   hardwareState: HardwareState
@@ -280,6 +282,9 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
   const [selectedConnection, setSelectedConnection] = useState<string | null>(null)
   const [showDetailedModal, setShowDetailedModal] = useState(false)
 
+  // Arduino command logging
+  const { getRecentPairs } = useArduinoCommandLog({ maxEntries: 50 })
+
 
 
   // Connection hover handler with enhanced feedback
@@ -525,6 +530,13 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
             </div>
           </div>
         </div>
+
+        {/* Arduino Command History Section */}
+        <ArduinoCommandHistory
+          commandPairs={getRecentPairs(5)}
+          connected={hardwareState.connection.connected}
+          maxEntries={5}
+        />
 
         {/* Compact Connection Information Section */}
         {selectedConnection && DETAILED_CONNECTION_INFO[selectedConnection] && (

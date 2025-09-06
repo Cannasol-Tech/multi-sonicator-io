@@ -247,17 +247,6 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
       <div className="sub-tab-content">
         {activeSubTab === 'parameters' && (
           <div className="control-section">
-        {/* Sonicator #4 Header */}
-        <div className="mb-4">
-          <h4 className="sonicator-4-header text-lg font-semibold mb-3 pb-2" style={{
-            borderBottom: '2px solid var(--border-color)',
-            color: 'var(--text-primary)'
-          }}>
-            🔧 Sonicator #4
-          </h4>
-
-
-
           {inputPins.map(([signal, pinState]) => {
             const pinInfo = pinDescriptions[signal]
             return (
@@ -266,8 +255,20 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
                 border: '1px solid var(--border-color)',
                 transition: 'all 0.3s ease'
               }}>
-                {/* Parameter Description as Bold Header */}
+                {/* Sonicator #4 identifier and Parameter Description */}
                 <div className="parameter-header mb-2">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-sm font-semibold" style={{ color: 'var(--color-primary)' }}>
+                      🔧 Sonicator #4
+                    </span>
+                    <span className="text-xs px-2 py-1 rounded" style={{
+                      background: 'var(--bg-tertiary)',
+                      color: 'var(--text-secondary)',
+                      fontSize: '10px'
+                    }}>
+                      Signal Configuration
+                    </span>
+                  </div>
                   <h5 className="text-sm font-bold mb-1" style={{ color: 'var(--text-primary)' }}>
                     {pinInfo ? pinInfo.description : signal}
                   </h5>
@@ -289,30 +290,54 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
               </div>
             )
           })}
-        </div>
           </div>
         )}
 
         {activeSubTab === 'monitoring' && (
           <div className="control-section">
-            {/* Sonicator #4 Header */}
-            <div className="mb-4">
-              <h4 className="sonicator-4-header text-lg font-semibold mb-3 pb-2" style={{
-                borderBottom: '2px solid var(--border-color)',
-                color: 'var(--text-primary)'
-              }}>
-                🔊 Sonicator #4
-              </h4>
-            </div>
-            {outputPins.map(([signal, pinState]) => (
-              <div key={signal} className="mb-2">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-mono" style={{ color: 'var(--text-primary)' }}>{signal}</span>
-                  <span className="text-xs" style={{ color: 'var(--text-tertiary)' }}>{pinState.pin}</span>
+            {outputPins.map(([signal, pinState]) => {
+              const pinInfo = pinDescriptions[signal]
+              return (
+                <div key={signal} className="parameter-card-compact mb-3 p-3 rounded-lg" style={{
+                  background: 'var(--bg-secondary)',
+                  border: '1px solid var(--border-color)',
+                  transition: 'all 0.3s ease'
+                }}>
+                  {/* Sonicator #4 identifier and Signal Description */}
+                  <div className="parameter-header mb-2">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-sm font-semibold" style={{ color: 'var(--color-primary)' }}>
+                        🔊 Sonicator #4
+                      </span>
+                      <span className="text-xs px-2 py-1 rounded" style={{
+                        background: 'var(--bg-tertiary)',
+                        color: 'var(--text-secondary)',
+                        fontSize: '10px'
+                      }}>
+                        Live Monitoring
+                      </span>
+                    </div>
+                    <h5 className="text-sm font-bold mb-1" style={{ color: 'var(--text-primary)' }}>
+                      {pinInfo ? pinInfo.description : signal}
+                    </h5>
+
+                    {/* Compact info row: Signal name and Connection */}
+                    <div className="parameter-info-row flex items-center justify-between text-xs" style={{ color: 'var(--text-secondary)' }}>
+                      <span className="signal-name font-mono" style={{ color: 'var(--text-primary)' }}>
+                        {signal}
+                      </span>
+                      {pinInfo && (
+                        <span className="connection-info" style={{ color: 'var(--text-tertiary)' }}>
+                          {pinInfo.wrapperPin} → {pinInfo.dutPin}, Pin {pinInfo.physicalPin}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {renderPinState(signal, pinState)}
                 </div>
-                {renderPinState(signal, pinState)}
-              </div>
-            ))}
+              )
+            })}
           </div>
         )}
       </div>
