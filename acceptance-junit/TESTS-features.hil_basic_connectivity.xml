@@ -1,10 +1,15 @@
-<testsuite name="features.hil_basic_connectivity.Hardware Basic Connectivity" tests="4" errors="0" failures="0" skipped="4" time="0.0" timestamp="2025-09-04T11:41:19.478134" hostname="Corbans-Mini.home"><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Power supply verification" status="skipped" time="0"><skipped /><system-out>
+<testsuite name="features.hil_basic_connectivity.Hardware Basic Connectivity" tests="4" errors="0" failures="4" skipped="0" time="0.000123" timestamp="2025-09-05T20:57:34.816729" hostname="Corbans-Mini.home"><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Power supply verification" status="failed" time="3.2e-05"><failure type="AssertionError" message="Hardware interface not available">
+<![CDATA[
+Failing step: Given the Arduino test harness is connected ... failed in 0.000s
+Location: test/acceptance/features/hil_basic_connectivity.feature:7
+Assertion Failed: Hardware interface not available]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @connectivity
   Scenario: Power supply verification
-    Given the Arduino test harness is connected ... skipped in 0.000s
+    Given the Arduino test harness is connected ... failed in 0.000s
     And the ATmega32A target is powered ... skipped in 0.000s
     And the HIL framework is initialized ... skipped in 0.000s
     When I measure the power supply voltages ... skipped in 0.000s
@@ -15,13 +20,18 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Programming interface verification" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Programming interface verification" status="failed" time="3e-05"><failure type="AssertionError" message="Hardware interface not available">
+<![CDATA[
+Failing step: Given the Arduino test harness is connected ... failed in 0.000s
+Location: test/acceptance/features/hil_basic_connectivity.feature:7
+Assertion Failed: Hardware interface not available]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @connectivity
   Scenario: Programming interface verification
-    Given the Arduino test harness is connected ... skipped in 0.000s
+    Given the Arduino test harness is connected ... failed in 0.000s
     And the ATmega32A target is powered ... skipped in 0.000s
     And the HIL framework is initialized ... skipped in 0.000s
     When I attempt to program the ATmega32A via Arduino as ISP ... skipped in 0.000s
@@ -32,13 +42,18 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Serial communication establishment" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Serial communication establishment" status="failed" time="3e-05"><failure type="AssertionError" message="Hardware interface not available">
+<![CDATA[
+Failing step: Given the Arduino test harness is connected ... failed in 0.000s
+Location: test/acceptance/features/hil_basic_connectivity.feature:7
+Assertion Failed: Hardware interface not available]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @connectivity
   Scenario: Serial communication establishment
-    Given the Arduino test harness is connected ... skipped in 0.000s
+    Given the Arduino test harness is connected ... failed in 0.000s
     And the ATmega32A target is powered ... skipped in 0.000s
     And the HIL framework is initialized ... skipped in 0.000s
     When I establish serial communication with the target ... skipped in 0.000s
@@ -48,13 +63,18 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Arduino Test Harness ping test" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Arduino Test Harness ping test" status="failed" time="3.1e-05"><failure type="AssertionError" message="Hardware interface not available">
+<![CDATA[
+Failing step: Given the Arduino test harness is connected ... failed in 0.000s
+Location: test/acceptance/features/hil_basic_connectivity.feature:7
+Assertion Failed: Hardware interface not available]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @connectivity
   Scenario: Arduino Test Harness ping test
-    Given the Arduino test harness is connected ... skipped in 0.000s
+    Given the Arduino test harness is connected ... failed in 0.000s
     And the ATmega32A target is powered ... skipped in 0.000s
     And the HIL framework is initialized ... skipped in 0.000s
     When I send a ping command to the Arduino Test Harness ... skipped in 0.000s

@@ -1,79 +1,79 @@
-<testsuite name="features.start_stop.Start and stop a single sonicator" tests="4" errors="0" failures="4" skipped="0" time="40.28088" timestamp="2025-09-04T11:41:59.793103" hostname="Corbans-Mini.home"><testcase classname="features.start_stop.Start and stop a single sonicator" name="Start/Stop reflects in status and system count/mask within 100 ms -- @1.1 " status="failed" time="10.084454"><failure type="AssertionError" message="/tmp/tty-msio not found. Start emulator: scripts/emulation/cli.py">
+<testsuite name="features.start_stop.Start and stop a single sonicator" tests="4" errors="0" failures="4" skipped="0" time="0.0" timestamp="2025-09-05T20:57:34.990625" hostname="Corbans-Mini.home"><testcase classname="features.start_stop.Start and stop a single sonicator" name="Start/Stop reflects in status and system count/mask within 100 ms -- @1.1 " status="failed" time="0"><failure type="NoneType" message="None">
 <![CDATA[
-Failing step: Given the HIL wrapper is connected and ready ... failed in 10.084s
+Failing step: Given the HIL wrapper is connected and ready ... undefined in 0.000s
 Location: test/acceptance/features/start_stop.feature:5
-Assertion Failed: /tmp/tty-msio not found. Start emulator: scripts/emulation/cli.py]]>
+None]]>
 </failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @smoke @us-001
   Scenario Outline: Start/Stop reflects in status and system count/mask within 100 ms -- @1.1 
-    Given the HIL wrapper is connected and ready ... failed in 10.084s
-    And the DUT is powered and at safe defaults ... skipped in 0.000s
-    When I write 1 to holding register 40005 ... skipped in 0.000s
-    Then within 100 ms the status flag bit0 for unit 1 equals 1 ... skipped in 0.000s
-    And Active Sonicator Count and Mask reflect the running units ... skipped in 0.000s
+    Given the HIL wrapper is connected and ready ... undefined in 0.000s
+    And the DUT is powered and at safe defaults ... undefined in 0.000s
+    When I write 1 to holding register 40005 ... undefined in 0.000s
+    Then within 100 ms the status flag bit0 for unit 1 equals 1 ... undefined in 0.000s
+    And Active Sonicator Count and Mask reflect the running units ... undefined in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.start_stop.Start and stop a single sonicator" name="Start/Stop reflects in status and system count/mask within 100 ms -- @1.2 " status="failed" time="10.074022"><failure type="AssertionError" message="/tmp/tty-msio not found. Start emulator: scripts/emulation/cli.py">
+</system-out></testcase><testcase classname="features.start_stop.Start and stop a single sonicator" name="Start/Stop reflects in status and system count/mask within 100 ms -- @1.2 " status="failed" time="0"><failure type="NoneType" message="None">
 <![CDATA[
-Failing step: Given the HIL wrapper is connected and ready ... failed in 10.074s
+Failing step: Given the HIL wrapper is connected and ready ... undefined in 0.000s
 Location: test/acceptance/features/start_stop.feature:5
-Assertion Failed: /tmp/tty-msio not found. Start emulator: scripts/emulation/cli.py]]>
+None]]>
 </failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @smoke @us-001
   Scenario Outline: Start/Stop reflects in status and system count/mask within 100 ms -- @1.2 
-    Given the HIL wrapper is connected and ready ... failed in 10.074s
-    And the DUT is powered and at safe defaults ... skipped in 0.000s
-    When I write 0 to holding register 40005 ... skipped in 0.000s
-    Then within 100 ms the status flag bit0 for unit 1 equals 0 ... skipped in 0.000s
-    And Active Sonicator Count and Mask reflect the running units ... skipped in 0.000s
+    Given the HIL wrapper is connected and ready ... undefined in 0.000s
+    And the DUT is powered and at safe defaults ... undefined in 0.000s
+    When I write 0 to holding register 40005 ... undefined in 0.000s
+    Then within 100 ms the status flag bit0 for unit 1 equals 0 ... undefined in 0.000s
+    And Active Sonicator Count and Mask reflect the running units ... undefined in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.start_stop.Start and stop a single sonicator" name="Start/Stop reflects in status and system count/mask within 100 ms -- @1.3 " status="failed" time="10.066479"><failure type="AssertionError" message="/tmp/tty-msio not found. Start emulator: scripts/emulation/cli.py">
+</system-out></testcase><testcase classname="features.start_stop.Start and stop a single sonicator" name="Start/Stop reflects in status and system count/mask within 100 ms -- @1.3 " status="failed" time="0"><failure type="NoneType" message="None">
 <![CDATA[
-Failing step: Given the HIL wrapper is connected and ready ... failed in 10.066s
+Failing step: Given the HIL wrapper is connected and ready ... undefined in 0.000s
 Location: test/acceptance/features/start_stop.feature:5
-Assertion Failed: /tmp/tty-msio not found. Start emulator: scripts/emulation/cli.py]]>
+None]]>
 </failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @smoke @us-001
   Scenario Outline: Start/Stop reflects in status and system count/mask within 100 ms -- @1.3 
-    Given the HIL wrapper is connected and ready ... failed in 10.066s
-    And the DUT is powered and at safe defaults ... skipped in 0.000s
-    When I write 1 to holding register 40006 ... skipped in 0.000s
-    Then within 100 ms the status flag bit0 for unit 2 equals 1 ... skipped in 0.000s
-    And Active Sonicator Count and Mask reflect the running units ... skipped in 0.000s
+    Given the HIL wrapper is connected and ready ... undefined in 0.000s
+    And the DUT is powered and at safe defaults ... undefined in 0.000s
+    When I write 1 to holding register 40006 ... undefined in 0.000s
+    Then within 100 ms the status flag bit0 for unit 2 equals 1 ... undefined in 0.000s
+    And Active Sonicator Count and Mask reflect the running units ... undefined in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.start_stop.Start and stop a single sonicator" name="Start/Stop reflects in status and system count/mask within 100 ms -- @1.4 " status="failed" time="10.055925"><failure type="AssertionError" message="/tmp/tty-msio not found. Start emulator: scripts/emulation/cli.py">
+</system-out></testcase><testcase classname="features.start_stop.Start and stop a single sonicator" name="Start/Stop reflects in status and system count/mask within 100 ms -- @1.4 " status="failed" time="0"><failure type="NoneType" message="None">
 <![CDATA[
-Failing step: Given the HIL wrapper is connected and ready ... failed in 10.056s
+Failing step: Given the HIL wrapper is connected and ready ... undefined in 0.000s
 Location: test/acceptance/features/start_stop.feature:5
-Assertion Failed: /tmp/tty-msio not found. Start emulator: scripts/emulation/cli.py]]>
+None]]>
 </failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @smoke @us-001
   Scenario Outline: Start/Stop reflects in status and system count/mask within 100 ms -- @1.4 
-    Given the HIL wrapper is connected and ready ... failed in 10.056s
-    And the DUT is powered and at safe defaults ... skipped in 0.000s
-    When I write 0 to holding register 40006 ... skipped in 0.000s
-    Then within 100 ms the status flag bit0 for unit 2 equals 0 ... skipped in 0.000s
-    And Active Sonicator Count and Mask reflect the running units ... skipped in 0.000s
+    Given the HIL wrapper is connected and ready ... undefined in 0.000s
+    And the DUT is powered and at safe defaults ... undefined in 0.000s
+    When I write 0 to holding register 40006 ... undefined in 0.000s
+    Then within 100 ms the status flag bit0 for unit 2 equals 0 ... undefined in 0.000s
+    And Active Sonicator Count and Mask reflect the running units ... undefined in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------

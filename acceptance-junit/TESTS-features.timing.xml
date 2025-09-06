@@ -1,8 +1,8 @@
-<testsuite name="features.timing.Timing" tests="2" errors="0" failures="0" skipped="2" time="0.0" timestamp="2025-09-04T11:41:59.800657" hostname="Corbans-Mini.home"><testcase classname="features.timing.Timing" name="SC-009 Latency ≤100 ms (representative)" status="skipped" time="0"><skipped /><system-out>
+<testsuite name="features.timing.Timing" tests="2" errors="1" failures="0" skipped="1" time="8.5e-05" timestamp="2025-09-05T20:57:35.020132" hostname="Corbans-Mini.home"><testcase classname="features.timing.Timing" name="SC-009 Latency ≤100 ms (representative)" status="skipped" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
-  @pending @req-latency @simulavr @hil
+  @pending @req-latency @hil
   Scenario: SC-009 Latency ≤100 ms (representative)
     Given the system is initialized ... skipped in 0.000s
     When I simulate starting sonicator 1 ... skipped in 0.000s
@@ -11,13 +11,28 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.timing.Timing" name="SC-009B Latency matrix (overload reset, frequency)" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.timing.Timing" name="SC-009B Latency matrix (overload reset, frequency)" status="failed" time="8.5e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
+<![CDATA[
+Failing step: Given the system is initialized ... failed in 0.000s
+Location: test/acceptance/features/timing.feature:13
+Traceback (most recent call last):
+  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
+    match.run(runner.context)
+  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "test/acceptance/steps/common_steps.py", line 113, in step_system_initialized
+    if _profile(context) == "hil":
+  File "test/acceptance/steps/common_steps.py", line 24, in _profile
+    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
+AttributeError: 'dict' object has no attribute 'userdata'
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
-  @req-latency @simulavr @hil
+  @req-latency @hil
   Scenario: SC-009B Latency matrix (overload reset, frequency)
-    Given the system is initialized ... skipped in 0.000s
+    Given the system is initialized ... failed in 0.000s
     When I write holding register 40009 with value 1 ... skipped in 0.000s
     Then holding register 40009 should equal 0 within 100 ms ... skipped in 0.000s
 

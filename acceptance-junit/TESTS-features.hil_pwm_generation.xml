@@ -1,10 +1,15 @@
-<testsuite name="features.hil_pwm_generation.PWM Generation Hardware Verification" tests="6" errors="0" failures="0" skipped="6" time="0.0" timestamp="2025-09-04T11:41:19.485692" hostname="Corbans-Mini.home"><testcase classname="features.hil_pwm_generation.PWM Generation Hardware Verification" name="Basic PWM output generation" status="skipped" time="0"><skipped /><system-out>
+<testsuite name="features.hil_pwm_generation.PWM Generation Hardware Verification" tests="6" errors="0" failures="6" skipped="0" time="0.00018" timestamp="2025-09-05T20:57:34.834496" hostname="Corbans-Mini.home"><testcase classname="features.hil_pwm_generation.PWM Generation Hardware Verification" name="Basic PWM output generation" status="failed" time="3.1e-05"><failure type="AssertionError" message="HIL framework not available">
+<![CDATA[
+Failing step: Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+Location: test/acceptance/features/hil_pwm_generation.feature:7
+Assertion Failed: HIL framework not available]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @pwm
   Scenario: Basic PWM output generation
-    Given the HIL framework is connected to ATmega32A ... skipped in 0.000s
+    Given the HIL framework is connected to ATmega32A ... failed in 0.000s
     And the PWM subsystem is initialized ... skipped in 0.000s
     And pin "AMPLITUDE_ALL" is configured for PWM output ... skipped in 0.000s
     When I set PWM on pin "AMPLITUDE_ALL" to 50% duty cycle at 1kHz ... skipped in 0.000s
@@ -14,13 +19,18 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_pwm_generation.PWM Generation Hardware Verification" name="PWM duty cycle variation" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.hil_pwm_generation.PWM Generation Hardware Verification" name="PWM duty cycle variation" status="failed" time="3.1e-05"><failure type="AssertionError" message="HIL framework not available">
+<![CDATA[
+Failing step: Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+Location: test/acceptance/features/hil_pwm_generation.feature:7
+Assertion Failed: HIL framework not available]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @pwm
   Scenario: PWM duty cycle variation
-    Given the HIL framework is connected to ATmega32A ... skipped in 0.000s
+    Given the HIL framework is connected to ATmega32A ... failed in 0.000s
     And the PWM subsystem is initialized ... skipped in 0.000s
     And pin "AMPLITUDE_ALL" is configured for PWM output ... skipped in 0.000s
     When I set PWM duty cycle to 25% on pin "AMPLITUDE_ALL" ... skipped in 0.000s
@@ -31,13 +41,18 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_pwm_generation.PWM Generation Hardware Verification" name="PWM frequency accuracy" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.hil_pwm_generation.PWM Generation Hardware Verification" name="PWM frequency accuracy" status="failed" time="3e-05"><failure type="AssertionError" message="HIL framework not available">
+<![CDATA[
+Failing step: Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+Location: test/acceptance/features/hil_pwm_generation.feature:7
+Assertion Failed: HIL framework not available]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @pwm
   Scenario: PWM frequency accuracy
-    Given the HIL framework is connected to ATmega32A ... skipped in 0.000s
+    Given the HIL framework is connected to ATmega32A ... failed in 0.000s
     And the PWM subsystem is initialized ... skipped in 0.000s
     And pin "AMPLITUDE_ALL" is configured for PWM output ... skipped in 0.000s
     When I set PWM frequency to 500Hz on pin "AMPLITUDE_ALL" ... skipped in 0.000s
@@ -48,32 +63,42 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_pwm_generation.PWM Generation Hardware Verification" name="PWM voltage levels" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.hil_pwm_generation.PWM Generation Hardware Verification" name="PWM voltage levels" status="failed" time="3e-05"><failure type="AssertionError" message="HIL framework not available">
+<![CDATA[
+Failing step: Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+Location: test/acceptance/features/hil_pwm_generation.feature:7
+Assertion Failed: HIL framework not available]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @pwm
   Scenario: PWM voltage levels
-    Given the HIL framework is connected to ATmega32A ... skipped in 0.000s
+    Given the HIL framework is connected to ATmega32A ... failed in 0.000s
     And the PWM subsystem is initialized ... skipped in 0.000s
     And pin "AMPLITUDE_ALL" is configured for PWM output ... skipped in 0.000s
     When I set PWM to 0% duty cycle on pin "AMPLITUDE_ALL" ... skipped in 0.000s
-    Then the average voltage should be approximately 0V ... skipped in 0.000s
+    Then the average voltage should be approximately 0V ... undefined in 0.000s
     When I set PWM to 100% duty cycle on pin "AMPLITUDE_ALL" ... skipped in 0.000s
-    Then the average voltage should be approximately 5V ... skipped in 0.000s
+    Then the average voltage should be approximately 5V ... undefined in 0.000s
     When I set PWM to 50% duty cycle on pin "AMPLITUDE_ALL" ... skipped in 0.000s
-    Then the average voltage should be approximately 2.5V ± 0.2V ... skipped in 0.000s
+    Then the average voltage should be approximately 2.5V ± 0.2V ... undefined in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_pwm_generation.PWM Generation Hardware Verification" name="PWM signal stability" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.hil_pwm_generation.PWM Generation Hardware Verification" name="PWM signal stability" status="failed" time="2.9e-05"><failure type="AssertionError" message="HIL framework not available">
+<![CDATA[
+Failing step: Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+Location: test/acceptance/features/hil_pwm_generation.feature:7
+Assertion Failed: HIL framework not available]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @pwm
   Scenario: PWM signal stability
-    Given the HIL framework is connected to ATmega32A ... skipped in 0.000s
+    Given the HIL framework is connected to ATmega32A ... failed in 0.000s
     And the PWM subsystem is initialized ... skipped in 0.000s
     And pin "AMPLITUDE_ALL" is configured for PWM output ... skipped in 0.000s
     When I set PWM to 60% duty cycle at 1kHz on pin "AMPLITUDE_ALL" ... skipped in 0.000s
@@ -84,13 +109,18 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_pwm_generation.PWM Generation Hardware Verification" name="PWM disable and enable" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.hil_pwm_generation.PWM Generation Hardware Verification" name="PWM disable and enable" status="failed" time="2.9e-05"><failure type="AssertionError" message="HIL framework not available">
+<![CDATA[
+Failing step: Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+Location: test/acceptance/features/hil_pwm_generation.feature:7
+Assertion Failed: HIL framework not available]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @pwm
   Scenario: PWM disable and enable
-    Given the HIL framework is connected to ATmega32A ... skipped in 0.000s
+    Given the HIL framework is connected to ATmega32A ... failed in 0.000s
     And the PWM subsystem is initialized ... skipped in 0.000s
     And pin "AMPLITUDE_ALL" is configured for PWM output ... skipped in 0.000s
     When PWM is enabled on pin "AMPLITUDE_ALL" with 40% duty cycle ... skipped in 0.000s

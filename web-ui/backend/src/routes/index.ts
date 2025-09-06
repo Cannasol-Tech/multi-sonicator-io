@@ -49,10 +49,13 @@ export function setupRoutes(app: Express, hardwareInterface: HardwareInterface, 
       const { signal } = req.params
       const { state } = req.body
 
+      console.log(`API: Controlling pin ${signal} to ${state}`)
+
       const pinStates = hardwareInterface.getPinStates()
       const pinState = pinStates.get(signal)
 
       if (!pinState) {
+        console.log(`API: Pin ${signal} not found`)
         return res.status(404).json({
           error: `Pin signal '${signal}' not found`,
           availablePins: Array.from(pinStates.keys())
@@ -61,6 +64,7 @@ export function setupRoutes(app: Express, hardwareInterface: HardwareInterface, 
 
       // Only allow control of input pins
       if (pinState.direction !== 'IN') {
+        console.log(`API: Pin ${signal} is not an input pin (${pinState.direction})`)
         return res.status(400).json({
           error: `Pin '${signal}' is not an input pin (direction: ${pinState.direction})`,
           message: 'Only input pins can be controlled'
@@ -69,6 +73,7 @@ export function setupRoutes(app: Express, hardwareInterface: HardwareInterface, 
 
       // Validate state value
       if (!['HIGH', 'LOW'].includes(state)) {
+        console.log(`API: Invalid state value: ${state}`)
         return res.status(400).json({
           error: 'Invalid state value',
           message: 'State must be either "HIGH" or "LOW"'
@@ -81,7 +86,9 @@ export function setupRoutes(app: Express, hardwareInterface: HardwareInterface, 
         args: [signal, state],
         expectResponse: true
       }
+      console.log(`API: Sending command:`, command)
       const result = await hardwareInterface.sendCommand(command)
+      console.log(`API: Command result:`, result)
 
       res.json({
         success: true,

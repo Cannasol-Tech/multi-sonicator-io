@@ -1,8 +1,8 @@
-<testsuite name="features.system.System metrics" tests="4" errors="0" failures="0" skipped="4" time="0.0" timestamp="2025-09-04T11:41:59.798071" hostname="Corbans-Mini.home"><testcase classname="features.system.System metrics" name="SC-007 Active Sonicator Count" status="skipped" time="0"><skipped /><system-out>
+<testsuite name="features.system.System metrics" tests="4" errors="3" failures="0" skipped="1" time="0.000226" timestamp="2025-09-05T20:57:34.993321" hostname="Corbans-Mini.home"><testcase classname="features.system.System metrics" name="SC-007 Active Sonicator Count" status="skipped" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
-  @pending @req-active-count @reg-40035 @simulavr @hil
+  @pending @req-active-count @reg-40035 @hil
   Scenario: SC-007 Active Sonicator Count
     Given the system is initialized ... skipped in 0.000s
     When I set input running for unit 1 to asserted ... skipped in 0.000s
@@ -11,39 +11,84 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system.System metrics" name="SC-008 Active Sonicator Mask" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.system.System metrics" name="SC-008 Active Sonicator Mask" status="failed" time="8e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
+<![CDATA[
+Failing step: Given the system is initialized ... failed in 0.000s
+Location: test/acceptance/features/system.feature:13
+Traceback (most recent call last):
+  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
+    match.run(runner.context)
+  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "test/acceptance/steps/common_steps.py", line 113, in step_system_initialized
+    if _profile(context) == "hil":
+  File "test/acceptance/steps/common_steps.py", line 24, in _profile
+    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
+AttributeError: 'dict' object has no attribute 'userdata'
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
-  @req-active-mask @reg-40036 @simulavr @hil
+  @req-active-mask @reg-40036 @hil
   Scenario: SC-008 Active Sonicator Mask
-    Given the system is initialized ... skipped in 0.000s
+    Given the system is initialized ... failed in 0.000s
     When I set input running for unit 1 to asserted ... skipped in 0.000s
     Then holding register 40036 should equal 1 within 100 ms ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system.System metrics" name="SC-013 System status bitfield" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.system.System metrics" name="SC-013 System status bitfield" status="failed" time="7.5e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
+<![CDATA[
+Failing step: Given the system is initialized ... failed in 0.000s
+Location: test/acceptance/features/system.feature:19
+Traceback (most recent call last):
+  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
+    match.run(runner.context)
+  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "test/acceptance/steps/common_steps.py", line 113, in step_system_initialized
+    if _profile(context) == "hil":
+  File "test/acceptance/steps/common_steps.py", line 24, in _profile
+    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
+AttributeError: 'dict' object has no attribute 'userdata'
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
-  @req-system-status @reg-40025 @simulavr @hil
+  @req-system-status @reg-40025 @hil
   Scenario: SC-013 System status bitfield
-    Given the system is initialized ... skipped in 0.000s
+    Given the system is initialized ... failed in 0.000s
     When I set input estop for unit 1 to asserted ... skipped in 0.000s
     Then holding register 40025 should equal 1 within 50 ms ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system.System metrics" name="SC-017 Active transitions stability" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.system.System metrics" name="SC-017 Active transitions stability" status="failed" time="7.1e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
+<![CDATA[
+Failing step: Given the system is initialized ... failed in 0.000s
+Location: test/acceptance/features/system.feature:25
+Traceback (most recent call last):
+  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
+    match.run(runner.context)
+  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "test/acceptance/steps/common_steps.py", line 113, in step_system_initialized
+    if _profile(context) == "hil":
+  File "test/acceptance/steps/common_steps.py", line 24, in _profile
+    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
+AttributeError: 'dict' object has no attribute 'userdata'
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
-  @req-active-transitions @reg-40035 @reg-40036 @simulavr @hil
+  @req-active-transitions @reg-40035 @reg-40036 @hil
   Scenario: SC-017 Active transitions stability
-    Given the system is initialized ... skipped in 0.000s
+    Given the system is initialized ... failed in 0.000s
     When I set input running for unit 1 to deasserted ... skipped in 0.000s
     Then holding register 40035 should equal 0 within 100 ms ... skipped in 0.000s
 

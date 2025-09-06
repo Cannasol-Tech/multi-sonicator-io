@@ -96,6 +96,19 @@ except ImportError:
         def __init__(self):
             self.connected = False
             self.serial_port = None
+            # Mock pin states for testing
+            self.pin_states = {
+                'FREQ_DIV10_4': 'LOW',
+                'FREQ_LOCK_4': 'LOW',
+                'OVERLOAD_4': 'LOW',
+                'START_4': 'LOW',
+                'RESET_4': 'LOW',
+                'POWER_SENSE_4': 512,  # ADC value
+                'AMPLITUDE_ALL': 'LOW',
+                'UART_RXD': 'LOW',
+                'UART_TXD': 'LOW',
+                'STATUS_LED': 'LOW'
+            }
 
         def connect(self):
             print('{"type": "connection", "status": "connected", "port": "mock"}')
@@ -105,6 +118,22 @@ except ImportError:
             self.connected = False
 
         def send_command(self, cmd):
+            # Parse command and update mock states
+            parts = cmd.split()
+            if len(parts) >= 3 and parts[0] == 'WRITE_PIN':
+                signal = parts[1]
+                state = parts[2]
+                if signal in self.pin_states:
+                    self.pin_states[signal] = state
+                    # Send pin state update
+                    print(json.dumps({"type": "pin_state", "pin": signal, "data": state}))
+                    sys.stdout.flush()
+                return "OK"
+            elif len(parts) >= 2 and parts[0] == 'READ_PIN':
+                signal = parts[1]
+                if signal in self.pin_states:
+                    return str(self.pin_states[signal])
+                return "UNKNOWN"
             return "OK"
 
 import json
@@ -131,7 +160,29 @@ try:
                 if cmd["type"] == "ping":
                     response = hil.send_command("PING")
                     print(json.dumps({"type": "response", "data": response}))
-                    
+
+                elif cmd["type"] == "command":
+                    # Handle generic commands from the API
+                    command = cmd["command"]
+                    args = cmd.get("args", [])
+
+                    if command == "write_pin" and len(args) >= 2:
+                        signal = args[0]
+                        state = args[1]
+                        response = hil.send_command(f"WRITE_PIN {signal} {state}")
+                        print(json.dumps({"type": "response", "data": response}))
+
+                    elif command == "read_pin" and len(args) >= 1:
+                        signal = args[0]
+                        response = hil.send_command(f"READ_PIN {signal}")
+                        print(json.dumps({"type": "pin_state", "pin": signal, "data": response}))
+
+                    else:
+                        # Generic command
+                        cmd_str = f"{command} {' '.join(args)}" if args else command
+                        response = hil.send_command(cmd_str)
+                        print(json.dumps({"type": "response", "data": response}))
+
                 elif cmd["type"] == "pin_read":
                     pin = cmd["pin"]
                     if pin.startswith("A"):
@@ -141,13 +192,13 @@ try:
                         # Digital read
                         response = hil.send_command(f"READ_PIN {pin}")
                     print(json.dumps({"type": "pin_state", "pin": pin, "data": response}))
-                    
+
                 elif cmd["type"] == "pin_write":
                     pin = cmd["pin"]
                     value = cmd["value"]
                     response = hil.send_command(f"WRITE_PIN {pin} {value}")
                     print(json.dumps({"type": "response", "data": response}))
-                    
+
                 elif cmd["type"] == "status":
                     response = hil.send_command("STATUS")
                     print(json.dumps({"type": "status", "data": response}))

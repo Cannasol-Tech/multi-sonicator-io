@@ -1,0 +1,36 @@
+<testsuite name="features.sonicator.Sonicator Acceptance" tests="2" errors="0" failures="1" skipped="1" time="3.1e-05" timestamp="2025-09-05T20:57:34.988400" hostname="Corbans-Mini.home"><testcase classname="features.sonicator.Sonicator Acceptance" name="Sonicator basic acceptance" status="failed" time="3.1e-05"><failure type="NoneType" message="None">
+<![CDATA[
+Failing step: When the sonicator feature is exercised ... undefined in 0.000s
+Location: test/acceptance/features/sonicator.feature:5
+None]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @sonicator @implemented
+  Scenario: Sonicator basic acceptance
+    Given the hardware is initialized ... passed in 0.000s
+    When the sonicator feature is exercised ... undefined in 0.000s
+    Then the expected result is observed ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+✅ Hardware initialization assumed complete (simulation mode)
+
+]]>
+</system-out></testcase><testcase classname="features.sonicator.Sonicator Acceptance" name="Sonicator advanced acceptance (pending implementation)" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @pending
+  Scenario: Sonicator advanced acceptance (pending implementation)
+    Given the hardware is initialized ... skipped in 0.000s
+    When the advanced sonicator feature is exercised ... skipped in 0.000s
+    Then the expected advanced result is observed ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

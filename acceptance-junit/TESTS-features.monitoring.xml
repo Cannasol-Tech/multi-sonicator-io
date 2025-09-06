@@ -1,8 +1,8 @@
-<testsuite name="features.monitoring.Monitoring via MODBUS" tests="6" errors="0" failures="0" skipped="6" time="0.0" timestamp="2025-09-04T11:41:19.491154" hostname="Corbans-Mini.home"><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-004 Power monitoring scaling" status="skipped" time="0"><skipped /><system-out>
+<testsuite name="features.monitoring.Monitoring via MODBUS" tests="6" errors="5" failures="0" skipped="1" time="0.00046" timestamp="2025-09-05T20:57:34.840446" hostname="Corbans-Mini.home"><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-004 Power monitoring scaling" status="skipped" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
-  @pending @req-power @prd-10-api @reg-40013-40016 @simulavr @hil
+  @pending @req-power @prd-10-api @reg-40013-40016 @hil
   Scenario: SC-004 Power monitoring scaling
     Given the system is initialized ... skipped in 0.000s
     When I simulate power reading of 100 ... skipped in 0.000s
@@ -11,65 +11,140 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-005 Frequency monitoring" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-005 Frequency monitoring" status="failed" time="6.5e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
+<![CDATA[
+Failing step: Given the system is initialized ... failed in 0.000s
+Location: test/acceptance/features/monitoring.feature:13
+Traceback (most recent call last):
+  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
+    match.run(runner.context)
+  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "test/acceptance/steps/common_steps.py", line 113, in step_system_initialized
+    if _profile(context) == "hil":
+  File "test/acceptance/steps/common_steps.py", line 24, in _profile
+    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
+AttributeError: 'dict' object has no attribute 'userdata'
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
-  @req-frequency @prd-10-api @reg-40017-40020 @simulavr @hil
+  @req-frequency @prd-10-api @reg-40017-40020 @hil
   Scenario: SC-005 Frequency monitoring
-    Given the system is initialized ... skipped in 0.000s
+    Given the system is initialized ... failed in 0.000s
     When I simulate frequency reading of 20000 ... skipped in 0.000s
     Then holding register 40017 should equal 20000 within 100 ms ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-006 Status flags" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-006 Status flags" status="failed" time="7e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
+<![CDATA[
+Failing step: Given the system is initialized ... failed in 0.000s
+Location: test/acceptance/features/monitoring.feature:19
+Traceback (most recent call last):
+  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
+    match.run(runner.context)
+  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "test/acceptance/steps/common_steps.py", line 113, in step_system_initialized
+    if _profile(context) == "hil":
+  File "test/acceptance/steps/common_steps.py", line 24, in _profile
+    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
+AttributeError: 'dict' object has no attribute 'userdata'
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
-  @req-status-flags @prd-10-api @reg-40021-40024 @simulavr @hil
+  @req-status-flags @prd-10-api @reg-40021-40024 @hil
   Scenario: SC-006 Status flags
-    Given the system is initialized ... skipped in 0.000s
+    Given the system is initialized ... failed in 0.000s
     When I simulate starting sonicator 1 ... skipped in 0.000s
     Then status flag bit 0 for unit 1 is 1 ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-015 Per-unit runtimes" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-015 Per-unit runtimes" status="failed" time="0.000122"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
+<![CDATA[
+Failing step: Given the system is initialized ... failed in 0.000s
+Location: test/acceptance/features/monitoring.feature:25
+Traceback (most recent call last):
+  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
+    match.run(runner.context)
+  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "test/acceptance/steps/common_steps.py", line 113, in step_system_initialized
+    if _profile(context) == "hil":
+  File "test/acceptance/steps/common_steps.py", line 24, in _profile
+    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
+AttributeError: 'dict' object has no attribute 'userdata'
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
-  @req-runtimes @reg-40027-40030 @simulavr @hil
+  @req-runtimes @reg-40027-40030 @hil
   Scenario: SC-015 Per-unit runtimes
-    Given the system is initialized ... skipped in 0.000s
+    Given the system is initialized ... failed in 0.000s
     When I simulate starting sonicator 1 ... skipped in 0.000s
     Then holding register 40027 should equal 5 within 1000 ms ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-016 Overload counts" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-016 Overload counts" status="failed" time="5.5e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
+<![CDATA[
+Failing step: Given the system is initialized ... failed in 0.000s
+Location: test/acceptance/features/monitoring.feature:31
+Traceback (most recent call last):
+  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
+    match.run(runner.context)
+  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "test/acceptance/steps/common_steps.py", line 113, in step_system_initialized
+    if _profile(context) == "hil":
+  File "test/acceptance/steps/common_steps.py", line 24, in _profile
+    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
+AttributeError: 'dict' object has no attribute 'userdata'
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
-  @req-overload-counts @reg-40031-40034 @simulavr @hil
+  @req-overload-counts @reg-40031-40034 @hil
   Scenario: SC-016 Overload counts
-    Given the system is initialized ... skipped in 0.000s
+    Given the system is initialized ... failed in 0.000s
     When I simulate overload on sonicator 1 ... skipped in 0.000s
     Then holding register 40031 should equal 1 within 200 ms ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-019 Frequency lock behavior" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-019 Frequency lock behavior" status="failed" time="0.000148"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
+<![CDATA[
+Failing step: Given the system is initialized ... failed in 0.000s
+Location: test/acceptance/features/monitoring.feature:37
+Traceback (most recent call last):
+  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
+    match.run(runner.context)
+  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "test/acceptance/steps/common_steps.py", line 113, in step_system_initialized
+    if _profile(context) == "hil":
+  File "test/acceptance/steps/common_steps.py", line 24, in _profile
+    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
+AttributeError: 'dict' object has no attribute 'userdata'
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
-  @req-freq-lock @simulavr @hil
+  @req-freq-lock @hil
   Scenario: SC-019 Frequency lock behavior
-    Given the system is initialized ... skipped in 0.000s
+    Given the system is initialized ... failed in 0.000s
     When I simulate frequency lock on sonicator 1 ... skipped in 0.000s
     Then status flag bit 2 for unit 1 is 1 ... skipped in 0.000s
 

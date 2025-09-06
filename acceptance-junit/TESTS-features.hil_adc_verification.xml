@@ -1,10 +1,15 @@
-<testsuite name="features.hil_adc_verification.ADC Hardware Verification" tests="6" errors="0" failures="0" skipped="6" time="0.0" timestamp="2025-09-04T11:41:19.476592" hostname="Corbans-Mini.home"><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="POWER_SENSE_4 ADC channel verification" status="skipped" time="0"><skipped /><system-out>
+<testsuite name="features.hil_adc_verification.ADC Hardware Verification" tests="6" errors="0" failures="6" skipped="0" time="0.000222" timestamp="2025-09-05T20:57:34.813741" hostname="Corbans-Mini.home"><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="POWER_SENSE_4 ADC channel verification" status="failed" time="3.4e-05"><failure type="AssertionError" message="HIL framework not available">
+<![CDATA[
+Failing step: Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+Location: test/acceptance/features/hil_adc_verification.feature:7
+Assertion Failed: HIL framework not available]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @adc
   Scenario: POWER_SENSE_4 ADC channel verification
-    Given the HIL framework is connected to ATmega32A ... skipped in 0.000s
+    Given the HIL framework is connected to ATmega32A ... failed in 0.000s
     And the ADC subsystem is initialized ... skipped in 0.000s
     And the ADC reference is set to 5.0V ... skipped in 0.000s
     When I apply 0V to ADC channel "POWER_SENSE_4" ... skipped in 0.000s
@@ -14,13 +19,18 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="POWER_SENSE_4 mid-scale verification" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="POWER_SENSE_4 mid-scale verification" status="failed" time="3.1e-05"><failure type="AssertionError" message="HIL framework not available">
+<![CDATA[
+Failing step: Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+Location: test/acceptance/features/hil_adc_verification.feature:7
+Assertion Failed: HIL framework not available]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @adc
   Scenario: POWER_SENSE_4 mid-scale verification
-    Given the HIL framework is connected to ATmega32A ... skipped in 0.000s
+    Given the HIL framework is connected to ATmega32A ... failed in 0.000s
     And the ADC subsystem is initialized ... skipped in 0.000s
     And the ADC reference is set to 5.0V ... skipped in 0.000s
     When I apply 2.5V to ADC channel "POWER_SENSE_4" ... skipped in 0.000s
@@ -30,13 +40,18 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="POWER_SENSE_4 full-scale verification" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="POWER_SENSE_4 full-scale verification" status="failed" time="6e-05"><failure type="AssertionError" message="HIL framework not available">
+<![CDATA[
+Failing step: Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+Location: test/acceptance/features/hil_adc_verification.feature:7
+Assertion Failed: HIL framework not available]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @adc
   Scenario: POWER_SENSE_4 full-scale verification
-    Given the HIL framework is connected to ATmega32A ... skipped in 0.000s
+    Given the HIL framework is connected to ATmega32A ... failed in 0.000s
     And the ADC subsystem is initialized ... skipped in 0.000s
     And the ADC reference is set to 5.0V ... skipped in 0.000s
     When I apply 5.0V to ADC channel "POWER_SENSE_4" ... skipped in 0.000s
@@ -46,13 +61,18 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="Power measurement scaling verification" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="Power measurement scaling verification" status="failed" time="3.3e-05"><failure type="AssertionError" message="HIL framework not available">
+<![CDATA[
+Failing step: Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+Location: test/acceptance/features/hil_adc_verification.feature:7
+Assertion Failed: HIL framework not available]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @adc
   Scenario: Power measurement scaling verification
-    Given the HIL framework is connected to ATmega32A ... skipped in 0.000s
+    Given the HIL framework is connected to ATmega32A ... failed in 0.000s
     And the ADC subsystem is initialized ... skipped in 0.000s
     And the ADC reference is set to 5.0V ... skipped in 0.000s
     Given the power measurement scaling is 5.44 mV/W ... skipped in 0.000s
@@ -63,13 +83,18 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="ADC noise and stability" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="ADC noise and stability" status="failed" time="3.3e-05"><failure type="AssertionError" message="HIL framework not available">
+<![CDATA[
+Failing step: Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+Location: test/acceptance/features/hil_adc_verification.feature:7
+Assertion Failed: HIL framework not available]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @adc
   Scenario: ADC noise and stability
-    Given the HIL framework is connected to ATmega32A ... skipped in 0.000s
+    Given the HIL framework is connected to ATmega32A ... failed in 0.000s
     And the ADC subsystem is initialized ... skipped in 0.000s
     And the ADC reference is set to 5.0V ... skipped in 0.000s
     When I apply a stable 2.5V to ADC channel "POWER_SENSE_4" ... skipped in 0.000s
@@ -80,13 +105,18 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="Multiple ADC channel independence" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="Multiple ADC channel independence" status="failed" time="3.1e-05"><failure type="AssertionError" message="HIL framework not available">
+<![CDATA[
+Failing step: Given the HIL framework is connected to ATmega32A ... failed in 0.000s
+Location: test/acceptance/features/hil_adc_verification.feature:7
+Assertion Failed: HIL framework not available]]>
+</failure><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @adc
   Scenario: Multiple ADC channel independence
-    Given the HIL framework is connected to ATmega32A ... skipped in 0.000s
+    Given the HIL framework is connected to ATmega32A ... failed in 0.000s
     And the ADC subsystem is initialized ... skipped in 0.000s
     And the ADC reference is set to 5.0V ... skipped in 0.000s
     When I apply 1.0V to ADC channel "POWER_SENSE_4" ... skipped in 0.000s
