@@ -4757,6 +4757,22 @@
   background: rgba(59, 130, 246, 0.1);
 }
 
+.compact-pin-row.selected {
+  border-color: #f59e0b;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(217, 119, 6, 0.1));
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+  animation: selectedRowPulse 2s infinite;
+}
+
+@keyframes selectedRowPulse {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.5);
+  }
+}
+
 .compact-pin-row.readonly {
   opacity: 0.7;
   cursor: default;
@@ -5158,6 +5174,24 @@
   border-color: #10b981;
   background: #ecfdf5;
   animation: pin-pulse-large 2s ease-in-out infinite;
+}
+
+.pin-indicator-large.selected {
+  border-color: #f59e0b;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+  animation: selectedPulse 2s infinite;
+}
+
+@keyframes selectedPulse {
+  0%, 100% {
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+  }
+  50% {
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.7);
+  }
 }
 
 .pin-label-large {

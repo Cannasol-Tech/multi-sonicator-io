@@ -259,7 +259,7 @@ const WireConnection: React.FC<{
   }, [connection, containerRef])
 
   const getWireColor = () => {
-    if (isHighlighted) return '#f59e0b'
+    if (isHighlighted) return '#ffd700' // Bright shining gold
     if (connection.direction === 'COMM') return '#d97706' // Orange for communication pins
     if (connection.direction === 'ANALOG') return '#8b5cf6'
     if (connection.direction === 'IN') return pinState?.state === 'HIGH' ? '#ef4444' : '#6b7280'

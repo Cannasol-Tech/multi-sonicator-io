@@ -285,19 +285,18 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
                     )}
                   </div>
                 </div>
-                <button
-                  className="btn-execute-individual"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    handleExecuteIndividualTest(scenario.name)
-                  }}
-                  disabled={isExecutionInProgress}
-                  title={`Execute ${scenario.name} individually`}
-                >
-                  ▶️ Run
-                </button>
-                </div>
               </label>
+              <button
+                className="btn-execute-individual"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  handleExecuteIndividualTest(scenario.name)
+                }}
+                disabled={isExecutionInProgress}
+                title={`Execute ${scenario.name} individually`}
+              >
+                ▶️ Run
+              </button>
             </div>
           ))}
         </div>
