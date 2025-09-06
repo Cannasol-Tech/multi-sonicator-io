@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ConnectionStatus } from '../types'
 import { api } from '../services/api'
 
@@ -11,6 +11,55 @@ interface HeaderProps {
 export default function Header({ connectionStatus, onShowHelp }: HeaderProps) {
   const [reconnecting, setReconnecting] = useState(false)
   const [retrying, setRetrying] = useState(false)
+  const [theme, setTheme] = useState<'light' | 'dark' | 'auto'>('auto')
+
+  // Load theme from localStorage on mount
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('multi-sonicator-theme') as 'light' | 'dark' | 'auto'
+    if (savedTheme) {
+      setTheme(savedTheme)
+      applyTheme(savedTheme)
+    } else {
+      applyTheme('auto')
+    }
+  }, [])
+
+  const applyTheme = (newTheme: 'light' | 'dark' | 'auto') => {
+    const root = document.documentElement
+
+    if (newTheme === 'dark') {
+      root.classList.add('dark-theme')
+    } else if (newTheme === 'light') {
+      root.classList.remove('dark-theme')
+    } else {
+      // Auto theme based on system preference
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+      if (mediaQuery.matches) {
+        root.classList.add('dark-theme')
+      } else {
+        root.classList.remove('dark-theme')
+      }
+    }
+  }
+
+  const toggleTheme = () => {
+    const themes: ('light' | 'dark' | 'auto')[] = ['light', 'dark', 'auto']
+    const currentIndex = themes.indexOf(theme)
+    const nextTheme = themes[(currentIndex + 1) % themes.length]
+
+    setTheme(nextTheme)
+    applyTheme(nextTheme)
+    localStorage.setItem('multi-sonicator-theme', nextTheme)
+  }
+
+  const getThemeIcon = () => {
+    switch (theme) {
+      case 'light': return '☀️'
+      case 'dark': return '🌙'
+      case 'auto': return '🌓'
+      default: return '🌓'
+    }
+  }
 
   const getConnectionText = () => {
     if (reconnecting) return 'Reconnecting...'
@@ -87,6 +136,14 @@ export default function Header({ connectionStatus, onShowHelp }: HeaderProps) {
           </div>
         )}
         
+        <button
+          className="btn theme-toggle"
+          onClick={toggleTheme}
+          title={`Current theme: ${theme}. Click to cycle through light/dark/auto`}
+        >
+          {getThemeIcon()}
+        </button>
+
         <button
           className="btn"
           onClick={onShowHelp}

@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react'
 import HardwareDiagram from './components/HardwareDiagram'
 import ControlPanel from './components/ControlPanel'
 import TestAutomationPanel from './components/TestAutomationPanel'
+import ArduinoCommandsPanel from './components/ArduinoCommandsPanel'
 import TestExecutionIndicator from './components/TestExecutionIndicator'
 import Header from './components/Header'
 import HelpSystem from './components/HelpSystem'
 import SettingsPanel from './components/SettingsPanel'
-import AdvancedControlPanel from './components/AdvancedControlPanel'
+import ProgressBarDemo from './components/ProgressBarDemo'
+
 
 import { useWebSocket } from './hooks/useWebSocket'
 import { useHardwareState } from './hooks/useHardwareState'
@@ -18,11 +20,11 @@ import { useKeyboardShortcuts, createAppShortcuts } from './hooks/useKeyboardSho
 function App() {
   const [helpVisible, setHelpVisible] = useState(false)
   const [highlightedPins, setHighlightedPins] = useState<string[]>([])
-  const [activeTab, setActiveTab] = useState<'hardware' | 'testing' | 'settings'>('hardware')
+  const [activeTab, setActiveTab] = useState<'hardware' | 'testing' | 'arduino-commands' | 'settings'>('hardware')
   const [currentTestExecution, setCurrentTestExecution] = useState<any>(null)
   const [keyboardShortcutsEnabled, setKeyboardShortcutsEnabled] = useState(true)
 
-  const { connected, sendMessage, lastMessage } = useWebSocket('ws://localhost:3005/ws')
+  const { connected, sendMessage, lastMessage } = useWebSocket('ws://localhost:3001/ws')
   const { hardwareState, updatePinState, updateMultiplePins, setConnectionStatus } = useHardwareState()
   const { addHistoryEntry } = usePinHistory()
   const {
@@ -182,9 +184,12 @@ function App() {
             >
               🧪 Test Automation
             </button>
-
-
-
+            <button
+              className={`tab-button ${activeTab === 'arduino-commands' ? 'active' : ''}`}
+              onClick={() => setActiveTab('arduino-commands')}
+            >
+              🔧 Arduino Commands
+            </button>
             <button
               className={`tab-button ${activeTab === 'settings' ? 'active' : ''}`}
               onClick={() => setActiveTab('settings')}
@@ -203,13 +208,6 @@ function App() {
                     onPinControl={handlePinControl}
                     connected={connected}
                   />
-                  <AdvancedControlPanel
-                    hardwareState={hardwareState}
-                    onPinClick={handlePinControl}
-                    onBatchOperation={(operation) => {
-                      console.log('Batch operation completed:', operation)
-                    }}
-                  />
                 </div>
               </div>
             )}
@@ -223,15 +221,23 @@ function App() {
               />
             )}
 
-
+            {activeTab === 'arduino-commands' && (
+              <ArduinoCommandsPanel
+                hardwareState={hardwareState}
+                connected={connected}
+              />
+            )}
 
             {activeTab === 'settings' && (
-              <SettingsPanel
-                onPreferencesChange={(preferences) => {
-                  console.log('Preferences updated:', preferences)
-                  setKeyboardShortcutsEnabled(preferences.keyboardShortcuts)
-                }}
-              />
+              <div className="settings-tab">
+                <SettingsPanel
+                  onPreferencesChange={(preferences) => {
+                    console.log('Preferences updated:', preferences)
+                    setKeyboardShortcutsEnabled(preferences.keyboardShortcuts)
+                  }}
+                />
+                <ProgressBarDemo />
+              </div>
             )}
           </div>
         </div>

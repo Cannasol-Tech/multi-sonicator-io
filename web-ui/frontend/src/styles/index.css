@@ -7,7 +7,7 @@
   --color-warning: #d97706;
   --color-error: #dc2626;
   --color-info: #0891b2;
-  
+
   /* Pin state colors */
   --color-pin-high: #22c55e;
   --color-pin-low: #6b7280;
@@ -16,12 +16,25 @@
   --color-pin-unknown: #9ca3af;
   --color-frequency-active: #8b5cf6;
   --color-frequency-inactive: #9ca3af;
-  
+
   /* Connection status colors */
   --color-connected: #10b981;
   --color-disconnected: #ef4444;
   --color-connecting: #f59e0b;
-  
+
+  /* Light theme colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --text-primary: #000000;
+  --text-secondary: #1e293b;
+  --text-tertiary: #475569;
+  --border-color: #e2e8f0;
+  --border-color-hover: #cbd5e1;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+
   /* Layout */
   --header-height: 60px;
   --sidebar-width: 500px;
@@ -40,17 +53,21 @@
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .app-header {
   height: var(--header-height);
-  background: white;
-  border-bottom: 1px solid #e5e7eb;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 var(--spacing-lg);
   flex-shrink: 0;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .app-main {
@@ -72,31 +89,45 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
+  background: var(--bg-secondary);
   position: relative;
   overflow: auto;
+  transition: background-color 0.3s ease;
 }
 
 /* Control panels */
 .control-panel {
   width: var(--sidebar-width);
-  background: white;
-  border-left: 1px solid #e5e7eb;
+  background: var(--bg-primary);
+  border-left: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .control-section {
-  padding: var(--spacing-md);
-  border-bottom: 1px solid #e5e7eb;
+  padding: var(--spacing-lg) var(--spacing-md);
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: var(--spacing-sm);
+  transition: border-color 0.3s ease;
+}
+
+.control-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
 }
 
 .control-section h3 {
-  margin-bottom: var(--spacing-sm);
-  font-size: 14px;
-  font-weight: 600;
-  color: #374151;
+  margin-bottom: var(--spacing-lg);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Connection status */
@@ -140,9 +171,11 @@
   padding: var(--spacing-xs) var(--spacing-sm);
   margin: var(--spacing-xs) 0;
   border-radius: var(--border-radius);
-  background: #f9fafb;
+  background: var(--bg-secondary);
   font-size: 12px;
   font-family: monospace;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
 }
 
 .pin-state.high {
@@ -168,22 +201,22 @@
 /* Buttons and controls */
 .btn {
   padding: var(--spacing-xs) var(--spacing-md);
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
-  background: white;
-  color: #374151;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   font-size: 13px;
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
 .btn:hover {
-  background: #f9fafb;
-  border-color: #9ca3af;
+  background: var(--bg-secondary);
+  border-color: var(--border-color-hover);
 }
 
 .btn:active {
-  background: #f3f4f6;
+  background: var(--bg-tertiary);
 }
 
 .btn.primary {
@@ -212,10 +245,13 @@
 /* Input controls */
 .input {
   padding: var(--spacing-xs) var(--spacing-sm);
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   font-size: 13px;
   width: 100%;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.15s ease;
 }
 
 .input:focus {
@@ -255,8 +291,8 @@
 .text-base { font-size: 14px; }
 .font-mono { font-family: monospace; }
 .font-semibold { font-weight: 600; }
-.text-gray-500 { color: #6b7280; }
-.text-gray-700 { color: #374151; }
+.text-gray-500 { color: var(--text-secondary); }
+.text-gray-700 { color: var(--text-primary); }
 .mb-2 { margin-bottom: var(--spacing-sm); }
 .mb-4 { margin-bottom: var(--spacing-md); }
 .flex { display: flex; }
@@ -266,13 +302,13 @@
 
 /* Test Automation Panel Styles */
 .test-automation-panel {
-  background: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
-  padding: 16px;
-  margin: 16px 0;
-  max-height: 600px;
+  width: var(--sidebar-width);
+  background: var(--bg-primary);
+  border-left: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .test-automation-panel.loading {
@@ -289,8 +325,8 @@
 .spinner {
   width: 40px;
   height: 40px;
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #007bff;
+  border: 4px solid var(--border-color);
+  border-top: 4px solid var(--color-primary);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 16px;
@@ -302,61 +338,75 @@
 }
 
 .panel-header {
+  padding: var(--spacing-lg) var(--spacing-md);
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: var(--spacing-sm);
+  transition: border-color 0.3s ease;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #dee2e6;
 }
 
 .panel-header h3 {
-  margin: 0;
-  color: #495057;
-  font-size: 18px;
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
 }
 
 .btn-toggle {
-  background: #6c757d;
-  color: white;
-  border: none;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
   padding: 4px 12px;
   border-radius: 4px;
   cursor: pointer;
   font-size: 12px;
+  transition: all 0.3s ease;
 }
 
 .btn-toggle:hover {
-  background: #5a6268;
+  background: var(--border-color-hover);
+  border-color: var(--border-color-hover);
 }
 
 .error-banner {
-  background: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
+  background: var(--bg-secondary);
+  color: var(--color-error);
+  border: 1px solid var(--color-error);
   border-radius: 4px;
-  padding: 12px;
-  margin-bottom: 16px;
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-sm);
+  transition: all 0.3s ease;
 }
 
 .error-close {
   background: none;
   border: none;
-  color: #721c24;
+  color: var(--color-error);
   cursor: pointer;
   font-size: 18px;
   margin-left: auto;
+  transition: opacity 0.3s ease;
+}
+
+.error-close:hover {
+  opacity: 0.7;
 }
 
 .execution-status {
-  background: white;
-  border: 1px solid #dee2e6;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   border-radius: 6px;
-  padding: 16px;
-  margin-bottom: 16px;
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  transition: all 0.3s ease;
 }
 
 .execution-header {
@@ -419,6 +469,96 @@
   border-radius: 10px;
 }
 
+/* Beautiful iridescent gradient for test progress */
+.progress-fill.iridescent {
+  background: linear-gradient(
+    45deg,
+    #667eea 0%,
+    #764ba2 25%,
+    #f093fb 50%,
+    #f5576c 75%,
+    #4facfe 100%
+  );
+  background-size: 300% 300%;
+  animation: iridescent-flow 3s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill.iridescent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes iridescent-flow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Beautiful metallic blue gradient for completed tests */
+.progress-fill.metallic-blue {
+  background: linear-gradient(
+    135deg,
+    #1e3a8a 0%,
+    #3b82f6 25%,
+    #60a5fa 50%,
+    #93c5fd 75%,
+    #dbeafe 90%,
+    #f0f9ff 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill.metallic-blue::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 70%
+  );
+  animation: metallic-shine 2s ease-in-out infinite;
+}
+
+@keyframes metallic-shine {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+  }
+}
+
 .progress-text {
   font-size: 12px;
   color: #6c757d;
@@ -445,9 +585,72 @@
   border-radius: 4px;
 }
 
+/* Iridescent gradient for step progress */
+.step-progress-fill.iridescent {
+  background: linear-gradient(
+    45deg,
+    #667eea 0%,
+    #764ba2 25%,
+    #f093fb 50%,
+    #f5576c 75%,
+    #4facfe 100%
+  );
+  background-size: 300% 300%;
+  animation: iridescent-flow 3s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.step-progress-fill.iridescent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmer 1.8s infinite;
+}
+
+/* Metallic blue for completed step progress */
+.step-progress-fill.metallic-blue {
+  background: linear-gradient(
+    135deg,
+    #1e3a8a 0%,
+    #3b82f6 25%,
+    #60a5fa 50%,
+    #93c5fd 75%,
+    #dbeafe 90%,
+    #f0f9ff 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.step-progress-fill.metallic-blue::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 70%
+  );
+  animation: metallic-shine 2.5s ease-in-out infinite;
+}
+
 .step-progress-text {
   font-size: 11px;
-  color: #6c757d;
+  color: var(--text-tertiary);
   text-align: center;
 }
 
@@ -465,7 +668,7 @@
 
 .stat.passed { color: #28a745; }
 .stat.failed { color: #dc3545; }
-.stat.duration { color: #6c757d; }
+.stat.duration { color: var(--text-tertiary); }
 
 .tag-filters {
   background: white;
@@ -478,7 +681,7 @@
 .tag-filters h4 {
   margin: 0 0 8px 0;
   font-size: 14px;
-  color: #495057;
+  color: var(--text-secondary);
 }
 
 .tag-list {
@@ -499,7 +702,7 @@
   background: #e9ecef;
   padding: 2px 6px;
   border-radius: 12px;
-  color: #495057;
+  color: var(--text-secondary);
 }
 
 .tag-filter input:checked + .tag-name {
@@ -527,7 +730,7 @@
 .selection-header h4 {
   margin: 0;
   font-size: 14px;
-  color: #495057;
+  color: var(--text-secondary);
 }
 
 .selection-controls {
@@ -591,7 +794,7 @@
 
 .scenario-name {
   font-weight: 500;
-  color: #495057;
+  color: var(--text-secondary);
   margin-bottom: 4px;
 }
 
@@ -601,7 +804,7 @@
   gap: 8px;
   margin-bottom: 4px;
   font-size: 12px;
-  color: #6c757d;
+  color: var(--text-tertiary);
 }
 
 .feature-file {
@@ -625,7 +828,7 @@
 
 .scenario-steps {
   font-size: 11px;
-  color: #6c757d;
+  color: var(--text-tertiary);
 }
 
 .pin-interactions {
@@ -669,16 +872,17 @@
 /* Tab Navigation Styles */
 .tab-navigation {
   display: flex;
-  border-bottom: 1px solid #dee2e6;
-  background: white;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  transition: all 0.3s ease;
 }
 
 .tab-button {
   flex: 1;
   padding: 12px 16px;
   border: none;
-  background: #f8f9fa;
-  color: #6c757d;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
@@ -687,14 +891,14 @@
 }
 
 .tab-button:hover {
-  background: #e9ecef;
-  color: #495057;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
 }
 
 .tab-button.active {
-  background: white;
-  color: #007bff;
-  border-bottom-color: #007bff;
+  background: var(--bg-primary);
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
 }
 
 .tab-content {
@@ -773,10 +977,13 @@
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 600px;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  min-height: 800px;
+  background: var(--bg-secondary);
+  transition: background-color 0.3s ease;
   padding: 20px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .wire-overlay {
@@ -816,23 +1023,26 @@
 .devices-row {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 80px;
   width: 100%;
 }
 
 .device-container {
-  background: white;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
   padding: 20px;
   text-align: center;
   position: relative;
   transition: all 0.3s ease;
+  color: var(--text-primary);
 }
 
 .device-container:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-lg);
   transform: translateY(-2px);
+  border-color: var(--border-color-hover);
 }
 
 .arduino-container {
@@ -853,15 +1063,17 @@
   margin: 0 0 4px 0;
   font-size: 18px;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .device-subtitle {
   font-size: 12px;
-  color: #64748b;
+  color: var(--text-tertiary);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  transition: color 0.3s ease;
 }
 
 .device-image-container {
@@ -873,7 +1085,7 @@
   width: 240px;
   height: auto;
   border-radius: 8px;
-  background: white;
+  background: var(--bg-primary);
   transition: all 0.3s ease;
 }
 
@@ -910,9 +1122,11 @@
   align-items: center;
   gap: 6px;
   padding: 4px 8px;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
   border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
+  color: var(--text-primary);
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 11px;
@@ -921,9 +1135,10 @@
 }
 
 .pin-indicator:hover {
-  background: rgba(255, 255, 255, 1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background: var(--bg-tertiary);
+  box-shadow: var(--shadow-md);
   transform: scale(1.05);
+  border-color: var(--border-color-hover);
 }
 
 .pin-indicator.highlighted {
@@ -948,7 +1163,8 @@
 .pin-label {
   font-family: monospace;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .pin-status {
@@ -981,14 +1197,14 @@
 
 .pin-indicator.readonly {
   opacity: 0.7;
-  background: #f8fafc;
-  border: 2px dashed #cbd5e1 !important;
+  background: var(--bg-secondary);
+  border: 2px dashed var(--border-color) !important;
 }
 
 .pin-indicator.readonly:hover {
-  background: #f1f5f9 !important;
+  background: var(--bg-tertiary) !important;
   transform: none !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: var(--shadow-sm) !important;
 }
 
 .readonly-indicator {
@@ -1579,6 +1795,33 @@
   .signal-name {
     font-size: 12px;
   }
+
+  /* Responsive configurable parameters */
+  .configurable-parameter-item {
+    margin-bottom: 16px;
+    padding: 16px;
+  }
+
+  .parameter-header {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .parameter-signal-name {
+    font-size: 14px;
+  }
+
+  .parameter-connection {
+    font-size: 11px;
+  }
+
+  .control-section {
+    padding: var(--spacing-md);
+  }
+
+  .control-section:has(.configurable-parameter-item) {
+    margin: var(--spacing-md) 0;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1680,44 +1923,7 @@
   background: #94a3b8;
 }
 
-/* Dark mode support (optional) */
-@media (prefers-color-scheme: dark) {
-  .hardware-diagram-enhanced {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-  }
 
-  .device-container,
-  .connection-info-panel,
-  .ping-test-section,
-  .system-info {
-    background: #334155;
-    color: #f1f5f9;
-  }
-
-  .device-header h3,
-  .panel-header h4,
-  .signal-name {
-    color: #f1f5f9;
-  }
-
-  .device-subtitle,
-  .connection-description,
-  .ping-details,
-  .info-item,
-  .help-text {
-    color: #cbd5e1;
-  }
-
-  .connection-item {
-    background: #475569;
-    border-color: #64748b;
-  }
-
-  .connection-item:hover {
-    background: #52525b;
-    border-color: #3b82f6;
-  }
-}
 
 
 
@@ -1912,18 +2118,64 @@
   border-left: 4px solid #f59e0b;
 }
 
-/* Theme and animation classes */
+.setting-note {
+  padding: 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  border-left: 4px solid var(--color-info);
+  margin-bottom: 16px;
+}
+
+.setting-note p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* Dark theme overrides */
 .dark-theme {
   --bg-primary: #0f172a;
   --bg-secondary: #1e293b;
-  --text-primary: #f1f5f9;
-  --text-secondary: #cbd5e1;
+  --bg-tertiary: #334155;
+  --text-primary: #c0c0c0;
+  --text-secondary: #a8a8a8;
+  --text-tertiary: #909090;
   --border-color: #334155;
+  --border-color-hover: #475569;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+
+  /* Adjust pin colors for dark theme */
+  --color-pin-high: #10b981;
+  --color-pin-low: #94a3b8;
+  --color-pin-analog: #60a5fa;
+  --color-pin-pwm: #a78bfa;
+  --color-frequency-active: #a78bfa;
+  --color-frequency-inactive: #94a3b8;
 }
 
 .no-animations * {
   animation: none !important;
   transition: none !important;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  font-size: 16px;
+  padding: 6px 8px;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  background: var(--bg-tertiary);
 }
 
 .compact-mode {
@@ -2249,6 +2501,20 @@
   height: 100%;
   background: #10b981;
   transition: width 0.3s ease;
+}
+
+/* Apply iridescent gradient to batch progress when running */
+.batch-progress .progress-fill.iridescent {
+  background: linear-gradient(
+    45deg,
+    #667eea 0%,
+    #764ba2 25%,
+    #f093fb 50%,
+    #f5576c 75%,
+    #4facfe 100%
+  );
+  background-size: 300% 300%;
+  animation: iridescent-flow 3s ease-in-out infinite;
 }
 
 .custom-preset-creator {
@@ -2955,7 +3221,7 @@
 }
 
 .help-modal-container {
-  background: linear-gradient(135deg, #ffffff 0%, #fefefe 50%, #f8fafc 100%);
+  background: var(--bg-primary);
   border-radius: 16px;
   width: 95%;
   max-width: 1000px;
@@ -2963,9 +3229,10 @@
   max-height: 800px;
   display: flex;
   overflow: hidden;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
   animation: helpModalSlideIn 0.4s ease-out;
+  transition: all 0.3s ease;
 }
 
 @keyframes helpModalSlideIn {
@@ -2982,16 +3249,18 @@
 /* Help Sidebar Styles */
 .help-sidebar {
   width: 280px;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  border-right: 1px solid #e2e8f0;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease;
 }
 
 .help-sidebar-header {
   padding: 24px 20px 16px;
-  border-bottom: 1px solid #e2e8f0;
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  transition: all 0.3s ease;
 }
 
 .help-sidebar-title {
@@ -3078,9 +3347,10 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: white;
+  background: var(--bg-primary);
   overflow-y: auto;
   animation: helpContentFadeIn 0.5s ease-out;
+  transition: background-color 0.3s ease;
 }
 
 @keyframes helpContentFadeIn {
@@ -3628,6 +3898,431 @@
   }
 }
 
+/* Sonicator Section Headers */
+.control-section h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  padding: 0 0 8px 0;
+  border-bottom: 2px solid;
+}
+
+.control-section h4:has-text("Sonicator #4") {
+  color: #1e40af;
+  border-bottom-color: #3b82f6;
+}
+
+/* Sonicator #4 Header Theme Support */
+.sonicator-4-header {
+  color: #000000 !important; /* Black for light theme */
+  transition: color 0.3s ease;
+}
+
+.dark-theme .sonicator-4-header {
+  color: #c0c0c0 !important; /* Silver for dark theme */
+}
+
+/* Arduino Commands Panel Styles */
+.arduino-commands-panel {
+  padding: 20px;
+  background: var(--bg-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.arduino-commands-panel .commands-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.arduino-commands-panel .commands-header h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 8px 0;
+}
+
+.arduino-commands-panel .commands-header p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.arduino-commands-panel .commands-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+/* PING Test Section */
+.arduino-commands-panel .ping-test-primary {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  padding: 24px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.arduino-commands-panel .ping-test-primary h4 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+}
+
+.arduino-commands-panel .ping-button-large {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 16px;
+  display: block;
+  width: 100%;
+}
+
+.arduino-commands-panel .ping-button-large:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.arduino-commands-panel .ping-button-large:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.arduino-commands-panel .ping-response-large {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.arduino-commands-panel .ping-response-large.success {
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.arduino-commands-panel .ping-response-large.error {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.arduino-commands-panel .response-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.arduino-commands-panel .response-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.arduino-commands-panel .detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arduino-commands-panel .detail-label {
+  font-weight: 500;
+}
+
+.arduino-commands-panel .detail-value {
+  font-family: 'Courier New', monospace;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* System Status Section */
+.arduino-commands-panel .system-status-section {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.arduino-commands-panel .system-status-section h4 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+}
+
+.arduino-commands-panel .status-indicators {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.arduino-commands-panel .status-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.arduino-commands-panel .status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.arduino-commands-panel .status-label {
+  font-weight: 500;
+  min-width: 80px;
+}
+
+.arduino-commands-panel .status-value {
+  font-family: 'Courier New', monospace;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: auto;
+}
+
+/* Quick Help Section */
+.arduino-commands-panel .quick-help-section {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: white;
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.arduino-commands-panel .quick-help-section h4 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+}
+
+.arduino-commands-panel .help-items {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.arduino-commands-panel .help-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.arduino-commands-panel .help-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.arduino-commands-panel .help-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.arduino-commands-panel .help-title {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.arduino-commands-panel .help-description {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* Enhanced Pin Mapping Display - Front and Center */
+.pin-mapping-display-prominent {
+  margin: 40px auto;
+  max-width: 1200px;
+  background: var(--bg-color);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 2px solid var(--border-color);
+}
+
+.pin-mapping-header-large {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  padding: 24px;
+  text-align: center;
+}
+
+.pin-mapping-header-large h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.mapping-subtitle-large {
+  font-size: 18px;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.pin-mapping-grid {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.pin-mapping-row-large {
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.pin-mapping-row-large:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+  transform: translateY(-2px);
+}
+
+.pin-mapping-row-large.active {
+  border-color: #10b981;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.05));
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.pin-mapping-row-large.readonly {
+  border-color: #f59e0b;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.05));
+  cursor: not-allowed;
+}
+
+.pin-connection-visual {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.arduino-pin-badge-large {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  min-width: 60px;
+  text-align: center;
+}
+
+.direction-badge-large {
+  background: var(--accent-color);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 12px;
+  text-align: center;
+}
+
+.signal-name-large {
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--text-color);
+  flex: 1;
+  min-width: 150px;
+}
+
+.connection-arrow-large {
+  font-size: 20px;
+  color: var(--text-secondary);
+  font-weight: bold;
+}
+
+.atmega-pin-badge-large {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  min-width: 60px;
+  text-align: center;
+}
+
+.current-value-badge-large {
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-color);
+  min-width: 80px;
+  text-align: center;
+}
+
+.pin-description-large {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.readonly-indicator {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+/* Responsive Design for Pin Mapping */
+@media (max-width: 768px) {
+  .pin-connection-visual {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .arduino-pin-badge-large,
+  .atmega-pin-badge-large,
+  .current-value-badge-large {
+    min-width: auto;
+  }
+
+  .connection-arrow-large {
+    text-align: center;
+    transform: rotate(90deg);
+  }
+}
+
+/* Enhanced parameter cards */
+.control-section .mb-3.p-3.bg-gray-50 {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.control-section .mb-3.p-3.bg-gray-50:hover {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 /* Arduino Command Log Tab */
 .arduino-tab {
   height: 100%;
@@ -3638,4 +4333,935 @@
 .arduino-tab .arduino-command-log {
   height: calc(100vh - var(--header-height) - 120px);
   max-height: 600px;
+}
+
+/* Configurable Parameters Enhanced Styling */
+.configurable-parameter-item {
+  margin-bottom: 24px;
+  padding: 20px;
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.configurable-parameter-item:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.1);
+}
+
+.configurable-parameter-item:last-child {
+  margin-bottom: 32px;
+}
+
+.parameter-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.parameter-signal-name {
+  font-size: 16px;
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  color: #1e293b;
+  letter-spacing: 0.5px;
+}
+
+.parameter-connection {
+  font-size: 12px;
+  color: #64748b;
+  font-family: 'Courier New', monospace;
+  background: #e2e8f0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+
+.parameter-description {
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.4;
+}
+
+.parameter-description strong {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.parameter-controls {
+  margin-top: 8px;
+}
+
+/* Enhanced section styling for configurable parameters */
+.control-section:has(.configurable-parameter-item) {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 2px solid #cbd5e1;
+  border-radius: 16px;
+  margin: var(--spacing-lg) 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Add visual separator between sections */
+.control-section + .control-section {
+  margin-top: var(--spacing-xl);
+}
+
+/* Compact Pin Mapping Display - Center Hardware Diagram */
+.compact-pin-mapping-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  margin: 0 20px;
+  box-shadow: var(--shadow-lg);
+  min-width: 600px;
+  max-width: 800px;
+}
+
+.pin-mapping-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.pin-mapping-header h4 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.mapping-subtitle {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.compact-pin-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.compact-pin-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.compact-pin-row:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-color-hover);
+  transform: translateY(-1px);
+  background: var(--bg-tertiary);
+}
+
+.compact-pin-row.active {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.compact-pin-row.readonly {
+  opacity: 0.7;
+  cursor: default;
+  border-style: dashed;
+}
+
+.compact-pin-row.readonly:hover {
+  transform: none;
+  background: var(--bg-secondary);
+}
+
+.wrapper-pin-badge {
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 4px 8px;
+  border-radius: 4px;
+  min-width: 45px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.direction-badge {
+  background: #f3f4f6;
+  color: #374151;
+  padding: 4px 6px;
+  border-radius: 4px;
+  min-width: 40px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 10px;
+}
+
+.signal-name {
+  color: var(--text-primary);
+  font-weight: 700;
+  min-width: 140px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.arrow {
+  color: var(--text-tertiary);
+  font-weight: 400;
+  font-size: 18px;
+  margin: 0 6px;
+}
+
+.dut-pin-badge {
+  background: #fecaca;
+  color: #dc2626;
+  padding: 4px 8px;
+  border-radius: 4px;
+  min-width: 45px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.current-value-badge {
+  background: #ecfdf5;
+  color: #059669;
+  padding: 4px 8px;
+  border-radius: 4px;
+  min-width: 70px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 10px;
+}
+
+/* Dark theme support for center pin mapping */
+.dark-theme .compact-pin-mapping-center {
+  background: var(--bg-primary);
+  border-color: var(--border-color);
+}
+
+.dark-theme .wrapper-pin-badge {
+  background: #1e3a8a;
+  color: #bfdbfe;
+}
+
+.dark-theme .direction-badge {
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+}
+
+.dark-theme .dut-pin-badge {
+  background: #7f1d1d;
+  color: #fca5a5;
+}
+
+.dark-theme .current-value-badge {
+  background: #064e3b;
+  color: #6ee7b7;
+}
+
+/* Special styling for the configurable parameters section header */
+.control-section:has(.pin-mapping-container) h3 {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  padding: var(--spacing-md);
+  margin: calc(-1 * var(--spacing-lg)) calc(-1 * var(--spacing-md)) var(--spacing-lg);
+  border-radius: 12px 12px 0 0;
+  border-bottom: none;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================================================ */
+/* ENHANCED CENTERED HARDWARE DIAGRAM STYLES */
+/* ============================================================================ */
+
+/* Centered and Enlarged Hardware Layout */
+.hardware-layout-centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 40px 40px 40px;
+  gap: 30px;
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 500px;
+}
+
+.devices-row-enlarged {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Larger Device Containers */
+.device-container-large {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  padding: 30px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+  min-width: 280px;
+  flex: 1;
+  max-width: 350px;
+}
+
+.device-container-large:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  transform: translateY(-3px);
+}
+
+/* Larger Device Images */
+.device-image-container-large {
+  position: relative;
+  margin: 20px 0;
+}
+
+.device-image-large {
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.device-image-large:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Larger Pin Indicators */
+.device-pins-large {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.pin-indicator-large {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.pin-indicator-large:hover {
+  border-color: #3b82f6;
+  background: #eff6ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.pin-indicator-large.highlighted {
+  border-color: #10b981;
+  background: #ecfdf5;
+  animation: pin-pulse-large 2s ease-in-out infinite;
+}
+
+.pin-label-large {
+  font-weight: 600;
+  font-size: 14px;
+  color: #374151;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.pin-status-large {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.pin-status-large.in {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.pin-status-large.out {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.pin-status-large.analog {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+@keyframes pin-pulse-large {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+}
+
+/* ============================================================================ */
+/* CONNECTION WIRES CENTER SECTION */
+/* ============================================================================ */
+
+.connection-wires-center {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  padding: 25px;
+  min-width: 320px;
+  max-width: 400px;
+  border: 2px solid #e5e7eb;
+}
+
+.wire-legend h4 {
+  margin: 0 0 20px 0;
+  color: #374151;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 2px solid #f3f4f6;
+  padding-bottom: 10px;
+}
+
+.connection-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.connection-wire {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.connection-wire:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+  transform: translateX(2px);
+}
+
+.connection-wire.active {
+  background: #ecfdf5;
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1);
+}
+
+.connection-wire.readonly {
+  background: #fef2f2;
+  border-color: #fecaca;
+  opacity: 0.8;
+}
+
+.wire-endpoints {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.arduino-endpoint, .atmega-endpoint {
+  font-weight: 600;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #f3f4f6;
+  color: #374151;
+  min-width: 35px;
+  text-align: center;
+}
+
+.arduino-endpoint {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.atmega-endpoint {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.wire-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  justify-content: center;
+  padding: 0 10px;
+}
+
+.wire-line.active {
+  animation: wire-flow 2s ease-in-out infinite;
+}
+
+.wire-signal {
+  font-size: 10px;
+  font-weight: 500;
+  color: #6b7280;
+  text-align: center;
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wire-arrow {
+  color: #9ca3af;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.wire-line.active .wire-arrow {
+  color: #10b981;
+  animation: arrow-pulse 1s ease-in-out infinite;
+}
+
+.wire-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.status-badge {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.status-badge.in {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.status-badge.out {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-badge.analog {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.state-value {
+  font-size: 11px;
+  font-weight: 600;
+  color: #374151;
+  background: #f3f4f6;
+  padding: 2px 6px;
+  border-radius: 3px;
+  min-width: 40px;
+  text-align: center;
+}
+
+@keyframes wire-flow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes arrow-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* ============================================================================ */
+/* ARDUINO COMMANDS CENTER SECTION */
+/* ============================================================================ */
+
+.arduino-commands-center {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  margin: 30px auto;
+  padding: 30px;
+  max-width: 1200px;
+  border: 2px solid #e5e7eb;
+}
+
+.commands-header {
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 3px solid #f3f4f6;
+  padding-bottom: 20px;
+}
+
+.commands-header h3 {
+  margin: 0 0 8px 0;
+  color: #1f2937;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.commands-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 16px;
+}
+
+.commands-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* PING Test Section - Primary */
+.ping-test-primary {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border: 2px solid #3b82f6;
+  border-radius: 12px;
+  padding: 25px;
+  text-align: center;
+}
+
+.ping-test-primary h4 {
+  margin: 0 0 20px 0;
+  color: #1e40af;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.ping-controls-large {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.ping-button-large {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.ping-button-large:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+.ping-button-large:active {
+  transform: translateY(0);
+}
+
+.ping-button-large.loading {
+  background: #9ca3af;
+  cursor: not-allowed;
+  animation: button-pulse 1.5s ease-in-out infinite;
+}
+
+.ping-status-large {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  background: white;
+  border: 2px solid #e5e7eb;
+}
+
+.ping-status-large.success {
+  background: #ecfdf5;
+  border-color: #10b981;
+}
+
+.ping-status-large.error {
+  background: #fef2f2;
+  border-color: #ef4444;
+}
+
+.ping-status-large.unknown {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.status-dot-large {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #9ca3af;
+}
+
+.ping-status-large.success .status-dot-large {
+  background: #10b981;
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+.ping-status-large.error .status-dot-large {
+  background: #ef4444;
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+.status-text-large {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.ping-details-large {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: white;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.detail-item strong {
+  color: #374151;
+}
+
+.status-message {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.response-time {
+  color: #059669;
+  font-weight: 600;
+}
+
+.last-ping {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+@keyframes button-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes dot-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* System Status Section */
+.system-status-large {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 2px solid #10b981;
+  border-radius: 12px;
+  padding: 25px;
+}
+
+.system-status-large h4 {
+  margin: 0 0 20px 0;
+  color: #065f46;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.status-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #d1fae5;
+}
+
+.status-indicator-large {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-indicator-large.connected {
+  background: #10b981;
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+.status-indicator-large.disconnected {
+  background: #ef4444;
+}
+
+.status-indicator-large.port {
+  background: #3b82f6;
+}
+
+.status-indicator-large.websocket {
+  background: #8b5cf6;
+}
+
+.status-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.status-details strong {
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status-details span {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-details span.connected {
+  color: #059669;
+}
+
+.status-details span.disconnected {
+  color: #dc2626;
+}
+
+.port-info, .websocket-status {
+  color: #6b7280;
+}
+
+/* Quick Help Section */
+.quick-help-large {
+  background: linear-gradient(135deg, #fefbff 0%, #f3e8ff 100%);
+  border: 2px solid #8b5cf6;
+  border-radius: 12px;
+  padding: 25px;
+}
+
+.quick-help-large h4 {
+  margin: 0 0 20px 0;
+  color: #5b21b6;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.help-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.help-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e9d5ff;
+  font-size: 13px;
+  color: #374151;
+}
+
+.help-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.help-item code {
+  background: #f3f4f6;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 11px;
+  color: #6b7280;
+}
+
+/* Responsive Design for Commands Grid */
+@media (max-width: 1024px) {
+  .commands-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .arduino-commands-center {
+    margin: 20px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .devices-row-enlarged {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .connection-wires-center {
+    order: -1;
+    min-width: 280px;
+    max-width: 100%;
+  }
+
+  .device-container-large {
+    max-width: 100%;
+    min-width: 280px;
+  }
+
+  .hardware-layout-centered {
+    padding: 30px 20px;
+  }
 }

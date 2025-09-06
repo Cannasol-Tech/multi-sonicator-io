@@ -155,11 +155,15 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
 
           <div className="execution-progress">
             <div className="progress-bar">
-              <div 
-                className="progress-fill"
-                style={{ 
+              <div
+                className={
+                  currentExecution.status === 'running' ? 'progress-fill iridescent' :
+                  currentExecution.status === 'passed' ? 'progress-fill metallic-blue' :
+                  'progress-fill'
+                }
+                style={{
                   width: `${executionProgress.percentage}%`,
-                  backgroundColor: getStatusColor(currentExecution.status)
+                  backgroundColor: (currentExecution.status === 'running' || currentExecution.status === 'passed') ? undefined : getStatusColor(currentExecution.status)
                 }}
               />
             </div>
@@ -172,10 +176,15 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
           {isExecutionInProgress && stepProgress.total > 0 && (
             <div className="step-progress">
               <div className="step-progress-bar">
-                <div 
-                  className="step-progress-fill"
-                  style={{ 
-                    width: `${(stepProgress.current / stepProgress.total) * 100}%`
+                <div
+                  className={
+                    currentExecution.status === 'running' ? 'step-progress-fill iridescent' :
+                    currentExecution.status === 'passed' ? 'step-progress-fill metallic-blue' :
+                    'step-progress-fill'
+                  }
+                  style={{
+                    width: `${(stepProgress.current / stepProgress.total) * 100}%`,
+                    background: (currentExecution.status === 'running' || currentExecution.status === 'passed') ? undefined : '#17a2b8'
                   }}
                 />
               </div>
@@ -190,9 +199,11 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
             <span className="stat failed">❌ {currentExecution.failed_scenarios}</span>
             <span className="stat duration">
               ⏱️ {formatDuration(
-                currentExecution.end_time 
-                  ? currentExecution.end_time - (currentExecution.start_time || 0)
-                  : Date.now() - (currentExecution.start_time || 0)
+                currentExecution.end_time && currentExecution.start_time
+                  ? currentExecution.end_time - currentExecution.start_time // Both should now be in milliseconds
+                  : currentExecution.start_time
+                    ? Date.now() - currentExecution.start_time // Both in milliseconds
+                    : 0
               )}
             </span>
           </div>

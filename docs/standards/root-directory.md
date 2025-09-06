@@ -2,7 +2,7 @@
 
 ## OFFICIAL STANDARD OF PROCEDURE RULE
 
-**AXOVIA FLOW ROOT DIRECTORY FILE LIST**
+***AXOVIA FLOW ROOT DIRECTORY FILE LIST***
 
 This document establishes the official rule for what files are allowed in the root directory of any Axovia Flow project. This standard ensures clean repository organization, prevents clutter, and maintains consistency across all Axovia Flow implementations.
 
@@ -17,41 +17,49 @@ The root directory should contain only essential configuration and documentation
 The following files are permitted in the root directory:
 
 #### 1. `.gitignore`
+
 - **Purpose**: Define files and directories to exclude from version control
 - **Required**: Yes
 - **Template**: Must include standard exclusions for Node.js, Python, and development artifacts
 
 #### 2. `.gitmodules`
+
 - **Purpose**: Define Git submodules used by the project
 - **Required**: Yes (if using submodules)
 - **Usage**: For BMad-Core and other framework integrations
 
 #### 3. `.npmignore`
-- **Purpose**: Define files to exclude when publishing to npm
+
+- **Purpose**: Define files to exclude when paublishing to npm
 - **Required**: Yes
 - **Template**: Must exclude development files, tests, and documentation
 
 #### 4. `Makefile`
+
 - **Purpose**: Provide make targets for common development workflows
 - **Required**: Yes
 - **Content**: Must include targets for `test`, `build`, `install`, `clean`, etc.
 
 #### 5. `LICENSE`
+
 - **Purpose**: Define the project's license terms
 - **Required**: Yes
 - **Format**: Standard license text (typically MIT, Apache 2.0, etc.)
 
 #### 6. `README.md`
+
 - **Purpose**: Provide project overview, installation, and usage instructions
 - **Required**: Yes
 - **Content**: Must follow the Axovia Flow README template
 
 #### 7. `package.json`
+
 - **Purpose**: Defines project metadata and npm dependencies
 - **Required**: Yes
 - **Usage**: Essential for `npm install` and script execution
 
 #### 8. `package-lock.json`
+
 - **Purpose**: Records the exact versions of dependencies
 - **Required**: Yes
 - **Usage**: Ensures reproducible builds with `npm ci`
@@ -124,8 +132,8 @@ Projects must implement automated validation:
 # Example Makefile target
 .PHONY: validate-root
 validate-root:
-	@echo "Validating root directory compliance..."
-	@./scripts/validate-root-directory.sh
+ @echo "Validating root directory compliance..."
+ @./scripts/validate-root-directory.sh
 ```
 
 ### Manual Review Checklist

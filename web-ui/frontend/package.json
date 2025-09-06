@@ -7,9 +7,18 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "echo \"Tests will be implemented with pytest\" && exit 0"
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
-  "keywords": ["arduino", "atmega32a", "sonicator", "testing", "hil"],
+  "keywords": [
+    "arduino",
+    "atmega32a",
+    "sonicator",
+    "testing",
+    "hil"
+  ],
   "author": "Cannasol Technologies",
   "license": "Proprietary",
   "dependencies": {
@@ -21,5 +30,13 @@
     "react-dom": "^19.1.1",
     "typescript": "^5.9.2",
     "vite": "^7.1.4"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@vitest/coverage-v8": "^3.2.4",
+    "jsdom": "^26.1.0",
+    "vitest": "^3.2.4"
   }
 }

@@ -93,8 +93,8 @@ export default function TestResultsModal({ execution, visible, onClose }: TestRe
               <div className="stat-card duration">
                 <div className="stat-number">
                   {TestAutomationAPI.formatDuration(
-                    execution.end_time && execution.start_time 
-                      ? execution.end_time - execution.start_time 
+                    execution.end_time && execution.start_time
+                      ? execution.end_time - execution.start_time // Both should now be in milliseconds
                       : undefined
                   )}
                 </div>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
 interface UserPreferences {
-  theme: 'light' | 'dark' | 'auto'
   animationsEnabled: boolean
   soundEnabled: boolean
   autoRefreshInterval: number
@@ -18,7 +17,6 @@ interface SettingsPanelProps {
 }
 
 const DEFAULT_PREFERENCES: UserPreferences = {
-  theme: 'auto',
   animationsEnabled: true,
   soundEnabled: false,
   autoRefreshInterval: 1000,
@@ -48,22 +46,9 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ onPreferencesChange }) =>
     }
   }, [])
 
-  // Apply theme changes immediately
+  // Apply preference changes immediately
   useEffect(() => {
     const root = document.documentElement
-    if (preferences.theme === 'dark') {
-      root.classList.add('dark-theme')
-    } else if (preferences.theme === 'light') {
-      root.classList.remove('dark-theme')
-    } else {
-      // Auto theme based on system preference
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-      if (mediaQuery.matches) {
-        root.classList.add('dark-theme')
-      } else {
-        root.classList.remove('dark-theme')
-      }
-    }
 
     // Apply animations setting
     if (!preferences.animationsEnabled) {
@@ -78,7 +63,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ onPreferencesChange }) =>
     } else {
       root.classList.remove('compact-mode')
     }
-  }, [preferences.theme, preferences.animationsEnabled, preferences.compactMode])
+  }, [preferences.animationsEnabled, preferences.compactMode])
 
   const updatePreference = <K extends keyof UserPreferences>(
     key: K, 
@@ -193,16 +178,8 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ onPreferencesChange }) =>
             <div className="settings-section">
               <h4>Appearance Settings</h4>
               
-              <div className="setting-group">
-                <label>Theme</label>
-                <select 
-                  value={preferences.theme}
-                  onChange={(e) => updatePreference('theme', e.target.value as any)}
-                >
-                  <option value="auto">Auto (System)</option>
-                  <option value="light">Light</option>
-                  <option value="dark">Dark</option>
-                </select>
+              <div className="setting-note">
+                <p>💡 <strong>Theme:</strong> Use the theme toggle button (🌓) in the header to switch between light, dark, and auto modes.</p>
               </div>
 
               <div className="setting-group">

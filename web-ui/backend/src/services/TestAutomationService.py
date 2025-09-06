@@ -28,7 +28,9 @@ try:
     from test.acceptance.hil_framework.hil_controller import HILController
     from test.acceptance.hil_framework.hardware_interface import HardwareInterface as HILHardwareInterface
 except ImportError as e:
-    print(f"Warning: Could not import HIL framework: {e}")
+    # Only print warning if not being called from API (when stdout is used for JSON)
+    if len(sys.argv) < 2 or sys.argv[1] not in ['get_scenarios', 'execute_scenarios']:
+        print(f"Warning: Could not import HIL framework: {e}")
     HILController = None
     HILHardwareInterface = None
 
@@ -103,8 +105,10 @@ class TestAutomationService:
         self.test_root = Path(__file__).parent.parent.parent.parent.parent / 'test' / 'acceptance'
         self.features_path = self.test_root / 'features'
         
-        print(f"Test Automation Service initialized")
-        print(f"Features path: {self.features_path}")
+        # Only print initialization messages if not being called from API
+        if len(sys.argv) < 2 or sys.argv[1] not in ['get_scenarios', 'execute_scenarios']:
+            print(f"Test Automation Service initialized")
+            print(f"Features path: {self.features_path}")
 
     def get_available_scenarios(self) -> List[Dict[str, Any]]:
         """Parse feature files and return available test scenarios"""
@@ -121,7 +125,9 @@ class TestAutomationService:
                 scenarios.extend(parsed_scenarios)
                 
         except Exception as e:
-            print(f"Error parsing feature files: {e}")
+            # Only print error if not being called from API
+            if len(sys.argv) < 2 or sys.argv[1] not in ['get_scenarios', 'execute_scenarios']:
+                print(f"Error parsing feature files: {e}")
             
         return scenarios
 
@@ -139,18 +145,18 @@ class TestAutomationService:
             current_steps = []
             feature_name = ""
             
-            for line in lines:
+            for line_index, line in enumerate(lines):
                 line = line.strip()
-                
+
                 if line.startswith('Feature:'):
                     feature_name = line.replace('Feature:', '').strip()
-                    
+
                 elif line.startswith('Scenario:'):
                     # Save previous scenario if exists
                     if current_scenario:
                         current_scenario['steps'] = current_steps
                         scenarios.append(current_scenario)
-                    
+
                     # Start new scenario
                     scenario_name = line.replace('Scenario:', '').strip()
                     current_scenario = {
@@ -158,7 +164,7 @@ class TestAutomationService:
                         'description': scenario_name,
                         'feature_file': str(feature_file.name),
                         'feature_name': feature_name,
-                        'tags': self._extract_tags_from_previous_lines(lines, lines.index(line)),
+                        'tags': self._extract_tags_from_previous_lines(lines, line_index),
                         'steps': []
                     }
                     current_steps = []
@@ -179,7 +185,9 @@ class TestAutomationService:
                 scenarios.append(current_scenario)
                 
         except Exception as e:
-            print(f"Error parsing feature file {feature_file}: {e}")
+            # Only print error if not being called from API
+            if len(sys.argv) < 2 or sys.argv[1] not in ['get_scenarios', 'execute_scenarios']:
+                print(f"Error parsing feature file {feature_file}: {e}")
             
         return scenarios
 
@@ -283,7 +291,7 @@ class TestAutomationService:
             
         execution = self.current_execution
         execution.status = TestStatus.RUNNING
-        execution.start_time = time.time()
+        execution.start_time = int(time.time() * 1000)  # Convert to milliseconds
         
         self._send_progress_update()
         
@@ -309,7 +317,7 @@ class TestAutomationService:
             print(f"Test execution error: {e}")
             
         finally:
-            execution.end_time = time.time()
+            execution.end_time = int(time.time() * 1000)  # Convert to milliseconds
             if execution.status == TestStatus.RUNNING:
                 execution.status = TestStatus.PASSED if execution.failed_scenarios == 0 else TestStatus.FAILED
                 

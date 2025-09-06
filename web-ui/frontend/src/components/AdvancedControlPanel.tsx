@@ -200,7 +200,7 @@ const AdvancedControlPanel: React.FC<AdvancedControlPanelProps> = ({
     const currentStates: Record<string, 'HIGH' | 'LOW'> = {}
     
     // Get current states of controllable pins (exclude UART communication pins)
-    const controllablePins = ['START_4', 'RESET_4', 'POWER_SENSE_4'] // UART pins excluded for Modbus communication
+    const controllablePins = ['START_4', 'RESET_4', 'POWER_SENSE_4', 'FREQ_DIV10_4'] // UART pins excluded for Modbus communication
     controllablePins.forEach(signal => {
       const pinState = hardwareState.pins[signal]
       if (pinState && (pinState.state === 'HIGH' || pinState.state === 'LOW')) {
@@ -410,7 +410,7 @@ const AdvancedControlPanel: React.FC<AdvancedControlPanelProps> = ({
               <div className="current-states">
                 <h5>Current Controllable Pin States</h5>
                 <div className="state-display">
-                  {['START_4', 'RESET_4', 'POWER_SENSE_4'].map(signal => { // Only controllable pins, UART excluded
+                  {['START_4', 'RESET_4', 'POWER_SENSE_4', 'FREQ_DIV10_4'].map(signal => { // Only controllable pins, UART excluded
                     const pinState = hardwareState.pins[signal]
                     return (
                       <div key={signal} className="current-state">
@@ -438,7 +438,7 @@ const AdvancedControlPanel: React.FC<AdvancedControlPanelProps> = ({
         {/* Power Level Control */}
         <div className="control-section">
           <div className="section-header">
-            <h4>🔋 Sonicator #4 Power Control</h4>
+            <h4 className="sonicator-4-header">🔋 Sonicator #4 Power Control</h4>
             <p>Simulate different power levels for Sonicator #4</p>
           </div>
           <div className="power-control">

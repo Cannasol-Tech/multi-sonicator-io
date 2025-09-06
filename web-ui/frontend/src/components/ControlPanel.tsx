@@ -8,9 +8,65 @@ interface ControlPanelProps {
 }
 
 export default function ControlPanel({ hardwareState, onPinControl, connected }: ControlPanelProps) {
-  const [pwmFrequency, setPwmFrequency] = useState(1000)
-  const [pwmDutyCycle, setPwmDutyCycle] = useState(50)
-  const [selectedPin, setSelectedPin] = useState('')
+
+  // Pin descriptions and mappings based on docs/planning/pin-matrix.md
+  const pinDescriptions: Record<string, { description: string; wrapperPin: string; dutPin: string; physicalPin: string }> = {
+    'FREQ_DIV10_4': {
+      description: 'Sonicator #4 Frequency Output (in Hz/10)',
+      wrapperPin: 'D7',
+      dutPin: 'PB0',
+      physicalPin: '1'
+    },
+    'FREQ_LOCK_4': {
+      description: 'Sonicator #4 Frequency Lock Signal',
+      wrapperPin: 'D8',
+      dutPin: 'PB4',
+      physicalPin: '5'
+    },
+    'OVERLOAD_4': {
+      description: 'Sonicator #4 Overload Protection Signal',
+      wrapperPin: 'A2',
+      dutPin: 'PD3',
+      physicalPin: '17'
+    },
+    'START_4': {
+      description: 'Sonicator #4 Start Control Signal',
+      wrapperPin: 'A3',
+      dutPin: 'PC0',
+      physicalPin: '22'
+    },
+    'RESET_4': {
+      description: 'Sonicator #4 Reset Control Signal',
+      wrapperPin: 'A4',
+      dutPin: 'PC1',
+      physicalPin: '23'
+    },
+    'POWER_SENSE_4': {
+      description: 'Sonicator #4 Power Sensing (5.44 mV/W scaling)',
+      wrapperPin: 'A1',
+      dutPin: 'PA7',
+      physicalPin: '33'
+    },
+    'AMPLITUDE_ALL': {
+      description: 'Sonicator Amplitude Control (PWM Output)',
+      wrapperPin: 'D9',
+      dutPin: 'PD7',
+      physicalPin: '21'
+    },
+    'UART_TXD': {
+      description: 'UART Transmit Data Output',
+      wrapperPin: 'D11',
+      dutPin: 'PD1',
+      physicalPin: '15'
+    },
+    'STATUS_LED': {
+      description: 'System Status LED Output',
+      wrapperPin: 'D12',
+      dutPin: 'PD4',
+      physicalPin: '18'
+    }
+  }
+
   const [configuration, setConfiguration] = useState({
     sonicator4: {
       operatingFrequencyKHz: 20.0,
@@ -24,10 +80,8 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
   const [frequencyInput, setFrequencyInput] = useState('20.0')
   const [manualFrequencyInput, setManualFrequencyInput] = useState('2.0')
 
-  const inputPins = Object.entries(hardwareState.pins).filter(([_, pin]) => pin.direction === 'IN')
-  const outputPins = Object.entries(hardwareState.pins).filter(([_, pin]) => pin.direction === 'OUT')
-  const analogPins = Object.entries(hardwareState.pins).filter(([_, pin]) => pin.direction === 'ANALOG')
-  const pwmPins = Object.entries(hardwareState.pins).filter(([signal, _]) => signal === 'AMPLITUDE_ALL')
+  const inputPins = Object.entries(hardwareState.pins).filter(([signal, pin]) => pin.direction === 'IN' || signal === 'POWER_SENSE_4')
+  const outputPins = Object.entries(hardwareState.pins).filter(([signal, pin]) => pin.direction === 'OUT' && signal !== 'UART_TXD')
 
   const handlePinToggle = (signal: string, currentState: any) => {
     // Don't allow toggling frequency pins or PWM output pins
@@ -199,56 +253,13 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
     }
   }
 
-  const handlePinRead = (signal: string, isAnalog: boolean = false) => {
-    onPinControl(signal, isAnalog ? 'read_adc' : 'read_pin')
-  }
 
-  const handlePWMSet = () => {
-    if (!selectedPin) return
 
-    // Validate PWM parameters
-    if (pwmFrequency < 1 || pwmFrequency > 50000) {
-      alert('PWM frequency must be between 1 and 50000 Hz')
-      return
-    }
 
-    if (pwmDutyCycle < 0 || pwmDutyCycle > 100) {
-      alert('PWM duty cycle must be between 0 and 100%')
-      return
-    }
 
-    onPinControl(selectedPin, 'set_pwm', {
-      frequency: pwmFrequency,
-      dutyCycle: pwmDutyCycle
-    })
-  }
 
-  const handlePing = () => {
-    onPinControl('', 'ping')
-  }
 
-  const handleReadAllPins = () => {
-    // Read all pins for comprehensive status update
-    Object.entries(hardwareState.pins).forEach(([signal, pinState]) => {
-      if (pinState.direction === 'ANALOG') {
-        onPinControl(signal, 'read_adc')
-      } else {
-        onPinControl(signal, 'read_pin')
-      }
-    })
-  }
 
-  const handleSetAllInputsLow = () => {
-    inputPins.forEach(([signal]) => {
-      onPinControl(signal, 'write_pin', 'LOW')
-    })
-  }
-
-  const handleSetAllInputsHigh = () => {
-    inputPins.forEach(([signal]) => {
-      onPinControl(signal, 'write_pin', 'HIGH')
-    })
-  }
 
   const formatTimestamp = (timestamp: number) => {
     return new Date(timestamp).toLocaleTimeString()
@@ -409,78 +420,50 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
 
   return (
     <div className="control-panel">
-      {/* Connection Status */}
-      <div className="control-section">
-        <h3>Connection Status</h3>
-        <div className="connection-status">
-          <div className={`connection-indicator ${connected ? 'connected' : 'disconnected'}`}></div>
-          <span>{connected ? 'Connected' : 'Disconnected'}</span>
-        </div>
-        {hardwareState.connection.port && (
-          <div className="text-xs text-gray-500 mt-1">
-            Port: {hardwareState.connection.port}
-          </div>
-        )}
-        <div className="flex gap-2 mt-2">
-          <button
-            className="btn primary"
-            onClick={handlePing}
-            disabled={!connected}
-            title="Send PING command to test communication"
-          >
-            Ping
-          </button>
-          <button
-            className="btn"
-            onClick={handleReadAllPins}
-            disabled={!connected}
-            title="Read current state of all pins"
-          >
-            Read All
-          </button>
-        </div>
-      </div>
 
-      {/* Input Pin Controls */}
+      {/* Configurable Parameters */}
       <div className="control-section">
-        <h3>Input Pins (Arduino → ATmega32A)</h3>
-        <div className="text-xs text-gray-500 mb-2">
+        <h3>Configurable Parameters</h3>
+        <div className="text-xs text-gray-500 mb-4">
           Click to toggle HIGH/LOW states
         </div>
-        <div className="flex gap-1 mb-2">
-          <button
-            className="btn text-xs"
-            onClick={handleSetAllInputsLow}
-            disabled={!connected}
-            title="Set all input pins to LOW"
-          >
-            All LOW
-          </button>
-          <button
-            className="btn text-xs"
-            onClick={handleSetAllInputsHigh}
-            disabled={!connected}
-            title="Set all input pins to HIGH"
-          >
-            All HIGH
-          </button>
-        </div>
-        {inputPins.map(([signal, pinState]) => (
-          <div key={signal} className="mb-2">
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-xs font-mono">{signal}</span>
-              <span className="text-xs text-gray-500">{pinState.pin}</span>
-            </div>
-            {renderPinState(signal, pinState)}
-          </div>
-        ))}
-      </div>
 
-      {/* Output Pin Monitoring */}
+        {/* Sonicator #4 Header */}
+        <div className="mb-4">
+          <h4 className="sonicator-4-header text-lg font-semibold mb-3 pb-2 border-b border-blue-200">
+            🔧 Sonicator #4
+          </h4>
+
+
+
+          {inputPins.map(([signal, pinState]) => {
+            const pinInfo = pinDescriptions[signal]
+            return (
+              <div key={signal} className="mb-3 p-3 bg-gray-50 rounded-lg border">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-mono font-semibold">{signal}</span>
+                  <span className="text-xs text-gray-500">{pinState.pin}</span>
+                </div>
+
+                {pinInfo && (
+                  <div className="mb-2 text-xs text-gray-600 space-y-1">
+                    <div><strong>Parameter:</strong> {pinInfo.description}</div>
+                    <div><strong>Connection:</strong> {pinInfo.wrapperPin} → {pinInfo.dutPin}, {pinInfo.physicalPin}</div>
+                    <div className="text-gray-500">Arduino Test Wrapper Pin → ATmega32A Pin, Physical Pin</div>
+                  </div>
+                )}
+
+                {renderPinState(signal, pinState)}
+              </div>
+            )
+          })}
+        </div>
+      </div>
+      {/* Live DUT Monitoring */}
       <div className="control-section">
-        <h3>Output Pins (ATmega32A → Arduino)</h3>
+        <h3>Live DUT Monitoring</h3>
         <div className="text-xs text-gray-500 mb-2">
-          Read-only monitoring
+          Real-time signals from ATmega32A
         </div>
         {outputPins.map(([signal, pinState]) => (
           <div key={signal} className="mb-2">
@@ -488,138 +471,18 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
               <span className="text-xs font-mono">{signal}</span>
               <span className="text-xs text-gray-500">{pinState.pin}</span>
             </div>
-            <div className={`pin-state ${pinState.state === 'HIGH' ? 'high' : 'low'}`}>
-              <span>{pinState.state}</span>
-              <span className="text-xs">
-                {formatTimestamp(pinState.timestamp)}
-              </span>
-            </div>
-            <button
-              className="btn text-xs mt-1"
-              onClick={() => handlePinRead(signal)}
-              disabled={!connected}
-              title={`Read current state of ${signal}`}
-            >
-              Read Pin
-            </button>
-          </div>
-        ))}
-      </div>
-
-      {/* PWM Pin Monitoring */}
-      <div className="control-section">
-        <h3>PWM Pins (ATmega32A → Arduino)</h3>
-        <div className="text-xs text-gray-500 mb-2">
-          Continuous PWM duty cycle monitoring
-        </div>
-        {pwmPins.map(([signal, pinState]) => (
-          <div key={signal} className="mb-2">
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-xs font-mono">{signal}</span>
-              <span className="text-xs text-gray-500">{pinState.pin}</span>
-            </div>
             {renderPinState(signal, pinState)}
-            <div className="text-xs text-green-600 mt-1 flex items-center">
-              <div className="pwm-live-indicator"></div>
-              <span className="ml-1">Continuously monitored by Arduino harness</span>
-            </div>
           </div>
         ))}
       </div>
 
-      {/* Analog Pin Monitoring */}
-      <div className="control-section">
-        <h3>Analog Pins</h3>
-        <div className="text-xs text-gray-500 mb-2">
-          ADC readings (0-1023, 0-5V)
-        </div>
-        {analogPins.map(([signal, pinState]) => (
-          <div key={signal} className="mb-2">
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-xs font-mono">{signal}</span>
-              <span className="text-xs text-gray-500">{pinState.pin}</span>
-            </div>
-            <div className="pin-state analog">
-              <span className="font-mono">
-                {typeof pinState.state === 'number' ? pinState.state : '---'}
-                {typeof pinState.state === 'number' && (
-                  <span className="text-xs ml-1">
-                    ({((pinState.state / 1023) * 5).toFixed(2)}V)
-                  </span>
-                )}
-              </span>
-              <span className="text-xs">
-                {formatTimestamp(pinState.timestamp)}
-              </span>
-            </div>
-            <button
-              className="btn text-xs mt-1"
-              onClick={() => handlePinRead(signal, true)}
-              disabled={!connected}
-              title={`Read ADC value from ${signal}`}
-            >
-              Read ADC
-            </button>
-          </div>
-        ))}
-      </div>
 
-      {/* PWM Control */}
-      <div className="control-section">
-        <h3>PWM Control</h3>
-        <div className="text-xs text-gray-500 mb-2">
-          Generate PWM signals on capable pins
-        </div>
-        
-        <div className="mb-2">
-          <label className="text-xs text-gray-700">Pin:</label>
-          <select 
-            className="input text-xs mt-1"
-            value={selectedPin}
-            onChange={(e) => setSelectedPin(e.target.value)}
-          >
-            <option value="">Select pin...</option>
-            {inputPins.map(([signal, pinState]) => (
-              <option key={signal} value={signal}>
-                {signal} ({pinState.pin})
-              </option>
-            ))}
-          </select>
-        </div>
 
-        <div className="mb-2">
-          <label className="text-xs text-gray-700">Frequency (Hz):</label>
-          <input
-            type="number"
-            className="input text-xs mt-1"
-            value={pwmFrequency}
-            onChange={(e) => setPwmFrequency(parseInt(e.target.value) || 0)}
-            min="1"
-            max="50000"
-          />
-        </div>
 
-        <div className="mb-2">
-          <label className="text-xs text-gray-700">Duty Cycle (%):</label>
-          <input
-            type="number"
-            className="input text-xs mt-1"
-            value={pwmDutyCycle}
-            onChange={(e) => setPwmDutyCycle(parseInt(e.target.value) || 0)}
-            min="0"
-            max="100"
-          />
-        </div>
 
-        <button
-          className="btn primary"
-          onClick={handlePWMSet}
-          disabled={!connected || !selectedPin}
-          title={`Set PWM on ${selectedPin}: ${pwmFrequency}Hz at ${pwmDutyCycle}%`}
-        >
-          Set PWM
-        </button>
-      </div>
+
+
+
 
 
 
@@ -631,10 +494,8 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
         </div>
         <div className="text-xs">
           <div>Total pins: {Object.keys(hardwareState.pins).length}</div>
-          <div>Input pins: {inputPins.length}</div>
-          <div>Output pins: {outputPins.length - pwmPins.length}</div>
-          <div>PWM pins: {pwmPins.length}</div>
-          <div>Analog pins: {analogPins.length}</div>
+          <div>Configurable parameters: {inputPins.length}</div>
+          <div>Live DUT signals: {outputPins.length}</div>
         </div>
       </div>
 
@@ -642,10 +503,10 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
       <div className="control-section">
         <h3>Quick Help</h3>
         <div className="text-xs text-gray-600 space-y-1">
-          <div><strong>Input Pins:</strong> Control signals sent to ATmega32A</div>
-          <div><strong>Output Pins:</strong> Monitor signals from ATmega32A</div>
-          <div><strong>Analog Pins:</strong> Read ADC values (0-1023)</div>
-          <div><strong>PWM:</strong> Generate pulse-width modulated signals</div>
+          <div><strong>Sonicator #4 Parameters:</strong> Configure input signals with connection details</div>
+          <div><strong>Connection Format:</strong> Arduino Pin → ATmega32A Pin, Physical Pin</div>
+          <div><strong>Parameter Control:</strong> Click buttons to toggle HIGH/LOW states</div>
+
           <div className="mt-2 pt-2 border-t border-gray-200">
             <strong>Pin Mapping:</strong> Based on <code>docs/planning/pin-matrix.md</code>
           </div>

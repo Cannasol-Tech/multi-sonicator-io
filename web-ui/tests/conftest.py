@@ -222,6 +222,99 @@ def sample_pin_history():
         }
     ]
 
+# Arduino Command Logging Test Fixtures
+@pytest.fixture
+def sample_arduino_commands() -> list:
+    """Sample Arduino commands for testing"""
+    base_time = int(time.time() * 1000)
+    return [
+        {
+            'direction': 'sent',
+            'data': '{"type":"pin_read","pin":"D7"}',
+            'timestamp': base_time,
+            'type': 'pin_read'
+        },
+        {
+            'direction': 'received',
+            'data': 'HIGH',
+            'timestamp': base_time + 100,
+            'type': 'response'
+        },
+        {
+            'direction': 'sent',
+            'data': '{"type":"pin_write","pin":"D8","value":"LOW"}',
+            'timestamp': base_time + 200,
+            'type': 'pin_write'
+        },
+        {
+            'direction': 'received',
+            'data': 'OK',
+            'timestamp': base_time + 300,
+            'type': 'response'
+        },
+        {
+            'direction': 'sent',
+            'data': '{"type":"analog_read","pin":"A0"}',
+            'timestamp': base_time + 400,
+            'type': 'analog_read'
+        },
+        {
+            'direction': 'received',
+            'data': '512',
+            'timestamp': base_time + 500,
+            'type': 'response'
+        }
+    ]
+
+@pytest.fixture
+def mock_arduino_hardware_interface():
+    """Mock hardware interface with Arduino command logging capabilities"""
+    interface = Mock()
+    interface.connected = True
+    interface.pythonProcess = Mock()
+    interface.pythonProcess.stdin = Mock()
+    interface.emit = Mock()
+    interface.lastLogTime = 0
+    interface.logThrottleMs = 1000
+    interface.lastPinLogTimes = {}
+    interface.pinStates = {}
+
+    # Mock methods
+    interface.sendPythonCommand = Mock()
+    interface.updatePinState = Mock()
+    interface.handlePythonMessage = Mock()
+
+    return interface
+
+@pytest.fixture
+def mock_arduino_websocket_handler(mock_arduino_hardware_interface):
+    """Mock WebSocket handler for Arduino command logging"""
+    handler = Mock()
+    handler.hardwareInterface = mock_arduino_hardware_interface
+    handler.clients = []
+    handler.broadcast = Mock()
+    handler.setupEventHandlers = Mock()
+
+    return handler
+
+@pytest.fixture
+def mock_websocket_clients():
+    """Mock WebSocket clients for testing"""
+    clients = []
+    for i in range(3):
+        client = Mock()
+        client.readyState = 1  # WebSocket.OPEN
+        client.send = Mock()
+        client.received_messages = []
+
+        def capture_send(message, client=client):
+            client.received_messages.append(message)
+
+        client.send.side_effect = capture_send
+        clients.append(client)
+
+    return clients
+
 # Test markers
 pytest.mark.unit = pytest.mark.unit
 pytest.mark.integration = pytest.mark.integration
@@ -229,4 +322,5 @@ pytest.mark.frontend = pytest.mark.frontend
 pytest.mark.backend = pytest.mark.backend
 pytest.mark.hardware = pytest.mark.hardware
 pytest.mark.websocket = pytest.mark.websocket
+pytest.mark.arduino_logging = pytest.mark.arduino_logging
 pytest.mark.slow = pytest.mark.slow

@@ -215,18 +215,32 @@ export class TestAutomationAPI {
    * Format execution duration
    */
   static formatDuration(durationMs?: number): string {
-    if (!durationMs) {
+    if (!durationMs || durationMs < 0) {
       return '0s'
     }
-    
-    const seconds = Math.floor(durationMs / 1000)
-    const minutes = Math.floor(seconds / 60)
-    
-    if (minutes > 0) {
-      return `${minutes}m ${seconds % 60}s`
+
+    // Safety check: if duration seems to be in seconds instead of milliseconds
+    // (i.e., unreasonably large), assume it's a timestamp issue and handle gracefully
+    if (durationMs > 1000000000) { // More than ~11 days in milliseconds is suspicious
+      console.warn('Duration appears to be in wrong units, attempting to correct:', durationMs)
+      return 'Invalid duration'
     }
-    
-    return `${seconds}s`
+
+    const totalSeconds = Math.floor(durationMs / 1000)
+    const hours = Math.floor(totalSeconds / 3600)
+    const minutes = Math.floor((totalSeconds % 3600) / 60)
+    const seconds = totalSeconds % 60
+
+    if (hours > 0) {
+      return `${hours}h ${minutes}m ${seconds}s`
+    } else if (minutes > 0) {
+      return `${minutes}m ${seconds}s`
+    } else if (totalSeconds > 0) {
+      return `${seconds}s`
+    } else {
+      // For very short durations, show milliseconds
+      return `${Math.round(durationMs)}ms`
+    }
   }
 
   /**

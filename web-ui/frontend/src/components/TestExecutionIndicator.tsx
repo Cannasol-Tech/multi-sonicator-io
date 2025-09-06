@@ -37,12 +37,19 @@ export default function TestExecutionIndicator({ execution, visible }: TestExecu
           borderRadius: '3px',
           overflow: 'hidden'
         }}>
-          <div style={{
-            width: `${progress}%`,
-            height: '100%',
-            background: TestAutomationAPI.getStatusColor(execution.status),
-            transition: 'width 0.3s ease'
-          }} />
+          <div
+            className={
+              execution.status === 'running' ? 'progress-fill iridescent' :
+              execution.status === 'passed' ? 'progress-fill metallic-blue' :
+              'progress-fill'
+            }
+            style={{
+              width: `${progress}%`,
+              height: '100%',
+              background: (execution.status === 'running' || execution.status === 'passed') ? undefined : TestAutomationAPI.getStatusColor(execution.status),
+              transition: 'width 0.3s ease'
+            }}
+          />
         </div>
         <div style={{ 
           fontSize: '11px', 
@@ -76,12 +83,19 @@ export default function TestExecutionIndicator({ execution, visible }: TestExecu
                 marginTop: '2px',
                 overflow: 'hidden'
               }}>
-                <div style={{
-                  width: `${(stepProgress.current / stepProgress.total) * 100}%`,
-                  height: '100%',
-                  background: '#17a2b8',
-                  transition: 'width 0.3s ease'
-                }} />
+                <div
+                  className={
+                    execution.status === 'running' ? 'step-progress-fill iridescent' :
+                    execution.status === 'passed' ? 'step-progress-fill metallic-blue' :
+                    'step-progress-fill'
+                  }
+                  style={{
+                    width: `${(stepProgress.current / stepProgress.total) * 100}%`,
+                    height: '100%',
+                    background: (execution.status === 'running' || execution.status === 'passed') ? undefined : '#17a2b8',
+                    transition: 'width 0.3s ease'
+                  }}
+                />
               </div>
             </div>
           )}

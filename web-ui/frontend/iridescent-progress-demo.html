@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌈 Iridescent Progress Bar Demo - Multi-Sonicator IO</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #374151;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .progress-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
+
+        /* Beautiful iridescent gradient for test progress */
+        .progress-fill.iridescent {
+            background: linear-gradient(
+                45deg,
+                #667eea 0%,
+                #764ba2 25%,
+                #f093fb 50%,
+                #f5576c 75%,
+                #4facfe 100%
+            );
+            background-size: 300% 300%;
+            animation: iridescent-flow 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill.iridescent::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes iridescent-flow {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .step-progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 4px;
+        }
+
+        .step-progress-fill {
+            height: 100%;
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .step-progress-fill.iridescent {
+            background: linear-gradient(
+                45deg,
+                #667eea 0%,
+                #764ba2 25%,
+                #f093fb 50%,
+                #f5576c 75%,
+                #4facfe 100%
+            );
+            background-size: 300% 300%;
+            animation: iridescent-flow 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-progress-fill.iridescent::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.4),
+                transparent
+            );
+            animation: shimmer 1.8s infinite;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-start {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-start:hover:not(:disabled) {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .btn-start:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        .btn-reset {
+            background: #6b7280;
+            color: white;
+        }
+
+        .btn-reset:hover {
+            background: #4b5563;
+            transform: translateY(-2px);
+        }
+
+        .status {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+
+        .status.running {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .status.complete {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status.idle {
+            background: #f8f9fa;
+            color: #6c757d;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .comparison-item {
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .old-style {
+            background: #f8d7da;
+            border: 2px solid #dc3545;
+        }
+
+        .new-style {
+            background: #d4edda;
+            border: 2px solid #28a745;
+        }
+
+        .progress-fill.old {
+            background: #28a745;
+        }
+
+        /* Beautiful metallic blue gradient for completed tests */
+        .progress-fill.metallic-blue {
+            background: linear-gradient(
+                135deg,
+                #1e3a8a 0%,
+                #3b82f6 25%,
+                #60a5fa 50%,
+                #93c5fd 75%,
+                #dbeafe 90%,
+                #f0f9ff 100%
+            );
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill.metallic-blue::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.4) 50%,
+                transparent 70%
+            );
+            animation: metallic-shine 2s ease-in-out infinite;
+        }
+
+        @keyframes metallic-shine {
+            0% {
+                transform: translateX(-100%) skewX(-15deg);
+            }
+            100% {
+                transform: translateX(200%) skewX(-15deg);
+            }
+        }
+
+        .step-progress-fill.metallic-blue {
+            background: linear-gradient(
+                135deg,
+                #1e3a8a 0%,
+                #3b82f6 25%,
+                #60a5fa 50%,
+                #93c5fd 75%,
+                #dbeafe 90%,
+                #f0f9ff 100%
+            );
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-progress-fill.metallic-blue::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.5) 50%,
+                transparent 70%
+            );
+            animation: metallic-shine 2.5s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>🌈 Beautiful Iridescent Progress Bars</h1>
+        <p style="text-align: center; color: #6c757d; margin-bottom: 30px;">
+            New design for Multi-Sonicator IO test progress indicators
+        </p>
+
+        <div class="progress-section">
+            <div class="progress-label">
+                <span>Test Execution Progress</span>
+                <span id="percentage">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div id="mainProgress" class="progress-fill iridescent" style="width: 0%"></div>
+            </div>
+            <div style="font-size: 12px; color: #6c757d; text-align: center;">
+                <span id="scenarios">0 / 25 scenarios</span>
+            </div>
+        </div>
+
+        <div id="stepSection" class="progress-section" style="display: none;">
+            <div style="font-size: 11px; color: #6c757d; margin-bottom: 4px;">
+                Step <span id="stepCurrent">1</span> / <span id="stepTotal">10</span>
+            </div>
+            <div class="step-progress-bar">
+                <div id="stepProgress" class="step-progress-fill iridescent" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn" class="btn-start">▶️ Start Test</button>
+            <button id="resetBtn" class="btn-reset">🔄 Reset</button>
+        </div>
+
+        <div id="status" class="status idle">
+            ⏸️ Ready to demonstrate the beautiful new progress design
+        </div>
+
+        <div class="comparison">
+            <div class="comparison-item old-style">
+                <h4>❌ Old Design</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill old" style="width: 100%"></div>
+                </div>
+                <p style="font-size: 12px; margin: 10px 0 0 0;">Misleading green during progress</p>
+            </div>
+            <div class="comparison-item new-style">
+                <h4>✨ New Design - Running</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill iridescent" style="width: 60%"></div>
+                </div>
+                <p style="font-size: 12px; margin: 10px 0 0 0;">Beautiful iridescent progress</p>
+            </div>
+        </div>
+
+        <div class="comparison" style="margin-top: 15px;">
+            <div class="comparison-item" style="background: #f8f9fa; border: 2px solid #6c757d;">
+                <h4>⚡ New Design - Complete</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill metallic-blue" style="width: 100%"></div>
+                </div>
+                <p style="font-size: 12px; margin: 10px 0 0 0;">Stunning metallic blue finish</p>
+            </div>
+            <div class="comparison-item" style="background: #e7f3ff; border: 2px solid #0066cc;">
+                <h4>🎯 Perfect Clarity</h4>
+                <div style="padding: 20px 0; text-align: center; color: #0066cc; font-weight: bold;">
+                    🌈 Running → ⚡ Complete<br>
+                    <small style="font-weight: normal;">No misleading colors!</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let progress = 0;
+        let isRunning = false;
+        let interval;
+
+        const elements = {
+            mainProgress: document.getElementById('mainProgress'),
+            percentage: document.getElementById('percentage'),
+            scenarios: document.getElementById('scenarios'),
+            stepSection: document.getElementById('stepSection'),
+            stepProgress: document.getElementById('stepProgress'),
+            stepCurrent: document.getElementById('stepCurrent'),
+            stepTotal: document.getElementById('stepTotal'),
+            startBtn: document.getElementById('startBtn'),
+            resetBtn: document.getElementById('resetBtn'),
+            status: document.getElementById('status')
+        };
+
+        function updateProgress() {
+            const percentage = Math.round(progress);
+            const scenarios = Math.round((progress / 100) * 25);
+            
+            elements.mainProgress.style.width = `${progress}%`;
+            elements.percentage.textContent = `${percentage}%`;
+            elements.scenarios.textContent = `${scenarios} / 25 scenarios`;
+
+            // Step progress
+            const currentStep = Math.min(Math.floor(progress / 10) + 1, 10);
+            const stepProgress = ((progress % 10) / 10) * 100;
+            
+            elements.stepCurrent.textContent = currentStep;
+            elements.stepProgress.style.width = `${stepProgress}%`;
+        }
+
+        function startTest() {
+            if (isRunning) return;
+            
+            progress = 0;
+            isRunning = true;
+            elements.startBtn.disabled = true;
+            elements.startBtn.textContent = '🔄 Running...';
+            elements.stepSection.style.display = 'block';
+            elements.status.className = 'status running';
+            elements.status.textContent = '🌈 Beautiful iridescent progress in action!';
+
+            interval = setInterval(() => {
+                progress += 1.5;
+                updateProgress();
+
+                if (progress >= 100) {
+                    progress = 100;
+                    updateProgress();
+                    stopTest();
+                }
+            }, 80);
+        }
+
+        function stopTest() {
+            isRunning = false;
+            clearInterval(interval);
+            elements.startBtn.disabled = false;
+            elements.startBtn.textContent = '▶️ Start Test';
+            elements.status.className = 'status complete';
+            elements.status.textContent = '✅ Test completed with stunning metallic blue finish!';
+
+            // Switch to metallic blue when complete
+            elements.mainProgress.className = 'progress-fill metallic-blue';
+            elements.stepProgress.className = 'step-progress-fill metallic-blue';
+        }
+
+        function resetTest() {
+            if (isRunning) {
+                clearInterval(interval);
+                isRunning = false;
+                elements.startBtn.disabled = false;
+                elements.startBtn.textContent = '▶️ Start Test';
+            }
+
+            progress = 0;
+            updateProgress();
+            elements.stepSection.style.display = 'none';
+            elements.status.className = 'status idle';
+            elements.status.textContent = '⏸️ Ready to demonstrate the beautiful new progress design';
+
+            // Reset to iridescent class
+            elements.mainProgress.className = 'progress-fill iridescent';
+            elements.stepProgress.className = 'step-progress-fill iridescent';
+        }
+
+        elements.startBtn.addEventListener('click', startTest);
+        elements.resetBtn.addEventListener('click', resetTest);
+
+        // Initialize
+        updateProgress();
+    </script>
+</body>
+</html>
