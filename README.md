@@ -34,7 +34,7 @@ The Multi-Sonicator I/O Controller extends Cannasol Technologies' proprietary au
 4. Build and upload firmware
 
 ```bash
-# Install Python dependencies
+# Install dependencies and sync company standards
 make install-deps
 
 # Build project
@@ -42,9 +42,24 @@ make build
 
 # Upload to target (via Arduino as ISP)
 make upload-to-device
+
+# Update company standards (when needed)
+make update-standards
 ```
 
 ## Documentation
+
+### Company Standards
+This project follows Axovia Flow company standards maintained in the central repository:
+- **[Coding Style Standards](.axovia-flow/company-standards/docs/standards/coding-style.md)** - Code formatting and quality guidelines
+- **[Project Structure Standards](.axovia-flow/company-standards/docs/standards/project-structure.md)** - Directory organization and file placement
+- **[Software Testing Standards](.axovia-flow/company-standards/docs/standards/sw-testing-standard.md)** - Testing methodology and requirements
+
+**Standards Management:**
+```bash
+make update-standards    # Update to latest company standards
+make check-standards     # Check if standards are up to date
+```
 
 ### Project Documentation
 - **[Product Requirements Document](docs/prd.md)** - Complete technical specifications and requirements

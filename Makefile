@@ -9,7 +9,7 @@
 .PHONY: acceptance-test-pwm acceptance-test-modbus acceptance-test-power generate-release-artifacts test-integration
 .PHONY: test-unit-communication test-unit-hal test-unit-control test-unit-sonicator validate-config generate-traceability-report manage-pending-scenarios update-pending-scenarios ci-local
 .PHONY: web-ui-install web-ui-dev web-ui-build web-ui-sandbox web-ui-test web-ui-clean
-.PHONY: validate-traceability check-compliance generate-executive-report generate-coverage-report generate-complete-executive-report
+.PHONY: validate-traceability check-compliance update-standards sync-standards init-submodules generate-executive-report generate-coverage-report generate-complete-executive-report
 
 #  Make Targets
 
@@ -23,7 +23,7 @@ endif
 
 
 # Python dependency installation
-install-deps:
+install-deps: init-submodules
 	@echo "📦 Installing Python dependencies..."
 	pip3 install -r requirements-testing.txt
 
@@ -529,4 +529,28 @@ web-ui-clean:
 	rm -rf web-ui/htmlcov
 	rm -rf web-ui/.pytest_cache
 	@echo "✅ Web UI cleaned"
+
+## Company Standards Management
+
+# Initialize git submodules (including company standards)
+init-submodules:
+	@echo "📚 Initializing git submodules..."
+	git submodule update --init --recursive
+	@echo "✅ Git submodules initialized"
+
+# Update company standards from central repository
+update-standards:
+	@echo "📚 Updating company standards from Axovia-AI/axovia-flow..."
+	git submodule update --remote .axovia-flow/company-standards
+	@echo "✅ Company standards updated to latest version"
+
+# Alias for update-standards
+sync-standards: update-standards
+
+# Check if standards are up to date
+check-standards:
+	@echo "🔍 Checking company standards status..."
+	@cd .axovia-flow/company-standards && git fetch origin
+	@cd .axovia-flow/company-standards && git status --porcelain=v1 2>/dev/null | grep -q "^" && echo "⚠️ Local changes detected in standards" || echo "✅ Standards are clean"
+	@cd .axovia-flow/company-standards && git log HEAD..origin/main --oneline | grep -q "^" && echo "📥 Updates available from central repository" || echo "✅ Standards are up to date"
 
