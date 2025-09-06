@@ -399,3 +399,87 @@ The pin mapping display is now correctly positioned in the center of the hardwar
 - ✅ UI remains fully responsive and themed
 
 The Configurable Parameters section now provides a cleaner, more focused interface for individual parameter control without the bulk "ALL LOW" and "ALL HIGH" buttons, encouraging more deliberate and safer parameter adjustments.
+
+## Restored Hardware Control Sections - Beautiful Glory Restored
+
+### 22. ✅ Restored outputPins Variable
+- **File Modified**: `web-ui/frontend/src/components/ControlPanel.tsx`
+- **Changes**:
+  - Added back `outputPins` variable that filters for output pins
+  - Filter: `pin.direction === 'OUT' && signal !== 'UART_TXD'`
+  - Excludes UART_TXD as previously requested
+- **Result**: Output pins are now available for Live DUT Monitoring display
+
+### 23. ✅ Restored Live DUT Monitoring Section
+- **File Modified**: `web-ui/frontend/src/components/ControlPanel.tsx`
+- **Changes**:
+  - Added back complete "Live DUT Monitoring" section
+  - Displays real-time signals from ATmega32A
+  - Shows output pins with enhanced pin state rendering
+  - Includes proper styling and layout
+  - Maps through outputPins array to display each signal
+- **Result**: Live DUT Monitoring section is fully functional and beautiful again
+
+### 24. ✅ Updated System Status Section
+- **File Modified**: `web-ui/frontend/src/components/ControlPanel.tsx`
+- **Changes**:
+  - Added "Live DUT signals" count to system status
+  - Shows total count of output pins being monitored
+  - Maintains existing pin counts and statistics
+- **Result**: System Status now accurately reflects all monitored signals
+
+### 25. ✅ Enhanced Help Section
+- **File Modified**: `web-ui/frontend/src/components/ControlPanel.tsx`
+- **Changes**:
+  - Updated help text to include Live DUT Monitoring description
+  - Clarified the difference between Configurable Parameters and Live DUT Monitoring
+  - Improved descriptions for better user understanding
+- **Result**: Help section now accurately describes all available features
+
+### Restored Hardware Control Tab Structure
+
+**Complete Section Layout:**
+1. **🔧 Configurable Parameters**
+   - Sonicator #4 configuration with enhanced pin cards
+   - Individual parameter controls with detailed descriptions
+   - Connection mapping (Arduino Pin → ATmega32A Pin, Physical Pin)
+   - Toggle buttons for controllable pins
+   - Frequency configuration with manual/auto modes
+
+2. **📊 Live DUT Monitoring** *(RESTORED)*
+   - Real-time signals from ATmega32A
+   - Output pins display with enhanced rendering
+   - PWM monitoring indicators
+   - Live status updates
+   - Beautiful pin state visualization
+
+3. **📈 System Status**
+   - Total pins count
+   - Configurable parameters count
+   - Live DUT signals count *(ADDED)*
+   - Last update timestamp
+
+4. **❓ Quick Help**
+   - Enhanced descriptions of all sections
+   - Connection format explanation
+   - Pin mapping reference
+
+### Enhanced Pin State Rendering Features
+
+Both sections now use the beautiful `renderPinState()` function that provides:
+- **Frequency Pins**: Enhanced display with pulse indicators and inline controls
+- **Digital Pins**: HIGH/LOW states with toggle buttons and status indicators
+- **PWM Pins**: Live monitoring indicators with pulse animations
+- **Analog Pins**: ADC value display with proper formatting
+- **Timestamps**: Last update time for each pin
+- **Interactive Controls**: Appropriate buttons for each pin type
+
+### Build Status After Restoration
+- ✅ Vite build successful
+- ✅ Development server runs without issues
+- ✅ All sections fully functional and beautiful
+- ✅ Enhanced pin state rendering working perfectly
+- ✅ Full theme support maintained
+- ✅ Interactive controls responsive
+
+The Hardware Control tab has been restored to its beautiful glory with both the Configurable Parameters and Live DUT Monitoring sections working perfectly, providing a comprehensive and visually appealing interface for hardware control and monitoring!

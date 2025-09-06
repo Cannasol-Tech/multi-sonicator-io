@@ -8,6 +8,7 @@ import Header from './components/Header'
 import HelpSystem from './components/HelpSystem'
 import SettingsPanel from './components/SettingsPanel'
 import ProgressBarDemo from './components/ProgressBarDemo'
+import PinHighlightDemo from './components/PinHighlightDemo'
 
 
 import { useWebSocket } from './hooks/useWebSocket'
@@ -166,6 +167,7 @@ function App() {
             hardwareState={hardwareState}
             onPinClick={handlePinControl}
             highlightedPins={highlightedPins}
+            onPinHighlight={setHighlightedPins}
           />
         </div>
 
@@ -237,6 +239,7 @@ function App() {
                   }}
                 />
                 <ProgressBarDemo />
+                <PinHighlightDemo />
               </div>
             )}
           </div>

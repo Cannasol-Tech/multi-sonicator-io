@@ -503,9 +503,9 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
       <div className="control-section">
         <h3>Quick Help</h3>
         <div className="text-xs text-gray-600 space-y-1">
-          <div><strong>Sonicator #4 Parameters:</strong> Configure input signals with connection details</div>
-          <div><strong>Connection Format:</strong> Arduino Pin → ATmega32A Pin, Physical Pin</div>
-          <div><strong>Parameter Control:</strong> Click buttons to toggle HIGH/LOW states</div>
+          <div><strong>Configurable Parameters:</strong> Control signals sent to ATmega32A with detailed pin mapping</div>
+          <div><strong>Live DUT Monitoring:</strong> Real-time digital & PWM signals from ATmega32A</div>
+          <div><strong>Connection Format:</strong> Arduino Pin → ATmega32A Pin, Physical Pin Number</div>
 
           <div className="mt-2 pt-2 border-t border-gray-200">
             <strong>Pin Mapping:</strong> Based on <code>docs/planning/pin-matrix.md</code>
