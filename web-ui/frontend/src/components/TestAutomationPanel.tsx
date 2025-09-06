@@ -126,25 +126,19 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
 
   return (
     <div className="test-automation-panel">
-      <div className="panel-header">
-        <h3>🧪 Test Automation</h3>
-        <div className="panel-controls">
-          <button 
-            className="btn-toggle"
-            onClick={() => setShowAdvanced(!showAdvanced)}
-          >
-            {showAdvanced ? 'Simple' : 'Advanced'}
-          </button>
-        </div>
+      {/* Header */}
+      <div className="test-automation-header">
+        <h2 style={{ color: 'var(--text-primary)', margin: 0, fontSize: '20px', fontWeight: '600' }}>
+          🧪 Test Automation
+        </h2>
+        {error && (
+          <div className="test-automation-error">
+            <span className="error-icon">⚠️</span>
+            <span className="error-message" style={{ color: 'var(--color-error)' }}>{error}</span>
+            <button className="error-close" onClick={clearError} style={{ color: 'var(--text-tertiary)' }}>×</button>
+          </div>
+        )}
       </div>
-
-      {error && (
-        <div className="error-banner">
-          <span className="error-icon">⚠️</span>
-          <span className="error-message">{error}</span>
-          <button className="error-close" onClick={clearError}>×</button>
-        </div>
-      )}
 
       {/* Enhanced Test Execution Status */}
       {currentExecution && (
