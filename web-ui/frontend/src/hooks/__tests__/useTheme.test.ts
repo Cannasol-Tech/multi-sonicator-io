@@ -34,15 +34,25 @@ function useTheme() {
       }
     }
     
-    // Save to localStorage
-    localStorage.setItem('theme', newTheme)
+    // Save to localStorage with error handling
+    try {
+      localStorage.setItem('theme', newTheme)
+    } catch (error) {
+      // Silently handle localStorage errors (quota exceeded, etc.)
+      console.warn('Failed to save theme to localStorage:', error)
+    }
   }
   
   React.useEffect(() => {
-    // Load saved theme
-    const saved = localStorage.getItem('theme') as 'light' | 'dark' | 'auto' | null
-    if (saved) {
-      applyTheme(saved)
+    // Load saved theme with error handling
+    try {
+      const saved = localStorage.getItem('theme') as 'light' | 'dark' | 'auto' | null
+      if (saved && ['light', 'dark', 'auto'].includes(saved)) {
+        applyTheme(saved)
+      }
+    } catch (error) {
+      // Silently handle localStorage errors
+      console.warn('Failed to load theme from localStorage:', error)
     }
   }, [])
   
