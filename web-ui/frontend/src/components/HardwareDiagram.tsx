@@ -280,7 +280,7 @@ const WireConnection: React.FC<{
       strokeDasharray={connection.direction === 'ANALOG' ? "5,5" : connection.direction === 'COMM' ? "10,5" : "none"}
       className={`wire-connection ${isHighlighted ? 'highlighted' : ''}`}
       style={{
-        filter: isHighlighted ? 'drop-shadow(0 0 8px rgba(245, 158, 11, 0.8))' : 'none',
+        filter: isHighlighted ? 'drop-shadow(0 0 12px rgba(255, 215, 0, 0.9)) drop-shadow(0 0 24px rgba(255, 215, 0, 0.6))' : 'none',
         transition: 'all 0.3s ease'
       }}
     />
@@ -296,6 +296,7 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
   const containerRef = useRef<HTMLDivElement>(null)
   const [hoveredConnection, setHoveredConnection] = useState<string | null>(null)
   const [selectedConnection, setSelectedConnection] = useState<string | null>(null)
+  const [showDetailedModal, setShowDetailedModal] = useState(false)
 
 
 
@@ -340,15 +341,15 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
       return
     }
 
-    // Enhanced highlighting: when any part of the connection is clicked, highlight all three components
+    // Enhanced highlighting: only one connection can be highlighted at a time
     if (onPinHighlight) {
       const currentlyHighlighted = highlightedPins.includes(signal)
       if (currentlyHighlighted) {
         // If already highlighted, remove highlighting
-        onPinHighlight(highlightedPins.filter(pin => pin !== signal))
+        onPinHighlight([])
       } else {
-        // If not highlighted, add to highlighted pins (keeping existing ones)
-        onPinHighlight([...highlightedPins, signal])
+        // If not highlighted, set this as the only highlighted connection
+        onPinHighlight([signal])
       }
     }
 
@@ -543,102 +544,162 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
           </div>
         </div>
 
-        {/* Detailed Connection Information Section */}
+        {/* Compact Connection Information Section */}
         {selectedConnection && DETAILED_CONNECTION_INFO[selectedConnection] && (
-          <div className="connection-details-section">
-            <div className="connection-details-header">
-              <h3>📋 Connection Details: {selectedConnection}</h3>
-              <div className="connection-details-subtitle">
-                Detailed information for the selected signal connection
-              </div>
-            </div>
+          <div className="connection-details-compact">
+            {(() => {
+              const info = DETAILED_CONNECTION_INFO[selectedConnection]
+              return (
+                <div className="compact-info-container">
+                  <div className="compact-info-header">
+                    <div className="compact-signal-info">
+                      <span className="compact-signal-name">{info.signal}</span>
+                      <span className={`compact-direction-badge ${info.direction.toLowerCase()}`}>
+                        {info.direction}
+                      </span>
+                    </div>
+                    <button
+                      className="expand-details-button"
+                      onClick={() => setShowDetailedModal(true)}
+                    >
+                      📋 View Details
+                    </button>
+                  </div>
 
-            <div className="connection-details-content">
+                  <div className="compact-info-content">
+                    <div className="compact-info-row">
+                      <span className="compact-label">Pins:</span>
+                      <span className="compact-value">
+                        {info.testHarnessPin.split(' ')[0]} ↔ {info.dutPin.split(' ')[0]}
+                      </span>
+                    </div>
+
+                    <div className="compact-info-row">
+                      <span className="compact-label">Purpose:</span>
+                      <span className="compact-value">{info.description}</span>
+                    </div>
+
+                    {info.modbusRegister && (
+                      <div className="compact-info-row">
+                        <span className="compact-label">Modbus:</span>
+                        <span className="compact-value modbus-compact">{info.modbusRegister}</span>
+                      </div>
+                    )}
+
+                    <div className="compact-info-row">
+                      <span className="compact-label">Range:</span>
+                      <span className="compact-value">{info.valueRange}</span>
+                    </div>
+                  </div>
+                </div>
+              )
+            })()}
+          </div>
+        )}
+
+        {/* Detailed Connection Modal */}
+        {showDetailedModal && selectedConnection && DETAILED_CONNECTION_INFO[selectedConnection] && (
+          <div className="connection-modal-overlay" onClick={() => setShowDetailedModal(false)}>
+            <div className="connection-modal-content" onClick={(e) => e.stopPropagation()}>
               {(() => {
                 const info = DETAILED_CONNECTION_INFO[selectedConnection]
                 return (
-                  <div className="connection-info-grid">
-                    {/* Signal Overview */}
-                    <div className="info-section signal-overview">
-                      <h4>🔌 Signal Overview</h4>
-                      <div className="info-item">
-                        <span className="info-label">Signal Name:</span>
-                        <span className="info-value signal-name">{info.signal}</span>
-                      </div>
-                      <div className="info-item">
-                        <span className="info-label">Direction:</span>
-                        <span className={`info-value direction-badge ${info.direction.toLowerCase()}`}>
-                          {info.direction}
-                        </span>
-                      </div>
-                      <div className="info-item">
-                        <span className="info-label">Description:</span>
-                        <span className="info-value">{info.description}</span>
-                      </div>
-                      <div className="info-item">
-                        <span className="info-label">Purpose:</span>
-                        <span className="info-value">{info.purpose}</span>
-                      </div>
+                  <>
+                    <div className="modal-header">
+                      <h2>📋 {info.signal} - Detailed Information</h2>
+                      <button
+                        className="modal-close-button"
+                        onClick={() => setShowDetailedModal(false)}
+                      >
+                        ✕
+                      </button>
                     </div>
 
-                    {/* Pin Connections */}
-                    <div className="info-section pin-connections">
-                      <h4>📍 Pin Connections</h4>
-                      <div className="pin-connection-details">
-                        <div className="pin-detail">
-                          <span className="pin-label">Test Harness:</span>
-                          <span className="pin-value arduino-pin">{info.testHarnessPin}</span>
+                    <div className="modal-body">
+                      <div className="modal-info-grid">
+                        {/* Signal Overview */}
+                        <div className="modal-section signal-overview">
+                          <h3>🔌 Signal Overview</h3>
+                          <div className="modal-info-item">
+                            <span className="modal-label">Signal Name:</span>
+                            <span className="modal-value signal-name">{info.signal}</span>
+                          </div>
+                          <div className="modal-info-item">
+                            <span className="modal-label">Direction:</span>
+                            <span className={`modal-value direction-badge ${info.direction.toLowerCase()}`}>
+                              {info.direction}
+                            </span>
+                          </div>
+                          <div className="modal-info-item">
+                            <span className="modal-label">Description:</span>
+                            <span className="modal-value">{info.description}</span>
+                          </div>
+                          <div className="modal-info-item">
+                            <span className="modal-label">Purpose:</span>
+                            <span className="modal-value">{info.purpose}</span>
+                          </div>
                         </div>
-                        <div className="connection-arrow">↔</div>
-                        <div className="pin-detail">
-                          <span className="pin-label">ATmega32A DUT:</span>
-                          <span className="pin-value atmega-pin">{info.dutPin}</span>
+
+                        {/* Pin Connections */}
+                        <div className="modal-section pin-connections">
+                          <h3>📍 Pin Connections</h3>
+                          <div className="modal-pin-connection-details">
+                            <div className="modal-pin-detail">
+                              <span className="modal-pin-label">Test Harness:</span>
+                              <span className="modal-pin-value arduino-pin">{info.testHarnessPin}</span>
+                            </div>
+                            <div className="modal-connection-arrow">↔</div>
+                            <div className="modal-pin-detail">
+                              <span className="modal-pin-label">ATmega32A DUT:</span>
+                              <span className="modal-pin-value atmega-pin">{info.dutPin}</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Technical Details */}
+                        <div className="modal-section technical-details">
+                          <h3>⚙️ Technical Details</h3>
+                          {info.modbusRegister && (
+                            <div className="modal-info-item">
+                              <span className="modal-label">Modbus Register:</span>
+                              <span className="modal-value modbus-register">{info.modbusRegister}</span>
+                            </div>
+                          )}
+                          <div className="modal-info-item">
+                            <span className="modal-label">Value Range:</span>
+                            <span className="modal-value">{info.valueRange}</span>
+                          </div>
+                          {info.readonly && (
+                            <div className="modal-info-item readonly-warning">
+                              <span className="modal-label">⚠️ Access:</span>
+                              <span className="modal-value">Read-Only (Communication Pin)</span>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Capabilities */}
+                        <div className="modal-section capabilities">
+                          <h3>🛠️ UI Capabilities</h3>
+                          <ul className="modal-capabilities-list">
+                            {info.capabilities.map((capability, index) => (
+                              <li key={index} className="modal-capability-item">
+                                <span className="modal-capability-bullet">•</span>
+                                <span className="modal-capability-text">{capability}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Testing Notes */}
+                        <div className="modal-section testing-notes">
+                          <h3>📝 Testing Notes</h3>
+                          <div className="modal-testing-notes-content">
+                            {info.testingNotes}
+                          </div>
                         </div>
                       </div>
                     </div>
-
-                    {/* Technical Details */}
-                    <div className="info-section technical-details">
-                      <h4>⚙️ Technical Details</h4>
-                      {info.modbusRegister && (
-                        <div className="info-item">
-                          <span className="info-label">Modbus Register:</span>
-                          <span className="info-value modbus-register">{info.modbusRegister}</span>
-                        </div>
-                      )}
-                      <div className="info-item">
-                        <span className="info-label">Value Range:</span>
-                        <span className="info-value">{info.valueRange}</span>
-                      </div>
-                      {info.readonly && (
-                        <div className="info-item readonly-warning">
-                          <span className="info-label">⚠️ Access:</span>
-                          <span className="info-value">Read-Only (Communication Pin)</span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Capabilities */}
-                    <div className="info-section capabilities">
-                      <h4>🛠️ UI Capabilities</h4>
-                      <ul className="capabilities-list">
-                        {info.capabilities.map((capability, index) => (
-                          <li key={index} className="capability-item">
-                            <span className="capability-bullet">•</span>
-                            <span className="capability-text">{capability}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Testing Notes */}
-                    <div className="info-section testing-notes">
-                      <h4>📝 Testing Notes</h4>
-                      <div className="testing-notes-content">
-                        {info.testingNotes}
-                      </div>
-                    </div>
-                  </div>
+                  </>
                 )
               })()}
             </div>

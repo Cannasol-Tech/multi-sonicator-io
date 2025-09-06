@@ -1142,14 +1142,18 @@
 }
 
 .pin-indicator.highlighted {
-  background: #fef3c7;
-  border: 2px solid #f59e0b;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+  border: 2px solid #ffd700;
   animation: pin-glow 1.5s ease-in-out infinite;
 }
 
 @keyframes pin-glow {
-  0%, 100% { box-shadow: 0 0 8px rgba(245, 158, 11, 0.6); }
-  50% { box-shadow: 0 0 16px rgba(245, 158, 11, 0.9); }
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.7), 0 0 24px rgba(255, 215, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.9), 0 0 40px rgba(255, 215, 0, 0.6);
+  }
 }
 
 .arduino-pin {
@@ -1312,9 +1316,9 @@
 }
 
 .connection-item.highlighted {
-  border-color: #f59e0b;
-  background: #fef3c7;
-  box-shadow: 0 4px 8px rgba(245, 158, 11, 0.2);
+  border-color: #ffd700;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4), 0 0 20px rgba(255, 215, 0, 0.2);
 }
 
 .connection-pins {
@@ -4613,16 +4617,29 @@
 .configurable-parameter-item {
   margin-bottom: 24px;
   padding: 20px;
-  background: #f8fafc;
-  border: 2px solid #e2e8f0;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
   border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-sm);
   transition: all 0.2s ease;
 }
 
 .configurable-parameter-item:hover {
   border-color: #3b82f6;
   box-shadow: 0 4px 8px rgba(59, 130, 246, 0.1);
+}
+
+/* Parameter Card Styling */
+.parameter-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.parameter-card:hover {
+  border-color: var(--border-color-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
 }
 
 .configurable-parameter-item:last-child {
@@ -4635,22 +4652,22 @@
   gap: 6px;
   margin-bottom: 12px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #cbd5e1;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .parameter-signal-name {
   font-size: 16px;
   font-family: 'Courier New', monospace;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--text-primary);
   letter-spacing: 0.5px;
 }
 
 .parameter-connection {
   font-size: 12px;
-  color: #64748b;
+  color: var(--text-secondary);
   font-family: 'Courier New', monospace;
-  background: #e2e8f0;
+  background: var(--bg-tertiary);
   padding: 4px 8px;
   border-radius: 4px;
   align-self: flex-start;
@@ -4659,12 +4676,12 @@
 .parameter-description {
   margin-bottom: 16px;
   font-size: 13px;
-  color: #475569;
+  color: var(--text-secondary);
   line-height: 1.4;
 }
 
 .parameter-description strong {
-  color: #1e293b;
+  color: var(--text-primary);
   font-weight: 600;
 }
 
@@ -4674,11 +4691,19 @@
 
 /* Enhanced section styling for configurable parameters */
 .control-section:has(.configurable-parameter-item) {
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  border: 2px solid #cbd5e1;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
   border-radius: 16px;
   margin: var(--spacing-lg) 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-md);
+}
+
+.control-section:has(.parameter-card) {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  margin: var(--spacing-lg) 0;
+  box-shadow: var(--shadow-sm);
 }
 
 /* Add visual separator between sections */
@@ -4753,8 +4778,9 @@
 }
 
 .compact-pin-row.active {
-  border-color: #3b82f6;
-  background: rgba(59, 130, 246, 0.1);
+  border-color: #ffd700;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 193, 7, 0.1));
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
 }
 
 .compact-pin-row.selected {
@@ -5171,8 +5197,8 @@
 }
 
 .pin-indicator-large.highlighted {
-  border-color: #10b981;
-  background: #ecfdf5;
+  border-color: #ffd700;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
   animation: pin-pulse-large 2s ease-in-out infinite;
 }
 
@@ -5228,10 +5254,10 @@
 
 @keyframes pin-pulse-large {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+    box-shadow: 0 0 16px rgba(255, 215, 0, 0.6), 0 0 0 0 rgba(255, 215, 0, 0.4);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+    box-shadow: 0 0 24px rgba(255, 215, 0, 0.8), 0 0 0 12px rgba(255, 215, 0, 0);
   }
 }
 

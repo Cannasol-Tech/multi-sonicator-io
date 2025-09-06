@@ -424,13 +424,16 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
       {/* Configurable Parameters */}
       <div className="control-section">
         <h3>Configurable Parameters</h3>
-        <div className="text-xs text-gray-500 mb-4">
+        <div className="text-xs mb-4" style={{ color: 'var(--text-tertiary)' }}>
           Click to toggle HIGH/LOW states
         </div>
 
         {/* Sonicator #4 Header */}
         <div className="mb-4">
-          <h4 className="sonicator-4-header text-lg font-semibold mb-3 pb-2 border-b border-blue-200">
+          <h4 className="sonicator-4-header text-lg font-semibold mb-3 pb-2" style={{
+            borderBottom: '2px solid var(--border-color)',
+            color: 'var(--text-primary)'
+          }}>
             🔧 Sonicator #4
           </h4>
 
@@ -439,17 +442,21 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
           {inputPins.map(([signal, pinState]) => {
             const pinInfo = pinDescriptions[signal]
             return (
-              <div key={signal} className="mb-3 p-3 bg-gray-50 rounded-lg border">
+              <div key={signal} className="parameter-card mb-3 p-3 rounded-lg" style={{
+                background: 'var(--bg-secondary)',
+                border: '1px solid var(--border-color)',
+                transition: 'all 0.3s ease'
+              }}>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-mono font-semibold">{signal}</span>
-                  <span className="text-xs text-gray-500">{pinState.pin}</span>
+                  <span className="text-sm font-mono font-semibold" style={{ color: 'var(--text-primary)' }}>{signal}</span>
+                  <span className="text-xs" style={{ color: 'var(--text-tertiary)' }}>{pinState.pin}</span>
                 </div>
 
                 {pinInfo && (
-                  <div className="mb-2 text-xs text-gray-600 space-y-1">
-                    <div><strong>Parameter:</strong> {pinInfo.description}</div>
-                    <div><strong>Connection:</strong> {pinInfo.wrapperPin} → {pinInfo.dutPin}, {pinInfo.physicalPin}</div>
-                    <div className="text-gray-500">Arduino Test Wrapper Pin → ATmega32A Pin, Physical Pin</div>
+                  <div className="mb-2 text-xs space-y-1" style={{ color: 'var(--text-secondary)' }}>
+                    <div><strong style={{ color: 'var(--text-primary)' }}>Parameter:</strong> {pinInfo.description}</div>
+                    <div><strong style={{ color: 'var(--text-primary)' }}>Connection:</strong> {pinInfo.wrapperPin} → {pinInfo.dutPin}, {pinInfo.physicalPin}</div>
+                    <div style={{ color: 'var(--text-tertiary)' }}>Arduino Test Wrapper Pin → ATmega32A Pin, Physical Pin</div>
                   </div>
                 )}
 
@@ -462,14 +469,14 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
       {/* Live DUT Monitoring */}
       <div className="control-section">
         <h3>Live DUT Monitoring</h3>
-        <div className="text-xs text-gray-500 mb-2">
+        <div className="text-xs mb-2" style={{ color: 'var(--text-tertiary)' }}>
           Real-time signals from ATmega32A
         </div>
         {outputPins.map(([signal, pinState]) => (
           <div key={signal} className="mb-2">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-xs font-mono">{signal}</span>
-              <span className="text-xs text-gray-500">{pinState.pin}</span>
+              <span className="text-xs font-mono" style={{ color: 'var(--text-primary)' }}>{signal}</span>
+              <span className="text-xs" style={{ color: 'var(--text-tertiary)' }}>{pinState.pin}</span>
             </div>
             {renderPinState(signal, pinState)}
           </div>
@@ -502,13 +509,18 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
       {/* Help Section */}
       <div className="control-section">
         <h3>Quick Help</h3>
-        <div className="text-xs text-gray-600 space-y-1">
-          <div><strong>Configurable Parameters:</strong> Control signals sent to ATmega32A with detailed pin mapping</div>
-          <div><strong>Live DUT Monitoring:</strong> Real-time digital & PWM signals from ATmega32A</div>
-          <div><strong>Connection Format:</strong> Arduino Pin → ATmega32A Pin, Physical Pin Number</div>
+        <div className="text-xs space-y-1" style={{ color: 'var(--text-secondary)' }}>
+          <div><strong style={{ color: 'var(--text-primary)' }}>Configurable Parameters:</strong> Control signals sent to ATmega32A with detailed pin mapping</div>
+          <div><strong style={{ color: 'var(--text-primary)' }}>Live DUT Monitoring:</strong> Real-time digital & PWM signals from ATmega32A</div>
+          <div><strong style={{ color: 'var(--text-primary)' }}>Connection Format:</strong> Arduino Pin → ATmega32A Pin, Physical Pin Number</div>
 
-          <div className="mt-2 pt-2 border-t border-gray-200">
-            <strong>Pin Mapping:</strong> Based on <code>docs/planning/pin-matrix.md</code>
+          <div className="mt-2 pt-2" style={{ borderTop: '1px solid var(--border-color)' }}>
+            <strong style={{ color: 'var(--text-primary)' }}>Pin Mapping:</strong> Based on <code style={{
+              background: 'var(--bg-tertiary)',
+              padding: '2px 4px',
+              borderRadius: '3px',
+              color: 'var(--text-primary)'
+            }}>docs/planning/pin-matrix.md</code>
           </div>
         </div>
       </div>
