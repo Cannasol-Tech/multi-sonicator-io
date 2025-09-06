@@ -53,6 +53,14 @@ export class WebSocketHandler {
         timestamp: Date.now()
       })
     })
+
+    this.hardwareInterface.on('arduino_command', (commandData) => {
+      this.broadcast({
+        type: 'arduino_command',
+        data: commandData,
+        timestamp: Date.now()
+      })
+    })
   }
 
   private setupTestAutomationListeners() {
@@ -199,6 +207,13 @@ export class WebSocketHandler {
         case 'read_adc':
           hardwareCommand = {
             command: `READ_ADC ${pin}`,
+            expectResponse: true
+          }
+          break
+
+        case 'read_pwm':
+          hardwareCommand = {
+            command: `READ_PWM ${pin}`,
             expectResponse: true
           }
           break

@@ -78,7 +78,7 @@ export interface ATmega32ADUT {
     PD4: { pin: 18, signal: 'OVERLOAD_3', direction: 'IN' };
     PD5: { pin: 19, signal: 'OVERLOAD_2', direction: 'IN' };
     PD6: { pin: 20, signal: 'OVERLOAD_1', direction: 'IN' };
-    PD7: { pin: 21, signal: 'AMPLITUDE_ALL', direction: 'IN' };
+    PD7: { pin: 21, signal: 'AMPLITUDE_ALL', direction: 'OUT' };
     
     // Port A (Analog)
     PA7: { pin: 33, signal: 'POWER_SENSE_4', direction: 'ANALOG' };

@@ -3,8 +3,13 @@ export interface PinState {
     pin: string;
     signal: string;
     direction: 'IN' | 'OUT' | 'ANALOG';
-    state: 'HIGH' | 'LOW' | number;
+    state: 'HIGH' | 'LOW' | number | string;
     timestamp: number;
+    frequency?: number;
+    frequencyDisplay?: string;
+    operatingFrequency?: string;
+    enabled?: boolean;
+    isActive?: boolean;
 }
 export interface HardwareCommand {
     command: string;
@@ -29,6 +34,7 @@ export declare class HardwareInterface extends EventEmitter {
     private pinStates;
     private commandQueue;
     private processingCommand;
+    private configuration;
     constructor();
     private initializePinStates;
     initialize(): Promise<boolean>;
@@ -44,4 +50,31 @@ export declare class HardwareInterface extends EventEmitter {
     reconnect(): Promise<boolean>;
     retryConnection(maxAttempts?: number, delayMs?: number): Promise<boolean>;
     disconnect(): void;
+    getConfiguration(): {
+        sonicator4: {
+            operatingFrequencyKHz: number;
+            outputFrequencyKHz: number;
+            enabled: boolean;
+            manualMode: boolean;
+            manualFrequencyKHz: number;
+        };
+        testHarness: {
+            pinMapping: {
+                FREQ_DIV10_4: string;
+                FREQ_LOCK_4: string;
+                OVERLOAD_4: string;
+                START_4: string;
+                RESET_4: string;
+                POWER_SENSE_4: string;
+                AMPLITUDE_ALL: string;
+                UART_RXD: string;
+                UART_TXD: string;
+                STATUS_LED: string;
+            };
+        };
+    };
+    updateConfiguration(newConfig: any): Promise<{
+        success: boolean;
+        config: any;
+    }>;
 }

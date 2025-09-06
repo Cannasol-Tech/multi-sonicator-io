@@ -11,10 +11,11 @@ interface PinConnection {
   arduino: string
   atmega: string
   signal: string
-  direction: 'IN' | 'OUT' | 'ANALOG'
+  direction: 'IN' | 'OUT' | 'ANALOG' | 'COMM'
   description: string
   arduinoPos?: { x: number; y: number }
   atmegaPos?: { x: number; y: number }
+  readonly?: boolean // Prevents manual control for communication pins
 }
 
 const PIN_CONNECTIONS: PinConnection[] = [
@@ -23,10 +24,10 @@ const PIN_CONNECTIONS: PinConnection[] = [
   { arduino: 'A2', atmega: 'PD3', signal: 'OVERLOAD_4', direction: 'IN', description: 'Overload input' },
   { arduino: 'A3', atmega: 'PC0', signal: 'START_4', direction: 'OUT', description: 'Start output' },
   { arduino: 'A4', atmega: 'PC1', signal: 'RESET_4', direction: 'OUT', description: 'Reset output' },
-  { arduino: 'A1', atmega: 'PA7', signal: 'POWER_SENSE_4', direction: 'ANALOG', description: 'Power sense analog' },
-  { arduino: 'D9', atmega: 'PD7', signal: 'AMPLITUDE_ALL', direction: 'IN', description: 'Amplitude PWM input' },
-  { arduino: 'D10', atmega: 'PD0', signal: 'UART_RXD', direction: 'IN', description: 'UART RX' },
-  { arduino: 'D11', atmega: 'PD1', signal: 'UART_TXD', direction: 'OUT', description: 'UART TX' },
+  { arduino: 'A1', atmega: 'PA7', signal: 'POWER_SENSE_4', direction: 'ANALOG', description: 'Sonicator #4 Power Level (Configurable)' },
+  { arduino: 'D9', atmega: 'PD7', signal: 'AMPLITUDE_ALL', direction: 'OUT', description: 'Amplitude PWM output' },
+  { arduino: 'D10', atmega: 'PD0', signal: 'UART_RXD', direction: 'COMM', description: 'UART RX (Modbus Communication)', readonly: true },
+  { arduino: 'D11', atmega: 'PD1', signal: 'UART_TXD', direction: 'COMM', description: 'UART TX (Modbus Communication)', readonly: true },
   { arduino: 'D12', atmega: 'PD2', signal: 'STATUS_LED', direction: 'OUT', description: 'Status LED' }
 ]
 
@@ -69,6 +70,7 @@ const WireConnection: React.FC<{
 
   const getWireColor = () => {
     if (isHighlighted) return '#f59e0b'
+    if (connection.direction === 'COMM') return '#d97706' // Orange for communication pins
     if (connection.direction === 'ANALOG') return '#8b5cf6'
     if (connection.direction === 'IN') return pinState?.state === 'HIGH' ? '#ef4444' : '#6b7280'
     if (connection.direction === 'OUT') return pinState?.state === 'HIGH' ? '#10b981' : '#6b7280'
@@ -81,7 +83,7 @@ const WireConnection: React.FC<{
       stroke={getWireColor()}
       strokeWidth={isHighlighted ? "3" : "2"}
       fill="none"
-      strokeDasharray={connection.direction === 'ANALOG' ? "5,5" : "none"}
+      strokeDasharray={connection.direction === 'ANALOG' ? "5,5" : connection.direction === 'COMM' ? "10,5" : "none"}
       className={`wire-connection ${isHighlighted ? 'highlighted' : ''}`}
       style={{
         filter: isHighlighted ? 'drop-shadow(0 0 4px currentColor)' : 'none',
@@ -146,6 +148,13 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
 
   const handlePinClick = (signal: string, pinState: any) => {
     console.log('Pin clicked:', signal, 'Current state:', pinState.state, 'Direction:', pinState.direction)
+
+    // Check if this is a readonly communication pin
+    const connection = PIN_CONNECTIONS.find(c => c.signal === signal)
+    if (connection?.readonly) {
+      console.log('Pin', signal, 'is readonly (communication pin) - no manual control allowed')
+      return
+    }
 
     if (pinState.direction === 'IN') {
       onPinClick(signal, 'toggle')
@@ -249,38 +258,80 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
 
       {/* Main Hardware Layout */}
       <div className="hardware-layout">
-        {/* Arduino Test Wrapper */}
-        <div className="device-container arduino-container">
-          <div className="device-header">
-            <h3>Arduino Uno R3</h3>
-            <span className="device-subtitle">HIL Test Wrapper</span>
-          </div>
-          <div className="device-image-container">
-            <img
-              src="/arduino-uno-r3-icon.png"
-              alt="Arduino Uno R3"
-              className="device-image arduino-image"
-            />
-            <div className="device-pins arduino-pins">
-              {PIN_CONNECTIONS.map(connection => {
-                const enhancedState = getEnhancedPinState(connection.signal)
-                return (
-                  <div
-                    key={connection.arduino}
-                    data-pin={connection.arduino}
-                    className={`pin-indicator arduino-pin ${enhancedState.isActive ? 'highlighted' : ''}`}
-                    onMouseEnter={() => handleConnectionHover(connection.signal)}
-                    onMouseLeave={() => handleConnectionHover(null)}
-                    onClick={() => handlePinClickWithFeedback(connection.signal, enhancedState)}
-                    title={`${connection.arduino} → ${connection.atmega} (${connection.signal})\n${connection.description}\nLast updated: ${enhancedState.lastUpdated}`}
-                  >
-                    <span className="pin-label">{connection.arduino}</span>
-                    <div className={`pin-status ${connection.direction.toLowerCase()}`}>
-                      {enhancedState.state}
+        <div className="devices-row">
+          {/* Arduino Test Wrapper */}
+          <div className="device-container arduino-container">
+            <div className="device-header">
+              <h3>Arduino Uno R3</h3>
+              <span className="device-subtitle">HIL Test Wrapper</span>
+            </div>
+            <div className="device-image-container">
+              <img
+                src="/arduino-uno-r3-icon.png"
+                alt="Arduino Uno R3"
+                className="device-image arduino-image"
+              />
+              <div className="device-pins arduino-pins">
+                {PIN_CONNECTIONS.map(connection => {
+                  const enhancedState = getEnhancedPinState(connection.signal)
+                  return (
+                    <div
+                      key={connection.arduino}
+                      data-pin={connection.arduino}
+                      className={`pin-indicator arduino-pin ${enhancedState.isActive ? 'highlighted' : ''} ${connection.readonly ? 'readonly' : ''}`}
+                      onMouseEnter={() => handleConnectionHover(connection.signal)}
+                      onMouseLeave={() => handleConnectionHover(null)}
+                      onClick={() => !connection.readonly && handlePinClickWithFeedback(connection.signal, enhancedState)}
+                      title={`${connection.arduino} → ${connection.atmega} (${connection.signal})\n${connection.description}\n${connection.readonly ? 'READONLY - Communication Pin' : 'Last updated: ' + enhancedState.lastUpdated}`}
+                      style={{ cursor: connection.readonly ? 'not-allowed' : 'pointer' }}
+                    >
+                      <span className="pin-label">{connection.arduino}</span>
+                      <div className={`pin-status ${connection.direction.toLowerCase()}`}>
+                        {enhancedState.state}
+                      </div>
                     </div>
-                  </div>
-                )
-              })}
+                  )
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* ATmega32A DUT */}
+          <div className="device-container atmega-container">
+            <div className="device-header">
+              <h3>ATmega32A</h3>
+              <span className="device-subtitle">Device Under Test</span>
+            </div>
+            <div className="device-image-container">
+              <img
+                src="/atmega-32-a-icon.png"
+                alt="ATmega32A"
+                className="device-image atmega-image"
+              />
+              <div className="device-pins atmega-pins">
+                {PIN_CONNECTIONS.map(connection => {
+                  const enhancedState = getEnhancedPinState(connection.signal)
+                  return (
+                    <div
+                      key={connection.atmega}
+                      data-pin={connection.atmega}
+                      className={`pin-indicator atmega-pin ${enhancedState.isActive ? 'highlighted' : ''}`}
+                      onMouseEnter={() => handleConnectionHover(connection.signal)}
+                      onMouseLeave={() => handleConnectionHover(null)}
+                      title={`${connection.atmega} ← ${connection.arduino} (${connection.signal})\n${connection.description}\nLast updated: ${enhancedState.lastUpdated}`}
+                    >
+                      <span className="pin-label">{connection.atmega}</span>
+                      <div className={`pin-status ${connection.direction.toLowerCase()}`}>
+                        {enhancedState.state}
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+            <div className="device-status">
+              <div className={`status-indicator ${hardwareState.connection.connected ? 'connected' : 'disconnected'}`}></div>
+              <span>{hardwareState.connection.connected ? 'Active' : 'Disconnected'}</span>
             </div>
           </div>
         </div>
@@ -350,45 +401,6 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
             })}
           </div>
         </div>
-
-        {/* ATmega32A DUT */}
-        <div className="device-container atmega-container">
-          <div className="device-header">
-            <h3>ATmega32A</h3>
-            <span className="device-subtitle">Device Under Test</span>
-          </div>
-          <div className="device-image-container">
-            <img
-              src="/atmega-32-a-icon.png"
-              alt="ATmega32A"
-              className="device-image atmega-image"
-            />
-            <div className="device-pins atmega-pins">
-              {PIN_CONNECTIONS.map(connection => {
-                const enhancedState = getEnhancedPinState(connection.signal)
-                return (
-                  <div
-                    key={connection.atmega}
-                    data-pin={connection.atmega}
-                    className={`pin-indicator atmega-pin ${enhancedState.isActive ? 'highlighted' : ''}`}
-                    onMouseEnter={() => handleConnectionHover(connection.signal)}
-                    onMouseLeave={() => handleConnectionHover(null)}
-                    title={`${connection.atmega} ← ${connection.arduino} (${connection.signal})\n${connection.description}\nLast updated: ${enhancedState.lastUpdated}`}
-                  >
-                    <span className="pin-label">{connection.atmega}</span>
-                    <div className={`pin-status ${connection.direction.toLowerCase()}`}>
-                      {enhancedState.state}
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-          <div className="device-status">
-            <div className={`status-indicator ${hardwareState.connection.connected ? 'connected' : 'disconnected'}`}></div>
-            <span>{hardwareState.connection.connected ? 'Active' : 'Disconnected'}</span>
-          </div>
-        </div>
       </div>
 
       {/* Control Panel */}
@@ -420,7 +432,7 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
             {pingStatus.responseTime && (
               <div><strong>Response Time:</strong> {pingStatus.responseTime}ms</div>
             )}
-            {pingStatus.lastPing && (
+            {pingStatus.lastPing !== null && (
               <div><strong>Last Test:</strong> {new Date(pingStatus.lastPing).toLocaleTimeString()}</div>
             )}
           </div>

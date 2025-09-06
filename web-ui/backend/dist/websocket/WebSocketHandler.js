@@ -1,9 +1,14 @@
-import { WebSocket } from 'ws';
-export class WebSocketHandler {
-    constructor(hardwareInterface) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.WebSocketHandler = void 0;
+const ws_1 = require("ws");
+class WebSocketHandler {
+    constructor(hardwareInterface, testAutomationService) {
         this.clients = new Set();
         this.hardwareInterface = hardwareInterface;
+        this.testAutomationService = testAutomationService;
         this.setupHardwareListeners();
+        this.setupTestAutomationListeners();
     }
     setupHardwareListeners() {
         // Listen for hardware events and broadcast to all connected clients
@@ -32,6 +37,43 @@ export class WebSocketHandler {
             this.broadcast({
                 type: 'error',
                 data: { error },
+                timestamp: Date.now()
+            });
+        });
+    }
+    setupTestAutomationListeners() {
+        if (!this.testAutomationService) {
+            return;
+        }
+        // Listen for test execution progress updates
+        this.testAutomationService.on('progress_update', (execution) => {
+            this.broadcast({
+                type: 'test_progress',
+                data: execution,
+                timestamp: Date.now()
+            });
+        });
+        // Listen for test execution completion
+        this.testAutomationService.on('execution_complete', (execution) => {
+            this.broadcast({
+                type: 'test_complete',
+                data: execution,
+                timestamp: Date.now()
+            });
+        });
+        // Listen for test execution errors
+        this.testAutomationService.on('execution_error', (error) => {
+            this.broadcast({
+                type: 'test_error',
+                data: { error },
+                timestamp: Date.now()
+            });
+        });
+        // Listen for test execution stopped
+        this.testAutomationService.on('execution_stopped', (execution) => {
+            this.broadcast({
+                type: 'test_stopped',
+                data: execution,
                 timestamp: Date.now()
             });
         });
@@ -67,7 +109,9 @@ export class WebSocketHandler {
             data: {
                 connected: this.hardwareInterface.isConnected(),
                 port: this.hardwareInterface.getSerialPort(),
-                pins: Object.fromEntries(this.hardwareInterface.getPinStates())
+                pins: Object.fromEntries(this.hardwareInterface.getPinStates()),
+                test_execution: this.testAutomationService?.getCurrentExecution() || null,
+                test_in_progress: this.testAutomationService?.isExecutionInProgress() || false
             },
             timestamp: Date.now()
         };
@@ -126,6 +170,12 @@ export class WebSocketHandler {
                         expectResponse: true
                     };
                     break;
+                case 'read_pwm':
+                    hardwareCommand = {
+                        command: `READ_PWM ${pin}`,
+                        expectResponse: true
+                    };
+                    break;
                 case 'set_pwm':
                     hardwareCommand = {
                         command: `SET_PWM ${pin} ${value.frequency} ${value.dutyCycle}`,
@@ -159,7 +209,7 @@ export class WebSocketHandler {
         }
     }
     sendToClient(ws, message) {
-        if (ws.readyState === WebSocket.OPEN) {
+        if (ws.readyState === ws_1.WebSocket.OPEN) {
             try {
                 ws.send(JSON.stringify(message));
             }
@@ -178,7 +228,7 @@ export class WebSocketHandler {
     broadcast(message) {
         const messageStr = JSON.stringify(message);
         this.clients.forEach(client => {
-            if (client.readyState === WebSocket.OPEN) {
+            if (client.readyState === ws_1.WebSocket.OPEN) {
                 try {
                     client.send(messageStr);
                 }
@@ -196,3 +246,4 @@ export class WebSocketHandler {
         return this.clients.size;
     }
 }
+exports.WebSocketHandler = WebSocketHandler;

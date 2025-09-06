@@ -23,15 +23,73 @@ const helpContent: Record<string, HelpContent> = {
     description: 'Pin connections between Arduino Test Wrapper and ATmega32A DUT for Sonicator 4 (S4) single channel HIL mapping.',
     examples: [
       'D7 → ATmega32A PB0 (FREQ_DIV10_4): Frequency ÷10 input',
-      'D8 → ATmega32A PB4 (FREQ_LOCK_4): Frequency lock input', 
+      'D8 → ATmega32A PB4 (FREQ_LOCK_4): Frequency lock input',
       'A2 → ATmega32A PD3 (OVERLOAD_4): Overload detection input',
       'A3 → ATmega32A PC0 (START_4): Start control output',
       'A4 → ATmega32A PC1 (RESET_4): Reset control output',
       'A1 → ATmega32A PA7 (POWER_SENSE_4): Power sense analog input',
-      'D9 → ATmega32A PD7 (AMPLITUDE_ALL): Amplitude PWM input',
+      'D9 ← ATmega32A PD7 (AMPLITUDE_ALL): Amplitude PWM output',
       'D10 → ATmega32A PD0 (UART_RXD): UART receive',
       'D11 → ATmega32A PD1 (UART_TXD): UART transmit',
       'D12 → ATmega32A PD2 (STATUS_LED): Status LED output'
+    ]
+  },
+
+  pinConnections: {
+    title: 'Complete Pin Connections Matrix',
+    description: 'Comprehensive pin mapping for all four sonicator channels as defined in docs/planning/pin-matrix.md. This is the SOLE SOURCE OF TRUTH for hardware pin assignments.',
+    examples: [
+      '🔌 DB9 Connector Layout:',
+      'DB9-1 (S1), DB9-2 (S2), DB9-3 (S3), DB9-4 (S4), DB9-0 (System)',
+      '',
+      '📍 Sonicator 1 (DB9-1):',
+      'Pin 1: OVERLOAD_1 ← PD6 (Pin 20) - OL_1 via opto',
+      'Pin 2: RESET_1 ← PC7 (Pin 29) - ULN2003A open-collector',
+      'Pin 3: FREQ_LOCK_1 ← PB7 (Pin 8) - FLCK_1 via opto',
+      'Pin 4: FREQ_DIV10_1 ← PB3 (Pin 4) - ÷10 frequency',
+      'Pin 5: POWER_SENSE_1 ← PA4/A4 (Pin 36) - 5.44 mV/W scaling',
+      'Pin 7: START_1 ← PC6 (Pin 28) - ULN2003A open-collector',
+      'Pin 8: AMPLITUDE_ALL → PD7 (Pin 21) - Shared 0–10V output',
+      '',
+      '📍 Sonicator 2 (DB9-2):',
+      'Pin 1: OVERLOAD_2 ← PD5 (Pin 19) - OL_2 via opto',
+      'Pin 2: RESET_2 ← PC5 (Pin 27) - ULN2003A open-collector',
+      'Pin 3: FREQ_LOCK_2 ← PB6 (Pin 7) - FLCK_2 via opto',
+      'Pin 4: FREQ_DIV10_2 ← PB2 (Pin 3) - ÷10 frequency',
+      'Pin 5: POWER_SENSE_2 ← PA5/A5 (Pin 35) - 5.44 mV/W scaling',
+      'Pin 7: START_2 ← PC4 (Pin 26) - ULN2003A open-collector',
+      'Pin 8: AMPLITUDE_ALL → PD7 (Pin 21) - Shared 0–10V output',
+      '',
+      '📍 Sonicator 3 (DB9-3):',
+      'Pin 1: OVERLOAD_3 ← PD4 (Pin 18) - OL_3 via opto',
+      'Pin 2: RESET_3 ← PC3 (Pin 25) - ULN2003A open-collector',
+      'Pin 3: FREQ_LOCK_3 ← PB5 (Pin 6) - FLCK_3 via opto',
+      'Pin 4: FREQ_DIV10_3 ← PB1 (Pin 2) - ÷10 frequency',
+      'Pin 5: POWER_SENSE_3 ← PA6/A6 (Pin 34) - 5.44 mV/W scaling',
+      'Pin 7: START_3 ← PC2 (Pin 24) - ULN2003A open-collector',
+      'Pin 8: AMPLITUDE_ALL → PD7 (Pin 21) - Shared 0–10V output',
+      '',
+      '📍 Sonicator 4 (DB9-4) - HIL Test Harness:',
+      'Pin 1: OVERLOAD_4 ← PD3 (Pin 17) - OL_4 via opto → A2',
+      'Pin 2: RESET_4 ← PC1 (Pin 23) - ULN2003A open-collector → A4',
+      'Pin 3: FREQ_LOCK_4 ← PB4 (Pin 5) - FLCK_4 via opto → D8',
+      'Pin 4: FREQ_DIV10_4 ← PB0 (Pin 1) - ÷10 frequency → D7',
+      'Pin 5: POWER_SENSE_4 ← PA7/A7 (Pin 33) - 5.44 mV/W scaling → A1',
+      'Pin 7: START_4 ← PC0 (Pin 22) - ULN2003A open-collector → A3',
+      'Pin 8: AMPLITUDE_ALL → PD7 (Pin 21) - Shared 0–10V output → D9 (PWM)',
+      '',
+      '📍 System Communications (DB9-0):',
+      'Pin 8: UART_RXD ← PD0 (Pin 14) - MODBUS RTU RX → D2',
+      'Pin 9: UART_TXD ← PD1 (Pin 15) - MODBUS RTU TX → D3',
+      '',
+      '📍 Status Indicator:',
+      'STATUS_LED ← PD2 (Pin 16) - Status LED drive → D4',
+      '',
+      '⚠️ Important Notes:',
+      'AMPLITUDE_ALL (PD7) is shared across all channels',
+      'Only Sonicator 4 has Arduino wrapper pins for HIL testing',
+      'All pin assignments verified by Product Owner',
+      'Changes must be reflected in include/config.h'
     ]
   },
 
@@ -43,10 +101,9 @@ const helpContent: Record<string, HelpContent> = {
       'Use "All LOW" / "All HIGH" buttons for bulk operations',
       'FREQ_DIV10_4: Controls frequency division input',
       'FREQ_LOCK_4: Controls frequency lock detection',
-      'OVERLOAD_4: Simulates overload condition',
-      'AMPLITUDE_ALL: Controls amplitude PWM signal'
+      'OVERLOAD_4: Simulates overload condition'
     ],
-    relatedPins: ['FREQ_DIV10_4', 'FREQ_LOCK_4', 'OVERLOAD_4', 'AMPLITUDE_ALL', 'UART_RXD']
+    relatedPins: ['FREQ_DIV10_4', 'FREQ_LOCK_4', 'OVERLOAD_4', 'UART_RXD']
   },
 
   outputPins: {
@@ -55,11 +112,12 @@ const helpContent: Record<string, HelpContent> = {
     examples: [
       'Click "Read Pin" to get current state',
       'START_4: Sonicator start control signal',
-      'RESET_4: Sonicator reset control signal', 
+      'RESET_4: Sonicator reset control signal',
       'UART_TXD: UART transmission data',
-      'STATUS_LED: System status indicator'
+      'STATUS_LED: System status indicator',
+      'AMPLITUDE_ALL: PWM amplitude control output (see PWM section)'
     ],
-    relatedPins: ['START_4', 'RESET_4', 'UART_TXD', 'STATUS_LED']
+    relatedPins: ['START_4', 'RESET_4', 'UART_TXD', 'STATUS_LED', 'AMPLITUDE_ALL']
   },
 
   analogPins: {
@@ -75,14 +133,17 @@ const helpContent: Record<string, HelpContent> = {
   },
 
   pwmControl: {
-    title: 'PWM (Pulse Width Modulation) Control',
-    description: 'Generate PWM signals on input pins with configurable frequency and duty cycle.',
+    title: 'PWM (Pulse Width Modulation) Continuous Monitoring',
+    description: 'Real-time monitoring of PWM signals output by the ATmega32A. The Arduino harness continuously measures and displays PWM duty cycles without manual intervention.',
     examples: [
-      'Select target pin from dropdown',
-      'Set frequency: 1-50000 Hz',
-      'Set duty cycle: 0-100%',
-      'Commonly used for AMPLITUDE_ALL signal generation'
-    ]
+      'AMPLITUDE_ALL: Continuously monitored amplitude control for all sonicator channels',
+      'Duty cycle automatically updated and displayed as percentage (0-100%)',
+      'PWM signal flows from ATmega32A PD7 to Arduino D9',
+      'Live monitoring indicator shows continuous measurement status',
+      'No manual "Read PWM" button needed - values update automatically',
+      'Green pulsing indicator confirms active monitoring'
+    ],
+    relatedPins: ['AMPLITUDE_ALL']
   },
 
   connection: {
@@ -122,94 +183,112 @@ const helpContent: Record<string, HelpContent> = {
   }
 }
 
+// Topic icons mapping
+const topicIcons: Record<string, string> = {
+  overview: '🏠',
+  pinMapping: '🔌',
+  pinConnections: '📋',
+  inputPins: '📥',
+  outputPins: '📤',
+  analogPins: '📊',
+  connection: '🔗',
+  troubleshooting: '🔧',
+  shortcuts: '⚡'
+}
+
 export default function HelpSystem({ visible, onClose }: HelpSystemProps) {
   const [selectedTopic, setSelectedTopic] = useState('overview')
+  const [contentKey, setContentKey] = useState(0)
 
   if (!visible) return null
 
   const currentHelp = helpContent[selectedTopic]
 
+  const handleTopicChange = (topic: string) => {
+    setSelectedTopic(topic)
+    setContentKey(prev => prev + 1) // Force re-render with animation
+  }
+
   return (
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      background: 'rgba(0, 0, 0, 0.5)',
-      zIndex: 1000,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
-    }}>
-      <div style={{
-        background: 'white',
-        borderRadius: '8px',
-        width: '90%',
-        maxWidth: '800px',
-        height: '80%',
-        display: 'flex',
-        overflow: 'hidden'
-      }}>
+    <div className="help-modal-overlay">
+      <div className="help-modal-container">
         {/* Help Topics Sidebar */}
-        <div style={{
-          width: '250px',
-          background: '#f9fafb',
-          borderRight: '1px solid #e5e7eb',
-          padding: '20px',
-          overflowY: 'auto'
-        }}>
-          <h3 className="font-semibold mb-4">Help Topics</h3>
-          {Object.entries(helpContent).map(([key, content]) => (
-            <button
-              key={key}
-              className={`btn w-full text-left mb-2 text-sm ${selectedTopic === key ? 'primary' : ''}`}
-              onClick={() => setSelectedTopic(key)}
-            >
-              {content.title.split(':')[0]}
-            </button>
-          ))}
+        <div className="help-sidebar">
+          <div className="help-sidebar-header">
+            <h3 className="help-sidebar-title">
+              📚 Help Topics
+            </h3>
+          </div>
+
+          <div className="help-topics-list">
+            {Object.entries(helpContent).map(([key, content]) => (
+              <button
+                key={key}
+                className={`help-topic-button ${selectedTopic === key ? 'active' : ''}`}
+                onClick={() => handleTopicChange(key)}
+              >
+                <span className="help-topic-icon">
+                  {topicIcons[key] || '📄'}
+                </span>
+                <span className="help-topic-text">
+                  {content.title.split(':')[0]}
+                </span>
+                {selectedTopic === key && (
+                  <span className="help-topic-indicator">▶</span>
+                )}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Help Content */}
-        <div style={{
-          flex: 1,
-          padding: '20px',
-          overflowY: 'auto'
-        }}>
-          <div className="flex justify-between items-start mb-4">
-            <h2 className="text-lg font-semibold">{currentHelp.title}</h2>
+        <div key={contentKey} className="help-content">
+          <div className="help-content-header">
+            <div className="help-content-title">
+              <span className="help-content-icon">
+                {topicIcons[selectedTopic] || '📄'}
+              </span>
+              <h2 className="help-title">{currentHelp.title}</h2>
+            </div>
             <button
-              className="btn"
+              className="help-close-button"
               onClick={onClose}
               title="Close help"
             >
-              ✕
+              <span className="help-close-icon">✕</span>
             </button>
           </div>
 
-          <p className="text-gray-700 mb-4">{currentHelp.description}</p>
+          <div className="help-description">
+            <p>{currentHelp.description}</p>
+          </div>
 
           {currentHelp.examples && (
-            <div className="mb-4">
-              <h4 className="font-semibold mb-2">Examples & Usage:</h4>
-              <ul className="text-sm text-gray-600 space-y-1">
+            <div className="help-examples">
+              <h4 className="help-examples-title">
+                <span className="help-examples-icon">💡</span>
+                Examples & Usage
+              </h4>
+              <div className="help-examples-list">
                 {currentHelp.examples.map((example, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="text-blue-500 mr-2">•</span>
-                    <span>{example}</span>
-                  </li>
+                  <div key={index} className="help-example-item">
+                    <span className="help-example-bullet">▸</span>
+                    <span className="help-example-text">{example}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           )}
 
           {currentHelp.relatedPins && (
-            <div className="mb-4">
-              <h4 className="font-semibold mb-2">Related Pins:</h4>
-              <div className="flex flex-wrap gap-2">
+            <div className="help-related-pins">
+              <h4 className="help-related-pins-title">
+                <span className="help-related-pins-icon">🔗</span>
+                Related Pins
+              </h4>
+              <div className="help-related-pins-list">
                 {currentHelp.relatedPins.map(pin => (
-                  <span key={pin} className="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs font-mono">
+                  <span key={pin} className="help-pin-badge">
                     {pin}
                   </span>
                 ))}
@@ -218,15 +297,84 @@ export default function HelpSystem({ visible, onClose }: HelpSystemProps) {
           )}
 
           {selectedTopic === 'overview' && (
-            <div className="mt-6 p-4 bg-blue-50 rounded">
-              <h4 className="font-semibold text-blue-800 mb-2">Quick Start:</h4>
-              <ol className="text-sm text-blue-700 space-y-1">
-                <li>1. Verify hardware connection (green indicator in header)</li>
-                <li>2. Click on pin connections in the diagram to interact</li>
-                <li>3. Use control panel for advanced operations</li>
-                <li>4. Monitor real-time pin states and history</li>
-                <li>5. Use help tooltips throughout the interface</li>
-              </ol>
+            <div className="help-quick-start">
+              <h4 className="help-quick-start-title">
+                <span className="help-quick-start-icon">🚀</span>
+                Quick Start Guide
+              </h4>
+              <div className="help-quick-start-steps">
+                <div className="help-step">
+                  <span className="help-step-number">1</span>
+                  <span className="help-step-text">Verify hardware connection (green indicator in header)</span>
+                </div>
+                <div className="help-step">
+                  <span className="help-step-number">2</span>
+                  <span className="help-step-text">Click on pin connections in the diagram to interact</span>
+                </div>
+                <div className="help-step">
+                  <span className="help-step-number">3</span>
+                  <span className="help-step-text">Use control panel for advanced operations</span>
+                </div>
+                <div className="help-step">
+                  <span className="help-step-number">4</span>
+                  <span className="help-step-text">Monitor real-time pin states and history</span>
+                </div>
+                <div className="help-step">
+                  <span className="help-step-number">5</span>
+                  <span className="help-step-text">Use help tooltips throughout the interface</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {selectedTopic === 'pinConnections' && (
+            <div className="help-special-sections">
+              <div className="help-warning-card">
+                <h4 className="help-warning-title">
+                  <span className="help-warning-icon">⚠️</span>
+                  SOLE SOURCE OF TRUTH
+                </h4>
+                <p className="help-warning-text">
+                  This pin matrix is the authoritative reference for all hardware connections.
+                  Any changes must be reflected in <code className="help-code">include/config.h</code> and
+                  the HIL wrapper under <code className="help-code">test/acceptance/sketches/arduino_test_wrapper/</code>.
+                </p>
+              </div>
+
+              <div className="help-success-card">
+                <h4 className="help-success-title">
+                  <span className="help-success-icon">🔧</span>
+                  HIL Test Harness
+                </h4>
+                <p className="help-success-text">
+                  Currently only Sonicator 4 (S4) is connected to the Arduino Test Wrapper for Hardware-in-the-Loop testing.
+                  The web interface controls this single channel through the Arduino Uno R4 WiFi.
+                </p>
+              </div>
+
+              <div className="help-info-card">
+                <h4 className="help-info-title">
+                  <span className="help-info-icon">📋</span>
+                  Legend
+                </h4>
+                <div className="help-legend-list">
+                  <div className="help-legend-item">
+                    <strong>DUT:</strong> ATmega32A pin identifier (port/pin and header reference)
+                  </div>
+                  <div className="help-legend-item">
+                    <strong>Signal:</strong> Functional name (OVERLOAD, FREQ_DIV10, etc.)
+                  </div>
+                  <div className="help-legend-item">
+                    <strong>Dir:</strong> Direction from DUT perspective (IN/OUT/ANALOG)
+                  </div>
+                  <div className="help-legend-item">
+                    <strong>Scale/Notes:</strong> Electrical characteristics and scaling
+                  </div>
+                  <div className="help-legend-item">
+                    <strong>→ Pin:</strong> Arduino wrapper pin for HIL testing
+                  </div>
+                </div>
+              </div>
             </div>
           )}
         </div>

@@ -226,7 +226,8 @@ class TestFrontendComponents:
         # This would test the help content structure from HelpSystem component
         required_help_topics = [
             'overview',
-            'pinMapping', 
+            'pinMapping',
+            'pinConnections',
             'inputPins',
             'outputPins',
             'analogPins',

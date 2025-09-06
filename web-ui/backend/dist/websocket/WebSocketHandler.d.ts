@@ -1,5 +1,6 @@
 import { WebSocket } from 'ws';
 import { HardwareInterface } from '../adapters/HardwareInterface.js';
+import { TestAutomationService } from '../services/TestAutomationService.js';
 export interface WebSocketMessage {
     type: string;
     data: any;
@@ -8,8 +9,10 @@ export interface WebSocketMessage {
 export declare class WebSocketHandler {
     private clients;
     private hardwareInterface;
-    constructor(hardwareInterface: HardwareInterface);
+    private testAutomationService?;
+    constructor(hardwareInterface: HardwareInterface, testAutomationService?: TestAutomationService);
     private setupHardwareListeners;
+    private setupTestAutomationListeners;
     handleConnection(ws: WebSocket): void;
     private sendInitialState;
     private handleMessage;

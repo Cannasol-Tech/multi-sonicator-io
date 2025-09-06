@@ -5,18 +5,24 @@ import TestAutomationPanel from './components/TestAutomationPanel'
 import TestExecutionIndicator from './components/TestExecutionIndicator'
 import Header from './components/Header'
 import HelpSystem from './components/HelpSystem'
+import SettingsPanel from './components/SettingsPanel'
+import AdvancedControlPanel from './components/AdvancedControlPanel'
+import ArduinoCommandLog from './components/ArduinoCommandLog'
 import { useWebSocket } from './hooks/useWebSocket'
 import { useHardwareState } from './hooks/useHardwareState'
 import { usePinHistory } from './hooks/usePinHistory'
 import { useTestAutomation } from './hooks/useTestAutomation'
+import { useKeyboardShortcuts, createAppShortcuts } from './hooks/useKeyboardShortcuts'
+import { useArduinoCommandLog } from './hooks/useArduinoCommandLog'
 
 function App() {
   const [helpVisible, setHelpVisible] = useState(false)
   const [highlightedPins, setHighlightedPins] = useState<string[]>([])
-  const [activeTab, setActiveTab] = useState<'hardware' | 'testing'>('hardware')
+  const [activeTab, setActiveTab] = useState<'hardware' | 'testing' | 'settings'>('hardware')
   const [currentTestExecution, setCurrentTestExecution] = useState<any>(null)
+  const [keyboardShortcutsEnabled, setKeyboardShortcutsEnabled] = useState(true)
 
-  const { connected, sendMessage, lastMessage } = useWebSocket('ws://localhost:3001/ws')
+  const { connected, sendMessage, lastMessage } = useWebSocket('ws://localhost:3005/ws')
   const { hardwareState, updatePinState, updateMultiplePins, setConnectionStatus } = useHardwareState()
   const { addHistoryEntry } = usePinHistory()
   const {
@@ -24,6 +30,38 @@ function App() {
     handleExecutionComplete,
     handleExecutionError
   } = useTestAutomation()
+
+  // Keyboard shortcuts
+  const shortcuts = createAppShortcuts({
+    toggleHardwareTab: () => setActiveTab('hardware'),
+    toggleTestingTab: () => setActiveTab('testing'),
+    toggleAnalyticsTab: () => {}, // Disabled - Analytics removed
+    toggleSettingsTab: () => setActiveTab('settings'),
+    pingHardware: () => {
+      // Trigger ping command
+      fetch('/api/ping', { method: 'POST' })
+        .then(res => res.json())
+        .then(data => console.log('Ping result:', data))
+        .catch(err => console.error('Ping failed:', err))
+    },
+    exportData: () => {
+      // Export current data
+      console.log('Export data shortcut triggered')
+    },
+    refreshConnection: () => {
+      // Refresh WebSocket connection
+      window.location.reload()
+    },
+    closeModals: () => {
+      setHelpVisible(false)
+      setCurrentTestExecution(null)
+    }
+  })
+
+  useKeyboardShortcuts({
+    shortcuts,
+    enabled: keyboardShortcutsEnabled
+  })
 
   // Handle WebSocket messages
   useEffect(() => {
@@ -141,16 +179,34 @@ function App() {
             >
               🧪 Test Automation
             </button>
+
+            <button
+              className={`tab-button ${activeTab === 'settings' ? 'active' : ''}`}
+              onClick={() => setActiveTab('settings')}
+            >
+              ⚙️ Settings
+            </button>
           </div>
 
           {/* Tab Content */}
           <div className="tab-content">
             {activeTab === 'hardware' && (
-              <ControlPanel
-                hardwareState={hardwareState}
-                onPinControl={handlePinControl}
-                connected={connected}
-              />
+              <div className="hardware-tab">
+                <div className="control-panels">
+                  <ControlPanel
+                    hardwareState={hardwareState}
+                    onPinControl={handlePinControl}
+                    connected={connected}
+                  />
+                  <AdvancedControlPanel
+                    hardwareState={hardwareState}
+                    onPinClick={handlePinControl}
+                    onBatchOperation={(operation) => {
+                      console.log('Batch operation completed:', operation)
+                    }}
+                  />
+                </div>
+              </div>
             )}
 
             {activeTab === 'testing' && (
@@ -158,6 +214,15 @@ function App() {
                 onPinHighlight={setHighlightedPins}
                 onTestProgress={(execution) => {
                   console.log('Test progress:', execution)
+                }}
+              />
+            )}
+
+            {activeTab === 'settings' && (
+              <SettingsPanel
+                onPreferencesChange={(preferences) => {
+                  console.log('Preferences updated:', preferences)
+                  setKeyboardShortcutsEnabled(preferences.keyboardShortcuts)
                 }}
               />
             )}

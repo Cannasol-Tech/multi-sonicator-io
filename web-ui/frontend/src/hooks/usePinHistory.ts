@@ -4,8 +4,8 @@ import { PinState } from '../types'
 export interface PinHistoryEntry {
   signal: string
   pin: string
-  previousState: 'HIGH' | 'LOW' | number
-  newState: 'HIGH' | 'LOW' | number
+  previousState: 'HIGH' | 'LOW' | number | string
+  newState: 'HIGH' | 'LOW' | number | string
   timestamp: number
   direction: 'IN' | 'OUT' | 'ANALOG'
 }

@@ -55,7 +55,7 @@ void ATmegaInterface::initializePins() {
     // Inputs (from ATmega32A perspective, outputs from Arduino perspective)
     pinMode(START_4_PIN, OUTPUT);       // A3 -> PC0 (START_4)
     pinMode(RESET_4_PIN, OUTPUT);       // A4 -> PC1 (RESET_4)
-    pinMode(AMPLITUDE_ALL_PIN, OUTPUT); // D9 -> PD7 (AMPLITUDE_ALL - PWM)
+    pinMode(AMPLITUDE_ALL_PIN, INPUT);  // D9 <- PD7 (AMPLITUDE_ALL - PWM READ)
     pinMode(UART_RXD_PIN, OUTPUT);      // D10 -> PD0 (UART_RXD)
     pinMode(STATUS_LED_PIN, OUTPUT);    // D12 -> PD2 (STATUS_LED)
 
@@ -154,17 +154,45 @@ void ATmegaInterface::disablePWM(uint8_t pin) {
 }
 
 bool ATmegaInterface::measurePWM(uint8_t pin, float &frequency, float &duty_cycle) {
-    // Simplified PWM measurement
-    // In a real implementation, this would use input capture or timing
-    
-    // For now, return simulated values based on what was set
-    frequency = 1000.0;  // Assume 1kHz
-    
-    // Read current pin state and estimate duty cycle
-    int analog_value = analogRead(pin);
-    duty_cycle = map(analog_value, 0, 1023, 0, 100);
-    
-    return true;
+    // PWM measurement for AMPLITUDE_ALL pin
+    if (pin == AMPLITUDE_ALL_PIN) {
+        // Use pulseIn to measure PWM duty cycle
+        unsigned long high_time = pulseIn(pin, HIGH, 50000); // 50ms timeout
+        unsigned long low_time = pulseIn(pin, LOW, 50000);   // 50ms timeout
+
+        if (high_time == 0 && low_time == 0) {
+            // No PWM signal detected, check if pin is constantly high or low
+            if (digitalRead(pin) == HIGH) {
+                duty_cycle = 100.0; // Constant HIGH = 100% duty cycle
+            } else {
+                duty_cycle = 0.0;   // Constant LOW = 0% duty cycle
+            }
+            frequency = 0.0; // No frequency if constant
+            return true;
+        }
+
+        if (high_time == 0) {
+            duty_cycle = 0.0; // No high pulse detected
+            frequency = 0.0;
+            return true;
+        }
+
+        if (low_time == 0) {
+            duty_cycle = 100.0; // No low pulse detected (always high)
+            frequency = 0.0;
+            return true;
+        }
+
+        // Calculate duty cycle and frequency
+        unsigned long total_period = high_time + low_time;
+        duty_cycle = (float)high_time / (float)total_period * 100.0;
+        frequency = 1000000.0 / (float)total_period; // Convert microseconds to Hz
+
+        return true;
+    }
+
+    // For other pins, return false
+    return false;
 }
 
 void ATmegaInterface::updatePinStates() {
@@ -184,8 +212,13 @@ void ATmegaInterface::updatePinStates() {
     pin_states[POWER_SENSE_4_PIN].analog_value = analogRead(POWER_SENSE_4_PIN);
     pin_states[POWER_SENSE_4_PIN].last_update = millis();
 
-    // Update PWM pin (read current PWM value)
-    pin_states[AMPLITUDE_ALL_PIN].analog_value = analogRead(AMPLITUDE_ALL_PIN);
+    // Update PWM pin (measure PWM duty cycle)
+    float frequency, duty_cycle;
+    if (measurePWM(AMPLITUDE_ALL_PIN, frequency, duty_cycle)) {
+        pin_states[AMPLITUDE_ALL_PIN].analog_value = (uint16_t)(duty_cycle * 10); // Store duty cycle * 10 for precision
+    } else {
+        pin_states[AMPLITUDE_ALL_PIN].analog_value = 0;
+    }
     pin_states[AMPLITUDE_ALL_PIN].last_update = millis();
 }
 
@@ -217,8 +250,13 @@ String ATmegaInterface::formatPinStatus() {
     status += "\"STATUS_LED\":" + String(pin_states[STATUS_LED_PIN].digital_state ? "true" : "false") + ",";
     status += "\"UART_RXD\":" + String(digitalRead(UART_RXD_PIN) ? "true" : "false") + ",";
 
-    // PWM output pin
-    status += "\"AMPLITUDE_ALL\":" + String(analogRead(AMPLITUDE_ALL_PIN)) + ",";
+    // PWM output pin (duty cycle percentage)
+    float frequency, duty_cycle;
+    if (measurePWM(AMPLITUDE_ALL_PIN, frequency, duty_cycle)) {
+        status += "\"AMPLITUDE_ALL\":\"" + String(duty_cycle, 1) + "%\",";
+    } else {
+        status += "\"AMPLITUDE_ALL\":\"0.0%\",";
+    }
 
     // Analog input pin
     status += "\"POWER_SENSE_4\":" + String(pin_states[POWER_SENSE_4_PIN].analog_value) + ",";

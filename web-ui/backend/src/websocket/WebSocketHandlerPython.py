@@ -107,6 +107,8 @@ class WebSocketHandler:
                 hw_command = {'command': f'READ_PIN {pin}', 'expectResponse': True}
             elif command == 'read_adc':
                 hw_command = {'command': f'READ_ADC {pin}', 'expectResponse': True}
+            elif command == 'read_pwm':
+                hw_command = {'command': f'READ_PWM {pin}', 'expectResponse': True}
             elif command == 'set_pwm':
                 frequency = value.get('frequency', 1000)
                 duty_cycle = value.get('dutyCycle', 50)

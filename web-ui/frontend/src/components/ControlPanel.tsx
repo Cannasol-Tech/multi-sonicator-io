@@ -15,19 +15,23 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
     sonicator4: {
       operatingFrequencyKHz: 20.0,
       outputFrequencyKHz: 2.0,
-      enabled: true
+      enabled: true,
+      manualMode: false,
+      manualFrequencyKHz: 2.0
     }
   })
   const [configLoading, setConfigLoading] = useState(false)
   const [frequencyInput, setFrequencyInput] = useState('20.0')
+  const [manualFrequencyInput, setManualFrequencyInput] = useState('2.0')
 
   const inputPins = Object.entries(hardwareState.pins).filter(([_, pin]) => pin.direction === 'IN')
   const outputPins = Object.entries(hardwareState.pins).filter(([_, pin]) => pin.direction === 'OUT')
   const analogPins = Object.entries(hardwareState.pins).filter(([_, pin]) => pin.direction === 'ANALOG')
+  const pwmPins = Object.entries(hardwareState.pins).filter(([signal, _]) => signal === 'AMPLITUDE_ALL')
 
   const handlePinToggle = (signal: string, currentState: any) => {
-    // Don't allow toggling frequency pins
-    if (signal === 'FREQ_DIV10_4') {
+    // Don't allow toggling frequency pins or PWM output pins
+    if (signal === 'FREQ_DIV10_4' || signal === 'AMPLITUDE_ALL') {
       return
     }
     const newState = currentState === 'HIGH' ? 'LOW' : 'HIGH'
@@ -52,34 +56,155 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
                 <span className="text-xs text-gray-500">Active</span>
               </div>
             )}
-            <div className="text-xs text-gray-500 mt-1">
-              Operating: {pinState.operatingFrequency || 'N/A'}
+
+            {/* Inline Frequency Configuration Controls */}
+            <div className="frequency-controls mt-3 p-3 bg-gray-50 rounded-lg border">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs font-medium text-gray-700">Mode:</span>
+                <button
+                  className={`btn text-xs px-2 py-1 ${configuration.sonicator4.manualMode ? 'btn-warning' : 'btn-secondary'}`}
+                  onClick={handleManualModeToggle}
+                  disabled={configLoading || !connected}
+                  title={`${configuration.sonicator4.manualMode ? 'Switch to' : 'Switch to'} ${configuration.sonicator4.manualMode ? 'automatic' : 'manual'} mode`}
+                >
+                  {configuration.sonicator4.manualMode ? 'MANUAL' : 'AUTO'}
+                </button>
+              </div>
+
+              {configuration.sonicator4.manualMode ? (
+                <div className="mb-2">
+                  <label className="text-xs text-gray-600 block mb-1">Manual Frequency (kHz):</label>
+                  <div className="flex gap-1">
+                    <input
+                      type="number"
+                      className="input text-xs flex-1"
+                      value={manualFrequencyInput}
+                      onChange={(e) => setManualFrequencyInput(e.target.value)}
+                      min="0.1"
+                      max="50"
+                      step="0.1"
+                      placeholder="2.0"
+                    />
+                    <button
+                      className="btn primary text-xs px-2"
+                      onClick={handleManualFrequencyUpdate}
+                      disabled={configLoading || !connected}
+                      title="Set manual frequency"
+                    >
+                      Set
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div className="mb-2">
+                  <label className="text-xs text-gray-600 block mb-1">Operating Frequency (kHz):</label>
+                  <div className="flex gap-1">
+                    <input
+                      type="number"
+                      className="input text-xs flex-1"
+                      value={frequencyInput}
+                      onChange={(e) => setFrequencyInput(e.target.value)}
+                      min="0.1"
+                      max="100"
+                      step="0.1"
+                      placeholder="20.0"
+                    />
+                    <button
+                      className="btn primary text-xs px-2"
+                      onClick={handleFrequencyUpdate}
+                      disabled={configLoading || !connected}
+                      title="Update operating frequency"
+                    >
+                      Set
+                    </button>
+                  </div>
+                  <div className="text-xs text-gray-500 mt-1">
+                    Output: {configuration.sonicator4.operatingFrequencyKHz / 10}kHz (÷10)
+                  </div>
+                </div>
+              )}
+
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-gray-600">Status:</span>
+                <button
+                  className={`btn text-xs px-2 py-1 ${configuration.sonicator4.enabled ? 'btn-success' : 'btn-secondary'}`}
+                  onClick={handleFrequencyToggle}
+                  disabled={configLoading || !connected}
+                  title={`${configuration.sonicator4.enabled ? 'Stop' : 'Start'} frequency generation`}
+                >
+                  {configuration.sonicator4.enabled ? 'ON' : 'OFF'}
+                </button>
+              </div>
             </div>
-            <div className="text-xs text-gray-400">
+
+            <div className="text-xs text-gray-400 mt-2">
               {formatTimestamp(pinState.timestamp)}
             </div>
           </div>
         </div>
       )
     } else {
+      // Enhanced design for all other pins
+      const isHigh = pinState.state === 'HIGH'
+      const isAnalog = typeof pinState.state === 'number'
+      const isPWM = signal === 'AMPLITUDE_ALL' || (typeof pinState.state === 'string' && pinState.state.includes('%'))
+
       return (
-        <button
-          className={`btn ${pinState.state === 'HIGH' ? 'success' : ''} w-full`}
-          onClick={() => handlePinToggle(signal, pinState.state)}
-          disabled={!connected}
-          title={`Toggle ${signal} (currently ${pinState.state})`}
-        >
-          {pinState.state}
-          <span className="text-xs ml-1">
-            {formatTimestamp(pinState.timestamp)}
-          </span>
-        </button>
+        <div className="enhanced-pin-display">
+          <div className={`pin-state enhanced ${isPWM ? 'pwm' : isHigh ? 'high' : isAnalog ? 'analog' : 'low'}`}>
+            <div className="pin-value">
+              {isPWM ? pinState.state : isAnalog ? `${pinState.state}` : pinState.state}
+              {isAnalog && <span className="text-xs ml-1">ADC</span>}
+              {isPWM && (
+                <div className="pwm-indicator">
+                  <div className="pwm-pulse-dot"></div>
+                  <span className="text-xs text-gray-500 ml-1">PWM</span>
+                </div>
+              )}
+            </div>
+
+            <div className="pin-controls">
+              {!isAnalog && !isPWM && (
+                <button
+                  className={`btn-mini ${isHigh ? 'btn-success' : 'btn-secondary'}`}
+                  onClick={() => handlePinToggle(signal, pinState.state)}
+                  disabled={!connected}
+                  title={`Toggle ${signal} (currently ${pinState.state})`}
+                >
+                  Toggle
+                </button>
+              )}
+
+              {isPWM && (
+                <div className="pwm-monitoring-indicator">
+                  <div className="pwm-live-dot"></div>
+                  <span className="text-xs text-green-600 font-medium">Live Monitoring</span>
+                </div>
+              )}
+
+              <div className="pin-indicator">
+                <div className={`status-dot ${isPWM ? 'pwm' : isHigh ? 'high' : isAnalog ? 'analog' : 'low'}`}></div>
+                <span className="text-xs text-gray-500">
+                  {isPWM ? 'PWM' : isAnalog ? 'Analog' : (isHigh ? 'High' : 'Low')}
+                </span>
+              </div>
+            </div>
+
+            <div className="text-xs text-gray-400 mt-2">
+              {formatTimestamp(pinState.timestamp)}
+            </div>
+          </div>
+        </div>
       )
     }
   }
 
-  const handlePinRead = (signal: string, isAnalog: boolean = false) => {
-    onPinControl(signal, isAnalog ? 'read_adc' : 'read_pin')
+  const handlePinRead = (signal: string, isAnalog: boolean = false, isPWM: boolean = false) => {
+    if (isPWM) {
+      onPinControl(signal, 'read_pwm')
+    } else {
+      onPinControl(signal, isAnalog ? 'read_adc' : 'read_pin')
+    }
   }
 
   const handlePWMSet = () => {
@@ -145,6 +270,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
       if (data.success && data.config) {
         setConfiguration(data.config)
         setFrequencyInput(data.config.sonicator4.operatingFrequencyKHz.toString())
+        setManualFrequencyInput(data.config.sonicator4.manualFrequencyKHz?.toString() || '2.0')
       }
     } catch (error) {
       console.error('Failed to load configuration:', error)
@@ -214,6 +340,72 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
       }
     } catch (error) {
       console.error('Error toggling frequency:', error)
+    } finally {
+      setConfigLoading(false)
+    }
+  }
+
+  const handleManualModeToggle = async () => {
+    setConfigLoading(true)
+    try {
+      const newManualMode = !configuration.sonicator4.manualMode
+      const response = await fetch('/api/config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          config: {
+            sonicator4: {
+              manualMode: newManualMode
+            }
+          }
+        })
+      })
+
+      const data = await response.json()
+      if (data.success) {
+        setConfiguration(data.config)
+        console.log(`Manual mode ${newManualMode ? 'enabled' : 'disabled'}`)
+      }
+    } catch (error) {
+      console.error('Error toggling manual mode:', error)
+    } finally {
+      setConfigLoading(false)
+    }
+  }
+
+  const handleManualFrequencyUpdate = async () => {
+    const frequency = parseFloat(manualFrequencyInput)
+
+    // Validate frequency
+    if (isNaN(frequency) || frequency <= 0 || frequency > 50) {
+      alert('Manual frequency must be between 0.1 and 50 kHz')
+      return
+    }
+
+    setConfigLoading(true)
+    try {
+      const response = await fetch('/api/config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          config: {
+            sonicator4: {
+              manualFrequencyKHz: frequency
+            }
+          }
+        })
+      })
+
+      const data = await response.json()
+      if (data.success) {
+        setConfiguration(data.config)
+        console.log(`Manual frequency updated to ${frequency}kHz`)
+      } else {
+        alert('Failed to update manual frequency')
+      }
+    } catch (error) {
+      console.error('Error updating manual frequency:', error)
+      alert('Network error updating manual frequency')
     } finally {
       setConfigLoading(false)
     }
@@ -318,6 +510,27 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
         ))}
       </div>
 
+      {/* PWM Pin Monitoring */}
+      <div className="control-section">
+        <h3>PWM Pins (ATmega32A → Arduino)</h3>
+        <div className="text-xs text-gray-500 mb-2">
+          Continuous PWM duty cycle monitoring
+        </div>
+        {pwmPins.map(([signal, pinState]) => (
+          <div key={signal} className="mb-2">
+            <div className="flex items-center justify-between mb-1">
+              <span className="text-xs font-mono">{signal}</span>
+              <span className="text-xs text-gray-500">{pinState.pin}</span>
+            </div>
+            {renderPinState(signal, pinState)}
+            <div className="text-xs text-green-600 mt-1 flex items-center">
+              <div className="pwm-live-indicator"></div>
+              <span className="ml-1">Continuously monitored by Arduino harness</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
       {/* Analog Pin Monitoring */}
       <div className="control-section">
         <h3>Analog Pins</h3>
@@ -412,62 +625,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
         </button>
       </div>
 
-      {/* Frequency Configuration */}
-      <div className="control-section">
-        <h3>Sonicator 4 Frequency Configuration</h3>
-        <div className="text-xs text-gray-600 mb-3">
-          Configure the operating frequency for Sonicator 4. The test harness will output 1/10th of this frequency on FREQ_DIV10_4 (D7).
-        </div>
 
-        <div className="mb-3">
-          <label className="text-xs text-gray-700">Operating Frequency (kHz):</label>
-          <div className="flex gap-2 mt-1">
-            <input
-              type="number"
-              className="input text-xs flex-1"
-              value={frequencyInput}
-              onChange={(e) => setFrequencyInput(e.target.value)}
-              min="0.1"
-              max="100"
-              step="0.1"
-              placeholder="20.0"
-            />
-            <button
-              className="btn primary text-xs px-3"
-              onClick={handleFrequencyUpdate}
-              disabled={configLoading || !connected}
-              title="Update frequency configuration"
-            >
-              {configLoading ? 'Setting...' : 'Set'}
-            </button>
-          </div>
-        </div>
-
-        <div className="mb-3 p-2 bg-gray-50 rounded text-xs">
-          <div className="flex justify-between items-center mb-1">
-            <span className="font-medium">Current Configuration:</span>
-            <button
-              className={`btn text-xs px-2 py-1 ${configuration.sonicator4.enabled ? 'btn-success' : 'btn-secondary'}`}
-              onClick={handleFrequencyToggle}
-              disabled={configLoading || !connected}
-              title={`${configuration.sonicator4.enabled ? 'Disable' : 'Enable'} frequency generation`}
-            >
-              {configuration.sonicator4.enabled ? 'ON' : 'OFF'}
-            </button>
-          </div>
-          <div className="text-gray-600 space-y-1">
-            <div>Operating: <strong>{configuration.sonicator4.operatingFrequencyKHz}kHz</strong></div>
-            <div>Output (D7): <strong>{configuration.sonicator4.outputFrequencyKHz}kHz</strong></div>
-            <div>Status: <strong className={configuration.sonicator4.enabled ? 'text-green-600' : 'text-gray-500'}>
-              {configuration.sonicator4.enabled ? 'Generating' : 'Stopped'}
-            </strong></div>
-          </div>
-        </div>
-
-        <div className="text-xs text-blue-600 bg-blue-50 p-2 rounded">
-          <strong>Note:</strong> The Arduino Test Harness automatically outputs frequency signals at 1/10th the configured operating frequency on pin D7 (FREQ_DIV10_4) to simulate the sonicator's frequency divider circuit.
-        </div>
-      </div>
 
       {/* System Status */}
       <div className="control-section">
@@ -478,7 +636,8 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
         <div className="text-xs">
           <div>Total pins: {Object.keys(hardwareState.pins).length}</div>
           <div>Input pins: {inputPins.length}</div>
-          <div>Output pins: {outputPins.length}</div>
+          <div>Output pins: {outputPins.length - pwmPins.length}</div>
+          <div>PWM pins: {pwmPins.length}</div>
           <div>Analog pins: {analogPins.length}</div>
         </div>
       </div>

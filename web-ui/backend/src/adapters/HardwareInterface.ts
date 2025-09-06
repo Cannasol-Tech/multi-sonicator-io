@@ -43,7 +43,9 @@ export class HardwareInterface extends EventEmitter {
     sonicator4: {
       operatingFrequencyKHz: 20.0,  // Default 20kHz
       outputFrequencyKHz: 2.0,      // 1/10th of operating frequency
-      enabled: true
+      enabled: true,
+      manualMode: false,            // Manual override mode
+      manualFrequencyKHz: 2.0       // Manual frequency override
     },
     testHarness: {
       pinMapping: {
@@ -75,7 +77,7 @@ export class HardwareInterface extends EventEmitter {
       { pin: 'A3', signal: 'START_4', direction: 'OUT' as const },
       { pin: 'A4', signal: 'RESET_4', direction: 'OUT' as const },
       { pin: 'A1', signal: 'POWER_SENSE_4', direction: 'ANALOG' as const },
-      { pin: 'D9', signal: 'AMPLITUDE_ALL', direction: 'IN' as const },
+      { pin: 'D9', signal: 'AMPLITUDE_ALL', direction: 'OUT' as const },
       { pin: 'D10', signal: 'UART_RXD', direction: 'IN' as const },
       { pin: 'D11', signal: 'UART_TXD', direction: 'OUT' as const },
       { pin: 'D12', signal: 'STATUS_LED', direction: 'OUT' as const }
@@ -130,7 +132,7 @@ except ImportError:
                 'START_4': 'LOW',
                 'RESET_4': 'LOW',
                 'POWER_SENSE_4': 512,  # ADC value
-                'AMPLITUDE_ALL': 'LOW',
+                'AMPLITUDE_ALL': '0.0%',
                 'UART_RXD': 'LOW',
                 'UART_TXD': 'LOW',
                 'STATUS_LED': 'LOW'
@@ -156,10 +158,13 @@ except ImportError:
             self.connected = False
 
         def frequency_generator(self):
-            """Generate frequency signals for configured pins"""
+            """Generate frequency signals and monitor PWM for configured pins"""
+            pwm_update_counter = 0
             while True:
                 try:
                     current_time = time.time()
+
+                    # Update frequency pins
                     for signal, config in self.frequency_config.items():
                         if config['enabled'] and config['frequency_hz'] > 0:
                             period = 1.0 / config['frequency_hz']
@@ -178,10 +183,44 @@ except ImportError:
                                 print(json.dumps({"type": "pin_state", "pin": signal, "data": new_state}))
                                 sys.stdout.flush()
 
+                    # Update PWM pins every 100ms (reduce update frequency for PWM)
+                    pwm_update_counter += 1
+                    if pwm_update_counter >= 100:  # Update PWM every 100ms
+                        pwm_update_counter = 0
+                        self.update_pwm_monitoring()
+
                     time.sleep(0.001)  # 1ms sleep for reasonable precision
                 except Exception as e:
                     print(f"Frequency generator error: {e}")
                     time.sleep(0.1)
+
+        def update_pwm_monitoring(self):
+            """Continuously monitor PWM signals"""
+            import random
+
+            # Simulate AMPLITUDE_ALL PWM monitoring with varying duty cycle
+            # In real hardware, this would read the actual PWM signal from the ATmega32A
+            duty_cycle = random.uniform(0, 100)
+            pwm_value = f"{duty_cycle:.1f}%"
+
+            # Only update if value changed significantly (reduce noise)
+            current_value = self.pin_states.get('AMPLITUDE_ALL', '0.0%')
+            try:
+                current_duty = float(current_value.replace('%', ''))
+                new_duty = float(pwm_value.replace('%', ''))
+
+                # Update if difference is > 1% to reduce noise
+                if abs(new_duty - current_duty) > 1.0:
+                    self.pin_states['AMPLITUDE_ALL'] = pwm_value
+
+                    # Send PWM state update
+                    print(json.dumps({"type": "pin_state", "pin": "AMPLITUDE_ALL", "data": pwm_value}))
+                    sys.stdout.flush()
+            except:
+                # Fallback: always update if parsing fails
+                self.pin_states['AMPLITUDE_ALL'] = pwm_value
+                print(json.dumps({"type": "pin_state", "pin": "AMPLITUDE_ALL", "data": pwm_value}))
+                sys.stdout.flush()
 
         def send_command(self, cmd):
             # Parse command and update mock states
@@ -229,6 +268,28 @@ except ImportError:
                 if signal in self.pin_states:
                     return str(self.pin_states[signal])
                 return "UNKNOWN"
+            elif len(parts) >= 2 and parts[0] == 'READ_PWM':
+                signal_or_pin = parts[1]
+                # Map Arduino pin names to signal names
+                pin_to_signal = {
+                    'D9': 'AMPLITUDE_ALL',
+                    'AMPLITUDE_ALL': 'AMPLITUDE_ALL'
+                }
+
+                # Check if it's an Arduino pin name, convert to signal name
+                if signal_or_pin in pin_to_signal:
+                    signal = pin_to_signal[signal_or_pin]
+                else:
+                    signal = signal_or_pin
+
+                if signal == 'AMPLITUDE_ALL':
+                    # Simulate continuous PWM monitoring with varying duty cycle
+                    import random
+                    duty_cycle = random.uniform(0, 100)
+                    # Update pin state for continuous monitoring
+                    self.pin_states[signal] = f"{duty_cycle:.1f}%"
+                    return f"OK PWM={duty_cycle:.1f}%"
+                return "ERR INVALID_PWM_CHANNEL"
             return "OK"
 
 import json
@@ -291,7 +352,10 @@ try:
 
                 elif cmd["type"] == "pin_read":
                     pin = cmd["pin"]
-                    if pin.startswith("A"):
+                    if pin == "D9" or pin == "AMPLITUDE_ALL":
+                        # PWM read for AMPLITUDE_ALL
+                        response = hil.send_command(f"READ_PWM {pin}")
+                    elif pin.startswith("A"):
                         # ADC read
                         response = hil.send_command(f"READ_ADC {pin}")
                     else:
@@ -394,6 +458,14 @@ except Exception as e:
         break
 
       case 'response':
+        // Log and broadcast Arduino response
+        console.log('Arduino Response Received:', message.data)
+        this.emit('arduino_command', {
+          direction: 'received',
+          data: message.data,
+          timestamp: Date.now(),
+          type: 'response'
+        })
         this.emit('command_response', message.data)
         break
 
@@ -404,11 +476,22 @@ except Exception as e:
     }
   }
 
+  private lastLogTime: number = 0
+  private logThrottleMs: number = 2000 // Only log once every 2 seconds per pin
+  private lastPinLogTimes: Map<string, number> = new Map()
+
   private updatePinState(pin: string, data: string) {
     // Parse hardware response and update pin state
     const timestamp = Date.now()
 
-    console.log(`Hardware: Updating pin state for ${pin} with data: ${data}`)
+    // Throttle logging to prevent spam - only log occasionally
+    const lastLogTime = this.lastPinLogTimes.get(pin) || 0
+    const shouldLog = timestamp - lastLogTime > this.logThrottleMs
+
+    if (shouldLog) {
+      console.log(`Hardware: Updating pin state for ${pin} with data: ${data}`)
+      this.lastPinLogTimes.set(pin, timestamp)
+    }
 
     // Find pin by Arduino pin name or signal name
     for (const [signal, pinState] of this.pinStates.entries()) {
@@ -418,7 +501,8 @@ except Exception as e:
         // Special handling for frequency pins
         if (signal === 'FREQ_DIV10_4') {
           if (this.configuration.sonicator4.enabled) {
-            newState = `${this.configuration.sonicator4.outputFrequencyKHz}kHz`
+            const modeIndicator = this.configuration.sonicator4.manualMode ? ' (M)' : ''
+            newState = `${this.configuration.sonicator4.outputFrequencyKHz}kHz${modeIndicator}`
           } else {
             newState = 'OFF'
           }
@@ -439,7 +523,10 @@ except Exception as e:
           }
         }
 
-        console.log(`Hardware: Pin ${signal} state updated from ${pinState.state} to ${newState}`)
+        // Only log state changes, not every update, and only occasionally
+        if (shouldLog && pinState.state !== newState) {
+          console.log(`Hardware: Pin ${signal} state updated from ${pinState.state} to ${newState}`)
+        }
 
         const updatedPin = {
           ...pinState,
@@ -485,7 +572,18 @@ except Exception as e:
       }
 
       try {
-        this.pythonProcess.stdin?.write(JSON.stringify(command) + '\n')
+        const commandStr = JSON.stringify(command)
+
+        // Log and broadcast command being sent
+        console.log('Arduino Command Sent:', commandStr)
+        this.emit('arduino_command', {
+          direction: 'sent',
+          data: commandStr,
+          timestamp: Date.now(),
+          type: command.type || 'unknown'
+        })
+
+        this.pythonProcess.stdin?.write(commandStr + '\n')
         resolve(true)
       } catch (error) {
         reject(error)
@@ -632,16 +730,24 @@ except Exception as e:
         const operatingFreq = parseFloat(newConfig.sonicator4.operatingFrequencyKHz)
         if (operatingFreq > 0 && operatingFreq <= 100) { // Reasonable limits
           this.configuration.sonicator4.operatingFrequencyKHz = operatingFreq
-          this.configuration.sonicator4.outputFrequencyKHz = operatingFreq / 10.0
 
-          console.log(`Hardware: Updated operating frequency to ${operatingFreq}kHz, output frequency to ${operatingFreq / 10.0}kHz`)
+          // Only update output frequency if not in manual mode
+          if (!this.configuration.sonicator4.manualMode) {
+            this.configuration.sonicator4.outputFrequencyKHz = operatingFreq / 10.0
+          }
 
-          // Send frequency configuration to hardware
+          console.log(`Hardware: Updated operating frequency to ${operatingFreq}kHz`)
+
+          // Send frequency configuration to hardware (use manual frequency if in manual mode)
+          const actualFreq = this.configuration.sonicator4.manualMode
+            ? this.configuration.sonicator4.manualFrequencyKHz
+            : operatingFreq / 10.0
+
           const command = {
             command: 'set_frequency',
             args: [
               'FREQ_DIV10_4',
-              (operatingFreq * 1000 / 10).toString() // Convert kHz to Hz and divide by 10
+              (actualFreq * 1000).toString() // Convert kHz to Hz
             ],
             expectResponse: true
           }
@@ -651,6 +757,48 @@ except Exception as e:
 
           // Update the FREQ_DIV10_4 pin state to reflect new frequency
           this.updatePinState('FREQ_DIV10_4', 'HIGH')
+        }
+      }
+
+      // Handle manual mode toggle
+      if (newConfig.sonicator4?.manualMode !== undefined) {
+        this.configuration.sonicator4.manualMode = newConfig.sonicator4.manualMode
+        console.log(`Hardware: Manual mode ${newConfig.sonicator4.manualMode ? 'enabled' : 'disabled'}`)
+
+        // If switching to automatic mode, recalculate output frequency
+        if (!newConfig.sonicator4.manualMode) {
+          this.configuration.sonicator4.outputFrequencyKHz = this.configuration.sonicator4.operatingFrequencyKHz / 10.0
+        }
+      }
+
+      // Handle manual frequency override
+      if (newConfig.sonicator4?.manualFrequencyKHz !== undefined) {
+        const manualFreq = parseFloat(newConfig.sonicator4.manualFrequencyKHz)
+        if (manualFreq > 0 && manualFreq <= 50) { // Reasonable limits for output frequency
+          this.configuration.sonicator4.manualFrequencyKHz = manualFreq
+
+          // If in manual mode, update the actual output frequency
+          if (this.configuration.sonicator4.manualMode) {
+            this.configuration.sonicator4.outputFrequencyKHz = manualFreq
+
+            console.log(`Hardware: Manual frequency set to ${manualFreq}kHz`)
+
+            // Send manual frequency to hardware
+            const command = {
+              command: 'set_frequency',
+              args: [
+                'FREQ_DIV10_4',
+                (manualFreq * 1000).toString() // Convert kHz to Hz
+              ],
+              expectResponse: true
+            }
+
+            const result = await this.sendCommand(command)
+            console.log('Hardware: Manual frequency configuration result:', result)
+
+            // Update the FREQ_DIV10_4 pin state
+            this.updatePinState('FREQ_DIV10_4', 'HIGH')
+          }
         }
       }
 

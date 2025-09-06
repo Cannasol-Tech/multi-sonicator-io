@@ -69,6 +69,13 @@ static const uint8_t PIN_STATUS_LED = 12; // drives LED terminal if needed for t
 float simulated_power_voltage = 0.0;
 bool use_simulated_power = false;
 
+// PWM measurement variables
+volatile unsigned long pwm_high_time = 0;
+volatile unsigned long pwm_period = 0;
+volatile unsigned long pwm_last_change = 0;
+volatile bool pwm_measuring = false;
+float last_measured_duty_cycle = 0.0;
+
 static void setSafeDefaults() {
   // Configure S4 pins (only physically implemented unit)
   pinMode(S4_PINS.OVERLOAD_IN, OUTPUT);   digitalWrite(S4_PINS.OVERLOAD_IN, LOW);
@@ -78,8 +85,8 @@ static void setSafeDefaults() {
   pinMode(S4_PINS.RESET_OUT, INPUT_PULLUP);  // Read DUT output
   pinMode(S4_PINS.POWER_ADC, INPUT);
 
-  // Configure shared pins
-  pinMode(PIN_AMPLITUDE_ALL, OUTPUT);    analogWrite(PIN_AMPLITUDE_ALL, 0);
+  // Configure shared pins - AMPLITUDE_ALL is now INPUT to read PWM from ATmega32A
+  pinMode(PIN_AMPLITUDE_ALL, INPUT);     // Read PWM output from ATmega32A PD7
   pinMode(PIN_UART_RXD_TO_DUT, OUTPUT);  digitalWrite(PIN_UART_RXD_TO_DUT, HIGH); // idle high if via level shifter
   pinMode(PIN_UART_TXD_FROM_DUT, INPUT);
   pinMode(PIN_STATUS_LED, OUTPUT);       digitalWrite(PIN_STATUS_LED, LOW);
@@ -90,6 +97,40 @@ static void setSafeDefaults() {
   pinMode(A3, INPUT);  // Additional ADC channel
   pinMode(6, OUTPUT);  // PWM pin for voltage simulation
   analogWrite(6, 0);   // Initialize voltage simulation to 0V
+}
+
+// Function to measure PWM duty cycle on AMPLITUDE_ALL pin
+float measurePWMDutyCycle() {
+  // Simple PWM measurement using pulseIn
+  // This measures one complete cycle
+  unsigned long high_time = pulseIn(PIN_AMPLITUDE_ALL, HIGH, 50000); // 50ms timeout
+  unsigned long low_time = pulseIn(PIN_AMPLITUDE_ALL, LOW, 50000);   // 50ms timeout
+
+  if (high_time == 0 && low_time == 0) {
+    // No PWM signal detected, check if pin is constantly high or low
+    if (digitalRead(PIN_AMPLITUDE_ALL) == HIGH) {
+      return 100.0; // Constant HIGH = 100% duty cycle
+    } else {
+      return 0.0;   // Constant LOW = 0% duty cycle
+    }
+  }
+
+  if (high_time == 0) {
+    return 0.0; // No high pulse detected
+  }
+
+  if (low_time == 0) {
+    return 100.0; // No low pulse detected (always high)
+  }
+
+  // Calculate duty cycle percentage
+  unsigned long total_period = high_time + low_time;
+  float duty_cycle = (float)high_time / (float)total_period * 100.0;
+
+  // Store for future reference
+  last_measured_duty_cycle = duty_cycle;
+
+  return duty_cycle;
 }
 
 static void handleLine(String line) {
@@ -195,6 +236,22 @@ static void handleLine(String line) {
       Serial.println(adc);
     } else {
       Serial.println("ERR INVALID_ADC_CHANNEL");
+    }
+    return;
+  }
+
+  // PWM measurement command for AMPLITUDE_ALL
+  if (line.startsWith("READ PWM ")) {
+    String channel = line.substring(9);
+    channel.trim();
+
+    if (channel.equalsIgnoreCase("AMPLITUDE_ALL") || channel.equalsIgnoreCase("D9")) {
+      float duty_cycle = measurePWMDutyCycle();
+      Serial.print("OK PWM=");
+      Serial.print(duty_cycle, 1);
+      Serial.println("%");
+    } else {
+      Serial.println("ERR INVALID_PWM_CHANNEL");
     }
     return;
   }

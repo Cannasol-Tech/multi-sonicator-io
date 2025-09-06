@@ -1,25 +1,33 @@
-import express from 'express';
-import { createServer } from 'http';
-import { WebSocketServer } from 'ws';
-import cors from 'cors';
-import { HardwareInterface } from './adapters/HardwareInterface.js';
-import { WebSocketHandler } from './websocket/WebSocketHandler.js';
-import { setupRoutes } from './routes/index.js';
-const app = express();
-const server = createServer(app);
-const wss = new WebSocketServer({ server, path: '/ws' });
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const http_1 = require("http");
+const ws_1 = require("ws");
+const cors_1 = __importDefault(require("cors"));
+const HardwareInterface_1 = require("./adapters/HardwareInterface");
+const WebSocketHandler_1 = require("./websocket/WebSocketHandler");
+const TestAutomationService_1 = require("./services/TestAutomationService");
+const index_1 = require("./routes/index");
+const app = (0, express_1.default)();
+const server = (0, http_1.createServer)(app);
+const wss = new ws_1.WebSocketServer({ server, path: '/ws' });
 // Middleware
-app.use(cors({
+app.use((0, cors_1.default)({
     origin: process.env.NODE_ENV === 'production' ? false : 'http://localhost:3000',
     credentials: true
 }));
-app.use(express.json());
+app.use(express_1.default.json());
 // Initialize hardware interface
-const hardwareInterface = new HardwareInterface();
+const hardwareInterface = new HardwareInterface_1.HardwareInterface();
+// Initialize test automation service
+const testAutomationService = new TestAutomationService_1.TestAutomationService();
 // Setup routes
-setupRoutes(app, hardwareInterface);
+(0, index_1.setupRoutes)(app, hardwareInterface, testAutomationService);
 // Setup WebSocket handling
-const wsHandler = new WebSocketHandler(hardwareInterface);
+const wsHandler = new WebSocketHandler_1.WebSocketHandler(hardwareInterface, testAutomationService);
 wss.on('connection', (ws, request) => {
     console.log('New WebSocket connection from:', request.socket.remoteAddress);
     wsHandler.handleConnection(ws);
