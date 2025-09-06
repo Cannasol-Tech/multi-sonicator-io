@@ -6427,13 +6427,13 @@
 
 .pin-indicator-large.selected {
   position: relative;
-  border: 3px solid #ffd700;
+  border: 1px solid #ffd700;
   box-shadow:
-    0 0 20px rgba(255, 215, 0, 0.6),
-    0 0 40px rgba(255, 215, 0, 0.3),
-    inset 0 0 20px rgba(255, 215, 0, 0.1);
-  animation: goldEssenceGlow 2s ease-in-out infinite;
-  transform: scale(1.05);
+    0 0 8px rgba(255, 215, 0, 0.25),
+    0 0 16px rgba(255, 215, 0, 0.15),
+    inset 0 0 8px rgba(255, 215, 0, 0.05);
+  animation: goldEssenceGlow 4s ease-in-out infinite;
+  transform: scale(1.01);
 }
 
 .pin-indicator-large.selected::before {
@@ -6445,78 +6445,78 @@
   bottom: 0;
   background: linear-gradient(
     45deg,
-    rgba(255, 215, 0, 0.08) 0%,
-    rgba(255, 193, 7, 0.12) 25%,
-    rgba(255, 215, 0, 0.08) 50%,
-    rgba(255, 193, 7, 0.12) 75%,
-    rgba(255, 215, 0, 0.08) 100%
+    rgba(255, 215, 0, 0.02) 0%,
+    rgba(255, 193, 7, 0.03) 25%,
+    rgba(255, 215, 0, 0.02) 50%,
+    rgba(255, 193, 7, 0.03) 75%,
+    rgba(255, 215, 0, 0.02) 100%
   );
   border-radius: 6px;
-  animation: goldFlow 3s ease-in-out infinite;
+  animation: goldFlow 5s ease-in-out infinite;
   pointer-events: none;
 }
 
 .pin-indicator-large.selected::after {
   content: '';
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: linear-gradient(
     45deg,
     transparent 0%,
-    rgba(255, 215, 0, 0.15) 25%,
+    rgba(255, 215, 0, 0.04) 25%,
     transparent 50%,
-    rgba(255, 215, 0, 0.15) 75%,
+    rgba(255, 215, 0, 0.04) 75%,
     transparent 100%
   );
   border-radius: 8px;
-  animation: goldEssenceFlow 4s ease-in-out infinite;
+  animation: goldEssenceFlow 6s ease-in-out infinite;
   pointer-events: none;
 }
 
 @keyframes goldEssenceGlow {
   0%, 100% {
     box-shadow:
-      0 0 20px rgba(255, 215, 0, 0.6),
-      0 0 40px rgba(255, 215, 0, 0.3),
-      inset 0 0 20px rgba(255, 215, 0, 0.1);
+      0 0 8px rgba(255, 215, 0, 0.25),
+      0 0 16px rgba(255, 215, 0, 0.15),
+      inset 0 0 8px rgba(255, 215, 0, 0.05);
   }
   50% {
     box-shadow:
-      0 0 25px rgba(255, 215, 0, 0.8),
-      0 0 50px rgba(255, 215, 0, 0.4),
-      inset 0 0 25px rgba(255, 215, 0, 0.15);
+      0 0 10px rgba(255, 215, 0, 0.3),
+      0 0 20px rgba(255, 215, 0, 0.2),
+      inset 0 0 10px rgba(255, 215, 0, 0.06);
   }
 }
 
 @keyframes goldFlow {
   0%, 100% {
     background-position: 0% 50%;
-    opacity: 0.8;
+    opacity: 0.5;
   }
   50% {
     background-position: 100% 50%;
-    opacity: 1;
+    opacity: 0.7;
   }
 }
 
 @keyframes goldEssenceFlow {
   0%, 100% {
-    opacity: 0.6;
+    opacity: 0.3;
     transform: rotate(0deg);
   }
   25% {
-    opacity: 0.8;
+    opacity: 0.4;
     transform: rotate(90deg);
   }
   50% {
-    opacity: 0.6;
+    opacity: 0.3;
     transform: rotate(180deg);
   }
   75% {
-    opacity: 0.8;
+    opacity: 0.4;
     transform: rotate(270deg);
   }
 }

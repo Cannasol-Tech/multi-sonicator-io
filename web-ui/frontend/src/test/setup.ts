@@ -126,3 +126,10 @@ global.IntersectionObserver = vi.fn().mockImplementation(() => ({
   unobserve: vi.fn(),
   disconnect: vi.fn(),
 }))
+
+// Mock URL methods for file downloads
+global.URL = {
+  ...global.URL,
+  createObjectURL: vi.fn(() => 'mock-object-url'),
+  revokeObjectURL: vi.fn(),
+}

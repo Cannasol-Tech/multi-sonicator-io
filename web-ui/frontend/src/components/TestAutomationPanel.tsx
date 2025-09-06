@@ -190,10 +190,10 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
             totalItems={executionProgress.total}
             currentItem={executionProgress.current}
             itemLabel="scenarios"
-            showStepProgress={isExecutionInProgress && stepProgress.total > 0}
-            stepProgress={(stepProgress.current / stepProgress.total) * 100}
-            currentStep={stepProgress.current}
-            totalSteps={stepProgress.total}
+            showStepProgress={isExecutionInProgress && stepProgress && stepProgress.total > 0}
+            stepProgress={stepProgress ? (stepProgress.current / stepProgress.total) * 100 : 0}
+            currentStep={stepProgress?.current || 0}
+            totalSteps={stepProgress?.total || 0}
             className="test-execution-progress"
           />
 

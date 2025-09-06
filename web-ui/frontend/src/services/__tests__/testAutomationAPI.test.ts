@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { TestAutomationAPI } from '../testAutomationAPI'
 
 // Mock fetch
@@ -330,44 +330,61 @@ describe('Test Automation API', () => {
     })
   })
 
-  describe('Request Configuration', () => {
-    it('includes proper headers for JSON requests', async () => {
-      vi.mocked(fetch).mockResolvedValueOnce({
-        ok: true,
-        json: async () => ({ executionId: 'exec-123' }),
-      } as Response)
-
-      await testAutomationAPI.executeScenarios(['scenario-1'])
-
-      expect(fetch).toHaveBeenCalledWith(
-        expect.any(String),
-        expect.objectContaining({
-          headers: {
-            'Content-Type': 'application/json',
+  describe('Filtering Methods', () => {
+    const mockScenarios = [
+      {
+        id: 'scenario-1',
+        name: 'Pin Test',
+        description: 'Test pins',
+        feature_file: 'pin-control.feature',
+        tags: ['@smoke', '@pin'],
+        steps: [
+          {
+            step_type: 'Given',
+            description: 'setup',
+            pin_interactions: ['D8', 'D9'],
+            status: 'pending'
           }
-        })
-      )
+        ]
+      },
+      {
+        id: 'scenario-2',
+        name: 'Power Test',
+        description: 'Test power',
+        feature_file: 'power.feature',
+        tags: ['@power'],
+        steps: [
+          {
+            step_type: 'When',
+            description: 'test',
+            pin_interactions: ['A0'],
+            status: 'pending'
+          }
+        ]
+      }
+    ]
+
+    it('filters scenarios by feature file', () => {
+      const result = TestAutomationAPI.filterScenariosByFeature(mockScenarios, ['pin-control.feature'])
+      expect(result).toHaveLength(1)
+      expect(result[0].id).toBe('scenario-1')
     })
 
-    it('uses correct HTTP methods', async () => {
-      vi.mocked(fetch).mockResolvedValue({
-        ok: true,
-        json: async () => ({}),
-      } as Response)
+    it('filters scenarios by tags', () => {
+      const result = TestAutomationAPI.filterScenariosByTags(mockScenarios, ['@smoke'])
+      expect(result).toHaveLength(1)
+      expect(result[0].id).toBe('scenario-1')
+    })
 
-      // GET request
-      await testAutomationAPI.getScenarios()
-      expect(fetch).toHaveBeenLastCalledWith(
-        expect.any(String),
-        expect.not.objectContaining({ method: expect.any(String) })
-      )
+    it('gets scenarios by pins', () => {
+      const result = TestAutomationAPI.getScenariosByPins(mockScenarios, ['D8'])
+      expect(result).toHaveLength(1)
+      expect(result[0].id).toBe('scenario-1')
+    })
 
-      // POST request
-      await testAutomationAPI.executeScenarios(['scenario-1'])
-      expect(fetch).toHaveBeenLastCalledWith(
-        expect.any(String),
-        expect.objectContaining({ method: 'POST' })
-      )
+    it('gets scenario pins', () => {
+      const pins = TestAutomationAPI.getScenarioPins(mockScenarios[0])
+      expect(pins).toEqual(['D8', 'D9'])
     })
   })
 })

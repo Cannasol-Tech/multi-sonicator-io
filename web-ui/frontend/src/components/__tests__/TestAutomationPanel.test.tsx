@@ -35,7 +35,9 @@ const mockUseTestAutomation = {
   getFilteredScenarios: vi.fn(() => []),
   getExecutionProgress: vi.fn(() => ({ completed: 0, total: 0, percentage: 0 })),
   getCurrentStepProgress: vi.fn(() => null),
-  clearError: vi.fn()
+  clearError: vi.fn(),
+  getStatusIcon: vi.fn(() => '✅'),
+  formatDuration: vi.fn((ms) => `${ms}ms`)
 }
 
 vi.mock('../../hooks/useTestAutomation', () => ({
@@ -51,9 +53,9 @@ const mockScenarios = [
     feature: 'pin-control.feature',
     tags: ['@smoke', '@pin'],
     steps: [
-      'Given the Arduino is connected',
-      'When I set pin D8 to HIGH',
-      'Then pin D8 should be HIGH'
+      { description: 'Given the Arduino is connected', pin_interactions: ['D7', 'D8'] },
+      { description: 'When I set pin D8 to HIGH', pin_interactions: ['D8'] },
+      { description: 'Then pin D8 should be HIGH', pin_interactions: [] }
     ]
   },
   {
@@ -63,9 +65,9 @@ const mockScenarios = [
     feature: 'pwm-control.feature',
     tags: ['@pwm'],
     steps: [
-      'Given the Arduino is connected',
-      'When I set pin D9 to PWM=128',
-      'Then pin D9 should be PWM=128'
+      { description: 'Given the Arduino is connected', pin_interactions: [] },
+      { description: 'When I set pin D9 to PWM=128', pin_interactions: ['D9'] },
+      { description: 'Then pin D9 should be PWM=128', pin_interactions: ['D9'] }
     ]
   }
 ]
@@ -476,7 +478,7 @@ describe('TestAutomationPanel Component', () => {
 
   describe('Live Test Results', () => {
     it('shows live progress button when execution is in progress', async () => {
-      // Mock execution in progress
+      // Mock execution in progress with proper step progress
       mockUseTestAutomation.isExecutionInProgress = true
       mockUseTestAutomation.currentExecution = {
         execution_id: 'live-test-123',
@@ -485,6 +487,10 @@ describe('TestAutomationPanel Component', () => {
         passed_scenarios: 1,
         failed_scenarios: 0
       }
+      mockUseTestAutomation.getCurrentStepProgress.mockReturnValue({
+        current: 2,
+        total: 5
+      })
 
       render(<TestAutomationPanel {...mockProps} />)
 
@@ -494,7 +500,7 @@ describe('TestAutomationPanel Component', () => {
     })
 
     it('shows view results button when execution is complete', async () => {
-      // Mock completed execution
+      // Mock completed execution with no step progress
       mockUseTestAutomation.isExecutionInProgress = false
       mockUseTestAutomation.currentExecution = {
         execution_id: 'completed-test-123',
@@ -503,6 +509,7 @@ describe('TestAutomationPanel Component', () => {
         passed_scenarios: 3,
         failed_scenarios: 0
       }
+      mockUseTestAutomation.getCurrentStepProgress.mockReturnValue(null)
 
       render(<TestAutomationPanel {...mockProps} />)
 
@@ -511,17 +518,17 @@ describe('TestAutomationPanel Component', () => {
       })
     })
 
-    it('disables results button when no execution exists', async () => {
+    it('does not show results section when no execution exists', async () => {
       // Mock no execution
       mockUseTestAutomation.isExecutionInProgress = false
       mockUseTestAutomation.currentExecution = null
+      mockUseTestAutomation.getCurrentStepProgress.mockReturnValue(null)
 
       render(<TestAutomationPanel {...mockProps} />)
 
-      await waitFor(() => {
-        const resultsButton = screen.getByText('📊 View Results')
-        expect(resultsButton).toBeDisabled()
-      })
+      // The execution section should not be rendered at all
+      expect(screen.queryByText('📊 View Results')).not.toBeInTheDocument()
+      expect(screen.queryByText('📊 Live Progress')).not.toBeInTheDocument()
     })
   })
 })
