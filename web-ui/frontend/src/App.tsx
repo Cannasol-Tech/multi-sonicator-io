@@ -147,9 +147,28 @@ function App() {
         setCurrentTestExecution(lastMessage.data)
         break
 
+      case 'arduino_command_response':
+        // Handle Arduino command responses for real-time logging
+        const { command, response, responseTime, success, error } = lastMessage.data
+        addCommandPair(
+          command,
+          response || (success ? 'OK' : 'ERROR'),
+          responseTime,
+          error
+        )
+        break
+
+      case 'arduino_command_sent':
+        // Handle Arduino command sent notifications
+        // This could be used to track commands sent from other sources
+        break
+
+      default:
+        console.log('Unknown message type:', lastMessage.type)
+        break
 
     }
-  }, [lastMessage, updatePinState, updateMultiplePins, setConnectionStatus, updateExecutionProgress, handleExecutionComplete, handleExecutionError])
+  }, [lastMessage, updatePinState, updateMultiplePins, setConnectionStatus, updateExecutionProgress, handleExecutionComplete, handleExecutionError, addCommandPair])
 
   // Update connection status when WebSocket connection changes
   useEffect(() => {
@@ -177,8 +196,7 @@ function App() {
 
     sendMessage(command)
 
-    // For now, we'll simulate a response since we don't have actual Arduino responses
-    // In a real implementation, this would be handled in the WebSocket message handler
+    // Simulate response for demo purposes (will be replaced by real WebSocket responses)
     setTimeout(() => {
       const responseTime = Date.now() - timestamp
       addCommandPair(

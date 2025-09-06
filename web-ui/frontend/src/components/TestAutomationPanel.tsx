@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useTestAutomation } from '../hooks/useTestAutomation'
 import { TestScenario, TestExecution } from '../types'
 import TestResultsModal, { TestResultsSection } from './TestResultsModal'
+import { ScenarioDetailsModal } from './ScenarioDetailsModal'
 import IridescentProgressBar from './IridescentProgressBar'
 
 interface TestAutomationPanelProps {
@@ -36,6 +37,8 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
   const [tagSearchQuery, setTagSearchQuery] = useState('')
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [activeSection, setActiveSection] = useState<'scenarios' | 'tags'>('scenarios')
+  const [showDetailsModal, setShowDetailsModal] = useState(false)
+  const [selectedScenarioForDetails, setSelectedScenarioForDetails] = useState<TestScenario | null>(null)
 
   // Get filtered scenarios and execution progress
   const filteredScenarios = getFilteredScenarios()
@@ -76,6 +79,18 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
     const allScenarioNames = filteredScenarios.map(s => s.name)
     await executeScenarios(allScenarioNames)
     setShowResultsModal(true)
+  }
+
+  // Handle showing scenario details
+  const handleShowScenarioDetails = (scenario: TestScenario) => {
+    setSelectedScenarioForDetails(scenario)
+    setShowDetailsModal(true)
+  }
+
+  // Handle closing scenario details
+  const handleCloseScenarioDetails = () => {
+    setShowDetailsModal(false)
+    setSelectedScenarioForDetails(null)
   }
 
 
