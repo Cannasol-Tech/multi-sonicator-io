@@ -4,15 +4,42 @@ import React from 'react'
 import TestAutomationPanel from '../TestAutomationPanel'
 
 // Mock test automation API
-const mockTestAutomationAPI = {
-  getScenarios: vi.fn(),
-  executeScenarios: vi.fn(),
+vi.mock('../../services/testAutomationApi', () => ({
+  TestAutomationAPI: {
+    getScenarios: vi.fn(),
+    executeScenarios: vi.fn(),
+    stopExecution: vi.fn(),
+    getExecutionResults: vi.fn(),
+    getStatusIcon: vi.fn(() => '✅'),
+    formatDuration: vi.fn((ms) => `${ms}ms`)
+  }
+}))
+
+// Mock useTestAutomation hook
+const mockUseTestAutomation = {
+  scenarios: [],
+  isLoading: false,
+  error: null,
+  selectedScenarios: [],
+  isExecutionInProgress: false,
+  currentExecution: null,
+  executionProgress: { completed: 0, total: 0, percentage: 0 },
+  currentStepProgress: null,
+  loadScenarios: vi.fn(),
+  selectScenario: vi.fn(),
+  deselectScenario: vi.fn(),
+  selectAllScenarios: vi.fn(),
+  clearSelectedScenarios: vi.fn(),
+  executeSelectedScenarios: vi.fn(),
   stopExecution: vi.fn(),
-  getExecutionResults: vi.fn(),
+  getFilteredScenarios: vi.fn(() => []),
+  getExecutionProgress: vi.fn(() => ({ completed: 0, total: 0, percentage: 0 })),
+  getCurrentStepProgress: vi.fn(() => null),
+  clearError: vi.fn()
 }
 
-vi.mock('../../services/testAutomationAPI', () => ({
-  default: mockTestAutomationAPI
+vi.mock('../../hooks/useTestAutomation', () => ({
+  useTestAutomation: () => mockUseTestAutomation
 }))
 
 // Mock scenarios data
@@ -51,12 +78,14 @@ describe('TestAutomationPanel Component', () => {
 
   beforeEach(() => {
     vi.clearAllMocks()
-    mockTestAutomationAPI.getScenarios.mockResolvedValue(mockScenarios)
-    mockTestAutomationAPI.executeScenarios.mockResolvedValue({ executionId: 'exec-123' })
-    mockTestAutomationAPI.getExecutionResults.mockResolvedValue({
-      status: 'completed',
-      results: []
-    })
+    // Reset mock hook state
+    mockUseTestAutomation.scenarios = mockScenarios
+    mockUseTestAutomation.isLoading = false
+    mockUseTestAutomation.error = null
+    mockUseTestAutomation.selectedScenarios = []
+    mockUseTestAutomation.isExecutionInProgress = false
+    mockUseTestAutomation.currentExecution = null
+    mockUseTestAutomation.getFilteredScenarios.mockReturnValue(mockScenarios)
   })
 
   describe('Rendering', () => {
@@ -441,6 +470,57 @@ describe('TestAutomationPanel Component', () => {
         // Verify they have the correct CSS classes for theme styling
         expect(selectAllButton).toHaveClass('btn-select-all')
         expect(clearAllButton).toHaveClass('btn-clear-all')
+      })
+    })
+  })
+
+  describe('Live Test Results', () => {
+    it('shows live progress button when execution is in progress', async () => {
+      // Mock execution in progress
+      mockUseTestAutomation.isExecutionInProgress = true
+      mockUseTestAutomation.currentExecution = {
+        execution_id: 'live-test-123',
+        status: 'running',
+        total_scenarios: 3,
+        passed_scenarios: 1,
+        failed_scenarios: 0
+      }
+
+      render(<TestAutomationPanel {...mockProps} />)
+
+      await waitFor(() => {
+        expect(screen.getByText('📊 Live Progress')).toBeInTheDocument()
+      })
+    })
+
+    it('shows view results button when execution is complete', async () => {
+      // Mock completed execution
+      mockUseTestAutomation.isExecutionInProgress = false
+      mockUseTestAutomation.currentExecution = {
+        execution_id: 'completed-test-123',
+        status: 'passed',
+        total_scenarios: 3,
+        passed_scenarios: 3,
+        failed_scenarios: 0
+      }
+
+      render(<TestAutomationPanel {...mockProps} />)
+
+      await waitFor(() => {
+        expect(screen.getByText('📊 View Results')).toBeInTheDocument()
+      })
+    })
+
+    it('disables results button when no execution exists', async () => {
+      // Mock no execution
+      mockUseTestAutomation.isExecutionInProgress = false
+      mockUseTestAutomation.currentExecution = null
+
+      render(<TestAutomationPanel {...mockProps} />)
+
+      await waitFor(() => {
+        const resultsButton = screen.getByText('📊 View Results')
+        expect(resultsButton).toBeDisabled()
       })
     })
   })

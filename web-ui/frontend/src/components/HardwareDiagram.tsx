@@ -41,7 +41,6 @@ const PIN_CONNECTIONS: PinConnection[] = [
   { arduino: 'A4', atmega: 'PC1', signal: 'RESET_4', direction: 'OUT', description: 'Reset output' },
   { arduino: 'A1', atmega: 'PA7', signal: 'POWER_SENSE_4', direction: 'ANALOG', description: 'Sonicator #4 Power Level (Configurable)' },
   { arduino: 'D9', atmega: 'PD7', signal: 'AMPLITUDE_ALL', direction: 'OUT', description: 'Amplitude PWM output' },
-  { arduino: 'D10', atmega: 'PD0', signal: 'UART_RXD', direction: 'COMM', description: 'UART RX (Modbus Communication)', readonly: true },
   { arduino: 'D11', atmega: 'PD1', signal: 'UART_TXD', direction: 'COMM', description: 'UART TX (Modbus Communication)', readonly: true },
   { arduino: 'D12', atmega: 'PD2', signal: 'STATUS_LED', direction: 'OUT', description: 'Status LED' }
 ]
@@ -166,24 +165,7 @@ const DETAILED_CONNECTION_INFO: Record<string, DetailedConnectionInfo> = {
     valueRange: 'PWM: 0-255 (0-100% duty cycle)',
     testingNotes: 'Master amplitude control. Changes affect all connected sonicators simultaneously. Monitor power feedback for validation.'
   },
-  'UART_RXD': {
-    signal: 'UART_RXD',
-    testHarnessPin: 'D10 (Digital Pin 10)',
-    dutPin: 'PD0 (Port D, Pin 0)',
-    direction: 'COMM',
-    description: 'UART Receive Data for Modbus communication',
-    purpose: 'Receives Modbus RTU communication data from the sonicator system.',
-    capabilities: [
-      'Modbus RTU protocol communication',
-      'Baud rate: 9600-115200 bps',
-      'Data logging and monitoring',
-      'Remote parameter access'
-    ],
-    modbusRegister: 'N/A (Communication channel)',
-    valueRange: 'Serial data: 0-5V TTL levels',
-    testingNotes: 'Communication pin - not directly controllable. Used for Modbus protocol data exchange. Monitor for communication errors.',
-    readonly: true
-  },
+
   'UART_TXD': {
     signal: 'UART_TXD',
     testHarnessPin: 'D11 (Digital Pin 11)',

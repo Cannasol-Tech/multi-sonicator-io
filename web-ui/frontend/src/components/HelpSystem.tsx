@@ -85,7 +85,6 @@ const helpContent: Record<string, HelpContent> = {
       'Pin 8: AMPLITUDE_ALL → PD7 (Pin 21) - Shared 0–10V output → D9 (PWM)',
       '',
       '📍 System Communications (DB9-0):',
-      'Pin 8: UART_RXD ← PD0 (Pin 14) - MODBUS RTU RX → D2',
       'Pin 9: UART_TXD ← PD1 (Pin 15) - MODBUS RTU TX → D3',
       '',
       '📍 Status Indicator:',

@@ -34,7 +34,6 @@ class HardwareInterface extends events_1.EventEmitter {
                     RESET_4: 'A4',
                     POWER_SENSE_4: 'A1',
                     AMPLITUDE_ALL: 'D9',
-                    UART_RXD: 'D10',
                     UART_TXD: 'D11',
                     STATUS_LED: 'D12'
                 }
@@ -103,7 +102,6 @@ except ImportError:
                 'RESET_4': 'LOW',
                 'POWER_SENSE_4': 512,  # ADC value
                 'AMPLITUDE_ALL': '0.0%',
-                'UART_RXD': 'LOW',
                 'UART_TXD': 'LOW',
                 'STATUS_LED': 'LOW'
             }

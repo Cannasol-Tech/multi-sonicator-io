@@ -126,7 +126,8 @@ describe('TestResultsModal', () => {
     
     // Check header
     expect(screen.getByText(/Test Results:/)).toBeInTheDocument()
-    expect(screen.getByText('test-123')).toBeInTheDocument()
+    // The execution ID is part of the header text
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('test-123')
     
     // Check summary stats
     expect(screen.getByText('2')).toBeInTheDocument() // passed scenarios
@@ -218,7 +219,7 @@ describe('TestResultsModal', () => {
     expect(screen.getByText('the result should be correct')).toBeInTheDocument()
     
     // Check pin interactions (now displayed with "Pins:" label)
-    expect(screen.getByText('Pins:')).toBeInTheDocument()
+    expect(screen.getAllByText('Pins:')).toHaveLength(4) // Multiple steps have pins
     expect(screen.getByText('D7, D8')).toBeInTheDocument()
     expect(screen.getByText('A2')).toBeInTheDocument()
   })
@@ -280,5 +281,79 @@ describe('TestResultsModal', () => {
     document.createElement = originalCreateElement
     document.body.appendChild = originalAppendChild
     document.body.removeChild = originalRemoveChild
+  })
+
+  describe('Live Execution Mode', () => {
+    const mockLiveExecution: TestExecution = {
+      ...mockExecution,
+      status: 'running',
+      current_scenario_index: 0,
+      end_time: undefined
+    }
+
+    it('should show live progress indicator when execution is running', () => {
+      render(
+        <TestResultsModal
+          execution={mockLiveExecution}
+          visible={true}
+          onClose={() => {}}
+          isLive={true}
+        />
+      )
+
+      // Check for live indicator elements
+      expect(screen.getByText('LIVE')).toBeInTheDocument()
+      expect(screen.getByText('Execution Progress')).toBeInTheDocument()
+      expect(document.querySelector('.live-indicator')).toBeInTheDocument()
+      expect(document.querySelector('.live-progress-section')).toBeInTheDocument()
+    })
+
+    it('should show current scenario indicator', () => {
+      render(
+        <TestResultsModal
+          execution={mockLiveExecution}
+          visible={true}
+          onClose={() => {}}
+          isLive={true}
+        />
+      )
+
+      expect(screen.getByText('RUNNING')).toBeInTheDocument()
+      expect(screen.getByText('Scenario 1 of 2')).toBeInTheDocument()
+    })
+
+    it('should hide export button during live execution', () => {
+      render(
+        <TestResultsModal
+          execution={mockLiveExecution}
+          visible={true}
+          onClose={() => {}}
+          isLive={true}
+        />
+      )
+
+      expect(screen.queryByText('📄 Export Results')).not.toBeInTheDocument()
+    })
+
+    it('should show progress bar with correct width', () => {
+      const progressExecution = {
+        ...mockLiveExecution,
+        passed_scenarios: 1,
+        failed_scenarios: 0,
+        total_scenarios: 2
+      }
+
+      render(
+        <TestResultsModal
+          execution={progressExecution}
+          visible={true}
+          onClose={() => {}}
+          isLive={true}
+        />
+      )
+
+      const progressBar = document.querySelector('.progress-bar.live')
+      expect(progressBar).toHaveStyle('width: 50%')
+    })
   })
 })

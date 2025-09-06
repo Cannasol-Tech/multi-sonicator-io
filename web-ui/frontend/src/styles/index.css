@@ -1048,6 +1048,54 @@
   background: linear-gradient(135deg, #dc2626, #b91c1c);
 }
 
+/* Live Scenario Status Indicators */
+.scenario-result.current {
+  border-left: 4px solid #3b82f6;
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), transparent);
+  animation: pulse 2s infinite;
+}
+
+.scenario-result.pending {
+  opacity: 0.6;
+  background: var(--bg-tertiary);
+}
+
+.current-indicator {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  padding: 2px 6px;
+  background: #3b82f6;
+  color: white;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  animation: pulse 2s infinite;
+}
+
+.pending-indicator {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  padding: 2px 6px;
+  background: #6b7280;
+  color: white;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* Step status indicators for live execution */
+.step-result.running {
+  border-left: 3px solid #3b82f6;
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), transparent);
+}
+
+.step-result.pending {
+  opacity: 0.5;
+  background: var(--bg-tertiary);
+}
+
 /* Pin Highlighting for Test Automation */
 .pin-state.highlighted {
   animation: pin-highlight 2s ease-in-out infinite;
@@ -1192,9 +1240,25 @@
   flex: 0 0 280px;
 }
 
+.arduino-container .device-header h3 {
+  color: #1e40af;
+}
+
+.dark-theme .arduino-container .device-header h3 {
+  color: #60a5fa;
+}
+
 .atmega-container {
   border-top: 4px solid #dc2626;
   flex: 0 0 280px;
+}
+
+.atmega-container .device-header h3 {
+  color: #dc2626;
+}
+
+.dark-theme .atmega-container .device-header h3 {
+  color: #f87171;
 }
 
 .device-header {
@@ -1202,11 +1266,13 @@
 }
 
 .device-header h3 {
-  margin: 0 0 4px 0;
-  font-size: 18px;
-  font-weight: 700;
-  color: #000000; /* Dark color for light backgrounds */
-  transition: color 0.3s ease;
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.5px;
 }
 
 .device-subtitle {
@@ -1986,7 +2052,13 @@
   }
 
   .device-header h3 {
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 800;
+  }
+
+  .device-container-large .device-header h3 {
+    font-size: 24px;
+    font-weight: 900;
   }
 
   .device-subtitle {
@@ -2318,9 +2390,23 @@
   --color-frequency-inactive: #94a3b8;
 }
 
-/* Dark theme device header titles - Silver color for dark backgrounds */
+/* Dark theme device header titles - Enhanced readability */
 .dark-theme .device-header h3 {
-  color: #c0c0c0; /* Silver color for dark backgrounds */
+  color: var(--text-primary);
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
+}
+
+/* Dark theme large device headers - Enhanced styling */
+.dark-theme .device-container-large .device-header h3 {
+  background: linear-gradient(135deg, #ffffff 0%, #e5e7eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .device-container-large .device-header h3::before {
+  color: var(--text-primary);
 }
 
 .no-animations * {
@@ -3576,73 +3662,9 @@
   }
 }
 
-/* Frequency Pin Display Styles */
-.frequency-pin-display {
-  width: 100%;
-}
+/* Frequency Pin Display Styles - Simplified to match other signals */
 
-.pin-state.frequency {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  border: 2px solid var(--color-frequency-inactive);
-  border-radius: 8px;
-  padding: 12px;
-  text-align: center;
-  position: relative;
-  transition: all 0.3s ease;
-}
 
-.pin-state.frequency.active {
-  border-color: var(--color-frequency-active);
-  background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
-}
-
-.frequency-value {
-  font-size: 18px;
-  font-weight: bold;
-  color: var(--color-frequency-active);
-  margin-bottom: 8px;
-}
-
-.pin-state.frequency.inactive .frequency-value {
-  color: var(--color-frequency-inactive);
-}
-
-.frequency-indicator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-bottom: 8px;
-}
-
-.pulse-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--color-frequency-active);
-  border-radius: 50%;
-  animation: pulse 1s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.pin-state.frequency.inactive .pulse-dot {
-  background: var(--color-frequency-inactive);
-  animation: none;
-}
 
 /* Enhanced Pin Display Styles */
 .enhanced-pin-display {
@@ -3776,73 +3798,7 @@
   animation: pulse 2s infinite;
 }
 
-/* Inline Frequency Controls */
-.frequency-controls {
-  border: 1px solid #e5e7eb;
-  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
 
-.frequency-controls .btn {
-  font-size: 10px;
-  padding: 3px 8px;
-  border-radius: 4px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.2s ease;
-}
-
-.frequency-controls .btn.btn-warning {
-  background: linear-gradient(135deg, #ffd700 0%, #ffc107 100%);
-  color: #b45309;
-  border: 1px solid #ffd700;
-}
-
-.frequency-controls .btn.btn-warning:hover {
-  background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
-}
-
-.frequency-controls .btn.btn-secondary {
-  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
-  color: white;
-  border: 1px solid #4b5563;
-}
-
-.frequency-controls .btn.btn-secondary:hover {
-  background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(75, 85, 99, 0.3);
-}
-
-.frequency-controls .btn.btn-success {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  color: white;
-  border: 1px solid #059669;
-}
-
-.frequency-controls .btn.btn-success:hover {
-  background: linear-gradient(135deg, #059669 0%, #047857 100%);
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(5, 150, 105, 0.3);
-}
-
-.frequency-controls .input {
-  font-size: 11px;
-  padding: 4px 6px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-  background: white;
-  transition: all 0.2s ease;
-}
-
-.frequency-controls .input:focus {
-  border-color: var(--color-pin-high);
-  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.1);
-  outline: none;
-}
 
 /* Enhanced Help System Styles */
 .help-modal-overlay {
@@ -6363,7 +6319,7 @@
 
 /* Larger Device Containers */
 .device-container-large {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 16px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
   padding: 30px;
@@ -6373,6 +6329,44 @@
   min-width: 280px;
   flex: 1;
   max-width: 350px;
+  border: 1px solid var(--border-color);
+}
+
+/* Enhanced styling for large device headers */
+.device-container-large .device-header h3 {
+  font-size: 28px;
+  font-weight: 900;
+  margin: 0 0 8px 0;
+  color: var(--text-primary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+/* Fallback for browsers that don't support background-clip: text */
+.device-container-large .device-header h3::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--text-primary);
+  z-index: -1;
+}
+
+.device-container-large .device-subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 4px;
 }
 
 .device-container-large:hover {

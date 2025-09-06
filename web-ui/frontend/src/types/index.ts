@@ -41,7 +41,6 @@ export interface ArduinoTestWrapper {
     AMPLITUDE_ALL: 'D9';   // -> ATmega32A PD7 Pin 21
     
     // System communication
-    UART_RXD: 'D10';       // -> ATmega32A PD0 Pin 14
     UART_TXD: 'D11';       // -> ATmega32A PD1 Pin 15
     STATUS_LED: 'D12';     // -> ATmega32A PD2 Pin 16
   };

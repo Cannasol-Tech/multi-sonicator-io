@@ -77,8 +77,6 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
     }
   })
   const [configLoading, setConfigLoading] = useState(false)
-  const [frequencyInput, setFrequencyInput] = useState('20.0')
-  const [manualFrequencyInput, setManualFrequencyInput] = useState('2.0')
   const [activeSubTab, setActiveSubTab] = useState<'parameters' | 'monitoring'>('parameters')
 
   const inputPins = Object.entries(hardwareState.pins).filter(([signal, pin]) => pin.direction === 'IN' || signal === 'POWER_SENSE_4')
@@ -100,95 +98,31 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
   const renderPinState = (signal: string, pinState: any) => {
     if (isFrequencyPin(signal)) {
       return (
-        <div className="frequency-pin-display">
-          <div className={`pin-state frequency ${pinState.enabled ? 'active' : 'inactive'}`}>
-            <div className="frequency-value">
-              {pinState.state}
+        <div className="enhanced-pin-display">
+          <div className="pin-state enhanced analog">
+            <div className="pin-value">
+              {pinState.state || '0Hz'}
             </div>
-            {pinState.enabled && (
-              <div className="frequency-indicator">
-                <div className="pulse-dot"></div>
-                <span className="text-xs text-gray-500">Active</span>
+
+            <div className="pin-controls">
+              <div className="pin-indicator">
+                <div className="status-dot analog"></div>
+                <span className="text-xs text-gray-500">Frequency</span>
               </div>
-            )}
+            </div>
 
-            {/* Inline Frequency Configuration Controls */}
-            <div className="frequency-controls mt-3 p-3 bg-gray-50 rounded-lg border">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-medium text-gray-700">Mode:</span>
-                <button
-                  className={`btn text-xs px-2 py-1 ${configuration.sonicator4.manualMode ? 'btn-warning' : 'btn-secondary'}`}
-                  onClick={handleManualModeToggle}
-                  disabled={configLoading || !connected}
-                  title={`${configuration.sonicator4.manualMode ? 'Switch to' : 'Switch to'} ${configuration.sonicator4.manualMode ? 'automatic' : 'manual'} mode`}
-                >
-                  {configuration.sonicator4.manualMode ? 'MANUAL' : 'AUTO'}
-                </button>
+            <div className="pin-details">
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-xs font-medium" style={{ color: 'var(--text-secondary)' }}>Configured:</span>
+                <span className="text-xs font-mono font-bold" style={{ color: 'var(--color-primary)' }}>
+                  {configuration.sonicator4.operatingFrequencyKHz}kHz
+                </span>
               </div>
-
-              {configuration.sonicator4.manualMode ? (
-                <div className="mb-2">
-                  <label className="text-xs text-gray-600 block mb-1">Manual Frequency (kHz):</label>
-                  <div className="flex gap-1">
-                    <input
-                      type="number"
-                      className="input text-xs flex-1"
-                      value={manualFrequencyInput}
-                      onChange={(e) => setManualFrequencyInput(e.target.value)}
-                      min="0.1"
-                      max="50"
-                      step="0.1"
-                      placeholder="2.0"
-                    />
-                    <button
-                      className="btn primary text-xs px-2"
-                      onClick={handleManualFrequencyUpdate}
-                      disabled={configLoading || !connected}
-                      title="Set manual frequency"
-                    >
-                      Set
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <div className="mb-2">
-                  <label className="text-xs text-gray-600 block mb-1">Operating Frequency (kHz):</label>
-                  <div className="flex gap-1">
-                    <input
-                      type="number"
-                      className="input text-xs flex-1"
-                      value={frequencyInput}
-                      onChange={(e) => setFrequencyInput(e.target.value)}
-                      min="0.1"
-                      max="100"
-                      step="0.1"
-                      placeholder="20.0"
-                    />
-                    <button
-                      className="btn primary text-xs px-2"
-                      onClick={handleFrequencyUpdate}
-                      disabled={configLoading || !connected}
-                      title="Update operating frequency"
-                    >
-                      Set
-                    </button>
-                  </div>
-                  <div className="text-xs text-gray-500 mt-1">
-                    Output: {configuration.sonicator4.operatingFrequencyKHz / 10}kHz (÷10)
-                  </div>
-                </div>
-              )}
-
               <div className="flex items-center justify-between">
-                <span className="text-xs text-gray-600">Status:</span>
-                <button
-                  className={`btn text-xs px-2 py-1 ${configuration.sonicator4.enabled ? 'btn-success' : 'btn-secondary'}`}
-                  onClick={handleFrequencyToggle}
-                  disabled={configLoading || !connected}
-                  title={`${configuration.sonicator4.enabled ? 'Stop' : 'Start'} frequency generation`}
-                >
-                  {configuration.sonicator4.enabled ? 'ON' : 'OFF'}
-                </button>
+                <span className="text-xs font-medium" style={{ color: 'var(--text-secondary)' }}>Current:</span>
+                <span className="text-xs font-mono font-bold" style={{ color: 'var(--text-primary)' }}>
+                  {pinState.state || '0Hz'}
+                </span>
               </div>
             </div>
 
@@ -277,147 +211,19 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
       const data = await response.json()
       if (data.success && data.config) {
         setConfiguration(data.config)
-        setFrequencyInput(data.config.sonicator4.operatingFrequencyKHz.toString())
-        setManualFrequencyInput(data.config.sonicator4.manualFrequencyKHz?.toString() || '2.0')
       }
     } catch (error) {
       console.error('Failed to load configuration:', error)
     }
   }
 
-  const handleFrequencyUpdate = async () => {
-    const frequency = parseFloat(frequencyInput)
 
-    // Validate frequency
-    if (isNaN(frequency) || frequency <= 0 || frequency > 100) {
-      alert('Operating frequency must be between 0.1 and 100 kHz')
-      return
-    }
 
-    setConfigLoading(true)
-    try {
-      const response = await fetch('/api/config', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          config: {
-            sonicator4: {
-              operatingFrequencyKHz: frequency,
-              enabled: configuration.sonicator4.enabled
-            }
-          }
-        })
-      })
 
-      const data = await response.json()
-      if (data.success) {
-        setConfiguration(data.config)
-        console.log(`Frequency updated to ${frequency}kHz (output: ${frequency / 10}kHz)`)
-      } else {
-        alert('Failed to update frequency configuration')
-      }
-    } catch (error) {
-      console.error('Error updating frequency:', error)
-      alert('Network error updating frequency')
-    } finally {
-      setConfigLoading(false)
-    }
-  }
 
-  const handleFrequencyToggle = async () => {
-    setConfigLoading(true)
-    try {
-      const newEnabled = !configuration.sonicator4.enabled
-      const response = await fetch('/api/config', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          config: {
-            sonicator4: {
-              operatingFrequencyKHz: configuration.sonicator4.operatingFrequencyKHz,
-              enabled: newEnabled
-            }
-          }
-        })
-      })
 
-      const data = await response.json()
-      if (data.success) {
-        setConfiguration(data.config)
-        console.log(`Frequency generation ${newEnabled ? 'enabled' : 'disabled'}`)
-      }
-    } catch (error) {
-      console.error('Error toggling frequency:', error)
-    } finally {
-      setConfigLoading(false)
-    }
-  }
 
-  const handleManualModeToggle = async () => {
-    setConfigLoading(true)
-    try {
-      const newManualMode = !configuration.sonicator4.manualMode
-      const response = await fetch('/api/config', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          config: {
-            sonicator4: {
-              manualMode: newManualMode
-            }
-          }
-        })
-      })
 
-      const data = await response.json()
-      if (data.success) {
-        setConfiguration(data.config)
-        console.log(`Manual mode ${newManualMode ? 'enabled' : 'disabled'}`)
-      }
-    } catch (error) {
-      console.error('Error toggling manual mode:', error)
-    } finally {
-      setConfigLoading(false)
-    }
-  }
-
-  const handleManualFrequencyUpdate = async () => {
-    const frequency = parseFloat(manualFrequencyInput)
-
-    // Validate frequency
-    if (isNaN(frequency) || frequency <= 0 || frequency > 50) {
-      alert('Manual frequency must be between 0.1 and 50 kHz')
-      return
-    }
-
-    setConfigLoading(true)
-    try {
-      const response = await fetch('/api/config', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          config: {
-            sonicator4: {
-              manualFrequencyKHz: frequency
-            }
-          }
-        })
-      })
-
-      const data = await response.json()
-      if (data.success) {
-        setConfiguration(data.config)
-        console.log(`Manual frequency updated to ${frequency}kHz`)
-      } else {
-        alert('Failed to update manual frequency')
-      }
-    } catch (error) {
-      console.error('Error updating manual frequency:', error)
-      alert('Network error updating manual frequency')
-    } finally {
-      setConfigLoading(false)
-    }
-  }
 
   return (
     <div className="control-panel">

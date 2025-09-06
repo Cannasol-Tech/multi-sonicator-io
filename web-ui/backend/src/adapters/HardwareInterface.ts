@@ -56,7 +56,6 @@ export class HardwareInterface extends EventEmitter {
         RESET_4: 'A4',
         POWER_SENSE_4: 'A1',
         AMPLITUDE_ALL: 'D9',
-        UART_RXD: 'D10',
         UART_TXD: 'D11',
         STATUS_LED: 'D12'
       }
@@ -78,7 +77,6 @@ export class HardwareInterface extends EventEmitter {
       { pin: 'A4', signal: 'RESET_4', direction: 'OUT' as const },
       { pin: 'A1', signal: 'POWER_SENSE_4', direction: 'ANALOG' as const },
       { pin: 'D9', signal: 'AMPLITUDE_ALL', direction: 'OUT' as const },
-      { pin: 'D10', signal: 'UART_RXD', direction: 'IN' as const },
       { pin: 'D11', signal: 'UART_TXD', direction: 'OUT' as const },
       { pin: 'D12', signal: 'STATUS_LED', direction: 'OUT' as const }
     ]
@@ -133,7 +131,6 @@ except ImportError:
                 'RESET_4': 'LOW',
                 'POWER_SENSE_4': 512,  # ADC value
                 'AMPLITUDE_ALL': '0.0%',
-                'UART_RXD': 'LOW',
                 'UART_TXD': 'LOW',
                 'STATUS_LED': 'LOW'
             }
