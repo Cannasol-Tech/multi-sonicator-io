@@ -31,11 +31,13 @@ Object.defineProperty(window, 'matchMedia', {
 
 describe('Header Component', () => {
   const mockProps = {
-    activeTab: 'hardware' as const,
-    onTabChange: vi.fn(),
-    onHelpToggle: vi.fn(),
-    connected: false,
-    lastUpdate: null as number | null,
+    connectionStatus: {
+      connected: false,
+      port: 'COM3',
+      lastSeen: Date.now(),
+      error: null
+    },
+    onShowHelp: vi.fn(),
   }
 
   beforeEach(() => {

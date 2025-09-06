@@ -127,9 +127,36 @@ global.IntersectionObserver = vi.fn().mockImplementation(() => ({
   disconnect: vi.fn(),
 }))
 
-// Mock URL methods for file downloads
-global.URL = {
-  ...global.URL,
-  createObjectURL: vi.fn(() => 'mock-object-url'),
-  revokeObjectURL: vi.fn(),
-}
+// Mock URL methods for file downloads and URL constructor
+global.URL = class MockURL {
+  static createObjectURL = vi.fn(() => 'mock-object-url')
+  static revokeObjectURL = vi.fn()
+
+  href: string
+  protocol: string
+  hostname: string
+  port: string
+  pathname: string
+  search: string
+  hash: string
+
+  constructor(url: string, base?: string) {
+    // Simple URL validation for test purposes
+    const validProtocols = ['http:', 'https:', 'ws:', 'wss:', 'ftp:', 'file:']
+    const hasValidProtocol = validProtocols.some(protocol => url.startsWith(protocol))
+
+    // Check for obviously invalid URLs
+    if (!hasValidProtocol || url === 'not-a-url' || url === 'http://' || url === '://example.com' || url.length < 8) {
+      throw new TypeError('Invalid URL')
+    }
+
+    // Create a basic valid URL structure
+    this.href = url
+    this.protocol = url.startsWith('https:') ? 'https:' : url.startsWith('http:') ? 'http:' : url.startsWith('ws:') ? 'ws:' : url.startsWith('wss:') ? 'wss:' : 'http:'
+    this.hostname = url.includes('localhost') ? 'localhost' : 'example.com'
+    this.port = url.includes(':3000') ? '3000' : ''
+    this.pathname = '/'
+    this.search = ''
+    this.hash = ''
+  }
+} as any

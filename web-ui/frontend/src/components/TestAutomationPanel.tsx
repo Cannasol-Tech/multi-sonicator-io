@@ -244,12 +244,12 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
               </div>
             </div>
 
-            {/* Scenario List */}
-            <div className="scenarios-list">
+            {/* Compact Scenario List */}
+            <div className="scenarios-list-compact">
               {filteredScenarios.map((scenario) => (
                 <div
                   key={scenario.name}
-                  className={`scenario-card ${selectedScenarios.includes(scenario.name) ? 'selected' : ''}`}
+                  className={`scenario-card-compact ${selectedScenarios.includes(scenario.name) ? 'selected' : ''}`}
                   onMouseEnter={() => handleScenarioHover(scenario)}
                   onMouseLeave={() => handleScenarioHover(null)}
                   style={{
@@ -259,51 +259,71 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
                     border: `1px solid ${selectedScenarios.includes(scenario.name)
                       ? 'var(--color-primary)'
                       : 'var(--border-color)'}`,
-                    borderRadius: '8px',
-                    padding: '12px',
-                    marginBottom: '8px',
-                    cursor: 'pointer',
+                    borderRadius: '6px',
+                    padding: '8px 12px',
+                    marginBottom: '4px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
                     transition: 'all 0.2s ease'
                   }}
-                  onClick={() => toggleScenarioSelection(scenario.name)}
                 >
-                  <div className="scenario-header">
-                    <div className="scenario-title">
-                      <input
-                        type="checkbox"
-                        checked={selectedScenarios.includes(scenario.name)}
-                        onChange={() => toggleScenarioSelection(scenario.name)}
-                        style={{ marginRight: '8px' }}
-                      />
-                      <span style={{ color: 'var(--text-primary)', fontWeight: '600' }}>
-                        {scenario.name}
-                      </span>
-                    </div>
+                  <div className="scenario-main-content" style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    flex: 1,
+                    cursor: 'pointer'
+                  }}
+                  onClick={() => toggleScenarioSelection(scenario.name)}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedScenarios.includes(scenario.name)}
+                      onChange={() => toggleScenarioSelection(scenario.name)}
+                      onClick={(e) => e.stopPropagation()}
+                      style={{
+                        marginRight: '12px',
+                        cursor: 'pointer'
+                      }}
+                    />
+                    <span style={{
+                      color: 'var(--text-primary)',
+                      fontWeight: '500',
+                      fontSize: '14px'
+                    }}>
+                      {scenario.name}
+                    </span>
                   </div>
-                  <div className="scenario-description" style={{
-                    color: 'var(--text-secondary)',
-                    fontSize: '14px',
-                    marginTop: '4px',
-                    marginLeft: '24px'
-                  }}>
-                    {scenario.description}
-                  </div>
-                  <div className="scenario-meta" style={{
-                    color: 'var(--text-tertiary)',
-                    fontSize: '12px',
-                    marginTop: '8px',
-                    marginLeft: '24px'
-                  }}>
-                    <span>{scenario.feature_file}</span>
-                    <span style={{ margin: '0 8px' }}>•</span>
-                    <span>{scenario.steps.length} steps</span>
-                    {scenario.tags.length > 0 && (
-                      <>
-                        <span style={{ margin: '0 8px' }}>•</span>
-                        <span>{scenario.tags.map(tag => `@${tag}`).join(', ')}</span>
-                      </>
-                    )}
-                  </div>
+
+                  <button
+                    className="scenario-details-btn"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      handleShowScenarioDetails(scenario)
+                    }}
+                    style={{
+                      background: 'var(--color-primary)',
+                      color: 'white',
+                      border: 'none',
+                      borderRadius: '4px',
+                      padding: '4px 8px',
+                      fontSize: '11px',
+                      fontWeight: '500',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease',
+                      marginLeft: '8px'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'var(--color-primary-hover)'
+                      e.currentTarget.style.transform = 'translateY(-1px)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'var(--color-primary)'
+                      e.currentTarget.style.transform = 'translateY(0)'
+                    }}
+                  >
+                    📋 Details
+                  </button>
                 </div>
               ))}
             </div>
@@ -375,6 +395,13 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
         visible={showResultsModal}
         onClose={() => setShowResultsModal(false)}
         isLive={isExecutionInProgress}
+      />
+
+      {/* Scenario Details Modal */}
+      <ScenarioDetailsModal
+        scenario={selectedScenarioForDetails}
+        visible={showDetailsModal}
+        onClose={handleCloseScenarioDetails}
       />
     </div>
   )
