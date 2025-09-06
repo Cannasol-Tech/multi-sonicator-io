@@ -177,8 +177,8 @@ export default function ProgressBarDemo({ className = '' }: ProgressBarDemoProps
         fontSize: '12px',
         textAlign: 'center'
       }}>
-        {isRunning ? '🌈 Beautiful iridescent progress in action!' :
-         progress === 100 ? '⚡ Test completed with stunning metallic blue finish!' :
+        {isRunning ? '🔄 Test execution in progress...' :
+         progress === 100 ? '⚡ Test execution complete!' :
          '⏸️ Ready to demonstrate the new progress design'}
       </div>
     </div>
