@@ -4629,6 +4629,82 @@
   font-weight: 500;
 }
 
+.arduino-commands-panel .detail-value.error-text {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+/* Ping History Styles */
+.arduino-commands-panel .ping-history {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.arduino-commands-panel .ping-history h5 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.arduino-commands-panel .history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.arduino-commands-panel .history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.arduino-commands-panel .history-item.success {
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.arduino-commands-panel .history-item.error {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.arduino-commands-panel .history-time {
+  font-family: 'Courier New', monospace;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 11px;
+}
+
+.arduino-commands-panel .history-response-time {
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.arduino-commands-panel .history-status {
+  font-size: 14px;
+}
+
+.arduino-commands-panel .history-stats {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.arduino-commands-panel .stat-item {
+  font-weight: 500;
+}
+
 .arduino-commands-panel .detail-value {
   font-family: 'Courier New', monospace;
   background: rgba(255, 255, 255, 0.1);

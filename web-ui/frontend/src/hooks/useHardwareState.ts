@@ -61,8 +61,16 @@ const initialPinStates: Record<string, PinState> = {
     description: 'Amplitude PWM output from ATmega32A PD7'
   },
 
+  'UART_RXD': {
+    pin: 'D2',
+    signal: 'UART_RXD',
+    direction: 'IN',
+    state: 'HIGH',
+    timestamp: Date.now(),
+    description: 'UART RX to ATmega32A PD0'
+  },
   'UART_TXD': {
-    pin: 'D11', 
+    pin: 'D3',
     signal: 'UART_TXD',
     direction: 'OUT',
     state: 'HIGH',
@@ -70,7 +78,7 @@ const initialPinStates: Record<string, PinState> = {
     description: 'UART TX from ATmega32A PD1'
   },
   'STATUS_LED': {
-    pin: 'D12',
+    pin: 'D4',
     signal: 'STATUS_LED',
     direction: 'OUT',
     state: 'LOW',

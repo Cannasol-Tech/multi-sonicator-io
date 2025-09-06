@@ -295,9 +295,14 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
 
         {activeSubTab === 'monitoring' && (
           <div className="control-section">
-            <h3>Live DUT Monitoring</h3>
-            <div className="text-xs mb-2" style={{ color: 'var(--text-tertiary)' }}>
-              Real-time signals from ATmega32A
+            {/* Sonicator #4 Header */}
+            <div className="mb-4">
+              <h4 className="sonicator-4-header text-lg font-semibold mb-3 pb-2" style={{
+                borderBottom: '2px solid var(--border-color)',
+                color: 'var(--text-primary)'
+              }}>
+                🔊 Sonicator #4
+              </h4>
             </div>
             {outputPins.map(([signal, pinState]) => (
               <div key={signal} className="mb-2">

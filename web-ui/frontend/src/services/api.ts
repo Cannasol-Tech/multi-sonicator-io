@@ -58,6 +58,13 @@ class ApiService {
     })
   }
 
+  // Ping hardware
+  async ping() {
+    return this.request('/ping', {
+      method: 'POST'
+    })
+  }
+
   // Connection management
   async getConnectionStatus() {
     return this.request('/connection')

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useTestAutomation } from '../hooks/useTestAutomation'
 import { TestScenario, TestExecution } from '../types'
-import TestResultsModal from './TestResultsModal'
+import TestResultsModal, { TestResultsSection } from './TestResultsModal'
 import IridescentProgressBar from './IridescentProgressBar'
 
 interface TestAutomationPanelProps {
@@ -115,9 +115,253 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
         )}
       </div>
 
-      {/* Previous Test Execution Results */}
-      {currentExecution && (
-        <div className="test-automation-section">
+      {/* Two-column layout: Test Controls and Test Results */}
+      <div className="test-automation-content">
+        {/* Left Column: Test Controls */}
+        <div className="test-controls-section">
+          {/* Current Execution Progress (if running) */}
+          {isExecutionInProgress && currentExecution && (
+            <div className="test-automation-section">
+              <div className="section-header">
+                <h3 style={{ color: 'var(--text-primary)', margin: 0, fontSize: '16px', fontWeight: '600' }}>
+                  🔄 Test Execution in Progress
+                </h3>
+              </div>
+              <div className="execution-summary">
+                <div className="execution-info">
+                  <div className="execution-id" style={{ color: 'var(--text-primary)', fontWeight: '600' }}>
+                    {currentExecution.execution_id}
+                  </div>
+                  <div className="execution-status" style={{ color: getStatusColor(currentExecution.status) }}>
+                    {getStatusIcon(currentExecution.status)} {currentExecution.status.toUpperCase()}
+                  </div>
+                </div>
+                <div className="execution-stats">
+                  <div className="stat-card">
+                    <div className="stat-value" style={{ color: 'var(--color-success)' }}>
+                      {currentExecution.passed_scenarios}
+                    </div>
+                    <div className="stat-label" style={{ color: 'var(--text-tertiary)' }}>Passed</div>
+                  </div>
+                  <div className="stat-card">
+                    <div className="stat-value" style={{ color: 'var(--color-error)' }}>
+                      {currentExecution.failed_scenarios}
+                    </div>
+                    <div className="stat-label" style={{ color: 'var(--text-tertiary)' }}>Failed</div>
+                  </div>
+                  <div className="stat-card">
+                    <div className="stat-value" style={{ color: 'var(--text-primary)' }}>
+                      {currentExecution.total_scenarios}
+                    </div>
+                    <div className="stat-label" style={{ color: 'var(--text-tertiary)' }}>Total</div>
+                  </div>
+                </div>
+                <div className="execution-progress">
+                  <IridescentProgressBar
+                    progress={executionProgress.percentage}
+                    isActive={true}
+                    showPercentage={true}
+                  />
+                  <div className="progress-actions">
+                    <button
+                      className="btn-stop"
+                      onClick={stopExecution}
+                      style={{
+                        background: 'var(--color-error)',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '6px',
+                        padding: '8px 16px',
+                        fontSize: '14px',
+                        fontWeight: '500',
+                        cursor: 'pointer',
+                        marginTop: '12px'
+                      }}
+                    >
+                      🛑 Stop Execution
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Test Scenario Controls */}
+          <div className="test-automation-section">
+            <div className="section-header">
+              <h3 style={{ color: 'var(--text-primary)', margin: 0, fontSize: '16px', fontWeight: '600' }}>
+                🎯 Test Scenarios
+              </h3>
+              <div className="section-actions">
+                <button
+                  className="btn-select-all"
+                  onClick={selectAllScenarios}
+                  style={{
+                    background: 'var(--bg-tertiary)',
+                    border: '1px solid var(--border-color)',
+                    borderRadius: '6px',
+                    padding: '4px 8px',
+                    fontSize: '12px',
+                    color: 'var(--text-secondary)',
+                    cursor: 'pointer',
+                    marginRight: '8px'
+                  }}
+                >
+                  Select All
+                </button>
+                <button
+                  className="btn-clear-selection"
+                  onClick={clearScenarioSelection}
+                  style={{
+                    background: 'var(--bg-tertiary)',
+                    border: '1px solid var(--border-color)',
+                    borderRadius: '6px',
+                    padding: '4px 8px',
+                    fontSize: '12px',
+                    color: 'var(--text-secondary)',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Clear
+                </button>
+              </div>
+            </div>
+
+            {/* Scenario List */}
+            <div className="scenarios-list">
+              {filteredScenarios.map((scenario) => (
+                <div
+                  key={scenario.name}
+                  className={`scenario-card ${selectedScenarios.includes(scenario.name) ? 'selected' : ''}`}
+                  onMouseEnter={() => handleScenarioHover(scenario)}
+                  onMouseLeave={() => handleScenarioHover(null)}
+                  style={{
+                    background: selectedScenarios.includes(scenario.name)
+                      ? 'var(--bg-tertiary)'
+                      : 'var(--bg-secondary)',
+                    border: `1px solid ${selectedScenarios.includes(scenario.name)
+                      ? 'var(--color-primary)'
+                      : 'var(--border-color)'}`,
+                    borderRadius: '8px',
+                    padding: '12px',
+                    marginBottom: '8px',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onClick={() => toggleScenarioSelection(scenario.name)}
+                >
+                  <div className="scenario-header">
+                    <div className="scenario-title">
+                      <input
+                        type="checkbox"
+                        checked={selectedScenarios.includes(scenario.name)}
+                        onChange={() => toggleScenarioSelection(scenario.name)}
+                        style={{ marginRight: '8px' }}
+                      />
+                      <span style={{ color: 'var(--text-primary)', fontWeight: '600' }}>
+                        {scenario.name}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="scenario-description" style={{
+                    color: 'var(--text-secondary)',
+                    fontSize: '14px',
+                    marginTop: '4px',
+                    marginLeft: '24px'
+                  }}>
+                    {scenario.description}
+                  </div>
+                  <div className="scenario-meta" style={{
+                    color: 'var(--text-tertiary)',
+                    fontSize: '12px',
+                    marginTop: '8px',
+                    marginLeft: '24px'
+                  }}>
+                    <span>{scenario.feature_file}</span>
+                    <span style={{ margin: '0 8px' }}>•</span>
+                    <span>{scenario.steps.length} steps</span>
+                    {scenario.tags.length > 0 && (
+                      <>
+                        <span style={{ margin: '0 8px' }}>•</span>
+                        <span>{scenario.tags.map(tag => `@${tag}`).join(', ')}</span>
+                      </>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Execution Buttons */}
+            <div className="execution-buttons">
+              <button
+                className="btn-execute-selected"
+                onClick={handleExecuteTests}
+                disabled={isExecutionInProgress || selectedScenarios.length === 0}
+                style={{
+                  background: selectedScenarios.length > 0 && !isExecutionInProgress
+                    ? 'var(--color-primary)'
+                    : 'var(--bg-tertiary)',
+                  color: selectedScenarios.length > 0 && !isExecutionInProgress
+                    ? 'white'
+                    : 'var(--text-tertiary)',
+                  border: 'none',
+                  borderRadius: '8px',
+                  padding: '12px 24px',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  cursor: selectedScenarios.length > 0 && !isExecutionInProgress ? 'pointer' : 'not-allowed',
+                  marginRight: '12px',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                {isExecutionInProgress ? '🔄 Running...' : `▶️ Execute Selected (${selectedScenarios.length})`}
+              </button>
+              <button
+                className="btn-execute-all"
+                onClick={handleExecuteFullSuite}
+                disabled={isExecutionInProgress || filteredScenarios.length === 0}
+                style={{
+                  background: !isExecutionInProgress && filteredScenarios.length > 0
+                    ? 'var(--color-secondary)'
+                    : 'var(--bg-tertiary)',
+                  color: !isExecutionInProgress && filteredScenarios.length > 0
+                    ? 'white'
+                    : 'var(--text-tertiary)',
+                  border: 'none',
+                  borderRadius: '8px',
+                  padding: '12px 24px',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  cursor: !isExecutionInProgress && filteredScenarios.length > 0 ? 'pointer' : 'not-allowed',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                {isExecutionInProgress ? '🔄 Running...' : `🚀 Execute All (${filteredScenarios.length})`}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: Test Results (Always Visible) */}
+        <div className="test-results-column">
+          <TestResultsSection
+            execution={currentExecution}
+            isLive={isExecutionInProgress}
+            className="embedded-results"
+          />
+        </div>
+      </div>
+
+      {/* Keep modal for backward compatibility (can be removed later) */}
+      <TestResultsModal
+        execution={currentExecution}
+        visible={showResultsModal}
+        onClose={() => setShowResultsModal(false)}
+        isLive={isExecutionInProgress}
+      />
+    </div>
+  )
+}
           <div className="section-header">
             <h3 style={{ color: 'var(--text-primary)', margin: 0, fontSize: '16px', fontWeight: '600' }}>
               📊 Previous Test Execution

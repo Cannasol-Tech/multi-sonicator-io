@@ -6,15 +6,24 @@ interface ArduinoCommandsPanelProps {
   connected: boolean
 }
 
+interface PingHistoryEntry {
+  timestamp: Date
+  responseTime: number
+  success: boolean
+  error?: string
+}
+
 export default function ArduinoCommandsPanel({ hardwareState, connected }: ArduinoCommandsPanelProps) {
   const [pingStatus, setPingStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [pingResponse, setPingResponse] = useState<any>(null)
   const [lastPingTime, setLastPingTime] = useState<Date | null>(null)
+  const [pingHistory, setPingHistory] = useState<PingHistoryEntry[]>([])
 
   const handlePing = async () => {
     setPingStatus('loading')
     setPingResponse(null)
-    
+    const startTime = Date.now()
+
     try {
       const response = await fetch('http://localhost:3001/api/ping', {
         method: 'POST',
@@ -22,21 +31,60 @@ export default function ArduinoCommandsPanel({ hardwareState, connected }: Ardui
           'Content-Type': 'application/json',
         },
       })
-      
+
       const data = await response.json()
+      const clientResponseTime = Date.now() - startTime
+
       setPingResponse(data)
       setPingStatus('success')
       setLastPingTime(new Date())
+
+      // Add to ping history (keep last 10 entries)
+      const historyEntry: PingHistoryEntry = {
+        timestamp: new Date(),
+        responseTime: data.responseTime || clientResponseTime,
+        success: data.success || response.ok,
+        error: data.error
+      }
+
+      setPingHistory(prev => [historyEntry, ...prev.slice(0, 9)])
+
     } catch (error) {
       console.error('Ping failed:', error)
+      const clientResponseTime = Date.now() - startTime
+
       setPingStatus('error')
-      setPingResponse({ error: 'Connection failed' })
+      const errorResponse = { error: 'Connection failed', responseTime: clientResponseTime }
+      setPingResponse(errorResponse)
+
+      // Add failed ping to history
+      const historyEntry: PingHistoryEntry = {
+        timestamp: new Date(),
+        responseTime: clientResponseTime,
+        success: false,
+        error: 'Connection failed'
+      }
+
+      setPingHistory(prev => [historyEntry, ...prev.slice(0, 9)])
     }
   }
 
   const formatResponseTime = (responseTime?: number) => {
     if (!responseTime) return 'N/A'
-    return `${responseTime}ms`
+
+    // Add performance indicators
+    let indicator = ''
+    if (responseTime < 50) {
+      indicator = ' 🟢' // Excellent
+    } else if (responseTime < 100) {
+      indicator = ' 🟡' // Good
+    } else if (responseTime < 500) {
+      indicator = ' 🟠' // Fair
+    } else {
+      indicator = ' 🔴' // Slow
+    }
+
+    return `${responseTime}ms${indicator}`
   }
 
   const getStatusIcon = () => {
@@ -86,26 +134,67 @@ export default function ArduinoCommandsPanel({ hardwareState, connected }: Ardui
                   )}
                 </div>
                 
-                {pingStatus === 'success' && pingResponse.hardware && (
+                {pingStatus === 'success' && pingResponse.success && (
                   <div className="response-details">
                     <div className="detail-item">
                       <span className="detail-label">Response Time:</span>
                       <span className="detail-value">{formatResponseTime(pingResponse.responseTime)}</span>
                     </div>
                     <div className="detail-item">
-                      <span className="detail-label">Hardware Port:</span>
-                      <span className="detail-value">{pingResponse.hardware.port || 'Mock'}</span>
+                      <span className="detail-label">Hardware Response:</span>
+                      <span className="detail-value">{pingResponse.result?.data || 'PONG'}</span>
                     </div>
                     <div className="detail-item">
                       <span className="detail-label">Status:</span>
-                      <span className="detail-value">{pingResponse.status}</span>
+                      <span className="detail-value">{pingResponse.success ? 'Connected' : 'Failed'}</span>
                     </div>
                   </div>
                 )}
                 
                 {pingStatus === 'error' && (
                   <div className="error-details">
-                    <span className="error-message">{pingResponse.error}</span>
+                    <div className="detail-item">
+                      <span className="detail-label">Error:</span>
+                      <span className="detail-value error-text">{pingResponse.error}</span>
+                    </div>
+                    {pingResponse.responseTime && (
+                      <div className="detail-item">
+                        <span className="detail-label">Response Time:</span>
+                        <span className="detail-value">{formatResponseTime(pingResponse.responseTime)}</span>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Ping History */}
+            {pingHistory.length > 0 && (
+              <div className="ping-history">
+                <h5>📊 Recent Communication Tests</h5>
+                <div className="history-list">
+                  {pingHistory.slice(0, 5).map((entry, index) => (
+                    <div key={index} className={`history-item ${entry.success ? 'success' : 'error'}`}>
+                      <span className="history-time">
+                        {entry.timestamp.toLocaleTimeString()}
+                      </span>
+                      <span className="history-response-time">
+                        {formatResponseTime(entry.responseTime)}
+                      </span>
+                      <span className="history-status">
+                        {entry.success ? '✅' : '❌'}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                {pingHistory.length > 0 && (
+                  <div className="history-stats">
+                    <span className="stat-item">
+                      Avg: {Math.round(pingHistory.slice(0, 5).reduce((sum, entry) => sum + entry.responseTime, 0) / Math.min(5, pingHistory.length))}ms
+                    </span>
+                    <span className="stat-item">
+                      Success: {Math.round((pingHistory.slice(0, 10).filter(entry => entry.success).length / Math.min(10, pingHistory.length)) * 100)}%
+                    </span>
                   </div>
                 )}
               </div>
