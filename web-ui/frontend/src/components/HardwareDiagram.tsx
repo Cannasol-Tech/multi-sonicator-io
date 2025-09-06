@@ -49,38 +49,79 @@ export const HardwareDiagram: React.FC = () => {
 
     // Set up WebSocket for real-time updates
     const ws = new WebSocket('ws://localhost:3001/ws')
-    
+
+    ws.onopen = () => {
+      console.log('WebSocket connected')
+    }
+
     ws.onmessage = (event) => {
+      console.log('WebSocket message received:', event.data)
       const data = JSON.parse(event.data)
       if (data.type === 'pin_update') {
+        console.log('Pin update received:', data)
         setHardwareState(prev => ({
           ...prev,
           pins: { ...prev.pins, [data.signal]: data }
         }))
       } else if (data.type === 'connection_update') {
+        console.log('Connection update received:', data)
         setHardwareState(prev => ({ ...prev, connection: data }))
       }
+    }
+
+    ws.onerror = (error) => {
+      console.error('WebSocket error:', error)
+    }
+
+    ws.onclose = () => {
+      console.log('WebSocket disconnected')
     }
 
     return () => ws.close()
   }, [])
 
   const handlePinClick = (signal: string, pinState: any) => {
+    console.log('Pin clicked:', signal, 'Current state:', pinState.state, 'Direction:', pinState.direction)
+
     if (pinState.direction === 'IN') {
       // Toggle input pin
       const newState = pinState.state === 'HIGH' ? 'LOW' : 'HIGH'
+      console.log('Toggling input pin', signal, 'from', pinState.state, 'to', newState)
+
       fetch(`/api/pins/${signal}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ state: newState })
       })
+      .then(res => res.json())
+      .then(data => {
+        console.log('Pin control response:', data)
+        if (data.success) {
+          // Update local state immediately for better UX
+          setHardwareState(prev => ({
+            ...prev,
+            pins: {
+              ...prev.pins,
+              [signal]: { ...prev.pins[signal], state: newState, timestamp: Date.now() }
+            }
+          }))
+        }
+      })
+      .catch(err => {
+        console.error('Failed to control pin:', err)
+      })
     } else {
       // Read output/analog pin
+      console.log('Reading output/analog pin:', signal)
       fetch(`/api/pins/${signal}`)
         .then(res => res.json())
         .then(data => {
+          console.log('Pin read response:', data)
           setHighlightedPins([signal])
           setTimeout(() => setHighlightedPins([]), 1000)
+        })
+        .catch(err => {
+          console.error('Failed to read pin:', err)
         })
     }
   }
