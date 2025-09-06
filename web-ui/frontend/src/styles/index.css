@@ -4,7 +4,7 @@
   /* Color scheme for hardware interface */
   --color-primary: #2563eb;
   --color-success: #16a34a;
-  --color-warning: #d97706;
+  --color-warning: #ffd700;
   --color-error: #dc2626;
   --color-info: #0891b2;
 
@@ -20,7 +20,7 @@
   /* Connection status colors */
   --color-connected: #10b981;
   --color-disconnected: #ef4444;
-  --color-connecting: #f59e0b;
+  --color-connecting: #ffd700;
 
   /* Light theme colors */
   --bg-primary: #ffffff;
@@ -1195,8 +1195,8 @@
 }
 
 .pin-status.comm {
-  background: #fef3c7;
-  color: #d97706;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+  color: #b45309;
 }
 
 .pin-indicator.readonly {
@@ -1216,7 +1216,7 @@
   top: -2px;
   right: -2px;
   font-size: 8px;
-  background: #f59e0b;
+  background: #ffd700;
   color: white;
   border-radius: 50%;
   width: 14px;
@@ -1392,8 +1392,8 @@
 }
 
 .direction-badge.comm {
-  background: #fef3c7;
-  color: #d97706;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+  color: #b45309;
 }
 
 .connection-item.readonly {
@@ -1527,14 +1527,14 @@
 }
 
 .preset-btn.low {
-  background: #fef3c7;
-  color: #d97706;
-  border-color: #f59e0b;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+  color: #b45309;
+  border-color: #ffd700;
 }
 
 .preset-btn.low:hover {
-  background: #fde68a;
-  border-color: #d97706;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fcd34d 100%);
+  border-color: #ffd700;
 }
 
 .preset-btn.medium {
@@ -1581,8 +1581,8 @@
 }
 
 .state-badge.unknown {
-  background: #fef3c7;
-  color: #d97706;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+  color: #b45309;
 }
 
 .connection-description {
@@ -2119,9 +2119,9 @@
 
 .shortcut-note {
   padding: 12px;
-  background: #fef3c7;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
   border-radius: 8px;
-  border-left: 4px solid #f59e0b;
+  border-left: 4px solid #ffd700;
 }
 
 .setting-note {
@@ -2397,8 +2397,8 @@
 }
 
 .batch-card:hover {
-  border-color: #f59e0b;
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+  border-color: #ffd700;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.15);
 }
 
 .batch-header {
@@ -2457,8 +2457,8 @@
 .execute-batch-btn {
   width: 100%;
   padding: 8px 12px;
-  background: #f59e0b;
-  color: white;
+  background: linear-gradient(135deg, #ffd700 0%, #ffc107 100%);
+  color: #b45309;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -2468,7 +2468,7 @@
 }
 
 .execute-batch-btn:hover:not(:disabled) {
-  background: #d97706;
+  background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
   transform: translateY(-1px);
 }
 
@@ -2619,8 +2619,8 @@
 }
 
 .state-value.unknown {
-  background: #fef3c7;
-  color: #d97706;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+  color: #b45309;
 }
 
 .create-preset-btn {
@@ -3151,15 +3151,15 @@
 }
 
 .frequency-controls .btn.btn-warning {
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-  color: white;
-  border: 1px solid #d97706;
+  background: linear-gradient(135deg, #ffd700 0%, #ffc107 100%);
+  color: #b45309;
+  border: 1px solid #ffd700;
 }
 
 .frequency-controls .btn.btn-warning:hover {
-  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
   transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(217, 119, 6, 0.3);
+  box-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
 }
 
 .frequency-controls .btn.btn-secondary {
@@ -3612,10 +3612,10 @@
 
 .help-warning-card {
   padding: 20px;
-  background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%);
-  border: 1px solid #fbbf24;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border: 1px solid #ffd700;
   border-radius: 12px;
-  border-left: 4px solid #f59e0b;
+  border-left: 4px solid #ffd700;
 }
 
 .help-warning-title {
@@ -3624,7 +3624,7 @@
   gap: 8px;
   font-size: 16px;
   font-weight: 600;
-  color: #92400e;
+  color: #b45309;
   margin: 0 0 12px 0;
 }
 
@@ -3817,7 +3817,7 @@
 .pwm-pulse-dot {
   width: 8px;
   height: 8px;
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  background: linear-gradient(135deg, #ffd700 0%, #ffc107 100%);
   border-radius: 50%;
   animation: pwmPulse 1s infinite;
 }
@@ -3884,13 +3884,13 @@
 
 /* Enhanced PWM Pin State */
 .pin-state.pwm {
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-  border-left: 4px solid #f59e0b;
-  color: #92400e;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+  border-left: 4px solid #ffd700;
+  color: #b45309;
 }
 
 .status-dot.pwm {
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  background: linear-gradient(135deg, #ffd700 0%, #ffc107 100%);
   animation: pwmStatusPulse 1.5s infinite;
 }
 
@@ -4210,8 +4210,8 @@
 }
 
 .pin-mapping-row-large.readonly {
-  border-color: #f59e0b;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.05));
+  border-color: #ffd700;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 193, 7, 0.05));
   cursor: not-allowed;
 }
 
@@ -4290,7 +4290,7 @@
 }
 
 .readonly-indicator {
-  color: #f59e0b;
+  color: #ffd700;
   font-weight: 600;
 }
 
@@ -4314,16 +4314,16 @@
   }
 }
 
-/* Connection Details Section */
-.connection-details-section {
-  margin: 24px auto;
-  max-width: 1200px;
+/* Compact Connection Details Section */
+.connection-details-compact {
+  margin: 16px auto;
+  max-width: 1000px;
   background: var(--card-bg);
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border: 2px solid var(--accent-color);
   animation: slideInUp 0.3s ease-out;
+  overflow: hidden;
 }
 
 @keyframes slideInUp {
@@ -4337,251 +4337,463 @@
   }
 }
 
-.connection-details-header {
-  background: linear-gradient(135deg, var(--accent-color), #1d4ed8);
-  color: white;
-  padding: 20px 24px;
+.compact-info-container {
+  padding: 16px 20px;
+}
+
+.compact-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.compact-signal-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.compact-signal-name {
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--accent-color);
+}
+
+.compact-direction-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 12px;
   text-align: center;
 }
 
-.connection-details-header h3 {
-  font-size: 24px;
-  font-weight: 700;
-  margin: 0 0 8px 0;
+.compact-direction-badge.in {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
 }
 
-.connection-details-subtitle {
-  font-size: 16px;
-  opacity: 0.9;
-  margin: 0;
+.compact-direction-badge.out {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
 }
 
-.connection-details-content {
-  padding: 24px;
+.compact-direction-badge.analog {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
 }
 
-.connection-info-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+.compact-direction-badge.comm {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: white;
 }
 
-.info-section {
-  background: var(--bg-color);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 20px;
+.expand-details-button {
+  background: linear-gradient(135deg, var(--accent-color), #1d4ed8);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.info-section:hover {
-  border-color: var(--accent-color);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+.expand-details-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
-.info-section h4 {
-  font-size: 18px;
+.compact-info-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.compact-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 6px 0;
+}
+
+.compact-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  min-width: 80px;
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.compact-value {
+  color: var(--text-color);
+  text-align: right;
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.compact-value.modbus-compact {
+  font-family: 'Courier New', monospace;
+  background: var(--bg-tertiary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* Connection Details Modal */
+.connection-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.connection-modal-content {
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 800px;
+  overflow: hidden;
+  animation: slideInScale 0.3s ease-out;
+}
+
+@keyframes slideInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-header {
+  background: linear-gradient(135deg, var(--accent-color), #1d4ed8);
+  color: white;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.modal-close-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.modal-close-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.modal-body {
+  padding: 24px;
+  max-height: calc(90vh - 80px);
+  overflow-y: auto;
+}
+
+.modal-info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.modal-section {
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.modal-section h3 {
+  font-size: 16px;
   font-weight: 600;
   color: var(--text-color);
-  margin: 0 0 16px 0;
+  margin: 0 0 12px 0;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.info-item {
+.modal-info-item {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   gap: 12px;
 }
 
-.info-item:last-child {
+.modal-info-item:last-child {
   margin-bottom: 0;
 }
 
-.info-label {
+.modal-label {
   font-weight: 600;
   color: var(--text-secondary);
-  min-width: 120px;
+  min-width: 100px;
   flex-shrink: 0;
+  font-size: 14px;
 }
 
-.info-value {
+.modal-value {
   color: var(--text-color);
   text-align: right;
   flex: 1;
+  font-size: 14px;
 }
 
-.info-value.signal-name {
+.modal-value.signal-name {
   font-family: 'Courier New', monospace;
   font-weight: 700;
   color: var(--accent-color);
 }
 
-.info-value.modbus-register {
+.modal-value.modbus-register {
   font-family: 'Courier New', monospace;
-  background: var(--card-bg);
-  padding: 4px 8px;
+  background: var(--bg-tertiary);
+  padding: 2px 6px;
   border-radius: 4px;
-  border: 1px solid var(--border-color);
-}
-
-.direction-badge {
-  padding: 4px 12px;
-  border-radius: 6px;
-  font-weight: 600;
   font-size: 12px;
-  text-align: center;
 }
 
-.direction-badge.in {
-  background: linear-gradient(135deg, #10b981, #059669);
-  color: white;
-}
-
-.direction-badge.out {
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-  color: white;
-}
-
-.direction-badge.analog {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
-  color: white;
-}
-
-.direction-badge.comm {
-  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-  color: white;
-}
-
-.readonly-warning {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.05));
-  border-radius: 8px;
-  padding: 8px;
-  border: 1px solid #f59e0b;
-}
-
-.readonly-warning .info-value {
-  color: #d97706;
-  font-weight: 600;
-}
-
-/* Pin Connection Details */
-.pin-connection-details {
+/* Modal Pin Connection Details */
+.modal-pin-connection-details {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  background: var(--card-bg);
-  padding: 16px;
+  gap: 12px;
+  background: var(--bg-tertiary);
+  padding: 12px;
   border-radius: 8px;
-  border: 1px solid var(--border-color);
 }
 
-.pin-detail {
+.modal-pin-detail {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex: 1;
 }
 
-.pin-label {
-  font-size: 12px;
+.modal-pin-label {
+  font-size: 11px;
   font-weight: 500;
   color: var(--text-secondary);
   text-transform: uppercase;
 }
 
-.pin-value {
+.modal-pin-value {
   font-family: 'Courier New', monospace;
   font-weight: 700;
-  font-size: 14px;
-  padding: 8px 12px;
-  border-radius: 6px;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 4px;
   text-align: center;
 }
 
-.pin-value.arduino-pin {
+.modal-pin-value.arduino-pin {
   background: linear-gradient(135deg, #3b82f6, #1d4ed8);
   color: white;
 }
 
-.pin-value.atmega-pin {
+.modal-pin-value.atmega-pin {
   background: linear-gradient(135deg, #10b981, #059669);
   color: white;
 }
 
-.connection-arrow {
-  font-size: 24px;
+.modal-connection-arrow {
+  font-size: 18px;
   font-weight: bold;
   color: var(--accent-color);
 }
 
-/* Capabilities List */
-.capabilities-list {
+/* Modal Direction Badges */
+.modal-value.direction-badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 12px;
+  text-align: center;
+}
+
+.modal-value.direction-badge.in {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.modal-value.direction-badge.out {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+}
+
+.modal-value.direction-badge.analog {
+  background: linear-gradient(135deg, #ffd700, #ffc107);
+  color: #b45309;
+}
+
+.modal-value.direction-badge.comm {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: white;
+}
+
+/* Modal Capabilities List */
+.modal-capabilities-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.capability-item {
+.modal-capability-item {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
-.capability-item:last-child {
+.modal-capability-item:last-child {
   margin-bottom: 0;
 }
 
-.capability-bullet {
+.modal-capability-bullet {
   color: var(--accent-color);
   font-weight: bold;
   flex-shrink: 0;
   margin-top: 2px;
 }
 
-.capability-text {
+.modal-capability-text {
   color: var(--text-color);
   line-height: 1.4;
+  font-size: 14px;
 }
 
-/* Testing Notes */
-.testing-notes-content {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 16px;
-  line-height: 1.6;
+/* Modal Testing Notes */
+.modal-testing-notes-content {
+  background: var(--bg-tertiary);
+  border-radius: 6px;
+  padding: 12px;
+  line-height: 1.5;
   color: var(--text-color);
+  font-size: 14px;
 }
 
-/* Responsive Design for Connection Details */
+/* Modal Readonly Warning */
+.modal-info-item.readonly-warning {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.05));
+  border-radius: 6px;
+  padding: 8px;
+  border: 1px solid #ffd700;
+}
+
+.modal-info-item.readonly-warning .modal-value {
+  color: #b45309;
+  font-weight: 600;
+}
+
+/* Responsive Design for Compact Details and Modal */
 @media (max-width: 768px) {
-  .connection-info-grid {
-    grid-template-columns: 1fr;
+  .connection-details-compact {
+    margin: 12px 16px;
+    max-width: none;
   }
 
-  .pin-connection-details {
+  .compact-info-header {
     flex-direction: column;
+    align-items: stretch;
     gap: 12px;
   }
 
-  .connection-arrow {
-    transform: rotate(90deg);
+  .compact-signal-info {
+    justify-content: center;
   }
 
-  .info-item {
+  .compact-info-row {
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
   }
 
-  .info-value {
+  .compact-value {
+    text-align: left;
+  }
+
+  .connection-modal-content {
+    width: 95vw;
+    max-height: 95vh;
+    margin: 16px;
+  }
+
+  .modal-header {
+    padding: 16px 20px;
+  }
+
+  .modal-header h2 {
+    font-size: 18px;
+  }
+
+  .modal-body {
+    padding: 16px 20px;
+    max-height: calc(95vh - 70px);
+  }
+
+  .modal-pin-connection-details {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .modal-connection-arrow {
+    transform: rotate(90deg);
+  }
+
+  .modal-info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .modal-value {
     text-align: left;
   }
 }
@@ -4784,9 +4996,9 @@
 }
 
 .compact-pin-row.selected {
-  border-color: #f59e0b;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(217, 119, 6, 0.1));
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+  border-color: #ffd700;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 193, 7, 0.1));
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
   animation: selectedRowPulse 2s infinite;
 }
 
@@ -4893,6 +5105,43 @@
 .dark-theme .current-value-badge {
   background: #064e3b;
   color: #6ee7b7;
+}
+
+/* Dark theme support for parameter cards */
+.dark-theme .parameter-card {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+.dark-theme .parameter-card:hover {
+  border-color: var(--border-color-hover);
+  background: var(--bg-tertiary);
+}
+
+.dark-theme .configurable-parameter-item {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+.dark-theme .parameter-header {
+  border-bottom-color: var(--border-color);
+}
+
+.dark-theme .parameter-signal-name {
+  color: var(--text-primary);
+}
+
+.dark-theme .parameter-connection {
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+}
+
+.dark-theme .parameter-description {
+  color: var(--text-secondary);
+}
+
+.dark-theme .parameter-description strong {
+  color: var(--text-primary);
 }
 
 /* Iridescent Progress Bar Styles */
@@ -5203,11 +5452,11 @@
 }
 
 .pin-indicator-large.selected {
-  border-color: #f59e0b;
-  background: linear-gradient(135deg, #f59e0b, #d97706);
-  color: white;
+  border-color: #ffd700;
+  background: linear-gradient(135deg, #ffd700, #ffc107);
+  color: #b45309;
   transform: scale(1.1);
-  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
   animation: selectedPulse 2s infinite;
 }
 
@@ -5248,8 +5497,8 @@
 }
 
 .pin-status-large.analog {
-  background: #fef3c7;
-  color: #92400e;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+  color: #b45309;
 }
 
 @keyframes pin-pulse-large {

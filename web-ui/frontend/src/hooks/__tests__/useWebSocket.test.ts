@@ -368,12 +368,18 @@ describe('useWebSocket', () => {
     it('returns false when trying to send while disconnected', async () => {
       const { result } = renderHook(() => useWebSocket('ws://localhost:3005/ws'))
 
-      // Wait for initial connection, then disconnect
+      // Wait for initial connection
+      await act(async () => {
+        await new Promise(resolve => setTimeout(resolve, 10))
+      })
+
+      // Disconnect
       await act(async () => {
         mockWebSocket.readyState = WebSocket.CLOSED
         if (mockWebSocket.onclose) {
           mockWebSocket.onclose(new CloseEvent('close', { code: 1000 }))
         }
+        await new Promise(resolve => setTimeout(resolve, 10))
       })
 
       const message = { type: 'test', data: 'hello' }

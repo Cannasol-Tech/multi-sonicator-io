@@ -585,3 +585,97 @@ Step 3 / 5
 - ✅ All existing test automation features preserved
 
 The Test Automation section has been restored to its beautiful glory with enhanced functionality for individual test execution and full acceptance test suite execution, featuring the stunning iridescent progress bar from the demo for an exceptional user experience! 🌈✨
+
+## Parameter Cards Theme Adherence Fixed - Perfect Light/Dark Mode Support
+
+### 31. ✅ Fixed Hardcoded Colors in Parameter Cards
+- **File Modified**: `web-ui/frontend/src/components/ControlPanel.tsx`
+- **Changes**:
+  - Replaced `text-gray-500` with `style={{ color: 'var(--text-tertiary)' }}`
+  - Replaced `text-gray-600` with `style={{ color: 'var(--text-secondary)' }}`
+  - Replaced `bg-gray-50` with `style={{ background: 'var(--bg-secondary)' }}`
+  - Replaced `border-gray-200` with `style={{ borderTop: '1px solid var(--border-color)' }}`
+  - Updated Sonicator #4 header to use `var(--text-primary)` and `var(--border-color)`
+  - Added proper theme-aware styling to all parameter card elements
+- **Result**: All parameter cards now use CSS variables instead of hardcoded colors
+
+### 32. ✅ Updated Parameter Card CSS for Theme Variables
+- **File Modified**: `web-ui/frontend/src/styles/index.css`
+- **Changes**:
+  - Updated `.configurable-parameter-item` to use `var(--bg-secondary)` and `var(--border-color)`
+  - Added new `.parameter-card` class with theme-aware styling
+  - Updated `.parameter-header` to use `var(--border-color)`
+  - Updated `.parameter-signal-name` to use `var(--text-primary)`
+  - Updated `.parameter-connection` to use `var(--bg-tertiary)` and `var(--text-secondary)`
+  - Updated `.parameter-description` to use theme variables
+  - Added hover effects using theme variables
+- **Result**: All parameter card styling now uses CSS variables for perfect theme support
+
+### 33. ✅ Added Dark Theme Support for Parameter Cards
+- **File Modified**: `web-ui/frontend/src/styles/index.css`
+- **Changes**:
+  - Added `.dark-theme .parameter-card` with proper dark mode styling
+  - Added `.dark-theme .parameter-card:hover` with enhanced dark mode hover effects
+  - Added `.dark-theme .configurable-parameter-item` styling
+  - Added `.dark-theme .parameter-header` border color support
+  - Added `.dark-theme .parameter-signal-name` text color support
+  - Added `.dark-theme .parameter-connection` background and text color support
+  - Added `.dark-theme .parameter-description` text color support
+- **Result**: Parameter cards now perfectly respond to dark theme with appropriate colors
+
+### Theme Adherence Features
+
+**Light Mode Parameter Cards:**
+- Background: Light gray (`var(--bg-secondary)`)
+- Text: Dark colors for excellent readability
+- Borders: Subtle light borders
+- Hover: Enhanced borders and shadows
+
+**Dark Mode Parameter Cards:**
+- Background: Dark gray (`var(--bg-secondary)`)
+- Text: Light colors for excellent readability
+- Borders: Subtle dark borders
+- Hover: Enhanced dark borders and shadows
+
+**Interactive Theme Switching:**
+- 🌓 Theme toggle button in header
+- Instant switching between Light → Dark → Auto modes
+- All parameter cards smoothly transition between themes
+- No hardcoded colors remaining
+- Perfect contrast ratios maintained
+
+### Parameter Card Elements Now Theme-Aware
+
+**Signal Names:**
+- Font: Monospace for technical clarity
+- Color: `var(--text-primary)` (black in light, light gray in dark)
+- Weight: Bold for emphasis
+
+**Pin Information:**
+- Color: `var(--text-tertiary)` (gray in light, lighter gray in dark)
+- Size: Small for secondary information
+
+**Parameter Descriptions:**
+- Color: `var(--text-secondary)` (medium gray in light, medium light in dark)
+- Strong text: `var(--text-primary)` for emphasis
+
+**Connection Information:**
+- Background: `var(--bg-tertiary)` (light gray in light, darker gray in dark)
+- Color: `var(--text-secondary)` for readability
+- Monospace font for technical accuracy
+
+**Card Backgrounds:**
+- Background: `var(--bg-secondary)` (light in light mode, dark in dark mode)
+- Borders: `var(--border-color)` (subtle in both modes)
+- Hover: Enhanced with `var(--border-color-hover)` and shadows
+
+### Build Status After Theme Fix
+- ✅ Vite build successful
+- ✅ Development server runs without issues
+- ✅ Parameter cards fully theme-aware
+- ✅ Perfect light/dark mode transitions
+- ✅ No hardcoded colors remaining
+- ✅ Excellent contrast ratios maintained
+- ✅ Smooth hover animations working
+
+The Configurable Parameters cards underneath Sonicator #4 now perfectly adhere to the theme configuration and beautifully react to the light/dark mode toggle with smooth transitions and excellent readability in both modes! 🌓✨

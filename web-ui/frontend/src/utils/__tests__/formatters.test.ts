@@ -169,7 +169,7 @@ describe('Formatter Utilities', () => {
 
   describe('sanitizeInput', () => {
     it('removes dangerous characters', () => {
-      expect(sanitizeInput('test<script>alert("xss")</script>')).toBe('testalert("xss")')
+      expect(sanitizeInput('test<script>alert("xss")</script>')).toBe('testalert(xss)')
       expect(sanitizeInput('normal text')).toBe('normal text')
       expect(sanitizeInput('test"quote\'test')).toBe('testquotetest')
     })
