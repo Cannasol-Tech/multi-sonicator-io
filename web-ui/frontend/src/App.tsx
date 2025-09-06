@@ -42,7 +42,7 @@ function App() {
     toggleSettingsTab: () => setActiveTab('settings'),
     pingHardware: () => {
       // Trigger ping command
-      fetch('/api/ping', { method: 'POST' })
+      fetch('http://localhost:3001/api/ping', { method: 'POST' })
         .then(res => res.json())
         .then(data => console.log('Ping result:', data))
         .catch(err => console.error('Ping failed:', err))

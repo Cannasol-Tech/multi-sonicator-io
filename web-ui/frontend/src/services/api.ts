@@ -1,5 +1,5 @@
 // API service for communicating with the backend
-const API_BASE = 'http://localhost:3005/api'
+const API_BASE = 'http://localhost:3001/api'
 
 export interface ApiResponse<T = any> {
   success?: boolean
