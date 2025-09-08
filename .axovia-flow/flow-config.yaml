@@ -1,0 +1,130 @@
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# File: Axovia Flow™ Extension Configuration
+# Author: Stephen Boyett
+# Company: Axovia AIå
+# Version: 1.0
+# @brief: Axovia Flow™ Config File intended 
+#           to extend The BMad Core config
+# Date: 2025-09-07
+# _____________________________________________
+
+extension:
+  name: "Axovia Flow™"
+  version: "1.0"
+  description: "Agentic workflow orchestration and multi-agent collaboration extension"
+
+# Agent Command Extensions
+agent_extensions:
+
+  # Project Manager Agent Extension
+  pm:
+    additional_commands:
+      - "create-feature-spec: run task create-feature-spec.md with template feature-spec-tmpl.yaml"
+    additional_dependencies:
+      tasks:
+        - create-feature-spec.md
+      templates:
+        - feature-spec-tmpl.yaml
+
+  # Product Owner Agent Extension
+  po:
+    additional_commands:
+      - "create-feature-spec: run task create-feature-spec.md with template feature-spec-tmpl.yaml"
+      - "validate-feature-spec: validate feature specification against company standards"
+    additional_dependencies:
+      tasks:
+        - create-feature-spec.md
+      templates:
+        - feature-spec-tmpl.yaml
+
+  # Scrum Master Agent Extension
+  sm:
+    additional_commands:
+      - "create-stories-from-feature: create stories from feature specification"
+      - "create-implementation-plan: create an implementation plan from a feature specification"
+    additional_dependencies:
+      tasks:
+        - create-stories-from-feature.md
+        - create-implementation-plan.md
+      templates:
+        - .bmad-core/templates/story-tmpl.yaml
+        - implementation-plan-tmpl.yaml
+
+# Feature Specification Configuration
+feature_specs:
+  location: "docs/agile/features"
+  template: "feature-spec-tmpl.yaml"
+  naming_convention: "feature-{id}-{name-kebab-case}.md"
+  id_format: "F-{XXX}"
+  standard_file: ".axovia-flow/company-standards/feature-specification-standard.md"
+
+# Custom Tasks
+tasks:
+  create_feature_spec:
+    file: ".axovia-flow/tasks/create-feature-spec.md"
+    description: "Create comprehensive feature specifications following company standards"
+    agents: ["pm", "po"]
+    requires_interaction: true
+    template: "feature-spec-tmpl.yaml"
+
+  create_stories_from_feature:
+    file: ".axovia-flow/tasks/create-stories-from-feature.md"
+    description: "Create stories from feature specification"
+    agents: ["sm"]
+    requires_interaction: true
+    template: "feature-spec-tmpl.yaml"
+
+  create_implementation_plan:
+    file: ".axovia-flow/tasks/create-implementation-plan.md"
+    description: "Create implementation plans with visual checklists separated by story"
+    agents: ["sm"]
+    requires_interaction: true
+    template: "implementation-plan-tmpl.yaml"
+
+# Custom Templates
+templates:
+  feature_spec:
+    file: ".axovia-flow/templates/feature-spec-tmpl.yaml"
+    description: "Feature specification template following Axovia AI standards"
+    output_location: "docs/agile/features"
+
+  implementation_plan:
+    file: ".axovia-flow/templates/implementation-plan-tmpl.yaml"
+    description: "Implementation plan template with visual checklists by story"
+    output_location: "docs/planning"
+
+# Quality Standards
+standards:
+  feature_specification: ".axovia-flow/company-standards/feature-specification-standard.md"
+  
+# Quality Gates
+quality_gates:
+  feature_specification:
+    - "All mandatory sections completed"
+    - "Scope clearly defined with inclusions/exclusions" 
+    - "Acceptance criteria are measurable and testable"
+    - "Traceability established to source requirements"
+    - "Compliance with company standard verified"
+
+# Integration Settings
+integration:
+  # Configration files loaded after other config files should: 
+  # - First extend complimenting configuration
+  # - Second override any conflicting configuration 
+  ##### If there are any conflicting configurations the agent should immediatly alert the user after initialization!!! 
+  ## index 0 is the lowest priority configuration and should be extended and conflicts overriden by following config
+  config_load_order: [
+    `.bmad-core/core-config.yaml`,   ## BMad Core Configuration     -- priority 0
+    `.axovia-flow/flow-config.yaml`, ## Axovia Flow Configuration   -- priority 1
+  ]
+  use_bmad_config: true
+  extends_bmad_core: true
+  uses_core_elicitation: true
+  custom_elicitation_methods: []
+  
+# File Locations
+locations:
+  tasks: ".axovia-flow/tasks"
+  templates: ".axovia-flow/templates"
+  standards: ".axovia-flow/company-standards"
+  features: "docs/agile/features"

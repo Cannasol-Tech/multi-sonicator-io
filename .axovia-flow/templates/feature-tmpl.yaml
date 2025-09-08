@@ -1,0 +1,416 @@
+# <!-- Powered by BMAD™ Core -->
+template:
+  id: feature-specification-template-v1
+  name: Feature Specification Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/agile/features/feature-{{feature_id}}-{{feature_name_kebab}}.md
+    title: "Feature {{feature_id}}: {{feature_name}}"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+agent_config:
+  editable_sections:
+    - Header
+    - Scope Definition
+    - Functional Requirements
+    - Acceptance Criteria
+    - Implementation Constraints
+    - Definition of Done
+    - Testing Requirements
+    - Implementation Mapping
+    - Change Control
+    - Success Metrics
+    - Change Log
+
+sections:
+  - id: header
+    title: Header
+    type: template-text
+    template: |
+      # Feature {{feature_id}}: {{feature_name}}
+
+      **Feature ID**: F-{{feature_id}}
+      **Status**: {{status}}
+      **Priority**: {{priority}}
+      **Epic**: {{epic_reference}}
+      **Owner**: {{product_owner}}
+      **Created**: {{created_date}}
+      **Updated**: {{updated_date}}
+    instruction: Define the feature header with all required metadata
+    elicit: true
+    owner: product-owner
+    editors: [product-owner, scrum-master]
+
+  - id: feature-summary
+    title: Feature Summary
+    type: text
+    instruction: Provide 1-2 sentences describing exactly what this feature does
+    elicit: true
+    owner: product-owner
+    editors: [product-owner]
+
+  - id: scope-definition
+    title: Scope Definition
+    instruction: Define the exact scope boundaries for this feature
+    elicit: true
+    owner: product-owner
+    editors: [product-owner]
+    sections:
+      - id: exactly-implemented
+        title: EXACTLY What Will Be Implemented
+        type: bullet-list
+        instruction: Precise list of functionality that WILL be implemented
+        elicit: true
+        owner: product-owner
+        editors: [product-owner]
+
+      - id: exactly-not-implemented
+        title: EXACTLY What Will NOT Be Implemented
+        type: bullet-list
+        instruction: Explicit list of related functionality that will NOT be included
+        elicit: true
+        owner: product-owner
+        editors: [product-owner]
+
+      - id: scope-boundaries
+        title: Scope Boundaries
+        type: text
+        instruction: Clear boundaries of where this feature starts and stops
+        elicit: true
+        owner: product-owner
+        editors: [product-owner]
+
+  - id: functional-requirements
+    title: Functional Requirements
+    instruction: Detailed specification of exactly how the feature works
+    elicit: true
+    owner: product-owner
+    editors: [product-owner]
+    sections:
+      - id: core-functionality
+        title: Core Functionality
+        type: text
+        instruction: Detailed, step-by-step description of exactly how the feature works
+        elicit: true
+        owner: product-owner
+        editors: [product-owner]
+
+      - id: user-interactions
+        title: User Interactions
+        type: text
+        instruction: Every user interaction explicitly defined with expected system responses
+        elicit: true
+        owner: product-owner
+        editors: [product-owner]
+
+      - id: system-behaviors
+        title: System Behaviors
+        type: text
+        instruction: Every system behavior explicitly specified
+        elicit: true
+        owner: product-owner
+        editors: [product-owner]
+
+      - id: data-handling
+        title: Data Handling
+        type: text
+        instruction: Exact data processing, storage, and retrieval requirements
+        elicit: true
+        owner: product-owner
+        editors: [product-owner]
+
+      - id: integration-points
+        title: Integration Points
+        type: text
+        instruction: Precise integration requirements with other system components
+        elicit: true
+        owner: product-owner
+        editors: [product-owner]
+
+  - id: acceptance-criteria
+    title: Acceptance Criteria
+    instruction: Specific, measurable, testable requirements for feature completion
+    elicit: true
+    owner: product-owner
+    editors: [product-owner]
+    sections:
+      - id: primary-acceptance-criteria
+        title: Primary Acceptance Criteria
+        type: numbered-list
+        instruction: List all specific, measurable, testable requirements
+        elicit: true
+        owner: product-owner
+        editors: [product-owner]
+
+      - id: input-output-specs
+        title: Input/Output Specifications
+        type: template-text
+        template: |
+          - **Input**: {{input_specifications}}
+          - **Processing**: {{processing_requirements}}
+          - **Output**: {{output_specifications}}
+        instruction: Define exact input/output specifications
+        elicit: true
+        owner: product-owner
+        editors: [product-owner]
+
+      - id: error-handling
+        title: Error Handling Requirements
+        type: numbered-list
+        instruction: List specific error conditions and exact system responses
+        elicit: true
+        owner: product-owner
+        editors: [product-owner]
+
+      - id: performance-requirements
+        title: Performance Requirements
+        type: bullet-list
+        instruction: Specific performance criteria with measurable thresholds
+        elicit: true
+        owner: product-owner
+        editors: [product-owner]
+
+      - id: validation-rules
+        title: Validation Rules
+        type: bullet-list
+        instruction: Exact validation rules for all inputs and business rule enforcement
+        elicit: true
+        owner: product-owner
+        editors: [product-owner]
+
+  - id: implementation-constraints
+    title: Implementation Constraints
+    instruction: Constraints that must be considered during implementation
+    elicit: true
+    owner: product-owner
+    editors: [product-owner, tech-lead]
+    sections:
+      - id: technical-constraints
+        title: Technical Constraints
+        type: text
+        instruction: Specific technical limitations and requirements
+        elicit: true
+        owner: tech-lead
+        editors: [tech-lead, product-owner]
+
+      - id: business-rules
+        title: Business Rules
+        type: text
+        instruction: Exact business rules that must be enforced
+        elicit: true
+        owner: product-owner
+        editors: [product-owner]
+
+      - id: dependencies
+        title: Dependencies
+        type: template-text
+        template: |
+          - **Required Before**: {{required_before}}
+          - **Required During**: {{required_during}}
+          - **Impacts**: {{impacts}}
+        instruction: Define all dependencies and impacts
+        elicit: true
+        owner: product-owner
+        editors: [product-owner, tech-lead]
+
+  - id: definition-of-done
+    title: Definition of Done
+    instruction: Exact completion requirements for this feature
+    elicit: true
+    owner: product-owner
+    editors: [product-owner, scrum-master]
+    sections:
+      - id: feature-completion-criteria
+        title: Feature Completion Criteria
+        type: checklist
+        template: |
+          - [ ] All specified functionality implemented exactly as defined
+          - [ ] All acceptance criteria met with evidence
+          - [ ] All error conditions handled as specified
+          - [ ] All performance requirements met
+          - [ ] All validation rules implemented
+          - [ ] No functionality implemented beyond specification
+          - [ ] All tests passing
+          - [ ] Documentation updated
+        instruction: Standard completion criteria checklist
+        elicit: true
+        owner: product-owner
+        editors: [product-owner, scrum-master]
+
+      - id: quality-gates
+        title: Quality Gates
+        type: template-text
+        template: |
+          - **Code Review**: {{code_review_criteria}}
+          - **Testing**: {{testing_requirements}}
+          - **Performance**: {{performance_validation}}
+          - **Security**: {{security_validation}}
+        instruction: Define specific quality gates for this feature
+        elicit: true
+        owner: tech-lead
+        editors: [tech-lead, product-owner]
+
+  - id: testing-requirements
+    title: Testing Requirements
+    instruction: Exact testing requirements for this feature
+    elicit: true
+    owner: product-owner
+    editors: [product-owner, qa-lead]
+    sections:
+      - id: required-test-coverage
+        title: Required Test Coverage
+        type: text
+        instruction: Exact testing requirements for this feature
+        elicit: true
+        owner: qa-lead
+        editors: [qa-lead, product-owner]
+
+      - id: test-scenarios
+        title: Test Scenarios
+        type: numbered-list
+        instruction: List specific test scenarios with expected results
+        elicit: true
+        owner: qa-lead
+        editors: [qa-lead, product-owner]
+
+      - id: edge-case-testing
+        title: Edge Case Testing
+        type: text
+        instruction: All edge cases that must be tested
+        elicit: true
+        owner: qa-lead
+        editors: [qa-lead, product-owner]
+
+      - id: error-condition-testing
+        title: Error Condition Testing
+        type: text
+        instruction: All error conditions that must be tested
+        elicit: true
+        owner: qa-lead
+        editors: [qa-lead, product-owner]
+
+  - id: implementation-mapping
+    title: Implementation Mapping
+    instruction: Traceability to other project artifacts
+    elicit: true
+    owner: product-owner
+    editors: [product-owner, scrum-master]
+    sections:
+      - id: related-prd-requirements
+        title: Related PRD Requirements
+        type: bullet-list
+        instruction: List related PRD requirements with IDs and descriptions
+        elicit: true
+        owner: product-owner
+        editors: [product-owner]
+
+      - id: implementing-user-stories
+        title: Implementing User Stories
+        type: bullet-list
+        instruction: List user stories that implement this feature
+        elicit: true
+        owner: scrum-master
+        editors: [scrum-master, product-owner]
+
+      - id: quality-assurance
+        title: Quality Assurance
+        type: text
+        instruction: QA requirements specific to this feature
+        elicit: true
+        owner: qa-lead
+        editors: [qa-lead, product-owner]
+
+  - id: change-control
+    title: Change Control
+    instruction: Process for managing changes to this specification
+    elicit: true
+    owner: product-owner
+    editors: [product-owner]
+    sections:
+      - id: scope-changes
+        title: Scope Changes
+        type: text
+        instruction: Process for handling scope changes during development
+        elicit: true
+        owner: product-owner
+        editors: [product-owner]
+
+      - id: approval-requirements
+        title: Approval Requirements
+        type: text
+        instruction: Who must approve changes to this specification
+        elicit: true
+        owner: product-owner
+        editors: [product-owner]
+
+  - id: success-metrics
+    title: Success Metrics
+    instruction: How feature success will be measured
+    elicit: true
+    owner: product-owner
+    editors: [product-owner]
+    sections:
+      - id: completion-metrics
+        title: Completion Metrics
+        type: text
+        instruction: How feature completion will be measured
+        elicit: true
+        owner: product-owner
+        editors: [product-owner]
+
+      - id: success-criteria
+        title: Success Criteria
+        type: text
+        instruction: Definition of successful feature delivery
+        elicit: true
+        owner: product-owner
+        editors: [product-owner]
+
+  - id: change-log
+    title: Change Log
+    type: table
+    columns: [Date, Version, Change, Author]
+    instruction: Track changes made to this feature specification
+    owner: product-owner
+    editors: [product-owner, scrum-master]
+
+  - id: dev-agent-record
+    title: Dev Agent Record
+    instruction: This section is populated by the development agent during implementation
+    owner: dev-agent
+    editors: [dev-agent]
+    sections:
+      - id: agent-model
+        title: Agent Model Used
+        template: "{{agent_model_name_version}}"
+        instruction: Record the specific AI agent model and version used for development
+        owner: dev-agent
+        editors: [dev-agent]
+
+      - id: debug-log-references
+        title: Debug Log References
+        instruction: Reference any debug logs or traces generated during development
+        owner: dev-agent
+        editors: [dev-agent]
+
+      - id: completion-notes
+        title: Completion Notes List
+        instruction: Notes about the completion of tasks and any issues encountered
+        owner: dev-agent
+        editors: [dev-agent]
+
+      - id: file-list
+        title: File List
+        instruction: List all files created, modified, or affected during feature implementation
+        owner: dev-agent
+        editors: [dev-agent]
+
+  - id: qa-results
+    title: QA Results
+    instruction: Results from QA Agent review of the completed feature implementation
+    owner: qa-agent
+    editors: [qa-agent]

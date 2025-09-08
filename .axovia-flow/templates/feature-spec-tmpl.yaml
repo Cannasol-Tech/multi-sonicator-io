@@ -1,0 +1,277 @@
+
+template:
+  id: feature-specification-template-v1
+  name: Feature Specification (Axovia AI Standard)
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/agile/features/feature-{{feature_id}}-{{feature_name_kebab}}.md
+    title: "Feature {{feature_id}}: {{feature_name}}"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+agent_config:
+  owner: po
+  editors: [po, pm]
+  reviewers: [pm, architect]
+
+sections:
+  - id: header
+    title: Feature Header
+    instruction: |
+      Establish the basic feature identification and metadata. This section sets up the feature tracking information and ownership.
+    content: |
+      # Feature {{feature_id}}: {{feature_name}}
+
+      **Feature ID**: {{feature_id}}  
+      **Status**: {{status}}  
+      **Priority**: {{priority}}  
+      **Epic**: {{epic_reference}}  
+      **Owner**: {{owner}}  
+      **Created**: {{created_date}}  
+      **Updated**: {{updated_date}}
+
+  - id: feature-summary
+    title: Feature Summary
+    instruction: |
+      Provide a concise 1-2 sentence description of exactly what this feature does. Focus on the core functionality and primary user benefit.
+    elicit: true
+    template: "{{feature_summary}}"
+
+  - id: scope-definition
+    title: Scope Definition
+    instruction: |
+      This is the MOST CRITICAL section. Define exactly what will and will not be implemented. Be explicit and comprehensive to prevent scope creep and ensure clear boundaries.
+    elicit: true
+    sections:
+      - id: exactly-implemented
+        title: EXACTLY What Will Be Implemented
+        instruction: Create a precise, comprehensive list of functionality that WILL be implemented
+        template: |
+          {{#each implemented_features}}
+          - {{this}}
+          {{/each}}
+      
+      - id: exactly-not-implemented
+        title: EXACTLY What Will NOT Be Implemented
+        instruction: Create an explicit list of related functionality that will NOT be included in this feature
+        template: |
+          {{#each excluded_features}}
+          - {{this}}
+          {{/each}}
+      
+      - id: scope-boundaries
+        title: Scope Boundaries
+        instruction: Define clear boundaries of where this feature starts and stops
+        template: "{{scope_boundaries}}"
+
+  - id: functional-requirements
+    title: Functional Requirements
+    instruction: |
+      Define the detailed functional requirements that specify exactly how the feature works. This section should be comprehensive enough for developers to implement without ambiguity.
+    elicit: true
+    sections:
+      - id: core-functionality
+        title: Core Functionality
+        instruction: Provide detailed, step-by-step description of exactly how the feature works
+        template: "{{core_functionality}}"
+      
+      - id: user-interactions
+        title: User Interactions
+        instruction: Define every user interaction explicitly with expected system responses
+        template: |
+          {{#each user_interactions}}
+          ### {{interaction_name}}
+          **User Action**: {{user_action}}
+          **System Response**: {{system_response}}
+          **Expected Outcome**: {{expected_outcome}}
+          
+          {{/each}}
+      
+      - id: system-behaviors
+        title: System Behaviors
+        instruction: Specify every system behavior explicitly
+        template: "{{system_behaviors}}"
+      
+      - id: data-handling
+        title: Data Handling
+        instruction: Define exact data processing, storage, and retrieval requirements
+        template: "{{data_handling}}"
+      
+      - id: integration-points
+        title: Integration Points
+        instruction: Specify precise integration requirements with other system components
+        template: "{{integration_points}}"
+
+  - id: acceptance-criteria
+    title: Acceptance Criteria
+    instruction: |
+      Define measurable, testable criteria that determine when the feature is complete and acceptable. These should be specific and verifiable.
+    elicit: true
+    sections:
+      - id: primary-criteria
+        title: Primary Acceptance Criteria (Must Have)
+        instruction: Define critical functionality that must work for feature acceptance
+        template: |
+          {{#each primary_criteria}}
+          - [ ] {{this}}
+          {{/each}}
+      
+      - id: secondary-criteria
+        title: Secondary Acceptance Criteria (Should Have)
+        instruction: Define important but not critical features
+        template: |
+          {{#each secondary_criteria}}
+          - [ ] {{this}}
+          {{/each}}
+      
+      - id: definition-of-done
+        title: Definition of Done
+        instruction: Define exact completion requirements
+        template: |
+          {{#each done_criteria}}
+          - [ ] {{this}}
+          {{/each}}
+
+  - id: testing-requirements
+    title: Testing Requirements
+    instruction: |
+      Define comprehensive testing requirements to ensure feature quality and reliability.
+    elicit: true
+    sections:
+      - id: test-scenarios
+        title: Test Scenarios
+        instruction: Define specific test scenarios with expected results
+        template: |
+          {{#each test_scenarios}}
+          ### Test Scenario {{@index}}: {{scenario_name}}
+          **Given**: {{given}}
+          **When**: {{when}}
+          **Then**: {{then}}
+          
+          {{/each}}
+      
+      - id: edge-case-testing
+        title: Edge Case Testing
+        instruction: Define all edge cases that must be tested
+        template: "{{edge_case_testing}}"
+      
+      - id: error-condition-testing
+        title: Error Condition Testing
+        instruction: Define all error conditions that must be tested
+        template: "{{error_condition_testing}}"
+
+  - id: implementation-mapping
+    title: Implementation Mapping
+    instruction: |
+      Establish traceability between this feature specification and other project artifacts to ensure alignment and completeness.
+    sections:
+      - id: related-prd-requirements
+        title: Related PRD Requirements
+        instruction: Map to specific PRD requirements that this feature addresses
+        template: |
+          {{#each prd_requirements}}
+          - **{{requirement_id}}**: {{requirement_description}}
+          {{/each}}
+      
+      - id: implementing-user-stories
+        title: Implementing User Stories
+        instruction: List the user stories that will implement this feature
+        template: |
+          {{#each user_stories}}
+          - **Story {{epic_num}}.{{story_num}}**: {{story_title}}
+          {{/each}}
+      
+      - id: quality-assurance
+        title: Quality Assurance
+        instruction: Define QA requirements specific to this feature
+        template: "{{qa_requirements}}"
+
+  - id: success-metrics
+    title: Success Metrics
+    instruction: |
+      Define how feature success will be measured and validated.
+    elicit: true
+    sections:
+      - id: completion-metrics
+        title: Completion Metrics
+        instruction: Define how feature completion will be measured
+        template: "{{completion_metrics}}"
+      
+      - id: success-criteria
+        title: Success Criteria
+        instruction: Define what constitutes successful feature delivery
+        template: "{{success_criteria}}"
+
+  - id: change-control
+    title: Change Control
+    instruction: |
+      Define the process for managing changes to this specification during development.
+    sections:
+      - id: scope-changes
+        title: Scope Changes
+        instruction: Define process for handling scope changes during development
+        template: "{{scope_change_process}}"
+      
+      - id: approval-requirements
+        title: Approval Requirements
+        instruction: Define who must approve changes to this specification
+        template: "{{approval_requirements}}"
+
+  - id: change-log
+    title: Change Log
+    instruction: |
+      Maintain a record of all changes made to this specification.
+    content: |
+      | Date | Version | Change | Author |
+      |------|---------|--------|---------|
+      | {{created_date}} | 1.0 | Initial specification | {{owner}} |
+
+# Template Variables
+variables:
+  feature_id:
+    type: text
+    description: "Feature ID (e.g., F-001)"
+    required: true
+  
+  feature_name:
+    type: text
+    description: "Feature name"
+    required: true
+  
+  feature_name_kebab:
+    type: text
+    description: "Feature name in kebab-case for filename"
+    required: true
+  
+  status:
+    type: choice
+    choices: [Draft, Approved, "In Development", Complete]
+    default: Draft
+    description: "Current feature status"
+  
+  priority:
+    type: choice
+    choices: [Critical, High, Medium, Low]
+    description: "Feature priority level"
+  
+  epic_reference:
+    type: text
+    description: "Reference to parent epic"
+  
+  owner:
+    type: text
+    description: "Product Owner responsible for this feature"
+    required: true
+  
+  created_date:
+    type: date
+    description: "Feature specification creation date"
+    required: true
+  
+  updated_date:
+    type: date
+    description: "Last update date"
+    required: true

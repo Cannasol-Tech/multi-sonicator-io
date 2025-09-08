@@ -1,4 +1,4 @@
-# Auggie Instructions for Multi-Sonicator-IO
+# AI Coding Agent Instructionsfor Multi-Sonicator-IO
 
 ## Purpose
 

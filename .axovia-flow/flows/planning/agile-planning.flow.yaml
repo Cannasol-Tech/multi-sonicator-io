@@ -1,0 +1,153 @@
+---
+description: Reference YAML for Agile Planning workflow (documentation only)
+---
+## ___________________________
+## Author: Stephen Boyett
+## Company: Axovia AI
+## Project: Axovia Flow Agentic Coding Framework
+## @brief: Reference YAML for Agile Planning workflow (documentation only)
+## Date: 2025-09-06
+## Version: 1.0
+## ___________________________
+
+# Agile Planning YAML Reference (/agile-planning-yaml)
+
+The following YAML mirrors the AIGILE planning workflow for portability and documentation. Windsurf executes `.md` workflows, not `.yaml` files.
+
+```yaml
+name: Agile Planning
+slug: agilebooster-planning
+description: Generate feature specifications and user stories from an implementation plan and PRD
+inputs:
+  implementation_plan_path:
+    type: string
+    default: docs/planning/implementation-plan.md
+  prd_path:
+    type: string
+    default: docs/requirements/PRD-v1.0.0.md
+  project_name:
+    type: string
+    default: <your-project-name>
+steps:
+  - id: phase1_open
+    name: Phase 1 - Open Inputs
+    action: prompt
+    prompt: |
+      Open and review:
+      - {{inputs.implementation_plan_path}}
+      - {{inputs.prd_path}}
+
+  - id: phase1_confirm
+    name: Phase 1 - Confirm Sources
+    action: question
+    prompt: >
+      I think we have everything we need to move to Phase 2 of the Planning Process.
+      Are the two files I have "{{inputs.implementation_plan_path}}" and "{{inputs.prd_path}}"
+      the correct, up to date, official documents for the "{{inputs.project_name}}" project?
+    on_answer:
+      yes: next: phase2_analyze
+      no: next: phase1_open
+      other: next: phase1_confirm
+
+  - id: phase2_analyze
+    name: Phase 2 - Analyze PRD and Plan
+    action: prompt
+    prompt: |
+      Converse to fully understand the PRD and Implementation Plan.
+      Produce a numbered list of features and a brief description for each.
+
+  - id: phase2_verify_feature
+    name: Phase 2 - Verify Understanding (per feature)
+    action: question
+    prompt: >
+      I think I have a clear understanding of the project and the features to be implemented:
+      (List features + brief descriptions). Is my understanding correct?
+    on_answer:
+      yes:
+        next_if_last: phase3_generate_specs
+        next_if_more: phase2_analyze
+      no: next: phase2_analyze
+      other: next: phase2_verify_feature
+
+  - id: phase3_generate_specs
+    name: Phase 3 - Generate Feature Specifications
+    action: generate_files
+    files:
+      path_pattern: docs/agile/features/{feature_num}-{feature_name}.md
+      template: |
+        # <Feature {feature_num} — {feature_name}>
+
+        ## Overview
+        {overview}
+
+        ## Scope
+        - In Scope:
+          - {in_scope}
+        - Out of Scope:
+          - {out_of_scope}
+
+        ## Functional Requirements
+        {functional_requirements}  # Use Given/When/Then
+
+        ## Non-Functional Requirements
+        {non_functional_requirements}
+
+        ## Public API and Interfaces
+        {public_api}
+
+        ## Dependencies
+        {dependencies}
+
+        ## Risks & Mitigations
+        {risks_mitigations}
+
+        ## Acceptance Criteria
+        {acceptance_criteria}
+
+  - id: phase3_approve
+    name: Phase 3 - Approve Feature Specs (per feature)
+    action: question
+    prompt: >
+      I have generated the Feature Specifications for each Feature agreed upon in Phase #2.
+      Are these accurate, complete, and ready to move into the backlog for sprint planning?
+    on_answer:
+      yes:
+        next_if_last: phase4_generate_stories
+        next_if_more: phase3_generate_specs
+      no: next: phase3_generate_specs
+      other: next: phase3_approve
+
+  - id: phase4_generate_stories
+    name: Phase 4 - Generate User Stories
+    action: generate_files
+    files:
+      path_pattern: docs/user-stories/{feature_num}-{feature_name}.md
+      template: |
+        ## User Story {story_id}
+        As a {role}, I want {capability} so that {benefit}.
+
+        ### Acceptance Criteria
+        {acceptance_criteria}  # Given/When/Then bulleted list
+
+        ### Notes/Dependencies (optional)
+        {notes}
+
+  - id: phase4_approve
+    name: Phase 4 - Approve User Stories (per feature)
+    action: question
+    prompt: >
+      I have generated the User Stories for each Feature Specification.
+      Are these accurate, complete, and ready to move into the backlog for sprint planning?
+    on_answer:
+      yes:
+        next_if_last: end
+        next_if_more: phase4_generate_stories
+      no: next: phase4_generate_stories
+      other: next: phase4_approve
+
+end: true
+```
+
+Notes:
+- Windsurf executes Markdown workflows with optional YAML frontmatter; this YAML is for reference only.
+- Use `/new-agile-workflow` to run the executable checklist version in this repository.

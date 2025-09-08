@@ -1,0 +1,639 @@
+
+template:
+  id: implementation-plan-template-v1
+  name: Implementation Plan (Axovia AI Standard)
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/planning/{{feature_id}}-implementation-plan.md
+    title: "Implementation Plan: {{feature_name}}"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+agent_config:
+  owner: sm
+  editors: [sm, po, pm, architect]
+  reviewers: [po, pm, architect, qa]
+
+sections:
+  - id: header
+    title: Implementation Plan Header
+    instruction: |
+      Establish the basic implementation plan identification and metadata. This section sets up the plan tracking information and ownership.
+    content: |
+      # Implementation Plan: {{feature_name}}
+
+      **Feature ID**: {{feature_id}}  
+      **Feature Name**: {{feature_name}}  
+      **Plan Status**: {{plan_status}}  
+      **Priority**: {{priority}}  
+      **Epic**: {{epic_reference}}  
+      **Owner**: {{owner}}  
+      **Created**: {{created_date}}  
+      **Updated**: {{updated_date}}  
+      **Target Completion**: {{target_completion}}
+
+  - id: purpose-overview
+    title: Purpose & Overview
+    instruction: |
+      Define the purpose of this implementation plan and provide a high-level overview of what will be delivered.
+    elicit: true
+    content: |
+      ## Purpose
+
+      {{purpose_description}}
+
+      ## Overview
+
+      {{overview_description}}
+
+      ## Success Criteria
+
+      {{success_criteria}}
+
+  - id: inputs-references
+    title: Inputs & References
+    instruction: |
+      Document all input documents and references that inform this implementation plan.
+    sections:
+      - id: source-documents
+        title: Source Documents
+        instruction: List all source documents that inform this implementation plan
+        content: |
+          ## Inputs & References
+
+          ### Source Documents
+          - **Feature Specification**: {{feature_spec_path}}
+          - **PRD Reference**: {{prd_reference}}
+          - **Architecture**: {{architecture_reference}}
+          - **Stories**: {{stories_location}}
+
+      - id: related-artifacts
+        title: Related Artifacts
+        instruction: Reference related planning artifacts and dependencies
+        template: |
+          ### Related Artifacts
+          {{#each related_artifacts}}
+          - **{{artifact_type}}**: {{artifact_path}} - {{description}}
+          {{/each}}
+
+  - id: planning-dod-compliance
+    title: Planning Definition of Done Compliance
+    instruction: |
+      Verify compliance with the Planning Definition of Done standard before implementation begins.
+    content: |
+      ## Planning Definition of Done Compliance
+
+      This implementation plan ensures compliance with [Planning Definition of Done](.axovia-flow/company-standards/planning-definition-of-done.md):
+
+      ### A) Foundation & Alignment
+      - [ ] Links to Business Goals and PRD shard(s) included
+      - [ ] Problem statement and intended outcome are clear (success criteria stated)
+      - [ ] Scope boundaries and out‑of‑scope notes documented
+
+      ### B) Requirements & Acceptance (BDD‑ready)
+      - [ ] PRD requirement IDs enumerated (coverage is explicit)
+      - [ ] Acceptance criteria drafted in BDD style (Given/When/Then) and traceable to PRD IDs
+      - [ ] Non‑functional requirements (security, performance, reliability) considered where relevant
+
+      ### C) Test Strategy & Traceability
+      - [ ] Unit test target stated: ≥ 90% line coverage
+      - [ ] Integration/Acceptance approach identified (E2E/API/Emulation/HIL as applicable)
+      - [ ] Data/fixtures plan captured (deterministic, idempotent where possible)
+      - [ ] Traceability plan: how BDD scenarios map to PRD IDs and where traces will be stored (docs/qa/traces)
+
+      ### D) Risks, Dependencies, Assumptions
+      - [ ] Key risks called out with mitigations (probability × impact)
+      - [ ] External dependencies identified (teams, services, data, credentials)
+      - [ ] Assumptions explicitly noted
+
+      ### E) Story Decomposition for Parallel Work
+      - [ ] Story is small enough or sharded into sub‑stories for parallel agents
+      - [ ] Ownership per shard is clear; interfaces/contracts between shards defined
+      - [ ] Handoffs and sequencing noted where ordering matters
+
+      ### F) Repository & Standards Readiness
+      - [ ] Relevant standards referenced (sw‑testing‑standard.md, release‑format.md, repository‑auditing.md)
+      - [ ] Required templates/stubs added (e.g., test/acceptance, docs/qa/traces)
+      - [ ] Labels and links prepared for Issue/PR templates (epic/story checklist, PR template expectations)
+
+      ### G) Exit Criteria (Mark "Ready for Dev")
+      - [ ] HUMAN sign‑off recorded: Planning DoD marked COMPLETE
+      - [ ] All required BMad agent checklists PASSED (Architect, PM/PO, QA, etc.)
+      - [ ] Planning DoD satisfied and recorded in the story/epic file or planning issue
+      - [ ] Links gathered: PRD shards, acceptance draft, traces location, risk log
+      - [ ] "Ready for Dev" label applied and communicated to Dev/QA agents
+
+  - id: milestones-timeline
+    title: Milestones & Timeline
+    instruction: |
+      Define key milestones and timeline for feature delivery.
+    elicit: true
+    sections:
+      - id: milestones
+        title: Milestones
+        instruction: Define major milestones with target dates
+        template: |
+          ## Milestones & Timeline
+
+          ### Key Milestones
+          {{#each milestones}}
+          - **{{milestone_id}}**: {{milestone_name}} — {{target_date}}
+            - {{milestone_description}}
+          {{/each}}
+
+      - id: timeline
+        title: Timeline Overview
+        instruction: Provide high-level timeline overview
+        template: |
+          ### Timeline Overview
+          - **Planning Phase**: {{planning_timeline}}
+          - **Development Phase**: {{development_timeline}}
+          - **Testing Phase**: {{testing_timeline}}
+          - **Deployment Phase**: {{deployment_timeline}}
+
+  - id: story-breakdown
+    title: Story Breakdown & Visual Checklists
+    instruction: |
+      Break down the feature into individual stories with detailed visual checklists for each story. This is the core section that provides actionable tasks for development teams.
+    elicit: true
+    sections:
+      - id: story-checklists
+        title: Story Implementation Checklists
+        instruction: Create detailed visual checklists for each story that implements this feature
+        repeatable: true
+        template: |
+          ## Story {{story_epic}}.{{story_number}}: {{story_title}}
+
+          **Story Status**: {{story_status}}  
+          **Assigned Agent**: {{assigned_agent}}  
+          **Estimated Effort**: {{estimated_effort}}  
+          **Dependencies**: {{story_dependencies}}
+
+          ### Story Overview
+          {{story_description}}
+
+          ### Acceptance Criteria Reference
+          {{story_acceptance_criteria}}
+
+          ### Implementation Checklist
+
+          #### 📋 Planning & Setup
+          - [ ] Story requirements reviewed and understood
+          - [ ] Architecture documents consulted
+          - [ ] Dependencies identified and resolved
+          - [ ] Development environment prepared
+          - [ ] Test data/fixtures prepared
+
+          #### 🏗️ Core Development Tasks
+          {{#each development_tasks}}
+          - [ ] {{task_description}}
+            {{#if task_details}}
+            - Details: {{task_details}}
+            {{/if}}
+            {{#if task_acceptance}}
+            - Acceptance: {{task_acceptance}}
+            {{/if}}
+          {{/each}}
+
+          #### 🧪 Testing Tasks
+          - [ ] Unit tests written (target: ≥90% coverage)
+          - [ ] Integration tests implemented
+          - [ ] Acceptance tests created (BDD style)
+          - [ ] Edge case testing completed
+          - [ ] Error condition testing completed
+          - [ ] Performance testing (if applicable)
+          - [ ] Security testing (if applicable)
+
+          #### 📚 Documentation Tasks
+          - [ ] Code documentation updated
+          - [ ] API documentation updated (if applicable)
+          - [ ] User documentation updated (if applicable)
+          - [ ] Architecture documentation updated (if applicable)
+
+          #### ✅ Quality Assurance
+          - [ ] Code review completed
+          - [ ] All tests passing
+          - [ ] Coverage targets met (≥90%)
+          - [ ] Performance benchmarks met
+          - [ ] Security requirements validated
+          - [ ] Accessibility requirements met (if applicable)
+
+          #### 🚀 Deployment Preparation
+          - [ ] Deployment scripts updated
+          - [ ] Configuration changes documented
+          - [ ] Database migrations prepared (if applicable)
+          - [ ] Rollback plan documented
+          - [ ] Monitoring/alerting configured
+
+          #### 📊 Story Completion
+          - [ ] All acceptance criteria verified
+          - [ ] Story demo prepared
+          - [ ] Stakeholder sign-off obtained
+          - [ ] Story marked as "Done"
+          - [ ] Implementation plan updated with results
+
+          ### Story Notes
+          {{story_notes}}
+
+          ---
+
+  - id: risks-mitigations
+    title: Risks & Mitigations
+    instruction: |
+      Identify key risks and their mitigations following company standards.
+    elicit: true
+    sections:
+      - id: risk-assessment
+        title: Risk Assessment
+        instruction: Identify and assess risks with probability and impact
+        template: |
+          ## Risks & Mitigations
+
+          ### Risk Assessment Matrix
+          {{#each risks}}
+          #### Risk {{risk_id}}: {{risk_title}}
+          - **Description**: {{risk_description}}
+          - **Probability**: {{risk_probability}} (High/Medium/Low)
+          - **Impact**: {{risk_impact}} (High/Medium/Low)
+          - **Risk Level**: {{risk_level}} (Critical/High/Medium/Low)
+          - **Mitigation**: {{risk_mitigation}}
+          - **Contingency**: {{risk_contingency}}
+          - **Owner**: {{risk_owner}}
+          {{/each}}
+
+      - id: dependencies
+        title: Dependencies
+        instruction: Document external dependencies
+        template: |
+          ### External Dependencies
+          {{#each dependencies}}
+          - **{{dependency_type}}**: {{dependency_description}}
+            - **Owner**: {{dependency_owner}}
+            - **Timeline**: {{dependency_timeline}}
+            - **Risk**: {{dependency_risk}}
+          {{/each}}
+
+      - id: assumptions
+        title: Assumptions
+        instruction: Document key assumptions
+        template: |
+          ### Key Assumptions
+          {{#each assumptions}}
+          - {{assumption_description}}
+          {{/each}}
+
+  - id: qa-alignment
+    title: QA Alignment & Test Strategy
+    instruction: |
+      Define QA alignment and testing strategy following company testing standards.
+    elicit: true
+    content: |
+      ## QA Alignment & Test Strategy
+
+      ### Test Strategy Overview
+      This implementation follows the [SW Testing Standard](.axovia-flow/company-standards/sw-testing-standard.md).
+
+      ### Testing Approach
+      - **Unit Testing**: ≥90% line coverage target
+      - **Integration Testing**: {{integration_test_approach}}
+      - **Acceptance Testing**: BDD-style scenarios
+      - **Performance Testing**: {{performance_test_approach}}
+      - **Security Testing**: {{security_test_approach}}
+
+      ### QA Artifacts Location
+      - **Test Plans**: `docs/qa/test-plans/`
+      - **Test Cases**: `docs/qa/test-cases/`
+      - **Traces**: `docs/qa/traces/`
+      - **Gates**: `docs/qa/gates/`
+      - **Assessments**: `docs/qa/assessments/`
+
+      ### Traceability Plan
+      - BDD scenarios map to PRD requirement IDs
+      - Test traces stored in `docs/qa/traces/{{feature_id}}/`
+      - Acceptance criteria linked to test cases
+
+  - id: definition-of-done
+    title: Feature Definition of Done
+    instruction: |
+      Define what constitutes completion for this entire feature implementation.
+    content: |
+      ## Feature Definition of Done
+
+      This feature is considered complete when:
+
+      ### Development Completion
+      - [ ] All stories completed with checklists 100% checked
+      - [ ] All acceptance criteria verified and signed off
+      - [ ] Code coverage ≥90% across all components
+      - [ ] All tests passing (unit, integration, acceptance)
+      - [ ] Performance benchmarks met
+      - [ ] Security requirements validated
+
+      ### Quality Gates Passed
+      - [ ] Code review completed for all stories
+      - [ ] QA gate assessments passed
+      - [ ] Architecture review completed
+      - [ ] Security review completed (if applicable)
+
+      ### Documentation Complete
+      - [ ] All documentation updated
+      - [ ] API documentation current
+      - [ ] User guides updated
+      - [ ] Deployment guides updated
+
+      ### Deployment Ready
+      - [ ] Feature deployed to staging environment
+      - [ ] Acceptance testing completed in staging
+      - [ ] Production deployment plan approved
+      - [ ] Rollback procedures documented and tested
+
+      ### Stakeholder Approval
+      - [ ] Product Owner sign-off obtained
+      - [ ] Business stakeholder approval received
+      - [ ] Feature marked as "Complete" in tracking system
+
+  - id: progress-tracking
+    title: Progress Tracking
+    instruction: |
+      Provide mechanisms for tracking overall feature progress.
+    content: |
+      ## Progress Tracking
+
+      ### Overall Feature Progress
+      - **Stories Completed**: 0 / {{total_stories}}
+      - **Overall Progress**: 0%
+      - **Last Updated**: {{updated_date}}
+
+      ### Story Status Summary
+      {{#each stories}}
+      - **Story {{epic}}.{{number}}**: {{title}} - {{status}}
+      {{/each}}
+
+      ### Milestone Status
+      {{#each milestones}}
+      - **{{milestone_id}}**: {{milestone_name}} - {{milestone_status}}
+      {{/each}}
+
+  - id: change-log
+    title: Change Log
+    instruction: |
+      Maintain a record of all changes made to this implementation plan.
+    content: |
+      ## Change Log
+
+      | Date | Version | Change | Author |
+      |------|---------|--------|---------|
+      | {{created_date}} | 1.0 | Initial implementation plan | {{owner}} |
+
+# Template Variables
+variables:
+  feature_id:
+    type: text
+    description: "Feature ID (e.g., F-001)"
+    required: true
+
+  feature_name:
+    type: text
+    description: "Feature name"
+    required: true
+
+  plan_status:
+    type: choice
+    choices: [Draft, "In Progress", Complete, "On Hold"]
+    default: Draft
+    description: "Current plan status"
+
+  priority:
+    type: choice
+    choices: [Critical, High, Medium, Low]
+    description: "Feature priority level"
+
+  epic_reference:
+    type: text
+    description: "Reference to parent epic"
+
+  owner:
+    type: text
+    description: "Scrum Master or Plan Owner"
+    required: true
+
+  created_date:
+    type: date
+    description: "Plan creation date"
+    required: true
+
+  updated_date:
+    type: date
+    description: "Last update date"
+    required: true
+
+  target_completion:
+    type: date
+    description: "Target completion date"
+
+  total_stories:
+    type: number
+    description: "Total number of stories in this feature"
+    required: true
+
+  - id: risks-mitigations
+    title: Risks & Mitigations
+    instruction: |
+      Identify key risks and their mitigations following company standards.
+    elicit: true
+    sections:
+      - id: risk-assessment
+        title: Risk Assessment
+        instruction: Identify and assess risks with probability and impact
+        template: |
+          ## Risks & Mitigations
+
+          ### Risk Assessment Matrix
+          {{#each risks}}
+          #### Risk {{risk_id}}: {{risk_title}}
+          - **Description**: {{risk_description}}
+          - **Probability**: {{risk_probability}} (High/Medium/Low)
+          - **Impact**: {{risk_impact}} (High/Medium/Low)
+          - **Risk Level**: {{risk_level}} (Critical/High/Medium/Low)
+          - **Mitigation**: {{risk_mitigation}}
+          - **Contingency**: {{risk_contingency}}
+          - **Owner**: {{risk_owner}}
+          {{/each}}
+
+      - id: dependencies
+        title: Dependencies
+        instruction: Document external dependencies
+        template: |
+          ### External Dependencies
+          {{#each dependencies}}
+          - **{{dependency_type}}**: {{dependency_description}}
+            - **Owner**: {{dependency_owner}}
+            - **Timeline**: {{dependency_timeline}}
+            - **Risk**: {{dependency_risk}}
+          {{/each}}
+
+      - id: assumptions
+        title: Assumptions
+        instruction: Document key assumptions
+        template: |
+          ### Key Assumptions
+          {{#each assumptions}}
+          - {{assumption_description}}
+          {{/each}}
+
+  - id: qa-alignment
+    title: QA Alignment & Test Strategy
+    instruction: |
+      Define QA alignment and testing strategy following company testing standards.
+    elicit: true
+    content: |
+      ## QA Alignment & Test Strategy
+
+      ### Test Strategy Overview
+      This implementation follows the [SW Testing Standard](.axovia-flow/company-standards/sw-testing-standard.md).
+
+      ### Testing Approach
+      - **Unit Testing**: ≥90% line coverage target
+      - **Integration Testing**: {{integration_test_approach}}
+      - **Acceptance Testing**: BDD-style scenarios
+      - **Performance Testing**: {{performance_test_approach}}
+      - **Security Testing**: {{security_test_approach}}
+
+      ### QA Artifacts Location
+      - **Test Plans**: `docs/qa/test-plans/`
+      - **Test Cases**: `docs/qa/test-cases/`
+      - **Traces**: `docs/qa/traces/`
+      - **Gates**: `docs/qa/gates/`
+      - **Assessments**: `docs/qa/assessments/`
+
+      ### Traceability Plan
+      - BDD scenarios map to PRD requirement IDs
+      - Test traces stored in `docs/qa/traces/{{feature_id}}/`
+      - Acceptance criteria linked to test cases
+
+  - id: definition-of-done
+    title: Feature Definition of Done
+    instruction: |
+      Define what constitutes completion for this entire feature implementation.
+    content: |
+      ## Feature Definition of Done
+
+      This feature is considered complete when:
+
+      ### Development Completion
+      - [ ] All stories completed with checklists 100% checked
+      - [ ] All acceptance criteria verified and signed off
+      - [ ] Code coverage ≥90% across all components
+      - [ ] All tests passing (unit, integration, acceptance)
+      - [ ] Performance benchmarks met
+      - [ ] Security requirements validated
+
+      ### Quality Gates Passed
+      - [ ] Code review completed for all stories
+      - [ ] QA gate assessments passed
+      - [ ] Architecture review completed
+      - [ ] Security review completed (if applicable)
+
+      ### Documentation Complete
+      - [ ] All documentation updated
+      - [ ] API documentation current
+      - [ ] User guides updated
+      - [ ] Deployment guides updated
+
+      ### Deployment Ready
+      - [ ] Feature deployed to staging environment
+      - [ ] Acceptance testing completed in staging
+      - [ ] Production deployment plan approved
+      - [ ] Rollback procedures documented and tested
+
+      ### Stakeholder Approval
+      - [ ] Product Owner sign-off obtained
+      - [ ] Business stakeholder approval received
+      - [ ] Feature marked as "Complete" in tracking system
+
+  - id: progress-tracking
+    title: Progress Tracking
+    instruction: |
+      Provide mechanisms for tracking overall feature progress.
+    content: |
+      ## Progress Tracking
+
+      ### Overall Feature Progress
+      - **Stories Completed**: 0 / {{total_stories}}
+      - **Overall Progress**: 0%
+      - **Last Updated**: {{updated_date}}
+
+      ### Story Status Summary
+      {{#each stories}}
+      - **Story {{epic}}.{{number}}**: {{title}} - {{status}}
+      {{/each}}
+
+      ### Milestone Status
+      {{#each milestones}}
+      - **{{milestone_id}}**: {{milestone_name}} - {{milestone_status}}
+      {{/each}}
+
+  - id: change-log
+    title: Change Log
+    instruction: |
+      Maintain a record of all changes made to this implementation plan.
+    content: |
+      ## Change Log
+
+      | Date | Version | Change | Author |
+      |------|---------|--------|---------|
+      | {{created_date}} | 1.0 | Initial implementation plan | {{owner}} |
+
+# Template Variables
+variables:
+  feature_id:
+    type: text
+    description: "Feature ID (e.g., F-001)"
+    required: true
+  
+  feature_name:
+    type: text
+    description: "Feature name"
+    required: true
+  
+  plan_status:
+    type: choice
+    choices: [Draft, "In Progress", Complete, "On Hold"]
+    default: Draft
+    description: "Current plan status"
+  
+  priority:
+    type: choice
+    choices: [Critical, High, Medium, Low]
+    description: "Feature priority level"
+  
+  epic_reference:
+    type: text
+    description: "Reference to parent epic"
+  
+  owner:
+    type: text
+    description: "Scrum Master or Plan Owner"
+    required: true
+  
+  created_date:
+    type: date
+    description: "Plan creation date"
+    required: true
+  
+  updated_date:
+    type: date
+    description: "Last update date"
+    required: true
+  
+  target_completion:
+    type: date
+    description: "Target completion date"
+  
+  total_stories:
+    type: number
+    description: "Total number of stories in this feature"
+    required: true
