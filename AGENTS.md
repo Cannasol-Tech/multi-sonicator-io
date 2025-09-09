@@ -10,7 +10,7 @@ Ensure AI Coding Agents consistently follows our house rules and repository stan
 2. **Architecture docs**: `docs/architecture/` and PRD documents
 3. **Project-specific**: This `AGENTS.md` file
 4. **Project-specific**: `.axovia-flow/flow-config.yaml`
-5. **Legacy standards**: `.bmad-core/core-config.yaml` (only when not in conflict)
+. **Legacy standards**: `.bmad-core/core-config.yaml` (only when not in conflict)
 
 > **Note**: If standards are duplicated elsewhere, treat `docs/standards/` as canonical. Flag any divergence and propose sync PRs.
 
