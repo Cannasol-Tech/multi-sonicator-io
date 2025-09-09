@@ -23,6 +23,7 @@ The proposed solution is a microcontroller-based multiplexer designed to manage 
 | :--------- | :------ | :-------------------------------------- | :-------- |
 | 2025-09-01 | 1.0     | Initial draft based on Project Brief.   | John (PM) |
 | 2025-09-01 | 1.1     | Updated requirements after brainstorming. | John (PM) |
+| 2025-09-09 | 1.2     | Resolved all open questions, added FR12 for connected sonicators count, updated CT2000 specifications. | John (PM) |
 
 ## 2. Requirements
 
@@ -39,6 +40,7 @@ The proposed solution is a microcontroller-based multiplexer designed to manage 
 9. **FR9**: The system shall report the total number of currently active sonicators and a bitmask representing their individual running states.
 10. **FR10**: On power-up, all sonicator units shall default to an 'off' state and require an explicit 'start' command to begin operation.
 11. **FR11**: If communication with the master PLC/HMI is lost for more than one second, all sonicator units shall automatically enter a safe, non-operational state.
+12. **FR12**: The system shall provide a `CONNECTED_SONICATORS_COUNT` MODBUS register that automatically detects and reports the number of physically connected and responsive sonicator units (0-4) by polling for signals from each sonicator module.
 
 ### 2.2. Non-Functional Requirements
 
@@ -78,6 +80,8 @@ The project will employ a comprehensive testing strategy that includes:
 * **Development Framework**: The project will utilize the Arduino framework managed via PlatformIO for core libraries and toolchain management.
 * **Scheduling**: The system will use a lightweight, non-blocking cooperative scheduler (`taskLoop`) and will not use a real-time operating system (RTOS).
 * **CI/CD**: Continuous integration and deployment will be managed using GitHub Actions.
+* **Frequency Measurement**: Implementation will use tick counting over set time periods for all four FREQ_DIV10_X pins to monitor 1.8kHz - 2.05kHz range simultaneously.
+* **Sonicator Base Class**: Agnostic frequency monitoring implementation for 1.8kHz - 2.05kHz range to support CT2000 specifications.
 
 ## 4. Out of Scope
 
@@ -171,15 +175,51 @@ This project is divided into three main epics, each concluding with a significan
 
 ## 9. Open Questions
 
-*All initial open questions were resolved during the drafting of this PRD.*
+*All open questions have been resolved as of September 9, 2025.*
 
-* **Physical Constraints:** The physical footprint and power constraints are not a direct constraint on the firmware development at this time and will be handled by the hardware team.
-* **PLC/HMI Error Codes:** No specific error codes are required by the PLC/HMI system beyond the defined `COMM_FAULT` flag.
-* **Hot-Swapping Sonicators:** Hot-swapping units during operation is out of scope for this version of the firmware.
+### 9.1. Resolved Questions
+
+**✅ CT2000 Specifications (Resolved 2025-09-09)**
+* **Frequency Range:** 18kHz - 20.5kHz operating range
+* **FREQ_DIV10_X Output:** 1.8kHz - 2.05kHz (frequency divided by 10 for digital monitoring)
+* **Power Output:** 0-8.160 VDC representing 0-100% power operation
+* **Power Scaling:** 5.44mV = 1 WATT (maximum ~1,500 Watts at 8.160V)
+
+**✅ Hardware Verification (Resolved 2025-09-09)**
+* **Overload Reset Pin 2:** Confirmed available and functional
+* **Internal Amplitude Control Switch:** Verified existence and functionality
+
+**✅ ATmega32A Pin Allocation (Resolved 2025-09-09)**
+* **Pin Matrix:** Documented as SOLE SOURCE OF TRUTH in `docs/planning/pin-matrix.md`
+* **Pin Capacity:** 40 pins available vs 39 pins required - sufficient capacity confirmed
+
+**✅ Frequency Measurement Implementation (Resolved 2025-09-09)**
+* **Approach:** Monitor ticks over set time period for all four FREQ_DIV10_X pins
+* **Base Class:** Agnostic monitoring for 1.8kHz - 2.05kHz range
+* **Implementation:** Tick counting method for simultaneous 4-channel measurement
+
+**✅ System Redundancy (Resolved 2025-09-09)**
+* **Hardware Redundancy:** Not implemented in current design
+* **Safety Mechanisms:** Comprehensive failsafe operations already defined (Watchdog timer, communication loss failsafe, safe power-up state)
+* **Conclusion:** Existing safety mechanisms provide adequate protection
+
+**✅ CE Marking (Resolved 2025-09-09)**
+* **Requirement:** Not applicable - US Market only deployment
+* **European Conformity:** Not required for this project scope
+
+**✅ Backward Compatibility (Resolved 2025-09-09)**
+* **Approach:** `CONNECTED_SONICATORS_COUNT` MODBUS register for auto-detection
+* **Implementation:** ATmega32A polls signals from four sonicator modules
+* **Testing:** Not required - multiplexer serves as source of truth for connected units
+
+### 9.2. Testing Limitations
+
+* **Power Verification Testing:** DUT can only verify low-end power output until upgraded power supply capable of full 8.160V output is implemented for complete testing capability.
 
 ## 10. Glossary
 
-* **CT2000:** The specific model of the sonicator unit being controlled by the multiplexer.
+* **CT2000:** The specific model of the sonicator unit being controlled by the multiplexer. Operating frequency range: 18kHz - 20.5kHz. Power output: 0-8.160 VDC (0-100% operation). Power scaling: 5.44mV = 1 WATT.
+* **FREQ_DIV10_X:** Digital frequency output signal from CT2000 sonicators, representing the operating frequency divided by 10 (1.8kHz - 2.05kHz range).
 * **Firmware:** Software embedded within the microcontroller, responsible for all control logic and communication.
 * **HAL (Hardware Abstraction Layer):** A software layer that isolates the core application logic from the specific microcontroller hardware, improving portability.
 * **HIL (Hardware-in-the-Loop):** A testing methodology where the final firmware is run on the actual microcontroller while simulating the external hardware (sonicators, PLC) to validate real-world interactions.
@@ -188,7 +228,7 @@ This project is divided into three main epics, each concluding with a significan
 * **Multiplexer:** The hardware device, controlled by the firmware, that manages communication and control signals for up to four sonicator units.
 * **PLC (Programmable Logic Controller):** The industrial computer that acts as the master controller, sending commands to and receiving data from the multiplexer via MODBUS.
 * **Sonicator:** A device that uses ultrasonic energy to process materials.
-* **Telemetry:** Data related to the status and performance of the sonicators (e.g., power, temperature, status flags) transmitted from the multiplexer to the PLC.
+* **Telemetry:** Data related to the status and performance of the sonicators (e.g., power, frequency, status flags) transmitted from the multiplexer to the PLC.
 * **Watchdog Timer:** A hardware safety feature that resets the microcontroller if the main application freezes or becomes unresponsive.
 
 ## 11. Appendix
