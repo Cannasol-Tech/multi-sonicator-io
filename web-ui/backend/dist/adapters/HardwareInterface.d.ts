@@ -39,6 +39,9 @@ export declare class HardwareInterface extends EventEmitter {
     private initializePinStates;
     initialize(): Promise<boolean>;
     private handlePythonMessage;
+    private lastLogTime;
+    private logThrottleMs;
+    private lastPinLogTimes;
     private updatePinState;
     private startPinMonitoring;
     private sendPythonCommand;
@@ -67,7 +70,6 @@ export declare class HardwareInterface extends EventEmitter {
                 RESET_4: string;
                 POWER_SENSE_4: string;
                 AMPLITUDE_ALL: string;
-                UART_RXD: string;
                 UART_TXD: string;
                 STATUS_LED: string;
             };

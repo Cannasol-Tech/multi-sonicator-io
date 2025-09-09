@@ -40,6 +40,13 @@ class WebSocketHandler {
                 timestamp: Date.now()
             });
         });
+        this.hardwareInterface.on('arduino_command', (commandData) => {
+            this.broadcast({
+                type: 'arduino_command',
+                data: commandData,
+                timestamp: Date.now()
+            });
+        });
     }
     setupTestAutomationListeners() {
         if (!this.testAutomationService) {

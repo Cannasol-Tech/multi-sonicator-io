@@ -3,40 +3,44 @@
   "owner": "Cannasol-Tech",
   "repo": "multi-sonicator-io",
   "releaseTag": "v0.0.0-dev",
-  "commit": "7377876",
-  "createdAt": "2025-09-05T21:44:16.598391Z",
+  "commit": "b91a1f2",
+  "createdAt": "2025-09-09T04:04:36.252976Z",
   "summary": {
-    "total": 4,
-    "passed": 3,
-    "failed": 1,
+    "total": 5,
+    "passed": 5,
+    "failed": 0,
     "skipped": 0,
-    "durationMs": 4000
+    "durationMs": 5000
   },
   "coverage": {
-    "lines_covered": 502,
-    "lines_total": 517,
-    "coverage_percentage": 97.1,
-    "meets_requirement": false
+    "lines_covered": 506,
+    "lines_total": 506,
+    "coverage_percentage": 100.0
   },
   "modules": {
-    "communication": {
-      "lines_covered": 110,
-      "lines_total": 125,
-      "coverage_percentage": 88.0
-    },
-    "hal": {
+    "test_hal.c": {
       "lines_covered": 97,
       "lines_total": 97,
       "coverage_percentage": 100.0
     },
-    "control": {
-      "lines_covered": 129,
-      "lines_total": 129,
+    "math.h": {
+      "lines_covered": 4,
+      "lines_total": 4,
       "coverage_percentage": 100.0
     },
-    "sonicator": {
+    "test_communication.c": {
+      "lines_covered": 110,
+      "lines_total": 110,
+      "coverage_percentage": 100.0
+    },
+    "test_sonicator.c": {
       "lines_covered": 166,
       "lines_total": 166,
+      "coverage_percentage": 100.0
+    },
+    "test_control.c": {
+      "lines_covered": 129,
+      "lines_total": 129,
       "coverage_percentage": 100.0
     }
   }

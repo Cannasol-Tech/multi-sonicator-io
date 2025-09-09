@@ -6,7 +6,7 @@
 
 React applications require comprehensive testing strategies that cover component behavior, user interactions, and integration with backend services. This standard defines the **official testing requirements** for all React projects, emphasizing modern testing practices with React Testing Library and Jest.
 
-- Work following the global standard for coding style located at `.axovia-flow/company-standards/coding-style.md`
+- Work following the global standard for coding style located at `docs/standards/coding-style.md`
 - Use React specific naming conventions for components and hooks
 - Use React specific folder structures for components and hooks
 - Use React specific linting rules for components and hooks

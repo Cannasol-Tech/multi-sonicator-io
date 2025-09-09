@@ -39,6 +39,9 @@ class HardwareInterface extends events_1.EventEmitter {
                 }
             }
         };
+        this.lastLogTime = 0;
+        this.logThrottleMs = 2000; // Only log once every 2 seconds per pin
+        this.lastPinLogTimes = new Map();
         this.initializePinStates();
     }
     initializePinStates() {
@@ -51,7 +54,6 @@ class HardwareInterface extends events_1.EventEmitter {
             { pin: 'A4', signal: 'RESET_4', direction: 'OUT' },
             { pin: 'A1', signal: 'POWER_SENSE_4', direction: 'ANALOG' },
             { pin: 'D9', signal: 'AMPLITUDE_ALL', direction: 'OUT' },
-            { pin: 'D10', signal: 'UART_RXD', direction: 'IN' },
             { pin: 'D11', signal: 'UART_TXD', direction: 'OUT' },
             { pin: 'D12', signal: 'STATUS_LED', direction: 'OUT' }
         ];
@@ -126,10 +128,13 @@ except ImportError:
             self.connected = False
 
         def frequency_generator(self):
-            """Generate frequency signals for configured pins"""
+            """Generate frequency signals and monitor PWM for configured pins"""
+            pwm_update_counter = 0
             while True:
                 try:
                     current_time = time.time()
+
+                    # Update frequency pins
                     for signal, config in self.frequency_config.items():
                         if config['enabled'] and config['frequency_hz'] > 0:
                             period = 1.0 / config['frequency_hz']
@@ -148,10 +153,44 @@ except ImportError:
                                 print(json.dumps({"type": "pin_state", "pin": signal, "data": new_state}))
                                 sys.stdout.flush()
 
+                    # Update PWM pins every 100ms (reduce update frequency for PWM)
+                    pwm_update_counter += 1
+                    if pwm_update_counter >= 100:  # Update PWM every 100ms
+                        pwm_update_counter = 0
+                        self.update_pwm_monitoring()
+
                     time.sleep(0.001)  # 1ms sleep for reasonable precision
                 except Exception as e:
                     print(f"Frequency generator error: {e}")
                     time.sleep(0.1)
+
+        def update_pwm_monitoring(self):
+            """Continuously monitor PWM signals"""
+            import random
+
+            # Simulate AMPLITUDE_ALL PWM monitoring with varying duty cycle
+            # In real hardware, this would read the actual PWM signal from the ATmega32A
+            duty_cycle = random.uniform(0, 100)
+            pwm_value = f"{duty_cycle:.1f}%"
+
+            # Only update if value changed significantly (reduce noise)
+            current_value = self.pin_states.get('AMPLITUDE_ALL', '0.0%')
+            try:
+                current_duty = float(current_value.replace('%', ''))
+                new_duty = float(pwm_value.replace('%', ''))
+
+                # Update if difference is > 1% to reduce noise
+                if abs(new_duty - current_duty) > 1.0:
+                    self.pin_states['AMPLITUDE_ALL'] = pwm_value
+
+                    # Send PWM state update
+                    print(json.dumps({"type": "pin_state", "pin": "AMPLITUDE_ALL", "data": pwm_value}))
+                    sys.stdout.flush()
+            except:
+                # Fallback: always update if parsing fails
+                self.pin_states['AMPLITUDE_ALL'] = pwm_value
+                print(json.dumps({"type": "pin_state", "pin": "AMPLITUDE_ALL", "data": pwm_value}))
+                sys.stdout.flush()
 
         def send_command(self, cmd):
             # Parse command and update mock states
@@ -214,9 +253,11 @@ except ImportError:
                     signal = signal_or_pin
 
                 if signal == 'AMPLITUDE_ALL':
-                    # Simulate PWM reading with varying duty cycle
+                    # Simulate continuous PWM monitoring with varying duty cycle
                     import random
                     duty_cycle = random.uniform(0, 100)
+                    # Update pin state for continuous monitoring
+                    self.pin_states[signal] = f"{duty_cycle:.1f}%"
                     return f"OK PWM={duty_cycle:.1f}%"
                 return "ERR INVALID_PWM_CHANNEL"
             return "OK"
@@ -380,6 +421,14 @@ except Exception as e:
                 this.updatePinState(message.pin, message.data);
                 break;
             case 'response':
+                // Log and broadcast Arduino response
+                console.log('Arduino Response Received:', message.data);
+                this.emit('arduino_command', {
+                    direction: 'received',
+                    data: message.data,
+                    timestamp: Date.now(),
+                    type: 'response'
+                });
                 this.emit('command_response', message.data);
                 break;
             case 'error':
@@ -391,7 +440,13 @@ except Exception as e:
     updatePinState(pin, data) {
         // Parse hardware response and update pin state
         const timestamp = Date.now();
-        console.log(`Hardware: Updating pin state for ${pin} with data: ${data}`);
+        // Throttle logging to prevent spam - only log occasionally
+        const lastLogTime = this.lastPinLogTimes.get(pin) || 0;
+        const shouldLog = timestamp - lastLogTime > this.logThrottleMs;
+        if (shouldLog) {
+            console.log(`Hardware: Updating pin state for ${pin} with data: ${data}`);
+            this.lastPinLogTimes.set(pin, timestamp);
+        }
         // Find pin by Arduino pin name or signal name
         for (const [signal, pinState] of this.pinStates.entries()) {
             if (pinState.pin === pin || signal === pin) {
@@ -425,7 +480,10 @@ except Exception as e:
                         newState = parseInt(data);
                     }
                 }
-                console.log(`Hardware: Pin ${signal} state updated from ${pinState.state} to ${newState}`);
+                // Only log state changes, not every update, and only occasionally
+                if (shouldLog && pinState.state !== newState) {
+                    console.log(`Hardware: Pin ${signal} state updated from ${pinState.state} to ${newState}`);
+                }
                 const updatedPin = {
                     ...pinState,
                     state: newState,
@@ -466,7 +524,16 @@ except Exception as e:
                 return;
             }
             try {
-                this.pythonProcess.stdin?.write(JSON.stringify(command) + '\n');
+                const commandStr = JSON.stringify(command);
+                // Log and broadcast command being sent
+                console.log('Arduino Command Sent:', commandStr);
+                this.emit('arduino_command', {
+                    direction: 'sent',
+                    data: commandStr,
+                    timestamp: Date.now(),
+                    type: command.type || 'unknown'
+                });
+                this.pythonProcess.stdin?.write(commandStr + '\n');
                 resolve(true);
             }
             catch (error) {
