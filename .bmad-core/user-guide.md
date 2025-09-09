@@ -84,13 +84,14 @@ graph TD
 
 #### Planning Artifacts (Standard Paths)
 
-```text
-PRD              → docs/prd.md
-Architecture     → docs/architecture.md
-Sharded Epics    → docs/epics/
-Sharded Stories  → docs/agile/stories/
-QA Assessments   → docs/qa/assessments/
-QA Gates         → docs/qa/gates/
+```markdown
+PRD              → `docs/prd.md`
+Architecture     → `docs/architecture.md`
+Sharded Epics    → `docs/agile/epics/`
+Sharded Stories  → `docs/agile/stories/`
+QA Assessments   → `docs/qa/assessments/`
+QA Gates         → `docs/qa/gates/`
+
 ```
 
 ### The Core Development Cycle (IDE)

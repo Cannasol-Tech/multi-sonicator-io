@@ -2,13 +2,15 @@
 
 ## Purpose
 
-Ensure Auggie (Augment Agent) consistently follows our house rules and repository standards for the multi-sonicator-io project.
+Ensure AI Coding Agents consistently follows our house rules and repository standards for the multi-sonicator-io project.
 
 ## Source of Truth Hierarchy
 
 1. **Primary standards**: `docs/standards/` (single source of truth)
 2. **Architecture docs**: `docs/architecture/` and PRD documents
-3. **Legacy standards**: `.bmad-core/*` (only when not in conflict)
+3. **Project-specific**: This `AGENTS.md` file
+4. **Project-specific**: `.axovia-flow/flow-config.yaml`
+5. **Legacy standards**: `.bmad-core/core-config.yaml` (only when not in conflict)
 
 > **Note**: If standards are duplicated elsewhere, treat `docs/standards/` as canonical. Flag any divergence and propose sync PRs.
 
@@ -18,7 +20,7 @@ Ensure Auggie (Augment Agent) consistently follows our house rules and repositor
 1. This instructions file (`AGENTS.md`)
 2. `docs/standards/*` in this repo
 3. `docs/architecture/*` and PRD docs
-4. `.bmad-core/*` (only when not conflicting)
+4. `.bmad-core/core-config.yaml` (only when not conflicting)
 
 ## Coding & Architecture Standards
 
@@ -134,7 +136,7 @@ Ensure Auggie (Augment Agent) consistently follows our house rules and repositor
 
 ## Metadata
 
-- **File**: `auggie.md` (repository root)
+- **File**: `AGENTS.md` (repository root)
 - **Created**: 2025-09-05
 - **Last Updated**: 2025-09-05
 - **Project**: Multi-Sonicator-IO
