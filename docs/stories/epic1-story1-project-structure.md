@@ -150,7 +150,7 @@ test/
 - `include/config.h` - Enhanced with STATUS_LED_PIN and SERIAL_BAUD_RATE definitions  
 - `test/unit/test_project_structure.cpp` - Created basic unit test for project validation
 - `Makefile` - Fixed with .PHONY declarations to ensure make targets work correctly
-- `docs/stories/epic1-story1-project-structure.md` - Updated with completion status
+- `docs/agile/stories/epic1-story1-project-structure.md` - Updated with completion status
 
 **Validated Existing Files:**
 

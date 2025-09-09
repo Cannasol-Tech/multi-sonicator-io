@@ -109,7 +109,7 @@
 ## Appendices
 
 - References
-  - PRD: `docs/Requirements/prd-v1.0.0.md`
+  - PRD: `docs/Requirements/prd`
   - Pin Matrix: `docs/planning/pin-matrix.md` (SOLE SOURCE OF TRUTH — FINALIZED)
   - Implementation Plan: `docs/planning/implementation-plan.md` (TBD)
   - CI: `.github/workflows/ci.yml`

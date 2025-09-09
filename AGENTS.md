@@ -14,7 +14,8 @@ Ensure Auggie (Augment Agent) consistently follows our house rules and repositor
 
 ## Decision Hierarchy (highest to lowest priority)
 
-1. This instructions file (`auggie.md`)
+0. The Axovia Flow framework flow config (`.axovia-flow/flow-config.yaml`)
+1. This instructions file (`AGENTS.md`)
 2. `docs/standards/*` in this repo
 3. `docs/architecture/*` and PRD docs
 4. `.bmad-core/*` (only when not conflicting)

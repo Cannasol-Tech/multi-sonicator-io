@@ -50,6 +50,7 @@ make update-standards
 ## Documentation
 
 ### Company Standards
+
 This project follows Axovia Flow company standards. Standards are automatically synchronized from the central repository (with local fallback):
 
 - **[Coding Style Standards](.axovia-flow/company-standards/coding-style.md)** - Code formatting and quality guidelines
@@ -57,29 +58,34 @@ This project follows Axovia Flow company standards. Standards are automatically 
 - **[Software Testing Standards](.axovia-flow/company-standards/sw-testing-standard.md)** - Testing methodology and requirements
 
 **Standards Management:**
+
 ```bash
 make update-standards    # Sync latest standards (remote or local fallback)
 make check-standards     # Check standards status
 ```
 
 **Features:**
+
 - ✅ **Standards-Only Import**: Downloads only `docs/standards/` (not entire repository)
 - ✅ **Local Fallback**: Uses local standards when remote repository unavailable
 - ✅ **Automatic Sync**: Standards updated during `make install-deps`
 - ✅ **Flexible Configuration**: Easy to change source repository in `scripts/sync_company_standards.py`
 
 ### Project Documentation
+
 - **[Product Requirements Document](docs/prd.md)** - Complete technical specifications and requirements
 - **[Project Requirements (Detailed)](docs/prd-shards/project-requirements.md)** - Comprehensive project requirements
 - **[Architecture Overview](docs/architecture.md)** - System architecture and design decisions
 - **[Pin Matrix (SOLE SOURCE OF TRUTH)](docs/planning/pin-matrix.md)** - Hardware pin assignments and interface mapping
 
 ### Hardware Documentation
+
 - **[ATmega32A Information](docs/ATMEGA32A/)** - Microcontroller specifications and pin definitions
 - **[Arduino ISP Setup](docs/ArduinoISP/uno-r3-isp-setup.md)** - Programming setup guide
 - **[Component Selection](docs/Digikey/component-list.md)** - Hardware components and sourcing
 
 ### Development Standards & Testing
+
 - **[Coding Standards](docs/standards/)** - Development guidelines and best practices
 - **[Testing Framework](docs/Testing/hil-serial-protocol.md)** - Hardware-in-the-loop testing protocol
 - **[Simulation Framework](docs/simulation_framework.md)** - Testing without hardware
@@ -89,23 +95,27 @@ make check-standards     # Check standards status
 The CI/CD pipeline automatically generates comprehensive documentation and test reports. Access the latest results:
 
 #### 📊 **Pipeline Results & Reports**
+
 - **[Latest CI Pipeline Results](../../actions/workflows/ci.yml)** - Build status, test results, and artifacts
 - **[Nightly Test Reports](../../actions/workflows/nightly.yml)** - Extended testing, performance benchmarks, and memory analysis
 - **[Release Pipeline](../../actions/workflows/release.yml)** - Release builds and automated documentation
 
 #### 📚 **Generated Documentation** (Available in CI Artifacts)
+
 - **API Reference Documentation** - Auto-generated from source code comments
 - **User Manual** - Operating procedures and safety guidelines
 - **Simulation Framework Guide** - Testing without hardware
 - **Implementation Summary** - Technical architecture details
 
 #### 📈 **Performance & Quality Reports** (Available in Nightly Artifacts)
+
 - **Performance Benchmarks** (`performance_report.json`) - Build times and execution metrics
 - **Memory Analysis** (`memory_report.json`) - Memory usage and leak detection
 - **Test Coverage Reports** - Unit and integration test coverage
 - **Build Output Logs** (`build_output.txt`) - Detailed compilation results
 
 #### 🔗 **How to Access Generated Results**
+
 1. Go to **[Actions tab](../../actions)** in this repository
 2. Click on the latest workflow run (CI, Nightly, or Release)
 3. Scroll to **Artifacts** section at the bottom
@@ -181,3 +191,42 @@ Proprietary software developed by Cannasol Technologies. All rights reserved.
 **Hardware Advisor**: Josh (CEO)  
 **Company**: Cannasol Technologies  
 **Last Updated**: December 2024
+
+   Identified Open Questions Requiring Resolution:
+
+     1. CT2000 Specifications Research (Lines 26-27 in Q&A)
+     • Frequency ranges need to be researched and
+       documented
+     • Power levels need to be researched and documented
+
+     2. Hardware Verification Requirements (Lines 125-128 in
+        Q&A)
+     • Confirm Overload Reset Pin 2 availability and
+       functionality
+     • Verify internal amplitude control switch existence
+       and functionality
+
+     3. ATmega32A Pin Allocation Diagram (Lines 142-143 in
+        Q&A)
+     • Need detailed pin diagram with all 40 pins labeled
+       to confirm capabilities
+     • Verify 39 pins required vs 40 pins available
+
+     4. Frequency Measurement Implementation Details (Lines
+        147-154 in Q&A)
+     • Implementation approach for 4 simultaneous frequency
+       measurements
+     • Decision on external frequency-to-voltage converters
+
+     5. System Redundancy Implementation (Lines 177-178 in
+        Q&A)
+     • Ideas needed for redundancy implementation
+     • Fallback options if one chip fails
+
+     6. CE Marking Clarification (Line 81 in Q&A)
+     • Understanding of CE Marking requirements
+
+     7. Backward Compatibility Testing Plan (Line 176 in
+        Q&A)
+     • Detailed testing plan for single vs multiple
+       sonicator configurations

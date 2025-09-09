@@ -248,8 +248,8 @@ Before finalizing:
 
 Save the story with appropriate naming:
 
-- If from epic: `docs/stories/epic-{n}-story-{m}.md`
-- If standalone: `docs/stories/brownfield-{feature-name}.md`
+- If from epic: `docs/agile/stories/epic-{n}-story-{m}.md`
+- If standalone: `docs/agile/stories/brownfield-{feature-name}.md`
 - If sequential: Follow existing story numbering
 
 Include header noting documentation context:

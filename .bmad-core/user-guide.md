@@ -88,7 +88,7 @@ graph TD
 PRD              → docs/prd.md
 Architecture     → docs/architecture.md
 Sharded Epics    → docs/epics/
-Sharded Stories  → docs/stories/
+Sharded Stories  → docs/agile/stories/
 QA Assessments   → docs/qa/assessments/
 QA Gates         → docs/qa/gates/
 ```

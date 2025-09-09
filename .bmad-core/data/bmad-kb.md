@@ -496,7 +496,7 @@ Resulting Folder Structure:
 
 - `docs/prd/` - Broken down PRD sections
 - `docs/architecture/` - Broken down architecture sections
-- `docs/stories/` - Generated user stories
+- `docs/agile/stories/` - Generated user stories
 
 1. **Development Cycle** (Sequential, one story at a time):
 
@@ -508,7 +508,7 @@ Resulting Folder Structure:
    **Step 1 - Story Creation**:
    - **NEW CLEAN CHAT** → Select powerful model → `@sm` → `*create`
    - SM executes create-next-story task
-   - Review generated story in `docs/stories/`
+   - Review generated story in `docs/agile/stories/`
    - Update status from "Draft" to "Approved"
 
    **Step 2 - Story Implementation**:
