@@ -1,0 +1,41 @@
+session_name: sonicator-dev
+start_directory: .
+windows:
+  - window_name: standards
+    layout: tiled
+    panes:
+      - make check-standards
+      - make sync-standards
+
+  - window_name: tests
+    layout: tiled
+    panes:
+      - make test-unit
+      - make test-acceptance
+      - make test-integration
+
+  - window_name: reports
+    layout: even-horizontal
+    panes:
+      - make generate-executive-report
+      - make generate-coverage-report
+
+  - window_name: firmware
+    layout: tiled
+    panes:
+      - make build
+      - make upload-to-device
+      - make upload-harness
+
+  - window_name: web-ui
+    layout: even-horizontal
+    panes:
+      - make web-ui-dev
+      - make web-ui-test
+
+  - window_name: sandbox
+    layout: main-vertical
+    panes:
+      - make web-ui-sandbox
+      - make web-ui-sandbox-auto
+

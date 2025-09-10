@@ -6,6 +6,7 @@ import { HardwareInterface } from './adapters/HardwareInterface'
 import { WebSocketHandler } from './websocket/WebSocketHandler'
 import { TestAutomationService } from './services/TestAutomationService'
 import { setupRoutes } from './routes/index'
+import { configService } from './config/ConfigService'
 
 const app = express()
 const server = createServer(app)
@@ -17,6 +18,20 @@ app.use(cors({
   credentials: true
 }))
 app.use(express.json())
+
+// Initialize configuration service
+console.log('🔧 Loading hardware configuration...')
+try {
+  configService.loadConfig()
+  const summary = configService.getConfigSummary()
+  console.log(`✅ Configuration loaded: ${summary.project} v${summary.version}`)
+  console.log(`🔌 Sonicators: ${summary.sonicators.connected}/${summary.sonicators.total} connected`)
+  console.log(`🧪 Test capabilities: ${summary.capabilities.supported}/${summary.capabilities.total} supported`)
+  console.log(`🔧 Simulation mode: ${summary.simulation_mode ? 'enabled' : 'disabled'}`)
+} catch (error) {
+  console.error('❌ Failed to load configuration:', error)
+  console.log('⚠️  Continuing with default hardware interface...')
+}
 
 // Initialize hardware interface
 const hardwareInterface = new HardwareInterface()

@@ -1,8 +1,15 @@
 import { Express, Request, Response } from 'express'
 import { HardwareInterface } from '../adapters/HardwareInterface.js'
 import { TestAutomationService } from '../services/TestAutomationService.js'
+import configRoutes from './config'
+import testRoutes from './tests'
 
 export function setupRoutes(app: Express, hardwareInterface: HardwareInterface, testAutomationService?: TestAutomationService) {
+  // Hardware configuration management routes
+  app.use('/api/hardware-config', configRoutes)
+
+  // Hardware test execution routes
+  app.use('/api/tests', testRoutes)
   // Health check endpoint
   app.get('/api/health', (req: Request, res: Response) => {
     res.json({

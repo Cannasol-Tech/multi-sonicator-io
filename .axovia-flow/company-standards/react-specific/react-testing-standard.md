@@ -227,6 +227,8 @@ describe('User Authentication Flow', () => {
 
 ## Coverage Requirements
 
+> **IMPORTANT:** When working in a React Repository, these Coverage Requirements Override the Global Coverage Requirements. 
+
 | Test Type | Minimum Coverage | Enforcement |
 |-----------|------------------|-------------|
 | Unit Tests | 90% | CI/CD Pipeline |

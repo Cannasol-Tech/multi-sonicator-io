@@ -1,12 +1,21 @@
-# Story: Single Sonicator Control Implementation
+# Story 1.4: Single Sonicator Control Implementation
 
-## Status: InProgress
+**Story ID**: S-1.4
+**Epic**: Epic 1: Foundational Control & Communication
+**Priority**: High
+**Owner**: Scrum Master
+**Created**: 2025-01-09
+**Updated**: 2025-01-09
+
+## Status
+
+InProgress
 
 ## Story
 
-As a **sonicator operator**,
-I want **control and monitoring capabilities for a single CT2000 sonicator unit**,
-So that **I can start, stop, adjust amplitude, and monitor the unit's performance remotely**.
+**As a** sonicator operator,
+**I want** control and monitoring capabilities for a single CT2000 sonicator unit,
+**so that** I can start, stop, adjust amplitude, and monitor the unit's performance remotely.
 
 ## Epic Context
 

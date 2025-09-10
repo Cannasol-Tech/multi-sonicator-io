@@ -3,6 +3,7 @@
 Purpose: Verify an AI agent has correctly loaded and is adhering to project configurations and standards.
 
 ## Preconditions
+- [ ] `.axovia-flow/checklists/AGENT-INIT.md` exists
 - [ ] `.bmad-core/core-config.yaml` exists
 - [ ] `.axovia-flow/flow-config.yaml` exists
 - [ ] `AGENTS.md` exists
@@ -11,7 +12,7 @@ Purpose: Verify an AI agent has correctly loaded and is adhering to project conf
 ## Load Order and Merge
 - [ ] Agent read `.bmad-core/core-config.yaml` first
 - [ ] Agent read `.axovia-flow/flow-config.yaml` second
-- [ ] Extension values override core unless core marks non-overridable
+- [ ] Extension values override any conflicting configuration with core unless core marks non-overridable
 
 ## Resolved Settings Confirmed to User
 - [ ] story_root/devStoryLocation

@@ -1,8 +1,21 @@
-# Story: Robust Multi-Sonicator Test Framework Setup — Unit & Acceptance Alignment
+# Story 2.0: Testing Framework Setup
 
-**Date:** 2025-09-04  
-**Author:** Scrum Master (Bob)  
-**Status:** Draft
+**Story ID**: S-2.0
+**Epic**: Epic 2: Testing Infrastructure
+**Priority**: High
+**Owner**: Scrum Master
+**Created**: 2025-09-04
+**Updated**: 2025-01-09
+
+## Status
+
+Draft
+
+## Story
+
+**As a** QA engineer,
+**I want** a robust multi-sonicator test framework with unit and acceptance testing alignment,
+**so that** I can ensure product robustness and traceability across all testing levels.
 
 ---
 

@@ -7,6 +7,7 @@ import TestExecutionIndicator from './components/TestExecutionIndicator'
 import Header from './components/Header'
 import HelpSystem from './components/HelpSystem'
 import SettingsPanel from './components/SettingsPanel'
+import HardwareConfigPanel from './components/HardwareConfigPanel'
 import ProgressBarDemo from './components/ProgressBarDemo'
 
 
@@ -21,7 +22,7 @@ import { useKeyboardShortcuts, createAppShortcuts } from './hooks/useKeyboardSho
 function App() {
   const [helpVisible, setHelpVisible] = useState(false)
   const [highlightedPins, setHighlightedPins] = useState<string[]>([])
-  const [activeTab, setActiveTab] = useState<'hardware' | 'testing' | 'arduino-commands' | 'settings'>('hardware')
+  const [activeTab, setActiveTab] = useState<'hardware' | 'testing' | 'arduino-commands' | 'settings' | 'config'>('hardware')
   const [currentTestExecution, setCurrentTestExecution] = useState<any>(null)
   const [keyboardShortcutsEnabled, setKeyboardShortcutsEnabled] = useState(true)
 
@@ -42,6 +43,7 @@ function App() {
     toggleTestingTab: () => setActiveTab('testing'),
     toggleAnalyticsTab: () => {}, // Disabled - Analytics removed
     toggleSettingsTab: () => setActiveTab('settings'),
+    toggleConfigTab: () => setActiveTab('config'),
     pingHardware: () => {
       // Trigger ping command
       const startTime = Date.now()
@@ -252,6 +254,12 @@ function App() {
             >
               ⚙️ Settings
             </button>
+            <button
+              className={`tab-button ${activeTab === 'config' ? 'active' : ''}`}
+              onClick={() => setActiveTab('config')}
+            >
+              🔧 Hardware Config
+            </button>
           </div>
 
           {/* Tab Content */}
@@ -293,6 +301,12 @@ function App() {
                   }}
                 />
                 <ProgressBarDemo />
+              </div>
+            )}
+
+            {activeTab === 'config' && (
+              <div className="config-tab">
+                <HardwareConfigPanel />
               </div>
             )}
           </div>

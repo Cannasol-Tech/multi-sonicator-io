@@ -1,0 +1,164 @@
+workflows:
+  - name: Test — Full Suite
+    command: make test
+    tags: [tests, ci, standards]
+    description: Run unit + acceptance + integration per company standards.
+
+  - name: Test — Unit Only
+    command: make test-unit
+    tags: [tests, unit]
+    description: Run Unity unit tests with coverage.
+
+  - name: Test — Acceptance (BDD)
+    command: make test-acceptance
+    tags: [tests, acceptance, bdd]
+    description: Run Behave acceptance tests (HIL-aware).
+
+  - name: Test — Integration (HIL)
+    command: make test-integration
+    tags: [tests, integration, hil]
+    description: Run HIL integration tests (hardware required).
+
+  - name: Test — Unit (Module)
+    command: make test-unit-$module
+    tags: [tests, unit, module]
+    description: Run unit tests for a specific module.
+    arguments:
+      - name: module
+        suggestions: [communication, hal, control, sonicator]
+        default: communication
+
+  - name: CI — Unit Pipeline
+    command: make ci
+    tags: [ci, reports]
+    description: CI pipeline (unit tests, executive + coverage reports).
+
+  - name: CI — Full Test Suite
+    command: make ci-test
+    tags: [ci, tests]
+    description: Full CI suite (unit, acceptance) with release artifacts.
+
+  - name: CI — Local Simulation
+    command: make ci-local
+    tags: [ci, local]
+    description: Run local CI simulation runner.
+
+  - name: Reports — Executive
+    command: make generate-executive-report && open final
+    tags: [reports]
+    description: Generate executive report (unit) and open final/.
+
+  - name: Reports — Coverage Summary
+    command: make generate-coverage-report && open final/coverage-summary.json
+    tags: [reports, coverage]
+    description: Generate coverage summary and open it.
+
+  - name: Standards — Sync
+    command: make sync-standards
+    tags: [standards]
+    description: Sync docs/standards with canonical source.
+
+  - name: Standards — Check
+    command: make check-standards
+    tags: [standards]
+    description: Verify standards are up to date.
+
+  - name: Firmware — Build
+    command: make build
+    tags: [firmware, build]
+    description: Build latest production firmware (PlatformIO env).
+
+  - name: Firmware — Upload to Device
+    command: make upload-to-device
+    tags: [firmware, upload, hil]
+    description: Upload production firmware to ATmega32A via Arduino as ISP.
+
+  - name: Harness — Upload Arduino Test Harness
+    command: make upload-harness
+    tags: [hil, harness]
+    description: Upload the Arduino Test Harness sketch.
+
+  - name: Device — Monitor Serial
+    command: make monitor-device
+    tags: [device, serial, hil]
+    description: Open serial monitor for the device.
+
+  - name: Web UI — Dev Servers
+    command: make web-ui-dev
+    tags: [web, ui, dev]
+    description: Start Web UI backend and frontend in dev mode.
+
+  - name: Web UI — Sandbox
+    command: make web-ui-sandbox
+    tags: [web, ui, sandbox, hil]
+    description: End-to-end sandbox flow (build, program, harness, servers, open UI).
+
+  - name: Web UI — Sandbox (Auto)
+    command: make web-ui-sandbox-auto
+    tags: [web, ui, sandbox, hil]
+    description: Automated sandbox flow for CI-like runs.
+
+  - name: Web UI — Tests
+    command: make web-ui-test
+    tags: [web, ui, tests]
+    description: Run Web UI tests with coverage thresholds.
+
+  - name: Docs — Open Pin Matrix
+    command: open docs/planning/pin-matrix.md
+    tags: [docs, hil]
+    description: Open the sole source of truth for pin assignments.
+
+  - name: Dev — Agent Suite (tmuxp)
+    command: tmuxp load .tmuxp/sonicator-dev.yaml
+    tags: [dev, agents, tmux]
+    description: Launch multi-pane agent suite (tests, firmware, web UI, reports, standards).
+
+  - name: Dev — Attach Agent Suite
+    command: tmux attach -t sonicator-dev || tmux ls
+    tags: [dev, agents, tmux]
+    description: Attach to existing tmux session (or list sessions if not running).
+
+  - name: Docs — BMAD Agents Guide
+    command: open docs/guides/warp-bmad-agents.md
+    tags: [docs, agents]
+    description: Open the guide to set up BMAD agents in Warp AI.
+
+  - name: Agents — Open Global Rules
+    command: open .warp/agents/bmad-global-rules.txt
+    tags: [agents]
+    description: View/copy BMAD Global Rules for Warp AI custom instructions.
+
+  - name: Agents — Open Standards Agent Prompt
+    command: open .warp/agents/standards-agent.txt
+    tags: [agents]
+    description: View/copy the Standards Agent system prompt.
+
+  - name: Agents — Open Testing Agent Prompt
+    command: open .warp/agents/testing-agent.txt
+    tags: [agents]
+    description: View/copy the Testing Agent system prompt.
+
+  - name: Agents — Open HIL Agent Prompt
+    command: open .warp/agents/hil-agent.txt
+    tags: [agents]
+    description: View/copy the HIL Agent system prompt.
+
+  - name: Agents — Open Web UI Agent Prompt
+    command: open .warp/agents/webui-agent.txt
+    tags: [agents]
+    description: View/copy the Web UI Agent system prompt.
+
+  - name: Agents — Open Release Agent Prompt
+    command: open .warp/agents/release-agent.txt
+    tags: [agents]
+    description: View/copy the Release Agent system prompt.
+
+  - name: Agents — Open Compliance Agent Prompt
+    command: open .warp/agents/compliance-agent.txt
+    tags: [agents]
+    description: View/copy the Compliance Agent system prompt.
+
+  - name: Agents — Open Repo Navigator Agent Prompt
+    command: open .warp/agents/repo-navigator-agent.txt
+    tags: [agents]
+    description: View/copy the Repo Navigator Agent system prompt.

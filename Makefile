@@ -10,6 +10,7 @@
 .PHONY: test-unit-communication test-unit-hal test-unit-control test-unit-sonicator validate-config generate-traceability-report manage-pending-scenarios update-pending-scenarios ci-local
 .PHONY: web-ui-install web-ui-dev web-ui-build web-ui-sandbox web-ui-test web-ui-clean
 .PHONY: validate-traceability check-compliance update-standards sync-standards check-standards generate-executive-report generate-coverage-report generate-complete-executive-report
+.PHONY: nexus-lens-status nexus-lens-validate nexus-lens-start nexus-lens-test nexus-lens-report nexus-lens-simulate
 
 #  Make Targets
 
@@ -30,8 +31,11 @@ install-deps: update-standards
 # Check and install dependencies if needed
 check-deps:
 	@echo "🔍 Checking Python dependencies..."
-	@python3 -c "import behave, serial, pytest" 2>/dev/null || (echo "📦 Installing missing dependencies..." && pip3 install -r requirements-testing.txt)
-	@echo "✅ All Python dependencies available"
+	@python3 -c "import behave, serial, pytest" 2>/dev/null && echo "✅ All Python dependencies available" || \
+		( echo "⚠️  Python test deps missing; preparing local virtualenv at web-ui/venv"; \
+		  python3 -m venv web-ui/venv >/dev/null 2>&1 || true; \
+		  . web-ui/venv/bin/activate && pip install -r requirements-testing.txt >/dev/null 2>&1 || true; \
+		  echo "ℹ️  Continuing without system-wide installs (PEP 668 safe)." )
 
 # Check and install PlatformIO if needed
 check-pio:
@@ -543,3 +547,75 @@ sync-standards: update-standards
 check-standards:
 	@python3 scripts/sync_company_standards.py --check-only
 
+## Nexus Lens Testing Framework Targets
+
+# Show Nexus Lens status and configuration
+nexus-lens-status:
+	@echo "🔍 Nexus Lens Status"
+	@./nexus-lens status
+
+# Validate Nexus Lens configuration
+nexus-lens-validate:
+	@echo "✅ Validating Nexus Lens configuration"
+	@./nexus-lens config validate
+
+# Start Nexus Lens testing interface (hardware mode)
+nexus-lens-start: check-deps
+	@echo "🚀 Starting Nexus Lens testing interface"
+	@./nexus-lens start
+
+# Start Nexus Lens in simulation mode (no hardware required)
+nexus-lens-simulate: check-deps
+	@echo "🔧 Starting Nexus Lens in simulation mode"
+	@./nexus-lens start --simulate
+
+# Run tests through Nexus Lens
+nexus-lens-test: check-deps
+	@echo "🧪 Running tests through Nexus Lens"
+	@./nexus-lens test
+
+# Run specific test suite through Nexus Lens
+nexus-lens-test-unit: check-deps
+	@echo "🧪 Running unit tests through Nexus Lens"
+	@./nexus-lens test --suite unit
+
+nexus-lens-test-integration: check-deps
+	@echo "🧪 Running integration tests through Nexus Lens"
+	@./nexus-lens test --suite integration
+
+nexus-lens-test-acceptance: check-deps
+	@echo "🧪 Running acceptance tests through Nexus Lens"
+	@./nexus-lens test --suite acceptance
+
+# Generate reports through Nexus Lens
+nexus-lens-report:
+	@echo "📊 Generating executive report through Nexus Lens"
+	@./nexus-lens report --type executive
+
+nexus-lens-coverage:
+	@echo "📊 Generating coverage report through Nexus Lens"
+	@./nexus-lens report --type coverage
+
+nexus-lens-complete-report:
+	@echo "📊 Generating complete report through Nexus Lens"
+	@./nexus-lens report --type complete
+
+# Nexus Lens help
+nexus-lens-help:
+	@echo "🏗️ Nexus Lens - Hardware-in-the-Loop Testing Framework"
+	@echo ""
+	@echo "Available Nexus Lens targets:"
+	@echo "  nexus-lens-status           - Show Nexus Lens status and configuration"
+	@echo "  nexus-lens-validate         - Validate Nexus Lens configuration files"
+	@echo "  nexus-lens-start            - Start testing interface (hardware mode)"
+	@echo "  nexus-lens-simulate         - Start testing interface (simulation mode)"
+	@echo "  nexus-lens-test             - Run all test suites"
+	@echo "  nexus-lens-test-unit        - Run unit tests only"
+	@echo "  nexus-lens-test-integration - Run integration tests only"
+	@echo "  nexus-lens-test-acceptance  - Run acceptance tests only"
+	@echo "  nexus-lens-report           - Generate executive report"
+	@echo "  nexus-lens-coverage         - Generate coverage report"
+	@echo "  nexus-lens-complete-report  - Generate complete report"
+	@echo "  nexus-lens-help             - Show this help message"
+	@echo ""
+	@echo "Direct CLI usage: ./nexus-lens <command> [options]"

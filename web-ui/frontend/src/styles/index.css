@@ -5659,17 +5659,17 @@
 
 /* Enhanced parameter cards */
 .control-section .mb-3.p-3.bg-gray-50 {
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  border: 1px solid #e2e8f0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   transition: all 0.2s ease;
 }
 
 .control-section .mb-3.p-3.bg-gray-50:hover {
-  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-  border-color: #cbd5e1;
+  background: var(--bg-tertiary);
+  border-color: var(--border-color-hover);
   transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 /* Arduino Command Log Tab */

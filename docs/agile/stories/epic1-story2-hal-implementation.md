@@ -1,12 +1,21 @@
-# Story: Hardware Abstraction Layer (HAL) Implementation
+# Story 1.2: Hardware Abstraction Layer (HAL)
 
-## Status: Ready for Development
+**Story ID**: S-1.2
+**Epic**: Epic 1: Foundational Control & Communication
+**Priority**: High
+**Owner**: Scrum Master
+**Created**: 2025-01-09
+**Updated**: 2025-01-09
+
+## Status
+
+Ready for Development
 
 ## Story
 
-As a **firmware developer**,
-I want **a hardware abstraction layer that provides consistent interfaces to ATmega32A peripherals**,
-So that **higher-level modules can interact with hardware without direct register manipulation**.
+**As a** firmware developer,
+**I want** a hardware abstraction layer that provides consistent interfaces to ATmega32A peripherals,
+**so that** higher-level modules can interact with hardware without direct register manipulation.
 
 ## Epic Context
 

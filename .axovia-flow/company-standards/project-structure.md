@@ -79,9 +79,14 @@ See [Root Directory Standard](root-directory.md) for complete implementation det
 
 ## Complete Directory Structure Standard
 
+Every File that is listed in this directory structure is not required but OPTIONAL based on needs of a given project.  Use best judgement and project context to determine if a file is necessary.
+
 ```text
 project-root/
 ├── .axovia-flow/              # Axovia Flow extension configuration (if applicable)
+|   ├── .scripts/              # Axovia Flow scripts (if applicable -- used internally by Axovia Flow™)
+|   |   ├── README.md          # Scripts documentation
+    ├── agents.yaml            # Axovia Flow agents (if applicable -- used internally by Axovia Flow™)  
 │   ├── flow-config.yaml       # Extension configuration
 │   ├── company-standards/     # Organization-specific standards
 │   ├── templates/             # Custom templates

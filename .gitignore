@@ -77,12 +77,31 @@ coverage/
 docs/_build/
 docs/.doctrees/
 reports/
+final/
+acceptance-junit/
+integration-junit/
+ci_results.json
 
 # CI/CD artifacts
 build_output.txt
 nightly_report.md
 manifest.json
 *.tar.gz
+
+# Web UI dependencies and build artifacts
+web-ui/frontend/node_modules/
+web-ui/backend/node_modules/
+web-ui/frontend/dist/
+web-ui/backend/dist/
+web-ui/venv/
+web-ui/htmlcov/
+
+# Python virtual environments
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
 
 # Temporary and backup files
 tmp/

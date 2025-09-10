@@ -1,0 +1,189 @@
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# File: Axovia Flow™ Project Configuration
+# Author: Stephen Boyett
+# Company: Axovia AI
+# Version: 1.0
+# @brief: Project-specific configuration for Axovia Flow services
+# Date: 2025-09-10
+# _____________________________________________
+
+# Project Information
+project:
+  name: "Axovia Flow"
+  version: "1.0.0"
+  description: "Persistent Agentic Workflow System - Multi-agent orchestration platform"
+  environment: "development"  # development, staging, production
+
+# Service Configuration
+services:
+  # Orchestrator Service Configuration
+  orchestrator:
+    host: "localhost"
+    port: 8080
+    log_level: "INFO"
+    shutdown_timeout: 30
+    
+  # Director of Flow Service Configuration
+  director:
+    host: "localhost"
+    port: 8081
+    log_level: "INFO"
+    shutdown_timeout: 30
+    
+  # MCP Server Configuration
+  mcp_server:
+    host: "0.0.0.0"
+    port: 8000
+    log_level: "INFO"
+    shutdown_timeout: 30
+
+# Database Configuration
+database:
+  # Orchestrator Database
+  orchestrator:
+    path: "state/orchestrator.db"
+    connection_timeout: 30
+    query_timeout: 10
+    
+  # Director Database
+  director:
+    path: "state/director.db"
+    connection_timeout: 30
+    query_timeout: 10
+
+# Logging Configuration
+logging:
+  format: "json"
+  rotation: "daily"
+  retention: "30 days"
+  level: "INFO"
+  
+  # Service-specific log levels (overrides global level)
+  services:
+    orchestrator: "INFO"
+    director: "INFO"
+    mcp_server: "INFO"
+
+# Development Configuration
+development:
+  # Auto-reload services on code changes
+  auto_reload: true
+  
+  # Debug mode settings
+  debug: true
+  
+  # Test database paths (separate from production)
+  test_databases:
+    orchestrator: "state/test_orchestrator.db"
+    director: "state/test_director.db"
+
+# Production Configuration
+production:
+  # Security settings
+  security:
+    enable_cors: false
+    allowed_origins: []
+    enable_https: false
+    ssl_cert_path: ""
+    ssl_key_path: ""
+  
+  # Performance settings
+  performance:
+    max_connections: 100
+    connection_pool_size: 10
+    request_timeout: 30
+
+# Agent Configuration Overrides
+agents:
+  # Default timeout for agent operations
+  default_timeout: 300
+  
+  # Maximum concurrent agents
+  max_concurrent: 5
+  
+  # Agent-specific settings
+  settings:
+    retry_attempts: 3
+    retry_delay: 1.0
+
+# File Paths (relative to project root)
+paths:
+  state_directory: "state"
+  logs_directory: "logs"
+  config_directory: "config"
+  schemas_directory: "schemas"
+  reports_directory: "reports"
+
+# Feature Flags
+features:
+  enable_mcp_server: true
+  enable_health_checks: true
+  enable_metrics: true
+  enable_agent_registry: true
+  enable_blackboard: true
+
+# Monitoring and Health Checks
+monitoring:
+  health_check_interval: 30  # seconds
+  metrics_collection: true
+  performance_monitoring: true
+  
+  # Health check endpoints
+  endpoints:
+    orchestrator: "/health"
+    director: "/health"
+    mcp_server: "/health"
+
+# Integration Settings
+integration:
+  # External service configurations
+  external_services:
+    openai:
+      timeout: 30
+      max_retries: 3
+    anthropic:
+      timeout: 30
+      max_retries: 3
+      
+  # Webhook configurations
+  webhooks:
+    enabled: false
+    endpoints: []
+
+# Environment-specific Overrides
+environments:
+  development:
+    services:
+      orchestrator:
+        log_level: "DEBUG"
+      director:
+        log_level: "DEBUG"
+    development:
+      debug: true
+      auto_reload: true
+      
+  staging:
+    services:
+      orchestrator:
+        host: "0.0.0.0"
+        port: 8080
+      director:
+        host: "0.0.0.0"
+        port: 8081
+    logging:
+      level: "INFO"
+      
+  production:
+    services:
+      orchestrator:
+        host: "0.0.0.0"
+        port: 80
+      director:
+        host: "0.0.0.0"
+        port: 81
+    logging:
+      level: "WARNING"
+    production:
+      security:
+        enable_cors: true
+        enable_https: true

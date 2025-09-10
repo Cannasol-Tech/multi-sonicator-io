@@ -32,8 +32,8 @@ To create comprehensive, company-standard Feature Specifications that define EXA
 ### 0. Load Configuration and Validate Prerequisites
 
 - Load `.bmad-core/core-config.yaml` from the project root if available
-- Verify access to `.axovia-flow/company-standards/feature-specification-standard.md`
-- If Feature Specification Standard not found, HALT and inform user: "Feature Specification Standard not found. This file is required for creating compliant feature specifications. Please ensure .axovia-flow/company-standards/feature-specification-standard.md exists before proceeding."
+- Verify access to `.axovia-flow/company-standards/feature-specification.md`
+- If Feature Specification Standard not found, HALT and inform user: "Feature Specification Standard not found. This file is required for creating compliant feature specifications. Please ensure .axovia-flow/company-standards/feature-specification.md exists before proceeding."
 - Extract key configurations and standard requirements
 
 ### 1. Feature Identification and Context Gathering

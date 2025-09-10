@@ -82,7 +82,9 @@ sections:
   - id: planning-dod-compliance
     title: Planning Definition of Done Compliance
     instruction: |
-      Verify compliance with the Planning Definition of Done standard before implementation begins.
+      - Verify compliance with the Planning Definition of Done standard before implementation begins.
+      - As an Agent Adhering to a Definition of Done, I should ALWAYS mark checkboxes as I complete tasks.
+      - As a Quality Assurance Agent, I should verify that all checkboxes are marked as complete before marking the Plan as complete.
     content: |
       ## Planning Definition of Done Compliance
 
@@ -179,6 +181,8 @@ sections:
           {{story_acceptance_criteria}}
 
           ### Implementation Checklist
+            - As an Agent Adhering to a Definition of Done, I should ALWAYS mark checkboxes as I complete tasks.
+            - As a Quality Assurance Agent, I should verify that all checkboxes are marked as complete before marking the Plan as complete.
 
           #### 📋 Planning & Setup
           - [ ] Story requirements reviewed and understood

@@ -1,12 +1,21 @@
-# BMad-Method Brownfield Story: Arduino Test Harness Web UI Integration
+# Story 3.0: Web UI Integration
 
-## Story Overview
-
-**Epic**: Hardware Testing Infrastructure Modernization
-**Story Type**: Brownfield Integration
+**Story ID**: S-3.0
+**Epic**: Epic 3: Hardware Testing Infrastructure Modernization
 **Priority**: Medium-High
-**Story Points**: 13 (Large)
-**Sprint Duration**: 3 sprints (6 weeks)
+**Owner**: Scrum Master
+**Created**: 2025-09-05
+**Updated**: 2025-01-09
+
+## Status
+
+InProgress
+
+## Story
+
+**As a** hardware test engineer,
+**I want** a web-based UI for Arduino test harness integration,
+**so that** I can control and monitor hardware testing through an intuitive browser interface.
 
 ## 🎯 Current Progress Status (Updated: 2025-09-05)
 

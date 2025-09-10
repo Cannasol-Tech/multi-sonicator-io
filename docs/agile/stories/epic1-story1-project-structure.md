@@ -1,22 +1,21 @@
-# Story: Project Structure & Build System Setup
+# Story 1.1: Project Structure & Build System
 
-## Status: Complete
+**Story ID**: S-1.1
+**Epic**: Epic 1: Foundational Control & Communication
+**Priority**: Critical
+**Owner**: Scrum Master
+**Created**: 2025-01-09
+**Updated**: 2025-01-09
+
+## Status
+
+Done
 
 ## Story
 
-As a **firmware develope### Debug Log References
-
-- Build successful: PlatformIO ATmega32A firmware compilation completed without errors
-- Memory usage: RAM 9.4% (193/2048 bytes), Flash 4.4% (1440/32768 bytes) - excellent resource utilization
-- Pin assignments: Status LED correctly mapped to PD2 (Pin 16) per pin matrix specification
-- Serial communication: 9600 baud rate configured for debugging output
-- Makefile fix: Added .PHONY declarations to resolve "up to date" issue with make targets
-- **HIL Upload Success: Firmware uploaded successfully via Arduino as ISP (device signature 0x1e9502 confirmed)**
-- **HIL Programming: Multiple firmware versions uploaded successfully without errors**
-- **HIL Debug: Simplified test firmware (1440 bytes) uploaded to test multiple pins (PD2, PB0, PB1)**
-- **HIL Resolution: Crystal oscillator issue resolved by switching to internal 8MHz oscillator**
-- **HIL Success: LED blinking confirmed on hardware - ATmega32A executing firmware correctly!** **a properly configured embedded project structure with build system**,
-So that **I can develop, test, and deploy ATmega32A firmware efficiently**.
+**As a** firmware developer,
+**I want** a properly configured embedded project structure with build system,
+**so that** I can develop, test, and deploy ATmega32A firmware efficiently.
 
 ## Epic Context
 

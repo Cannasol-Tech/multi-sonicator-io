@@ -1,7 +1,15 @@
-# Story: Acceptance Testing Framework with HIL Integration
+# Story 1.0: HIL Testing Framework
 
-### Status
-Ready for Review
+**Story ID**: S-1.0
+**Epic**: Epic 1: Foundational Control & Communication
+**Priority**: Critical
+**Owner**: Scrum Master
+**Created**: 2025-01-09
+**Updated**: 2025-01-09
+
+## Status
+
+Done
 
 ---
 
@@ -16,6 +24,7 @@ Ready for Review
 **EXCEPTIONAL IMPLEMENTATION QUALITY** - This HIL Testing Framework represents a comprehensive, production-ready test architecture that exceeds industry standards for embedded systems testing. The implementation demonstrates exceptional attention to detail, robust error handling, and a sophisticated understanding of hardware-in-the-loop testing requirements.
 
 **Key Quality Indicators:**
+
 - Complete BDD framework integration with seamless Behave environment setup
 - Sophisticated Arduino Test Wrapper providing safe ATmega32A interface
 - Interactive Sandbox CLI enabling both automated and manual testing workflows
@@ -38,6 +47,7 @@ Ready for Review
 **✅ COMPLETE COVERAGE - All 43 Acceptance Criteria Implemented:**
 
 **BDD Acceptance Testing (ACs 1-10):** ✅ VERIFIED
+
 - Behave BDD framework operational with @hil tagged scenarios
 - environment.py configures HIL controller for hardware scenarios  
 - BDD feature files cover GPIO, ADC, PWM, MODBUS validation
@@ -45,6 +55,7 @@ Ready for Review
 - All HIL components contained within test/acceptance/ directory
 
 **Arduino Test Harness (ACs 11-15):** ✅ VERIFIED
+
 - Arduino test harness acts as safe middleman for ATmega32A
 - Sandbox mode provides safe testing environment
 - ISP programming interface integrated
@@ -52,6 +63,7 @@ Ready for Review
 - Safe output pin control established
 
 **Sandbox CLI (ACs 16-27):** ✅ VERIFIED
+
 - Interactive continuous loop with hardware interaction
 - All required commands implemented: monitor_on/off, help, status, set, reset, upload, build, clean, quit
 - Real-time pin monitoring with 1-second updates
@@ -59,6 +71,7 @@ Ready for Review
 - Complete command set for manual hardware testing
 
 **Hardware Validation (ACs 28-33):** ✅ VERIFIED
+
 - Pin connectivity validation per docs/planning/pin-matrix.md (SOLE SOURCE OF TRUTH)
 - Power supply verification (24V input, 5V/3.3V rails)
 - Crystal oscillator timing verification
@@ -66,6 +79,7 @@ Ready for Review
 - Wrapper pin assignments match pin matrix exactly
 
 **MODBUS Testing (ACs 34-38):** ✅ VERIFIED
+
 - MODBUS RTU slave communication at 115200 baud
 - Register read/write testing for all defined ranges
 - CRC validation and error handling
@@ -73,6 +87,7 @@ Ready for Review
 - Protocol compliance verification
 
 **Quality Requirements (ACs 39-43):** ✅ VERIFIED
+
 - Comprehensive documentation with setup instructions
 - Automated test execution with pass/fail reporting
 - Test repeatability and deterministic results
@@ -82,6 +97,7 @@ Ready for Review
 ### Pin Matrix Compliance Verification
 
 **✅ CRITICAL COMPLIANCE CONFIRMED** - Implementation strictly follows `docs/planning/pin-matrix.md` as SOLE SOURCE OF TRUTH:
+
 - Arduino Test Wrapper pin assignments match pin matrix Wrapper Pin column exactly
 - Single-channel Uno R4 WiFi HIL harness prototype properly documented
 - All pin mappings verified against Product Owner approved specifications
@@ -89,6 +105,7 @@ Ready for Review
 ### Test Architecture Assessment
 
 **✅ EXCELLENT FRAMEWORK DESIGN:**
+
 - **Multi-level Testing**: BDD acceptance, integration, hardware validation, protocol testing
 - **Framework Architecture**: Clear separation between HIL Controller, Hardware Interface, Programmer components  
 - **Configuration Management**: YAML-based with profile switching (simulavr/hil)
@@ -98,6 +115,7 @@ Ready for Review
 ### Security Review
 
 **✅ SECURE HARDWARE INTERACTION:**
+
 - Arduino Test Wrapper provides safe middleman interface preventing direct ATmega32A access
 - No unsafe hardware operations possible through framework
 - Secure programming interface through Arduino as ISP
@@ -106,6 +124,7 @@ Ready for Review
 ### Performance Considerations
 
 **✅ PERFORMANCE REQUIREMENTS MET:**
+
 - MODBUS communication response time <100ms specified and implemented
 - Hardware validation timeouts properly defined
 - Efficient serial communication protocols
@@ -144,6 +163,7 @@ Ready for Review
 ### Epic Enablement Assessment
 
 **✅ PERFECTLY POSITIONED FOR EPIC 1 CONTINUATION:**
+
 - Epic 1 Story 1: Project Structure (HIL verification framework ready)
 - Epic 1 Story 2: HAL Implementation (HIL validation infrastructure complete)
 - Epic 1 Story 3: MODBUS Framework (HIL protocol testing ready)
@@ -152,6 +172,7 @@ Ready for Review
 ### Definition of Done Verification
 
 **✅ ALL 14 DOD ITEMS COMPLETED:**
+
 - [x] Behave BDD acceptance tests operational with HIL integration
 - [x] @hil tagged scenarios operational with real ATmega32A hardware
 - [x] test/acceptance/ directory contains all HIL framework components
@@ -175,6 +196,7 @@ Ready for Review
 ### Future Recommendations
 
 **No immediate actions required.** Consider for future epics:
+
 - Oscilloscope integration for advanced signal analysis
 - Multi-channel testing expansion when hardware available
 - Performance benchmarking automation
@@ -187,9 +209,9 @@ Ready for Review
 
 ## Story
 
-As a **firmware developer**,
-I want **Behave BDD acceptance tests integrated with Hardware-in-the-Loop (HIL) framework that validates all firmware functionality using real ATmega32A hardware**,
-So that **every Epic 1 story can be verified against actual hardware behavior through automated acceptance scenarios, ensuring reliable integration before deployment**.
+**As a** firmware developer,
+**I want** Behave BDD acceptance tests integrated with Hardware-in-the-Loop (HIL) framework that validates all firmware functionality using real ATmega32A hardware,
+**so that** every Epic 1 story can be verified against actual hardware behavior through automated acceptance scenarios, ensuring reliable integration before deployment.
 
 ## Epic Context
 
@@ -234,7 +256,7 @@ Goal: Establish core firmware structure, basic sonicator control, and MODBUS com
 
 ### Arduino Test Harness Requirements
 
-11. Arduino test harness/wrapper firmware acts as middleman between ATmega32A and HIL framework
+1. Arduino test harness/wrapper firmware acts as middleman between ATmega32A and HIL framework
 12. Arduino harness provides safe sandbox mode for ATmega32A testing
 13. Arduino harness can upload firmware to ATmega32A via ISP interface
 14. Arduino harness monitors and reports ATmega32A pin states in real-time
@@ -900,11 +922,9 @@ hil-clean:
 - **Hardware-only approach** - No emulation alternatives supported
 - **Pin assignments must strictly follow `docs/planning/pin-matrix.md`** - Any deviations require pin matrix updates first
 
----
+## Tasks / Subtasks
 
-## Tasks
-
-- [x] **Task 1: HIL Framework Core Structure**
+- [x] **Task 1: HIL Framework Core Structure** (AC: 1-10)
   - [x] Create test/acceptance/hil_framework/ directory structure
   - [x] Implement HILController class with Behave integration
   - [x] Implement HardwareInterface for Arduino Test Wrapper communication
@@ -913,7 +933,7 @@ hil-clean:
   - [x] Create SandboxCLI for manual HIL testing
   - [x] Create hil_config.yaml configuration file
 
-- [x] **Task 2: BDD Feature Implementation**
+- [x] **Task 2: BDD Feature Implementation** (AC: 1-10)
   - [x] Create hil_basic_connectivity.feature for hardware connectivity tests
   - [x] Create hil_power_verification.feature for power supply validation
   - [x] Create hil_gpio_functionality.feature for GPIO testing
@@ -921,32 +941,77 @@ hil-clean:
   - [x] Create hil_pwm_generation.feature for PWM output testing
   - [x] Create hil_modbus_communication.feature for MODBUS protocol testing
 
-- [x] **Task 3: Step Definition Implementation**
+- [x] **Task 3: Step Definition Implementation** (AC: 1-10)
   - [x] Create hil_hardware_steps.py with hardware assertion steps
   - [x] Create hil_connectivity_steps.py for connection verification
   - [x] Create hil_modbus_steps.py for MODBUS communication steps
   - [x] Create hil_control_steps.py for device control operations
 
-- [x] **Task 4: Arduino Test Harness**
+- [x] **Task 4: Arduino Test Harness** (AC: 11-15)
   - [x] Create arduino_harness/src/main.cpp firmware
   - [x] Implement atmega_interface.cpp for ATmega32A control
   - [x] Implement sandbox_mode.cpp for manual testing
   - [x] Implement pin_monitor.cpp for real-time monitoring
   - [x] Create platformio.ini for Arduino harness build
 
-- [x] **Task 5: Behave Environment Integration**
+- [x] **Task 5: Behave Environment Integration** (AC: 1-10)
   - [x] Update environment.py with HIL controller initialization
   - [x] Add hardware readiness checks for @hil tagged scenarios
   - [x] Implement scenario-level hardware setup and cleanup
   - [x] Add HIL framework error handling and fallbacks
 
-- [x] **Task 6: Build System Integration**
+- [x] **Task 6: Build System Integration** (AC: 39-43)
   - [x] Update Makefile with HIL testing targets
   - [x] Add test-acceptance-hil target with hardware validation
   - [x] Add hardware-sandbox, upload-harness, monitor-device targets
   - [x] Add hil-setup, hil-clean, and individual HIL test targets
   - [x] Update requirements-testing.txt with HIL dependencies
   - [x] Verify scripts/hil_cli.py exists for CLI operations
+
+## Dev Notes
+
+### Relevant Source Tree Information
+
+**HIL Framework Location**: `test/acceptance/hil_framework/`
+- All HIL components contained within acceptance testing directory
+- Framework integrates with existing Behave BDD test structure
+- Arduino Test Harness provides safe middleman interface to ATmega32A
+
+**Key Integration Points**:
+- `test/acceptance/environment.py` - Behave environment with HIL controller setup
+- `test/acceptance/features/` - BDD feature files with @hil tagged scenarios
+- `test/acceptance/steps/` - HIL-integrated step definitions
+- `Makefile` - HIL testing targets integrated with existing build system
+
+**Pin Matrix Compliance**: All pin assignments strictly follow `docs/planning/pin-matrix.md` as SOLE SOURCE OF TRUTH
+
+**Hardware Requirements**:
+- Arduino Uno R4 WiFi configured as ISP programmer
+- ATmega32A target hardware assembled and powered
+- USB serial adapters for communication
+- Basic test equipment (multimeter, optional oscilloscope)
+
+### Testing
+
+**Test Framework**: Behave BDD with HIL integration
+**Test Location**: `test/acceptance/` directory
+**Test Standards**:
+- All hardware tests tagged with @hil
+- BDD Given-When-Then scenario format
+- Hardware validation through Arduino Test Wrapper
+- Real-time pin monitoring and control capabilities
+
+**Testing Frameworks**:
+- Behave BDD for acceptance scenarios
+- PySerial for hardware communication
+- modbus-tk for MODBUS protocol testing
+- Arduino Test Wrapper for safe ATmega32A interface
+
+**Specific Requirements**:
+- All tests require real hardware (no emulation)
+- Test repeatability across multiple hardware runs
+- Comprehensive error handling and graceful fallbacks
+- Integration with existing CI/CD pipeline
 
 ---
 
@@ -1003,14 +1068,14 @@ Claude 3.5 Sonnet
 - Pin assignments strictly follow docs/planning/pin-matrix.md specifications
 - Ready for hardware validation with Arduino Uno R4 WiFi and ATmega32A target
 
-### Change Log
+## Change Log
 
-- 2024-01-XX: Created comprehensive HIL framework structure
-- 2024-01-XX: Implemented all BDD features for hardware validation scenarios
-- 2024-01-XX: Created Arduino Test Harness firmware for safe ATmega32A control
-- 2024-01-XX: Integrated HIL controller with Behave environment
-- 2024-01-XX: Updated build system with HIL testing targets and dependencies
-
-### Status
-
-Ready for Review
+| Date | Version | Description | Author |
+|------|---------|-------------|--------|
+| 2025-01-09 | 1.0 | Updated story format to Axovia Flow standards | Scrum Master |
+| 2024-09-02 | 0.9 | QA review completed - exceptional implementation quality | Quinn (Test Architect) |
+| 2024-01-XX | 0.8 | Updated build system with HIL testing targets and dependencies | Dev Agent |
+| 2024-01-XX | 0.7 | Integrated HIL controller with Behave environment | Dev Agent |
+| 2024-01-XX | 0.6 | Created Arduino Test Harness firmware for safe ATmega32A control | Dev Agent |
+| 2024-01-XX | 0.5 | Implemented all BDD features for hardware validation scenarios | Dev Agent |
+| 2024-01-XX | 0.1 | Created comprehensive HIL framework structure | Dev Agent |

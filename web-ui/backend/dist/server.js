@@ -11,6 +11,7 @@ const HardwareInterface_1 = require("./adapters/HardwareInterface");
 const WebSocketHandler_1 = require("./websocket/WebSocketHandler");
 const TestAutomationService_1 = require("./services/TestAutomationService");
 const index_1 = require("./routes/index");
+const ConfigService_1 = require("./config/ConfigService");
 const app = (0, express_1.default)();
 const server = (0, http_1.createServer)(app);
 const wss = new ws_1.WebSocketServer({ server, path: '/ws' });
@@ -20,6 +21,20 @@ app.use((0, cors_1.default)({
     credentials: true
 }));
 app.use(express_1.default.json());
+// Initialize configuration service
+console.log('🔧 Loading hardware configuration...');
+try {
+    ConfigService_1.configService.loadConfig();
+    const summary = ConfigService_1.configService.getConfigSummary();
+    console.log(`✅ Configuration loaded: ${summary.project} v${summary.version}`);
+    console.log(`🔌 Sonicators: ${summary.sonicators.connected}/${summary.sonicators.total} connected`);
+    console.log(`🧪 Test capabilities: ${summary.capabilities.supported}/${summary.capabilities.total} supported`);
+    console.log(`🔧 Simulation mode: ${summary.simulation_mode ? 'enabled' : 'disabled'}`);
+}
+catch (error) {
+    console.error('❌ Failed to load configuration:', error);
+    console.log('⚠️  Continuing with default hardware interface...');
+}
 // Initialize hardware interface
 const hardwareInterface = new HardwareInterface_1.HardwareInterface();
 // Initialize test automation service

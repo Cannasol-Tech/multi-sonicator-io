@@ -13,12 +13,14 @@ This document establishes the **SOLE SOURCE OF TRUTH** for multi-agent collabora
 ## Scope and Authority
 
 ### Applicability
+
 - **ALL** projects using multiple AI agents for development workflows
 - **ALL** AI-driven document generation and review processes  
 - **ALL** automated quality assurance and testing workflows
 - **ALL** project management and coordination activities involving AI agents
 
 ### Compliance Requirement
+
 - **MANDATORY**: All company projects MUST follow these standards
 - **NO EXCEPTIONS**: Deviations require written CTO approval
 - **ENFORCEMENT**: Project reviews will validate compliance
@@ -26,36 +28,44 @@ This document establishes the **SOLE SOURCE OF TRUTH** for multi-agent collabora
 ## Core Collaboration Principles
 
 ### 1. Deterministic Agent Handoffs
+
 **Requirement**: Agent transitions must be predictable, repeatable, and auditable.
 
 **Implementation Standards**:
+
 - Explicit handoff protocols with defined inputs/outputs
 - Validation gates at every agent transition
 - Rollback capability for failed handoffs
 - Complete audit trail of all transitions
 
 ### 2. Centralized State Management
+
 **Requirement**: All agents operate on consistent, synchronized state.
 
 **Implementation Standards**:
+
 - Single source of truth for workflow state
 - ACID-compliant state operations
 - Atomic state transitions with rollback capability
 - Real-time state synchronization across all agents
 
 ### 3. Role-Based Agent Specialization
+
 **Requirement**: Each agent has clearly defined, non-overlapping responsibilities.
 
 **Implementation Standards**:
+
 - Formal agent registry with capability definitions
 - Tool and permission restrictions per agent role
 - Validation that agents stay within defined scope
 - Clear escalation paths for capability gaps
 
 ### 4. Fault-Tolerant Operations
+
 **Requirement**: System continues operation despite individual agent failures.
 
 **Implementation Standards**:
+
 - Automatic retry with exponential backoff
 - Circuit breaker patterns for persistent failures
 - Graceful degradation strategies
@@ -64,6 +74,7 @@ This document establishes the **SOLE SOURCE OF TRUTH** for multi-agent collabora
 ## Agent Coordination Patterns
 
 ### Pattern 1: Sequential Workflow
+
 ```yaml
 Type: Linear agent chain
 Pattern: PM → Architect → Developer → QA
@@ -72,6 +83,7 @@ Use Case: Standard development workflows
 ```
 
 ### Pattern 2: Parallel Processing
+
 ```yaml
 Type: Concurrent agent execution
 Pattern: Coordinator → [Agent A, Agent B, Agent C] → Merger
@@ -80,6 +92,7 @@ Use Case: Independent work streams
 ```
 
 ### Pattern 3: Review and Revision
+
 ```yaml
 Type: Iterative improvement cycle
 Pattern: Creator → Reviewer → Creator (repeat until approved)
@@ -88,6 +101,7 @@ Use Case: Document review and quality assurance
 ```
 
 ### Pattern 4: Producer-Consumer
+
 ```yaml
 Type: Continuous processing pipeline
 Pattern: Producer → Queue → Consumer(s)
@@ -100,6 +114,7 @@ Use Case: CI/CD and automated testing
 ### 1. Agent Registry Standard
 
 **Required Agent Definition**:
+
 ```yaml
 agent:
   id: "unique_identifier"
@@ -127,12 +142,14 @@ agent:
 ### 2. State Management Standard
 
 **Required State Store**:
+
 - **Development**: SQLite with ACID transactions
 - **Production**: PostgreSQL with connection pooling
 - **Schema**: Versioned with automated migrations
 - **Backup**: Automated with point-in-time recovery
 
 **State Update Protocol**:
+
 ```python
 # MANDATORY state update pattern
 def update_workflow_state(workflow_id, agent_id, new_state):
@@ -149,6 +166,7 @@ def update_workflow_state(workflow_id, agent_id, new_state):
 ### 3. Message Passing Standard
 
 **Required Message Format**:
+
 ```json
 {
   "message_id": "uuid_v4",
@@ -170,6 +188,7 @@ def update_workflow_state(workflow_id, agent_id, new_state):
 ```
 
 **Message Delivery Requirements**:
+
 - **Guarantee**: At-least-once delivery with idempotency
 - **Ordering**: FIFO within workflow context
 - **Persistence**: Messages stored until acknowledged
@@ -178,18 +197,21 @@ def update_workflow_state(workflow_id, agent_id, new_state):
 ### 4. Handoff Protocol Standard
 
 **Pre-Handoff Validation (MANDATORY)**:
+
 1. **Artifact Completeness**: All required outputs present
 2. **Schema Validation**: Outputs validate against JSON schemas
 3. **Quality Gates**: Automated quality checks pass
 4. **Dependency Check**: All prerequisites satisfied
 
 **Handoff Execution (MANDATORY)**:
+
 1. **Atomic State Update**: Workflow state updated in single transaction
 2. **Artifact Transfer**: Files moved to receiving agent context
 3. **Context Preservation**: Complete workflow history maintained
 4. **Agent Notification**: Receiving agent notified with full context
 
 **Post-Handoff Verification (MANDATORY)**:
+
 1. **Receipt Acknowledgment**: Receiving agent confirms handoff
 2. **Context Validation**: Agent has all required context
 3. **Capability Verification**: Agent can perform required tasks
@@ -198,12 +220,14 @@ def update_workflow_state(workflow_id, agent_id, new_state):
 ## Error Handling and Recovery
 
 ### Error Classification Standard
+
 - **Transient**: Network timeouts, temporary resource unavailability
 - **Permanent**: Invalid inputs, capability mismatches, schema violations
 - **System**: Infrastructure failures, service outages
 - **Logic**: Workflow definition errors, configuration problems
 
 ### Recovery Strategy Requirements
+
 ```python
 # MANDATORY error handling pattern
 def handle_agent_error(error_type, context, attempt_count):
@@ -220,6 +244,7 @@ def handle_agent_error(error_type, context, attempt_count):
 ```
 
 ### Retry Policy Standard
+
 - **Initial Delay**: 1 second
 - **Backoff Multiplier**: 2.0 (exponential)
 - **Maximum Delay**: 300 seconds (5 minutes)
@@ -229,18 +254,21 @@ def handle_agent_error(error_type, context, attempt_count):
 ## Quality Assurance Requirements
 
 ### 1. Schema Validation (MANDATORY)
+
 - **All Outputs**: Must validate against predefined JSON schemas
 - **Schema Versioning**: Semantic versioning with backward compatibility
 - **Validation Timing**: Before every agent handoff
 - **Failure Handling**: Automatic revision requests for invalid outputs
 
 ### 2. Quality Gates (MANDATORY)
+
 - **Completeness**: All required artifacts present and accessible
 - **Correctness**: Outputs meet defined acceptance criteria
 - **Consistency**: Outputs align with previous workflow decisions
 - **Compliance**: Outputs follow all company standards
 
 ### 3. Testing Requirements (MANDATORY)
+
 - **Unit Tests**: Individual agent logic and decision-making
 - **Integration Tests**: Multi-agent workflow scenarios
 - **Error Recovery Tests**: All error conditions and recovery paths
@@ -249,6 +277,7 @@ def handle_agent_error(error_type, context, attempt_count):
 ## Monitoring and Observability
 
 ### Required Metrics (MANDATORY)
+
 ```yaml
 Workflow Metrics:
   - completion_rate_percentage
@@ -270,6 +299,7 @@ System Metrics:
 ```
 
 ### Logging Standard (MANDATORY)
+
 ```json
 {
   "timestamp": "2025-01-06T10:30:00.000Z",
@@ -292,18 +322,21 @@ System Metrics:
 ## Security and Compliance
 
 ### 1. Agent Authentication (MANDATORY)
+
 - **Unique Credentials**: Each agent instance has unique authentication
 - **Role-Based Access**: Permissions based on agent role definitions
 - **Credential Rotation**: Automatic rotation every 90 days
 - **Audit Logging**: All authentication events logged
 
 ### 2. Data Protection (MANDATORY)
+
 - **Encryption**: All data encrypted in transit (TLS 1.3) and at rest (AES-256)
 - **Access Control**: Agents access only required workflow context
 - **Data Retention**: Automated cleanup of expired workflow data
 - **Audit Trail**: Complete record of all data access and modifications
 
 ### 3. Workflow Integrity (MANDATORY)
+
 - **Digital Signatures**: Critical handoffs cryptographically signed
 - **Tamper Detection**: Automated detection of unauthorized state changes
 - **Rollback Capability**: Point-in-time recovery for security incidents
@@ -312,24 +345,28 @@ System Metrics:
 ## Implementation Checklist
 
 ### Phase 1: Foundation (MANDATORY)
+
 - [ ] Agent registry with role definitions implemented
 - [ ] Centralized state store with ACID transactions deployed
 - [ ] Message queue system with delivery guarantees operational
 - [ ] Basic handoff protocol with validation gates functional
 
 ### Phase 2: Quality Assurance (MANDATORY)
+
 - [ ] Schema validation for all agent outputs implemented
 - [ ] Quality gates enforced at all handoff points
 - [ ] Error handling and retry mechanisms operational
 - [ ] Comprehensive logging and monitoring deployed
 
 ### Phase 3: Security and Compliance (MANDATORY)
+
 - [ ] Agent authentication and authorization implemented
 - [ ] Data encryption and access controls deployed
 - [ ] Audit logging and compliance monitoring operational
 - [ ] Security incident response procedures tested
 
 ### Phase 4: Optimization (RECOMMENDED)
+
 - [ ] Performance monitoring and optimization implemented
 - [ ] Advanced error recovery strategies deployed
 - [ ] Workflow optimization based on metrics implemented
@@ -338,17 +375,20 @@ System Metrics:
 ## Governance and Compliance
 
 ### Change Management
+
 - **Standard Updates**: Require Architecture Review Board approval
 - **Implementation Changes**: Require project lead approval
 - **Emergency Changes**: Require CTO approval with post-incident review
 
 ### Compliance Monitoring
+
 - **Quarterly Reviews**: All projects audited for compliance
 - **Automated Checks**: CI/CD pipelines validate standard compliance
 - **Violation Reporting**: Automatic alerts for standard violations
 - **Remediation**: 30-day timeline for compliance issues
 
 ### Training Requirements
+
 - **All Engineers**: Must complete multi-agent collaboration training
 - **Project Leads**: Must certify in standard implementation
 - **Architects**: Must demonstrate standard design proficiency
@@ -356,6 +396,7 @@ System Metrics:
 ## Workflow Definition Standards
 
 ### Standard Workflow File Format
+
 ```yaml
 # MANDATORY workflow definition format
 workflow:
@@ -433,6 +474,7 @@ workflow:
 ```
 
 ### Workflow Validation Requirements
+
 - **Schema Compliance**: All workflows must validate against workflow schema
 - **Agent Availability**: All required agents must be registered and available
 - **Dependency Validation**: Stage dependencies must form valid DAG (no cycles)
@@ -441,6 +483,7 @@ workflow:
 ## Agent Configuration Standards
 
 ### Standard Agent Configuration Format
+
 ```yaml
 # MANDATORY agent configuration format
 agents:
@@ -545,16 +588,18 @@ agents:
 ## Support and Resources
 
 ### Documentation
+
 - **Implementation Guides**: Step-by-step implementation instructions
 - **Best Practices**: Proven patterns and anti-patterns
 - **Troubleshooting**: Common issues and resolution procedures
 - **Examples**: Reference implementations and code samples
 
 ### Support Channels
-- **Technical Support**: engineering-support@company.com
-- **Standard Questions**: architecture-team@company.com
-- **Training Requests**: training@company.com
-- **Emergency Issues**: on-call-engineering@company.com
+
+- **Technical Support**: <engineering-support@company.com>
+- **Standard Questions**: <architecture-team@company.com>
+- **Training Requests**: <training@company.com>
+- **Emergency Issues**: <on-call-engineering@company.com>
 
 ---
 

@@ -55,6 +55,7 @@ export const createAppShortcuts = (actions: {
   toggleTestingTab: () => void
   toggleAnalyticsTab: () => void // Keep for compatibility but will be disabled
   toggleSettingsTab: () => void
+  toggleConfigTab: () => void
   pingHardware: () => void
   exportData: () => void
   refreshConnection: () => void
@@ -83,6 +84,12 @@ export const createAppShortcuts = (actions: {
     ctrlKey: true,
     action: actions.toggleSettingsTab,
     description: 'Toggle Settings tab'
+  },
+  {
+    key: 'c',
+    ctrlKey: true,
+    action: actions.toggleConfigTab,
+    description: 'Toggle Hardware Config tab'
   },
   {
     key: ' ',

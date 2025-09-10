@@ -47,6 +47,42 @@ make upload-to-device
 make update-standards
 ```
 
+### Nexus Lens Testing Framework
+
+This project includes **Nexus Lens**, a comprehensive hardware-in-the-loop (HIL) testing framework specifically configured for embedded systems testing.
+
+#### Quick Start with Nexus Lens
+
+```bash
+# Check Nexus Lens status
+make nexus-lens-status
+
+# Validate configuration
+make nexus-lens-validate
+
+# Start testing interface (simulation mode - no hardware required)
+make nexus-lens-simulate
+
+# Start testing interface (hardware mode - requires physical setup)
+make nexus-lens-start
+
+# Run all tests
+make nexus-lens-test
+
+# Generate executive report
+make nexus-lens-report
+```
+
+#### Features
+
+- **Hardware Configuration**: Pre-configured for ATmega32A DUT and Arduino Uno R3 test harness
+- **Multi-Suite Testing**: Integrates Unity (unit), pytest (integration), and Behave (acceptance) tests
+- **Real-time Monitoring**: Web-based interface for test execution and hardware monitoring
+- **Executive Reporting**: Comprehensive test reports with coverage analysis
+- **Simulation Mode**: Test without physical hardware for development
+
+See [Nexus Lens Documentation](.nexus-lens/README.md) for detailed usage instructions.
+
 ## Documentation
 
 ### Company Standards

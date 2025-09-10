@@ -30,10 +30,10 @@ export default function TestExecutionIndicator({ execution, visible }: TestExecu
       </div>
 
       <div className="indicator-progress" style={{ margin: '8px 0' }}>
-        <div style={{ 
-          width: '100%', 
-          height: '6px', 
-          background: '#e9ecef', 
+        <div style={{
+          width: '100%',
+          height: '6px',
+          background: 'var(--bg-tertiary)',
           borderRadius: '3px',
           overflow: 'hidden'
         }}>
@@ -73,12 +73,12 @@ export default function TestExecutionIndicator({ execution, visible }: TestExecu
           </div>
           
           {stepProgress.total > 0 && (
-            <div style={{ fontSize: '11px', color: '#6c757d' }}>
+            <div style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>
               Step {stepProgress.current} / {stepProgress.total}
               <div style={{
                 width: '100%',
                 height: '3px',
-                background: '#e9ecef',
+                background: 'var(--bg-tertiary)',
                 borderRadius: '2px',
                 marginTop: '2px',
                 overflow: 'hidden'
@@ -92,7 +92,7 @@ export default function TestExecutionIndicator({ execution, visible }: TestExecu
                   style={{
                     width: `${(stepProgress.current / stepProgress.total) * 100}%`,
                     height: '100%',
-                    background: (execution.status === 'running' || execution.status === 'passed') ? undefined : '#17a2b8',
+                    background: (execution.status === 'running' || execution.status === 'passed') ? undefined : 'var(--color-info)',
                     transition: 'width 0.3s ease'
                   }}
                 />
@@ -123,11 +123,11 @@ export default function TestExecutionIndicator({ execution, visible }: TestExecu
       </div>
 
       {execution.status !== 'running' && (
-        <div style={{ 
-          marginTop: '8px', 
-          padding: '6px', 
-          background: execution.status === 'passed' ? '#d4edda' : '#f8d7da',
-          color: execution.status === 'passed' ? '#155724' : '#721c24',
+        <div style={{
+          marginTop: '8px',
+          padding: '6px',
+          background: execution.status === 'passed' ? 'rgba(16, 185, 129, 0.15)' : 'rgba(220, 38, 38, 0.15)',
+          color: execution.status === 'passed' ? 'var(--color-success)' : 'var(--color-error)',
           borderRadius: '4px',
           fontSize: '12px',
           textAlign: 'center'

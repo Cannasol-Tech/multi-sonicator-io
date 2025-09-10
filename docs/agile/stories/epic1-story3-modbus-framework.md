@@ -1,12 +1,21 @@
-# Story: MODBUS RTU Communication Framework
+# Story 1.3: MODBUS RTU Communication Framework
 
-## Status: Ready for Development
+**Story ID**: S-1.3
+**Epic**: Epic 1: Foundational Control & Communication
+**Priority**: High
+**Owner**: Scrum Master
+**Created**: 2025-01-09
+**Updated**: 2025-01-09
+
+## Status
+
+Ready for Development
 
 ## Story
 
-As a **PLC/HMI integration engineer**,
-I want **a MODBUS RTU slave interface that exposes sonicator control and monitoring registers**,
-So that **the existing automation system can control and monitor sonicator operations**.
+**As a** PLC/HMI integration engineer,
+**I want** a MODBUS RTU slave interface that exposes sonicator control and monitoring registers,
+**so that** the existing automation system can control and monitor sonicator operations.
 
 ## Epic Context
 

@@ -76,8 +76,8 @@ Ensure AI Coding Agents consistently follows our house rules and repository stan
 ## Tooling & Safety
 
 - Always use your task manager for all tasks - even when a single task is only required, use the task manager.
-- When working, create a task list using your task manager for all tasks to be completed at all times. 
-- Be consistent with updating your task list using your task manager tool. 
+- When working, create a task list using your task manager for all tasks to be completed at all times.
+- Be consistent with updating your task list using your task manager tool.
 - The task manager should be utilized and kept up to date whether working on a single test or a large feature with many tasks.  Using the task manager helps increase visibility for project management and alignment between Agents and Project Managers.
 
 ### Dependency Management

@@ -21,7 +21,7 @@ The Axovia Flow framework follows a two-tier template system:
 ### Feature Specification Templates
 - **Purpose**: Generate feature specifications following company standards
 - **Output Location**: `docs/agile/features/`
-- **Standard Compliance**: `.axovia-flow/company-standards/feature-specification-standard.md`
+- **Standard Compliance**: `.axovia-flow/company-standards/feature-specification.md`
 
 ### Implementation Plan Templates  
 - **Purpose**: Create visual implementation plans with story-based checklists

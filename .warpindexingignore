@@ -1,0 +1,61 @@
+# Warp Indexing Ignore File
+# Excludes large directories and build artifacts from Warp's codebase indexing
+
+# Node.js dependencies (115MB in frontend, 35MB in backend)
+web-ui/frontend/node_modules/
+web-ui/backend/node_modules/
+web-ui/venv/
+
+# Build artifacts and distributions
+web-ui/frontend/dist/
+web-ui/backend/dist/
+web-ui/htmlcov/
+build/
+.pio/
+
+# Test results and coverage reports
+coverage/
+final/
+acceptance-junit/
+integration-junit/
+ci_results.json
+
+# Documentation build artifacts
+docs/_build/
+docs/.doctrees/
+
+# Temporary files and caches
+tmp/
+temp/
+.cache/
+.pytest_cache/
+
+# IDE and OS files
+.DS_Store
+.vscode/
+.idea/
+*.sublime-*
+
+# Large resource files (if any)
+resource/large_files/
+resource/binaries/
+
+# Log files
+*.log
+logs/
+
+# Backup files
+*.bak
+*.backup
+backup/
+
+# Python virtual environments
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+
+# Large test data files
+test/data/large/
+test/fixtures/large/

@@ -107,7 +107,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
             <div className="pin-controls">
               <div className="pin-indicator">
                 <div className="status-dot analog"></div>
-                <span className="text-xs text-gray-500">Frequency</span>
+                <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>Frequency</span>
               </div>
             </div>
 
@@ -126,7 +126,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
               </div>
             </div>
 
-            <div className="text-xs text-gray-400 mt-2">
+            <div className="text-xs mt-2" style={{ color: 'var(--text-tertiary)' }}>
               {formatTimestamp(pinState.timestamp)}
             </div>
           </div>
@@ -147,7 +147,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
               {isPWM && (
                 <div className="pwm-indicator">
                   <div className="pwm-pulse-dot"></div>
-                  <span className="text-xs text-gray-500 ml-1">PWM</span>
+                  <span className="text-xs ml-1" style={{ color: 'var(--text-secondary)' }}>PWM</span>
                 </div>
               )}
             </div>
@@ -167,19 +167,19 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
               {isPWM && (
                 <div className="pwm-monitoring-indicator">
                   <div className="pwm-live-dot"></div>
-                  <span className="text-xs text-green-600 font-medium">Live Monitoring</span>
+                  <span className="text-xs font-medium" style={{ color: 'var(--color-success)' }}>Live Monitoring</span>
                 </div>
               )}
 
               <div className="pin-indicator">
                 <div className={`status-dot ${isPWM ? 'pwm' : isHigh ? 'high' : isAnalog ? 'analog' : 'low'}`}></div>
-                <span className="text-xs text-gray-500">
+                <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>
                   {isPWM ? 'PWM' : isAnalog ? 'Analog' : (isHigh ? 'High' : 'Low')}
                 </span>
               </div>
             </div>
 
-            <div className="text-xs text-gray-400 mt-2">
+            <div className="text-xs mt-2" style={{ color: 'var(--text-tertiary)' }}>
               {formatTimestamp(pinState.timestamp)}
             </div>
           </div>
@@ -345,7 +345,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
       {/* System Status */}
       <div className="control-section">
         <h3>System Status</h3>
-        <div className="text-xs text-gray-500 mb-2">
+        <div className="text-xs mb-2" style={{ color: 'var(--text-secondary)' }}>
           Last update: {formatTimestamp(hardwareState.lastUpdate)}
         </div>
         <div className="text-xs">

@@ -179,35 +179,42 @@ This project is divided into three main epics, each concluding with a significan
 
 ### 9.1. Resolved Questions
 
-**✅ CT2000 Specifications (Resolved 2025-09-09)**
+#### ✅ CT2000 Specifications (Resolved 2025-09-09)
+
 * **Frequency Range:** 18kHz - 20.5kHz operating range
 * **FREQ_DIV10_X Output:** 1.8kHz - 2.05kHz (frequency divided by 10 for digital monitoring)
 * **Power Output:** 0-8.160 VDC representing 0-100% power operation
 * **Power Scaling:** 5.44mV = 1 WATT (maximum ~1,500 Watts at 8.160V)
 
-**✅ Hardware Verification (Resolved 2025-09-09)**
+#### ✅ Hardware Verification (Resolved 2025-09-09)
+
 * **Overload Reset Pin 2:** Confirmed available and functional
 * **Internal Amplitude Control Switch:** Verified existence and functionality
 
-**✅ ATmega32A Pin Allocation (Resolved 2025-09-09)**
+#### ✅ ATmega32A Pin Allocation (Resolved 2025-09-09)
+
 * **Pin Matrix:** Documented as SOLE SOURCE OF TRUTH in `docs/planning/pin-matrix.md`
 * **Pin Capacity:** 40 pins available vs 39 pins required - sufficient capacity confirmed
 
-**✅ Frequency Measurement Implementation (Resolved 2025-09-09)**
+#### ✅ Frequency Measurement Implementation (Resolved 2025-09-09)
+
 * **Approach:** Monitor ticks over set time period for all four FREQ_DIV10_X pins
 * **Base Class:** Agnostic monitoring for 1.8kHz - 2.05kHz range
 * **Implementation:** Tick counting method for simultaneous 4-channel measurement
 
-**✅ System Redundancy (Resolved 2025-09-09)**
+#### ✅ System Redundancy (Resolved 2025-09-09)
+
 * **Hardware Redundancy:** Not implemented in current design
 * **Safety Mechanisms:** Comprehensive failsafe operations already defined (Watchdog timer, communication loss failsafe, safe power-up state)
 * **Conclusion:** Existing safety mechanisms provide adequate protection
 
-**✅ CE Marking (Resolved 2025-09-09)**
+#### ✅ CE Marking (Resolved 2025-09-09)
+
 * **Requirement:** Not applicable - US Market only deployment
 * **European Conformity:** Not required for this project scope
 
-**✅ Backward Compatibility (Resolved 2025-09-09)**
+#### ✅ Backward Compatibility (Resolved 2025-09-09)
+
 * **Approach:** `CONNECTED_SONICATORS_COUNT` MODBUS register for auto-detection
 * **Implementation:** ATmega32A polls signals from four sonicator modules
 * **Testing:** Not required - multiplexer serves as source of truth for connected units
