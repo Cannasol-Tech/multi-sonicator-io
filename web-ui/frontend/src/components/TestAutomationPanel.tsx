@@ -203,6 +203,113 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
             </div>
           )}
 
+          {/* Tag Filtering Section */}
+          <div className="test-automation-section">
+            <div className="section-header">
+              <h3 style={{ color: 'var(--text-primary)', margin: 0, fontSize: '16px', fontWeight: '600' }}>
+                🏷️ Filter by Tags
+              </h3>
+              <button
+                className="btn-clear-tags"
+                onClick={() => {
+                  setSelectedTags([])
+                  setFilterTags([])
+                }}
+                disabled={selectedTags.length === 0}
+                style={{
+                  background: selectedTags.length > 0 ? 'var(--bg-tertiary)' : 'transparent',
+                  border: '1px solid var(--border-color)',
+                  borderRadius: '6px',
+                  padding: '4px 8px',
+                  fontSize: '12px',
+                  color: selectedTags.length > 0 ? 'var(--text-secondary)' : 'var(--text-tertiary)',
+                  cursor: selectedTags.length > 0 ? 'pointer' : 'not-allowed'
+                }}
+              >
+                Clear Tags
+              </button>
+            </div>
+            
+            {/* Tag Filter Buttons */}
+            <div className="tag-filter-container" style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '6px',
+              marginBottom: '12px'
+            }}>
+              {availableTags.map((tag) => (
+                <button
+                  key={tag}
+                  className={`tag-filter-btn ${selectedTags.includes(tag) ? 'selected' : ''}`}
+                  onClick={() => handleTagToggle(tag)}
+                  style={{
+                    background: selectedTags.includes(tag)
+                      ? 'var(--color-primary)'
+                      : 'var(--bg-tertiary)',
+                    color: selectedTags.includes(tag)
+                      ? 'white'
+                      : 'var(--text-secondary)',
+                    border: `1px solid ${selectedTags.includes(tag)
+                      ? 'var(--color-primary)'
+                      : 'var(--border-color)'}`,
+                    borderRadius: '20px',
+                    padding: '4px 12px',
+                    fontSize: '11px',
+                    fontWeight: '500',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    whiteSpace: 'nowrap'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!selectedTags.includes(tag)) {
+                      e.currentTarget.style.background = 'var(--bg-quaternary)'
+                      e.currentTarget.style.borderColor = 'var(--color-primary)'
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!selectedTags.includes(tag)) {
+                      e.currentTarget.style.background = 'var(--bg-tertiary)'
+                      e.currentTarget.style.borderColor = 'var(--border-color)'
+                    }
+                  }}
+                >
+                  @{tag}
+                </button>
+              ))}
+            </div>
+            
+            {/* Active Filter Summary */}
+            {selectedTags.length > 0 && (
+              <div className="active-filters-summary" style={{
+                padding: '8px 12px',
+                background: 'var(--bg-tertiary)',
+                borderRadius: '6px',
+                border: '1px solid var(--border-color)',
+                marginBottom: '12px'
+              }}>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between'
+                }}>
+                  <span style={{
+                    color: 'var(--text-secondary)',
+                    fontSize: '12px'
+                  }}>
+                    📊 Filtered: {filteredScenarios.length} scenarios
+                  </span>
+                  <span style={{
+                    color: 'var(--color-primary)',
+                    fontSize: '12px',
+                    fontWeight: '500'
+                  }}>
+                    Tags: {selectedTags.join(', ')}
+                  </span>
+                </div>
+              </div>
+            )}
+          </div>
+
           {/* Test Scenario Controls */}
           <div className="test-automation-section">
             <div className="section-header">
@@ -286,13 +393,61 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
                         cursor: 'pointer'
                       }}
                     />
-                    <span style={{
-                      color: 'var(--text-primary)',
-                      fontWeight: '500',
-                      fontSize: '14px'
-                    }}>
-                      {scenario.name}
-                    </span>
+                    <div style={{ flex: 1 }}>
+                      <div style={{
+                        color: 'var(--text-primary)',
+                        fontWeight: '500',
+                        fontSize: '14px',
+                        marginBottom: '2px'
+                      }}>
+                        {scenario.name}
+                      </div>
+                      {/* Scenario Tags */}
+                      {scenario.tags && scenario.tags.length > 0 && (
+                        <div className="scenario-tags" style={{
+                          display: 'flex',
+                          flexWrap: 'wrap',
+                          gap: '4px',
+                          marginTop: '4px'
+                        }}>
+                          {scenario.tags.slice(0, 3).map((tag) => (
+                            <span
+                              key={tag}
+                              className="scenario-tag"
+                              style={{
+                                background: selectedTags.includes(tag)
+                                  ? 'var(--color-primary)'
+                                  : 'var(--bg-quaternary)',
+                                color: selectedTags.includes(tag)
+                                  ? 'white'
+                                  : 'var(--text-tertiary)',
+                                fontSize: '9px',
+                                fontWeight: '500',
+                                padding: '2px 6px',
+                                borderRadius: '10px',
+                                border: selectedTags.includes(tag)
+                                  ? '1px solid var(--color-primary)'
+                                  : '1px solid var(--border-color)'
+                              }}
+                            >
+                              @{tag}
+                            </span>
+                          ))}
+                          {scenario.tags.length > 3 && (
+                            <span
+                              style={{
+                                color: 'var(--text-tertiary)',
+                                fontSize: '9px',
+                                fontWeight: '500',
+                                padding: '2px 6px'
+                              }}
+                            >
+                              +{scenario.tags.length - 3}
+                            </span>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
 
                   <button

@@ -2398,6 +2398,258 @@
   transition: none !important;
 }
 
+/* Enhanced Dark Theme Styles for Signal Monitoring Cards */
+.dark-theme .parameter-card-compact {
+  background: linear-gradient(135deg, #2a3441 0%, #374151 100%) !important;
+  border: 1px solid #4b5563 !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark-theme .parameter-card-compact:hover {
+  background: linear-gradient(135deg, #374151 0%, #475569 100%) !important;
+  border-color: #6b7280 !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Enhanced pin state displays for dark theme */
+.dark-theme .pin-state.enhanced {
+  background: linear-gradient(135deg, #374151 0%, #475569 100%) !important;
+  border: 2px solid #6b7280 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark-theme .pin-state.enhanced.high {
+  background: linear-gradient(135deg, #065f46 0%, #047857 100%) !important;
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2), 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark-theme .pin-state.enhanced.analog {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2), 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark-theme .pin-state.enhanced.pwm {
+  background: linear-gradient(135deg, #581c87 0%, #6b21a8 100%) !important;
+  border-color: #8b5cf6 !important;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2), 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Enhanced text visibility for dark theme */
+.dark-theme .parameter-card-compact .text-sm,
+.dark-theme .parameter-card-compact .text-xs {
+  color: #e5e7eb !important;
+}
+
+.dark-theme .parameter-card-compact .parameter-connection {
+  color: #9ca3af !important;
+}
+
+/* Enhanced badge styling for dark theme */
+.dark-theme .parameter-card-compact .text-xs.px-2.py-1.rounded {
+  background: #475569 !important;
+  color: #d1d5db !important;
+  border: 1px solid #6b7280 !important;
+}
+
+/* Frequency meter visuals */
+.frequency-meter {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+.frequency-meter-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #60a5fa, #22c55e);
+}
+.frequency-meter-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-tertiary);
+  margin-top: 4px;
+}
+
+/* Enhanced frequency control styling */
+.frequency-controls-enhanced {
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.frequency-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  padding: 4px 8px;
+  transition: all 0.3s ease;
+}
+
+.frequency-input-container:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.frequency-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  width: 50px;
+  text-align: center;
+}
+
+.frequency-input-error {
+  color: var(--color-error) !important;
+}
+
+.frequency-input-container:has(.frequency-input-error) {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.frequency-unit {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-left: 4px;
+}
+
+.frequency-set-btn {
+  background: var(--color-success);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.frequency-set-btn:hover:not(:disabled) {
+  background: #16a34a;
+  transform: translateY(-1px);
+}
+
+.frequency-set-btn:disabled {
+  background: var(--bg-tertiary);
+  color: var(--text-tertiary);
+  cursor: not-allowed;
+}
+
+.preset-buttons {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.frequency-preset-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 6px 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 32px;
+}
+
+.frequency-preset-btn:hover:not(:disabled) {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.frequency-preset-btn.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+.frequency-preset-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.preset-value {
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.preset-unit {
+  font-size: 8px;
+  font-weight: 500;
+  opacity: 0.8;
+  margin-top: 1px;
+}
+
+.frequency-loading {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Frequency controls styling for dark theme */
+.dark-theme .frequency-controls {
+  border-top: 1px solid #4b5563 !important;
+}
+
+.dark-theme .frequency-controls input.input {
+  background: #374151 !important;
+  border: 1px solid #6b7280 !important;
+  color: #e5e7eb !important;
+}
+
+.dark-theme .frequency-controls input.input:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 1px #3b82f6 !important;
+}
+
+.dark-theme .frequency-controls .btn-mini {
+  background: #475569 !important;
+  border-color: #6b7280 !important;
+  color: #e5e7eb !important;
+}
+
+.dark-theme .frequency-controls .btn-mini:hover:not(:disabled) {
+  background: #6b7280 !important;
+  border-color: #9ca3af !important;
+}
+
+.dark-theme .frequency-controls .btn-mini.btn-success {
+  background: #059669 !important;
+  border-color: #10b981 !important;
+  color: white !important;
+}
+
+.dark-theme .frequency-controls .btn-mini.btn-success:hover:not(:disabled) {
+  background: #047857 !important;
+  border-color: #059669 !important;
+}
+
 /* Theme toggle button */
 .theme-toggle {
   font-size: 16px;

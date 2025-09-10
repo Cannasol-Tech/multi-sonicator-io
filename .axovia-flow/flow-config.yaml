@@ -171,13 +171,7 @@ integration:
   # - Second override any conflicting configuration 
   ##### If there are any conflicting configurations the agent should immediatly alert the user after initialization!!! 
   ## index 0 is the lowest priority configuration and should be extended and conflicts overriden by following config
-<<<<<<< HEAD
-  config_load_order:
-    - ".bmad-core/core-config.yaml"   ## BMad Core Configuration     -- priority 0
-    - ".axovia-flow/flow-config.yaml" ## Axovia Flow Configuration   -- priority 1
-=======
   config_load_order: [integration.bmadCoreConfigFile, integration.axoviaFlowConfigFile]
->>>>>>> agent-dev
   use_bmad_config: true
   extends_bmad_core: true
   uses_core_elicitation: true

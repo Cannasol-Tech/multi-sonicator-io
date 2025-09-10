@@ -12,6 +12,7 @@ export class WebSocketHandler {
   private clients: Set<WebSocket> = new Set()
   private hardwareInterface: HardwareInterface
   private testAutomationService?: TestAutomationService
+  private pendingCommands: Map<string, { command: string; timestamp: number }> = new Map()
 
   constructor(hardwareInterface: HardwareInterface, testAutomationService?: TestAutomationService) {
     this.hardwareInterface = hardwareInterface
@@ -54,12 +55,56 @@ export class WebSocketHandler {
       })
     })
 
+    // Handle Arduino command logging for proper command/response pairing
     this.hardwareInterface.on('arduino_command', (commandData) => {
-      this.broadcast({
-        type: 'arduino_command',
-        data: commandData,
-        timestamp: Date.now()
-      })
+      if (commandData.direction === 'sent') {
+        // Store sent command for pairing with response
+        const commandId = `${commandData.timestamp}-${commandData.type}`
+        this.pendingCommands.set(commandId, {
+          command: commandData.data,
+          timestamp: commandData.timestamp
+        })
+        
+        // Broadcast arduino_command_sent message
+        this.broadcast({
+          type: 'arduino_command_sent',
+          data: {
+            command: commandData.data,
+            timestamp: commandData.timestamp,
+            type: commandData.type
+          },
+          timestamp: Date.now()
+        })
+      } else if (commandData.direction === 'received') {
+        // Find matching sent command and create response pair
+        let matchedCommand = null
+        let responseTime = 0
+        
+        // Look for most recent matching command (simple approach)
+        const recentCommands = Array.from(this.pendingCommands.entries())
+          .sort((a, b) => b[1].timestamp - a[1].timestamp)
+          
+        if (recentCommands.length > 0) {
+          const [commandId, commandInfo] = recentCommands[0]
+          matchedCommand = commandInfo.command
+          responseTime = commandData.timestamp - commandInfo.timestamp
+          this.pendingCommands.delete(commandId)
+        }
+        
+        // Broadcast arduino_command_response message
+        this.broadcast({
+          type: 'arduino_command_response',
+          data: {
+            command: matchedCommand || 'Unknown command',
+            response: commandData.data,
+            responseTime: Math.max(responseTime, 0),
+            success: !commandData.data.includes('ERROR') && !commandData.data.includes('FAIL'),
+            error: commandData.data.includes('ERROR') || commandData.data.includes('FAIL') ? commandData.data : undefined,
+            timestamp: commandData.timestamp
+          },
+          timestamp: Date.now()
+        })
+      }
     })
   }
 

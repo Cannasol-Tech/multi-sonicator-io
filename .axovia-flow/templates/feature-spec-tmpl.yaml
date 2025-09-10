@@ -1,3 +1,4 @@
+# FEATURE Specification Template for Axovia Flow™d
 
 template:
   id: feature-specification-template-v1
@@ -5,8 +6,122 @@ template:
   version: 1.0
   output:
     format: markdown
-    filename: docs/agile/features/feature-{{feature_id}}-{{feature_name_kebab}}.md
+    filename: docs/agile/features/FEATURE-{{feature_id}}-{{feature_name_kebab}}.md
     title: "Feature {{feature_id}}: {{feature_name}}"
+
+# Possible Feature States
+feature-states:   
+  - APPROVED
+  - COMPLETE
+  - READY_FOR_DEV
+  - TESTING
+  - IN_PROGRESS
+  - DRAFT
+  - BLOCKED
+  - CANCELLED
+
+# Feature Status
+feature_status:
+  type: choice
+  choices: {{feature-states}}
+  default: DRAFT
+  description: "Current feature status"
+
+requirement_id:
+  type: text
+  description: "PRD Requirement ID (e.g. FR1, NFR2)"
+  required: true
+
+requirement_title:
+  type: text
+  required: false
+  description: "Human-readable title of the PRD requirement"
+
+requirement_description:
+  type: text
+  required: false
+  description: "Short description or summary of the PRD requirement"
+
+requirement_type:
+  type: choice
+  choices: [FR, NFR]
+  required: true
+  description: "Functional (FR) or Non-Functional (NFR)"
+
+requirement_satisfied:
+  type: choice
+  choices: [true, false, partial]
+  default: partial
+  description: "Whether this feature fully satisfies the requirement"
+
+verified:
+  type: boolean
+  default: false
+  description: "Whether the acceptance criteria has been verified"
+
+acceptance_criteria_id:
+  type: text
+  description: "Acceptance Criteria ID (e.g. AC1, AC2)"
+  required: true
+
+acceptance_criteria_description:
+  type: text
+  required: false
+  description: "Short description or summary of the acceptance criteria"
+
+prd-requirement:
+  type: object
+  brief: "PRD FRs partially or fully satisfied by the Functionality Delivered"
+  fields:
+    - id: {{requirement_id}} # e.g., FR1, NFR2
+    - title: {{requirement_title}}
+    - satisfied: {{requirement_satisfied}} # true | partial ( if false, it would not be supported at all ß)
+    - description: {{requirement_description}} # brief description of the requirement
+
+supported:
+  type: object
+  brief: "PRD FRs supported by the Functionality Delivered"
+  detail: "These Reqs are supported or partially implemented by this Feature"
+  purpose: "Enhances Traceability between stories, features, epics and the PRD"
+  format: 
+    - id: {{requirement_id}}
+      title: {{requirement_title}}
+      description: {{requirement_description}}
+      satisfied: {{requirement_satisfied}} # true | false | partial
+  description: "List of PRD FR/NFRs supported by the Functionality Delivered"
+  required: true
+
+# Agent Header in YAML format for quick agent consumption
+agent-header:
+  feature_id: {{feature_id}}
+  name: {{feature_name}}
+  owner: {{owner}}
+  branch: {{branch}}
+  status: {{ feature_status }}
+  created: {{ created_timestamp }}
+  updated: {{ updated_timestamp }}
+  implementation_phase: 
+    type: integer
+    required: false
+    description: "Integer of Containing Implementation Phase if Applicable"
+  epic: {{epic_reference}}
+  supports: {{ supported_requirements }}
+  acceptance_criteria:
+    type: object
+    description: "List of Acceptance Criteria for the Feature"
+    purpose: "Maps to BDD Scenarios and QA Traces for Verification"
+    fields: 
+      - id: {{acceptance_criteria_id}}
+        verified: {{verified}}
+        description: {{acceptance_criteria_description}}
+        required: true
+    required: true
+  definition_of_done: 
+    type: text
+    blocking: true
+    required: true
+    description: "Definition of Done for the Feature"
+    standard: axoviaFlow.checklists.feature_specification_dod
 
 workflow:
   mode: interactive
@@ -105,6 +220,22 @@ sections:
         instruction: Specify precise integration requirements with other system components
         template: "{{integration_points}}"
 
+      - id: performance-requirements
+        title: Performance Requirements
+        instruction: Specify performance criteria with measurable thresholds
+        template: |
+          {{#each performance_requirements}}
+          - {{this}}
+          {{/each}}
+
+      - id: validation-rules
+        title: Validation Rules
+        instruction: Define exact validation rules for all inputs and business rule enforcement
+        template: |
+          {{#each validation_rules}}
+          - {{this}}
+          {{/each}}
+
   - id: acceptance-criteria
     title: Acceptance Criteria
     instruction: |
@@ -126,6 +257,14 @@ sections:
           {{#each secondary_criteria}}
           - [ ] {{this}}
           {{/each}}
+
+      - id: input-output-specs
+        title: Input/Output Specifications
+        instruction: Define exact input/output specifications for this feature
+        template: |
+          - **Input**: {{input_specifications}}
+          - **Processing**: {{processing_requirements}}
+          - **Output**: {{output_specifications}}
       
       - id: definition-of-done
         title: Definition of Done
@@ -134,6 +273,15 @@ sections:
           {{#each done_criteria}}
           - [ ] {{this}}
           {{/each}}
+
+      - id: quality-gates
+        title: Quality Gates
+        instruction: Define specific quality gates for this feature
+        template: |
+          - **Code Review**: {{code_review_criteria}}
+          - **Testing**: {{testing_requirements}}
+          - **Performance**: {{performance_validation}}
+          - **Security**: {{security_validation}}
 
   - id: testing-requirements
     title: Testing Requirements
@@ -163,6 +311,29 @@ sections:
         instruction: Define all error conditions that must be tested
         template: "{{error_condition_testing}}"
 
+  - id: implementation-constraints
+    title: Implementation Constraints
+    instruction: Constraints that must be considered during implementation
+    elicit: true
+    sections:
+      - id: technical-constraints
+        title: Technical Constraints
+        instruction: Specific technical limitations and requirements
+        template: "{{technical_constraints}}"
+
+      - id: business-rules
+        title: Business Rules
+        instruction: Exact business rules that must be enforced
+        template: "{{business_rules}}"
+
+      - id: dependencies
+        title: Dependencies
+        instruction: Define all dependencies and impacts
+        template: |
+          - **Required Before**: {{required_before}}
+          - **Required During**: {{required_during}}
+          - **Impacts**: {{impacts}}
+
   - id: implementation-mapping
     title: Implementation Mapping
     instruction: |
@@ -174,14 +345,6 @@ sections:
         template: |
           {{#each prd_requirements}}
           - **{{requirement_id}}**: {{requirement_description}}
-          {{/each}}
-      
-      - id: implementing-user-stories
-        title: Implementing User Stories
-        instruction: List the user stories that will implement this feature
-        template: |
-          {{#each user_stories}}
-          - **Story {{epic_num}}.{{story_num}}**: {{story_title}}
           {{/each}}
       
       - id: quality-assurance
@@ -233,7 +396,7 @@ sections:
 variables:
   feature_id:
     type: text
-    description: "Feature ID (e.g., F-001)"
+    description: "Feature ID (e.g., FEAT-001)"
     required: true
   
   feature_name:

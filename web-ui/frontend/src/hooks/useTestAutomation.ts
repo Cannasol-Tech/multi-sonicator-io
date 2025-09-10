@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { TestExecution, TestAutomationState } from '../types'
-import { TestAutomationAPI } from '../services/testAutomationApi'
+import { TestAutomationAPI } from '../services/TestAutomationAPI'
 
 export function useTestAutomation() {
   const [state, setState] = useState<TestAutomationState>({
