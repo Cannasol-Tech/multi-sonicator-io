@@ -176,11 +176,10 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
               </div>
             </div>
 
-            {/* Frequency Control Section */}
-            <div className="frequency-controls mt-3 pt-2" style={{ borderTop: '1px solid var(--border-color)' }}>
-              <div className="mb-2">
-                <label className="text-xs font-medium" style={{ color: 'var(--text-secondary)' }}>Set Frequency (kHz):</label>
-                <div className="flex items-center gap-2 mt-1">
+            {/* Compact Frequency Control Section */}
+            <div className="frequency-controls mt-2 pt-2" style={{ borderTop: '1px solid var(--border-color)' }}>
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-1">
                   <input
                     type="number"
                     min="1"
@@ -196,27 +195,26 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
                     placeholder="20.0"
                     className="input text-xs"
                     style={{
-                      padding: '4px 6px',
-                      fontSize: '11px',
-                      width: '60px'
+                      padding: '2px 4px',
+                      fontSize: '10px',
+                      width: '45px',
+                      height: '20px'
                     }}
                     disabled={!connected || configLoading}
                   />
+                  <span className="text-xs" style={{ color: 'var(--text-tertiary)', fontSize: '9px' }}>kHz</span>
                   <button
                     onClick={handleFrequencyInputSubmit}
                     disabled={!connected || configLoading || !frequencyInput}
                     className="btn-mini btn-success"
-                    style={{ fontSize: '10px', padding: '3px 6px' }}
+                    style={{ fontSize: '8px', padding: '1px 4px', height: '18px' }}
                   >
                     Set
                   </button>
                 </div>
-              </div>
-              
-              {/* Frequency Presets */}
-              <div>
-                <span className="text-xs font-medium" style={{ color: 'var(--text-secondary)' }}>Presets:</span>
-                <div className="flex gap-1 mt-1">
+                
+                {/* Compact Frequency Presets */}
+                <div className="flex gap-1">
                   {[20, 25, 30, 35, 40].map(freq => (
                     <button
                       key={freq}
@@ -224,8 +222,10 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
                       disabled={!connected || configLoading}
                       className="btn-mini btn-secondary"
                       style={{
-                        fontSize: '9px',
-                        padding: '2px 4px',
+                        fontSize: '8px',
+                        padding: '1px 3px',
+                        height: '16px',
+                        minWidth: '18px',
                         backgroundColor: configuration.sonicator4.operatingFrequencyKHz === freq ? 'var(--color-success)' : undefined,
                         color: configuration.sonicator4.operatingFrequencyKHz === freq ? 'white' : undefined
                       }}

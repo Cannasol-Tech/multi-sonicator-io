@@ -372,12 +372,18 @@ web-ui-install:
 # Development mode - start both frontend and backend
 web-ui-dev: check-deps
 	@echo "🚀 Starting Web UI in development mode..."
-	@echo "🔧 Starting backend server..."
-	cd web-ui/backend && npm run dev &
-	@echo "🔧 Starting frontend development server..."
-	cd web-ui/frontend && npm run dev &
+	@echo "🔧 Cleaning up any processes on ports 3001 and 3101..."
+	@lsof -ti:3001 | xargs -r kill -9 2>/dev/null || true
+	@lsof -ti:3101 | xargs -r kill -9 2>/dev/null || true
+	@sleep 2
+	@echo "🔧 Starting backend server on port 3001..."
+	@cd web-ui/backend && PORT=3001 npm run dev &
+	@echo "🔧 Starting frontend development server on port 3101..."
+	@cd web-ui/frontend && PORT=3101 npm run dev &
+	@echo "⏳ Waiting for servers to initialize..."
+	@sleep 5
 	@echo "✅ Web UI development servers started"
-	@echo "📱 Frontend: http://localhost:3000"
+	@echo "📱 Frontend: http://localhost:3101"
 	@echo "🔌 Backend API: http://localhost:3001/api"
 	@echo "🔗 WebSocket: ws://localhost:3001/ws"
 
@@ -441,19 +447,23 @@ web-ui-sandbox: check-deps check-pio check-arduino-cli
 
 	@echo ""
 	@echo "Step 8: Starting Web UI servers..."
+	@echo "🔧 Cleaning up any processes on ports 3001 and 3101..."
+	@lsof -ti:3001 | xargs -r kill -9 2>/dev/null || true
+	@lsof -ti:3101 | xargs -r kill -9 2>/dev/null || true
+	@sleep 2
 	@echo "🔧 Starting Web UI backend with HIL integration..."
-	@cd web-ui/backend && npm run dev > /tmp/web-ui-backend.log 2>&1 &
+	@cd web-ui/backend && PORT=3001 npm run dev > /tmp/web-ui-backend.log 2>&1 &
 	@echo "🔧 Starting Web UI frontend..."
-	@cd web-ui/frontend && npm run dev > /tmp/web-ui-frontend.log 2>&1 &
+	@cd web-ui/frontend && PORT=3101 npm run dev > /tmp/web-ui-frontend.log 2>&1 &
 	@echo "⏳ Waiting for servers to start..."
 	@sleep 8
 	@echo "🔍 Checking server status..."
 	@curl -s http://localhost:3001/api/health > /dev/null 2>&1 || echo "⚠️ Backend server may not be ready yet"
-	@curl -s http://localhost:3000 > /dev/null 2>&1 || echo "⚠️ Frontend server may not be ready yet"
+	@curl -s http://localhost:3101 > /dev/null 2>&1 || echo "⚠️ Frontend server may not be ready yet"
 
 	@echo ""
 	@echo "✅ Web UI sandbox mode active"
-	@echo "📱 Web Interface: http://localhost:3000"
+	@echo "📱 Web Interface: http://localhost:3101"
 	@echo "🔌 Backend API: http://localhost:3001/api"
 	@echo "🔗 WebSocket: ws://localhost:3001/ws"
 	@echo "🎯 Hardware: Arduino Test Harness ↔ ATmega32A DUT"
@@ -461,7 +471,7 @@ web-ui-sandbox: check-deps check-pio check-arduino-cli
 	@echo ""
 	@echo "🚀 Opening web interface in default browser..."
 	@sleep 2
-	@open http://localhost:3000 2>/dev/null || xdg-open http://localhost:3000 2>/dev/null || echo "Please open http://localhost:3000 in your browser"
+	@open http://localhost:3101 2>/dev/null || xdg-open http://localhost:3101 2>/dev/null || echo "Please open http://localhost:3101 in your browser"
 
 # Automated sandbox mode - skips hardware setup prompt (for CI/CD)
 web-ui-sandbox-auto: check-deps check-pio check-arduino-cli
