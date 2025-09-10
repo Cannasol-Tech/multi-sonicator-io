@@ -22,18 +22,6 @@ This document serves as the central hub for all testing standards within the org
 
 ## Universal Testing Strategy
 
-> *Testing Guidelines Listed here should be Adhered to by all Agents working in All types of projects*
-
-### Universal Principles
-
-***IMPORTANT:** All project types must adhere to these core principles:*
-
-1. **Mocking Policy**: Mocks are reserved for unit testing only, unless explicitly approved
-2. **Coverage Requirements**: Minimum coverage thresholds defined per project type
-3. **Test Organization**: Structured test directories and naming conventions
-4. **Quality Gates**: Automated validation before story completion
-5. **BMad-Core Integration**: Compliance with agent workflows and tasks
-
 ### Three-Stage Foundation
 
 All project types follow this foundational approach, adapted to their specific needs:
@@ -66,7 +54,7 @@ All project types follow this foundational approach, adapted to their specific n
 
 ## Standardized Make Targets
 
-> **All projects must implement standardized make targets for consistent execution:**
+All projects must implement standardized make targets for consistent execution:
 
 ### Required Targets (Project-Specific Implementation)
 
@@ -216,8 +204,6 @@ Additional quality gates are defined in each project-specific testing standard:
 * Adoption of new automation/emulation tools as appropriate.
 * Maintain alignment with industry standards (ISTQB, IEEE 829, ISO/IEC/IEEE 29119).
 * Regular updates to supplementary guidance based on project learnings.
-* Assess effectiveness of project-specific standards
-* Cross-pollinate learnings between project types
 
 ---
 
@@ -272,25 +258,6 @@ graph TD
 - **Monorepos**: May require multiple testing standards
 - **Microservices**: Each service follows its appropriate standard
 - **Full-Stack Projects**: Frontend and backend may use different standards
-
----
-
-## Quick Reference
-
-### Getting Started
-
-1. Identify your project type
-2. Read the appropriate project-specific testing standard
-3. Implement required make targets
-4. Set up CI/CD integration
-5. Begin following the prescribed testing patterns
-
-### Support Resources
-
-- Project-specific testing standard documents
-- BMad-Core task documentation
-- Framework-specific implementation guides
-- Quality gate validation tools
 
 ---
 

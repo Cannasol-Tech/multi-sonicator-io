@@ -39,77 +39,6 @@
  */
  ```
 
-## Dart File
-
-> *Dartdoc is the standard documentation tool for Dart, similar to Doxygen*
->
-> *Dart uses triple-slash comments (`///`) for documentation that can be processed by dartdoc*
->
-> *Note: All of the following fields do not need to be used - use only as needed.*
->
-> **Required Fields**: `@file`, `@author`, `@date`, `@brief`, `@version`*
-
-```dart
-/// @file TITLE_OF_FILE
-/// @author Stephen Boyett
-/// @date 2023-08-25
-/// @brief Brief description of the Dart file.
-/// @details More detailed description of the file.
-/// @note Any important notes about the file.
-/// @warning Any important warnings about the file.
-/// @todo Any tasks that need to be done.
-/// @bug Any bugs that need to be fixed.
-/// @see Any related files or documentation.
-/// @version 1.0
-/// @since 1.0
-/// @deprecated Any deprecation information.
-```
-
-### Dart Documentation Best Practices
-
-For Dart files, consider these additional documentation practices:
-
-1. **Library Documentation**: For library files, use a library-level documentation comment:
-```dart
-/// @file my_library.dart
-/// @author Stephen Boyett
-/// @date 2023-08-25
-/// @brief A comprehensive utility library for data processing.
-/// @version 1.0
-///
-/// This library provides various utilities for data manipulation,
-/// validation, and transformation operations.
-library my_library;
-```
-
-2. **Class Documentation**: Document classes with their purpose and usage:
-```dart
-/// A utility class for handling user authentication.
-///
-/// This class provides methods for login, logout, and session management.
-/// Use this class to handle all authentication-related operations.
-class AuthManager {
-  // class implementation
-}
-```
-
-3. **Method Documentation**: Document public methods with parameters and return values:
-```dart
-/// Authenticates a user with the provided credentials.
-///
-/// [username] The user's username or email address.
-/// [password] The user's password.
-///
-/// Returns `true` if authentication is successful, `false` otherwise.
-///
-/// Throws [AuthenticationException] if the credentials are invalid.
-bool authenticate(String username, String password) {
-  // method implementation
-}
-```
-
-4. **dartdoc Generation**: Use `dart doc` command to generate HTML documentation from these comments.
-
 ## HTML File
 
 ```html
@@ -344,7 +273,7 @@ All file headers must include these minimum fields:
 - **Brief**: One-line description of the file's purpose
 - **Version**: Semantic version number (e.g., 1.0, 2.1.3)
 
-### Optional Fields (for Doxygen-compatible and Dartdoc-compatible files)
+### Optional Fields (for Doxygen-compatible files)
 
 - **Details**: Extended description when brief is insufficient
 - **Note**: Important implementation notes
@@ -354,17 +283,6 @@ All file headers must include these minimum fields:
 - **See**: References to related files or documentation
 - **Since**: Version when feature was introduced
 - **Deprecated**: Deprecation information and alternatives
-
-### Dart-Specific Documentation Guidelines
-
-When working with Dart files, follow these additional practices:
-
-1. **Documentation Generation**: Use `dart doc` to generate HTML documentation
-2. **Markdown Support**: Dartdoc supports Markdown formatting in comments
-3. **Code Examples**: Include code examples in documentation using triple backticks
-4. **Cross-References**: Use square brackets `[ClassName]` to create links to other documented elements
-5. **Parameter Documentation**: Use `[paramName]` to document method parameters
-6. **Library Organization**: Group related functionality and document at the library level
 
 ### Best Practices
 
@@ -386,35 +304,3 @@ When working with Dart files, follow these additional practices:
 - Always use **YYYY-MM-DD** format for consistency
 - Update when making significant changes to the file
 - Consider using automated tools to maintain current dates
-
-### Documentation Generation
-
-Different languages use different tools to generate documentation from file headers:
-
-#### Doxygen-Compatible Languages
-For C, C++, C#, Java, JavaScript, TypeScript, Python, Ruby, Swift, Kotlin, Go, Rust, PHP:
-```bash
-# Install Doxygen
-# Generate documentation
-doxygen Doxyfile
-```
-
-#### Dart Projects
-For Dart files:
-```bash
-# Generate documentation for the current package
-dart doc
-
-# Generate documentation with custom output directory
-dart doc --output-dir docs/api
-
-# Serve documentation locally
-dart doc --serve
-```
-
-#### Language-Specific Tools
-- **Python**: Also supports Sphinx with autodoc
-- **JavaScript/TypeScript**: JSDoc, TypeDoc
-- **Rust**: Built-in `cargo doc`
-- **Go**: Built-in `go doc`
-- **Java**: Javadoc

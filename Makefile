@@ -8,7 +8,7 @@
 .PHONY: hardware-sandbox acceptance-setup acceptance-clean acceptance-test-basic acceptance-test-gpio acceptance-test-adc
 .PHONY: acceptance-test-pwm acceptance-test-modbus acceptance-test-power generate-release-artifacts test-integration
 .PHONY: test-unit-communication test-unit-hal test-unit-control test-unit-sonicator validate-config generate-traceability-report manage-pending-scenarios update-pending-scenarios ci-local
-.PHONY: web-ui-install web-ui-dev web-ui-build web-ui-sandbox web-ui-test web-ui-clean
+.PHONY: web-ui-install web-ui-dev web-ui-build web-ui-sandbox web-ui-test web-ui-clean web-ui-stop
 .PHONY: validate-traceability check-compliance update-standards sync-standards check-standards generate-executive-report generate-coverage-report generate-complete-executive-report
 .PHONY: nexus-lens-status nexus-lens-validate nexus-lens-start nexus-lens-test nexus-lens-report nexus-lens-simulate
 
@@ -531,6 +531,16 @@ web-ui-test:
 	@echo "🧪 Running Web UI tests..."
 	cd web-ui && source venv/bin/activate && python -m pytest tests/ -v --cov=backend/src --cov-report=term-missing --cov-report=html:htmlcov --cov-fail-under=90
 	@echo "✅ Web UI tests completed"
+
+# Stop Web UI development servers
+web-ui-stop:
+	@echo "🛑 Stopping Web UI development servers..."
+	@echo "🔧 Terminating Node.js processes (vite, nodemon, ts-node)..."
+	@pkill -f "vite\|nodemon\|ts-node" 2>/dev/null || true
+	@echo "🔧 Force killing processes on ports 3001 and 3101..."
+	@lsof -ti:3001,3101 | xargs kill -9 2>/dev/null || true
+	@sleep 1
+	@echo "✅ Web UI development servers stopped"
 
 # Clean Web UI build artifacts
 web-ui-clean:

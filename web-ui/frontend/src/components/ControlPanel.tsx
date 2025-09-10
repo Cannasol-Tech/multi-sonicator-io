@@ -95,12 +95,14 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
   const handleFrequencyChange = async (newFrequencyKHz: number) => {
     try {
       setConfigLoading(true)
+      // Clamp to 15–22 kHz range for safety
+      const clamped = Math.min(22, Math.max(15, newFrequencyKHz))
       const updatedConfig = {
         ...configuration,
         sonicator4: {
           ...configuration.sonicator4,
-          operatingFrequencyKHz: newFrequencyKHz,
-          outputFrequencyKHz: newFrequencyKHz / 10 // FREQ_DIV10 is frequency divided by 10
+          operatingFrequencyKHz: clamped,
+          outputFrequencyKHz: clamped / 10 // FREQ_DIV10 is frequency divided by 10
         }
       }
       
@@ -108,7 +110,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
       setConfiguration(updatedConfig)
       
       // Send to backend
-      onPinControl('FREQ_DIV10_4', 'set_frequency', newFrequencyKHz)
+      onPinControl('FREQ_DIV10_4', 'set_frequency', clamped)
       
       // Also save configuration
       const response = await fetch('/api/config', {
@@ -131,7 +133,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
 
   const handleFrequencyInputSubmit = () => {
     const frequency = parseFloat(frequencyInput)
-    if (!isNaN(frequency) && frequency > 0 && frequency <= 40) {
+    if (!isNaN(frequency) && frequency >= 15 && frequency <= 22) {
       handleFrequencyChange(frequency)
       setFrequencyInput('')
     }
@@ -165,76 +167,114 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
               <div className="flex items-center justify-between mb-1">
                 <span className="text-xs font-medium" style={{ color: 'var(--text-secondary)' }}>Configured:</span>
                 <span className="text-xs font-mono font-bold" style={{ color: 'var(--color-primary)' }}>
-                  {configuration.sonicator4.operatingFrequencyKHz}kHz
+                  {configuration.sonicator4.operatingFrequencyKHz.toFixed(1)}kHz
                 </span>
               </div>
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between mb-1">
                 <span className="text-xs font-medium" style={{ color: 'var(--text-secondary)' }}>Current:</span>
                 <span className="text-xs font-mono font-bold" style={{ color: 'var(--text-primary)' }}>
                   {pinState.state || '0Hz'}
                 </span>
               </div>
+              {/* Visual meter within 15–22 kHz */}
+              <div className="frequency-meter">
+                <div
+                  className="frequency-meter-fill"
+                  style={{ width: `${((configuration.sonicator4.operatingFrequencyKHz - 15) / 7) * 100}%` }}
+                ></div>
+                <div className="frequency-meter-labels">
+                  <span>15</span>
+                  <span>18.5</span>
+                  <span>22 kHz</span>
+                </div>
+              </div>
+              <div className="text-xs" style={{ color: 'var(--text-tertiary)', marginTop: 4 }}>
+                Div/10 output: {(configuration.sonicator4.operatingFrequencyKHz / 10).toFixed(2)} kHz • Range: 15.0–22.0 kHz
+              </div>
             </div>
 
-            {/* Compact Frequency Control Section */}
-            <div className="frequency-controls mt-2 pt-2" style={{ borderTop: '1px solid var(--border-color)' }}>
-              <div className="flex items-center justify-between gap-2">
-                <div className="flex items-center gap-1">
-                  <input
-                    type="number"
-                    min="1"
-                    max="40"
-                    step="0.1"
-                    value={frequencyInput}
-                    onChange={(e) => setFrequencyInput(e.target.value)}
-                    onKeyPress={(e) => {
-                      if (e.key === 'Enter') {
-                        handleFrequencyInputSubmit()
-                      }
-                    }}
-                    placeholder="20.0"
-                    className="input text-xs"
-                    style={{
-                      padding: '2px 4px',
-                      fontSize: '10px',
-                      width: '45px',
-                      height: '20px'
-                    }}
-                    disabled={!connected || configLoading}
-                  />
-                  <span className="text-xs" style={{ color: 'var(--text-tertiary)', fontSize: '9px' }}>kHz</span>
+            {/* Enhanced Frequency Control Section */}
+            <div className="frequency-controls-enhanced mt-3 pt-2" style={{ borderTop: '1px solid var(--border-color)' }}>
+              <div className="frequency-control-header mb-2">
+                <span className="text-xs font-semibold" style={{ color: 'var(--color-primary)' }}>⚡ Frequency Control</span>
+                <span className="text-xs ml-2" style={{ 
+                  color: frequencyInput && (parseFloat(frequencyInput) < 15 || parseFloat(frequencyInput) > 22) 
+                    ? 'var(--color-error)' 
+                    : 'var(--text-tertiary)'
+                }}>
+                  {frequencyInput && (parseFloat(frequencyInput) < 15 || parseFloat(frequencyInput) > 22) 
+                    ? '⚠️ Out of range' 
+                    : '15.0 – 22.0 kHz'}
+                </span>
+              </div>
+              
+              <div className="frequency-input-section mb-2">
+                <div className="flex items-center gap-2">
+                  <div className="frequency-input-container">
+                    <input
+                      type="number"
+                      min="15"
+                      max="22"
+                      step="0.1"
+                      value={frequencyInput}
+                      onChange={(e) => setFrequencyInput(e.target.value)}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter') {
+                          handleFrequencyInputSubmit()
+                        }
+                      }}
+                      placeholder="20.0"
+                      className={`frequency-input ${
+                        frequencyInput && (parseFloat(frequencyInput) < 15 || parseFloat(frequencyInput) > 22)
+                          ? 'frequency-input-error'
+                          : ''
+                      }`}
+                      disabled={!connected || configLoading}
+                    />
+                    <span className="frequency-unit">kHz</span>
+                  </div>
                   <button
                     onClick={handleFrequencyInputSubmit}
-                    disabled={!connected || configLoading || !frequencyInput}
-                    className="btn-mini btn-success"
-                    style={{ fontSize: '8px', padding: '1px 4px', height: '18px' }}
+                    disabled={!connected || configLoading || !frequencyInput || 
+                              (frequencyInput && (parseFloat(frequencyInput) < 15 || parseFloat(frequencyInput) > 22))}
+                    className="frequency-set-btn"
                   >
-                    Set
+                    {configLoading ? '⏳' : '✓ Set'}
                   </button>
                 </div>
+              </div>
                 
-                {/* Compact Frequency Presets */}
-                <div className="flex gap-1">
-                  {[20, 25, 30, 35, 40].map(freq => (
+              {/* Enhanced Frequency Presets */}
+              <div className="frequency-presets">
+                <span className="text-xs font-medium mb-1 block" style={{ color: 'var(--text-secondary)' }}>Quick Presets:</span>
+                <div className="preset-buttons">
+                  {[15, 17, 19, 20, 22].map(freq => (
                     <button
                       key={freq}
                       onClick={() => handleFrequencyPreset(freq)}
                       disabled={!connected || configLoading}
-                      className="btn-mini btn-secondary"
-                      style={{
-                        fontSize: '8px',
-                        padding: '1px 3px',
-                        height: '16px',
-                        minWidth: '18px',
-                        backgroundColor: configuration.sonicator4.operatingFrequencyKHz === freq ? 'var(--color-success)' : undefined,
-                        color: configuration.sonicator4.operatingFrequencyKHz === freq ? 'white' : undefined
-                      }}
+                      className={`frequency-preset-btn ${
+                        Math.abs(configuration.sonicator4.operatingFrequencyKHz - freq) < 0.1 ? 'active' : ''
+                      }`}
+                      title={`Set frequency to ${freq} kHz`}
                     >
-                      {freq}
+                      <span className="preset-value">{freq}</span>
+                      <span className="preset-unit">kHz</span>
                     </button>
                   ))}
                 </div>
               </div>
+              
+              {configLoading && (
+                <div className="frequency-loading" style={{ 
+                  textAlign: 'center', 
+                  color: 'var(--color-primary)', 
+                  fontSize: '10px',
+                  marginTop: '8px'
+                }}>
+                  ⚙️ Updating frequency...
+                </div>
+              )}
             </div>
 
             <div className="text-xs mt-2" style={{ color: 'var(--text-tertiary)' }}>

@@ -31,9 +31,10 @@ To create comprehensive, company-standard Feature Specifications that define EXA
 
 ### 0. Load Configuration and Validate Prerequisites
 
-- Load `.bmad-core/core-config.yaml` from the project root if available
-- Verify access to `.axovia-flow/company-standards/feature-specification.md`
-- If Feature Specification Standard not found, HALT and inform user: "Feature Specification Standard not found. This file is required for creating compliant feature specifications. Please ensure .axovia-flow/company-standards/feature-specification.md exists before proceeding."
+- Load `.axovia-flow/flow-config.yaml` from the project root
+- Verify access to feature specification template at `axoviaFlow.templates.feature_specification.fileLocation`
+- Verify access to Definition of Done checklist at `.axovia-flow/checklists/feature-specification-dod.md`
+- If template or DoD checklist not found, HALT and inform user: "Required templates not found. Feature specification template and DoD checklist are required for creating compliant feature specifications."
 - Extract key configurations and standard requirements
 
 ### 1. Feature Identification and Context Gathering
@@ -187,15 +188,17 @@ Draft and present:
 
 #### 7.1 Generate Final Specification
 
-- Create feature specification file using company standard template
+- Create feature specification file using template from `axoviaFlow.templates.feature_specification.fileLocation`
 - Apply all gathered information to template sections
-- Ensure compliance with Feature Specification Standard
-- Save to `docs/agile/features/feature-{ID}-{name-kebab-case}.md`
+- Ensure compliance with Definition of Done checklist at `.axovia-flow/checklists/feature-specification-dod.md`
+- Save to `docs/agile/features/FEATURE-{ID}-{name-kebab-case}.md` (note: FEATURE- prefix)
 
 #### 7.2 Quality Validation
 
-- Verify all mandatory sections are complete
-- Check compliance with company standards
+- Verify all mandatory sections are complete per DoD checklist
+- Check frontmatter includes: agent, id (3-digit numeric), title, status, priority, epic, created, updated
+- Validate supports section has at least one FR or NFR entry
+- Ensure file naming follows FEATURE-{id}-{name-kebab}.md convention
 - Validate traceability and completeness
 - Generate completion summary
 

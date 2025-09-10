@@ -455,8 +455,7 @@ except Exception as e:
         break
 
       case 'response':
-        // Log and broadcast Arduino response
-        console.log('Arduino Response Received:', message.data)
+        // Emit Arduino response for logging (reduced verbosity)
         this.emit('arduino_command', {
           direction: 'received',
           data: message.data,
@@ -474,21 +473,16 @@ except Exception as e:
   }
 
   private lastLogTime: number = 0
-  private logThrottleMs: number = 2000 // Only log once every 2 seconds per pin
+  private logThrottleMs: number = 5000 // Only log once every 5 seconds per pin (reduced frequency)
   private lastPinLogTimes: Map<string, number> = new Map()
 
   private updatePinState(pin: string, data: string) {
     // Parse hardware response and update pin state
     const timestamp = Date.now()
 
-    // Throttle logging to prevent spam - only log occasionally
+    // Throttle logging to prevent spam - only log occasionally  
     const lastLogTime = this.lastPinLogTimes.get(pin) || 0
     const shouldLog = timestamp - lastLogTime > this.logThrottleMs
-
-    if (shouldLog) {
-      console.log(`Hardware: Updating pin state for ${pin} with data: ${data}`)
-      this.lastPinLogTimes.set(pin, timestamp)
-    }
 
     // Find pin by Arduino pin name or signal name
     for (const [signal, pinState] of this.pinStates.entries()) {
@@ -520,9 +514,9 @@ except Exception as e:
           }
         }
 
-        // Only log state changes, not every update, and only occasionally
+        // Only log significant state changes occasionally (reduced verbosity)
         if (shouldLog && pinState.state !== newState) {
-          console.log(`Hardware: Pin ${signal} state updated from ${pinState.state} to ${newState}`)
+          this.lastPinLogTimes.set(pin, timestamp)
         }
 
         const updatedPin = {
@@ -571,8 +565,7 @@ except Exception as e:
       try {
         const commandStr = JSON.stringify(command)
 
-        // Log and broadcast command being sent
-        console.log('Arduino Command Sent:', commandStr)
+        // Emit command being sent for logging (reduced verbosity)
         this.emit('arduino_command', {
           direction: 'sent',
           data: commandStr,

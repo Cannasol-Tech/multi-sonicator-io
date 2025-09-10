@@ -141,8 +141,192 @@ def save_commit_info(commit_sha):
     with open(info_file, 'w') as f:
         json.dump(info, f, indent=2)
 
+def validate_root_directory():
+    """Validate root directory compliance"""
+    log("🔍 Validating root directory structure...")
+    
+    # Required root files
+    required_files = {
+        '.gitignore': 'Version control exclusions',
+        '.npmignore': 'NPM package exclusions', 
+        'Makefile': 'Development workflow targets',
+        'LICENSE': 'Project license',
+        'README.md': 'Project documentation'
+    }
+    
+    # Optional files
+    optional_files = {'.gitmodules': 'Git submodule definitions'}
+    
+    # Prohibited files (examples)
+    prohibited_patterns = [
+        'package.json', 'package-lock.json', 'requirements.txt',
+        'pytest.ini', 'behave.ini', 'setup.cfg', 'platformio.ini'
+    ]
+    
+    violations = []
+    warnings = []
+    
+    # Check for required files
+    for file, description in required_files.items():
+        if not Path(file).exists():
+            violations.append(f"Missing required file: {file} ({description})")
+        else:
+            log(f"✅ Found required file: {file}")
+    
+    # Check for prohibited files in root
+    for pattern in prohibited_patterns:
+        if Path(pattern).exists():
+            warnings.append(f"Prohibited file in root: {pattern} (should be in config/ or appropriate subdirectory)")
+    
+    # Report violations
+    if violations:
+        log("❌ Root directory violations found:", "ERROR")
+        for violation in violations:
+            log(f"   - {violation}", "ERROR")
+    
+    if warnings:
+        log("⚠️ Root directory warnings:", "WARNING")
+        for warning in warnings:
+            log(f"   - {warning}", "WARNING")
+    
+    return len(violations) == 0
+
+def validate_core_directories():
+    """Validate core directory structure"""
+    log("🔍 Validating core directory structure...")
+    
+    # Required core directories
+    required_dirs = {
+        'docs': 'Documentation',
+        'src': 'Source code',
+        'bin': 'Binary/executable files'
+    }
+    
+    # Required docs subdirectories per company standards
+    required_docs_subdirs = {
+        'docs/architecture': 'Architecture documentation',
+        'docs/planning': 'Planning documents',
+        'docs/requirements': 'Requirements documentation', 
+        'docs/standards': 'Project standards',
+        'docs/agile': 'Agile development artifacts',
+        'docs/agent-reports': 'AI agent reports',
+        'docs/testing': 'Testing documentation'
+    }
+    
+    violations = []
+    
+    # Check core directories
+    for dir_path, description in required_dirs.items():
+        if not Path(dir_path).is_dir():
+            violations.append(f"Missing required directory: {dir_path} ({description})")
+        else:
+            log(f"✅ Found required directory: {dir_path}")
+    
+    # Check docs subdirectories
+    for dir_path, description in required_docs_subdirs.items():
+        if not Path(dir_path).is_dir():
+            violations.append(f"Missing required docs subdirectory: {dir_path} ({description})")
+        else:
+            log(f"✅ Found required docs subdirectory: {dir_path}")
+            
+            # Check for README.md in each subdirectory
+            readme_path = Path(dir_path) / 'README.md'
+            if not readme_path.exists():
+                violations.append(f"Missing README.md in {dir_path}")
+            else:
+                log(f"✅ Found README.md in {dir_path}")
+    
+    if violations:
+        log("❌ Directory structure violations found:", "ERROR")
+        for violation in violations:
+            log(f"   - {violation}", "ERROR")
+    
+    return len(violations) == 0
+
+def validate_standards_files():
+    """Validate standards files integrity"""
+    log("🔍 Validating standards files integrity...")
+    
+    standards_path = Path(STANDARDS_TARGET_PATH)
+    if not standards_path.exists():
+        log("❌ Standards directory not found", "ERROR")
+        return False
+    
+    # Check for key standards files
+    key_files = [
+        'project-structure.md',
+        'coding-style.md', 
+        'sw-testing-standard.md'
+    ]
+    
+    violations = []
+    
+    for file in key_files:
+        file_path = standards_path / file
+        if not file_path.exists():
+            violations.append(f"Missing key standards file: {file}")
+        else:
+            # Basic content validation
+            try:
+                with open(file_path, 'r') as f:
+                    content = f.read()
+                    if len(content.strip()) < 100:
+                        violations.append(f"Standards file too short (possible corruption): {file}")
+                    else:
+                        log(f"✅ Standards file validated: {file}")
+            except Exception as e:
+                violations.append(f"Cannot read standards file {file}: {e}")
+    
+    if violations:
+        log("❌ Standards files validation failed:", "ERROR")
+        for violation in violations:
+            log(f"   - {violation}", "ERROR")
+    
+    return len(violations) == 0
+
+def comprehensive_standards_check():
+    """Perform comprehensive standards compliance check"""
+    log("🔍 Starting comprehensive standards compliance check...")
+    
+    # Component checks
+    checks = [
+        ("Root Directory Compliance", validate_root_directory),
+        ("Core Directory Structure", validate_core_directories),
+        ("Standards Files Integrity", validate_standards_files)
+    ]
+    
+    results = []
+    overall_success = True
+    
+    for check_name, check_func in checks:
+        log(f"\n📋 {check_name}:")
+        try:
+            result = check_func()
+            results.append((check_name, result, None))
+            if not result:
+                overall_success = False
+        except Exception as e:
+            log(f"❌ {check_name} failed with exception: {e}", "ERROR")
+            results.append((check_name, False, str(e)))
+            overall_success = False
+    
+    # Summary report
+    log("\n📊 Standards Compliance Summary:")
+    for check_name, success, error in results:
+        status = "✅ PASS" if success else "❌ FAIL"
+        log(f"   {status} - {check_name}")
+        if error:
+            log(f"     Error: {error}")
+    
+    if overall_success:
+        log("\n✅ All standards compliance checks passed!")
+    else:
+        log("\n❌ Standards compliance violations found. Please review and fix issues above.", "ERROR")
+    
+    return overall_success
+
 def check_standards_status():
-    """Check if standards are up to date"""
+    """Check if standards are up to date and validate compliance"""
     log("🔍 Checking company standards status...")
 
     # Get latest commit
@@ -153,7 +337,8 @@ def check_standards_status():
             current_info = get_current_commit_info()
             if current_info and current_info.get('source') == 'local':
                 log("✅ Using local standards (remote not available)")
-                return True
+                # Still perform comprehensive validation
+                return comprehensive_standards_check()
             else:
                 log("📥 Local standards sync required")
                 return False
@@ -171,12 +356,13 @@ def check_standards_status():
     current_sha = current_info.get('commit_sha')
     if current_sha == latest_sha:
         log("✅ Standards are up to date")
-        return True
     else:
         log("📥 Updates available from central repository")
         log(f"   Current: {current_sha[:8] if current_sha else 'unknown'}")
         log(f"   Latest:  {latest_sha[:8]}")
-        return False
+    
+    # Perform comprehensive validation regardless of version status
+    return comprehensive_standards_check()
 
 def copy_local_standards():
     """Copy local standards as fallback"""
