@@ -18,13 +18,17 @@ An implementation plan should be created for any user story that involves more t
 
 ### How to Create and Use an Implementation Plan
 
-1. **Create the File**: Copy the template from `docs/planning/implementation-plan.md` into a new file, typically within the relevant feature or epic directory (e.g., `docs/agile/epics/my-feature/implementation-plan.md`).
+1. **Create the File**: Copy the template from below into a new file, typically within the relevant feature or epic directory (e.g., `docs/planning/<feature-epic-or-story-name>-implementation-plan.md`).
 
 2. **Break Down the Work**: Under the `Work Breakdown` section, list the specific, small, and testable tasks required to complete the story. Use checkboxes for each task.
 
     ```markdown
-    - [ ] Task 1: Create the Pydantic model for user state.
-    - [ ] Task 2: Add the new state to the LangGraph workflow.
+
+    # <Feature/Epic/Story Name> Implementation Plan
+
+    ## Work Breakdown
+    - [x] Task 1: Create the Pydantic model for user state.   -- marks a complete task
+    - [ ] Task 2: Add the new state to the LangGraph workflow.  -- displays an incomplete task
     - [ ] Task 3: Write unit tests for the new model.
     ```
 

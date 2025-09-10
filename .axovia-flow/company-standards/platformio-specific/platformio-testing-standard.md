@@ -205,12 +205,26 @@ build_flags =
 
 ## Coverage Requirements
 
-| Test Type | Minimum Coverage | Enforcement |
-|-----------|------------------|-------------|
-| Unit Tests | 90% | CI/CD Pipeline |
-| Integration Tests | 80% | CI/CD Pipeline |
-| HIL Tests | Critical Hardware Paths | Manual Review |
-| Overall Project | 85% | CI/CD Pipeline |
+| Test Type | Minimum Coverage | Enforcement | Execution |
+|-----------|------------------|-------------|-----------|
+| Unit Tests | 90% | CI/CD Pipeline | Automated (CI) |
+| Integration Tests | 80% | Manual Review | Manual Only |
+| HIL Tests | Critical Hardware Paths | Manual Review | Manual Only |
+| Overall Project | 85% | Release Review | Combined CI + Manual |
+
+### Pipeline vs Manual Testing
+
+**CI Pipeline (Automated):**
+- Unit tests with 90% coverage requirement
+- Executive report generation (unit tests only)
+- Coverage validation and reporting
+- BDD syntax validation (no execution)
+
+**Manual Testing (Required for Release):**
+- Acceptance tests with BDD scenario execution
+- Hardware-in-the-loop (HIL) testing
+- Integration testing with real hardware
+- Executive report generation (full test suite)
 
 ---
 
@@ -219,36 +233,60 @@ build_flags =
 PlatformIO projects must implement these standardized make targets:
 
 ```bash
+# CI Pipeline (Unit Tests Only)
+make ci
+# - Executes: Unit tests + coverage + executive report generation
+# - Coverage: ≥90% requirement enforced
+# - Hardware: Not required (CI environment)
+# - Reports: Executive report, coverage summary (unit tests only)
+
 # Unit Testing (with mocking allowed)
 make test-unit
 # - Executes: pio test --filter test_unit
 # - Coverage: ≥90% requirement
 # - Mocking: Unity/CMock permitted
 
-# Integration Testing (no mocking)
+# Integration Testing (no mocking) - MANUAL ONLY
 make test-integration
 # - Executes: pio test --filter test_integration
 # - Coverage: ≥80% requirement
 # - Mocking: PROHIBITED
+# - Execution: Manual only (not in CI pipeline)
 
-# Hardware-in-the-Loop Testing
+# Acceptance Testing (BDD) - MANUAL ONLY
+make test-acceptance
+# - Executes: Behave BDD scenarios with HIL hardware
+# - Scope: BDD scenario validation with real hardware
+# - Mocking: PROHIBITED
+# - Execution: Manual only (not in CI pipeline)
+
+# Hardware-in-the-Loop Testing - MANUAL ONLY
 make test-hil
 # - Executes: pio test --filter test_hil --environment hil
 # - Scope: Real hardware validation
 # - Mocking: PROHIBITED
+# - Execution: Manual only (not in CI pipeline)
 
-# Emulation Testing
-make test-emulation
-# - Executes: pio test --filter test_emulation --environment emulation
-# - Scope: Hardware emulation testing
-# - Mocking: PROHIBITED (use emulation)
-
-# Complete PlatformIO Test Suite
+# Complete Manual Test Suite (Release Testing)
 make test
-# - Executes all test types based on hardware availability
-# - HIL tests only run when hardware detected
-# - Falls back to emulation when hardware unavailable
+# - Executes: All test types with real hardware
+# - Includes: Unit + Integration + Acceptance + HIL
+# - Reports: Complete executive report + acceptance reports
+# - Execution: Manual only (for release validation)
 ```
+
+### CI vs Manual Testing Targets
+
+**CI Pipeline Targets (Automated):**
+- `make ci` - Complete CI pipeline (unit tests only)
+- `make test-unit` - Individual unit test execution
+- `make validate-config` - Configuration validation
+
+**Manual Testing Targets (Hardware Required):**
+- `make test-acceptance` - BDD acceptance testing
+- `make test-integration` - Integration testing  
+- `make test-hil` - Hardware-in-the-loop testing
+- `make test` - Complete test suite for releases
 
 ---
 
@@ -272,9 +310,25 @@ void setUp(void) {
 
 ### CI/CD Integration
 
-- **Hardware Available**: Run full HIL test suite
-- **Hardware Unavailable**: Run emulation tests automatically
-- **Coverage Validation**: Ensure minimum coverage regardless of hardware availability
+**CI Pipeline Configuration (Unit Tests Only):**
+
+- **CI/CD Automated**: Run unit tests only (with 90% coverage validation)
+- **CI/CD Automated**: BDD syntax validation (no execution)
+- **Hardware Independence**: CI pipeline does not require physical hardware
+- **Fast Feedback**: Quick validation for pull requests and development workflow
+
+**Manual Testing (Hardware Required):**
+
+- **Acceptance Tests**: Manual execution of BDD scenarios with HIL hardware
+- **Hardware Integration**: Manual HIL test suite execution
+- **Performance Validation**: Manual real-time performance testing
+- **Release Validation**: Manual comprehensive test suite before releases
+
+**Hardware Availability Strategy:**
+
+- **CI Pipeline**: Unit tests + emulation (no hardware required)
+- **Manual Execution**: Acceptance + HIL tests (hardware required)
+- **Coverage Validation**: Unit test coverage enforced in CI, manual test results included in release reports
 
 ---
 

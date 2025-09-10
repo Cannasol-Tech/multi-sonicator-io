@@ -4,7 +4,7 @@
 
 ## Overview
 
-Flutter applications require specialized testing approaches due to their cross-platform nature and unique architecture. This standard defines the **official testing requirements** for all Flutter projects, emphasizing the use of Flutter's built-in testing framework with strict mocking limitations.  Tests should be written in a modular format to where indivudual modules can be tested in isolation.  All tests should be written in a way that allows for easy debugging and maintenance.  Each subset of tests (unit, widget, integration, and golden) should all be able to be ran independently using their respective make targets, i.e. `make test-widget`.  The entirety of the test suite should be able to be ran using the `make test` target.`
+Flutter applications require specialized testing approaches due to their cross-platform nature and unique architecture. This standard defines the **official testing requirements** for all Flutter projects, emphasizing the use of Flutter's built-in testing framework with strict mocking limitations.
 
 ---
 
@@ -22,25 +22,11 @@ Flutter applications require specialized testing approaches due to their cross-p
 - **Prohibition**: Widget tests, integration tests, and golden tests must NOT use mocking
 - **Rationale**: Mocking in non-unit tests defeats the purpose of testing real component interactions
 
-### Specialized Frameworks
+### Specialized Testing Frameworks
 
-- **BLoC Testing**: `bloc_test` framework permitted when using BLoC pattern for business logic
-  - Note: If this does not integrate with the flutter project we can use a different framework / pattern for business logic.
+- **BLoC Testing**: `bloc_test` fra`mework permitted when using BLoC pattern for business logic
 - **Integration Testing**: Flutter's `integration_test` framework for end-to-end testing
-  - Note: This testing should use NO mocking whatsoever and provide extensive edge case testing for the application
 - **Golden Testing**: Flutter's built-in golden test support for visual regression testing
-  - Note: This testing should use NO mocking whatsoever and provide testing for the visual aspects of the Application.  
-    - These tests should ensure things like:
-      - UI Consistency
-      - Visual Regression
-      - Responsive Design
-      - Dark Mode
-      - Light Mode
-      - Test any Localized content
-      - Any platform specific UI interactions
-      - Any style guide / user experience design requirements
-      - Any accessibility requirements
-      - Any thing else the developer would like to cover using the Golden Testing (NOTE: This does not take away from coverage requirements for the Unit, Widget, or Integration tests)
 
 ---
 
@@ -48,26 +34,26 @@ Flutter applications require specialized testing approaches due to their cross-p
 
 ### Test Organization Structure
 
-```markdown
+```
 test/
-├── unit/                   # Business logic tests (70% of test effort)
-│   ├── models/               # Data model unit tests
-│   ├── services/             # Service layer unit tests  
-│   ├── handlers/             # Business logic handler tests
-│   └── utils/                # Utility function tests
+├── unit/                    # Business logic tests (70% of test effort)
+│   ├── models/             # Data model unit tests
+│   ├── services/           # Service layer unit tests  
+│   ├── handlers/           # Business logic handler tests
+│   └── utils/              # Utility function tests
 ├── widget/                 # UI component tests (20% of test effort)
-│   ├── pages/                # Page widget tests
-│   ├── components/           # Reusable component tests
-│   └── dialogs/              # Dialog widget tests
+│   ├── pages/              # Page widget tests
+│   ├── components/         # Reusable component tests
+│   └── dialogs/            # Dialog widget tests
 ├── integration/            # End-to-end tests (10% of test effort)
-│   ├── flows/                # Complete user journey tests
-│   └── platform/             # Platform-specific integration tests
+│   ├── flows/              # Complete user journey tests
+│   └── platform/           # Platform-specific integration tests
 ├── golden/                 # Visual regression tests
-│   └── screenshots/          # Golden file storage
+│   └── screenshots/        # Golden file storage
 └── helpers/                # Test utilities (centralized)
-    ├── mocks.dart            # Mock definitions (unit tests only)
-    ├── test_data.dart        # Test data constants
-    └── test_utils.dart       # Common test utilities
+    ├── mocks.dart          # Mock definitions (unit tests only)
+    ├── test_data.dart      # Test data constants
+    └── test_utils.dart     # Common test utilities
 ```
 
 ### Testing Pyramid Distribution
