@@ -57,22 +57,22 @@ make ci
 
 ```bash
 # Check Nexus Lens testing framework status
-make nexus-lens-status
+make web-ui-status
 
 # Validate HIL configuration
-make nexus-lens-validate
+make web-ui-validate
 
 # Start testing interface (simulation mode - no hardware required)
-make nexus-lens-simulate
+make web-ui-simulate
 
 # Start testing interface (hardware mode - requires physical setup)
-make nexus-lens-start
+make web-ui-start
 
 # Run all HIL tests
-make nexus-lens-test
+make web-ui-test
 
 # Generate executive report
-make nexus-lens-report
+make web-ui-report
 ```
 
 ### Hardware-in-the-Loop Development

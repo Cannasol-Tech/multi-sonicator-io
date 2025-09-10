@@ -150,7 +150,6 @@ project-root/
 │   │   │   └── feature-*.md   # Individual feature files
 │   │   └── stories/           # User story definitions
 │   │       ├── README.md      # Story management guide
-│   │       └── story-*.md     # Individual story files
 │   ├── planning/              # Project planning documents
 │   │   ├── README.md          # Planning overview
 │   │   ├── market-research.md # Market analysis

@@ -55,22 +55,22 @@ This project includes **Nexus Lens**, a comprehensive hardware-in-the-loop (HIL)
 
 ```bash
 # Check Nexus Lens status
-make nexus-lens-status
+make web-ui-status
 
 # Validate configuration
-make nexus-lens-validate
+make web-ui-validate
 
 # Start testing interface (simulation mode - no hardware required)
-make nexus-lens-simulate
+make web-ui-simulate
 
 # Start testing interface (hardware mode - requires physical setup)
-make nexus-lens-start
+make web-ui-start
 
 # Run all tests
-make nexus-lens-test
+make web-ui-test
 
 # Generate executive report
-make nexus-lens-report
+make web-ui-report
 ```
 
 #### Features
@@ -81,7 +81,7 @@ make nexus-lens-report
 - **Executive Reporting**: Comprehensive test reports with coverage analysis
 - **Simulation Mode**: Test without physical hardware for development
 
-See [Nexus Lens Documentation](.nexus-lens/README.md) for detailed usage instructions.
+See [Nexus Lens Documentation](.web-ui/README.md) for detailed usage instructions.
 
 ## Documentation
 

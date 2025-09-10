@@ -10,7 +10,6 @@
 .PHONY: test-unit-communication test-unit-hal test-unit-control test-unit-sonicator validate-config generate-traceability-report manage-pending-scenarios update-pending-scenarios ci-local
 .PHONY: web-ui-install web-ui-dev web-ui-build web-ui-sandbox web-ui-test web-ui-clean web-ui-stop
 .PHONY: validate-traceability check-compliance update-standards sync-standards check-standards generate-executive-report generate-coverage-report generate-complete-executive-report coverage
-.PHONY: nexus-lens-status nexus-lens-validate nexus-lens-start nexus-lens-test nexus-lens-report nexus-lens-simulate
 
 #  Make Targets
 
@@ -578,55 +577,55 @@ check-standards:
 ## Nexus Lens Testing Framework Targets
 
 # Show Nexus Lens status and configuration
-nexus-lens-status:
+web-ui-status:
 	@echo "🔍 Nexus Lens Status"
-	@./nexus-lens status
+	@./web-ui status
 
 # Validate Nexus Lens configuration
-nexus-lens-validate:
+web-ui-validate:
 	@echo "✅ Validating Nexus Lens configuration"
-	@./nexus-lens config validate
+	@./web-ui config validate
 
 # Start Nexus Lens testing interface (hardware mode)
-nexus-lens-start: check-deps
+web-ui-start: check-deps
 	@echo "🚀 Starting Nexus Lens testing interface"
-	@./nexus-lens start
+	@./web-ui start
 
 # Start Nexus Lens in simulation mode (no hardware required)
-nexus-lens-simulate: check-deps
+web-ui-simulate: check-deps
 	@echo "🔧 Starting Nexus Lens in simulation mode"
-	@./nexus-lens start --simulate
+	@./web-ui start --simulate
 
 # Run tests through Nexus Lens
-nexus-lens-test: check-deps
+web-ui-test: check-deps
 	@echo "🧪 Running tests through Nexus Lens"
-	@./nexus-lens test
+	@./web-ui test
 
 # Run specific test suite through Nexus Lens
-nexus-lens-test-unit: check-deps
+web-ui-test-unit: check-deps
 	@echo "🧪 Running unit tests through Nexus Lens"
-	@./nexus-lens test --suite unit
+	@./web-ui test --suite unit
 
-nexus-lens-test-integration: check-deps
+web-ui-test-integration: check-deps
 	@echo "🧪 Running integration tests through Nexus Lens"
-	@./nexus-lens test --suite integration
+	@./web-ui test --suite integration
 
-nexus-lens-test-acceptance: check-deps
+web-ui-test-acceptance: check-deps
 	@echo "🧪 Running acceptance tests through Nexus Lens"
-	@./nexus-lens test --suite acceptance
+	@./web-ui test --suite acceptance
 
 # Generate reports through Nexus Lens
-nexus-lens-report:
+web-ui-report:
 	@echo "📊 Generating executive report through Nexus Lens"
-	@./nexus-lens report --type executive
+	@./web-ui report --type executive
 
-nexus-lens-coverage:
+web-ui-coverage:
 	@echo "📊 Generating coverage report through Nexus Lens"
-	@./nexus-lens report --type coverage
+	@./web-ui report --type coverage
 
-nexus-lens-complete-report:
+web-ui-complete-report:
 	@echo "📊 Generating complete report through Nexus Lens"
-	@./nexus-lens report --type complete
+	@./web-ui report --type complete
 
 # CI/CD Pipeline Artifact Management
 upload-artifacts: check-deps
@@ -654,21 +653,21 @@ upload-artifacts: check-deps
 	@du -sh artifacts | cut -f1 | xargs echo "  Total size:"
 
 # Nexus Lens help
-nexus-lens-help:
+web-ui-help:
 	@echo "🏗️ Nexus Lens - Hardware-in-the-Loop Testing Framework"
 	@echo ""
 	@echo "Available Nexus Lens targets:"
-	@echo "  nexus-lens-status           - Show Nexus Lens status and configuration"
-	@echo "  nexus-lens-validate         - Validate Nexus Lens configuration files"
-	@echo "  nexus-lens-start            - Start testing interface (hardware mode)"
-	@echo "  nexus-lens-simulate         - Start testing interface (simulation mode)"
-	@echo "  nexus-lens-test             - Run all test suites"
-	@echo "  nexus-lens-test-unit        - Run unit tests only"
-	@echo "  nexus-lens-test-integration - Run integration tests only"
-	@echo "  nexus-lens-test-acceptance  - Run acceptance tests only"
-	@echo "  nexus-lens-report           - Generate executive report"
-	@echo "  nexus-lens-coverage         - Generate coverage report"
-	@echo "  nexus-lens-complete-report  - Generate complete report"
-	@echo "  nexus-lens-help             - Show this help message"
+	@echo "  web-ui-status           - Show Nexus Lens status and configuration"
+	@echo "  web-ui-validate         - Validate Nexus Lens configuration files"
+	@echo "  web-ui-start            - Start testing interface (hardware mode)"
+	@echo "  web-ui-simulate         - Start testing interface (simulation mode)"
+	@echo "  web-ui-test             - Run all test suites"
+	@echo "  web-ui-test-unit        - Run unit tests only"
+	@echo "  web-ui-test-integration - Run integration tests only"
+	@echo "  web-ui-test-acceptance  - Run acceptance tests only"
+	@echo "  web-ui-report           - Generate executive report"
+	@echo "  web-ui-coverage         - Generate coverage report"
+	@echo "  web-ui-complete-report  - Generate complete report"
+	@echo "  web-ui-help             - Show this help message"
 	@echo ""
-	@echo "Direct CLI usage: ./nexus-lens <command> [options]"
+	@echo "Direct CLI usage: ./web-ui <command> [options]"
