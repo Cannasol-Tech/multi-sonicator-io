@@ -78,6 +78,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
   })
   const [configLoading, setConfigLoading] = useState(false)
   const [activeSubTab, setActiveSubTab] = useState<'parameters' | 'monitoring'>('parameters')
+  const [frequencyInput, setFrequencyInput] = useState<string>('')
 
   const inputPins = Object.entries(hardwareState.pins).filter(([signal, pin]) => pin.direction === 'IN' || signal === 'POWER_SENSE_4')
   const outputPins = Object.entries(hardwareState.pins).filter(([signal, pin]) => pin.direction === 'OUT' && signal !== 'UART_TXD')
@@ -89,6 +90,55 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
     }
     const newState = currentState === 'HIGH' ? 'LOW' : 'HIGH'
     onPinControl(signal, 'write_pin', newState)
+  }
+
+  const handleFrequencyChange = async (newFrequencyKHz: number) => {
+    try {
+      setConfigLoading(true)
+      const updatedConfig = {
+        ...configuration,
+        sonicator4: {
+          ...configuration.sonicator4,
+          operatingFrequencyKHz: newFrequencyKHz,
+          outputFrequencyKHz: newFrequencyKHz / 10 // FREQ_DIV10 is frequency divided by 10
+        }
+      }
+      
+      // Update local state immediately for UI responsiveness
+      setConfiguration(updatedConfig)
+      
+      // Send to backend
+      onPinControl('FREQ_DIV10_4', 'set_frequency', newFrequencyKHz)
+      
+      // Also save configuration
+      const response = await fetch('/api/config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ config: updatedConfig })
+      })
+      
+      if (!response.ok) {
+        throw new Error('Failed to save configuration')
+      }
+    } catch (error) {
+      console.error('Failed to update frequency:', error)
+      // Reload configuration on error
+      loadConfiguration()
+    } finally {
+      setConfigLoading(false)
+    }
+  }
+
+  const handleFrequencyInputSubmit = () => {
+    const frequency = parseFloat(frequencyInput)
+    if (!isNaN(frequency) && frequency > 0 && frequency <= 40) {
+      handleFrequencyChange(frequency)
+      setFrequencyInput('')
+    }
+  }
+
+  const handleFrequencyPreset = (frequency: number) => {
+    handleFrequencyChange(frequency)
   }
 
   const isFrequencyPin = (signal: string) => {
@@ -123,6 +173,67 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
                 <span className="text-xs font-mono font-bold" style={{ color: 'var(--text-primary)' }}>
                   {pinState.state || '0Hz'}
                 </span>
+              </div>
+            </div>
+
+            {/* Frequency Control Section */}
+            <div className="frequency-controls mt-3 pt-2" style={{ borderTop: '1px solid var(--border-color)' }}>
+              <div className="mb-2">
+                <label className="text-xs font-medium" style={{ color: 'var(--text-secondary)' }}>Set Frequency (kHz):</label>
+                <div className="flex items-center gap-2 mt-1">
+                  <input
+                    type="number"
+                    min="1"
+                    max="40"
+                    step="0.1"
+                    value={frequencyInput}
+                    onChange={(e) => setFrequencyInput(e.target.value)}
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter') {
+                        handleFrequencyInputSubmit()
+                      }
+                    }}
+                    placeholder="20.0"
+                    className="input text-xs"
+                    style={{
+                      padding: '4px 6px',
+                      fontSize: '11px',
+                      width: '60px'
+                    }}
+                    disabled={!connected || configLoading}
+                  />
+                  <button
+                    onClick={handleFrequencyInputSubmit}
+                    disabled={!connected || configLoading || !frequencyInput}
+                    className="btn-mini btn-success"
+                    style={{ fontSize: '10px', padding: '3px 6px' }}
+                  >
+                    Set
+                  </button>
+                </div>
+              </div>
+              
+              {/* Frequency Presets */}
+              <div>
+                <span className="text-xs font-medium" style={{ color: 'var(--text-secondary)' }}>Presets:</span>
+                <div className="flex gap-1 mt-1">
+                  {[20, 25, 30, 35, 40].map(freq => (
+                    <button
+                      key={freq}
+                      onClick={() => handleFrequencyPreset(freq)}
+                      disabled={!connected || configLoading}
+                      className="btn-mini btn-secondary"
+                      style={{
+                        fontSize: '9px',
+                        padding: '2px 4px',
+                        backgroundColor: configuration.sonicator4.operatingFrequencyKHz === freq ? 'var(--color-success)' : undefined,
+                        color: configuration.sonicator4.operatingFrequencyKHz === freq ? 'white' : undefined
+                      }}
+                    >
+                      {freq}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 

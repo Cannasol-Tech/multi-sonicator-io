@@ -2398,6 +2398,99 @@
   transition: none !important;
 }
 
+/* Enhanced Dark Theme Styles for Signal Monitoring Cards */
+.dark-theme .parameter-card-compact {
+  background: linear-gradient(135deg, #2a3441 0%, #374151 100%) !important;
+  border: 1px solid #4b5563 !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark-theme .parameter-card-compact:hover {
+  background: linear-gradient(135deg, #374151 0%, #475569 100%) !important;
+  border-color: #6b7280 !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Enhanced pin state displays for dark theme */
+.dark-theme .pin-state.enhanced {
+  background: linear-gradient(135deg, #374151 0%, #475569 100%) !important;
+  border: 2px solid #6b7280 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark-theme .pin-state.enhanced.high {
+  background: linear-gradient(135deg, #065f46 0%, #047857 100%) !important;
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2), 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark-theme .pin-state.enhanced.analog {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2), 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark-theme .pin-state.enhanced.pwm {
+  background: linear-gradient(135deg, #581c87 0%, #6b21a8 100%) !important;
+  border-color: #8b5cf6 !important;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2), 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Enhanced text visibility for dark theme */
+.dark-theme .parameter-card-compact .text-sm,
+.dark-theme .parameter-card-compact .text-xs {
+  color: #e5e7eb !important;
+}
+
+.dark-theme .parameter-card-compact .parameter-connection {
+  color: #9ca3af !important;
+}
+
+/* Enhanced badge styling for dark theme */
+.dark-theme .parameter-card-compact .text-xs.px-2.py-1.rounded {
+  background: #475569 !important;
+  color: #d1d5db !important;
+  border: 1px solid #6b7280 !important;
+}
+
+/* Frequency controls styling for dark theme */
+.dark-theme .frequency-controls {
+  border-top: 1px solid #4b5563 !important;
+}
+
+.dark-theme .frequency-controls input.input {
+  background: #374151 !important;
+  border: 1px solid #6b7280 !important;
+  color: #e5e7eb !important;
+}
+
+.dark-theme .frequency-controls input.input:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 1px #3b82f6 !important;
+}
+
+.dark-theme .frequency-controls .btn-mini {
+  background: #475569 !important;
+  border-color: #6b7280 !important;
+  color: #e5e7eb !important;
+}
+
+.dark-theme .frequency-controls .btn-mini:hover:not(:disabled) {
+  background: #6b7280 !important;
+  border-color: #9ca3af !important;
+}
+
+.dark-theme .frequency-controls .btn-mini.btn-success {
+  background: #059669 !important;
+  border-color: #10b981 !important;
+  color: white !important;
+}
+
+.dark-theme .frequency-controls .btn-mini.btn-success:hover:not(:disabled) {
+  background: #047857 !important;
+  border-color: #059669 !important;
+}
+
 /* Theme toggle button */
 .theme-toggle {
   font-size: 16px;
