@@ -2,13 +2,13 @@
 
 ## Overview
 
-Successfully migrated the multi-sonicator-io project to use `web-ui/config/hardware-config.yaml` as the single source of truth for pin connection configurations, replacing the previous `docs/planning/pin-matrix.md` document.
+Successfully migrated the multi-sonicator-io project to use `config/hardware-config.yaml` as the single source of truth for pin connection configurations, replacing the previous `docs/planning/pin-matrix.md` document.
 
 ## Changes Made
 
 ### ✅ **New Single Source of Truth**
 
-**`web-ui/config/hardware-config.yaml`** now contains:
+**`config/hardware-config.yaml`** now contains:
 
 - Complete ATmega32A pin definitions with all pin matrix information
 - Detailed pin specifications including:
@@ -79,7 +79,7 @@ Before:
 docs/planning/pin-matrix.md (SOLE SOURCE OF TRUTH)
 
 After:
-web-ui/config/hardware-config.yaml (SOLE SOURCE OF TRUTH)
+config/hardware-config.yaml (SOLE SOURCE OF TRUTH)
 docs/inactive/pin-matrix.md (historical reference)
 docs/inactive/README.md (explanation)
 ```

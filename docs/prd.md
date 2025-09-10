@@ -193,7 +193,7 @@ This project is divided into three main epics, each concluding with a significan
 
 #### ✅ ATmega32A Pin Allocation (Resolved 2025-09-09)
 
-* **Hardware Configuration:** Documented as SOLE SOURCE OF TRUTH in `web-ui/config/hardware-config.yaml`
+* **Hardware Configuration:** Documented as SOLE SOURCE OF TRUTH in `config/hardware-config.yaml`
 * **Pin Capacity:** 40 pins available vs 39 pins required - sufficient capacity confirmed
 
 #### ✅ Frequency Measurement Implementation (Resolved 2025-09-09)

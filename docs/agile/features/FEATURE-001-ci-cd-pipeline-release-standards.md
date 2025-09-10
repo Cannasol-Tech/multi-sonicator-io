@@ -60,16 +60,19 @@ Establish a comprehensive CI/CD pipeline and ensure complete adherence to compan
 ### User Interactions
 
 #### Developer Code Commit
+
 **User Action**: Developer commits code to repository
 **System Response**: CI pipeline automatically triggers build and test sequence
 **Expected Outcome**: Build status reported, tests executed, quality checks performed
 
 #### Unit Test Execution
+
 **User Action**: Developer runs `make test-unit`
 **System Response**: Unity Test Framework executes all unit tests with coverage analysis
 **Expected Outcome**: Test results displayed with coverage report showing ≥85% coverage
 
 #### Build Process
+
 **User Action**: Developer runs `make build`
 **System Response**: PlatformIO builds project with quality checks
 **Expected Outcome**: Successful build with quality validation or clear error messages
@@ -129,16 +132,19 @@ Establish a comprehensive CI/CD pipeline and ensure complete adherence to compan
 ### Test Scenarios
 
 #### Test Scenario 1: Successful Build Pipeline
+
 **Given**: Valid code committed to repository
 **When**: CI pipeline executes
 **Then**: Build succeeds, tests pass, documentation generates
 
 #### Test Scenario 2: Test Failure Handling
+
 **Given**: Code with failing tests committed
 **When**: CI pipeline executes
 **Then**: Pipeline fails, merge blocked, clear error messages provided
 
 #### Test Scenario 3: Coverage Enforcement
+
 **Given**: Code with <85% test coverage
 **When**: CI pipeline executes
 **Then**: Build fails with coverage report showing deficiency

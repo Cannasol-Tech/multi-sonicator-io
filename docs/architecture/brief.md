@@ -19,7 +19,7 @@
 - Provide per-unit control: amplitude setpoint, start/stop, overload reset, and safety interlocks; and per-unit monitoring: power (W), frequency (Hz), overload, frequency lock.
 - Establish a hardware harness and HIL wrapper (`test/acceptance/sketches/arduino_test_wrapper/`) to validate I/O semantics, timing, and error handling pre-integration.
 - Deliver acceptance tests (unit, HIL, and BDD acceptance in `test/acceptance/`) tied to PRD requirements; integrate in CI (`.github/workflows/ci.yml`).
-- Maintain a single source of truth for pins in `web-ui/config/hardware-config.yaml` (SOLE SOURCE OF TRUTH) synchronized with `include/config.h`.
+- Maintain a single source of truth for pins in `config/hardware-config.yaml` (SOLE SOURCE OF TRUTH) synchronized with `include/config.h`.
 
 ## Target Users
 
@@ -78,7 +78,7 @@
   - Testing: C++ unit tests in `test/`, BDD acceptance with Behave (`test/acceptance/`), HIL in Arduino wrapper.
   - CI: GitHub Actions workflows (`.github/workflows/ci.yml`) run tests and reports.
 - Architecture Considerations
-  - Centralized config in `include/config.h` mirrors `web-ui/config/hardware-config.yaml` (SOLE SOURCE OF TRUTH).
+  - Centralized config in `include/config.h` mirrors `config/hardware-config.yaml` (SOLE SOURCE OF TRUTH).
   - Service-style modules for I/O handling, MODBUS service, and per-unit state machines.
   - Security/Safety: Debounce, watchdogs, safe-state on error; no hardcoded secrets.
 
@@ -110,14 +110,14 @@
 
 - References
   - PRD: `docs/Requirements/prd`
-  - Hardware Configuration: `web-ui/config/hardware-config.yaml` (SOLE SOURCE OF TRUTH — FINALIZED)
+  - Hardware Configuration: `config/hardware-config.yaml` (SOLE SOURCE OF TRUTH — FINALIZED)
   - Implementation Plan: `docs/planning/implementation-plan.md` (TBD)
   - CI: `.github/workflows/ci.yml`
 
 ## Next Steps
 
 - Immediate Actions
-  1. Confirm hardware configuration is finalized and keep `include/config.h` in sync (COMPLETED). web-ui/config/hardware-config.yaml is the SOLE SOURCE OF TRUTH.
+  1. Confirm hardware configuration is finalized and keep `include/config.h` in sync (COMPLETED). config/hardware-config.yaml is the SOLE SOURCE OF TRUTH.
   2. Document STATUS LED on PD2 (physical pin 16) and remove legacy RGB references across docs (COMPLETED).
   3. Implement per-unit I/O services and MODBUS register map.
   4. Build HIL wrapper protocol and acceptance scenarios; ensure CI is green.

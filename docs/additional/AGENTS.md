@@ -127,7 +127,7 @@ Ensure AI Coding Agents consistently follows our house rules and repository stan
 
 ### Multi-Sonicator-IO Focus
 
-- Always reference `web-ui/config/hardware-config.yaml` as the single SOLE SOURCE OF TRUTH for the pin assignments and connections between the Arduino Test Wrapper and the ATMEGA32A Sonicator Multiplexer DUT.
+- Always reference `config/hardware-config.yaml` as the single SOLE SOURCE OF TRUTH for the pin assignments and connections between the Arduino Test Wrapper and the ATMEGA32A Sonicator Multiplexer DUT.
 - Understand the sonicator control and monitoring requirements
 - Follow embedded systems best practices where applicable
 - Maintain real-time performance considerations

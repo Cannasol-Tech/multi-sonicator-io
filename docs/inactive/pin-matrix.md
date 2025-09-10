@@ -1,8 +1,8 @@
 # Pin Matrix — DUT ↔ Signals ↔ Wrapper/HIL
 
-**⚠️ INACTIVE DOCUMENT ⚠️**
+***⚠️ INACTIVE DOCUMENT ⚠️***
 
-**This document has been superseded by `web-ui/config/hardware-config.yaml` as of 2025-01-10.**
+**This document has been superseded by `config/hardware-config.yaml` as of 2025-01-10.**
 
 **The hardware-config.yaml file is now the SOLE SOURCE OF TRUTH for hardware pin assignments.**
 

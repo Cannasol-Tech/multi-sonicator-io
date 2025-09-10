@@ -28,7 +28,7 @@ Instead of creating a separate Nexus Lens NPM package, we enhanced your existing
 
 ### ✅ **Configuration Files Created**
 
-#### **`web-ui/config/hardware-config.yaml`**
+#### **`config/hardware-config.yaml`**
 
 Complete hardware configuration including:
 
@@ -203,7 +203,7 @@ Configuration includes complete pin mappings for all 4 channels. When you expand
 
 ### **New Files**
 
-- `web-ui/config/hardware-config.yaml` - Complete hardware configuration
+- `config/hardware-config.yaml` - Complete hardware configuration
 - `web-ui/backend/src/config/ConfigService.ts` - Configuration management service
 - `web-ui/backend/src/routes/config.ts` - Configuration API routes
 - `web-ui/frontend/src/components/HardwareConfigPanel.tsx` - Hardware config UI

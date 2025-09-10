@@ -137,7 +137,7 @@ The firmware follows a strict layered architecture:
 - **Main Application** (`src/main.cpp`): Unified main loop with MODBUS processing and sonicator service calls
 - **Configuration** (`include/config.h`): Complete pin definitions and hardware specifications
 - **Register Map** (`include/register_map.h`): MODBUS register structures and addressing
-- **Hardware Configuration** (`web-ui/config/hardware-config.yaml`): **SOLE SOURCE OF TRUTH** for hardware pin assignments
+- **Hardware Configuration** (`config/hardware-config.yaml`): **SOLE SOURCE OF TRUTH** for hardware pin assignments
 
 ### Hardware Interface Design
 
@@ -201,7 +201,7 @@ docs/
 ├── prd.md               # Product requirements document
 └── standards/           # Company development standards
 
-web-ui/config/
+config/
 └── hardware-config.yaml # SOLE SOURCE OF TRUTH for hardware configuration
 ```
 
@@ -209,7 +209,7 @@ web-ui/config/
 
 ### Hardware Pin Assignments
 
-**CRITICAL**: All pin assignments must reference `web-ui/config/hardware-config.yaml` as the **SOLE SOURCE OF TRUTH**. Never modify pin mappings in `include/config.h` without updating the hardware configuration first.
+**CRITICAL**: All pin assignments must reference `config/hardware-config.yaml` as the **SOLE SOURCE OF TRUTH**. Never modify pin mappings in `include/config.h` without updating the hardware configuration first.
 
 ### MODBUS Register Map
 

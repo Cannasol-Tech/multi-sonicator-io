@@ -9,7 +9,7 @@
  * Configuration constants and compile-time settings for the
  * Multi Sonicator I/O Controller (Model: CAN-SON-CTRL-4).
  * Uses Arduino Framework for UART, I2C, PWM, and ADC operations.
- * See web-ui/config/hardware-config.yaml — SOLE SOURCE OF TRUTH for hardware pin assignments. This file mirrors the configuration; do not modify mappings here without updating the configuration first.
+ * See config/hardware-config.yaml — SOLE SOURCE OF TRUTH for hardware pin assignments. This file mirrors the configuration; do not modify mappings here without updating the configuration first.
  */
 
 #ifndef CONFIG_H
@@ -18,7 +18,7 @@
 #include <Arduino.h>
 
 // ----------------------------------------------------------------------------
-// See web-ui/config/hardware-config.yaml — SOLE SOURCE OF TRUTH for hardware pin assignments. This file mirrors the configuration; do not modify mappings here without updating the configuration first.
+// See config/hardware-config.yaml — SOLE SOURCE OF TRUTH for hardware pin assignments. This file mirrors the configuration; do not modify mappings here without updating the configuration first.
 // -----------------------------------------------------------------------------
 
 // Backward-compatible aliases for unit tests targeting legacy pin names
@@ -91,7 +91,7 @@
  * @defgroup SonicatorInterface Sonicator Interface Pin Mapping
  * @brief ATmega32A pin assignments for CT2000 sonicator control interfaces
  * @details Based on schematic design with 6N137 optocouplers and ULN2003A drivers.
- * See also: web-ui/config/hardware-config.yaml (SOLE SOURCE OF TRUTH) and PRD sections.
+ * See also: config/hardware-config.yaml (SOLE SOURCE OF TRUTH) and PRD sections.
  * @{
  */
 

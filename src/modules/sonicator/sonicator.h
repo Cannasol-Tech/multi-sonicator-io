@@ -1,5 +1,6 @@
 /**
  * @file sonicator.h
+ * @author Stephen Boyett
  * @brief Enhanced Sonicator Interface Class for CT2000 Control
  * @author Cannasol Technologies
  * @date 2025-06-27
@@ -31,7 +32,12 @@
  * - Safety monitoring with response time faster than MODBUS protocol requirements
  * - Runtime statistics and fault logging
  */
+
+ 
+
 class SonicatorInterface {
+//@brief Basie Sonicator Interface Class
+
 private:
     // Hardware configuration
     sonicator_hardware_config_t hardware_config;
@@ -59,21 +65,48 @@ private:
     uint32_t overload_detection_time;
     uint32_t last_safety_check;
     
-    // Statistics
+    // Statistics and monitoring
     uint32_t total_start_cycles;
     uint32_t total_overload_events;
     uint32_t last_start_time;
+    uint32_t total_runtime_ms;
+    uint32_t last_update_timestamp;
+    uint16_t update_call_count;
     
-    // Private methods
-    void updateHardwareOutputs();
-    void readHardwareInputs();
-    uint16_t measureFrequency();
-    uint16_t measurePower();
-    void updateStateMachine();
-    void handleOverloadCondition();
-    void updateStatistics();
-    bool validateAmplitudeRange(uint8_t amplitude);
-    void logStateChange(sonicator_state_t new_state);
+    // Error handling and diagnostics
+    error_code_t last_error_code;
+    uint32_t consecutive_error_count;
+    uint32_t last_error_timestamp;
+    bool critical_error_flag;
+    
+    // Performance monitoring
+    uint32_t min_update_time_us;
+    uint32_t max_update_time_us;
+    uint32_t avg_update_time_us;
+    bool performance_monitoring_enabled;
+    
+    // Private methods - Core functionality
+    void updateHardwareOutputs() noexcept;
+    void readHardwareInputs() noexcept;
+    void updateStateMachine() noexcept;
+    void handleOverloadCondition() noexcept;
+    void updateStatistics() noexcept;
+    void logStateChange(sonicator_state_t new_state) noexcept;
+    
+    // Private methods - Measurement and validation
+    uint16_t measureFrequency() const noexcept;
+    uint16_t measurePower() const noexcept;
+    bool validateAmplitudeRange(uint8_t amplitude) const noexcept;
+    bool validateSystemState() const noexcept;
+    
+    // Private methods - Safety and error handling
+    bool checkSafetyConstraints() const noexcept;
+    void handleSystemError(error_code_t error) noexcept;
+    bool isWithinOperatingLimits() const noexcept;
+    
+    // Private methods - Timing and performance
+    uint32_t getCurrentTimestamp() const noexcept;
+    bool hasTimedOut(uint32_t start_time, uint32_t timeout_ms) const noexcept;
 
 public:
     /**
@@ -162,8 +195,9 @@ public:
     bool isRunning() const;
     
     /**
-     * @brief Check if overload condition exists
+     * @brief Check if overload condition exists and throw an interrupt if so
      * @return true if overloaded
+     * @note this should throw an interrupt handled by the main loop if an Overload occurs
      */
     bool isOverloaded() const;
     
@@ -243,63 +277,85 @@ public:
     
     /**
      * @brief Main update function (call from main loop)
-     * Must be called at least every 10ms for proper operation
+     * @return Current sonicator state
+     * @mandatory Must be called at least every 10ms for proper operation
+     * @performance Optimized for real-time execution, typically completes in <1ms
+     * @thread_safety Not thread-safe - call only from main thread
+     * @error_handling Returns SONICATOR_STATE_FAULT on critical errors
      */
-    void update();
-    
-    /**
-     * @brief Fast safety check (call from safety interrupt)
-     * Must be called every 1ms or faster for safety compliance
-     */
-    void safetyScan();
-    
+    sonicator_state_t update() noexcept;
+
     /**
      * @brief Reset all statistics and counters
+     * @note This is a void operation that doesn't affect current state
+     * @thread_safety Not thread-safe - call only when sonicator is stopped
      */
-    void resetStatistics();
+    void resetStatistics() noexcept;
     
     /**
-     * @brief Update control outputs (called from update())
+     * @brief Update control outputs based on current state
+     * @return true if outputs updated successfully, false on hardware error
+     * @note Called internally by update() - typically not called directly
+     * @performance Optimized for minimal latency (<100μs typical)
      */
-    void updateControlOutputs();
+    bool updateControlOutputs() noexcept;
     
     // ========================================================================
     // LEGACY COMPATIBILITY (for existing code)
     // ========================================================================
     
     /**
-     * @brief Legacy start function
+     * @brief Start the sonicator (legacy compatibility)
+     * @return true if start command accepted, false on error
+     * @deprecated Use startSonication() instead for better error handling
      */
-    void start() { startSonication(); }
+    [[deprecated("Use startSonication() instead")]]
+    bool start() { return startSonication(); }
     
     /**
-     * @brief Legacy stop function  
+     * @brief Stop the sonicator (legacy compatibility)
+     * @return true if stop command accepted, false on error
+     * @deprecated Use stopSonication() instead for better error handling
      */
-    void stop() { stopSonication(); }
+    [[deprecated("Use stopSonication() instead")]]
+    bool stop() { return stopSonication(); }
     
     /**
-     * @brief Legacy frequency getter
-     * @return Current frequency
+     * @brief Get the current frequency of the sonicator (legacy compatibility)
+     * @return Current frequency in Hz
+     * @deprecated Use getCurrentFrequency() instead for consistency
      */
-    int getFrequency() const { return getCurrentFrequency(); }
+    [[deprecated("Use getCurrentFrequency() instead")]]
+    uint16_t getFrequency() const { return getCurrentFrequency(); }
     
     /**
-     * @brief Legacy amplitude getter
-     * @return Current amplitude
+     * @brief Get the current amplitude of the sonicator (legacy compatibility)
+     * @return Current amplitude percentage (20-100%)
+     * @deprecated Use getCurrentAmplitude() instead for consistency
      */
-    int getAmplitude() const { return getCurrentAmplitude(); }
+    [[deprecated("Use getCurrentAmplitude() instead")]]
+    uint8_t getAmplitude() const { return getCurrentAmplitude(); }
     
     /**
-     * @brief Legacy amplitude setter
-     * @param amplitude Amplitude percentage
+     * @brief Set the amplitude of the sonicator (legacy compatibility)
+     * @param amplitude Amplitude percentage (20-100)
+     * @return true if amplitude set successfully, false on error
+     * @deprecated Use setAmplitude() instead for better error handling
      */
-    void setAmplitude(int amplitude) { setAmplitude((uint8_t)amplitude); }
+    [[deprecated("Use the non-legacy setAmplitude() instead")]]
+    bool setAmplitudeLegacy(uint8_t amplitude) { return setAmplitude(amplitude); }
     
     /**
-     * @brief Legacy frequency setter (read-only in CT2000)
-     * @param frequency Frequency (ignored - read-only)
+     * @brief Set the frequency of the sonicator (legacy compatibility - no-op)
+     * @param frequency Frequency (ignored - CT2000 frequency is read-only)
+     * @return false always (operation not supported)
+     * @deprecated CT2000 frequency is read-only and cannot be set
      */
-    void setFrequency(int frequency) { /* CT2000 frequency is read-only */ }
+    [[deprecated("CT2000 frequency is read-only")]]
+    bool setFrequency(int frequency) {
+        (void)frequency; // Suppress unused parameter warning
+        return false; // CT2000 frequency is read-only
+    }
 };
 
 #endif // SONICATOR_H

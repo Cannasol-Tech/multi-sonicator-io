@@ -112,7 +112,7 @@ make check-standards     # Check standards status
 - **[Product Requirements Document](docs/prd.md)** - Complete technical specifications and requirements
 - **[Project Requirements (Detailed)](docs/prd-shards/project-requirements.md)** - Comprehensive project requirements
 - **[Architecture Overview](docs/architecture.md)** - System architecture and design decisions
-- **[Hardware Configuration (SOLE SOURCE OF TRUTH)](web-ui/config/hardware-config.yaml)** - Hardware pin assignments and interface mapping
+- **[Hardware Configuration (SOLE SOURCE OF TRUTH)](config/hardware-config.yaml)** - Hardware pin assignments and interface mapping
 
 ### Hardware Documentation
 

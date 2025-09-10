@@ -61,16 +61,19 @@ Establish a comprehensive Hardware-in-the-Loop (HIL) testing framework and valid
 ### User Interactions
 
 #### BDD Test Execution
+
 **User Action**: Test engineer runs `make test-acceptance`
 **System Response**: BDD scenarios execute on physical hardware
 **Expected Outcome**: Test results with pass/fail status and hardware validation
 
 #### Web UI Hardware Monitoring
+
 **User Action**: Developer accesses Web UI for hardware monitoring
 **System Response**: Real-time MODBUS register values and system status displayed
 **Expected Outcome**: Live hardware state monitoring with <1s update latency
 
 #### Sandbox CLI Debugging
+
 **User Action**: Engineer uses Sandbox CLI for hardware debugging
 **System Response**: Manual hardware control commands executed
 **Expected Outcome**: Direct hardware interaction with logged responses
@@ -133,16 +136,19 @@ Establish a comprehensive Hardware-in-the-Loop (HIL) testing framework and valid
 ### Test Scenarios
 
 #### Test Scenario 1: Pin Matrix Verification
+
 **Given**: ATmega32A connected via Arduino Test Wrapper
 **When**: Pin verification process executes
 **Then**: All 39 pins validated against approved pin matrix
 
 #### Test Scenario 2: HIL BDD Execution
+
 **Given**: HIL framework operational
 **When**: BDD scenarios execute on hardware
 **Then**: Test results captured with hardware state validation
 
 #### Test Scenario 3: Web UI MODBUS Access
+
 **Given**: Web UI connected to hardware
 **When**: User monitors MODBUS registers
 **Then**: Real-time values displayed with <1s latency

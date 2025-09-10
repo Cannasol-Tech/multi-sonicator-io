@@ -6,7 +6,7 @@ This directory contains documentation that has been superseded or is no longer a
 
 ### pin-matrix.md
 - **Status**: Inactive as of 2025-01-10
-- **Superseded by**: `web-ui/config/hardware-config.yaml`
+- **Superseded by**: `config/hardware-config.yaml`
 - **Reason**: Consolidated hardware configuration into single YAML source of truth
 - **Kept for**: Historical reference and migration documentation
 
