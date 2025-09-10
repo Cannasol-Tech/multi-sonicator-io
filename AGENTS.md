@@ -6,11 +6,11 @@ Ensure AI Coding Agents consistently follows our house rules and repository stan
 
 ## Source of Truth Hierarchy
 
-1. **Primary standards**: `docs/standards/` (single source of truth)
+1. **Primary standards**: `.axovia-flow/company-standards/` (single source of truth)
 2. **Architecture docs**: `docs/architecture/` and PRD documents
 3. **Project-specific**: This `AGENTS.md` file
 4. **Project-specific**: `.axovia-flow/flow-config.yaml`
-. **Legacy standards**: `.bmad-core/core-config.yaml` (only when not in conflict)
+5. **Legacy standards**: `.bmad-core/core-config.yaml` (only when not in conflict)
 
 > **Note**: If standards are duplicated elsewhere, treat `docs/standards/` as canonical. Flag any divergence and propose sync PRs.
 

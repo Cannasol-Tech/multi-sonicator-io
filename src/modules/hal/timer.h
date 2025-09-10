@@ -32,10 +32,10 @@ extern "C" {
  * @brief Timer identifiers
  */
 typedef enum {
-    TIMER_ID_0 = 0,             ///< Timer 0 (8-bit)
-    TIMER_ID_1 = 1,             ///< Timer 1 (16-bit)
-    TIMER_ID_SCHEDULER,         ///< Dedicated scheduler timer
-    TIMER_ID_WATCHDOG,          ///< Dedicated watchdog timer
+    TIMER_ID_0 = 0,             //< Timer 0 (8-bit)
+    TIMER_ID_1 = 1,             //< Timer 1 (16-bit)
+    TIMER_ID_SCHEDULER,         //< Dedicated scheduler timer
+    TIMER_ID_WATCHDOG,          //< Dedicated watchdog timer
     TIMER_ID_MAX = 4
 } timer_id_t;
 
@@ -43,58 +43,58 @@ typedef enum {
  * @brief Timer modes
  */
 typedef enum {
-    TIMER_MODE_NORMAL = 0,      ///< Normal mode (overflow)
-    TIMER_MODE_CTC,             ///< Clear Timer on Compare match
-    TIMER_MODE_PWM_FAST,        ///< Fast PWM mode
-    TIMER_MODE_PWM_PHASE_CORRECT ///< Phase correct PWM mode
+    TIMER_MODE_NORMAL = 0,      //< Normal mode (overflow)
+    TIMER_MODE_CTC,             //< Clear Timer on Compare match
+    TIMER_MODE_PWM_FAST,        //< Fast PWM mode
+    TIMER_MODE_PWM_PHASE_CORRECT //< Phase correct PWM mode
 } timer_mode_t;
 
 /**
  * @brief Timer prescaler values
  */
 typedef enum {
-    TIMER_PRESCALER_1 = 1,      ///< No prescaling
-    TIMER_PRESCALER_8 = 2,      ///< Divide by 8
-    TIMER_PRESCALER_64 = 3,     ///< Divide by 64
-    TIMER_PRESCALER_256 = 4,    ///< Divide by 256
-    TIMER_PRESCALER_1024 = 5,   ///< Divide by 1024
-    TIMER_PRESCALER_EXT_FALL = 6, ///< External clock on falling edge
-    TIMER_PRESCALER_EXT_RISE = 7  ///< External clock on rising edge
+    TIMER_PRESCALER_1 = 1,      //< No prescaling
+    TIMER_PRESCALER_8 = 2,      //< Divide by 8
+    TIMER_PRESCALER_64 = 3,     //< Divide by 64
+    TIMER_PRESCALER_256 = 4,    //< Divide by 256
+    TIMER_PRESCALER_1024 = 5,   //< Divide by 1024
+    TIMER_PRESCALER_EXT_FALL = 6, //< External clock on falling edge
+    TIMER_PRESCALER_EXT_RISE = 7  //< External clock on rising edge
 } timer_prescaler_t;
 
 /**
  * @brief Timer configuration structure
  */
 typedef struct {
-    timer_mode_t mode;          ///< Timer mode
-    timer_prescaler_t prescaler;///< Clock prescaler
-    uint16_t period;            ///< Timer period value
-    bool enable_interrupt;      ///< Enable timer interrupt
+    timer_mode_t mode;          //< Timer mode
+    timer_prescaler_t prescaler;//< Clock prescaler
+    uint16_t period;            //< Timer period value
+    bool enable_interrupt;      //< Enable timer interrupt
 } timer_config_t;
 
 /**
  * @brief HAL function return codes
  */
 typedef enum {
-    TIMER_OK = 0,               ///< Operation successful
-    TIMER_ERROR_INVALID_ID,     ///< Invalid timer ID
-    TIMER_ERROR_INVALID_PERIOD, ///< Invalid period value
-    TIMER_ERROR_INVALID_CONFIG, ///< Invalid configuration
-    TIMER_ERROR_NOT_INITIALIZED ///< Timer not initialized
+    TIMER_OK = 0,               //< Operation successful
+    TIMER_ERROR_INVALID_ID,     //< Invalid timer ID
+    TIMER_ERROR_INVALID_PERIOD, //< Invalid period value
+    TIMER_ERROR_INVALID_CONFIG, //< Invalid configuration
+    TIMER_ERROR_NOT_INITIALIZED //< Timer not initialized
 } timer_result_t;
 
 // ============================================================================
 // CONFIGURATION CONSTANTS
 // ============================================================================
 
-#define TIMER_RESOLUTION_US     1           ///< Timer resolution (1 μs)
-#define TIMER_MAX_PERIOD_MS     65535       ///< Maximum period (65.535 seconds)
-#define TIMER_SCHEDULER_PERIOD  10          ///< Scheduler period (10ms)
-#define TIMER_WATCHDOG_PERIOD   1000        ///< Watchdog period (1 second)
+#define TIMER_RESOLUTION_US     1           //< Timer resolution (1 μs)
+#define TIMER_MAX_PERIOD_MS     65535       //< Maximum period (65.535 seconds)
+#define TIMER_SCHEDULER_PERIOD  10          //< Scheduler period (10ms)
+#define TIMER_WATCHDOG_PERIOD   1000        //< Watchdog period (1 second)
 
 // Safety timing requirements
-#define TIMER_EMERGENCY_RESPONSE_US 50      ///< Emergency response time
-#define TIMER_MODBUS_CHAR_TIMEOUT   104     ///< MODBUS character timeout
+#define TIMER_EMERGENCY_RESPONSE_US 50      //< Emergency response time
+#define TIMER_MODBUS_CHAR_TIMEOUT   104     //< MODBUS character timeout
 
 // ============================================================================
 // PUBLIC INTERFACE

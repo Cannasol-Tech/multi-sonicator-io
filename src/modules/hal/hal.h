@@ -39,13 +39,13 @@ extern "C" {
  * @brief HAL system return codes
  */
 typedef enum {
-    HAL_OK = 0,                 ///< All operations successful
-    HAL_ERROR_GPIO,             ///< GPIO subsystem error
-    HAL_ERROR_ADC,              ///< ADC subsystem error
-    HAL_ERROR_PWM,              ///< PWM subsystem error
-    HAL_ERROR_UART,             ///< UART subsystem error
-    HAL_ERROR_TIMER,            ///< Timer subsystem error
-    HAL_ERROR_NOT_INITIALIZED   ///< HAL not initialized
+    HAL_OK = 0,                 //< All operations successful
+    HAL_ERROR_GPIO,             //< GPIO subsystem error
+    HAL_ERROR_ADC,              //< ADC subsystem error
+    HAL_ERROR_PWM,              //< PWM subsystem error
+    HAL_ERROR_UART,             //< UART subsystem error
+    HAL_ERROR_TIMER,            //< Timer subsystem error
+    HAL_ERROR_NOT_INITIALIZED   //< HAL not initialized
 } hal_result_t;
 
 /**
@@ -121,19 +121,19 @@ hal_result_t hal_emergency_shutdown(void);
  * @brief Complete sonicator control structure
  */
 typedef struct {
-    bool start;                 ///< Start/stop control
-    uint8_t amplitude_percent;  ///< Amplitude setting (20-100%)
-    bool reset_overload;        ///< Reset overload condition
+    bool start;                 //< Start/stop control
+    uint8_t amplitude_percent;  //< Amplitude setting (20-100%)
+    bool reset_overload;        //< Reset overload condition
 } sonicator_control_t;
 
 /**
  * @brief Complete sonicator status structure
  */
 typedef struct {
-    bool overload;              ///< Overload condition active
-    bool frequency_locked;      ///< Frequency lock status
-    float power_watts;          ///< Current power output
-    uint16_t frequency_hz;      ///< Operating frequency
+    bool overload;              //< Overload condition active
+    bool frequency_locked;      //< Frequency lock status
+    float power_watts;          //< Current power output
+    uint16_t frequency_hz;      //< Operating frequency
 } sonicator_status_t;
 
 /**

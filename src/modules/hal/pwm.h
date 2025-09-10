@@ -32,7 +32,7 @@ extern "C" {
  * @brief PWM channel identifiers
  */
 typedef enum {
-    PWM_CHANNEL_AMPLITUDE = 0,  ///< Amplitude control channel (PD7)
+    PWM_CHANNEL_AMPLITUDE = 0,  //< Amplitude control channel (PD7)
     PWM_CHANNEL_MAX = 1
 } pwm_channel_t;
 
@@ -40,55 +40,55 @@ typedef enum {
  * @brief PWM timer prescaler values
  */
 typedef enum {
-    PWM_PRESCALER_1 = 1,        ///< No prescaling
-    PWM_PRESCALER_8 = 2,        ///< Divide by 8
-    PWM_PRESCALER_32 = 3,       ///< Divide by 32
-    PWM_PRESCALER_64 = 4,       ///< Divide by 64
-    PWM_PRESCALER_128 = 5,      ///< Divide by 128
-    PWM_PRESCALER_256 = 6,      ///< Divide by 256
-    PWM_PRESCALER_1024 = 7      ///< Divide by 1024
+    PWM_PRESCALER_1 = 1,        //< No prescaling
+    PWM_PRESCALER_8 = 2,        //< Divide by 8
+    PWM_PRESCALER_32 = 3,       //< Divide by 32
+    PWM_PRESCALER_64 = 4,       //< Divide by 64
+    PWM_PRESCALER_128 = 5,      //< Divide by 128
+    PWM_PRESCALER_256 = 6,      //< Divide by 256
+    PWM_PRESCALER_1024 = 7      //< Divide by 1024
 } pwm_prescaler_t;
 
 /**
  * @brief PWM waveform generation modes
  */
 typedef enum {
-    PWM_MODE_FAST_8BIT = 0,     ///< Fast PWM, 8-bit (0-255)
-    PWM_MODE_FAST_9BIT,         ///< Fast PWM, 9-bit (0-511)
-    PWM_MODE_FAST_10BIT,        ///< Fast PWM, 10-bit (0-1023)
-    PWM_MODE_PHASE_CORRECT_8BIT,///< Phase correct PWM, 8-bit
-    PWM_MODE_PHASE_CORRECT_9BIT,///< Phase correct PWM, 9-bit
-    PWM_MODE_PHASE_CORRECT_10BIT///< Phase correct PWM, 10-bit
+    PWM_MODE_FAST_8BIT = 0,     //< Fast PWM, 8-bit (0-255)
+    PWM_MODE_FAST_9BIT,         //< Fast PWM, 9-bit (0-511)
+    PWM_MODE_FAST_10BIT,        //< Fast PWM, 10-bit (0-1023)
+    PWM_MODE_PHASE_CORRECT_8BIT,//< Phase correct PWM, 8-bit
+    PWM_MODE_PHASE_CORRECT_9BIT,//< Phase correct PWM, 9-bit
+    PWM_MODE_PHASE_CORRECT_10BIT//< Phase correct PWM, 10-bit
 } pwm_mode_t;
 
 /**
  * @brief HAL function return codes
  */
 typedef enum {
-    PWM_OK = 0,                 ///< Operation successful
-    PWM_ERROR_INVALID_CHANNEL,  ///< Invalid channel number
-    PWM_ERROR_INVALID_DUTY,     ///< Invalid duty cycle value
-    PWM_ERROR_INVALID_FREQ,     ///< Invalid frequency value
-    PWM_ERROR_NOT_INITIALIZED   ///< PWM not initialized
+    PWM_OK = 0,                 //< Operation successful
+    PWM_ERROR_INVALID_CHANNEL,  //< Invalid channel number
+    PWM_ERROR_INVALID_DUTY,     //< Invalid duty cycle value
+    PWM_ERROR_INVALID_FREQ,     //< Invalid frequency value
+    PWM_ERROR_NOT_INITIALIZED   //< PWM not initialized
 } pwm_result_t;
 
 // ============================================================================
 // CONFIGURATION CONSTANTS
 // ============================================================================
 
-#define PWM_DEFAULT_FREQUENCY   1000        ///< Default PWM frequency (1kHz)
-#define PWM_MIN_FREQUENCY       100         ///< Minimum PWM frequency (100Hz)
-#define PWM_MAX_FREQUENCY       50000       ///< Maximum PWM frequency (50kHz)
+#define PWM_DEFAULT_FREQUENCY   1000        //< Default PWM frequency (1kHz)
+#define PWM_MIN_FREQUENCY       100         //< Minimum PWM frequency (100Hz)
+#define PWM_MAX_FREQUENCY       50000       //< Maximum PWM frequency (50kHz)
 
-#define PWM_DUTY_MIN           0            ///< Minimum duty cycle (0%)
-#define PWM_DUTY_MAX           100          ///< Maximum duty cycle (100%)
+#define PWM_DUTY_MIN           0            //< Minimum duty cycle (0%)
+#define PWM_DUTY_MAX           100          //< Maximum duty cycle (100%)
 
-#define PWM_AMPLITUDE_MIN      20           ///< Minimum amplitude (20%)
-#define PWM_AMPLITUDE_MAX      100          ///< Maximum amplitude (100%)
+#define PWM_AMPLITUDE_MIN      20           //< Minimum amplitude (20%)
+#define PWM_AMPLITUDE_MAX      100          //< Maximum amplitude (100%)
 
 // Filter characteristics (per schematic)
-#define PWM_FILTER_CUTOFF_HZ   16           ///< RC filter cutoff frequency
-#define PWM_OPAMP_GAIN         2.0f         ///< LM358N gain (0-5V → 0-10V)
+#define PWM_FILTER_CUTOFF_HZ   16           //< RC filter cutoff frequency
+#define PWM_OPAMP_GAIN         2.0f         //< LM358N gain (0-5V → 0-10V)
 
 // ============================================================================
 // PUBLIC INTERFACE

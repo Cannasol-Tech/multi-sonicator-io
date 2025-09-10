@@ -32,28 +32,28 @@ extern "C" {
  * @brief GPIO pin modes
  */
 typedef enum {
-    GPIO_MODE_INPUT = 0,        ///< Input mode (high impedance)
-    GPIO_MODE_INPUT_PULLUP,     ///< Input with internal pull-up
-    GPIO_MODE_OUTPUT,           ///< Output mode (push-pull)
-    GPIO_MODE_OUTPUT_OPEN_DRAIN ///< Output mode (open-drain)
+    GPIO_MODE_INPUT = 0,        //< Input mode (high impedance)
+    GPIO_MODE_INPUT_PULLUP,     //< Input with internal pull-up
+    GPIO_MODE_OUTPUT,           //< Output mode (push-pull)
+    GPIO_MODE_OUTPUT_OPEN_DRAIN //< Output mode (open-drain)
 } gpio_mode_t;
 
 /**
  * @brief GPIO pin states
  */
 typedef enum {
-    GPIO_LOW = 0,               ///< Logic low (0V)
-    GPIO_HIGH = 1               ///< Logic high (5V)
+    GPIO_LOW = 0,               //< Logic low (0V)
+    GPIO_HIGH = 1               //< Logic high (5V)
 } gpio_state_t;
 
 /**
  * @brief HAL function return codes
  */
 typedef enum {
-    GPIO_OK = 0,                ///< Operation successful
-    GPIO_ERROR_INVALID_PIN,     ///< Invalid pin number
-    GPIO_ERROR_INVALID_MODE,    ///< Invalid pin mode
-    GPIO_ERROR_NOT_INITIALIZED  ///< GPIO not initialized
+    GPIO_OK = 0,                //< Operation successful
+    GPIO_ERROR_INVALID_PIN,     //< Invalid pin number
+    GPIO_ERROR_INVALID_MODE,    //< Invalid pin mode
+    GPIO_ERROR_NOT_INITIALIZED  //< GPIO not initialized
 } gpio_result_t;
 
 // ============================================================================

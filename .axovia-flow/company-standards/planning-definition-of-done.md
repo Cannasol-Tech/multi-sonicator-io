@@ -62,7 +62,7 @@ Authoritative Standard — Single Source of Truth
 - .bmad-core/checklists/pm-checklist.md
 - .bmad-core/checklists/po-master-checklist.md
 - .bmad-core/checklists/story-draft-checklist.md
-- docs/standards/sw‑testing‑standard.md
-- docs/standards/release‑format.md
-- docs/standards/repository‑auditing.md
+- .axovia-flow/company-standards/sw‑testing‑standard.md
+- .axovia-flow/company-standards/release‑format.md
+- .axovia-flow/company-standards/repository‑auditing.md
 - docs/qa/README.md

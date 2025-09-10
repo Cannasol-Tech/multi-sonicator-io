@@ -9,7 +9,7 @@
 .PHONY: acceptance-test-pwm acceptance-test-modbus acceptance-test-power generate-release-artifacts test-integration
 .PHONY: test-unit-communication test-unit-hal test-unit-control test-unit-sonicator validate-config generate-traceability-report manage-pending-scenarios update-pending-scenarios ci-local
 .PHONY: web-ui-install web-ui-dev web-ui-build web-ui-sandbox web-ui-test web-ui-clean web-ui-stop
-.PHONY: validate-traceability check-compliance update-standards sync-standards check-standards generate-executive-report generate-coverage-report generate-complete-executive-report
+.PHONY: validate-traceability check-compliance update-standards sync-standards check-standards generate-executive-report generate-coverage-report generate-complete-executive-report coverage
 .PHONY: nexus-lens-status nexus-lens-validate nexus-lens-start nexus-lens-test nexus-lens-report nexus-lens-simulate
 
 #  Make Targets
@@ -343,6 +343,14 @@ generate-coverage-report: check-deps
 		--output=final/coverage-summary.json
 	@echo "✅ Coverage report generated in final/"
 
+# Standalone coverage target (readable summary)
+coverage: check-deps
+	@echo "📊 Running coverage pipeline (unit tests + summary)..."
+	@$(MAKE) test-unit
+	@$(MAKE) generate-coverage-report
+	@echo "📄 Coverage summary: final/coverage-summary.json"
+	@echo "📂 Full artifacts: coverage/ and final/"
+
 # Generate complete executive report (manual testing with acceptance results)
 generate-complete-executive-report: check-deps
 	@echo "📊 Generating complete executive report (unit + acceptance)..."
@@ -619,6 +627,31 @@ nexus-lens-coverage:
 nexus-lens-complete-report:
 	@echo "📊 Generating complete report through Nexus Lens"
 	@./nexus-lens report --type complete
+
+# CI/CD Pipeline Artifact Management
+upload-artifacts: check-deps
+	@echo "📦 Packaging and uploading CI/CD artifacts..."
+	@mkdir -p artifacts/firmware artifacts/reports artifacts/coverage
+	@echo "🔄 Collecting firmware artifacts..."
+	@if [ -d ".pio/build" ]; then \
+		cp -r .pio/build/* artifacts/firmware/ 2>/dev/null || true; \
+	fi
+	@echo "🔄 Collecting test reports..."
+	@if [ -d "reports" ]; then \
+		cp -r reports/* artifacts/reports/ 2>/dev/null || true; \
+	fi
+	@echo "🔄 Collecting coverage reports..."
+	@if [ -d "coverage" ]; then \
+		cp -r coverage/* artifacts/coverage/ 2>/dev/null || true; \
+	fi
+	@echo "🔄 Generating artifact manifest..."
+	@python3 scripts/ci/generate_reports.py --build-dir .pio/build --output-dir artifacts/reports
+	@echo "📊 Creating artifact checksums..."
+	@find artifacts -type f -exec sha256sum {} \; > artifacts/checksums.sha256
+	@echo "✅ Artifacts packaged successfully in artifacts/ directory"
+	@echo "📋 Artifact summary:"
+	@find artifacts -type f | wc -l | xargs echo "  Total files:"
+	@du -sh artifacts | cut -f1 | xargs echo "  Total size:"
 
 # Nexus Lens help
 nexus-lens-help:

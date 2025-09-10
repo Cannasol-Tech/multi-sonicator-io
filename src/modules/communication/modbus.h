@@ -38,34 +38,34 @@ extern "C" {
 // MODBUS CONFIGURATION
 // ============================================================================
 
-#define MODBUS_SLAVE_ID             2           ///< MODBUS slave ID per system requirements
-#define MODBUS_BAUD_RATE            115200      ///< Communication baud rate
-#define MODBUS_TIMEOUT_MS           1000        ///< Communication timeout (1 second)
-#define MODBUS_RESPONSE_TIMEOUT_MS  100         ///< Maximum response time per NFR2
+#define MODBUS_SLAVE_ID             2           //< MODBUS slave ID per system requirements
+#define MODBUS_BAUD_RATE            115200      //< Communication baud rate
+#define MODBUS_TIMEOUT_MS           1000        //< Communication timeout (1 second)
+#define MODBUS_RESPONSE_TIMEOUT_MS  100         //< Maximum response time per NFR2
 
 // Supported MODBUS function codes
-#define MODBUS_FC_READ_HOLDING      0x03        ///< Read Holding Registers
-#define MODBUS_FC_WRITE_SINGLE      0x06        ///< Write Single Register
-#define MODBUS_FC_WRITE_MULTIPLE    0x10        ///< Write Multiple Registers
+#define MODBUS_FC_READ_HOLDING      0x03        //< Read Holding Registers
+#define MODBUS_FC_WRITE_SINGLE      0x06        //< Write Single Register
+#define MODBUS_FC_WRITE_MULTIPLE    0x10        //< Write Multiple Registers
 
 // ============================================================================
 // ERROR CODES
 // ============================================================================
 
 typedef enum {
-    MODBUS_OK = 0,                  ///< Operation successful
-    MODBUS_ERROR_ILLEGAL_FUNCTION,  ///< Unsupported function code
-    MODBUS_ERROR_ILLEGAL_ADDRESS,   ///< Invalid register address
-    MODBUS_ERROR_ILLEGAL_VALUE,     ///< Invalid register value
-    MODBUS_ERROR_SLAVE_FAILURE,     ///< Slave device failure
-    MODBUS_ERROR_ACKNOWLEDGE,       ///< Acknowledge error
-    MODBUS_ERROR_SLAVE_BUSY,        ///< Slave device busy
-    MODBUS_ERROR_MEMORY_PARITY,     ///< Memory parity error
-    MODBUS_ERROR_GATEWAY_PATH,      ///< Gateway path unavailable
-    MODBUS_ERROR_GATEWAY_TARGET,    ///< Gateway target failed to respond
-    MODBUS_ERROR_TIMEOUT,           ///< Communication timeout
-    MODBUS_ERROR_CRC,               ///< CRC validation failed
-    MODBUS_ERROR_INVALID_LENGTH     ///< Invalid frame length
+    MODBUS_OK = 0,                  //< Operation successful
+    MODBUS_ERROR_ILLEGAL_FUNCTION,  //< Unsupported function code
+    MODBUS_ERROR_ILLEGAL_ADDRESS,   //< Invalid register address
+    MODBUS_ERROR_ILLEGAL_VALUE,     //< Invalid register value
+    MODBUS_ERROR_SLAVE_FAILURE,     //< Slave device failure
+    MODBUS_ERROR_ACKNOWLEDGE,       //< Acknowledge error
+    MODBUS_ERROR_SLAVE_BUSY,        //< Slave device busy
+    MODBUS_ERROR_MEMORY_PARITY,     //< Memory parity error
+    MODBUS_ERROR_GATEWAY_PATH,      //< Gateway path unavailable
+    MODBUS_ERROR_GATEWAY_TARGET,    //< Gateway target failed to respond
+    MODBUS_ERROR_TIMEOUT,           //< Communication timeout
+    MODBUS_ERROR_CRC,               //< CRC validation failed
+    MODBUS_ERROR_INVALID_LENGTH     //< Invalid frame length
 } modbus_error_t;
 
 // ============================================================================
@@ -73,12 +73,12 @@ typedef enum {
 // ============================================================================
 
 typedef enum {
-    MODBUS_STATE_IDLE,              ///< Waiting for request
-    MODBUS_STATE_RECEIVING,         ///< Processing incoming frame
-    MODBUS_STATE_PROCESSING,        ///< Executing MODBUS function
-    MODBUS_STATE_RESPONDING,        ///< Sending response frame
-    MODBUS_STATE_ERROR,             ///< Handling communication errors
-    MODBUS_STATE_TIMEOUT            ///< Communication timeout detected
+    MODBUS_STATE_IDLE,              //< Waiting for request
+    MODBUS_STATE_RECEIVING,         //< Processing incoming frame
+    MODBUS_STATE_PROCESSING,        //< Executing MODBUS function
+    MODBUS_STATE_RESPONDING,        //< Sending response frame
+    MODBUS_STATE_ERROR,             //< Handling communication errors
+    MODBUS_STATE_TIMEOUT            //< Communication timeout detected
 } modbus_state_t;
 
 // ============================================================================
@@ -117,13 +117,13 @@ typedef void (*modbus_error_callback_t)(modbus_error_t error_code);
 // ============================================================================
 
 typedef struct {
-    uint8_t slave_id;                           ///< MODBUS slave ID
-    uint32_t baud_rate;                         ///< Communication baud rate
-    uint16_t timeout_ms;                        ///< Communication timeout
-    modbus_read_callback_t read_callback;      ///< Register read callback
-    modbus_write_callback_t write_callback;    ///< Register write callback
-    modbus_timeout_callback_t timeout_callback; ///< Timeout event callback
-    modbus_error_callback_t error_callback;    ///< Error event callback
+    uint8_t slave_id;                           //< MODBUS slave ID
+    uint32_t baud_rate;                         //< Communication baud rate
+    uint16_t timeout_ms;                        //< Communication timeout
+    modbus_read_callback_t read_callback;      //< Register read callback
+    modbus_write_callback_t write_callback;    //< Register write callback
+    modbus_timeout_callback_t timeout_callback; //< Timeout event callback
+    modbus_error_callback_t error_callback;    //< Error event callback
 } modbus_config_t;
 
 // ============================================================================
@@ -131,15 +131,15 @@ typedef struct {
 // ============================================================================
 
 typedef struct {
-    uint32_t requests_received;         ///< Total requests received
-    uint32_t responses_sent;            ///< Total responses sent
-    uint32_t crc_errors;                ///< CRC validation errors
-    uint32_t timeout_errors;            ///< Communication timeouts
-    uint32_t illegal_function_errors;   ///< Illegal function code errors
-    uint32_t illegal_address_errors;    ///< Illegal address errors
-    uint32_t slave_failure_errors;      ///< Slave failure errors
-    uint32_t last_request_time;         ///< Timestamp of last request
-    uint32_t max_response_time;         ///< Maximum response time recorded
+    uint32_t requests_received;         //< Total requests received
+    uint32_t responses_sent;            //< Total responses sent
+    uint32_t crc_errors;                //< CRC validation errors
+    uint32_t timeout_errors;            //< Communication timeouts
+    uint32_t illegal_function_errors;   //< Illegal function code errors
+    uint32_t illegal_address_errors;    //< Illegal address errors
+    uint32_t slave_failure_errors;      //< Slave failure errors
+    uint32_t last_request_time;         //< Timestamp of last request
+    uint32_t max_response_time;         //< Maximum response time recorded
 } modbus_statistics_t;
 
 // ============================================================================

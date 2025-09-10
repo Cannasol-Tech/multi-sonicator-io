@@ -32,70 +32,70 @@ extern "C" {
  * @brief UART parity settings
  */
 typedef enum {
-    UART_PARITY_NONE = 0,       ///< No parity
-    UART_PARITY_EVEN = 2,       ///< Even parity
-    UART_PARITY_ODD = 3         ///< Odd parity
+    UART_PARITY_NONE = 0,       //< No parity
+    UART_PARITY_EVEN = 2,       //< Even parity
+    UART_PARITY_ODD = 3         //< Odd parity
 } uart_parity_t;
 
 /**
  * @brief UART stop bit settings
  */
 typedef enum {
-    UART_STOP_1BIT = 0,         ///< 1 stop bit
-    UART_STOP_2BIT = 1          ///< 2 stop bits
+    UART_STOP_1BIT = 0,         //< 1 stop bit
+    UART_STOP_2BIT = 1          //< 2 stop bits
 } uart_stop_bits_t;
 
 /**
  * @brief UART data bit settings
  */
 typedef enum {
-    UART_DATA_5BIT = 0,         ///< 5 data bits
-    UART_DATA_6BIT = 1,         ///< 6 data bits
-    UART_DATA_7BIT = 2,         ///< 7 data bits
-    UART_DATA_8BIT = 3,         ///< 8 data bits
-    UART_DATA_9BIT = 7          ///< 9 data bits
+    UART_DATA_5BIT = 0,         //< 5 data bits
+    UART_DATA_6BIT = 1,         //< 6 data bits
+    UART_DATA_7BIT = 2,         //< 7 data bits
+    UART_DATA_8BIT = 3,         //< 8 data bits
+    UART_DATA_9BIT = 7          //< 9 data bits
 } uart_data_bits_t;
 
 /**
  * @brief UART configuration structure
  */
 typedef struct {
-    uint32_t baud_rate;         ///< Baud rate (bps)
-    uart_data_bits_t data_bits; ///< Number of data bits
-    uart_parity_t parity;       ///< Parity setting
-    uart_stop_bits_t stop_bits; ///< Number of stop bits
+    uint32_t baud_rate;         //< Baud rate (bps)
+    uart_data_bits_t data_bits; //< Number of data bits
+    uart_parity_t parity;       //< Parity setting
+    uart_stop_bits_t stop_bits; //< Number of stop bits
 } uart_config_t;
 
 /**
  * @brief HAL function return codes
  */
 typedef enum {
-    UART_OK = 0,                ///< Operation successful
-    UART_ERROR_INVALID_BAUD,    ///< Invalid baud rate
-    UART_ERROR_INVALID_CONFIG,  ///< Invalid configuration
-    UART_ERROR_BUFFER_FULL,     ///< Transmit buffer full
-    UART_ERROR_BUFFER_EMPTY,    ///< Receive buffer empty
-    UART_ERROR_TIMEOUT,         ///< Operation timeout
-    UART_ERROR_NOT_INITIALIZED  ///< UART not initialized
+    UART_OK = 0,                //< Operation successful
+    UART_ERROR_INVALID_BAUD,    //< Invalid baud rate
+    UART_ERROR_INVALID_CONFIG,  //< Invalid configuration
+    UART_ERROR_BUFFER_FULL,     //< Transmit buffer full
+    UART_ERROR_BUFFER_EMPTY,    //< Receive buffer empty
+    UART_ERROR_TIMEOUT,         //< Operation timeout
+    UART_ERROR_NOT_INITIALIZED  //< UART not initialized
 } uart_result_t;
 
 // ============================================================================
 // CONFIGURATION CONSTANTS
 // ============================================================================
 
-#define UART_DEFAULT_BAUD       115200      ///< Default baud rate for MODBUS
-#define UART_MIN_BAUD           9600        ///< Minimum supported baud rate
-#define UART_MAX_BAUD           230400      ///< Maximum supported baud rate
+#define UART_DEFAULT_BAUD       115200      //< Default baud rate for MODBUS
+#define UART_MIN_BAUD           9600        //< Minimum supported baud rate
+#define UART_MAX_BAUD           230400      //< Maximum supported baud rate
 
-#define UART_TX_BUFFER_SIZE     256         ///< Transmit buffer size
-#define UART_RX_BUFFER_SIZE     256         ///< Receive buffer size
+#define UART_TX_BUFFER_SIZE     256         //< Transmit buffer size
+#define UART_RX_BUFFER_SIZE     256         //< Receive buffer size
 
-#define UART_TIMEOUT_MS         1000        ///< Default timeout (1 second)
-#define UART_CHAR_TIMEOUT_MS    10          ///< Character timeout for MODBUS
+#define UART_TIMEOUT_MS         1000        //< Default timeout (1 second)
+#define UART_CHAR_TIMEOUT_MS    10          //< Character timeout for MODBUS
 
 // MODBUS RTU timing requirements (at 115200 baud)
-#define UART_MODBUS_T1_5_US     130         ///< 1.5 character time (μs)
-#define UART_MODBUS_T3_5_US     304         ///< 3.5 character time (μs)
+#define UART_MODBUS_T1_5_US     130         //< 1.5 character time (μs)
+#define UART_MODBUS_T3_5_US     304         //< 3.5 character time (μs)
 
 // ============================================================================
 // PUBLIC INTERFACE

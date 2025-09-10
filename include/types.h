@@ -89,32 +89,32 @@ typedef enum {
  */
 typedef struct {
     // Control parameters
-    uint8_t amplitude_setpoint;          ///< Commanded amplitude (20-100%)
-    bool start_command;                  ///< Start/stop command state
-    bool reset_command;                  ///< Overload reset command (pulsed)
+    uint8_t amplitude_setpoint;          //< Commanded amplitude (20-100%)
+    bool start_command;                  //< Start/stop command state
+    bool reset_command;                  //< Overload reset command (pulsed)
     
     // Measured parameters  
-    uint16_t actual_frequency_hz;        ///< Measured frequency (Hz)
-    uint16_t actual_power_watts;         ///< Measured power output (W)
+    uint16_t actual_frequency_hz;        //< Measured frequency (Hz)
+    uint16_t actual_power_watts;         //< Measured power output (W)
     
     // Status flags
-    sonicator_state_t state;             ///< Current operating state
-    bool is_running;                     ///< Sonics active flag
-    bool is_overloaded;                  ///< Overload condition flag
-    bool is_frequency_locked;            ///< Frequency lock status flag
-    bool communication_ok;               ///< Interface communication status
+    sonicator_state_t state;             //< Current operating state
+    bool is_running;                     //< Sonics active flag
+    bool is_overloaded;                  //< Overload condition flag
+    bool is_frequency_locked;            //< Frequency lock status flag
+    bool communication_ok;               //< Interface communication status
     
     // Statistics and counters
-    uint32_t total_runtime_seconds;      ///< Accumulated runtime
-    uint32_t overload_count;             ///< Number of overload events
-    uint32_t start_count;                ///< Number of start cycles
-    uint32_t last_start_timestamp;       ///< Timestamp of last start
-    uint32_t last_overload_timestamp;    ///< Timestamp of last overload
+    uint32_t total_runtime_seconds;      //< Accumulated runtime
+    uint32_t overload_count;             //< Number of overload events
+    uint32_t start_count;                //< Number of start cycles
+    uint32_t last_start_timestamp;       //< Timestamp of last start
+    uint32_t last_overload_timestamp;    //< Timestamp of last overload
     
     // Hardware interface state
-    uint8_t sonicator_id;                ///< Sonicator number (1-4)
-    bool interface_enabled;              ///< Interface enable flag
-    error_code_t last_error;             ///< Most recent error code
+    uint8_t sonicator_id;                //< Sonicator number (1-4)
+    bool interface_enabled;              //< Interface enable flag
+    error_code_t last_error;             //< Most recent error code
 } sonicator_status_t;
 
 /**
@@ -122,70 +122,70 @@ typedef struct {
  */
 typedef struct {
     // Overall system state
-    system_mode_t operating_mode;        ///< Current system mode
-    uint16_t system_status_flags;        ///< Status bit field (see config.h)
-    bool emergency_stop_active;          ///< Master emergency stop state
-    uint32_t system_uptime_seconds;      ///< Total system runtime
+    system_mode_t operating_mode;        //< Current system mode
+    uint16_t system_status_flags;        //< Status bit field (see config.h)
+    bool emergency_stop_active;          //< Master emergency stop state
+    uint32_t system_uptime_seconds;      //< Total system runtime
     
     // Connected sonicators
-    uint8_t sonicator_count;             ///< Number of connected sonicators
-    uint8_t active_sonicator_mask;       ///< Bitmask of active sonicators
+    uint8_t sonicator_count;             //< Number of connected sonicators
+    uint8_t active_sonicator_mask;       //< Bitmask of active sonicators
     
     // Communication status
-    bool modbus_communication_ok;        ///< MODBUS RTU communication status
-    uint32_t modbus_request_count;       ///< Total MODBUS requests received
-    uint32_t modbus_error_count;         ///< MODBUS communication errors
-    uint32_t last_modbus_activity;       ///< Timestamp of last MODBUS activity
+    bool modbus_communication_ok;        //< MODBUS RTU communication status
+    uint32_t modbus_request_count;       //< Total MODBUS requests received
+    uint32_t modbus_error_count;         //< MODBUS communication errors
+    uint32_t last_modbus_activity;       //< Timestamp of last MODBUS activity
     
     // Performance monitoring
-    uint16_t cpu_usage_percent;          ///< Estimated CPU utilization
-    uint16_t memory_usage_bytes;         ///< Dynamic memory usage
-    uint16_t main_loop_frequency_hz;     ///< Actual main loop rate
+    uint16_t cpu_usage_percent;          //< Estimated CPU utilization
+    uint16_t memory_usage_bytes;         //< Dynamic memory usage
+    uint16_t main_loop_frequency_hz;     //< Actual main loop rate
     
     // Error tracking
-    error_code_t last_system_error;      ///< Most recent system error
-    uint32_t total_error_count;          ///< Total error events
-    uint32_t watchdog_reset_count;       ///< Number of watchdog resets
+    error_code_t last_system_error;      //< Most recent system error
+    uint32_t total_error_count;          //< Total error events
+    uint32_t watchdog_reset_count;       //< Number of watchdog resets
 } system_status_t;
 
 /**
  * @brief MODBUS RTU frame structure for parsing
  */
 typedef struct {
-    uint8_t slave_address;               ///< Target slave address
-    uint8_t function_code;               ///< MODBUS function code
-    uint16_t starting_address;           ///< Register starting address
-    uint16_t quantity;                   ///< Number of registers
-    uint8_t byte_count;                  ///< Data byte count
-    uint8_t* data;                       ///< Pointer to data payload
-    uint16_t crc;                        ///< CRC-16 checksum
-    uint8_t frame_length;                ///< Total frame length in bytes
+    uint8_t slave_address;               //< Target slave address
+    uint8_t function_code;               //< MODBUS function code
+    uint16_t starting_address;           //< Register starting address
+    uint16_t quantity;                   //< Number of registers
+    uint8_t byte_count;                  //< Data byte count
+    uint8_t* data;                       //< Pointer to data payload
+    uint16_t crc;                        //< CRC-16 checksum
+    uint8_t frame_length;                //< Total frame length in bytes
 } modbus_frame_t;
 
 /**
  * @brief Safety event log entry for audit trail
  */
 typedef struct {
-    uint32_t timestamp;                  ///< Event timestamp (seconds since boot)
-    safety_event_t event_type;           ///< Type of safety event
-    uint8_t sonicator_id;                ///< Associated sonicator (0 = system-wide)
-    uint16_t event_data;                 ///< Event-specific data
-    char description[32];                ///< Human-readable description
+    uint32_t timestamp;                  //< Event timestamp (seconds since boot)
+    safety_event_t event_type;           //< Type of safety event
+    uint8_t sonicator_id;                //< Associated sonicator (0 = system-wide)
+    uint16_t event_data;                 //< Event-specific data
+    char description[32];                //< Human-readable description
 } safety_event_log_t;
 
 /**
  * @brief Hardware abstraction layer pin configuration
  */
 typedef struct {
-    uint8_t overload_input_pin;          ///< Overload indication input
-    uint8_t frequency_output_pin;        ///< Frequency output input  
-    uint8_t frequency_lock_pin;          ///< Frequency lock input
-    uint8_t start_output_pin;            ///< Start control output
-    uint8_t reset_output_pin;            ///< Overload reset output
-    uint8_t pwm_amplitude_pin;           ///< PWM pin for amplitude control
-    uint8_t adc_power_pin;               ///< Built-in ADC pin for power monitoring
-    uint8_t adc_channel;                 ///< ADC channel for power monitoring
-    uint8_t status_led_pin;              ///< Individual status LED pin
+    uint8_t overload_input_pin;          //< Overload indication input
+    uint8_t frequency_output_pin;        //< Frequency output input  
+    uint8_t frequency_lock_pin;          //< Frequency lock input
+    uint8_t start_output_pin;            //< Start control output
+    uint8_t reset_output_pin;            //< Overload reset output
+    uint8_t pwm_amplitude_pin;           //< PWM pin for amplitude control
+    uint8_t adc_power_pin;               //< Built-in ADC pin for power monitoring
+    uint8_t adc_channel;                 //< ADC channel for power monitoring
+    uint8_t status_led_pin;              //< Individual status LED pin
 } sonicator_hardware_config_t;
 
 /**
@@ -193,25 +193,25 @@ typedef struct {
  */
 typedef struct {
     // Timing measurements
-    uint32_t main_loop_min_us;           ///< Minimum main loop execution time
-    uint32_t main_loop_max_us;           ///< Maximum main loop execution time
-    uint32_t main_loop_avg_us;           ///< Average main loop execution time
+    uint32_t main_loop_min_us;           //< Minimum main loop execution time
+    uint32_t main_loop_max_us;           //< Maximum main loop execution time
+    uint32_t main_loop_avg_us;           //< Average main loop execution time
     
     // Interrupt statistics  
-    uint32_t timer_interrupt_count;      ///< Timer interrupt counter
-    uint32_t safety_interrupt_count;     ///< Safety interrupt counter
-    uint32_t modbus_interrupt_count;     ///< MODBUS UART interrupt counter
+    uint32_t timer_interrupt_count;      //< Timer interrupt counter
+    uint32_t safety_interrupt_count;     //< Safety interrupt counter
+    uint32_t modbus_interrupt_count;     //< MODBUS UART interrupt counter
     
     // Communication statistics
-    uint32_t i2c_transaction_count;      ///< I2C transaction counter
-    uint32_t i2c_error_count;            ///< I2C communication errors
-    uint32_t uart_byte_count;            ///< Total UART bytes transferred
-    uint32_t uart_error_count;           ///< UART communication errors
+    uint32_t i2c_transaction_count;      //< I2C transaction counter
+    uint32_t i2c_error_count;            //< I2C communication errors
+    uint32_t uart_byte_count;            //< Total UART bytes transferred
+    uint32_t uart_error_count;           //< UART communication errors
     
     // Memory and resource usage
-    uint16_t stack_usage_bytes;          ///< Estimated stack usage
-    uint16_t heap_usage_bytes;           ///< Dynamic memory usage
-    uint8_t free_ram_percent;            ///< Percentage of free RAM
+    uint16_t stack_usage_bytes;          //< Estimated stack usage
+    uint16_t heap_usage_bytes;           //< Dynamic memory usage
+    uint8_t free_ram_percent;            //< Percentage of free RAM
 } diagnostics_metrics_t;
 
 // ============================================================================

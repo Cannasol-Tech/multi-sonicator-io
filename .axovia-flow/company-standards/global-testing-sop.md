@@ -28,7 +28,7 @@ This document serves as the central hub for all testing standards within the org
 
 ***IMPORTANT:** All project types must adhere to these core principles:*
 
-1. **Mocking Policy**: Mocks are reserved for unit testing only, unless explicitly approved
+1. **Mocking Policy**: Mocks are reserved for unit testing only, unless explicitly approved. Project-specific exception: Flutter widget tests may mock external dependencies using Mocktail and run under `make test-widget`.
 2. **Coverage Requirements**: Minimum coverage thresholds defined per project type
 3. **Test Organization**: Structured test directories and naming conventions
 4. **Quality Gates**: Automated validation before story completion
@@ -43,6 +43,7 @@ All project types follow this foundational approach, adapted to their specific n
    - **Coverage**: High coverage requirements (varies by project type)
    - **Mocking**: Permitted and encouraged for external dependencies
    - **Universal Principle**: Mocks are reserved for unit testing only
+   - **Explicit Exception**: Flutter widget tests may mock external dependencies (see Flutter testing standard)
 
 2. **Integration Testing**
    - **Focus**: System workflows and component interactions

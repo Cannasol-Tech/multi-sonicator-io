@@ -31,14 +31,14 @@ extern "C" {
  * @brief ADC channel identifiers
  */
 typedef enum {
-    ADC_CHANNEL_0 = 0,          ///< ADC0 - LM2907 frequency converter
-    ADC_CHANNEL_1 = 1,          ///< ADC1 - Reserved
-    ADC_CHANNEL_2 = 2,          ///< ADC2 - Reserved  
-    ADC_CHANNEL_3 = 3,          ///< ADC3 - Reserved
-    ADC_CHANNEL_4 = 4,          ///< ADC4 - Sonicator 1 power (PA4)
-    ADC_CHANNEL_5 = 5,          ///< ADC5 - Sonicator 2 power (PA5)
-    ADC_CHANNEL_6 = 6,          ///< ADC6 - Sonicator 3 power (PA6)
-    ADC_CHANNEL_7 = 7,          ///< ADC7 - Sonicator 4 power (PA7)
+    ADC_CHANNEL_0 = 0,          //< ADC0 - LM2907 frequency converter
+    ADC_CHANNEL_1 = 1,          //< ADC1 - Reserved
+    ADC_CHANNEL_2 = 2,          //< ADC2 - Reserved  
+    ADC_CHANNEL_3 = 3,          //< ADC3 - Reserved
+    ADC_CHANNEL_4 = 4,          //< ADC4 - Sonicator 1 power (PA4)
+    ADC_CHANNEL_5 = 5,          //< ADC5 - Sonicator 2 power (PA5)
+    ADC_CHANNEL_6 = 6,          //< ADC6 - Sonicator 3 power (PA6)
+    ADC_CHANNEL_7 = 7,          //< ADC7 - Sonicator 4 power (PA7)
     ADC_CHANNEL_MAX = 8
 } adc_channel_t;
 
@@ -46,53 +46,53 @@ typedef enum {
  * @brief ADC reference voltage selection
  */
 typedef enum {
-    ADC_REF_EXTERNAL = 0,       ///< External AREF pin
-    ADC_REF_VCC = 1,            ///< VCC (5V) reference
-    ADC_REF_INTERNAL = 2        ///< Internal 2.56V reference
+    ADC_REF_EXTERNAL = 0,       //< External AREF pin
+    ADC_REF_VCC = 1,            //< VCC (5V) reference
+    ADC_REF_INTERNAL = 2        //< Internal 2.56V reference
 } adc_reference_t;
 
 /**
  * @brief ADC prescaler values for clock division
  */
 typedef enum {
-    ADC_PRESCALER_2 = 1,        ///< Divide by 2
-    ADC_PRESCALER_4 = 2,        ///< Divide by 4
-    ADC_PRESCALER_8 = 3,        ///< Divide by 8
-    ADC_PRESCALER_16 = 4,       ///< Divide by 16
-    ADC_PRESCALER_32 = 5,       ///< Divide by 32
-    ADC_PRESCALER_64 = 6,       ///< Divide by 64
-    ADC_PRESCALER_128 = 7       ///< Divide by 128
+    ADC_PRESCALER_2 = 1,        //< Divide by 2
+    ADC_PRESCALER_4 = 2,        //< Divide by 4
+    ADC_PRESCALER_8 = 3,        //< Divide by 8
+    ADC_PRESCALER_16 = 4,       //< Divide by 16
+    ADC_PRESCALER_32 = 5,       //< Divide by 32
+    ADC_PRESCALER_64 = 6,       //< Divide by 64
+    ADC_PRESCALER_128 = 7       //< Divide by 128
 } adc_prescaler_t;
 
 /**
  * @brief HAL function return codes
  */
 typedef enum {
-    ADC_OK = 0,                 ///< Operation successful
-    ADC_ERROR_INVALID_CHANNEL,  ///< Invalid channel number
-    ADC_ERROR_INVALID_REF,      ///< Invalid reference selection
-    ADC_ERROR_TIMEOUT,          ///< Conversion timeout
-    ADC_ERROR_NOT_INITIALIZED   ///< ADC not initialized
+    ADC_OK = 0,                 //< Operation successful
+    ADC_ERROR_INVALID_CHANNEL,  //< Invalid channel number
+    ADC_ERROR_INVALID_REF,      //< Invalid reference selection
+    ADC_ERROR_TIMEOUT,          //< Conversion timeout
+    ADC_ERROR_NOT_INITIALIZED   //< ADC not initialized
 } adc_result_t;
 
 // ============================================================================
 // CONFIGURATION CONSTANTS
 // ============================================================================
 
-#define ADC_RESOLUTION_BITS     10          ///< 10-bit ADC resolution
-#define ADC_MAX_VALUE          1023         ///< Maximum ADC reading (2^10 - 1)
-#define ADC_REFERENCE_VOLTAGE   5.0f        ///< Reference voltage (5V)
-#define ADC_CONVERSION_TIME_US  104         ///< Typical conversion time at 125kHz
+#define ADC_RESOLUTION_BITS     10          //< 10-bit ADC resolution
+#define ADC_MAX_VALUE          1023         //< Maximum ADC reading (2^10 - 1)
+#define ADC_REFERENCE_VOLTAGE   5.0f        //< Reference voltage (5V)
+#define ADC_CONVERSION_TIME_US  104         //< Typical conversion time at 125kHz
 
 // Power monitoring constants (per pin matrix)
-#define ADC_POWER_SCALING_MV_PER_W  5.44f   ///< 5.44mV per watt scaling
-#define ADC_POWER_MAX_WATTS        2000     ///< Maximum power (2000W)
-#define ADC_POWER_VOLTAGE_DIVIDER   2.0f    ///< 10kΩ voltage divider ratio
+#define ADC_POWER_SCALING_MV_PER_W  5.44f   //< 5.44mV per watt scaling
+#define ADC_POWER_MAX_WATTS        2000     //< Maximum power (2000W)
+#define ADC_POWER_VOLTAGE_DIVIDER   2.0f    //< 10kΩ voltage divider ratio
 
 // Frequency monitoring constants (LM2907)
-#define ADC_FREQ_SCALE_HZ_PER_V    500      ///< 500 Hz per volt
-#define ADC_FREQ_MIN_HZ            1900     ///< Minimum frequency (1.9kHz)
-#define ADC_FREQ_MAX_HZ            2100     ///< Maximum frequency (2.1kHz)
+#define ADC_FREQ_SCALE_HZ_PER_V    500      //< 500 Hz per volt
+#define ADC_FREQ_MIN_HZ            1900     //< Minimum frequency (1.9kHz)
+#define ADC_FREQ_MAX_HZ            2100     //< Maximum frequency (2.1kHz)
 
 // ============================================================================
 // PUBLIC INTERFACE
