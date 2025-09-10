@@ -172,7 +172,7 @@ Establish a comprehensive Hardware-in-the-Loop (HIL) testing framework and valid
 ### Related PRD Requirements
 
 - **NFR7**: Automated acceptance tests (simulation and/or HIL)
-- **Pin Matrix**: `docs/planning/pin-matrix.md` as SOLE SOURCE OF TRUTH
+- **Pin Matrix**: `config/hardware-config.yaml` as SOLE SOURCE OF TRUTH
 - **Technical Assumptions**: Hardware-in-the-Loop testing, BDD with pytest + Behave
 - **FR1-FR12**: All functional requirements must be testable via BDD scenarios
 
