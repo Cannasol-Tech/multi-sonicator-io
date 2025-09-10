@@ -137,7 +137,7 @@ The firmware follows a strict layered architecture:
 - **Main Application** (`src/main.cpp`): Unified main loop with MODBUS processing and sonicator service calls
 - **Configuration** (`include/config.h`): Complete pin definitions and hardware specifications
 - **Register Map** (`include/register_map.h`): MODBUS register structures and addressing
-- **Pin Matrix** (`docs/planning/pin-matrix.md`): **SOLE SOURCE OF TRUTH** for hardware pin assignments
+- **Hardware Configuration** (`web-ui/config/hardware-config.yaml`): **SOLE SOURCE OF TRUTH** for hardware pin assignments
 
 ### Hardware Interface Design
 
@@ -196,16 +196,20 @@ test/
 
 docs/
 ├── planning/
-│   └── pin-matrix.md     # SOLE SOURCE OF TRUTH for pin assignments
+├── inactive/
+│   └── pin-matrix.md     # Historical pin assignments (superseded)
 ├── prd.md               # Product requirements document
 └── standards/           # Company development standards
+
+web-ui/config/
+└── hardware-config.yaml # SOLE SOURCE OF TRUTH for hardware configuration
 ```
 
 ## Development Guidelines
 
 ### Hardware Pin Assignments
 
-**CRITICAL**: All pin assignments must reference `docs/planning/pin-matrix.md` as the **SOLE SOURCE OF TRUTH**. Never modify pin mappings in `include/config.h` without updating the pin matrix first.
+**CRITICAL**: All pin assignments must reference `web-ui/config/hardware-config.yaml` as the **SOLE SOURCE OF TRUTH**. Never modify pin mappings in `include/config.h` without updating the hardware configuration first.
 
 ### MODBUS Register Map
 

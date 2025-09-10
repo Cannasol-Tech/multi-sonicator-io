@@ -9,7 +9,7 @@
  * Configuration constants and compile-time settings for the
  * Multi Sonicator I/O Controller (Model: CAN-SON-CTRL-4).
  * Uses Arduino Framework for UART, I2C, PWM, and ADC operations.
- * See docs/planning/pin-matrix.md — SOLE SOURCE OF TRUTH for hardware pin assignments. This file mirrors the matrix; do not modify mappings here without updating the matrix first.
+ * See web-ui/config/hardware-config.yaml — SOLE SOURCE OF TRUTH for hardware pin assignments. This file mirrors the configuration; do not modify mappings here without updating the configuration first.
  */
 
 #ifndef CONFIG_H
@@ -18,7 +18,7 @@
 #include <Arduino.h>
 
 // ----------------------------------------------------------------------------
-// See docs/planning/pin-matrix.md — SOLE SOURCE OF TRUTH for hardware pin assignments. This file mirrors the matrix; do not modify mappings here without updating the matrix first.
+// See web-ui/config/hardware-config.yaml — SOLE SOURCE OF TRUTH for hardware pin assignments. This file mirrors the configuration; do not modify mappings here without updating the configuration first.
 // -----------------------------------------------------------------------------
 
 // Backward-compatible aliases for unit tests targeting legacy pin names
@@ -70,8 +70,8 @@
 // ============================================================================
 
 // UART Communication (MODBUS RTU) - Arduino Serial uses these automatically
-#define UART_RX_PIN 0     // PD0 (Physical pin 14) - DB9-0 Pin 8 (MODBUS RTU RX) - See pin-matrix.md
-#define UART_TX_PIN 1     // PD1 (Physical pin 15) - DB9-0 Pin 9 (MODBUS RTU TX) - See pin-matrix.md
+#define UART_RX_PIN 0     // PD0 (Physical pin 14) - DB9-0 Pin 8 (MODBUS RTU RX) - See hardware-config.yaml
+#define UART_TX_PIN 1     // PD1 (Physical pin 15) - DB9-0 Pin 9 (MODBUS RTU TX) - See hardware-config.yaml
 
 // I2C Interface (Available for Future Expansion) - Arduino Wire library compatible
 #define I2C_SDA_PIN 22    // PC1 (Physical pin 22)
@@ -82,7 +82,7 @@
 #define XTAL2_PIN 12      // XTAL2 (Physical pin 12)
 
 // Status LED (single LED terminal) - Direct register access
-#define STATUS_LED_PIN 2      // PD2 (Physical pin 16) - LED-TERM (DB9-0 Pin) - See pin-matrix.md
+#define STATUS_LED_PIN 2      // PD2 (Physical pin 16) - LED-TERM (DB9-0 Pin) - See hardware-config.yaml
 
 // Serial Communication Configuration
 #define SERIAL_BAUD_RATE 115200  // Debug serial communication speed
@@ -91,7 +91,7 @@
  * @defgroup SonicatorInterface Sonicator Interface Pin Mapping
  * @brief ATmega32A pin assignments for CT2000 sonicator control interfaces
  * @details Based on schematic design with 6N137 optocouplers and ULN2003A drivers.
- * See also: docs/planning/pin-matrix.md (SOLE SOURCE OF TRUTH) and PRD sections.
+ * See also: web-ui/config/hardware-config.yaml (SOLE SOURCE OF TRUTH) and PRD sections.
  * @{
  */
 

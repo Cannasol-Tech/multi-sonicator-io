@@ -96,7 +96,7 @@ Done
 
 ### Pin Matrix Compliance Verification
 
-**✅ CRITICAL COMPLIANCE CONFIRMED** - Implementation strictly follows `docs/planning/pin-matrix.md` as SOLE SOURCE OF TRUTH:
+**✅ CRITICAL COMPLIANCE CONFIRMED** - Implementation strictly follows `web-ui/config/hardware-config.yaml` as SOLE SOURCE OF TRUTH:
 
 - Arduino Test Wrapper pin assignments match pin matrix Wrapper Pin column exactly
 - Single-channel Uno R4 WiFi HIL harness prototype properly documented
@@ -983,7 +983,7 @@ hil-clean:
 - `test/acceptance/steps/` - HIL-integrated step definitions
 - `Makefile` - HIL testing targets integrated with existing build system
 
-**Pin Matrix Compliance**: All pin assignments strictly follow `docs/planning/pin-matrix.md` as SOLE SOURCE OF TRUTH
+**Hardware Configuration Compliance**: All pin assignments strictly follow `web-ui/config/hardware-config.yaml` as SOLE SOURCE OF TRUTH
 
 **Hardware Requirements**:
 - Arduino Uno R4 WiFi configured as ISP programmer

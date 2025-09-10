@@ -1,10 +1,13 @@
 # Hardware Configuration for Multi-Sonicator-IO Web UI
-# Based on docs/planning/pin-matrix.md (SOLE SOURCE OF TRUTH)
+# SOLE SOURCE OF TRUTH for hardware pin assignments
+# Migrated from docs/planning/pin-matrix.md (now inactive)
+# Changes here must be reflected in include/config.h and HIL wrapper
 
 project:
   name: "multi-sonicator-io"
   description: "Sonicator Multiplexer - Hardware-in-the-Loop Testing"
   version: "1.0.0"
+  status: "FINAL - Sole Source of Truth confirmed by Product Owner"
 
 # Device Under Test (ATmega32A)
 dut:
@@ -14,44 +17,352 @@ dut:
     clock_frequency: 16000000  # 16MHz
     voltage: 5.0
     manufacturer: "Microchip"
-  
-  # Pin definitions matching your existing types/index.ts
+
+  # Pin definitions with complete pin matrix information
   pins:
     # Port B - Frequency inputs
-    PB0: { pin: 1, signal: "FREQ_DIV10_4", direction: "IN", sonicator: 4 }
-    PB1: { pin: 2, signal: "FREQ_DIV10_3", direction: "IN", sonicator: 3 }
-    PB2: { pin: 3, signal: "FREQ_DIV10_2", direction: "IN", sonicator: 2 }
-    PB3: { pin: 4, signal: "FREQ_DIV10_1", direction: "IN", sonicator: 1 }
-    PB4: { pin: 5, signal: "FREQ_LOCK_4", direction: "IN", sonicator: 4 }
-    PB5: { pin: 6, signal: "FREQ_LOCK_3", direction: "IN", sonicator: 3 }
-    PB6: { pin: 7, signal: "FREQ_LOCK_2", direction: "IN", sonicator: 2 }
-    PB7: { pin: 8, signal: "FREQ_LOCK_1", direction: "IN", sonicator: 1 }
-    
+    PB0:
+      pin: 1
+      signal: "FREQ_DIV10_4"
+      direction: "IN"
+      sonicator: 4
+      header_ref: "DB9-4 Pin 4"
+      scale_notes: "÷10 frequency (S4)"
+      wrapper_pin: "D7"
+      test_point: "TBD"
+
+    PB1:
+      pin: 2
+      signal: "FREQ_DIV10_3"
+      direction: "IN"
+      sonicator: 3
+      header_ref: "DB9-3 Pin 4"
+      scale_notes: "÷10 frequency (S3)"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+
+    PB2:
+      pin: 3
+      signal: "FREQ_DIV10_2"
+      direction: "IN"
+      sonicator: 2
+      header_ref: "DB9-2 Pin 4"
+      scale_notes: "÷10 frequency (S2)"
+      wrapper_pin: "N/A (Uno R4 single-channel)"
+      test_point: "N/A"
+
+    PB3:
+      pin: 4
+      signal: "FREQ_DIV10_1"
+      direction: "IN"
+      sonicator: 1
+      header_ref: "DB9-1 Pin 4"
+      scale_notes: "÷10 frequency (S1)"
+      wrapper_pin: "N/A"
+      test_point: "TBD"
+
+    PB4:
+      pin: 5
+      signal: "FREQ_LOCK_4"
+      direction: "IN"
+      sonicator: 4
+      header_ref: "DB9-4 Pin 3"
+      scale_notes: "FLCK_4 via opto"
+      wrapper_pin: "D8"
+      test_point: "TBD"
+
+    PB5:
+      pin: 6
+      signal: "FREQ_LOCK_3"
+      direction: "IN"
+      sonicator: 3
+      header_ref: "DB9-3 Pin 3"
+      scale_notes: "FLCK_3 via opto"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+
+    PB6:
+      pin: 7
+      signal: "FREQ_LOCK_2"
+      direction: "IN"
+      sonicator: 2
+      header_ref: "DB9-2 Pin 3"
+      scale_notes: "FLCK_2 via opto"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+
+    PB7:
+      pin: 8
+      signal: "FREQ_LOCK_1"
+      direction: "IN"
+      sonicator: 1
+      header_ref: "DB9-1 Pin 3"
+      scale_notes: "FLCK_1 via opto"
+      wrapper_pin: "N/A"
+      test_point: "TBD"
+
     # Port C - Control outputs
-    PC0: { pin: 22, signal: "START_4", direction: "OUT", sonicator: 4 }
-    PC1: { pin: 23, signal: "RESET_4", direction: "OUT", sonicator: 4 }
-    PC2: { pin: 24, signal: "START_3", direction: "OUT", sonicator: 3 }
-    PC3: { pin: 25, signal: "RESET_3", direction: "OUT", sonicator: 3 }
-    PC4: { pin: 26, signal: "START_2", direction: "OUT", sonicator: 2 }
-    PC5: { pin: 27, signal: "RESET_2", direction: "OUT", sonicator: 2 }
-    PC6: { pin: 28, signal: "START_1", direction: "OUT", sonicator: 1 }
-    PC7: { pin: 29, signal: "RESET_1", direction: "OUT", sonicator: 1 }
-    
-    # Port D - Communication and status
-    PD0: { pin: 14, signal: "UART_RXD", direction: "IN", function: "MODBUS RTU RX" }
-    PD1: { pin: 15, signal: "UART_TXD", direction: "OUT", function: "MODBUS RTU TX" }
-    PD2: { pin: 16, signal: "STATUS_LED", direction: "OUT", function: "System status" }
-    PD3: { pin: 17, signal: "OVERLOAD_4", direction: "IN", sonicator: 4 }
-    PD4: { pin: 18, signal: "OVERLOAD_3", direction: "IN", sonicator: 3 }
-    PD5: { pin: 19, signal: "OVERLOAD_2", direction: "IN", sonicator: 2 }
-    PD6: { pin: 20, signal: "OVERLOAD_1", direction: "IN", sonicator: 1 }
-    PD7: { pin: 21, signal: "AMPLITUDE_ALL", direction: "OUT", function: "Shared amplitude control" }
-    
+    PC0:
+      pin: 22
+      signal: "START_4"
+      direction: "OUT"
+      sonicator: 4
+      header_ref: "DB9-4 Pin 7"
+      scale_notes: "ULN2003A open-collector"
+      wrapper_pin: "A3"
+      test_point: "TBD"
+
+    PC1:
+      pin: 23
+      signal: "RESET_4"
+      direction: "OUT"
+      sonicator: 4
+      header_ref: "DB9-4 Pin 2"
+      scale_notes: "ULN2003A open-collector"
+      wrapper_pin: "A4"
+      test_point: "TBD"
+
+    PC2:
+      pin: 24
+      signal: "START_3"
+      direction: "OUT"
+      sonicator: 3
+      header_ref: "DB9-3 Pin 7"
+      scale_notes: "ULN2003A open-collector"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+
+    PC3:
+      pin: 25
+      signal: "RESET_3"
+      direction: "OUT"
+      sonicator: 3
+      header_ref: "DB9-3 Pin 2"
+      scale_notes: "ULN2003A open-collector"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+
+    PC4:
+      pin: 26
+      signal: "START_2"
+      direction: "OUT"
+      sonicator: 2
+      header_ref: "DB9-2 Pin 7"
+      scale_notes: "ULN2003A open-collector"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+
+    PC5:
+      pin: 27
+      signal: "RESET_2"
+      direction: "OUT"
+      sonicator: 2
+      header_ref: "DB9-2 Pin 2"
+      scale_notes: "ULN2003A open-collector"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+
+    PC6:
+      pin: 28
+      signal: "START_1"
+      direction: "OUT"
+      sonicator: 1
+      header_ref: "DB9-1 Pin 7"
+      scale_notes: "ULN2003A open-collector"
+      wrapper_pin: "N/A"
+      test_point: "TBD"
+
+    PC7:
+      pin: 29
+      signal: "RESET_1"
+      direction: "OUT"
+      sonicator: 1
+      header_ref: "DB9-1 Pin 2"
+      scale_notes: "ULN2003A open-collector"
+      wrapper_pin: "N/A"
+      test_point: "TBD"
+
+    # Port D - Communication, status, and overload inputs
+    PD0:
+      pin: 14
+      signal: "UART_RXD"
+      direction: "IN"
+      header_ref: "DB9-0 Pin 8"
+      scale_notes: "MODBUS RTU RX"
+      wrapper_pin: "D2 (drive to DUT RX)"
+      test_point: "TBD"
+      function: "MODBUS RTU RX"
+
+    PD1:
+      pin: 15
+      signal: "UART_TXD"
+      direction: "OUT"
+      header_ref: "DB9-0 Pin 9"
+      scale_notes: "MODBUS RTU TX"
+      wrapper_pin: "D3 (read from DUT TX)"
+      test_point: "TBD"
+      function: "MODBUS RTU TX"
+
+    PD2:
+      pin: 16
+      signal: "STATUS_LED"
+      direction: "OUT"
+      header_ref: "LED-TERM"
+      scale_notes: "Status LED drive"
+      wrapper_pin: "D4"
+      test_point: "LED-TERM"
+      function: "System status"
+
+    PD3:
+      pin: 17
+      signal: "OVERLOAD_4"
+      direction: "IN"
+      sonicator: 4
+      header_ref: "DB9-4 Pin 1"
+      scale_notes: "OL_4 via opto"
+      wrapper_pin: "A2"
+      test_point: "TBD"
+
+    PD4:
+      pin: 18
+      signal: "OVERLOAD_3"
+      direction: "IN"
+      sonicator: 3
+      header_ref: "DB9-3 Pin 1"
+      scale_notes: "OL_3 via opto"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+
+    PD5:
+      pin: 19
+      signal: "OVERLOAD_2"
+      direction: "IN"
+      sonicator: 2
+      header_ref: "DB9-2 Pin 1"
+      scale_notes: "OL_2 via opto"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+
+    PD6:
+      pin: 20
+      signal: "OVERLOAD_1"
+      direction: "IN"
+      sonicator: 1
+      header_ref: "DB9-1 Pin 1"
+      scale_notes: "OL_1 via opto"
+      wrapper_pin: "N/A"
+      test_point: "TBD"
+
+    PD7:
+      pin: 21
+      signal: "AMPLITUDE_ALL"
+      direction: "OUT"
+      header_ref: "DB9-1/2/3/4 Pin 8"
+      scale_notes: "Shared AMP_C (0–10V), common"
+      wrapper_pin: "D9 (PWM)"
+      test_point: "TBD"
+      function: "Shared amplitude control"
+
     # Port A - Analog power sensing
-    PA4: { pin: 36, signal: "POWER_SENSE_1", direction: "ANALOG", sonicator: 1, scaling: "5.44 mV/W" }
-    PA5: { pin: 35, signal: "POWER_SENSE_2", direction: "ANALOG", sonicator: 2, scaling: "5.44 mV/W" }
-    PA6: { pin: 34, signal: "POWER_SENSE_3", direction: "ANALOG", sonicator: 3, scaling: "5.44 mV/W" }
-    PA7: { pin: 33, signal: "POWER_SENSE_4", direction: "ANALOG", sonicator: 4, scaling: "5.44 mV/W" }
+    PA4:
+      pin: 36
+      signal: "POWER_SENSE_1"
+      direction: "ANALOG"
+      sonicator: 1
+      header_ref: "DB9-1 Pin 5"
+      scale_notes: "5.44 mV/W scaling"
+      wrapper_pin: "N/A"
+      test_point: "TBD"
+      scaling: "5.44 mV/W"
+
+    PA5:
+      pin: 35
+      signal: "POWER_SENSE_2"
+      direction: "ANALOG"
+      sonicator: 2
+      header_ref: "DB9-2 Pin 5"
+      scale_notes: "5.44 mV/W scaling"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+      scaling: "5.44 mV/W"
+
+    PA6:
+      pin: 34
+      signal: "POWER_SENSE_3"
+      direction: "ANALOG"
+      sonicator: 3
+      header_ref: "DB9-3 Pin 5"
+      scale_notes: "5.44 mV/W scaling"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+      scaling: "5.44 mV/W"
+
+    PA7:
+      pin: 33
+      signal: "POWER_SENSE_4"
+      direction: "ANALOG"
+      sonicator: 4
+      header_ref: "DB9-4 Pin 5"
+      scale_notes: "5.44 mV/W scaling"
+      wrapper_pin: "A1"
+      test_point: "TBD"
+      scaling: "5.44 mV/W"
+
+# DB9 Connector Mapping
+# Each channel uses its own DB9: DB9-1 (S1), DB9-2 (S2), DB9-3 (S3), DB9-4 (S4)
+# System comms use DB9-0
+# Pin map per channel DB9: Pin1=OVERLOAD, Pin2=RESET, Pin3=FREQ_LOCK, Pin4=FREQ÷10, Pin5=POWER, Pin7=START, Pin8=AMPLITUDE
+# DB9-0: Pin8=UART_RXD, Pin9=UART_TXD
+db9_connectors:
+  DB9-0:
+    description: "System communications connector (Modbus RTU network)"
+    pins:
+      8: { signal: "UART_RXD", dut_pin: "PD0" }
+      9: { signal: "UART_TXD", dut_pin: "PD1" }
+
+  DB9-1:
+    description: "Sonicator 1 interface"
+    pins:
+      1: { signal: "OVERLOAD_1", dut_pin: "PD6" }
+      2: { signal: "RESET_1", dut_pin: "PC7" }
+      3: { signal: "FREQ_LOCK_1", dut_pin: "PB7" }
+      4: { signal: "FREQ_DIV10_1", dut_pin: "PB3" }
+      5: { signal: "POWER_SENSE_1", dut_pin: "PA4" }
+      7: { signal: "START_1", dut_pin: "PC6" }
+      8: { signal: "AMPLITUDE_ALL", dut_pin: "PD7" }
+
+  DB9-2:
+    description: "Sonicator 2 interface"
+    pins:
+      1: { signal: "OVERLOAD_2", dut_pin: "PD5" }
+      2: { signal: "RESET_2", dut_pin: "PC5" }
+      3: { signal: "FREQ_LOCK_2", dut_pin: "PB6" }
+      4: { signal: "FREQ_DIV10_2", dut_pin: "PB2" }
+      5: { signal: "POWER_SENSE_2", dut_pin: "PA5" }
+      7: { signal: "START_2", dut_pin: "PC4" }
+      8: { signal: "AMPLITUDE_ALL", dut_pin: "PD7" }
+
+  DB9-3:
+    description: "Sonicator 3 interface"
+    pins:
+      1: { signal: "OVERLOAD_3", dut_pin: "PD4" }
+      2: { signal: "RESET_3", dut_pin: "PC3" }
+      3: { signal: "FREQ_LOCK_3", dut_pin: "PB5" }
+      4: { signal: "FREQ_DIV10_3", dut_pin: "PB1" }
+      5: { signal: "POWER_SENSE_3", dut_pin: "PA6" }
+      7: { signal: "START_3", dut_pin: "PC2" }
+      8: { signal: "AMPLITUDE_ALL", dut_pin: "PD7" }
+
+  DB9-4:
+    description: "Sonicator 4 interface (fully connected in current prototype)"
+    pins:
+      1: { signal: "OVERLOAD_4", dut_pin: "PD3" }
+      2: { signal: "RESET_4", dut_pin: "PC1" }
+      3: { signal: "FREQ_LOCK_4", dut_pin: "PB4" }
+      4: { signal: "FREQ_DIV10_4", dut_pin: "PB0" }
+      5: { signal: "POWER_SENSE_4", dut_pin: "PA7" }
+      7: { signal: "START_4", dut_pin: "PC0" }
+      8: { signal: "AMPLITUDE_ALL", dut_pin: "PD7" }
 
 # Test Harness (Arduino Uno R3)
 harness:
@@ -175,3 +486,36 @@ environment:
   hardware_timeout_ms: 5000
   command_timeout_ms: 1000
   log_level: "info"
+
+# Actions required when this configuration changes
+actions_on_update:
+  - description: "Update include/config.h to match matrix"
+    details: "Update with doxygen comments citing this file and PRD sections"
+
+  - description: "Update HIL wrapper constants"
+    details: "Update test/acceptance/sketches/arduino_test_wrapper/arduino_test_wrapper.ino constants to match Wrapper Pins"
+
+  - description: "Update test documentation"
+    details: "Update test/acceptance/README.md harness diagram and mapping"
+
+# References and documentation
+references:
+  - file: "docs/Requirements/prd-v1.0.0.md"
+    sections: "Sections 5, 7, 10"
+    description: "Product requirements document"
+
+  - file: "include/config.h"
+    description: "Register map, constants"
+
+  - file: "docs/inactive/pin-matrix.md"
+    description: "Original pin matrix document (now inactive)"
+
+  - description: "Schematics/Hardware docs"
+    details: "Pin headers and electrical characteristics"
+
+# Migration notes
+migration:
+  date: "2025-01-10"
+  from: "docs/planning/pin-matrix.md"
+  reason: "Consolidate hardware configuration into single YAML source of truth"
+  status: "Complete - pin-matrix.md moved to docs/inactive/"

@@ -1,5 +1,17 @@
 # Pin Matrix — DUT ↔ Signals ↔ Wrapper/HIL
 
+**⚠️ INACTIVE DOCUMENT ⚠️**
+
+**This document has been superseded by `web-ui/config/hardware-config.yaml` as of 2025-01-10.**
+
+**The hardware-config.yaml file is now the SOLE SOURCE OF TRUTH for hardware pin assignments.**
+
+**This file is kept for historical reference only.**
+
+---
+
+*Original content below (now inactive):*
+
 SOLE SOURCE OF TRUTH for hardware pin assignments. Changes here must be reflected in `include/config.h` and the HIL wrapper under `test/acceptance/sketches/arduino_test_wrapper/`.
 
 Status: FINAL — Sole Source of Truth confirmed by Product Owner (Approved). Single-channel Uno R4 WiFi HIL harness prototype is documented; wrapper mapping must mirror this matrix.

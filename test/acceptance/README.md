@@ -72,4 +72,4 @@ Notes:
 - Wrapper must default to safe states on boot and protocol errors.
 - Keep harness mapping documented and versioned with this folder.
 - Current harness profile: Arduino Uno R4 WiFi, single-channel (S1 only). Untested prototype; do not enable in CI.
-- See `docs/planning/pin-matrix.md` for the authoritative mapping (SOLE SOURCE OF TRUTH; Wrapper Pin and Test Point columns).
+- See `web-ui/config/hardware-config.yaml` for the authoritative mapping (SOLE SOURCE OF TRUTH; wrapper_pin and test_point fields).
