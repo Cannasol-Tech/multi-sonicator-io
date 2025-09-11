@@ -1,0 +1,68 @@
+# Implementation Plan
+
+Project: Multi-Sonicator-IO
+Owner: Product Owner
+Last Updated: 2025-09-10
+
+## Planning Standards
+
+- Follow Axovia Flow standards (`.axovia-flow/company-standards/`)
+- Single Source of Truth for hardware mapping: `config/hardware-config.yaml`
+- TDD-first for every story (write tests first, ensure they pass last)
+- Keep one source of truth, avoid duplication
+
+## Milestones
+
+- Milestone M0: Epic 0 — HIL Testing Framework & Hardware Verification
+- Milestone M1: Epic 1 — Foundational Control & Communication
+
+---
+
+## Epic 0: HIL Testing Framework & Hardware Verification
+
+User Stories (planning checklist — creation of story docs)
+- [x] 0.1 Project Structure & CI/CD Pipeline — `docs/agile/stories/0.1.project-structure-cicd-pipeline.md`
+- [x] 0.2 HIL Test Harness Setup — `docs/agile/stories/0.2.hil-test-harness-setup.md`
+- [x] 0.3 BDD Acceptance Testing Framework — `docs/agile/stories/0.3.bdd-acceptance-testing-framework.md`
+- [x] 0.4 Hardware Connection Verification — `docs/agile/stories/0.4.hardware-connection-verification.md`
+- [x] 0.5 Arduino Test Wrapper Validation — `docs/agile/stories/0.5.arduino-test-wrapper-validation.md`
+- [x] 0.6 Sandbox CLI Implementation — `docs/agile/stories/0.6-sandbox-cli-manual-testing.md`
+- [x] 0.7 MODBUS Hardware Validation — `docs/agile/stories/0.7.modbus-hardware-validation.md`
+- [x] 0.8 Web UI Testing Interface — `docs/agile/stories/0.8.web-ui-testing-interface.md`
+- [x] 0.9 Test Coverage & Documentation — `docs/agile/stories/0.9.test-coverage-and-documentation.md`
+
+Execution Tasks (DoD-driven; tests-first, then implementation)
+- [ ] Add acceptance BDD skeletons for each 0.x story (tagged @epic0)
+- [ ] Implement incremental HIL harness with simulation fallback
+- [ ] Validate pin matrix against `config/hardware-config.yaml` in automated step
+- [ ] Ensure CI targets for unit/acceptance tests and coverage reporting
+
+---
+
+## Epic 1: Foundational Control & Communication
+
+User Stories (planning checklist — creation of story docs)
+- [x] 1.0 HIL Testing Framework — `docs/agile/stories/1.0-hil-testing-framework.md`
+- [x] 1.1 Project Structure & Build System — `docs/agile/stories/1.1-project-structure.md`
+- [x] 1.2 Hardware Abstraction Layer (HAL) — `docs/agile/stories/1.2-hal-implementation.md`
+- [x] 1.3 MODBUS RTU Communication Framework — `docs/agile/stories/1.3-modbus-framework.md`
+- [x] 1.4 Single Sonicator Control — `docs/agile/stories/1.4.single-sonicator-control.md` (S4-only focus)
+
+Execution Tasks (TDD-first)
+- [ ] Define register map tables for control/telemetry (`include/register_map.h`)
+- [ ] Implement HAL modules (GPIO, ADC, PWM, UART) with unit tests
+- [ ] Implement MODBUS slave handlers with boundary and negative tests
+- [ ] Implement single sonicator control (start/stop/amplitude) with HIL tests
+
+---
+
+## Notes & Assumptions
+
+- Scope temporarily constrained to S4-only simulation/wrapper mapping per `docs/planning/pin-matrix.md` and `config/hardware-config.yaml`.
+- QA Gates exist under `docs/qa/gates/` and should be extended for any newly added stories.
+
+## Tracking
+
+- Update this plan after any story creation or status change.
+- Mark tasks complete by changing `[ ]` to `[x]`.
+- Add subtasks as implementation details become clearer.
