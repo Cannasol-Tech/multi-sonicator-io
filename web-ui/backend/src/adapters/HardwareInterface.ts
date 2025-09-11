@@ -718,7 +718,7 @@ except Exception as e:
       // Update sonicator frequency configuration
       if (newConfig.sonicator4?.operatingFrequencyKHz !== undefined) {
         const operatingFreq = parseFloat(newConfig.sonicator4.operatingFrequencyKHz)
-        if (operatingFreq > 0 && operatingFreq <= 100) { // Reasonable limits
+        if (operatingFreq >= 18 && operatingFreq <= 22) { // CT2000 sonicator operating range: 18-22 kHz
           this.configuration.sonicator4.operatingFrequencyKHz = operatingFreq
 
           // Only update output frequency if not in manual mode
@@ -764,7 +764,7 @@ except Exception as e:
       // Handle manual frequency override
       if (newConfig.sonicator4?.manualFrequencyKHz !== undefined) {
         const manualFreq = parseFloat(newConfig.sonicator4.manualFrequencyKHz)
-        if (manualFreq > 0 && manualFreq <= 50) { // Reasonable limits for output frequency
+        if (manualFreq >= 1.8 && manualFreq <= 2.2) { // CT2000 output frequency range: 1.8-2.2 kHz (div/10)
           this.configuration.sonicator4.manualFrequencyKHz = manualFreq
 
           // If in manual mode, update the actual output frequency

@@ -78,7 +78,7 @@ POST /api/hardware-config/reload           # Reload configuration
 - **Channel 4**: Fully connected and operational
 - **Channels 1-3**: Configured but not connected (ready for harness expansion)
 - **Real-time Status**: Connected/not connected/error states
-- **Specifications**: Power (0-2000W), Frequency (15-25kHz), Amplitude (20-100%)
+- **Specifications**: Power (0-2000W), Frequency (18-22kHz), Amplitude (20-100%)
 
 ### 🧪 **Test Capabilities**
 
@@ -255,7 +255,7 @@ POST /api/tests/all                      # Complete hardware test suite
   "name": "Sonicator 4 Tests",
   "tests": [
     {"testName": "Power Measurement", "status": "pass", "message": "Power: 1292W (range: 0-2000W)"},
-    {"testName": "Frequency", "status": "pass", "message": "Frequency: 15528Hz (range: 15000-25000Hz)"},
+    {"testName": "Frequency", "status": "pass", "message": "Frequency: 19528Hz (range: 18000-22000Hz)"}, 
     {"testName": "Amplitude Control", "status": "pass", "message": "Amplitude: 33% (PWM control working)"},
     {"testName": "Safety Interlocks", "status": "pass", "message": "Emergency stop response: 27μs (spec: ≤50μs)"}
   ],

@@ -95,8 +95,8 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
   const handleFrequencyChange = async (newFrequencyKHz: number) => {
     try {
       setConfigLoading(true)
-      // Clamp to 15–22 kHz range for safety
-      const clamped = Math.min(22, Math.max(15, newFrequencyKHz))
+      // Clamp to 18–22 kHz range for CT2000 sonicators
+      const clamped = Math.min(22, Math.max(18, newFrequencyKHz))
       const updatedConfig = {
         ...configuration,
         sonicator4: {
@@ -133,7 +133,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
 
   const handleFrequencyInputSubmit = () => {
     const frequency = parseFloat(frequencyInput)
-    if (!isNaN(frequency) && frequency >= 15 && frequency <= 22) {
+    if (!isNaN(frequency) && frequency >= 18 && frequency <= 22) {
       handleFrequencyChange(frequency)
       setFrequencyInput('')
     }
@@ -176,20 +176,20 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
                   {pinState.state || '0Hz'}
                 </span>
               </div>
-              {/* Visual meter within 15–22 kHz */}
+              {/* Visual meter within 18–22 kHz */}
               <div className="frequency-meter">
                 <div
                   className="frequency-meter-fill"
-                  style={{ width: `${((configuration.sonicator4.operatingFrequencyKHz - 15) / 7) * 100}%` }}
+                  style={{ width: `${((configuration.sonicator4.operatingFrequencyKHz - 18) / 4) * 100}%` }}
                 ></div>
                 <div className="frequency-meter-labels">
-                  <span>15</span>
-                  <span>18.5</span>
+                  <span>18</span>
+                  <span>20</span>
                   <span>22 kHz</span>
                 </div>
               </div>
               <div className="text-xs" style={{ color: 'var(--text-tertiary)', marginTop: 4 }}>
-                Div/10 output: {(configuration.sonicator4.operatingFrequencyKHz / 10).toFixed(2)} kHz • Range: 15.0–22.0 kHz
+                Div/10 output: {(configuration.sonicator4.operatingFrequencyKHz / 10).toFixed(2)} kHz • Range: 18.0–22.0 kHz
               </div>
             </div>
 
@@ -198,13 +198,13 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
               <div className="frequency-control-header mb-2">
                 <span className="text-xs font-semibold" style={{ color: 'var(--color-primary)' }}>⚡ Frequency Control</span>
                 <span className="text-xs ml-2" style={{ 
-                  color: frequencyInput && (parseFloat(frequencyInput) < 15 || parseFloat(frequencyInput) > 22) 
+                  color: frequencyInput && (parseFloat(frequencyInput) < 18 || parseFloat(frequencyInput) > 22) 
                     ? 'var(--color-error)' 
                     : 'var(--text-tertiary)'
                 }}>
-                  {frequencyInput && (parseFloat(frequencyInput) < 15 || parseFloat(frequencyInput) > 22) 
+                  {frequencyInput && (parseFloat(frequencyInput) < 18 || parseFloat(frequencyInput) > 22) 
                     ? '⚠️ Out of range' 
-                    : '15.0 – 22.0 kHz'}
+                    : '18.0 – 22.0 kHz'}
                 </span>
               </div>
               
@@ -213,7 +213,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
                   <div className="frequency-input-container">
                     <input
                       type="number"
-                      min="15"
+                      min="18"
                       max="22"
                       step="0.1"
                       value={frequencyInput}
@@ -225,7 +225,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
                       }}
                       placeholder="20.0"
                       className={`frequency-input ${
-                        frequencyInput && (parseFloat(frequencyInput) < 15 || parseFloat(frequencyInput) > 22)
+                        frequencyInput && (parseFloat(frequencyInput) < 18 || parseFloat(frequencyInput) > 22)
                           ? 'frequency-input-error'
                           : ''
                       }`}
@@ -236,7 +236,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
                   <button
                     onClick={handleFrequencyInputSubmit}
                     disabled={!connected || configLoading || !frequencyInput || 
-                              (frequencyInput && (parseFloat(frequencyInput) < 15 || parseFloat(frequencyInput) > 22))}
+                              (frequencyInput && (parseFloat(frequencyInput) < 18 || parseFloat(frequencyInput) > 22))}
                     className="frequency-set-btn"
                   >
                     {configLoading ? '⏳' : '✓ Set'}
@@ -248,7 +248,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
               <div className="frequency-presets">
                 <span className="text-xs font-medium mb-1 block" style={{ color: 'var(--text-secondary)' }}>Quick Presets:</span>
                 <div className="preset-buttons">
-                  {[15, 17, 19, 20, 22].map(freq => (
+                  {[18, 19, 20, 21, 22].map(freq => (
                     <button
                       key={freq}
                       onClick={() => handleFrequencyPreset(freq)}
