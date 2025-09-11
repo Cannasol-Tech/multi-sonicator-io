@@ -1,4 +1,8 @@
-# FEATURE Specification Template for Axovia Flow™d
+# @file: feature-spec-tmpl.yaml
+# @author: Stephen Boyett
+# @date: 2025-09-10
+# @version: 1.0
+# @description: Feature Specification Template (official)
 
 template:
   id: feature-specification-template-v1
@@ -7,146 +11,50 @@ template:
   output:
     format: markdown
     filename: docs/agile/features/FEATURE-{{feature_id}}-{{feature_name_kebab}}.md
-    title: "Feature {{feature_id}}: {{feature_name}}"
-
-# Possible Feature States
-feature-states:   
-  - APPROVED
-  - COMPLETE
-  - READY_FOR_DEV
-  - TESTING
-  - IN_PROGRESS
-  - DRAFT
-  - BLOCKED
-  - CANCELLED
-
-# Feature Status
-feature_status:
-  type: choice
-  choices: {{feature-states}}
-  default: DRAFT
-  description: "Current feature status"
-
-requirement_id:
-  type: text
-  description: "PRD Requirement ID (e.g. FR1, NFR2)"
-  required: true
-
-requirement_title:
-  type: text
-  required: false
-  description: "Human-readable title of the PRD requirement"
-
-requirement_description:
-  type: text
-  required: false
-  description: "Short description or summary of the PRD requirement"
-
-requirement_type:
-  type: choice
-  choices: [FR, NFR]
-  required: true
-  description: "Functional (FR) or Non-Functional (NFR)"
-
-requirement_satisfied:
-  type: choice
-  choices: [true, false, partial]
-  default: partial
-  description: "Whether this feature fully satisfies the requirement"
-
-verified:
-  type: boolean
-  default: false
-  description: "Whether the acceptance criteria has been verified"
-
-acceptance_criteria_id:
-  type: text
-  description: "Acceptance Criteria ID (e.g. AC1, AC2)"
-  required: true
-
-acceptance_criteria_description:
-  type: text
-  required: false
-  description: "Short description or summary of the acceptance criteria"
-
-prd-requirement:
-  type: object
-  brief: "PRD FRs partially or fully satisfied by the Functionality Delivered"
-  fields:
-    - id: {{requirement_id}} # e.g., FR1, NFR2
-    - title: {{requirement_title}}
-    - satisfied: {{requirement_satisfied}} # true | partial ( if false, it would not be supported at all ß)
-    - description: {{requirement_description}} # brief description of the requirement
-
-supported:
-  type: object
-  brief: "PRD FRs supported by the Functionality Delivered"
-  detail: "These Reqs are supported or partially implemented by this Feature"
-  purpose: "Enhances Traceability between stories, features, epics and the PRD"
-  format: 
-    - id: {{requirement_id}}
-      title: {{requirement_title}}
-      description: {{requirement_description}}
-      satisfied: {{requirement_satisfied}} # true | false | partial
-  description: "List of PRD FR/NFRs supported by the Functionality Delivered"
-  required: true
-
-# Agent Header in YAML format for quick agent consumption
-agent-header:
-  feature_id: {{feature_id}}
-  name: {{feature_name}}
-  owner: {{owner}}
-  branch: {{branch}}
-  status: {{ feature_status }}
-  created: {{ created_timestamp }}
-  updated: {{ updated_timestamp }}
-  implementation_phase: 
-    type: integer
-    required: false
-    description: "Integer of Containing Implementation Phase if Applicable"
-  epic: {{epic_reference}}
-  supports: {{ supported_requirements }}
-  acceptance_criteria:
-    type: object
-    description: "List of Acceptance Criteria for the Feature"
-    purpose: "Maps to BDD Scenarios and QA Traces for Verification"
-    fields: 
-      - id: {{acceptance_criteria_id}}
-        verified: {{verified}}
-        description: {{acceptance_criteria_description}}
-        required: true
-    required: true
-  definition_of_done: 
-    type: text
-    blocking: true
-    required: true
-    description: "Definition of Done for the Feature"
-    standard: axoviaFlow.checklists.feature_specification_dod
+    title: "Feature {{feature_id}}: {{feature_name}} Specification Document"
 
 workflow:
   mode: interactive
   elicitation: advanced-elicitation
 
+integration_test_scenario:
+  - id: T-{{feature_id}}-{{scenario_id}}
+    title: {{scenario_name}}
+    scenario_type: integration
+    integration_points: list(integration_point)
+
+bdd_test_scenario:
+  - id: B-{{feature_id}}-{{scenario_id}}
+    title: {{scenario_name}}
+    scenario_type: bdd
+    given: {{given}}
+      when: {{when}}
+      then: {{then}}
+
+test_scenario: choice(bdd_test_scenario, unit_test_scenario, integration_test_scenario, e2e_test_scenario, golden_test_scenario)
+
 agent_config:
   owner: po
   editors: [po, pm]
-  reviewers: [pm, architect]
+  reviewers: [pm, qa]
 
 sections:
   - id: header
-    title: Feature Header
+    title: Header
     instruction: |
       Establish the basic feature identification and metadata. This section sets up the feature tracking information and ownership.
     content: |
-      # Feature {{feature_id}}: {{feature_name}}
+      # Feature {{feature_id}}: {{feature_name}} Specification Document
 
-      **Feature ID**: {{feature_id}}  
-      **Status**: {{status}}  
-      **Priority**: {{priority}}  
-      **Epic**: {{epic_reference}}  
-      **Owner**: {{owner}}  
-      **Created**: {{created_date}}  
+      **Feature ID**: {{feature_id}}
+      **Status**: {{status}}
+      **Priority**: {{priority}}
+      **Epic**: {{epic_reference}}
+      **Owner**: {{owner}}
+      **Created**: {{created_date}}
       **Updated**: {{updated_date}}
+    owner: po
+    editors: [po, pm]
 
   - id: feature-summary
     title: Feature Summary
@@ -154,12 +62,16 @@ sections:
       Provide a concise 1-2 sentence description of exactly what this feature does. Focus on the core functionality and primary user benefit.
     elicit: true
     template: "{{feature_summary}}"
+    owner: po
+    editors: [po]
 
   - id: scope-definition
     title: Scope Definition
     instruction: |
       This is the MOST CRITICAL section. Define exactly what will and will not be implemented. Be explicit and comprehensive to prevent scope creep and ensure clear boundaries.
     elicit: true
+    owner: po
+    editors: [po]
     sections:
       - id: exactly-implemented
         title: EXACTLY What Will Be Implemented
@@ -168,6 +80,8 @@ sections:
           {{#each implemented_features}}
           - {{this}}
           {{/each}}
+        owner: po
+        editors: [po]
       
       - id: exactly-not-implemented
         title: EXACTLY What Will NOT Be Implemented
@@ -176,22 +90,31 @@ sections:
           {{#each excluded_features}}
           - {{this}}
           {{/each}}
+        owner: po
+        editors: [po]
       
       - id: scope-boundaries
         title: Scope Boundaries
         instruction: Define clear boundaries of where this feature starts and stops
         template: "{{scope_boundaries}}"
+        owner: po
+        editors: [po]
 
   - id: functional-requirements
     title: Functional Requirements
     instruction: |
       Define the detailed functional requirements that specify exactly how the feature works. This section should be comprehensive enough for developers to implement without ambiguity.
     elicit: true
+    owner: po
+    editors: [po]
     sections:
       - id: core-functionality
         title: Core Functionality
         instruction: Provide detailed, step-by-step description of exactly how the feature works
         template: "{{core_functionality}}"
+        test_scenarios: list(test_scenario)
+        owner: po
+        editors: [po]
       
       - id: user-interactions
         title: User Interactions
@@ -204,43 +127,42 @@ sections:
           **Expected Outcome**: {{expected_outcome}}
           
           {{/each}}
+        test_scenarios: list(test_scenario)
+        owner: po
+        editors: [po]
       
       - id: system-behaviors
         title: System Behaviors
         instruction: Specify every system behavior explicitly
         template: "{{system_behaviors}}"
+        test_scenarios: list(test_scenario)
+        owner: po
+        editors: [po]
       
       - id: data-handling
         title: Data Handling
         instruction: Define exact data processing, storage, and retrieval requirements
         template: "{{data_handling}}"
+        test_scenarios: list(test_scenario)
+        owner: po
+        editors: [po]
       
       - id: integration-points
         title: Integration Points
         instruction: Specify precise integration requirements with other system components
         template: "{{integration_points}}"
-
-      - id: performance-requirements
-        title: Performance Requirements
-        instruction: Specify performance criteria with measurable thresholds
-        template: |
-          {{#each performance_requirements}}
-          - {{this}}
-          {{/each}}
-
-      - id: validation-rules
-        title: Validation Rules
-        instruction: Define exact validation rules for all inputs and business rule enforcement
-        template: |
-          {{#each validation_rules}}
-          - {{this}}
-          {{/each}}
+        test_scenarios: list(test_scenario)
+        owner: po
+        editors: [po]
 
   - id: acceptance-criteria
     title: Acceptance Criteria
     instruction: |
       Define measurable, testable criteria that determine when the feature is complete and acceptable. These should be specific and verifiable.
     elicit: true
+    test_scenarios: list(test_scenario)
+    owner: po
+    editors: [po]
     sections:
       - id: primary-criteria
         title: Primary Acceptance Criteria (Must Have)
@@ -249,6 +171,8 @@ sections:
           {{#each primary_criteria}}
           - [ ] {{this}}
           {{/each}}
+        owner: po
+        editors: [po]
       
       - id: secondary-criteria
         title: Secondary Acceptance Criteria (Should Have)
@@ -257,14 +181,8 @@ sections:
           {{#each secondary_criteria}}
           - [ ] {{this}}
           {{/each}}
-
-      - id: input-output-specs
-        title: Input/Output Specifications
-        instruction: Define exact input/output specifications for this feature
-        template: |
-          - **Input**: {{input_specifications}}
-          - **Processing**: {{processing_requirements}}
-          - **Output**: {{output_specifications}}
+        owner: po
+        editors: [po]
       
       - id: definition-of-done
         title: Definition of Done
@@ -273,21 +191,16 @@ sections:
           {{#each done_criteria}}
           - [ ] {{this}}
           {{/each}}
-
-      - id: quality-gates
-        title: Quality Gates
-        instruction: Define specific quality gates for this feature
-        template: |
-          - **Code Review**: {{code_review_criteria}}
-          - **Testing**: {{testing_requirements}}
-          - **Performance**: {{performance_validation}}
-          - **Security**: {{security_validation}}
+        owner: po
+        editors: [po, sm]
 
   - id: testing-requirements
     title: Testing Requirements
     instruction: |
       Define comprehensive testing requirements to ensure feature quality and reliability.
     elicit: true
+    owner: qa
+    editors: [qa, po]
     sections:
       - id: test-scenarios
         title: Test Scenarios
@@ -300,44 +213,29 @@ sections:
           **Then**: {{then}}
           
           {{/each}}
+        owner: qa
+        editors: [qa, po]
       
       - id: edge-case-testing
         title: Edge Case Testing
         instruction: Define all edge cases that must be tested
         template: "{{edge_case_testing}}"
+        owner: qa
+        editors: [qa, po]
       
       - id: error-condition-testing
         title: Error Condition Testing
         instruction: Define all error conditions that must be tested
         template: "{{error_condition_testing}}"
-
-  - id: implementation-constraints
-    title: Implementation Constraints
-    instruction: Constraints that must be considered during implementation
-    elicit: true
-    sections:
-      - id: technical-constraints
-        title: Technical Constraints
-        instruction: Specific technical limitations and requirements
-        template: "{{technical_constraints}}"
-
-      - id: business-rules
-        title: Business Rules
-        instruction: Exact business rules that must be enforced
-        template: "{{business_rules}}"
-
-      - id: dependencies
-        title: Dependencies
-        instruction: Define all dependencies and impacts
-        template: |
-          - **Required Before**: {{required_before}}
-          - **Required During**: {{required_during}}
-          - **Impacts**: {{impacts}}
+        owner: qa
+        editors: [qa, po]
 
   - id: implementation-mapping
     title: Implementation Mapping
     instruction: |
       Establish traceability between this feature specification and other project artifacts to ensure alignment and completeness.
+    owner: po
+    editors: [po]
     sections:
       - id: related-prd-requirements
         title: Related PRD Requirements
@@ -346,42 +244,58 @@ sections:
           {{#each prd_requirements}}
           - **{{requirement_id}}**: {{requirement_description}}
           {{/each}}
+        owner: po
+        editors: [po]
       
       - id: quality-assurance
-        title: Quality Assurance
+        title: Quality Assurance Acceptance Criteria
         instruction: Define QA requirements specific to this feature
         template: "{{qa_requirements}}"
+        owner: qa
+        editors: [qa, po]
 
   - id: success-metrics
     title: Success Metrics
     instruction: |
       Define how feature success will be measured and validated.
     elicit: true
+    owner: po
+    editors: [po]
     sections:
       - id: completion-metrics
         title: Completion Metrics
         instruction: Define how feature completion will be measured
         template: "{{completion_metrics}}"
+        owner: po
+        editors: [po]
       
       - id: success-criteria
         title: Success Criteria
         instruction: Define what constitutes successful feature delivery
         template: "{{success_criteria}}"
+        owner: po
+        editors: [po]
 
   - id: change-control
     title: Change Control
     instruction: |
       Define the process for managing changes to this specification during development.
+    owner: po
+    editors: [po]
     sections:
       - id: scope-changes
         title: Scope Changes
         instruction: Define process for handling scope changes during development
         template: "{{scope_change_process}}"
+        owner: po
+        editors: [po]
       
       - id: approval-requirements
         title: Approval Requirements
         instruction: Define who must approve changes to this specification
         template: "{{approval_requirements}}"
+        owner: po
+        editors: [po]
 
   - id: change-log
     title: Change Log
@@ -391,12 +305,14 @@ sections:
       | Date | Version | Change | Author |
       |------|---------|--------|---------|
       | {{created_date}} | 1.0 | Initial specification | {{owner}} |
+    owner: po
+    editors: [po]
 
 # Template Variables
 variables:
   feature_id:
     type: text
-    description: "Feature ID (e.g., FEAT-001)"
+    description: "3 Digit Integer Feature ID (e.g., `001`)"
     required: true
   
   feature_name:

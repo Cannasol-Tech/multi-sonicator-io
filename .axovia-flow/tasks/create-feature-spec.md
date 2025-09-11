@@ -31,10 +31,9 @@ To create comprehensive, company-standard Feature Specifications that define EXA
 
 ### 0. Load Configuration and Validate Prerequisites
 
-- Load `.axovia-flow/flow-config.yaml` from the project root
-- Verify access to feature specification template at `axoviaFlow.templates.feature_specification.fileLocation`
-- Verify access to Definition of Done checklist at `.axovia-flow/checklists/feature-specification-dod.md`
-- If template or DoD checklist not found, HALT and inform user: "Required templates not found. Feature specification template and DoD checklist are required for creating compliant feature specifications."
+- Load `.bmad-core/core-config.yaml` from the project root if available
+- Verify access to `.axovia-flow/company-standards/feature-specification.md`
+- If Feature Specification Standard not found, HALT and inform user: "Feature Specification Standard not found. This file is required for creating compliant feature specifications. Please ensure .axovia-flow/company-standards/feature-specification.md exists before proceeding."
 - Extract key configurations and standard requirements
 
 ### 1. Feature Identification and Context Gathering
@@ -55,6 +54,7 @@ Present the following numbered options and WAIT for user response:
 #### 1.2 Gather Source Context
 
 Based on user selection:
+
 - **If PRD section**: Load and review relevant PRD sections
 - **If Epic**: Load epic file and extract feature requirements
 - **If user requirements**: Prepare for comprehensive elicitation
@@ -67,19 +67,22 @@ Based on user selection:
 **ELICITATION REQUIRED** - Present content and use 1-9 format:
 
 Gather and present:
-- **Feature ID**: Generate next sequential F-XXX ID
+
+- **Feature ID**: Generate next sequential 3-digit ID (###) with zero-padding
 - **Feature Name**: Clear, descriptive name
 - **Priority**: Critical/High/Medium/Low
 - **Epic Reference**: Link to parent epic if applicable
 - **Owner**: Product Owner responsible
 
 **Present detailed rationale explaining:**
+
 - ID assignment logic and sequence
 - Naming conventions and clarity
 - Priority assessment criteria
 - Epic relationship and dependencies
 
 **MANDATORY 1-9 OPTIONS:**
+
 1. Proceed to next section
 2. Stakeholder Analysis (identify all affected parties)
 3. Competitive Analysis (review similar features)
@@ -99,17 +102,20 @@ Gather and present:
 **ELICITATION REQUIRED** - This is the most critical section:
 
 Draft and present:
+
 - **EXACTLY What Will Be Implemented**: Precise functionality list
 - **EXACTLY What Will NOT Be Implemented**: Explicit exclusions
 - **Scope Boundaries**: Clear start/stop boundaries
 
 **Present detailed rationale explaining:**
+
 - Scope decisions and trade-offs made
 - Boundary definitions and reasoning
 - Exclusion rationale and future considerations
 - Risk areas requiring validation
 
 **MANDATORY 1-9 OPTIONS:**
+
 1. Proceed to next section
 2. Scope Validation Workshop (validate with stakeholders)
 3. Boundary Analysis (examine edge cases)
@@ -127,6 +133,7 @@ Draft and present:
 **ELICITATION REQUIRED**:
 
 Draft and present:
+
 - **Core Functionality**: Step-by-step feature operation
 - **User Interactions**: Every interaction with expected responses
 - **System Behaviors**: All system behaviors specified
@@ -134,12 +141,14 @@ Draft and present:
 - **Integration Points**: Precise integration specifications
 
 **Present detailed rationale explaining:**
+
 - Functionality design decisions
 - Interaction patterns chosen
 - Data handling approach
 - Integration strategy and dependencies
 
 **MANDATORY 1-9 OPTIONS:**
+
 1. Proceed to next section
 2. User Story Mapping (map user interactions)
 3. Process Flow Analysis (analyze business processes)
@@ -157,6 +166,7 @@ Draft and present:
 **ELICITATION REQUIRED**:
 
 Draft and present:
+
 - **Primary Acceptance Criteria**: Must-have functionality
 - **Secondary Acceptance Criteria**: Should-have functionality  
 - **Definition of Done**: Exact completion requirements
@@ -164,6 +174,7 @@ Draft and present:
 - **Quality Gates**: Quality validation requirements
 
 **MANDATORY 1-9 OPTIONS:**
+
 1. Proceed to next section
 2. Test Case Development (develop detailed test cases)
 3. Quality Metrics Definition (define quality measures)
@@ -179,6 +190,7 @@ Draft and present:
 #### 6.1 Map to Development Artifacts
 
 Draft and present:
+
 - **Related PRD Requirements**: Traceability to PRD
 - **Implementing User Stories**: Stories that will implement feature
 - **Quality Assurance**: QA requirements
@@ -188,29 +200,29 @@ Draft and present:
 
 #### 7.1 Generate Final Specification
 
-- Create feature specification file using template from `axoviaFlow.templates.feature_specification.fileLocation`
+- Create feature specification file using company standard template
 - Apply all gathered information to template sections
-- Ensure compliance with Definition of Done checklist at `.axovia-flow/checklists/feature-specification-dod.md`
-- Save to `docs/agile/features/FEATURE-{ID}-{name-kebab-case}.md` (note: FEATURE- prefix)
+- Ensure compliance with Feature Specification Standard
+- Save to `docs/agile/features/FEATURE-{ID}-{name-kebab-case}.md`
 
 #### 7.2 Quality Validation
 
-- Verify all mandatory sections are complete per DoD checklist
-- Check frontmatter includes: agent, id (3-digit numeric), title, status, priority, epic, created, updated
-- Validate supports section has at least one FR or NFR entry
-- Ensure file naming follows FEATURE-{id}-{name-kebab}.md convention
+- Verify all mandatory sections are complete
+- Check compliance with company standards
 - Validate traceability and completeness
 - Generate completion summary
 
 ## CRITICAL REMINDERS
 
 **❌ NEVER:**
+
 - Skip elicitation for efficiency
 - Create specifications without user interaction
 - Use formats other than 1-9 numbered options
 - Make assumptions about requirements
 
 **✅ ALWAYS:**
+
 - Use exact 1-9 format when elicit: true
 - Select options 2-9 from data/elicitation-methods only
 - Provide detailed rationale explaining decisions
@@ -220,6 +232,7 @@ Draft and present:
 ## Agent Permissions
 
 This task is designed for:
+
 - **Primary Users**: PM (Product Manager) and PO (Product Owner) agents
 - **Collaboration**: Can involve other agents for specialized elicitation
 - **Output Ownership**: Product Owner owns final specification
@@ -228,6 +241,7 @@ This task is designed for:
 ## Success Criteria
 
 Task is complete when:
+
 - Feature specification file is created following company standard
 - All mandatory sections are populated with detailed requirements
 - Scope is clearly defined with explicit inclusions/exclusions

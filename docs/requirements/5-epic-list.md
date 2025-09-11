@@ -19,16 +19,16 @@
 * Execute the full suite of acceptance tests on the physical hardware.
 * Achieve the 85% unit test coverage target.
 * Generate and review the final Doxygen documentation.
-* Perform a 24-hour soak test to ensure system reliability.
+
 
 ## Epic 1: Foundational Control & Communication
 
 **Goal:** Establish the core firmware structure, basic sonicator control, and the MODBUS communication layer, enabling control and monitoring of a single sonicator.
 
-* Develop the MODBUS RTU slave interface with the register map.
-* Implement a single source of truth enumeration for the MODBUS register map in `include/register_map.h` file
-* Develop a Single Sonicator Module class in `src/modules//sonicator.h`
-* Develop a Modular HAL for the ATmega32a in `src/modules/hal/`
+* REQ: D  evelop the MODBUS RTU slave interface with the register map.
+* REQ: Implement a single source of truth enumeration for the MODBUS register map in `include/register_map.h` file
+* REQ: Develop a Single Sonicator Module class in `src/modules//sonicator.h`
+* REQ: Develop a Modular HAL for the ATmega32a in `src/modules/hal/`
 
   *HAL Requirement:*
   * HAL should be written as modular as possible containing class for (at minimum):
@@ -38,31 +38,31 @@
         4. UART Interface
         5. Timer Interface
 
-* Implement control logic for a single sonicator (Start/Stop, Amplitude).
-* Implement telemetry for a single sonicator (Power, Frequency, Status).
-* Write unit tests for the initial modules.
-* Include Function Requirements for configuring and monitoring a single sonicator
-* Include Funcional Requirements for all safety features for a single sonicator
-* Create Acceptance Test BDD Scenarios for all Functinal Requirements
-* Verify all MODBUS register access for the single sonicator using Web User interface
-* Verify all MODBUS register access for the single sonicator using Web User interface
+* REQ: Implement control logic for a single sonicator (Start/Stop, Amplitude).
+* REQ: Implement telemetry for a single sonicator (Power, Frequency, Status).
+* REQ: Write unit tests for the initial modules.
+* REQ: Include Function Requirements for configuring and monitoring a single sonicator
+* REQ: Include Funcional Requirements for all safety features for a single sonicator
+* REQ: Create Acceptance Test BDD Scenarios for all Functinal Requirements
+* REQ: Verify all MODBUS register access for the single sonicator using Web User interface
+* REQ: Verify all MODBUS register access for the single sonicator using Web User interface
 
 ## Epic 2: Multi-Sonicator Management & Safety Features
 
 **Goal:** Scale the system to manage all four sonicators concurrently and implement critical safety and reliability features.
 
-* Extend control and telemetry logic to handle four sonicators.
-* Implement the overload reset functionality.
-* Integrate the watchdog timer for system stability.
-* Implement the communication loss failsafe mechanism.
-* Develop acceptance tests for multi-sonicator scenarios.
+* REQ: Extend control and telemetry logic to handle four sonicators.
+* REQ: Implement the overload reset functionality.
+* REQ: Integrate the watchdog timer for system stability.
+* REQ: Implement the communication loss failsafe mechanism.
+* REQ: Develop acceptance tests for multi-sonicator scenarios.
 
 ## Epic 3: HIL-Validation and Finalization
 
 **Goal:** Validate the complete system against physical hardware and finalize documentation and testing requirements for release.
 
-* Set up the Hardware-in-the-Loop (HIL) test harness.
-* Execute the full suite of acceptance tests on the physical hardware.
-* Achieve the 85% unit test coverage target.
-* Generate and review the final Doxygen documentation.
-* Perform a 24-hour soak test to ensure system reliability.
+* REQ: Set up the Hardware-in-the-Loop (HIL) test harness.
+* REQ: Execute the full suite of acceptance tests on the physical hardware.
+* REQ: Achieve the 85% unit test coverage target.
+* REQ: Generate and review the final Doxygen documentation.
+

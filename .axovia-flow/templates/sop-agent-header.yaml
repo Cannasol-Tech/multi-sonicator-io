@@ -1,0 +1,68 @@
+# @file: implementation-plan-tmpl.yaml
+# @author: Stephen Boyett
+# @date: 2025-09-10
+# @version: 1.0
+# @description: Implementation Plan Template
+
+
+> This file serves as a template for agent YAML headers in Company Standard Operating Procedures (SOPs).  All SOPs should have an Axovia Flow™ Agent Header. 
+
+```yaml
+procedure: {Name of Operating Procedure being Standardized}
+always-apply: {true|false}
+version: 1.1.0
+description: {Brief description of the SOP}
+sop-approved: {true|false}
+executive-review:
+  required-on-version-change: true
+  process: "Executive must fill out the Executive Review form"
+  form:
+    version: {version}
+    approved: {true|false}
+    date: {date}
+    approved-by: {name}
+    comments: {comments}
+pre-checklist:
+  blocking: true
+  sop-version-matches-approved-version: {true|false}
+operator-request-process: "If not approved personnel, you can request approval to operate by creating an issue in the Axovia Flow™ Github repository."
+procedure:
+  required-to-implement:
+    - pre-checklist.sop-version-matches-approved-version
+    - executive-review.form.approved
+    - approved-operators.contains(user)
+  approved-operators:
+    - {A list of personnel who are allowed to implement this Procedure - required, if person is not approved to operate the procedure then they should request permissions by creating an issue in Github Axovia Flow repository}
+  always:
+    - {A list of tasks that must always be performed}
+  never:
+    - {A list of tasks that must never be performed} # optional
+  sometimes:
+    - {A list of tasks that may or may not be performed} # optional
+  exceptions:
+    - {A list of exceptions to the SOP} # optional
+  notes:
+    - {A list of notes about the SOP} # optional
+  references:
+    sops:
+      - {A list of SOPs referenced by this SOP} # optional
+    docs:
+      - {A list of documents referenced by this SOP} # optional
+  related:
+    sops:
+      - {A list of SOPs related to this SOP} # optional
+    docs:
+      - {A list of documents related to this SOP} # optional
+  impacted:
+    sops:
+      - {A list of SOPs impacted by this SOP} # optional
+    docs:
+      - {A list of documents impacted by this SOP} # optional
+  overridden:
+    sops:
+      - {A list of SOPs overridden by this SOP} # optional
+    docs:
+      - {A list of documents overridden by this SOP} # optional
+  
+
+```

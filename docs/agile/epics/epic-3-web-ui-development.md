@@ -62,11 +62,13 @@ Develop a modern web-based user interface for sonicator control and monitoring, 
 ## Dependencies
 
 ### Prerequisites
+
 - Epic 1: Foundational Control & Communication (MODBUS interface)
 - Epic 2: Testing Infrastructure (for UI testing)
 - Hardware abstraction layer operational
 
 ### Enables
+
 - Epic 4: Production Deployment (complete system ready)
 - Future analytics and reporting features
 

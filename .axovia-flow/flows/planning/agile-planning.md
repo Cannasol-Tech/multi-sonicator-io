@@ -49,7 +49,7 @@ This workflow guides the AI Agentic Multi Agent Agile planning process across fo
 ## Phase 3 — Generate Feature Specifications
 
 1. For each approved feature, create a file:
-   - Path: docs/agile/features/<feature_num>-<feature_name>.md
+    - Path: docs/agile/features/FEATURE-<feature_id>-<feature_name_kebab>.md
 2. Use the following template:
 
    ```markdown
@@ -98,7 +98,7 @@ This workflow guides the AI Agentic Multi Agent Agile planning process across fo
 ## Phase 4 — Generate User Stories
 
 1. For each approved feature, generate stories (recommended path):
-   - Path: docs/user-stories/<feature_num>-<feature_name>.md
+   - Path: docs/agile/stories/STORY-<epic_id>.<story_id>-<story_name_kebab>.md
 
 2. Story template (repeat per story):
 
@@ -124,6 +124,7 @@ This workflow guides the AI Agentic Multi Agent Agile planning process across fo
    - If NO → Revise stories for that feature until approved
 
 ## Tips
+
 - Maintain strict alignment with `docs/planning/implementation-plan.md` and the PRD.
 - Ensure every requirement is testable and unambiguous.
 - Avoid adding scope beyond what’s explicitly required.

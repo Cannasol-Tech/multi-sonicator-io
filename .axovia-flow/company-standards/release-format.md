@@ -26,9 +26,9 @@ Use this checklist in CI before publishing a release:
 
 ## 2. Artifacts Overview
 
-- __Required__
+- **Required**
   - `final/executive-report.json` — Acceptance (BDD/Behave) results; canonical machine-readable artifact.
-- __Optional (recommended)__
+- **Optional (recommended)**
   - `final/coverage-summary.json` — Code coverage totals (LCOV summarized) and optionally per-file.
   - `final/unit-test-summary.json` — Unit test aggregates and failures.
   - `final/executive-report.md` — Human-readable executive summary (for stakeholders). JSON remains the source of truth.
@@ -90,23 +90,24 @@ Minimal shape:
 }
 ```
 
-Field definitions:
+Executive Reporting JSONField definitions:
 
-- __version__: Schema version string (e.g., `1.0.0`).
-- __owner__, __repo__: GitHub owner/name.
-- __releaseTag__: Release tag (e.g., `v1.2.3`).
-- __commit__: Short SHA or full SHA.
-- __createdAt__: ISO timestamp of artifact generation.
-- __summary__: Totals for acceptance scenarios and overall duration in ms.
-- __scenarios__:
-  - __feature__: Grouping or feature name.
-  - __name__: Scenario title.
-  - __status__: `passed|failed|skipped|unknown`.
-  - __durationMs__: Execution time in ms.
-  - __steps__: Ordered steps with `keyword` (`Given|When|Then|And|But`), `text`, and optional per-step `status`.
-  - __tags__: Array of strings.
-  - __evidenceUrl__: Optional link to logs/screenshots.
-- __requirements__: Optional PRD mapping array.
+- **version**: Schema version string (e.g., `1.0.0`).
+- **owner**: GitHub owner.
+- **repo**: GitHub repository name.
+- **releaseTag**: Release tag (e.g., `v1.2.3`).
+- **commit**: Short SHA or full SHA.
+- **createdAt**: ISO timestamp of artifact generation.
+- **summary**: Totals for acceptance scenarios and overall duration in ms.
+- **scenarios**:
+  - **feature**: Grouping or feature name. (e.g., `Sonicator Amplitude Control`)  -- Feature Specifications for a given project can be found in `docs/agile/features/` directory.
+  - **name**: Scenario title. (e.g., `Amplitude control per unit`)
+  - **status**: `passed|failed|skipped|unknown`.
+  - **durationMs**: Execution time in ms.
+  - **steps**: Ordered steps with `keyword` (`Given|When|Then|And|But`), `text`, and optional per-step `status`.
+  - **tags**: Array of strings.
+  - **evidenceUrl**: Optional link to logs/screenshots.
+- **requirements**: Optional PRD mapping array.
 
 ### 4.2 coverage-summary.json (optional)
 

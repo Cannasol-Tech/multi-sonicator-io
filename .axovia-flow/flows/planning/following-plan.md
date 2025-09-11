@@ -1,8 +1,12 @@
 # Windsurf IDE Cascade Agent Rules Configuration
-# This YAML file defines rules for a Cascade Agent in Windsurf IDE.
-# Rules ensure sequential plan execution, testing, phase assignment, and collaboration.
-# Optimized for low token usage while maintaining core behaviors.
-# Best practices: Use triggers for task starts/ends, integrate with GitHub API, and enforce state via agent memory.
+
+# This YAML file defines rules for a Cascade Agent in Windsurf IDE
+
+# Rules ensure sequential plan execution, testing, phase assignment, and collaboration
+
+# Optimized for low token usage while maintaining core behaviors
+
+# Best practices: Use triggers for task starts/ends, integrate with GitHub API, and enforce state via agent memory
 
 agent_type: cascade
 version: 1.0
@@ -132,10 +136,15 @@ rules:
 ```
 
 # Additional Suggested Rules
-# - Handoff Rule: On phase end, notify next agent: trigger=on_phase_merge, action=broadcast_handoff.
-# - Multi-Agent Sync: Periodic sync meetings via shared log checks.
-# - Plan Update Handling: If user updates plan, reset state and reassign phases.
+
+# - Handoff Rule: On phase end, notify next agent: trigger=on_phase_merge, action=broadcast_handoff
+
+# - Multi-Agent Sync: Periodic sync meetings via shared log checks
+
+# - Plan Update Handling: If user updates plan, reset state and reassign phases
 
 # Implementation Notes
-# Encode as Windsurf config; test with sample cascades.
-# For LLM agents, prepend as system prompt in workflows.
+
+# Encode as Windsurf config; test with sample cascades
+
+# For LLM agents, prepend as system prompt in workflows

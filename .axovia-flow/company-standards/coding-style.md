@@ -287,15 +287,74 @@ Closes #123
 
 **CRITICAL**: All projects must use Makefile targets for common operations. Never create standalone scripts in the root directory - use make targets that may reference scripts in `scripts/` directory.
 
-## Makefile Requirements
+### Required Make Targets
 
-- **ALWAYS** adhere to the Standard Operating Proecdure for creating and utilize Makefiles.
-- **NEVER** create make targets that are not defined in the Makefiles SOP
-- **IF** you need to add a new make target, raise an issue on Github in the Axovia Flow™ Project Repository (<https://github.com/Axovia-AI/axovia-flow/issues> )
-  - *NOTE:* ALWAYS follow the procedure included int the Makefile SOP for proposing a new make target.
-- **RETAIN** the Makefile SOP as the single source of truth for all makefile targets utilized across the company.
-- **UNDERSTAND** that the purpose of this standard is to unify operations and increase efficiency.
+All projects must implement these standardized make targets:
 
+**Development Workflow:**
+
+- `make install` - Install all dependencies and setup development environment
+- `make build` - Build the project for development
+- `make clean` - Clean build artifacts and temporary files
+- `make dev` - Start development server with hot reload
+
+**Testing Workflow:**
+
+- `make test` - Run all tests (unit, integration, acceptance)
+- `make test-unit` - Run unit tests only
+- `make test-integration` - Run integration tests only
+- `make test-acceptance` - Run acceptance tests (BDD/Gherkin scenarios)
+- `make test-watch` - Run tests in watch mode
+- `make coverage` - Generate test coverage reports
+
+**Quality Assurance:**
+
+- `make lint` - Run code linting and formatting checks
+- `make format` - Auto-format code according to standards
+- `make validate` - Run all quality checks (lint, test, coverage)
+
+**Production Workflow:**
+
+- `make build-prod` - Build for production deployment
+- `make deploy` - Deploy to production environment
+- `make release` - Create and tag a new release
+
+### Implementation Guidelines
+
+- Make targets should be simple and descriptive
+- Complex logic should be in `scripts/` directory, called by make targets
+- All targets should have help text accessible via `make help`
+- Use `.PHONY` declarations for non-file targets
+- Include error handling and status reporting
+- Follow the root directory standard - no scripts in root
+
+### Example Makefile Structure
+
+**Note**: Makefiles require tabs for indentation (not spaces)
+
+```makefile
+.PHONY: help install build clean test lint format
+
+help: ## Show this help message
+ @echo "Available targets:"
+ @grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  %-15s %s\n", $$1, $$2}'
+
+install: ## Install dependencies
+ @echo "Installing dependencies..."
+ @scripts/install.sh
+
+build: ## Build the project
+ @echo "Building project..."
+ @scripts/build.sh
+
+test: ## Run all tests
+ @echo "Running tests..."
+ @scripts/test.sh
+
+clean: ## Clean build artifacts
+ @echo "Cleaning..."
+ @scripts/clean.sh
+```
 
 ## Continuous Improvement
 

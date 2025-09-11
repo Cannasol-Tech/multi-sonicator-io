@@ -47,7 +47,7 @@ database:
     
   # Director Database
   director:
-    path: "state/director.db"
+    path: "state/flow_graph_director_impldb"
     connection_timeout: 30
     query_timeout: 10
 
@@ -75,7 +75,7 @@ development:
   # Test database paths (separate from production)
   test_databases:
     orchestrator: "state/test_orchestrator.db"
-    director: "state/test_director.db"
+    director: "state/test_flow_graph_director_impldb"
 
 # Production Configuration
 production:
@@ -121,6 +121,7 @@ features:
   enable_metrics: true
   enable_agent_registry: true
   enable_blackboard: true
+  enable_semantic_search: false # Future Improvement
 
 # Monitoring and Health Checks
 monitoring:

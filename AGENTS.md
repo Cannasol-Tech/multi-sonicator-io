@@ -4,15 +4,24 @@
 
 Ensure AI Coding Agents consistently follows our house rules and repository standards for the multi-sonicator-io project.
 
+## Flow Config Locatiom
+
+```yaml
+axoviaFlowConfig:
+  filePath: ".axovia-flow/flow-config.yaml"
+  description: "Axovia Flow™ Config File intended to extend The BMad Core config"
+  when_to_use: "Always"
+```
+
 ## Source of Truth Hierarchy
 
 1. **Primary standards**: `.axovia-flow/company-standards/` (single source of truth)
-2. **Architecture docs**: `docs/architecture/` and PRD documents
+2. **Architecture docs**: axoviaFlowConfig.filePaths.architecture.shards
 3. **Project-specific**: This `AGENTS.md` file
-4. **Project-specific**: `.axovia-flow/flow-config.yaml`
+4. **Project-specific**: axoviaFlowConfig.filePaths.comapnyStandards
 5. **Legacy standards**: `.bmad-core/core-config.yaml` (only when not in conflict)
 
-> **Note**: If standards are duplicated elsewhere, treat `docs/standards/` as canonical. Flag any divergence and propose sync PRs.
+> **Note**: If standards are duplicated elsewhere, treat `docs/standards/*` as canonical. Flag any divergence and propose sync PRs.
 
 ## Decision Hierarchy (highest to lowest priority)
 
@@ -32,7 +41,7 @@ Ensure AI Coding Agents consistently follows our house rules and repository stan
 - **Documentation**: Use doxygen-style comments for public interfaces and important modules
 - **Architecture Changes**: Before making architecture-level changes (new modules/services, cross-cutting patterns), pause and request user approval with a brief plan/diagram
 
-### Code Structure
+### Code Structure  
 
 ```markdown
 - One clear, distinct purpose per function

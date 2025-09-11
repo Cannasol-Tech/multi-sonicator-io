@@ -10,7 +10,7 @@ The following YAML mirrors the AIGILE planning workflow for portability and docu
 
 # Agile Planning Workflow outlined (.agile-planning.md)
 name: Agile Planning
-slug: agilebooster-planning
+slug: agile-planning
 description: Generate feature specifications and user stories from an implementation plan and PRD
 inputs:
   implementation_plan_path:
@@ -143,5 +143,6 @@ end: true
 ```
 
 Notes:
+
 - Windsurf executes Markdown workflows with optional YAML frontmatter; this YAML is for reference only.
 - Use `/new-agile-workflow` to run the executable checklist version in this repository.

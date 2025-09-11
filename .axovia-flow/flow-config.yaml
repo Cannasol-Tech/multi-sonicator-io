@@ -5,7 +5,7 @@
 # Version: 1.0
 # @brief: Axovia Flow™ Config File intended 
 #           to extend The BMad Core config
-# Date: 2025-09-10
+# Date: 2025-09-07
 # _____________________________________________
 
 extension:
@@ -50,22 +50,8 @@ agent_extensions:
         - .bmad-core/templates/story-tmpl.yaml
         - implementation-plan-tmpl.yaml
 
-agile:
-  fileLocations:
-    stories: "docs/agile/stories"
-    features: "docs/agile/features"
-    epics: "docs/agile/epics"
-    prd: "docs/prd.md"
-    architecture: "docs/architecture.md"
-    prd-shards: "docs/prd-shards"
-  fileNameFormats:
-     stories: "STORY-{id}.md"
-     features: "FEATURE-{id}-{name-kebab-case}.md"
-     epics: "EPIC-{id}.md"
-
 # Company wide Software SOPs 
- 
-
+ s
 standard_operating_procedures:
   # **IMPORTANT:** Always adhere to these procedures above all else
 
@@ -112,8 +98,8 @@ standard_operating_procedures:
 feature_specifications:
   location: "docs/agile/features"
   template: "feature-spec-tmpl.yaml"
-  naming_convention: "feature-{id}-{name-kebab-case}.md"
-  id_format: "FR-{###}"
+  naming_convention: "FEATURE-{id}-{name-kebab-case}.md"
+  id_format: "3-digit Integer (###)"
   standard_file: ".axovia-flow/company-standards/feature-specification.md"
 
 # Custom Tasks
@@ -166,9 +152,9 @@ quality_gates:
 
 # Integration Settings
 integration:
-  # Configuration files to load and integrate
-  bmadCoreConfigFile: ".bmad-core/core-config.yaml"
-  axoviaFlowConfigFile: ".axovia-flow/flow-config.yaml"
+  configFiles:
+    bmad_core: ".bmad-core/core-config.yaml"
+    axovia_flow: ".axovia-flow/flow-config.yaml"
 
   # Configration files loaded after other config files should: 
   # - First extend complimenting configuration
@@ -182,10 +168,10 @@ integration:
   custom_elicitation_methods: []
   
 # File Locations
-fileLocations:
+filePaths:
   tasks: ".axovia-flow/tasks"
   templates: ".axovia-flow/templates"
-  standards: ".axovia-flow/company-standards"
+  company_standards: ".axovia-flow/company-standards"
   prd:
     file: "docs/prd.md"
     shards: "docs/prd-shards"    
@@ -197,7 +183,7 @@ fileLocations:
   epics: "docs/agile/epics"
   qa: "docs/qa"
 
-
+# Keywords
 keywords:
   - word: "agent-id"
     definition: "A Unique Identifie to identify a specific agent instance.  The Agent ID is formatted as `[AGENT-TYPE]-[INSTANCE-NUMBER]`.  For example: `[DEV-01]` is the first instance of the `DEV` agent."

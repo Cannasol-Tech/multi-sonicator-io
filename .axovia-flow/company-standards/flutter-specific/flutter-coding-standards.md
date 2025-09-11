@@ -6,10 +6,9 @@
 
 Flutter applications require comprehensive testing strategies that cover widget behavior, user interactions, and integration with backend services. This standard defines the **official testing requirements** for all Flutter projects, emphasizing modern testing practices with Flutter Test and Flutter Driver.
 
-- **ALWAYS:** Work following the global standard for coding style located at `.axovia-flow/company-standards/coding-style.md`
-- **ALWAYS:** Use Flutter specific naming conventions for widgets and blocs
-- **ALWAYS:** Use Flutter specific folder structures for widgets and blocs
-- **ALWAYS:** Use Flutter specific linting rules for widgets and blocs
-- **ALWAYS:** Use Flutter specific testing rules for widgets and blocs
-- **ALWAYS:** Use Framer Motion for Animation and Transitions
-- **ALWAYS:** Use `//` for making comments in Dart files
+- Work following the global standard for coding style located at `docs/standards/coding-style.md`
+- Use Flutter specific naming conventions for widgets and blocs
+- Use Flutter specific folder structures for widgets and blocs
+- Use Flutter specific linting rules for widgets and blocs
+- Use Flutter specific testing rules for widgets and blocs
+- Use Framer Motion for Animation and Transitions
