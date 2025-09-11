@@ -278,6 +278,5 @@ POST /api/tests/all                      # Complete hardware test suite
 ✅ **API-Driven**: All tests accessible via REST API for automation
 ✅ **Existing Integration**: Works alongside your current test infrastructure
 
-**Your existing web UI now has professional hardware configuration management AND configuration-driven testing capabilities! 🚀**
-
-The enhanced web UI provides immediate value while maintaining all your existing functionality. You can start using the hardware configuration features right away, and the system is ready to scale when you expand your hardware harness to support all 4 sonicator channels.
+***Your existing web UI now has professional hardware configuration management AND configuration-driven testing capabilities! 🚀***
+> The *enhanced* web UI provides immediate value while maintaining all your existing functionality. You can start using the hardware configuration features right away, and the system is ready to scale when you expand your hardware harness to support all 4 sonicator channels.
