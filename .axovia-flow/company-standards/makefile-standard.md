@@ -17,7 +17,7 @@ Ensure all makefile targets are consistent and follow company standards.  Reduce
 
 ## Source of Truth
 
-This document is the single source of truth for all makefile targets utilized across the company.  This file is the single source of truth for all pin capabilities utilized across the Nexus Lens Embedded Tester Project.
+This document is the single source of truth for all makefile targets utilized across the company.
 
 ## Makefile Target Standards
 

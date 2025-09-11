@@ -47,41 +47,38 @@ make upload-to-device
 make update-standards
 ```
 
-### Nexus Lens Testing Framework
+### Web UI and HIL Testing
 
-This project includes **Nexus Lens**, a comprehensive hardware-in-the-loop (HIL) testing framework specifically configured for embedded systems testing.
+This project includes a Web UI with backend APIs and tests that support hardware-in-the-loop (HIL) workflows.
 
-#### Quick Start with Nexus Lens
+#### Quick Start
 
 ```bash
-# Check Nexus Lens status
-make web-ui-status
+# Install frontend/backend and Python test dependencies
+make web-ui-install
 
-# Validate configuration
-make web-ui-validate
+# Start development servers (frontend + backend)
+make web-ui-dev
 
-# Start testing interface (simulation mode - no hardware required)
-make web-ui-simulate
-
-# Start testing interface (hardware mode - requires physical setup)
-make web-ui-start
-
-# Run all tests
+# Run Web UI tests with coverage (HTML report in web-ui/htmlcov)
 make web-ui-test
 
-# Generate executive report
-make web-ui-report
+# Optional: Full firmware + Web UI sandbox workflow
+make web-ui-sandbox
+
+# Generate overall coverage summary for the repo (final/coverage-summary.json)
+make coverage
 ```
 
 #### Features
 
 - **Hardware Configuration**: Pre-configured for ATmega32A DUT and Arduino Uno R3 test harness
 - **Multi-Suite Testing**: Integrates Unity (unit), pytest (integration), and Behave (acceptance) tests
-- **Real-time Monitoring**: Web-based interface for test execution and hardware monitoring
-- **Executive Reporting**: Comprehensive test reports with coverage analysis
-- **Simulation Mode**: Test without physical hardware for development
+- **Real-time Monitoring**: Web-based interface for test execution and monitoring
+- **Coverage Reporting**: Coverage summary and HTML reports for Web UI tests
+- **Sandbox Mode**: Optional end-to-end run including firmware build and upload
 
-See [Nexus Lens Documentation](.web-ui/README.md) for detailed usage instructions.
+
 
 ## Documentation
 

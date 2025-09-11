@@ -373,7 +373,9 @@ web-ui-install:
 	@echo "📦 Installing backend dependencies..."
 	cd web-ui/backend && npm install
 	@echo "📦 Installing Python test dependencies..."
-	cd web-ui && python3 -m venv venv && source venv/bin/activate && pip install pytest pytest-asyncio pytest-mock requests websocket-client pytest-cov
+	python3 -m venv web-ui/venv
+	web-ui/venv/bin/python -m pip install --upgrade pip
+	web-ui/venv/bin/python -m pip install pytest pytest-asyncio pytest-mock requests websocket-client pytest-cov
 	@echo "✅ Web UI dependencies installed"
 
 # Development mode - start both frontend and backend
@@ -536,7 +538,7 @@ web-ui-sandbox-auto: check-deps check-pio check-arduino-cli
 # Run Web UI tests
 web-ui-test:
 	@echo "🧪 Running Web UI tests..."
-	cd web-ui && source venv/bin/activate && python -m pytest tests/ -v --cov=backend/src --cov-report=term-missing --cov-report=html:htmlcov --cov-fail-under=90
+	web-ui/venv/bin/python -m pytest web-ui/tests/ -v --cov=web-ui/backend/src --cov-report=term-missing --cov-report=html:web-ui/htmlcov --cov-fail-under=90
 	@echo "✅ Web UI tests completed"
 
 # Stop Web UI development servers
@@ -574,60 +576,7 @@ sync-standards: update-standards
 check-standards:
 	@python3 scripts/sync_company_standards.py --check-only
 
-## Nexus Lens Testing Framework Targets
-
-# Show Nexus Lens status and configuration
-web-ui-status:
-	@echo "🔍 Nexus Lens Status"
-	@./web-ui status
-
-# Validate Nexus Lens configuration
-web-ui-validate:
-	@echo "✅ Validating Nexus Lens configuration"
-	@./web-ui config validate
-
-# Start Nexus Lens testing interface (hardware mode)
-web-ui-start: check-deps
-	@echo "🚀 Starting Nexus Lens testing interface"
-	@./web-ui start
-
-# Start Nexus Lens in simulation mode (no hardware required)
-web-ui-simulate: check-deps
-	@echo "🔧 Starting Nexus Lens in simulation mode"
-	@./web-ui start --simulate
-
-# Run tests through Nexus Lens
-web-ui-test: check-deps
-	@echo "🧪 Running tests through Nexus Lens"
-	@./web-ui test
-
-# Run specific test suite through Nexus Lens
-web-ui-test-unit: check-deps
-	@echo "🧪 Running unit tests through Nexus Lens"
-	@./web-ui test --suite unit
-
-web-ui-test-integration: check-deps
-	@echo "🧪 Running integration tests through Nexus Lens"
-	@./web-ui test --suite integration
-
-web-ui-test-acceptance: check-deps
-	@echo "🧪 Running acceptance tests through Nexus Lens"
-	@./web-ui test --suite acceptance
-
-# Generate reports through Nexus Lens
-web-ui-report:
-	@echo "📊 Generating executive report through Nexus Lens"
-	@./web-ui report --type executive
-
-web-ui-coverage:
-	@echo "📊 Generating coverage report through Nexus Lens"
-	@./web-ui report --type coverage
-
-web-ui-complete-report:
-	@echo "📊 Generating complete report through Nexus Lens"
-	@./web-ui report --type complete
-
-# CI/CD Pipeline Artifact Management
+## CI/CD Pipeline Artifact Management
 upload-artifacts: check-deps
 	@echo "📦 Packaging and uploading CI/CD artifacts..."
 	@mkdir -p artifacts/firmware artifacts/reports artifacts/coverage
@@ -652,22 +601,3 @@ upload-artifacts: check-deps
 	@find artifacts -type f | wc -l | xargs echo "  Total files:"
 	@du -sh artifacts | cut -f1 | xargs echo "  Total size:"
 
-# Nexus Lens help
-web-ui-help:
-	@echo "🏗️ Nexus Lens - Hardware-in-the-Loop Testing Framework"
-	@echo ""
-	@echo "Available Nexus Lens targets:"
-	@echo "  web-ui-status           - Show Nexus Lens status and configuration"
-	@echo "  web-ui-validate         - Validate Nexus Lens configuration files"
-	@echo "  web-ui-start            - Start testing interface (hardware mode)"
-	@echo "  web-ui-simulate         - Start testing interface (simulation mode)"
-	@echo "  web-ui-test             - Run all test suites"
-	@echo "  web-ui-test-unit        - Run unit tests only"
-	@echo "  web-ui-test-integration - Run integration tests only"
-	@echo "  web-ui-test-acceptance  - Run acceptance tests only"
-	@echo "  web-ui-report           - Generate executive report"
-	@echo "  web-ui-coverage         - Generate coverage report"
-	@echo "  web-ui-complete-report  - Generate complete report"
-	@echo "  web-ui-help             - Show this help message"
-	@echo ""
-	@echo "Direct CLI usage: ./web-ui <command> [options]"

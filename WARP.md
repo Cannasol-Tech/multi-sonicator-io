@@ -10,7 +10,7 @@ The Multi-Sonicator I/O Controller is an industrial automation system built on a
 - ATmega32A microcontroller @ 16MHz (external crystal)
 - Arduino Framework with PlatformIO build system
 - MODBUS RTU slave interface (115200 baud, 8N1)
-- Hardware-in-the-Loop (HIL) testing framework (Nexus Lens)
+- Hardware-in-the-Loop (HIL) testing framework (Web UI Test Runner)
 - Multi-framework testing: Unity (unit), pytest (integration), Behave (acceptance)
 
 ## Essential Development Commands
@@ -53,10 +53,10 @@ make test-integration
 make ci
 ```
 
-### Nexus Lens HIL Testing
+### Web UI Test Runner (HIL Testing)
 
 ```bash
-# Check Nexus Lens testing framework status
+# Check test runner status
 make web-ui-status
 
 # Validate HIL configuration

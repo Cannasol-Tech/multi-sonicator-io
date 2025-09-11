@@ -8,7 +8,7 @@ This document summarizes the successful integration of hardware configuration ma
 
 ### ✅ **Enhanced Existing Web UI (Option 3)**
 
-Instead of creating a separate Nexus Lens NPM package, we enhanced your existing web UI with the best concepts from the Nexus Lens architecture design. This provides immediate value while maintaining your existing project structure.
+We enhanced your existing web UI with an integrated test runner, adopting proven HIL testing concepts. This provides immediate value while maintaining your existing project structure.
 
 ### ✅ **Hardware Configuration Management System**
 
@@ -154,7 +154,7 @@ Configuration includes complete pin mappings for all 4 channels. When you expand
 
 ### ✅ **Immediate Value**
 
-- **No waiting**: Available now, no need to wait for Nexus Lens NPM package
+- **No waiting**: Available now, no need to wait for external packages
 - **Integrated**: Works with your existing web UI and development workflow
 - **Tested**: Backend running, APIs working, configuration validated
 
