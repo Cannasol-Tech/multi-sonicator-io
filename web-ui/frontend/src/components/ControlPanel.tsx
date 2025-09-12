@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { HardwareState } from '../types'
+import { formatFrequency } from '../utils/formatters'
 
 interface ControlPanelProps {
   hardwareState: HardwareState
@@ -78,7 +79,6 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
   })
   const [configLoading, setConfigLoading] = useState(false)
   const [activeSubTab, setActiveSubTab] = useState<'parameters' | 'monitoring'>('parameters')
-  const [frequencyInput, setFrequencyInput] = useState<string>('')
 
   const inputPins = Object.entries(hardwareState.pins).filter(([signal, pin]) => pin.direction === 'IN' || signal === 'POWER_SENSE_4')
   const outputPins = Object.entries(hardwareState.pins).filter(([signal, pin]) => pin.direction === 'OUT' && signal !== 'UART_TXD')
@@ -131,16 +131,11 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
     }
   }
 
-  const handleFrequencyInputSubmit = () => {
-    const frequency = parseFloat(frequencyInput)
-    if (!isNaN(frequency) && frequency >= 18 && frequency <= 22) {
-      handleFrequencyChange(frequency)
-      setFrequencyInput('')
+  const handleFrequencyInputChange = (newFrequency: number) => {
+    if (!isNaN(newFrequency)) {
+      // Allow immediate input but clamp in handler
+      handleFrequencyChange(newFrequency)
     }
-  }
-
-  const handleFrequencyPreset = (frequency: number) => {
-    handleFrequencyChange(frequency)
   }
 
   const isFrequencyPin = (signal: string) => {
@@ -153,7 +148,22 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
         <div className="enhanced-pin-display">
           <div className="pin-state enhanced analog">
             <div className="pin-value">
-              {pinState.state || '0Hz'}
+              {(() => {
+                if (!pinState.state) return formatFrequency(0);
+                const stateStr = pinState.state.toString();
+                // If already contains Hz/kHz units, extract the numeric part
+                if (stateStr.includes('Hz') || stateStr.includes('kHz')) {
+                  const numericPart = stateStr.replace(/[^0-9.]/g, '');
+                  const frequencyValue = parseFloat(numericPart) || 0;
+                  // If the original contained 'kHz', multiply by 1000 to get Hz
+                  const frequencyHz = stateStr.includes('kHz') ? frequencyValue * 1000 : frequencyValue;
+                  return formatFrequency(frequencyHz);
+                }
+                // Otherwise treat as raw frequency in Hz
+                const rawFreq = parseFloat(stateStr) || 0;
+                return formatFrequency(rawFreq);
+              })()
+              }
             </div>
 
             <div className="pin-controls">
@@ -163,118 +173,25 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
               </div>
             </div>
 
-            <div className="pin-details">
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-xs font-medium" style={{ color: 'var(--text-secondary)' }}>Configured:</span>
-                <span className="text-xs font-mono font-bold" style={{ color: 'var(--color-primary)' }}>
-                  {configuration.sonicator4.operatingFrequencyKHz.toFixed(1)}kHz
-                </span>
-              </div>
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-xs font-medium" style={{ color: 'var(--text-secondary)' }}>Current:</span>
-                <span className="text-xs font-mono font-bold" style={{ color: 'var(--text-primary)' }}>
-                  {pinState.state || '0Hz'}
-                </span>
-              </div>
-              {/* Visual meter within 18–22 kHz */}
-              <div className="frequency-meter">
-                <div
-                  className="frequency-meter-fill"
-                  style={{ width: `${((configuration.sonicator4.operatingFrequencyKHz - 18) / 4) * 100}%` }}
-                ></div>
-                <div className="frequency-meter-labels">
-                  <span>18</span>
-                  <span>20</span>
-                  <span>22 kHz</span>
-                </div>
-              </div>
-              <div className="text-xs" style={{ color: 'var(--text-tertiary)', marginTop: 4 }}>
-                Div/10 output: {(configuration.sonicator4.operatingFrequencyKHz / 10).toFixed(2)} kHz • Range: 18.0–22.0 kHz
-              </div>
-            </div>
-
-            {/* Enhanced Frequency Control Section */}
-            <div className="frequency-controls-enhanced mt-3 pt-2" style={{ borderTop: '1px solid var(--border-color)' }}>
-              <div className="frequency-control-header mb-2">
-                <span className="text-xs font-semibold" style={{ color: 'var(--color-primary)' }}>⚡ Frequency Control</span>
-                <span className="text-xs ml-2" style={{ 
-                  color: frequencyInput && (parseFloat(frequencyInput) < 18 || parseFloat(frequencyInput) > 22) 
-                    ? 'var(--color-error)' 
-                    : 'var(--text-tertiary)'
-                }}>
-                  {frequencyInput && (parseFloat(frequencyInput) < 18 || parseFloat(frequencyInput) > 22) 
-                    ? '⚠️ Out of range' 
-                    : '18.0 – 22.0 kHz'}
-                </span>
-              </div>
-              
-              <div className="frequency-input-section mb-2">
-                <div className="flex items-center gap-2">
-                  <div className="frequency-input-container">
-                    <input
-                      type="number"
-                      min="18"
-                      max="22"
-                      step="0.1"
-                      value={frequencyInput}
-                      onChange={(e) => setFrequencyInput(e.target.value)}
-                      onKeyPress={(e) => {
-                        if (e.key === 'Enter') {
-                          handleFrequencyInputSubmit()
-                        }
-                      }}
-                      placeholder="20.0"
-                      className={`frequency-input ${
-                        frequencyInput && (parseFloat(frequencyInput) < 18 || parseFloat(frequencyInput) > 22)
-                          ? 'frequency-input-error'
-                          : ''
-                      }`}
-                      disabled={!connected || configLoading}
-                    />
-                    <span className="frequency-unit">kHz</span>
-                  </div>
-                  <button
-                    onClick={handleFrequencyInputSubmit}
-                    disabled={!connected || configLoading || !frequencyInput || 
-                              (frequencyInput && (parseFloat(frequencyInput) < 18 || parseFloat(frequencyInput) > 22))}
-                    className="frequency-set-btn"
-                  >
-                    {configLoading ? '⏳' : '✓ Set'}
-                  </button>
-                </div>
-              </div>
-                
-              {/* Enhanced Frequency Presets */}
-              <div className="frequency-presets">
-                <span className="text-xs font-medium mb-1 block" style={{ color: 'var(--text-secondary)' }}>Quick Presets:</span>
-                <div className="preset-buttons">
-                  {[18, 19, 20, 21, 22].map(freq => (
-                    <button
-                      key={freq}
-                      onClick={() => handleFrequencyPreset(freq)}
-                      disabled={!connected || configLoading}
-                      className={`frequency-preset-btn ${
-                        Math.abs(configuration.sonicator4.operatingFrequencyKHz - freq) < 0.1 ? 'active' : ''
-                      }`}
-                      title={`Set frequency to ${freq} kHz`}
-                    >
-                      <span className="preset-value">{freq}</span>
-                      <span className="preset-unit">kHz</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-              
-              {configLoading && (
-                <div className="frequency-loading" style={{ 
-                  textAlign: 'center', 
-                  color: 'var(--color-primary)', 
-                  fontSize: '10px',
-                  marginTop: '8px'
-                }}>
-                  ⚙️ Updating frequency...
-                </div>
-              )}
+            {/* Simple frequency control */}
+            <div className="pin-controls">
+              <input
+                type="number"
+                min="18"
+                max="22"
+                step="0.1"
+                value={configuration.sonicator4.operatingFrequencyKHz}
+                onChange={(e) => handleFrequencyInputChange(parseFloat(e.target.value))}
+                disabled={!connected || configLoading}
+                className="btn-mini"
+                style={{ 
+                  width: '80px',
+                  textAlign: 'center',
+                  fontFamily: 'monospace'
+                }}
+                title="Frequency (kHz)"
+              />
+              <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>kHz</span>
             </div>
 
             <div className="text-xs mt-2" style={{ color: 'var(--text-tertiary)' }}>
@@ -398,7 +315,8 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
       <div className="sub-tab-content">
         {activeSubTab === 'parameters' && (
           <div className="control-section">
-          {inputPins.map(([signal, pinState]) => {
+            <div className="parameter-grid">
+              {inputPins.map(([signal, pinState]) => {
             const pinInfo = pinDescriptions[signal]
             return (
               <div key={signal} className="parameter-card-compact mb-3 p-3 rounded-lg" style={{
@@ -411,13 +329,6 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-sm font-semibold" style={{ color: 'var(--color-primary)' }}>
                       🔧 Sonicator #4
-                    </span>
-                    <span className="text-xs px-2 py-1 rounded" style={{
-                      background: 'var(--bg-tertiary)',
-                      color: 'var(--text-secondary)',
-                      fontSize: '10px'
-                    }}>
-                      Signal Configuration
                     </span>
                   </div>
                   <h5 className="text-sm font-bold mb-1" style={{ color: 'var(--text-primary)' }}>
@@ -439,14 +350,16 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
 
                 {renderPinState(signal, pinState)}
               </div>
-            )
-          })}
+              )
+            })}
+            </div>
           </div>
         )}
 
         {activeSubTab === 'monitoring' && (
           <div className="control-section">
-            {outputPins.map(([signal, pinState]) => {
+            <div className="parameter-grid">
+              {outputPins.map(([signal, pinState]) => {
               const pinInfo = pinDescriptions[signal]
               return (
                 <div key={signal} className="parameter-card-compact mb-3 p-3 rounded-lg" style={{
@@ -489,6 +402,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
                 </div>
               )
             })}
+            </div>
           </div>
         )}
       </div>

@@ -2398,6 +2398,28 @@
   transition: none !important;
 }
 
+/* Parameter Card Uniform Sizing */
+.parameter-card-compact {
+  flex: 1 1 240px;    /* grow, shrink, base width */
+  display: flex;
+  flex-direction: column;
+  min-height: 160px;  /* guarantees equal height */
+  box-sizing: border-box;
+}
+
+.parameter-card-compact .enhanced-pin-display {
+  flex: 1;            /* pushes footer to bottom */
+  display: flex;
+  flex-direction: column;
+}
+
+.parameter-card-compact .pin-state.enhanced {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 /* Enhanced Dark Theme Styles for Signal Monitoring Cards */
 .dark-theme .parameter-card-compact {
   background: linear-gradient(135deg, #2a3441 0%, #374151 100%) !important;
@@ -8673,4 +8695,39 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-xs);
+}
+
+/* =========================
+   Parameter Grid Layout
+   ========================= */
+
+.parameter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+/* Overflow prevention for parameter card content */
+.parameter-card-compact .signal-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.parameter-card-compact .connection-info {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 60%;
+}
+
+.parameter-card-compact .parameter-header {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.parameter-card-compact .pin-value {
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
