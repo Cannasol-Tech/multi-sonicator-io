@@ -9,7 +9,9 @@
 .PHONY: acceptance-test-pwm acceptance-test-modbus acceptance-test-power generate-release-artifacts test-integration
 .PHONY: test-unit-communication test-unit-hal test-unit-control test-unit-sonicator validate-config generate-traceability-report manage-pending-scenarios update-pending-scenarios ci-local
 .PHONY: web-ui-install web-ui-dev web-ui-build web-ui-sandbox web-ui-test web-ui-clean web-ui-stop
+.PHONY: web-ui-docker-build web-ui-docker-dev web-ui-docker-prod web-ui-docker-stop web-ui-docker-clean
 .PHONY: validate-traceability check-compliance update-standards sync-standards check-standards generate-executive-report generate-coverage-report generate-complete-executive-report coverage
+.PHONY: validate-dod check-dod-compliance enforce-dod-gate validate-story-completion
 
 #  Make Targets
 
@@ -583,6 +585,58 @@ web-ui-clean:
 	rm -rf web-ui/.pytest_cache
 	@echo "✅ Web UI cleaned"
 
+## Docker Web UI Targets
+
+# Build Docker images for Web UI
+web-ui-docker-build:
+	@echo "🐳 Building Web UI Docker images..."
+	@echo "🏗️ Building backend image..."
+	cd web-ui && docker-compose build backend
+	@echo "🏗️ Building frontend image..."
+	cd web-ui && docker-compose build frontend
+	@echo "✅ Web UI Docker images built"
+
+# Start Web UI in Docker development mode
+web-ui-docker-dev:
+	@echo "🐳 Starting Web UI in Docker development mode..."
+	cd web-ui && docker-compose up -d
+	@echo "⏳ Waiting for services to start..."
+	@sleep 10
+	@echo "✅ Web UI Docker development environment started"
+	@echo "📱 Frontend: http://localhost:3101"
+	@echo "🔌 Backend API: http://localhost:3001/api"
+	@echo "📊 Health Check: http://localhost:3001/api/health"
+
+# Start Web UI in Docker production mode
+web-ui-docker-prod:
+	@echo "🐳 Starting Web UI in Docker production mode..."
+	cd web-ui && docker-compose -f docker-compose.prod.yml up -d
+	@echo "⏳ Waiting for services to start..."
+	@sleep 15
+	@echo "✅ Web UI Docker production environment started"
+	@echo "📱 Frontend: http://localhost:3101"
+	@echo "🔌 Backend API: http://localhost:3001/api"
+	@echo "📊 Health Check: http://localhost:3001/api/health"
+
+# Stop Web UI Docker containers
+web-ui-docker-stop:
+	@echo "🐳 Stopping Web UI Docker containers..."
+	cd web-ui && docker-compose down || true
+	cd web-ui && docker-compose -f docker-compose.prod.yml down || true
+	@echo "✅ Web UI Docker containers stopped"
+
+# Clean Web UI Docker resources
+web-ui-docker-clean: web-ui-docker-stop
+	@echo "🐳 Cleaning Web UI Docker resources..."
+	cd web-ui && docker-compose down --volumes --remove-orphans || true
+	cd web-ui && docker-compose -f docker-compose.prod.yml down --volumes --remove-orphans || true
+	@echo "🗑️ Removing Web UI Docker images..."
+	docker rmi multi-sonicator-backend-dev multi-sonicator-frontend-dev 2>/dev/null || true
+	docker rmi multi-sonicator-backend-prod multi-sonicator-frontend-prod 2>/dev/null || true
+	@echo "🧹 Pruning unused Docker resources..."
+	docker system prune -f
+	@echo "✅ Web UI Docker resources cleaned"
+
 ## Company Standards Management
 
 # Download/update company standards from central repository (standards only)
@@ -620,4 +674,96 @@ upload-artifacts: check-deps
 	@echo "📋 Artifact summary:"
 	@find artifacts -type f | wc -l | xargs echo "  Total files:"
 	@du -sh artifacts | cut -f1 | xargs echo "  Total size:"
+
+# ============================================================================
+# DEFINITION OF DONE (DoD) VALIDATION TARGETS - MANDATORY QUALITY GATES
+# ============================================================================
+
+# Validate DoD compliance for a specific story
+validate-dod:
+	@if [ -z "$(STORY)" ]; then \
+		echo "❌ ERROR: STORY parameter required. Usage: make validate-dod STORY=1.3"; \
+		exit 1; \
+	fi
+	@echo "🔍 Validating Definition of Done compliance for Story $(STORY)..."
+	@echo "📋 Checking DoD checklist completion..."
+	@if [ ! -f "docs/agile/stories/$(STORY)"*.md ]; then \
+		echo "❌ ERROR: Story file not found for $(STORY)"; \
+		exit 1; \
+	fi
+	@STORY_FILE=$$(ls docs/agile/stories/$(STORY)*.md 2>/dev/null | head -1); \
+	if ! grep -q "## Definition of Done Checklist Completion" "$$STORY_FILE"; then \
+		echo "❌ BLOCKING: DoD checklist section missing in $$STORY_FILE"; \
+		echo "📋 Required: Add DoD checklist using docs/standards/definition-of-done-template.md"; \
+		exit 1; \
+	fi
+	@echo "✅ DoD checklist section found"
+	@STORY_FILE=$$(ls docs/agile/stories/$(STORY)*.md 2>/dev/null | head -1); \
+	if ! grep -q "## QA Results" "$$STORY_FILE"; then \
+		echo "❌ BLOCKING: QA Results section missing - Test Architect review required"; \
+		echo "📋 Required: Run Test Architect review using *review $(STORY) command"; \
+		exit 1; \
+	fi
+	@echo "✅ QA Results section found"
+	@if [ ! -f "docs/qa/gates/$(STORY)"*.yml ]; then \
+		echo "❌ BLOCKING: Quality gate file missing"; \
+		echo "📋 Required: Test Architect must create quality gate using *gate $(STORY) command"; \
+		exit 1; \
+	fi
+	@echo "✅ Quality gate file found"
+	@GATE_FILE=$$(ls docs/qa/gates/$(STORY)*.yml 2>/dev/null | head -1); \
+	GATE_STATUS=$$(grep "^gate:" "$$GATE_FILE" | cut -d' ' -f2); \
+	if [ "$$GATE_STATUS" != "PASS" ]; then \
+		echo "❌ BLOCKING: Quality gate status is $$GATE_STATUS (must be PASS)"; \
+		echo "📋 Required: Resolve quality issues before marking story as Done"; \
+		exit 1; \
+	fi
+	@echo "✅ Quality gate status: PASS"
+	@echo "🎯 DoD validation PASSED for Story $(STORY)"
+
+# Check DoD compliance across all completed stories
+check-dod-compliance:
+	@echo "🔍 Checking DoD compliance across all stories marked as Done..."
+	@FAILED_STORIES=""; \
+	for story_file in docs/agile/stories/*.md; do \
+		if grep -q "^Done$$\|^Complete$$\|^Ready for Review$$" "$$story_file"; then \
+			STORY_ID=$$(basename "$$story_file" .md | cut -d'.' -f1-2); \
+			echo "📋 Checking $$STORY_ID..."; \
+			if ! make validate-dod STORY=$$STORY_ID >/dev/null 2>&1; then \
+				echo "❌ DoD compliance FAILED for $$STORY_ID"; \
+				FAILED_STORIES="$$FAILED_STORIES $$STORY_ID"; \
+			else \
+				echo "✅ DoD compliance PASSED for $$STORY_ID"; \
+			fi; \
+		fi; \
+	done; \
+	if [ -n "$$FAILED_STORIES" ]; then \
+		echo "❌ BLOCKING: DoD compliance failures detected:$$FAILED_STORIES"; \
+		echo "📋 Required: Complete DoD checklist for all failed stories"; \
+		exit 1; \
+	fi
+	@echo "🎯 All completed stories pass DoD compliance checks"
+
+# Enforce DoD gate before allowing story completion
+enforce-dod-gate:
+	@if [ -z "$(STORY)" ]; then \
+		echo "❌ ERROR: STORY parameter required. Usage: make enforce-dod-gate STORY=1.3"; \
+		exit 1; \
+	fi
+	@echo "🚫 ENFORCING DoD quality gate for Story $(STORY)..."
+	@echo "⚠️  This is a MANDATORY quality gate - no bypassing allowed"
+	@make validate-dod STORY=$(STORY)
+	@echo "🔒 DoD quality gate ENFORCED - Story $(STORY) approved for completion"
+
+# Validate story completion readiness
+validate-story-completion:
+	@if [ -z "$(STORY)" ]; then \
+		echo "❌ ERROR: STORY parameter required. Usage: make validate-story-completion STORY=1.3"; \
+		exit 1; \
+	fi
+	@echo "🎯 Validating story completion readiness for Story $(STORY)..."
+	@make enforce-dod-gate STORY=$(STORY)
+	@make test-unit >/dev/null 2>&1 || (echo "❌ BLOCKING: Unit tests failing"; exit 1)
+	@echo "✅ Unit tests passing"
+	@echo "🎯 Story $(STORY) is READY for completion - all quality gates passed"
 

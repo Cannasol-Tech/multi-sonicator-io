@@ -1,16 +1,47 @@
-# Definition of Done (DoD) Template
+# Definition of Done (DoD) Template - MANDATORY QUALITY GATE
+
+## ⚠️ CRITICAL ENFORCEMENT NOTICE
+
+**THIS IS A MANDATORY QUALITY GATE - NO EXCEPTIONS**
+
+- ❌ **BLOCKING**: Stories CANNOT be marked as "Done" without complete DoD validation
+- ❌ **BLOCKING**: Stories CANNOT be merged without Test Architect DoD approval
+- ❌ **BLOCKING**: Stories CANNOT be released without PASS quality gate status
+- ✅ **REQUIRED**: All 7 DoD sections must be completed with evidence
+- ✅ **REQUIRED**: Test Architect must validate and create quality gate file
 
 ## Purpose
 
-This template provides a standardized checklist for validating story completion according to company standards. All stories marked as "Done" must complete this checklist to ensure consistent quality and compliance.
+This template provides a **mandatory** standardized checklist for validating story completion according to company standards. **NO STORY** can be marked as "Done" without completing this checklist and receiving Test Architect validation.
 
-## Usage Instructions
+## MANDATORY Usage Instructions - NO BYPASSING ALLOWED
 
-1. **Copy this template** into the story file under "## Definition of Done Checklist Completion"
-2. **Complete each section** systematically during story development
-3. **Mark items as complete** only when evidence exists
-4. **Document evidence** for each completed item
-5. **Get Test Architect validation** before marking story as "Done"
+1. **MANDATORY**: Copy this template into the story file under "## Definition of Done Checklist Completion"
+2. **MANDATORY**: Complete each section systematically during story development
+3. **MANDATORY**: Mark items as complete only when evidence exists
+4. **MANDATORY**: Document evidence for each completed item
+5. **MANDATORY**: Get Test Architect validation using `*review {story}` command
+6. **MANDATORY**: Receive PASS quality gate status before marking story as "Done"
+
+## ⛔ ENFORCEMENT RULES
+
+### For Developers:
+- **CANNOT** change story status to "Done" without complete DoD checklist
+- **CANNOT** merge code without Test Architect DoD approval
+- **MUST** provide specific evidence for every checklist item
+- **MUST** request Test Architect review when DoD is complete
+
+### For Test Architects:
+- **MUST** validate every DoD checklist item before approval
+- **MUST** create quality gate file using `*gate {story}` command
+- **MUST** provide PASS/CONCERNS/FAIL/WAIVED decision with rationale
+- **CANNOT** approve stories with incomplete DoD evidence
+
+### For Project Managers:
+- **CANNOT** accept stories as "Done" without Test Architect DoD approval
+- **CANNOT** include stories in releases without PASS quality gate status
+- **MUST** enforce DoD compliance across all development teams
+- **MUST** track DoD compliance metrics in sprint reviews
 
 ---
 
@@ -88,8 +119,12 @@ This template provides a standardized checklist for validating story completion 
 - [List documentation updates performed]
 - [Reference updated documentation files]
 
-### Final Confirmation: [ ] **CONFIRMED**
+### Final Confirmation: [ ] **CONFIRMED** ⚠️ MANDATORY
 - [ ] I, [Agent Name], confirm that all applicable DoD items have been addressed
+- [ ] I, [Agent Name], confirm that all evidence has been documented and validated
+- [ ] I, [Agent Name], request Test Architect review for quality gate validation
+
+**⛔ CRITICAL**: This story CANNOT be marked as "Done" until Test Architect validates this DoD checklist and creates a PASS quality gate.
 
 ## Dev Agent Record
 
@@ -119,19 +154,41 @@ This template provides a standardized checklist for validating story completion 
 
 ---
 
-## Quality Gates
+## ⛔ MANDATORY QUALITY GATES - BLOCKING REQUIREMENTS
 
-### Test Architect Review Required
-- [ ] **DoD Compliance Verified**: Test Architect has validated all checklist items
-- [ ] **Quality Gate Created**: Gate file created in `docs/qa/gates/`
-- [ ] **Traceability Verified**: Requirements mapped to tests
-- [ ] **Risk Assessment Complete**: Risk profile documented if needed
+### 🚫 STORY CANNOT BE MARKED "DONE" WITHOUT:
 
-### Approval Criteria
-- All DoD checklist items marked as complete with evidence
-- Test Architect validation completed
-- Quality gate status: PASS
-- No blocking issues identified
+#### 1. Complete DoD Checklist ⚠️ MANDATORY
+- [ ] **DoD Compliance Verified**: Test Architect has validated ALL checklist items
+- [ ] **Evidence Documented**: Specific evidence provided for every checklist item
+- [ ] **Quality Gate Created**: Gate file created in `docs/qa/gates/` with PASS status
+- [ ] **Traceability Verified**: All requirements mapped to tests with evidence
+- [ ] **Risk Assessment Complete**: Risk profile documented and acceptable
+
+#### 2. Test Architect Approval ⚠️ MANDATORY
+- [ ] **Test Architect Review**: `*review {story}` command executed by Test Architect
+- [ ] **Quality Gate Status**: PASS (CONCERNS/FAIL/WAIVED require explicit approval)
+- [ ] **QA Results Updated**: Comprehensive review results added to story file
+- [ ] **Gate File Created**: Quality gate file exists in `docs/qa/gates/`
+
+#### 3. Blocking Conditions ⚠️ AUTOMATIC FAILURE
+- ❌ **FAIL**: Any DoD checklist item incomplete or lacking evidence
+- ❌ **FAIL**: Test coverage below 85% requirement
+- ❌ **FAIL**: Quality gate status is FAIL without approved waiver
+- ❌ **FAIL**: No Test Architect validation performed
+- ❌ **FAIL**: Critical security or performance issues unresolved
+
+### 🔒 ENFORCEMENT MECHANISMS
+
+#### Automated Checks (Future Implementation)
+- **Pre-merge Hook**: Verify DoD checklist completion before code merge
+- **Status Validation**: Block status change to "Done" without quality gate PASS
+- **Release Gate**: Prevent release inclusion without DoD compliance
+
+#### Manual Enforcement (Immediate)
+- **Code Review**: Reviewers must verify DoD completion before approval
+- **Sprint Review**: PM must validate DoD compliance before story acceptance
+- **Release Planning**: Only stories with PASS quality gates included in releases
 
 ---
 

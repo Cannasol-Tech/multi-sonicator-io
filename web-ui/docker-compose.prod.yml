@@ -1,0 +1,99 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: production
+    container_name: multi-sonicator-backend-prod
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - PYTHONPATH=/app
+    volumes:
+      # Mount HIL framework from parent directory (read-only)
+      - ../test/acceptance/hil_framework:/app/hil_framework:ro
+      - ../config:/app/config:ro
+      # Mount device files for hardware access
+      - /dev:/dev
+      # Persistent logs
+      - ./logs:/app/logs
+    privileged: true  # Required for hardware access
+    networks:
+      - web-ui-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: production
+    container_name: multi-sonicator-frontend-prod
+    ports:
+      - "3101:3101"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      # Mount resource files (read-only)
+      - ../resource:/usr/share/nginx/html/resource:ro
+    depends_on:
+      - backend
+    networks:
+      - web-ui-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3101/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Optional: Redis for session management and caching
+  redis:
+    image: redis:7-alpine
+    container_name: multi-sonicator-redis-prod
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - web-ui-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+networks:
+  web-ui-network:
+    driver: bridge
+    name: multi-sonicator-network-prod
+
+volumes:
+  redis_data:
+    driver: local

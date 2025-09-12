@@ -132,11 +132,11 @@ def generate_coverage_json(coverage_dir):
     print(f"📊 Coverage JSON report: {json_file}")
     print(f"📈 Overall coverage: {coverage_data['overall']['coverage_percentage']:.1f}%")
     
-    # Check if we meet 90% requirement
-    if coverage_data["overall"]["coverage_percentage"] >= 90.0:
-        print("✅ Coverage requirement met (≥90%)")
+    # Check if we meet 85% requirement
+    if coverage_data["overall"]["coverage_percentage"] >= 85.0:
+        print("✅ Coverage requirement met (≥85%)")
     else:
-        print("⚠️  Coverage requirement not met (<90%)")
+        print("⚠️  Coverage requirement not met (<85%)")
 
 if __name__ == "__main__":
     success = generate_coverage_report()

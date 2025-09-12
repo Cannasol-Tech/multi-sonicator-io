@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: multi-sonicator-backend-dev
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+      - PYTHONPATH=/app
+    volumes:
+      # Mount source code for development
+      - ./backend/src:/app/src
+      - ./backend/dist:/app/dist
+      # Mount HIL framework from parent directory
+      - ../test/acceptance/hil_framework:/app/hil_framework
+      - ../config:/app/config
+      # Mount device files for hardware access
+      - /dev:/dev
+    privileged: true  # Required for hardware access
+    networks:
+      - web-ui-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: multi-sonicator-frontend-dev
+    ports:
+      - "3101:3101"
+    environment:
+      - NODE_ENV=development
+      - VITE_API_URL=http://localhost:3001
+      - VITE_WS_URL=ws://localhost:3001
+    volumes:
+      # Mount source code for development
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+      # Mount resource files
+      - ../resource:/app/public/resource
+    depends_on:
+      - backend
+    networks:
+      - web-ui-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3101/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  web-ui-network:
+    driver: bridge
+    name: multi-sonicator-network
+
+volumes:
+  node_modules_backend:
+  node_modules_frontend:

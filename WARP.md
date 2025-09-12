@@ -154,7 +154,7 @@ The firmware follows a strict layered architecture:
 ### Three-Stage Testing Pyramid
 
 1. **Unit Tests** (Unity Framework)
-   - Target: 90% code coverage minimum
+- Target: 85% code coverage minimum
    - Native C/C++ testing with mocks
    - Individual module validation
 

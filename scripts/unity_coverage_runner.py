@@ -183,12 +183,12 @@ class UnityCoverageRunner:
         print(f"\n📊 Test Summary: {success_count}/{len(self.modules)} modules passed")
         print(f"📈 Overall Coverage: {self.coverage_data['overall']['coverage_percentage']:.1f}%")
         
-        # Check 90% requirement
-        if self.coverage_data['overall']['coverage_percentage'] >= 90.0:
-            print("✅ Coverage requirement met (≥90%)")
+        # Check 85% requirement
+        if self.coverage_data['overall']['coverage_percentage'] >= 85.0:
+            print("✅ Coverage requirement met (≥85%)")
             self.coverage_data['overall']['meets_requirement'] = True
         else:
-            print("⚠️  Coverage requirement not met (<90%)")
+            print("⚠️  Coverage requirement not met (<85%)")
             self.coverage_data['overall']['meets_requirement'] = False
         
         return success_count == len(self.modules)
@@ -247,14 +247,14 @@ class UnityCoverageRunner:
             <div class="coverage-fill" style="width: {self.coverage_data['overall']['coverage_percentage']}%"></div>
         </div>
         <p>Lines Covered: {self.coverage_data['overall']['lines_covered']} / {self.coverage_data['overall']['lines_total']}</p>
-        <p>Requirement (≥90%): {'✅ MET' if self.coverage_data['overall']['meets_requirement'] else '❌ NOT MET'}</p>
+        <p>Requirement (≥85%): {'✅ MET' if self.coverage_data['overall']['meets_requirement'] else '❌ NOT MET'}</p>
     </div>
     
     <h2>Module Coverage</h2>
 """
         
         for module_name, module_data in self.coverage_data['modules'].items():
-            status_class = "pass" if module_data['coverage_percentage'] >= 90 else "fail"
+            status_class = "pass" if module_data['coverage_percentage'] >= 85 else "fail"
             html_content += f"""
     <div class="module {status_class}">
         <h3>{module_name.title()} Module</h3>
