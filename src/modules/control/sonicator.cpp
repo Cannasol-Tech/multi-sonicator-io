@@ -46,7 +46,29 @@
 // STATIC VARIABLES (single sonicator instance)
 // ============================================================================
 
-static sonicator_state_control_t g_sonicator = {0};
+static sonicator_state_control_t g_sonicator = {
+    SONICATOR_STATE_UNKNOWN,  // state
+    SONICATOR_STATE_UNKNOWN,  // previous_state
+    0,                        // state_entry_time
+    SONICATOR_MIN_AMPLITUDE_PERCENT, // amplitude_percent
+    false,                    // start_requested
+    false,                    // stop_requested
+    false,                    // reset_requested
+    false,                    // is_running
+    false,                    // overload_active
+    false,                    // frequency_locked
+    0.0f,                     // power_watts
+    0,                        // frequency_hz
+    SONICATOR_FAULT_NONE,     // active_faults
+    0,                        // fault_count
+    0,                        // last_fault_time
+    0,                        // last_update_time
+    0,                        // watchdog_last_reset
+    false,                    // safety_override
+    0,                        // start_count
+    0,                        // total_runtime_ms
+    0                         // last_start_time
+};
 static bool g_simulation_mode = SONICATOR_SIMULATION_MODE;
 static bool g_initialized = false;
 
@@ -141,6 +163,7 @@ static bool hal_gpio_read_safe(uint8_t pin) {
  * @param duty_cycle Duty cycle (0-255)
  */
 static void hal_pwm_set_safe(uint8_t pin, uint8_t duty_cycle) {
+    (void)pin; // Suppress unused parameter warning
     if (!g_simulation_mode) {
         pwm_set_duty_cycle(PWM_CHANNEL_AMPLITUDE, duty_cycle);
     }
@@ -251,22 +274,22 @@ static sonicator_fault_t check_fault_conditions(void) {
     }
     
     if (overload_debounce && is_timeout(overload_detected_time, SONICATOR_FAULT_DEBOUNCE_MS)) {
-        faults |= SONICATOR_FAULT_OVERLOAD;
+        faults = (sonicator_fault_t)(faults | SONICATOR_FAULT_OVERLOAD);
     }
     
     // Check frequency lock loss (only when running)
     if ((ctrl->state == SONICATOR_STATE_RUNNING) && !ctrl->frequency_locked) {
-        faults |= SONICATOR_FAULT_FREQ_UNLOCK;
+        faults = (sonicator_fault_t)(faults | SONICATOR_FAULT_FREQ_UNLOCK);
     }
     
     // Check communication timeout
     if (is_timeout(ctrl->last_update_time, SONICATOR_COMM_TIMEOUT_MS)) {
-        faults |= SONICATOR_FAULT_COMM_TIMEOUT;
+        faults = (sonicator_fault_t)(faults | SONICATOR_FAULT_COMM_TIMEOUT);
     }
     
     // Check watchdog timeout  
     if (is_timeout(ctrl->watchdog_last_reset, SONICATOR_WATCHDOG_TIMEOUT_MS)) {
-        faults |= SONICATOR_FAULT_WATCHDOG;
+        faults = (sonicator_fault_t)(faults | SONICATOR_FAULT_WATCHDOG);
     }
     
     return faults;
@@ -386,7 +409,7 @@ static void process_state_machine(void) {
             // Unknown state - go to fault
             ctrl->state = SONICATOR_STATE_FAULT;
             ctrl->state_entry_time = now;
-            ctrl->active_faults |= SONICATOR_FAULT_HARDWARE;
+            ctrl->active_faults = (sonicator_fault_t)(ctrl->active_faults | SONICATOR_FAULT_HARDWARE);
             SONICATOR_LOG("State: UNKNOWN -> FAULT");
             break;
     }
@@ -478,7 +501,7 @@ bool sonicator_reset_overload(void) {
         (ctrl->active_faults & SONICATOR_FAULT_OVERLOAD)) {
         
         // Clear overload fault and request reset pulse
-        ctrl->active_faults &= ~SONICATOR_FAULT_OVERLOAD;
+        ctrl->active_faults = (sonicator_fault_t)(ctrl->active_faults & ~SONICATOR_FAULT_OVERLOAD);
         ctrl->reset_requested = true;
         return true;
     }
@@ -501,7 +524,7 @@ bool sonicator_emergency_stop(void) {
     ctrl->previous_state = ctrl->state;
     ctrl->state = SONICATOR_STATE_FAULT;
     ctrl->state_entry_time = get_timestamp_ms();
-    ctrl->active_faults |= SONICATOR_FAULT_HARDWARE;
+    ctrl->active_faults = (sonicator_fault_t)(ctrl->active_faults | SONICATOR_FAULT_HARDWARE);
     ctrl->is_running = false;
     
     SONICATOR_LOG("EMERGENCY STOP");
@@ -608,7 +631,7 @@ bool sonicator_inject_fault(sonicator_fault_t fault_mask) {
         return false;
     }
     
-    g_sonicator.active_faults |= fault_mask;
+    g_sonicator.active_faults = (sonicator_fault_t)(g_sonicator.active_faults | fault_mask);
     SONICATOR_LOG("FAULT INJECTED (TESTING)");
     return true;
 }

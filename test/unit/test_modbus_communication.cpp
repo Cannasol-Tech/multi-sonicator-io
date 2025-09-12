@@ -31,6 +31,7 @@ static modbus_error_t test_last_error;
 
 // Test callback functions
 static modbus_error_t test_read_callback(uint16_t address, uint16_t* value) {
+    (void)address; // Suppress unused parameter warning
     *value = test_read_value;
     return MODBUS_OK;
 }

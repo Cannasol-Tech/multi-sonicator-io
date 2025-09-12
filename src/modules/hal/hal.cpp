@@ -32,7 +32,6 @@ static hal_result_t map_timer_error(timer_result_t result);
 // ============================================================================
 
 hal_result_t hal_init(void) {
-    hal_result_t result = HAL_OK;
     
     // Initialize Timer first (needed for other subsystems)
     timer_result_t timer_result = timer_init();

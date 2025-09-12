@@ -21,7 +21,7 @@
 // Mock Arduino functions for unit testing
 extern "C" {
     unsigned long millis() { return clock() / (CLOCKS_PER_SEC / 1000); }
-    void delay(unsigned long ms) { /* stub */ }
+    void delay(unsigned long ms) { (void)ms; /* stub */ }
 }
 #define Serial std::cout
 #else
@@ -49,6 +49,15 @@ static uint8_t rx_buffer[128];
 static uint16_t rx_length = 0;
 static uint8_t tx_buffer[128];
 static uint16_t tx_length = 0;
+
+// Suppress unused variable warnings for unit testing
+#ifdef UNIT_TEST
+__attribute__((unused)) static void suppress_unused_warnings() {
+    (void)rx_buffer;
+    (void)rx_length;
+    (void)tx_length;
+}
+#endif
 
 // ============================================================================
 // PRIVATE FUNCTION DECLARATIONS
@@ -368,6 +377,7 @@ static void modbus_handle_error(modbus_error_t error) {
     }
 }
 
+#ifndef UNIT_TEST
 static bool modbus_validate_frame(uint8_t* frame, uint16_t length) {
     if (!frame || length < 4) {
         return false;
@@ -392,6 +402,7 @@ static bool modbus_validate_frame(uint8_t* frame, uint16_t length) {
 }
 
 static uint16_t modbus_process_frame(uint8_t* frame, uint16_t length) {
+    (void)length; // Suppress unused parameter warning
     request_start_time = millis();
     
     uint8_t function_code = frame[1];
@@ -473,3 +484,4 @@ static uint16_t modbus_process_frame(uint8_t* frame, uint16_t length) {
     
     return response_length;
 }
+#endif // !UNIT_TEST
