@@ -13,6 +13,10 @@
 
 #  Make Targets
 
+# Python virtual environment wrapper for consistency
+PYTHON_VENV := . web-ui/venv/bin/activate && python
+PYTHON_VENV_PIP := . web-ui/venv/bin/activate && pip
+
 # Verbosity control for acceptance auto-setup (1 = silent redirects)
 ACCEPT_SILENT ?= 1
 ifeq ($(ACCEPT_SILENT),1)
@@ -25,16 +29,24 @@ endif
 # Python dependency installation
 install-deps: update-standards
 	@echo "📦 Installing Python dependencies..."
-	pip3 install -r requirements-testing.txt
+	@echo "🔧 Setting up Python virtual environment..."
+	@python3 -m venv web-ui/venv 2>/dev/null || true
+	@echo "📦 Installing dependencies in virtual environment..."
+	@web-ui/venv/bin/python -m pip install --upgrade pip
+	@web-ui/venv/bin/python -m pip install -r config/requirements-testing.txt
+	@echo "✅ Python dependencies installed in virtual environment"
 
 # Check and install dependencies if needed
 check-deps:
 	@echo "🔍 Checking Python dependencies..."
-	@python3 -c "import behave, serial, pytest" 2>/dev/null && echo "✅ All Python dependencies available" || \
-		( echo "⚠️  Python test deps missing; preparing local virtualenv at web-ui/venv"; \
-		  python3 -m venv web-ui/venv >/dev/null 2>&1 || true; \
-		  . web-ui/venv/bin/activate && pip install -r requirements-testing.txt >/dev/null 2>&1 || true; \
-		  echo "ℹ️  Continuing without system-wide installs (PEP 668 safe)." )
+	@if [ ! -d "web-ui/venv" ]; then \
+		echo "⚠️  Python venv missing; creating local virtualenv at web-ui/venv"; \
+		python3 -m venv web-ui/venv >/dev/null 2>&1 || true; \
+	fi
+	@$(PYTHON_VENV) -c "import behave, serial, pytest" 2>/dev/null && echo "✅ All Python dependencies available" || \
+		( echo "⚠️  Python test deps missing; installing in virtualenv"; \
+		  $(PYTHON_VENV_PIP) install -r config/requirements-testing.txt >/dev/null 2>&1 || true; \
+		  echo "ℹ️  Dependencies installed in virtual environment (PEP 668 safe)." )
 
 # Check and install PlatformIO if needed
 check-pio:
@@ -232,25 +244,25 @@ test-acceptance: check-deps check-pio check-arduino-cli
 	@echo "Stage 2: Acceptance Testing (BDD scenarios via Behave framework)..."
 	@echo "🔎 Probing HIL hardware (soft-fail permitted)..."
 	@HIL_OK=0; \
-	PYTHONPATH=. python3 test/acceptance/hil_framework/hil_controller.py --setup >/dev/null 2>&1 && HIL_OK=1 || HIL_OK=0; \
+	PYTHONPATH=. $(PYTHON_VENV) test/acceptance/hil_framework/hil_controller.py --setup >/dev/null 2>&1 && HIL_OK=1 || HIL_OK=0; \
 	if [ $$HIL_OK -eq 1 ]; then \
 		echo "✅ HIL available - running acceptance tests in HIL mode"; \
-		PYTHONPATH=. python3 -m behave test/acceptance \
+		PYTHONPATH=. $(PYTHON_VENV) -m behave test/acceptance \
 			--junit \
 			--junit-directory=acceptance-junit \
 			-D profile=hil \
 			--tags=~@pending; \
 	else \
 		echo "🛠  Attempting to program target and setup Arduino Test Harness per pin-matrix..."; \
-		python3 scripts/setup_arduino_isp.py >/dev/null 2>&1 || true; \
+		$(PYTHON_VENV) scripts/setup_arduino_isp.py >/dev/null 2>&1 || true; \
 		pio run -e atmega32a >/dev/null 2>&1 || true; \
 		pio run -e atmega32a -t upload >/dev/null 2>&1 || true; \
 		( cd test/acceptance/arduino_harness && pio run --target upload ) >/dev/null 2>&1 || true; \
 		sleep 3; \
-		HIL_OK=0; PYTHONPATH=. python3 test/acceptance/hil_framework/hil_controller.py --setup >/dev/null 2>&1 && HIL_OK=1 || HIL_OK=0; \
+		HIL_OK=0; PYTHONPATH=. $(PYTHON_VENV) test/acceptance/hil_framework/hil_controller.py --setup >/dev/null 2>&1 && HIL_OK=1 || HIL_OK=0; \
 		if [ $$HIL_OK -eq 1 ]; then \
 			echo "✅ HIL available after auto-setup - running acceptance tests in HIL mode"; \
-			PYTHONPATH=. python3 -m behave test/acceptance \
+			PYTHONPATH=. $(PYTHON_VENV) -m behave test/acceptance \
 				--junit \
 				--junit-directory=acceptance-junit \
 				-D profile=hil \

@@ -104,9 +104,9 @@ workflows:
     description: Run Web UI tests with coverage thresholds.
 
   - name: Docs — Open Pin Matrix
-    command: open docs/planning/pin-matrix.md
+    command: open config/hardware-config.yaml
     tags: [docs, hil]
-    description: Open the sole source of truth for pin assignments.
+    description: Open the sole source of truth for hardware pin assignments.
 
   - name: Dev — Agent Suite (tmuxp)
     command: tmuxp load .tmuxp/sonicator-dev.yaml

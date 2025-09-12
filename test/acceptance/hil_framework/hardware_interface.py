@@ -236,6 +236,89 @@ class HardwareInterface:
             self.serial_connection = None
             self.connected = False
 
+    def ping(self) -> bool:
+        """Test basic connectivity with Arduino Test Wrapper"""
+        try:
+            response = self.send_command("PING", read_timeout=1.0)
+            return response and "PONG" in response.upper()
+        except Exception as e:
+            self.logger.debug(f"Ping failed: {e}")
+            return False
+
+    def get_info(self) -> str:
+        """Get Arduino Test Wrapper version and info"""
+        try:
+            return self.send_command("INFO", read_timeout=1.0)
+        except Exception as e:
+            self.logger.debug(f"Info command failed: {e}")
+            return ""
+
+    def get_status(self, sonicator: int) -> Optional[str]:
+        """Get sonicator status"""
+        try:
+            response = self.send_command(f"READ STATUS {sonicator}", read_timeout=1.0)
+            return response if response and "OK" in response else None
+        except Exception as e:
+            self.logger.debug(f"Status read failed for sonicator {sonicator}: {e}")
+            return None
+
+    def read_power(self, sonicator: int) -> Optional[float]:
+        """Read power measurement for sonicator"""
+        try:
+            response = self.send_command(f"READ POWER {sonicator}", read_timeout=1.0)
+            if response and "POWER=" in response:
+                # Extract power value from response like "OK POWER=428"
+                power_str = response.split("POWER=")[1].split()[0]
+                return float(power_str)
+            return None
+        except Exception as e:
+            self.logger.debug(f"Power read failed for sonicator {sonicator}: {e}")
+            return None
+
+    def set_overload(self, sonicator: int, state: bool) -> bool:
+        """Set overload condition for sonicator"""
+        try:
+            response = self.send_command(f"SET OVERLOAD {sonicator} {1 if state else 0}", read_timeout=1.0)
+            return response and "OK" in response
+        except Exception as e:
+            self.logger.debug(f"Set overload failed for sonicator {sonicator}: {e}")
+            return False
+
+    def set_frequency_lock(self, sonicator: int, state: bool) -> bool:
+        """Set frequency lock for sonicator"""
+        try:
+            response = self.send_command(f"SET LOCK {sonicator} {1 if state else 0}", read_timeout=1.0)
+            return response and "OK" in response
+        except Exception as e:
+            self.logger.debug(f"Set frequency lock failed for sonicator {sonicator}: {e}")
+            return False
+
+    def read_adc(self, channel: str) -> Optional[int]:
+        """Read ADC value from channel"""
+        try:
+            response = self.send_command(f"READ ADC {channel}", read_timeout=1.0)
+            if response and "ADC=" in response:
+                # Extract ADC value from response like "OK ADC=512"
+                adc_str = response.split("ADC=")[1].split()[0]
+                return int(adc_str)
+            return None
+        except Exception as e:
+            self.logger.debug(f"ADC read failed for channel {channel}: {e}")
+            return None
+
+    def read_pwm(self, channel: str) -> Optional[float]:
+        """Read PWM duty cycle from channel"""
+        try:
+            response = self.send_command(f"READ PWM {channel}", read_timeout=1.0)
+            if response and "PWM=" in response:
+                # Extract PWM value from response like "OK PWM=50%"
+                pwm_str = response.split("PWM=")[1].split("%")[0]
+                return float(pwm_str)
+            return None
+        except Exception as e:
+            self.logger.debug(f"PWM read failed for channel {channel}: {e}")
+            return None
+
     def send_command(self, command: str, read_timeout: float = 1.0) -> str:
         """Send a single-line ASCII command to the Arduino Test Harness and return one line of response.
         Returns empty string on timeout.

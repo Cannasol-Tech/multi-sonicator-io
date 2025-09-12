@@ -1,0 +1,46 @@
+{
+  "test_run_id": "hil_20250911_205750",
+  "suite_name": "basic",
+  "start_time": "2025-09-11T20:57:50.304949",
+  "test_results": [
+    {
+      "name": "basic_connectivity",
+      "status": "ERROR",
+      "start_time": "2025-09-11T20:57:50.304993",
+      "test_cases": [],
+      "error": "'HILController' object has no attribute 'initialize_hardware'",
+      "end_time": "2025-09-11T20:57:50.305276"
+    },
+    {
+      "name": "safety_systems",
+      "status": "PASS",
+      "start_time": "2025-09-11T20:57:50.305743",
+      "test_cases": [
+        {
+          "name": "emergency_stop",
+          "status": "PASS",
+          "message": "Emergency stop functional"
+        },
+        {
+          "name": "safe_defaults",
+          "status": "PASS",
+          "message": "Safe defaults verified"
+        },
+        {
+          "name": "overload_protection",
+          "status": "PASS",
+          "message": "Overload protection functional"
+        }
+      ],
+      "end_time": "2025-09-11T20:57:50.305928"
+    }
+  ],
+  "end_time": "2025-09-11T20:57:50.305929",
+  "duration_seconds": 0.00098,
+  "summary": {
+    "total_tests": 3,
+    "passed_tests": 3,
+    "failed_tests": 0,
+    "success_rate": 100.0
+  }
+}

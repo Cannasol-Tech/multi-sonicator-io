@@ -1,0 +1,172 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`IridescentProgressBar > Visual Regression > matches snapshot for completed state 1`] = `
+<div
+  class="iridescent-progress-container "
+>
+  <div
+    class="progress-section"
+  >
+    <div
+      class="progress-label"
+    >
+      <span
+        style="font-size: 14px; font-weight: 500; color: var(--text-primary);"
+      >
+        Test Execution Progress
+      </span>
+      <span
+        style="font-size: 12px; color: var(--text-tertiary);"
+      >
+        100
+        %
+      </span>
+    </div>
+    <div
+      class="progress-bar"
+      style="width: 100%; height: 20px; background: var(--bg-tertiary); border-radius: 10px; overflow: hidden; margin-bottom: 8px;"
+    >
+      <div
+        class="progress-fill metallic-blue"
+        style="width: 100%; height: 100%; transition: width 0.3s ease; border-radius: 10px;"
+      />
+    </div>
+    <div
+      style="font-size: 12px; color: var(--text-tertiary); text-align: center; margin-bottom: 0px;"
+    >
+      10
+       / 
+      10
+       
+      tests
+       (
+      100
+      %)
+    </div>
+  </div>
+  <div
+    style="font-size: 12px; color: var(--text-secondary); text-align: center; margin-top: 8px; font-weight: 600;"
+  >
+    ⚡ Test execution complete!
+  </div>
+</div>
+`;
+
+exports[`IridescentProgressBar > Visual Regression > matches snapshot for default idle state 1`] = `
+<div
+  class="iridescent-progress-container "
+>
+  <div
+    class="progress-section"
+  >
+    <div
+      class="progress-label"
+    >
+      <span
+        style="font-size: 14px; font-weight: 500; color: var(--text-primary);"
+      >
+        Test Execution Progress
+      </span>
+      <span
+        style="font-size: 12px; color: var(--text-tertiary);"
+      >
+        42
+        %
+      </span>
+    </div>
+    <div
+      class="progress-bar"
+      style="width: 100%; height: 20px; background: var(--bg-tertiary); border-radius: 10px; overflow: hidden; margin-bottom: 8px;"
+    >
+      <div
+        class="progress-fill"
+        style="width: 42%; height: 100%; background: var(--border-color); transition: width 0.3s ease; border-radius: 10px;"
+      />
+    </div>
+    <div
+      style="font-size: 12px; color: var(--text-tertiary); text-align: center; margin-bottom: 0px;"
+    >
+      11
+       / 
+      25
+       
+      scenarios
+       (
+      42
+      %)
+    </div>
+  </div>
+</div>
+`;
+
+exports[`IridescentProgressBar > Visual Regression > matches snapshot for running state with step progress 1`] = `
+<div
+  class="iridescent-progress-container "
+>
+  <div
+    class="progress-section"
+  >
+    <div
+      class="progress-label"
+    >
+      <span
+        style="font-size: 14px; font-weight: 500; color: var(--text-primary);"
+      >
+        Test Execution Progress
+      </span>
+      <span
+        style="font-size: 12px; color: var(--text-tertiary);"
+      >
+        67
+        %
+      </span>
+    </div>
+    <div
+      class="progress-bar"
+      style="width: 100%; height: 20px; background: var(--bg-tertiary); border-radius: 10px; overflow: hidden; margin-bottom: 8px;"
+    >
+      <div
+        class="progress-fill iridescent"
+        style="width: 67%; height: 100%; transition: width 0.3s ease; border-radius: 10px;"
+      />
+    </div>
+    <div
+      style="font-size: 12px; color: var(--text-tertiary); text-align: center; margin-bottom: 15px;"
+    >
+      10
+       / 
+      15
+       
+      scenarios
+       (
+      67
+      %)
+    </div>
+  </div>
+  <div
+    class="step-progress-section"
+  >
+    <div
+      style="font-size: 11px; color: var(--text-tertiary); margin-bottom: 4px;"
+    >
+      Step 
+      4
+       / 
+      7
+    </div>
+    <div
+      style="width: 100%; height: 8px; background: var(--bg-tertiary); border-radius: 4px; overflow: hidden;"
+    >
+      <div
+        class="step-progress-fill iridescent"
+        style="width: 23%; height: 100%; transition: width 0.3s ease; border-radius: 4px;"
+      />
+    </div>
+  </div>
+  <div
+    style="font-size: 12px; color: var(--text-secondary); text-align: center; margin-top: 8px; font-style: italic;"
+  >
+    🔄 Test execution in progress...
+  </div>
+</div>
+`;

@@ -1,0 +1,242 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ProgressBarDemo > Visual Regression > matches snapshot for completed state 1`] = `
+<div
+  class="progress-demo "
+  style="padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin: 20px;"
+>
+  <h3
+    style="margin-bottom: 20px; color: rgb(55, 65, 81);"
+  >
+    🌈 Iridescent Progress Bar Demo
+  </h3>
+  <div
+    style="margin-bottom: 15px;"
+  >
+    <div
+      style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;"
+    >
+      <span
+        style="font-size: 14px; font-weight: 500; color: rgb(55, 65, 81);"
+      >
+        Test Progress
+      </span>
+      <span
+        style="font-size: 12px; color: rgb(107, 114, 128);"
+      >
+        100
+        %
+      </span>
+    </div>
+    <div
+      style="width: 100%; height: 20px; background: rgb(233, 236, 239); border-radius: 10px; overflow: hidden; margin-bottom: 8px;"
+    >
+      <div
+        class="progress-fill iridescent"
+        style="width: 100%; height: 100%; transition: width 0.3s ease; border-radius: 10px;"
+      />
+    </div>
+    <div
+      style="font-size: 12px; color: rgb(108, 117, 125); text-align: center; margin-bottom: 15px;"
+    >
+      25
+       / 25 scenarios (
+      100
+      %)
+    </div>
+  </div>
+  <div
+    style="margin-bottom: 15px;"
+  >
+    <div
+      style="font-size: 11px; color: rgb(108, 117, 125); margin-bottom: 4px;"
+    >
+      Step 
+      10
+       / 10
+    </div>
+    <div
+      style="width: 100%; height: 8px; background: rgb(233, 236, 239); border-radius: 4px; overflow: hidden;"
+    >
+      <div
+        class="step-progress-fill iridescent"
+        style="width: 0%; height: 100%; transition: width 0.3s ease; border-radius: 4px;"
+      />
+    </div>
+  </div>
+  <div
+    style="display: flex; gap: 10px; justify-content: center;"
+  >
+    <button
+      disabled=""
+      style="padding: 8px 16px; color: white; border-radius: 6px; cursor: not-allowed; font-size: 14px; font-weight: 500; background: rgb(148, 163, 184);"
+    >
+      🔄 Running...
+    </button>
+    <button
+      style="padding: 8px 16px; background: rgb(107, 114, 128); color: white; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500;"
+    >
+      🔄 Reset
+    </button>
+  </div>
+  <div
+    style="margin-top: 15px; padding: 8px; color: rgb(30, 64, 175); border-radius: 4px; font-size: 12px; text-align: center; background: rgb(219, 234, 254);"
+  >
+    🔄 Test execution in progress...
+  </div>
+</div>
+`;
+
+exports[`ProgressBarDemo > Visual Regression > matches snapshot for initial state 1`] = `
+<div
+  class="progress-demo "
+  style="padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin: 20px;"
+>
+  <h3
+    style="margin-bottom: 20px; color: rgb(55, 65, 81);"
+  >
+    🌈 Iridescent Progress Bar Demo
+  </h3>
+  <div
+    style="margin-bottom: 15px;"
+  >
+    <div
+      style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;"
+    >
+      <span
+        style="font-size: 14px; font-weight: 500; color: rgb(55, 65, 81);"
+      >
+        Test Progress
+      </span>
+      <span
+        style="font-size: 12px; color: rgb(107, 114, 128);"
+      >
+        0
+        %
+      </span>
+    </div>
+    <div
+      style="width: 100%; height: 20px; background: rgb(233, 236, 239); border-radius: 10px; overflow: hidden; margin-bottom: 8px;"
+    >
+      <div
+        class="progress-fill"
+        style="width: 0%; height: 100%; background: rgb(229, 231, 235); transition: width 0.3s ease; border-radius: 10px;"
+      />
+    </div>
+    <div
+      style="font-size: 12px; color: rgb(108, 117, 125); text-align: center; margin-bottom: 15px;"
+    >
+      0
+       / 25 scenarios (
+      0
+      %)
+    </div>
+  </div>
+  <div
+    style="display: flex; gap: 10px; justify-content: center;"
+  >
+    <button
+      style="padding: 8px 16px; background: rgb(59, 130, 246); color: white; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500;"
+    >
+      ▶️ Start Test
+    </button>
+    <button
+      style="padding: 8px 16px; background: rgb(107, 114, 128); color: white; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500;"
+    >
+      🔄 Reset
+    </button>
+  </div>
+  <div
+    style="margin-top: 15px; padding: 8px; background: rgb(248, 249, 250); color: rgb(108, 117, 125); border-radius: 4px; font-size: 12px; text-align: center;"
+  >
+    ⏸️ Ready to demonstrate the new progress design
+  </div>
+</div>
+`;
+
+exports[`ProgressBarDemo > Visual Regression > matches snapshot for running state 1`] = `
+<div
+  class="progress-demo "
+  style="padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin: 20px;"
+>
+  <h3
+    style="margin-bottom: 20px; color: rgb(55, 65, 81);"
+  >
+    🌈 Iridescent Progress Bar Demo
+  </h3>
+  <div
+    style="margin-bottom: 15px;"
+  >
+    <div
+      style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;"
+    >
+      <span
+        style="font-size: 14px; font-weight: 500; color: rgb(55, 65, 81);"
+      >
+        Test Progress
+      </span>
+      <span
+        style="font-size: 12px; color: rgb(107, 114, 128);"
+      >
+        30
+        %
+      </span>
+    </div>
+    <div
+      style="width: 100%; height: 20px; background: rgb(233, 236, 239); border-radius: 10px; overflow: hidden; margin-bottom: 8px;"
+    >
+      <div
+        class="progress-fill iridescent"
+        style="width: 30%; height: 100%; transition: width 0.3s ease; border-radius: 10px;"
+      />
+    </div>
+    <div
+      style="font-size: 12px; color: rgb(108, 117, 125); text-align: center; margin-bottom: 15px;"
+    >
+      8
+       / 25 scenarios (
+      30
+      %)
+    </div>
+  </div>
+  <div
+    style="margin-bottom: 15px;"
+  >
+    <div
+      style="font-size: 11px; color: rgb(108, 117, 125); margin-bottom: 4px;"
+    >
+      Step 
+      4
+       / 10
+    </div>
+    <div
+      style="width: 100%; height: 8px; background: rgb(233, 236, 239); border-radius: 4px; overflow: hidden;"
+    >
+      <div
+        class="step-progress-fill iridescent"
+        style="width: 0%; height: 100%; transition: width 0.3s ease; border-radius: 4px;"
+      />
+    </div>
+  </div>
+  <div
+    style="display: flex; gap: 10px; justify-content: center;"
+  >
+    <button
+      disabled=""
+      style="padding: 8px 16px; color: white; border-radius: 6px; cursor: not-allowed; font-size: 14px; font-weight: 500; background: rgb(148, 163, 184);"
+    >
+      🔄 Running...
+    </button>
+    <button
+      style="padding: 8px 16px; background: rgb(107, 114, 128); color: white; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500;"
+    >
+      🔄 Reset
+    </button>
+  </div>
+  <div
+    style="margin-top: 15px; padding: 8px; color: rgb(30, 64, 175); border-radius: 4px; font-size: 12px; text-align: center; background: rgb(219, 234, 254);"
+  >
+    🔄 Test execution in progress...
+  </div>
+</div>
+`;

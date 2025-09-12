@@ -653,19 +653,10 @@ def step_verify_voltage_reading_with_tolerance(context, expected_voltage, tolera
         print(f"✅ Voltage verification assumed for {expected_voltage}V ±{tolerance}V")
 
 
-@given('the power measurement scaling is {scaling:f} mV/W')
-def step_power_measurement_scaling(context, scaling):
-    """Set power measurement scaling factor"""
-    context.power_scaling_mv_per_w = scaling
-    print(f"✅ Power measurement scaling set to {scaling} mV/W")
 
 
-@when('I simulate {power:d}W power consumption')
-def step_simulate_power_consumption(context, power):
-    """Simulate power consumption by applying corresponding voltage"""
-    # Calculate voltage based on scaling factor
-    voltage_mv = power * context.power_scaling_mv_per_w
-    voltage_v = voltage_mv / 1000.0
+
+
 
     # Apply voltage to power sense channel
     response = context.hardware_interface.send_command(f"SET VOLTAGE POWER_SENSE_4 {voltage_v}")
@@ -719,11 +710,7 @@ def step_apply_stable_voltage_to_adc(context, voltage_str, channel):
     print(f"✅ Applied stable {voltage}V to ADC channel {channel} for noise testing")
 
 
-@when('I take {count:d} ADC readings over {duration:d} seconds')
-def step_take_multiple_adc_readings(context, count, duration):
-    """Take multiple ADC readings for statistical analysis"""
-    if not hasattr(context, 'applied_adc_voltage'):
-        assert False, "No ADC channel voltage applied"
+
 
     channel, voltage = context.applied_adc_voltage
     readings = []
@@ -757,12 +744,7 @@ def step_verify_adc_noise_level(context, max_stdev):
     print(f"✅ ADC noise level acceptable: {context.adc_stdev:.2f} < {max_stdev} counts")
 
 
-@then('all readings should be within ±{tolerance:d} ADC counts of the mean')
-def step_verify_adc_reading_consistency(context, tolerance):
-    """Verify all ADC readings are within tolerance of mean"""
-    assert hasattr(context, 'adc_readings'), "No ADC readings available"
 
-    outliers = []
     for reading in context.adc_readings:
         if abs(reading - context.adc_mean) > tolerance:
             outliers.append(reading)
@@ -790,11 +772,7 @@ def step_apply_voltage_to_another_adc_channel(context, voltage):
     print(f"✅ Applied {voltage}V to other ADC channel {other_channel}")
 
 
-@then('"{channel}" should read approximately {expected_voltage:f}V')
-def step_verify_specific_channel_voltage(context, channel, expected_voltage):
-    """Verify specific ADC channel reads expected voltage"""
-    actual_voltage = context.hardware_interface.read_adc_voltage(channel,
-                                                               context.adc_reference_voltage)
+
 
     if actual_voltage is not None:
         tolerance = 0.2  # ±200mV tolerance for multi-channel testing

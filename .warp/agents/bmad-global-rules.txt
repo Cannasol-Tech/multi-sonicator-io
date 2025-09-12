@@ -13,7 +13,7 @@ Decision Principles
 - Prefer smallest, safest change that meets requirements.
 - Ask for clarification when unsure; present 1–3 options with a recommendation.
 - Never hand-edit lockfiles; use package managers.
-- For pin assignments and Arduino↔ATMEGA32A connections, treat docs/planning/pin-matrix.md as SOLE SOURCE OF TRUTH.
+- For pin assignments and Arduino↔ATMEGA32A connections, treat config/hardware-config.yaml as SOLE SOURCE OF TRUTH.
 
 Coding & Architecture Standards
 - Modular design; single responsibility per function/class.
@@ -39,7 +39,7 @@ Tooling & Safety
 - Prefer smallest safe change; show diffs before writes when possible.
 
 Project-Specific (Multi‑Sonicator‑IO)
-- Pin matrix: docs/planning/pin-matrix.md is canonical; always reference it.
+- Hardware config: config/hardware-config.yaml is canonical; always reference it.
 - Maintain hardware interface reliability and real-time considerations.
 - Web UI: keep simple but effective for DUT testing.
 

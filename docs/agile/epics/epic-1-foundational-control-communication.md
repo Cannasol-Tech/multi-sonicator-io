@@ -23,7 +23,7 @@ Establish core firmware structure, basic sonicator control, and MODBUS communica
 - MODBUS RTU slave communication interface (115200 baud, 8N1)
 - Single sonicator control and monitoring capabilities
 - Hardware-in-the-Loop (HIL) testing framework with BDD acceptance tests
-- Pin assignments per docs/planning/pin-matrix.md (SOLE SOURCE OF TRUTH)
+- Pin assignments per config/hardware-config.yaml (SOLE SOURCE OF TRUTH)
 
 ### EXACTLY What Will NOT Be Implemented
 
@@ -60,10 +60,10 @@ Establish core firmware structure, basic sonicator control, and MODBUS communica
 ## Dependencies
 
 ### Prerequisites
-- Arduino Uno R4 WiFi configured as ISP programmer
+- Arduino Uno R3 configured as ISP programmer
 - ATmega32A target hardware assembled and powered
 - CT2000 sonicator unit for testing
-- Pin matrix documentation (docs/planning/pin-matrix.md)
+- Hardware configuration documentation (config/hardware-config.yaml)
 
 ### Enables
 - Epic 2: Multi-Sonicator Coordination
@@ -79,7 +79,7 @@ Establish core firmware structure, basic sonicator control, and MODBUS communica
 **Mitigation**: Start with basic register operations, expand incrementally
 
 **Risk**: Pin matrix changes affecting multiple stories
-**Mitigation**: Pin matrix as SOLE SOURCE OF TRUTH, all changes require epic review
+**Mitigation**: Hardware configuration YAML as SOLE SOURCE OF TRUTH, all changes require epic review
 
 ## Definition of Done
 

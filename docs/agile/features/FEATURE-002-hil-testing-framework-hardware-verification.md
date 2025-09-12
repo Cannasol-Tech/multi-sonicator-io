@@ -50,7 +50,7 @@ Establish a comprehensive Hardware-in-the-Loop (HIL) testing framework and valid
 ### Core Functionality
 
 1. Python HIL controller interfaces with ATmega32A via Arduino Test Wrapper
-2. Pin matrix verification validates all 39 connections against `docs/planning/pin-matrix.md`
+2. Pin matrix verification validates all 39 connections against `config/hardware-config.yaml`
 3. BDD framework maps test scenarios to PRD requirements (FR1-FR12)
 4. Web UI provides real-time MODBUS register read/write capabilities
 5. Sandbox CLI enables manual hardware control and debugging

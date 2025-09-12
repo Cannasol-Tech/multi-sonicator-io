@@ -223,7 +223,7 @@ export default function HardwareConfigPanel() {
                 <div className="sonicator-details">
                   <p><strong>Connector:</strong> {sonicator.db9_connector}</p>
                   <p><strong>Power:</strong> {sonicator.power_range[0]}-{sonicator.power_range[1]}W</p>
-                  <p><strong>Frequency:</strong> {sonicator.frequency_range[0]/1000}-{sonicator.frequency_range[1]/1000}kHz</p>
+                  <p><strong>Frequency:</strong> {(sonicator.frequency_range[0]/1000).toFixed(2)}-{(sonicator.frequency_range[1]/1000).toFixed(2)}kHz</p>
                   <p><strong>Amplitude:</strong> {sonicator.amplitude_range[0]}-{sonicator.amplitude_range[1]}%</p>
                 </div>
               </div>

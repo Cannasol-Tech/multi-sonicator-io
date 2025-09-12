@@ -19,25 +19,25 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
       physicalPin: '1'
     },
     'FREQ_LOCK_4': {
-      description: 'Sonicator #4 Frequency Lock Signal',
+      description: 'Sonicator #4 Frequency Lock Input (Control Signal)',
       wrapperPin: 'D8',
       dutPin: 'PB4',
       physicalPin: '5'
     },
     'OVERLOAD_4': {
-      description: 'Sonicator #4 Overload Protection Signal',
+      description: 'Sonicator #4 Overload Input (Control Signal)',
       wrapperPin: 'A2',
       dutPin: 'PD3',
       physicalPin: '17'
     },
     'START_4': {
-      description: 'Sonicator #4 Start Control Signal',
+      description: 'Sonicator #4 Start Status Output',
       wrapperPin: 'A3',
       dutPin: 'PC0',
       physicalPin: '22'
     },
     'RESET_4': {
-      description: 'Sonicator #4 Reset Control Signal',
+      description: 'Sonicator #4 Reset Status Output',
       wrapperPin: 'A4',
       dutPin: 'PC1',
       physicalPin: '23'
@@ -62,9 +62,9 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
     },
     'STATUS_LED': {
       description: 'System Status LED Output',
-      wrapperPin: 'D12',
-      dutPin: 'PD4',
-      physicalPin: '18'
+      wrapperPin: 'D4',
+      dutPin: 'PD2',
+      physicalPin: '16'
     }
   }
 
@@ -80,14 +80,27 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
   const [configLoading, setConfigLoading] = useState(false)
   const [activeSubTab, setActiveSubTab] = useState<'parameters' | 'monitoring'>('parameters')
 
-  const inputPins = Object.entries(hardwareState.pins).filter(([signal, pin]) => pin.direction === 'IN' || signal === 'POWER_SENSE_4')
-  const outputPins = Object.entries(hardwareState.pins).filter(([signal, pin]) => pin.direction === 'OUT' && signal !== 'UART_TXD')
+  // Control signals that can be manipulated in "Configurable Parameters" tab
+  // These are inputs TO the DUT that we can control from the harness
+  const controlPins = Object.entries(hardwareState.pins).filter(([signal, pin]) => 
+    signal === 'FREQ_DIV10_4' || signal === 'FREQ_LOCK_4' || signal === 'OVERLOAD_4'
+  )
+  
+  // Monitoring signals that are read-only in "Live DUT Monitoring" tab
+  // These are outputs FROM the DUT that we can only monitor
+  const monitoringPins = Object.entries(hardwareState.pins).filter(([signal, pin]) => 
+    signal === 'START_4' || signal === 'RESET_4' || signal === 'AMPLITUDE_ALL' || 
+    signal === 'STATUS_LED' || signal === 'POWER_SENSE_4'
+  )
 
   const handlePinToggle = (signal: string, currentState: any) => {
-    // Don't allow toggling frequency pins or PWM output pins
-    if (signal === 'FREQ_DIV10_4' || signal === 'AMPLITUDE_ALL') {
-      return
+    // Only allow toggling control signals (inputs to the DUT)
+    // Don't allow toggling frequency pins as they have their own controls
+    if (signal === 'FREQ_DIV10_4') {
+      return // Frequency controlled via input field
     }
+    
+    // Toggle the digital control signals
     const newState = currentState === 'HIGH' ? 'LOW' : 'HIGH'
     onPinControl(signal, 'write_pin', newState)
   }
@@ -142,7 +155,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
     return signal === 'FREQ_DIV10_4'
   }
 
-  const renderPinState = (signal: string, pinState: any) => {
+  const renderPinState = (signal: string, pinState: any, isMonitoringMode: boolean = false) => {
     if (isFrequencyPin(signal)) {
       return (
         <div className="enhanced-pin-display">
@@ -173,26 +186,28 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
               </div>
             </div>
 
-            {/* Simple frequency control */}
-            <div className="pin-controls">
-              <input
-                type="number"
-                min="18"
-                max="22"
-                step="0.1"
-                value={configuration.sonicator4.operatingFrequencyKHz}
-                onChange={(e) => handleFrequencyInputChange(parseFloat(e.target.value))}
-                disabled={!connected || configLoading}
-                className="btn-mini"
-                style={{ 
-                  width: '80px',
-                  textAlign: 'center',
-                  fontFamily: 'monospace'
-                }}
-                title="Frequency (kHz)"
-              />
-              <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>kHz</span>
-            </div>
+            {/* Frequency control - only show in control mode */}
+            {!isMonitoringMode && (
+              <div className="pin-controls">
+                <input
+                  type="number"
+                  min="18"
+                  max="22"
+                  step="0.1"
+                  value={configuration.sonicator4.operatingFrequencyKHz}
+                  onChange={(e) => handleFrequencyInputChange(parseFloat(e.target.value))}
+                  disabled={!connected || configLoading}
+                  className="btn-mini"
+                  style={{ 
+                    width: '80px',
+                    textAlign: 'center',
+                    fontFamily: 'monospace'
+                  }}
+                  title="Frequency (kHz)"
+                />
+                <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>kHz</span>
+              </div>
+            )}
 
             <div className="text-xs mt-2" style={{ color: 'var(--text-tertiary)' }}>
               {formatTimestamp(pinState.timestamp)}
@@ -221,7 +236,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
             </div>
 
             <div className="pin-controls">
-              {!isAnalog && !isPWM && (
+              {!isAnalog && !isPWM && !isMonitoringMode && (
                 <button
                   className={`btn-mini ${isHigh ? 'btn-success' : 'btn-secondary'}`}
                   onClick={() => handlePinToggle(signal, pinState.state)}
@@ -316,7 +331,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
         {activeSubTab === 'parameters' && (
           <div className="control-section">
             <div className="parameter-grid">
-              {inputPins.map(([signal, pinState]) => {
+              {controlPins.map(([signal, pinState]) => {
             const pinInfo = pinDescriptions[signal]
             return (
               <div key={signal} className="parameter-card-compact mb-3 p-3 rounded-lg" style={{
@@ -348,7 +363,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
                   </div>
                 </div>
 
-                {renderPinState(signal, pinState)}
+                {renderPinState(signal, pinState, false)}
               </div>
               )
             })}
@@ -359,7 +374,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
         {activeSubTab === 'monitoring' && (
           <div className="control-section">
             <div className="parameter-grid">
-              {outputPins.map(([signal, pinState]) => {
+            {monitoringPins.map(([signal, pinState]) => {
               const pinInfo = pinDescriptions[signal]
               return (
                 <div key={signal} className="parameter-card-compact mb-3 p-3 rounded-lg" style={{
@@ -398,7 +413,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
                     </div>
                   </div>
 
-                  {renderPinState(signal, pinState)}
+                  {renderPinState(signal, pinState, true)}
                 </div>
               )
             })}
@@ -415,8 +430,8 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
         </div>
         <div className="text-xs">
           <div>Total pins: {Object.keys(hardwareState.pins).length}</div>
-          <div>Configurable parameters: {inputPins.length}</div>
-          <div>Live DUT signals: {outputPins.length}</div>
+          <div>Configurable parameters: {controlPins.length}</div>
+          <div>Live DUT signals: {monitoringPins.length}</div>
         </div>
       </div>
 

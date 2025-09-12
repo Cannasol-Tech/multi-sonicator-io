@@ -377,10 +377,7 @@ def step_write_value_to_register(context, value, address):
     step_write_register(context, address, value)
 
 
-@when('I write holding register {address:d} with value {value:d}')
-def step_write_register_with_value(context, address, value):
-    """Alternative syntax for writing register"""
-    step_write_register(context, address, value)
+
 
 
 # AMPLITUDE CONTROL AND VERIFICATION STEPS

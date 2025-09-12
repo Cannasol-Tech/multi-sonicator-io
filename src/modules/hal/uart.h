@@ -11,7 +11,7 @@
  * 
  * Supports interrupt-driven transmission/reception with circular buffers
  * for reliable MODBUS frame handling without blocking main application.
- * Pin assignments per docs/planning/pin-matrix.md (SOLE SOURCE OF TRUTH).
+ * Pin assignments per config/hardware-config.yaml (SOLE SOURCE OF TRUTH).
  */
 
 #ifndef HAL_UART_H

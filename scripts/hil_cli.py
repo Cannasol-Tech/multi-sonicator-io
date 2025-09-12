@@ -67,8 +67,12 @@ def print_info(text: str):
     print(f"{Colors.CYAN}ℹ {text}{Colors.END}")
 
 
-def confirm_step(message: str) -> bool:
+def confirm_step(message: str, non_interactive: bool = False) -> bool:
     """Ask user for confirmation."""
+    if non_interactive:
+        print(f"{Colors.YELLOW}{message} (y/n): {Colors.GREEN}y{Colors.END} [auto-confirmed]")
+        return True
+
     while True:
         response = input(f"{Colors.YELLOW}{message} (y/n): {Colors.END}").lower().strip()
         if response in ['y', 'yes']:
@@ -79,8 +83,11 @@ def confirm_step(message: str) -> bool:
             print("Please enter 'y' or 'n'")
 
 
-def wait_for_enter(message: str = "Press Enter to continue..."):
+def wait_for_enter(message: str = "Press Enter to continue...", non_interactive: bool = False):
     """Wait for user to press Enter."""
+    if non_interactive:
+        print(f"{Colors.CYAN}{message}{Colors.END} [auto-skipped]")
+        return
     input(f"{Colors.CYAN}{message}{Colors.END}")
 
 
@@ -825,14 +832,19 @@ def main():
     parser.add_argument("--env", choices=["development", "production"],
                        default="development", help="Build environment")
     parser.add_argument("--port", help="Arduino port (auto-detect if not specified)")
+    parser.add_argument("--non-interactive", "-y", action="store_true",
+                       help="Run in non-interactive mode (auto-confirm all prompts)")
 
     args = parser.parse_args()
 
     print_header("INTERACTIVE HIL SETUP & MONITORING")
-    print_info("This will guide you through the complete HIL setup process")
-    print_info("Each step requires your confirmation before proceeding")
+    if args.non_interactive:
+        print_info("Running in non-interactive mode - all prompts will be auto-confirmed")
+    else:
+        print_info("This will guide you through the complete HIL setup process")
+        print_info("Each step requires your confirmation before proceeding")
 
-    if not confirm_step("Start HIL setup process?"):
+    if not confirm_step("Start HIL setup process?", args.non_interactive):
         print_info("Setup cancelled by user")
         return
 

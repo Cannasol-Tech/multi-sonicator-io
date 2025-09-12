@@ -11,7 +11,7 @@
  * control of all 4 sonicators.
  * 
  * PWM signal feeds 1kΩ + 10µF RC filter and LM358N op-amp for 0-10V output.
- * Pin assignments per docs/planning/pin-matrix.md (SOLE SOURCE OF TRUTH).
+ * Pin assignments per config/hardware-config.yaml (SOLE SOURCE OF TRUTH).
  */
 
 #ifndef HAL_PWM_H
