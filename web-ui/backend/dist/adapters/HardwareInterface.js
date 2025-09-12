@@ -40,7 +40,7 @@ class HardwareInterface extends events_1.EventEmitter {
             }
         };
         this.lastLogTime = 0;
-        this.logThrottleMs = 2000; // Only log once every 2 seconds per pin
+        this.logThrottleMs = 5000; // Only log once every 5 seconds per pin (reduced frequency)
         this.lastPinLogTimes = new Map();
         this.initializePinStates();
     }
@@ -421,8 +421,7 @@ except Exception as e:
                 this.updatePinState(message.pin, message.data);
                 break;
             case 'response':
-                // Log and broadcast Arduino response
-                console.log('Arduino Response Received:', message.data);
+                // Emit Arduino response for logging (reduced verbosity)
                 this.emit('arduino_command', {
                     direction: 'received',
                     data: message.data,
@@ -440,13 +439,9 @@ except Exception as e:
     updatePinState(pin, data) {
         // Parse hardware response and update pin state
         const timestamp = Date.now();
-        // Throttle logging to prevent spam - only log occasionally
+        // Throttle logging to prevent spam - only log occasionally  
         const lastLogTime = this.lastPinLogTimes.get(pin) || 0;
         const shouldLog = timestamp - lastLogTime > this.logThrottleMs;
-        if (shouldLog) {
-            console.log(`Hardware: Updating pin state for ${pin} with data: ${data}`);
-            this.lastPinLogTimes.set(pin, timestamp);
-        }
         // Find pin by Arduino pin name or signal name
         for (const [signal, pinState] of this.pinStates.entries()) {
             if (pinState.pin === pin || signal === pin) {
@@ -480,9 +475,9 @@ except Exception as e:
                         newState = parseInt(data);
                     }
                 }
-                // Only log state changes, not every update, and only occasionally
+                // Only log significant state changes occasionally (reduced verbosity)
                 if (shouldLog && pinState.state !== newState) {
-                    console.log(`Hardware: Pin ${signal} state updated from ${pinState.state} to ${newState}`);
+                    this.lastPinLogTimes.set(pin, timestamp);
                 }
                 const updatedPin = {
                     ...pinState,
@@ -525,8 +520,7 @@ except Exception as e:
             }
             try {
                 const commandStr = JSON.stringify(command);
-                // Log and broadcast command being sent
-                console.log('Arduino Command Sent:', commandStr);
+                // Emit command being sent for logging (reduced verbosity)
                 this.emit('arduino_command', {
                     direction: 'sent',
                     data: commandStr,
@@ -661,7 +655,7 @@ except Exception as e:
             // Update sonicator frequency configuration
             if (newConfig.sonicator4?.operatingFrequencyKHz !== undefined) {
                 const operatingFreq = parseFloat(newConfig.sonicator4.operatingFrequencyKHz);
-                if (operatingFreq > 0 && operatingFreq <= 100) { // Reasonable limits
+                if (operatingFreq >= 18 && operatingFreq <= 22) { // CT2000 sonicator operating range: 18-22 kHz
                     this.configuration.sonicator4.operatingFrequencyKHz = operatingFreq;
                     // Only update output frequency if not in manual mode
                     if (!this.configuration.sonicator4.manualMode) {
@@ -698,7 +692,7 @@ except Exception as e:
             // Handle manual frequency override
             if (newConfig.sonicator4?.manualFrequencyKHz !== undefined) {
                 const manualFreq = parseFloat(newConfig.sonicator4.manualFrequencyKHz);
-                if (manualFreq > 0 && manualFreq <= 50) { // Reasonable limits for output frequency
+                if (manualFreq >= 1.8 && manualFreq <= 2.2) { // CT2000 output frequency range: 1.8-2.2 kHz (div/10)
                     this.configuration.sonicator4.manualFrequencyKHz = manualFreq;
                     // If in manual mode, update the actual output frequency
                     if (this.configuration.sonicator4.manualMode) {

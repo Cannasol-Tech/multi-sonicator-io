@@ -44,7 +44,15 @@ const yaml = __importStar(require("js-yaml"));
 class ConfigService {
     constructor(configPath) {
         this.config = null;
-        this.configPath = configPath || path.join(__dirname, '../../config/hardware-config.yaml');
+        // Priority: explicit arg > ENV var > centralized repo path > legacy backend-local path
+        const envPath = process.env.HARDWARE_CONFIG_PATH;
+        const centralizedPath = path.join(__dirname, '../../../../config/hardware-config.yaml');
+        const legacyBackendLocal = path.join(__dirname, '../../config/hardware-config.yaml');
+        this.configPath = configPath || envPath || centralizedPath;
+        // Backward compatibility: if centralized path missing but legacy exists, use it
+        if (!fs.existsSync(this.configPath) && fs.existsSync(legacyBackendLocal)) {
+            this.configPath = legacyBackendLocal;
+        }
     }
     /**
      * Load hardware configuration from YAML file

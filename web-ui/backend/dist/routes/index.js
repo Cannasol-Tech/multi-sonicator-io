@@ -4,10 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.setupRoutes = setupRoutes;
-const config_js_1 = __importDefault(require("./config.js"));
+const config_1 = __importDefault(require("./config"));
+const tests_1 = __importDefault(require("./tests"));
 function setupRoutes(app, hardwareInterface, testAutomationService) {
     // Hardware configuration management routes
-    app.use('/api/hardware-config', config_js_1.default);
+    app.use('/api/hardware-config', config_1.default);
+    // Hardware test execution routes
+    app.use('/api/tests', tests_1.default);
     // Health check endpoint
     app.get('/api/health', (req, res) => {
         res.json({
