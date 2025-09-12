@@ -106,6 +106,13 @@ tasks:
     requires_interaction: false
     template: "cicd_ci_workflow"
 
+  create_github_issue:
+    file: ".axovia-flow/flows/create-github-issue.yaml"
+    description: "Create GitHub issues following repository issue template standards"
+    agents: ["bmad-master", "pm", "qa"]
+    requires_interaction: true
+    template: "github_issue"
+
 # Custom Templates
 templates:
   feature_spec:
@@ -132,6 +139,11 @@ templates:
     file: ".axovia-flow/templates/markdown-header.tmpl.md"
     description: "Standard Markdown frontmatter header (Axovia format with dependencies, commands, tags)"
     output_location: "<inline>"
+
+  github_issue:
+    file: ".github/ISSUE_TEMPLATE/bug_report.md"
+    description: "GitHub issue template following repository standards"
+    output_location: "<dynamic>"
 
 # Quality Standards
 standards:
