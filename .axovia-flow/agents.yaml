@@ -1,63 +1,27 @@
-# Axovia Flow™ Coding Framework Agent Definitions 
+---
+- File: `agents.yaml`
+- brief: Top-level agents configuration 
+            used by CLI and services.
+- author: Stephen Boyett
+- company: Axovia AI
+- version: 1.0
+- date: 2025-09-06
+- tags: 
+  - "axovia-flow"
+  - "agile"
+  - "agentic"
+  - "agents"
+  - "registry"
+  - "multi-agent"
+  - "collaboration"
+  - "efficiency"
+  - "workflow"
+  - "orchestration"
+  - "automation"
+imports:
+  - file: "agents/vars.yaml"
+    description: "Axovia Flow™ Agent Registry Variable Definitions"
+  - file: "agents/registry.yaml"
+    description: "Axovia Flow™ Agent Configurations and Registry"
+---
 
-agents:
-  - role: dev
-    description: "A developer agent responsible for writing and debugging code."
-    model:
-      provider: "openai"
-      name: "gpt-4-turbo"
-    tools:
-      - "file_read"
-      - "file_write"
-      - "run_command"
-    context_files:
-      - "docs/architecture/overview.md"
-      - "docs/prd.md"
-    output_schema: "schemas/json/dev_output.json"
-
-  - role: embedded_dev
-    description: "An Embedded Software Architect Agent fine-tuned for developing Embedded Systems with C/C++"
-    model:
-      provider: "openai"
-      name: "gpt-5"
-    tools:
-      - "file_read"
-      - "file_write"
-      - "run_command"
-    context_files: [architecture.fileLocation, prdFileLocation]
-    output_schema: "schemas/json/embedded_dev_output.json"
-
-  - role: analyst
-    model: "anthropic/claude-3.5-sonnet"
-    description: "Specializes in analyzing requirements, project briefs, and creating initial documentation."
-    tools: ["search_web", "read_url_content"]
-    context_files: ["docs/bmad-kb.md"]
-    output_schema: "schemas/brief.json"
-
-  - role: architect
-    model: "anthropic/claude-3.5-sonnet"
-    description: "Designs system architecture, makes technical decisions, and creates architecture documents."
-    tools: ["find_by_name", "read_file", "list_dir"]
-    context_files: ["docs/architecture/template.md"]
-    output_schema: "schemas/architecture.json"
-
-  - role: pm
-    model: "anthropic/claude-3-opus"
-    description: "Manages the product backlog, creates PRDs, and defines user stories."
-    tools: ["create_memory", "todo_list"]
-    context_files: ["docs/prd/template.md"]
-    output_schema: "schemas/prd.json"
-
-  - role: dev
-    model: "anthropic/claude-3.5-sonnet"
-    description: "Implements user stories, writes code, and creates tests."
-    tools: ["write_to_file", "replace_file_content", "run_command"]
-    context_files: [".axovia-flow/company-standards/coding-style.md"]
-    output_schema: "schemas/code_commit.json"
-
-  - role: qa
-    model: "anthropic/claude-3-haiku"
-    description: "Tests implemented features, verifies acceptance criteria, and creates quality gates."
-    tools: ["run_command", "read_file"]
-    context_files: ["docs/guides/tdd-bdd-strategy.md"]
-    output_schema: "schemas/qa_report.json"

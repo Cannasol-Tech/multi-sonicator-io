@@ -13,6 +13,14 @@
 
 #  Make Targets
 
+.PHONY: traceability
+
+# Lightweight BDD traceability scan (ensures every @TODO has a matching @trace)
+traceability: check-deps
+	@echo "🔎 Running BDD traceability scan (@TODO vs @trace)..."
+	@python3 scripts/update_traceability.py
+	@echo "✅ BDD traceability scan complete"
+
 # Python virtual environment wrapper for consistency
 PYTHON_VENV := . web-ui/venv/bin/activate && python
 PYTHON_VENV_PIP := . web-ui/venv/bin/activate && pip
@@ -286,20 +294,20 @@ test-integration: check-deps check-arduino-cli
 # HIL Testing Targets
 test-acceptance-hil: check-deps check-arduino-cli
 	@echo "🧪 Running BDD acceptance tests with HIL hardware validation..."
-	@python3 scripts/detect_hardware.py --check-arduino || (echo "❌ Hardware required for HIL testing" && exit 1)
-	behave test/acceptance --junit --junit-directory=acceptance-junit --tags=hil -D profile=hil
+	@$(PYTHON_VENV) scripts/detect_hardware.py --check-arduino || (echo "❌ Hardware required for HIL testing" && exit 1)
+	PYTHONPATH=. $(PYTHON_VENV) -m behave test/acceptance --junit --junit-directory=acceptance-junit --tags=hil -D profile=hil
 
 acceptance-setup: check-deps
 	@echo "🔧 Setting up acceptance test framework..."
-	python3 test/acceptance/hil_framework/hil_controller.py --setup
+	$(PYTHON_VENV) test/acceptance/hil_framework/hil_controller.py --setup
 
 acceptance-clean: check-deps
 	@echo "🧹 Cleaning acceptance test framework..."
-	python3 test/acceptance/hil_framework/hil_controller.py --cleanup
+	$(PYTHON_VENV) test/acceptance/hil_framework/hil_controller.py --cleanup
 
 acceptance-test-basic: check-deps check-arduino-cli
 	@echo "🔌 Running basic acceptance connectivity tests..."
-	PYTHONPATH=. python3 -m behave test/acceptance/features/hil_basic_connectivity.feature -D profile=hil
+	PYTHONPATH=. $(PYTHON_VENV) -m behave test/acceptance/features/hil_basic_connectivity.feature -D profile=hil
 
 acceptance-test-gpio: check-deps check-arduino-cli
 	@echo "🔧 Running acceptance GPIO functionality tests..."
@@ -307,19 +315,19 @@ acceptance-test-gpio: check-deps check-arduino-cli
 
 acceptance-test-adc: check-deps check-arduino-cli
 	@echo "📊 Running acceptance ADC verification tests..."
-	PYTHONPATH=. python3 -m behave test/acceptance/features/hil_adc_verification.feature -D profile=hil
+	PYTHONPATH=. $(PYTHON_VENV) -m behave test/acceptance/features/hil_adc_verification.feature -D profile=hil
 
 acceptance-test-pwm: check-deps check-arduino-cli
 	@echo "📡 Running acceptance PWM generation tests..."
-	PYTHONPATH=. python3 -m behave test/acceptance/features/hil_pwm_generation.feature -D profile=hil
+	PYTHONPATH=. $(PYTHON_VENV) -m behave test/acceptance/features/hil_pwm_generation.feature -D profile=hil
 
 acceptance-test-modbus: check-deps check-arduino-cli
 	@echo "🔗 Running acceptance MODBUS communication tests..."
-	PYTHONPATH=. python3 -m behave test/acceptance/features/hil_modbus_communication.feature -D profile=hil
+	PYTHONPATH=. $(PYTHON_VENV) -m behave test/acceptance/features/hil_modbus_communication.feature -D profile=hil
 
 acceptance-test-power: check-deps check-arduino-cli
 	@echo "⚡ Running acceptance power verification tests..."
-	PYTHONPATH=. python3 -m behave test/acceptance/features/hil_power_verification.feature -D profile=hil
+	PYTHONPATH=. $(PYTHON_VENV) -m behave test/acceptance/features/hil_power_verification.feature -D profile=hil
 
 generate-release-artifacts: check-deps
 	@echo "Generating release format compliant artifacts..."

@@ -105,6 +105,14 @@ void register_manager_reset_comm_errors(void);
  */
 bool register_manager_validate_value(uint16_t address, uint16_t value);
 
+/**
+ * @brief Consume (read-and-clear) the overload reset command for a sonicator.
+ * @param sonicator_id Sonicator ID (0-31)
+ * @param requested Pointer to store whether a reset was requested (true/false)
+ * @return true on success, false on invalid id or not initialized
+ */
+bool register_manager_consume_overload_reset(uint8_t sonicator_id, bool* requested);
+
 #ifdef __cplusplus
 }
 #endif

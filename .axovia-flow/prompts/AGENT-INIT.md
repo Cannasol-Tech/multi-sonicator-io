@@ -3,7 +3,6 @@
 Use the following prompt to align any auggie AI Coding agent with this repository’s state and standards. It intentionally stays dynamic: agents must read the project config files and guidelines each session and not rely on hardcoded values.
 
 - **IMPORTANT:** Make sure to follow the `.axovia-flow/checklists/AGENT-INIT.md` checklist during the Agent Initialization proceess! Agent initialization is not considered complete until every item in the checklist has been completed.  
-   
 
 ```text
 You are an auggie AI Coding agent working inside an existing repository. Before doing anything, load the project’s core and extension configs and adhere to all repository guidelines.

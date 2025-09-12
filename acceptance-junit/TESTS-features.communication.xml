@@ -1,37 +1,17 @@
-<testsuite name="features.communication.Communication Acceptance" tests="1" errors="1" failures="0" skipped="0" time="0.000546" timestamp="2025-09-05T20:57:34.777903" hostname="Corbans-Mini.home"><testcase classname="features.communication.Communication Acceptance" name="Communication basic acceptance" status="failed" time="0.000546"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
-<![CDATA[
-Failing step: When the communication feature is exercised ... failed in 0.001s
-Location: test/acceptance/features/communication.feature:5
-Traceback (most recent call last):
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "test/acceptance/steps/common_steps.py", line 387, in step_exercise_communication_feature
-    client = _get_client(context)
-  File "test/acceptance/steps/common_steps.py", line 46, in _get_client
-    if _profile(context) != "hil":
-  File "test/acceptance/steps/common_steps.py", line 24, in _profile
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
-AttributeError: 'dict' object has no attribute 'userdata'
-
-Captured stdout:
-✅ Hardware initialization assumed complete (simulation mode)]]>
+<testsuite name="features.communication.Communication Acceptance" tests="1" errors="1" failures="0" skipped="0" time="0.0" timestamp="2025-09-12T00:59:55.243363" hostname="Corbans-Mini.home"><testcase classname="features.communication.Communication Acceptance" name="Communication basic acceptance" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
 </error><system-out>
 <![CDATA[
 @scenario.begin
 
   @communication @implemented
   Scenario: Communication basic acceptance
-    Given the hardware is initialized ... passed in 0.000s
-    When the communication feature is exercised ... failed in 0.001s
-    Then the expected result is observed ... undefined in 0.000s
+    Given the hardware is initialized ... skipped in 0.000s
+    When the communication feature is exercised ... skipped in 0.000s
+    Then the expected result is observed ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-✅ Hardware initialization assumed complete (simulation mode)
-
 ]]>
 </system-out></testcase></testsuite>

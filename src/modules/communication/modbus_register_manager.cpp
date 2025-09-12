@@ -177,3 +177,15 @@ bool register_manager_validate_value(uint16_t address, uint16_t value) {
     // System status registers are read-only, but value validation not needed
     return true;
 }
+
+bool register_manager_consume_overload_reset(uint8_t sonicator_id, bool* requested) {
+    if (!manager_initialized || sonicator_id >= MODBUS_MAX_SONICATORS) {
+        if (requested) { *requested = false; }
+        return false;
+    }
+    bool was_requested = (register_map.sonicators[sonicator_id].overload_reset != 0);
+    // Clear the write-only command after consumption
+    register_map.sonicators[sonicator_id].overload_reset = 0;
+    if (requested) { *requested = was_requested; }
+    return true;
+}

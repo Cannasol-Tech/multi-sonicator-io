@@ -6,7 +6,7 @@ The `.axovia-flow/flows/` directory contains executable workflow definitions tha
 
 ## Directory Structure
 
-```
+```text
 .axovia-flow/flows/
 ├── README.md                    # This file - directory documentation
 ├── planning/                    # Agile planning and project setup workflows
@@ -20,6 +20,7 @@ The `.axovia-flow/flows/` directory contains executable workflow definitions tha
 ## Workflow Types
 
 ### Planning Workflows
+
 Located in `planning/`, these workflows handle project initialization and agile methodologies:
 
 - **Agile Planning** (`agile-planning.md`) - Complete 4-phase agile planning process:

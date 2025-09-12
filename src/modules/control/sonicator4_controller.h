@@ -33,6 +33,10 @@ static inline void son4_service(void) {
         return;
     }
 
+    // Check for overload reset command (write-and-clear)
+    bool reset_req = false;
+    (void)register_manager_consume_overload_reset(reg_id, &reset_req);
+
     // Clamp amplitude to 20-100%
     if (amplitude_sp < 20) amplitude_sp = 20;
     if (amplitude_sp > 100) amplitude_sp = 100;
@@ -40,8 +44,8 @@ static inline void son4_service(void) {
     sonicator_control_t ctrl;
     ctrl.start = (start_stop != 0);
     ctrl.amplitude_percent = (uint8_t)amplitude_sp;
-    // Reset command is write-only; we treat nonzero as momentary reset
-    ctrl.reset_overload = false;
+    // Apply reset request (momentary pulse handled by HAL)
+    ctrl.reset_overload = reset_req;
 
     (void)hal_control_sonicator(hal_id, &ctrl);
 

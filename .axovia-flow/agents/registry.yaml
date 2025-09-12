@@ -1,0 +1,219 @@
+<!-- ~* Axovia Flow™ Agentic-Framework ~* -->
+---
+## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Axovia Flow™ ~ Agent Registry 
+- File: `agents/registry.yaml`
+- brief: Agent configurations and definitions
+- author: Stephen Boyett
+- company: Axovia AI
+- version: 1.0
+- date: 2025-09-06
+- dependencies:
+  - file: "vars.yaml"
+    type: "variables"
+    required: true
+    description: "Registry variable definitions"
+  - file: "../company-standards/coding-style.md"
+    type: "context"
+    required: true
+    description: "Company coding standards"
+  - file: "../../docs/architecture/tech-stack.md"
+    type: "context"
+    required: false
+    description: "Technical architecture documentation"
+  - external: ".bmad-core/agents/"
+    type: "base-configs"
+    required: true
+    description: "BMad Core agent base configurations"
+- tags:
+  - "axovia-flow"
+  - "agile"
+  - "agentic"
+  - "agents"
+  - "registry"
+  - "multi-agent"
+  - "collaboration"
+  - "efficiency"
+  - "workflow"
+  - "orchestration"
+  - "automation"
+## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---
+
+# Axovia Flow™ Agent Configuration
+
+purpose: "To extend the capabilities and functionality of the agents includedd in the BMad Core Agent Registry"
+instructions: "Extend the functionality you provide to the user with the instructions in your agent's section"
+agents:
+  - name: "Director of Flow"
+    role: "Interact with the BMad Core agents to facilitate Agile Planning and Execution"
+    model: "anthropic/claude-4-sonnet"
+    tools:
+      - "document_creation"
+      - "template_processing"
+      - "call_agent"
+      - "run_command"
+      - "read_file"
+      - "write_file"
+      - "list_dir"
+      - "find_by_name"
+      - "create_memory"
+      - "execute_agent_task"
+      - "validate_agent_task"
+      # - "reward_agent"  Future Feature
+      # - "punish_agent"  Future Feature
+      - "todo_list"
+    tasks:
+      - task_name: "plan-sprint"
+        file: "tasks/plan-sprint.md"
+        brief: "Plans an Agile Sprint"
+        details: "Plans an Agile Sprint meant to represent a set of stories to 
+         be completed in an efficient manner.  Using Agile Development Best Principles 
+         which will be included in the meeting-context supplied to all of the agents 
+         in the meeting. The Plan prioritizes parallel Story implementation by utilizing dependency
+         mapping obtained through traceability analysis. The plan follows a well structured, continuously
+         improving, clearly defined, Axovia ~Flow™~ to produce a set of stories that will be executed in an 
+         efficient and effective manner by the development team.  The Plan will be strictly followed by the 
+         development team and any deviations from the plan must be approved by the Director of Flow.  The Sprint Planning 
+         process will also enable continuous learning of the Axovia Flow™ Agentic system by outputting a confidence level 
+         for the timely completion of the plan and the shared reasoning for the confidence level.  After every
+         Sprint, A retrospective meeting will be held where the team can reflect on their implementation of the plan
+         and learn from mistakes, while celebrating and being rewarded for successes.  The target of this process is 
+         to accurately predict the completion of the plan - not to complete the plan faster than planned.  If the plan can be implemented 
+         faster, more work should have been pulled in.  Accurate understanding of time estimates is critical to 
+         successfully growing a business."
+        parameters:
+          - id: "Sprint"
+            type: "string"
+            brief: "The sprint to be planned."
+            disabled: false
+            required: true
+            triggers: [ "-s", "--sprint" ]
+        
+      - task_name: "execute-agile-sprint"
+        brief: "Executes an Agile Sprint based on the feature specifications in the project"
+        parameters:
+          - id: "Sprint"
+            type: "string"
+            brief: "The sprint to be executed."
+            disabled: false
+            required: true
+            triggers: [ "-s", "--sprint" ]
+      - task_name: "review-agile-sprint"
+        brief: "Reviews an Agile Sprint based on the feature specifications in the project"
+        details: "Reviews an Agile Sprint based on the feature specifications in the project"
+        parameters:
+          - id: "Sprint"
+            type: "string"
+            brief: "The sprint to be reviewed."
+            required: true
+            disabled: false
+            triggers: [ "-s", "-S", "--sprint", "--Sprint" ]
+      - task_name: "validate-agile-sprint"
+        brief: "Validates an Agile Sprint based on the feature specifications in the project"
+        details: "Validates an Agile Sprint based on the feature specifications in the project"
+        parameters:
+          - id: "Sprint"
+            type: "string"
+            brief: "The sprint to be validated."
+            required: true
+            disabled: false
+            triggers: [ "-s", "--sprint" ]
+      - task_name: "release"
+        brief: "Triggers a Release of the Project" 
+        details: "Follows the Agile Release Process to produce a 
+          High Quality Software Release implementing with the highest standards of 
+          Quality Assurance and security while maintaining the ability for Continuous Deployment
+          and Iterative Improvements throughtout the product lifecycle."
+        parameters:
+          - id: "Release"
+            type: "string"
+            brief: "The release to be triggered."
+            disabled: false
+            required: true
+            triggers: [ "-r", "--release" ]
+      - name: "hold-meeting" # A Task where the user can specify meetings to be held
+        brief: "A configurable meeting called by the User"
+        details: "A meeting that can be called by the user that can include any available agent.  
+          The meeting is a round table format where each agent is provided with the meeting topic through
+          special meeting-context that includes the other agents in the room and any other relevant information.
+          The meeting-context is updated after every message sent in the meeting.  The Agent's can talk freely and 
+          collaboratively, speaking when they are the best fit to provide information or answer questions.  Asking 
+          questions when they are not knowledgeable is encouraged.  Asking eliciting / thought provoking questions
+          is encouraged by agents to help the team reach the beset possible outcome or solution.  Meeting types 
+          can be confiugured and added by the user and iteratively improved over time."
+        parameters:
+          - id: "Agents"
+            type: "list or null"
+            brief: "A list of agents to include in the meeting."
+            disabled: false
+            required: false
+            triggers: [ "-a", "--agents" ]
+          - id: "MeetingType"
+            type: list(meeting_type)
+            brief: "The type of meeting to be held."
+            disabled: false
+            required: false
+            triggers: [ "-m", "--meeting-type" ]
+          - id: "Topic"
+            type: "string"
+            brief: "The topic of the meeting."
+            disabled: false
+            required: true
+            triggers: [ "-t", "--topic" ]
+    context_files:
+      - ".axovia-flow/company-standards/coding-style.md"
+      - "docs/architecture/tech-stack.md"
+    output_schema: "schemas/director-of-flow-output.json"
+    retry_limit: 3
+
+AgentRegistry:
+  - role: dev
+    base_config: ".bmad-core/agents/dev.md"
+    description: "A developer agent responsible for writing and debugging code."
+    model:
+      provider: "openai"
+      name: "gpt-4-turbo"
+    tools:
+      - "file_read"
+      - "file_write"
+      - "run_command"
+    context_files:
+      - "docs/architecture/overview.md"
+      - "docs/prd.md"
+    output_schema: "schemas/json/developer_output.json"
+
+  - role: analyst
+    base_config: ".bmad-core/agents/analyst.md"
+    model: "anthropic/claude-3.5-sonnet"
+    description: "Specializes in analyzing requirements, project briefs, and creating initial documentation."
+    tools: ["search_web", "read_url_content"]
+    context_files: ["docs/bmad-kb.md"]
+    output_schema: "schemas/brief.json"
+
+  - role: architect
+    base_config: ".bmad-core/agents/architect.md"
+    model: "anthropic/claude-3.5-sonnet"
+    description: "Designs system architecture, makes technical decisions, and creates architecture documents."
+    tools: ["find_by_name", "read_file", "list_dir"]
+    context_files: ["docs/architecture/template.md"]
+    output_schema: "schemas/architecture.json"
+
+  - role: pm
+    base_config: ".bmad-core/agents/pm.md"
+    model: "anthropic/claude-3-opus"
+    description: "Manages the product backlog, creates PRDs, and defines user stories."
+    tools: ["create_memory", "todo_list"]
+    context_files: ["docs/prd/template.md"]
+    output_schema: "schemas/prd.json"
+
+  - role: qa
+    base_config: ".bmad-core/agents/qa.md"
+    model: "anthropic/claude-3-haiku"
+    description: "Tests implemented features, verifies acceptance criteria, and creates quality gates."
+    tools: ["run_command", "read_file"]
+    context_files: ["docs/guides/tdd-bdd-strategy.md"]
+    output_schema: "schemas/qa_report.json"
+    quality_gates:
+      feature_specification:
+        task: axoviaFlow.tasks.validateFeatureSpec

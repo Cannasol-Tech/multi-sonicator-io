@@ -1,19 +1,5 @@
-<testsuite name="features.complete_modbus_interface.Complete MODBUS Interface Testing" tests="15" errors="14" failures="0" skipped="1" time="0.000858" timestamp="2025-09-05T20:57:34.787580" hostname="Corbans-Mini.home"><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete system status register testing" status="failed" time="6.1e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
-Location: test/acceptance/features/complete_modbus_interface.feature:7
-Traceback (most recent call last):
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "test/acceptance/steps/common_steps.py", line 322, in step_modbus_rtu_connected
-    client = _get_client(context)
-  File "test/acceptance/steps/common_steps.py", line 46, in _get_client
-    if _profile(context) != "hil":
-  File "test/acceptance/steps/common_steps.py", line 24, in _profile
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
-AttributeError: 'dict' object has no attribute 'userdata'
+<testsuite name="features.complete_modbus_interface.Complete MODBUS Interface Testing" tests="15" errors="15" failures="0" skipped="0" time="0.0" timestamp="2025-09-12T00:59:55.268246" hostname="Corbans-Mini.home"><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete system status register testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
 ]]>
 </error><system-out>
 <![CDATA[
@@ -21,39 +7,25 @@ AttributeError: 'dict' object has no attribute 'userdata'
 
   @modbus @interface @critical
   Scenario: Complete system status register testing
-    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
     And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
     And the MODBUS slave ID is configured correctly ... skipped in 0.000s
-    And all 4 sonicators are connected and ready ... undefined in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
     Given the system is initialized and operational ... skipped in 0.000s
     When I read the system status registers (0x0000-0x000F) ... skipped in 0.000s
     Then register 0x0000 should contain the overall system status ... skipped in 0.000s
-    And register 0x0001 should contain the active sonicator count ... undefined in 0.000s
-    And register 0x0002 should contain the active sonicator bitmask ... undefined in 0.000s
-    And register 0x0003 should contain the watchdog status ... undefined in 0.000s
+    And register 0x0001 should contain the active sonicator count ... skipped in 0.000s
+    And register 0x0002 should contain the active sonicator bitmask ... skipped in 0.000s
+    And register 0x0003 should contain the watchdog status ... skipped in 0.000s
     And register 0x0004 should contain the communication error count ... skipped in 0.000s
-    And all reserved registers should return zero ... undefined in 0.000s
-    And all reads should complete within 100ms ... undefined in 0.000s
+    And all reserved registers should return zero ... skipped in 0.000s
+    And all reads should complete within 100ms ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Global control register testing" status="failed" time="6e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
-Location: test/acceptance/features/complete_modbus_interface.feature:7
-Traceback (most recent call last):
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "test/acceptance/steps/common_steps.py", line 322, in step_modbus_rtu_connected
-    client = _get_client(context)
-  File "test/acceptance/steps/common_steps.py", line 46, in _get_client
-    if _profile(context) != "hil":
-  File "test/acceptance/steps/common_steps.py", line 24, in _profile
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
-AttributeError: 'dict' object has no attribute 'userdata'
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Global control register testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
 ]]>
 </error><system-out>
 <![CDATA[
@@ -61,38 +33,24 @@ AttributeError: 'dict' object has no attribute 'userdata'
 
   @modbus @interface @critical
   Scenario: Global control register testing
-    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
     And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
     And the MODBUS slave ID is configured correctly ... skipped in 0.000s
-    And all 4 sonicators are connected and ready ... undefined in 0.000s
-    Given the system is ready for control operations ... undefined in 0.000s
-    When I write to the global control registers (0x0010-0x001F) ... undefined in 0.000s
-    Then writing 1 to register 0x0010 should enable the global system ... undefined in 0.000s
-    And writing 1 to register 0x0011 should trigger emergency stop ... undefined in 0.000s
-    And writing 1 to register 0x0012 should initiate system reset ... undefined in 0.000s
-    And all control actions should be reflected within 100ms ... undefined in 0.000s
-    And reading back the registers should confirm the written values ... undefined in 0.000s
-    And reserved registers should reject writes gracefully ... undefined in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given the system is ready for control operations ... skipped in 0.000s
+    When I write to the global control registers (0x0010-0x001F) ... skipped in 0.000s
+    Then writing 1 to register 0x0010 should enable the global system ... skipped in 0.000s
+    And writing 1 to register 0x0011 should trigger emergency stop ... skipped in 0.000s
+    And writing 1 to register 0x0012 should initiate system reset ... skipped in 0.000s
+    And all control actions should be reflected within 100ms ... skipped in 0.000s
+    And reading back the registers should confirm the written values ... skipped in 0.000s
+    And reserved registers should reject writes gracefully ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 1 register interface testing" status="failed" time="6e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
-Location: test/acceptance/features/complete_modbus_interface.feature:7
-Traceback (most recent call last):
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "test/acceptance/steps/common_steps.py", line 322, in step_modbus_rtu_connected
-    client = _get_client(context)
-  File "test/acceptance/steps/common_steps.py", line 46, in _get_client
-    if _profile(context) != "hil":
-  File "test/acceptance/steps/common_steps.py", line 24, in _profile
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
-AttributeError: 'dict' object has no attribute 'userdata'
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 1 register interface testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
 ]]>
 </error><system-out>
 <![CDATA[
@@ -100,40 +58,26 @@ AttributeError: 'dict' object has no attribute 'userdata'
 
   @modbus @interface @comprehensive
   Scenario: Complete sonicator 1 register interface testing
-    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
     And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
     And the MODBUS slave ID is configured correctly ... skipped in 0.000s
-    And all 4 sonicators are connected and ready ... undefined in 0.000s
-    Given sonicator 1 is connected and ready ... undefined in 0.000s
-    When I test all sonicator 1 registers (0x0100-0x011F) ... undefined in 0.000s
-    Then writing to register 0x0100 should control start/stop ... undefined in 0.000s
-    And writing to register 0x0101 should set amplitude (20-100%) ... undefined in 0.000s
-    And writing to register 0x0102 should trigger overload reset ... undefined in 0.000s
-    And reading register 0x0110 should return power consumption ... undefined in 0.000s
-    And reading register 0x0111 should return operating frequency ... undefined in 0.000s
-    And reading register 0x0112 should return status flags ... undefined in 0.000s
-    And reading register 0x0113 should return actual amplitude ... undefined in 0.000s
-    And all operations should complete within 100ms ... undefined in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given sonicator 1 is connected and ready ... skipped in 0.000s
+    When I test all sonicator 1 registers (0x0100-0x011F) ... skipped in 0.000s
+    Then writing to register 0x0100 should control start/stop ... skipped in 0.000s
+    And writing to register 0x0101 should set amplitude (20-100%) ... skipped in 0.000s
+    And writing to register 0x0102 should trigger overload reset ... skipped in 0.000s
+    And reading register 0x0110 should return power consumption ... skipped in 0.000s
+    And reading register 0x0111 should return operating frequency ... skipped in 0.000s
+    And reading register 0x0112 should return status flags ... skipped in 0.000s
+    And reading register 0x0113 should return actual amplitude ... skipped in 0.000s
+    And all operations should complete within 100ms ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 2 register interface testing" status="failed" time="5.7e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
-Location: test/acceptance/features/complete_modbus_interface.feature:7
-Traceback (most recent call last):
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "test/acceptance/steps/common_steps.py", line 322, in step_modbus_rtu_connected
-    client = _get_client(context)
-  File "test/acceptance/steps/common_steps.py", line 46, in _get_client
-    if _profile(context) != "hil":
-  File "test/acceptance/steps/common_steps.py", line 24, in _profile
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
-AttributeError: 'dict' object has no attribute 'userdata'
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 2 register interface testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
 ]]>
 </error><system-out>
 <![CDATA[
@@ -141,40 +85,26 @@ AttributeError: 'dict' object has no attribute 'userdata'
 
   @modbus @interface @comprehensive
   Scenario: Complete sonicator 2 register interface testing
-    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
     And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
     And the MODBUS slave ID is configured correctly ... skipped in 0.000s
-    And all 4 sonicators are connected and ready ... undefined in 0.000s
-    Given sonicator 2 is connected and ready ... undefined in 0.000s
-    When I test all sonicator 2 registers (0x0120-0x013F) ... undefined in 0.000s
-    Then writing to register 0x0120 should control start/stop ... undefined in 0.000s
-    And writing to register 0x0121 should set amplitude (20-100%) ... undefined in 0.000s
-    And writing to register 0x0122 should trigger overload reset ... undefined in 0.000s
-    And reading register 0x0130 should return power consumption ... undefined in 0.000s
-    And reading register 0x0131 should return operating frequency ... undefined in 0.000s
-    And reading register 0x0132 should return status flags ... undefined in 0.000s
-    And reading register 0x0133 should return actual amplitude ... undefined in 0.000s
-    And all operations should complete within 100ms ... undefined in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given sonicator 2 is connected and ready ... skipped in 0.000s
+    When I test all sonicator 2 registers (0x0120-0x013F) ... skipped in 0.000s
+    Then writing to register 0x0120 should control start/stop ... skipped in 0.000s
+    And writing to register 0x0121 should set amplitude (20-100%) ... skipped in 0.000s
+    And writing to register 0x0122 should trigger overload reset ... skipped in 0.000s
+    And reading register 0x0130 should return power consumption ... skipped in 0.000s
+    And reading register 0x0131 should return operating frequency ... skipped in 0.000s
+    And reading register 0x0132 should return status flags ... skipped in 0.000s
+    And reading register 0x0133 should return actual amplitude ... skipped in 0.000s
+    And all operations should complete within 100ms ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 3 register interface testing" status="failed" time="5.6e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
-Location: test/acceptance/features/complete_modbus_interface.feature:7
-Traceback (most recent call last):
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "test/acceptance/steps/common_steps.py", line 322, in step_modbus_rtu_connected
-    client = _get_client(context)
-  File "test/acceptance/steps/common_steps.py", line 46, in _get_client
-    if _profile(context) != "hil":
-  File "test/acceptance/steps/common_steps.py", line 24, in _profile
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
-AttributeError: 'dict' object has no attribute 'userdata'
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 3 register interface testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
 ]]>
 </error><system-out>
 <![CDATA[
@@ -182,40 +112,26 @@ AttributeError: 'dict' object has no attribute 'userdata'
 
   @modbus @interface @comprehensive
   Scenario: Complete sonicator 3 register interface testing
-    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
     And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
     And the MODBUS slave ID is configured correctly ... skipped in 0.000s
-    And all 4 sonicators are connected and ready ... undefined in 0.000s
-    Given sonicator 3 is connected and ready ... undefined in 0.000s
-    When I test all sonicator 3 registers (0x0140-0x015F) ... undefined in 0.000s
-    Then writing to register 0x0140 should control start/stop ... undefined in 0.000s
-    And writing to register 0x0141 should set amplitude (20-100%) ... undefined in 0.000s
-    And writing to register 0x0142 should trigger overload reset ... undefined in 0.000s
-    And reading register 0x0150 should return power consumption ... undefined in 0.000s
-    And reading register 0x0151 should return operating frequency ... undefined in 0.000s
-    And reading register 0x0152 should return status flags ... undefined in 0.000s
-    And reading register 0x0153 should return actual amplitude ... undefined in 0.000s
-    And all operations should complete within 100ms ... undefined in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given sonicator 3 is connected and ready ... skipped in 0.000s
+    When I test all sonicator 3 registers (0x0140-0x015F) ... skipped in 0.000s
+    Then writing to register 0x0140 should control start/stop ... skipped in 0.000s
+    And writing to register 0x0141 should set amplitude (20-100%) ... skipped in 0.000s
+    And writing to register 0x0142 should trigger overload reset ... skipped in 0.000s
+    And reading register 0x0150 should return power consumption ... skipped in 0.000s
+    And reading register 0x0151 should return operating frequency ... skipped in 0.000s
+    And reading register 0x0152 should return status flags ... skipped in 0.000s
+    And reading register 0x0153 should return actual amplitude ... skipped in 0.000s
+    And all operations should complete within 100ms ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 4 register interface testing" status="failed" time="5.6e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
-Location: test/acceptance/features/complete_modbus_interface.feature:7
-Traceback (most recent call last):
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "test/acceptance/steps/common_steps.py", line 322, in step_modbus_rtu_connected
-    client = _get_client(context)
-  File "test/acceptance/steps/common_steps.py", line 46, in _get_client
-    if _profile(context) != "hil":
-  File "test/acceptance/steps/common_steps.py", line 24, in _profile
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
-AttributeError: 'dict' object has no attribute 'userdata'
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 4 register interface testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
 ]]>
 </error><system-out>
 <![CDATA[
@@ -223,40 +139,26 @@ AttributeError: 'dict' object has no attribute 'userdata'
 
   @modbus @interface @comprehensive
   Scenario: Complete sonicator 4 register interface testing
-    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
     And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
     And the MODBUS slave ID is configured correctly ... skipped in 0.000s
-    And all 4 sonicators are connected and ready ... undefined in 0.000s
-    Given sonicator 4 is connected and ready ... undefined in 0.000s
-    When I test all sonicator 4 registers (0x0160-0x017F) ... undefined in 0.000s
-    Then writing to register 0x0160 should control start/stop ... undefined in 0.000s
-    And writing to register 0x0161 should set amplitude (20-100%) ... undefined in 0.000s
-    And writing to register 0x0162 should trigger overload reset ... undefined in 0.000s
-    And reading register 0x0170 should return power consumption ... undefined in 0.000s
-    And reading register 0x0171 should return operating frequency ... undefined in 0.000s
-    And reading register 0x0172 should return status flags ... undefined in 0.000s
-    And reading register 0x0173 should return actual amplitude ... undefined in 0.000s
-    And all operations should complete within 100ms ... undefined in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given sonicator 4 is connected and ready ... skipped in 0.000s
+    When I test all sonicator 4 registers (0x0160-0x017F) ... skipped in 0.000s
+    Then writing to register 0x0160 should control start/stop ... skipped in 0.000s
+    And writing to register 0x0161 should set amplitude (20-100%) ... skipped in 0.000s
+    And writing to register 0x0162 should trigger overload reset ... skipped in 0.000s
+    And reading register 0x0170 should return power consumption ... skipped in 0.000s
+    And reading register 0x0171 should return operating frequency ... skipped in 0.000s
+    And reading register 0x0172 should return status flags ... skipped in 0.000s
+    And reading register 0x0173 should return actual amplitude ... skipped in 0.000s
+    And all operations should complete within 100ms ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS function code 03 (Read Holding Registers) testing" status="failed" time="5.6e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
-Location: test/acceptance/features/complete_modbus_interface.feature:7
-Traceback (most recent call last):
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "test/acceptance/steps/common_steps.py", line 322, in step_modbus_rtu_connected
-    client = _get_client(context)
-  File "test/acceptance/steps/common_steps.py", line 46, in _get_client
-    if _profile(context) != "hil":
-  File "test/acceptance/steps/common_steps.py", line 24, in _profile
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
-AttributeError: 'dict' object has no attribute 'userdata'
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS function code 03 (Read Holding Registers) testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
 ]]>
 </error><system-out>
 <![CDATA[
@@ -264,37 +166,23 @@ AttributeError: 'dict' object has no attribute 'userdata'
 
   @modbus @interface @validation
   Scenario: MODBUS function code 03 (Read Holding Registers) testing
-    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
     And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
     And the MODBUS slave ID is configured correctly ... skipped in 0.000s
-    And all 4 sonicators are connected and ready ... undefined in 0.000s
-    Given the system has various register values set ... undefined in 0.000s
-    When I use function code 03 to read single registers ... undefined in 0.000s
-    Then all readable registers should return correct values ... undefined in 0.000s
-    When I use function code 03 to read multiple consecutive registers ... undefined in 0.000s
-    Then all values should be returned in the correct order ... undefined in 0.000s
-    And the response should include the correct byte count ... undefined in 0.000s
-    And the CRC should be calculated correctly ... undefined in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given the system has various register values set ... skipped in 0.000s
+    When I use function code 03 to read single registers ... skipped in 0.000s
+    Then all readable registers should return correct values ... skipped in 0.000s
+    When I use function code 03 to read multiple consecutive registers ... skipped in 0.000s
+    Then all values should be returned in the correct order ... skipped in 0.000s
+    And the response should include the correct byte count ... skipped in 0.000s
+    And the CRC should be calculated correctly ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS function code 06 (Write Single Register) testing" status="failed" time="5.5e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
-Location: test/acceptance/features/complete_modbus_interface.feature:7
-Traceback (most recent call last):
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "test/acceptance/steps/common_steps.py", line 322, in step_modbus_rtu_connected
-    client = _get_client(context)
-  File "test/acceptance/steps/common_steps.py", line 46, in _get_client
-    if _profile(context) != "hil":
-  File "test/acceptance/steps/common_steps.py", line 24, in _profile
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
-AttributeError: 'dict' object has no attribute 'userdata'
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS function code 06 (Write Single Register) testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
 ]]>
 </error><system-out>
 <![CDATA[
@@ -302,37 +190,23 @@ AttributeError: 'dict' object has no attribute 'userdata'
 
   @modbus @interface @validation
   Scenario: MODBUS function code 06 (Write Single Register) testing
-    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
     And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
     And the MODBUS slave ID is configured correctly ... skipped in 0.000s
-    And all 4 sonicators are connected and ready ... undefined in 0.000s
-    Given the system is ready for write operations ... undefined in 0.000s
-    When I use function code 06 to write to writable registers ... undefined in 0.000s
-    Then the register values should be updated correctly ... undefined in 0.000s
-    And the response should echo the written address and value ... undefined in 0.000s
-    And the CRC should be calculated correctly ... undefined in 0.000s
-    When I attempt to write to read-only registers ... undefined in 0.000s
-    Then the system should return an illegal address exception ... undefined in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given the system is ready for write operations ... skipped in 0.000s
+    When I use function code 06 to write to writable registers ... skipped in 0.000s
+    Then the register values should be updated correctly ... skipped in 0.000s
+    And the response should echo the written address and value ... skipped in 0.000s
+    And the CRC should be calculated correctly ... skipped in 0.000s
+    When I attempt to write to read-only registers ... skipped in 0.000s
+    Then the system should return an illegal address exception ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS function code 16 (Write Multiple Registers) testing" status="failed" time="5.5e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
-Location: test/acceptance/features/complete_modbus_interface.feature:7
-Traceback (most recent call last):
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "test/acceptance/steps/common_steps.py", line 322, in step_modbus_rtu_connected
-    client = _get_client(context)
-  File "test/acceptance/steps/common_steps.py", line 46, in _get_client
-    if _profile(context) != "hil":
-  File "test/acceptance/steps/common_steps.py", line 24, in _profile
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
-AttributeError: 'dict' object has no attribute 'userdata'
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS function code 16 (Write Multiple Registers) testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
 ]]>
 </error><system-out>
 <![CDATA[
@@ -340,37 +214,23 @@ AttributeError: 'dict' object has no attribute 'userdata'
 
   @modbus @interface @validation
   Scenario: MODBUS function code 16 (Write Multiple Registers) testing
-    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
     And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
     And the MODBUS slave ID is configured correctly ... skipped in 0.000s
-    And all 4 sonicators are connected and ready ... undefined in 0.000s
-    Given the system is ready for multiple write operations ... undefined in 0.000s
-    When I use function code 16 to write multiple consecutive registers ... undefined in 0.000s
-    Then all register values should be updated correctly ... undefined in 0.000s
-    And the response should confirm the starting address and quantity ... undefined in 0.000s
-    And the CRC should be calculated correctly ... undefined in 0.000s
-    When I attempt to write across read-only boundaries ... undefined in 0.000s
-    Then the system should return an appropriate exception ... undefined in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given the system is ready for multiple write operations ... skipped in 0.000s
+    When I use function code 16 to write multiple consecutive registers ... skipped in 0.000s
+    Then all register values should be updated correctly ... skipped in 0.000s
+    And the response should confirm the starting address and quantity ... skipped in 0.000s
+    And the CRC should be calculated correctly ... skipped in 0.000s
+    When I attempt to write across read-only boundaries ... skipped in 0.000s
+    Then the system should return an appropriate exception ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS error handling and exception responses" status="failed" time="5.7e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
-Location: test/acceptance/features/complete_modbus_interface.feature:7
-Traceback (most recent call last):
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "test/acceptance/steps/common_steps.py", line 322, in step_modbus_rtu_connected
-    client = _get_client(context)
-  File "test/acceptance/steps/common_steps.py", line 46, in _get_client
-    if _profile(context) != "hil":
-  File "test/acceptance/steps/common_steps.py", line 24, in _profile
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
-AttributeError: 'dict' object has no attribute 'userdata'
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS error handling and exception responses" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
 ]]>
 </error><system-out>
 <![CDATA[
@@ -378,39 +238,25 @@ AttributeError: 'dict' object has no attribute 'userdata'
 
   @modbus @interface @error-handling
   Scenario: MODBUS error handling and exception responses
-    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
     And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
     And the MODBUS slave ID is configured correctly ... skipped in 0.000s
-    And all 4 sonicators are connected and ready ... undefined in 0.000s
-    Given the system is operational ... undefined in 0.000s
-    When I attempt to read from an illegal address ... undefined in 0.000s
-    Then the system should return exception code 02 (Illegal Data Address) ... undefined in 0.000s
-    When I attempt to write an illegal data value ... undefined in 0.000s
-    Then the system should return exception code 03 (Illegal Data Value) ... undefined in 0.000s
-    When I send a request with invalid CRC ... undefined in 0.000s
-    Then the system should not respond (silent error handling) ... undefined in 0.000s
-    When I send a request to the wrong slave ID ... undefined in 0.000s
-    Then the system should not respond ... undefined in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given the system is operational ... skipped in 0.000s
+    When I attempt to read from an illegal address ... skipped in 0.000s
+    Then the system should return exception code 02 (Illegal Data Address) ... skipped in 0.000s
+    When I attempt to write an illegal data value ... skipped in 0.000s
+    Then the system should return exception code 03 (Illegal Data Value) ... skipped in 0.000s
+    When I send a request with invalid CRC ... skipped in 0.000s
+    Then the system should not respond (silent error handling) ... skipped in 0.000s
+    When I send a request to the wrong slave ID ... skipped in 0.000s
+    Then the system should not respond ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS communication performance testing" status="failed" time="5.5e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
-Location: test/acceptance/features/complete_modbus_interface.feature:7
-Traceback (most recent call last):
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "test/acceptance/steps/common_steps.py", line 322, in step_modbus_rtu_connected
-    client = _get_client(context)
-  File "test/acceptance/steps/common_steps.py", line 46, in _get_client
-    if _profile(context) != "hil":
-  File "test/acceptance/steps/common_steps.py", line 24, in _profile
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
-AttributeError: 'dict' object has no attribute 'userdata'
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS communication performance testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
 ]]>
 </error><system-out>
 <![CDATA[
@@ -418,39 +264,25 @@ AttributeError: 'dict' object has no attribute 'userdata'
 
   @modbus @interface @performance
   Scenario: MODBUS communication performance testing
-    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
     And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
     And the MODBUS slave ID is configured correctly ... skipped in 0.000s
-    And all 4 sonicators are connected and ready ... undefined in 0.000s
-    Given the system is under normal operating conditions ... undefined in 0.000s
-    When I perform 100 consecutive read operations ... undefined in 0.000s
-    Then each operation should complete within 100ms ... undefined in 0.000s
-    And no communication errors should occur ... undefined in 0.000s
-    And all responses should have correct CRC values ... undefined in 0.000s
-    When I perform 50 consecutive write operations ... undefined in 0.000s
-    Then each operation should complete within 100ms ... undefined in 0.000s
-    And all register values should be updated correctly ... undefined in 0.000s
-    And the system should maintain stable operation ... undefined in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given the system is under normal operating conditions ... skipped in 0.000s
+    When I perform 100 consecutive read operations ... skipped in 0.000s
+    Then each operation should complete within 100ms ... skipped in 0.000s
+    And no communication errors should occur ... skipped in 0.000s
+    And all responses should have correct CRC values ... skipped in 0.000s
+    When I perform 50 consecutive write operations ... skipped in 0.000s
+    Then each operation should complete within 100ms ... skipped in 0.000s
+    And all register values should be updated correctly ... skipped in 0.000s
+    And the system should maintain stable operation ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS communication stress testing" status="failed" time="5.5e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
-Location: test/acceptance/features/complete_modbus_interface.feature:7
-Traceback (most recent call last):
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "test/acceptance/steps/common_steps.py", line 322, in step_modbus_rtu_connected
-    client = _get_client(context)
-  File "test/acceptance/steps/common_steps.py", line 46, in _get_client
-    if _profile(context) != "hil":
-  File "test/acceptance/steps/common_steps.py", line 24, in _profile
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
-AttributeError: 'dict' object has no attribute 'userdata'
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS communication stress testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
 ]]>
 </error><system-out>
 <![CDATA[
@@ -458,38 +290,24 @@ AttributeError: 'dict' object has no attribute 'userdata'
 
   @modbus @interface @stress-testing
   Scenario: MODBUS communication stress testing
-    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
     And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
     And the MODBUS slave ID is configured correctly ... skipped in 0.000s
-    And all 4 sonicators are connected and ready ... undefined in 0.000s
-    Given the system is configured for stress testing ... undefined in 0.000s
-    When I perform rapid sequential read/write operations ... undefined in 0.000s
-    Then the system should handle the load without errors ... undefined in 0.000s
-    And response times should remain within specifications ... undefined in 0.000s
-    And no data corruption should occur ... undefined in 0.000s
-    When I perform operations while sonicators are running ... undefined in 0.000s
-    Then MODBUS communication should not interfere with sonicator operation ... undefined in 0.000s
-    And sonicator operation should not affect MODBUS timing ... undefined in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given the system is configured for stress testing ... skipped in 0.000s
+    When I perform rapid sequential read/write operations ... skipped in 0.000s
+    Then the system should handle the load without errors ... skipped in 0.000s
+    And response times should remain within specifications ... skipped in 0.000s
+    And no data corruption should occur ... skipped in 0.000s
+    When I perform operations while sonicators are running ... skipped in 0.000s
+    Then MODBUS communication should not interfere with sonicator operation ... skipped in 0.000s
+    And sonicator operation should not affect MODBUS timing ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Legacy MODBUS register mapping compatibility" status="failed" time="5.6e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
-Location: test/acceptance/features/complete_modbus_interface.feature:7
-Traceback (most recent call last):
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "test/acceptance/steps/common_steps.py", line 322, in step_modbus_rtu_connected
-    client = _get_client(context)
-  File "test/acceptance/steps/common_steps.py", line 46, in _get_client
-    if _profile(context) != "hil":
-  File "test/acceptance/steps/common_steps.py", line 24, in _profile
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
-AttributeError: 'dict' object has no attribute 'userdata'
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Legacy MODBUS register mapping compatibility" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
 ]]>
 </error><system-out>
 <![CDATA[
@@ -497,37 +315,23 @@ AttributeError: 'dict' object has no attribute 'userdata'
 
   @modbus @interface @legacy-compatibility
   Scenario: Legacy MODBUS register mapping compatibility
-    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
     And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
     And the MODBUS slave ID is configured correctly ... skipped in 0.000s
-    And all 4 sonicators are connected and ready ... undefined in 0.000s
-    Given the system supports legacy register addresses ... undefined in 0.000s
-    When I access registers using the 40001-based addressing ... undefined in 0.000s
-    Then register 40001 should map to sonicator 1 amplitude ... undefined in 0.000s
-    And register 40005 should map to sonicator 1 start/stop ... undefined in 0.000s
-    And register 40009 should map to sonicator 1 overload reset ... undefined in 0.000s
-    And all legacy addresses should work correctly ... undefined in 0.000s
-    And the mapping should be consistent with documentation ... undefined in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given the system supports legacy register addresses ... skipped in 0.000s
+    When I access registers using the 40001-based addressing ... skipped in 0.000s
+    Then register 40001 should map to sonicator 1 amplitude ... skipped in 0.000s
+    And register 40005 should map to sonicator 1 start/stop ... skipped in 0.000s
+    And register 40009 should map to sonicator 1 overload reset ... skipped in 0.000s
+    And all legacy addresses should work correctly ... skipped in 0.000s
+    And the mapping should be consistent with documentation ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Concurrent MODBUS access testing" status="failed" time="0.000119"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
-Location: test/acceptance/features/complete_modbus_interface.feature:7
-Traceback (most recent call last):
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "test/acceptance/steps/common_steps.py", line 322, in step_modbus_rtu_connected
-    client = _get_client(context)
-  File "test/acceptance/steps/common_steps.py", line 46, in _get_client
-    if _profile(context) != "hil":
-  File "test/acceptance/steps/common_steps.py", line 24, in _profile
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
-AttributeError: 'dict' object has no attribute 'userdata'
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Concurrent MODBUS access testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
 ]]>
 </error><system-out>
 <![CDATA[
@@ -535,22 +339,25 @@ AttributeError: 'dict' object has no attribute 'userdata'
 
   @modbus @interface @concurrent-access
   Scenario: Concurrent MODBUS access testing
-    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... failed in 0.000s
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
     And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
     And the MODBUS slave ID is configured correctly ... skipped in 0.000s
-    And all 4 sonicators are connected and ready ... undefined in 0.000s
-    Given multiple MODBUS masters may access the system ... undefined in 0.000s
-    When I simulate concurrent access from multiple sources ... undefined in 0.000s
-    Then the system should handle requests in order ... undefined in 0.000s
-    And no data corruption should occur ... undefined in 0.000s
-    And all responses should be sent to the correct master ... undefined in 0.000s
-    And the system should maintain data consistency ... undefined in 0.000s
-    And performance should degrade gracefully under load ... undefined in 0.000s
+    And all 4 sonicators are connected and ready ... skipped in 0.000s
+    Given multiple MODBUS masters may access the system ... skipped in 0.000s
+    When I simulate concurrent access from multiple sources ... skipped in 0.000s
+    Then the system should handle requests in order ... skipped in 0.000s
+    And no data corruption should occur ... skipped in 0.000s
+    And all responses should be sent to the correct master ... skipped in 0.000s
+    And the system should maintain data consistency ... skipped in 0.000s
+    And performance should degrade gracefully under load ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Advanced MODBUS function codes" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Advanced MODBUS function codes" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 

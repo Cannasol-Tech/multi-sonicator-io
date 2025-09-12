@@ -1,19 +1,41 @@
-<testsuite name="features.ci.CI drift checks" tests="1" errors="0" failures="0" skipped="0" time="0.00074" timestamp="2025-09-05T20:57:54.689500" hostname="Corbans-Mini.home"><testcase classname="features.ci.CI drift checks" name="SC-025 CI drift check: PRD vs include/config.h" status="passed" time="0.00074"><system-out>
+<testsuite name="features.ci.CI drift checks" tests="1" errors="1" failures="0" skipped="0" time="0.005662" timestamp="2025-09-12T00:59:55.241309" hostname="Corbans-Mini.home"><testcase classname="features.ci.CI drift checks" name="SC-025 CI drift check: PRD vs include/config.h" status="cleanup_error" time="0.005662"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
   @req-ci-drift @prd-17-risk @hil
   Scenario: SC-025 CI drift check: PRD vs include/config.h
-    Given the CI environment is configured ... passed in 0.000s
+    Given the CI environment is configured ... passed in 0.003s
     And the PRD requirements are documented in project-requirements.md ... passed in 0.000s
     And the implementation constants are defined in include/config.h ... passed in 0.000s
     When the CI drift check script runs ... passed in 0.000s
     Then it should compare PRD requirements against implementation ... passed in 0.000s
     And it should flag any mismatches between documentation and code ... passed in 0.000s
-    And it should block merge if critical drift is detected ... passed in 0.000s
+    And it should block merge if critical drift is detected ... passed in 0.002s
     And it should generate a drift report for review ... passed in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
+
+Captured stdout:
+🔧 HIL scenario setup: SC-025 CI drift check: PRD vs include/config.h
+
+✅ CI environment configuration assumed (local development)
+✅ PRD requirements documented
+✅ Implementation constants defined in include/config.h
+✅ CI drift check script executed
+✅ PRD requirements compared against implementation
+✅ Documentation/code mismatches flagged (if any)
+✅ Merge blocking on critical drift verified
+✅ Drift report generated for review
+
 ]]>
-</system-out></testcase></testsuite>
+</system-out><system-err>
+<![CDATA[
+Captured stderr:
+
+
+]]>
+</system-err></testcase></testsuite>

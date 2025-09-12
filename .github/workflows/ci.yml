@@ -30,6 +30,10 @@ jobs:
           echo "🔍 Checking company standards compliance..."
           python3 scripts/sync_company_standards.py --check-only
         continue-on-error: false
+      - name: BDD Traceability Scan (@TODO vs @trace)
+        run: |
+          echo "🔎 Ensuring BDD @TODO scenarios are trace-tagged..."
+          make traceability
       - name: Generate Standards Report
         if: always()
         run: |

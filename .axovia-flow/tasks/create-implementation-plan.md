@@ -1,4 +1,10 @@
-<!-- Powered by BMAD™ Core -->
+<!-- Axovia Flow™ Core Implementation -->
+<!-- @file: create-implementation-plan.md
+<!-- @author: Stephen Boyett
+<!-- @date: 2025-09-10
+<!-- @version: 1.0
+<!-- @description: Executable workflow to create implementation plans from feature specifications.
+<!-- ~Axovia Flow™~ -->
 
 # Create Implementation Plan Task
 

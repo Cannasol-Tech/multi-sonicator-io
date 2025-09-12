@@ -1,15 +1,13 @@
-<testsuite name="features.hil_basic_connectivity.Hardware Basic Connectivity" tests="4" errors="0" failures="4" skipped="0" time="0.000123" timestamp="2025-09-05T20:57:34.816729" hostname="Corbans-Mini.home"><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Power supply verification" status="failed" time="3.2e-05"><failure type="AssertionError" message="Hardware interface not available">
-<![CDATA[
-Failing step: Given the Arduino test harness is connected ... failed in 0.000s
-Location: test/acceptance/features/hil_basic_connectivity.feature:7
-Assertion Failed: Hardware interface not available]]>
-</failure><system-out>
+<testsuite name="features.hil_basic_connectivity.Hardware Basic Connectivity" tests="4" errors="4" failures="0" skipped="0" time="4.058808" timestamp="2025-09-12T01:20:38.949292" hostname="Corbans-Mini.home"><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Power supply verification" status="cleanup_error" time="1.015824"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @connectivity
   Scenario: Power supply verification
-    Given the Arduino test harness is connected ... failed in 0.000s
+    Given the Arduino test harness is connected ... failed in 1.016s
     And the ATmega32A target is powered ... skipped in 0.000s
     And the HIL framework is initialized ... skipped in 0.000s
     When I measure the power supply voltages ... skipped in 0.000s
@@ -19,19 +17,21 @@ Assertion Failed: Hardware interface not available]]>
 
 @scenario.end
 --------------------------------------------------------------------------------
+
+Captured stdout:
+🔧 HIL scenario setup: Power supply verification
+
 ]]>
-</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Programming interface verification" status="failed" time="3e-05"><failure type="AssertionError" message="Hardware interface not available">
-<![CDATA[
-Failing step: Given the Arduino test harness is connected ... failed in 0.000s
-Location: test/acceptance/features/hil_basic_connectivity.feature:7
-Assertion Failed: Hardware interface not available]]>
-</failure><system-out>
+</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Programming interface verification" status="cleanup_error" time="1.003851"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @connectivity
   Scenario: Programming interface verification
-    Given the Arduino test harness is connected ... failed in 0.000s
+    Given the Arduino test harness is connected ... failed in 1.004s
     And the ATmega32A target is powered ... skipped in 0.000s
     And the HIL framework is initialized ... skipped in 0.000s
     When I attempt to program the ATmega32A via Arduino as ISP ... skipped in 0.000s
@@ -41,19 +41,21 @@ Assertion Failed: Hardware interface not available]]>
 
 @scenario.end
 --------------------------------------------------------------------------------
+
+Captured stdout:
+🔧 HIL scenario setup: Programming interface verification
+
 ]]>
-</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Serial communication establishment" status="failed" time="3e-05"><failure type="AssertionError" message="Hardware interface not available">
-<![CDATA[
-Failing step: Given the Arduino test harness is connected ... failed in 0.000s
-Location: test/acceptance/features/hil_basic_connectivity.feature:7
-Assertion Failed: Hardware interface not available]]>
-</failure><system-out>
+</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Serial communication establishment" status="cleanup_error" time="1.025362"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @connectivity
   Scenario: Serial communication establishment
-    Given the Arduino test harness is connected ... failed in 0.000s
+    Given the Arduino test harness is connected ... failed in 1.025s
     And the ATmega32A target is powered ... skipped in 0.000s
     And the HIL framework is initialized ... skipped in 0.000s
     When I establish serial communication with the target ... skipped in 0.000s
@@ -62,19 +64,21 @@ Assertion Failed: Hardware interface not available]]>
 
 @scenario.end
 --------------------------------------------------------------------------------
+
+Captured stdout:
+🔧 HIL scenario setup: Serial communication establishment
+
 ]]>
-</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Arduino Test Harness ping test" status="failed" time="3.1e-05"><failure type="AssertionError" message="Hardware interface not available">
-<![CDATA[
-Failing step: Given the Arduino test harness is connected ... failed in 0.000s
-Location: test/acceptance/features/hil_basic_connectivity.feature:7
-Assertion Failed: Hardware interface not available]]>
-</failure><system-out>
+</system-out></testcase><testcase classname="features.hil_basic_connectivity.Hardware Basic Connectivity" name="Arduino Test Harness ping test" status="cleanup_error" time="1.013771"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @connectivity
   Scenario: Arduino Test Harness ping test
-    Given the Arduino test harness is connected ... failed in 0.000s
+    Given the Arduino test harness is connected ... failed in 1.014s
     And the ATmega32A target is powered ... skipped in 0.000s
     And the HIL framework is initialized ... skipped in 0.000s
     When I send a ping command to the Arduino Test Harness ... skipped in 0.000s
@@ -83,5 +87,9 @@ Assertion Failed: Hardware interface not available]]>
 
 @scenario.end
 --------------------------------------------------------------------------------
+
+Captured stdout:
+🔧 HIL scenario setup: Arduino Test Harness ping test
+
 ]]>
 </system-out></testcase></testsuite>

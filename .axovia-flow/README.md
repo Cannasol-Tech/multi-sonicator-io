@@ -17,21 +17,25 @@ Axovia Flow™ aims to become the industry standard for agentic AI coding framew
 ## Core Capabilities
 
 ### Multi-Agent Orchestration
+
 - **Director of Flow**: Central orchestration agent that coordinates all other agents and maintains project alignment
 - **Specialized Coding Agents**: Domain-specific agents for different aspects of development (frontend, backend, testing, documentation)
 - **Intelligent Task Distribution**: Automatic assignment of tasks to the most appropriate agents based on expertise and current workload
 
 ### Persistent Agent Personas
+
 - **Company-Specific Training**: Agents that understand and enforce your organization's unique coding standards and practices
 - **Domain Expertise**: Specialized knowledge in specific technologies, frameworks, and business domains
 - **Continuous Learning**: Agents that improve over time based on project outcomes and feedback
 
 ### Enterprise Integration
+
 - **Agile Workflow Support**: Native integration with epic management, feature specifications, and implementation planning
 - **Quality Assurance**: Automated testing, code review, and compliance checking at every stage
 - **Documentation Generation**: Automatic creation and maintenance of technical documentation, API docs, and user guides
 
 ### Standards Enforcement
+
 - **Company Standard Operating Procedures**: Centralized standards management across all projects
 - **Automated Compliance**: Real-time checking and enforcement of coding standards, security requirements, and best practices
 - **Quality Gates**: Configurable checkpoints that ensure deliverables meet enterprise standards before progression

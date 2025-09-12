@@ -25,7 +25,7 @@ export default function ArduinoCommandsPanel({ hardwareState, connected }: Ardui
     const startTime = Date.now()
 
     try {
-      const response = await fetch('http://localhost:3001/api/ping', {
+      const response = await fetch('/api/ping', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,0 +1,68 @@
+<!-- ~* Axovia Flow™ Framework ~* -->
+---
+## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Axovia Flow™ ~ Registry Variable Definitions
+- File: `agents/vars.yaml`
+- brief: Variable definitions for the Axovia Flow Agent Registry
+- author: Stephen Boyett
+- company: Axovia AI
+- version: 1.0
+- date: 2025-09-06
+- dependencies:
+  - external: ".bmad-core/core-config.yaml"
+    type: "base-config"
+    required: true
+    description: "BMad Core configuration that this extends"
+  - file: "../../.axovia-flow/flow-config.yaml"
+    type: "parent-config"
+    required: true
+    description: "Parent flow configuration"
+- tags:
+  - "axovia-flow"
+  - "variables"
+  - "registry"
+  - "parameters"
+  - "configuration"
+## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---
+
+# Axovia Flow™ Agent Registry Variable Definitions
+parameters: 
+  - id: archive
+    type: "string"
+    brief: "Exposes the Agent Registry Version Archive"
+    disabled: false
+    required: true
+    triggers: [ "-v", "--version" ]
+    default: latest
+    details: "Enables the user to access previous versions of the agent registry.  The archive should store 
+      the Agentic Workflow's performance across a list of continuously expandable criterias defined in the 
+      `criteria` section of this file.  The archive should be a dictionary with the version as the key 
+      and the agent registry as the value.  The agent registry should be a dictionary with the agent name as the 
+      key and the agent configuration as the value.  The agent configuration should be a dictionary with the 
+      agent parameters as the keys and the parameter values as the values.  The archive should be stored in a " 
+  
+  - id: agent_criteria
+    type: string
+    brief: "A single criteria to evaluate the Agentic Workflow against"
+    disabled: true  # TODO: Phase #2 - Future Improvement 
+    required: false
+    triggers: [ "-c", "--criteria" ]
+    default: "plan-accuracy"
+    details: "Enables the user to evaluate the Agentic Workflow against a specific criteria.  The criteria should be a string 
+      that represents a specific aspect of the Agentic Workflow.  The criteria should be a dictionary with the criteria as the key 
+      and the criteria description as the value.  The criteria should be stored in a "
+
+  - id: performance_criteria
+    type: list(agent_criteria)
+    brief: "A list of criteria to evaluate the Agentic Workflow against"
+    disabled: true  # TODO: Phase #2 - Future Improvement 
+    required: false
+    triggers: [ "-c", "--criteria" ]
+    default: 
+      - "plan-accuracy"
+      - "execution-efficiency" 
+      - "quality-assurance"
+      - "security"
+      - "cost-effectiveness"
+      - "user-satisfaction"

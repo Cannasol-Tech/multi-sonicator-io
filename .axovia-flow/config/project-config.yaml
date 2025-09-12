@@ -14,29 +14,6 @@ project:
   description: "Persistent Agentic Workflow System - Multi-agent orchestration platform"
   environment: "development"  # development, staging, production
 
-# Service Configuration
-services:
-  # Orchestrator Service Configuration
-  orchestrator:
-    host: "localhost"
-    port: 8080
-    log_level: "INFO"
-    shutdown_timeout: 30
-    
-  # Director of Flow Service Configuration
-  director:
-    host: "localhost"
-    port: 8081
-    log_level: "INFO"
-    shutdown_timeout: 30
-    
-  # MCP Server Configuration
-  mcp_server:
-    host: "0.0.0.0"
-    port: 8000
-    log_level: "INFO"
-    shutdown_timeout: 30
-
 # Database Configuration
 database:
   # Orchestrator Database

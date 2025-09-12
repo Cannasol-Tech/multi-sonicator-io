@@ -1,12 +1,11 @@
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# File: Axovia Flow™ Extension Configuration
+---
+<!-- ~* Axovia Flow™ Framework -->
+# File: Axovia Flow™ Agentic Framework Configuration
 # Author: Stephen Boyett
 # Company: Axovia AIå
 # Version: 1.0
-# @brief: Axovia Flow™ Config File intended 
-#           to extend The BMad Core config
+# @brief: Axovia Flow™ Config File intended  to extend The BMad Core config
 # Date: 2025-09-07
-# _____________________________________________
 
 extension:
   name: "Axovia Flow™"
@@ -15,62 +14,29 @@ extension:
 
 # Agent Command Extensions
 agent_extensions:
-
-  # Project Manager Agent Extension
-  pm:
-    additional_commands:
-      - "create-feature-spec: run task create-feature-spec.md with template feature-spec-tmpl.yaml"
-    additional_dependencies:
-      tasks:
-        - create-feature-spec.md
-      templates:
-        - feature-spec-tmpl.yaml
-
-  # Product Owner Agent Extension
-  po:
-    additional_commands:
-      - "create-feature-spec: run task create-feature-spec.md with template feature-spec-tmpl.yaml"
-      - "validate-feature-spec: validate feature specification against company standards"
-    additional_dependencies:
-      tasks:
-        - create-feature-spec.md
-      templates:
-        - feature-spec-tmpl.yaml
-
-  # Scrum Master Agent Extension
-  sm:
-    additional_commands:
-      - "create-stories-from-feature: create stories from feature specification"
-      - "create-implementation-plan: create an implementation plan from a feature specification"
-    additional_dependencies:
-      tasks:
-        - create-stories-from-feature.md
-        - create-implementation-plan.md
-      templates:
-        - .bmad-core/templates/story-tmpl.yaml
-        - implementation-plan-tmpl.yaml
+  fileLocation: `.axovia-flow/agents/registry.yaml``
 
 # Company wide Software SOPs 
- s
+
 standard_operating_procedures:
-  # **IMPORTANT:** Always adhere to these procedures above all else
+  # !!IMPORTANT!!: Always adhere to these procedures above all else
 
    # SOPs for Planning related Tasks
   - planning: 
     feature_specification: ".axovia-flow/company-standards/feature-specification.md"
-    implementation_plan: ".axovia-flow/company-standards/implementation-plan.md"
+    implementation_plan: ".axovia-flow/company-standards/implementation-plans.md"
     definition_of_done: ".axovia-flow/company-standards/planning-definition-of-done.md"
 
-  # SOPs for Quality Assurance Related Tasks
+  # !!SOPs for Quality Assurance Related Tasks
   - quality:
-    repository_audit: ".axovia-flow/company-standards/repository-audit.md"
+    repository_audit: ".axovia-flow/company-standards/repository-auditing.md"
     security_audit: ".axovia-flow/company-standards/security-audit.md"
-    pull_request: ".axovia-flow/company-standards/pull-request.md"
+    pull_request: ".axovia-flow/company-standards/pull-requests.md"
     code_review: ".axovia-flow/company-standards/code-review.md"
 
   # SOPs for Testing Related Tasks
   - testing:
-    sw_testing_global: ".axovia-flow/company-standards/global-testing-sop.md"
+    sw_testing_global: ".axovia-flow/company-standards/sw-testing.md"
     
   # SOPs for Release Related Tasks
   - release: 
@@ -81,7 +47,8 @@ standard_operating_procedures:
     makefile_standard: ".axovia-flow/company-standards/makefile-standard.md"
     root_directory: ".axovia-flow/company-standards/root-directory.md"
     project_structure: ".axovia-flow/company-standards/project-structure.md"
-    
+    directory_readme: ".axovia-flow/company-standards/directory-readme-standard.md"
+
   # SOPs for Project Implementation Phase and General Software Development 
   - development: 
     definition_of_done: ".axovia-flow/company-standards/planning-definition-of-done.md"
@@ -125,6 +92,20 @@ tasks:
     requires_interaction: true
     template: "implementation-plan-tmpl.yaml"
 
+  generate_directory_readmes:
+    file: ".axovia-flow/flows/generate-directory-readmes.yaml"
+    description: "Generate standardized README.md files for specified directories"
+    agents: ["bmad-master", "architect"]
+    requires_interaction: false
+    template: "directory-readme-tmpl.yaml"
+
+  generate_cicd:
+    file: ".axovia-flow/flows/generate-cicd.yaml"
+    description: "Generate CI/CD workflows (GitHub Actions) using Axovia templates"
+    agents: ["bmad-master", "architect"]
+    requires_interaction: false
+    template: "cicd_ci_workflow"
+
 # Custom Templates
 templates:
   feature_spec:
@@ -137,9 +118,25 @@ templates:
     description: "Implementation plan template with visual checklists by story"
     output_location: "docs/planning"
 
+  directory_readme:
+    file: ".axovia-flow/templates/directory-readme-tmpl.yaml"
+    description: "Standardized per-directory README template for AI indexing and navigation"
+    output_location: "<dynamic>"
+
+  cicd_ci_workflow:
+    file: ".axovia-flow/templates/cicd-ci-workflow.tmpl.yml"
+    description: "GitHub Actions CI workflow template (Axovia standard validator pipeline)"
+    output_location: ".github/workflows/ci.yml"
+
+  markdown_header:
+    file: ".axovia-flow/templates/markdown-header.tmpl.md"
+    description: "Standard Markdown frontmatter header (Axovia format with dependencies, commands, tags)"
+    output_location: "<inline>"
+
 # Quality Standards
 standards:
   feature_specification: ".axovia-flow/company-standards/feature-specification.md"
+  directory_readme: ".axovia-flow/company-standards/directory-readme-standard.md"
   
 # Quality Gates
 quality_gates:
@@ -155,13 +152,14 @@ integration:
   configFiles:
     bmad_core: ".bmad-core/core-config.yaml"
     axovia_flow: ".axovia-flow/flow-config.yaml"
+    services: ".axovia-flow/config/services.yaml"
 
   # Configration files loaded after other config files should: 
-  # - First extend complimenting configuration
-  # - Second override any conflicting configuration 
-  ##### If there are any conflicting configurations the agent should immediatly alert the user after initialization!!! 
   ## index 0 is the lowest priority configuration and should be extended and conflicts overriden by following config
-  config_load_order: [integration.bmadCoreConfigFile, integration.axoviaFlowConfigFile]
+  config_load_order:
+    - integration.configFiles.bmad_core
+    - integration.configFiles.axovia_flow
+    - integration.configFiles.services
   use_bmad_config: true
   extends_bmad_core: true
   uses_core_elicitation: true
@@ -169,20 +167,23 @@ integration:
   
 # File Locations
 filePaths:
+  agent_reports: "docs/agent-reports"
+  flows: ".axovia-flow/flows"
   tasks: ".axovia-flow/tasks"
   templates: ".axovia-flow/templates"
   company_standards: ".axovia-flow/company-standards"
+  services: ".axovia-flow/config/services.yaml"
+  features: "docs/agile/features"
+  stories: "docs/agile/stories"
+  epics: "docs/agile/epics"
+  qa: "docs/qa"
   prd:
     file: "docs/prd.md"
     shards: "docs/prd-shards"    
   architecture:
     overview: "docs/architecture.md"
     shards: "docs/architecture/shards"
-  features: "docs/agile/features"
-  stories: "docs/agile/stories"
-  epics: "docs/agile/epics"
-  qa: "docs/qa"
-
+  
 # Keywords
 keywords:
   - word: "agent-id"
@@ -199,3 +200,4 @@ keywords:
     definition: "An optional markdown formatted report that is included in the release alongside the functionality-report. This report can be miscellaneous extra information about the projects functionality that is not included in the functionality-report.  Explanations for test coverage gaps, or any other piece of information that should be exposed at the project management level"
   - word: "agent-report"
     definition: "A report generated by an agent that is stored in the `docs/agent-reports/` directory.  *NOTE: Refer to the README.md in the `docs/agent-reports/` directory for more information.*"
+___
