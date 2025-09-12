@@ -4864,10 +4864,11 @@
 }
 
 .arduino-commands-panel .ping-response-large {
-  background: rgba(255, 255, 255, 0.1);
+  background: transparent;
   border-radius: 8px;
   padding: 16px;
   margin-top: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .arduino-commands-panel .ping-response-large.success {
@@ -4910,10 +4911,11 @@
 
 /* Ping History Styles */
 .arduino-commands-panel .ping-history {
-  background: rgba(255, 255, 255, 0.1);
+  background: transparent;
   border-radius: 8px;
   padding: 16px;
   margin-top: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .arduino-commands-panel .ping-history h5 {
@@ -4981,9 +4983,10 @@
 
 .arduino-commands-panel .detail-value {
   font-family: 'Courier New', monospace;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   padding: 2px 8px;
   border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* System Status Section */
@@ -5010,9 +5013,10 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(255, 255, 255, 0.1);
+  background: transparent;
   padding: 12px;
   border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .arduino-commands-panel .status-dot {
@@ -5029,10 +5033,11 @@
 
 .arduino-commands-panel .status-value {
   font-family: 'Courier New', monospace;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   padding: 2px 8px;
   border-radius: 4px;
   margin-left: auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Quick Help Section */
@@ -5059,9 +5064,15 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(255, 255, 255, 0.1);
+  background: transparent;
   padding: 12px;
   border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background-color 0.2s ease;
+}
+
+.arduino-commands-panel .help-item:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .arduino-commands-panel .help-icon {
@@ -8443,11 +8454,16 @@
   align-items: center;
   gap: 12px;
   padding: 10px 12px;
-  background: rgba(255, 255, 255, 0.1);
+  background: transparent;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: none;
   font-size: 13px;
   color: inherit;
+  transition: background-color 0.2s ease;
+}
+
+.help-item:hover {
+  background: var(--bg-secondary);
 }
 
 .help-icon {
