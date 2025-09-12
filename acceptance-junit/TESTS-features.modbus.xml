@@ -1,95 +1,50 @@
-<testsuite name="features.modbus.MODBUS protocol behaviors" tests="4" errors="3" failures="0" skipped="1" time="0.000223" timestamp="2025-09-05T20:57:34.837508" hostname="Corbans-Mini.home"><testcase classname="features.modbus.MODBUS protocol behaviors" name="SC-020 FC16 multiple write boundary cases" status="skipped" time="0"><skipped /><system-out>
+<testsuite name="features.modbus.MODBUS protocol behaviors" tests="4" errors="0" failures="0" skipped="4" time="0.0" timestamp="2025-09-12T01:57:26.124187" hostname="Corbans-Mini.home"><testcase classname="features.modbus.MODBUS protocol behaviors" name="SC-020 FC16 multiple write boundary cases" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @pending @req-fc16 @hil
   Scenario: SC-020 FC16 multiple write boundary cases
-    Given the system is initialized ... skipped in 0.000s
-    When I write holding register 40001 with value 50 ... skipped in 0.000s
-    Then holding register 40001 should equal 50 within 100 ms ... skipped in 0.000s
+    Given the system is initialized ... untested in 0.000s
+    When I write holding register 40001 with value 50 ... untested in 0.000s
+    Then holding register 40001 should equal 50 within 100 ms ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.modbus.MODBUS protocol behaviors" name="SC-021 Illegal address handling" status="failed" time="7.1e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
-<![CDATA[
-Failing step: Given the system is initialized ... failed in 0.000s
-Location: test/acceptance/features/modbus.feature:13
-Traceback (most recent call last):
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "test/acceptance/steps/common_steps.py", line 113, in step_system_initialized
-    if _profile(context) == "hil":
-  File "test/acceptance/steps/common_steps.py", line 24, in _profile
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
-AttributeError: 'dict' object has no attribute 'userdata'
-]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.modbus.MODBUS protocol behaviors" name="SC-021 Illegal address handling" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @req-illegal-address @hil
   Scenario: SC-021 Illegal address handling
-    Given the system is initialized ... failed in 0.000s
-    When I write holding register 49999 with value 1 ... skipped in 0.000s
-    Then holding register 49999 should equal 0 within 100 ms ... skipped in 0.000s
+    Given the system is initialized ... untested in 0.000s
+    When I write holding register 49999 with value 1 ... untested in 0.000s
+    Then holding register 49999 should equal 0 within 100 ms ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.modbus.MODBUS protocol behaviors" name="SC-022 Slave ID configuration" status="failed" time="9.4e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
-<![CDATA[
-Failing step: Given the system is initialized ... failed in 0.000s
-Location: test/acceptance/features/modbus.feature:19
-Traceback (most recent call last):
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "test/acceptance/steps/common_steps.py", line 113, in step_system_initialized
-    if _profile(context) == "hil":
-  File "test/acceptance/steps/common_steps.py", line 24, in _profile
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
-AttributeError: 'dict' object has no attribute 'userdata'
-]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.modbus.MODBUS protocol behaviors" name="SC-022 Slave ID configuration" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @req-slave-id @hil
   Scenario: SC-022 Slave ID configuration
-    Given the system is initialized ... failed in 0.000s
-    When I write holding register 40002 with value 2 ... skipped in 0.000s
-    Then holding register 40002 should equal 2 within 100 ms ... skipped in 0.000s
+    Given the system is initialized ... untested in 0.000s
+    When I write holding register 40002 with value 2 ... untested in 0.000s
+    Then holding register 40002 should equal 2 within 100 ms ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.modbus.MODBUS protocol behaviors" name="SC-023 CRC error handling" status="failed" time="5.8e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
-<![CDATA[
-Failing step: Given the system is initialized ... failed in 0.000s
-Location: test/acceptance/features/modbus.feature:25
-Traceback (most recent call last):
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "test/acceptance/steps/common_steps.py", line 113, in step_system_initialized
-    if _profile(context) == "hil":
-  File "test/acceptance/steps/common_steps.py", line 24, in _profile
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
-AttributeError: 'dict' object has no attribute 'userdata'
-]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.modbus.MODBUS protocol behaviors" name="SC-023 CRC error handling" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @req-crc @hil
   Scenario: SC-023 CRC error handling
-    Given the system is initialized ... failed in 0.000s
-    Then corrupted frames are rejected ... skipped in 0.000s
+    Given the system is initialized ... untested in 0.000s
+    Then corrupted frames are rejected ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------

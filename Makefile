@@ -299,11 +299,11 @@ test-acceptance-hil: check-deps check-arduino-cli
 
 acceptance-setup: check-deps
 	@echo "🔧 Setting up acceptance test framework..."
-	$(PYTHON_VENV) test/acceptance/hil_framework/hil_controller.py --setup
+	PYTHONPATH=. $(PYTHON_VENV) -m test.acceptance.hil_framework.hil_controller --setup
 
 acceptance-clean: check-deps
 	@echo "🧹 Cleaning acceptance test framework..."
-	$(PYTHON_VENV) test/acceptance/hil_framework/hil_controller.py --cleanup
+	PYTHONPATH=. $(PYTHON_VENV) -m test.acceptance.hil_framework.hil_controller --cleanup
 
 acceptance-test-basic: check-deps check-arduino-cli
 	@echo "🔌 Running basic acceptance connectivity tests..."

@@ -109,9 +109,9 @@ export default function ArduinoCommandsPanel({ hardwareState, connected }: Ardui
       </div>
 
       <div className="commands-grid">
-        {/* PING Test Section - Primary */}
-        <div className="ping-test-primary">
-          <h4>Hardware Communication Test</h4>
+        {/* PING Test Section */}
+        <div className="section-card ping-test primary">
+          <h4>🔍 Hardware Communication Test</h4>
           <div className="ping-controls-large">
             <button
               className={`ping-button-large ${pingStatus === 'loading' ? 'loading' : ''}`}
@@ -220,8 +220,8 @@ Time: ${entry.timestamp.toLocaleString()}`}
         </div>
 
         {/* System Status Section */}
-        <div className="system-status-section">
-          <h4>System Status</h4>
+        <div className="section-card system-status success">
+          <h4>⚡ System Status</h4>
           <div className="status-indicators">
             <div className="status-item">
               <div 
@@ -256,8 +256,8 @@ Time: ${entry.timestamp.toLocaleString()}`}
         </div>
 
         {/* Quick Help Section */}
-        <div className="quick-help-section">
-          <h4>Quick Help</h4>
+        <div className="section-card help info">
+          <h4>📚 Quick Help</h4>
           <div className="help-items">
             <div className="help-item">
               <span className="help-icon">🔍</span>

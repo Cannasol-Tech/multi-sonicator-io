@@ -9,6 +9,8 @@
 #include "modules/communication/modbus_register_manager.h"
 #include "register_map.h"
 #include "modules/control/sonicator4_controller.h"
+#include "sonicator_control.h"
+#include "sonicator_modbus_bridge.h"
 
 static void setup_modbus(void) {
     modbus_config_t cfg{};
@@ -23,17 +25,31 @@ static void setup_modbus(void) {
 }
 
 void setup() {
+    // Initialize hardware abstraction layer
     (void)hal_init();
+    
+    // Initialize MODBUS register management
     register_manager_init();
     setup_modbus();
-
+    
+    // Initialize sonicator control system
+    sonicator_begin();
+    
+    // Initialize sonicator-MODBUS bridge
+    sonicator_modbus_bridge_init();
+    
+    // Set default values
     auto* map = register_manager_get_map();
     map->global_control.global_enable = 1;
-    map->sonicators[3].amplitude_setpoint = 50;
+    map->sonicators[3].amplitude_setpoint = 50; // Sonicator 4 default amplitude
 }
 
 void loop() {
     (void)modbus_process();
     son4_service();
+    
+    // Update sonicator-MODBUS bridge
+    sonicator_modbus_bridge_update();
+    
     delay(10);
 }

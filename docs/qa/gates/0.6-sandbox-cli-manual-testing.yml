@@ -1,0 +1,66 @@
+# Quality Gate Decision for Story 0.6: Sandbox CLI Manual Testing
+schema: 1
+story: "0.6"
+story_title: "Sandbox CLI Manual Testing"
+gate: DEPENDENCY_BLOCKED
+status_reason: "Excellent CLI story planning with outstanding developer experience focus, but blocked by Story 0.2 HIL Test Harness completion."
+reviewer: "Quinn (Test Architect)"
+updated: "2025-09-12T00:00:00Z"
+
+waiver: { active: false }
+
+top_issues:
+  - id: "DEP-001"
+    severity: high
+    finding: "Story 0.2 HIL Test Harness Setup must be completed first with unit test coverage ≥90%"
+    suggested_action: "Complete Story 0.2 implementation and resolve unit test coverage gaps"
+    suggested_owner: "dev"
+  - id: "TECH-001"
+    severity: low
+    finding: "CLI framework selection needed (Python Click vs argparse)"
+    suggested_action: "Select Python Click for rich CLI features and developer experience"
+    suggested_owner: "dev"
+
+planning_assessment:
+  story_structure: EXCELLENT
+  acceptance_criteria: COMPREHENSIVE
+  task_breakdown: DETAILED
+  technical_documentation: OUTSTANDING
+  developer_experience: EXCELLENT
+  readiness_score: 85
+
+quality_score: 85
+expires: "2025-09-26T00:00:00Z"
+
+evidence:
+  acceptance_criteria_count: 12
+  task_count: 6
+  command_categories: 4
+  cli_features: 8
+
+cli_assessment:
+  command_structure: EXCELLENT
+  developer_experience: OUTSTANDING
+  safety_features: COMPREHENSIVE
+  integration_design: WELL_PLANNED
+
+dependencies:
+  blocking:
+    - story: "0.2"
+      title: "HIL Test Harness Setup"
+      status: "CONCERNS"
+      issue: "Unit test coverage below 90% requirement"
+  technical:
+    - requirement: "CLI Framework Selection"
+      recommendation: "Python Click"
+      rationale: "Rich features, autocomplete, excellent developer experience"
+
+recommendations:
+  immediate:
+    - action: "Wait for Story 0.2 completion with unit test coverage ≥90%"
+      refs: ["Story 0.2 gate status"]
+    - action: "Select Python Click as CLI framework"
+      refs: ["CLI Framework requirements"]
+  future:
+    - action: "Consider CLI command plugin architecture for extensibility"
+      refs: ["Command structure design"]

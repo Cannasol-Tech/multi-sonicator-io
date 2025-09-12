@@ -12,8 +12,12 @@ License: Proprietary
 import subprocess
 import logging
 import time
+import os
+import glob
+import signal
+import shutil
 from pathlib import Path
-from typing import Optional, List
+from typing import Optional, List, Iterable
 
 
 class ArduinoISPProgrammer:
@@ -23,8 +27,8 @@ class ArduinoISPProgrammer:
         """Initialize Arduino ISP programmer"""
         self.programmer_port = programmer_port
         self.logger = logging.getLogger(__name__)
-        self.avrdude_cmd = 'avrdude'
-        self.avrdude_conf = avrdude_conf
+        self.avrdude_cmd = self._resolve_avrdude()
+        self.avrdude_conf = avrdude_conf or self._resolve_avrdude_conf()
         self.bitclock = bitclock
         # ATmega32A programming parameters
         self.target_mcu = 'atmega32'
@@ -45,8 +49,13 @@ class ArduinoISPProgrammer:
             
             if result.returncode != 0:
                 self.logger.error("avrdude not available or not working")
-                return False
-                
+                # Attempt to fallback to PlatformIO-bundled avrdude
+                self.avrdude_cmd = self._resolve_avrdude(force_fallback=True)
+                self.avrdude_conf = self.avrdude_conf or self._resolve_avrdude_conf()
+                result2 = subprocess.run([self.avrdude_cmd, '-v'], capture_output=True, text=True, timeout=10)
+                if result2.returncode != 0:
+                    return False
+            
             # Test programmer connection
             cmd = [self.avrdude_cmd]
             if self.avrdude_conf:
@@ -72,13 +81,17 @@ class ArduinoISPProgrammer:
                 return True
             else:
                 self.logger.error(f"Programmer connection failed: {result.stderr}")
-                return False
+                # Try freeing port and retry once
+                self._free_port_users()
+                time.sleep(1.0)
+                return self.verify_connection()
                 
         except subprocess.TimeoutExpired:
             self.logger.error("Programmer connection test timed out")
             return False
         except Exception as e:
             self.logger.error(f"Programmer verification error: {e}")
+            self._free_port_users()
             return False
             
     def program_firmware(self, firmware_path: str) -> bool:
@@ -101,31 +114,39 @@ class ArduinoISPProgrammer:
                 '-b', str(self.baud_rate),
                 '-B', self.bitclock,
                 '-U', f'flash:w:{firmware_path}:i',
-                '-v'
+                '-v',
+                '-D',  # do not erase chip before programming
+                '-V'   # disable verification to speed up; verification can be separate
             ]
             
             self.logger.debug(f"Programming command: {' '.join(cmd)}")
             
-            # Execute programming
-            result = subprocess.run(
-                cmd,
-                capture_output=True,
-                text=True,
-                timeout=120  # 2 minutes timeout
-            )
-            
-            if result.returncode == 0:
-                self.logger.info("Firmware programming completed successfully")
-                return True
-            else:
-                self.logger.error(f"Programming failed: {result.stderr}")
-                return False
+            # Execute programming with up to 3 attempts, freeing port on failure
+            attempts = 3
+            for attempt in range(1, attempts + 1):
+                result = subprocess.run(
+                    cmd,
+                    capture_output=True,
+                    text=True,
+                    timeout=120
+                )
+                if result.returncode == 0:
+                    self.logger.info("Firmware programming completed successfully")
+                    return True
+                else:
+                    self.logger.error(f"Programming failed (attempt {attempt}/{attempts}): {result.stderr}")
+                    # Free the port users and retry after short delay
+                    self._free_port_users()
+                    time.sleep(1.5)
+            return False
                 
         except subprocess.TimeoutExpired:
             self.logger.error("Firmware programming timed out")
+            self._free_port_users()
             return False
         except Exception as e:
             self.logger.error(f"Programming error: {e}")
+            self._free_port_users()
             return False
             
     def read_fuses(self) -> Optional[dict]:
@@ -232,3 +253,102 @@ class ArduinoISPProgrammer:
         """Clean up programmer interface"""
         # No persistent connections to clean up for avrdude
         self.logger.info("Programmer interface cleanup completed")
+
+    # -------------------------- Internal helpers --------------------------- #
+
+    def _resolve_avrdude(self, force_fallback: bool = False) -> str:
+        """Resolve path to avrdude, checking system, local .pio, then ~/.platformio."""
+        if not force_fallback:
+            found = shutil.which('avrdude')
+            if found:
+                return found
+        # Try project-local PlatformIO packages dir (.pio/packages)
+        try:
+            repo_root = Path(__file__).resolve().parents[3]
+        except Exception:
+            repo_root = Path.cwd()
+        local_pio = repo_root / '.pio' / 'packages' / 'tool-avrdude' / 'avrdude'
+        if local_pio.exists():
+            return str(local_pio)
+        # Fallback to user PlatformIO packages dir (~/.platformio/packages)
+        home = os.path.expanduser('~')
+        user_pio = os.path.join(home, '.platformio', 'packages', 'tool-avrdude', 'avrdude')
+        return user_pio if os.path.exists(user_pio) else 'avrdude'
+
+    def _resolve_avrdude_conf(self) -> Optional[str]:
+        """Resolve path to avrdude.conf from local .pio or ~/.platformio packages."""
+        try:
+            repo_root = Path(__file__).resolve().parents[3]
+        except Exception:
+            repo_root = Path.cwd()
+        local_conf = repo_root / '.pio' / 'packages' / 'tool-avrdude' / 'avrdude.conf'
+        if local_conf.exists():
+            return str(local_conf)
+        home = os.path.expanduser('~')
+        conf_path = os.path.join(home, '.platformio', 'packages', 'tool-avrdude', 'avrdude.conf')
+        return conf_path if os.path.exists(conf_path) else None
+
+    def _candidate_ports(self) -> Iterable[str]:
+        """Generate candidate serial device paths to free if locked."""
+        ports = set()
+        if self.programmer_port:
+            ports.add(self.programmer_port)
+            # On macOS, tty.* is the dialin counterpart to cu.*
+            if '/cu.' in self.programmer_port:
+                ports.add(self.programmer_port.replace('/cu.', '/tty.'))
+        # Also consider all usbmodem variants if pattern used
+        for pat in ('/dev/cu.usbmodem*', '/dev/tty.usbmodem*'):
+            for p in glob.glob(pat):
+                ports.add(p)
+        return ports
+
+    def _pids_holding_device(self, device_path: str) -> List[int]:
+        """Return list of PIDs that have the given device open using lsof."""
+        try:
+            result = subprocess.run(
+                ['lsof', '-t', device_path],
+                capture_output=True,
+                text=True,
+                timeout=5
+            )
+            if result.returncode != 0:
+                return []
+            pids = []
+            for line in result.stdout.strip().splitlines():
+                try:
+                    pid = int(line.strip())
+                    if pid != os.getpid():
+                        pids.append(pid)
+                except ValueError:
+                    continue
+            return pids
+        except Exception:
+            return []
+
+    def _free_port_users(self) -> None:
+        """Attempt to free the programmer serial port by terminating blocking processes."""
+        try:
+            victims = set()
+            for dev in self._candidate_ports():
+                for pid in self._pids_holding_device(dev):
+                    victims.add(pid)
+            if not victims:
+                return
+            self.logger.warning(f"Freeing serial port by terminating processes holding it: {sorted(victims)}")
+            # First try gentle SIGTERM, then SIGKILL if necessary
+            for pid in victims:
+                try:
+                    os.kill(pid, signal.SIGTERM)
+                except Exception:
+                    pass
+            time.sleep(0.5)
+            # Force kill remaining
+            for pid in victims:
+                try:
+                    os.kill(pid, 0)
+                    # still alive
+                    os.kill(pid, signal.SIGKILL)
+                except Exception:
+                    pass
+        except Exception as e:
+            self.logger.warning(f"Failed to free serial port users: {e}")

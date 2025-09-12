@@ -1,77 +1,77 @@
-<testsuite name="features.monitoring.Monitoring via MODBUS" tests="6" errors="0" failures="0" skipped="6" time="8.094914" timestamp="2025-09-05T21:42:57.758988" hostname="Corbans-Mini.home"><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-004 Power monitoring scaling" status="skipped" time="0"><skipped /><system-out>
+<testsuite name="features.monitoring.Monitoring via MODBUS" tests="6" errors="0" failures="0" skipped="6" time="0.0" timestamp="2025-09-12T01:57:26.125359" hostname="Corbans-Mini.home"><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-004 Power monitoring scaling" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @pending @req-power @prd-10-api @reg-40013-40016 @hil
   Scenario: SC-004 Power monitoring scaling
-    Given the system is initialized ... skipped in 0.000s
-    When I simulate power reading of 100 ... skipped in 0.000s
-    Then holding register 40013 should equal 100 within 100 ms ... skipped in 0.000s
+    Given the system is initialized ... untested in 0.000s
+    When I simulate power reading of 100 ... untested in 0.000s
+    Then holding register 40013 should equal 100 within 100 ms ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-005 Frequency monitoring" status="skipped" time="0.000732"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-005 Frequency monitoring" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @req-frequency @prd-10-api @reg-40017-40020 @hil
   Scenario: SC-005 Frequency monitoring
-    Given the system is initialized ... passed in 0.001s
-    When I simulate frequency reading of 20000 ... skipped in 0.000s
-    Then holding register 40017 should equal 20000 within 100 ms ... skipped in 0.000s
+    Given the system is initialized ... untested in 0.000s
+    When I simulate frequency reading of 20000 ... untested in 0.000s
+    Then holding register 40017 should equal 20000 within 100 ms ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-006 Status flags" status="skipped" time="2.010864"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-006 Status flags" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @req-status-flags @prd-10-api @reg-40021-40024 @hil
   Scenario: SC-006 Status flags
-    Given the system is initialized ... passed in 0.000s
-    When I simulate starting sonicator 1 ... skipped in 2.011s
-    Then status flag bit 0 for unit 1 is 1 ... skipped in 0.000s
+    Given the system is initialized ... untested in 0.000s
+    When I simulate starting sonicator 1 ... untested in 0.000s
+    Then status flag bit 0 for unit 1 is 1 ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-015 Per-unit runtimes" status="skipped" time="2.003638"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-015 Per-unit runtimes" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @req-runtimes @reg-40027-40030 @hil
   Scenario: SC-015 Per-unit runtimes
-    Given the system is initialized ... passed in 0.000s
-    When I simulate starting sonicator 1 ... skipped in 2.004s
-    Then holding register 40027 should equal 5 within 1000 ms ... skipped in 0.000s
+    Given the system is initialized ... untested in 0.000s
+    When I simulate starting sonicator 1 ... untested in 0.000s
+    Then holding register 40027 should equal 5 within 1000 ms ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-016 Overload counts" status="skipped" time="2.04855"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-016 Overload counts" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @req-overload-counts @reg-40031-40034 @hil
   Scenario: SC-016 Overload counts
-    Given the system is initialized ... passed in 0.000s
-    When I simulate overload on sonicator 1 ... skipped in 2.049s
-    Then holding register 40031 should equal 1 within 200 ms ... skipped in 0.000s
+    Given the system is initialized ... untested in 0.000s
+    When I simulate overload on sonicator 1 ... untested in 0.000s
+    Then holding register 40031 should equal 1 within 200 ms ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-019 Frequency lock behavior" status="skipped" time="2.031129"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-019 Frequency lock behavior" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @req-freq-lock @hil
   Scenario: SC-019 Frequency lock behavior
-    Given the system is initialized ... passed in 0.000s
-    When I simulate frequency lock on sonicator 1 ... skipped in 2.031s
-    Then status flag bit 2 for unit 1 is 1 ... skipped in 0.000s
+    Given the system is initialized ... untested in 0.000s
+    When I simulate frequency lock on sonicator 1 ... untested in 0.000s
+    Then status flag bit 2 for unit 1 is 1 ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
