@@ -436,9 +436,9 @@ communication:
     stop_bits: 1
     parity: "none"
     timeout_ms: 1000
-    
+
   serial:
-    port: "/dev/ttyUSB0"  # Default, configurable
+    port: "/dev/tty.usbmodem2101"  # Arduino Uno R4 WiFi connected
     baud_rate: 115200
     timeout_ms: 5000
 
@@ -484,7 +484,7 @@ limitations:
   
 # Environment settings
 environment:
-  simulation_mode: true  # Default to simulation
+  simulation_mode: false  # REAL HARDWARE CONNECTED - Arduino Uno R4 WiFi at /dev/tty.usbmodem2101
   hardware_timeout_ms: 5000
   command_timeout_ms: 1000
   log_level: "info"

@@ -104,16 +104,16 @@ upload-harness:
 
 setup-arduino-isp:
 	# Setup Arduino as ISP (auto-upload ArduinoISP sketch if needed)
-	python3 scripts/setup_arduino_isp.py
+	$(PYTHON_VENV) scripts/setup_arduino_isp.py
 
 check-arduino-isp:
 	# Check if Arduino as ISP is ready (no upload)
-	python3 scripts/setup_arduino_isp.py --check-only
+	$(PYTHON_VENV) scripts/setup_arduino_isp.py --check-only
 
 hardware-sandbox: check-deps check-pio check-arduino-cli
 	@echo "🔧 Setting up HIL Hardware Sandbox Environment..."
 	@echo "Step 1: Setting up Arduino as ISP (auto-upload if needed)..."
-	@python3 scripts/setup_arduino_isp.py || (echo "❌ Failed to setup Arduino as ISP" && exit 1)
+	@$(PYTHON_VENV) scripts/setup_arduino_isp.py || (echo "❌ Failed to setup Arduino as ISP" && exit 1)
 	@echo "✅ Arduino as ISP is ready"
 
 	@echo "Step 2: Building latest ATmega32A firmware..."

@@ -18,6 +18,7 @@ import signal
 import shutil
 from pathlib import Path
 from typing import Optional, List, Iterable
+import sys
 
 
 class ArduinoISPProgrammer:
@@ -100,7 +101,12 @@ class ArduinoISPProgrammer:
             if not Path(firmware_path).exists():
                 self.logger.error(f"Firmware file not found: {firmware_path}")
                 return False
-                
+
+            # Quick check: is an Arduino (programmer) present?
+            if not self._arduino_present():
+                self.logger.error("Arduino ISP programmer not detected; skipping programming")
+                return False
+
             self.logger.info(f"Programming firmware: {firmware_path}")
             
             # Construct avrdude command
@@ -138,6 +144,12 @@ class ArduinoISPProgrammer:
                     # Free the port users and retry after short delay
                     self._free_port_users()
                     time.sleep(1.5)
+
+            # Fallback to PlatformIO upload (respects Arduino ISP settings in platformio.ini)
+            self.logger.info("Falling back to PlatformIO upload (Arduino as ISP)")
+            if self._pio_upload():
+                self.logger.info("PlatformIO upload completed successfully")
+                return True
             return False
                 
         except subprocess.TimeoutExpired:
@@ -352,3 +364,29 @@ class ArduinoISPProgrammer:
                     pass
         except Exception as e:
             self.logger.warning(f"Failed to free serial port users: {e}")
+
+    def _arduino_present(self) -> bool:
+        """Check if Arduino ISP is present using detection script (best-effort)."""
+        try:
+            repo_root = Path(__file__).resolve().parents[3]
+            script = repo_root / 'scripts' / 'detect_hardware.py'
+            if not script.exists():
+                return True  # cannot verify, do not block
+            result = subprocess.run([sys.executable, str(script), '--check-arduino'], capture_output=True, text=True, timeout=10)
+            return result.returncode == 0
+        except Exception:
+            return True
+
+    def _pio_upload(self) -> bool:
+        """Attempt to upload using PlatformIO environment configured for Arduino as ISP."""
+        try:
+            repo_root = Path(__file__).resolve().parents[3]
+            # Use platformio to upload with atmega32a env; relies on config/platformio.ini
+            result = subprocess.run(['pio', 'run', '-e', 'atmega32a', '-t', 'upload'], cwd=str(repo_root), capture_output=True, text=True, timeout=300)
+            if result.returncode != 0:
+                self.logger.error(f"PlatformIO upload failed: {result.stderr}")
+                return False
+            return True
+        except Exception as e:
+            self.logger.error(f"PlatformIO upload error: {e}")
+            return False
