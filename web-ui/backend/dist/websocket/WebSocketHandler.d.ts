@@ -10,6 +10,7 @@ export declare class WebSocketHandler {
     private clients;
     private hardwareInterface;
     private testAutomationService?;
+    private pendingCommands;
     constructor(hardwareInterface: HardwareInterface, testAutomationService?: TestAutomationService);
     private setupHardwareListeners;
     private setupTestAutomationListeners;

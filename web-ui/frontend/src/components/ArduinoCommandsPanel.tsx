@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import ArduinoCommandDialog from './ArduinoCommandDialog'
 import { HardwareState } from '../types'
 
 interface ArduinoCommandsPanelProps {
@@ -18,6 +19,7 @@ export default function ArduinoCommandsPanel({ hardwareState, connected }: Ardui
   const [pingResponse, setPingResponse] = useState<any>(null)
   const [lastPingTime, setLastPingTime] = useState<Date | null>(null)
   const [pingHistory, setPingHistory] = useState<PingHistoryEntry[]>([])
+  const [showCmdDialog, setShowCmdDialog] = useState(false)
 
   const handlePing = async () => {
     setPingStatus('loading')
@@ -98,14 +100,19 @@ export default function ArduinoCommandsPanel({ hardwareState, connected }: Ardui
 
   const getConnectionStatusColor = () => {
     if (!connected) return '#ef4444' // red
-    return hardwareState.connection.status === 'connected' ? '#10b981' : '#f59e0b' // green or amber
+    return hardwareState.connection.connected ? '#10b981' : '#f59e0b' // green or amber
   }
 
   return (
     <div className="arduino-commands-panel">
       <div className="commands-header">
         <h3>🔧 Arduino Test Wrapper Commands</h3>
-        <p>Real-time communication with HIL Test Harness</p>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <p style={{ margin: 0 }}>Real-time communication with HIL Test Harness</p>
+          <button className="btn primary" onClick={() => setShowCmdDialog(true)}>
+            Open Command Dialog
+          </button>
+        </div>
       </div>
 
       <div className="commands-grid">
@@ -237,11 +244,11 @@ Time: ${entry.timestamp.toLocaleString()}`}
             <div className="status-item">
               <div 
                 className="status-dot" 
-                style={{ backgroundColor: hardwareState.connection.status === 'connected' ? '#10b981' : '#ef4444' }}
+                style={{ backgroundColor: hardwareState.connection.connected ? '#10b981' : '#ef4444' }}
               ></div>
               <span className="status-label">Hardware</span>
               <span className="status-value">
-                {hardwareState.connection.status === 'connected' ? 'Ready' : 'Not Ready'}
+                {hardwareState.connection.connected ? 'Ready' : 'Not Ready'}
               </span>
             </div>
             
@@ -249,7 +256,7 @@ Time: ${entry.timestamp.toLocaleString()}`}
               <div className="status-dot" style={{ backgroundColor: '#3b82f6' }}></div>
               <span className="status-label">Port</span>
               <span className="status-value">
-                {hardwareState.connection.port || 'Mock'}
+                {hardwareState.connection.port || 'Unknown'}
               </span>
             </div>
           </div>
@@ -293,6 +300,7 @@ Time: ${entry.timestamp.toLocaleString()}`}
           </div>
         </div>
       </div>
+      <ArduinoCommandDialog visible={showCmdDialog} onClose={() => setShowCmdDialog(false)} />
     </div>
   )
 }

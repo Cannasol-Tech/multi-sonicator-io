@@ -47,7 +47,6 @@ export declare class HardwareInterface extends EventEmitter {
     private sendPythonCommand;
     sendCommand(command: HardwareCommand): Promise<HardwareResponse>;
     getPinStates(): Map<string, PinState>;
-    isConnected(): boolean;
     getSerialPort(): string | null;
     private detectHardware;
     reconnect(): Promise<boolean>;
@@ -79,4 +78,22 @@ export declare class HardwareInterface extends EventEmitter {
         success: boolean;
         config: any;
     }>;
+    ping(): Promise<{
+        success: boolean;
+        data?: any;
+        error?: string;
+        responseTime?: number;
+    }>;
+    getInfo(): Promise<{
+        success: boolean;
+        data?: any;
+        error?: string;
+    }>;
+    getStatus(sonicator?: number): Promise<{
+        success: boolean;
+        data?: any;
+        error?: string;
+    }>;
+    isConnected(): boolean;
+    getPortPath(): string | null;
 }

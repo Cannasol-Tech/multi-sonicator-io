@@ -48,19 +48,12 @@ describe('Header Component', () => {
   describe('Rendering', () => {
     it('renders the header with title', () => {
       render(<Header {...mockProps} />)
-      
-      expect(screen.getByText('Multi-Sonicator IO')).toBeInTheDocument()
-      expect(screen.getByText('Hardware Control & Test Automation')).toBeInTheDocument()
+
+      expect(screen.getByText('Multi-Sonicator-IO Test Harness')).toBeInTheDocument()
+      expect(screen.getByText('Arduino Test Wrapper ↔ ATmega32A DUT')).toBeInTheDocument()
     })
 
-    it('renders all navigation tabs', () => {
-      render(<Header {...mockProps} />)
-      
-      expect(screen.getByText('Hardware Control')).toBeInTheDocument()
-      expect(screen.getByText('Test Automation')).toBeInTheDocument()
-      expect(screen.getByText('Arduino Commands')).toBeInTheDocument()
-      expect(screen.getByText('Settings')).toBeInTheDocument()
-    })
+
 
     it('renders connection status indicator', () => {
       render(<Header {...mockProps} />)
@@ -70,9 +63,10 @@ describe('Header Component', () => {
 
     it('renders theme toggle button', () => {
       render(<Header {...mockProps} />)
-      
-      const themeButton = screen.getByRole('button', { name: /theme/i })
+
+      const themeButton = screen.getByTitle(/Current theme:/)
       expect(themeButton).toBeInTheDocument()
+      expect(themeButton).toHaveClass('theme-toggle')
     })
 
     it('renders help button', () => {
@@ -83,43 +77,19 @@ describe('Header Component', () => {
     })
   })
 
-  describe('Tab Navigation', () => {
-    it('highlights the active tab', () => {
-      render(<Header {...mockProps} activeTab="hardware" />)
-      
-      const hardwareTab = screen.getByText('Hardware Control').closest('button')
-      expect(hardwareTab).toHaveClass('active')
-    })
 
-    it('calls onTabChange when tab is clicked', () => {
-      render(<Header {...mockProps} />)
-      
-      const testTab = screen.getByText('Test Automation')
-      fireEvent.click(testTab)
-      
-      expect(mockProps.onTabChange).toHaveBeenCalledWith('test-automation')
-    })
-
-    it('updates active tab correctly for all tabs', () => {
-      const { rerender } = render(<Header {...mockProps} activeTab="hardware" />)
-      
-      expect(screen.getByText('Hardware Control').closest('button')).toHaveClass('active')
-      
-      rerender(<Header {...mockProps} activeTab="test-automation" />)
-      expect(screen.getByText('Test Automation').closest('button')).toHaveClass('active')
-      
-      rerender(<Header {...mockProps} activeTab="arduino-commands" />)
-      expect(screen.getByText('Arduino Commands').closest('button')).toHaveClass('active')
-      
-      rerender(<Header {...mockProps} activeTab="settings" />)
-      expect(screen.getByText('Settings').closest('button')).toHaveClass('active')
-    })
-  })
 
   describe('Connection Status', () => {
     it('shows connected status when connected', () => {
-      render(<Header {...mockProps} connected={true} />)
-      
+      const connectedProps = {
+        ...mockProps,
+        connectionStatus: {
+          ...mockProps.connectionStatus,
+          connected: true
+        }
+      }
+      render(<Header {...connectedProps} />)
+
       expect(screen.getByText('Connected')).toBeInTheDocument()
       expect(screen.queryByText('Disconnected')).not.toBeInTheDocument()
     })

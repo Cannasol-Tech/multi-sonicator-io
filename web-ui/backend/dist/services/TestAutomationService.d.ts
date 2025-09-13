@@ -34,11 +34,44 @@ export declare class TestAutomationService extends EventEmitter {
     private pythonProcess;
     private currentExecution;
     private pythonServicePath;
+    private cachedScenarios;
+    private availableTags;
+    private executionHistory;
+    private tagPresets;
     constructor();
+    private initializeTagPresets;
     /**
      * Get available test scenarios by calling Python service
      */
     getAvailableScenarios(): Promise<TestScenario[]>;
+    /**
+     * Extract all available tags from scenarios
+     */
+    private extractAvailableTags;
+    /**
+     * Get all available tags from loaded scenarios
+     */
+    getAvailableTags(): Promise<string[]>;
+    /**
+     * Get scenarios filtered by tags with AND/OR logic
+     */
+    getScenariosByTags(tags: string[], useOrLogic?: boolean): Promise<TestScenario[]>;
+    /**
+     * Search scenarios by text query
+     */
+    searchScenarios(query: string): Promise<TestScenario[]>;
+    /**
+     * Get tag presets
+     */
+    getTagPresets(): Record<string, string[]>;
+    /**
+     * Save custom tag combination
+     */
+    saveTagPreset(name: string, tags: string[]): boolean;
+    /**
+     * Get tags categorized by type
+     */
+    getCategorizedTags(): Promise<Record<string, string[]>>;
     /**
      * Execute selected test scenarios
      */
@@ -60,17 +93,9 @@ export declare class TestAutomationService extends EventEmitter {
      */
     isExecutionInProgress(): boolean;
     /**
-     * Get test scenarios filtered by tags
-     */
-    getScenariosByTags(tags: string[]): Promise<TestScenario[]>;
-    /**
      * Get test scenarios for specific feature files
      */
     getScenariosByFeature(featureFiles: string[]): Promise<TestScenario[]>;
-    /**
-     * Get available tags from all scenarios
-     */
-    getAvailableTags(): Promise<string[]>;
     /**
      * Get available feature files
      */
@@ -82,4 +107,33 @@ export declare class TestAutomationService extends EventEmitter {
         valid: boolean;
         missing: string[];
     }>;
+    /**
+     * Get execution history
+     */
+    getExecutionHistory(): TestExecution[];
+    /**
+     * Add execution to history
+     */
+    private addExecutionToHistory;
+    /**
+     * Clear execution history
+     */
+    clearExecutionHistory(): void;
+    /**
+     * Get execution statistics
+     */
+    getExecutionStats(): {
+        totalExecutions: number;
+        totalScenarios: number;
+        totalPassed: number;
+        totalFailed: number;
+        averageDuration: number;
+        successRate: number;
+    };
+    /**
+     * Export execution results in various formats
+     */
+    exportExecutionResults(executionId: string, format: 'json' | 'csv' | 'html'): Promise<string>;
+    private convertExecutionToCSV;
+    private convertExecutionToHTML;
 }

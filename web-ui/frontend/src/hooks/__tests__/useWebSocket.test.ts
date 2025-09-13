@@ -110,7 +110,9 @@ describe('useWebSocket', () => {
         }
       })
 
-      expect(result.current.error).toBeTruthy()
+      await waitFor(() => {
+        expect(result.current.error).toBeTruthy()
+      })
     })
   })
 
