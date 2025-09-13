@@ -15,6 +15,7 @@ Last Updated: 2025-09-10
 
 - Milestone M0: Epic 0 — HIL Testing Framework & Hardware Verification
 - Milestone M1: Epic 1 — Foundational Control & Communication
+- Milestone M2: Epic 3 — Hardware Testing Infrastructure Modernization
 
 ---
 
@@ -66,3 +67,52 @@ Execution Tasks (TDD-first)
 - Update this plan after any story creation or status change.
 - Mark tasks complete by changing `[ ]` to `[x]`.
 - Add subtasks as implementation details become clearer.
+
+---
+
+## Epic 3: Hardware Testing Infrastructure Modernization
+
+User Stories (planning checklist — creation of story docs)
+- [x] 3.0 Web UI Integration — `docs/agile/stories/3.0.integration-story.md`
+- [ ] 3.1 Frontend Development — `docs/agile/stories/3.1.frontend-development-react-interface.md`
+- [ ] 3.2 Real-Time Logging & Traceability — `docs/agile/stories/3.2.real-time-logging-traceability.md`
+
+Execution Tasks (TDD-first)
+- [ ] Implement real-time logging with ring buffers and export endpoints (CSV/JSONL)
+- [ ] Add Web UI logging controls and status indicators with tests (≥95% coverage on new modules)
+- [ ] Extend HIL publisher with timestamps/correlation IDs; add Behave scenarios tagged `@trace`
+- [ ] Ensure `make web-ui-sandbox` supports enabling logging and triggering exports
+
+---
+
+## Epic 4: Multi-Sonicator Coordination & Management
+
+User Stories (planning checklist — creation of story docs)
+- [ ] 4.1 Multi-Unit State Management — `docs/stories/4.1.multi-unit-state-management.md`
+- [x] 4.2 Individual Control Systems — `docs/stories/4.2.individual-control-systems.md`
+- [ ] 4.3 Coordinated Operation Modes — `docs/stories/4.3.coordinated-operation-modes.md`
+- [ ] 4.4 Advanced Amplitude Management — `docs/stories/4.4.advanced-amplitude-management.md`
+- [ ] 4.5 Real-time Monitoring Systems — `docs/stories/4.5.realtime-monitoring-systems.md`
+
+Execution Tasks (TDD-first)
+- [ ] Write unit tests for `SonicatorUnit` (start/stop, amplitude bounds, safety)
+- [ ] Implement per-unit MODBUS handlers with boundary/negative tests
+- [ ] Add HIL tests for S4-first control per current scope (see `docs/planning/pin-matrix.md`)
+- [ ] Validate response times <100ms in integration tests; log artifacts under `test/data/results/`
+- [ ] Create feature prompts in `docs/features/` and keep in sync with register map `include/register_map.h`
+
+Notes
+- Current scope is S4-only simulation/wrapper mapping (UNO R4: D7, D8, A2, A3, A4, A1, D9 PWM). Implement Unit 4 fully; scaffold Units 1–3 with clear TODOs to avoid duplication later.
+
+---
+
+## Epic 5: Production Deployment & Operations
+
+User Stories (planning checklist — creation of story docs)
+- [ ] 5.1 Automated Deployment Pipeline — `docs/stories/5.1.automated-deployment-pipeline.md`
+
+Execution Tasks (TDD-first)
+- [ ] Extend `.github/workflows/ci.yml` with build/test/artifact stages for firmware and web-ui
+- [ ] Add `release.yml` for tagged builds publishing firmware and docs artifacts
+- [ ] Ensure traceability matrix is generated and uploaded each run
+- [ ] Build Docker images for `web-ui/frontend` and `web-ui/backend` (optional push on secrets)

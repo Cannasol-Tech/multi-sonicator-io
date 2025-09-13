@@ -47,7 +47,6 @@ Develop a modern web-based user interface for sonicator control and monitoring, 
 2. **Story 3.1**: Frontend Development - React-based user interface
 3. **Story 3.2**: Backend API - Node.js server for hardware communication
 4. **Story 3.3**: Real-time Monitoring - WebSocket-based live updates
-5. **Story 3.4**: Mobile Responsiveness - Tablet and phone compatibility
 
 ## Acceptance Criteria
 

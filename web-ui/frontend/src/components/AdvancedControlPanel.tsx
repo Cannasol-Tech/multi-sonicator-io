@@ -267,16 +267,16 @@ const AdvancedControlPanel: React.FC<AdvancedControlPanelProps> = ({
         <h3>🎛️ Advanced Control Panel</h3>
         <div className="control-tabs">
           {[
-            { id: 'presets', label: '📋 Presets', icon: '📋' },
-            { id: 'batch', label: '⚡ Batch Ops', icon: '⚡' },
-            { id: 'custom', label: '🛠️ Custom', icon: '🛠️' }
+            { id: 'presets', label: '📋 Presets' },
+            { id: 'batch', label: '⚡ Batch Ops' },
+            { id: 'custom', label: '🛠️ Custom' }
           ].map(tab => (
             <button
               key={tab.id}
               className={`control-tab ${activeTab === tab.id ? 'active' : ''}`}
               onClick={() => setActiveTab(tab.id as any)}
             >
-              {tab.icon} {tab.label}
+              {tab.label}
             </button>
           ))}
         </div>

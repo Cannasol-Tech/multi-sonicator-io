@@ -1,0 +1,45 @@
+# QA Gate: Story 4.2 — Individual Control Systems
+status_contexts:
+  - ci/unit
+  - ci/integration
+  - ci/acceptance
+  - standards/check
+  - lint/markdown
+
+risk_profile:
+  safety_critical: true
+  timing_sensitive: true
+  hardware_dependent: true
+
+requirements:
+  unit_tests:
+    coverage_min: 0.85
+    files:
+      - test/unit/control/test_sonicator_unit.cpp
+  integration_tests:
+    required: true
+    files:
+      - test/integration/test_unit_modbus_interface.py
+  hil_tests:
+    required: true
+    files:
+      - test/hil/test_unit4_individual_control.py
+  performance:
+    response_time_ms_max: 100
+  documentation:
+    feature_prompt: docs/features/feature-4.2-individual-control-systems.md
+    story_doc: docs/stories/4.2.individual-control-systems.md
+
+checks:
+  - id: pin-matrix-source-of-truth
+    description: "Use config/hardware-config.yaml and docs/planning/pin-matrix.md as the only mapping sources"
+    must_pass: true
+  - id: s4_only_scope
+    description: "Implement S4 fully; scaffold Units 1–3 with TODOs and guards"
+    must_pass: true
+  - id: modbus-register-sync
+    description: "Register addresses used in code/tests must match include/register_map.h"
+    must_pass: true
+  - id: timing-metric
+    description: "Demonstrate <100ms write→action in integration or HIL runs"
+    must_pass: true
