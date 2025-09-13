@@ -113,8 +113,56 @@ jobs:
             reports/
           retention-days: 7
 
+  web-ui-tests:
+    needs: [standards-compliance]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: |
+            web-ui/frontend/package-lock.json
+            web-ui/backend/package-lock.json
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: Install Web UI Dependencies
+        run: |
+          echo "📦 Installing Web UI dependencies..."
+          make web-ui-install
+      - name: Build Web UI
+        run: |
+          echo "🏗️ Building Web UI for production..."
+          make web-ui-build
+      - name: Run Web UI Tests
+        run: |
+          echo "🧪 Running Web UI tests with coverage..."
+          make web-ui-test
+      - name: Upload Web UI Test Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: web-ui-test-results
+          path: |
+            web-ui/htmlcov/
+            web-ui/.pytest_cache/
+          retention-days: 7
+      - name: Upload Web UI Coverage Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: web-ui-coverage-report
+          path: web-ui/htmlcov/
+          retention-days: 30
+
   integration-tests:
-    needs: [detect-hardware, unit-tests]
+    needs: [detect-hardware, unit-tests, web-ui-tests]
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
@@ -190,7 +238,7 @@ jobs:
             test_results/
 
   build-firmware:
-    needs: [unit-tests, integration-tests]
+    needs: [unit-tests, integration-tests, web-ui-tests]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:

@@ -6,7 +6,7 @@ Feature: MODBUS RTU Conformance & Performance
   So that integration is seamless and reliable under industrial conditions
 
   # Traceability
-  # Source: docs/agile/features/modbus-communication-interface.md
+  # Source: docs/features/modbus-communication-interface.md
   # PRD: docs/prd.md §2 (FR8), §2.2 (NFR2, NFR8), §6.1
 
   @pending @hil @TODO:modbus-rtu-conformance @trace:modbus-conformance

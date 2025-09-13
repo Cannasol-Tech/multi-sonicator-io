@@ -38,7 +38,7 @@ Check for available documentation in this order:
 3. **Brownfield PRD** (docs/prd.md)
    - May contain embedded technical details
 
-4. **Epic Files** (docs/agile/epics/ or similar)
+4. **Epic Files** (docs/epics/ or similar)
    - Created by brownfield-create-epic task
 
 5. **User-Provided Documentation**
@@ -248,8 +248,8 @@ Before finalizing:
 
 Save the story with appropriate naming:
 
-- If from epic: `docs/agile/stories/epic-{n}-story-{m}.md`
-- If standalone: `docs/agile/stories/brownfield-{feature-name}.md`
+- If from epic: `docs/stories/epic-{n}-story-{m}.md`
+- If standalone: `docs/stories/brownfield-{feature-name}.md`
 - If sequential: Follow existing story numbering
 
 Include header noting documentation context:

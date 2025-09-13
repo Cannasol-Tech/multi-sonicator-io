@@ -1,3 +1,8 @@
+---
+description: bmad-master
+auto_execution_mode: 3
+---
+
 <!-- Powered by BMAD™ Core -->
 
 # BMad Master

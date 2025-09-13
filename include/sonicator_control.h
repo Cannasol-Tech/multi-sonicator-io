@@ -1,7 +1,8 @@
 /**
  * @file sonicator_control.h
  * @brief Single Sonicator Control API for Epic 1 Story 1.4
- * @author Cannasol Technologies
+ * @note Developed by Cannasol Technologies
+ * @project Multi Sonicator IO Controller
  * @date 2025-09-12
  * @version 1.0.0
  * 
@@ -30,7 +31,7 @@ extern "C" {
 #endif
 
 // ============================================================================
-// SONICATOR STATE MACHINE DEFINITIONS
+// >•Cannasol•Technologies•< STATE MACHINE DEFINITIONS
 // ============================================================================
 
 /**

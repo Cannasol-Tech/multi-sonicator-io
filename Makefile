@@ -687,18 +687,18 @@ validate-dod:
 	fi
 	@echo "🔍 Validating Definition of Done compliance for Story $(STORY)..."
 	@echo "📋 Checking DoD checklist completion..."
-	@if [ ! -f "docs/agile/stories/$(STORY)"*.md ]; then \
+	@if [ ! -f "docs/stories/$(STORY)"*.md ]; then \
 		echo "❌ ERROR: Story file not found for $(STORY)"; \
 		exit 1; \
 	fi
-	@STORY_FILE=$$(ls docs/agile/stories/$(STORY)*.md 2>/dev/null | head -1); \
+	@STORY_FILE=$$(ls docs/stories/$(STORY)*.md 2>/dev/null | head -1); \
 	if ! grep -q "## Definition of Done Checklist Completion" "$$STORY_FILE"; then \
 		echo "❌ BLOCKING: DoD checklist section missing in $$STORY_FILE"; \
 		echo "📋 Required: Add DoD checklist using docs/standards/definition-of-done-template.md"; \
 		exit 1; \
 	fi
 	@echo "✅ DoD checklist section found"
-	@STORY_FILE=$$(ls docs/agile/stories/$(STORY)*.md 2>/dev/null | head -1); \
+	@STORY_FILE=$$(ls docs/stories/$(STORY)*.md 2>/dev/null | head -1); \
 	if ! grep -q "## QA Results" "$$STORY_FILE"; then \
 		echo "❌ BLOCKING: QA Results section missing - Test Architect review required"; \
 		echo "📋 Required: Run Test Architect review using *review $(STORY) command"; \
@@ -725,7 +725,7 @@ validate-dod:
 check-dod-compliance:
 	@echo "🔍 Checking DoD compliance across all stories marked as Done..."
 	@FAILED_STORIES=""; \
-	for story_file in docs/agile/stories/*.md; do \
+	for story_file in docs/stories/*.md; do \
 		if grep -q "^Done$$\|^Complete$$\|^Ready for Review$$" "$$story_file"; then \
 			STORY_ID=$$(basename "$$story_file" .md | cut -d'.' -f1-2); \
 			echo "📋 Checking $$STORY_ID..."; \

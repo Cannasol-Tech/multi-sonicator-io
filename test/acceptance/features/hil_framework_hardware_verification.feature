@@ -6,7 +6,7 @@ Feature: HIL Testing Framework & Hardware Verification
   So that firmware can be developed and validated reliably against real hardware
 
   # Traceability
-  # Source: docs/agile/features/FEATURE-002-hil-testing-framework-hardware-verification.md
+  # Source: docs/features/FEATURE-002-hil-testing-framework-hardware-verification.md
   # PRD: docs/prd.md §2 (FR1–FR12), §3.3, §6.1, §6.2
   # Hardware: config/hardware-config.yaml (SOLE SOURCE OF TRUTH)
 

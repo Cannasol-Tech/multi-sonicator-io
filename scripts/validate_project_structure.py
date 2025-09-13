@@ -20,7 +20,7 @@ def validate_project_structure():
         "test/unit",
         "test/acceptance",
         "docs",
-        "docs/agile/stories",
+        "docs/stories",
         "docs/standards",
         "scripts",
         ".github/workflows"
