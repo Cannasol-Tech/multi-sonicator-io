@@ -201,7 +201,7 @@ test-all: check-deps check-pio test-unit test-acceptance
 
 # CI Pipeline - Unit tests only (no hardware required)
 # This make target should execute the unit tests and simulate a release as if the CI pipeline has completed successfully
-# The `make ci` flow should be as follows: 
+# The `make ci` flow should be as follows:
 #   1. `make ci`should execute the unit tests
 #   2. `make ci` should generate the executive report from the unit test results and the results of the last acceptance test run
 #   3. `make ci` should generate the coverage report from the unit test results
@@ -439,7 +439,7 @@ web-ui-build:
 #    5. Upload the latest version of the Arduino Test Harness sketch to the Arduino (make upload-harness)
 #    6. Verify that the test harness has been uploaded successfully (make verify-harness)
 #    7. Start the Web User Interface in sandbox mode
-#        - Start the Web User Interface backend with HIL integration, this should directly integrate with our HIL framework 
+#        - Start the Web User Interface backend with HIL integration, this should directly integrate with our HIL framework
 #        - Start the Web User Interface frontend and verify that it is running
 #    8. Open the web interface in the default browser
 #    9. Verify that the web interface is running and that the HIL framework is integrated
@@ -768,3 +768,69 @@ validate-story-completion:
 	@make test-unit >/dev/null 2>&1 || (echo "❌ BLOCKING: Unit tests failing"; exit 1)
 	@echo "✅ Unit tests passing"
 	@echo "🎯 Story $(STORY) is READY for completion - all quality gates passed"
+
+# ============================================================================
+# QA COMMAND WRAPPERS (Quinn QA CLI)
+# ============================================================================
+.PHONY: qa-help qa-gate qa-review qa-nfr-assess qa-risk-profile qa-test-design qa-trace
+
+# Show QA CLI commands
+qa-help:
+	@python3 scripts/qa_cli.py help
+
+# Create/update a quality gate file for a story
+# Usage: make qa-gate STORY=1.4 STATUS=PASS REASON="Short rationale"
+qa-gate:
+	@if [ -z "$(STORY)" ]; then \
+		echo "❌ ERROR: STORY parameter required. Usage: make qa-gate STORY=1.4 STATUS=PASS [REASON=...]"; \
+		exit 1; \
+	fi
+	@if [ -z "$(STATUS)" ]; then \
+		echo "❌ ERROR: STATUS parameter required. One of: PASS|CONCERNS|FAIL|WAIVED"; \
+		exit 1; \
+	fi
+	@echo "🧪 Creating/updating QA gate for story $(STORY) with status $(STATUS)..."
+	@python3 scripts/qa_cli.py gate "$(STORY)" --status "$(STATUS)" --reason "$(REASON)"
+	@echo "✅ QA gate updated"
+
+# Placeholders for additional QA flows (will exit with a helpful message until implemented)
+# Usage: make qa-review STORY=1.4
+qa-review:
+	@if [ -z "$(STORY)" ]; then \
+		echo "❌ ERROR: STORY parameter required. Usage: make qa-review STORY=1.4"; \
+		exit 1; \
+	fi
+	@python3 scripts/qa_cli.py review "$(STORY)" || (echo "ℹ️ review command not yet implemented in scripts/qa_cli.py" && exit 1)
+
+# Usage: make qa-nfr-assess STORY=1.4
+qa-nfr-assess:
+	@if [ -z "$(STORY)" ]; then \
+		echo "❌ ERROR: STORY parameter required. Usage: make qa-nfr-assess STORY=1.4"; \
+		exit 1; \
+	fi
+	@python3 scripts/qa_cli.py nfr-assess "$(STORY)" || (echo "ℹ️ nfr-assess command not yet implemented in scripts/qa_cli.py" && exit 1)
+
+# Usage: make qa-risk-profile STORY=1.4
+qa-risk-profile:
+	@if [ -z "$(STORY)" ]; then \
+		echo "❌ ERROR: STORY parameter required. Usage: make qa-risk-profile STORY=1.4"; \
+		exit 1; \
+	fi
+	@python3 scripts/qa_cli.py risk-profile "$(STORY)" || (echo "ℹ️ risk-profile command not yet implemented in scripts/qa_cli.py" && exit 1)
+
+# Usage: make qa-test-design STORY=1.4
+qa-test-design:
+	@if [ -z "$(STORY)" ]; then \
+		echo "❌ ERROR: STORY parameter required. Usage: make qa-test-design STORY=1.4"; \
+		exit 1; \
+	fi
+	@python3 scripts/qa_cli.py test-design "$(STORY)" || (echo "ℹ️ test-design command not yet implemented in scripts/qa_cli.py" && exit 1)
+
+# Usage: make qa-trace STORY=1.4
+qa-trace:
+	@if [ -z "$(STORY)" ]; then \
+		echo "❌ ERROR: STORY parameter required. Usage: make qa-trace STORY=1.4"; \
+		exit 1; \
+	fi
+	@python3 scripts/qa_cli.py trace "$(STORY)" || (echo "ℹ️ trace command not yet implemented in scripts/qa_cli.py" && exit 1)
+

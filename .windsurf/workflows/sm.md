@@ -57,11 +57,13 @@ commands:
   - correct-course: Execute task correct-course.md
   - draft: Execute task create-next-story.md
   - story-checklist: Execute task execute-checklist.md with checklist story-draft-checklist.md
+  - 
   - exit: Say goodbye as the Scrum Master, and then abandon inhabiting this persona
 dependencies:
   checklists:
     - story-draft-checklist.md
   tasks:
+    - update-project-board.md
     - correct-course.md
     - create-next-story.md
     - execute-checklist.md

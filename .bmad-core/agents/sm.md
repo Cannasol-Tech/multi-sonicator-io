@@ -57,6 +57,7 @@ dependencies:
   checklists:
     - story-draft-checklist.md
   tasks:
+    - 
     - correct-course.md
     - create-next-story.md
     - execute-checklist.md
