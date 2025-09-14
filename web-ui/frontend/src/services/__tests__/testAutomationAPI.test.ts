@@ -59,7 +59,7 @@ describe('Test Automation API', () => {
 
       const result = await TestAutomationAPI.getAvailableScenarios()
 
-      expect(fetch).toHaveBeenCalledWith('http://localhost:3001/api/test/scenarios')
+      expect(fetch).toHaveBeenCalledWith('/api/test/scenarios')
       expect(result).toEqual(mockResponse.scenarios)
     })
 
@@ -114,7 +114,7 @@ describe('Test Automation API', () => {
       const executionId = 'exec-123'
       const result = await TestAutomationAPI.executeScenarios(scenarioNames, executionId)
 
-      expect(fetch).toHaveBeenCalledWith('http://localhost:3001/api/test/execute', {
+      expect(fetch).toHaveBeenCalledWith('/api/test/execute', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -153,7 +153,7 @@ describe('Test Automation API', () => {
 
       await TestAutomationAPI.executeScenarios(['scenario-1'], 'exec-123')
 
-      expect(fetch).toHaveBeenCalledWith('http://localhost:3001/api/test/execute', {
+      expect(fetch).toHaveBeenCalledWith('/api/test/execute', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -175,7 +175,7 @@ describe('Test Automation API', () => {
 
       const result = await TestAutomationAPI.stopExecution()
 
-      expect(fetch).toHaveBeenCalledWith('http://localhost:3001/api/test/stop', {
+      expect(fetch).toHaveBeenCalledWith('/api/test/stop', {
         method: 'POST'
       })
       expect(result).toBe(true)
@@ -217,7 +217,7 @@ describe('Test Automation API', () => {
 
       const result = await TestAutomationAPI.getScenariosByTags(['@smoke'])
 
-      expect(fetch).toHaveBeenCalledWith('http://localhost:3001/api/test/scenarios/tags/@smoke')
+      expect(fetch).toHaveBeenCalledWith('/api/test/scenarios/tags/@smoke')
       expect(result).toEqual(mockResponse.scenarios)
     })
 
@@ -256,7 +256,7 @@ describe('Test Automation API', () => {
 
       const result = await TestAutomationAPI.getExecutionStatus()
 
-      expect(fetch).toHaveBeenCalledWith('http://localhost:3001/api/test/execution')
+      expect(fetch).toHaveBeenCalledWith('/api/test/execution')
       expect(result).toEqual(mockStatus)
     })
 
@@ -283,7 +283,7 @@ describe('Test Automation API', () => {
 
       const result = await TestAutomationAPI.getAvailableTags()
 
-      expect(fetch).toHaveBeenCalledWith('http://localhost:3001/api/test/tags')
+      expect(fetch).toHaveBeenCalledWith('/api/test/tags')
       expect(result).toEqual(mockResponse.tags)
     })
 

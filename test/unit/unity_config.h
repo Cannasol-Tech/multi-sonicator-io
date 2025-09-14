@@ -13,9 +13,6 @@
 #ifndef UNITY_CONFIG_H
 #define UNITY_CONFIG_H
 
-// Unity Framework Includes
-#include <unity.h>
-
 // Standard Library Includes for Native Testing
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,7 +22,7 @@
 #include <time.h>
 
 // ============================================================================
-// UNITY CONFIGURATION MACROS
+// UNITY CONFIGURATION MACROS (must be defined BEFORE including unity.h)
 // ============================================================================
 
 // Enable Unity features for comprehensive testing
@@ -34,11 +31,8 @@
 #define UNITY_SUPPORT_64
 #define UNITY_INCLUDE_PRINT_FORMATTED
 
-// Test output configuration
-#define UNITY_OUTPUT_CHAR(c)    putchar(c)
-#define UNITY_OUTPUT_FLUSH()    fflush(stdout)
-#define UNITY_OUTPUT_START()    printf("Unity Test Framework - Multi-Sonicator I/O Controller\n")
-#define UNITY_OUTPUT_COMPLETE() printf("\n--- Test Execution Complete ---\n")
+// Unity Framework Include (AFTER configuration)
+#include <unity.h>
 
 // Memory allocation for dynamic tests (if needed)
 // #define UNITY_FIXTURE_MALLOC(size)    malloc(size)

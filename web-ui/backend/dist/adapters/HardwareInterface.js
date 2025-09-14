@@ -70,13 +70,14 @@ class HardwareInterface extends events_1.EventEmitter {
     async initialize() {
         try {
             console.log('Initializing hardware interface with auto-detection...');
-            // First, try to auto-detect Arduino test harness
+            // Fallback: First, try to auto-detect Arduino test harness
             const detectedPort = await this.detectHardware();
             if (detectedPort) {
                 console.log(`Auto-detected Arduino test harness on port: ${detectedPort}`);
             }
-            // Spawn Python HIL interface process
-            this.pythonProcess = (0, child_process_1.spawn)('python3', [
+            // Spawn Python HIL interface process using the web-ui venv
+            const pythonPath = `${process.cwd()}/../venv/bin/python`;
+            this.pythonProcess = (0, child_process_1.spawn)(pythonPath, [
                 '-c', `
 import sys
 import os
@@ -120,7 +121,7 @@ except ImportError:
             self.frequency_thread = threading.Thread(target=self.frequency_generator, daemon=True)
             self.frequency_thread.start()
 
-        def connect(self):
+        def verify_connection(self):
             print('{"type": "connection", "status": "connected", "port": "mock"}')
             return True
 
@@ -270,7 +271,7 @@ import threading
 hil = HardwareInterface()
 
 try:
-    if hil.connect():
+    if hil.verify_connection():
         print(json.dumps({"type": "connection", "status": "connected", "port": hil.serial_port}))
         sys.stdout.flush()
         
@@ -360,8 +361,9 @@ except Exception as e:
     sys.exit(1)
 `
             ], {
-                cwd: process.cwd(),
-                stdio: ['pipe', 'pipe', 'pipe']
+                cwd: `${process.cwd()}/../..`,
+                stdio: ['pipe', 'pipe', 'pipe'],
+                env: { ...process.env, PYTHONPATH: `${process.cwd()}/../../test/acceptance:${process.env.PYTHONPATH || ''}` }
             });
             this.pythonProcess.stdout?.on('data', (data) => {
                 const lines = data.toString().split('\n').filter((line) => line.trim());
@@ -565,19 +567,17 @@ except Exception as e:
     getPinStates() {
         return new Map(this.pinStates);
     }
-    isConnected() {
-        return this.connected;
-    }
     getSerialPort() {
         return this.serialPort;
     }
     async detectHardware() {
         try {
             // Use existing hardware detection script
-            const detectProcess = (0, child_process_1.spawn)('python3', [
+            const pythonPath = `${process.cwd()}/../venv/bin/python`;
+            const detectProcess = (0, child_process_1.spawn)(pythonPath, [
                 'scripts/detect_hardware.py'
             ], {
-                cwd: process.cwd(),
+                cwd: `${process.cwd()}/../..`,
                 stdio: ['pipe', 'pipe', 'pipe']
             });
             return new Promise((resolve) => {
@@ -732,6 +732,69 @@ except Exception as e:
                 config: this.configuration
             };
         }
+    }
+    // Web UI Communication Methods
+    async ping() {
+        const startTime = Date.now();
+        try {
+            const command = {
+                command: 'ping',
+                args: [],
+                expectResponse: true
+            };
+            const result = await this.sendCommand(command);
+            return {
+                success: result.success,
+                data: result.data,
+                error: result.error,
+                responseTime: Date.now() - startTime
+            };
+        }
+        catch (error) {
+            return {
+                success: false,
+                error: `Ping failed: ${error}`,
+                responseTime: Date.now() - startTime
+            };
+        }
+    }
+    async getInfo() {
+        try {
+            const command = {
+                command: 'info',
+                args: [],
+                expectResponse: true
+            };
+            return await this.sendCommand(command);
+        }
+        catch (error) {
+            return {
+                success: false,
+                error: `Get info failed: ${error}`
+            };
+        }
+    }
+    async getStatus(sonicator = 4) {
+        try {
+            const command = {
+                command: 'status',
+                args: [sonicator.toString()],
+                expectResponse: true
+            };
+            return await this.sendCommand(command);
+        }
+        catch (error) {
+            return {
+                success: false,
+                error: `Get status failed: ${error}`
+            };
+        }
+    }
+    isConnected() {
+        return this.connected;
+    }
+    getPortPath() {
+        return this.serialPort;
     }
 }
 exports.HardwareInterface = HardwareInterface;

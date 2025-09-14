@@ -100,7 +100,7 @@ Executive Reporting JSONField definitions:
 - **createdAt**: ISO timestamp of artifact generation.
 - **summary**: Totals for acceptance scenarios and overall duration in ms.
 - **scenarios**:
-  - **feature**: Grouping or feature name. (e.g., `Sonicator Amplitude Control`)  -- Feature Specifications for a given project can be found in `docs/agile/features/` directory.
+  - **feature**: Grouping or feature name. (e.g., `Sonicator Amplitude Control`)  -- Feature Specifications for a given project can be found in `docs/features/` directory.
   - **name**: Scenario title. (e.g., `Amplitude control per unit`)
   - **status**: `passed|failed|skipped|unknown`.
   - **durationMs**: Execution time in ms.

@@ -1,0 +1,245 @@
+feature_file,scenario,todo_key,trace_key,status,tags
+test/acceptance/features/hil_signal_testing.feature,AC5 - Digital signal generation and monitoring,,,ready,@hil @signal_testing @hil @ac5 @digital_signals @hil @ac5 @analog_signals
+test/acceptance/features/hil_signal_testing.feature,AC5 - Analog signal generation and ADC monitoring,,,ready,@hil @ac5 @pwm_signals
+test/acceptance/features/hil_signal_testing.feature,AC5 - PWM signal generation and monitoring,,,ready,@hil @ac5 @frequency_signals
+test/acceptance/features/hil_signal_testing.feature,AC5 - Frequency signal generation,,,ready,@hil @ac5 @uart_communication
+test/acceptance/features/hil_signal_testing.feature,AC5 - UART communication testing,,,ready,@hil @ac5 @signal_stability
+test/acceptance/features/hil_signal_testing.feature,Signal generation stability and accuracy,,,ready,@hil @ac5 @signal_edge_cases
+test/acceptance/features/hil_signal_testing.feature,Signal generation edge cases and limits,,,ready,
+test/acceptance/features/control.feature,SC-001 Amplitude control per unit,,,pending,@pending @pending @req-amplitude @prd-5-functional @prd-10-api @reg-40001-40004 @hil @pending @req-startstop @prd-5-functional @prd-10-api @reg-40005-40008 @hil
+test/acceptance/features/control.feature,SC-002 Start/Stop per unit,,,pending,@pending @req-overload-reset @prd-5-functional @prd-10-api @reg-40009-40012 @hil
+test/acceptance/features/control.feature,SC-003 Overload Reset pulse semantics,,,pending,@pending @req-amplitude-clamp @prd-6-nfr @reg-40001-40004 @hil
+test/acceptance/features/ci.feature,SC-025 CI drift check: PRD vs include/config.h,,,ready,@req-ci-drift @prd-17-risk @hil
+test/acceptance/features/hal.feature,HAL basic acceptance,,,pending,@hal @implemented @pending
+test/acceptance/features/hal.feature,HAL advanced acceptance (pending implementation),,,ready,
+test/acceptance/features/modbus_conformance.feature,MODBUS protocol conformance (FC03/FC06/FC16 basics),modbus-rtu-conformance,modbus-interface,pending,@modbus @documentation @trace:modbus-interface @pending @hil @TODO:modbus-rtu-conformance @trace:modbus-conformance @pending @hil @TODO:modbus-performance @trace:modbus-performance
+test/acceptance/features/modbus_conformance.feature,Communication performance under load,modbus-error-handling,modbus-errors,pending,@pending @hil @TODO:modbus-error-handling @trace:modbus-errors
+test/acceptance/features/modbus_conformance.feature,Illegal address and CRC error handling,modbus-legacy-addressing,modbus-legacy,pending,@pending @hil @TODO:modbus-legacy-addressing @trace:modbus-legacy
+test/acceptance/features/modbus_conformance.feature,Legacy 4xxxx addressing examples for HMI,,,ready,
+test/acceptance/features/hil_adc_verification.feature,POWER_SENSE_4 ADC channel verification,,,ready,@hil @hardware @adc @hil @hardware @adc
+test/acceptance/features/hil_adc_verification.feature,POWER_SENSE_4 mid-scale verification,,,ready,@hil @hardware @adc
+test/acceptance/features/hil_adc_verification.feature,POWER_SENSE_4 full-scale verification,,,ready,@hil @hardware @adc
+test/acceptance/features/hil_adc_verification.feature,Power measurement scaling verification,,,ready,@hil @hardware @adc
+test/acceptance/features/hil_adc_verification.feature,ADC noise and stability,,,ready,@hil @hardware @adc
+test/acceptance/features/hil_adc_verification.feature,Multiple ADC channel independence,,,ready,
+test/acceptance/features/hil_smoke.feature,HIL-001 Wrapper responds to PING,,,ready,@hil @smoke
+test/acceptance/features/sonicator.feature,Sonicator basic acceptance,,,pending,@sonicator @implemented @pending
+test/acceptance/features/sonicator.feature,Sonicator advanced acceptance (pending implementation),,,ready,
+test/acceptance/features/hil_basic_connectivity.feature,Power supply verification,,,ready,@hil @hardware @connectivity @hil @hardware @connectivity
+test/acceptance/features/hil_basic_connectivity.feature,Programming interface verification,,,ready,@hil @hardware @connectivity
+test/acceptance/features/hil_basic_connectivity.feature,Serial communication establishment,,,ready,@hil @hardware @connectivity
+test/acceptance/features/hil_basic_connectivity.feature,Arduino Test Harness ping test,,,ready,
+test/acceptance/features/web_ui_tag_filtering.feature,TGF-001 Display available Behave tags,,,ready,@web-ui @tag-filtering @behave-tags @critical @smoke @tag-display @tag-filtering @single-tag
+test/acceptance/features/web_ui_tag_filtering.feature,TGF-002 Filter scenarios by single tag,,,ready,@tag-filtering @multiple-tags
+test/acceptance/features/web_ui_tag_filtering.feature,TGF-003 Filter scenarios by multiple tags (AND logic),,,ready,@tag-filtering @or-logic
+test/acceptance/features/web_ui_tag_filtering.feature,TGF-004 Filter scenarios by multiple tags (OR logic),,,ready,@tag-search @dynamic-filtering
+test/acceptance/features/web_ui_tag_filtering.feature,TGF-005 Search and filter tags dynamically,,,ready,@tag-categories @organization
+test/acceptance/features/web_ui_tag_filtering.feature,TGF-006 Browse tags by category,,,ready,@tag-execution @filtered-run
+test/acceptance/features/web_ui_tag_filtering.feature,TGF-007 Execute tests based on tag selection,,,ready,@tag-presets @quick-selection
+test/acceptance/features/web_ui_tag_filtering.feature,TGF-008 Use predefined tag preset combinations,,,ready,@tag-management @custom-combinations
+test/acceptance/features/web_ui_tag_filtering.feature,TGF-009 Save custom tag combinations,,,ready,@tag-validation @edge-cases
+test/acceptance/features/web_ui_tag_filtering.feature,TGF-010 Handle edge cases in tag filtering,,,ready,@tag-performance @large-datasets
+test/acceptance/features/web_ui_tag_filtering.feature,TGF-011 Handle large numbers of tags efficiently,,,ready,
+test/acceptance/features/hil_hardware_setup.feature,AC1 - Physical hardware test harness operational with Arduino Test Wrapper,,,ready,@hil @hardware_setup @hil @ac1 @physical_harness @hil @ac2 @dut_connection
+test/acceptance/features/hil_hardware_setup.feature,AC2 - ATmega32A Sonicator Multiplexer DUT properly connected and powered,,,ready,@hil @ac3 @isp_programming
+test/acceptance/features/hil_hardware_setup.feature,AC3 - ISP programming interface functional for firmware deployment,,,ready,@hil @ac2 @ac3 @power_validation
+test/acceptance/features/hil_hardware_setup.feature,Power supply validation and ISP functionality,,,ready,@hil @ac1 @ac2 @ac3 @integration
+test/acceptance/features/hil_hardware_setup.feature,Complete hardware setup integration test,,,ready,
+test/acceptance/features/communication.feature,Communication basic acceptance,,,ready,@communication @implemented
+test/acceptance/features/amplitude_control.feature,Reject out-of-range amplitude for Sonicator 4,,,ready,@us-003 @us-003 @invalid
+test/acceptance/features/hil_automated_testing.feature,AC6 - Automated test execution with hardware validation,,,ready,@hil @automated_testing @hil @ac6 @automated_execution @hil @ac6 @hardware_validation
+test/acceptance/features/hil_automated_testing.feature,Hardware validation during automated testing,,,ready,@hil @ac7 @result_collection
+test/acceptance/features/hil_automated_testing.feature,AC7 - Test result collection and reporting from physical hardware,,,ready,@hil @ac7 @comprehensive_reporting
+test/acceptance/features/hil_automated_testing.feature,Comprehensive test result reporting,,,ready,@hil @ac6 @ac7 @test_scheduling
+test/acceptance/features/hil_automated_testing.feature,Automated test scheduling and execution,,,ready,@hil @ac6 @parallel_testing
+test/acceptance/features/hil_automated_testing.feature,Parallel test execution capabilities,,,ready,@hil @ac7 @real_time_monitoring
+test/acceptance/features/hil_automated_testing.feature,Real-time test monitoring and data collection,,,ready,@hil @ac6 @ac7 @regression_testing
+test/acceptance/features/hil_automated_testing.feature,Automated regression testing with historical comparison,,,ready,
+test/acceptance/features/monitoring.feature,SC-004 Power monitoring scaling,,,pending,@pending @req-power @prd-10-api @reg-40013-40016 @hil @req-frequency @prd-10-api @reg-40017-40020 @hil
+test/acceptance/features/monitoring.feature,SC-005 Frequency monitoring,,,ready,@req-status-flags @prd-10-api @reg-40021-40024 @hil
+test/acceptance/features/monitoring.feature,SC-006 Status flags,,,ready,@req-runtimes @reg-40027-40030 @hil
+test/acceptance/features/monitoring.feature,SC-015 Per-unit runtimes,,,ready,@req-overload-counts @reg-40031-40034 @hil
+test/acceptance/features/monitoring.feature,SC-016 Overload counts,,,ready,@req-freq-lock @hil
+test/acceptance/features/monitoring.feature,SC-019 Frequency lock behavior,,,ready,
+test/acceptance/features/hil_hardware_abstraction.feature,AC4 - Test wrapper communication protocol implementation,,,ready,@hil @hardware_abstraction @hil @ac4 @communication_protocol @hil @ac4 @hardware_abstraction
+test/acceptance/features/hil_hardware_abstraction.feature,Hardware abstraction for test automation,,,ready,@hil @ac4 @signal_abstraction
+test/acceptance/features/hil_hardware_abstraction.feature,Test signal generation abstraction,,,ready,@hil @ac4 @monitoring_abstraction
+test/acceptance/features/hil_hardware_abstraction.feature,Hardware monitoring and data collection abstraction,,,ready,@hil @ac4 @control_interface
+test/acceptance/features/hil_hardware_abstraction.feature,Test execution control interface,,,ready,@hil @ac4 @error_handling
+test/acceptance/features/hil_hardware_abstraction.feature,Hardware abstraction error handling,,,ready,@hil @ac4 @configuration_management
+test/acceptance/features/hil_hardware_abstraction.feature,Hardware configuration management through abstraction,,,ready,
+test/acceptance/features/timing.feature,SC-009 Latency ≤100 ms (representative),,,pending,@pending @req-latency @hil @req-latency @hil
+test/acceptance/features/timing.feature,"SC-009B Latency matrix (overload reset, frequency)",,,ready,
+test/acceptance/features/hil_power_verification.feature,Input power supply verification,,,ready,@hil @hardware @power @hil @hardware @power
+test/acceptance/features/hil_power_verification.feature,Regulated power rail verification,,,ready,@hil @hardware @power
+test/acceptance/features/hil_power_verification.feature,Power supply load regulation,,,ready,@hil @hardware @power
+test/acceptance/features/hil_power_verification.feature,Crystal oscillator verification,,,ready,@hil @hardware @power
+test/acceptance/features/hil_power_verification.feature,Power-on sequence verification,,,ready,@hil @hardware @power
+test/acceptance/features/hil_power_verification.feature,Brown-out detection verification,,,ready,
+test/acceptance/features/modbus.feature,SC-020 FC16 multiple write boundary cases,,,pending,@pending @req-fc16 @hil @req-illegal-address @hil
+test/acceptance/features/modbus.feature,SC-021 Illegal address handling,,,ready,@req-slave-id @hil
+test/acceptance/features/modbus.feature,SC-022 Slave ID configuration,,,ready,@req-crc @hil
+test/acceptance/features/modbus.feature,SC-023 CRC error handling,,,ready,
+test/acceptance/features/hil_pwm_generation.feature,Basic PWM output generation,,,ready,@hil @hardware @pwm @hil @hardware @pwm
+test/acceptance/features/hil_pwm_generation.feature,PWM duty cycle variation,,,ready,@hil @hardware @pwm
+test/acceptance/features/hil_pwm_generation.feature,PWM frequency accuracy,,,ready,@hil @hardware @pwm
+test/acceptance/features/hil_pwm_generation.feature,PWM voltage levels,,,ready,@hil @hardware @pwm
+test/acceptance/features/hil_pwm_generation.feature,PWM signal stability,,,ready,@hil @hardware @pwm
+test/acceptance/features/hil_pwm_generation.feature,PWM disable and enable,,,ready,
+test/acceptance/features/web_ui_test_results.feature,TRR-001 Display test execution overview,,,ready,@web-ui @test-results @reporting @critical @smoke @results-overview @results-details @scenario-breakdown
+test/acceptance/features/web_ui_test_results.feature,TRR-002 Show detailed scenario results,,,ready,@failure-analysis @error-details
+test/acceptance/features/web_ui_test_results.feature,TRR-003 Analyze test failures in detail,,,ready,@step-tracking @granular-results
+test/acceptance/features/web_ui_test_results.feature,TRR-004 View step-by-step execution results,,,ready,@filtering @results-search
+test/acceptance/features/web_ui_test_results.feature,TRR-005 Filter and search test results,,,ready,@comparison @historical-analysis
+test/acceptance/features/web_ui_test_results.feature,TRR-006 Compare results across executions,,,ready,@export @report-generation
+test/acceptance/features/web_ui_test_results.feature,TRR-007 Export results in multiple formats,,,ready,@charts @visualizations
+test/acceptance/features/web_ui_test_results.feature,TRR-008 Generate visual result analytics,,,ready,@notifications @alerts-reporting
+test/acceptance/features/web_ui_test_results.feature,TRR-009 Configure result notifications,,,ready,@archival @data-retention
+test/acceptance/features/web_ui_test_results.feature,TRR-010 Manage test result data lifecycle,,,ready,@integration @ci-cd-reporting
+test/acceptance/features/web_ui_test_results.feature,TRR-011 Integrate with CI/CD pipeline reporting,,,ready,
+test/acceptance/features/hil_safety_systems.feature,AC8 - Emergency stop procedures and response time,,,ready,@hil @safety_systems @hil @ac8 @emergency_stop @hil @ac8 @safety_interlocks
+test/acceptance/features/hil_safety_systems.feature,Safety interlocks and fault detection,,,ready,@hil @ac8 @overload_protection
+test/acceptance/features/hil_safety_systems.feature,Overload protection and monitoring,,,ready,@hil @ac8 @power_safety
+test/acceptance/features/hil_safety_systems.feature,Power system safety monitoring,,,ready,@hil @ac8 @communication_safety
+test/acceptance/features/hil_safety_systems.feature,Communication safety and timeout handling,,,ready,@hil @ac8 @thermal_protection
+test/acceptance/features/hil_safety_systems.feature,Thermal protection and monitoring,,,ready,@hil @ac8 @safety_system_testing
+test/acceptance/features/hil_safety_systems.feature,Safety system self-testing and validation,,,ready,@hil @ac8 @safety_logging
+test/acceptance/features/hil_safety_systems.feature,Safety incident logging and reporting,,,ready,@hil @ac8 @fail_safe_behavior
+test/acceptance/features/hil_safety_systems.feature,Fail-safe behavior under various fault conditions,,,ready,
+test/acceptance/features/smoke.feature,SMK-001 Harness runs a passing step,,,ready,@smoke @hil @smoke @web-ui @acceptance
+test/acceptance/features/smoke.feature,SMK-002 Web UI Smoke Acceptance Test,,,ready,
+test/acceptance/features/hil_gpio_functionality.feature,Digital output control - START_4 pin,,,ready,@hil @hardware @gpio @hil @hardware @gpio
+test/acceptance/features/hil_gpio_functionality.feature,Digital output control - RESET_4 pin,,,ready,@hil @hardware @gpio
+test/acceptance/features/hil_gpio_functionality.feature,Digital input reading - OVERLOAD_4 pin,,,ready,@hil @hardware @gpio
+test/acceptance/features/hil_gpio_functionality.feature,Digital input reading - FREQ_LOCK_4 pin,,,ready,@hil @hardware @gpio
+test/acceptance/features/hil_gpio_functionality.feature,Pin state persistence,,,ready,@hil @hardware @gpio
+test/acceptance/features/hil_gpio_functionality.feature,Status LED control,,,ready,
+test/acceptance/features/complete_modbus_interface.feature,Complete system status register testing,,,ready,@modbus @interface @critical @modbus @interface @critical
+test/acceptance/features/complete_modbus_interface.feature,Global control register testing,,,ready,@modbus @interface @comprehensive
+test/acceptance/features/complete_modbus_interface.feature,Complete sonicator 1 register interface testing,,,ready,@modbus @interface @comprehensive
+test/acceptance/features/complete_modbus_interface.feature,Complete sonicator 2 register interface testing,,,ready,@modbus @interface @comprehensive
+test/acceptance/features/complete_modbus_interface.feature,Complete sonicator 3 register interface testing,,,ready,@modbus @interface @comprehensive
+test/acceptance/features/complete_modbus_interface.feature,Complete sonicator 4 register interface testing,,,ready,@modbus @interface @validation
+test/acceptance/features/complete_modbus_interface.feature,MODBUS function code 03 (Read Holding Registers) testing,,,ready,@modbus @interface @validation
+test/acceptance/features/complete_modbus_interface.feature,MODBUS function code 06 (Write Single Register) testing,,,ready,@modbus @interface @validation
+test/acceptance/features/complete_modbus_interface.feature,MODBUS function code 16 (Write Multiple Registers) testing,,,ready,@modbus @interface @error-handling
+test/acceptance/features/complete_modbus_interface.feature,MODBUS error handling and exception responses,,,ready,@modbus @interface @performance
+test/acceptance/features/complete_modbus_interface.feature,MODBUS communication performance testing,,,ready,@modbus @interface @stress-testing
+test/acceptance/features/complete_modbus_interface.feature,MODBUS communication stress testing,,,ready,@modbus @interface @legacy-compatibility
+test/acceptance/features/complete_modbus_interface.feature,Legacy MODBUS register mapping compatibility,,,ready,@modbus @interface @concurrent-access
+test/acceptance/features/complete_modbus_interface.feature,Concurrent MODBUS access testing,,,pending,@pending @modbus @interface @advanced-functions
+test/acceptance/features/complete_modbus_interface.feature,Advanced MODBUS function codes,,,ready,
+test/acceptance/features/executive_reporting.feature,SC-011 Executive report artifact,,,pending,@pending @req-exec-report @hil
+test/acceptance/features/regulatory_compliance.feature,FDA 21 CFR Part 11 compliance validation,,,ready,@compliance @regulatory @critical @compliance @regulatory @critical
+test/acceptance/features/regulatory_compliance.feature,ISO 9001 quality management compliance,,,ready,@compliance @regulatory @safety
+test/acceptance/features/regulatory_compliance.feature,IEC 61508 functional safety compliance,,,ready,@compliance @regulatory @electrical
+test/acceptance/features/regulatory_compliance.feature,IEC 61010 electrical safety compliance,,,ready,@compliance @regulatory @emc
+test/acceptance/features/regulatory_compliance.feature,EMC directive compliance (2014/30/EU),,,ready,@compliance @regulatory @environmental
+test/acceptance/features/regulatory_compliance.feature,RoHS directive compliance (2011/65/EU),,,ready,@compliance @regulatory @data-protection
+test/acceptance/features/regulatory_compliance.feature,GDPR data protection compliance,,,ready,@compliance @regulatory @cybersecurity
+test/acceptance/features/regulatory_compliance.feature,IEC 62443 industrial cybersecurity compliance,,,ready,@compliance @regulatory @calibration
+test/acceptance/features/regulatory_compliance.feature,ISO/IEC 17025 calibration compliance,,,ready,@compliance @regulatory @documentation
+test/acceptance/features/regulatory_compliance.feature,Technical documentation compliance,,,pending,@pending @compliance @regulatory @medical
+test/acceptance/features/regulatory_compliance.feature,Medical device regulation compliance (MDR 2017/745),,,pending,@pending @compliance @regulatory @export
+test/acceptance/features/regulatory_compliance.feature,Export control compliance,,,pending,@pending @compliance @regulatory @environmental-management
+test/acceptance/features/regulatory_compliance.feature,ISO 14001 environmental management compliance,,,pending,@pending @compliance @regulatory @energy-efficiency
+test/acceptance/features/regulatory_compliance.feature,Energy efficiency directive compliance,,,ready,
+test/acceptance/features/web_ui_test_automation.feature,TAU-001 Load test scenarios from backend,,,ready,@web-ui @test-automation @critical @smoke @ui-basic @ui-controls @scenario-selection
+test/acceptance/features/web_ui_test_automation.feature,TAU-002 Select individual test scenarios,,,ready,@ui-controls @bulk-selection
+test/acceptance/features/web_ui_test_automation.feature,TAU-003 Select all scenarios at once,,,ready,@test-execution @individual
+test/acceptance/features/web_ui_test_automation.feature,TAU-004 Execute individual test scenario,,,ready,@test-execution @full-suite
+test/acceptance/features/web_ui_test_automation.feature,TAU-005 Execute full acceptance test suite,,,ready,@test-execution @stop-execution
+test/acceptance/features/web_ui_test_automation.feature,TAU-006 Stop running test execution,,,ready,@test-results @modal
+test/acceptance/features/web_ui_test_automation.feature,TAU-007 View detailed test results,,,ready,@test-results @export
+test/acceptance/features/web_ui_test_automation.feature,TAU-008 Export test execution results,,,ready,
+test/acceptance/features/system.feature,SC-007 Active Sonicator Count,,,pending,@pending @req-active-count @reg-40035 @hil @req-active-mask @reg-40036 @hil
+test/acceptance/features/system.feature,SC-008 Active Sonicator Mask,,,ready,@req-system-status @reg-40025 @hil
+test/acceptance/features/system.feature,SC-013 System status bitfield,,,ready,@req-active-transitions @reg-40035 @reg-40036 @hil
+test/acceptance/features/system.feature,SC-017 Active transitions stability,,,ready,
+test/acceptance/features/web_ui_progress_monitoring.feature,TPM-001 Display basic progress information,,,ready,@web-ui @progress-monitoring @real-time @critical @smoke @basic-progress @progress-bar @iridescent
+test/acceptance/features/web_ui_progress_monitoring.feature,TPM-002 Show iridescent progress bar animation,,,ready,@step-tracking @detailed-progress
+test/acceptance/features/web_ui_progress_monitoring.feature,TPM-003 Track individual test step progress,,,ready,@scenario-status @live-updates
+test/acceptance/features/web_ui_progress_monitoring.feature,TPM-004 Show live scenario execution status,,,ready,@statistics @counters
+test/acceptance/features/web_ui_progress_monitoring.feature,TPM-005 Display execution statistics,,,ready,@timing @duration-tracking
+test/acceptance/features/web_ui_progress_monitoring.feature,TPM-006 Track execution timing and duration,,,ready,@error-handling @failure-details
+test/acceptance/features/web_ui_progress_monitoring.feature,TPM-007 Display detailed failure information,,,ready,@performance @resource-monitoring
+test/acceptance/features/web_ui_progress_monitoring.feature,TPM-008 Monitor system resource usage,,,ready,@websocket @connectivity
+test/acceptance/features/web_ui_progress_monitoring.feature,TPM-009 Handle WebSocket connection issues,,,ready,@notifications @alerts
+test/acceptance/features/web_ui_progress_monitoring.feature,TPM-010 Show execution notifications and alerts,,,ready,@history @execution-log
+test/acceptance/features/web_ui_progress_monitoring.feature,TPM-011 Maintain execution history log,,,ready,@export @progress-data
+test/acceptance/features/web_ui_progress_monitoring.feature,TPM-012 Export progress monitoring data,,,ready,
+test/acceptance/features/system_integration_complete.feature,Complete system startup and initialization,,,ready,@system @integration @critical @system @integration @critical
+test/acceptance/features/system_integration_complete.feature,Four-sonicator simultaneous operation,,,ready,@system @integration @critical
+test/acceptance/features/system_integration_complete.feature,Sequential sonicator control with monitoring,,,ready,@system @integration @safety
+test/acceptance/features/system_integration_complete.feature,Emergency stop functionality,,,ready,@system @integration @fault-handling
+test/acceptance/features/system_integration_complete.feature,Overload detection and recovery,,,ready,@system @integration @communication
+test/acceptance/features/system_integration_complete.feature,MODBUS communication reliability under load,,,ready,@system @integration @performance
+test/acceptance/features/system_integration_complete.feature,System performance under maximum load,,,ready,@system @integration @timing
+test/acceptance/features/system_integration_complete.feature,Response time requirements validation,,,ready,@system @integration @data-integrity
+test/acceptance/features/system_integration_complete.feature,Telemetry data accuracy and consistency,,,ready,@system @integration @configuration
+test/acceptance/features/system_integration_complete.feature,System configuration persistence,,,pending,@pending @system @integration @advanced
+test/acceptance/features/system_integration_complete.feature,Advanced diagnostics and health monitoring,,,pending,@pending @system @integration @networking
+test/acceptance/features/system_integration_complete.feature,Multi-controller network operation,,,pending,@pending @system @integration @calibration
+test/acceptance/features/system_integration_complete.feature,Automated system calibration,,,ready,
+test/acceptance/features/hil_framework_hardware_verification.feature,Pin Matrix Verification against authoritative mapping,pin-matrix-verification,hil-testing-framework,pending,@hil @hardware @documentation @trace:hil-testing-framework @pending @hil @TODO:pin-matrix-verification @trace:hil-pin-matrix @pending @hil @TODO:hil-bdd-execution @trace:hil-bdd-execution
+test/acceptance/features/hil_framework_hardware_verification.feature,Execute BDD scenarios on physical hardware,web-ui-modbus-monitoring,web-ui-modbus,pending,@pending @hil @web-ui @TODO:web-ui-modbus-monitoring @trace:web-ui-modbus
+test/acceptance/features/hil_framework_hardware_verification.feature,Web UI displays real-time MODBUS values,sandbox-cli-debug,sandbox-cli,pending,@pending @hil @cli @TODO:sandbox-cli-debug @trace:sandbox-cli
+test/acceptance/features/hil_framework_hardware_verification.feature,Sandbox CLI provides manual hardware control,isp-programming,isp-interface,pending,@pending @hil @programming @TODO:isp-programming @trace:isp-interface
+test/acceptance/features/hil_framework_hardware_verification.feature,ISP programming interface functional,ct2000-interface-validation,ct2000-signals,pending,@pending @hil @ct2000 @TODO:ct2000-interface-validation @trace:ct2000-signals
+test/acceptance/features/hil_framework_hardware_verification.feature,CT2000 interface signals are validated end-to-end,,,ready,
+test/acceptance/features/hil_ci_integration.feature,AC10 - Integration with CI/CD pipeline for automated HIL testing,,,ready,@hil @ci_integration @hil @ac10 @ci_pipeline_integration @hil @ac10 @hardware_availability_check
+test/acceptance/features/hil_ci_integration.feature,Hardware availability checking in CI/CD,,,ready,@hil @ac10 @automated_test_execution
+test/acceptance/features/hil_ci_integration.feature,Automated HIL test execution in CI/CD,,,ready,@hil @ac10 @test_result_integration
+test/acceptance/features/hil_ci_integration.feature,HIL test result integration with CI/CD reporting,,,ready,@hil @ac10 @parallel_pipeline_execution
+test/acceptance/features/hil_ci_integration.feature,Parallel HIL testing in CI/CD pipelines,,,ready,@hil @ac10 @build_gate_integration
+test/acceptance/features/hil_ci_integration.feature,HIL testing as a build gate,,,ready,@hil @ac10 @deployment_validation
+test/acceptance/features/hil_ci_integration.feature,HIL testing for deployment validation,,,ready,@hil @ac10 @continuous_monitoring
+test/acceptance/features/hil_ci_integration.feature,Continuous HIL monitoring in production pipeline,,,ready,@hil @ac10 @metrics_and_reporting
+test/acceptance/features/hil_ci_integration.feature,HIL testing metrics and CI/CD reporting,,,ready,
+test/acceptance/features/production_validation.feature,Factory acceptance test sequence,,,ready,@production @validation @critical @production @validation @environmental
+test/acceptance/features/production_validation.feature,Environmental stress testing,,,ready,@production @validation @electrical
+test/acceptance/features/production_validation.feature,Electrical safety and compliance validation,,,ready,@production @validation @reliability
+test/acceptance/features/production_validation.feature,Long-term reliability testing,,,ready,@production @validation @performance
+test/acceptance/features/production_validation.feature,Performance specification validation,,,ready,@production @validation @safety
+test/acceptance/features/production_validation.feature,Safety system validation,,,ready,@production @validation @modbus
+test/acceptance/features/production_validation.feature,MODBUS protocol compliance validation,,,ready,@production @validation @interoperability
+test/acceptance/features/production_validation.feature,PLC integration validation,,,ready,@production @validation @manufacturing
+test/acceptance/features/production_validation.feature,Manufacturing test automation,,,ready,@production @validation @documentation
+test/acceptance/features/production_validation.feature,Documentation and traceability validation,,,pending,@pending @production @validation @field-upgrade
+test/acceptance/features/production_validation.feature,Field upgrade capability validation,,,pending,@pending @production @validation @remote-monitoring
+test/acceptance/features/production_validation.feature,Remote monitoring and diagnostics,,,pending,@pending @production @validation @predictive-maintenance
+test/acceptance/features/production_validation.feature,Predictive maintenance capabilities,,,ready,
+test/acceptance/features/web_ui_advanced_automation.feature,TAA-001 Create and manage custom test suites,,,ready,@web-ui @advanced-automation @orchestration @critical @test-suites @custom-suites @scheduling @automated-execution
+test/acceptance/features/web_ui_advanced_automation.feature,TAA-002 Schedule automated test executions,,,ready,@parallel-execution @performance
+test/acceptance/features/web_ui_advanced_automation.feature,TAA-003 Execute tests in parallel for faster completion,,,ready,@dependency-management @test-ordering
+test/acceptance/features/web_ui_advanced_automation.feature,TAA-004 Handle test dependencies and execution ordering,,,ready,@retry-policies @resilience
+test/acceptance/features/web_ui_advanced_automation.feature,TAA-005 Configure intelligent retry policies,,,ready,@environment-management @test-data
+test/acceptance/features/web_ui_advanced_automation.feature,TAA-006 Manage test environments and data sets,,,ready,@load-testing @stress-testing
+test/acceptance/features/web_ui_advanced_automation.feature,TAA-007 Perform load and stress testing via web UI,,,ready,@test-data-generation @parameterized-tests
+test/acceptance/features/web_ui_advanced_automation.feature,TAA-008 Generate and use dynamic test data,,,ready,@api-integration @external-systems
+test/acceptance/features/web_ui_advanced_automation.feature,TAA-009 Integrate with external test management systems,,,ready,@custom-reporters @reporting-extensions
+test/acceptance/features/web_ui_advanced_automation.feature,TAA-010 Create custom test result reporters,,,ready,@test-analytics @ml-insights
+test/acceptance/features/web_ui_advanced_automation.feature,TAA-011 Analyze test patterns with machine learning,,,ready,@security-testing @compliance
+test/acceptance/features/web_ui_advanced_automation.feature,TAA-012 Perform security and compliance testing,,,ready,
+test/acceptance/features/safety.feature,SC-012 Watchdog policy is documented,,,pending,@pending @req-watchdog-docs @req-estop @hil
+test/acceptance/features/safety.feature,SC-014 Emergency stop register behavior,,,ready,
+test/acceptance/features/hmi_integration.feature,SC-010 HMI contract adherence (4xxxx convention),,,pending,@pending @req-hmi @hil @pending @req-hmi-addressing @hil
+test/acceptance/features/hmi_integration.feature,SC-024 HMI addressing examples,,,ready,
+test/acceptance/features/hil_modbus_communication.feature,Read System Status Registers,,,ready,@hil @modbus @hardware @hil @modbus @hardware
+test/acceptance/features/hil_modbus_communication.feature,Write and Verify Control Register,,,ready,@hil @modbus @hardware
+test/acceptance/features/hil_modbus_communication.feature,Communication Fault Detection,,,ready,@hil @modbus @hardware
+test/acceptance/features/hil_modbus_communication.feature,Multiple register read operation,,,ready,@hil @modbus @hardware
+test/acceptance/features/hil_modbus_communication.feature,Register write and immediate readback,,,ready,@hil @modbus @hardware
+test/acceptance/features/hil_modbus_communication.feature,Invalid register access handling,,,ready,@hil @modbus @hardware
+test/acceptance/features/hil_modbus_communication.feature,CRC error handling,,,ready,@hil @modbus @hardware
+test/acceptance/features/hil_modbus_communication.feature,Communication timeout handling,,,ready,@hil @modbus @hardware
+test/acceptance/features/hil_modbus_communication.feature,Sonicator control via MODBUS,,,ready,
+test/acceptance/features/hil_configuration_validation.feature,AC9 - Hardware configuration validation against pin matrix,,,ready,@hil @configuration_validation @hil @ac9 @pin_matrix_validation @hil @ac9 @db9_connector_validation
+test/acceptance/features/hil_configuration_validation.feature,DB9 connector mapping validation,,,ready,@hil @ac9 @signal_integrity_validation
+test/acceptance/features/hil_configuration_validation.feature,Signal integrity and electrical validation,,,ready,@hil @ac9 @power_distribution_validation
+test/acceptance/features/hil_configuration_validation.feature,Power distribution validation,,,ready,@hil @ac9 @test_capability_validation
+test/acceptance/features/hil_configuration_validation.feature,Test capability validation against configuration,,,ready,@hil @ac9 @configuration_consistency
+test/acceptance/features/hil_configuration_validation.feature,Configuration consistency validation,,,ready,@hil @ac9 @dynamic_configuration_validation
+test/acceptance/features/hil_configuration_validation.feature,Dynamic configuration validation during operation,,,ready,@hil @ac9 @configuration_version_control
+test/acceptance/features/hil_configuration_validation.feature,Configuration version control and tracking,,,ready,@hil @ac9 @automated_configuration_validation
+test/acceptance/features/hil_configuration_validation.feature,Automated configuration validation in CI/CD,,,ready,

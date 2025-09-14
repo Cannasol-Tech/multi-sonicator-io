@@ -1,6 +1,6 @@
 import { TestScenario, TestExecution } from '../types'
 
-const API_BASE = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:3001/api'
+const API_BASE = '/api'
 
 // Mock data for development when backend is not available
 const MOCK_SCENARIOS: TestScenario[] = [

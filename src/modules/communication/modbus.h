@@ -21,6 +21,8 @@
  * - 0x0000-0x000F: System Status (Read Only)
  * - 0x0010-0x001F: Global Control (Read/Write)
  * - 0x0100-0x041F: Per-Sonicator Registers (Read/Write + Read Only)
+ * 
+ * --Powered By.•^ ~•Axovia•Flow™•~ •∆• Agentic•Framework
  */
 
 #ifndef MODBUS_H

@@ -94,8 +94,8 @@ describe('TestResultsSection Component', () => {
     // Check header
     expect(screen.getByText(/Test Results: test-exec-123/)).toBeInTheDocument()
     
-    // Check summary stats
-    expect(screen.getByText('2')).toBeInTheDocument() // Passed scenarios
+    // Check summary stats (multiple "2" values expected)
+    expect(screen.getAllByText('2')).toHaveLength(2) // Passed scenarios and Total scenarios
     expect(screen.getByText('0')).toBeInTheDocument() // Failed scenarios
     expect(screen.getByText('Passed')).toBeInTheDocument()
     expect(screen.getByText('Failed')).toBeInTheDocument()
@@ -129,8 +129,8 @@ describe('TestResultsSection Component', () => {
     expect(screen.getByText('I set pin D7 to HIGH')).toBeInTheDocument()
     expect(screen.getByText('PWM is configured')).toBeInTheDocument()
     
-    // Check step types
-    expect(screen.getByText('Given')).toBeInTheDocument()
+    // Check step types (multiple instances expected)
+    expect(screen.getAllByText('Given')).toHaveLength(2) // Two "Given" steps in the test data
     expect(screen.getByText('When')).toBeInTheDocument()
     
     // Check pin interactions

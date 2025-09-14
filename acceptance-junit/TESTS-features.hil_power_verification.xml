@@ -1,129 +1,99 @@
-<testsuite name="features.hil_power_verification.Power Supply and Electrical Verification" tests="6" errors="0" failures="6" skipped="0" time="0.0" timestamp="2025-09-05T20:57:34.830570" hostname="Corbans-Mini.home"><testcase classname="features.hil_power_verification.Power Supply and Electrical Verification" name="Input power supply verification" status="failed" time="0"><failure type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the HIL framework is connected ... undefined in 0.000s
-Location: test/acceptance/features/hil_power_verification.feature:7
-None]]>
-</failure><system-out>
+<testsuite name="features.hil_power_verification.Power Supply and Electrical Verification" tests="6" errors="0" failures="0" skipped="6" time="0.0" timestamp="2025-09-12T01:57:26.078955" hostname="Corbans-Mini.home"><testcase classname="features.hil_power_verification.Power Supply and Electrical Verification" name="Input power supply verification" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @power
   Scenario: Input power supply verification
-    Given the HIL framework is connected ... undefined in 0.000s
-    And the power supply is enabled ... undefined in 0.000s
-    And the ATmega32A target is powered ... skipped in 0.000s
-    When I measure the input voltage ... undefined in 0.000s
-    Then the 24V input should be 24.0V ± 0.5V ... undefined in 0.000s
-    And the input current should be within expected range ... undefined in 0.000s
+    Given the HIL framework is connected ... untested in 0.000s
+    And the power supply is enabled ... untested in 0.000s
+    And the ATmega32A target is powered ... untested in 0.000s
+    When I measure the input voltage ... untested in 0.000s
+    Then the 24V input should be 24.0V ± 0.5V ... untested in 0.000s
+    And the input current should be within expected range ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_power_verification.Power Supply and Electrical Verification" name="Regulated power rail verification" status="failed" time="0"><failure type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the HIL framework is connected ... undefined in 0.000s
-Location: test/acceptance/features/hil_power_verification.feature:7
-None]]>
-</failure><system-out>
+</system-out></testcase><testcase classname="features.hil_power_verification.Power Supply and Electrical Verification" name="Regulated power rail verification" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @power
   Scenario: Regulated power rail verification
-    Given the HIL framework is connected ... undefined in 0.000s
-    And the power supply is enabled ... undefined in 0.000s
-    And the ATmega32A target is powered ... skipped in 0.000s
-    When I measure the regulated power rails ... undefined in 0.000s
-    Then the 5V rail should be 5.0V ± 0.1V ... skipped in 0.000s
-    And the 3.3V rail should be 3.3V ± 0.1V if present ... undefined in 0.000s
-    And the ripple voltage should be less than 50mV peak-to-peak ... undefined in 0.000s
+    Given the HIL framework is connected ... untested in 0.000s
+    And the power supply is enabled ... untested in 0.000s
+    And the ATmega32A target is powered ... untested in 0.000s
+    When I measure the regulated power rails ... untested in 0.000s
+    Then the 5V rail should be 5.0V ± 0.1V ... untested in 0.000s
+    And the 3.3V rail should be 3.3V ± 0.1V if present ... untested in 0.000s
+    And the ripple voltage should be less than 50mV peak-to-peak ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_power_verification.Power Supply and Electrical Verification" name="Power supply load regulation" status="failed" time="0"><failure type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the HIL framework is connected ... undefined in 0.000s
-Location: test/acceptance/features/hil_power_verification.feature:7
-None]]>
-</failure><system-out>
+</system-out></testcase><testcase classname="features.hil_power_verification.Power Supply and Electrical Verification" name="Power supply load regulation" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @power
   Scenario: Power supply load regulation
-    Given the HIL framework is connected ... undefined in 0.000s
-    And the power supply is enabled ... undefined in 0.000s
-    And the ATmega32A target is powered ... skipped in 0.000s
-    When I apply varying loads to the 5V rail ... undefined in 0.000s
-    Then the voltage should remain 5.0V ± 0.1V ... undefined in 0.000s
-    And the regulation should be maintained under all load conditions ... undefined in 0.000s
+    Given the HIL framework is connected ... untested in 0.000s
+    And the power supply is enabled ... untested in 0.000s
+    And the ATmega32A target is powered ... untested in 0.000s
+    When I apply varying loads to the 5V rail ... untested in 0.000s
+    Then the voltage should remain 5.0V ± 0.1V ... untested in 0.000s
+    And the regulation should be maintained under all load conditions ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_power_verification.Power Supply and Electrical Verification" name="Crystal oscillator verification" status="failed" time="0"><failure type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the HIL framework is connected ... undefined in 0.000s
-Location: test/acceptance/features/hil_power_verification.feature:7
-None]]>
-</failure><system-out>
+</system-out></testcase><testcase classname="features.hil_power_verification.Power Supply and Electrical Verification" name="Crystal oscillator verification" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @power
   Scenario: Crystal oscillator verification
-    Given the HIL framework is connected ... undefined in 0.000s
-    And the power supply is enabled ... undefined in 0.000s
-    And the ATmega32A target is powered ... skipped in 0.000s
-    When I measure the crystal oscillator frequency ... undefined in 0.000s
-    Then the frequency should be 16.000MHz ± 0.01% ... undefined in 0.000s
-    And the crystal should be stable and running ... undefined in 0.000s
+    Given the HIL framework is connected ... untested in 0.000s
+    And the power supply is enabled ... untested in 0.000s
+    And the ATmega32A target is powered ... untested in 0.000s
+    When I measure the crystal oscillator frequency ... untested in 0.000s
+    Then the frequency should be 16.000MHz ± 0.01% ... untested in 0.000s
+    And the crystal should be stable and running ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_power_verification.Power Supply and Electrical Verification" name="Power-on sequence verification" status="failed" time="0"><failure type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the HIL framework is connected ... undefined in 0.000s
-Location: test/acceptance/features/hil_power_verification.feature:7
-None]]>
-</failure><system-out>
+</system-out></testcase><testcase classname="features.hil_power_verification.Power Supply and Electrical Verification" name="Power-on sequence verification" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @power
   Scenario: Power-on sequence verification
-    Given the HIL framework is connected ... undefined in 0.000s
-    And the power supply is enabled ... undefined in 0.000s
-    And the ATmega32A target is powered ... skipped in 0.000s
-    When I power cycle the system ... undefined in 0.000s
-    Then the power rails should come up in correct sequence ... undefined in 0.000s
-    And the ATmega32A should start executing within 2 seconds ... undefined in 0.000s
-    And all GPIO pins should be in their default states ... undefined in 0.000s
+    Given the HIL framework is connected ... untested in 0.000s
+    And the power supply is enabled ... untested in 0.000s
+    And the ATmega32A target is powered ... untested in 0.000s
+    When I power cycle the system ... untested in 0.000s
+    Then the power rails should come up in correct sequence ... untested in 0.000s
+    And the ATmega32A should start executing within 2 seconds ... untested in 0.000s
+    And all GPIO pins should be in their default states ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hil_power_verification.Power Supply and Electrical Verification" name="Brown-out detection verification" status="failed" time="0"><failure type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the HIL framework is connected ... undefined in 0.000s
-Location: test/acceptance/features/hil_power_verification.feature:7
-None]]>
-</failure><system-out>
+</system-out></testcase><testcase classname="features.hil_power_verification.Power Supply and Electrical Verification" name="Brown-out detection verification" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @hil @hardware @power
   Scenario: Brown-out detection verification
-    Given the HIL framework is connected ... undefined in 0.000s
-    And the power supply is enabled ... undefined in 0.000s
-    And the ATmega32A target is powered ... skipped in 0.000s
-    When I gradually reduce the input voltage ... undefined in 0.000s
-    Then the brown-out detector should trigger at the specified threshold ... undefined in 0.000s
-    And the system should reset cleanly ... undefined in 0.000s
-    When the voltage is restored ... undefined in 0.000s
-    Then the system should restart normally ... undefined in 0.000s
+    Given the HIL framework is connected ... untested in 0.000s
+    And the power supply is enabled ... untested in 0.000s
+    And the ATmega32A target is powered ... untested in 0.000s
+    When I gradually reduce the input voltage ... untested in 0.000s
+    Then the brown-out detector should trigger at the specified threshold ... untested in 0.000s
+    And the system should reset cleanly ... untested in 0.000s
+    When the voltage is restored ... untested in 0.000s
+    Then the system should restart normally ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------

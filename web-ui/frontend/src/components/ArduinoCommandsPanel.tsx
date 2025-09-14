@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import ArduinoCommandDialog from './ArduinoCommandDialog'
 import { HardwareState } from '../types'
 
 interface ArduinoCommandsPanelProps {
@@ -18,6 +19,7 @@ export default function ArduinoCommandsPanel({ hardwareState, connected }: Ardui
   const [pingResponse, setPingResponse] = useState<any>(null)
   const [lastPingTime, setLastPingTime] = useState<Date | null>(null)
   const [pingHistory, setPingHistory] = useState<PingHistoryEntry[]>([])
+  const [showCmdDialog, setShowCmdDialog] = useState(false)
 
   const handlePing = async () => {
     setPingStatus('loading')
@@ -25,7 +27,7 @@ export default function ArduinoCommandsPanel({ hardwareState, connected }: Ardui
     const startTime = Date.now()
 
     try {
-      const response = await fetch('http://localhost:3001/api/ping', {
+      const response = await fetch('/api/ping', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -98,20 +100,25 @@ export default function ArduinoCommandsPanel({ hardwareState, connected }: Ardui
 
   const getConnectionStatusColor = () => {
     if (!connected) return '#ef4444' // red
-    return hardwareState.connection.status === 'connected' ? '#10b981' : '#f59e0b' // green or amber
+    return hardwareState.connection.connected ? '#10b981' : '#f59e0b' // green or amber
   }
 
   return (
     <div className="arduino-commands-panel">
       <div className="commands-header">
         <h3>🔧 Arduino Test Wrapper Commands</h3>
-        <p>Real-time communication with HIL Test Harness</p>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <p style={{ margin: 0 }}>Real-time communication with HIL Test Harness</p>
+          <button className="btn primary" onClick={() => setShowCmdDialog(true)}>
+            Open Command Dialog
+          </button>
+        </div>
       </div>
 
       <div className="commands-grid">
-        {/* PING Test Section - Primary */}
-        <div className="ping-test-primary">
-          <h4>Hardware Communication Test</h4>
+        {/* PING Test Section */}
+        <div className="section-card ping-test primary">
+          <h4>🔍 Hardware Communication Test</h4>
           <div className="ping-controls-large">
             <button
               className={`ping-button-large ${pingStatus === 'loading' ? 'loading' : ''}`}
@@ -220,8 +227,8 @@ Time: ${entry.timestamp.toLocaleString()}`}
         </div>
 
         {/* System Status Section */}
-        <div className="system-status-section">
-          <h4>System Status</h4>
+        <div className="section-card system-status success">
+          <h4>⚡ System Status</h4>
           <div className="status-indicators">
             <div className="status-item">
               <div 
@@ -237,11 +244,11 @@ Time: ${entry.timestamp.toLocaleString()}`}
             <div className="status-item">
               <div 
                 className="status-dot" 
-                style={{ backgroundColor: hardwareState.connection.status === 'connected' ? '#10b981' : '#ef4444' }}
+                style={{ backgroundColor: hardwareState.connection.connected ? '#10b981' : '#ef4444' }}
               ></div>
               <span className="status-label">Hardware</span>
               <span className="status-value">
-                {hardwareState.connection.status === 'connected' ? 'Ready' : 'Not Ready'}
+                {hardwareState.connection.connected ? 'Ready' : 'Not Ready'}
               </span>
             </div>
             
@@ -249,15 +256,15 @@ Time: ${entry.timestamp.toLocaleString()}`}
               <div className="status-dot" style={{ backgroundColor: '#3b82f6' }}></div>
               <span className="status-label">Port</span>
               <span className="status-value">
-                {hardwareState.connection.port || 'Mock'}
+                {hardwareState.connection.port || 'Unknown'}
               </span>
             </div>
           </div>
         </div>
 
         {/* Quick Help Section */}
-        <div className="quick-help-section">
-          <h4>Quick Help</h4>
+        <div className="section-card help info">
+          <h4>📚 Quick Help</h4>
           <div className="help-items">
             <div className="help-item">
               <span className="help-icon">🔍</span>
@@ -293,6 +300,7 @@ Time: ${entry.timestamp.toLocaleString()}`}
           </div>
         </div>
       </div>
+      <ArduinoCommandDialog visible={showCmdDialog} onClose={() => setShowCmdDialog(false)} />
     </div>
   )
 }

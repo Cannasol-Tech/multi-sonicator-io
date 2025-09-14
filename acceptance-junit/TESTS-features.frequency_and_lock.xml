@@ -1,51 +1,39 @@
-<testsuite name="features.frequency_and_lock.Frequency measurement and lock status per unit" tests="2" errors="0" failures="0" skipped="0" time="0.209848" timestamp="2025-09-05T21:10:11.170476" hostname="Corbans-Mini.home"><testcase classname="features.frequency_and_lock.Frequency measurement and lock status per unit" name="Frequency and lock reflected within 100 ms -- @1.1 " status="passed" time="0.107573"><system-out>
+<testsuite name="features.frequency_and_lock.Frequency measurement and lock status per unit" tests="2" errors="2" failures="0" skipped="0" time="2.008776" timestamp="2025-09-12T22:03:09.391990" hostname="Corbans-Mini.home"><testcase classname="features.frequency_and_lock.Frequency measurement and lock status per unit" name="Frequency and lock reflected within 100 ms -- @1.1 " status="cleanup_error" time="1.003881"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
   @us-004
   Scenario Outline: Frequency and lock reflected within 100 ms -- @1.1 
-    Given the HIL wrapper is connected and ready ... passed in 0.001s
-    And the DUT is powered and at safe defaults ... passed in 0.000s
-    Given unit 1 receives a frequency of 2000 Hz on the ÷10 input ... passed in 0.001s
-    And unit 1 lock input is set to 1 ... passed in 0.000s
-    Then within 100 ms holding register 40017 is approximately 2000 Hz ... passed in 0.105s
-    And status flag bit2 for unit 1 equals 1 ... passed in 0.000s
+    Given the HIL wrapper is connected and ready ... failed in 1.004s
+    And the DUT is powered and at safe defaults ... skipped in 0.000s
+    Given unit 1 receives a frequency of 2000 Hz on the ÷10 input ... skipped in 0.000s
+    And unit 1 lock input is set to 1 ... skipped in 0.000s
+    Then within 100 ms holding register 40017 is approximately 2000 Hz ... skipped in 0.000s
+    And status flag bit2 for unit 1 equals 1 ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-✅ HIL wrapper assumed ready (simulation mode)
-✅ DUT assumed powered and at safe defaults (simulation mode)
-✅ Unit 1 frequency assumed set to 2000 Hz (HIL simulation)
-✅ Unit 1 lock input assumed set to 1 (HIL simulation)
-✅ Register 40017 frequency assumed correct: ~2000Hz (no MODBUS)
-✅ Unit 1 status bit2 assumed as 1 (no MODBUS)
-
 ]]>
-</system-out></testcase><testcase classname="features.frequency_and_lock.Frequency measurement and lock status per unit" name="Frequency and lock reflected within 100 ms -- @1.2 " status="passed" time="0.102275"><system-out>
+</system-out></testcase><testcase classname="features.frequency_and_lock.Frequency measurement and lock status per unit" name="Frequency and lock reflected within 100 ms -- @1.2 " status="cleanup_error" time="1.004895"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
   @us-004
   Scenario Outline: Frequency and lock reflected within 100 ms -- @1.2 
-    Given the HIL wrapper is connected and ready ... passed in 0.000s
-    And the DUT is powered and at safe defaults ... passed in 0.000s
-    Given unit 1 receives a frequency of 0 Hz on the ÷10 input ... passed in 0.000s
-    And unit 1 lock input is set to 0 ... passed in 0.000s
-    Then within 100 ms holding register 40017 is approximately 0 Hz ... passed in 0.102s
-    And status flag bit2 for unit 1 equals 0 ... passed in 0.000s
+    Given the HIL wrapper is connected and ready ... failed in 1.005s
+    And the DUT is powered and at safe defaults ... skipped in 0.000s
+    Given unit 1 receives a frequency of 0 Hz on the ÷10 input ... skipped in 0.000s
+    And unit 1 lock input is set to 0 ... skipped in 0.000s
+    Then within 100 ms holding register 40017 is approximately 0 Hz ... skipped in 0.000s
+    And status flag bit2 for unit 1 equals 0 ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-✅ HIL wrapper assumed ready (simulation mode)
-✅ DUT assumed powered and at safe defaults (simulation mode)
-✅ Unit 1 frequency assumed set to 0 Hz (HIL simulation)
-✅ Unit 1 lock input assumed set to 0 (HIL simulation)
-✅ Register 40017 frequency assumed correct: ~0Hz (no MODBUS)
-✅ Unit 1 status bit2 assumed as 0 (no MODBUS)
-
 ]]>
 </system-out></testcase></testsuite>

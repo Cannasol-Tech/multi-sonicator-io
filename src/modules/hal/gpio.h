@@ -10,7 +10,7 @@
  * status indicators, and digital I/O operations. Abstracts ATmega32A port
  * manipulation for consistent cross-platform development.
  * 
- * Pin assignments per docs/planning/pin-matrix.md (SOLE SOURCE OF TRUTH).
+ * Pin assignments per config/hardware-config.yaml (SOLE SOURCE OF TRUTH).
  * Supports all sonicator control signals, status LED, and system I/O.
  */
 

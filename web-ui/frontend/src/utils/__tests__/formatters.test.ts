@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+import { formatFrequency } from '../formatters'
 
 // Utility functions for formatting data
 export const formatTimestamp = (timestamp: number): string => {
@@ -176,6 +177,33 @@ describe('Formatter Utilities', () => {
 
     it('handles empty input', () => {
       expect(sanitizeInput('')).toBe('')
+    })
+  })
+
+  describe('formatFrequency', () => {
+    it('formats Hz frequencies with two decimal places', () => {
+      expect(formatFrequency(100)).toBe('100.00 Hz')
+      expect(formatFrequency(500.5)).toBe('500.50 Hz')
+      expect(formatFrequency(999.99)).toBe('999.99 Hz')
+    })
+
+    it('formats kHz frequencies with two decimal places', () => {
+      expect(formatFrequency(1000)).toBe('1.00 kHz')
+      expect(formatFrequency(1500)).toBe('1.50 kHz')
+      expect(formatFrequency(20000)).toBe('20.00 kHz')
+      expect(formatFrequency(22500.75)).toBe('22.50 kHz')
+    })
+
+    it('formats MHz frequencies with two decimal places', () => {
+      expect(formatFrequency(1000000)).toBe('1.00 MHz')
+      expect(formatFrequency(1500000)).toBe('1.50 MHz')
+      expect(formatFrequency(2500000.5)).toBe('2.50 MHz')
+    })
+
+    it('handles edge cases correctly', () => {
+      expect(formatFrequency(0)).toBe('0.00 Hz')
+      expect(formatFrequency(999)).toBe('999.00 Hz')
+      expect(formatFrequency(999999)).toBe('1000.00 kHz')
     })
   })
 })

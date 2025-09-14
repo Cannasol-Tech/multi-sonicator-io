@@ -122,8 +122,8 @@ describe('ScenarioDetailsModal Component', () => {
     expect(screen.getByText('I set pin D7 to HIGH')).toBeInTheDocument()
     expect(screen.getByText('the pin state should be HIGH')).toBeInTheDocument()
     
-    // Check pin interactions
-    expect(screen.getByText('Pin Interactions:')).toBeInTheDocument()
+    // Check pin interactions (multiple instances expected)
+    expect(screen.getAllByText('Pin Interactions:')).toHaveLength(3) // One for each step
   })
 
   it('renders status information correctly', () => {

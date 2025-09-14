@@ -24,6 +24,8 @@
  * for a single CT2000 sonicator unit via DB9 connector.
  * 
  * Features:
+ * - Control Signals: Amplitude, Start/Stop, Overload Reset
+ * - Monitoring Signals: 
  * - Full amplitude control (20-100% via 0-10V DAC)
  * - Start/stop control via relay output
  * - Overload reset control

@@ -230,15 +230,7 @@ def step_register_value_should_be_valid(context):
     context.hil_logger.test_pass(f"MODBUS register value valid: {context.last_modbus_read['value']}")
 
 
-@then('the response time should be less than {max_time:d}ms')
-def step_verify_modbus_response_time(context, max_time):
-    """Verify MODBUS response time"""
-    if hasattr(context, 'last_modbus_read'):
-        response_time = context.last_modbus_read['response_time'] * 1000
-        assert response_time < max_time, f"MODBUS response time {response_time:.1f}ms exceeds {max_time}ms"
-        context.hil_logger.measurement("MODBUS response time", response_time, "ms", f"< {max_time}ms")
-    else:
-        assert False, "No MODBUS operation recorded"
+
 
 
 @then('the CRC should be correct')

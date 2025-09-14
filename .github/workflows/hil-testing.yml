@@ -1,0 +1,298 @@
+name: HIL Testing
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master ]
+  schedule:
+    # Run HIL tests daily at 2 AM UTC
+    - cron: 'N/A '
+  workflow_dispatch:
+    inputs:
+      test_suite:
+        description: 'Test suite to run'
+        required: false
+        default: 'basic'
+        type: choice 
+        options:
+          - basic
+          - comprehensive
+          - safety
+      force_hardware:
+        description: 'Force hardware testing (ignore availability check)'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  hil-hardware-check:
+    name: HIL Hardware Availability Check
+    runs-on: self-hosted
+    outputs:
+      hardware-available: ${{ steps.check.outputs.available }}
+      skip-tests: ${{ steps.check.outputs.skip }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml pyserial
+    
+    - name: Check HIL hardware availability
+      id: check
+      run: |
+        echo "Checking HIL hardware availability..."
+        if python3 test/scripts/ci_hil_integration.py --action check; then
+          echo "available=true" >> $GITHUB_OUTPUT
+          echo "skip=false" >> $GITHUB_OUTPUT
+          echo "✅ HIL hardware is available"
+        else
+          echo "available=false" >> $GITHUB_OUTPUT
+          if [ "${{ github.event.inputs.force_hardware }}" == "true" ]; then
+            echo "skip=false" >> $GITHUB_OUTPUT
+            echo "⚠️ HIL hardware not available but forced to continue"
+          else
+            echo "skip=true" >> $GITHUB_OUTPUT
+            echo "⚠️ HIL hardware not available - tests will be skipped"
+          fi
+        fi
+    
+    - name: Upload hardware check results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: hil-hardware-check
+        path: ci_artifacts/
+        retention-days: 7
+
+  hil-tests:
+    name: HIL Tests
+    runs-on: self-hosted
+    needs: hil-hardware-check
+    if: needs.hil-hardware-check.outputs.skip == 'false'
+    timeout-minutes: 15
+    
+    strategy:
+      matrix:
+        test-suite: 
+          - ${{ github.event.inputs.test_suite || 'basic' }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml pyserial behave pytest
+    
+    - name: Set up PlatformIO
+      run: |
+        pip install platformio
+        pio --version
+    
+    - name: Prepare HIL environment
+      run: |
+        echo "Setting up HIL test environment..."
+        mkdir -p ci_artifacts
+        mkdir -p test/data/results/current
+        mkdir -p test/data/logs/hardware
+    
+    - name: Run HIL Tests
+      id: hil-tests
+      run: |
+        echo "Running HIL tests with suite: ${{ matrix.test-suite }}"
+        
+        # Set environment variables for CI
+        export CI=true
+        export GITHUB_ACTIONS=true
+        export HIL_TEST_SUITE="${{ matrix.test-suite }}"
+        
+        # Run HIL tests
+        if python3 test/scripts/ci_hil_integration.py --action test --verbose; then
+          echo "result=success" >> $GITHUB_OUTPUT
+          echo "✅ HIL tests passed"
+        else
+          echo "result=failure" >> $GITHUB_OUTPUT
+          echo "❌ HIL tests failed"
+          exit 1
+        fi
+    
+    - name: Generate test reports
+      if: always()
+      run: |
+        echo "Generating HIL test reports..."
+        
+        # Generate coverage report if available
+        if [ -f "coverage/coverage.json" ]; then
+          echo "📊 Coverage report available"
+        fi
+        
+        # Generate executive report
+        if [ -f "scripts/generate_executive_report.py" ]; then
+          python3 scripts/generate_executive_report.py || true
+        fi
+    
+    - name: Upload HIL test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: hil-test-results-${{ matrix.test-suite }}
+        path: |
+          ci_artifacts/
+          test/data/results/current/
+          test/data/logs/hardware/
+          coverage/
+          final/
+        retention-days: 30
+    
+    - name: Upload test logs
+      uses: actions/upload-artifact@v3
+      if: failure()
+      with:
+        name: hil-test-logs-${{ matrix.test-suite }}
+        path: |
+          test/data/logs/
+          *.log
+        retention-days: 7
+    
+    - name: Comment PR with HIL results
+      if: github.event_name == 'pull_request' && always()
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          const path = 'ci_artifacts/ci_hil_summary.txt';
+          
+          if (fs.existsSync(path)) {
+            const summary = fs.readFileSync(path, 'utf8');
+            const status = '${{ steps.hil-tests.outputs.result }}';
+            const icon = status === 'success' ? '✅' : '❌';
+            
+            const comment = `## ${icon} HIL Test Results
+            
+            **Test Suite:** ${{ matrix.test-suite }}
+            **Status:** ${status.toUpperCase()}
+            
+            <details>
+            <summary>HIL Test Summary</summary>
+            
+            \`\`\`
+            ${summary}
+            \`\`\`
+            
+            </details>
+            
+            📊 [View detailed results in the workflow artifacts](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            `;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+          }
+
+  hil-build-gate:
+    name: HIL Build Gate
+    runs-on: self-hosted
+    needs: [hil-hardware-check, hil-tests]
+    if: always()
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml pyserial
+    
+    - name: Download HIL test artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: hil-test-results-${{ github.event.inputs.test_suite || 'basic' }}
+        path: ci_artifacts/
+      continue-on-error: true
+    
+    - name: Evaluate build gate
+      id: gate
+      run: |
+        echo "Evaluating HIL build gate..."
+        
+        # Check if HIL tests were skipped
+        if [ "${{ needs.hil-hardware-check.outputs.skip }}" == "true" ]; then
+          echo "result=pass" >> $GITHUB_OUTPUT
+          echo "message=HIL tests skipped - hardware not available" >> $GITHUB_OUTPUT
+          echo "✅ Build gate PASS - HIL tests skipped (hardware not available)"
+          exit 0
+        fi
+        
+        # Check HIL test results
+        if [ "${{ needs.hil-tests.result }}" == "success" ]; then
+          echo "result=pass" >> $GITHUB_OUTPUT
+          echo "message=HIL tests passed successfully" >> $GITHUB_OUTPUT
+          echo "✅ Build gate PASS - HIL tests successful"
+        else
+          echo "result=fail" >> $GITHUB_OUTPUT
+          echo "message=HIL tests failed or were cancelled" >> $GITHUB_OUTPUT
+          echo "❌ Build gate FAIL - HIL tests failed"
+          exit 1
+        fi
+    
+    - name: Update commit status
+      if: always()
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const state = '${{ steps.gate.outputs.result }}' === 'pass' ? 'success' : 'failure';
+          const description = '${{ steps.gate.outputs.message }}';
+          
+          github.rest.repos.createCommitStatus({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            sha: context.sha,
+            state: state,
+            target_url: `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+            description: description,
+            context: 'HIL Tests / Build Gate'
+          });
+
+  hil-notification:
+    name: HIL Test Notification
+    runs-on: ubuntu-latest
+    needs: [hil-hardware-check, hil-tests, hil-build-gate]
+    if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+    
+    steps:
+    - name: Send notification
+      run: |
+        echo "HIL Test Notification"
+        echo "===================="
+        echo "Hardware Available: ${{ needs.hil-hardware-check.outputs.hardware-available }}"
+        echo "Tests Skipped: ${{ needs.hil-hardware-check.outputs.skip }}"
+        echo "Test Result: ${{ needs.hil-tests.result }}"
+        echo "Build Gate: ${{ needs.hil-build-gate.result }}"
+        
+        # This could be extended to send actual notifications
+        # (Slack, email, etc.) for scheduled runs or critical failures

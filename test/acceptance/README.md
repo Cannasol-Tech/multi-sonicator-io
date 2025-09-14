@@ -26,8 +26,7 @@ Always adhere to the standards outlined in `docs/standards/sw-testing-standard.m
 ## Testing Strategy
 
 ### CI Pipeline (Automated)
-- **Unit Tests Only**: CI runs only unit tests with 90% coverage validation
-- **BDD Syntax Validation**: CI validates BDD scenario syntax but does not execute tests
+- **Unit Tests Only**: CI runs only unidates BDD scenario syntax but does not execute tests
 - **Fast Feedback**: Quick validation for pull requests and development workflow
 - **Hardware Independence**: No physical hardware required for CI
 
@@ -39,6 +38,7 @@ Always adhere to the standards outlined in `docs/standards/sw-testing-standard.m
 
 ## Directory Structure
 
+- `hil_framework/`: Contains the HIL framework for hardware testing.
 - `features/`: Contains `.feature` files written in Gherkin syntax. Each file describes a feature and its scenarios.
 - `steps/`: Contains Python scripts that implement the steps defined in the `.feature` files.
 - `sketches/`: Contains Arduino sketches for the test environment, including the test wrapper for HIL.

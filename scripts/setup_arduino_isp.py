@@ -19,31 +19,44 @@ def detect_arduino_port():
     """Detect Arduino port using detect_hardware.py"""
     script_dir = Path(__file__).parent
     detect_script = script_dir / "detect_hardware.py"
-    
+
+    # Use virtual environment Python if available
+    venv_python = script_dir.parent / "web-ui" / "venv" / "bin" / "python"
+    python_cmd = str(venv_python) if venv_python.exists() else sys.executable
+
     try:
-        result = run_command([sys.executable, str(detect_script), "--check-arduino"], check=False)
+        result = run_command([python_cmd, str(detect_script), "--check-arduino"], check=False)
         if result.returncode == 0:
-            # Parse output to get port (this is a simplified approach)
-            # In a real implementation, you might want to modify detect_hardware.py to return JSON
-            import serial.tools.list_ports
-            ports = serial.tools.list_ports.comports()
-            
-            # Look for Arduino-like devices
-            for port in ports:
-                description = (port.description or "").lower()
-                manufacturer = (port.manufacturer or "").lower()
-                device = port.device.lower()
-                
-                arduino_indicators = [
-                    'arduino', 'uno', 'nano', 'mega',
-                    'usbmodem', 'usbserial',
-                    'ch340', 'ftdi', 'cp210x'
-                ]
-                
-                if any(indicator in description for indicator in arduino_indicators) or \
-                   any(indicator in manufacturer for indicator in arduino_indicators) or \
-                   any(indicator in device for indicator in arduino_indicators):
-                    return port.device
+            # Parse output to get port from detect_hardware.py output
+            output_lines = result.stdout.strip().split('\n')
+            for line in output_lines:
+                if 'Found Arduino programmer:' in line:
+                    port = line.split(':')[1].strip()
+                    return port
+
+            # Fallback: try to import serial and detect directly
+            try:
+                import serial.tools.list_ports
+                ports = serial.tools.list_ports.comports()
+
+                # Look for Arduino-like devices
+                for port in ports:
+                    description = (port.description or "").lower()
+                    manufacturer = (port.manufacturer or "").lower()
+                    device = port.device.lower()
+
+                    arduino_indicators = [
+                        'arduino', 'uno', 'nano', 'mega',
+                        'usbmodem', 'usbserial',
+                        'ch340', 'ftdi', 'cp210x'
+                    ]
+
+                    if any(indicator in description for indicator in arduino_indicators) or \
+                       any(indicator in manufacturer for indicator in arduino_indicators) or \
+                       any(indicator in device for indicator in arduino_indicators):
+                        return port.device
+            except ImportError:
+                print("Warning: pyserial not available, relying on detect_hardware.py output")
             
         return None
     except Exception as e:
@@ -54,13 +67,17 @@ def check_arduino_isp_loaded(port):
     """Check if ArduinoISP sketch is loaded using probe script"""
     script_dir = Path(__file__).parent
     probe_script = script_dir / "probe_arduinoisp.py"
-    
+
     if not probe_script.exists():
         print("Warning: probe_arduinoisp.py not found, assuming ArduinoISP not loaded")
         return False
-    
+
+    # Use virtual environment Python if available
+    venv_python = script_dir.parent / "web-ui" / "venv" / "bin" / "python"
+    python_cmd = str(venv_python) if venv_python.exists() else sys.executable
+
     try:
-        result = run_command([sys.executable, str(probe_script), port], check=False)
+        result = run_command([python_cmd, str(probe_script), port], check=False)
         return result.returncode == 0
     except Exception as e:
         print(f"Error probing ArduinoISP: {e}")
@@ -96,11 +113,16 @@ def upload_arduino_isp(port):
             fqbn = detect_board_fqbn(port)
             print(f"Detected board FQBN: {fqbn}")
 
+            # Use virtual environment Python if available
+            script_dir = Path(__file__).parent
+            venv_python = script_dir.parent / "web-ui" / "venv" / "bin" / "python"
+            python_cmd = str(venv_python) if venv_python.exists() else sys.executable
+
             env = os.environ.copy()
             env["ARDUINO_PORT"] = port
             env["ARDUINO_FQBN"] = fqbn
 
-            result = subprocess.run([sys.executable, str(upload_script)],
+            result = subprocess.run([python_cmd, str(upload_script)],
                                   env=env, check=False)
             return result.returncode == 0
         except Exception as e:

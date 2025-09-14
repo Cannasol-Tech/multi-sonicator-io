@@ -325,8 +325,6 @@ uart_result_t uart_flush_tx(void) {
         return UART_ERROR_NOT_INITIALIZED;
     }
 
-    uint32_t timeout = millis() + UART_TIMEOUT_MS;
-
 #ifdef NATIVE_TEST
     return UART_OK;
 #else

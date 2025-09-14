@@ -802,10 +802,7 @@ def step_verify_unit_can_start_normally(context, unit):
 # COMPREHENSIVE OVERLOAD AND SAFETY MONITORING STEPS
 # ===================================================
 
-@when('I simulate overload on sonicator {unit:d}')
-def step_simulate_overload_on_unit(context, unit):
-    """Simulate overload condition on specific sonicator unit"""
-    step_unit_overload_input_set(context, unit, 1)
+
 
 
 @when('I clear overload on sonicator {unit:d}')

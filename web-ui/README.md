@@ -104,3 +104,110 @@ The web UI integrates with existing HIL framework components:
 - **Real-time Performance**: Hardware commands must respond within 100ms
 - **Error Handling**: Comprehensive error messages with suggested actions
 - **Help Integration**: Context-sensitive help for all interface elements
+
+## Deployment
+
+### Development Deployment
+
+1. **Install Dependencies**:
+   ```bash
+   make web-ui-install
+   ```
+
+2. **Start Development Servers**:
+   ```bash
+   make web-ui-dev
+   ```
+   - Frontend: http://localhost:3101
+   - Backend API: http://localhost:3001/api
+
+3. **Run Tests**:
+   ```bash
+   make web-ui-test
+   ```
+
+### Production Deployment
+
+1. **Build Production Assets**:
+   ```bash
+   make web-ui-build
+   ```
+
+2. **Production Server Setup**:
+   ```bash
+   # Install production dependencies
+   cd web-ui/backend && npm ci --production
+   cd web-ui/frontend && npm ci --production
+
+   # Start production server
+   cd web-ui/backend && npm start
+   ```
+
+3. **Environment Variables**:
+   ```bash
+   export NODE_ENV=production
+   export PORT=3001
+   export FRONTEND_PORT=3101
+   ```
+
+### Sandbox Mode Deployment
+
+For complete hardware testing environment:
+
+```bash
+make web-ui-sandbox
+```
+
+This comprehensive command:
+1. Builds latest production firmware (PlatformIO)
+2. Auto-detects Arduino hardware port
+3. Uploads Arduino as ISP sketch
+4. Programs ATmega32A DUT with production firmware
+5. Uploads Arduino Test Harness firmware
+6. Starts web UI backend with HIL integration
+7. Launches frontend development server
+8. Opens browser to interface
+9. Verifies hardware connectivity
+
+### Docker Deployment (Coming Soon)
+
+Docker support is planned for easier deployment and development environment consistency.
+
+## Documentation
+
+- **[API Documentation](docs/API.md)** - Complete REST API reference
+- **[User Guide](docs/USER_GUIDE.md)** - End-user interface documentation
+- **[Architecture Decision Record](docs/ADR-001-Integration-Architecture.md)** - Technical architecture decisions
+
+## Troubleshooting
+
+### Common Issues
+
+**Port Conflicts**:
+```bash
+# Kill processes on web UI ports
+make web-ui-stop
+```
+
+**Hardware Connection Issues**:
+```bash
+# Check hardware detection
+python3 scripts/detect_hardware.py
+
+# Manual reconnection
+curl -X POST http://localhost:3001/api/connection/reconnect
+```
+
+**Test Coverage Issues**:
+```bash
+# Run tests with verbose output
+web-ui/venv/bin/python -m pytest web-ui/tests/ -v --cov-report=term-missing
+```
+
+**Build Failures**:
+```bash
+# Clean and rebuild
+make web-ui-clean
+make web-ui-install
+make web-ui-build
+```

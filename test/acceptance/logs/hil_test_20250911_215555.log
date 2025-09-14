@@ -1,0 +1,14 @@
+2025-09-11 21:55:55,180 - hil_framework - INFO - HIL logging initialized - log file: /Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/test/acceptance/logs/hil_test_20250911_215555.log
+2025-09-11 21:55:55,257 - hil_framework - INFO - 🧪 TEST START: HIL Environment Initialization
+2025-09-11 21:55:56,144 - hil_framework - INFO - HIL Controller initialized
+2025-09-11 21:55:56,150 - hil_framework - INFO - ✅ TEST PASS: HIL test environment initialized
+2025-09-11 21:55:58,219 - hil_framework - INFO - ✅ TEST PASS: Hardware configuration loaded from config/hardware-config.yaml
+2025-09-11 21:55:58,261 - hil_framework - INFO - ✅ TEST PASS: Arduino found on USB port: /dev/cu.usbmodem2101
+2025-09-11 21:55:58,286 - hil_framework - INFO - 🔧 HW EVENT: Detected Arduino ports: ['/dev/cu.usbmodem2101', '/dev/tty.usbmodem2101'] 
+2025-09-11 21:55:58,296 - hil_framework - INFO - ✅ TEST PASS: Arduino found on port: /dev/cu.usbmodem2101
+2025-09-11 21:55:58,322 - hil_framework - INFO - ✅ TEST PASS: Arduino basic communication assumed working (simulation mode)
+2025-09-11 21:56:20,121 - hil_framework - INFO - 🔧 HW EVENT: Wrapper upload result: False 
+2025-09-11 21:56:20,158 - hil_framework - ERROR - ❌ TEST FAIL: Wrapper firmware upload - /Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/web-ui/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+NotPlatformIOProjectError: Not a PlatformIO project. `platformio.ini` file has not been found in current working directory (/Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/test/acceptance/hil_framework/arduino_harness/arduino_test_wrapper). To initialize new project please use `platformio project init` command
+

@@ -10,7 +10,7 @@
  * and frequency measurement. Supports 10-bit resolution with 5V reference.
  * 
  * Power monitoring uses 5.44mV/W scaling factor per pin matrix specifications.
- * Pin assignments per docs/planning/pin-matrix.md (SOLE SOURCE OF TRUTH).
+ * Pin assignments per config/hardware-config.yaml (SOLE SOURCE OF TRUTH).
  */
 
 #ifndef HAL_ADC_H

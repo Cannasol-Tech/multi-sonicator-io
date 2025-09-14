@@ -45,7 +45,7 @@ HMI System (MODBUS Master)
 - **Microcontroller**: ATmega32A @ 16MHz (external crystal)
 - **Power Supply**: 24VDC → 12V → 5V cascaded regulation
 - **Communication**: MODBUS RTU over isolated RS-485/RS-232
-- **Programming**: Arduino as ISP (Uno R4 WiFi)
+- **Programming**: Arduino as ISP (Uno R3)
 
 #### Interface Design
 
@@ -67,7 +67,7 @@ HMI System (MODBUS Master)
 - PWM generation for amplitude control
 - UART communication handling
 - Timer management for precise timing
-- Status LED (PD2) driver for unified system indication per `docs/planning/pin-matrix.md` (SOLE SOURCE OF TRUTH) (`STATUS_LED_PIN`)
+- Status LED (PD2) driver for unified system indication per `config/hardware-config.yaml` (SOLE SOURCE OF TRUTH) (`STATUS_LED_PIN`)
 
 ### 2. Communication Layer
 
@@ -270,7 +270,7 @@ HMI System (MODBUS Master)
 
 ### Programming and Debug
 
-- **ISP Programming**: Arduino Uno R4 WiFi as in-system programmer
+- **ISP Programming**: Arduino Uno R3 as in-system programmer
 - **Serial Debug**: UART-based debugging and diagnostics
 - **Hardware Testing**: Built-in self-test and diagnostic routines
 
@@ -284,7 +284,7 @@ Host (Behave BDD + pytest infrastructure) ⇄ USB Serial ⇄ Arduino Wrapper (ar
                                         ATmega32A DUT (Sonicator Controller)
 ```
 
-**Pin mapping (conceptual; see `docs/planning/pin-matrix.md` as SOLE SOURCE OF TRUTH; `include/config.h` mirrors the matrix)**
+**Pin mapping (conceptual; see `config/hardware-config.yaml` as SOLE SOURCE OF TRUTH; `include/config.h` mirrors the YAML)**
 
 | Function | DUT Signal | Wrapper Role |
 |----------|------------|--------------|
@@ -335,7 +335,7 @@ Notes:
 
 Test one sonicator channel at a time by moving a small 6–7 wire harness between S1..S4.
 
-| Role | Uno R4 Pin | Direction | Notes |
+| Role | Uno R3 Pin | Direction | Notes |
 |------|------------|-----------|-------|
 | Overload (selected unit) | D6 | Out | Drive DUT input (simulate CT2000 overload) |
 | Freq Lock (selected unit) | D7 | Out | Drive DUT input |

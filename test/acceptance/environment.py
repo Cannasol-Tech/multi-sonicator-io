@@ -64,37 +64,34 @@ def before_all(context):
         hil_config = yaml.safe_load(f)
     context.config = hil_config
 
-    userdata = getattr(context.config, "userdata", {}) or {}
     context.profile = hil_config.get('behave', {}).get('profile', 'hil').lower()
-    if context.profile not in ("hil", "hil"):
+    if context.profile != "hil":
         context.profile = "hil"
 
     context.shared = {}
 
-    if context.profile == "hil":
-        context.serial_port = "/tmp/tty-msio"
-    else:
-        try:
-            _HardwareInterface, HILController = import_hil_modules()
-            context.hil_controller = HILController(config_file=config_path)
-            context.hil_logger = getattr(context.hil_controller, 'logger', _NullLogger())
-            if context.hil_controller.setup_hardware():
-                context.hardware_ready = True
-                context.hardware_interface = context.hil_controller.hardware_interface
-                context.serial_port = context.hardware_interface.serial_port if context.hardware_interface else None
-                print("✅ HIL framework initialized successfully")
-            else:
-                context.hardware_ready = False
-                context.hardware_interface = None
-                context.serial_port = None
-                print("❌ HIL hardware connection failed")
-        except Exception as e:
-            print(f"❌ HIL framework error: {e}")
-            import traceback
-            traceback.print_exc()
+    # Initialize HIL Controller and attempt hardware setup
+    try:
+        _HardwareInterface, HILController = import_hil_modules()
+        context.hil_controller = HILController(config_file=config_path)
+        context.hil_logger = getattr(context.hil_controller, 'logger', _NullLogger())
+        if context.hil_controller.setup_hardware():
+            context.hardware_ready = True
+            context.hardware_interface = context.hil_controller.hardware_interface
+            context.serial_port = context.hardware_interface.serial_port if context.hardware_interface else None
+            print("✅ HIL framework initialized successfully")
+        else:
             context.hardware_ready = False
-            context.serial_port = None
             context.hardware_interface = None
+            context.serial_port = None
+            print("❌ HIL hardware connection failed")
+    except Exception as e:
+        print(f"❌ HIL framework error: {e}")
+        import traceback
+        traceback.print_exc()
+        context.hardware_ready = False
+        context.serial_port = None
+        context.hardware_interface = None
 
 
 def after_all(context):
@@ -136,15 +133,16 @@ def before_scenario(context, scenario):
                 scenario.skip("HIL hardware not available")
 
 
+
+
 def after_scenario(context, scenario):
-    """Cleanup after each scenario"""
-    if context.profile == "hil" and hasattr(context, 'hil_controller'):
-        if context.hardware_ready and 'hil' in scenario.tags:
+    """Cleanup after each scenario and release resources"""
+    # HIL-specific cleanup hook (placeholder for future)
+    if getattr(context, "profile", "") == "hil" and hasattr(context, "hil_controller"):
+        if getattr(context, "hardware_ready", False) and 'hil' in getattr(scenario, "tags", set()):
             # Scenario-specific cleanup if needed
             pass
 
-
-def after_scenario(context, scenario):
     # Ensure any Modbus client opened by steps is closed to release serial lock
     m = getattr(context, "modbus", None)
     try:

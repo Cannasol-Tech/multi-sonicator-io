@@ -1,26 +1,23 @@
-<testsuite name="features.hal.HAL Acceptance" tests="2" errors="0" failures="1" skipped="1" time="3e-05" timestamp="2025-09-05T20:57:34.792586" hostname="Corbans-Mini.home"><testcase classname="features.hal.HAL Acceptance" name="HAL basic acceptance" status="failed" time="3e-05"><failure type="NoneType" message="None">
-<![CDATA[
-Failing step: When the HAL feature is exercised ... undefined in 0.000s
-Location: test/acceptance/features/hal.feature:5
-None]]>
-</failure><system-out>
+<testsuite name="features.hal.HAL Acceptance" tests="2" errors="2" failures="0" skipped="0" time="1.008157" timestamp="2025-09-12T22:03:10.403788" hostname="Corbans-Mini.home"><testcase classname="features.hal.HAL Acceptance" name="HAL basic acceptance" status="cleanup_error" time="1.008157"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
   @hal @implemented
   Scenario: HAL basic acceptance
-    Given the hardware is initialized ... passed in 0.000s
-    When the HAL feature is exercised ... undefined in 0.000s
-    Then the expected result is observed ... undefined in 0.000s
+    Given the hardware is initialized ... failed in 1.008s
+    When the HAL feature is exercised ... skipped in 0.000s
+    Then the expected result is observed ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-✅ Hardware initialization assumed complete (simulation mode)
-
 ]]>
-</system-out></testcase><testcase classname="features.hal.HAL Acceptance" name="HAL advanced acceptance (pending implementation)" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.hal.HAL Acceptance" name="HAL advanced acceptance (pending implementation)" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 

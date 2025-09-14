@@ -102,6 +102,7 @@ npx bmad-method install
   - **Cline**: VS Code extension with AI features
   - **Roo Code**: Web-based IDE with agent support
   - **GitHub Copilot**: VS Code extension with AI peer programming assistant
+  - **Auggie CLI (Augment Code)**: AI-powered development environment
 
 **Note for VS Code Users**: BMAD-METHOD™ assumes when you mention "VS Code" that you're using it with an AI-powered extension like GitHub Copilot, Cline, or Roo. Standard VS Code without AI capabilities cannot run BMad agents. The installer includes built-in support for Cline and Roo.
 
@@ -496,7 +497,7 @@ Resulting Folder Structure:
 
 - `docs/prd/` - Broken down PRD sections
 - `docs/architecture/` - Broken down architecture sections
-- `docs/agile/stories/` - Generated user stories
+- `docs/stories/` - Generated user stories
 
 1. **Development Cycle** (Sequential, one story at a time):
 
@@ -508,7 +509,7 @@ Resulting Folder Structure:
    **Step 1 - Story Creation**:
    - **NEW CLEAN CHAT** → Select powerful model → `@sm` → `*create`
    - SM executes create-next-story task
-   - Review generated story in `docs/agile/stories/`
+   - Review generated story in `docs/stories/`
    - Update status from "Draft" to "Approved"
 
    **Step 2 - Story Implementation**:

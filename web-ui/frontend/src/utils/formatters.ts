@@ -121,11 +121,11 @@ export function formatPinDirection(direction: 'IN' | 'OUT'): string {
  */
 export function formatFrequency(frequency: number): string {
   if (frequency < 1000) {
-    return `${frequency} Hz`
+    return `${frequency.toFixed(2)} Hz`
   } else if (frequency < 1000000) {
-    return `${(frequency / 1000).toFixed(1)} kHz`
+    return `${(frequency / 1000).toFixed(2)} kHz`
   } else {
-    return `${(frequency / 1000000).toFixed(1)} MHz`
+    return `${(frequency / 1000000).toFixed(2)} MHz`
   }
 }
 

@@ -60,6 +60,190 @@
   --spacing-xl: 32px;
 }
 
+/* ==========================================================
+   Generic Modal Styles (used by multiple components)
+   ========================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  width: 880px;
+  max-width: 95vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+}
+
+/* ==========================================================
+   Arduino Command Dialog Styles
+   ========================================================== */
+.arduino-command-dialog {
+  width: 960px;
+  max-width: 98vw;
+}
+
+.arduino-command-dialog .modal-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.connection-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.cmd-form {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.cmd-row {
+  display: flex;
+  gap: 8px;
+}
+
+.cmd-input {
+  font-family: monospace;
+}
+
+.cmd-suggestions {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cmd-suggestions .suggestion {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: 999px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.cmd-suggestions .suggestion:hover {
+  background: var(--bg-tertiary);
+}
+
+.quick-commands {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.quick-commands .qc-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.cmd-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px 20px;
+  overflow: auto;
+}
+
+@media (max-width: 900px) {
+  .cmd-panels {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cmd-panels .panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cmd-panels .panel .panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.response-box {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 12px;
+  margin: 0;
+  max-height: 220px;
+  overflow: auto;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.history-list.scrollable {
+  max-height: 260px;
+  overflow: auto;
+  padding: 8px 12px 16px 12px;
+}
+
+.history-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.history-item .hi-meta { color: var(--text-tertiary); width: 14px; text-align: center; }
+.history-item .hi-text { color: var(--text-primary); }
+.history-item .hi-text.mono { font-family: monospace; }
+.history-item .hi-rt { color: var(--text-tertiary); margin-left: auto; }
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.checkbox { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary); }
+.spacer { flex: 1; }
+
 /* Base layout */
 .app {
   display: flex;
@@ -2396,6 +2580,28 @@
 .no-animations * {
   animation: none !important;
   transition: none !important;
+}
+
+/* Parameter Card Uniform Sizing */
+.parameter-card-compact {
+  flex: 1 1 240px;    /* grow, shrink, base width */
+  display: flex;
+  flex-direction: column;
+  min-height: 160px;  /* guarantees equal height */
+  box-sizing: border-box;
+}
+
+.parameter-card-compact .enhanced-pin-display {
+  flex: 1;            /* pushes footer to bottom */
+  display: flex;
+  flex-direction: column;
+}
+
+.parameter-card-compact .pin-state.enhanced {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* Enhanced Dark Theme Styles for Signal Monitoring Cards */
@@ -4770,9 +4976,61 @@
 /* Arduino Commands Panel Styles */
 .arduino-commands-panel {
   padding: 20px;
-  background: var(--bg-color);
+  background: var(--bg-primary);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Section Card Styles - Unified design for all sections */
+.section-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.section-card:hover {
+  border-color: var(--border-color-hover);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.section-card h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Dark theme section cards */
+.dark-theme .section-card {
+  background: linear-gradient(135deg, #2a3441 0%, #374151 100%);
+  border: 1px solid #4b5563;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.dark-theme .section-card:hover {
+  background: linear-gradient(135deg, #374151 0%, #475569 100%);
+  border-color: #6b7280;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Section card modifiers for specific functionality */
+.section-card.primary {
+  border-color: #3b82f6;
+}
+
+.section-card.success {
+  border-color: #10b981;
+}
+
+.section-card.info {
+  border-color: #8b5cf6;
 }
 
 .arduino-commands-panel .commands-header {
@@ -4783,7 +5041,7 @@
 .arduino-commands-panel .commands-header h3 {
   font-size: 24px;
   font-weight: 700;
-  color: var(--text-color);
+  color: var(--text-primary);
   margin: 0 0 8px 0;
 }
 
@@ -4799,24 +5057,18 @@
   gap: 24px;
 }
 
-/* PING Test Section */
-.arduino-commands-panel .ping-test-primary {
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-  color: white;
-  padding: 24px;
-  border-radius: 12px;
+/* Section-specific content styling */
+.section-card.ping-test {
   text-align: center;
 }
 
-.arduino-commands-panel .ping-test-primary h4 {
-  font-size: 20px;
-  font-weight: 600;
-  margin: 0 0 20px 0;
+.section-card.ping-test h4 {
+  color: #3b82f6;
 }
 
 .arduino-commands-panel .ping-button-large {
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border: 2px solid #3b82f6;
   color: white;
   padding: 16px 32px;
   border-radius: 8px;
@@ -4827,35 +5079,43 @@
   margin-bottom: 16px;
   display: block;
   width: 100%;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .arduino-commands-panel .ping-button-large:hover {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  border-color: #2563eb;
   transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
 }
 
 .arduino-commands-panel .ping-button-large:disabled {
+  background: #9ca3af;
+  border-color: #9ca3af;
   opacity: 0.6;
   cursor: not-allowed;
   transform: none;
+  box-shadow: none;
 }
 
 .arduino-commands-panel .ping-response-large {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--bg-tertiary);
   border-radius: 8px;
   padding: 16px;
   margin-top: 16px;
+  border: 1px solid var(--border-color);
 }
 
 .arduino-commands-panel .ping-response-large.success {
-  background: rgba(16, 185, 129, 0.2);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid #10b981;
+  color: var(--text-primary);
 }
 
 .arduino-commands-panel .ping-response-large.error {
-  background: rgba(239, 68, 68, 0.2);
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid #ef4444;
+  color: var(--text-primary);
 }
 
 .arduino-commands-panel .response-header {
@@ -4888,17 +5148,18 @@
 
 /* Ping History Styles */
 .arduino-commands-panel .ping-history {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--bg-tertiary);
   border-radius: 8px;
   padding: 16px;
   margin-top: 16px;
+  border: 1px solid var(--border-color);
 }
 
 .arduino-commands-panel .ping-history h5 {
   margin: 0 0 12px 0;
   font-size: 14px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
 }
 
 .arduino-commands-panel .history-list {
@@ -4919,25 +5180,25 @@
 }
 
 .arduino-commands-panel .history-item.success {
-  background: rgba(16, 185, 129, 0.2);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid #10b981;
 }
 
 .arduino-commands-panel .history-item.error {
-  background: rgba(239, 68, 68, 0.2);
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid #ef4444;
 }
 
 .arduino-commands-panel .history-time {
   font-family: 'Courier New', monospace;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
   font-size: 11px;
 }
 
 .arduino-commands-panel .history-response-time {
   font-family: 'Courier New', monospace;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
 }
 
 .arduino-commands-panel .history-status {
@@ -4948,9 +5209,9 @@
   display: flex;
   justify-content: space-between;
   padding-top: 8px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid var(--border-color);
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
 }
 
 .arduino-commands-panel .stat-item {
@@ -4959,23 +5220,16 @@
 
 .arduino-commands-panel .detail-value {
   font-family: 'Courier New', monospace;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--bg-tertiary);
   padding: 2px 8px;
   border-radius: 4px;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
 }
 
-/* System Status Section */
-.arduino-commands-panel .system-status-section {
-  background: linear-gradient(135deg, #10b981, #059669);
-  color: white;
-  padding: 24px;
-  border-radius: 12px;
-}
-
-.arduino-commands-panel .system-status-section h4 {
-  font-size: 20px;
-  font-weight: 600;
-  margin: 0 0 16px 0;
+/* Section-specific content styling for system status */
+.section-card.system-status h4 {
+  color: #10b981;
 }
 
 .arduino-commands-panel .status-indicators {
@@ -4988,9 +5242,10 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--bg-tertiary);
   padding: 12px;
   border-radius: 8px;
+  border: 1px solid var(--border-color);
 }
 
 .arduino-commands-panel .status-dot {
@@ -5003,28 +5258,22 @@
 .arduino-commands-panel .status-label {
   font-weight: 500;
   min-width: 80px;
+  color: var(--text-secondary);
 }
 
 .arduino-commands-panel .status-value {
   font-family: 'Courier New', monospace;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--bg-secondary);
   padding: 2px 8px;
   border-radius: 4px;
   margin-left: auto;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
 }
 
-/* Quick Help Section */
-.arduino-commands-panel .quick-help-section {
-  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-  color: white;
-  padding: 24px;
-  border-radius: 12px;
-}
-
-.arduino-commands-panel .quick-help-section h4 {
-  font-size: 20px;
-  font-weight: 600;
-  margin: 0 0 16px 0;
+/* Section-specific content styling for help */
+.section-card.help h4 {
+  color: #8b5cf6;
 }
 
 .arduino-commands-panel .help-items {
@@ -5037,14 +5286,22 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--bg-tertiary);
   padding: 12px;
   border-radius: 8px;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.arduino-commands-panel .help-item:hover {
+  background: var(--bg-secondary);
+  border-color: var(--border-color-hover);
 }
 
 .arduino-commands-panel .help-icon {
   font-size: 20px;
   flex-shrink: 0;
+  color: var(--text-secondary);
 }
 
 .arduino-commands-panel .help-content {
@@ -5056,11 +5313,12 @@
 .arduino-commands-panel .help-title {
   font-weight: 600;
   font-size: 14px;
+  color: var(--text-primary);
 }
 
 .arduino-commands-panel .help-description {
   font-size: 12px;
-  opacity: 0.8;
+  color: var(--text-secondary);
 }
 
 /* Enhanced Pin Mapping Display - Front and Center */
@@ -8421,11 +8679,16 @@
   align-items: center;
   gap: 12px;
   padding: 10px 12px;
-  background: rgba(255, 255, 255, 0.1);
+  background: transparent;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: none;
   font-size: 13px;
   color: inherit;
+  transition: background-color 0.2s ease;
+}
+
+.help-item:hover {
+  background: var(--bg-secondary);
 }
 
 .help-icon {
@@ -8673,4 +8936,39 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-xs);
+}
+
+/* =========================
+   Parameter Grid Layout
+   ========================= */
+
+.parameter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+/* Overflow prevention for parameter card content */
+.parameter-card-compact .signal-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.parameter-card-compact .connection-info {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 60%;
+}
+
+.parameter-card-compact .parameter-header {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.parameter-card-compact .pin-value {
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
