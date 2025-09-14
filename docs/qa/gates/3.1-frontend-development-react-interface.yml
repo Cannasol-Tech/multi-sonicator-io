@@ -22,9 +22,9 @@ top_issues:
     suggested_action: "Improve test coverage to meet ≥85% component and function coverage requirement"
   
   - id: "REQ-001"
-    severity: medium
-    finding: "Authentication and session management (AC 7) marked as not required but specified in acceptance criteria"
-    suggested_action: "Clarify requirements - either implement authentication or formally waive this acceptance criteria"
+    severity: low
+    finding: "Authentication and session management (AC 7) formally de-scoped for S-3.1 per PO authorization"
+    suggested_action: "No action for S-3.1; track auth in a future story (e.g., S-3.x) if/when required"
   
   - id: "MNT-001"
     severity: low

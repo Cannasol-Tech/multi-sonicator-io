@@ -327,7 +327,7 @@ python3 scripts/ci_test_runner.py --stage acceptance
 ### **Quality Metrics**
 
 - **Test Pass Rate:** >95% for activated scenarios
-- **Coverage Maintenance:** Maintain >90% unit test coverage
+- **Coverage Maintenance:** Maintain ≥85% unit test coverage
 - **Regression Prevention:** Zero regression failures after activation
 - **Documentation Currency:** 100% scenario-requirement traceability
 

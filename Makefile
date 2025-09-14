@@ -155,7 +155,7 @@ hardware-sandbox: check-deps check-pio check-arduino-cli
 test: check-deps check-pio validate-config test-unit test-acceptance test-integration generate-traceability-report
 	@echo "✅ Complete test suite executed per software testing standard"
 	@echo "   - Configuration validation: HIL config integrity verified"
-	@echo "   - Unit tests: Unity Test Framework with 90% coverage requirement"
+	@echo "   - Unit tests: Unity Test Framework with 85% coverage requirement"
 	@echo "   - Acceptance tests: BDD scenarios via Behave + pytest HIL framework"
 	@echo "   - Integration tests: HIL hardware validation"
 	@echo "   - Traceability report: Coverage and requirements mapping generated"

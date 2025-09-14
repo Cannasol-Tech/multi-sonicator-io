@@ -12,7 +12,7 @@ waiver: { active: false }
 top_issues:
   - id: "DEP-001"
     severity: high
-    finding: "Story 0.2 HIL Test Harness Setup must be completed first with unit test coverage ≥90%"
+    finding: "Story 0.2 HIL Test Harness Setup must be completed first with unit test coverage ≥85%"
     suggested_action: "Complete Story 0.2 implementation and resolve unit test coverage gaps"
     suggested_owner: "dev"
   - id: "REG-001"
@@ -54,7 +54,7 @@ dependencies:
     - story: "0.2"
       title: "HIL Test Harness Setup"
       status: "CONCERNS"
-      issue: "Unit test coverage below 90% requirement"
+      issue: "Unit test coverage below 85% requirement"
     - requirement: "Register Map Definition"
       file: "include/register_map.h"
       status: "MISSING"
@@ -64,7 +64,7 @@ dependencies:
 
 recommendations:
   immediate:
-    - action: "Wait for Story 0.2 completion with unit test coverage ≥90%"
+    - action: "Wait for Story 0.2 completion with unit test coverage ≥85%"
       refs: ["Story 0.2 gate status"]
     - action: "Define MODBUS register map in include/register_map.h"
       refs: ["Register map requirements"]

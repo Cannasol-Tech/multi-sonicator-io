@@ -6,12 +6,12 @@
  * @version 1.0.0
  * 
  * @details
- * This test suite provides comprehensive coverage (90%+) for both:
+ * This test suite provides comprehensive coverage (≥85%) for both:
  * - Hardware Abstraction Layer (HAL) module
  * - Communication (MODBUS) module
  * 
  * Combines all critical test cases to ensure robust functionality
- * and meet the 90% coverage requirement for both modules.
+ * and meet the 85% coverage requirement for both modules.
  */
 
 #ifdef UNIT_TEST

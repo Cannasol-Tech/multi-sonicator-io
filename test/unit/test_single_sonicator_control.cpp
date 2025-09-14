@@ -94,6 +94,7 @@ void test_modbus_bridge_response_time(void) {
     // Test bridge update function
     bool action_taken = sonicator_modbus_bridge_update();
     // Should return false if no commands pending (normal case)
+    TEST_ASSERT_FALSE_MESSAGE(action_taken, "Bridge update should take no action when no commands are pending");
     
     // Test bridge responsiveness check
     TEST_ASSERT_TRUE(sonicator_modbus_bridge_is_responsive());

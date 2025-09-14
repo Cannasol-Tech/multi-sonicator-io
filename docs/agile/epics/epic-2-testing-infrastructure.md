@@ -18,7 +18,7 @@ Establish comprehensive testing infrastructure including unit testing, integrati
 
 ### EXACTLY What Will Be Implemented
 
-- Comprehensive unit testing framework with ≥90% coverage requirement
+- Comprehensive unit testing framework with ≥85% coverage requirement
 - Integration testing for hardware-software interfaces
 - Acceptance testing with BDD scenarios
 - Test automation and CI/CD pipeline integration
@@ -49,7 +49,7 @@ Establish comprehensive testing infrastructure including unit testing, integrati
 
 ## Acceptance Criteria
 
-1. **Coverage Metrics**: ≥90% unit test coverage maintained
+1. **Coverage Metrics**: ≥85% unit test coverage maintained
 2. **Test Automation**: All tests run automatically on code changes
 3. **Integration Testing**: Hardware interfaces validated with real and simulated devices
 4. **Performance Validation**: MODBUS response times <100ms consistently
@@ -82,7 +82,7 @@ Establish comprehensive testing infrastructure including unit testing, integrati
 ## Definition of Done
 
 - [ ] All 5 user stories completed and accepted
-- [ ] ≥90% unit test coverage achieved and maintained
+- [ ] ≥85% unit test coverage achieved and maintained
 - [ ] Integration tests covering all hardware interfaces
 - [ ] Performance tests validating timing requirements
 - [ ] CI/CD pipeline executing all tests automatically

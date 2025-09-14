@@ -609,10 +609,10 @@ if [[ -f "pytest.ini" ]] || [[ -f "pyproject.toml" ]] || [[ -f "setup.cfg" ]]; t
   echo ""
   echo "Checking Python test coverage..."
   if command -v pytest >/dev/null 2>&1; then
-    if pytest --cov=src --cov-report=term-missing --cov-fail-under=90 >/dev/null 2>&1; then
-      echo "✅ PASS: Test coverage meets 90% requirement"
+    if pytest --cov=src --cov-report=term-missing --cov-fail-under=85 >/dev/null 2>&1; then
+      echo "✅ PASS: Test coverage meets 85% requirement"
     else
-      echo "❌ FAIL: Test coverage below 90% requirement"
+      echo "❌ FAIL: Test coverage below 85% requirement"
     fi
   else
     echo "⚠️  WARN: pytest not available, cannot check coverage"

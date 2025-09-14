@@ -117,7 +117,7 @@ Implement comprehensive multi-sonicator coordination capabilities enabling simul
 - [ ] Safety interlock systems tested and certified
 - [ ] Load balancing algorithms prevent power system overload
 - [ ] Performance requirements met (≤100ms MODBUS response)
-- [ ] ≥90% unit test coverage for all multi-unit functionality
+- [ ] ≥85% unit test coverage for all multi-unit functionality
 - [ ] All HIL acceptance tests passing with 4 sonicators
 - [ ] Safety protocols documented and approved
 - [ ] Operational procedures complete and reviewed

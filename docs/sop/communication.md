@@ -294,7 +294,7 @@ This communication standard integrates seamlessly with:
 ```
 [DEV-01] I've completed the user authentication module implementation as requested.
 
-[DEV-01] The implementation includes comprehensive unit tests with 95% coverage, exceeding our 90% requirement.
+[DEV-01] The implementation includes comprehensive unit tests with 95% coverage, exceeding our 85% requirement.
 
 [DEV-01] All tests are passing and the module is ready for code review. The implementation follows the coding standards defined in AGENTS.md.
 

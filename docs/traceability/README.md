@@ -13,7 +13,7 @@ How it works:
 Tagging conventions:
 - `@TODO:<key>` — placeholder scenarios that are not yet implemented
 - `@trace:<key>` — stable linkage key for dashboards/matrices (e.g., `modbus-performance`, `hil-pin-matrix`)
-- You may also include `@prd-<section>` or `@req-<short>` tags as needed for deeper PRD coverage (see docs/requirements/prd-to-scenarios-traceability.md)
+- You may also include `@prd-<section>` or `@req-<short>` tags as needed for deeper PRD coverage (see docs/prd/prd-to-scenarios-traceability.md)
 
 Recommended authoring pattern:
 - Put tags on the line(s) immediately before each `Scenario:`

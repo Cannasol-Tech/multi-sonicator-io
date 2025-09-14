@@ -92,6 +92,6 @@ Note: DB9-0 is the communications connector back to the main automation system (
 
 ## References
 
-- `docs/Requirements/prd-v1.0.0.md` — Sections 5, 7, 10
+- `docs/prd/prd-v1.0.0.md` — Sections 5, 7, 10
 - `include/config.h` — Register map, constants
 - Schematics/Hardware docs — pin headers and electrical characteristics

@@ -1,8 +1,8 @@
 # PRD-to-Scenarios Traceability Matrix
 
 **Last Updated:** September 5, 2025 - Automated compliance validation implemented
-Source PRD: `docs/Requirements/prd-v1.0.0.md`
-Authoritative requirements sources: `docs/Requirements/project-requirements.md`, `docs/Requirements/project-reqs-qna.md`
+Source PRD: `docs/prd/prd-v1.0.0.md`
+Authoritative requirements sources: `docs/prd/project-requirements.md`, `docs/prd/project-reqs-qna.md`
 Implementation mirror: `include/config.h`
 
 Profiles:
@@ -76,7 +76,7 @@ Tagging conventions:
 
 ## Maintenance
 
-- Any change to the register map in `docs/Requirements/project-requirements.md` must update:
+- Any change to the register map in `docs/prd/project-requirements.md` must update:
   - `include/config.h`
   - This traceability matrix
   - Behave feature files and tags

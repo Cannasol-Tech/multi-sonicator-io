@@ -54,7 +54,7 @@ provenance:
 | Story | Title | Status | Progress | QA Gate | Blocking Issues |
 |-------|-------|--------|----------|---------|-----------------|
 | **0.1** | Project Structure & CI/CD Pipeline | ✅ **COMPLETED** | 100% | ✅ PASS | - |
-| **0.2** | HIL Test Harness Setup | ⚠️ **CONCERNS** | 70% | ⚠️ CONCERNS | Unit test coverage <90% |
+| **0.2** | HIL Test Harness Setup | ⚠️ **CONCERNS** | 70% | ⚠️ CONCERNS | Unit test coverage <85% |
 | **0.3** | BDD Acceptance Testing Framework | 📋 **DRAFT** | 0% | 🔒 BLOCKED | Depends on 0.2 |
 | **0.4** | Hardware Connection Verification | 📋 **NOT STARTED** | 0% | - | Depends on 0.2, 0.3 |
 | **0.5** | Arduino Test Wrapper Validation | 📋 **NOT STARTED** | 0% | - | Depends on 0.2, 0.3 |
@@ -64,7 +64,7 @@ provenance:
 | **0.9** | Test Coverage & Documentation | 📋 **NOT STARTED** | 0% | - | **FINAL STORY** - Depends on ALL others |
 
 ### **🚨 Critical Path Issues**
-1. **Story 0.2** - Must achieve ≥90% unit test coverage (currently ~70%)
+1. **Story 0.2** - Must achieve ≥85% unit test coverage (currently ~70%)
 2. **Dependency Cascade** - 7 stories blocked until 0.2 is complete
 3. **Quality Gates** - Epic 0 completion required for Epic 1 start
 

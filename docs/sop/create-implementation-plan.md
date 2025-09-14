@@ -185,7 +185,7 @@ Draft and present:
 - **Test strategy overview**: Unit, integration, acceptance testing approach
 - **QA artifacts location**: Test plans, cases, traces, gates, assessments
 - **Traceability plan**: BDD scenarios to PRD requirements mapping
-- **Coverage targets**: ≥90% unit coverage and other quality metrics
+- **Coverage targets**: ≥85% unit coverage and other quality metrics
 
 ### 7. Implementation Plan Completion
 

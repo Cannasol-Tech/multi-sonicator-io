@@ -1,5 +1,7 @@
-import { spawn, ChildProcess } from 'child_process'
+import { spawn, spawnSync, ChildProcess } from 'child_process'
+import fs from 'fs'
 import { EventEmitter } from 'events'
+import path from 'path'
 // import { DirectHardwareInterface } from './DirectHardwareInterface'
 
 export interface PinState {
@@ -95,6 +97,39 @@ export class HardwareInterface extends EventEmitter {
     })
   }
 
+  private resolvePythonInterpreter(): string {
+    try {
+      const candidates = [
+        `${process.cwd()}/../venv/bin/python`,
+        `${process.cwd()}/../venv/bin/python3`,
+        process.env.PYTHON || '',
+        'python3',
+        'python'
+      ].filter(Boolean) as string[]
+
+      for (const cand of candidates) {
+        try {
+          // If absolute/relative path to a file
+          if (cand.startsWith('/') || cand.startsWith('.')) {
+            if (fs.existsSync(cand)) {
+              // Ensure it is executable or at least resolves to a real path
+              try { fs.realpathSync(cand) } catch { continue }
+              return cand
+            }
+          } else {
+            // Resolve via PATH
+            const res = spawnSync('which', [cand], { encoding: 'utf8' })
+            if (res.status === 0 && res.stdout && res.stdout.trim()) {
+              return cand
+            }
+          }
+        } catch {}
+      }
+    } catch {}
+    // Final fallback
+    return 'python3'
+  }
+
   async initialize(): Promise<boolean> {
     try {
       console.log('Initializing hardware interface with auto-detection...')
@@ -107,8 +142,8 @@ export class HardwareInterface extends EventEmitter {
         console.log(`Auto-detected Arduino test harness on port: ${detectedPort}`)
       }
 
-      // Spawn Python HIL interface process using the web-ui venv
-      const pythonPath = `${process.cwd()}/../venv/bin/python`
+      // Spawn Python HIL interface process using a resolved Python interpreter (venv or system)
+      const pythonPath = this.resolvePythonInterpreter()
       this.pythonProcess = spawn(pythonPath, [
         '-c', `
 import sys
@@ -306,7 +341,7 @@ try:
     if hil.verify_connection():
         print(json.dumps({"type": "connection", "status": "connected", "port": hil.serial_port}))
         sys.stdout.flush()
-        
+
         # Continuous monitoring loop for sandbox mode
         while True:
             try:
@@ -314,9 +349,9 @@ try:
                 line = sys.stdin.readline().strip()
                 if not line:
                     continue
-                    
+
                 cmd = json.loads(line)
-                
+
                 if cmd["type"] == "ping":
                     response = hil.send_command("PING")
                     print(json.dumps({"type": "response", "data": response}))
@@ -375,19 +410,19 @@ try:
                 elif cmd["type"] == "status":
                     response = hil.send_command("STATUS")
                     print(json.dumps({"type": "status", "data": response}))
-                    
+
                 sys.stdout.flush()
-                
+
             except json.JSONDecodeError:
                 continue
             except Exception as e:
                 print(json.dumps({"type": "error", "error": str(e)}))
                 sys.stdout.flush()
-                
+
     else:
         print(json.dumps({"type": "connection", "status": "failed", "error": "Could not connect to hardware"}))
         sys.exit(1)
-        
+
 except Exception as e:
     print(json.dumps({"type": "error", "error": str(e)}))
     sys.exit(1)
@@ -487,7 +522,7 @@ except Exception as e:
     // Parse hardware response and update pin state
     const timestamp = Date.now()
 
-    // Throttle logging to prevent spam - only log occasionally  
+    // Throttle logging to prevent spam - only log occasionally
     const lastLogTime = this.lastPinLogTimes.get(pin) || 0
     const shouldLog = timestamp - lastLogTime > this.logThrottleMs
 
@@ -630,7 +665,7 @@ except Exception as e:
   private async detectHardware(): Promise<string | null> {
     try {
       // Use existing hardware detection script
-      const pythonPath = `${process.cwd()}/../venv/bin/python`
+      const pythonPath = this.resolvePythonInterpreter()
       const detectProcess = spawn(pythonPath, [
         'scripts/detect_hardware.py'
       ], {

@@ -207,8 +207,9 @@ export default function HelpSystem({ visible, onClose }: HelpSystemProps) {
   }
 
   return (
-    <div className="help-modal-overlay">
+    <div className="help-modal-overlay help-overlay" data-testid="help-system">
       <div className="help-modal-container">
+        <div className="visually-hidden">Help & Documentation</div>
         {/* Help Topics Sidebar */}
         <div className="help-sidebar">
           <div className="help-sidebar-header">

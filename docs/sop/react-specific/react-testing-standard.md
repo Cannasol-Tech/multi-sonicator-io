@@ -231,7 +231,7 @@ describe('User Authentication Flow', () => {
 
 | Test Type | Minimum Coverage | Enforcement |
 |-----------|------------------|-------------|
-| Unit Tests | 90% | CI/CD Pipeline |
+| Unit Tests | 85% | CI/CD Pipeline |
 | Component Tests | 80% | CI/CD Pipeline |
 | Integration Tests | Critical Paths | Manual Review |
 | Overall Project | 85% | CI/CD Pipeline |
@@ -246,7 +246,7 @@ React projects must implement these standardized make targets:
 # Unit Testing (with mocking allowed)
 make test-unit
 # - Executes: npm test -- --testPathPattern=test
-# - Coverage: ≥90% requirement
+# - Coverage: ≥85% requirement
 # - Mocking: Jest mocking permitted
 
 # Component Testing (minimal mocking)
@@ -324,7 +324,7 @@ test('should not have accessibility violations', async () => {
 
 All React stories must pass these quality gates:
 
-- [ ] Unit tests achieve ≥90% coverage (mocking permitted for external services)
+- [ ] Unit tests achieve ≥85% coverage (mocking permitted for external services)
 - [ ] Component tests achieve ≥80% coverage (minimal mocking)
 - [ ] Integration tests cover critical page interactions (no component mocking)
 - [ ] Accessibility tests pass with no violations

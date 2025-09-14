@@ -109,7 +109,7 @@
 ## Appendices
 
 - References
-  - PRD: `docs/Requirements/prd`
+  - PRD: `docs/prd/prd`
   - Hardware Configuration: `config/hardware-config.yaml` (SOLE SOURCE OF TRUTH — FINALIZED)
   - Implementation Plan: `docs/planning/implementation-plan.md` (TBD)
   - CI: `.github/workflows/ci.yml`

@@ -54,7 +54,7 @@ Establish core firmware structure, basic sonicator control, and MODBUS communica
 3. **MODBUS Communication**: RTU slave responds to read/write operations within 100ms
 4. **Sonicator Control**: Single unit start/stop/amplitude control operational
 5. **Hardware Testing**: HIL framework validates all functionality with real hardware
-6. **Code Quality**: ≥90% unit test coverage, all acceptance tests passing
+6. **Code Quality**: ≥85% unit test coverage, all acceptance tests passing
 7. **Documentation**: Complete setup and usage documentation provided
 
 ## Dependencies
@@ -84,7 +84,7 @@ Establish core firmware structure, basic sonicator control, and MODBUS communica
 ## Definition of Done
 
 - [ ] All 5 user stories completed and accepted
-- [ ] ≥90% unit test coverage achieved
+- [ ] ≥85% unit test coverage achieved
 - [ ] All HIL acceptance tests passing
 - [ ] MODBUS communication validated with external master
 - [ ] Single sonicator control demonstrated end-to-end

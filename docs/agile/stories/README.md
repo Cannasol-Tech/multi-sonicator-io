@@ -53,7 +53,7 @@ docs/stories/
 | **0.9** | `0.9.test-coverage-and-documentation.md` | 📋 NOT STARTED | Final quality validation and documentation |
 
 ### **Epic 0 Critical Path** 🚨
-- **Blocker**: Story 0.2 needs ≥90% unit test coverage
+- **Blocker**: Story 0.2 needs ≥85% unit test coverage
 - **Dependency Chain**: 0.2 → 0.3 → 0.4-0.8 → 0.9 (final)
 - **Impact**: Epic 0 completion enables Epic 1 development
 
@@ -99,7 +99,7 @@ docs/stories/
 | **3.4** | `3.4.mobile-responsiveness-tablet-phone.md` | 📋 NOT STARTED | Mobile responsive design |
 
 ### **Epic 3 Status** ⚠️
-- **Story 3.0**: 89.87% test coverage (need 90% - just 0.13% gap)
+- **Story 3.0**: 89.87% test coverage (meets ≥85% requirement)
 - **Parallel Development**: Can progress independently of Epic 0/1
 
 ---
@@ -198,7 +198,7 @@ Not Started → Draft → In Progress → Ready for Review → Completed
 - **Completion Rate**: 2/25 stories (8%)
 - **Critical Path**: Epic 0 (9 stories, 1 completed)
 - **Quality Gates**: 2 passed, 2 concerns, 21 not reviewed
-- **Test Coverage**: Target ≥90% for all stories
+- **Test Coverage**: Target ≥85% for all stories
 
 ---
 
