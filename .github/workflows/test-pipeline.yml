@@ -30,7 +30,7 @@ jobs:
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements-testing.txt
+        pip install -r config/requirements-testing.txt
         
     - name: Validate HIL configuration
       run: |
@@ -63,7 +63,7 @@ jobs:
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements-testing.txt
+        pip install -r config/requirements-testing.txt
         
     - name: Install PlatformIO
       run: |
@@ -74,7 +74,7 @@ jobs:
         make ci
         
     - name: Upload CI reports
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ci-reports
         path: |
@@ -117,7 +117,7 @@ jobs:
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements-testing.txt
+        pip install -r config/requirements-testing.txt
         
     - name: Validate BDD syntax only (no execution)
       run: |
@@ -130,7 +130,7 @@ jobs:
         python3 scripts/manage_pending_scenarios.py
         
     - name: Upload BDD validation reports
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: bdd-validation-reports
         path: |
@@ -157,17 +157,17 @@ jobs:
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements-testing.txt
+        pip install -r config/requirements-testing.txt
         
     - name: Download CI reports
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: ci-reports
         path: ./
       continue-on-error: true
         
     - name: Download BDD validation reports
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: bdd-validation-reports
         path: test/acceptance/
@@ -178,7 +178,7 @@ jobs:
         python3 scripts/generate_traceability_report.py
         
     - name: Upload final reports
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: integration-reports
         path: |
@@ -242,7 +242,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements-testing.txt
+        pip install -r config/requirements-testing.txt
         
     - name: Check hardware availability
       run: |
@@ -263,7 +263,7 @@ jobs:
       continue-on-error: true
         
     - name: Upload HIL test results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: hil-test-results
         path: |
