@@ -15,7 +15,7 @@ __metadata:
 ---
 # Task: Update Project Board
 
-Purpose: Keep the single source of truth in `config/planning-board.yaml` in sync with current epic/feature/story statuses and sprint planning decisions.
+Purpose: Keep the single source of truth in `docs/agile/project-board.md` in sync with current epic/feature/story statuses and sprint planning decisions.
 
 Operator: Scrum Master (sm)
 
