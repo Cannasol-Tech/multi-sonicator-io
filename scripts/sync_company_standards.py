@@ -2,7 +2,7 @@
 """
 Company Standards Synchronization Script
 
-Downloads only the docs/standards/ directory from the Axovia-AI/axovia-flow repository
+Downloads only the docs/sop/ directory from the Axovia-AI/axovia-flow repository
 to keep company standards up to date without pulling the entire project.
 
 Usage:
@@ -22,14 +22,14 @@ from urllib.error import URLError, HTTPError
 # Configuration - Update these values for your organization
 REPO_OWNER = "Axovia-AI"  # Change to your organization
 REPO_NAME = "axovia-flow"  # Change to your standards repository
-STANDARDS_SOURCE_PATH = "docs/standards"
-STANDARDS_TARGET_PATH = ".axovia-flow/company-standards"
+STANDARDS_SOURCE_PATH = "docs/sop"
+STANDARDS_TARGET_PATH = ".axovia-flow/sop"
 GITHUB_API_BASE = "https://api.github.com"
 GITHUB_RAW_BASE = "https://raw.githubusercontent.com"
 
 # Fallback: Use local standards if remote repository is not available
 FALLBACK_TO_LOCAL = True
-LOCAL_STANDARDS_PATH = "docs/standards"
+LOCAL_STANDARDS_PATH = "docs/sop"
 
 def log(message, level="INFO"):
     """Simple logging function"""
@@ -207,7 +207,7 @@ def validate_core_directories():
         'docs/architecture': 'Architecture documentation',
         'docs/planning': 'Planning documents',
         'docs/requirements': 'Requirements documentation', 
-        'docs/standards': 'Project standards',
+        'docs/sop': 'Project standards',
         'docs/agile': 'Agile development artifacts',
         'docs/agent-reports': 'AI agent reports',
         'docs/testing': 'Testing documentation'

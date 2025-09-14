@@ -3,7 +3,7 @@
  * @brief Unit tests for company standards compliance validation
  * 
  * Tests to ensure the project structure complies with Axovia Flow company standards
- * as defined in .axovia-flow/company-standards/project-structure.md
+ * as defined in .axovia-flow/sop/project-structure.md
  * 
  * @author Multi-Sonicator I/O Controller Team
  * @date 2025-09-10
@@ -23,7 +23,7 @@ const std::string PROJECT_ROOT = "./";
 const std::string DOCS_PATH = "docs/";
 const std::string SRC_PATH = "src/";
 const std::string BIN_PATH = "bin/";
-const std::string STANDARDS_PATH = ".axovia-flow/company-standards/";
+const std::string STANDARDS_PATH = ".axovia-flow/sop/";
 
 /**
  * @brief Helper function to check if a file exists
@@ -126,7 +126,7 @@ void test_docs_subdirectories_exist(void) {
         "docs/architecture",
         "docs/planning",
         "docs/requirements",
-        "docs/standards", 
+        "docs/sop", 
         "docs/agile",
         "docs/agent-reports",
         "docs/testing"
@@ -146,7 +146,7 @@ void test_docs_subdirectory_readmes_exist(void) {
         "docs/architecture",
         "docs/planning", 
         "docs/requirements",
-        "docs/standards",
+        "docs/sop",
         "docs/agile",
         "docs/agent-reports",
         "docs/testing"

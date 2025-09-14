@@ -36,7 +36,7 @@ Story 0.1 has been successfully completed with all acceptance criteria met and a
   - `docs/architecture/` - Architecture documentation
   - `docs/planning/` - Planning documents (contains pin-matrix.md as SOLE SOURCE OF TRUTH)
   - `docs/requirements/` - Requirements documentation
-  - `docs/standards/` - Project standards
+  - `docs/sop/` - Project standards
   - `docs/agile/` - Agile development artifacts
   - `docs/agent-reports/` - AI agent reports
   - `docs/testing/` - Testing documentation

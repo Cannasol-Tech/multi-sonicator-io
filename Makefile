@@ -346,7 +346,7 @@ generate-release-artifacts: check-deps
 
 # Generate executive report for CI pipeline (unit tests only)
 # This make target should generate the executive report from the latest test results and coverage data.
-# This report should always adhere to the company standards outlined in the `docs/standards/release-format.md`, and `docs/standards/executive-report-standard.md`
+# This report should always adhere to the company standards outlined in the `docs/sop/release-format.md`, and `docs/sop/executive-report-standard.md`
 generate-executive-report: check-deps
 	@echo "📊 Generating executive report for CI pipeline..."
 	@mkdir -p final
@@ -694,7 +694,7 @@ validate-dod:
 	@STORY_FILE=$$(ls docs/stories/$(STORY)*.md 2>/dev/null | head -1); \
 	if ! grep -q "## Definition of Done Checklist Completion" "$$STORY_FILE"; then \
 		echo "❌ BLOCKING: DoD checklist section missing in $$STORY_FILE"; \
-		echo "📋 Required: Add DoD checklist using docs/standards/definition-of-done-template.md"; \
+		echo "📋 Required: Add DoD checklist using docs/sop/definition-of-done-template.md"; \
 		exit 1; \
 	fi
 	@echo "✅ DoD checklist section found"

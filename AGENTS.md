@@ -15,19 +15,19 @@ axoviaFlowConfig:
 
 ## Source of Truth Hierarchy
 
-1. **Primary standards**: `.axovia-flow/company-standards/` (single source of truth)
+1. **Primary standards**: `.axovia-flow/sop/` (single source of truth)
 2. **Architecture docs**: axoviaFlowConfig.filePaths.architecture.shards
 3. **Project-specific**: This `AGENTS.md` file
 4. **Project-specific**: axoviaFlowConfig.filePaths.comapnyStandards
 5. **Legacy standards**: `.bmad-core/core-config.yaml` (only when not in conflict)
 
-> **Note**: If standards are duplicated elsewhere, treat `docs/standards/*` as canonical. Flag any divergence and propose sync PRs.
+> **Note**: If standards are duplicated elsewhere, treat `docs/sop/*` as canonical. Flag any divergence and propose sync PRs.
 
 ## Decision Hierarchy (highest to lowest priority)
 
 0. The Axovia Flow framework flow config (`.axovia-flow/flow-config.yaml`)
 1. This instructions file (`AGENTS.md`)
-2. `docs/standards/*` in this repo
+2. `docs/sop/*` in this repo
 3. `docs/architecture/*` and PRD docs
 4. `.bmad-core/core-config.yaml` (only when not conflicting)
 
@@ -57,10 +57,10 @@ axoviaFlowConfig:
 - Unit Tests must be completed for all newly implemented features
 - Unit Test Coverage must exceed 85% statement coverage
 - Unit Test Coverage must be neatly displayed in the test report after running make test-unit
-- The test report must follow the standards listed in `docs/standards/sw-testing-standard.md` and `docs/standards/release-report.md`
+- The test report must follow the standards listed in `docs/sop/sw-testing-standard.md` and `docs/sop/release-report.md`
 - The feature must be verified through Acceptance BDD Tests with scenarios that are neatly mapped to PRD Requirements.
 - The Acceptance BDD Tests must be run through the make target: make test-acceptance
-- The Acceptance BDD Test Report must follow the standards listed in `docs/standards/sw-testing-standard.md` and `docs/standards/release-report.md
+- The Acceptance BDD Test Report must follow the standards listed in `docs/sop/sw-testing-standard.md` and `docs/sop/release-report.md
 - The new functionality must be triple-checked for any code duplication or integration issues with existing systems.
 - Regression: All previously written tests should pass after the new functionality is implemented.
 - Previously written tests that are failing after the new feature has been implemented should be elevated to Project Management's attention by creating a file in the repository called `REGRESSION-ISSUES.md` which should clearly outline which tests are now failing and why they are failing.  The file should also outline potential solutions to fix the issues with pro's and cons for each solution clearly listed.
@@ -68,9 +68,9 @@ axoviaFlowConfig:
 ### Testing Standards
 
 - All tests should be run solely by make targets as defined in the Company's Software Testing Standards!
-- Follow testing guidance in `docs/standards/sw-testing-standard.md`
+- Follow testing guidance in `docs/sop/sw-testing-standard.md`
 - Enforce coverage thresholds as defined in canonical standards
-- For conflicts between testing standards, prefer `docs/standards/` and report deltas
+- For conflicts between testing standards, prefer `docs/sop/` and report deltas
 - **Verification Requirement**: For every code change, add/update tests until behavior is verified
 - Prefer fast, deterministic tests
 - Provide test plans and execution commands

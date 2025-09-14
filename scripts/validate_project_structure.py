@@ -21,7 +21,7 @@ def validate_project_structure():
         "test/acceptance",
         "docs",
         "docs/stories",
-        "docs/standards",
+        "docs/sop",
         "scripts",
         ".github/workflows"
     ]
@@ -33,7 +33,7 @@ def validate_project_structure():
         "requirements-testing.txt",
         "docs/prd.md",
         "docs/architecture.md",
-        "docs/standards/sw-testing-standard.md",
+        "docs/sop/sw-testing-standard.md",
         "src/main.cpp",
         "include/config.h",
         "include/types.h"

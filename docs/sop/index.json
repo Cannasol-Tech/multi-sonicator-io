@@ -1,0 +1,6219 @@
+{
+  "generated_at": "2025-09-10T06:01:01.484Z",
+  "model": null,
+  "standards_root": ".axovia-flow/sop",
+  "document_count": 26,
+  "documents": [
+    {
+      "id": "README",
+      "path": "README.md",
+      "sha256": "1208f81ce38e332506468de86b6ad110857b010e8f4daa9d80d08da71895406b",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 146,
+      "chunks": [
+        {
+          "id": "README#1",
+          "heading": "Project Standards Documentation",
+          "startLine": 0,
+          "endLine": 1
+        },
+        {
+          "id": "README#2",
+          "heading": "Overview",
+          "startLine": 2,
+          "endLine": 5
+        },
+        {
+          "id": "README#3",
+          "heading": "Company Standard Operating Procedures Index",
+          "startLine": 6,
+          "endLine": 25
+        },
+        {
+          "id": "README#4",
+          "heading": "Directory Purpose",
+          "startLine": 26,
+          "endLine": 29
+        },
+        {
+          "id": "README#5",
+          "heading": "Importing Standards to Other Repositories",
+          "startLine": 30,
+          "endLine": 31
+        },
+        {
+          "id": "README#6",
+          "heading": "Overview",
+          "startLine": 32,
+          "endLine": 35
+        },
+        {
+          "id": "README#7",
+          "heading": "Method 1: Git Submodule (Recommended)",
+          "startLine": 36,
+          "endLine": 39
+        },
+        {
+          "id": "README#8",
+          "heading": "Step 1: Add the Standards Submodule",
+          "startLine": 40,
+          "endLine": 42
+        },
+        {
+          "id": "README#9",
+          "heading": "Navigate to your target repository",
+          "startLine": 43,
+          "endLine": 45
+        },
+        {
+          "id": "README#10",
+          "heading": "Add the axovia-flow repository as a submodule",
+          "startLine": 46,
+          "endLine": 48
+        },
+        {
+          "id": "README#11",
+          "heading": "Initialize and update the submodule",
+          "startLine": 49,
+          "endLine": 52
+        },
+        {
+          "id": "README#12",
+          "heading": "Step 2: Create Standards Directory Structure",
+          "startLine": 53,
+          "endLine": 55
+        },
+        {
+          "id": "README#13",
+          "heading": "Create the standards directory in your project",
+          "startLine": 56,
+          "endLine": 58
+        },
+        {
+          "id": "README#14",
+          "heading": "Create subdirectories for framework-specific standards",
+          "startLine": 59,
+          "endLine": 64
+        },
+        {
+          "id": "README#15",
+          "heading": "Step 3: Set Up Sync Script",
+          "startLine": 65,
+          "endLine": 69
+        },
+        {
+          "id": "README#16",
+          "heading": "Create the sync script",
+          "startLine": 70,
+          "endLine": 74
+        },
+        {
+          "id": "README#17",
+          "heading": "Company Standards Sync Script",
+          "startLine": 75,
+          "endLine": 75
+        },
+        {
+          "id": "README#18",
+          "heading": "Syncs standards from axovia-flow submodule to local .axovia-flow/sop",
+          "startLine": 76,
+          "endLine": 83
+        },
+        {
+          "id": "README#19",
+          "heading": "Ensure submodule is up to date",
+          "startLine": 84,
+          "endLine": 86
+        },
+        {
+          "id": "README#20",
+          "heading": "Sync all standard files",
+          "startLine": 87,
+          "endLine": 91
+        },
+        {
+          "id": "README#21",
+          "heading": "Create a custom README that references the source",
+          "startLine": 92,
+          "endLine": 93
+        },
+        {
+          "id": "README#22",
+          "heading": "Project Standards Documentation",
+          "startLine": 94,
+          "endLine": 95
+        },
+        {
+          "id": "README#23",
+          "heading": "Overview",
+          "startLine": 96,
+          "endLine": 101
+        },
+        {
+          "id": "README#24",
+          "heading": "Last Sync",
+          "startLine": 102,
+          "endLine": 106
+        },
+        {
+          "id": "README#25",
+          "heading": "Available Standards",
+          "startLine": 107,
+          "endLine": 110
+        },
+        {
+          "id": "README#26",
+          "heading": "Append the standards index from the source",
+          "startLine": 111,
+          "endLine": 120
+        },
+        {
+          "id": "README#27",
+          "heading": "Make the script executable",
+          "startLine": 121,
+          "endLine": 124
+        },
+        {
+          "id": "README#28",
+          "heading": "Step 4: Run Initial Sync",
+          "startLine": 125,
+          "endLine": 127
+        },
+        {
+          "id": "README#29",
+          "heading": "Run the sync script to import all standards",
+          "startLine": 128,
+          "endLine": 130
+        },
+        {
+          "id": "README#30",
+          "heading": "Commit the changes",
+          "startLine": 131,
+          "endLine": 139
+        },
+        {
+          "id": "README#31",
+          "heading": "Step 5: Set Up Automated Updates (Optional)",
+          "startLine": 140,
+          "endLine": 144
+        },
+        {
+          "id": "README#32",
+          "heading": ".github/workflows/sync-standards.yml",
+          "startLine": 145,
+          "endLine": 179
+        },
+        {
+          "id": "README#33",
+          "heading": "Method 2: Direct Copy (Alternative)",
+          "startLine": 180,
+          "endLine": 183
+        },
+        {
+          "id": "README#34",
+          "heading": "Step 1: Clone the Source Repository",
+          "startLine": 184,
+          "endLine": 186
+        },
+        {
+          "id": "README#35",
+          "heading": "Clone the axovia-flow repository temporarily",
+          "startLine": 187,
+          "endLine": 190
+        },
+        {
+          "id": "README#36",
+          "heading": "Step 2: Copy Standards Files",
+          "startLine": 191,
+          "endLine": 193
+        },
+        {
+          "id": "README#37",
+          "heading": "Navigate to your target repository",
+          "startLine": 194,
+          "endLine": 196
+        },
+        {
+          "id": "README#38",
+          "heading": "Create standards directory structure",
+          "startLine": 197,
+          "endLine": 201
+        },
+        {
+          "id": "README#39",
+          "heading": "Copy all standards files",
+          "startLine": 202,
+          "endLine": 204
+        },
+        {
+          "id": "README#40",
+          "heading": "Clean up temporary clone",
+          "startLine": 205,
+          "endLine": 208
+        },
+        {
+          "id": "README#41",
+          "heading": "Step 3: Create Update Script",
+          "startLine": 209,
+          "endLine": 211
+        },
+        {
+          "id": "README#42",
+          "heading": "Create update script for future syncing",
+          "startLine": 212,
+          "endLine": 216
+        },
+        {
+          "id": "README#43",
+          "heading": "Company Standards Update Script",
+          "startLine": 217,
+          "endLine": 217
+        },
+        {
+          "id": "README#44",
+          "heading": "Downloads latest standards from axovia-flow repository",
+          "startLine": 218,
+          "endLine": 225
+        },
+        {
+          "id": "README#45",
+          "heading": "Clone the repository",
+          "startLine": 226,
+          "endLine": 228
+        },
+        {
+          "id": "README#46",
+          "heading": "Backup current standards",
+          "startLine": 229,
+          "endLine": 233
+        },
+        {
+          "id": "README#47",
+          "heading": "Copy new standards",
+          "startLine": 234,
+          "endLine": 237
+        },
+        {
+          "id": "README#48",
+          "heading": "Add source attribution to README",
+          "startLine": 238,
+          "endLine": 239
+        },
+        {
+          "id": "README#49",
+          "heading": "Project Standards Documentation",
+          "startLine": 240,
+          "endLine": 241
+        },
+        {
+          "id": "README#50",
+          "heading": "Overview",
+          "startLine": 242,
+          "endLine": 247
+        },
+        {
+          "id": "README#51",
+          "heading": "Last Update",
+          "startLine": 248,
+          "endLine": 254
+        },
+        {
+          "id": "README#52",
+          "heading": "Append standards index",
+          "startLine": 255,
+          "endLine": 259
+        },
+        {
+          "id": "README#53",
+          "heading": "Clean up",
+          "startLine": 260,
+          "endLine": 266
+        },
+        {
+          "id": "README#54",
+          "heading": "Make the script executable",
+          "startLine": 267,
+          "endLine": 270
+        },
+        {
+          "id": "README#55",
+          "heading": "Method 3: Selective Import",
+          "startLine": 271,
+          "endLine": 274
+        },
+        {
+          "id": "README#56",
+          "heading": "Step 1: Identify Required Standards",
+          "startLine": 275,
+          "endLine": 291
+        },
+        {
+          "id": "README#57",
+          "heading": "Step 2: Create Selective Import Script",
+          "startLine": 292,
+          "endLine": 294
+        },
+        {
+          "id": "README#58",
+          "heading": "Create selective import script",
+          "startLine": 295,
+          "endLine": 299
+        },
+        {
+          "id": "README#59",
+          "heading": "Selective Standards Import Script",
+          "startLine": 300,
+          "endLine": 300
+        },
+        {
+          "id": "README#60",
+          "heading": "Imports only specified standards from axovia-flow repository",
+          "startLine": 301,
+          "endLine": 306
+        },
+        {
+          "id": "README#61",
+          "heading": "Define which standards to import (modify as needed)",
+          "startLine": 307,
+          "endLine": 316
+        },
+        {
+          "id": "README#62",
+          "heading": "Define framework-specific directories to import (uncomment as needed)",
+          "startLine": 317,
+          "endLine": 325
+        },
+        {
+          "id": "README#63",
+          "heading": "Clone the repository",
+          "startLine": 326,
+          "endLine": 329
+        },
+        {
+          "id": "README#64",
+          "heading": "Create target directory",
+          "startLine": 330,
+          "endLine": 332
+        },
+        {
+          "id": "README#65",
+          "heading": "Import universal standards",
+          "startLine": 333,
+          "endLine": 342
+        },
+        {
+          "id": "README#66",
+          "heading": "Import framework-specific directories",
+          "startLine": 343,
+          "endLine": 352
+        },
+        {
+          "id": "README#67",
+          "heading": "Create custom README for selective import",
+          "startLine": 353,
+          "endLine": 354
+        },
+        {
+          "id": "README#68",
+          "heading": "Project Standards Documentation",
+          "startLine": 355,
+          "endLine": 356
+        },
+        {
+          "id": "README#69",
+          "heading": "Overview",
+          "startLine": 357,
+          "endLine": 362
+        },
+        {
+          "id": "README#70",
+          "heading": "Imported Standards",
+          "startLine": 363,
+          "endLine": 366
+        },
+        {
+          "id": "README#71",
+          "heading": "List imported files",
+          "startLine": 367,
+          "endLine": 390
+        },
+        {
+          "id": "README#72",
+          "heading": "Clean up",
+          "startLine": 391,
+          "endLine": 397
+        },
+        {
+          "id": "README#73",
+          "heading": "Make the script executable",
+          "startLine": 398,
+          "endLine": 401
+        },
+        {
+          "id": "README#74",
+          "heading": "Step 3: Customize and Run Import",
+          "startLine": 402,
+          "endLine": 404
+        },
+        {
+          "id": "README#75",
+          "heading": "Edit the script to select which standards you need",
+          "startLine": 405,
+          "endLine": 407
+        },
+        {
+          "id": "README#76",
+          "heading": "Run the selective import",
+          "startLine": 408,
+          "endLine": 410
+        },
+        {
+          "id": "README#77",
+          "heading": "Commit the imported standards",
+          "startLine": 411,
+          "endLine": 418
+        },
+        {
+          "id": "README#78",
+          "heading": "Post-Import Integration Steps",
+          "startLine": 419,
+          "endLine": 422
+        },
+        {
+          "id": "README#79",
+          "heading": "Step 1: Update Project Documentation",
+          "startLine": 423,
+          "endLine": 425
+        },
+        {
+          "id": "README#80",
+          "heading": "Update your main README.md to reference the standards",
+          "startLine": 426,
+          "endLine": 427
+        },
+        {
+          "id": "README#81",
+          "heading": "Development Standards",
+          "startLine": 428,
+          "endLine": 441
+        },
+        {
+          "id": "README#82",
+          "heading": "Step 2: Configure Development Tools",
+          "startLine": 442,
+          "endLine": 447
+        },
+        {
+          "id": "README#83",
+          "heading": "Update package.json scripts",
+          "startLine": 448,
+          "endLine": 453
+        },
+        {
+          "id": "README#84",
+          "heading": "Install required dependencies",
+          "startLine": 454,
+          "endLine": 459
+        },
+        {
+          "id": "README#85",
+          "heading": "Update requirements-dev.txt or pyproject.toml",
+          "startLine": 460,
+          "endLine": 465
+        },
+        {
+          "id": "README#86",
+          "heading": "Or for pyproject.toml projects",
+          "startLine": 466,
+          "endLine": 469
+        },
+        {
+          "id": "README#87",
+          "heading": "Step 3: Set Up Pre-commit Hooks",
+          "startLine": 470,
+          "endLine": 472
+        },
+        {
+          "id": "README#88",
+          "heading": "Install pre-commit",
+          "startLine": 473,
+          "endLine": 475
+        },
+        {
+          "id": "README#89",
+          "heading": "Create .pre-commit-config.yaml",
+          "startLine": 476,
+          "endLine": 498
+        },
+        {
+          "id": "README#90",
+          "heading": "Install the hooks",
+          "startLine": 499,
+          "endLine": 502
+        },
+        {
+          "id": "README#91",
+          "heading": "Step 4: Update Makefile",
+          "startLine": 503,
+          "endLine": 507
+        },
+        {
+          "id": "README#92",
+          "heading": "Add to existing Makefile or create new one",
+          "startLine": 508,
+          "endLine": 510
+        },
+        {
+          "id": "README#93",
+          "heading": "Development Standards Compliance",
+          "startLine": 511,
+          "endLine": 538
+        },
+        {
+          "id": "README#94",
+          "heading": "Maintenance and Updates",
+          "startLine": 539,
+          "endLine": 540
+        },
+        {
+          "id": "README#95",
+          "heading": "Keeping Standards Current",
+          "startLine": 541,
+          "endLine": 544
+        },
+        {
+          "id": "README#96",
+          "heading": "Update standards to latest version",
+          "startLine": 545,
+          "endLine": 553
+        },
+        {
+          "id": "README#97",
+          "heading": "Update standards manually",
+          "startLine": 554,
+          "endLine": 561
+        },
+        {
+          "id": "README#98",
+          "heading": "Update selected standards",
+          "startLine": 562,
+          "endLine": 567
+        },
+        {
+          "id": "README#99",
+          "heading": "Monitoring for Standards Changes",
+          "startLine": 568,
+          "endLine": 575
+        },
+        {
+          "id": "README#100",
+          "heading": "Creating Standards Compliance Reports",
+          "startLine": 576,
+          "endLine": 587
+        },
+        {
+          "id": "README#101",
+          "heading": "Check if standards directory exists",
+          "startLine": 588,
+          "endLine": 595
+        },
+        {
+          "id": "README#102",
+          "heading": "Check for required files based on root-directory.md standard",
+          "startLine": 596,
+          "endLine": 605
+        },
+        {
+          "id": "README#103",
+          "heading": "Check test coverage if applicable",
+          "startLine": 606,
+          "endLine": 620
+        },
+        {
+          "id": "README#104",
+          "heading": "Check for proper project structure",
+          "startLine": 621,
+          "endLine": 637
+        },
+        {
+          "id": "README#105",
+          "heading": "Troubleshooting Common Issues",
+          "startLine": 638,
+          "endLine": 639
+        },
+        {
+          "id": "README#106",
+          "heading": "Issue: Submodule Not Updating",
+          "startLine": 640,
+          "endLine": 645
+        },
+        {
+          "id": "README#107",
+          "heading": "Force update to latest remote version",
+          "startLine": 646,
+          "endLine": 650
+        },
+        {
+          "id": "README#108",
+          "heading": "Issue: Merge Conflicts During Standards Update",
+          "startLine": 651,
+          "endLine": 656
+        },
+        {
+          "id": "README#109",
+          "heading": "Backup your local changes",
+          "startLine": 657,
+          "endLine": 659
+        },
+        {
+          "id": "README#110",
+          "heading": "Reset to clean state",
+          "startLine": 660,
+          "endLine": 662
+        },
+        {
+          "id": "README#111",
+          "heading": "Re-run standards sync",
+          "startLine": 663,
+          "endLine": 665
+        },
+        {
+          "id": "README#112",
+          "heading": "Manually merge your changes if needed",
+          "startLine": 666,
+          "endLine": 668
+        },
+        {
+          "id": "README#113",
+          "heading": "Issue: Standards Script Permissions",
+          "startLine": 669,
+          "endLine": 674
+        },
+        {
+          "id": "README#114",
+          "heading": "Make all scripts executable",
+          "startLine": 675,
+          "endLine": 677
+        },
+        {
+          "id": "README#115",
+          "heading": "Or specifically for standards scripts",
+          "startLine": 678,
+          "endLine": 682
+        },
+        {
+          "id": "README#116",
+          "heading": "Issue: Missing Dependencies for Standards Validation",
+          "startLine": 683,
+          "endLine": 688
+        },
+        {
+          "id": "README#117",
+          "heading": "For Python projects",
+          "startLine": 689,
+          "endLine": 690
+        },
+        {
+          "id": "README#118",
+          "heading": "or",
+          "startLine": 691,
+          "endLine": 693
+        },
+        {
+          "id": "README#119",
+          "heading": "For Node.js projects",
+          "startLine": 694,
+          "endLine": 696
+        },
+        {
+          "id": "README#120",
+          "heading": "For pre-commit hooks",
+          "startLine": 697,
+          "endLine": 701
+        },
+        {
+          "id": "README#121",
+          "heading": "Best Practices",
+          "startLine": 702,
+          "endLine": 703
+        },
+        {
+          "id": "README#122",
+          "heading": "1. Regular Standards Updates",
+          "startLine": 704,
+          "endLine": 709
+        },
+        {
+          "id": "README#123",
+          "heading": "2. Team Communication",
+          "startLine": 710,
+          "endLine": 715
+        },
+        {
+          "id": "README#124",
+          "heading": "3. Gradual Adoption",
+          "startLine": 716,
+          "endLine": 720
+        },
+        {
+          "id": "README#125",
+          "heading": "Create a migration plan",
+          "startLine": 721,
+          "endLine": 722
+        },
+        {
+          "id": "README#126",
+          "heading": "Standards Migration Plan",
+          "startLine": 723,
+          "endLine": 724
+        },
+        {
+          "id": "README#127",
+          "heading": "Phase 1: Infrastructure (Week 1)",
+          "startLine": 725,
+          "endLine": 730
+        },
+        {
+          "id": "README#128",
+          "heading": "Phase 2: New Code (Week 2-4)",
+          "startLine": 731,
+          "endLine": 735
+        },
+        {
+          "id": "README#129",
+          "heading": "Phase 3: Legacy Code (Month 2-3)",
+          "startLine": 736,
+          "endLine": 740
+        },
+        {
+          "id": "README#130",
+          "heading": "Phase 4: Full Compliance (Month 4)",
+          "startLine": 741,
+          "endLine": 747
+        },
+        {
+          "id": "README#131",
+          "heading": "4. Continuous Integration",
+          "startLine": 748,
+          "endLine": 752
+        },
+        {
+          "id": "README#132",
+          "heading": ".github/workflows/standards-compliance.yml",
+          "startLine": 753,
+          "endLine": 791
+        },
+        {
+          "id": "README#133",
+          "heading": "Support and Contributing",
+          "startLine": 792,
+          "endLine": 793
+        },
+        {
+          "id": "README#134",
+          "heading": "Getting Help",
+          "startLine": 794,
+          "endLine": 799
+        },
+        {
+          "id": "README#135",
+          "heading": "Contributing to Standards",
+          "startLine": 800,
+          "endLine": 809
+        },
+        {
+          "id": "README#136",
+          "heading": "Reporting Issues",
+          "startLine": 810,
+          "endLine": 820
+        },
+        {
+          "id": "README#137",
+          "heading": "Quick Reference",
+          "startLine": 821,
+          "endLine": 822
+        },
+        {
+          "id": "README#138",
+          "heading": "Import Commands Summary",
+          "startLine": 823,
+          "endLine": 825
+        },
+        {
+          "id": "README#139",
+          "heading": "Method 1: Submodule (Recommended)",
+          "startLine": 826,
+          "endLine": 829
+        },
+        {
+          "id": "README#140",
+          "heading": "Method 2: Direct Copy",
+          "startLine": 830,
+          "endLine": 833
+        },
+        {
+          "id": "README#141",
+          "heading": "Method 3: Selective Import",
+          "startLine": 834,
+          "endLine": 836
+        },
+        {
+          "id": "README#142",
+          "heading": "Update Standards",
+          "startLine": 837,
+          "endLine": 841
+        },
+        {
+          "id": "README#143",
+          "heading": "Validate Compliance",
+          "startLine": 842,
+          "endLine": 846
+        },
+        {
+          "id": "README#144",
+          "heading": "Essential Files to Create",
+          "startLine": 847,
+          "endLine": 855
+        },
+        {
+          "id": "README#145",
+          "heading": "Directory Structure",
+          "startLine": 856,
+          "endLine": 877
+        },
+        {
+          "id": "README#146",
+          "heading": "Directory Structure",
+          "startLine": 878,
+          "endLine": 882
+        }
+      ]
+    },
+    {
+      "id": "coding-style",
+      "path": "coding-style.md",
+      "sha256": "79a69a4ec254cb341a9ab26b767c76768ee6ea0b8d9431b8ed43ea8cfc809b7a",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 47,
+      "chunks": [
+        {
+          "id": "coding-style#1",
+          "heading": "Coding Style Standards",
+          "startLine": 0,
+          "endLine": 1
+        },
+        {
+          "id": "coding-style#2",
+          "heading": "Purpose",
+          "startLine": 2,
+          "endLine": 5
+        },
+        {
+          "id": "coding-style#3",
+          "heading": "General Principles",
+          "startLine": 6,
+          "endLine": 7
+        },
+        {
+          "id": "coding-style#4",
+          "heading": "Code Quality",
+          "startLine": 8,
+          "endLine": 14
+        },
+        {
+          "id": "coding-style#5",
+          "heading": "Documentation",
+          "startLine": 15,
+          "endLine": 20
+        },
+        {
+          "id": "coding-style#6",
+          "heading": "Project Structure Standards",
+          "startLine": 21,
+          "endLine": 22
+        },
+        {
+          "id": "coding-style#7",
+          "heading": "Root Directory Organization",
+          "startLine": 23,
+          "endLine": 60
+        },
+        {
+          "id": "coding-style#8",
+          "heading": "Root Directory Organization",
+          "startLine": 61,
+          "endLine": 64
+        },
+        {
+          "id": "coding-style#9",
+          "heading": "Language-Specific Standards",
+          "startLine": 65,
+          "endLine": 66
+        },
+        {
+          "id": "coding-style#10",
+          "heading": "Python",
+          "startLine": 67,
+          "endLine": 69
+        },
+        {
+          "id": "coding-style#11",
+          "heading": "Function naming: snake_case",
+          "startLine": 70,
+          "endLine": 85
+        },
+        {
+          "id": "coding-style#12",
+          "heading": "Class naming: PascalCase",
+          "startLine": 86,
+          "endLine": 93
+        },
+        {
+          "id": "coding-style#13",
+          "heading": "JavaScript/TypeScript",
+          "startLine": 94,
+          "endLine": 111
+        },
+        {
+          "id": "coding-style#14",
+          "heading": "File Organization",
+          "startLine": 112,
+          "endLine": 113
+        },
+        {
+          "id": "coding-style#15",
+          "heading": "Directory Structure",
+          "startLine": 114,
+          "endLine": 119
+        },
+        {
+          "id": "coding-style#16",
+          "heading": "File Naming",
+          "startLine": 120,
+          "endLine": 126
+        },
+        {
+          "id": "coding-style#17",
+          "heading": "Code Formatting",
+          "startLine": 127,
+          "endLine": 128
+        },
+        {
+          "id": "coding-style#18",
+          "heading": "Indentation",
+          "startLine": 129,
+          "endLine": 135
+        },
+        {
+          "id": "coding-style#19",
+          "heading": "Line Length",
+          "startLine": 136,
+          "endLine": 141
+        },
+        {
+          "id": "coding-style#20",
+          "heading": "Imports",
+          "startLine": 142,
+          "endLine": 144
+        },
+        {
+          "id": "coding-style#21",
+          "heading": "Python: Group imports",
+          "startLine": 145,
+          "endLine": 164
+        },
+        {
+          "id": "coding-style#22",
+          "heading": "Error Handling",
+          "startLine": 165,
+          "endLine": 166
+        },
+        {
+          "id": "coding-style#23",
+          "heading": "Exception Handling",
+          "startLine": 167,
+          "endLine": 174
+        },
+        {
+          "id": "coding-style#24",
+          "heading": "Good",
+          "startLine": 175,
+          "endLine": 182
+        },
+        {
+          "id": "coding-style#25",
+          "heading": "Testing Standards",
+          "startLine": 183,
+          "endLine": 184
+        },
+        {
+          "id": "coding-style#26",
+          "heading": "Test Organization",
+          "startLine": 185,
+          "endLine": 191
+        },
+        {
+          "id": "coding-style#27",
+          "heading": "Test Naming",
+          "startLine": 192,
+          "endLine": 199
+        },
+        {
+          "id": "coding-style#28",
+          "heading": "Version Control",
+          "startLine": 200,
+          "endLine": 201
+        },
+        {
+          "id": "coding-style#29",
+          "heading": "Commit Messages",
+          "startLine": 202,
+          "endLine": 213
+        },
+        {
+          "id": "coding-style#30",
+          "heading": "Branch Naming",
+          "startLine": 214,
+          "endLine": 219
+        },
+        {
+          "id": "coding-style#31",
+          "heading": "Performance Guidelines",
+          "startLine": 220,
+          "endLine": 221
+        },
+        {
+          "id": "coding-style#32",
+          "heading": "General Rules",
+          "startLine": 222,
+          "endLine": 228
+        },
+        {
+          "id": "coding-style#33",
+          "heading": "Database Queries",
+          "startLine": 229,
+          "endLine": 235
+        },
+        {
+          "id": "coding-style#34",
+          "heading": "Security Standards",
+          "startLine": 236,
+          "endLine": 237
+        },
+        {
+          "id": "coding-style#35",
+          "heading": "Input Validation",
+          "startLine": 238,
+          "endLine": 244
+        },
+        {
+          "id": "coding-style#36",
+          "heading": "Secrets Management",
+          "startLine": 245,
+          "endLine": 251
+        },
+        {
+          "id": "coding-style#37",
+          "heading": "Code Review Guidelines",
+          "startLine": 252,
+          "endLine": 253
+        },
+        {
+          "id": "coding-style#38",
+          "heading": "Before Submitting",
+          "startLine": 254,
+          "endLine": 261
+        },
+        {
+          "id": "coding-style#39",
+          "heading": "Review Checklist",
+          "startLine": 262,
+          "endLine": 269
+        },
+        {
+          "id": "coding-style#40",
+          "heading": "Tools and Automation",
+          "startLine": 270,
+          "endLine": 271
+        },
+        {
+          "id": "coding-style#41",
+          "heading": "Linting",
+          "startLine": 272,
+          "endLine": 277
+        },
+        {
+          "id": "coding-style#42",
+          "heading": "Pre-commit Hooks",
+          "startLine": 278,
+          "endLine": 284
+        },
+        {
+          "id": "coding-style#43",
+          "heading": "Build System Standards",
+          "startLine": 285,
+          "endLine": 288
+        },
+        {
+          "id": "coding-style#44",
+          "heading": "Required Make Targets",
+          "startLine": 289,
+          "endLine": 320
+        },
+        {
+          "id": "coding-style#45",
+          "heading": "Implementation Guidelines",
+          "startLine": 321,
+          "endLine": 329
+        },
+        {
+          "id": "coding-style#46",
+          "heading": "Example Makefile Structure",
+          "startLine": 330,
+          "endLine": 357
+        },
+        {
+          "id": "coding-style#47",
+          "heading": "Continuous Improvement",
+          "startLine": 358,
+          "endLine": 361
+        }
+      ]
+    },
+    {
+      "id": "communication",
+      "path": "communication.md",
+      "sha256": "a866ef39e9ca95a5d3d177626a72c579d3364eda915b5b580db890d8340bf890",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 40,
+      "chunks": [
+        {
+          "id": "communication#1",
+          "heading": "Communication Standard Operating Procedure",
+          "startLine": 0,
+          "endLine": 5
+        },
+        {
+          "id": "communication#2",
+          "heading": "Executive Summary",
+          "startLine": 6,
+          "endLine": 7
+        },
+        {
+          "id": "communication#3",
+          "heading": "Core Requirements",
+          "startLine": 8,
+          "endLine": 13
+        },
+        {
+          "id": "communication#4",
+          "heading": "Business Value",
+          "startLine": 14,
+          "endLine": 19
+        },
+        {
+          "id": "communication#5",
+          "heading": "Agent Communication Protocol",
+          "startLine": 20,
+          "endLine": 21
+        },
+        {
+          "id": "communication#6",
+          "heading": "Mandatory Agent ID Requirements",
+          "startLine": 22,
+          "endLine": 23
+        },
+        {
+          "id": "communication#7",
+          "heading": "Primary Requirements",
+          "startLine": 24,
+          "endLine": 34
+        },
+        {
+          "id": "communication#8",
+          "heading": "Agent ID Management Protocol",
+          "startLine": 35,
+          "endLine": 44
+        },
+        {
+          "id": "communication#9",
+          "heading": "ID Recovery Process",
+          "startLine": 45,
+          "endLine": 58
+        },
+        {
+          "id": "communication#10",
+          "heading": "Technical Implementation Notes",
+          "startLine": 59,
+          "endLine": 72
+        },
+        {
+          "id": "communication#11",
+          "heading": "Agent ID Format and Assignment",
+          "startLine": 73,
+          "endLine": 74
+        },
+        {
+          "id": "communication#12",
+          "heading": "Standard Format Specification",
+          "startLine": 75,
+          "endLine": 91
+        },
+        {
+          "id": "communication#13",
+          "heading": "Communication Examples and Patterns",
+          "startLine": 92,
+          "endLine": 93
+        },
+        {
+          "id": "communication#14",
+          "heading": "Single Agent Conversation Pattern",
+          "startLine": 94,
+          "endLine": 111
+        },
+        {
+          "id": "communication#15",
+          "heading": "Multi-Agent Collaboration Pattern",
+          "startLine": 112,
+          "endLine": 134
+        },
+        {
+          "id": "communication#16",
+          "heading": "Agent ID Assignment and Standards",
+          "startLine": 135,
+          "endLine": 136
+        },
+        {
+          "id": "communication#17",
+          "heading": "Standard Agent ID Registry",
+          "startLine": 137,
+          "endLine": 150
+        },
+        {
+          "id": "communication#18",
+          "heading": "Custom Agent ID Guidelines",
+          "startLine": 151,
+          "endLine": 172
+        },
+        {
+          "id": "communication#19",
+          "heading": "Implementation Requirements and Standards",
+          "startLine": 173,
+          "endLine": 174
+        },
+        {
+          "id": "communication#20",
+          "heading": "Mandatory Implementation Rules",
+          "startLine": 175,
+          "endLine": 176
+        },
+        {
+          "id": "communication#21",
+          "heading": "Universal Requirements (All AI Agents)",
+          "startLine": 177,
+          "endLine": 189
+        },
+        {
+          "id": "communication#22",
+          "heading": "Multi-Agent Coordination Requirements",
+          "startLine": 190,
+          "endLine": 197
+        },
+        {
+          "id": "communication#23",
+          "heading": "Technical Implementation Guidelines",
+          "startLine": 198,
+          "endLine": 199
+        },
+        {
+          "id": "communication#24",
+          "heading": "ID Validation Rules",
+          "startLine": 200,
+          "endLine": 221
+        },
+        {
+          "id": "communication#25",
+          "heading": "Error Handling and Recovery",
+          "startLine": 222,
+          "endLine": 240
+        },
+        {
+          "id": "communication#26",
+          "heading": "Compliance and Quality Assurance",
+          "startLine": 241,
+          "endLine": 242
+        },
+        {
+          "id": "communication#27",
+          "heading": "Quality Gates and Standards",
+          "startLine": 243,
+          "endLine": 256
+        },
+        {
+          "id": "communication#28",
+          "heading": "Non-Compliance Handling",
+          "startLine": 257,
+          "endLine": 271
+        },
+        {
+          "id": "communication#29",
+          "heading": "Integration with Existing Standards",
+          "startLine": 272,
+          "endLine": 282
+        },
+        {
+          "id": "communication#30",
+          "heading": "Communication Examples by Agent Type",
+          "startLine": 283,
+          "endLine": 284
+        },
+        {
+          "id": "communication#31",
+          "heading": "Development Agent Examples",
+          "startLine": 285,
+          "endLine": 295
+        },
+        {
+          "id": "communication#32",
+          "heading": "QA Agent Examples",
+          "startLine": 296,
+          "endLine": 307
+        },
+        {
+          "id": "communication#33",
+          "heading": "Architect Agent Examples",
+          "startLine": 308,
+          "endLine": 319
+        },
+        {
+          "id": "communication#34",
+          "heading": "Monitoring and Reporting",
+          "startLine": 320,
+          "endLine": 321
+        },
+        {
+          "id": "communication#35",
+          "heading": "Conversation Analytics",
+          "startLine": 322,
+          "endLine": 335
+        },
+        {
+          "id": "communication#36",
+          "heading": "Management Visibility",
+          "startLine": 336,
+          "endLine": 349
+        },
+        {
+          "id": "communication#37",
+          "heading": "Enhanced Compliance Checklist",
+          "startLine": 350,
+          "endLine": 351
+        },
+        {
+          "id": "communication#38",
+          "heading": "Pre-Communication Verification",
+          "startLine": 352,
+          "endLine": 358
+        },
+        {
+          "id": "communication#39",
+          "heading": "During Communication",
+          "startLine": 359,
+          "endLine": 367
+        },
+        {
+          "id": "communication#40",
+          "heading": "Post-Communication Review",
+          "startLine": 368,
+          "endLine": 392
+        }
+      ]
+    },
+    {
+      "id": "executive-report-standard",
+      "path": "executive-report-standard.md",
+      "sha256": "b2d4323078e7874aaae8e932553a46e61d13d0adf7af326b050af3eabf454ef5",
+      "meta": {
+        "description": "Standard for repositories to publish test and coverage results for the Functionality Reports Dashboard"
+      },
+      "frontmatter": "description: Standard for repositories to publish test and coverage results for the Functionality Reports Dashboard",
+      "chunk_count": 14,
+      "chunks": [
+        {
+          "id": "executive-report-standard#1",
+          "heading": "Cannasol Functionality Reports — Repository Release Standard",
+          "startLine": 1,
+          "endLine": 4
+        },
+        {
+          "id": "executive-report-standard#2",
+          "heading": "1. Goals and Scope",
+          "startLine": 5,
+          "endLine": 10
+        },
+        {
+          "id": "executive-report-standard#3",
+          "heading": "2. Artifacts Overview",
+          "startLine": 11,
+          "endLine": 21
+        },
+        {
+          "id": "executive-report-standard#4",
+          "heading": "3. File Naming and Location",
+          "startLine": 22,
+          "endLine": 28
+        },
+        {
+          "id": "executive-report-standard#5",
+          "heading": "4. JSON Schemas (v1)",
+          "startLine": 29,
+          "endLine": 32
+        },
+        {
+          "id": "executive-report-standard#6",
+          "heading": "4.1 executive-report.json (required)",
+          "startLine": 33,
+          "endLine": 84
+        },
+        {
+          "id": "executive-report-standard#7",
+          "heading": "4.2 coverage-summary.json (optional)",
+          "startLine": 85,
+          "endLine": 109
+        },
+        {
+          "id": "executive-report-standard#8",
+          "heading": "4.3 unit-test-summary.json (optional)",
+          "startLine": 110,
+          "endLine": 129
+        },
+        {
+          "id": "executive-report-standard#9",
+          "heading": "5. Release Process (CI Guidance)",
+          "startLine": 130,
+          "endLine": 139
+        },
+        {
+          "id": "executive-report-standard#10",
+          "heading": "5.1 Example GitHub Actions Snippet (bash pseudo-steps)",
+          "startLine": 140,
+          "endLine": 204
+        },
+        {
+          "id": "executive-report-standard#11",
+          "heading": "6. Validation and Quality Gates",
+          "startLine": 205,
+          "endLine": 210
+        },
+        {
+          "id": "executive-report-standard#12",
+          "heading": "7. Consumer Expectations (This Project)",
+          "startLine": 211,
+          "endLine": 220
+        },
+        {
+          "id": "executive-report-standard#13",
+          "heading": "8. Backward Compatibility",
+          "startLine": 221,
+          "endLine": 225
+        },
+        {
+          "id": "executive-report-standard#14",
+          "heading": "9. Versioning and Evolution",
+          "startLine": 226,
+          "endLine": 235
+        }
+      ]
+    },
+    {
+      "id": "feature-specification",
+      "path": "feature-specification.md",
+      "sha256": "462e6841955639f0c231a044c03c84ebe245d14454622e5e6049333454fc5327",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 62,
+      "chunks": [
+        {
+          "id": "feature-specification#1",
+          "heading": "Feature Specification Standard",
+          "startLine": 0,
+          "endLine": 7
+        },
+        {
+          "id": "feature-specification#2",
+          "heading": "Overview",
+          "startLine": 8,
+          "endLine": 11
+        },
+        {
+          "id": "feature-specification#3",
+          "heading": "Core Principles",
+          "startLine": 12,
+          "endLine": 13
+        },
+        {
+          "id": "feature-specification#4",
+          "heading": "1. **EXACT SCOPE DEFINITION**",
+          "startLine": 14,
+          "endLine": 20
+        },
+        {
+          "id": "feature-specification#5",
+          "heading": "2. **LARGER THAN USER STORIES**",
+          "startLine": 21,
+          "endLine": 26
+        },
+        {
+          "id": "feature-specification#6",
+          "heading": "3. **COMPLETE FUNCTIONAL DEFINITION**",
+          "startLine": 27,
+          "endLine": 33
+        },
+        {
+          "id": "feature-specification#7",
+          "heading": "Feature Specification Template",
+          "startLine": 34,
+          "endLine": 35
+        },
+        {
+          "id": "feature-specification#8",
+          "heading": "File Naming Convention",
+          "startLine": 36,
+          "endLine": 41
+        },
+        {
+          "id": "feature-specification#9",
+          "heading": "Template Structure",
+          "startLine": 42,
+          "endLine": 44
+        },
+        {
+          "id": "feature-specification#10",
+          "heading": "Feature {ID}: {Feature Name}",
+          "startLine": 45,
+          "endLine": 54
+        },
+        {
+          "id": "feature-specification#11",
+          "heading": "Feature Summary",
+          "startLine": 55,
+          "endLine": 58
+        },
+        {
+          "id": "feature-specification#12",
+          "heading": "Scope Definition",
+          "startLine": 59,
+          "endLine": 60
+        },
+        {
+          "id": "feature-specification#13",
+          "heading": "EXACTLY What Will Be Implemented",
+          "startLine": 61,
+          "endLine": 63
+        },
+        {
+          "id": "feature-specification#14",
+          "heading": "EXACTLY What Will NOT Be Implemented",
+          "startLine": 64,
+          "endLine": 66
+        },
+        {
+          "id": "feature-specification#15",
+          "heading": "Scope Boundaries",
+          "startLine": 67,
+          "endLine": 69
+        },
+        {
+          "id": "feature-specification#16",
+          "heading": "Functional Requirements",
+          "startLine": 70,
+          "endLine": 71
+        },
+        {
+          "id": "feature-specification#17",
+          "heading": "Core Functionality",
+          "startLine": 72,
+          "endLine": 74
+        },
+        {
+          "id": "feature-specification#18",
+          "heading": "User Interactions",
+          "startLine": 75,
+          "endLine": 77
+        },
+        {
+          "id": "feature-specification#19",
+          "heading": "System Behaviors",
+          "startLine": 78,
+          "endLine": 80
+        },
+        {
+          "id": "feature-specification#20",
+          "heading": "Data Handling",
+          "startLine": 81,
+          "endLine": 83
+        },
+        {
+          "id": "feature-specification#21",
+          "heading": "Integration Points",
+          "startLine": 84,
+          "endLine": 86
+        },
+        {
+          "id": "feature-specification#22",
+          "heading": "Acceptance Criteria",
+          "startLine": 87,
+          "endLine": 88
+        },
+        {
+          "id": "feature-specification#23",
+          "heading": "Primary Acceptance Criteria",
+          "startLine": 89,
+          "endLine": 93
+        },
+        {
+          "id": "feature-specification#24",
+          "heading": "Input/Output Specifications",
+          "startLine": 94,
+          "endLine": 98
+        },
+        {
+          "id": "feature-specification#25",
+          "heading": "Error Handling Requirements",
+          "startLine": 99,
+          "endLine": 102
+        },
+        {
+          "id": "feature-specification#26",
+          "heading": "Performance Requirements",
+          "startLine": 103,
+          "endLine": 107
+        },
+        {
+          "id": "feature-specification#27",
+          "heading": "Validation Rules",
+          "startLine": 108,
+          "endLine": 112
+        },
+        {
+          "id": "feature-specification#28",
+          "heading": "Implementation Constraints",
+          "startLine": 113,
+          "endLine": 114
+        },
+        {
+          "id": "feature-specification#29",
+          "heading": "Technical Constraints",
+          "startLine": 115,
+          "endLine": 117
+        },
+        {
+          "id": "feature-specification#30",
+          "heading": "Business Rules",
+          "startLine": 118,
+          "endLine": 120
+        },
+        {
+          "id": "feature-specification#31",
+          "heading": "Dependencies",
+          "startLine": 121,
+          "endLine": 125
+        },
+        {
+          "id": "feature-specification#32",
+          "heading": "Definition of Done",
+          "startLine": 126,
+          "endLine": 127
+        },
+        {
+          "id": "feature-specification#33",
+          "heading": "Feature Completion Criteria",
+          "startLine": 128,
+          "endLine": 137
+        },
+        {
+          "id": "feature-specification#34",
+          "heading": "Quality Gates",
+          "startLine": 138,
+          "endLine": 143
+        },
+        {
+          "id": "feature-specification#35",
+          "heading": "Testing Requirements",
+          "startLine": 144,
+          "endLine": 145
+        },
+        {
+          "id": "feature-specification#36",
+          "heading": "Required Test Coverage",
+          "startLine": 146,
+          "endLine": 148
+        },
+        {
+          "id": "feature-specification#37",
+          "heading": "Test Scenarios",
+          "startLine": 149,
+          "endLine": 152
+        },
+        {
+          "id": "feature-specification#38",
+          "heading": "Edge Case Testing",
+          "startLine": 153,
+          "endLine": 155
+        },
+        {
+          "id": "feature-specification#39",
+          "heading": "Error Condition Testing",
+          "startLine": 156,
+          "endLine": 158
+        },
+        {
+          "id": "feature-specification#40",
+          "heading": "Implementation Mapping",
+          "startLine": 159,
+          "endLine": 160
+        },
+        {
+          "id": "feature-specification#41",
+          "heading": "Related PRD Requirements",
+          "startLine": 161,
+          "endLine": 163
+        },
+        {
+          "id": "feature-specification#42",
+          "heading": "Implementing User Stories",
+          "startLine": 164,
+          "endLine": 167
+        },
+        {
+          "id": "feature-specification#43",
+          "heading": "Quality Assurance",
+          "startLine": 168,
+          "endLine": 170
+        },
+        {
+          "id": "feature-specification#44",
+          "heading": "Change Control",
+          "startLine": 171,
+          "endLine": 172
+        },
+        {
+          "id": "feature-specification#45",
+          "heading": "Scope Changes",
+          "startLine": 173,
+          "endLine": 175
+        },
+        {
+          "id": "feature-specification#46",
+          "heading": "Approval Requirements",
+          "startLine": 176,
+          "endLine": 178
+        },
+        {
+          "id": "feature-specification#47",
+          "heading": "Success Metrics",
+          "startLine": 179,
+          "endLine": 180
+        },
+        {
+          "id": "feature-specification#48",
+          "heading": "Completion Metrics",
+          "startLine": 181,
+          "endLine": 183
+        },
+        {
+          "id": "feature-specification#49",
+          "heading": "Success Criteria",
+          "startLine": 184,
+          "endLine": 186
+        },
+        {
+          "id": "feature-specification#50",
+          "heading": "Change Log",
+          "startLine": 187,
+          "endLine": 193
+        },
+        {
+          "id": "feature-specification#51",
+          "heading": "Standard Requirements",
+          "startLine": 194,
+          "endLine": 195
+        },
+        {
+          "id": "feature-specification#52",
+          "heading": "MANDATORY Sections",
+          "startLine": 196,
+          "endLine": 205
+        },
+        {
+          "id": "feature-specification#53",
+          "heading": "Specification Quality Standards",
+          "startLine": 206,
+          "endLine": 207
+        },
+        {
+          "id": "feature-specification#54",
+          "heading": "Exactness Requirements",
+          "startLine": 208,
+          "endLine": 214
+        },
+        {
+          "id": "feature-specification#55",
+          "heading": "Scope Control Requirements",
+          "startLine": 215,
+          "endLine": 221
+        },
+        {
+          "id": "feature-specification#56",
+          "heading": "Usage Guidelines",
+          "startLine": 222,
+          "endLine": 223
+        },
+        {
+          "id": "feature-specification#57",
+          "heading": "When to Create Feature Specifications",
+          "startLine": 224,
+          "endLine": 230
+        },
+        {
+          "id": "feature-specification#58",
+          "heading": "Development Team Responsibilities",
+          "startLine": 231,
+          "endLine": 238
+        },
+        {
+          "id": "feature-specification#59",
+          "heading": "Product Owner Responsibilities",
+          "startLine": 239,
+          "endLine": 246
+        },
+        {
+          "id": "feature-specification#60",
+          "heading": "Quality Assurance",
+          "startLine": 247,
+          "endLine": 248
+        },
+        {
+          "id": "feature-specification#61",
+          "heading": "Specification Review Process",
+          "startLine": 249,
+          "endLine": 256
+        },
+        {
+          "id": "feature-specification#62",
+          "heading": "Implementation Validation",
+          "startLine": 257,
+          "endLine": 269
+        }
+      ]
+    },
+    {
+      "id": "file-header",
+      "path": "file-header.md",
+      "sha256": "9cd346a6d838e6e30407d876b0e1a025e96531fa206e6165fde7c092bb171566",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 52,
+      "chunks": [
+        {
+          "id": "file-header#1",
+          "heading": "File Header Standards for different File Types that an Axovia AI Agent might work with",
+          "startLine": 0,
+          "endLine": 1
+        },
+        {
+          "id": "file-header#2",
+          "heading": "YAML File",
+          "startLine": 2,
+          "endLine": 4
+        },
+        {
+          "id": "file-header#3",
+          "heading": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+          "startLine": 5,
+          "endLine": 10
+        },
+        {
+          "id": "file-header#4",
+          "heading": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+          "startLine": 11,
+          "endLine": 13
+        },
+        {
+          "id": "file-header#5",
+          "heading": "C, C++, C#, Java, JavaScript, TypeScript, Python, Ruby, Swift, Kotlin, Go, Rust, PHP, FILE",
+          "startLine": 14,
+          "endLine": 40
+        },
+        {
+          "id": "file-header#6",
+          "heading": "Dart File",
+          "startLine": 41,
+          "endLine": 66
+        },
+        {
+          "id": "file-header#7",
+          "heading": "Dart Documentation Best Practices",
+          "startLine": 67,
+          "endLine": 111
+        },
+        {
+          "id": "file-header#8",
+          "heading": "HTML File",
+          "startLine": 112,
+          "endLine": 125
+        },
+        {
+          "id": "file-header#9",
+          "heading": "CSS File",
+          "startLine": 126,
+          "endLine": 139
+        },
+        {
+          "id": "file-header#10",
+          "heading": "SQL File",
+          "startLine": 140,
+          "endLine": 151
+        },
+        {
+          "id": "file-header#11",
+          "heading": "Shell Script (Bash, Zsh, etc.)",
+          "startLine": 152,
+          "endLine": 155
+        },
+        {
+          "id": "file-header#12",
+          "heading": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+          "startLine": 156,
+          "endLine": 161
+        },
+        {
+          "id": "file-header#13",
+          "heading": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+          "startLine": 162,
+          "endLine": 164
+        },
+        {
+          "id": "file-header#14",
+          "heading": "PowerShell Script",
+          "startLine": 165,
+          "endLine": 178
+        },
+        {
+          "id": "file-header#15",
+          "heading": "Markdown File",
+          "startLine": 179,
+          "endLine": 192
+        },
+        {
+          "id": "file-header#16",
+          "heading": "JSON File",
+          "startLine": 193,
+          "endLine": 206
+        },
+        {
+          "id": "file-header#17",
+          "heading": "XML File",
+          "startLine": 207,
+          "endLine": 221
+        },
+        {
+          "id": "file-header#18",
+          "heading": "Dockerfile",
+          "startLine": 222,
+          "endLine": 224
+        },
+        {
+          "id": "file-header#19",
+          "heading": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+          "startLine": 225,
+          "endLine": 230
+        },
+        {
+          "id": "file-header#20",
+          "heading": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+          "startLine": 231,
+          "endLine": 233
+        },
+        {
+          "id": "file-header#21",
+          "heading": "Docker Compose File",
+          "startLine": 234,
+          "endLine": 236
+        },
+        {
+          "id": "file-header#22",
+          "heading": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+          "startLine": 237,
+          "endLine": 242
+        },
+        {
+          "id": "file-header#23",
+          "heading": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+          "startLine": 243,
+          "endLine": 247
+        },
+        {
+          "id": "file-header#24",
+          "heading": "Makefile",
+          "startLine": 248,
+          "endLine": 250
+        },
+        {
+          "id": "file-header#25",
+          "heading": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+          "startLine": 251,
+          "endLine": 256
+        },
+        {
+          "id": "file-header#26",
+          "heading": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+          "startLine": 257,
+          "endLine": 259
+        },
+        {
+          "id": "file-header#27",
+          "heading": "Configuration Files (.ini, .conf, .cfg)",
+          "startLine": 260,
+          "endLine": 271
+        },
+        {
+          "id": "file-header#28",
+          "heading": "TOML File",
+          "startLine": 272,
+          "endLine": 274
+        },
+        {
+          "id": "file-header#29",
+          "heading": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+          "startLine": 275,
+          "endLine": 280
+        },
+        {
+          "id": "file-header#30",
+          "heading": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+          "startLine": 281,
+          "endLine": 283
+        },
+        {
+          "id": "file-header#31",
+          "heading": "R Script",
+          "startLine": 284,
+          "endLine": 286
+        },
+        {
+          "id": "file-header#32",
+          "heading": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+          "startLine": 287,
+          "endLine": 292
+        },
+        {
+          "id": "file-header#33",
+          "heading": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+          "startLine": 293,
+          "endLine": 295
+        },
+        {
+          "id": "file-header#34",
+          "heading": "MATLAB Script",
+          "startLine": 296,
+          "endLine": 307
+        },
+        {
+          "id": "file-header#35",
+          "heading": "LaTeX File",
+          "startLine": 308,
+          "endLine": 319
+        },
+        {
+          "id": "file-header#36",
+          "heading": "Jupyter Notebook (First Cell)",
+          "startLine": 320,
+          "endLine": 333
+        },
+        {
+          "id": "file-header#37",
+          "heading": "Usage Guidelines",
+          "startLine": 334,
+          "endLine": 335
+        },
+        {
+          "id": "file-header#38",
+          "heading": "Required Fields",
+          "startLine": 336,
+          "endLine": 345
+        },
+        {
+          "id": "file-header#39",
+          "heading": "Optional Fields (for Doxygen-compatible and Dartdoc-compatible files)",
+          "startLine": 346,
+          "endLine": 356
+        },
+        {
+          "id": "file-header#40",
+          "heading": "Dart-Specific Documentation Guidelines",
+          "startLine": 357,
+          "endLine": 367
+        },
+        {
+          "id": "file-header#41",
+          "heading": "Best Practices",
+          "startLine": 368,
+          "endLine": 375
+        },
+        {
+          "id": "file-header#42",
+          "heading": "Version Guidelines",
+          "startLine": 376,
+          "endLine": 382
+        },
+        {
+          "id": "file-header#43",
+          "heading": "Date Format",
+          "startLine": 383,
+          "endLine": 388
+        },
+        {
+          "id": "file-header#44",
+          "heading": "Documentation Generation",
+          "startLine": 389,
+          "endLine": 392
+        },
+        {
+          "id": "file-header#45",
+          "heading": "Doxygen-Compatible Languages",
+          "startLine": 393,
+          "endLine": 395
+        },
+        {
+          "id": "file-header#46",
+          "heading": "Install Doxygen",
+          "startLine": 396,
+          "endLine": 396
+        },
+        {
+          "id": "file-header#47",
+          "heading": "Generate documentation",
+          "startLine": 397,
+          "endLine": 400
+        },
+        {
+          "id": "file-header#48",
+          "heading": "Dart Projects",
+          "startLine": 401,
+          "endLine": 403
+        },
+        {
+          "id": "file-header#49",
+          "heading": "Generate documentation for the current package",
+          "startLine": 404,
+          "endLine": 406
+        },
+        {
+          "id": "file-header#50",
+          "heading": "Generate documentation with custom output directory",
+          "startLine": 407,
+          "endLine": 409
+        },
+        {
+          "id": "file-header#51",
+          "heading": "Serve documentation locally",
+          "startLine": 410,
+          "endLine": 413
+        },
+        {
+          "id": "file-header#52",
+          "heading": "Language-Specific Tools",
+          "startLine": 414,
+          "endLine": 420
+        }
+      ]
+    },
+    {
+      "id": "flutter-coding-standards",
+      "path": "flutter-specific/flutter-coding-standards.md",
+      "sha256": "1300ba714c064b4f6ef613deffb532cf0de9193c4456fead9f38d4ab1b99ad91",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 2,
+      "chunks": [
+        {
+          "id": "flutter-coding-standards#1",
+          "heading": "Flutter Specific Coding Standards",
+          "startLine": 0,
+          "endLine": 3
+        },
+        {
+          "id": "flutter-coding-standards#2",
+          "heading": "Overview",
+          "startLine": 4,
+          "endLine": 14
+        }
+      ]
+    },
+    {
+      "id": "flutter-testing-standard",
+      "path": "flutter-specific/flutter-testing-standard.md",
+      "sha256": "f5cf118731e48a96e7405e298b076cbefdcb6297e56be165f10fa733dfff9ae3",
+      "meta": {
+        "id": "flutter-testing-standard",
+        "version": "1.1.0",
+        "project_type": "flutter",
+        "coverage": {
+          "unit": 85,
+          "widget": 70,
+          "overall": 80
+        },
+        "mocking": {
+          "unit": "allow",
+          "widget": "allow_deps_only",
+          "integration": "forbid",
+          "golden": "forbid"
+        },
+        "make_targets": [
+          "test-unit",
+          "test-widget",
+          "test-golden",
+          "test-integration"
+        ],
+        "notes": [
+          "Use Mocktail for dependency mocking; do not mock widgets/rendering"
+        ],
+        "updated_at": "${DATE:-2025-09-10}"
+      },
+      "frontmatter": "id: flutter-testing-standard\nversion: 1.1.0\nproject_type: flutter\ncoverage:\n  unit: 85\n  widget: 70\n  overall: 80\nmocking:\n  unit: allow\n  widget: allow_deps_only\n  integration: forbid\n  golden: forbid\nmake_targets:\n  - test-unit\n  - test-widget\n  - test-golden\n  - test-integration\nnotes:\n  - Use Mocktail for dependency mocking; do not mock widgets/rendering\nupdated_at: \"${DATE:-2025-09-10}\"",
+      "chunk_count": 42,
+      "chunks": [
+        {
+          "id": "flutter-testing-standard#1",
+          "heading": "Flutter Application Testing Standard",
+          "startLine": 1,
+          "endLine": 4
+        },
+        {
+          "id": "flutter-testing-standard#2",
+          "heading": "Overview",
+          "startLine": 5,
+          "endLine": 10
+        },
+        {
+          "id": "flutter-testing-standard#3",
+          "heading": "Framework Requirements",
+          "startLine": 11,
+          "endLine": 12
+        },
+        {
+          "id": "flutter-testing-standard#4",
+          "heading": "Primary Testing Framework",
+          "startLine": 13,
+          "endLine": 17
+        },
+        {
+          "id": "flutter-testing-standard#5",
+          "heading": "Mocking Framework (Unit & Widget Tests)",
+          "startLine": 18,
+          "endLine": 24
+        },
+        {
+          "id": "flutter-testing-standard#6",
+          "heading": "Specialized Frameworks",
+          "startLine": 25,
+          "endLine": 46
+        },
+        {
+          "id": "flutter-testing-standard#7",
+          "heading": "Testing Architecture",
+          "startLine": 47,
+          "endLine": 48
+        },
+        {
+          "id": "flutter-testing-standard#8",
+          "heading": "Test Organization Structure",
+          "startLine": 49,
+          "endLine": 72
+        },
+        {
+          "id": "flutter-testing-standard#9",
+          "heading": "Testing Pyramid Distribution",
+          "startLine": 73,
+          "endLine": 80
+        },
+        {
+          "id": "flutter-testing-standard#10",
+          "heading": "Framework-Specific Standards",
+          "startLine": 81,
+          "endLine": 82
+        },
+        {
+          "id": "flutter-testing-standard#11",
+          "heading": "1. Unit Testing",
+          "startLine": 83,
+          "endLine": 119
+        },
+        {
+          "id": "flutter-testing-standard#12",
+          "heading": "2. Widget Testing",
+          "startLine": 120,
+          "endLine": 161
+        },
+        {
+          "id": "flutter-testing-standard#13",
+          "heading": "3. Golden Testing (Visual Regression)",
+          "startLine": 162,
+          "endLine": 179
+        },
+        {
+          "id": "flutter-testing-standard#14",
+          "heading": "4. Integration Testing",
+          "startLine": 180,
+          "endLine": 208
+        },
+        {
+          "id": "flutter-testing-standard#15",
+          "heading": "Coverage Requirements",
+          "startLine": 209,
+          "endLine": 219
+        },
+        {
+          "id": "flutter-testing-standard#16",
+          "heading": "Make Targets for Flutter",
+          "startLine": 220,
+          "endLine": 224
+        },
+        {
+          "id": "flutter-testing-standard#17",
+          "heading": "Unit Testing (with mocking allowed)",
+          "startLine": 225,
+          "endLine": 226
+        },
+        {
+          "id": "flutter-testing-standard#18",
+          "heading": "- Executes: flutter test test/unit/",
+          "startLine": 227,
+          "endLine": 227
+        },
+        {
+          "id": "flutter-testing-standard#19",
+          "heading": "- Coverage: ≥85% requirement",
+          "startLine": 228,
+          "endLine": 228
+        },
+        {
+          "id": "flutter-testing-standard#20",
+          "heading": "- Mocking: Mocktail permitted",
+          "startLine": 229,
+          "endLine": 230
+        },
+        {
+          "id": "flutter-testing-standard#21",
+          "heading": "Widget Testing (dependency mocking allowed)",
+          "startLine": 231,
+          "endLine": 232
+        },
+        {
+          "id": "flutter-testing-standard#22",
+          "heading": "- Executes: flutter test test/widget/",
+          "startLine": 233,
+          "endLine": 233
+        },
+        {
+          "id": "flutter-testing-standard#23",
+          "heading": "- Coverage: ≥70% requirement",
+          "startLine": 234,
+          "endLine": 234
+        },
+        {
+          "id": "flutter-testing-standard#24",
+          "heading": "- Mocking: Allowed for external dependencies via Mocktail; do not mock widgets",
+          "startLine": 235,
+          "endLine": 236
+        },
+        {
+          "id": "flutter-testing-standard#25",
+          "heading": "Golden Testing (visual regression)",
+          "startLine": 237,
+          "endLine": 238
+        },
+        {
+          "id": "flutter-testing-standard#26",
+          "heading": "- Executes: flutter test test/golden/",
+          "startLine": 239,
+          "endLine": 239
+        },
+        {
+          "id": "flutter-testing-standard#27",
+          "heading": "- Updates: flutter test --update-goldens (when needed)",
+          "startLine": 240,
+          "endLine": 240
+        },
+        {
+          "id": "flutter-testing-standard#28",
+          "heading": "- Mocking: PROHIBITED",
+          "startLine": 241,
+          "endLine": 242
+        },
+        {
+          "id": "flutter-testing-standard#29",
+          "heading": "Integration Testing (end-to-end)",
+          "startLine": 243,
+          "endLine": 244
+        },
+        {
+          "id": "flutter-testing-standard#30",
+          "heading": "- Executes: flutter test integration_test/",
+          "startLine": 245,
+          "endLine": 245
+        },
+        {
+          "id": "flutter-testing-standard#31",
+          "heading": "- Scope: Complete user flows",
+          "startLine": 246,
+          "endLine": 246
+        },
+        {
+          "id": "flutter-testing-standard#32",
+          "heading": "- Mocking: PROHIBITED",
+          "startLine": 247,
+          "endLine": 248
+        },
+        {
+          "id": "flutter-testing-standard#33",
+          "heading": "Complete Flutter Test Suite",
+          "startLine": 249,
+          "endLine": 250
+        },
+        {
+          "id": "flutter-testing-standard#34",
+          "heading": "- Executes all Flutter test types in sequence",
+          "startLine": 251,
+          "endLine": 251
+        },
+        {
+          "id": "flutter-testing-standard#35",
+          "heading": "- Equivalent to: make test-unit && make test-widget && make test-integration",
+          "startLine": 252,
+          "endLine": 256
+        },
+        {
+          "id": "flutter-testing-standard#36",
+          "heading": "Prohibited Practices",
+          "startLine": 257,
+          "endLine": 258
+        },
+        {
+          "id": "flutter-testing-standard#37",
+          "heading": "Strictly Forbidden",
+          "startLine": 259,
+          "endLine": 267
+        },
+        {
+          "id": "flutter-testing-standard#38",
+          "heading": "Required Practices",
+          "startLine": 268,
+          "endLine": 277
+        },
+        {
+          "id": "flutter-testing-standard#39",
+          "heading": "Cross-Platform Considerations",
+          "startLine": 278,
+          "endLine": 279
+        },
+        {
+          "id": "flutter-testing-standard#40",
+          "heading": "Platform-Specific Testing",
+          "startLine": 280,
+          "endLine": 286
+        },
+        {
+          "id": "flutter-testing-standard#41",
+          "heading": "Test Execution Strategy",
+          "startLine": 287,
+          "endLine": 295
+        },
+        {
+          "id": "flutter-testing-standard#42",
+          "heading": "Quality Gates for Flutter",
+          "startLine": 296,
+          "endLine": 311
+        }
+      ]
+    },
+    {
+      "id": "sw-testing",
+      "path": "sw-testing.md",
+      "sha256": "604ef7351caf2485a8e7c7d960e5c0246667a516b93fb23ce13dff087fc4a262",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 47,
+      "chunks": [
+        {
+          "id": "sw-testing#1",
+          "heading": "Software Testing Official Organization-Wide Standards of Procedures",
+          "startLine": 0,
+          "endLine": 3
+        },
+        {
+          "id": "sw-testing#2",
+          "heading": "Purpose",
+          "startLine": 4,
+          "endLine": 7
+        },
+        {
+          "id": "sw-testing#3",
+          "heading": "Project-Specific Testing Standards",
+          "startLine": 8,
+          "endLine": 9
+        },
+        {
+          "id": "sw-testing#4",
+          "heading": "By Project Type",
+          "startLine": 10,
+          "endLine": 21
+        },
+        {
+          "id": "sw-testing#5",
+          "heading": "Universal Testing Strategy",
+          "startLine": 22,
+          "endLine": 25
+        },
+        {
+          "id": "sw-testing#6",
+          "heading": "Universal Principles",
+          "startLine": 26,
+          "endLine": 35
+        },
+        {
+          "id": "sw-testing#7",
+          "heading": "Three-Stage Foundation",
+          "startLine": 36,
+          "endLine": 58
+        },
+        {
+          "id": "sw-testing#8",
+          "heading": "Project-Specific Adaptations",
+          "startLine": 59,
+          "endLine": 66
+        },
+        {
+          "id": "sw-testing#9",
+          "heading": "Standardized Make Targets",
+          "startLine": 67,
+          "endLine": 70
+        },
+        {
+          "id": "sw-testing#10",
+          "heading": "Required Targets (Project-Specific Implementation)",
+          "startLine": 71,
+          "endLine": 73
+        },
+        {
+          "id": "sw-testing#11",
+          "heading": "Unit Testing",
+          "startLine": 74,
+          "endLine": 75
+        },
+        {
+          "id": "sw-testing#12",
+          "heading": "- Project-specific unit test execution",
+          "startLine": 76,
+          "endLine": 76
+        },
+        {
+          "id": "sw-testing#13",
+          "heading": "- Coverage reporting and validation",
+          "startLine": 77,
+          "endLine": 77
+        },
+        {
+          "id": "sw-testing#14",
+          "heading": "- Framework varies by project type",
+          "startLine": 78,
+          "endLine": 79
+        },
+        {
+          "id": "sw-testing#15",
+          "heading": "Integration Testing",
+          "startLine": 80,
+          "endLine": 81
+        },
+        {
+          "id": "sw-testing#16",
+          "heading": "- Component and system integration testing",
+          "startLine": 82,
+          "endLine": 82
+        },
+        {
+          "id": "sw-testing#17",
+          "heading": "- External dependency validation",
+          "startLine": 83,
+          "endLine": 83
+        },
+        {
+          "id": "sw-testing#18",
+          "heading": "- Real environment testing",
+          "startLine": 84,
+          "endLine": 85
+        },
+        {
+          "id": "sw-testing#19",
+          "heading": "End-to-End Testing",
+          "startLine": 86,
+          "endLine": 87
+        },
+        {
+          "id": "sw-testing#20",
+          "heading": "- Complete workflow validation",
+          "startLine": 88,
+          "endLine": 88
+        },
+        {
+          "id": "sw-testing#21",
+          "heading": "- User acceptance scenario testing",
+          "startLine": 89,
+          "endLine": 89
+        },
+        {
+          "id": "sw-testing#22",
+          "heading": "- Production-like environment testing",
+          "startLine": 90,
+          "endLine": 91
+        },
+        {
+          "id": "sw-testing#23",
+          "heading": "Complete Test Suite",
+          "startLine": 92,
+          "endLine": 93
+        },
+        {
+          "id": "sw-testing#24",
+          "heading": "- Executes all test stages in sequence",
+          "startLine": 94,
+          "endLine": 94
+        },
+        {
+          "id": "sw-testing#25",
+          "heading": "- Primary target for CI/CD pipelines",
+          "startLine": 95,
+          "endLine": 95
+        },
+        {
+          "id": "sw-testing#26",
+          "heading": "- Equivalent to: make test-unit && make test-integration && make test-e2e",
+          "startLine": 96,
+          "endLine": 98
+        },
+        {
+          "id": "sw-testing#27",
+          "heading": "Implementation Requirements",
+          "startLine": 99,
+          "endLine": 107
+        },
+        {
+          "id": "sw-testing#28",
+          "heading": "Test Case Guidelines",
+          "startLine": 108,
+          "endLine": 116
+        },
+        {
+          "id": "sw-testing#29",
+          "heading": "Execution & Reporting",
+          "startLine": 117,
+          "endLine": 149
+        },
+        {
+          "id": "sw-testing#30",
+          "heading": "BMad-Core Integration",
+          "startLine": 150,
+          "endLine": 151
+        },
+        {
+          "id": "sw-testing#31",
+          "heading": "Agent Workflow Integration",
+          "startLine": 152,
+          "endLine": 157
+        },
+        {
+          "id": "sw-testing#32",
+          "heading": "Task Integration",
+          "startLine": 158,
+          "endLine": 164
+        },
+        {
+          "id": "sw-testing#33",
+          "heading": "Quality Gates",
+          "startLine": 165,
+          "endLine": 175
+        },
+        {
+          "id": "sw-testing#34",
+          "heading": "Quality Gates",
+          "startLine": 176,
+          "endLine": 177
+        },
+        {
+          "id": "sw-testing#35",
+          "heading": "Universal Requirements",
+          "startLine": 178,
+          "endLine": 187
+        },
+        {
+          "id": "sw-testing#36",
+          "heading": "Project-Specific Gates",
+          "startLine": 188,
+          "endLine": 197
+        },
+        {
+          "id": "sw-testing#37",
+          "heading": "Supplementary Resources",
+          "startLine": 198,
+          "endLine": 199
+        },
+        {
+          "id": "sw-testing#38",
+          "heading": "Implementation Guidance",
+          "startLine": 200,
+          "endLine": 204
+        },
+        {
+          "id": "sw-testing#39",
+          "heading": "Automated Tooling",
+          "startLine": 205,
+          "endLine": 212
+        },
+        {
+          "id": "sw-testing#40",
+          "heading": "Continuous Improvement",
+          "startLine": 213,
+          "endLine": 223
+        },
+        {
+          "id": "sw-testing#41",
+          "heading": "Flow Diagram",
+          "startLine": 224,
+          "endLine": 260
+        },
+        {
+          "id": "sw-testing#42",
+          "heading": "Implementation Guidance",
+          "startLine": 261,
+          "endLine": 262
+        },
+        {
+          "id": "sw-testing#43",
+          "heading": "Choosing the Right Standard",
+          "startLine": 263,
+          "endLine": 269
+        },
+        {
+          "id": "sw-testing#44",
+          "heading": "Cross-Project Considerations",
+          "startLine": 270,
+          "endLine": 277
+        },
+        {
+          "id": "sw-testing#45",
+          "heading": "Quick Reference",
+          "startLine": 278,
+          "endLine": 279
+        },
+        {
+          "id": "sw-testing#46",
+          "heading": "Getting Started",
+          "startLine": 280,
+          "endLine": 287
+        },
+        {
+          "id": "sw-testing#47",
+          "heading": "Support Resources",
+          "startLine": 288,
+          "endLine": 298
+        }
+      ]
+    },
+    {
+      "id": "implementation-plans",
+      "path": "implementation-plans.md",
+      "sha256": "178c44810975469d047d932159f3c70ff2a4b64eb7c703fd4f2317e78737d35c",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 6,
+      "chunks": [
+        {
+          "id": "implementation-plans#1",
+          "heading": "Standard: Implementation Plans",
+          "startLine": 0,
+          "endLine": 1
+        },
+        {
+          "id": "implementation-plans#2",
+          "heading": "1. Purpose",
+          "startLine": 2,
+          "endLine": 11
+        },
+        {
+          "id": "implementation-plans#3",
+          "heading": "2. Process",
+          "startLine": 12,
+          "endLine": 13
+        },
+        {
+          "id": "implementation-plans#4",
+          "heading": "When to Create an Implementation Plan",
+          "startLine": 14,
+          "endLine": 17
+        },
+        {
+          "id": "implementation-plans#5",
+          "heading": "How to Create and Use an Implementation Plan",
+          "startLine": 18,
+          "endLine": 31
+        },
+        {
+          "id": "implementation-plans#6",
+          "heading": "3. Implementation Plans vs. Story Checklists",
+          "startLine": 32,
+          "endLine": 35
+        }
+      ]
+    },
+    {
+      "id": "makefile-standard",
+      "path": "makefile-standard.md",
+      "sha256": "e56eba3d99e887c7d66cc03ba3d62273be6a0df8d2c9d70fc98d8cb699d4d5a5",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 41,
+      "chunks": [
+        {
+          "id": "makefile-standard#1",
+          "heading": "",
+          "startLine": 0,
+          "endLine": 10
+        },
+        {
+          "id": "makefile-standard#2",
+          "heading": "Company Wide Makefile Target Standards",
+          "startLine": 11,
+          "endLine": 12
+        },
+        {
+          "id": "makefile-standard#3",
+          "heading": "Purpose",
+          "startLine": 13,
+          "endLine": 16
+        },
+        {
+          "id": "makefile-standard#4",
+          "heading": "Source of Truth",
+          "startLine": 17,
+          "endLine": 20
+        },
+        {
+          "id": "makefile-standard#5",
+          "heading": "Makefile Target Standards",
+          "startLine": 21,
+          "endLine": 22
+        },
+        {
+          "id": "makefile-standard#6",
+          "heading": "Global Requirements",
+          "startLine": 23,
+          "endLine": 44
+        },
+        {
+          "id": "makefile-standard#7",
+          "heading": "Update Standards",
+          "startLine": 45,
+          "endLine": 54
+        },
+        {
+          "id": "makefile-standard#8",
+          "heading": "All",
+          "startLine": 55,
+          "endLine": 68
+        },
+        {
+          "id": "makefile-standard#9",
+          "heading": "Clean",
+          "startLine": 69,
+          "endLine": 88
+        },
+        {
+          "id": "makefile-standard#10",
+          "heading": "Build",
+          "startLine": 89,
+          "endLine": 98
+        },
+        {
+          "id": "makefile-standard#11",
+          "heading": "Install",
+          "startLine": 99,
+          "endLine": 118
+        },
+        {
+          "id": "makefile-standard#12",
+          "heading": "Uninstall",
+          "startLine": 119,
+          "endLine": 128
+        },
+        {
+          "id": "makefile-standard#13",
+          "heading": "Axovia Flow™ Project Specific Targets",
+          "startLine": 129,
+          "endLine": 132
+        },
+        {
+          "id": "makefile-standard#14",
+          "heading": "Help and Documentation",
+          "startLine": 133,
+          "endLine": 140
+        },
+        {
+          "id": "makefile-standard#15",
+          "heading": "Testing Targets",
+          "startLine": 141,
+          "endLine": 181
+        },
+        {
+          "id": "makefile-standard#16",
+          "heading": "Code Quality Targets",
+          "startLine": 182,
+          "endLine": 200
+        },
+        {
+          "id": "makefile-standard#17",
+          "heading": "Orchestrator Operations",
+          "startLine": 201,
+          "endLine": 230
+        },
+        {
+          "id": "makefile-standard#18",
+          "heading": "Development Targets",
+          "startLine": 231,
+          "endLine": 240
+        },
+        {
+          "id": "makefile-standard#19",
+          "heading": "Flutter Project Template Targets",
+          "startLine": 241,
+          "endLine": 245
+        },
+        {
+          "id": "makefile-standard#20",
+          "heading": "---- Flutter Makefile Template ----",
+          "startLine": 246,
+          "endLine": 255
+        },
+        {
+          "id": "makefile-standard#21",
+          "heading": "Ensure Flutter toolchain and dependencies",
+          "startLine": 256,
+          "endLine": 261
+        },
+        {
+          "id": "makefile-standard#22",
+          "heading": "Unit Testing (mocking allowed)",
+          "startLine": 262,
+          "endLine": 266
+        },
+        {
+          "id": "makefile-standard#23",
+          "heading": "Widget Testing (dependency mocking allowed; do not mock widgets)",
+          "startLine": 267,
+          "endLine": 271
+        },
+        {
+          "id": "makefile-standard#24",
+          "heading": "Golden Testing (no mocking)",
+          "startLine": 272,
+          "endLine": 276
+        },
+        {
+          "id": "makefile-standard#25",
+          "heading": "Update golden baselines (manual use only)",
+          "startLine": 277,
+          "endLine": 281
+        },
+        {
+          "id": "makefile-standard#26",
+          "heading": "Integration Testing (no mocking)",
+          "startLine": 282,
+          "endLine": 286
+        },
+        {
+          "id": "makefile-standard#27",
+          "heading": "Complete Flutter Test Suite",
+          "startLine": 287,
+          "endLine": 290
+        },
+        {
+          "id": "makefile-standard#28",
+          "heading": "Notes:",
+          "startLine": 291,
+          "endLine": 291
+        },
+        {
+          "id": "makefile-standard#29",
+          "heading": "- Coverage output is written to coverage/lcov.info when --coverage is used.",
+          "startLine": 292,
+          "endLine": 292
+        },
+        {
+          "id": "makefile-standard#30",
+          "heading": "- Mocking policy: allowed in unit and widget tests for external deps (Mocktail); never mock widgets or rendering.",
+          "startLine": 293,
+          "endLine": 293
+        },
+        {
+          "id": "makefile-standard#31",
+          "heading": "- Adjust *_DIR variables if your project structure differs.",
+          "startLine": 294,
+          "endLine": 294
+        },
+        {
+          "id": "makefile-standard#32",
+          "heading": "---- End Flutter Makefile Template ----",
+          "startLine": 295,
+          "endLine": 313
+        },
+        {
+          "id": "makefile-standard#33",
+          "heading": "Future Implementation Targets",
+          "startLine": 314,
+          "endLine": 322
+        },
+        {
+          "id": "makefile-standard#34",
+          "heading": "Usage Examples",
+          "startLine": 323,
+          "endLine": 325
+        },
+        {
+          "id": "makefile-standard#35",
+          "heading": "Setup and installation",
+          "startLine": 326,
+          "endLine": 328
+        },
+        {
+          "id": "makefile-standard#36",
+          "heading": "Development workflow",
+          "startLine": 329,
+          "endLine": 333
+        },
+        {
+          "id": "makefile-standard#37",
+          "heading": "Run the orchestrator",
+          "startLine": 334,
+          "endLine": 336
+        },
+        {
+          "id": "makefile-standard#38",
+          "heading": "Process a specific story",
+          "startLine": 337,
+          "endLine": 339
+        },
+        {
+          "id": "makefile-standard#39",
+          "heading": "Development with auto-reload",
+          "startLine": 340,
+          "endLine": 342
+        },
+        {
+          "id": "makefile-standard#40",
+          "heading": "Clean up",
+          "startLine": 343,
+          "endLine": 346
+        },
+        {
+          "id": "makefile-standard#41",
+          "heading": "Standards Compliance",
+          "startLine": 347,
+          "endLine": 356
+        }
+      ]
+    },
+    {
+      "id": "multi-agent-collaboration",
+      "path": "multi-agent-collaboration.md",
+      "sha256": "48229250626b57e983cc5d109d6834fb77a086d546751432893d47722124dbe3",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 58,
+      "chunks": [
+        {
+          "id": "multi-agent-collaboration#1",
+          "heading": "Multi-Agent Collaboration Standard",
+          "startLine": 0,
+          "endLine": 7
+        },
+        {
+          "id": "multi-agent-collaboration#2",
+          "heading": "Purpose",
+          "startLine": 8,
+          "endLine": 11
+        },
+        {
+          "id": "multi-agent-collaboration#3",
+          "heading": "Scope and Authority",
+          "startLine": 12,
+          "endLine": 13
+        },
+        {
+          "id": "multi-agent-collaboration#4",
+          "heading": "Applicability",
+          "startLine": 14,
+          "endLine": 20
+        },
+        {
+          "id": "multi-agent-collaboration#5",
+          "heading": "Compliance Requirement",
+          "startLine": 21,
+          "endLine": 26
+        },
+        {
+          "id": "multi-agent-collaboration#6",
+          "heading": "Core Collaboration Principles",
+          "startLine": 27,
+          "endLine": 28
+        },
+        {
+          "id": "multi-agent-collaboration#7",
+          "heading": "1. Deterministic Agent Handoffs",
+          "startLine": 29,
+          "endLine": 39
+        },
+        {
+          "id": "multi-agent-collaboration#8",
+          "heading": "2. Centralized State Management",
+          "startLine": 40,
+          "endLine": 50
+        },
+        {
+          "id": "multi-agent-collaboration#9",
+          "heading": "3. Role-Based Agent Specialization",
+          "startLine": 51,
+          "endLine": 61
+        },
+        {
+          "id": "multi-agent-collaboration#10",
+          "heading": "4. Fault-Tolerant Operations",
+          "startLine": 62,
+          "endLine": 72
+        },
+        {
+          "id": "multi-agent-collaboration#11",
+          "heading": "Agent Coordination Patterns",
+          "startLine": 73,
+          "endLine": 74
+        },
+        {
+          "id": "multi-agent-collaboration#12",
+          "heading": "Pattern 1: Sequential Workflow",
+          "startLine": 75,
+          "endLine": 83
+        },
+        {
+          "id": "multi-agent-collaboration#13",
+          "heading": "Pattern 2: Parallel Processing",
+          "startLine": 84,
+          "endLine": 92
+        },
+        {
+          "id": "multi-agent-collaboration#14",
+          "heading": "Pattern 3: Review and Revision",
+          "startLine": 93,
+          "endLine": 101
+        },
+        {
+          "id": "multi-agent-collaboration#15",
+          "heading": "Pattern 4: Producer-Consumer",
+          "startLine": 102,
+          "endLine": 110
+        },
+        {
+          "id": "multi-agent-collaboration#16",
+          "heading": "Technical Implementation Requirements",
+          "startLine": 111,
+          "endLine": 112
+        },
+        {
+          "id": "multi-agent-collaboration#17",
+          "heading": "1. Agent Registry Standard",
+          "startLine": 113,
+          "endLine": 140
+        },
+        {
+          "id": "multi-agent-collaboration#18",
+          "heading": "2. State Management Standard",
+          "startLine": 141,
+          "endLine": 152
+        },
+        {
+          "id": "multi-agent-collaboration#19",
+          "heading": "MANDATORY state update pattern",
+          "startLine": 153,
+          "endLine": 164
+        },
+        {
+          "id": "multi-agent-collaboration#20",
+          "heading": "3. Message Passing Standard",
+          "startLine": 165,
+          "endLine": 195
+        },
+        {
+          "id": "multi-agent-collaboration#21",
+          "heading": "4. Handoff Protocol Standard",
+          "startLine": 196,
+          "endLine": 218
+        },
+        {
+          "id": "multi-agent-collaboration#22",
+          "heading": "Error Handling and Recovery",
+          "startLine": 219,
+          "endLine": 220
+        },
+        {
+          "id": "multi-agent-collaboration#23",
+          "heading": "Error Classification Standard",
+          "startLine": 221,
+          "endLine": 227
+        },
+        {
+          "id": "multi-agent-collaboration#24",
+          "heading": "Recovery Strategy Requirements",
+          "startLine": 228,
+          "endLine": 230
+        },
+        {
+          "id": "multi-agent-collaboration#25",
+          "heading": "MANDATORY error handling pattern",
+          "startLine": 231,
+          "endLine": 244
+        },
+        {
+          "id": "multi-agent-collaboration#26",
+          "heading": "Retry Policy Standard",
+          "startLine": 245,
+          "endLine": 252
+        },
+        {
+          "id": "multi-agent-collaboration#27",
+          "heading": "Quality Assurance Requirements",
+          "startLine": 253,
+          "endLine": 254
+        },
+        {
+          "id": "multi-agent-collaboration#28",
+          "heading": "1. Schema Validation (MANDATORY)",
+          "startLine": 255,
+          "endLine": 261
+        },
+        {
+          "id": "multi-agent-collaboration#29",
+          "heading": "2. Quality Gates (MANDATORY)",
+          "startLine": 262,
+          "endLine": 268
+        },
+        {
+          "id": "multi-agent-collaboration#30",
+          "heading": "3. Testing Requirements (MANDATORY)",
+          "startLine": 269,
+          "endLine": 275
+        },
+        {
+          "id": "multi-agent-collaboration#31",
+          "heading": "Monitoring and Observability",
+          "startLine": 276,
+          "endLine": 277
+        },
+        {
+          "id": "multi-agent-collaboration#32",
+          "heading": "Required Metrics (MANDATORY)",
+          "startLine": 278,
+          "endLine": 299
+        },
+        {
+          "id": "multi-agent-collaboration#33",
+          "heading": "Logging Standard (MANDATORY)",
+          "startLine": 300,
+          "endLine": 320
+        },
+        {
+          "id": "multi-agent-collaboration#34",
+          "heading": "Security and Compliance",
+          "startLine": 321,
+          "endLine": 322
+        },
+        {
+          "id": "multi-agent-collaboration#35",
+          "heading": "1. Agent Authentication (MANDATORY)",
+          "startLine": 323,
+          "endLine": 329
+        },
+        {
+          "id": "multi-agent-collaboration#36",
+          "heading": "2. Data Protection (MANDATORY)",
+          "startLine": 330,
+          "endLine": 336
+        },
+        {
+          "id": "multi-agent-collaboration#37",
+          "heading": "3. Workflow Integrity (MANDATORY)",
+          "startLine": 337,
+          "endLine": 343
+        },
+        {
+          "id": "multi-agent-collaboration#38",
+          "heading": "Implementation Checklist",
+          "startLine": 344,
+          "endLine": 345
+        },
+        {
+          "id": "multi-agent-collaboration#39",
+          "heading": "Phase 1: Foundation (MANDATORY)",
+          "startLine": 346,
+          "endLine": 352
+        },
+        {
+          "id": "multi-agent-collaboration#40",
+          "heading": "Phase 2: Quality Assurance (MANDATORY)",
+          "startLine": 353,
+          "endLine": 359
+        },
+        {
+          "id": "multi-agent-collaboration#41",
+          "heading": "Phase 3: Security and Compliance (MANDATORY)",
+          "startLine": 360,
+          "endLine": 366
+        },
+        {
+          "id": "multi-agent-collaboration#42",
+          "heading": "Phase 4: Optimization (RECOMMENDED)",
+          "startLine": 367,
+          "endLine": 373
+        },
+        {
+          "id": "multi-agent-collaboration#43",
+          "heading": "Governance and Compliance",
+          "startLine": 374,
+          "endLine": 375
+        },
+        {
+          "id": "multi-agent-collaboration#44",
+          "heading": "Change Management",
+          "startLine": 376,
+          "endLine": 381
+        },
+        {
+          "id": "multi-agent-collaboration#45",
+          "heading": "Compliance Monitoring",
+          "startLine": 382,
+          "endLine": 388
+        },
+        {
+          "id": "multi-agent-collaboration#46",
+          "heading": "Training Requirements",
+          "startLine": 389,
+          "endLine": 394
+        },
+        {
+          "id": "multi-agent-collaboration#47",
+          "heading": "Workflow Definition Standards",
+          "startLine": 395,
+          "endLine": 396
+        },
+        {
+          "id": "multi-agent-collaboration#48",
+          "heading": "Standard Workflow File Format",
+          "startLine": 397,
+          "endLine": 399
+        },
+        {
+          "id": "multi-agent-collaboration#49",
+          "heading": "MANDATORY workflow definition format",
+          "startLine": 400,
+          "endLine": 460
+        },
+        {
+          "id": "multi-agent-collaboration#50",
+          "heading": "MANDATORY workflow definition format",
+          "startLine": 461,
+          "endLine": 474
+        },
+        {
+          "id": "multi-agent-collaboration#51",
+          "heading": "Workflow Validation Requirements",
+          "startLine": 475,
+          "endLine": 481
+        },
+        {
+          "id": "multi-agent-collaboration#52",
+          "heading": "Agent Configuration Standards",
+          "startLine": 482,
+          "endLine": 483
+        },
+        {
+          "id": "multi-agent-collaboration#53",
+          "heading": "Standard Agent Configuration Format",
+          "startLine": 484,
+          "endLine": 486
+        },
+        {
+          "id": "multi-agent-collaboration#54",
+          "heading": "MANDATORY agent configuration format",
+          "startLine": 487,
+          "endLine": 561
+        },
+        {
+          "id": "multi-agent-collaboration#55",
+          "heading": "MANDATORY agent configuration format",
+          "startLine": 562,
+          "endLine": 586
+        },
+        {
+          "id": "multi-agent-collaboration#56",
+          "heading": "Support and Resources",
+          "startLine": 587,
+          "endLine": 588
+        },
+        {
+          "id": "multi-agent-collaboration#57",
+          "heading": "Documentation",
+          "startLine": 589,
+          "endLine": 595
+        },
+        {
+          "id": "multi-agent-collaboration#58",
+          "heading": "Support Channels",
+          "startLine": 596,
+          "endLine": 610
+        }
+      ]
+    },
+    {
+      "id": "node-package-publishing",
+      "path": "node-package-publishing.md",
+      "sha256": "fff92f58cab176220fa41985f6dc11bc61b0c706e14b8a96c01ceca307d8e76f",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 87,
+      "chunks": [
+        {
+          "id": "node-package-publishing#1",
+          "heading": "",
+          "startLine": 0,
+          "endLine": 0
+        },
+        {
+          "id": "node-package-publishing#2",
+          "heading": "Axovia Flow - Publishing SOP (Node Packages)",
+          "startLine": 1,
+          "endLine": 6
+        },
+        {
+          "id": "node-package-publishing#3",
+          "heading": "Prerequisites",
+          "startLine": 7,
+          "endLine": 12
+        },
+        {
+          "id": "node-package-publishing#4",
+          "heading": "Versioning",
+          "startLine": 13,
+          "endLine": 17
+        },
+        {
+          "id": "node-package-publishing#5",
+          "heading": "CLI-only Publishing (Manual)",
+          "startLine": 18,
+          "endLine": 30
+        },
+        {
+          "id": "node-package-publishing#6",
+          "heading": "CI-driven Publishing",
+          "startLine": 31,
+          "endLine": 43
+        },
+        {
+          "id": "node-package-publishing#7",
+          "heading": "Rollback Procedure",
+          "startLine": 44,
+          "endLine": 47
+        },
+        {
+          "id": "node-package-publishing#8",
+          "heading": "Security and Access",
+          "startLine": 48,
+          "endLine": 52
+        },
+        {
+          "id": "node-package-publishing#9",
+          "heading": "Notes",
+          "startLine": 53,
+          "endLine": 57
+        },
+        {
+          "id": "node-package-publishing#10",
+          "heading": "Node.js Package Publishing Standard",
+          "startLine": 58,
+          "endLine": 67
+        },
+        {
+          "id": "node-package-publishing#11",
+          "heading": "Purpose",
+          "startLine": 68,
+          "endLine": 71
+        },
+        {
+          "id": "node-package-publishing#12",
+          "heading": "Scope and Authority",
+          "startLine": 72,
+          "endLine": 73
+        },
+        {
+          "id": "node-package-publishing#13",
+          "heading": "Applicability",
+          "startLine": 74,
+          "endLine": 80
+        },
+        {
+          "id": "node-package-publishing#14",
+          "heading": "Compliance Requirement",
+          "startLine": 81,
+          "endLine": 86
+        },
+        {
+          "id": "node-package-publishing#15",
+          "heading": "Core Publishing Principles",
+          "startLine": 87,
+          "endLine": 88
+        },
+        {
+          "id": "node-package-publishing#16",
+          "heading": "1. Quality First",
+          "startLine": 89,
+          "endLine": 99
+        },
+        {
+          "id": "node-package-publishing#17",
+          "heading": "2. Semantic Versioning",
+          "startLine": 100,
+          "endLine": 110
+        },
+        {
+          "id": "node-package-publishing#18",
+          "heading": "3. Comprehensive Documentation",
+          "startLine": 111,
+          "endLine": 121
+        },
+        {
+          "id": "node-package-publishing#19",
+          "heading": "4. Security and Compliance",
+          "startLine": 122,
+          "endLine": 132
+        },
+        {
+          "id": "node-package-publishing#20",
+          "heading": "Package Structure Requirements",
+          "startLine": 133,
+          "endLine": 134
+        },
+        {
+          "id": "node-package-publishing#21",
+          "heading": "Mandatory Files",
+          "startLine": 135,
+          "endLine": 146
+        },
+        {
+          "id": "node-package-publishing#22",
+          "heading": "Recommended Files",
+          "startLine": 147,
+          "endLine": 156
+        },
+        {
+          "id": "node-package-publishing#23",
+          "heading": "Package.json Requirements",
+          "startLine": 157,
+          "endLine": 201
+        },
+        {
+          "id": "node-package-publishing#24",
+          "heading": "Publishing Process",
+          "startLine": 202,
+          "endLine": 203
+        },
+        {
+          "id": "node-package-publishing#25",
+          "heading": "Phase 1: Pre-Publication Validation (MANDATORY)",
+          "startLine": 204,
+          "endLine": 219
+        },
+        {
+          "id": "node-package-publishing#26",
+          "heading": "Run all tests",
+          "startLine": 220,
+          "endLine": 222
+        },
+        {
+          "id": "node-package-publishing#27",
+          "heading": "Security audit",
+          "startLine": 223,
+          "endLine": 225
+        },
+        {
+          "id": "node-package-publishing#28",
+          "heading": "Package size check",
+          "startLine": 226,
+          "endLine": 228
+        },
+        {
+          "id": "node-package-publishing#29",
+          "heading": "Lint package.json",
+          "startLine": 229,
+          "endLine": 231
+        },
+        {
+          "id": "node-package-publishing#30",
+          "heading": "Validate documentation",
+          "startLine": 232,
+          "endLine": 235
+        },
+        {
+          "id": "node-package-publishing#31",
+          "heading": "Phase 2: Registry Selection",
+          "startLine": 236,
+          "endLine": 240
+        },
+        {
+          "id": "node-package-publishing#32",
+          "heading": "Verify registry",
+          "startLine": 241,
+          "endLine": 243
+        },
+        {
+          "id": "node-package-publishing#33",
+          "heading": "Should return: https://registry.npmjs.org/",
+          "startLine": 244,
+          "endLine": 249
+        },
+        {
+          "id": "node-package-publishing#34",
+          "heading": "Configure registry for scoped packages",
+          "startLine": 250,
+          "endLine": 256
+        },
+        {
+          "id": "node-package-publishing#35",
+          "heading": "Configure private registry",
+          "startLine": 257,
+          "endLine": 260
+        },
+        {
+          "id": "node-package-publishing#36",
+          "heading": "Phase 3: Publication Execution",
+          "startLine": 261,
+          "endLine": 265
+        },
+        {
+          "id": "node-package-publishing#37",
+          "heading": "Clean build",
+          "startLine": 266,
+          "endLine": 269
+        },
+        {
+          "id": "node-package-publishing#38",
+          "heading": "Final test run",
+          "startLine": 270,
+          "endLine": 272
+        },
+        {
+          "id": "node-package-publishing#39",
+          "heading": "Version bump (if needed)",
+          "startLine": 273,
+          "endLine": 275
+        },
+        {
+          "id": "node-package-publishing#40",
+          "heading": "Create git tag",
+          "startLine": 276,
+          "endLine": 282
+        },
+        {
+          "id": "node-package-publishing#41",
+          "heading": "Dry run first",
+          "startLine": 283,
+          "endLine": 285
+        },
+        {
+          "id": "node-package-publishing#42",
+          "heading": "Publish to public registry",
+          "startLine": 286,
+          "endLine": 288
+        },
+        {
+          "id": "node-package-publishing#43",
+          "heading": "Publish to GitHub Packages",
+          "startLine": 289,
+          "endLine": 291
+        },
+        {
+          "id": "node-package-publishing#44",
+          "heading": "Publish with specific tag",
+          "startLine": 292,
+          "endLine": 298
+        },
+        {
+          "id": "node-package-publishing#45",
+          "heading": "Push tags to repository",
+          "startLine": 299,
+          "endLine": 301
+        },
+        {
+          "id": "node-package-publishing#46",
+          "heading": "Create GitHub release",
+          "startLine": 302,
+          "endLine": 304
+        },
+        {
+          "id": "node-package-publishing#47",
+          "heading": "Update documentation",
+          "startLine": 305,
+          "endLine": 308
+        },
+        {
+          "id": "node-package-publishing#48",
+          "heading": "Version Management Standards",
+          "startLine": 309,
+          "endLine": 310
+        },
+        {
+          "id": "node-package-publishing#49",
+          "heading": "Version Numbering",
+          "startLine": 311,
+          "endLine": 316
+        },
+        {
+          "id": "node-package-publishing#50",
+          "heading": "Release Types",
+          "startLine": 317,
+          "endLine": 323
+        },
+        {
+          "id": "node-package-publishing#51",
+          "heading": "Deprecation Policy",
+          "startLine": 324,
+          "endLine": 329
+        },
+        {
+          "id": "node-package-publishing#52",
+          "heading": "Security Requirements",
+          "startLine": 330,
+          "endLine": 331
+        },
+        {
+          "id": "node-package-publishing#53",
+          "heading": "Dependency Management",
+          "startLine": 332,
+          "endLine": 334
+        },
+        {
+          "id": "node-package-publishing#54",
+          "heading": "Regular dependency audits",
+          "startLine": 335,
+          "endLine": 337
+        },
+        {
+          "id": "node-package-publishing#55",
+          "heading": "Update dependencies",
+          "startLine": 338,
+          "endLine": 340
+        },
+        {
+          "id": "node-package-publishing#56",
+          "heading": "Check for outdated packages",
+          "startLine": 341,
+          "endLine": 344
+        },
+        {
+          "id": "node-package-publishing#57",
+          "heading": "Secret Management",
+          "startLine": 345,
+          "endLine": 350
+        },
+        {
+          "id": "node-package-publishing#58",
+          "heading": "Vulnerability Response",
+          "startLine": 351,
+          "endLine": 356
+        },
+        {
+          "id": "node-package-publishing#59",
+          "heading": "Documentation Standards",
+          "startLine": 357,
+          "endLine": 358
+        },
+        {
+          "id": "node-package-publishing#60",
+          "heading": "README.md Requirements",
+          "startLine": 359,
+          "endLine": 361
+        },
+        {
+          "id": "node-package-publishing#61",
+          "heading": "Package Name",
+          "startLine": 362,
+          "endLine": 365
+        },
+        {
+          "id": "node-package-publishing#62",
+          "heading": "Installation",
+          "startLine": 366,
+          "endLine": 371
+        },
+        {
+          "id": "node-package-publishing#63",
+          "heading": "Usage",
+          "startLine": 372,
+          "endLine": 378
+        },
+        {
+          "id": "node-package-publishing#64",
+          "heading": "API Documentation",
+          "startLine": 379,
+          "endLine": 380
+        },
+        {
+          "id": "node-package-publishing#65",
+          "heading": "Methods",
+          "startLine": 381,
+          "endLine": 384
+        },
+        {
+          "id": "node-package-publishing#66",
+          "heading": "Contributing",
+          "startLine": 385,
+          "endLine": 388
+        },
+        {
+          "id": "node-package-publishing#67",
+          "heading": "License",
+          "startLine": 389,
+          "endLine": 393
+        },
+        {
+          "id": "node-package-publishing#68",
+          "heading": "CHANGELOG.md Format",
+          "startLine": 394,
+          "endLine": 396
+        },
+        {
+          "id": "node-package-publishing#69",
+          "heading": "Changelog",
+          "startLine": 397,
+          "endLine": 398
+        },
+        {
+          "id": "node-package-publishing#70",
+          "heading": "[1.0.0] - 2025-09-08",
+          "startLine": 399,
+          "endLine": 400
+        },
+        {
+          "id": "node-package-publishing#71",
+          "heading": "Added",
+          "startLine": 401,
+          "endLine": 403
+        },
+        {
+          "id": "node-package-publishing#72",
+          "heading": "Changed",
+          "startLine": 404,
+          "endLine": 406
+        },
+        {
+          "id": "node-package-publishing#73",
+          "heading": "Deprecated",
+          "startLine": 407,
+          "endLine": 409
+        },
+        {
+          "id": "node-package-publishing#74",
+          "heading": "Removed",
+          "startLine": 410,
+          "endLine": 412
+        },
+        {
+          "id": "node-package-publishing#75",
+          "heading": "Fixed",
+          "startLine": 413,
+          "endLine": 415
+        },
+        {
+          "id": "node-package-publishing#76",
+          "heading": "Security",
+          "startLine": 416,
+          "endLine": 419
+        },
+        {
+          "id": "node-package-publishing#77",
+          "heading": "Quality Assurance",
+          "startLine": 420,
+          "endLine": 421
+        },
+        {
+          "id": "node-package-publishing#78",
+          "heading": "Automated Testing Requirements",
+          "startLine": 422,
+          "endLine": 428
+        },
+        {
+          "id": "node-package-publishing#79",
+          "heading": "Manual Review Requirements",
+          "startLine": 429,
+          "endLine": 434
+        },
+        {
+          "id": "node-package-publishing#80",
+          "heading": "Continuous Integration",
+          "startLine": 435,
+          "endLine": 437
+        },
+        {
+          "id": "node-package-publishing#81",
+          "heading": "Required CI checks",
+          "startLine": 438,
+          "endLine": 446
+        },
+        {
+          "id": "node-package-publishing#82",
+          "heading": "Monitoring and Maintenance",
+          "startLine": 447,
+          "endLine": 448
+        },
+        {
+          "id": "node-package-publishing#83",
+          "heading": "Post-Publication Monitoring",
+          "startLine": 449,
+          "endLine": 455
+        },
+        {
+          "id": "node-package-publishing#84",
+          "heading": "Maintenance Schedule",
+          "startLine": 456,
+          "endLine": 462
+        },
+        {
+          "id": "node-package-publishing#85",
+          "heading": "Compliance Checklist",
+          "startLine": 463,
+          "endLine": 464
+        },
+        {
+          "id": "node-package-publishing#86",
+          "heading": "Pre-Publication Checklist",
+          "startLine": 465,
+          "endLine": 477
+        },
+        {
+          "id": "node-package-publishing#87",
+          "heading": "Post-Publication Checklist",
+          "startLine": 478,
+          "endLine": 495
+        }
+      ]
+    },
+    {
+      "id": "planning-definition-of-done",
+      "path": "planning-definition-of-done.md",
+      "sha256": "4126cbedd656cd1a1b441f28b10285e05f0e2c33b5ee515917374ecc8f3dffc7",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 10,
+      "chunks": [
+        {
+          "id": "planning-definition-of-done#1",
+          "heading": "Planning Definition of Done (Standard)",
+          "startLine": 0,
+          "endLine": 6
+        },
+        {
+          "id": "planning-definition-of-done#2",
+          "heading": "Mandatory Phase Separation (Policy)",
+          "startLine": 7,
+          "endLine": 12
+        },
+        {
+          "id": "planning-definition-of-done#3",
+          "heading": "A) Foundation & Alignment",
+          "startLine": 13,
+          "endLine": 18
+        },
+        {
+          "id": "planning-definition-of-done#4",
+          "heading": "B) Requirements & Acceptance (BDD‑ready)",
+          "startLine": 19,
+          "endLine": 24
+        },
+        {
+          "id": "planning-definition-of-done#5",
+          "heading": "C) Test Strategy & Traceability",
+          "startLine": 25,
+          "endLine": 31
+        },
+        {
+          "id": "planning-definition-of-done#6",
+          "heading": "D) Risks, Dependencies, Assumptions",
+          "startLine": 32,
+          "endLine": 37
+        },
+        {
+          "id": "planning-definition-of-done#7",
+          "heading": "E) Story Decomposition for Parallel Work",
+          "startLine": 38,
+          "endLine": 43
+        },
+        {
+          "id": "planning-definition-of-done#8",
+          "heading": "F) Repository & Standards Readiness",
+          "startLine": 44,
+          "endLine": 49
+        },
+        {
+          "id": "planning-definition-of-done#9",
+          "heading": "G) Exit Criteria (Mark “Ready for Dev”)",
+          "startLine": 50,
+          "endLine": 57
+        },
+        {
+          "id": "planning-definition-of-done#10",
+          "heading": "References",
+          "startLine": 58,
+          "endLine": 68
+        }
+      ]
+    },
+    {
+      "id": "platformio-coding.standard",
+      "path": "platformio-specific/platformio-coding.standard.md",
+      "sha256": "8c216deb3abef7b05faf1579d751eedd579862f5293f1b09423df72a3fa49fe3",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 3,
+      "chunks": [
+        {
+          "id": "platformio-coding.standard#1",
+          "heading": "PlatformIO Embedded Coding Standard",
+          "startLine": 0,
+          "endLine": 3
+        },
+        {
+          "id": "platformio-coding.standard#2",
+          "heading": "Overview",
+          "startLine": 4,
+          "endLine": 7
+        },
+        {
+          "id": "platformio-coding.standard#3",
+          "heading": "PlatformIO Specific Coding Standards",
+          "startLine": 8,
+          "endLine": 15
+        }
+      ]
+    },
+    {
+      "id": "platformio-testing-standard",
+      "path": "platformio-specific/platformio-testing-standard.md",
+      "sha256": "43ecac5293877fbd4d852fa997ca019ab839150458ba950cb6fcdc4f0e59b0e2",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 49,
+      "chunks": [
+        {
+          "id": "platformio-testing-standard#1",
+          "heading": "PlatformIO Embedded Testing Standard",
+          "startLine": 0,
+          "endLine": 3
+        },
+        {
+          "id": "platformio-testing-standard#2",
+          "heading": "Overview",
+          "startLine": 4,
+          "endLine": 9
+        },
+        {
+          "id": "platformio-testing-standard#3",
+          "heading": "Framework Requirements",
+          "startLine": 10,
+          "endLine": 11
+        },
+        {
+          "id": "platformio-testing-standard#4",
+          "heading": "Primary Testing Framework",
+          "startLine": 12,
+          "endLine": 17
+        },
+        {
+          "id": "platformio-testing-standard#5",
+          "heading": "Mocking Framework (Unit Tests ONLY)",
+          "startLine": 18,
+          "endLine": 24
+        },
+        {
+          "id": "platformio-testing-standard#6",
+          "heading": "Specialized Frameworks",
+          "startLine": 25,
+          "endLine": 32
+        },
+        {
+          "id": "platformio-testing-standard#7",
+          "heading": "Testing Architecture",
+          "startLine": 33,
+          "endLine": 34
+        },
+        {
+          "id": "platformio-testing-standard#8",
+          "heading": "Test Organization Structure",
+          "startLine": 35,
+          "endLine": 57
+        },
+        {
+          "id": "platformio-testing-standard#9",
+          "heading": "Testing Pyramid Distribution",
+          "startLine": 58,
+          "endLine": 65
+        },
+        {
+          "id": "platformio-testing-standard#10",
+          "heading": "Framework-Specific Standards",
+          "startLine": 66,
+          "endLine": 67
+        },
+        {
+          "id": "platformio-testing-standard#11",
+          "heading": "1. Unit Testing",
+          "startLine": 68,
+          "endLine": 112
+        },
+        {
+          "id": "platformio-testing-standard#12",
+          "heading": "2. Integration Testing",
+          "startLine": 113,
+          "endLine": 147
+        },
+        {
+          "id": "platformio-testing-standard#13",
+          "heading": "3. Hardware-in-the-Loop (HIL) Testing",
+          "startLine": 148,
+          "endLine": 183
+        },
+        {
+          "id": "platformio-testing-standard#14",
+          "heading": "4. Emulation Testing",
+          "startLine": 184,
+          "endLine": 204
+        },
+        {
+          "id": "platformio-testing-standard#15",
+          "heading": "Coverage Requirements",
+          "startLine": 205,
+          "endLine": 215
+        },
+        {
+          "id": "platformio-testing-standard#16",
+          "heading": "Make Targets for PlatformIO",
+          "startLine": 216,
+          "endLine": 220
+        },
+        {
+          "id": "platformio-testing-standard#17",
+          "heading": "Unit Testing (with mocking allowed)",
+          "startLine": 221,
+          "endLine": 222
+        },
+        {
+          "id": "platformio-testing-standard#18",
+          "heading": "- Executes: pio test --filter test_unit",
+          "startLine": 223,
+          "endLine": 223
+        },
+        {
+          "id": "platformio-testing-standard#19",
+          "heading": "- Coverage: ≥90% requirement",
+          "startLine": 224,
+          "endLine": 224
+        },
+        {
+          "id": "platformio-testing-standard#20",
+          "heading": "- Mocking: Unity/CMock permitted",
+          "startLine": 225,
+          "endLine": 226
+        },
+        {
+          "id": "platformio-testing-standard#21",
+          "heading": "Integration Testing (no mocking)",
+          "startLine": 227,
+          "endLine": 228
+        },
+        {
+          "id": "platformio-testing-standard#22",
+          "heading": "- Executes: pio test --filter test_integration",
+          "startLine": 229,
+          "endLine": 229
+        },
+        {
+          "id": "platformio-testing-standard#23",
+          "heading": "- Coverage: ≥80% requirement",
+          "startLine": 230,
+          "endLine": 230
+        },
+        {
+          "id": "platformio-testing-standard#24",
+          "heading": "- Mocking: PROHIBITED",
+          "startLine": 231,
+          "endLine": 232
+        },
+        {
+          "id": "platformio-testing-standard#25",
+          "heading": "Hardware-in-the-Loop Testing",
+          "startLine": 233,
+          "endLine": 234
+        },
+        {
+          "id": "platformio-testing-standard#26",
+          "heading": "- Executes: pio test --filter test_hil --environment hil",
+          "startLine": 235,
+          "endLine": 235
+        },
+        {
+          "id": "platformio-testing-standard#27",
+          "heading": "- Scope: Real hardware validation",
+          "startLine": 236,
+          "endLine": 236
+        },
+        {
+          "id": "platformio-testing-standard#28",
+          "heading": "- Mocking: PROHIBITED",
+          "startLine": 237,
+          "endLine": 238
+        },
+        {
+          "id": "platformio-testing-standard#29",
+          "heading": "Emulation Testing",
+          "startLine": 239,
+          "endLine": 240
+        },
+        {
+          "id": "platformio-testing-standard#30",
+          "heading": "- Executes: pio test --filter test_emulation --environment emulation",
+          "startLine": 241,
+          "endLine": 241
+        },
+        {
+          "id": "platformio-testing-standard#31",
+          "heading": "- Scope: Hardware emulation testing",
+          "startLine": 242,
+          "endLine": 242
+        },
+        {
+          "id": "platformio-testing-standard#32",
+          "heading": "- Mocking: PROHIBITED (use emulation)",
+          "startLine": 243,
+          "endLine": 244
+        },
+        {
+          "id": "platformio-testing-standard#33",
+          "heading": "Complete PlatformIO Test Suite",
+          "startLine": 245,
+          "endLine": 246
+        },
+        {
+          "id": "platformio-testing-standard#34",
+          "heading": "- Executes all test types based on hardware availability",
+          "startLine": 247,
+          "endLine": 247
+        },
+        {
+          "id": "platformio-testing-standard#35",
+          "heading": "- HIL tests only run when hardware detected",
+          "startLine": 248,
+          "endLine": 248
+        },
+        {
+          "id": "platformio-testing-standard#36",
+          "heading": "- Falls back to emulation when hardware unavailable",
+          "startLine": 249,
+          "endLine": 253
+        },
+        {
+          "id": "platformio-testing-standard#37",
+          "heading": "Hardware Detection and Fallback",
+          "startLine": 254,
+          "endLine": 255
+        },
+        {
+          "id": "platformio-testing-standard#38",
+          "heading": "Automatic Hardware Detection",
+          "startLine": 256,
+          "endLine": 271
+        },
+        {
+          "id": "platformio-testing-standard#39",
+          "heading": "CI/CD Integration",
+          "startLine": 272,
+          "endLine": 279
+        },
+        {
+          "id": "platformio-testing-standard#40",
+          "heading": "Prohibited Practices",
+          "startLine": 280,
+          "endLine": 281
+        },
+        {
+          "id": "platformio-testing-standard#41",
+          "heading": "Strictly Forbidden",
+          "startLine": 282,
+          "endLine": 289
+        },
+        {
+          "id": "platformio-testing-standard#42",
+          "heading": "Required Practices",
+          "startLine": 290,
+          "endLine": 299
+        },
+        {
+          "id": "platformio-testing-standard#43",
+          "heading": "Real-Time Testing Considerations",
+          "startLine": 300,
+          "endLine": 301
+        },
+        {
+          "id": "platformio-testing-standard#44",
+          "heading": "Timing Validation",
+          "startLine": 302,
+          "endLine": 322
+        },
+        {
+          "id": "platformio-testing-standard#45",
+          "heading": "Performance Testing",
+          "startLine": 323,
+          "endLine": 331
+        },
+        {
+          "id": "platformio-testing-standard#46",
+          "heading": "Cross-Platform Considerations",
+          "startLine": 332,
+          "endLine": 333
+        },
+        {
+          "id": "platformio-testing-standard#47",
+          "heading": "Multi-Target Testing",
+          "startLine": 334,
+          "endLine": 356
+        },
+        {
+          "id": "platformio-testing-standard#48",
+          "heading": "Platform-Specific Testing",
+          "startLine": 357,
+          "endLine": 365
+        },
+        {
+          "id": "platformio-testing-standard#49",
+          "heading": "Quality Gates for PlatformIO",
+          "startLine": 366,
+          "endLine": 381
+        }
+      ]
+    },
+    {
+      "id": "product-code-convention-standard",
+      "path": "product-code-convention-standard.md",
+      "sha256": "f7a04ef80c43d634a52f21e2f038413ef4bbbbe2fe39a18e0f9fe5931a356da3",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 18,
+      "chunks": [
+        {
+          "id": "product-code-convention-standard#1",
+          "heading": "Product Code Convention Company Standard",
+          "startLine": 0,
+          "endLine": 9
+        },
+        {
+          "id": "product-code-convention-standard#2",
+          "heading": "Software Products",
+          "startLine": 10,
+          "endLine": 13
+        },
+        {
+          "id": "product-code-convention-standard#3",
+          "heading": "Software Product Code Format Breakdown",
+          "startLine": 14,
+          "endLine": 15
+        },
+        {
+          "id": "product-code-convention-standard#4",
+          "heading": "Hardware Products",
+          "startLine": 16,
+          "endLine": 19
+        },
+        {
+          "id": "product-code-convention-standard#5",
+          "heading": "Hadware Product Code Format Breakdown",
+          "startLine": 20,
+          "endLine": 21
+        },
+        {
+          "id": "product-code-convention-standard#6",
+          "heading": "Liquid Products",
+          "startLine": 22,
+          "endLine": 25
+        },
+        {
+          "id": "product-code-convention-standard#7",
+          "heading": "Liquid Product Code Format Breakdown",
+          "startLine": 26,
+          "endLine": 27
+        },
+        {
+          "id": "product-code-convention-standard#8",
+          "heading": "TODO: Solid Products",
+          "startLine": 28,
+          "endLine": 31
+        },
+        {
+          "id": "product-code-convention-standard#9",
+          "heading": "Solid Product Code Format Breakdown",
+          "startLine": 32,
+          "endLine": 33
+        },
+        {
+          "id": "product-code-convention-standard#10",
+          "heading": "Powder Products",
+          "startLine": 34,
+          "endLine": 37
+        },
+        {
+          "id": "product-code-convention-standard#11",
+          "heading": "Powder Product Code Format Breakdown",
+          "startLine": 38,
+          "endLine": 41
+        },
+        {
+          "id": "product-code-convention-standard#12",
+          "heading": "Emulsion Products",
+          "startLine": 42,
+          "endLine": 45
+        },
+        {
+          "id": "product-code-convention-standard#13",
+          "heading": "Emulsion Product Code Format Breakdown",
+          "startLine": 46,
+          "endLine": 47
+        },
+        {
+          "id": "product-code-convention-standard#14",
+          "heading": "CC: Production Location",
+          "startLine": 48,
+          "endLine": 53
+        },
+        {
+          "id": "product-code-convention-standard#15",
+          "heading": "PP: Product Type",
+          "startLine": 54,
+          "endLine": 65
+        },
+        {
+          "id": "product-code-convention-standard#16",
+          "heading": "NN: Potency (mg/ml or mg/g)",
+          "startLine": 66,
+          "endLine": 72
+        },
+        {
+          "id": "product-code-convention-standard#17",
+          "heading": "1: Surfactant/Formulation Type",
+          "startLine": 73,
+          "endLine": 79
+        },
+        {
+          "id": "product-code-convention-standard#18",
+          "heading": "Example Generated Product Codes",
+          "startLine": 80,
+          "endLine": 112
+        }
+      ]
+    },
+    {
+      "id": "project-structure",
+      "path": "project-structure.md",
+      "sha256": "b0e5f250d49f668373d9cb7375367b69d2803124275bdc9e292c84f30c1edb6e",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 43,
+      "chunks": [
+        {
+          "id": "project-structure#1",
+          "heading": "Project Directory Structure Official Standard",
+          "startLine": 0,
+          "endLine": 28
+        },
+        {
+          "id": "project-structure#2",
+          "heading": "Overview",
+          "startLine": 29,
+          "endLine": 32
+        },
+        {
+          "id": "project-structure#3",
+          "heading": "Root Directory Standard",
+          "startLine": 33,
+          "endLine": 38
+        },
+        {
+          "id": "project-structure#4",
+          "heading": "Mandatory Root Directory Files",
+          "startLine": 39,
+          "endLine": 47
+        },
+        {
+          "id": "project-structure#5",
+          "heading": "Conditional Root Directory Files",
+          "startLine": 48,
+          "endLine": 58
+        },
+        {
+          "id": "project-structure#6",
+          "heading": "Prohibited Root Directory Files",
+          "startLine": 59,
+          "endLine": 72
+        },
+        {
+          "id": "project-structure#7",
+          "heading": "Root Directory Organization Principle",
+          "startLine": 73,
+          "endLine": 78
+        },
+        {
+          "id": "project-structure#8",
+          "heading": "Complete Directory Structure Standard",
+          "startLine": 79,
+          "endLine": 109
+        },
+        {
+          "id": "project-structure#9",
+          "heading": "Complete Directory Structure Standard",
+          "startLine": 110,
+          "endLine": 142
+        },
+        {
+          "id": "project-structure#10",
+          "heading": "Complete Directory Structure Standard",
+          "startLine": 143,
+          "endLine": 171
+        },
+        {
+          "id": "project-structure#11",
+          "heading": "Directory Purpose and Guidelines",
+          "startLine": 172,
+          "endLine": 173
+        },
+        {
+          "id": "project-structure#12",
+          "heading": "Core Infrastructure Directories",
+          "startLine": 174,
+          "endLine": 175
+        },
+        {
+          "id": "project-structure#13",
+          "heading": "`.axovia-flow/` - Axovia Flow Extension",
+          "startLine": 176,
+          "endLine": 181
+        },
+        {
+          "id": "project-structure#14",
+          "heading": "`.bmad-core/` - BMad-Core Integration",
+          "startLine": 182,
+          "endLine": 187
+        },
+        {
+          "id": "project-structure#15",
+          "heading": "`bin/` - Executable Scripts",
+          "startLine": 188,
+          "endLine": 193
+        },
+        {
+          "id": "project-structure#16",
+          "heading": "`config/` - Configuration Management",
+          "startLine": 194,
+          "endLine": 199
+        },
+        {
+          "id": "project-structure#17",
+          "heading": "Documentation Directories",
+          "startLine": 200,
+          "endLine": 201
+        },
+        {
+          "id": "project-structure#18",
+          "heading": "`docs/` - Project Documentation",
+          "startLine": 202,
+          "endLine": 207
+        },
+        {
+          "id": "project-structure#19",
+          "heading": "`docs/architecture/` - Technical Architecture",
+          "startLine": 208,
+          "endLine": 213
+        },
+        {
+          "id": "project-structure#20",
+          "heading": "`docs/agile/` - Agile Development Artifacts",
+          "startLine": 214,
+          "endLine": 219
+        },
+        {
+          "id": "project-structure#21",
+          "heading": "Source Code Directories",
+          "startLine": 220,
+          "endLine": 221
+        },
+        {
+          "id": "project-structure#22",
+          "heading": "`src/` - Source Code Organization",
+          "startLine": 222,
+          "endLine": 227
+        },
+        {
+          "id": "project-structure#23",
+          "heading": "`test/` - Testing Resources",
+          "startLine": 228,
+          "endLine": 233
+        },
+        {
+          "id": "project-structure#24",
+          "heading": "Utility Directories",
+          "startLine": 234,
+          "endLine": 235
+        },
+        {
+          "id": "project-structure#25",
+          "heading": "`scripts/` - Development Scripts",
+          "startLine": 236,
+          "endLine": 241
+        },
+        {
+          "id": "project-structure#26",
+          "heading": "`tools/` - Development Tools",
+          "startLine": 242,
+          "endLine": 247
+        },
+        {
+          "id": "project-structure#27",
+          "heading": "Implementation Guidelines",
+          "startLine": 248,
+          "endLine": 249
+        },
+        {
+          "id": "project-structure#28",
+          "heading": "Project Initialization Checklist",
+          "startLine": 250,
+          "endLine": 272
+        },
+        {
+          "id": "project-structure#29",
+          "heading": "Naming Conventions",
+          "startLine": 273,
+          "endLine": 274
+        },
+        {
+          "id": "project-structure#30",
+          "heading": "File Naming",
+          "startLine": 275,
+          "endLine": 280
+        },
+        {
+          "id": "project-structure#31",
+          "heading": "Directory Naming",
+          "startLine": 281,
+          "endLine": 285
+        },
+        {
+          "id": "project-structure#32",
+          "heading": "Maintenance Requirements",
+          "startLine": 286,
+          "endLine": 287
+        },
+        {
+          "id": "project-structure#33",
+          "heading": "Documentation Synchronization",
+          "startLine": 288,
+          "endLine": 293
+        },
+        {
+          "id": "project-structure#34",
+          "heading": "Directory Hygiene",
+          "startLine": 294,
+          "endLine": 299
+        },
+        {
+          "id": "project-structure#35",
+          "heading": "Quality Assurance",
+          "startLine": 300,
+          "endLine": 305
+        },
+        {
+          "id": "project-structure#36",
+          "heading": "Technology-Specific Adaptations",
+          "startLine": 306,
+          "endLine": 307
+        },
+        {
+          "id": "project-structure#37",
+          "heading": "Node.js Projects",
+          "startLine": 308,
+          "endLine": 323
+        },
+        {
+          "id": "project-structure#38",
+          "heading": "Python Projects",
+          "startLine": 324,
+          "endLine": 340
+        },
+        {
+          "id": "project-structure#39",
+          "heading": "Java Projects",
+          "startLine": 341,
+          "endLine": 356
+        },
+        {
+          "id": "project-structure#40",
+          "heading": "Compliance and Validation",
+          "startLine": 357,
+          "endLine": 358
+        },
+        {
+          "id": "project-structure#41",
+          "heading": "Automated Validation",
+          "startLine": 359,
+          "endLine": 364
+        },
+        {
+          "id": "project-structure#42",
+          "heading": "Manual Review Process",
+          "startLine": 365,
+          "endLine": 370
+        },
+        {
+          "id": "project-structure#43",
+          "heading": "Exception Handling",
+          "startLine": 371,
+          "endLine": 384
+        }
+      ]
+    },
+    {
+      "id": "pull-requests",
+      "path": "pull-requests.md",
+      "sha256": "d1a974a5bf988de04a527862e7cbeb4fb9ed082c89bdeb50593629c7f8cb2948",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 8,
+      "chunks": [
+        {
+          "id": "pull-requests#1",
+          "heading": "Pull Request",
+          "startLine": 0,
+          "endLine": 3
+        },
+        {
+          "id": "pull-requests#2",
+          "heading": "Description",
+          "startLine": 4,
+          "endLine": 9
+        },
+        {
+          "id": "pull-requests#3",
+          "heading": "Related Issues",
+          "startLine": 10,
+          "endLine": 15
+        },
+        {
+          "id": "pull-requests#4",
+          "heading": "Type of Change",
+          "startLine": 16,
+          "endLine": 28
+        },
+        {
+          "id": "pull-requests#5",
+          "heading": "Screenshots / GIFs",
+          "startLine": 29,
+          "endLine": 31
+        },
+        {
+          "id": "pull-requests#6",
+          "heading": "How Has This Been Tested?",
+          "startLine": 32,
+          "endLine": 37
+        },
+        {
+          "id": "pull-requests#7",
+          "heading": "Checklist",
+          "startLine": 38,
+          "endLine": 50
+        },
+        {
+          "id": "pull-requests#8",
+          "heading": "Additional Notes",
+          "startLine": 51,
+          "endLine": 53
+        }
+      ]
+    },
+    {
+      "id": "coding-standards",
+      "path": "react-specific/coding-standards.md",
+      "sha256": "5ac02701d995c7bcbe43a0b8ce42486f46cefff24d1aa83d193c0572ddc252b4",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 2,
+      "chunks": [
+        {
+          "id": "coding-standards#1",
+          "heading": "React Specific Coding Standards",
+          "startLine": 0,
+          "endLine": 3
+        },
+        {
+          "id": "coding-standards#2",
+          "heading": "Overview",
+          "startLine": 4,
+          "endLine": 16
+        }
+      ]
+    },
+    {
+      "id": "react-testing-standard",
+      "path": "react-specific/react-testing-standard.md",
+      "sha256": "b749914de74cc561468ed17384da3b464d6b4dc8652d88e2a81dd10b178c67b1",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 42,
+      "chunks": [
+        {
+          "id": "react-testing-standard#1",
+          "heading": "React UI Application Testing Standard",
+          "startLine": 0,
+          "endLine": 3
+        },
+        {
+          "id": "react-testing-standard#2",
+          "heading": "Overview",
+          "startLine": 4,
+          "endLine": 9
+        },
+        {
+          "id": "react-testing-standard#3",
+          "heading": "Framework Requirements",
+          "startLine": 10,
+          "endLine": 11
+        },
+        {
+          "id": "react-testing-standard#4",
+          "heading": "Primary Testing Framework",
+          "startLine": 12,
+          "endLine": 17
+        },
+        {
+          "id": "react-testing-standard#5",
+          "heading": "Mocking Framework (Unit Tests ONLY)",
+          "startLine": 18,
+          "endLine": 24
+        },
+        {
+          "id": "react-testing-standard#6",
+          "heading": "Specialized Frameworks",
+          "startLine": 25,
+          "endLine": 33
+        },
+        {
+          "id": "react-testing-standard#7",
+          "heading": "Testing Architecture",
+          "startLine": 34,
+          "endLine": 35
+        },
+        {
+          "id": "react-testing-standard#8",
+          "heading": "Test Organization Structure",
+          "startLine": 36,
+          "endLine": 65
+        },
+        {
+          "id": "react-testing-standard#9",
+          "heading": "Testing Pyramid Distribution",
+          "startLine": 66,
+          "endLine": 73
+        },
+        {
+          "id": "react-testing-standard#10",
+          "heading": "Framework-Specific Standards",
+          "startLine": 74,
+          "endLine": 75
+        },
+        {
+          "id": "react-testing-standard#11",
+          "heading": "1. Unit Testing",
+          "startLine": 76,
+          "endLine": 114
+        },
+        {
+          "id": "react-testing-standard#12",
+          "heading": "2. Component Testing",
+          "startLine": 115,
+          "endLine": 157
+        },
+        {
+          "id": "react-testing-standard#13",
+          "heading": "3. Integration Testing",
+          "startLine": 158,
+          "endLine": 201
+        },
+        {
+          "id": "react-testing-standard#14",
+          "heading": "4. End-to-End Testing",
+          "startLine": 202,
+          "endLine": 226
+        },
+        {
+          "id": "react-testing-standard#15",
+          "heading": "Coverage Requirements",
+          "startLine": 227,
+          "endLine": 239
+        },
+        {
+          "id": "react-testing-standard#16",
+          "heading": "Make Targets for React",
+          "startLine": 240,
+          "endLine": 244
+        },
+        {
+          "id": "react-testing-standard#17",
+          "heading": "Unit Testing (with mocking allowed)",
+          "startLine": 245,
+          "endLine": 246
+        },
+        {
+          "id": "react-testing-standard#18",
+          "heading": "- Executes: npm test -- --testPathPattern=test",
+          "startLine": 247,
+          "endLine": 247
+        },
+        {
+          "id": "react-testing-standard#19",
+          "heading": "- Coverage: ≥90% requirement",
+          "startLine": 248,
+          "endLine": 248
+        },
+        {
+          "id": "react-testing-standard#20",
+          "heading": "- Mocking: Jest mocking permitted",
+          "startLine": 249,
+          "endLine": 250
+        },
+        {
+          "id": "react-testing-standard#21",
+          "heading": "Component Testing (minimal mocking)",
+          "startLine": 251,
+          "endLine": 252
+        },
+        {
+          "id": "react-testing-standard#22",
+          "heading": "- Executes: npm test -- --testPathPattern=components",
+          "startLine": 253,
+          "endLine": 253
+        },
+        {
+          "id": "react-testing-standard#23",
+          "heading": "- Coverage: ≥80% requirement",
+          "startLine": 254,
+          "endLine": 254
+        },
+        {
+          "id": "react-testing-standard#24",
+          "heading": "- Mocking: Minimize to external services only",
+          "startLine": 255,
+          "endLine": 256
+        },
+        {
+          "id": "react-testing-standard#25",
+          "heading": "Integration Testing (no component mocking)",
+          "startLine": 257,
+          "endLine": 258
+        },
+        {
+          "id": "react-testing-standard#26",
+          "heading": "- Executes: npm test -- --testPathPattern=integration",
+          "startLine": 259,
+          "endLine": 259
+        },
+        {
+          "id": "react-testing-standard#27",
+          "heading": "- Scope: Page-level interactions",
+          "startLine": 260,
+          "endLine": 260
+        },
+        {
+          "id": "react-testing-standard#28",
+          "heading": "- Mocking: External APIs only",
+          "startLine": 261,
+          "endLine": 262
+        },
+        {
+          "id": "react-testing-standard#29",
+          "heading": "End-to-End Testing",
+          "startLine": 263,
+          "endLine": 264
+        },
+        {
+          "id": "react-testing-standard#30",
+          "heading": "- Executes: npx cypress run or npx playwright test",
+          "startLine": 265,
+          "endLine": 265
+        },
+        {
+          "id": "react-testing-standard#31",
+          "heading": "- Scope: Complete user workflows",
+          "startLine": 266,
+          "endLine": 266
+        },
+        {
+          "id": "react-testing-standard#32",
+          "heading": "- Mocking: PROHIBITED",
+          "startLine": 267,
+          "endLine": 268
+        },
+        {
+          "id": "react-testing-standard#33",
+          "heading": "Complete React Test Suite",
+          "startLine": 269,
+          "endLine": 270
+        },
+        {
+          "id": "react-testing-standard#34",
+          "heading": "- Executes all React test types in sequence",
+          "startLine": 271,
+          "endLine": 271
+        },
+        {
+          "id": "react-testing-standard#35",
+          "heading": "- Equivalent to: make test-unit && make test-component && make test-integration",
+          "startLine": 272,
+          "endLine": 276
+        },
+        {
+          "id": "react-testing-standard#36",
+          "heading": "Prohibited Practices",
+          "startLine": 277,
+          "endLine": 278
+        },
+        {
+          "id": "react-testing-standard#37",
+          "heading": "Strictly Forbidden",
+          "startLine": 279,
+          "endLine": 286
+        },
+        {
+          "id": "react-testing-standard#38",
+          "heading": "Required Practices",
+          "startLine": 287,
+          "endLine": 296
+        },
+        {
+          "id": "react-testing-standard#39",
+          "heading": "Accessibility Testing",
+          "startLine": 297,
+          "endLine": 298
+        },
+        {
+          "id": "react-testing-standard#40",
+          "heading": "Required Accessibility Tests",
+          "startLine": 299,
+          "endLine": 312
+        },
+        {
+          "id": "react-testing-standard#41",
+          "heading": "Accessibility Standards",
+          "startLine": 313,
+          "endLine": 321
+        },
+        {
+          "id": "react-testing-standard#42",
+          "heading": "Quality Gates for React",
+          "startLine": 322,
+          "endLine": 336
+        }
+      ]
+    },
+    {
+      "id": "release-format",
+      "path": "release-format.md",
+      "sha256": "b18c3d61a09554e2903ca327a51c163ef0771bfe832c2867c612220b71d3836d",
+      "meta": {
+        "description": "Standard for repositories to publish test and coverage results for the Functionality Reports Dashboard"
+      },
+      "frontmatter": "description: Standard for repositories to publish test and coverage results for the Functionality Reports Dashboard",
+      "chunk_count": 16,
+      "chunks": [
+        {
+          "id": "release-format#1",
+          "heading": "Cannasol Functionality Reports — Official Repository Release Standard of Procedure Docuementation",
+          "startLine": 1,
+          "endLine": 4
+        },
+        {
+          "id": "release-format#2",
+          "heading": "1. Goals and Scope",
+          "startLine": 5,
+          "endLine": 10
+        },
+        {
+          "id": "release-format#3",
+          "heading": "Quick Checklist",
+          "startLine": 11,
+          "endLine": 22
+        },
+        {
+          "id": "release-format#4",
+          "heading": "2. Artifacts Overview",
+          "startLine": 23,
+          "endLine": 33
+        },
+        {
+          "id": "release-format#5",
+          "heading": "3. File Naming and Location",
+          "startLine": 34,
+          "endLine": 40
+        },
+        {
+          "id": "release-format#6",
+          "heading": "4. JSON Schemas (v1)",
+          "startLine": 41,
+          "endLine": 44
+        },
+        {
+          "id": "release-format#7",
+          "heading": "Schema References",
+          "startLine": 45,
+          "endLine": 54
+        },
+        {
+          "id": "release-format#8",
+          "heading": "4.1 executive-report.json (required)",
+          "startLine": 55,
+          "endLine": 106
+        },
+        {
+          "id": "release-format#9",
+          "heading": "4.2 coverage-summary.json (optional)",
+          "startLine": 107,
+          "endLine": 131
+        },
+        {
+          "id": "release-format#10",
+          "heading": "4.3 unit-test-summary.json (optional)",
+          "startLine": 132,
+          "endLine": 151
+        },
+        {
+          "id": "release-format#11",
+          "heading": "5. Release Process (CI Guidance)",
+          "startLine": 152,
+          "endLine": 161
+        },
+        {
+          "id": "release-format#12",
+          "heading": "5.1 Example GitHub Actions Snippet (bash pseudo-steps)",
+          "startLine": 162,
+          "endLine": 226
+        },
+        {
+          "id": "release-format#13",
+          "heading": "6. Validation and Quality Gates",
+          "startLine": 227,
+          "endLine": 232
+        },
+        {
+          "id": "release-format#14",
+          "heading": "7. Consumer Expectations (This Project)",
+          "startLine": 233,
+          "endLine": 242
+        },
+        {
+          "id": "release-format#15",
+          "heading": "8. Backward Compatibility",
+          "startLine": 243,
+          "endLine": 247
+        },
+        {
+          "id": "release-format#16",
+          "heading": "9. Versioning and Evolution",
+          "startLine": 248,
+          "endLine": 257
+        }
+      ]
+    },
+    {
+      "id": "repository-auditing",
+      "path": "repository-auditing.md",
+      "sha256": "d90c87d719982c6ad7e27635d42bd263128d2ef6620c445c412e61c051b1bcfa",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 35,
+      "chunks": [
+        {
+          "id": "repository-auditing#1",
+          "heading": "Repository Auditing — Standard Operating Procedure (SOP)",
+          "startLine": 0,
+          "endLine": 5
+        },
+        {
+          "id": "repository-auditing#2",
+          "heading": "Purpose",
+          "startLine": 6,
+          "endLine": 9
+        },
+        {
+          "id": "repository-auditing#3",
+          "heading": "Scope",
+          "startLine": 10,
+          "endLine": 16
+        },
+        {
+          "id": "repository-auditing#4",
+          "heading": "Roles & Responsibilities",
+          "startLine": 17,
+          "endLine": 23
+        },
+        {
+          "id": "repository-auditing#5",
+          "heading": "Frequency",
+          "startLine": 24,
+          "endLine": 28
+        },
+        {
+          "id": "repository-auditing#6",
+          "heading": "Success Criteria",
+          "startLine": 29,
+          "endLine": 34
+        },
+        {
+          "id": "repository-auditing#7",
+          "heading": "Preparation",
+          "startLine": 35,
+          "endLine": 40
+        },
+        {
+          "id": "repository-auditing#8",
+          "heading": "Audit Checklist",
+          "startLine": 41,
+          "endLine": 46
+        },
+        {
+          "id": "repository-auditing#9",
+          "heading": "A. Repository Metadata & Hygiene",
+          "startLine": 47,
+          "endLine": 59
+        },
+        {
+          "id": "repository-auditing#10",
+          "heading": "B. Access & Governance",
+          "startLine": 60,
+          "endLine": 68
+        },
+        {
+          "id": "repository-auditing#11",
+          "heading": "C. CI/CD & Workflow Security",
+          "startLine": 69,
+          "endLine": 77
+        },
+        {
+          "id": "repository-auditing#12",
+          "heading": "D. Dependencies & Supply Chain",
+          "startLine": 78,
+          "endLine": 85
+        },
+        {
+          "id": "repository-auditing#13",
+          "heading": "E. Code Quality & Testing",
+          "startLine": 86,
+          "endLine": 93
+        },
+        {
+          "id": "repository-auditing#14",
+          "heading": "F. Releases & Change Management",
+          "startLine": 94,
+          "endLine": 101
+        },
+        {
+          "id": "repository-auditing#15",
+          "heading": "G. Operations & Observability",
+          "startLine": 102,
+          "endLine": 108
+        },
+        {
+          "id": "repository-auditing#16",
+          "heading": "H. Repository Structure",
+          "startLine": 109,
+          "endLine": 114
+        },
+        {
+          "id": "repository-auditing#17",
+          "heading": "Procedure",
+          "startLine": 115,
+          "endLine": 133
+        },
+        {
+          "id": "repository-auditing#18",
+          "heading": "Scoring (Guideline)",
+          "startLine": 134,
+          "endLine": 141
+        },
+        {
+          "id": "repository-auditing#19",
+          "heading": "Reporting",
+          "startLine": 142,
+          "endLine": 146
+        },
+        {
+          "id": "repository-auditing#20",
+          "heading": "Smaller-Scale Audits (Targeted)",
+          "startLine": 147,
+          "endLine": 150
+        },
+        {
+          "id": "repository-auditing#21",
+          "heading": "1) Consistency Audit",
+          "startLine": 151,
+          "endLine": 157
+        },
+        {
+          "id": "repository-auditing#22",
+          "heading": "2) Security Audit",
+          "startLine": 158,
+          "endLine": 164
+        },
+        {
+          "id": "repository-auditing#23",
+          "heading": "3) Performance Audit",
+          "startLine": 165,
+          "endLine": 171
+        },
+        {
+          "id": "repository-auditing#24",
+          "heading": "4) Testing Audit",
+          "startLine": 172,
+          "endLine": 178
+        },
+        {
+          "id": "repository-auditing#25",
+          "heading": "Remediation SLAs (Default)",
+          "startLine": 179,
+          "endLine": 186
+        },
+        {
+          "id": "repository-auditing#26",
+          "heading": "Recordkeeping",
+          "startLine": 187,
+          "endLine": 191
+        },
+        {
+          "id": "repository-auditing#27",
+          "heading": "Standard References",
+          "startLine": 192,
+          "endLine": 201
+        },
+        {
+          "id": "repository-auditing#28",
+          "heading": "Recommended Tools & Example Commands",
+          "startLine": 202,
+          "endLine": 220
+        },
+        {
+          "id": "repository-auditing#29",
+          "heading": "Templates",
+          "startLine": 221,
+          "endLine": 222
+        },
+        {
+          "id": "repository-auditing#30",
+          "heading": "Audit Report (copy into docs/audits/<date>/repository-audit.md)",
+          "startLine": 223,
+          "endLine": 234
+        },
+        {
+          "id": "repository-auditing#31",
+          "heading": "Summary",
+          "startLine": 235,
+          "endLine": 240
+        },
+        {
+          "id": "repository-auditing#32",
+          "heading": "Checklist Outcomes",
+          "startLine": 241,
+          "endLine": 251
+        },
+        {
+          "id": "repository-auditing#33",
+          "heading": "Findings Table",
+          "startLine": 252,
+          "endLine": 257
+        },
+        {
+          "id": "repository-auditing#34",
+          "heading": "Remediation Plan",
+          "startLine": 258,
+          "endLine": 262
+        },
+        {
+          "id": "repository-auditing#35",
+          "heading": "Approvals",
+          "startLine": 263,
+          "endLine": 271
+        }
+      ]
+    },
+    {
+      "id": "root-directory",
+      "path": "root-directory.md",
+      "sha256": "a65860af4fd30ba7b8f4f6b9652d64714bf147e12f65045f0428664b4608b3cb",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 32,
+      "chunks": [
+        {
+          "id": "root-directory#1",
+          "heading": "Axovia Flow Root Directory Standard",
+          "startLine": 0,
+          "endLine": 1
+        },
+        {
+          "id": "root-directory#2",
+          "heading": "OFFICIAL STANDARD OF PROCEDURE RULE",
+          "startLine": 2,
+          "endLine": 7
+        },
+        {
+          "id": "root-directory#3",
+          "heading": "Purpose",
+          "startLine": 8,
+          "endLine": 11
+        },
+        {
+          "id": "root-directory#4",
+          "heading": "Official Root Directory File List",
+          "startLine": 12,
+          "endLine": 13
+        },
+        {
+          "id": "root-directory#5",
+          "heading": "ALLOWED FILES (MANDATORY)",
+          "startLine": 14,
+          "endLine": 17
+        },
+        {
+          "id": "root-directory#6",
+          "heading": "1. `.gitignore`",
+          "startLine": 18,
+          "endLine": 22
+        },
+        {
+          "id": "root-directory#7",
+          "heading": "2. `.gitmodules`",
+          "startLine": 23,
+          "endLine": 27
+        },
+        {
+          "id": "root-directory#8",
+          "heading": "3. `.npmignore`",
+          "startLine": 28,
+          "endLine": 32
+        },
+        {
+          "id": "root-directory#9",
+          "heading": "4. `Makefile`",
+          "startLine": 33,
+          "endLine": 37
+        },
+        {
+          "id": "root-directory#10",
+          "heading": "5. `LICENSE`",
+          "startLine": 38,
+          "endLine": 42
+        },
+        {
+          "id": "root-directory#11",
+          "heading": "6. `README.md`",
+          "startLine": 43,
+          "endLine": 47
+        },
+        {
+          "id": "root-directory#12",
+          "heading": "7. `package.json`",
+          "startLine": 48,
+          "endLine": 52
+        },
+        {
+          "id": "root-directory#13",
+          "heading": "8. `package-lock.json`",
+          "startLine": 53,
+          "endLine": 57
+        },
+        {
+          "id": "root-directory#14",
+          "heading": "PROHIBITED FILES",
+          "startLine": 58,
+          "endLine": 59
+        },
+        {
+          "id": "root-directory#15",
+          "heading": "NEVER ALLOWED IN ROOT DIRECTORY",
+          "startLine": 60,
+          "endLine": 72
+        },
+        {
+          "id": "root-directory#16",
+          "heading": "Implementation Guidelines",
+          "startLine": 73,
+          "endLine": 74
+        },
+        {
+          "id": "root-directory#17",
+          "heading": "Directory Structure Enforcement",
+          "startLine": 75,
+          "endLine": 95
+        },
+        {
+          "id": "root-directory#18",
+          "heading": "CI/CD Integration",
+          "startLine": 96,
+          "endLine": 101
+        },
+        {
+          "id": "root-directory#19",
+          "heading": "Migration Strategy",
+          "startLine": 102,
+          "endLine": 115
+        },
+        {
+          "id": "root-directory#20",
+          "heading": "Compliance Validation",
+          "startLine": 116,
+          "endLine": 117
+        },
+        {
+          "id": "root-directory#21",
+          "heading": "Automated Checks",
+          "startLine": 118,
+          "endLine": 122
+        },
+        {
+          "id": "root-directory#22",
+          "heading": "Example Makefile target",
+          "startLine": 123,
+          "endLine": 129
+        },
+        {
+          "id": "root-directory#23",
+          "heading": "Manual Review Checklist",
+          "startLine": 130,
+          "endLine": 138
+        },
+        {
+          "id": "root-directory#24",
+          "heading": "Exceptions",
+          "startLine": 139,
+          "endLine": 140
+        },
+        {
+          "id": "root-directory#25",
+          "heading": "Temporary Exceptions",
+          "startLine": 141,
+          "endLine": 148
+        },
+        {
+          "id": "root-directory#26",
+          "heading": "Permanent Exceptions",
+          "startLine": 149,
+          "endLine": 152
+        },
+        {
+          "id": "root-directory#27",
+          "heading": "Enforcement",
+          "startLine": 153,
+          "endLine": 154
+        },
+        {
+          "id": "root-directory#28",
+          "heading": "Repository Owners",
+          "startLine": 155,
+          "endLine": 160
+        },
+        {
+          "id": "root-directory#29",
+          "heading": "Contributors",
+          "startLine": 161,
+          "endLine": 166
+        },
+        {
+          "id": "root-directory#30",
+          "heading": "Tools and Automation",
+          "startLine": 167,
+          "endLine": 172
+        },
+        {
+          "id": "root-directory#31",
+          "heading": "Related Documentation",
+          "startLine": 173,
+          "endLine": 179
+        },
+        {
+          "id": "root-directory#32",
+          "heading": "Version History",
+          "startLine": 180,
+          "endLine": 188
+        }
+      ]
+    },
+    {
+      "id": "sw-testing",
+      "path": "sw-testing.md",
+      "sha256": "2a6fe72aa15005c66bade24d08c7832516e93ded16e0097218d0d01bdb0eb686",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 47,
+      "chunks": [
+        {
+          "id": "sw-testing#1",
+          "heading": "Software Testing Official Organization-Wide Standards of Procedures",
+          "startLine": 0,
+          "endLine": 3
+        },
+        {
+          "id": "sw-testing#2",
+          "heading": "Purpose",
+          "startLine": 4,
+          "endLine": 7
+        },
+        {
+          "id": "sw-testing#3",
+          "heading": "Project-Specific Testing Standards",
+          "startLine": 8,
+          "endLine": 9
+        },
+        {
+          "id": "sw-testing#4",
+          "heading": "By Project Type",
+          "startLine": 10,
+          "endLine": 21
+        },
+        {
+          "id": "sw-testing#5",
+          "heading": "Universal Testing Strategy",
+          "startLine": 22,
+          "endLine": 25
+        },
+        {
+          "id": "sw-testing#6",
+          "heading": "Universal Principles",
+          "startLine": 26,
+          "endLine": 35
+        },
+        {
+          "id": "sw-testing#7",
+          "heading": "Three-Stage Foundation",
+          "startLine": 36,
+          "endLine": 57
+        },
+        {
+          "id": "sw-testing#8",
+          "heading": "Project-Specific Adaptations",
+          "startLine": 58,
+          "endLine": 65
+        },
+        {
+          "id": "sw-testing#9",
+          "heading": "Standardized Make Targets",
+          "startLine": 66,
+          "endLine": 69
+        },
+        {
+          "id": "sw-testing#10",
+          "heading": "Required Targets (Project-Specific Implementation)",
+          "startLine": 70,
+          "endLine": 72
+        },
+        {
+          "id": "sw-testing#11",
+          "heading": "Unit Testing",
+          "startLine": 73,
+          "endLine": 74
+        },
+        {
+          "id": "sw-testing#12",
+          "heading": "- Project-specific unit test execution",
+          "startLine": 75,
+          "endLine": 75
+        },
+        {
+          "id": "sw-testing#13",
+          "heading": "- Coverage reporting and validation",
+          "startLine": 76,
+          "endLine": 76
+        },
+        {
+          "id": "sw-testing#14",
+          "heading": "- Framework varies by project type",
+          "startLine": 77,
+          "endLine": 78
+        },
+        {
+          "id": "sw-testing#15",
+          "heading": "Integration Testing",
+          "startLine": 79,
+          "endLine": 80
+        },
+        {
+          "id": "sw-testing#16",
+          "heading": "- Component and system integration testing",
+          "startLine": 81,
+          "endLine": 81
+        },
+        {
+          "id": "sw-testing#17",
+          "heading": "- External dependency validation",
+          "startLine": 82,
+          "endLine": 82
+        },
+        {
+          "id": "sw-testing#18",
+          "heading": "- Real environment testing",
+          "startLine": 83,
+          "endLine": 84
+        },
+        {
+          "id": "sw-testing#19",
+          "heading": "End-to-End Testing",
+          "startLine": 85,
+          "endLine": 86
+        },
+        {
+          "id": "sw-testing#20",
+          "heading": "- Complete workflow validation",
+          "startLine": 87,
+          "endLine": 87
+        },
+        {
+          "id": "sw-testing#21",
+          "heading": "- User acceptance scenario testing",
+          "startLine": 88,
+          "endLine": 88
+        },
+        {
+          "id": "sw-testing#22",
+          "heading": "- Production-like environment testing",
+          "startLine": 89,
+          "endLine": 90
+        },
+        {
+          "id": "sw-testing#23",
+          "heading": "Complete Test Suite",
+          "startLine": 91,
+          "endLine": 92
+        },
+        {
+          "id": "sw-testing#24",
+          "heading": "- Executes all test stages in sequence",
+          "startLine": 93,
+          "endLine": 93
+        },
+        {
+          "id": "sw-testing#25",
+          "heading": "- Primary target for CI/CD pipelines",
+          "startLine": 94,
+          "endLine": 94
+        },
+        {
+          "id": "sw-testing#26",
+          "heading": "- Equivalent to: make test-unit && make test-integration && make test-e2e",
+          "startLine": 95,
+          "endLine": 97
+        },
+        {
+          "id": "sw-testing#27",
+          "heading": "Implementation Requirements",
+          "startLine": 98,
+          "endLine": 106
+        },
+        {
+          "id": "sw-testing#28",
+          "heading": "Test Case Guidelines",
+          "startLine": 107,
+          "endLine": 115
+        },
+        {
+          "id": "sw-testing#29",
+          "heading": "Execution & Reporting",
+          "startLine": 116,
+          "endLine": 148
+        },
+        {
+          "id": "sw-testing#30",
+          "heading": "BMad-Core Integration",
+          "startLine": 149,
+          "endLine": 150
+        },
+        {
+          "id": "sw-testing#31",
+          "heading": "Agent Workflow Integration",
+          "startLine": 151,
+          "endLine": 156
+        },
+        {
+          "id": "sw-testing#32",
+          "heading": "Task Integration",
+          "startLine": 157,
+          "endLine": 163
+        },
+        {
+          "id": "sw-testing#33",
+          "heading": "Quality Gates",
+          "startLine": 164,
+          "endLine": 174
+        },
+        {
+          "id": "sw-testing#34",
+          "heading": "Quality Gates",
+          "startLine": 175,
+          "endLine": 176
+        },
+        {
+          "id": "sw-testing#35",
+          "heading": "Universal Requirements",
+          "startLine": 177,
+          "endLine": 186
+        },
+        {
+          "id": "sw-testing#36",
+          "heading": "Project-Specific Gates",
+          "startLine": 187,
+          "endLine": 196
+        },
+        {
+          "id": "sw-testing#37",
+          "heading": "Supplementary Resources",
+          "startLine": 197,
+          "endLine": 198
+        },
+        {
+          "id": "sw-testing#38",
+          "heading": "Implementation Guidance",
+          "startLine": 199,
+          "endLine": 203
+        },
+        {
+          "id": "sw-testing#39",
+          "heading": "Automated Tooling",
+          "startLine": 204,
+          "endLine": 211
+        },
+        {
+          "id": "sw-testing#40",
+          "heading": "Continuous Improvement",
+          "startLine": 212,
+          "endLine": 222
+        },
+        {
+          "id": "sw-testing#41",
+          "heading": "Flow Diagram",
+          "startLine": 223,
+          "endLine": 259
+        },
+        {
+          "id": "sw-testing#42",
+          "heading": "Implementation Guidance",
+          "startLine": 260,
+          "endLine": 261
+        },
+        {
+          "id": "sw-testing#43",
+          "heading": "Choosing the Right Standard",
+          "startLine": 262,
+          "endLine": 268
+        },
+        {
+          "id": "sw-testing#44",
+          "heading": "Cross-Project Considerations",
+          "startLine": 269,
+          "endLine": 276
+        },
+        {
+          "id": "sw-testing#45",
+          "heading": "Quick Reference",
+          "startLine": 277,
+          "endLine": 278
+        },
+        {
+          "id": "sw-testing#46",
+          "heading": "Getting Started",
+          "startLine": 279,
+          "endLine": 286
+        },
+        {
+          "id": "sw-testing#47",
+          "heading": "Support Resources",
+          "startLine": 287,
+          "endLine": 296
+        }
+      ]
+    },
+    {
+      "id": "testing-standards-overview",
+      "path": "testing-standards-overview.md",
+      "sha256": "29079f6b5cb837a31f4b47964ee3d80db559fbf90ab57e54e7bffd1a58ba9bab",
+      "meta": {},
+      "frontmatter": "",
+      "chunk_count": 38,
+      "chunks": [
+        {
+          "id": "testing-standards-overview#1",
+          "heading": "Software Testing Standards Overview",
+          "startLine": 0,
+          "endLine": 3
+        },
+        {
+          "id": "testing-standards-overview#2",
+          "heading": "Purpose",
+          "startLine": 4,
+          "endLine": 9
+        },
+        {
+          "id": "testing-standards-overview#3",
+          "heading": "Project-Specific Testing Standards",
+          "startLine": 10,
+          "endLine": 11
+        },
+        {
+          "id": "testing-standards-overview#4",
+          "heading": "By Project Type",
+          "startLine": 12,
+          "endLine": 19
+        },
+        {
+          "id": "testing-standards-overview#5",
+          "heading": "Universal Principles",
+          "startLine": 20,
+          "endLine": 32
+        },
+        {
+          "id": "testing-standards-overview#6",
+          "heading": "Universal Testing Strategy",
+          "startLine": 33,
+          "endLine": 34
+        },
+        {
+          "id": "testing-standards-overview#7",
+          "heading": "Three-Stage Foundation",
+          "startLine": 35,
+          "endLine": 55
+        },
+        {
+          "id": "testing-standards-overview#8",
+          "heading": "Standardized Make Targets",
+          "startLine": 56,
+          "endLine": 59
+        },
+        {
+          "id": "testing-standards-overview#9",
+          "heading": "Required Targets (Project-Specific Implementation)",
+          "startLine": 60,
+          "endLine": 62
+        },
+        {
+          "id": "testing-standards-overview#10",
+          "heading": "Unit Testing",
+          "startLine": 63,
+          "endLine": 64
+        },
+        {
+          "id": "testing-standards-overview#11",
+          "heading": "- Project-specific unit test execution",
+          "startLine": 65,
+          "endLine": 65
+        },
+        {
+          "id": "testing-standards-overview#12",
+          "heading": "- Coverage reporting and validation",
+          "startLine": 66,
+          "endLine": 66
+        },
+        {
+          "id": "testing-standards-overview#13",
+          "heading": "- Framework varies by project type",
+          "startLine": 67,
+          "endLine": 68
+        },
+        {
+          "id": "testing-standards-overview#14",
+          "heading": "Integration Testing",
+          "startLine": 69,
+          "endLine": 70
+        },
+        {
+          "id": "testing-standards-overview#15",
+          "heading": "- Component and system integration testing",
+          "startLine": 71,
+          "endLine": 71
+        },
+        {
+          "id": "testing-standards-overview#16",
+          "heading": "- External dependency validation",
+          "startLine": 72,
+          "endLine": 72
+        },
+        {
+          "id": "testing-standards-overview#17",
+          "heading": "- Real environment testing",
+          "startLine": 73,
+          "endLine": 74
+        },
+        {
+          "id": "testing-standards-overview#18",
+          "heading": "End-to-End Testing",
+          "startLine": 75,
+          "endLine": 76
+        },
+        {
+          "id": "testing-standards-overview#19",
+          "heading": "- Complete workflow validation",
+          "startLine": 77,
+          "endLine": 77
+        },
+        {
+          "id": "testing-standards-overview#20",
+          "heading": "- User acceptance scenario testing",
+          "startLine": 78,
+          "endLine": 78
+        },
+        {
+          "id": "testing-standards-overview#21",
+          "heading": "- Production-like environment testing",
+          "startLine": 79,
+          "endLine": 80
+        },
+        {
+          "id": "testing-standards-overview#22",
+          "heading": "Complete Test Suite",
+          "startLine": 81,
+          "endLine": 82
+        },
+        {
+          "id": "testing-standards-overview#23",
+          "heading": "- Executes all test stages in sequence",
+          "startLine": 83,
+          "endLine": 83
+        },
+        {
+          "id": "testing-standards-overview#24",
+          "heading": "- Primary target for CI/CD pipelines",
+          "startLine": 84,
+          "endLine": 84
+        },
+        {
+          "id": "testing-standards-overview#25",
+          "heading": "- Equivalent to: make test-unit && make test-integration && make test-e2e",
+          "startLine": 85,
+          "endLine": 89
+        },
+        {
+          "id": "testing-standards-overview#26",
+          "heading": "Quality Gates",
+          "startLine": 90,
+          "endLine": 91
+        },
+        {
+          "id": "testing-standards-overview#27",
+          "heading": "Universal Requirements",
+          "startLine": 92,
+          "endLine": 101
+        },
+        {
+          "id": "testing-standards-overview#28",
+          "heading": "Project-Specific Gates",
+          "startLine": 102,
+          "endLine": 113
+        },
+        {
+          "id": "testing-standards-overview#29",
+          "heading": "BMad-Core Integration",
+          "startLine": 114,
+          "endLine": 115
+        },
+        {
+          "id": "testing-standards-overview#30",
+          "heading": "Agent Workflow Integration",
+          "startLine": 116,
+          "endLine": 121
+        },
+        {
+          "id": "testing-standards-overview#31",
+          "heading": "Task Integration",
+          "startLine": 122,
+          "endLine": 130
+        },
+        {
+          "id": "testing-standards-overview#32",
+          "heading": "Implementation Guidance",
+          "startLine": 131,
+          "endLine": 132
+        },
+        {
+          "id": "testing-standards-overview#33",
+          "heading": "Choosing the Right Standard",
+          "startLine": 133,
+          "endLine": 139
+        },
+        {
+          "id": "testing-standards-overview#34",
+          "heading": "Cross-Project Considerations",
+          "startLine": 140,
+          "endLine": 147
+        },
+        {
+          "id": "testing-standards-overview#35",
+          "heading": "Continuous Improvement",
+          "startLine": 148,
+          "endLine": 156
+        },
+        {
+          "id": "testing-standards-overview#36",
+          "heading": "Quick Reference",
+          "startLine": 157,
+          "endLine": 158
+        },
+        {
+          "id": "testing-standards-overview#37",
+          "heading": "Getting Started",
+          "startLine": 159,
+          "endLine": 166
+        },
+        {
+          "id": "testing-standards-overview#38",
+          "heading": "Support Resources",
+          "startLine": 167,
+          "endLine": 177
+        }
+      ]
+    }
+  ]
+}

@@ -86,9 +86,9 @@ make coverage
 
 This project follows Axovia Flow company standards. Standards are automatically synchronized from the central repository (with local fallback):
 
-- **[Coding Style Standards](.axovia-flow/company-standards/coding-style.md)** - Code formatting and quality guidelines
-- **[Project Structure Standards](.axovia-flow/company-standards/project-structure.md)** - Directory organization and file placement
-- **[Software Testing Standards](.axovia-flow/company-standards/sw-testing-standard.md)** - Testing methodology and requirements
+- **[Coding Style Standards](.axovia-flow/sop/coding-style.md)** - Code formatting and quality guidelines
+- **[Project Structure Standards](.axovia-flow/sop/project-structure.md)** - Directory organization and file placement
+- **[Software Testing Standards](.axovia-flow/sop/sw-testing-standard.md)** - Testing methodology and requirements
 
 **Standards Management:**
 
@@ -99,7 +99,7 @@ make check-standards     # Check standards status
 
 **Features:**
 
-- ✅ **Standards-Only Import**: Downloads only `docs/standards/` (not entire repository)
+- ✅ **Standards-Only Import**: Downloads only `docs/sop/` (not entire repository)
 - ✅ **Local Fallback**: Uses local standards when remote repository unavailable
 - ✅ **Automatic Sync**: Standards updated during `make install-deps`
 - ✅ **Flexible Configuration**: Easy to change source repository in `scripts/sync_company_standards.py`
@@ -119,7 +119,7 @@ make check-standards     # Check standards status
 
 ### Development Standards & Testing
 
-- **[Coding Standards](docs/standards/)** - Development guidelines and best practices
+- **[Coding Standards](docs/sop/)** - Development guidelines and best practices
 - **[Testing Framework](docs/Testing/hil-serial-protocol.md)** - Hardware-in-the-loop testing protocol
 - **[Simulation Framework](docs/simulation_framework.md)** - Testing without hardware
 

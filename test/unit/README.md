@@ -6,7 +6,7 @@ Unit tests for Multi-Sonicator IO are located in the `test/unit` directory.
 
 ## Unit Testing Framework Defined
 
-- These tests follow completely and explicitly the procedure defined in the docs/standards/sw-testing-standard.md file.
+- These tests follow completely and explicitly the procedure defined in the docs/sop/sw-testing-standard.md file.
 - Unit tests are meant to provide a fast and reliable way to test behavior of the code at a functional level.
 - The tests should be written so that they can test the code in isolation from other components.
 - Mocks and stubs should be used to replace the other components and simulate their behavior.
