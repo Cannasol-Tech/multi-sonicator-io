@@ -57,10 +57,17 @@ dependencies:
   checklists:
     - story-draft-checklist.md
   tasks:
-    - 
     - correct-course.md
     - create-next-story.md
     - execute-checklist.md
   templates:
     - story-tmpl.yaml
+  extension:
+    - agile-flow:
+        version: 1.0
+        description: Agile Flow™ workflow orchestration and multi-agent collaboration extension
+        tasks:
+          - update-project-board.md
+            file: .agile-flow/tasks/update-project-board.md
+            description: Update the project board with current statuses and sprint planning decisions
 ```
