@@ -32,7 +32,7 @@ This is the global coding standard for all projects, always adhere to this stand
 - **ALWAYS** use the `dist/` directory to store any distribution artifacts
 - **NEVER** implement any un-standardized functionality withouth verifying in detail with the Project Manager (Human User)
 - **ALWAYS** verify that you are aligned with the Human/Project Manager's vision for the project you are working on before implementing anything.
-- **ALWAYS** adhere to `.axovia-flow/flow-config.yaml` as the highest source of truth for project configuration and rules if available. ~> * Axovia Flow Framework Disabled currently *`
+- **ALWAYS** adhere to `.agile-flow/flow-config.yaml` as the highest source of truth for project configuration and rules if available. ~> * Agile Flow Framework Disabled currently *`
 - **ALWAYS** adhere to `.bmad-core/core-config.yaml` as the **SECONDARY** source of truth for project configuration and rules **IF** available.
 - **ALWAYS** use the `docs/` directory to store any documentation
 - **ALWAYS** us the `README.md` file at the root of a given directory for documenting and indexing the given directory.

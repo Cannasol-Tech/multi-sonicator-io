@@ -1,6 +1,6 @@
 ---
-<!-- *~ Axovia Flow™ Agentic Framework -->
-project: "Axovia Flow™
+<!-- *~ Agile Flow™ Agentic Framework -->
+project: "Agile Flow™
 file: "create-feature-plan.md"
 author: "Stephen Boyett"
 company: "Axovia AI"
@@ -18,8 +18,8 @@ Purpose
 Pre‑requisites
 
 - Target Feature Specification present in `docs/agile/features/`.
-- Access to implementation plan template: `docs/planning/implementation-plan-tmpl.yaml` (or fallback: `.axovia-flow/templates/implementation-plan-tmpl.yaml`).
-- Review standards in `.axovia-flow/sop/` for handoffs, testing, and quality gates.
+- Access to implementation plan template: `docs/planning/implementation-plan-tmpl.yaml` (or fallback: `.agile-flow/templates/implementation-plan-tmpl.yaml`).
+- Review standards in `docs/sop/` for handoffs, testing, and quality gates.
 
 Execution Rules
 

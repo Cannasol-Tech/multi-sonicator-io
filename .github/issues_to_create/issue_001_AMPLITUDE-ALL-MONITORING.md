@@ -5,7 +5,7 @@ title: '[BUG] Live Monitoring Display Shows GREEN When Hardware Not Configured'
 labels: ['bug', 'needs-triage']
 assignees: ''
 ---
-<!-- Powered by Axovia Flow™ Agentic Framework -->
+<!-- Powered by Agile Flow™ Agentic Framework -->
 
 **Describe the bug**    
 The live Monitoring display is showing a GREEN status when the hardware is not correctly configured. The system should indicate an error state or warning when hardware configuration issues are present.

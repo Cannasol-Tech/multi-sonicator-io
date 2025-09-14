@@ -212,7 +212,7 @@ function App() {
   return (
     <div className="app">
       <Header
-        connectionStatus={hardwareState.connection}
+        connectionStatus={{ ...hardwareState.connection, connected }}
         onReconnect={() => window.location.reload()}
         onShowHelp={() => setHelpVisible(true)}
       />
@@ -292,17 +292,15 @@ function App() {
               />
             )}
 
-            {activeTab === 'settings' && (
-              <div className="settings-tab">
-                <SettingsPanel
-                  onPreferencesChange={(preferences) => {
-                    console.log('Preferences updated:', preferences)
-                    setKeyboardShortcutsEnabled(preferences.keyboardShortcuts)
-                  }}
-                />
-                <ProgressBarDemo />
-              </div>
-            )}
+            <div className="settings-tab" style={{ display: activeTab === 'settings' ? 'block' : 'none' }}>
+              <SettingsPanel
+                onPreferencesChange={(preferences) => {
+                  console.log('Preferences updated:', preferences)
+                  setKeyboardShortcutsEnabled(preferences.keyboardShortcuts)
+                }}
+              />
+              <ProgressBarDemo />
+            </div>
 
             {activeTab === 'config' && (
               <div className="config-tab">

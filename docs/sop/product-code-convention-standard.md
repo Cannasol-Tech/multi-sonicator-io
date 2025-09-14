@@ -110,4 +110,4 @@ Below is an example of generated product codes in JSON format, illustrating the 
 }
 ```
 
-This convention ensures consistent, readable, and scalable product identification across the Axovia Flow ecosystem.
+This convention ensures consistent, readable, and scalable product identification across the Agile Flow ecosystem.

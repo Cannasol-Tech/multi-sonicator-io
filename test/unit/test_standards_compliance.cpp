@@ -2,8 +2,8 @@
  * @file test_standards_compliance.cpp
  * @brief Unit tests for company standards compliance validation
  * 
- * Tests to ensure the project structure complies with Axovia Flow company standards
- * as defined in .axovia-flow/sop/project-structure.md
+ * Tests to ensure the project structure complies with Agile Flow company standards
+ * as defined in docs/sop/project-structure.md
  * 
  * @author Multi-Sonicator I/O Controller Team
  * @date 2025-09-10
@@ -23,7 +23,7 @@ const std::string PROJECT_ROOT = "./";
 const std::string DOCS_PATH = "docs/";
 const std::string SRC_PATH = "src/";
 const std::string BIN_PATH = "bin/";
-const std::string STANDARDS_PATH = ".axovia-flow/sop/";
+const std::string STANDARDS_PATH = "docs/sop/";
 
 /**
  * @brief Helper function to check if a file exists

@@ -99,4 +99,4 @@ Develop a modern web-based user interface for sonicator control and monitoring, 
 
 | Date | Version | Description | Author |
 |------|---------|-------------|--------|
-| 2025-01-09 | 1.0 | Created epic following Axovia Flow standards | Scrum Master |
+| 2025-01-09 | 1.0 | Created epic following Agile Flow standards | Scrum Master |

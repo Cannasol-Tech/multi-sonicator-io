@@ -37,7 +37,7 @@ The agile overview is primarily displayed through dashboard files that aggregate
 
 **Key Features**:
 - Identical content structure to project-board.md but with additional metadata
-- Frontmatter with Axovia Flow™ provenance tags
+- Frontmatter with Agile Flow™ provenance tags
 - Story-specific progress tracking
 - QA gate integration
 - Dependency management

@@ -2,7 +2,7 @@
 
 Authoritative Standard — Single Source of Truth
 
-- This document governs the Planning Definition of Done (DoD) for all Axovia Flow repositories.
+- This document governs the Planning Definition of Done (DoD) for all Agile Flow repositories.
 - Implementation work MUST NOT begin until all mandatory criteria are satisfied.
 
 ## Mandatory Phase Separation (Policy)
@@ -62,7 +62,7 @@ Authoritative Standard — Single Source of Truth
 - .bmad-core/checklists/pm-checklist.md
 - .bmad-core/checklists/po-master-checklist.md
 - .bmad-core/checklists/story-draft-checklist.md
-- .axovia-flow/sop/sw‑testing‑standard.md
-- .axovia-flow/sop/release‑format.md
-- .axovia-flow/sop/repository‑auditing.md
+- docs/sop/sw‑testing‑standard.md
+- docs/sop/release‑format.md
+- docs/sop/repository‑auditing.md
 - docs/qa/README.md

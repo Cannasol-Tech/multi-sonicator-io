@@ -1,7 +1,7 @@
 <!-- DO NOT EDIT: This file is auto-synced from docs/standards/sw-testing-standard.md. Edit the SoT instead. -->
 # Software Testing Official Organization-Wide Standards of Procedures
 >
-> **Note:** This document is the authoritative testing framework for all Axovia Flow Projects
+> **Note:** This document is the authoritative testing framework for all Agile Flow Projects
 
 ## Purpose
 

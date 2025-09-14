@@ -82,7 +82,7 @@ See [Root Directory Standard](root-directory.md) for complete implementation det
 
 Every File that is listed in this directory structure is not required but OPTIONAL based on needs of a given project.  Use best judgement and project context to determine if a file is necessary.
 
-### Standard Root Directory Structure for A Project using the Axovia Flow™ Framework
+### Standard Root Directory Structure for A Project using the Agile Flow™ Framework
 
 ```yaml
 standard:
@@ -110,10 +110,10 @@ standard:
 
 ```text
 project-root/
-├── .axovia-flow/              # Axovia Flow extension configuration (if applicable)
-|   ├── .scripts/              # Axovia Flow scripts (if applicable -- used internally by Axovia Flow™)
+├── .agile-flow/              # Agile Flow extension configuration (if applicable)
+|   ├── .scripts/              # Agile Flow scripts (if applicable -- used internally by Agile Flow™)
 |   |   ├── README.md          # Scripts documentation
-|    ├── agents.yaml            # Axovia Flow agents (if applicable -- used internally by Axovia Flow™)  
+|    ├── agents.yaml            # Agile Flow agents (if applicable -- used internally by Agile Flow™)  
 │   ├── flow-config.yaml       # Extension configuration
 │   ├── index.json             # Table of contents (if applicable)
 │   ├── sop/     # Organization-specific standards
@@ -190,12 +190,12 @@ project-root/
 
 ### Core Infrastructure Directories
 
-#### `.axovia-flow/` - Axovia Flow Extension
+#### `.agile-flow/` - Agile Flow Extension
 
-- **Purpose**: Axovia Flow-specific configuration and extensions
-- **When Required**: Projects using Axovia Flow orchestration
+- **Purpose**: Agile Flow-specific configuration and extensions
+- **When Required**: Projects using Agile Flow orchestration
 - **Key Files**: `flow-config.yaml`, company standards, custom templates
-- **Maintenance**: Managed by Axovia Flow system
+- **Maintenance**: Managed by Agile Flow system
 
 #### `.bmad-core/` - BMad-Core Integration
 
@@ -295,7 +295,7 @@ project-root/
 
 ### Phase 3: Integration Setup
 
-- [ ] Configure Axovia Flow integration (if applicable)
+- [ ] Configure Agile Flow integration (if applicable)
 - [ ] Set up BMad-Core integration (if applicable)
 - [ ] Initialize CI/CD pipeline configuration
 - [ ] Set up development environment automation

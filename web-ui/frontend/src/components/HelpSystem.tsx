@@ -252,6 +252,7 @@ export default function HelpSystem({ visible, onClose }: HelpSystemProps) {
               className="help-close-button"
               onClick={onClose}
               title="Close help"
+              aria-label="Close"
             >
               <span className="help-close-icon">✕</span>
             </button>

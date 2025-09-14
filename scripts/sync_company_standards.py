@@ -2,7 +2,7 @@
 """
 Company Standards Synchronization Script
 
-Downloads only the docs/sop/ directory from the Axovia-AI/axovia-flow repository
+Downloads only the docs/sop/ directory from the Axovia-AI/agile-flow repository
 to keep company standards up to date without pulling the entire project.
 
 Usage:
@@ -21,9 +21,9 @@ from urllib.error import URLError, HTTPError
 
 # Configuration - Update these values for your organization
 REPO_OWNER = "Axovia-AI"  # Change to your organization
-REPO_NAME = "axovia-flow"  # Change to your standards repository
+REPO_NAME = "agile-flow"  # Change to your standards repository
 STANDARDS_SOURCE_PATH = "docs/sop"
-STANDARDS_TARGET_PATH = ".axovia-flow/sop"
+STANDARDS_TARGET_PATH = "docs/sop"
 GITHUB_API_BASE = "https://api.github.com"
 GITHUB_RAW_BASE = "https://raw.githubusercontent.com"
 

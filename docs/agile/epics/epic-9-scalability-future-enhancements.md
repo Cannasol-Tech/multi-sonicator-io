@@ -137,4 +137,4 @@ Implement scalability improvements and future enhancement capabilities to suppor
 
 | Date | Version | Description | Author |
 |------|---------|-------------|--------|
-| 2025-09-10 | 1.0 | Created epic for scalability and future enhancements following Axovia Flow standards | Project Manager |
+| 2025-09-10 | 1.0 | Created epic for scalability and future enhancements following Agile Flow standards | Project Manager |

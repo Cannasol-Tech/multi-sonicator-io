@@ -84,11 +84,11 @@ make coverage
 
 ### Company Standards
 
-This project follows Axovia Flow company standards. Standards are automatically synchronized from the central repository (with local fallback):
+This project follows Agile Flow company standards. Standards are automatically synchronized from the central repository (with local fallback):
 
-- **[Coding Style Standards](.axovia-flow/sop/coding-style.md)** - Code formatting and quality guidelines
-- **[Project Structure Standards](.axovia-flow/sop/project-structure.md)** - Directory organization and file placement
-- **[Software Testing Standards](.axovia-flow/sop/sw-testing-standard.md)** - Testing methodology and requirements
+- **[Coding Style Standards](docs/sop/coding-style.md)** - Code formatting and quality guidelines
+- **[Project Structure Standards](docs/sop/project-structure.md)** - Directory organization and file placement
+- **[Software Testing Standards](docs/sop/sw-testing-standard.md)** - Testing methodology and requirements
 
 **Standards Management:**
 

@@ -1,0 +1,134 @@
+__metadata:
+  title: "Agile Flow™ ø Extension Configuration"
+  author: Stephen Boyett
+  company: Axovia AI
+  version: 1.0
+  brief: "Agile Flow™ ø Config File intended to extend The BMad Core config"
+  date: 2025-09-14
+  tags:
+    - "agile-flow"
+    - "axovia"
+    - "ai"
+    - "config"
+    - "agentic"
+    - "framework"
+    - "fileLocations"
+
+extension:
+  name: "Agile Flow™"
+  version: "1.0"
+  description: "Agile Flow™ workflow orchestration and multi-agent collaboration extension"
+
+# Company File Banners 
+provenance_tags: "docs/sop/provenance-tags.md"
+
+# Company wide Software SOPs 
+
+standard_operating_procedures:
+  # **IMPORTANT:** Always adhere to these procedures above all else
+
+   # SOPs for Planning related Tasks
+  - planning: 
+    feature_specification: "docs/sop/feature-specification.md"
+    implementation_plan: "docs/sop/implementation-plans.md"
+    definition_of_done: "docs/sop/planning-definition-of-done.md"
+
+  # SOPs for Quality Assurance Related Tasks
+  - quality:
+    repository_audit: "docs/sop/repository-auditing.md"
+    security_audit: "docs/sop/security-audit.md"
+    pull_request: "docs/sop/pull-requests.md"
+    code_review: "docs/sop/code-review.md"
+
+  # SOPs for Testing Related Tasks
+  - testing:
+    sw_testing_global: "docs/sop/sw-testing.md"
+    
+  # SOPs for Release Related Tasks
+  - release: 
+    release_report: "docs/sop/release-format.md"
+  
+  # SOPs for Project Structure and Management
+  - repository_management: 
+    file_header: "docs/sop/file-header.md"
+    makefile_standard: "docs/sop/makefile-standard.md"
+    root_directory: "docs/sop/root-directory.md"
+    project_structure: "docs/sop/project-structure.md"
+    
+  # SOPs for Project Implementation Phase and General Software Development 
+  - development: 
+    definition_of_done: "docs/sop/planning-definition-of-done.md"
+    coding-style: "docs/sop/coding-style.md"
+    communication: "docs/sop/communication.md"
+
+  # SOPs that are to be deprecated upon the completion of the Agile Flow™ Framework
+  - deprecated:
+    # DEPRECATION REASON: >> File Based Agent Sync, will be outperformed by Agile Flow™ Agent Orchestration.
+    multi_agent_collaboration: "docs/sop/multi-agent-collaboration.md"
+
+
+# Integration Settings
+integration:
+  configFiles:
+    bmad_core: ".bmad-core/core-config.yaml"
+    axovia_flow: ".agile-flow/flow-config.yaml"
+
+  # Configration files loaded after other config files should: 
+  # - First extend complimenting configuration
+  # - Second override any conflicting configuration 
+  ##### If there are any conflicting configurations the agent should immediatly alert the user after initialization!!! 
+  ## index 0 is the lowest priority configuration and should be extended and conflicts overriden by following config
+  config_load_order: [".bmad-core/core-config.yaml", ".agile-flow/flow-config.yaml"]
+  use_bmad_config: true
+  extends_bmad_core: true
+  uses_core_elicitation: true
+  custom_elicitation_methods: []
+
+# File Locations
+filePaths:
+  agent_reports: "docs/agent-reports"
+  templates: ".bmad-core/templates"
+  company_standards: "docs/sop"
+  stories: "docs/agile/stories"
+  epics: "docs/agile/epics"
+  qa: "docs/qa"
+  prd:
+    file: "docs/prd/index.md"
+    shards: "docs/prd"
+  architecture:
+    overview: "docs/architecture/architecture.md"
+    shards: "docs/architecture"
+
+  # Testing and validation
+  tests: "tests"
+  unit_tests: "tests/unit"
+  integration_tests: "tests/integration"
+  acceptance_tests: "tests/acceptance"
+ 
+  # Web UI
+  frontend: "web-ui/frontend"
+  backend: "web-ui/backend"
+  web_ui_tests: "web-ui/tests"
+
+  # Hardware
+  hardware: "hardware"
+  config: "hardware/config"
+  test: "hardware/test"
+  resource: "hardware/resource"
+
+# Keywords
+keywords:
+  - word: "agent-id"
+    definition: "A Unique Identifie to identify a specific agent instance.  The Agent ID is formatted as '[AGENT-TYPE]-[INSTANCE-NUMBER]'.  For example: '[DEV-01]' is the first instance of the 'DEV' agent."
+  - word: "standalone-agent"
+    definition: "An agent that performs specific tasks and is not currently acting as one of the pre-defined official agile-flow agents. Common standalone agents: cascade, augment, claude, cursor, augment-01, cascade-ui"
+  - word: "multi-agent-collaboration"
+    definition: "An official agile-flow agent protocol that defines how agents coordinate and collaborate within an agile-flow project when multiple agents are working together or in parallel."
+  - word: "acceptance-test"
+    definition: "A Behave Driven test that validates PRD requirements using BDD formats with specific pre-defined Gherkin Scenarios that map to the PRD Requirements for the given project."
+  - word: "functionality-report"
+    definition: "A report that is included with every company project that followed the functionality-report standard of procedure. This report is generated on CI Release and is packaged in a specific way so that the information can be displayed to the executives."
+  - word: "executive-report"
+    definition: "An optional markdown formatted report that is included in the release alongside the functionality-report. This report can be miscellaneous extra information about the projects functionality that is not included in the functionality-report.  Explanations for test coverage gaps, or any other piece of information that should be exposed at the project management level"
+  - word: "agent-report"
+    definition: "A report generated by an agent that is stored in the 'docs/agent-reports/' directory.  *NOTE: Refer to the README.md in the 'docs/agent-reports/' directory for more information.*"

@@ -1,6 +1,6 @@
 ---
-# <!-- *~ Axovia Flow™ Agentic Framework -->
-file: .axovia-flow/sop/feature-specification.md
+# <!-- *~ Agile Flow™ Agentic Framework -->
+file: docs/sop/feature-specification.md
 title: Axovia Feature Specification Standard
 author: Stephen Boyett
 company: Axovia AI

@@ -23,10 +23,10 @@ To create comprehensive Implementation Plans that translate Feature Specificatio
 
 ### 0. Load Configuration and Validate Prerequisites
 
-- Load `.bmad-core/core-config.yaml` and `.axovia-flow/flow-config.yaml` from the project root
-- Verify access to `.axovia-flow/sop/implementation-plans.md`
-- Verify access to `.axovia-flow/sop/planning-definition-of-done.md`
-- If company standards not found, HALT and inform user: "Required company standards not found. Please ensure .axovia-flow/sop/ directory contains implementation-plans.md and planning-definition-of-done.md before proceeding."
+- Load `.bmad-core/core-config.yaml` and `.agile-flow/flow-config.yaml` from the project root
+- Verify access to `docs/sop/implementation-plans.md`
+- Verify access to `docs/sop/planning-definition-of-done.md`
+- If company standards not found, HALT and inform user: "Required company standards not found. Please ensure docs/sop/ directory contains implementation-plans.md and planning-definition-of-done.md before proceeding."
 - Extract key configurations and standard requirements
 
 ### 1. Feature Specification Analysis

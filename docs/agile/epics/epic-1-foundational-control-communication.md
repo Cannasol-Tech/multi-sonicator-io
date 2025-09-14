@@ -96,4 +96,4 @@ Establish core firmware structure, basic sonicator control, and MODBUS communica
 
 | Date | Version | Description | Author |
 |------|---------|-------------|--------|
-| 2025-01-09 | 1.0 | Created epic following Axovia Flow standards | Scrum Master |
+| 2025-01-09 | 1.0 | Created epic following Agile Flow standards | Scrum Master |

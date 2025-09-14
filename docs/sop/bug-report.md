@@ -5,7 +5,7 @@ title: '[BUG] Live Monitoring Display Shows GREEN When Hardware Not Configured'
 labels: ['bug', 'needs-triage']
 assignees: ''
 ---
-<!-- -- Axovia Flow™ Agentic Framework Bug Report Standard -->
+<!-- -- Agile Flow™ Agentic Framework Bug Report Standard -->
 
 # Overview
 
@@ -58,4 +58,4 @@ The monitoring display should reflect the actual hardware state and configuratio
 - [ ] Non-safety-critical issue
 - [ ] Unknown
 
-#< -- Axovia Flow™ Agentic Framework Bug Report Standard -->
+#< -- Agile Flow™ Agentic Framework Bug Report Standard -->

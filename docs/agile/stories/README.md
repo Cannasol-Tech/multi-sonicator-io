@@ -149,7 +149,7 @@ docs/stories/
 
 ## 📊 **Story File Standards**
 
-Each story file follows the Axovia Flow company standards and includes:
+Each story file follows the Agile Flow company standards and includes:
 
 ### **Required Sections**
 - **Story Header**: ID, Epic, Priority, Owner, Dates

@@ -79,7 +79,7 @@ Establish a comprehensive Hardware-in-the-Loop (HIL) testing framework to valida
 - ATmega32A Sonicator Multiplexer DUT hardware assembled and powered
 - CT2000 sonicator unit(s) for physical testing
 - Hardware configuration documented in config/hardware-config.yaml (SOLE SOURCE OF TRUTH)
-- Company standards documentation loaded (.axovia-flow/sop/)
+- Company standards documentation loaded (docs/sop/)
 
 ### Enables
 
@@ -129,4 +129,4 @@ Establish a comprehensive Hardware-in-the-Loop (HIL) testing framework to valida
 
 | Date | Version | Description | Author |
 |------|---------|-------------|--------|
-| 2025-09-10 | 1.0 | Created epic following Axovia Flow standards for HIL testing framework | Project Manager |
+| 2025-09-10 | 1.0 | Created epic following Agile Flow standards for HIL testing framework | Project Manager |

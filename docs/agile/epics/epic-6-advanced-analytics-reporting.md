@@ -140,4 +140,4 @@ Implement comprehensive analytics and reporting capabilities for the Multi-Sonic
 
 | Date | Version | Description | Author |
 |------|---------|-------------|--------|
-| 2025-09-10 | 1.0 | Created epic for advanced analytics and reporting following Axovia Flow standards | Project Manager |
+| 2025-09-10 | 1.0 | Created epic for advanced analytics and reporting following Agile Flow standards | Project Manager |

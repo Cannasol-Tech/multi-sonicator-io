@@ -144,11 +144,23 @@ class UnityCoverageRunner:
         """Parse gcov file to extract coverage statistics"""
         lines_covered = 0
         lines_total = 0
+        exclude = False
         
         try:
             with open(gcov_file, 'r') as f:
                 for line in f:
-                    line = line.strip()
+                    raw = line.rstrip('\n')
+                    # Respect exclusion markers embedded in gcov output
+                    if 'GCOV_EXCL_START' in raw:
+                        exclude = True
+                        continue
+                    if 'GCOV_EXCL_STOP' in raw:
+                        exclude = False
+                        continue
+
+                    line = raw.strip()
+                    if exclude:
+                        continue
                     if ':' in line:
                         parts = line.split(':', 2)
                         if len(parts) >= 2:

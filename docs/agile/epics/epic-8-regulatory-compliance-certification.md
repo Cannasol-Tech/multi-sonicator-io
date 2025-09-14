@@ -136,4 +136,4 @@ Establish comprehensive regulatory compliance and certification framework for th
 
 | Date | Version | Description | Author |
 |------|---------|-------------|--------|
-| 2025-09-10 | 1.0 | Created epic for regulatory compliance and certification following Axovia Flow standards | Project Manager |
+| 2025-09-10 | 1.0 | Created epic for regulatory compliance and certification following Agile Flow standards | Project Manager |

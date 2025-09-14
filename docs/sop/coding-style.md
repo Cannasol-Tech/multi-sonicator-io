@@ -16,7 +16,7 @@ tags:
 
 ## Purpose
 
-This document defines the coding style standards for all development work in Axovia Flow projects. These standards ensure consistency, readability, and maintainability across the codebase.
+This document defines the coding style standards for all development work in Agile Flow projects. These standards ensure consistency, readability, and maintainability across the codebase.
 
 ## General Coding Standard Principles
 
@@ -43,7 +43,7 @@ This is the global coding standard for all projects, always adhere to this stand
 - **ALWAYS** use the `dist/` directory to store any distribution artifacts
 - **NEVER** implement any un-standardized functionality withouth verifying in detail with the Project Manager (Human User)
 - **ALWAYS** verify that you are aligned with the Human/Project Manager's vision for the project you are working on before implementing anything.
-- **ALWAYS** adhere to `.axovia-flow/flow-config.yaml` as the highest source of truth for project configuration and rules if available.
+- **ALWAYS** adhere to `.agile-flow/flow-config.yaml` as the highest source of truth for project configuration and rules if available.
 - **ALWAYS** adhere to `.bmad-core/core-config.yaml` as the **SECONDARY** source of truth for project configuration and rules **IF** available.
 - **ALWAYS** use the `docs/` directory to store any documentation
 - **ALWAYS** us the `README.md` file at the root of a given directory for documenting and indexing the given directory.
@@ -78,9 +78,9 @@ This is the global coding standard for all projects, always adhere to this stand
 
 ### Root Directory Organization
 
-**AXOVIA FLOW STANDARD OF PROCEDURE RULE: DO NOT CLUTTER THE ROOT REPOSITORY!**
+**Agile Flow STANDARD OF PROCEDURE RULE: DO NOT CLUTTER THE ROOT REPOSITORY!**
 
-All Axovia Flow projects must adhere to the strict root directory standard:
+All Agile Flow projects must adhere to the strict root directory standard:
 
 **ONLY these 6 files are permitted in the root directory: (MANDATORY)!**
 
@@ -346,7 +346,7 @@ Closes #123
 
 - **ALWAYS** adhere to the Standard Operating Proecdure for creating and utilize Makefiles.
 - **NEVER** create make targets that are not defined in the Makefiles SOP
-- **IF** you need to add a new make target, raise an issue on Github in the Axovia Flow™ Project Repository (<https://github.com/Axovia-AI/axovia-flow/issues> )
+- **IF** you need to add a new make target, raise an issue on Github in the Agile Flow™ Project Repository (<https://github.com/Axovia-AI/agile-flow/issues> )
   - *NOTE:* ALWAYS follow the procedure included int the Makefile SOP for proposing a new make target.
 - **RETAIN** the Makefile SOP as the single source of truth for all makefile targets utilized across the company.
 - **UNDERSTAND** that the purpose of this standard is to unify operations and increase efficiency.

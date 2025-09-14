@@ -26,6 +26,8 @@ traceability: check-deps
 # Python virtual environment wrapper for consistency
 PYTHON_VENV := . web-ui/venv/bin/activate && python
 PYTHON_VENV_PIP := . web-ui/venv/bin/activate && pip
+# Prefer a stable interpreter inside venv (python3.13 if present, else python)
+VENV_PY := $(shell [ -x web-ui/venv/bin/python3.13 ] && echo web-ui/venv/bin/python3.13 || echo web-ui/venv/bin/python)
 
 # Verbosity control for acceptance auto-setup (1 = silent redirects)
 ACCEPT_SILENT ?= 1
@@ -560,7 +562,7 @@ web-ui-sandbox-auto: check-deps check-pio check-arduino-cli
 # Run Web UI tests
 web-ui-test:
 	@echo "🧪 Running Web UI tests..."
-	web-ui/venv/bin/python -m pytest web-ui/tests/ -v --cov=web-ui/backend/src --cov-report=term-missing --cov-report=html:web-ui/htmlcov --cov-fail-under=90
+	$(VENV_PY) -m pytest web-ui/tests/ -v --cov=web-ui/backend/src --cov-report=term-missing --cov-report=html:web-ui/htmlcov --cov-fail-under=90
 	@echo "✅ Web UI tests completed"
 
 # Stop Web UI development servers

@@ -14,7 +14,7 @@ __metadata__:
       - standard
       - documentation
       - indexing
-file: .axovia-flow/sop/root-directory.md
+file: docs/sop/root-directory.md
 title: Axovia Root Directory Standard
 author: Stephen Boyett
 company: Axovia AI
@@ -24,17 +24,17 @@ version: 1.0
 
 ---
 
-# Axovia Flow Root Directory Standard
+# Agile Flow Root Directory Standard
 
 ## OFFICIAL STANDARD OF PROCEDURE RULE
 
-**AXOVIA FLOW ROOT DIRECTORY FILE LIST**
+**Agile Flow ROOT DIRECTORY FILE LIST**
 
-This document establishes the official rule for what files are allowed in the root directory of any Axovia Flow project. This standard ensures clean repository organization, prevents clutter, and maintains consistency across all Axovia Flow implementations.
+This document establishes the official rule for what files are allowed in the root directory of any Agile Flow project. This standard ensures clean repository organization, prevents clutter, and maintains consistency across all Agile Flow implementations.
 
 ## Purpose
 
-The root directory should contain only essential configuration and documentation files. All project code, tests, documentation, and supporting files should be organized in appropriate subdirectories. This standard prevents repository pollution and ensures consistent project structure across all Axovia Flow implementations.
+The root directory should contain only essential configuration and documentation files. All project code, tests, documentation, and supporting files should be organized in appropriate subdirectories. This standard prevents repository pollution and ensures consistent project structure across all Agile Flow implementations.
 
 ## Official Root Directory File List
 
@@ -70,7 +70,7 @@ The following files are permitted in the root directory:
 #### 6. `README.md`
 - **Purpose**: Provide project overview, installation, and usage instructions
 - **Required**: Yes
-- **Content**: Must follow the Axovia Flow README template
+- **Content**: Must follow the Agile Flow README template
 
 #### 7. `package.json`
 - **Purpose**: Defines project metadata and npm dependencies
@@ -101,7 +101,7 @@ The following files are permitted in the root directory:
 
 ### Directory Structure Enforcement
 
-All Axovia Flow projects must follow this structure:
+All Agile Flow projects must follow this structure:
 
 ```markdown
 <ROOT_DIR>/
@@ -181,7 +181,7 @@ validate-root:
 
 ### Repository Owners
 
-- **Must enforce** this standard in all Axovia Flow repositories
+- **Must enforce** this standard in all Agile Flow repositories
 - **Must reject** pull requests that violate this rule
 - **Must implement** automated validation in CI/CD
 
@@ -211,4 +211,4 @@ validate-root:
 
 ---
 
-**This document is the SINGLE SOURCE OF TRUTH for Axovia Flow root directory standards. All projects must comply with this rule.**
+**This document is the SINGLE SOURCE OF TRUTH for Agile Flow root directory standards. All projects must comply with this rule.**

@@ -136,4 +136,4 @@ Implement comprehensive multi-sonicator coordination capabilities enabling simul
 
 | Date | Version | Description | Author |
 |------|---------|-------------|--------|
-| 2025-09-10 | 1.0 | Created epic for multi-sonicator coordination following Axovia Flow standards | Project Manager |
+| 2025-09-10 | 1.0 | Created epic for multi-sonicator coordination following Agile Flow standards | Project Manager |

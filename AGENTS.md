@@ -8,14 +8,14 @@ Ensure AI Coding Agents consistently follows our house rules and repository stan
 
 ```yaml
 axoviaFlowConfig:
-  filePath: ".axovia-flow/flow-config.yaml"
-  description: "Axovia Flow™ Config File intended to extend The BMad Core config"
+  filePath: ".agile-flow/flow-config.yaml"
+  description: "Agile Flow™ Config File intended to extend The BMad Core config"
   when_to_use: "Always"
 ```
 
 ## Source of Truth Hierarchy
 
-1. **Primary standards**: `.axovia-flow/sop/` (single source of truth)
+1. **Primary standards**: `docs/sop/` (single source of truth)
 2. **Architecture docs**: axoviaFlowConfig.filePaths.architecture.shards
 3. **Project-specific**: This `AGENTS.md` file
 4. **Project-specific**: axoviaFlowConfig.filePaths.comapnyStandards
@@ -25,7 +25,7 @@ axoviaFlowConfig:
 
 ## Decision Hierarchy (highest to lowest priority)
 
-0. The Axovia Flow framework flow config (`.axovia-flow/flow-config.yaml`)
+0. The Agile Flow framework flow config (`.agile-flow/flow-config.yaml`)
 1. This instructions file (`AGENTS.md`)
 2. `docs/sop/*` in this repo
 3. `docs/architecture/*` and PRD docs

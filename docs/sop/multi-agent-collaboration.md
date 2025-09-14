@@ -1,4 +1,4 @@
-> < !-- *~ Axovia Flow™ Agentic Framework -->>
+> < !-- *~ Agile Flow™ Agentic Framework -->>
 # Multi-Agent Collaboration Standard
 
 **Document Type**: Company Standard  
@@ -516,7 +516,7 @@ agents:
 
     context_requirements:
       always_load:
-        - ".axovia-flow/sop/"
+        - "docs/sop/"
         - "docs/templates/"
       workflow_specific:
         - "project_brief"
@@ -564,7 +564,7 @@ agents:
 
     context_requirements:
       always_load:
-        - ".axovia-flow/sop/"
+        - "docs/sop/"
         - "docs/architecture/"
         - "docs/security/"
       workflow_specific:

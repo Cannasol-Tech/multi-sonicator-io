@@ -235,10 +235,10 @@ This project uses Arduino Framework with PlatformIO for:
 
 ## Company Standards Integration
 
-This project follows Axovia Flow company standards:
-- **Coding Style Standards**: `.axovia-flow/sop/coding-style.md`
-- **Project Structure Standards**: `.axovia-flow/sop/project-structure.md`
-- **Software Testing Standards**: `.axovia-flow/sop/sw-testing-standard.md`
+This project follows Agile Flow company standards:
+- **Coding Style Standards**: `docs/sop/coding-style.md`
+- **Project Structure Standards**: `docs/sop/project-structure.md`
+- **Software Testing Standards**: `docs/sop/sw-testing-standard.md`
 
 Standards are automatically synchronized:
 ```bash

@@ -2,7 +2,7 @@
 
 This document describes standard operating procedures for publishing Node packages at Axovia AI.
 
-Applies to: @axovia/axovia-flow and similar CLI-oriented packages.
+Applies to: @axovia/agile-flow and similar CLI-oriented packages.
 
 ## Prerequisites
 - Node.js 18+
@@ -20,7 +20,7 @@ Applies to: @axovia/axovia-flow and similar CLI-oriented packages.
    - `npm ci`
    - `npm run test`
 2. Smoke test locally
-   - `node bin/axovia-flow.js --help`
+   - `node bin/agile-flow.js --help`
 3. Bump version in package.json
 4. Publish (scoped, restricted)
    - `npm publish --access restricted`
@@ -42,7 +42,7 @@ Example GitHub Actions steps:
 - npm publish --provenance --access restricted
 
 ## Rollback Procedure
-- Deprecate the faulty version: `npm deprecate @axovia/axovia-flow@X.Y.Z "reason"`
+- Deprecate the faulty version: `npm deprecate @axovia/agile-flow@X.Y.Z "reason"`
 - Publish a hotfix version: bump PATCH and publish
 
 ## Security and Access
@@ -52,7 +52,7 @@ Example GitHub Actions steps:
 
 ## Notes
 - This package is CLI-only for now. TypeScript types are provided as placeholders.
-- Ensure README examples use the scoped package name: `npx @axovia/axovia-flow`
+- Ensure README examples use the scoped package name: `npx @axovia/agile-flow`
 
 # Node.js Package Publishing Standard
 

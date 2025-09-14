@@ -13,7 +13,7 @@
 
 ## Purpose
 
-Ensure all makefile targets are consistent and follow company standards.  Reduce time spent context switching between projects by standardizing makefile targets so that developers can easily switch between projects without having to remember the specific makefile targets for each project.  When working in a Makefile, always refer and strictly adhere to the standards outlined in this document.  If a makefile target is not listed in this document, it is not currently allowed.  The developer should create a pull request to Axovia-AI/axovia-flow to add the new makefile target to this document in the governing repository.  
+Ensure all makefile targets are consistent and follow company standards.  Reduce time spent context switching between projects by standardizing makefile targets so that developers can easily switch between projects without having to remember the specific makefile targets for each project.  When working in a Makefile, always refer and strictly adhere to the standards outlined in this document.  If a makefile target is not listed in this document, it is not currently allowed.  The developer should create a pull request to Axovia-AI/agile-flow to add the new makefile target to this document in the governing repository.  
 
 ## Source of Truth
 
@@ -49,7 +49,7 @@ The update-standards make target is meant to align all of the Company projects s
 
 ***make update-standards:*** This command should always:
 
-  *1.* Synchronize the repository with the Single Sole Source of truth: `Axovia-AI/axovia-flow/.axovia-flow/sop/`
+  *1.* Synchronize the repository with the Single Sole Source of truth: `Axovia-AI/agile-flow/docs/sop/`
   *2.* Update any necessary files to ensure that the makefile is in compliance with the company standards
   *3.* Update any necessary files to ensure that the project is in compliance with the latest standards
 
@@ -60,9 +60,9 @@ The update-standards make target is meant to align all of the Company projects s
   *1.* Clean the project to ensure an empty slate
   *2.* Install all dependencies and ensure that the environment is ready for a production build.
   *3.* Build the latest source code as a production build
-  *4.* Run all of the unit tests and save the coverage-summary.json in `final/` directory per the `.axovia-flow/sop/release-format.md`
-  *5.* Run all of the acceptance tests and save the executive-report.json in `final/` directory per the `.axovia-flow/sop/release-format.md`
-  *5.1* Run any other tests that are present for the given repository and save any generated reports in the correct documents per the `.axovia-flow/sop/release-format.md`
+  *4.* Run all of the unit tests and save the coverage-summary.json in `final/` directory per the `docs/sop/release-format.md`
+  *5.* Run all of the acceptance tests and save the executive-report.json in `final/` directory per the `docs/sop/release-format.md`
+  *5.1* Run any other tests that are present for the given repository and save any generated reports in the correct documents per the `docs/sop/release-format.md`
   *6.* Run `make preview` to launch a fully functioning local preview of the application
     - ***Note:*** The `make preview` command should always launch all necessary local serversckto have a fully functioning locally run preview of the project.  
   7.
@@ -76,7 +76,7 @@ The update-standards make target is meant to align all of the Company projects s
   *3.* Remove temporary files and directories
   *4.* Clean up test artifacts and coverage reports
 
-**Axovia Flow Implementation:**
+**Agile Flow Implementation:**
 
 ```make
 clean:
@@ -95,7 +95,7 @@ clean:
   *2.* Generate any necessary artifacts
   *3.* Validate the build process
 
-**Note:** Currently not implemented in Axovia Flow as it's a Python-based orchestrator that doesn't require compilation.
+**Note:** Currently not implemented in Agile Flow as it's a Python-based orchestrator that doesn't require compilation.
 
 ### Install
 
@@ -106,11 +106,11 @@ clean:
   *3.* Create necessary directories and configuration files
   *4.* Prepare the system for development or deployment
 
-**Axovia Flow Implementation:**
+**Agile Flow Implementation:**
 
 ```make
 install:
- @echo "Installing Axovia Flow dependencies..."
+ @echo "Installing Agile Flow dependencies..."
  pip install -r requirements.txt
  @echo "Creating necessary directories..."
  mkdir -p state schemas tests
@@ -125,11 +125,11 @@ install:
   *2.* Clean up created directories and files
   *3.* Restore the system to pre-installation state
 
-**Note:** Currently not implemented in Axovia Flow.
+**Note:** Currently not implemented in Agile Flow.
 
-## Axovia Flow™ Project Specific Targets
+## Agile Flow™ Project Specific Targets
 
-The following targets are implemented in the Axovia Flow project and serve as reference implementations for similar orchestrator-based projects:
+The following targets are implemented in the Agile Flow project and serve as reference implementations for similar orchestrator-based projects:
 
 ### Help and Documentation
 
@@ -201,11 +201,11 @@ format:
 
 ### Orchestrator Operations
 
-***make axovia-run:*** Start the Axovia Flow orchestrator service
+***make axovia-run:*** Start the Agile Flow orchestrator service
 
 ```make
 axovia-run:
- @echo "Starting Axovia Flow Orchestrator..."
+ @echo "Starting Agile Flow Orchestrator..."
  PYTHONPATH=src python -m orchestrator.cli run
 ```
 
@@ -213,7 +213,7 @@ axovia-run:
 
 ```make
 axovia-status:
- @echo "Checking Axovia Flow Orchestrator status..."
+ @echo "Checking Agile Flow Orchestrator status..."
  PYTHONPATH=src python -m orchestrator.cli status
 ```
 
@@ -296,19 +296,19 @@ test-flutter: test-unit test-widget test-integration
 # ---- End Flutter Makefile Template ----
 ```
 
-***make init:*** Initialize Axovia Flow configuration
+***make init:*** Initialize Agile Flow configuration
 
 ```make
 init:
- @echo "Initializing Axovia Flow configuration..."
+ @echo "Initializing Agile Flow configuration..."
  PYTHONPATH=src python -m orchestrator.cli init
 ```
 
-***make validate:*** Validate Axovia Flow configuration
+***make validate:*** Validate Agile Flow configuration
 
 ```make
 validate:
- @echo "Validating Axovia Flow configuration..."
+ @echo "Validating Agile Flow configuration..."
  PYTHONPATH=src python -m orchestrator.cli validate
 ```
 
@@ -356,7 +356,7 @@ make clean
 
 ## Standards Compliance
 
-All Makefile targets in Axovia Flow projects must:
+All Makefile targets in Agile Flow projects must:
 
 *1.* Include descriptive echo statements
 *2.* Use consistent naming conventions

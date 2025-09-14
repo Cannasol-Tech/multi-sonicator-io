@@ -9,7 +9,7 @@
 
 ## Executive Summary
 
-Story 0.1 has been successfully completed with all acceptance criteria met and all tasks implemented. The Multi-Sonicator I/O Controller project now fully complies with Axovia Flow company standards and has comprehensive validation infrastructure in place.
+Story 0.1 has been successfully completed with all acceptance criteria met and all tasks implemented. The Multi-Sonicator I/O Controller project now fully complies with Agile Flow company standards and has comprehensive validation infrastructure in place.
 
 ## Completed Implementation
 

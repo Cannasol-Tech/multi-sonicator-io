@@ -133,4 +133,4 @@ Establish comprehensive production deployment infrastructure and operational pro
 
 | Date | Version | Description | Author |
 |------|---------|-------------|--------|
-| 2025-09-10 | 1.0 | Created epic for production deployment and operations following Axovia Flow standards | Project Manager |
+| 2025-09-10 | 1.0 | Created epic for production deployment and operations following Agile Flow standards | Project Manager |

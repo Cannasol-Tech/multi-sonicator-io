@@ -2,15 +2,18 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import React from 'react'
 import App from '../App'
+// Import the mocked hook reference so we can adjust return values in tests
+import { useWebSocket as mockedUseWebSocket } from '../hooks/useWebSocket'
 
 // Mock all the hooks and services
-vi.mock('../hooks/useWebSocket', () => ({
-  useWebSocket: () => ({
+vi.mock('../hooks/useWebSocket', () => {
+  const mockUseWebSocket = vi.fn(() => ({
     connected: true,
     sendMessage: vi.fn(),
     lastMessage: null
-  })
-}))
+  }))
+  return { useWebSocket: mockUseWebSocket }
+})
 
 vi.mock('../hooks/useHardwareState', () => ({
   useHardwareState: () => ({
@@ -32,7 +35,11 @@ vi.mock('../hooks/useArduinoCommandLog', () => ({
   useArduinoCommandLog: () => ({
     commands: [],
     addCommand: vi.fn(),
-    clearCommands: vi.fn()
+    addCommandPair: vi.fn(),
+    clearCommands: vi.fn(),
+    getCommandCount: vi.fn(() => 0),
+    getFilteredCommands: vi.fn(() => []),
+    getRecentPairs: vi.fn(() => [])
   })
 }))
 
@@ -82,10 +89,10 @@ vi.mock('../hooks/useTestAutomation', () => ({
   })
 }))
 
-vi.mock('../hooks/useKeyboardShortcuts', () => ({
-  useKeyboardShortcuts: () => ({ shortcuts: [] }),
-  createAppShortcuts: () => []
-}))
+vi.mock('../hooks/useKeyboardShortcuts', async () => {
+  const actual = await vi.importActual<any>('../hooks/useKeyboardShortcuts')
+  return actual
+})
 
 // Mock localStorage
 const mockLocalStorage = {
@@ -155,12 +162,12 @@ describe('App Component Integration Tests', () => {
     it('switches to test automation tab', async () => {
       render(<App />)
 
-      const testTab = screen.getByText('🧪 Test Automation')
+      const testTab = screen.getByRole('button', { name: /Test Automation/i })
       fireEvent.click(testTab)
 
       await waitFor(() => {
-        expect(testTab.closest('button')).toHaveClass('active')
-        expect(screen.getByText(/Test Automation/i)).toBeInTheDocument()
+        expect(testTab).toHaveClass('active')
+        expect(screen.getByRole('heading', { name: /Test Automation/i })).toBeInTheDocument()
       })
     })
 
@@ -172,7 +179,7 @@ describe('App Component Integration Tests', () => {
 
       await waitFor(() => {
         expect(commandsTab.closest('button')).toHaveClass('active')
-        expect(screen.getByText(/Command Log/i)).toBeInTheDocument()
+        expect(screen.getByRole('heading', { name: /Arduino Test Wrapper Commands/i })).toBeInTheDocument()
       })
     })
 
@@ -184,7 +191,7 @@ describe('App Component Integration Tests', () => {
       
       await waitFor(() => {
         expect(settingsTab.closest('button')).toHaveClass('active')
-        expect(screen.getByText(/Settings/i)).toBeInTheDocument()
+        expect(screen.getByRole('heading', { name: /Settings & Preferences/i })).toBeInTheDocument()
       })
     })
 
@@ -196,8 +203,8 @@ describe('App Component Integration Tests', () => {
       fireEvent.click(settingsTab)
 
       await waitFor(() => {
-        const themeSelect = screen.getByLabelText(/Theme/i)
-        fireEvent.change(themeSelect, { target: { value: 'dark' } })
+        const compactCheckbox = screen.getByLabelText(/Compact Mode/i) as HTMLInputElement
+        if (!compactCheckbox.checked) fireEvent.click(compactCheckbox)
       })
 
       // Switch to hardware tab and back
@@ -205,10 +212,9 @@ describe('App Component Integration Tests', () => {
       fireEvent.click(hardwareTab)
       fireEvent.click(settingsTab)
 
-      // Theme selection should be preserved
+      // Compact mode selection should be preserved
       await waitFor(() => {
-        const themeSelect = screen.getByLabelText(/Theme/i) as HTMLSelectElement
-        expect(themeSelect.value).toBe('dark')
+        expect(document.documentElement).toHaveClass('compact-mode')
       })
     })
   })
@@ -217,9 +223,10 @@ describe('App Component Integration Tests', () => {
     it('applies theme changes globally', async () => {
       render(<App />)
       
-      const themeButton = screen.getByRole('button', { name: /theme/i })
+      const themeButton = screen.getByTitle(/Current theme:/i)
+      // Cycle: auto -> light -> dark
       fireEvent.click(themeButton)
-      
+      fireEvent.click(themeButton)
       await waitFor(() => {
         expect(document.documentElement).toHaveClass('dark-theme')
       })
@@ -228,11 +235,11 @@ describe('App Component Integration Tests', () => {
     it('persists theme preference', async () => {
       render(<App />)
       
-      const themeButton = screen.getByRole('button', { name: /theme/i })
+      const themeButton = screen.getByTitle(/Current theme:/i)
       fireEvent.click(themeButton)
-      
+      fireEvent.click(themeButton)
       await waitFor(() => {
-        expect(mockLocalStorage.setItem).toHaveBeenCalledWith('theme', 'dark')
+        expect(mockLocalStorage.setItem).toHaveBeenCalledWith('multi-sonicator-theme', 'dark')
       })
     })
 
@@ -287,28 +294,27 @@ describe('App Component Integration Tests', () => {
   })
 
   describe('Keyboard Shortcuts Integration', () => {
-    it('enables keyboard shortcuts by default', () => {
+    it('enables keyboard shortcuts by default', async () => {
       render(<App />)
-      
-      // Should respond to keyboard shortcuts
-      fireEvent.keyDown(document, { key: 'h', ctrlKey: true })
-      
-      expect(screen.getByText(/Help & Documentation/i)).toBeInTheDocument()
+      fireEvent.keyDown(document, { key: 't', ctrlKey: true })
+      await waitFor(() => {
+        const testTabBtn = screen.getByRole('button', { name: /Test Automation/i })
+        expect(testTabBtn).toHaveClass('active')
+      })
     })
 
     it('disables keyboard shortcuts when setting is off', async () => {
       render(<App />)
       
       // Go to settings and disable shortcuts
-      const settingsTab = screen.getByText('Settings')
+      const settingsTab = screen.getByRole('button', { name: /Settings/i })
       fireEvent.click(settingsTab)
       
       await waitFor(() => {
-        const shortcutsNav = screen.getByText('Keyboard Shortcuts')
-        fireEvent.click(shortcutsNav)
-        
-        const enableCheckbox = screen.getByLabelText(/Enable keyboard shortcuts/i)
-        fireEvent.click(enableCheckbox)
+        const behaviorNav = screen.getByRole('button', { name: /Behavior/i })
+        fireEvent.click(behaviorNav)
+        const enableCheckbox = screen.getByLabelText(/Enable Keyboard Shortcuts/i) as HTMLInputElement
+        if (enableCheckbox.checked) fireEvent.click(enableCheckbox)
       })
       
       // Switch back to hardware tab
@@ -316,25 +322,25 @@ describe('App Component Integration Tests', () => {
       fireEvent.click(hardwareTab)
       
       // Keyboard shortcuts should not work
-      fireEvent.keyDown(document, { key: 'h', ctrlKey: true })
-      
-      expect(screen.queryByText(/Help & Documentation/i)).not.toBeInTheDocument()
+      fireEvent.keyDown(document, { key: 't', ctrlKey: true })
+
+      expect(screen.getByRole('button', { name: /Test Automation/i })).not.toHaveClass('active')
     })
 
     it('supports tab switching shortcuts', async () => {
       render(<App />)
       
       // Ctrl+1 should switch to hardware tab
-      fireEvent.keyDown(document, { key: '1', ctrlKey: true })
+      fireEvent.keyDown(document, { key: 'h', ctrlKey: true })
       
       const hardwareTab = screen.getByText('🔧 Hardware Control').closest('button')
       expect(hardwareTab).toHaveClass('active')
       
       // Ctrl+2 should switch to test automation tab
-      fireEvent.keyDown(document, { key: '2', ctrlKey: true })
+      fireEvent.keyDown(document, { key: 't', ctrlKey: true })
       
       await waitFor(() => {
-        const testTab = screen.getByText('🧪 Test Automation').closest('button')
+        const testTab = screen.getByRole('button', { name: /Test Automation/i })
         expect(testTab).toHaveClass('active')
       })
     })
@@ -344,7 +350,7 @@ describe('App Component Integration Tests', () => {
     it('highlights pins when clicked in hardware diagram', async () => {
       render(<App />)
       
-      const d8Pin = screen.getByText('D8').closest('.pin')
+      const d8Pin = screen.getAllByText('D8')[0].closest('.pin-indicator-large')
       fireEvent.click(d8Pin!)
       
       await waitFor(() => {
@@ -356,12 +362,12 @@ describe('App Component Integration Tests', () => {
       render(<App />)
       
       // Switch to test automation tab
-      const testTab = screen.getByText('Test Automation')
+      const testTab = screen.getByRole('button', { name: /Test Automation/i })
       fireEvent.click(testTab)
       
       await waitFor(() => {
         // Mock test execution that highlights pins
-        const runButton = screen.getByText(/Run Selected/i)
+        const runButton = screen.getByText(/Execute Selected/i)
         if (!runButton.disabled) {
           fireEvent.click(runButton)
         }
@@ -381,7 +387,7 @@ describe('App Component Integration Tests', () => {
 
     it('disables controls when disconnected', async () => {
       // Mock disconnected state
-      vi.mocked(require('../hooks/useWebSocket').useWebSocket).mockReturnValue({
+      vi.mocked(mockedUseWebSocket).mockReturnValue({
         connected: false,
         sendMessage: vi.fn(),
         lastMessage: null
@@ -403,9 +409,9 @@ describe('App Component Integration Tests', () => {
   })
 
   describe('Error Handling', () => {
-    it('handles WebSocket connection errors gracefully', () => {
+    it('handles WebSocket connection errors gracefully', async () => {
       // Mock WebSocket error
-      vi.mocked(require('../hooks/useWebSocket').useWebSocket).mockReturnValue({
+      vi.mocked(mockedUseWebSocket).mockReturnValue({
         connected: false,
         sendMessage: vi.fn(),
         lastMessage: null,
@@ -416,7 +422,9 @@ describe('App Component Integration Tests', () => {
         render(<App />)
       }).not.toThrow()
       
-      expect(screen.getByText('Disconnected')).toBeInTheDocument()
+      await waitFor(() => {
+        expect(screen.getByText(/Disconnected|WebSocket disconnected|Connection failed/i)).toBeInTheDocument()
+      })
     })
 
     it('handles component rendering errors gracefully', () => {

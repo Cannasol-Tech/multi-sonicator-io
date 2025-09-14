@@ -6,7 +6,7 @@ Last Updated: 2025-09-10
 
 ## Planning Standards
 
-- Follow Axovia Flow standards (`.axovia-flow/sop/`)
+- Follow Agile Flow standards (`docs/sop/`)
 - Single Source of Truth for hardware mapping: `config/hardware-config.yaml`
 - TDD-first for every story (write tests first, ensure they pass last)
 - Keep one source of truth, avoid duplication

@@ -66,12 +66,16 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ onPreferencesChange }) =>
   }, [preferences.animationsEnabled, preferences.compactMode])
 
   const updatePreference = <K extends keyof UserPreferences>(
-    key: K, 
+    key: K,
     value: UserPreferences[K]
   ) => {
     const newPreferences = { ...preferences, [key]: value }
     setPreferences(newPreferences)
     setHasUnsavedChanges(true)
+    // Persist immediately so state is preserved when navigating away
+    try {
+      localStorage.setItem('multi-sonicator-preferences', JSON.stringify(newPreferences))
+    } catch {}
     onPreferencesChange?.(newPreferences)
   }
 

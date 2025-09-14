@@ -2,7 +2,7 @@
 
 ## Overview
 
-This directory is managed by the Axovia Flow project and meant to be the sole source of truth for Company Wide standards.  These standards are meant to be used across companies and adhered to for all Cannasol Technologies, Axovia AI, Silverline Software, or True Tune projects.  Also, when specified in any other project.  These company standard operating procedures should be strictly adhered to by all developers, agents, engineers and any one else working within the project's repository.
+This directory is managed by the Agile Flow project and meant to be the sole source of truth for Company Wide standards.  These standards are meant to be used across companies and adhered to for all Cannasol Technologies, Axovia AI, Silverline Software, or True Tune projects.  Also, when specified in any other project.  These company standard operating procedures should be strictly adhered to by all developers, agents, engineers and any one else working within the project's repository.
 
 ## Company Standard Operating Procedures Index
 
@@ -44,8 +44,8 @@ Git submodules provide the most maintainable approach for importing standards, a
 # Navigate to your target repository
 cd /path/to/your/project
 
-# Add the axovia-flow repository as a submodule
-git submodule add https://github.com/Axovia-AI/axovia-flow.git .standards-source
+# Add the agile-flow repository as a submodule
+git submodule add https://github.com/Axovia-AI/agile-flow.git .standards-source
 
 # Initialize and update the submodule
 git submodule update --init --recursive
@@ -55,12 +55,12 @@ git submodule update --init --recursive
 
 ```bash
 # Create the standards directory in your project
-mkdir -p .axovia-flow/sop
+mkdir -p docs/sop
 
 # Create subdirectories for framework-specific standards
-mkdir -p .axovia-flow/sop/flutter-specific
-mkdir -p .axovia-flow/sop/platformio-specific
-mkdir -p .axovia-flow/sop/react-specific
+mkdir -p docs/sop/flutter-specific
+mkdir -p docs/sop/platformio-specific
+mkdir -p docs/sop/react-specific
 ```
 
 #### Step 3: Set Up Sync Script
@@ -74,11 +74,11 @@ cat > scripts/sync-sop.sh << 'EOF'
 set -euo pipefail
 
 # Company Standards Sync Script
-# Syncs standards from axovia-flow submodule to local .axovia-flow/sop
+# Syncs standards from agile-flow submodule to local docs/sop
 
 SUBMODULE_PATH=".standards-source"
-SOURCE_DIR="$SUBMODULE_PATH/.axovia-flow/sop"
-TARGET_DIR=".axovia-flow/sop"
+SOURCE_DIR="$SUBMODULE_PATH/docs/sop"
+TARGET_DIR="docs/sop"
 
 echo "Syncing company standards from $SOURCE_DIR to $TARGET_DIR..."
 
@@ -96,9 +96,9 @@ cat > "$TARGET_DIR/README.md" << 'INNER_EOF'
 
 ## Overview
 
-This directory contains company-wide standards imported from the [Axovia Flow](https://github.com/Axovia-AI/axovia-flow) repository. These standards are the single source of truth for all Cannasol Technologies, Axovia AI, Silverline Software, and True Tune projects.
+This directory contains company-wide standards imported from the [Agile Flow](https://github.com/Axovia-AI/agile-flow) repository. These standards are the single source of truth for all Cannasol Technologies, Axovia AI, Silverline Software, and True Tune projects.
 
-**⚠️ DO NOT EDIT FILES DIRECTLY**: These files are automatically synced from the source repository. To modify standards, submit changes to the [axovia-flow repository](https://github.com/Axovia-AI/axovia-flow/tree/main/.axovia-flow/sop).
+**⚠️ DO NOT EDIT FILES DIRECTLY**: These files are automatically synced from the source repository. To modify standards, submit changes to the [agile-flow repository](https://github.com/Axovia-AI/agile-flow/tree/main/docs/sop).
 
 ## Last Sync
 
@@ -133,7 +133,7 @@ chmod +x scripts/sync-sop.sh
 git add .
 git commit -m "Import company standards via submodule
 
-- Added axovia-flow as submodule for standards source
+- Added agile-flow as submodule for standards source
 - Created sync script for automated standards updates
 - Imported all current company standards"
 ```
@@ -172,7 +172,7 @@ jobs:
           commit-message: "chore: sync company standards"
           title: "Sync Company Standards"
           body: |
-            Automated sync of company standards from axovia-flow repository.
+            Automated sync of company standards from agile-flow repository.
 
             Please review changes and merge if appropriate.
           branch: sync-standards
@@ -185,8 +185,8 @@ If submodules are not suitable for your project, you can directly copy the stand
 #### Step 1: Clone the Source Repository
 
 ```bash
-# Clone the axovia-flow repository temporarily
-git clone https://github.com/Axovia-AI/axovia-flow.git /tmp/axovia-flow-standards
+# Clone the agile-flow repository temporarily
+git clone https://github.com/Axovia-AI/agile-flow.git /tmp/agile-flow-standards
 ```
 
 #### Step 2: Copy Standards Files
@@ -196,15 +196,15 @@ git clone https://github.com/Axovia-AI/axovia-flow.git /tmp/axovia-flow-standard
 cd /path/to/your/project
 
 # Create standards directory structure
-mkdir -p .axovia-flow/sop/flutter-specific
-mkdir -p .axovia-flow/sop/platformio-specific
-mkdir -p .axovia-flow/sop/react-specific
+mkdir -p docs/sop/flutter-specific
+mkdir -p docs/sop/platformio-specific
+mkdir -p docs/sop/react-specific
 
 # Copy all standards files
-cp -r /tmp/axovia-flow-standards/.axovia-flow/sop/* .axovia-flow/sop/
+cp -r /tmp/agile-flow-standards/docs/sop/* docs/sop/
 
 # Clean up temporary clone
-rm -rf /tmp/axovia-flow-standards
+rm -rf /tmp/agile-flow-standards
 ```
 
 #### Step 3: Create Update Script
@@ -216,16 +216,16 @@ cat > scripts/update-sop.sh << 'EOF'
 set -euo pipefail
 
 # Company Standards Update Script
-# Downloads latest standards from axovia-flow repository
+# Downloads latest standards from agile-flow repository
 
 TEMP_DIR=$(mktemp -d)
-REPO_URL="https://github.com/Axovia-AI/axovia-flow.git"
-TARGET_DIR=".axovia-flow/sop"
+REPO_URL="https://github.com/Axovia-AI/agile-flow.git"
+TARGET_DIR="docs/sop"
 
 echo "Downloading latest company standards..."
 
 # Clone the repository
-git clone "$REPO_URL" "$TEMP_DIR/axovia-flow"
+git clone "$REPO_URL" "$TEMP_DIR/agile-flow"
 
 # Backup current standards
 if [[ -d "$TARGET_DIR" ]]; then
@@ -234,7 +234,7 @@ fi
 
 # Copy new standards
 mkdir -p "$TARGET_DIR"
-cp -r "$TEMP_DIR/axovia-flow/.axovia-flow/sop/"* "$TARGET_DIR/"
+cp -r "$TEMP_DIR/agile-flow/docs/sop/"* "$TARGET_DIR/"
 
 # Add source attribution to README
 cat > "$TARGET_DIR/README.md" << 'INNER_EOF'
@@ -242,9 +242,9 @@ cat > "$TARGET_DIR/README.md" << 'INNER_EOF'
 
 ## Overview
 
-This directory contains company-wide standards copied from the [Axovia Flow](https://github.com/Axovia-AI/axovia-flow) repository. These standards are the single source of truth for all Cannasol Technologies, Axovia AI, Silverline Software, and True Tune projects.
+This directory contains company-wide standards copied from the [Agile Flow](https://github.com/Axovia-AI/agile-flow) repository. These standards are the single source of truth for all Cannasol Technologies, Axovia AI, Silverline Software, and True Tune projects.
 
-**⚠️ IMPORTANT**: These files were copied on $(date). To get the latest updates, run `./scripts/update-sop.sh` or submit changes to the [axovia-flow repository](https://github.com/Axovia-AI/axovia-flow/tree/main/.axovia-flow/sop).
+**⚠️ IMPORTANT**: These files were copied on $(date). To get the latest updates, run `./scripts/update-sop.sh` or submit changes to the [agile-flow repository](https://github.com/Axovia-AI/agile-flow/tree/main/docs/sop).
 
 ## Last Update
 
@@ -254,8 +254,8 @@ Source: $REPO_URL
 INNER_EOF
 
 # Append standards index
-if [[ -f "$TEMP_DIR/axovia-flow/.axovia-flow/sop/README.md" ]]; then
-  sed -n '/## Company Standard Operating Procedures Index/,/## Directory Purpose/p' "$TEMP_DIR/axovia-flow/.axovia-flow/sop/README.md" | head -n -1 >> "$TARGET_DIR/README.md"
+if [[ -f "$TEMP_DIR/agile-flow/docs/sop/README.md" ]]; then
+  sed -n '/## Company Standard Operating Procedures Index/,/## Directory Purpose/p' "$TEMP_DIR/agile-flow/docs/sop/README.md" | head -n -1 >> "$TARGET_DIR/README.md"
 fi
 
 # Clean up
@@ -299,11 +299,11 @@ cat > scripts/import-selected-standards.sh << 'EOF'
 set -euo pipefail
 
 # Selective Standards Import Script
-# Imports only specified standards from axovia-flow repository
+# Imports only specified standards from agile-flow repository
 
-REPO_URL="https://github.com/Axovia-AI/axovia-flow.git"
+REPO_URL="https://github.com/Axovia-AI/agile-flow.git"
 TEMP_DIR=$(mktemp -d)
-TARGET_DIR=".axovia-flow/sop"
+TARGET_DIR="docs/sop"
 
 # Define which standards to import (modify as needed)
 UNIVERSAL_STANDARDS=(
@@ -325,8 +325,8 @@ FRAMEWORK_DIRS=(
 echo "Importing selected company standards..."
 
 # Clone the repository
-git clone "$REPO_URL" "$TEMP_DIR/axovia-flow"
-SOURCE_DIR="$TEMP_DIR/axovia-flow/.axovia-flow/sop"
+git clone "$REPO_URL" "$TEMP_DIR/agile-flow"
+SOURCE_DIR="$TEMP_DIR/agile-flow/docs/sop"
 
 # Create target directory
 mkdir -p "$TARGET_DIR"
@@ -357,9 +357,9 @@ cat > "$TARGET_DIR/README.md" << 'INNER_EOF'
 
 ## Overview
 
-This directory contains selected company-wide standards imported from the [Axovia Flow](https://github.com/Axovia-AI/axovia-flow) repository.
+This directory contains selected company-wide standards imported from the [Agile Flow](https://github.com/Axovia-AI/agile-flow) repository.
 
-**⚠️ SELECTIVE IMPORT**: Only specific standards have been imported. To import additional standards or get updates, run `./scripts/import-selected-standards.sh` or visit the [source repository](https://github.com/Axovia-AI/axovia-flow/tree/main/.axovia-flow/sop).
+**⚠️ SELECTIVE IMPORT**: Only specific standards have been imported. To import additional standards or get updates, run `./scripts/import-selected-standards.sh` or visit the [source repository](https://github.com/Axovia-AI/agile-flow/tree/main/docs/sop).
 
 ## Imported Standards
 
@@ -410,7 +410,7 @@ nano scripts/import-selected-standards.sh
 ./scripts/import-selected-standards.sh
 
 # Commit the imported standards
-git add .axovia-flow/sop/ scripts/import-selected-standards.sh
+git add docs/sop/ scripts/import-selected-standards.sh
 git commit -m "Import selected company standards
 
 - Imported universal coding and testing standards
@@ -428,7 +428,7 @@ After importing standards using any of the above methods, follow these steps to 
 echo "
 ## Development Standards
 
-This project follows company-wide development standards. See [.axovia-flow/sop/](./.axovia-flow/sop/) for detailed guidelines on:
+This project follows company-wide development standards. See [docs/sop/](./docs/sop/) for detailed guidelines on:
 
 - Code style and formatting
 - Testing requirements and coverage
@@ -554,7 +554,7 @@ git commit -m "Update company standards to latest version"
 ```bash
 # Update standards manually
 ./scripts/update-sop.sh
-git add .axovia-flow/sop/
+git add docs/sop/
 git commit -m "Update company standards"
 ```
 
@@ -562,7 +562,7 @@ git commit -m "Update company standards"
 ```bash
 # Update selected standards
 ./scripts/import-selected-standards.sh
-git add .axovia-flow/sop/
+git add docs/sop/
 git commit -m "Update selected company standards"
 ```
 
@@ -570,7 +570,7 @@ git commit -m "Update selected company standards"
 
 Set up notifications to stay informed about standards updates:
 
-1. **Watch the axovia-flow repository** on GitHub for notifications
+1. **Watch the agile-flow repository** on GitHub for notifications
 2. **Subscribe to releases** to get notified of major standards updates
 3. **Set up automated checks** in your CI/CD pipeline to detect when standards are out of date
 
@@ -587,8 +587,8 @@ echo "=== Company Standards Compliance Check ==="
 echo ""
 
 # Check if standards directory exists
-if [[ ! -d ".axovia-flow/sop" ]]; then
-  echo "❌ FAIL: .axovia-flow/sop directory not found"
+if [[ ! -d "docs/sop" ]]; then
+  echo "❌ FAIL: docs/sop directory not found"
   exit 1
 fi
 
@@ -656,10 +656,10 @@ git submodule update --remote --force .standards-source
 **Solution**:
 ```bash
 # Backup your local changes
-cp .axovia-flow/sop/modified-file.md .axovia-flow/sop/modified-file.md.backup
+cp docs/sop/modified-file.md docs/sop/modified-file.md.backup
 
 # Reset to clean state
-git checkout -- .axovia-flow/sop/
+git checkout -- docs/sop/
 
 # Re-run standards sync
 ./scripts/sync-sop.sh
@@ -794,7 +794,7 @@ jobs:
 
 #### Getting Help
 
-- **Documentation Issues**: Open an issue in the [axovia-flow repository](https://github.com/Axovia-AI/axovia-flow/issues)
+- **Documentation Issues**: Open an issue in the [agile-flow repository](https://github.com/Axovia-AI/agile-flow/issues)
 - **Standards Questions**: Contact the development team or project maintainers
 - **Implementation Support**: Refer to the specific standard documents for detailed guidance
 
@@ -802,9 +802,9 @@ jobs:
 
 To propose changes or additions to company standards:
 
-1. **Fork** the [axovia-flow repository](https://github.com/Axovia-AI/axovia-flow)
+1. **Fork** the [agile-flow repository](https://github.com/Axovia-AI/agile-flow)
 2. **Create a feature branch** for your proposed changes
-3. **Update the relevant standard documents** in `.axovia-flow/sop/`
+3. **Update the relevant standard documents** in `docs/sop/`
 4. **Submit a pull request** with detailed explanation of the changes
 5. **Participate in review process** with the standards committee
 
@@ -825,12 +825,12 @@ When reporting issues with standards import or compliance:
 
 ```bash
 # Method 1: Submodule (Recommended)
-git submodule add https://github.com/Axovia-AI/axovia-flow.git .standards-source
+git submodule add https://github.com/Axovia-AI/agile-flow.git .standards-source
 ./scripts/sync-sop.sh
 
 # Method 2: Direct Copy
-git clone https://github.com/Axovia-AI/axovia-flow.git /tmp/axovia-flow-standards
-cp -r /tmp/axovia-flow-standards/.axovia-flow/sop/* .axovia-flow/sop/
+git clone https://github.com/Axovia-AI/agile-flow.git /tmp/agile-flow-standards
+cp -r /tmp/agile-flow-standards/docs/sop/* docs/sop/
 
 # Method 3: Selective Import
 ./scripts/import-selected-standards.sh
