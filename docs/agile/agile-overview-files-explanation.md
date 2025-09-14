@@ -268,7 +268,7 @@ The agile overview is primarily displayed through dashboard files that aggregate
 
 ### Quality Standards
 
-- Test coverage targets (≥90% for unit tests)
+- Test coverage targets (≥85% for unit tests)
 - QA gate criteria (PASS/CONCERNS/FAIL/WAIVED)
 - Documentation completeness requirements
 - Traceability compliance

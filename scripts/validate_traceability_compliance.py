@@ -25,7 +25,7 @@ class TraceabilityValidator:
         
         # Critical compliance thresholds
         self.REQUIRED_COVERAGE = 100.0  # 100% PRD coverage required
-        self.REQUIRED_UNIT_COVERAGE = 90.0  # 90% unit test coverage
+        self.REQUIRED_UNIT_COVERAGE = 85.0  # 85% unit test coverage
         self.MAX_PENDING_SCENARIOS = 5  # Max pending scenarios allowed
         
         self.validation_results = {

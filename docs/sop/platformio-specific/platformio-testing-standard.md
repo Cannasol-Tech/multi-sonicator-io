@@ -76,7 +76,7 @@ test/
 ### 1. Unit Testing
 
 - **Framework**: Unity Test Framework (mocking permitted)
-- **Coverage Requirement**: ≥90% statement coverage
+- **Coverage Requirement**: ≥85% statement coverage
 - **Scope**: Algorithms, drivers, protocols, utilities
 - **Mocking**: Permitted for hardware abstractions and external dependencies
 - **Location**: `test/unit/`
@@ -229,7 +229,7 @@ PlatformIO projects must implement these standardized make targets:
 # Unit Testing (with mocking allowed)
 make test-unit
 # - Executes: pio test --filter test_unit
-# - Coverage: ≥90% requirement
+# - Coverage: ≥85% requirement
 # - Mocking: Unity/CMock permitted
 
 # Integration Testing (no mocking)
@@ -375,7 +375,7 @@ test_framework = unity
 
 All PlatformIO stories must pass these quality gates:
 
-- [ ] Unit tests achieve ≥90% coverage (mocking permitted for external dependencies)
+- [ ] Unit tests achieve ≥85% coverage (mocking permitted for external dependencies)
 - [ ] Integration tests achieve ≥80% coverage (NO mocking)
 - [ ] HIL tests validate critical hardware functionality (NO mocking)
 - [ ] Real-time constraints validated in timing-critical tests

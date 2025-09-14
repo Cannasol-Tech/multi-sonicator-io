@@ -6,7 +6,7 @@
  * @version 1.0.0
  *
  * @details
- * Unity-based unit tests for control module achieving 90% code coverage.
+ * Unity-based unit tests for control module achieving ≥85% code coverage.
  * Tests sonicator control logic, state machines, and safety systems.
  */
 

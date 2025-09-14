@@ -9,7 +9,7 @@ This document provides comprehensive guidance for using the robust testing frame
 ### 1. Unit Testing Framework (Unity)
 - **Framework**: Unity Test Framework for embedded C/C++
 - **Environment**: Native compilation with coverage analysis
-- **Coverage Requirement**: ≥90% code coverage
+- **Coverage Requirement**: ≥85% code coverage
 - **Execution**: `make test-unit`
 
 ### 2. Acceptance Testing Framework (BDD)
@@ -96,7 +96,7 @@ test/unit/
 ### Coverage Reports
 - **JSON Report**: `coverage/coverage.json` (dashboard consumption)
 - **HTML Report**: `coverage/coverage.html` (human readable)
-- **Requirement**: ≥90% line coverage across all modules
+- **Requirement**: ≥85% line coverage across all modules
 
 ## Acceptance Testing Details
 
@@ -193,7 +193,7 @@ coverage/
 1. Create test file in appropriate module directory
 2. Follow Unity test naming conventions
 3. Include comprehensive test cases for new functionality
-4. Ensure coverage meets 90% requirement
+4. Ensure coverage meets 85% requirement
 5. Update mock implementations if needed
 
 ### Adding New BDD Scenarios
@@ -273,7 +273,7 @@ For detailed information, see [HIL Framework Architecture Guide](hil-framework-a
 ## Best Practices
 
 1. **Run tests frequently** during development
-2. **Maintain 90% coverage** for all new code
+2. **Maintain 85% coverage** for all new code
 3. **Update BDD scenarios** when requirements change
 4. **Validate configuration** before major test runs
 5. **Review traceability reports** regularly

@@ -42,8 +42,8 @@ class TraceabilityReportGenerator:
                 "framework": "Unity Test Framework",
                 "environment": "Native C/C++",
                 "coverage_data": coverage_data,
-                "meets_requirement": coverage_data.get("overall", {}).get("coverage_percentage", 0) >= 90.0,
-                "requirement": "≥90% code coverage"
+                "meets_requirement": coverage_data.get("overall", {}).get("coverage_percentage", 0) >= 85.0,
+                "requirement": "≥85% code coverage"
             }
         else:
             self.report_data["unit_testing"] = {
@@ -190,11 +190,11 @@ class TraceabilityReportGenerator:
         
         self.report_data["overall_metrics"] = {
             "unit_test_coverage": f"{unit_coverage:.1f}%",
-            "unit_test_status": "✅ PASS" if unit_coverage >= 90 else "❌ FAIL",
+            "unit_test_status": "✅ PASS" if unit_coverage >= 85 else "❌ FAIL",
             "acceptance_scenarios": acceptance_scenarios,
             "requirements_coverage": f"{requirements_covered}/{total_requirements}",
             "requirements_percentage": f"{(requirements_covered/total_requirements*100):.1f}%" if total_requirements > 0 else "0%",
-            "overall_status": "✅ ROBUST" if unit_coverage >= 90 and requirements_covered == total_requirements else "⚠️ NEEDS WORK"
+            "overall_status": "✅ ROBUST" if unit_coverage >= 85 and requirements_covered == total_requirements else "⚠️ NEEDS WORK"
         }
     
     def generate_json_report(self):

@@ -46,7 +46,7 @@ python3 scripts/analyze_coverage_trends.py --weeks 4
 
 #### Coverage Decline Response
 1. **Identify Declining Modules**
-   - Review coverage reports for modules below 90%
+   - Review coverage reports for modules below 85%
    - Identify specific uncovered code paths
    - Prioritize based on criticality and risk
 
@@ -242,7 +242,7 @@ python3 scripts/generate_config_docs.py
 ## Quality Assurance
 
 ### Test Quality Metrics
-- **Coverage**: Maintain ≥90% line coverage
+- **Coverage**: Maintain ≥85% line coverage
 - **Test Reliability**: <1% flaky test rate
 - **Execution Time**: Unit tests <2 minutes, full suite <10 minutes
 - **Traceability**: 100% PRD requirement coverage

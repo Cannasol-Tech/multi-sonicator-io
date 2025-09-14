@@ -129,6 +129,15 @@ test/acceptance/features/complete_modbus_interface.feature,MODBUS communication 
 test/acceptance/features/complete_modbus_interface.feature,Legacy MODBUS register mapping compatibility,,,ready,@modbus @interface @concurrent-access
 test/acceptance/features/complete_modbus_interface.feature,Concurrent MODBUS access testing,,,pending,@pending @modbus @interface @advanced-functions
 test/acceptance/features/complete_modbus_interface.feature,Advanced MODBUS function codes,,,ready,
+test/acceptance/features/single_sonicator_control.feature,AC-1 Start/Stop Command Response Time,,,ready,@acceptance @hil @story-1.4 @critical @acceptance @hil @story-1.4 @critical
+test/acceptance/features/single_sonicator_control.feature,AC-2 Amplitude Control Within Tolerance,,,ready,@acceptance @hil @story-1.4 @critical
+test/acceptance/features/single_sonicator_control.feature,AC-3 Telemetry Registers Accuracy,,,ready,@acceptance @hil @story-1.4 @critical
+test/acceptance/features/single_sonicator_control.feature,AC-4 MODBUS Response Time Compliance,,,ready,@acceptance @hil @story-1.4 @critical
+test/acceptance/features/single_sonicator_control.feature,AC-5 Complete Control Loop Validation,,,ready,@acceptance @hil @story-1.4 @edge-case
+test/acceptance/features/single_sonicator_control.feature,Amplitude Clamping Validation,,,ready,@acceptance @hil @story-1.4 @fault-handling
+test/acceptance/features/single_sonicator_control.feature,Overload Reset Command,,,ready,@acceptance @hil @story-1.4 @timing
+test/acceptance/features/single_sonicator_control.feature,State Transition Timing Validation,,,ready,@acceptance @hil @story-1.4 @comprehensive
+test/acceptance/features/single_sonicator_control.feature,HIL End-to-End Validation,,,ready,
 test/acceptance/features/executive_reporting.feature,SC-011 Executive report artifact,,,pending,@pending @req-exec-report @hil
 test/acceptance/features/regulatory_compliance.feature,FDA 21 CFR Part 11 compliance validation,,,ready,@compliance @regulatory @critical @compliance @regulatory @critical
 test/acceptance/features/regulatory_compliance.feature,ISO 9001 quality management compliance,,,ready,@compliance @regulatory @safety

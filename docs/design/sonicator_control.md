@@ -269,7 +269,7 @@ void loop() {
 
 ## Testing Strategy
 
-### Unit Testing (>90% coverage required)
+### Unit Testing (≥85% coverage required)
 - State machine transitions (all paths)
 - Timing edge cases (delays, timeouts)
 - Fault injection and recovery
@@ -308,7 +308,7 @@ assert(state == SONICATOR_STATE_FAULT);
 - [ ] Response time optimization (<100ms)
 
 ### Phase 3: Testing and Validation
-- [ ] Unit tests with mock HAL (>90% coverage)
+- [ ] Unit tests with mock HAL (≥85% coverage)
 - [ ] HIL acceptance tests
 - [ ] Hardware timing validation
 - [ ] MODBUS protocol compliance testing

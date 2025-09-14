@@ -77,7 +77,7 @@ Visual hardware representation uses:
 
 ## Testing
 
-The web UI maintains 90% unit test coverage using pytest for consistency with existing test infrastructure.
+The web UI maintains ≥85% unit test coverage using pytest for consistency with existing test infrastructure.
 
 ```bash
 # Run web UI tests

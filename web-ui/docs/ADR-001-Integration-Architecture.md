@@ -21,7 +21,7 @@ The Multi-Sonicator-IO project required a modern web-based interface for the exi
 - Real-time pin state monitoring for all DUT pins
 - Full sandbox mode operation with continuous monitoring
 - Integration with existing HIL framework (no breaking changes)
-- 90% test coverage requirement
+- 85% test coverage requirement
 - Sub-100ms hardware command response times
 
 ### Constraints
@@ -194,7 +194,7 @@ Extended existing Makefile with web UI targets:
 - **Unit Tests**: Jest for frontend, pytest for backend Python components
 - **Integration Tests**: End-to-end WebSocket communication testing
 - **Hardware Mocking**: Mock hardware interface for reliable automated testing
-- **Coverage Requirements**: 90% minimum coverage achieved (90.31%)
+- **Coverage Requirements**: 85% minimum coverage achieved (90.31%)
 
 ### Performance Optimizations
 - **WebSocket Throttling**: Prevent hardware overload
@@ -206,7 +206,7 @@ Extended existing Makefile with web UI targets:
 
 ### Success Metrics Achieved
 - **Response Time**: Hardware commands complete within 100ms requirement
-- **Test Coverage**: 90.31% (exceeds 90% requirement)
+- **Test Coverage**: 90.31% (exceeds 85% requirement)
 - **Integration Stability**: Zero regressions in existing CLI tools
 - **User Experience**: Single page application with real-time updates
 

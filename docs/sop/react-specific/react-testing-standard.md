@@ -77,7 +77,7 @@ src/
 ### 1. Unit Testing
 
 - **Framework**: Jest (mocking permitted)
-- **Coverage Requirement**: ≥90% statement coverage
+- **Coverage Requirement**: ≥85% statement coverage
 - **Scope**: Services, utilities, pure functions, business logic
 - **Mocking**: Permitted for external dependencies and APIs
 - **Location**: Co-located with source files (`*.test.ts`)

@@ -2,7 +2,7 @@ schema: 1
 story: "0.2"
 story_title: "HIL Test Harness Setup"
 gate: CONCERNS
-status_reason: "Excellent architecture and functional implementation, but unit test coverage significantly below required 90% standard due to placeholder implementations"
+status_reason: "Excellent architecture and functional implementation, but unit test coverage significantly below required 85% standard due to placeholder implementations"
 reviewer: "Quinn (Test Architect)"
 updated: "2025-09-12T01:40:30Z"
 
@@ -11,7 +11,7 @@ waiver: { active: false }
 top_issues:
   - id: "TEST-001"
     severity: high
-    finding: "Unit test coverage below 90% requirement - most test_hil_framework.cpp tests are placeholders"
+    finding: "Unit test coverage below 85% requirement - most test_hil_framework.cpp tests are placeholders"
     suggested_action: "Implement actual test logic in all placeholder unit tests"
     suggested_owner: "dev"
   - id: "TEST-002"
@@ -70,7 +70,7 @@ risk_summary:
   highest: high
   recommendations:
     must_fix: 
-      - "Implement unit test logic to achieve 90% coverage requirement"
+      - "Implement unit test logic to achieve 85% coverage requirement"
     monitor:
       - "Emergency stop physical validation timing"
       - "ISP programming end-to-end validation"

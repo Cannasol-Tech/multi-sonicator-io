@@ -24,7 +24,7 @@ make generate-complete-executive-report
 ### What the CI Pipeline Does
 1. **Configuration Validation**: Validates HIL configuration integrity
 2. **Unit Tests**: Runs all unit tests with Unity Test Framework
-3. **Coverage Validation**: Enforces 90% coverage requirement
+3. **Coverage Validation**: Enforces 85% coverage requirement
 4. **Executive Report**: Generates unit test executive report
 5. **Coverage Report**: Generates coverage summary report
 
@@ -39,7 +39,7 @@ make generate-complete-executive-report
 - ✅ **Fast Feedback**: Completes in ~2-3 minutes
 - ✅ **Hardware Independent**: No physical hardware required
 - ✅ **PR Validation**: Runs on every pull request
-- ✅ **Coverage Enforcement**: Validates 90% unit test coverage
+- ✅ **Coverage Enforcement**: Validates 85% unit test coverage
 - ✅ **Standardized Reports**: Machine and human-readable formats
 
 ## Manual Testing (Release Process)
@@ -94,7 +94,7 @@ make generate-complete-executive-report
 ## Quality Gates
 
 ### CI Pipeline Quality Gates
-- ✅ Unit test coverage ≥ 90%
+- ✅ Unit test coverage ≥ 85%
 - ✅ All unit tests pass
 - ✅ Configuration validation passes
 - ✅ Reports generated successfully

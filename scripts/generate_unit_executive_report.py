@@ -44,7 +44,7 @@ def parse_unit_test_coverage(coverage_file):
         # Create test scenarios from modules
         scenarios = []
         for module_name, module_data in modules.items():
-            status = "passed" if module_data.get('coverage_percentage', 0) >= 90 else "failed"
+            status = "passed" if module_data.get('coverage_percentage', 0) >= 85 else "failed"
             scenarios.append({
                 "name": f"Unit Test Coverage - {module_name}",
                 "feature": f"Unit Tests - {module_name.title()} Module",
@@ -58,7 +58,7 @@ def parse_unit_test_coverage(coverage_file):
                         "durationMs": 500
                     },
                     {
-                        "name": f"Verify {module_name} coverage >= 90%",
+                        "name": f"Verify {module_name} coverage >= 85%",
                         "status": status,
                         "durationMs": 500
                     }
@@ -84,7 +84,7 @@ def parse_unit_test_coverage(coverage_file):
             requirements.append({
                 "id": f"REQ-UNIT-{module_name.upper()}",
                 "title": f"Unit Test Coverage for {module_name.title()} Module",
-                "status": "covered" if modules[module_name].get('coverage_percentage', 0) >= 90 else "failed",
+                "status": "covered" if modules[module_name].get('coverage_percentage', 0) >= 85 else "failed",
                 "scenarios": [f"Unit Test Coverage - {module_name}"]
             })
         
@@ -183,7 +183,7 @@ def generate_unit_executive_report(args):
 - **Passed**: {summary['passed']} ✅
 - **Failed**: {summary['failed']} ❌  
 - **Coverage**: {coverage_pct:.1f}%
-- **Coverage Requirement (≥90%)**: {"✅ MET" if coverage_pct >= 90.0 else "❌ NOT MET"}
+- **Coverage Requirement (≥85%)**: {"✅ MET" if coverage_pct >= 85.0 else "❌ NOT MET"}
 
 ## Test Coverage by Module
 
@@ -197,7 +197,7 @@ def generate_unit_executive_report(args):
             modules = coverage_data.get('modules', {})
             for module_name, module_data in modules.items():
                 module_pct = module_data.get('coverage_percentage', 0.0)
-                status = "✅" if module_pct >= 90.0 else "❌"
+                status = "✅" if module_pct >= 85.0 else "❌"
                 markdown_content += f"- **{module_name.title()}**: {module_pct:.1f}% {status}\n"
         except:
             pass

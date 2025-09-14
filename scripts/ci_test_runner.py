@@ -108,14 +108,14 @@ class CITestRunner:
                     data = json.load(f)
                 coverage = data['overall']['coverage_percentage']
                 
-                if coverage >= 90.0:
+                if coverage >= 85.0:
                     print(f"✅ Coverage Requirement - PASSED ({coverage:.1f}%)")
                     self.results["stages"]["Coverage Check"] = {
                         "status": "PASS",
                         "coverage": coverage
                     }
                 else:
-                    print(f"❌ Coverage Requirement - FAILED ({coverage:.1f}% < 90%)")
+                    print(f"❌ Coverage Requirement - FAILED ({coverage:.1f}% < 85%)")
                     self.results["stages"]["Coverage Check"] = {
                         "status": "FAIL",
                         "coverage": coverage

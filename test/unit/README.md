@@ -12,7 +12,7 @@ Unit tests for Multi-Sonicator IO are located in the `test/unit` directory.
 - Mocks and stubs should be used to replace the other components and simulate their behavior.
 - The tests should be written so that the state of the code (databases / agents / etc. ) is the same after the test as it was before (clean up).
 - The tests should be written so that they are easy to read and understand.
-- The tests should achieve 90% code coverage for the codebase.  
+- The tests should achieve 85% code coverage for the codebase.  
 - The unit tests should strive to achieve 100% coverage with well-written tests that are verifying actual functionality of the small slices of code.
 - The unit tests should be run as part of the CI pipeline and act as the first gate. **1 unit test failure == 1 pipeline failure!**
 - Parameterized tests should be used to test many scenarios to ensure good branch and edge case coverage.  **Test as much as we can!**

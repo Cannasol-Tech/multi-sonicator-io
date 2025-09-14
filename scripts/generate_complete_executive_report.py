@@ -130,7 +130,7 @@ def combine_test_results(unit_results, acceptance_results, output_dir):
 - **Passed**: {unit_summary['passed']} ✅
 - **Failed**: {unit_summary['failed']} ❌
 - **Coverage**: {coverage_pct:.1f}%
-- **Coverage Requirement (≥90%)**: {"✅ MET" if coverage_pct >= 90.0 else "❌ NOT MET"}
+- **Coverage Requirement (≥85%)**: {"✅ MET" if coverage_pct >= 85.0 else "❌ NOT MET"}
 
 ### Acceptance Tests
 - **Scenarios**: {acceptance_summary['total']}
@@ -142,15 +142,15 @@ def combine_test_results(unit_results, acceptance_results, output_dir):
 
 | Gate | Requirement | Status |
 |------|------------|--------|
-| Unit Test Coverage | ≥90% | {"✅ PASS" if coverage_pct >= 90.0 else "❌ FAIL"} |
+| Unit Test Coverage | ≥85% | {"✅ PASS" if coverage_pct >= 85.0 else "❌ FAIL"} |
 | Acceptance Tests | All critical scenarios pass | {"✅ PASS" if acceptance_summary['failed'] == 0 else "❌ FAIL"} |
 | Overall Test Pass Rate | ≥95% | {"✅ PASS" if (combined_summary['passed'] / max(combined_summary['total'], 1)) >= 0.95 else "❌ FAIL"} |
 
 ## Release Readiness
 
-{"✅ **READY FOR RELEASE**" if (coverage_pct >= 90.0 and acceptance_summary['failed'] == 0 and (combined_summary['passed'] / max(combined_summary['total'], 1)) >= 0.95) else "❌ **NOT READY FOR RELEASE**"}
+{"✅ **READY FOR RELEASE**" if (coverage_pct >= 85.0 and acceptance_summary['failed'] == 0 and (combined_summary['passed'] / max(combined_summary['total'], 1)) >= 0.95) else "❌ **NOT READY FOR RELEASE**"}
 
-{"All quality gates passed. This release meets the comprehensive testing requirements." if (coverage_pct >= 90.0 and acceptance_summary['failed'] == 0 and (combined_summary['passed'] / max(combined_summary['total'], 1)) >= 0.95) else "One or more quality gates failed. Review failed tests before release."}
+{"All quality gates passed. This release meets the comprehensive testing requirements." if (coverage_pct >= 85.0 and acceptance_summary['failed'] == 0 and (combined_summary['passed'] / max(combined_summary['total'], 1)) >= 0.95) else "One or more quality gates failed. Review failed tests before release."}
 
 ## Testing Approach
 

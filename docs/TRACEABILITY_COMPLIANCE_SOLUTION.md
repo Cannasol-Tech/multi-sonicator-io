@@ -41,7 +41,7 @@ Your acceptance test traceability to PRD requirements system is now **FULLY FUNC
 ### **TRACEABILITY METRICS:**
 
 - **PRD Coverage:** 92.3% (24/26 requirements covered)
-- **Unit Test Coverage:** 97.1% (exceeds 90% standard)
+- **Unit Test Coverage:** 97.1% (exceeds 85% standard)
 - **Acceptance Scenarios:** 124 total scenarios
 - **Critical Pending Tests:** 5/5 (at threshold limit)
 - **Drift Score:** 1 (1 orphaned scenario detected)
@@ -108,7 +108,7 @@ make check-compliance
 ### **Compliance Thresholds:**
 
 - **Required PRD Coverage:** 100.0%
-- **Required Unit Coverage:** 90.0%
+- **Required Unit Coverage:** 85.0%
 - **Max Pending Critical Scenarios:** 5
 - **Drift Score Tolerance:** 0
 

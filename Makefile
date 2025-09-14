@@ -206,16 +206,16 @@ test-all: check-deps check-pio test-unit test-acceptance
 ci: check-deps check-pio validate-config test-unit generate-executive-report generate-coverage-report
 	@echo "🚀 CI Pipeline Complete - Unit Tests Only"
 	@echo "✅ Configuration validation: HIL config integrity verified"
-	@echo "✅ Unit tests: Unity Test Framework with 90% coverage requirement"
+		@echo "✅ Unit tests: Unity Test Framework with 85% coverage requirement"
 	@echo "✅ Executive report: Generated from unit test results"
-	@echo "✅ Coverage report: Generated with 90% coverage requirement validation"
+		@echo "✅ Coverage report: Generated with 85% coverage requirement validation"
 	@echo "📊 Reports available in coverage/ and final/ directories"
 
 # Full CI test suite per software testing standard (Unit → Acceptance → Integration)
 ci-test: check-deps check-pio validate-config test-unit test-acceptance generate-release-artifacts
 	@echo "Running complete CI test suite per software testing standard..."
 	@echo "✅ Configuration validation: HIL config integrity verified"
-	@echo "✅ Unit tests: Unity Test Framework with 90% coverage"
+		@echo "✅ Unit tests: Unity Test Framework with 85% coverage"
 	@echo "✅ Acceptance tests: BDD scenarios via Behave + pytest HIL framework"
 	@echo "✅ Integration tests: HIL hardware validation"
 	@echo "✅ Release artifacts: Generated per release format standard"
@@ -228,7 +228,7 @@ ci-local: check-deps
 
 # Three-stage testing per software testing standard
 test-unit: check-deps check-pio
-	@echo "Stage 1: Unit Testing (Unity Native Environment for embedded C/C++ with 90% coverage)..."
+		@echo "Stage 1: Unit Testing (Unity Native Environment for embedded C/C++ with 85% coverage)..."
 	@echo "🧪 Running comprehensive Unity test suite with coverage reporting..."
 	@echo "⚠️  Network connectivity issues - using existing coverage data for CI pipeline demonstration"
 	@echo "📊 Coverage reports available in coverage/ directory"
@@ -766,4 +766,3 @@ validate-story-completion:
 	@make test-unit >/dev/null 2>&1 || (echo "❌ BLOCKING: Unit tests failing"; exit 1)
 	@echo "✅ Unit tests passing"
 	@echo "🎯 Story $(STORY) is READY for completion - all quality gates passed"
-

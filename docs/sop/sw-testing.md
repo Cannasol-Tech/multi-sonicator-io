@@ -127,7 +127,7 @@ make test
 
 3. **Sign-Off Criteria:**
 
-   * **Unit:** ≥90% coverage achieved.
+   * **Unit:** ≥85% coverage achieved.
    * **Acceptance:** All BDD scenarios pass and align with PRD.
    * **Integration:**
 
@@ -153,7 +153,7 @@ make test
 ### Agent Workflow Integration
 
 * **QA Agent**: Primary implementer of this standard through `*test-design`, `*trace`, and `*gate` commands
-* **Dev Agent**: Must achieve 90% unit coverage before story completion
+* **Dev Agent**: Must achieve 85% unit coverage before story completion
 * **PM Agent**: Ensures acceptance criteria are BDD-testable during story creation
 
 ### Task Integration
@@ -167,7 +167,7 @@ make test
 
 All stories must pass through QA gates that validate:\
 
-* [ ] Unit tests achieve ≥90% coverage
+* [ ] Unit tests achieve ≥85% coverage
 * [ ] Acceptance tests map to PRD requirements using BDD format
 * [ ] Integration tests cover all external system interactions
 * [ ] Test reports generated in standardized format

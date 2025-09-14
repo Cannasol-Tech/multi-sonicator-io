@@ -4,7 +4,7 @@
 
 ### CI Pipeline Status
 - [ ] All CI jobs completed successfully
-- [ ] Unit test coverage ≥90%
+- [ ] Unit test coverage ≥85%
 - [ ] No failing unit tests
 - [ ] BDD syntax validation passed
 - [ ] Configuration validation passed
@@ -29,7 +29,7 @@
 - [ ] Verify test execution times
 
 ### Coverage Monitoring
-- [ ] Overall coverage ≥90%
+- [ ] Overall coverage ≥85%
 - [ ] No modules below 85% coverage
 - [ ] Coverage trend is stable or improving
 - [ ] New code has adequate test coverage
@@ -193,7 +193,7 @@
 
 ### Before Code Merge
 - [ ] All unit tests pass
-- [ ] Coverage requirement met (≥90%)
+- [ ] Coverage requirement met (≥85%)
 - [ ] No new flaky tests introduced
 - [ ] BDD scenarios updated if needed
 - [ ] Documentation updated

@@ -7,7 +7,7 @@
  *
  * @details
  * Unity configuration for embedded C/C++ unit testing with native environment.
- * Provides comprehensive test framework setup for 90% coverage requirement.
+ * Provides comprehensive test framework setup for 85% coverage requirement.
  */
 
 #ifndef UNITY_CONFIG_H

@@ -51,10 +51,10 @@
 
 | Module | Current Coverage | Target Coverage | Status | Notes |
 |--------|------------------|-----------------|--------|-------|
-| Communication | XX.X% | ≥90% | ✅/❌ | [Notes] |
-| HAL | XX.X% | ≥90% | ✅/❌ | [Notes] |
-| Control | XX.X% | ≥90% | ✅/❌ | [Notes] |
-| Sonicator | XX.X% | ≥90% | ✅/❌ | [Notes] |
+| Communication | XX.X% | ≥85% | ✅/❌ | [Notes] |
+| HAL | XX.X% | ≥85% | ✅/❌ | [Notes] |
+| Control | XX.X% | ≥85% | ✅/❌ | [Notes] |
+| Sonicator | XX.X% | ≥85% | ✅/❌ | [Notes] |
 
 ### BDD Scenario Coverage by Feature Area
 
@@ -192,7 +192,7 @@
 ### Target Metrics (Next Review)
 
 - **Requirement Coverage Target:** XX%
-- **Unit Test Coverage Target:** ≥90%
+- **Unit Test Coverage Target:** ≥85%
 - **BDD Scenario Coverage Target:** 100%
 - **Test Reliability Target:** ≥99%
 
