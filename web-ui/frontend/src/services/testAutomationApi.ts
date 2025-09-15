@@ -174,10 +174,6 @@ const MOCK_SCENARIOS: TestScenario[] = [
   }
 ]
 
-export class TestAutomationAPI {
-
-const MOCK_TAGS = ['@smoke', '@pin-control', '@hil', '@power', '@analog', '@frequency', '@digital', '@safety', '@overload', '@output', '@integration', '@system']
-
 // Check if we should use mock data (when backend is not available)
 const shouldUseMockData = () => {
   // Force mock data if explicitly requested
@@ -193,9 +189,6 @@ const shouldUseMockData = () => {
 const MOCK_TAGS = ['@smoke', '@pin-control', '@hil', '@power', '@analog', '@frequency', '@digital', '@safety', '@overload', '@output', '@integration', '@system']
 
 export class TestAutomationAPI {
-  /**
-   * Get all available test scenarios
-   */
   static async getAvailableScenarios(): Promise<TestScenario[]> {
     // Use mock data in development or when backend is not available
     if (shouldUseMockData()) {

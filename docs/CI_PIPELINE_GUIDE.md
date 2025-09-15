@@ -164,7 +164,7 @@ This CI pipeline complies with:
 ---
 
 For questions or issues, refer to:
-- `docs/sop/sw-testing-standard.md`
+- `docs/sop/sw-testing.md`
 - `docs/sop/platformio-specific/platformio-testing-standard.md`
 - `test/acceptance/README.md`
 - `final/README.md`

@@ -1,4 +1,4 @@
-<testsuite name="features.hil_adc_verification.ADC Hardware Verification" tests="6" errors="6" failures="0" skipped="0" time="6.029557" timestamp="2025-09-12T22:04:25.472529" hostname="Corbans-Mini.home"><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="POWER_SENSE_4 ADC channel verification" status="cleanup_error" time="1.002723"><error type="UnknownError" message="">
+<testsuite name="features.hil_adc_verification.ADC Hardware Verification" tests="6" errors="6" failures="0" skipped="0" time="6.048211" timestamp="2025-09-15T17:51:57.775308" hostname="Corbans-Mini.home"><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="POWER_SENSE_4 ADC channel verification" status="cleanup_error" time="1.009134"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -8,7 +8,7 @@
   @hil @hardware @adc
   Scenario: POWER_SENSE_4 ADC channel verification
     Given the HIL framework is connected to ATmega32A ... passed in 0.000s
-    And the ADC subsystem is initialized ... failed in 1.002s
+    And the ADC subsystem is initialized ... failed in 1.009s
     And the ADC reference is set to 5.0V ... skipped in 0.000s
     When I apply 0V to ADC channel "POWER_SENSE_4" ... skipped in 0.000s
     Then the ADC reading should be approximately 0 ... skipped in 0.000s
@@ -29,7 +29,7 @@ Captured stderr:
 
 
 ]]>
-</system-err></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="POWER_SENSE_4 mid-scale verification" status="cleanup_error" time="1.012925"><error type="UnknownError" message="">
+</system-err></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="POWER_SENSE_4 mid-scale verification" status="cleanup_error" time="1.001883"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -39,7 +39,7 @@ Captured stderr:
   @hil @hardware @adc
   Scenario: POWER_SENSE_4 mid-scale verification
     Given the HIL framework is connected to ATmega32A ... passed in 0.000s
-    And the ADC subsystem is initialized ... failed in 1.012s
+    And the ADC subsystem is initialized ... failed in 1.002s
     And the ADC reference is set to 5.0V ... skipped in 0.000s
     When I apply 2.5V to ADC channel "POWER_SENSE_4" ... skipped in 0.000s
     Then the ADC reading should be approximately 512 ... skipped in 0.000s
@@ -60,7 +60,7 @@ Captured stderr:
 
 
 ]]>
-</system-err></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="POWER_SENSE_4 full-scale verification" status="cleanup_error" time="1.001517"><error type="UnknownError" message="">
+</system-err></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="POWER_SENSE_4 full-scale verification" status="cleanup_error" time="1.007099"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -70,7 +70,7 @@ Captured stderr:
   @hil @hardware @adc
   Scenario: POWER_SENSE_4 full-scale verification
     Given the HIL framework is connected to ATmega32A ... passed in 0.000s
-    And the ADC subsystem is initialized ... failed in 1.001s
+    And the ADC subsystem is initialized ... failed in 1.007s
     And the ADC reference is set to 5.0V ... skipped in 0.000s
     When I apply 5.0V to ADC channel "POWER_SENSE_4" ... skipped in 0.000s
     Then the ADC reading should be approximately 1023 ... skipped in 0.000s
@@ -91,7 +91,7 @@ Captured stderr:
 
 
 ]]>
-</system-err></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="Power measurement scaling verification" status="cleanup_error" time="1.00477"><error type="UnknownError" message="">
+</system-err></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="Power measurement scaling verification" status="cleanup_error" time="1.00693"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -101,7 +101,7 @@ Captured stderr:
   @hil @hardware @adc
   Scenario: Power measurement scaling verification
     Given the HIL framework is connected to ATmega32A ... passed in 0.000s
-    And the ADC subsystem is initialized ... failed in 1.004s
+    And the ADC subsystem is initialized ... failed in 1.007s
     And the ADC reference is set to 5.0V ... skipped in 0.000s
     Given the power measurement scaling is 5.44 mV/W ... skipped in 0.000s
     When I simulate 100W power consumption ... skipped in 0.000s
@@ -123,7 +123,7 @@ Captured stderr:
 
 
 ]]>
-</system-err></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="ADC noise and stability" status="cleanup_error" time="1.003437"><error type="UnknownError" message="">
+</system-err></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="ADC noise and stability" status="cleanup_error" time="1.010752"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -133,7 +133,7 @@ Captured stderr:
   @hil @hardware @adc
   Scenario: ADC noise and stability
     Given the HIL framework is connected to ATmega32A ... passed in 0.000s
-    And the ADC subsystem is initialized ... failed in 1.003s
+    And the ADC subsystem is initialized ... failed in 1.011s
     And the ADC reference is set to 5.0V ... skipped in 0.000s
     When I apply a stable 2.5V to ADC channel "POWER_SENSE_4" ... skipped in 0.000s
     And I take 100 ADC readings over 10 seconds ... skipped in 0.000s
@@ -155,7 +155,7 @@ Captured stderr:
 
 
 ]]>
-</system-err></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="Multiple ADC channel independence" status="cleanup_error" time="1.004185"><error type="UnknownError" message="">
+</system-err></testcase><testcase classname="features.hil_adc_verification.ADC Hardware Verification" name="Multiple ADC channel independence" status="cleanup_error" time="1.012413"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -165,7 +165,7 @@ Captured stderr:
   @hil @hardware @adc
   Scenario: Multiple ADC channel independence
     Given the HIL framework is connected to ATmega32A ... passed in 0.000s
-    And the ADC subsystem is initialized ... failed in 1.004s
+    And the ADC subsystem is initialized ... failed in 1.012s
     And the ADC reference is set to 5.0V ... skipped in 0.000s
     When I apply 1.0V to ADC channel "POWER_SENSE_4" ... skipped in 0.000s
     And I apply 3.0V to another available ADC channel ... skipped in 0.000s

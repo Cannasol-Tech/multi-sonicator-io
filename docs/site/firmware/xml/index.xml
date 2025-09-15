@@ -271,6 +271,13 @@
     <member refid="d3/d0c/structmodbus__statistics__t_1a4ef350ec6bde9dce159bb2ca62a78cfd" kind="variable"><name>last_request_time</name></member>
     <member refid="d3/d0c/structmodbus__statistics__t_1a8847fbfaef8f4d8940128cbc9f9b8d5b" kind="variable"><name>max_response_time</name></member>
   </compound>
+  <compound refid="db/d86/structmulti__status__t" kind="struct"><name>multi_status_t</name>
+    <member refid="db/d86/structmulti__status__t_1a70abf968f501b54be996557ff653b6b4" kind="variable"><name>master_state</name></member>
+    <member refid="db/d86/structmulti__status__t_1a3553822adcbd067d9846049411acfe53" kind="variable"><name>active_mask</name></member>
+    <member refid="db/d86/structmulti__status__t_1a65bd6f3cb6133e97291ed14d702a0a5c" kind="variable"><name>unit_state</name></member>
+    <member refid="db/d86/structmulti__status__t_1af4edd4148787e47c5a2f28cda6ba5dba" kind="variable"><name>fault_code</name></member>
+    <member refid="db/d86/structmulti__status__t_1a0644363013284a9323e833dcd8dd0e02" kind="variable"><name>last_transition_time_ms</name></member>
+  </compound>
   <compound refid="dc/d5b/structsafety__event__log__t" kind="struct"><name>safety_event_log_t</name>
     <member refid="dc/d5b/structsafety__event__log__t_1ab3d1303c4dd223ff4269d69a39365e5d" kind="variable"><name>timestamp</name></member>
     <member refid="dc/d5b/structsafety__event__log__t_1a81f3cdd3312d9575ae97bdb0c6502e43" kind="variable"><name>event_type</name></member>
@@ -624,6 +631,19 @@
     <member refid="db/d16/config_8h_1ae202ba5dbb32afeac215b4c3556b25fb" kind="define"><name>REG_SONICATOR_3_OVERLOAD_COUNT</name></member>
     <member refid="db/d16/config_8h_1a8a15671af4eeaeb8258d32ed08d95d49" kind="define"><name>REG_SONICATOR_4_OVERLOAD_COUNT</name></member>
   </compound>
+  <compound refid="d5/d11/multi__sonicator_8h" kind="file"><name>multi_sonicator.h</name>
+    <member refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398" kind="enum"><name>master_state_t</name></member>
+    <member refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398a4f77d0a956ce1cd48e8213f7202979e4" kind="enumvalue"><name>MASTER_STATE_IDLE</name></member>
+    <member refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398afd5843c80f602ed57ea84fa7f77b6d92" kind="enumvalue"><name>MASTER_STATE_COORDINATED_START</name></member>
+    <member refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398af64482b47693f4449a9b174c7beef1b4" kind="enumvalue"><name>MASTER_STATE_RUNNING</name></member>
+    <member refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398a790c33f92f35b1a7eee14f38474e79f7" kind="enumvalue"><name>MASTER_STATE_EMERGENCY_STOP</name></member>
+    <member refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398a39dc65b2e4486769f20f30adb7392bfa" kind="enumvalue"><name>MASTER_STATE_FAULT_ISOLATION</name></member>
+    <member refid="d5/d11/multi__sonicator_8h_1a060568980bb741acf21a23a285d0589e" kind="function"><name>multi_sonicator_begin</name></member>
+    <member refid="d5/d11/multi__sonicator_8h_1aab1152cce0dec605b2fcead87d278c53" kind="function"><name>multi_sonicator_request_coordinated_start</name></member>
+    <member refid="d5/d11/multi__sonicator_8h_1a567f0e25f4d4739b894bc96c6326f2d2" kind="function"><name>multi_sonicator_emergency_stop</name></member>
+    <member refid="d5/d11/multi__sonicator_8h_1ab27d110fab9d852323dfad0e2d9e8e7f" kind="function"><name>multi_sonicator_update</name></member>
+    <member refid="d5/d11/multi__sonicator_8h_1a6f2a01048fa73aa4a239fdd978a6c4cb" kind="function"><name>multi_sonicator_get_status</name></member>
+  </compound>
   <compound refid="d6/d4f/register__map_8h" kind="file"><name>register_map.h</name>
     <member refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726" kind="enum"><name>register_address_t</name></member>
     <member refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a393a07480d822d7e5511f3925ba418c6" kind="enumvalue"><name>REG_SYSTEM_STATUS</name></member>
@@ -907,6 +927,14 @@
     <member refid="d4/d9a/modbus__registers_8h_1a49d5030e372b350d95c6a27f6a31e20a" kind="define"><name>SONICATOR_REG_ADDR</name></member>
     <member refid="d4/d9a/modbus__registers_8h_1ae1a92d0edd2471906be4fdf387b1e263" kind="define"><name>IS_VALID_REGISTER_ADDR</name></member>
     <member refid="d4/d9a/modbus__registers_8h_1a3c9869c3729bb4947e12e4b5ce5a3a7e" kind="define"><name>IS_READONLY_REGISTER</name></member>
+  </compound>
+  <compound refid="d6/dab/multi__sonicator_8cpp" kind="file"><name>multi_sonicator.cpp</name>
+    <member refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kind="variable"><name>g_multi</name></member>
+    <member refid="d6/dab/multi__sonicator_8cpp_1a060568980bb741acf21a23a285d0589e" kind="function"><name>multi_sonicator_begin</name></member>
+    <member refid="d6/dab/multi__sonicator_8cpp_1aab1152cce0dec605b2fcead87d278c53" kind="function"><name>multi_sonicator_request_coordinated_start</name></member>
+    <member refid="d6/dab/multi__sonicator_8cpp_1a567f0e25f4d4739b894bc96c6326f2d2" kind="function"><name>multi_sonicator_emergency_stop</name></member>
+    <member refid="d6/dab/multi__sonicator_8cpp_1ab27d110fab9d852323dfad0e2d9e8e7f" kind="function"><name>multi_sonicator_update</name></member>
+    <member refid="d6/dab/multi__sonicator_8cpp_1a6f2a01048fa73aa4a239fdd978a6c4cb" kind="function"><name>multi_sonicator_get_status</name></member>
   </compound>
   <compound refid="d2/db9/sonicator_8cpp" kind="file"><name>sonicator.cpp</name>
     <member refid="d2/db9/sonicator_8cpp_1a0b7077f739992ab6c25eb7d02c0899c6" kind="define"><name>SONICATOR_SIMULATION_MODE</name></member>

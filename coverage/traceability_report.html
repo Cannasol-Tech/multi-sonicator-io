@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Testing Framework Traceability Report - Multi-Sonicator I/O Controller</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { background: #f0f0f0; padding: 20px; border-radius: 5px; }
+        .section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .metrics { display: flex; gap: 20px; }
+        .metric { flex: 1; text-align: center; padding: 10px; background: #f9f9f9; border-radius: 5px; }
+        .pass { background: #d4edda; }
+        .fail { background: #f8d7da; }
+        .warning { background: #fff3cd; }
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Testing Framework Traceability Report</h1>
+        <p>Multi-Sonicator I/O Controller - Generated: 2025-09-05T16:09:55.160790</p>
+        <p>Overall Status: ✅ ROBUST</p>
+    </div>
+    
+    <div class="metrics">
+        <div class="metric pass">
+            <h3>Unit Test Coverage</h3>
+            <p>97.1%</p>
+            <p>✅ PASS</p>
+        </div>
+        <div class="metric">
+            <h3>Acceptance Scenarios</h3>
+            <p>125</p>
+            <p>BDD Test Cases</p>
+        </div>
+        <div class="metric">
+            <h3>Requirements Coverage</h3>
+            <p>6/6</p>
+            <p>100.0%</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Traceability Matrix</h2>
+        <table>
+            <tr>
+                <th>Requirement ID</th>
+                <th>Description</th>
+                <th>Unit Tests</th>
+                <th>Acceptance Tests</th>
+                <th>Test Files</th>
+            </tr>
+
+            <tr>
+                <td>REQ-001</td>
+                <td>GPIO pin control and monitoring</td>
+                <td>✅</td>
+                <td>✅</td>
+                <td>hil_gpio_functionality.feature</td>
+            </tr>
+
+            <tr>
+                <td>REQ-002</td>
+                <td>ADC voltage measurement accuracy</td>
+                <td>✅</td>
+                <td>✅</td>
+                <td>hil_adc_verification.feature</td>
+            </tr>
+
+            <tr>
+                <td>REQ-003</td>
+                <td>PWM signal generation</td>
+                <td>✅</td>
+                <td>✅</td>
+                <td>hil_pwm_generation.feature</td>
+            </tr>
+
+            <tr>
+                <td>REQ-004</td>
+                <td>MODBUS RTU communication protocol</td>
+                <td>✅</td>
+                <td>✅</td>
+                <td>hil_modbus_communication.feature, modbus.feature</td>
+            </tr>
+
+            <tr>
+                <td>REQ-005</td>
+                <td>Power supply monitoring and safety</td>
+                <td>✅</td>
+                <td>✅</td>
+                <td>hil_power_verification.feature</td>
+            </tr>
+
+            <tr>
+                <td>REQ-006</td>
+                <td>Sonicator control and feedback</td>
+                <td>✅</td>
+                <td>✅</td>
+                <td>sonicator.feature, control.feature</td>
+            </tr>
+
+        </table>
+    </div>
+</body>
+</html>

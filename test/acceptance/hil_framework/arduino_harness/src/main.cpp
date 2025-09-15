@@ -185,6 +185,18 @@ void processCommand(String command) {
     else if (cmd == "MODBUS_SET_BAUD") {
         handleModbusSetBaud(args);
     }
+    else if (cmd == "SET START_INHIBIT") {
+        // Args: <unit> <0|1>
+        int spaceIndex = args.indexOf(' ');
+        if (spaceIndex == -1) {
+            Serial.println(F("ERROR: SET START_INHIBIT requires unit and value"));
+            return;
+        }
+        int unit = args.substring(0, spaceIndex).toInt();
+        int val = args.substring(spaceIndex + 1).toInt();
+        atmega.setStartInhibit((uint8_t)unit, val != 0);
+        Serial.println(F("OK"));
+    }
     else {
         Serial.println("ERROR: Unknown command '" + cmd + "'. Type HELP for available commands.");
     }
@@ -213,6 +225,7 @@ void printHelp() {
     Serial.println("  STATUS_ALL              - Get all pin status");
     Serial.println("  MODBUS_READ <addr>      - Read MODBUS register");
     Serial.println("  MODBUS_WRITE <addr> <val> - Write MODBUS register");
+    Serial.println("  SET START_INHIBIT <unit> <0|1> - Test-control: inhibit start for unit (1..4)");
     Serial.println("  HELP                    - Show this help");
 }
 

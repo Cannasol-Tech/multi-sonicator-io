@@ -87,23 +87,23 @@ Feature: Multi-Unit State Management (Story 4.1)
     Then the write is rejected or the register value is clamped per spec
 
     Examples:
-      | addr | value |
-      | 276  | 2     |   # 0x0114 Unit1 PREV_STATE
-      | 277  | 80    |   # 0x0115 Unit1 PERSISTED_AMPLITUDE
-      | 278  | 1     |   # 0x0116 Unit1 LAST_FAULT_CODE
-      | 279  | 1234  |   # 0x0117 Unit1 LAST_STATE_TIMESTAMP_LO
-      | 308  | 2     |   # 0x0134 Unit2 PREV_STATE
-      | 309  | 70    |   # 0x0135 Unit2 PERSISTED_AMPLITUDE
-      | 310  | 0     |   # 0x0136 Unit2 LAST_FAULT_CODE
-      | 311  | 5678  |   # 0x0137 Unit2 LAST_STATE_TIMESTAMP_LO
-      | 340  | 2     |   # 0x0154 Unit3 PREV_STATE
-      | 341  | 60    |   # 0x0155 Unit3 PERSISTED_AMPLITUDE
-      | 342  | 0     |   # 0x0156 Unit3 LAST_FAULT_CODE
-      | 343  | 42    |   # 0x0157 Unit3 LAST_STATE_TIMESTAMP_LO
-      | 372  | 2     |   # 0x0174 Unit4 PREV_STATE
-      | 373  | 50    |   # 0x0175 Unit4 PERSISTED_AMPLITUDE
-      | 374  | 0     |   # 0x0176 Unit4 LAST_FAULT_CODE
-      | 375  | 9999  |   # 0x0177 Unit4 LAST_STATE_TIMESTAMP_LO
+      | addr | value | note                              |
+      | 276  | 2     | 0x0114 Unit1 PREV_STATE           |
+      | 277  | 80    | 0x0115 Unit1 PERSISTED_AMPLITUDE  |
+      | 278  | 1     | 0x0116 Unit1 LAST_FAULT_CODE      |
+      | 279  | 1234  | 0x0117 Unit1 LAST_STATE_TIMESTAMP_LO |
+      | 308  | 2     | 0x0134 Unit2 PREV_STATE           |
+      | 309  | 70    | 0x0135 Unit2 PERSISTED_AMPLITUDE  |
+      | 310  | 0     | 0x0136 Unit2 LAST_FAULT_CODE      |
+      | 311  | 5678  | 0x0137 Unit2 LAST_STATE_TIMESTAMP_LO |
+      | 340  | 2     | 0x0154 Unit3 PREV_STATE           |
+      | 341  | 60    | 0x0155 Unit3 PERSISTED_AMPLITUDE  |
+      | 342  | 0     | 0x0156 Unit3 LAST_FAULT_CODE      |
+      | 343  | 42    | 0x0157 Unit3 LAST_STATE_TIMESTAMP_LO |
+      | 372  | 2     | 0x0174 Unit4 PREV_STATE           |
+      | 373  | 50    | 0x0175 Unit4 PERSISTED_AMPLITUDE  |
+      | 374  | 0     | 0x0176 Unit4 LAST_FAULT_CODE      |
+      | 375  | 9999  | 0x0177 Unit4 LAST_STATE_TIMESTAMP_LO |
 
   @ac-11 @trace:S-4.1 @modbus
   Scenario Outline: Address mapping for previous-state per-unit registers
@@ -185,12 +185,13 @@ Feature: Multi-Unit State Management (Story 4.1)
     And units 2 and 4 should be in "STOPPED" state
 
   @ac-4 @trace:S-4.1 @conflict
-  Scenario: Concurrent stop command during coordinated start is rejected
+  Scenario: Per-unit abort during coordinated start is allowed
     Given all units are in normal operating condition
     When a coordinated start is requested for units 1-4
     And a stop command is issued for unit 1 during coordination
-    Then the master should reject unsafe transitions
-    And within 100 ms all units 1-4 should be in "RUNNING" state
+    Then unit 1 should transition to "STOPPED" within 100 ms
+    And units 2,3,4 should transition to "RUNNING" within 100 ms
+    And the master coordination state should be RUNNING
 
   @ac-4 @trace:S-4.1 @conflict @fault-gating
   Scenario: Faulted unit blocks coordinated start per safety policy
@@ -213,3 +214,49 @@ Feature: Multi-Unit State Management (Story 4.1)
     When a coordinated stop is requested for units 1-4
     Then within 100 ms the system count should be 0
     And all units should be in stopped state
+
+  @ac-15 @trace:S-4.1 @pending
+  Scenario Outline: Start-timeout error path when start is inhibited
+    Given start is inhibited for unit <unit>
+    When a coordinated start is requested for units 1-4
+    Then unit <unit> should enter an error state within 500 ms
+    And units <others> should transition to "RUNNING" within 200 ms
+    And the master coordination state should be RUNNING
+
+    Examples:
+      | unit | others |
+      | 1    | 2,3,4 |
+      | 2    | 1,3,4 |
+      | 3    | 1,2,4 |
+      | 4    | 1,2,3 |
+
+  @ac-12 @trace:S-4.1
+  Scenario: Per-unit STOP aborts in-flight START for that unit
+    Given unit 1 has a START in progress
+    When a stop command is issued for unit 1
+    Then unit 1 should transition to "STOPPED" within 100 ms
+    And other units should remain unaffected
+
+  @ac-12 @trace:S-4.1
+  Scenario: Per-unit START aborts in-flight STOP for that unit
+    Given unit 3 has a STOP in progress
+    When a start command is issued for unit 3
+    Then unit 3 should transition to "RUNNING" within 100 ms
+    And other units should remain unaffected
+
+  @ac-13 @trace:S-4.1 @pending @fault
+  Scenario: Partial success on coordinated start with one unit failing
+    Given unit 4 overload input is set to 1
+    When a coordinated start is requested for units 1-4
+    Then within 100 ms units 1,2,3 should be in "RUNNING" state
+    And unit 4 should enter an error state within 100 ms
+    And the master coordination state should be RUNNING
+
+  @ac-14 @trace:S-4.1
+  Scenario: Per-unit abort during coordinated stop is allowed
+    Given units 1-4 are RUNNING under coordinated control
+    And a coordinated stop is requested for units 1-4
+    When a start command is issued for unit 2 during coordination
+    Then unit 2 should transition to "RUNNING" within 100 ms
+    And units 1,3,4 should transition to "STOPPED" within 100 ms
+    And the master coordination state should be RUNNING

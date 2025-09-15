@@ -42,6 +42,8 @@ extern "C" {
 #define MODBUS_REG_GLOBAL_ENABLE        0x0010  //< Global system enable
 #define MODBUS_REG_EMERGENCY_STOP       0x0011  //< Emergency stop command
 #define MODBUS_REG_SYSTEM_RESET         0x0012  //< System reset command
+// Test-control and diagnostics (Read/Write) — reserved addresses
+#define MODBUS_REG_TEST_START_INHIBIT   0x0013  //< Bitmask (b0..b3) inhibit per-unit start (test-only)
 
 // Per-Sonicator Register Base Addresses
 #define MODBUS_REG_SONICATOR_BASE       0x0100  //< Base address for sonicator registers
@@ -105,6 +107,7 @@ typedef struct {
     uint16_t global_enable;        //< 0x0010: Global system enable
     uint16_t emergency_stop;       //< 0x0011: Emergency stop command
     uint16_t system_reset;         //< 0x0012: System reset command
+    uint16_t test_start_inhibit_mask; //< 0x0013: Per-unit start inhibit mask (test-only)
     uint16_t reserved[13];         //< 0x0013-0x001F: Reserved for future use
 } global_control_registers_t;
 

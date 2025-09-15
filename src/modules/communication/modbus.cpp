@@ -13,6 +13,7 @@
 
 #include "modbus.h"
 #include "modbus_registers.h"
+#include "multi_sonicator.h"
 #ifdef UNIT_TEST
 #include <iostream>
 #include <cstring>
@@ -316,6 +317,15 @@ static bool modbus_write_register_internal(uint16_t address, uint16_t value) {
                     }
                 }
                 break;
+            case MODBUS_REG_TEST_START_INHIBIT: {
+                // Apply per-unit start inhibit based on bitmask b0..b3
+                uint16_t mask = value & 0x000F;
+                for (uint8_t i = 0; i < 4; ++i) {
+                    bool inhibit = ((mask >> i) & 0x1u) != 0u;
+                    multi_sonicator_set_start_inhibit(i, inhibit);
+                }
+                break;
+            }
         }
         
         return true;

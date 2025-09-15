@@ -28,6 +28,7 @@ var hierarchy =
     [ "modbus_frame_t", "db/dc0/structmodbus__frame__t.html", null ],
     [ "modbus_register_map_t", "d5/d1a/structmodbus__register__map__t.html", null ],
     [ "modbus_statistics_t", "d3/d0c/structmodbus__statistics__t.html", null ],
+    [ "multi_status_t", "db/d86/structmulti__status__t.html", null ],
     [ "safety_event_log_t", "dc/d5b/structsafety__event__log__t.html", null ],
     [ "sonicator_control_t", "d7/dd6/structsonicator__control__t.html", null ],
     [ "sonicator_hardware_config_t", "d2/d25/structsonicator__hardware__config__t.html", null ],

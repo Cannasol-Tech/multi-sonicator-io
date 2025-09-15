@@ -88,7 +88,7 @@ This project follows Agile Flow company standards. Standards are automatically s
 
 - **[Coding Style Standards](docs/sop/coding-style.md)** - Code formatting and quality guidelines
 - **[Project Structure Standards](docs/sop/project-structure.md)** - Directory organization and file placement
-- **[Software Testing Standards](docs/sop/sw-testing-standard.md)** - Testing methodology and requirements
+- **[Software Testing Standards](docs/sop/sw-testing.md)** - Testing methodology and requirements
 
 **Standards Management:**
 

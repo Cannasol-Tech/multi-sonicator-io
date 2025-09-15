@@ -174,7 +174,10 @@ bool register_manager_validate_value(uint16_t address, uint16_t value) {
             case MODBUS_REG_SYSTEM_RESET:
                 // Control commands must be 0 or 1
                 return (value <= 1);
-                
+            case MODBUS_REG_TEST_START_INHIBIT:
+                // Bitmask b0..b3 only
+                return (value <= 0x000F);
+            
             default:
                 return true;
         }

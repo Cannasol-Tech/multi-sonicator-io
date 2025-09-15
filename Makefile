@@ -10,7 +10,7 @@
 .PHONY: test-unit-communication test-unit-hal test-unit-control test-unit-sonicator validate-config generate-traceability-report manage-pending-scenarios update-pending-scenarios ci-local
 .PHONY: web-ui-install web-ui-dev web-ui-build web-ui-sandbox web-ui-test web-ui-clean web-ui-stop
 .PHONY: web-ui-docker-build web-ui-docker-dev web-ui-docker-prod web-ui-docker-stop web-ui-docker-clean
-.PHONY: validate-traceability check-compliance update-standards sync-standards check-standards generate-executive-report generate-coverage-report generate-complete-executive-report coverage
+.PHONY: validate-traceability check-compliance update-standards sync-standards check-standards generate-executive-report generate-coverage-report generate-complete-executive-report coverage update-tools install-tools check-tools run-tool
 .PHONY: validate-dod check-dod-compliance enforce-dod-gate validate-story-completion
 
 #  Make Targets
@@ -46,6 +46,7 @@ install-deps: update-standards
 	@echo "📦 Installing dependencies in virtual environment..."
 	@web-ui/venv/bin/python -m pip install --upgrade pip
 	@web-ui/venv/bin/python -m pip install -r config/requirements-testing.txt
+	@web-ui/venv/bin/python -m pip install -r config/tools-requirements.txt
 	@echo "✅ Python dependencies installed in virtual environment"
 
 # Check and install dependencies if needed
@@ -55,10 +56,13 @@ check-deps:
 		echo "⚠️  Python venv missing; creating local virtualenv at web-ui/venv"; \
 		python3 -m venv web-ui/venv >/dev/null 2>&1 || true; \
 	fi
-	@$(PYTHON_VENV) -c "import behave, serial, pytest" 2>/dev/null && echo "✅ All Python dependencies available" || \
-		( echo "⚠️  Python test deps missing; installing in virtualenv"; \
+	@$(PYTHON_VENV) -c "import behave, serial, pytest, yaml" 2>/dev/null && echo "✅ All Python dependencies available" || \
+		( echo "⚠️  Python test deps missing; installing all dependencies in virtualenv"; \
+		  $(PYTHON_VENV_PIP) install --upgrade pip >/dev/null 2>&1 || true; \
 		  $(PYTHON_VENV_PIP) install -r config/requirements-testing.txt >/dev/null 2>&1 || true; \
-		  echo "ℹ️  Dependencies installed in virtual environment (PEP 668 safe)." )
+		  $(PYTHON_VENV_PIP) install -r config/tools-requirements.txt >/dev/null 2>&1 || true; \
+		  echo "ℹ️  All dependencies installed in virtual environment (PEP 668 safe)." )
+
 
 # Check and install PlatformIO if needed
 check-pio:
@@ -72,17 +76,33 @@ check-arduino-cli:
 	@which arduino-cli >/dev/null 2>&1 || (echo "⚠️ Arduino CLI not found. Install with: brew install arduino-cli (macOS) or see https://arduino.github.io/arduino-cli/")
 	@echo "✅ Arduino CLI check complete"
 
+# Check and install npm/Node.js if needed (for Web UI)
+check-npm:
+	@echo "🔍 Checking npm/Node.js..."
+	@which npm >/dev/null 2>&1 || (echo "📦 Installing Node.js and npm..." && \
+		if command -v brew >/dev/null 2>&1; then \
+			brew install node; \
+		elif command -v apt-get >/dev/null 2>&1; then \
+			curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && sudo apt-get install -y nodejs; \
+		elif command -v yum >/dev/null 2>&1; then \
+			curl -fsSL https://rpm.nodesource.com/setup_lts.x | sudo bash - && sudo yum install -y nodejs; \
+		else \
+			echo "❌ Unable to auto-install Node.js. Please install manually from https://nodejs.org/"; \
+			exit 1; \
+		fi)
+	@echo "✅ npm/Node.js available"
+
 ## Firmware Related Make Targets (Arduino Framework)
 
-build:
+build: check-pio
 	# Build ATmega32A firmware using Arduino Framework via PlatformIO
 	pio run -e atmega32a
 
-clean:
+clean: check-pio
 	# Clean Arduino Framework build artifacts
 	pio run --target clean
 
-upload:
+upload: check-pio
 	# Upload Arduino Framework firmware to ATmega32A via Arduino as ISP
 	@echo "🔧 Setting up Arduino as ISP (auto-upload if needed)..."
 	@python3 scripts/setup_arduino_isp.py || (echo "❌ Failed to setup Arduino as ISP" && exit 1)
@@ -90,7 +110,7 @@ upload:
 	@echo "📤 Uploading firmware to ATmega32A..."
 	pio run -e atmega32a --target upload
 
-monitor-device:
+monitor-device: check-deps
 	# Monitor serial output from Arduino Test Harness
 	python3 scripts/hil_cli.py monitor
 
@@ -102,15 +122,15 @@ upload-to-device:
 	@echo "📤 Uploading firmware via HIL CLI..."
 	python3 scripts/hil_cli.py upload
 
-upload-harness:
+upload-harness: check-pio
 	# Upload Arduino Test Harness firmware to Arduino
 	cd test/acceptance/arduino_harness && pio run --target upload
 
-setup-arduino-isp:
+setup-arduino-isp: check-deps
 	# Setup Arduino as ISP (auto-upload ArduinoISP sketch if needed)
 	$(PYTHON_VENV) scripts/setup_arduino_isp.py
 
-check-arduino-isp:
+check-arduino-isp: check-deps
 	# Check if Arduino as ISP is ready (no upload)
 	$(PYTHON_VENV) scripts/setup_arduino_isp.py --check-only
 
@@ -165,7 +185,7 @@ test: check-deps check-pio validate-config test-unit test-acceptance test-integr
 # Configuration validation target
 validate-config: check-deps
 	@echo "🔍 Validating HIL configuration integrity..."
-	@python3 scripts/validate_hil_config.py
+	@web-ui/venv/bin/python scripts/validate_hil_config.py
 	@echo "✅ Configuration validation complete"
 
 # Generate comprehensive traceability and coverage reports
@@ -230,26 +250,26 @@ ci-local: check-deps
 
 # Three-stage testing per software testing standard
 test-unit: check-deps check-pio
-		@echo "Stage 1: Unit Testing (Unity Native Environment for embedded C/C++ with 85% coverage)..."
+	@echo "Stage 1: Unit Testing (Unity Native Environment for embedded C/C++ with 85% coverage)..."
 	@echo "🧪 Running comprehensive Unity test suite with coverage reporting..."
-	@echo "⚠️  Network connectivity issues - using existing coverage data for CI pipeline demonstration"
+	@python3 scripts/unity_coverage_runner.py
 	@echo "📊 Coverage reports available in coverage/ directory"
 	@echo "✅ Unity native unit tests completed with coverage analysis"
 
 # Individual module testing targets
-test-unit-communication: check-deps
+test-unit-communication: check-deps check-pio
 	@echo "🧪 Running communication module unit tests..."
 	@python3 scripts/unity_coverage_runner.py --module communication
 
-test-unit-hal: check-deps
+test-unit-hal: check-deps check-pio
 	@echo "🧪 Running HAL module unit tests..."
 	@python3 scripts/unity_coverage_runner.py --module hal
 
-test-unit-control: check-deps
+test-unit-control: check-deps check-pio
 	@echo "🧪 Running control module unit tests..."
 	@python3 scripts/unity_coverage_runner.py --module control
 
-test-unit-sonicator: check-deps
+test-unit-sonicator: check-deps check-pio
 	@echo "🧪 Running sonicator module unit tests..."
 	@python3 scripts/unity_coverage_runner.py --module sonicator
 test-acceptance: check-deps check-pio check-arduino-cli
@@ -332,6 +352,26 @@ acceptance-test-modbus: check-deps check-arduino-cli
 acceptance-test-power: check-deps check-arduino-cli
 	@echo "⚡ Running acceptance power verification tests..."
 	PYTHONPATH=. $(PYTHON_VENV) -m behave test/acceptance/features/hil_power_verification.feature -D profile=hil
+
+# Quick hardware timing validation (Emergency Stop <= 100ms)
+test-hil-timing: check-deps check-arduino-cli check-pio
+	@echo "⏱  Running emergency-stop timing validation (requires Arduino Test Wrapper)..."
+	@if [ -n "$(ARDUINO_PORT)" ]; then \
+		PYTHONPATH=. $(PYTHON_VENV) test/hil/run_emergency_stop_timing.py --port "$(ARDUINO_PORT)" || exit $$?; \
+	else \
+		PYTHONPATH=. $(PYTHON_VENV) test/hil/run_emergency_stop_timing.py || exit $$?; \
+	fi
+	@echo "✅ Timing validation complete"
+
+# ISP programming smoke test (Arduino as ISP → ATmega32A)
+isp-smoke-test: check-deps check-arduino-cli check-pio
+	@echo "🔌 Running ISP programming smoke test (non-interactive)..."
+	@if [ -n "$(ARDUINO_PORT)" ]; then \
+		PYTHONPATH=. $(PYTHON_VENV) test/hil/isp_smoke_test.py --port "$(ARDUINO_PORT)" --non-interactive || exit $$?; \
+	else \
+		PYTHONPATH=. $(PYTHON_VENV) test/hil/isp_smoke_test.py --non-interactive || exit $$?; \
+	fi
+	@echo "✅ ISP smoke test complete"
 
 generate-release-artifacts: check-deps
 	@echo "Generating release format compliant artifacts..."
@@ -447,17 +487,22 @@ web-ui-sandbox: check-deps check-pio check-arduino-cli
 	@echo "🧪 Starting Web UI in sandbox mode..."
 	@echo ""
 	@echo "Step 1: Setting up Arduino as ISP (auto-upload if needed)..."
-	@python3 scripts/setup_arduino_isp.py || (echo "❌ Failed to setup Arduino as ISP" && exit 1)
+	@ARDUINO_PORT=$$(python3 scripts/setup_arduino_isp.py --get-port 2>/dev/null || python3 scripts/detect_hardware.py --check-arduino 2>&1 | grep "Found Arduino" | sed 's/.*Found Arduino programmer: //' || echo "/dev/cu.usbmodem2101"); \
+	echo "Detected Arduino port: $$ARDUINO_PORT"; \
+	export ARDUINO_PORT=$$ARDUINO_PORT; \
+	python3 scripts/setup_arduino_isp.py || (echo "❌ Failed to setup Arduino as ISP" && exit 1)
 	@echo "✅ Arduino as ISP is ready"
 
 	@echo ""
 	@echo "Step 2: Building latest production firmware..."
-	@pio run -e atmega32a || (echo "❌ Firmware build failed" && exit 1)
+	@export ARDUINO_PORT=$$ARDUINO_PORT; \
+	pio run -e atmega32a || (echo "❌ Firmware build failed" && exit 1)
 	@echo "✅ Production firmware build successful"
 
 	@echo ""
 	@echo "Step 3: Programming ATmega32A target via Arduino as ISP..."
-	@pio run -e atmega32a -t upload || (echo "❌ ATmega32A programming failed" && exit 1)
+	@export ARDUINO_PORT=$$ARDUINO_PORT; \
+	pio run -e atmega32a -t upload || (echo "❌ ATmega32A programming failed" && exit 1)
 	@echo "✅ ATmega32A programmed successfully"
 
 	@echo ""
@@ -651,6 +696,39 @@ sync-standards: update-standards
 # Check if standards are up to date
 check-standards:
 	@python3 scripts/sync_company_standards.py --check-only
+
+## Development Tools Management
+
+# Update development tools to latest versions
+update-tools: check-deps
+	@echo "🔄 Updating development tools..."
+	@$(PYTHON_VENV_PIP) install --upgrade -r config/tools-requirements.txt
+	@echo "✅ Development tools updated"
+	@echo "ℹ️ Remember to activate the virtual environment with: source web-ui/venv/bin/activate"
+
+# Install development tools
+install-tools: check-deps
+	@echo "📦 Installing development tools..."
+	@$(PYTHON_VENV_PIP) install -r config/tools-requirements.txt
+	@echo "✅ Development tools installed"
+	@echo "ℹ️ Remember to activate the virtual environment with: source web-ui/venv/bin/activate"
+
+# Check development tools installation
+check-tools: check-deps
+	@echo "🔍 Checking development tools..."
+	@$(PYTHON_VENV) -c "import gemini" 2>/dev/null && \
+	echo "✅ All development tools available" || \
+	( echo "⚠️ Some development tools missing; installing..." && \
+	  make install-tools )
+
+# Run a development tool command within the virtual environment
+run-tool: check-tools
+	@if [ -z "$(TOOL)" ]; then \
+		echo "❌ ERROR: TOOL parameter required. Usage: make run-tool TOOL=gemini-cli"; \
+		exit 1; \
+	fi
+	@echo "🔧 Running $(TOOL) in virtual environment..."
+	@web-ui/venv/bin/$(TOOL) $(ARGS)
 
 ## CI/CD Pipeline Artifact Management
 upload-artifacts: check-deps
@@ -850,16 +928,28 @@ update-project-board:
 ## =============================================================================
 ## DOCUMENTATION BUILD TARGETS
 ## =============================================================================
-.PHONY: check-doxygen docs-firmware docs-web-backend docs-web-frontend docs-all
+.PHONY: docs-all check-doxygen docs-firmware docs-web-backend docs-web-frontend docs-all
 
 # Ensure Doxygen is available and give installation guidance if missing
 check-doxygen:
-	@which doxygen >/dev/null 2>&1 || { \
-	  echo "❌ Doxygen not found on PATH."; \
-	  echo "👉 Install on macOS with: brew install doxygen graphviz"; \
-	  echo "   Or download from: https://www.doxygen.nl/download.html"; \
-	  exit 1; \
-	}
+	@echo "🔍 Checking Doxygen..."
+	@which doxygen >/dev/null 2>&1 || ( \
+		echo "⚠️ Doxygen not found. Installing..."; \
+		if command -v brew >/dev/null 2>&1; then \
+			brew install doxygen graphviz; \
+		elif command -v apt-get >/dev/null 2>&1; then \
+			sudo apt-get update && sudo apt-get install -y doxygen graphviz; \
+		elif command -v yum >/dev/null 2>&1; then \
+			sudo yum install -y doxygen graphviz; \
+		else \
+			echo "❌ Unable to auto-install. Please install manually:"; \
+			echo "   macOS: brew install doxygen graphviz"; \
+			echo "   Ubuntu/Debian: sudo apt-get install doxygen graphviz"; \
+			echo "   Or download from: https://www.doxygen.nl/download.html"; \
+			exit 1; \
+		fi \
+	)
+	@echo "✅ Doxygen available"
 
 # Build firmware docs with Doxygen
 docs-firmware: check-doxygen
@@ -868,24 +958,23 @@ docs-firmware: check-doxygen
 	@echo "✅ Firmware docs built in docs/site/firmware"
 
 # Build backend docs with TypeDoc
-docs-web-backend:
+docs-web-backend: check-doxygen
 	@echo "📚 Building web-ui backend documentation (TypeDoc)..."
 	@cd web-ui/backend && npx --yes typedoc
 	@echo "✅ Backend docs built in docs/site/web/backend"
 
 # Build frontend docs with TypeDoc
-docs-web-frontend:
+docs-web-frontend: check-doxygen
 	@echo "📚 Building web-ui frontend documentation (TypeDoc)..."
 	@cd web-ui/frontend && npx --yes typedoc
 	@echo "✅ Frontend docs built in docs/site/web/frontend"
 
 # Build all docs
-docs-all: docs-firmware docs-web-backend docs-web-frontend
+docs-all: check-doxygen docs-firmware docs-web-backend docs-web-frontend
 	@echo "🎉 All documentation generated under docs/site/"
 
 # Compute documentation coverage and enforce no-drop against baseline
-.PHONY: doc-coverage
-doc-coverage:
+doc-coverage: check-doxygen
 	@echo "📊 Checking documentation coverage (no drop gate)..."
 	@python3 scripts/doc_coverage_check.py \
 		--baseline docs/coverage/doc_coverage_baseline.json \

@@ -256,7 +256,7 @@ def validate_standards_files():
     key_files = [
         'project-structure.md',
         'coding-style.md', 
-        'sw-testing-standard.md'
+        'sw-testing.md'
     ]
     
     violations = []

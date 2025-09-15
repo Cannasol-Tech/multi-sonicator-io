@@ -1,0 +1,1302 @@
+{
+  "timestamp": "2025-09-05T16:09:55.160790",
+  "project": "Multi-Sonicator I/O Controller",
+  "version": "1.0.0",
+  "unit_testing": {
+    "framework": "Unity Test Framework",
+    "environment": "Native C/C++",
+    "coverage_data": {
+      "timestamp": "2025-09-05T16:07:47.263634",
+      "modules": {
+        "communication": {
+          "lines_covered": 110,
+          "lines_total": 125,
+          "coverage_percentage": 88.0
+        },
+        "hal": {
+          "lines_covered": 97,
+          "lines_total": 97,
+          "coverage_percentage": 100.0
+        },
+        "control": {
+          "lines_covered": 129,
+          "lines_total": 129,
+          "coverage_percentage": 100.0
+        },
+        "sonicator": {
+          "lines_covered": 166,
+          "lines_total": 166,
+          "coverage_percentage": 100.0
+        }
+      },
+      "overall": {
+        "lines_covered": 502,
+        "lines_total": 517,
+        "coverage_percentage": 97.1,
+        "meets_requirement": false
+      }
+    },
+    "meets_requirement": true,
+    "requirement": "\u226590% code coverage"
+  },
+  "acceptance_testing": {
+    "framework": "Behave BDD",
+    "environment": "Hardware-in-the-Loop (HIL)",
+    "total_features": 28,
+    "total_scenarios": 125,
+    "tagged_scenarios": {
+      "hil": 46,
+      "smoke": 0,
+      "pending": 17
+    },
+    "features": [
+      {
+        "name": "Control functions via MODBUS",
+        "file": "control.feature",
+        "scenarios": [
+          {
+            "name": "SC-001 Amplitude control per unit",
+            "tags": [
+              "pending",
+              "req-startstop",
+              "prd-5-functional",
+              "prd-10-api",
+              "reg-40005-40008",
+              "simulavr",
+              "hil"
+            ]
+          },
+          {
+            "name": "SC-002 Start/Stop per unit",
+            "tags": [
+              "pending",
+              "req-overload-reset",
+              "prd-5-functional",
+              "prd-10-api",
+              "reg-40009-40012",
+              "simulavr",
+              "hil"
+            ]
+          },
+          {
+            "name": "SC-003 Overload Reset pulse semantics",
+            "tags": [
+              "pending",
+              "req-amplitude-clamp",
+              "prd-6-nfr",
+              "reg-40001-40004",
+              "simulavr",
+              "hil"
+            ]
+          }
+        ],
+        "scenario_count": 3
+      },
+      {
+        "name": "CI drift checks",
+        "file": "ci.feature",
+        "scenarios": [
+          {
+            "name": "SC-025 CI drift check: PRD vs include/config.h",
+            "tags": []
+          }
+        ],
+        "scenario_count": 1
+      },
+      {
+        "name": "HAL Acceptance",
+        "file": "hal.feature",
+        "scenarios": [
+          {
+            "name": "HAL basic acceptance",
+            "tags": [
+              "pending"
+            ]
+          },
+          {
+            "name": "HAL advanced acceptance (pending implementation)",
+            "tags": []
+          }
+        ],
+        "scenario_count": 2
+      },
+      {
+        "name": "ADC Hardware Verification",
+        "file": "hil_adc_verification.feature",
+        "scenarios": [
+          {
+            "name": "POWER_SENSE_4 ADC channel verification",
+            "tags": [
+              "hil",
+              "hardware",
+              "adc"
+            ]
+          },
+          {
+            "name": "POWER_SENSE_4 mid-scale verification",
+            "tags": [
+              "hil",
+              "hardware",
+              "adc"
+            ]
+          },
+          {
+            "name": "POWER_SENSE_4 full-scale verification",
+            "tags": [
+              "hil",
+              "hardware",
+              "adc"
+            ]
+          },
+          {
+            "name": "Power measurement scaling verification",
+            "tags": [
+              "hil",
+              "hardware",
+              "adc"
+            ]
+          },
+          {
+            "name": "ADC noise and stability",
+            "tags": [
+              "hil",
+              "hardware",
+              "adc"
+            ]
+          },
+          {
+            "name": "Multiple ADC channel independence",
+            "tags": []
+          }
+        ],
+        "scenario_count": 6
+      },
+      {
+        "name": "HIL Smoke Test",
+        "file": "hil_smoke.feature",
+        "scenarios": [
+          {
+            "name": "HIL-001 Wrapper responds to PING",
+            "tags": []
+          }
+        ],
+        "scenario_count": 1
+      },
+      {
+        "name": "Sonicator Acceptance",
+        "file": "sonicator.feature",
+        "scenarios": [
+          {
+            "name": "Sonicator basic acceptance",
+            "tags": [
+              "pending"
+            ]
+          },
+          {
+            "name": "Sonicator advanced acceptance (pending implementation)",
+            "tags": []
+          }
+        ],
+        "scenario_count": 2
+      },
+      {
+        "name": "Hardware Basic Connectivity",
+        "file": "hil_basic_connectivity.feature",
+        "scenarios": [
+          {
+            "name": "Power supply verification",
+            "tags": [
+              "hil",
+              "hardware",
+              "connectivity"
+            ]
+          },
+          {
+            "name": "Programming interface verification",
+            "tags": [
+              "hil",
+              "hardware",
+              "connectivity"
+            ]
+          },
+          {
+            "name": "Serial communication establishment",
+            "tags": [
+              "hil",
+              "hardware",
+              "connectivity"
+            ]
+          },
+          {
+            "name": "Arduino Test Harness ping test",
+            "tags": []
+          }
+        ],
+        "scenario_count": 4
+      },
+      {
+        "name": "Communication Acceptance",
+        "file": "communication.feature",
+        "scenarios": [
+          {
+            "name": "Communication basic acceptance",
+            "tags": []
+          }
+        ],
+        "scenario_count": 1
+      },
+      {
+        "name": "Amplitude control (common)",
+        "file": "amplitude_control.feature",
+        "scenarios": [
+          {
+            "name": "Reject out-of-range amplitude for Sonicator 4",
+            "tags": []
+          }
+        ],
+        "scenario_count": 1
+      },
+      {
+        "name": "Monitoring via MODBUS",
+        "file": "monitoring.feature",
+        "scenarios": [
+          {
+            "name": "SC-004 Power monitoring scaling",
+            "tags": [
+              "req-frequency",
+              "prd-10-api",
+              "reg-40017-40020",
+              "simulavr",
+              "hil"
+            ]
+          },
+          {
+            "name": "SC-005 Frequency monitoring",
+            "tags": [
+              "req-status-flags",
+              "prd-10-api",
+              "reg-40021-40024",
+              "simulavr",
+              "hil"
+            ]
+          },
+          {
+            "name": "SC-006 Status flags",
+            "tags": [
+              "req-runtimes",
+              "reg-40027-40030",
+              "simulavr",
+              "hil"
+            ]
+          },
+          {
+            "name": "SC-015 Per-unit runtimes",
+            "tags": [
+              "req-overload-counts",
+              "reg-40031-40034",
+              "simulavr",
+              "hil"
+            ]
+          },
+          {
+            "name": "SC-016 Overload counts",
+            "tags": [
+              "req-freq-lock",
+              "simulavr",
+              "hil"
+            ]
+          },
+          {
+            "name": "SC-019 Frequency lock behavior",
+            "tags": []
+          }
+        ],
+        "scenario_count": 6
+      },
+      {
+        "name": "Timing",
+        "file": "timing.feature",
+        "scenarios": [
+          {
+            "name": "SC-009 Latency \u2264100 ms (representative)",
+            "tags": [
+              "req-latency",
+              "simulavr",
+              "hil"
+            ]
+          },
+          {
+            "name": "SC-009B Latency matrix (overload reset, frequency)",
+            "tags": []
+          }
+        ],
+        "scenario_count": 2
+      },
+      {
+        "name": "Power Supply and Electrical Verification",
+        "file": "hil_power_verification.feature",
+        "scenarios": [
+          {
+            "name": "Input power supply verification",
+            "tags": [
+              "hil",
+              "hardware",
+              "power"
+            ]
+          },
+          {
+            "name": "Regulated power rail verification",
+            "tags": [
+              "hil",
+              "hardware",
+              "power"
+            ]
+          },
+          {
+            "name": "Power supply load regulation",
+            "tags": [
+              "hil",
+              "hardware",
+              "power"
+            ]
+          },
+          {
+            "name": "Crystal oscillator verification",
+            "tags": [
+              "hil",
+              "hardware",
+              "power"
+            ]
+          },
+          {
+            "name": "Power-on sequence verification",
+            "tags": [
+              "hil",
+              "hardware",
+              "power"
+            ]
+          },
+          {
+            "name": "Brown-out detection verification",
+            "tags": []
+          }
+        ],
+        "scenario_count": 6
+      },
+      {
+        "name": "MODBUS protocol behaviors",
+        "file": "modbus.feature",
+        "scenarios": [
+          {
+            "name": "SC-020 FC16 multiple write boundary cases",
+            "tags": [
+              "req-illegal-address",
+              "simulavr"
+            ]
+          },
+          {
+            "name": "SC-021 Illegal address handling",
+            "tags": [
+              "req-slave-id",
+              "simulavr",
+              "hil"
+            ]
+          },
+          {
+            "name": "SC-022 Slave ID configuration",
+            "tags": [
+              "req-crc",
+              "simulavr"
+            ]
+          },
+          {
+            "name": "SC-023 CRC error handling",
+            "tags": []
+          }
+        ],
+        "scenario_count": 4
+      },
+      {
+        "name": "PWM Generation Hardware Verification",
+        "file": "hil_pwm_generation.feature",
+        "scenarios": [
+          {
+            "name": "Basic PWM output generation",
+            "tags": [
+              "hil",
+              "hardware",
+              "pwm"
+            ]
+          },
+          {
+            "name": "PWM duty cycle variation",
+            "tags": [
+              "hil",
+              "hardware",
+              "pwm"
+            ]
+          },
+          {
+            "name": "PWM frequency accuracy",
+            "tags": [
+              "hil",
+              "hardware",
+              "pwm"
+            ]
+          },
+          {
+            "name": "PWM voltage levels",
+            "tags": [
+              "hil",
+              "hardware",
+              "pwm"
+            ]
+          },
+          {
+            "name": "PWM signal stability",
+            "tags": [
+              "hil",
+              "hardware",
+              "pwm"
+            ]
+          },
+          {
+            "name": "PWM disable and enable",
+            "tags": []
+          }
+        ],
+        "scenario_count": 6
+      },
+      {
+        "name": "Smoke",
+        "file": "smoke.feature",
+        "scenarios": [
+          {
+            "name": "SMK-001 Harness runs a passing step",
+            "tags": []
+          }
+        ],
+        "scenario_count": 1
+      },
+      {
+        "name": "GPIO Hardware Functionality",
+        "file": "hil_gpio_functionality.feature",
+        "scenarios": [
+          {
+            "name": "Digital output control - START_4 pin",
+            "tags": [
+              "hil",
+              "hardware",
+              "gpio"
+            ]
+          },
+          {
+            "name": "Digital output control - RESET_4 pin",
+            "tags": [
+              "hil",
+              "hardware",
+              "gpio"
+            ]
+          },
+          {
+            "name": "Digital input reading - OVERLOAD_4 pin",
+            "tags": [
+              "hil",
+              "hardware",
+              "gpio"
+            ]
+          },
+          {
+            "name": "Digital input reading - FREQ_LOCK_4 pin",
+            "tags": [
+              "hil",
+              "hardware",
+              "gpio"
+            ]
+          },
+          {
+            "name": "Pin state persistence",
+            "tags": [
+              "hil",
+              "hardware",
+              "gpio"
+            ]
+          },
+          {
+            "name": "Status LED control",
+            "tags": []
+          }
+        ],
+        "scenario_count": 6
+      },
+      {
+        "name": "Complete MODBUS Interface Testing",
+        "file": "complete_modbus_interface.feature",
+        "scenarios": [
+          {
+            "name": "Complete system status register testing",
+            "tags": [
+              "modbus",
+              "interface",
+              "critical"
+            ]
+          },
+          {
+            "name": "Global control register testing",
+            "tags": [
+              "modbus",
+              "interface",
+              "comprehensive"
+            ]
+          },
+          {
+            "name": "Complete sonicator 1 register interface testing",
+            "tags": [
+              "modbus",
+              "interface",
+              "comprehensive"
+            ]
+          },
+          {
+            "name": "Complete sonicator 2 register interface testing",
+            "tags": [
+              "modbus",
+              "interface",
+              "comprehensive"
+            ]
+          },
+          {
+            "name": "Complete sonicator 3 register interface testing",
+            "tags": [
+              "modbus",
+              "interface",
+              "comprehensive"
+            ]
+          },
+          {
+            "name": "Complete sonicator 4 register interface testing",
+            "tags": [
+              "modbus",
+              "interface",
+              "validation"
+            ]
+          },
+          {
+            "name": "MODBUS function code 03 (Read Holding Registers) testing",
+            "tags": [
+              "modbus",
+              "interface",
+              "validation"
+            ]
+          },
+          {
+            "name": "MODBUS function code 06 (Write Single Register) testing",
+            "tags": [
+              "modbus",
+              "interface",
+              "validation"
+            ]
+          },
+          {
+            "name": "MODBUS function code 16 (Write Multiple Registers) testing",
+            "tags": [
+              "modbus",
+              "interface",
+              "error-handling"
+            ]
+          },
+          {
+            "name": "MODBUS error handling and exception responses",
+            "tags": [
+              "modbus",
+              "interface",
+              "performance"
+            ]
+          },
+          {
+            "name": "MODBUS communication performance testing",
+            "tags": [
+              "modbus",
+              "interface",
+              "stress-testing"
+            ]
+          },
+          {
+            "name": "MODBUS communication stress testing",
+            "tags": [
+              "modbus",
+              "interface",
+              "legacy-compatibility"
+            ]
+          },
+          {
+            "name": "Legacy MODBUS register mapping compatibility",
+            "tags": [
+              "modbus",
+              "interface",
+              "concurrent-access"
+            ]
+          },
+          {
+            "name": "Concurrent MODBUS access testing",
+            "tags": [
+              "pending",
+              "modbus",
+              "interface",
+              "advanced-functions"
+            ]
+          },
+          {
+            "name": "Advanced MODBUS function codes",
+            "tags": []
+          }
+        ],
+        "scenario_count": 15
+      },
+      {
+        "name": "Executive reporting",
+        "file": "executive_reporting.feature",
+        "scenarios": [
+          {
+            "name": "SC-011 Executive report artifact",
+            "tags": []
+          }
+        ],
+        "scenario_count": 1
+      },
+      {
+        "name": "Regulatory Compliance and Standards Validation",
+        "file": "regulatory_compliance.feature",
+        "scenarios": [
+          {
+            "name": "FDA 21 CFR Part 11 compliance validation",
+            "tags": [
+              "compliance",
+              "regulatory",
+              "critical"
+            ]
+          },
+          {
+            "name": "ISO 9001 quality management compliance",
+            "tags": [
+              "compliance",
+              "regulatory",
+              "safety"
+            ]
+          },
+          {
+            "name": "IEC 61508 functional safety compliance",
+            "tags": [
+              "compliance",
+              "regulatory",
+              "electrical"
+            ]
+          },
+          {
+            "name": "IEC 61010 electrical safety compliance",
+            "tags": [
+              "compliance",
+              "regulatory",
+              "emc"
+            ]
+          },
+          {
+            "name": "EMC directive compliance (2014/30/EU)",
+            "tags": [
+              "compliance",
+              "regulatory",
+              "environmental"
+            ]
+          },
+          {
+            "name": "RoHS directive compliance (2011/65/EU)",
+            "tags": [
+              "compliance",
+              "regulatory",
+              "data-protection"
+            ]
+          },
+          {
+            "name": "GDPR data protection compliance",
+            "tags": [
+              "compliance",
+              "regulatory",
+              "cybersecurity"
+            ]
+          },
+          {
+            "name": "IEC 62443 industrial cybersecurity compliance",
+            "tags": [
+              "compliance",
+              "regulatory",
+              "calibration"
+            ]
+          },
+          {
+            "name": "ISO/IEC 17025 calibration compliance",
+            "tags": [
+              "compliance",
+              "regulatory",
+              "documentation"
+            ]
+          },
+          {
+            "name": "Technical documentation compliance",
+            "tags": [
+              "pending",
+              "compliance",
+              "regulatory",
+              "medical"
+            ]
+          },
+          {
+            "name": "Medical device regulation compliance (MDR 2017/745)",
+            "tags": [
+              "pending",
+              "compliance",
+              "regulatory",
+              "export"
+            ]
+          },
+          {
+            "name": "Export control compliance",
+            "tags": [
+              "pending",
+              "compliance",
+              "regulatory",
+              "environmental-management"
+            ]
+          },
+          {
+            "name": "ISO 14001 environmental management compliance",
+            "tags": [
+              "pending",
+              "compliance",
+              "regulatory",
+              "energy-efficiency"
+            ]
+          },
+          {
+            "name": "Energy efficiency directive compliance",
+            "tags": []
+          }
+        ],
+        "scenario_count": 14
+      },
+      {
+        "name": "Start and stop a single sonicator",
+        "file": "start_stop.feature",
+        "scenarios": [],
+        "scenario_count": 0
+      },
+      {
+        "name": "System metrics",
+        "file": "system.feature",
+        "scenarios": [
+          {
+            "name": "SC-007 Active Sonicator Count",
+            "tags": [
+              "req-active-mask",
+              "reg-40036",
+              "simulavr",
+              "hil"
+            ]
+          },
+          {
+            "name": "SC-008 Active Sonicator Mask",
+            "tags": [
+              "req-system-status",
+              "reg-40025",
+              "simulavr",
+              "hil"
+            ]
+          },
+          {
+            "name": "SC-013 System status bitfield",
+            "tags": [
+              "req-active-transitions",
+              "reg-40035",
+              "reg-40036",
+              "simulavr",
+              "hil"
+            ]
+          },
+          {
+            "name": "SC-017 Active transitions stability",
+            "tags": []
+          }
+        ],
+        "scenario_count": 4
+      },
+      {
+        "name": "Complete System Integration Testing",
+        "file": "system_integration_complete.feature",
+        "scenarios": [
+          {
+            "name": "Complete system startup and initialization",
+            "tags": [
+              "system",
+              "integration",
+              "critical"
+            ]
+          },
+          {
+            "name": "Four-sonicator simultaneous operation",
+            "tags": [
+              "system",
+              "integration",
+              "critical"
+            ]
+          },
+          {
+            "name": "Sequential sonicator control with monitoring",
+            "tags": [
+              "system",
+              "integration",
+              "safety"
+            ]
+          },
+          {
+            "name": "Emergency stop functionality",
+            "tags": [
+              "system",
+              "integration",
+              "fault-handling"
+            ]
+          },
+          {
+            "name": "Overload detection and recovery",
+            "tags": [
+              "system",
+              "integration",
+              "communication"
+            ]
+          },
+          {
+            "name": "MODBUS communication reliability under load",
+            "tags": [
+              "system",
+              "integration",
+              "performance"
+            ]
+          },
+          {
+            "name": "System performance under maximum load",
+            "tags": [
+              "system",
+              "integration",
+              "timing"
+            ]
+          },
+          {
+            "name": "Response time requirements validation",
+            "tags": [
+              "system",
+              "integration",
+              "data-integrity"
+            ]
+          },
+          {
+            "name": "Telemetry data accuracy and consistency",
+            "tags": [
+              "system",
+              "integration",
+              "configuration"
+            ]
+          },
+          {
+            "name": "System configuration persistence",
+            "tags": [
+              "pending",
+              "system",
+              "integration",
+              "advanced"
+            ]
+          },
+          {
+            "name": "Advanced diagnostics and health monitoring",
+            "tags": [
+              "pending",
+              "system",
+              "integration",
+              "networking"
+            ]
+          },
+          {
+            "name": "Multi-controller network operation",
+            "tags": [
+              "pending",
+              "system",
+              "integration",
+              "calibration"
+            ]
+          },
+          {
+            "name": "Automated system calibration",
+            "tags": []
+          }
+        ],
+        "scenario_count": 13
+      },
+      {
+        "name": "Frequency measurement and lock status per unit",
+        "file": "frequency_and_lock.feature",
+        "scenarios": [],
+        "scenario_count": 0
+      },
+      {
+        "name": "Production Validation Testing",
+        "file": "production_validation.feature",
+        "scenarios": [
+          {
+            "name": "Factory acceptance test sequence",
+            "tags": [
+              "production",
+              "validation",
+              "environmental"
+            ]
+          },
+          {
+            "name": "Environmental stress testing",
+            "tags": [
+              "production",
+              "validation",
+              "electrical"
+            ]
+          },
+          {
+            "name": "Electrical safety and compliance validation",
+            "tags": [
+              "production",
+              "validation",
+              "reliability"
+            ]
+          },
+          {
+            "name": "Long-term reliability testing",
+            "tags": [
+              "production",
+              "validation",
+              "performance"
+            ]
+          },
+          {
+            "name": "Performance specification validation",
+            "tags": [
+              "production",
+              "validation",
+              "safety"
+            ]
+          },
+          {
+            "name": "Safety system validation",
+            "tags": [
+              "production",
+              "validation",
+              "modbus"
+            ]
+          },
+          {
+            "name": "MODBUS protocol compliance validation",
+            "tags": [
+              "production",
+              "validation",
+              "interoperability"
+            ]
+          },
+          {
+            "name": "PLC integration validation",
+            "tags": [
+              "production",
+              "validation",
+              "manufacturing"
+            ]
+          },
+          {
+            "name": "Manufacturing test automation",
+            "tags": [
+              "production",
+              "validation",
+              "documentation"
+            ]
+          },
+          {
+            "name": "Documentation and traceability validation",
+            "tags": [
+              "pending",
+              "production",
+              "validation",
+              "field-upgrade"
+            ]
+          },
+          {
+            "name": "Field upgrade capability validation",
+            "tags": [
+              "pending",
+              "production",
+              "validation",
+              "remote-monitoring"
+            ]
+          },
+          {
+            "name": "Remote monitoring and diagnostics",
+            "tags": [
+              "pending",
+              "production",
+              "validation",
+              "predictive-maintenance"
+            ]
+          },
+          {
+            "name": "Predictive maintenance capabilities",
+            "tags": []
+          }
+        ],
+        "scenario_count": 13
+      },
+      {
+        "name": "Overload detection and reset per unit",
+        "file": "overload_reset.feature",
+        "scenarios": [],
+        "scenario_count": 0
+      },
+      {
+        "name": "Safety",
+        "file": "safety.feature",
+        "scenarios": [
+          {
+            "name": "SC-012 Watchdog policy is documented",
+            "tags": [
+              "req-estop",
+              "hil"
+            ]
+          },
+          {
+            "name": "SC-014 Emergency stop register behavior",
+            "tags": []
+          }
+        ],
+        "scenario_count": 2
+      },
+      {
+        "name": "HMI/PLC integration",
+        "file": "hmi_integration.feature",
+        "scenarios": [
+          {
+            "name": "SC-010 HMI contract adherence (4xxxx convention)",
+            "tags": [
+              "pending",
+              "req-hmi-addressing",
+              "simulavr",
+              "hil"
+            ]
+          },
+          {
+            "name": "SC-024 HMI addressing examples",
+            "tags": []
+          }
+        ],
+        "scenario_count": 2
+      },
+      {
+        "name": "MODBUS RTU Communication Hardware Validation",
+        "file": "hil_modbus_communication.feature",
+        "scenarios": [
+          {
+            "name": "Read System Status Registers",
+            "tags": [
+              "hil",
+              "modbus",
+              "hardware"
+            ]
+          },
+          {
+            "name": "Write and Verify Control Register",
+            "tags": [
+              "hil",
+              "modbus",
+              "hardware"
+            ]
+          },
+          {
+            "name": "Communication Fault Detection",
+            "tags": [
+              "hil",
+              "modbus",
+              "hardware"
+            ]
+          },
+          {
+            "name": "Multiple register read operation",
+            "tags": [
+              "hil",
+              "modbus",
+              "hardware"
+            ]
+          },
+          {
+            "name": "Register write and immediate readback",
+            "tags": [
+              "hil",
+              "modbus",
+              "hardware"
+            ]
+          },
+          {
+            "name": "Invalid register access handling",
+            "tags": [
+              "hil",
+              "modbus",
+              "hardware"
+            ]
+          },
+          {
+            "name": "CRC error handling",
+            "tags": [
+              "hil",
+              "modbus",
+              "hardware"
+            ]
+          },
+          {
+            "name": "Communication timeout handling",
+            "tags": [
+              "hil",
+              "modbus",
+              "hardware"
+            ]
+          },
+          {
+            "name": "Sonicator control via MODBUS",
+            "tags": []
+          }
+        ],
+        "scenario_count": 9
+      }
+    ],
+    "coverage_areas": [
+      "GPIO Functionality",
+      "ADC Verification",
+      "PWM Generation",
+      "MODBUS Communication",
+      "Power Verification",
+      "Basic Connectivity",
+      "Sonicator Control"
+    ]
+  },
+  "traceability": {
+    "requirements_count": 6,
+    "requirements": {
+      "REQ-001": {
+        "description": "GPIO pin control and monitoring",
+        "tests": [
+          "hil_gpio_functionality.feature"
+        ],
+        "coverage": "Unit + Acceptance"
+      },
+      "REQ-002": {
+        "description": "ADC voltage measurement accuracy",
+        "tests": [
+          "hil_adc_verification.feature"
+        ],
+        "coverage": "Unit + Acceptance"
+      },
+      "REQ-003": {
+        "description": "PWM signal generation",
+        "tests": [
+          "hil_pwm_generation.feature"
+        ],
+        "coverage": "Unit + Acceptance"
+      },
+      "REQ-004": {
+        "description": "MODBUS RTU communication protocol",
+        "tests": [
+          "hil_modbus_communication.feature",
+          "modbus.feature"
+        ],
+        "coverage": "Unit + Acceptance"
+      },
+      "REQ-005": {
+        "description": "Power supply monitoring and safety",
+        "tests": [
+          "hil_power_verification.feature"
+        ],
+        "coverage": "Unit + Acceptance"
+      },
+      "REQ-006": {
+        "description": "Sonicator control and feedback",
+        "tests": [
+          "sonicator.feature",
+          "control.feature"
+        ],
+        "coverage": "Unit + Acceptance"
+      }
+    },
+    "coverage_matrix": {
+      "REQ-001": {
+        "description": "GPIO pin control and monitoring",
+        "unit_tests": "\u2705",
+        "acceptance_tests": "\u2705",
+        "test_files": [
+          "hil_gpio_functionality.feature"
+        ],
+        "fully_covered": true
+      },
+      "REQ-002": {
+        "description": "ADC voltage measurement accuracy",
+        "unit_tests": "\u2705",
+        "acceptance_tests": "\u2705",
+        "test_files": [
+          "hil_adc_verification.feature"
+        ],
+        "fully_covered": true
+      },
+      "REQ-003": {
+        "description": "PWM signal generation",
+        "unit_tests": "\u2705",
+        "acceptance_tests": "\u2705",
+        "test_files": [
+          "hil_pwm_generation.feature"
+        ],
+        "fully_covered": true
+      },
+      "REQ-004": {
+        "description": "MODBUS RTU communication protocol",
+        "unit_tests": "\u2705",
+        "acceptance_tests": "\u2705",
+        "test_files": [
+          "hil_modbus_communication.feature",
+          "modbus.feature"
+        ],
+        "fully_covered": true
+      },
+      "REQ-005": {
+        "description": "Power supply monitoring and safety",
+        "unit_tests": "\u2705",
+        "acceptance_tests": "\u2705",
+        "test_files": [
+          "hil_power_verification.feature"
+        ],
+        "fully_covered": true
+      },
+      "REQ-006": {
+        "description": "Sonicator control and feedback",
+        "unit_tests": "\u2705",
+        "acceptance_tests": "\u2705",
+        "test_files": [
+          "sonicator.feature",
+          "control.feature"
+        ],
+        "fully_covered": true
+      }
+    }
+  },
+  "overall_metrics": {
+    "unit_test_coverage": "97.1%",
+    "unit_test_status": "\u2705 PASS",
+    "acceptance_scenarios": 125,
+    "requirements_coverage": "6/6",
+    "requirements_percentage": "100.0%",
+    "overall_status": "\u2705 ROBUST"
+  }
+}

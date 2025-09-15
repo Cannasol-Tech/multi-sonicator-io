@@ -54,6 +54,10 @@ public:
     bool modbusWrite(uint16_t address, uint16_t value);
     void setModbusSlaveId(uint8_t slave_id);
     void setModbusBaudRate(uint32_t baud_rate);
+
+    // Test-control: start inhibit flags (for acceptance testing only)
+    void setStartInhibit(uint8_t unit_1_based, bool enable);
+    bool getStartInhibit(uint8_t unit_1_based) const;
     
 private:
     bool sandbox_mode_active;
@@ -73,6 +77,7 @@ private:
     uint8_t modbus_slave_id;
     uint32_t modbus_baud_rate;
     uint16_t modbus_registers[256];  // Simulate 256 registers
+    bool start_inhibit_flags[4];     // Test-control flags for units 1..4
     
     // Internal methods
     void initializePins();

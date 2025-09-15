@@ -27,13 +27,13 @@ def validate_project_structure():
     ]
     
     required_files = [
-        "platformio.ini",
+        "config/platformio.ini",
         "Makefile", 
         "README.md",
-        "requirements-testing.txt",
+        "config/requirements-testing.txt",
         "docs/prd.md",
-        "docs/architecture.md",
-        "docs/sop/sw-testing-standard.md",
+        "docs/architecture/architecture.md",
+        "docs/sop/sw-testing.md",
         "src/main.cpp",
         "include/config.h",
         "include/types.h"
@@ -82,7 +82,7 @@ def validate_project_structure():
 def validate_platformio_config():
     """Validate PlatformIO configuration for ATmega32A."""
     project_root = Path(__file__).parent.parent
-    platformio_ini = project_root / "platformio.ini"
+    platformio_ini = project_root / "config" / "platformio.ini"
     
     if not platformio_ini.exists():
         print("❌ platformio.ini not found")

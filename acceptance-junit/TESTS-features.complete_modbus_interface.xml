@@ -1,4 +1,4 @@
-<testsuite name="features.complete_modbus_interface.Complete MODBUS Interface Testing" tests="15" errors="15" failures="0" skipped="0" time="0.004517" timestamp="2025-09-12T22:03:07.370374" hostname="Corbans-Mini.home"><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete system status register testing" status="cleanup_error" time="0.000154"><error type="UnknownError" message="">
+<testsuite name="features.complete_modbus_interface.Complete MODBUS Interface Testing" tests="15" errors="15" failures="0" skipped="0" time="0.0" timestamp="2025-09-15T17:35:02.975739" hostname="Corbans-Mini.home"><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete system status register testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -23,18 +23,8 @@
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-✅ MODBUS RTU connection assumed (simulation mode)
-
 ]]>
-</system-out><system-err>
-<![CDATA[
-Captured stderr:
-SKIP Scenario Complete system status register testing: pending: pymodbus not available
-
-]]>
-</system-err></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Global control register testing" status="cleanup_error" time="0.00018"><error type="UnknownError" message="">
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Global control register testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -58,18 +48,8 @@ SKIP Scenario Complete system status register testing: pending: pymodbus not ava
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-✅ MODBUS RTU connection assumed (simulation mode)
-
 ]]>
-</system-out><system-err>
-<![CDATA[
-Captured stderr:
-SKIP Scenario Global control register testing: pending: pymodbus not available
-
-]]>
-</system-err></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 1 register interface testing" status="cleanup_error" time="0.000742"><error type="UnknownError" message="">
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 1 register interface testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -78,7 +58,7 @@ SKIP Scenario Global control register testing: pending: pymodbus not available
 
   @modbus @interface @comprehensive
   Scenario: Complete sonicator 1 register interface testing
-    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.001s
+    Given the Multi-Sonicator I/O Controller is connected via MODBUS RTU ... skipped in 0.000s
     And the communication is established at 115200 baud, 8N1 format ... skipped in 0.000s
     And the MODBUS slave ID is configured correctly ... skipped in 0.000s
     And all 4 sonicators are connected and ready ... skipped in 0.000s
@@ -95,18 +75,8 @@ SKIP Scenario Global control register testing: pending: pymodbus not available
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-✅ MODBUS RTU connection assumed (simulation mode)
-
 ]]>
-</system-out><system-err>
-<![CDATA[
-Captured stderr:
-SKIP Scenario Complete sonicator 1 register interface testing: pending: pymodbus not available
-
-]]>
-</system-err></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 2 register interface testing" status="cleanup_error" time="0.000487"><error type="UnknownError" message="">
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 2 register interface testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -132,18 +102,8 @@ SKIP Scenario Complete sonicator 1 register interface testing: pending: pymodbus
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-✅ MODBUS RTU connection assumed (simulation mode)
-
 ]]>
-</system-out><system-err>
-<![CDATA[
-Captured stderr:
-SKIP Scenario Complete sonicator 2 register interface testing: pending: pymodbus not available
-
-]]>
-</system-err></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 3 register interface testing" status="cleanup_error" time="0.000309"><error type="UnknownError" message="">
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 3 register interface testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -169,18 +129,8 @@ SKIP Scenario Complete sonicator 2 register interface testing: pending: pymodbus
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-✅ MODBUS RTU connection assumed (simulation mode)
-
 ]]>
-</system-out><system-err>
-<![CDATA[
-Captured stderr:
-SKIP Scenario Complete sonicator 3 register interface testing: pending: pymodbus not available
-
-]]>
-</system-err></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 4 register interface testing" status="cleanup_error" time="0.000275"><error type="UnknownError" message="">
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Complete sonicator 4 register interface testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -206,18 +156,8 @@ SKIP Scenario Complete sonicator 3 register interface testing: pending: pymodbus
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-✅ MODBUS RTU connection assumed (simulation mode)
-
 ]]>
-</system-out><system-err>
-<![CDATA[
-Captured stderr:
-SKIP Scenario Complete sonicator 4 register interface testing: pending: pymodbus not available
-
-]]>
-</system-err></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS function code 03 (Read Holding Registers) testing" status="cleanup_error" time="0.000404"><error type="UnknownError" message="">
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS function code 03 (Read Holding Registers) testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -240,18 +180,8 @@ SKIP Scenario Complete sonicator 4 register interface testing: pending: pymodbus
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-✅ MODBUS RTU connection assumed (simulation mode)
-
 ]]>
-</system-out><system-err>
-<![CDATA[
-Captured stderr:
-SKIP Scenario MODBUS function code 03 (Read Holding Registers) testing: pending: pymodbus not available
-
-]]>
-</system-err></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS function code 06 (Write Single Register) testing" status="cleanup_error" time="0.000133"><error type="UnknownError" message="">
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS function code 06 (Write Single Register) testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -274,18 +204,8 @@ SKIP Scenario MODBUS function code 03 (Read Holding Registers) testing: pending:
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-✅ MODBUS RTU connection assumed (simulation mode)
-
 ]]>
-</system-out><system-err>
-<![CDATA[
-Captured stderr:
-SKIP Scenario MODBUS function code 06 (Write Single Register) testing: pending: pymodbus not available
-
-]]>
-</system-err></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS function code 16 (Write Multiple Registers) testing" status="cleanup_error" time="0.000413"><error type="UnknownError" message="">
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS function code 16 (Write Multiple Registers) testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -308,18 +228,8 @@ SKIP Scenario MODBUS function code 06 (Write Single Register) testing: pending: 
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-✅ MODBUS RTU connection assumed (simulation mode)
-
 ]]>
-</system-out><system-err>
-<![CDATA[
-Captured stderr:
-SKIP Scenario MODBUS function code 16 (Write Multiple Registers) testing: pending: pymodbus not available
-
-]]>
-</system-err></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS error handling and exception responses" status="cleanup_error" time="0.000328"><error type="UnknownError" message="">
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS error handling and exception responses" status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -344,18 +254,8 @@ SKIP Scenario MODBUS function code 16 (Write Multiple Registers) testing: pendin
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-✅ MODBUS RTU connection assumed (simulation mode)
-
 ]]>
-</system-out><system-err>
-<![CDATA[
-Captured stderr:
-SKIP Scenario MODBUS error handling and exception responses: pending: pymodbus not available
-
-]]>
-</system-err></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS communication performance testing" status="cleanup_error" time="0.000371"><error type="UnknownError" message="">
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS communication performance testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -380,18 +280,8 @@ SKIP Scenario MODBUS error handling and exception responses: pending: pymodbus n
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-✅ MODBUS RTU connection assumed (simulation mode)
-
 ]]>
-</system-out><system-err>
-<![CDATA[
-Captured stderr:
-SKIP Scenario MODBUS communication performance testing: pending: pymodbus not available
-
-]]>
-</system-err></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS communication stress testing" status="cleanup_error" time="0.000308"><error type="UnknownError" message="">
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="MODBUS communication stress testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -415,18 +305,8 @@ SKIP Scenario MODBUS communication performance testing: pending: pymodbus not av
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-✅ MODBUS RTU connection assumed (simulation mode)
-
 ]]>
-</system-out><system-err>
-<![CDATA[
-Captured stderr:
-SKIP Scenario MODBUS communication stress testing: pending: pymodbus not available
-
-]]>
-</system-err></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Legacy MODBUS register mapping compatibility" status="cleanup_error" time="0.000283"><error type="UnknownError" message="">
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Legacy MODBUS register mapping compatibility" status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -449,18 +329,8 @@ SKIP Scenario MODBUS communication stress testing: pending: pymodbus not availab
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-✅ MODBUS RTU connection assumed (simulation mode)
-
 ]]>
-</system-out><system-err>
-<![CDATA[
-Captured stderr:
-SKIP Scenario Legacy MODBUS register mapping compatibility: pending: pymodbus not available
-
-]]>
-</system-err></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Concurrent MODBUS access testing" status="cleanup_error" time="0.00013"><error type="UnknownError" message="">
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Concurrent MODBUS access testing" status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -483,18 +353,8 @@ SKIP Scenario Legacy MODBUS register mapping compatibility: pending: pymodbus no
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-✅ MODBUS RTU connection assumed (simulation mode)
-
 ]]>
-</system-out><system-err>
-<![CDATA[
-Captured stderr:
-SKIP Scenario Concurrent MODBUS access testing: pending: pymodbus not available
-
-]]>
-</system-err></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Advanced MODBUS function codes" status="cleanup_error" time="0"><error type="UnknownError" message="">
+</system-out></testcase><testcase classname="features.complete_modbus_interface.Complete MODBUS Interface Testing" name="Advanced MODBUS function codes" status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>

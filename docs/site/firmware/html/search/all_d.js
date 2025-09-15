@@ -17,12 +17,13 @@ var searchData=
   ['last_5fstate_5ftimestamp_5flo_14',['last_state_timestamp_lo',['../d4/d97/structsonicator__registers__t.html#a4979494c03692c663491fe98a02d2168',1,'sonicator_registers_t']]],
   ['last_5fstatus_5fupdate_15',['last_status_update',['../da/d9e/modbus__example_8cpp.html#a484df318d4270158a32154ad7b372e86',1,'modbus_example.cpp']]],
   ['last_5fsystem_5ferror_16',['last_system_error',['../d7/dc4/structsystem__status__t.html#a99de2faad467f95f864e9ebb1307a576',1,'system_status_t']]],
-  ['last_5fupdate_5ftime_17',['last_update_time',['../df/d70/structsonicator__state__control__t.html#aa7007812c1aa0b399b4e7624727b5e0d',1,'sonicator_state_control_t']]],
-  ['list_18',['Deprecated List',['../da/d58/deprecated.html',1,'']]],
-  ['lm2907_20frequency_20to_20voltage_20converter_19',['LM2907 Frequency-to-Voltage Converter',['../dc/dce/group___l_m2907_frequency_converter.html',1,'']]],
-  ['lm2907_5ffreq_5finput_5fpin_20',['LM2907_FREQ_INPUT_PIN',['../dc/dce/group___l_m2907_frequency_converter.html#ga47c019a4b87fe13a7f580567c30da3b2',1,'config.h']]],
-  ['lm2907_5ffreq_5fmax_5fvoltage_21',['LM2907_FREQ_MAX_VOLTAGE',['../dc/dce/group___l_m2907_frequency_converter.html#ga8b65dfd8166d7905a3c84f6049cd3cb8',1,'config.h']]],
-  ['lm2907_5ffreq_5fmin_5fvoltage_22',['LM2907_FREQ_MIN_VOLTAGE',['../dc/dce/group___l_m2907_frequency_converter.html#gad5c14d06916e502df2e02e982799275f',1,'config.h']]],
-  ['lm2907_5ffreq_5fscale_5ffactor_23',['LM2907_FREQ_SCALE_FACTOR',['../dc/dce/group___l_m2907_frequency_converter.html#ga5e48f6282ba8b3017b506dd390d7cb31',1,'config.h']]],
-  ['loop_24',['loop',['../df/d0a/main_8cpp.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;main.cpp'],['../da/d9e/modbus__example_8cpp.html#a0b33edabd7f1c4e4a0bf32c67269be2f',1,'loop(void):&#160;modbus_example.cpp']]]
+  ['last_5ftransition_5ftime_5fms_17',['last_transition_time_ms',['../db/d86/structmulti__status__t.html#a0644363013284a9323e833dcd8dd0e02',1,'multi_status_t']]],
+  ['last_5fupdate_5ftime_18',['last_update_time',['../df/d70/structsonicator__state__control__t.html#aa7007812c1aa0b399b4e7624727b5e0d',1,'sonicator_state_control_t']]],
+  ['list_19',['Deprecated List',['../da/d58/deprecated.html',1,'']]],
+  ['lm2907_20frequency_20to_20voltage_20converter_20',['LM2907 Frequency-to-Voltage Converter',['../dc/dce/group___l_m2907_frequency_converter.html',1,'']]],
+  ['lm2907_5ffreq_5finput_5fpin_21',['LM2907_FREQ_INPUT_PIN',['../dc/dce/group___l_m2907_frequency_converter.html#ga47c019a4b87fe13a7f580567c30da3b2',1,'config.h']]],
+  ['lm2907_5ffreq_5fmax_5fvoltage_22',['LM2907_FREQ_MAX_VOLTAGE',['../dc/dce/group___l_m2907_frequency_converter.html#ga8b65dfd8166d7905a3c84f6049cd3cb8',1,'config.h']]],
+  ['lm2907_5ffreq_5fmin_5fvoltage_23',['LM2907_FREQ_MIN_VOLTAGE',['../dc/dce/group___l_m2907_frequency_converter.html#gad5c14d06916e502df2e02e982799275f',1,'config.h']]],
+  ['lm2907_5ffreq_5fscale_5ffactor_24',['LM2907_FREQ_SCALE_FACTOR',['../dc/dce/group___l_m2907_frequency_converter.html#ga5e48f6282ba8b3017b506dd390d7cb31',1,'config.h']]],
+  ['loop_25',['loop',['../df/d0a/main_8cpp.html#afe461d27b9c48d5921c00d521181f12f',1,'loop():&#160;main.cpp'],['../da/d9e/modbus__example_8cpp.html#a0b33edabd7f1c4e4a0bf32c67269be2f',1,'loop(void):&#160;modbus_example.cpp']]]
 ];
