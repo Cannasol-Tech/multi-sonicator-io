@@ -10,7 +10,7 @@ provenance:
 ---
 # 📊 Multi-Sonicator I/O Project Stories Dashboard
 
-**Last Updated**: 2025-09-14  
+P25-09-14
 **Total Stories**: 25  
 **Project Completion**: 8%  
 
@@ -55,7 +55,7 @@ provenance:
 |-------|-------|--------|----------|---------|-----------------|
 | **0.1** | Project Structure & CI/CD Pipeline | ✅ **COMPLETED** | 100% | ✅ PASS | - |
 | **0.2** | HIL Test Harness Setup | ⚠️ **CONCERNS** | 70% | ⚠️ CONCERNS | Unit test coverage <85% |
-| **0.3** | BDD Acceptance Testing Framework | 📋 **DRAFT** | 0% | 🔒 BLOCKED | Depends on 0.2 |
+|**0.3**|BDD Acceptance Testing Framework| 📋 **DRAFT** |0%| - |Depends on 0.2|
 | **0.4** | Hardware Connection Verification | 📋 **NOT STARTED** | 0% | - | Depends on 0.2, 0.3 |
 | **0.5** | Arduino Test Wrapper Validation | 📋 **NOT STARTED** | 0% | - | Depends on 0.2, 0.3 |
 | **0.6** | Sandbox CLI Manual Testing | 📋 **NOT STARTED** | 0% | - | Depends on 0.2, 0.3 |
@@ -106,7 +106,7 @@ provenance:
 | Story | Title | Status | Progress | QA Gate | Blocking Issues |
 |-------|-------|--------|----------|---------|-----------------|
 | **3.0** | Web UI Integration | 🟢 **READY FOR REVIEW** | 95% | ✅ PASS | Coverage 89.87% (meets ≥85%) |
-| **3.1** | Frontend Development | 📋 **NOT STARTED** | 0% | - | Depends on 3.0 |
+| **3.1** | Frontend Development | 🔵 **REVIEW** | 0% | ⚠️ CONCERNS | Depends on 3.0 |
 | **3.2** | Backend API | 📋 **NOT STARTED** | 0% | - | Depends on 3.0 |
 | **3.3** | Real-time Monitoring | 📋 **NOT STARTED** | 0% | - | Depends on 3.1, 3.2 |
 | **3.4** | Mobile Responsiveness | 📋 **NOT STARTED** | 0% | - | Depends on 3.1, 3.2 |

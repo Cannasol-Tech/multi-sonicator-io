@@ -1,0 +1,66 @@
+name: Build and Publish Documentation
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Doxygen
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y doxygen graphviz
+
+      - name: Build firmware docs (Doxygen)
+        run: |
+          doxygen docs/doxygen/Doxyfile
+
+      - name: Build web-ui backend docs (TypeDoc)
+        working-directory: web-ui/backend
+        run: |
+          npm ci
+          npx typedoc
+
+      - name: Build web-ui frontend docs (TypeDoc)
+        working-directory: web-ui/frontend
+        run: |
+          npm ci
+          npx typedoc
+
+      - name: Upload docs artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-docs
+          path: |
+            docs/site/**
+
+      # Optional: publish to GitHub Pages
+      # - name: Upload Pages artifact
+      #   uses: actions/upload-pages-artifact@v3
+      #   with:
+      #     path: docs/site
+
+  # pages:
+  #   needs: docs
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     pages: write
+  #     id-token: write
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+  #   steps:
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@v4

@@ -1,0 +1,22 @@
+# Doxygen configuration for Multi-Sonicator IO Firmware
+# Minimal starter; extend as needed
+
+PROJECT_NAME           = "Multi-Sonicator IO Firmware"
+OUTPUT_DIRECTORY       = docs/site/firmware
+CREATE_SUBDIRS         = YES
+
+INPUT                  = src include
+RECURSIVE              = YES
+FILE_PATTERNS          = *.c *.cpp *.h *.hpp
+
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = YES
+JAVADOC_AUTOBRIEF      = YES
+
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = NO
+QUIET                  = NO

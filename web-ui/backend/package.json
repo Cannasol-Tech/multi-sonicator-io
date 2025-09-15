@@ -7,7 +7,8 @@
     "dev": "nodemon --exec ts-node src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "test": "echo \"Tests will be implemented with pytest\" && exit 0"
+    "test": "echo \"Tests will be implemented with pytest\" && exit 0",
+    "docs": "typedoc"
   },
   "keywords": [
     "arduino",
@@ -33,5 +34,8 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2",
     "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "typedoc": "^0.25.13"
   }
 }

@@ -838,3 +838,38 @@ qa-trace:
 		exit 1; \
 	fi
 	@python3 scripts/qa_cli.py trace "$(STORY)" || (echo "ℹ️ trace command not yet implemented in scripts/qa_cli.py" && exit 1)
+## =============================================================================
+## PROJECT BOARD UPDATER
+## =============================================================================
+.PHONY: update-project-board
+update-project-board:
+	@echo "🔄 Updating project board and story status dashboard..."
+	@python3 scripts/update_project_board.py
+	@echo "✅ Project board updated"
+
+## =============================================================================
+## DOCUMENTATION BUILD TARGETS
+## =============================================================================
+.PHONY: docs-firmware docs-web-backend docs-web-frontend docs-all
+
+# Build firmware docs with Doxygen
+docs-firmware:
+	@echo "📚 Building firmware documentation (Doxygen)..."
+	@doxygen docs/doxygen/Doxyfile
+	@echo "✅ Firmware docs built in docs/site/firmware"
+
+# Build backend docs with TypeDoc
+docs-web-backend:
+	@echo "📚 Building web-ui backend documentation (TypeDoc)..."
+	@cd web-ui/backend && npx --yes typedoc
+	@echo "✅ Backend docs built in docs/site/web/backend"
+
+# Build frontend docs with TypeDoc
+docs-web-frontend:
+	@echo "📚 Building web-ui frontend documentation (TypeDoc)..."
+	@cd web-ui/frontend && npx --yes typedoc
+	@echo "✅ Frontend docs built in docs/site/web/frontend"
+
+# Build all docs
+docs-all: docs-firmware docs-web-backend docs-web-frontend
+	@echo "🎉 All documentation generated under docs/site/"
