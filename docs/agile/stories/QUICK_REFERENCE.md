@@ -20,7 +20,7 @@ provenance:
 ### **🚨 Critical (Fix Today)**
 1. **Story 0.2** - HIL Test Harness Setup
    - **Issue**: Unit test coverage ~70% (need ≥85%)
-   - **File**: `docs/stories/__COMPLETE/0.2.hil-test-harness-setup.md`
+   - **File**: `docs/agile/stories/__COMPLETE/0.2.hil-test-harness-setup.md`
    - **QA Gate**: `docs/qa/gates/0.2-hil-test-harness-setup.yml`
    - **Action**: Implement unit test logic, replace placeholder tests
    - **Impact**: Unblocks 7 Epic 0 stories
@@ -80,50 +80,50 @@ provenance:
 ## 📁 **File Locations**
 
 ### **Main Documentation**
-- **Live Status**: `docs/stories/STORY_STATUS_DASHBOARD.md`
-- **Stories Index**: `docs/stories/README.md` 
-- **This Quick Reference**: `docs/stories/QUICK_REFERENCE.md`
+- **Live Status**: `docs/agile/stories/STORY_STATUS_DASHBOARD.md`
+- **Stories Index**: `docs/agile/stories/README.md` 
+- **This Quick Reference**: `docs/agile/stories/QUICK_REFERENCE.md`
 
 ### **Story Files by Epic**
 ```bash
 # Epic 0 - HIL Testing Framework
-docs/stories/0.1.project-structure-cicd-pipeline.md
-docs/stories/0.3.bdd-acceptance-testing-framework.md  
-docs/stories/0.4.hardware-connection-verification.md
-docs/stories/0.5.arduino-test-wrapper-validation.md
-docs/stories/0.6-sandbox-cli-manual-testing.md
-docs/stories/0.7.modbus-hardware-validation.md
-docs/stories/0.8.web-ui-testing-interface.md
-docs/stories/0.9.test-coverage-and-documentation.md
+docs/agile/stories/0.1.project-structure-cicd-pipeline.md
+docs/agile/stories/0.3.bdd-acceptance-testing-framework.md  
+docs/agile/stories/0.4.hardware-connection-verification.md
+docs/agile/stories/0.5.arduino-test-wrapper-validation.md
+docs/agile/stories/0.6-sandbox-cli-manual-testing.md
+docs/agile/stories/0.7.modbus-hardware-validation.md
+docs/agile/stories/0.8.web-ui-testing-interface.md
+docs/agile/stories/0.9.test-coverage-and-documentation.md
 
 # Completed Epic 0 stories
-docs/stories/__COMPLETE/COMPLETE-0.1.project-structure-compliance.md
-docs/stories/__COMPLETE/0.2.hil-test-harness-setup.md
+docs/agile/stories/__COMPLETE/COMPLETE-0.1.project-structure-compliance.md
+docs/agile/stories/__COMPLETE/0.2.hil-test-harness-setup.md
 
 # Epic 1 - Foundational Control  
-docs/stories/1.1.hardware-abstraction-layer.md
-docs/stories/1.3-modbus-framework.md
-docs/stories/1.4.single-sonicator-control.md
-docs/stories/__COMPLETE/1.0-hil-testing-framework.md  # Completed
+docs/agile/stories/1.1.hardware-abstraction-layer.md
+docs/agile/stories/1.3-modbus-framework.md
+docs/agile/stories/1.4.single-sonicator-control.md
+docs/agile/stories/__COMPLETE/1.0-hil-testing-framework.md  # Completed
 
 # Epic 2 - Testing Infrastructure
-docs/stories/2.0.testing-framework-setup.md
+docs/agile/stories/2.0.testing-framework-setup.md
 
 # Epic 3 - Web UI Development
-docs/stories/3.0.integration-story.md  # 95% complete, needs 0.13% coverage
-docs/stories/3.1.frontend-development-react-interface.md
-docs/stories/3.2.backend-api-nodejs-server.md
-docs/stories/3.3.real-time-monitoring-websocket.md
-docs/stories/3.4.mobile-responsiveness-tablet-phone.md
+docs/agile/stories/3.0.integration-story.md  # 95% complete, needs 0.13% coverage
+docs/agile/stories/3.1.frontend-development-react-interface.md
+docs/agile/stories/3.2.backend-api-nodejs-server.md
+docs/agile/stories/3.3.real-time-monitoring-websocket.md
+docs/agile/stories/3.4.mobile-responsiveness-tablet-phone.md
 
 # Epic 4 - Multi-Sonicator Coordination
-docs/stories/4.1.multi-unit-state-management.md
-docs/stories/4.2.individual-control-systems.md
-docs/stories/4.3.coordinated-operation-modes.md
-docs/stories/4.4.advanced-amplitude-management.md
+docs/agile/stories/4.1.multi-unit-state-management.md
+docs/agile/stories/4.2.individual-control-systems.md
+docs/agile/stories/4.3.coordinated-operation-modes.md
+docs/agile/stories/4.4.advanced-amplitude-management.md
 
 # Epic 5 - Production Deployment
-docs/stories/5.1.automated-deployment-pipeline.md
+docs/agile/stories/5.1.automated-deployment-pipeline.md
 ```
 
 ### **QA Gates**
@@ -163,10 +163,10 @@ docs/sop/sw-testing-standard.md
 ### **Status Checking**
 ```bash
 # View main dashboard
-cat docs/stories/STORY_STATUS_DASHBOARD.md
+cat docs/agile/stories/STORY_STATUS_DASHBOARD.md
 
 # Check specific story
-find docs/stories -name "*0.2*" -o -name "*3.0*"
+find docs/agile/stories -name "*0.2*" -o -name "*3.0*"
 
 # View QA gate status
 cat docs/qa/gates/0.2-hil-test-harness-setup.yml
@@ -190,13 +190,13 @@ make validate-story-3.0
 ### **Story Management**
 ```bash
 # Update story status
-vim docs/stories/STORY_STATUS_DASHBOARD.md
+vim docs/agile/stories/STORY_STATUS_DASHBOARD.md
 
 # Update QA gate
 vim docs/qa/gates/[story-id]-*.yml
 
 # Check dependencies
-grep -r "depends on\|blocked by" docs/stories/
+grep -r "depends on\|blocked by" docs/agile/stories/
 ```
 
 ---

@@ -35,7 +35,7 @@ This workflow helps build a new full‑stack application from concept through pl
 
 9. __Create next story (SM)__
    - Input: sharded docs
-   - Output: story in `docs/stories/` (or your chosen location), status Draft.
+   - Output: story in `docs/agile/stories/` (or your chosen location), status Draft.
 
 10. __(Optional) Review and approve story (Analyst/PM)__
    - Update status: Draft → Approved.

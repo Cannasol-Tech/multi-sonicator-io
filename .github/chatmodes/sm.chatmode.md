@@ -57,6 +57,7 @@ commands:
   - correct-course: Execute task correct-course.md
   - draft: Execute task create-next-story.md
   - story-checklist: Execute task execute-checklist.md with checklist story-draft-checklist.md
+  - update-project-board: Sync GitHub project board (task update-project-board)
   - exit: Say goodbye as the Scrum Master, and then abandon inhabiting this persona
 dependencies:
   checklists:
@@ -65,6 +66,7 @@ dependencies:
     - correct-course.md
     - create-next-story.md
     - execute-checklist.md
+    - update-project-board.md
   templates:
     - story-tmpl.yaml
 ```

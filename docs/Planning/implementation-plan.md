@@ -22,15 +22,15 @@ Last Updated: 2025-09-10
 ## Epic 0: HIL Testing Framework & Hardware Verification
 
 User Stories (planning checklist — creation of story docs)
-- [x] 0.1 Project Structure & CI/CD Pipeline — `docs/stories/0.1.project-structure-cicd-pipeline.md`
-- [x] 0.2 HIL Test Harness Setup — `docs/stories/0.2.hil-test-harness-setup.md`
-- [x] 0.3 BDD Acceptance Testing Framework — `docs/stories/0.3.bdd-acceptance-testing-framework.md`
-- [x] 0.4 Hardware Connection Verification — `docs/stories/0.4.hardware-connection-verification.md`
-- [x] 0.5 Arduino Test Wrapper Validation — `docs/stories/0.5.arduino-test-wrapper-validation.md`
-- [x] 0.6 Sandbox CLI Implementation — `docs/stories/0.6-sandbox-cli-manual-testing.md`
-- [x] 0.7 MODBUS Hardware Validation — `docs/stories/0.7.modbus-hardware-validation.md`
-- [x] 0.8 Web UI Testing Interface — `docs/stories/0.8.web-ui-testing-interface.md`
-- [x] 0.9 Test Coverage & Documentation — `docs/stories/0.9.test-coverage-and-documentation.md`
+- [x] 0.1 Project Structure & CI/CD Pipeline — `docs/agile/stories/0.1.project-structure-cicd-pipeline.md`
+- [x] 0.2 HIL Test Harness Setup — `docs/agile/stories/0.2.hil-test-harness-setup.md`
+- [x] 0.3 BDD Acceptance Testing Framework — `docs/agile/stories/0.3.bdd-acceptance-testing-framework.md`
+- [x] 0.4 Hardware Connection Verification — `docs/agile/stories/0.4.hardware-connection-verification.md`
+- [x] 0.5 Arduino Test Wrapper Validation — `docs/agile/stories/0.5.arduino-test-wrapper-validation.md`
+- [x] 0.6 Sandbox CLI Implementation — `docs/agile/stories/0.6-sandbox-cli-manual-testing.md`
+- [x] 0.7 MODBUS Hardware Validation — `docs/agile/stories/0.7.modbus-hardware-validation.md`
+- [x] 0.8 Web UI Testing Interface — `docs/agile/stories/0.8.web-ui-testing-interface.md`
+- [x] 0.9 Test Coverage & Documentation — `docs/agile/stories/0.9.test-coverage-and-documentation.md`
 
 Execution Tasks (DoD-driven; tests-first, then implementation)
 - [ ] Add acceptance BDD skeletons for each 0.x story (tagged @epic0)
@@ -43,11 +43,11 @@ Execution Tasks (DoD-driven; tests-first, then implementation)
 ## Epic 1: Foundational Control & Communication
 
 User Stories (planning checklist — creation of story docs)
-- [x] 1.0 HIL Testing Framework — `docs/stories/1.0-hil-testing-framework.md`
-- [x] 1.1 Project Structure & Build System — `docs/stories/1.1-project-structure.md`
-- [x] 1.2 Hardware Abstraction Layer (HAL) — `docs/stories/1.2-hal-implementation.md`
-- [x] 1.3 MODBUS RTU Communication Framework — `docs/stories/1.3-modbus-framework.md`
-- [x] 1.4 Single Sonicator Control — `docs/stories/1.4.single-sonicator-control.md` (S4-only focus)
+- [x] 1.0 HIL Testing Framework — `docs/agile/stories/1.0-hil-testing-framework.md`
+- [x] 1.1 Project Structure & Build System — `docs/agile/stories/1.1-project-structure.md`
+- [x] 1.2 Hardware Abstraction Layer (HAL) — `docs/agile/stories/1.2-hal-implementation.md`
+- [x] 1.3 MODBUS RTU Communication Framework — `docs/agile/stories/1.3-modbus-framework.md`
+- [x] 1.4 Single Sonicator Control — `docs/agile/stories/1.4.single-sonicator-control.md` (S4-only focus)
 
 Execution Tasks (TDD-first)
 - [ ] Define register map tables for control/telemetry (`include/register_map.h`)
@@ -88,11 +88,11 @@ Execution Tasks (TDD-first)
 ## Epic 4: Multi-Sonicator Coordination & Management
 
 User Stories (planning checklist — creation of story docs)
-- [ ] 4.1 Multi-Unit State Management — `docs/stories/4.1.multi-unit-state-management.md`
-- [x] 4.2 Individual Control Systems — `docs/stories/4.2.individual-control-systems.md`
-- [ ] 4.3 Coordinated Operation Modes — `docs/stories/4.3.coordinated-operation-modes.md`
-- [ ] 4.4 Advanced Amplitude Management — `docs/stories/4.4.advanced-amplitude-management.md`
-- [ ] 4.5 Real-time Monitoring Systems — `docs/stories/4.5.realtime-monitoring-systems.md`
+- [ ] 4.1 Multi-Unit State Management — `docs/agile/stories/4.1.multi-unit-state-management.md`
+- [x] 4.2 Individual Control Systems — `docs/agile/stories/4.2.individual-control-systems.md`
+- [ ] 4.3 Coordinated Operation Modes — `docs/agile/stories/4.3.coordinated-operation-modes.md`
+- [ ] 4.4 Advanced Amplitude Management — `docs/agile/stories/4.4.advanced-amplitude-management.md`
+- [ ] 4.5 Real-time Monitoring Systems — `docs/agile/stories/4.5.realtime-monitoring-systems.md`
 
 Execution Tasks (TDD-first)
 - [ ] Write unit tests for `SonicatorUnit` (start/stop, amplitude bounds, safety)
@@ -109,7 +109,7 @@ Notes
 ## Epic 5: Production Deployment & Operations
 
 User Stories (planning checklist — creation of story docs)
-- [ ] 5.1 Automated Deployment Pipeline — `docs/stories/5.1.automated-deployment-pipeline.md`
+- [ ] 5.1 Automated Deployment Pipeline — `docs/agile/stories/5.1.automated-deployment-pipeline.md`
 
 Execution Tasks (TDD-first)
 - [ ] Extend `.github/workflows/ci.yml` with build/test/artifact stages for firmware and web-ui

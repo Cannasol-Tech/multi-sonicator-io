@@ -3,9 +3,9 @@
 Add condensed agent metadata frontmatter to story markdown files.
 
 - Targets the following directories (recursive):
-  - docs/stories/
-  - docs/stories/ARCHIVE/
-  - docs/stories/__COMPLETE__/
+  - docs/agile/stories/
+  - docs/agile/stories/ARCHIVE/
+  - docs/agile/stories/__COMPLETE__/
   - docs/agile/stories/
 
 - If a file already has YAML frontmatter (starts with '---'), it is skipped by default

@@ -1,4 +1,14 @@
 import { EventEmitter } from 'events';
+
+
+// @brief 
+export interface ConnectionStatus {
+    connected: boolean;
+    port?: string;
+    lastSeen?: number;
+    error?: string;
+}
+
 export interface PinState {
     pin: string;
     signal: string;
@@ -49,6 +59,11 @@ export interface HardwareResponse {
  * Based on scripts/hil_serial.py and test/acceptance/hil_framework/hardware_interface.py
  */
 export declare class HardwareInterface extends EventEmitter {
+    constructor();
+    initialize(): Promise<boolean>;
+
+
+    private detectHardware;
     private pythonProcess;
     private connected;
     private serialPort;
@@ -56,9 +71,7 @@ export declare class HardwareInterface extends EventEmitter {
     private commandQueue;
     private processingCommand;
     private configuration;
-    constructor();
     private initializePinStates;
-    initialize(): Promise<boolean>;
     private handlePythonMessage;
     private lastLogTime;
     private logThrottleMs;
@@ -69,8 +82,6 @@ export declare class HardwareInterface extends EventEmitter {
     sendCommand(command: HardwareCommand): Promise<HardwareResponse>;
     getPinStates(): Map<string, PinState>;
     getSerialPort(): string | null;
-    private detectHardware;
-    reconnect(): Promise<boolean>;
     retryConnection(maxAttempts?: number, delayMs?: number): Promise<boolean>;
     disconnect(): void;
     getConfiguration(): {

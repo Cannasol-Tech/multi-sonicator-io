@@ -49,24 +49,24 @@
 ### **Current Structure** → **Agile Workflow Structure**
 
 ```bash
-# Current: docs/stories/[epic].[story]-[name].md
+# Current: docs/agile/stories/[epic].[story]-[name].md
 # Agile:   docs/user-stories/[feature_num]-[feature_name].md
 
-docs/stories/0.1.project-structure-cicd-pipeline.md
+docs/agile/stories/0.1.project-structure-cicd-pipeline.md
 → docs/user-stories/1-hil-testing-framework.md#story-0.1
 
-docs/stories/0.2.hil-test-harness-setup.md  
+docs/agile/stories/0.2.hil-test-harness-setup.md  
 → docs/user-stories/1-hil-testing-framework.md#story-0.2
 
-docs/stories/1.4.single-sonicator-control.md
+docs/agile/stories/1.4.single-sonicator-control.md
 → docs/user-stories/2-foundational-control.md#story-1.4
 
-docs/stories/3.0.integration-story.md
+docs/agile/stories/3.0.integration-story.md
 → docs/user-stories/4-web-ui-development.md#story-3.0
 ```
 
 ---
 
-**Source of Truth**: `docs/stories/STORY_STATUS_DASHBOARD.md`  
+**Source of Truth**: `docs/agile/stories/STORY_STATUS_DASHBOARD.md`  
 **Cross-Reference**: This mapping file
 **Update Frequency**: After epic/story changes

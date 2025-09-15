@@ -156,8 +156,8 @@ QA Gate Files Found: 25+ files
 ## 🛠️ **How to Use This System**
 
 ### **Daily Development**
-1. **Check Status**: `cat docs/stories/STORY_STATUS_DASHBOARD.md`
-2. **Quick Actions**: `cat docs/stories/QUICK_REFERENCE.md`
+1. **Check Status**: `cat docs/agile/stories/STORY_STATUS_DASHBOARD.md`
+2. **Quick Actions**: `cat docs/agile/stories/QUICK_REFERENCE.md`
 3. **Story Details**: Navigate to specific story files
 4. **QA Status**: Check `docs/qa/gates/[story-id].yml`
 
@@ -183,7 +183,7 @@ QA Gate Files Found: 25+ files
 - Dependencies and blocking relationships mapped
 
 ### **Organized File Structure** ✅
-- Centralized documentation in `docs/stories/`
+- Centralized documentation in `docs/agile/stories/`
 - Integration with existing QA gate system
 - Clear navigation and reference guides
 

@@ -13,6 +13,11 @@
 
 #include "Arduino.h"
 
+/**
+ * @class ATmegaInterface
+ * @brief Interface for controlling ATmega32A from Arduino Test Harness
+ * 
+ */
 class ATmegaInterface {
 public:
     void begin();

@@ -219,7 +219,7 @@ __metadata:
 
 ### **Story Files Location**
 ```
-docs/stories/
+docs/agile/stories/
 ├── __COMPLETE/              # Completed stories
 ├── ARCHIVE/                 # Archived/deprecated stories  
 ├── 0.x.epic-0-stories.md   # Epic 0 stories

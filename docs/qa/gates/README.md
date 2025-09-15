@@ -173,8 +173,8 @@ make qa-validate-all
 
 ## 📚 **Related Documentation**
 
-- **Stories Index**: `docs/stories/README.md`
-- **Status Dashboard**: `docs/stories/STORY_STATUS_DASHBOARD.md`
+- **Stories Index**: `docs/agile/stories/README.md`
+- **Status Dashboard**: `docs/agile/stories/STORY_STATUS_DASHBOARD.md`
 - **QA Standards**: `docs/sop/sw-testing-standard.md`
 - **Code Review Guide**: `docs/sop/code-review-checklist.md`
 

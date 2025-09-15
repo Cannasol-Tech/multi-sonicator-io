@@ -17,7 +17,7 @@ This directory contains all user stories for the Multi-Sonicator I/O Controller 
 ## 📁 **Directory Structure**
 
 ```
-docs/stories/
+docs/agile/stories/
 ├── README.md                                    # This index file
 ├── STORY_STATUS_DASHBOARD.md                    # Live project status tracking
 ├── __COMPLETE/                                  # Completed stories archive
@@ -207,13 +207,13 @@ Not Started → Draft → In Progress → Ready for Review → Completed
 ### **Story Management**
 ```bash
 # View current status
-cat docs/stories/STORY_STATUS_DASHBOARD.md
+cat docs/agile/stories/STORY_STATUS_DASHBOARD.md
 
 # Find specific story
-find docs/stories -name "*[story-keyword]*"
+find docs/agile/stories -name "*[story-keyword]*"
 
 # Check epic progress
-ls docs/stories/[epic-number]*
+ls docs/agile/stories/[epic-number]*
 ```
 
 ### **Quality Checks**

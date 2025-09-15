@@ -9,7 +9,7 @@
  * Provides the bridge between sonicator control functions and MODBUS register 
  * management. Handles register read/write operations and translates between
  * MODBUS register format and sonicator control API.
- * 
+ * > > > > > > > > > > > > > > > > > > > > > > > > > > >
  * Implements the MODBUS register integration for Sonicator 4 (zero-based ID 3):
  * - 0x0160: Start/Stop control (RW)
  * - 0x0161: Amplitude setpoint (RW, 20-100%)  
@@ -18,7 +18,7 @@
  * - 0x0171: Frequency (R, Hz)
  * - 0x0172: Status flags (R, bit-mapped)
  * - 0x0173: Actual amplitude (R, %)
- *  
+ * > > > > > > > > > > > > > > > > > > > > > > > > > > >
  * @note > > > > > > > > > > > > > > > > > > > > > > > > 
  * - Sonicator 4 is zero-based ID 3 in the register map 
  * - MODBUS response time target is 100ms per Story 1.4

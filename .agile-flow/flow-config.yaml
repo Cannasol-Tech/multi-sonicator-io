@@ -19,6 +19,10 @@ extension:
   version: "1.0"
   description: "Agile Flow™ workflow orchestration and multi-agent collaboration extension"
 
+tasks:
+  - update_project_board: ".agile-flow/tasks/update-project-board.md"
+    agent: sm, po, pm, qa, dev
+
 # Company File Banners 
 provenance_tags: "docs/sop/provenance-tags.md"
 
