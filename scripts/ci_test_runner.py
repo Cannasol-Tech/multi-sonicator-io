@@ -135,9 +135,8 @@ class CITestRunner:
         
         try:
             result = subprocess.run(
-                "cd test/acceptance && python3 -m behave --dry-run --tags='not @hil' features/ 2>&1",
-                shell=True,
-                cwd=self.project_root,
+                ["python3", "-m", "behave", "--dry-run", "--tags=not @hil", "features/"],
+                cwd=self.project_root / "test/acceptance",
                 capture_output=True,
                 text=True,
                 timeout=120
