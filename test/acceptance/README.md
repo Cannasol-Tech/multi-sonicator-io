@@ -4,7 +4,7 @@ Location: `test/acceptance/`
 
 ## Overview
 
-This directory contains the unified testing framework for all Acceptance and Integration tests. As defined by the `docs/sop/sw-testing-standard.md`, these tests run as:
+This directory contains the unified testing framework for all Acceptance and Integration tests. As defined by the `docs/sop/sw-testing.md`, these tests run as:
 
 - **Hardware-in-the-Loop (HIL) tests** when physical hardware is available.
 - **Emulation tests** when hardware is unavailable (e.g., in a CI pipeline).
@@ -13,7 +13,7 @@ This directory contains the unified testing framework for all Acceptance and Int
 
 It uses the Behave BDD framework to run the same scenarios against either a real or a simulated hardware target.
 
-Always adhere to the standards outlined in `docs/sop/sw-testing-standard.md`.
+Always adhere to the standards outlined in `docs/sop/sw-testing.md`.
 
 ## Purpose
 

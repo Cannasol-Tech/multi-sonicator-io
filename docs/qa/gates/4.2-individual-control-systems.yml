@@ -43,3 +43,34 @@ checks:
   - id: timing-metric
     description: "Demonstrate <100ms write→action in integration or HIL runs"
     must_pass: true
+
+---
+# QA Gate Decision (schema v1)
+schema: 1
+story: '4.2'
+gate: FAIL
+status_reason: 'Story not started; no implementation or verified tests for acceptance criteria.'
+reviewer: 'Quinn'
+updated: '2025-09-15T22:19:39Z'
+top_issues:
+  - id: 'TEST-001'
+    severity: high
+    finding: 'No unit tests implemented or passing for individual unit control.'
+    suggested_action: 'Implement tests in test/unit/control/test_sonicator_unit.cpp and reach ≥85% coverage.'
+  - id: 'TEST-002'
+    severity: high
+    finding: 'Integration tests do not validate per-unit MODBUS start/stop/amplitude control.'
+    suggested_action: 'Complete scenarios in test/integration/test_unit_modbus_interface.py for all 4 units.'
+  - id: 'TEST-003'
+    severity: high
+    finding: 'HIL validation for response time (<100ms) and safety not executed.'
+    suggested_action: 'Implement and run test/hil/test_unit4_individual_control.py, verify <100ms response.'
+  - id: 'REQ-001'
+    severity: medium
+    finding: 'Acceptance criteria lack verified traceability to tests.'
+    suggested_action: 'Add Given-When-Then mappings in story and ensure each AC has at least one test.'
+  - id: 'ARCH-001'
+    severity: medium
+    finding: 'Register map alignment not verified in code/tests.'
+    suggested_action: 'Ensure MODBUS addresses match include/register_map.h and add assertions/tests.'
+waiver: { active: false }

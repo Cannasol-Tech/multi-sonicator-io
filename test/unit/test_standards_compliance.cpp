@@ -166,7 +166,7 @@ void test_standards_files_exist(void) {
     std::vector<std::string> standards_files = {
         "project-structure.md",
         "coding-style.md",
-        "sw-testing-standard.md"
+        "sw-testing.md"
     };
     
     for (const auto& file : standards_files) {

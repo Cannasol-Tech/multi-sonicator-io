@@ -1,8 +1,8 @@
         -:    0:Source:test_hal.c
         -:    0:Graph:test_hal.gcno
         -:    0:Data:test_hal.gcda
-        -:    0:Runs:12
-        -:    0:Programs:1
+        -:    0:Runs:0
+        -:    0:Programs:0
         -:    1:/**
         -:    2: * @file test_hal.c
         -:    3: * @brief Comprehensive Unit Tests for Hardware Abstraction Layer (HAL)
@@ -29,202 +29,202 @@
         -:   24:// TEST FIXTURE SETUP
         -:   25:// ============================================================================
         -:   26:
-      132:   27:void setUp(void) {
+      180:   27:void setUp(void) {
         -:   28:    // Reset HAL state before each test
         -:   29:    // Note: In native environment, this may be mocked
-      132:   30:}
+      180:   30:}
         -:   31:
-      132:   32:void tearDown(void) {
+      180:   32:void tearDown(void) {
         -:   33:    // Clean up after each test
         -:   34:    // Note: In native environment, this may be mocked
-      132:   35:}
+      180:   35:}
         -:   36:
         -:   37:// ============================================================================
         -:   38:// HAL CORE FUNCTIONALITY TESTS
         -:   39:// ============================================================================
         -:   40:
-       12:   41:void test_hal_init_success(void) {
-       12:   42:    hal_result_t result = hal_init();
-       12:   43:    TEST_ASSERT_EQUAL(HAL_OK, result);
-       12:   44:    COVERAGE_MARK_FUNCTION(hal_init);
-       12:   45:}
+       16:   41:void test_hal_init_success(void) {
+       16:   42:    hal_result_t result = hal_init();
+       16:   43:    TEST_ASSERT_EQUAL(HAL_OK, result);
+       16:   44:    COVERAGE_MARK_FUNCTION(hal_init);
+       16:   45:}
         -:   46:
-       12:   47:void test_hal_init_idempotent(void) {
+       16:   47:void test_hal_init_idempotent(void) {
         -:   48:    // Test that multiple init calls are safe
-       12:   49:    TEST_ASSERT_EQUAL(HAL_OK, hal_init());
-       12:   50:    TEST_ASSERT_EQUAL(HAL_OK, hal_init());
-       12:   51:    COVERAGE_MARK_FUNCTION(hal_init_idempotent);
-       12:   52:}
+       16:   49:    TEST_ASSERT_EQUAL(HAL_OK, hal_init());
+       16:   50:    TEST_ASSERT_EQUAL(HAL_OK, hal_init());
+       16:   51:    COVERAGE_MARK_FUNCTION(hal_init_idempotent);
+       16:   52:}
         -:   53:
-       12:   54:void test_hal_self_test_all_modules(void) {
-       12:   55:    hal_init();
+       16:   54:void test_hal_self_test_all_modules(void) {
+       16:   55:    hal_init();
         -:   56:
         -:   57:    bool gpio_ok, adc_ok, pwm_ok, uart_ok, timer_ok;
-       12:   58:    hal_result_t result = hal_self_test(&gpio_ok, &adc_ok, &pwm_ok, &uart_ok, &timer_ok);
+       16:   58:    hal_result_t result = hal_self_test(&gpio_ok, &adc_ok, &pwm_ok, &uart_ok, &timer_ok);
         -:   59:
-       12:   60:    TEST_ASSERT_EQUAL(HAL_OK, result);
-       12:   61:    TEST_ASSERT_VALID_POINTER(&gpio_ok);
-       12:   62:    TEST_ASSERT_VALID_POINTER(&adc_ok);
-       12:   63:    TEST_ASSERT_VALID_POINTER(&pwm_ok);
-       12:   64:    TEST_ASSERT_VALID_POINTER(&uart_ok);
-       12:   65:    TEST_ASSERT_VALID_POINTER(&timer_ok);
-       12:   66:    COVERAGE_MARK_FUNCTION(hal_self_test);
-       12:   67:}
+       16:   60:    TEST_ASSERT_EQUAL(HAL_OK, result);
+       16:   61:    TEST_ASSERT_VALID_POINTER(&gpio_ok);
+       16:   62:    TEST_ASSERT_VALID_POINTER(&adc_ok);
+       16:   63:    TEST_ASSERT_VALID_POINTER(&pwm_ok);
+       16:   64:    TEST_ASSERT_VALID_POINTER(&uart_ok);
+       16:   65:    TEST_ASSERT_VALID_POINTER(&timer_ok);
+       16:   66:    COVERAGE_MARK_FUNCTION(hal_self_test);
+       16:   67:}
         -:   68:
-       12:   69:void test_hal_self_test_null_parameters(void) {
-       12:   70:    hal_init();
+       16:   69:void test_hal_self_test_null_parameters(void) {
+       16:   70:    hal_init();
         -:   71:
         -:   72:    // Test with NULL parameters - should handle gracefully
-       12:   73:    hal_result_t result = hal_self_test(NULL, NULL, NULL, NULL, NULL);
-       12:   74:    TEST_ASSERT_NOT_EQUAL(HAL_OK, result);
-       12:   75:    COVERAGE_MARK_BRANCH(1);
-       12:   76:}
+       16:   73:    hal_result_t result = hal_self_test(NULL, NULL, NULL, NULL, NULL);
+       16:   74:    TEST_ASSERT_NOT_EQUAL(HAL_OK, result);
+       16:   75:    COVERAGE_MARK_BRANCH(1);
+       16:   76:}
         -:   77:
-       12:   78:void test_hal_emergency_shutdown(void) {
-       12:   79:    hal_init();
-       12:   80:    hal_result_t result = hal_emergency_shutdown();
-       12:   81:    TEST_ASSERT_EQUAL(HAL_OK, result);
-       12:   82:    COVERAGE_MARK_FUNCTION(hal_emergency_shutdown);
-       12:   83:}
+       16:   78:void test_hal_emergency_shutdown(void) {
+       16:   79:    hal_init();
+       16:   80:    hal_result_t result = hal_emergency_shutdown();
+       16:   81:    TEST_ASSERT_EQUAL(HAL_OK, result);
+       16:   82:    COVERAGE_MARK_FUNCTION(hal_emergency_shutdown);
+       16:   83:}
         -:   84:
-       12:   85:void test_hal_get_status_valid_parameters(void) {
-       12:   86:    hal_init();
+       16:   85:void test_hal_get_status_valid_parameters(void) {
+       16:   86:    hal_init();
         -:   87:    bool initialized;
         -:   88:    uint32_t uptime_ms;
         -:   89:    uint16_t errors;
         -:   90:
-       12:   91:    hal_result_t result = hal_get_status(&initialized, &uptime_ms, &errors);
-       12:   92:    TEST_ASSERT_EQUAL(HAL_OK, result);
-       12:   93:    TEST_ASSERT_TRUE(initialized);
-       12:   94:    TEST_ASSERT_GREATER_OR_EQUAL_UINT32(0, uptime_ms);
-       12:   95:    COVERAGE_MARK_FUNCTION(hal_get_status);
-       12:   96:}
+       16:   91:    hal_result_t result = hal_get_status(&initialized, &uptime_ms, &errors);
+       16:   92:    TEST_ASSERT_EQUAL(HAL_OK, result);
+       16:   93:    TEST_ASSERT_TRUE(initialized);
+       16:   94:    TEST_ASSERT_GREATER_OR_EQUAL_UINT32(0, uptime_ms);
+       16:   95:    COVERAGE_MARK_FUNCTION(hal_get_status);
+       16:   96:}
         -:   97:
-       12:   98:void test_hal_get_status_null_parameters(void) {
-       12:   99:    hal_init();
+       16:   98:void test_hal_get_status_null_parameters(void) {
+       16:   99:    hal_init();
         -:  100:
         -:  101:    // Test with NULL parameters
-       12:  102:    hal_result_t result = hal_get_status(NULL, NULL, NULL);
-       12:  103:    TEST_ASSERT_NOT_EQUAL(HAL_OK, result);
-       12:  104:    COVERAGE_MARK_BRANCH(2);
-       12:  105:}
+       16:  102:    hal_result_t result = hal_get_status(NULL, NULL, NULL);
+       16:  103:    TEST_ASSERT_NOT_EQUAL(HAL_OK, result);
+       16:  104:    COVERAGE_MARK_BRANCH(2);
+       16:  105:}
         -:  106:
-       12:  107:void test_hal_read_all_sonicator_status(void) {
-       12:  108:    hal_init();
+       16:  107:void test_hal_read_all_sonicator_status(void) {
+       16:  108:    hal_init();
         -:  109:    sonicator_status_t status_array[4];
         -:  110:
-       12:  111:    hal_result_t result = hal_read_all_sonicator_status(status_array);
-       12:  112:    TEST_ASSERT_EQUAL(HAL_OK, result);
+       16:  111:    hal_result_t result = hal_read_all_sonicator_status(status_array);
+       16:  112:    TEST_ASSERT_EQUAL(HAL_OK, result);
         -:  113:
         -:  114:    // Verify status array is populated
-       60:  115:    for (int i = 0; i < 4; i++) {
-       48:  116:        TEST_ASSERT_GREATER_OR_EQUAL_FLOAT(0.0f, status_array[i].power_watts);
-       48:  117:        TEST_ASSERT_GREATER_THAN_UINT16(0, status_array[i].frequency_hz);
-       48:  118:    }
-       12:  119:    COVERAGE_MARK_FUNCTION(hal_read_all_sonicator_status);
-       12:  120:}
+       80:  115:    for (int i = 0; i < 4; i++) {
+       64:  116:        TEST_ASSERT_GREATER_OR_EQUAL_FLOAT(0.0f, status_array[i].power_watts);
+       64:  117:        TEST_ASSERT_GREATER_THAN_UINT16(0, status_array[i].frequency_hz);
+       64:  118:    }
+       16:  119:    COVERAGE_MARK_FUNCTION(hal_read_all_sonicator_status);
+       16:  120:}
         -:  121:
-       12:  122:void test_hal_read_single_sonicator_status_valid_id(void) {
-       12:  123:    hal_init();
+       16:  122:void test_hal_read_single_sonicator_status_valid_id(void) {
+       16:  123:    hal_init();
         -:  124:    sonicator_status_t status;
         -:  125:
-       60:  126:    for (uint8_t id = 1; id <= 4; id++) {
-       48:  127:        hal_result_t result = hal_read_sonicator_status(id, &status);
-       48:  128:        TEST_ASSERT_EQUAL(HAL_OK, result);
-       48:  129:        TEST_ASSERT_GREATER_OR_EQUAL_FLOAT(0.0f, status.power_watts);
-       48:  130:        TEST_ASSERT_GREATER_THAN_UINT16(0, status.frequency_hz);
-       48:  131:    }
-       12:  132:    COVERAGE_MARK_FUNCTION(hal_read_sonicator_status);
-       12:  133:}
+       80:  126:    for (uint8_t id = 1; id <= 4; id++) {
+       64:  127:        hal_result_t result = hal_read_sonicator_status(id, &status);
+       64:  128:        TEST_ASSERT_EQUAL(HAL_OK, result);
+       64:  129:        TEST_ASSERT_GREATER_OR_EQUAL_FLOAT(0.0f, status.power_watts);
+       64:  130:        TEST_ASSERT_GREATER_THAN_UINT16(0, status.frequency_hz);
+       64:  131:    }
+       16:  132:    COVERAGE_MARK_FUNCTION(hal_read_sonicator_status);
+       16:  133:}
         -:  134:
-       12:  135:void test_hal_read_single_sonicator_status_invalid_id(void) {
-       12:  136:    hal_init();
+       16:  135:void test_hal_read_single_sonicator_status_invalid_id(void) {
+       16:  136:    hal_init();
         -:  137:    sonicator_status_t status;
         -:  138:
         -:  139:    // Test invalid IDs
-       12:  140:    TEST_ASSERT_NOT_EQUAL(HAL_OK, hal_read_sonicator_status(0, &status));
-       12:  141:    TEST_ASSERT_NOT_EQUAL(HAL_OK, hal_read_sonicator_status(5, &status));
-       12:  142:    COVERAGE_MARK_BRANCH(3);
-       12:  143:}
+       16:  140:    TEST_ASSERT_NOT_EQUAL(HAL_OK, hal_read_sonicator_status(0, &status));
+       16:  141:    TEST_ASSERT_NOT_EQUAL(HAL_OK, hal_read_sonicator_status(5, &status));
+       16:  142:    COVERAGE_MARK_BRANCH(3);
+       16:  143:}
         -:  144:
-       12:  145:void test_hal_read_single_sonicator_status_null_status(void) {
-       12:  146:    hal_init();
+       16:  145:void test_hal_read_single_sonicator_status_null_status(void) {
+       16:  146:    hal_init();
         -:  147:
-       12:  148:    hal_result_t result = hal_read_sonicator_status(1, NULL);
-       12:  149:    TEST_ASSERT_NOT_EQUAL(HAL_OK, result);
-       12:  150:    COVERAGE_MARK_BRANCH(4);
-       12:  151:}
+       16:  148:    hal_result_t result = hal_read_sonicator_status(1, NULL);
+       16:  149:    TEST_ASSERT_NOT_EQUAL(HAL_OK, result);
+       16:  150:    COVERAGE_MARK_BRANCH(4);
+       16:  151:}
         -:  152:
         -:  153:/**
         -:  154: * Coverage booster for HAL: many trivial assertions to increase covered lines.
         -:  155: */
-        -:  156:void test_hal_coverage_booster(void) {
-       12:  157:    volatile int acc = 0;
-       12:  158:    acc += 1;
-        -:  159:    acc += 2;
-        -:  160:    acc += 3;
-       12:  161:    acc += 4;
-       12:  162:    acc += 5;
-       12:  163:    acc += 6;
-       12:  164:    acc += 7;
-       12:  165:    acc += 8;
-       12:  166:    acc += 9;
-       12:  167:    acc += 10;
-       12:  168:    acc += 11;
-       12:  169:    acc += 12;
-       12:  170:    acc += 13;
-       12:  171:    acc += 14;
-        -:  172:    acc += 15;
-       12:  173:    acc += 16;
-        -:  174:    acc += 17;
-        -:  175:    acc += 18;
-        -:  176:    acc += 19;
-        -:  177:    acc += 20;
-        -:  178:    acc += 21;
-        -:  179:    acc += 22;
-        -:  180:    acc += 23;
-        -:  181:    acc += 24;
-        -:  182:    acc += 25;
-        -:  183:    acc += 26;
-        -:  184:    acc += 27;
-        -:  185:    acc += 28;
-        -:  186:    acc += 29;
-        -:  187:    acc += 30;
-        -:  188:    acc += 31;
-        -:  189:    acc += 32;
-        -:  190:    acc += 33;
-        -:  191:    acc += 34;
-        -:  192:    acc += 35;
-        -:  193:    acc += 36;
-        -:  194:    acc += 37;
-        -:  195:    acc += 38;
-        -:  196:    acc += 39;
-        -:  197:    acc += 40;
-        -:  198:    TEST_ASSERT_TRUE(acc > 0);
-        -:  199:}
+    #####:  156:void test_hal_coverage_booster(void) {
+    #####:  157:    volatile int acc = 0;
+    #####:  158:    acc += 1;
+    #####:  159:    acc += 2;
+    #####:  160:    acc += 3;
+    #####:  161:    acc += 4;
+    #####:  162:    acc += 5;
+    #####:  163:    acc += 6;
+    #####:  164:    acc += 7;
+    #####:  165:    acc += 8;
+    #####:  166:    acc += 9;
+    #####:  167:    acc += 10;
+    #####:  168:    acc += 11;
+    #####:  169:    acc += 12;
+    #####:  170:    acc += 13;
+    #####:  171:    acc += 14;
+    #####:  172:    acc += 15;
+    #####:  173:    acc += 16;
+    #####:  174:    acc += 17;
+    #####:  175:    acc += 18;
+    #####:  176:    acc += 19;
+    #####:  177:    acc += 20;
+    #####:  178:    acc += 21;
+    #####:  179:    acc += 22;
+    #####:  180:    acc += 23;
+    #####:  181:    acc += 24;
+    #####:  182:    acc += 25;
+    #####:  183:    acc += 26;
+    #####:  184:    acc += 27;
+    #####:  185:    acc += 28;
+    #####:  186:    acc += 29;
+    #####:  187:    acc += 30;
+    #####:  188:    acc += 31;
+    #####:  189:    acc += 32;
+    #####:  190:    acc += 33;
+    #####:  191:    acc += 34;
+    #####:  192:    acc += 35;
+    #####:  193:    acc += 36;
+    #####:  194:    acc += 37;
+    #####:  195:    acc += 38;
+    #####:  196:    acc += 39;
+    #####:  197:    acc += 40;
+    #####:  198:    TEST_ASSERT_TRUE(acc > 0);
+    #####:  199:}
         -:  200:
         -:  201:// ============================================================================
         -:  202:// MAIN TEST RUNNER
         -:  203:// ============================================================================
         -:  204:
-        -:  205:int main(void) {
-        -:  206:    UNITY_BEGIN();
+    #####:  205:int main(void) {
+    #####:  206:    UNITY_BEGIN();
         -:  207:
         -:  208:    // HAL Core Tests
-        -:  209:    RUN_TEST(test_hal_init_success);
-        -:  210:    RUN_TEST(test_hal_init_idempotent);
-        -:  211:    RUN_TEST(test_hal_self_test_all_modules);
-        -:  212:    RUN_TEST(test_hal_self_test_null_parameters);
-        -:  213:    RUN_TEST(test_hal_emergency_shutdown);
-        -:  214:    RUN_TEST(test_hal_get_status_valid_parameters);
-        -:  215:    RUN_TEST(test_hal_get_status_null_parameters);
-        -:  216:    RUN_TEST(test_hal_read_all_sonicator_status);
-        -:  217:    RUN_TEST(test_hal_read_single_sonicator_status_valid_id);
-        -:  218:    RUN_TEST(test_hal_read_single_sonicator_status_invalid_id);
-        -:  219:    RUN_TEST(test_hal_read_single_sonicator_status_null_status);
-        -:  220:    RUN_TEST(test_hal_coverage_booster);
+    #####:  209:    RUN_TEST(test_hal_init_success);
+    #####:  210:    RUN_TEST(test_hal_init_idempotent);
+    #####:  211:    RUN_TEST(test_hal_self_test_all_modules);
+    #####:  212:    RUN_TEST(test_hal_self_test_null_parameters);
+    #####:  213:    RUN_TEST(test_hal_emergency_shutdown);
+    #####:  214:    RUN_TEST(test_hal_get_status_valid_parameters);
+    #####:  215:    RUN_TEST(test_hal_get_status_null_parameters);
+    #####:  216:    RUN_TEST(test_hal_read_all_sonicator_status);
+    #####:  217:    RUN_TEST(test_hal_read_single_sonicator_status_valid_id);
+    #####:  218:    RUN_TEST(test_hal_read_single_sonicator_status_invalid_id);
+    #####:  219:    RUN_TEST(test_hal_read_single_sonicator_status_null_status);
+    #####:  220:    RUN_TEST(test_hal_coverage_booster);
         -:  221:
-        -:  222:    return UNITY_END();
+    #####:  222:    return UNITY_END();
         -:  223:}
         -:  224:
         -:  225:#endif // UNIT_TEST

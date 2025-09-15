@@ -1,4 +1,4 @@
-<testsuite name="features.frequency_and_lock.Frequency measurement and lock status per unit" tests="2" errors="2" failures="0" skipped="0" time="2.008776" timestamp="2025-09-12T22:03:09.391990" hostname="Corbans-Mini.home"><testcase classname="features.frequency_and_lock.Frequency measurement and lock status per unit" name="Frequency and lock reflected within 100 ms -- @1.1 " status="cleanup_error" time="1.003881"><error type="UnknownError" message="">
+<testsuite name="features.frequency_and_lock.Frequency measurement and lock status per unit" tests="2" errors="2" failures="0" skipped="0" time="0.0" timestamp="2025-09-15T17:44:35.395563" hostname="Corbans-Mini.home"><testcase classname="features.frequency_and_lock.Frequency measurement and lock status per unit" name="Frequency and lock reflected within 100 ms -- @1.1 " status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -7,7 +7,7 @@
 
   @us-004
   Scenario Outline: Frequency and lock reflected within 100 ms -- @1.1 
-    Given the HIL wrapper is connected and ready ... failed in 1.004s
+    Given the HIL wrapper is connected and ready ... skipped in 0.000s
     And the DUT is powered and at safe defaults ... skipped in 0.000s
     Given unit 1 receives a frequency of 2000 Hz on the ÷10 input ... skipped in 0.000s
     And unit 1 lock input is set to 1 ... skipped in 0.000s
@@ -17,7 +17,7 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.frequency_and_lock.Frequency measurement and lock status per unit" name="Frequency and lock reflected within 100 ms -- @1.2 " status="cleanup_error" time="1.004895"><error type="UnknownError" message="">
+</system-out></testcase><testcase classname="features.frequency_and_lock.Frequency measurement and lock status per unit" name="Frequency and lock reflected within 100 ms -- @1.2 " status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -26,7 +26,7 @@
 
   @us-004
   Scenario Outline: Frequency and lock reflected within 100 ms -- @1.2 
-    Given the HIL wrapper is connected and ready ... failed in 1.005s
+    Given the HIL wrapper is connected and ready ... skipped in 0.000s
     And the DUT is powered and at safe defaults ... skipped in 0.000s
     Given unit 1 receives a frequency of 0 Hz on the ÷10 input ... skipped in 0.000s
     And unit 1 lock input is set to 0 ... skipped in 0.000s

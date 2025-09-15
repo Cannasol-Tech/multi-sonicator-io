@@ -3,20 +3,64 @@
   "owner": "Cannasol-Tech",
   "repo": "multi-sonicator-io",
   "releaseTag": "v0.0.0-dev",
-  "commit": "b91a1f2",
-  "createdAt": "2025-09-09T04:04:36.252976Z",
+  "commit": "2792fb5",
+  "createdAt": "2025-09-15T21:18:52.513543Z",
   "testType": "unit-only",
   "summary": {
-    "total": 5,
-    "passed": 5,
-    "failed": 0,
+    "total": 4,
+    "passed": 2,
+    "failed": 2,
     "skipped": 0,
-    "durationMs": 5000
+    "durationMs": 4000
   },
   "scenarios": [
     {
-      "name": "Unit Test Coverage - test_hal.c",
-      "feature": "Unit Tests - Test_Hal.C Module",
+      "name": "Unit Test Coverage - communication",
+      "feature": "Unit Tests - Communication Module",
+      "status": "failed",
+      "durationMs": 1000,
+      "tags": [
+        "@unit",
+        "@coverage"
+      ],
+      "steps": [
+        {
+          "name": "Test communication module functionality",
+          "status": "failed",
+          "durationMs": 500
+        },
+        {
+          "name": "Verify communication coverage >= 85%",
+          "status": "failed",
+          "durationMs": 500
+        }
+      ]
+    },
+    {
+      "name": "Unit Test Coverage - hal",
+      "feature": "Unit Tests - Hal Module",
+      "status": "failed",
+      "durationMs": 1000,
+      "tags": [
+        "@unit",
+        "@coverage"
+      ],
+      "steps": [
+        {
+          "name": "Test hal module functionality",
+          "status": "failed",
+          "durationMs": 500
+        },
+        {
+          "name": "Verify hal coverage >= 85%",
+          "status": "failed",
+          "durationMs": 500
+        }
+      ]
+    },
+    {
+      "name": "Unit Test Coverage - control",
+      "feature": "Unit Tests - Control Module",
       "status": "passed",
       "durationMs": 1000,
       "tags": [
@@ -25,20 +69,20 @@
       ],
       "steps": [
         {
-          "name": "Test test_hal.c module functionality",
+          "name": "Test control module functionality",
           "status": "passed",
           "durationMs": 500
         },
         {
-          "name": "Verify test_hal.c coverage >= 90%",
+          "name": "Verify control coverage >= 85%",
           "status": "passed",
           "durationMs": 500
         }
       ]
     },
     {
-      "name": "Unit Test Coverage - math.h",
-      "feature": "Unit Tests - Math.H Module",
+      "name": "Unit Test Coverage - sonicator",
+      "feature": "Unit Tests - Sonicator Module",
       "status": "passed",
       "durationMs": 1000,
       "tags": [
@@ -47,78 +91,12 @@
       ],
       "steps": [
         {
-          "name": "Test math.h module functionality",
+          "name": "Test sonicator module functionality",
           "status": "passed",
           "durationMs": 500
         },
         {
-          "name": "Verify math.h coverage >= 90%",
-          "status": "passed",
-          "durationMs": 500
-        }
-      ]
-    },
-    {
-      "name": "Unit Test Coverage - test_communication.c",
-      "feature": "Unit Tests - Test_Communication.C Module",
-      "status": "passed",
-      "durationMs": 1000,
-      "tags": [
-        "@unit",
-        "@coverage"
-      ],
-      "steps": [
-        {
-          "name": "Test test_communication.c module functionality",
-          "status": "passed",
-          "durationMs": 500
-        },
-        {
-          "name": "Verify test_communication.c coverage >= 90%",
-          "status": "passed",
-          "durationMs": 500
-        }
-      ]
-    },
-    {
-      "name": "Unit Test Coverage - test_sonicator.c",
-      "feature": "Unit Tests - Test_Sonicator.C Module",
-      "status": "passed",
-      "durationMs": 1000,
-      "tags": [
-        "@unit",
-        "@coverage"
-      ],
-      "steps": [
-        {
-          "name": "Test test_sonicator.c module functionality",
-          "status": "passed",
-          "durationMs": 500
-        },
-        {
-          "name": "Verify test_sonicator.c coverage >= 90%",
-          "status": "passed",
-          "durationMs": 500
-        }
-      ]
-    },
-    {
-      "name": "Unit Test Coverage - test_control.c",
-      "feature": "Unit Tests - Test_Control.C Module",
-      "status": "passed",
-      "durationMs": 1000,
-      "tags": [
-        "@unit",
-        "@coverage"
-      ],
-      "steps": [
-        {
-          "name": "Test test_control.c module functionality",
-          "status": "passed",
-          "durationMs": 500
-        },
-        {
-          "name": "Verify test_control.c coverage >= 90%",
+          "name": "Verify sonicator coverage >= 85%",
           "status": "passed",
           "durationMs": 500
         }
@@ -127,43 +105,35 @@
   ],
   "requirements": [
     {
-      "id": "REQ-UNIT-TEST_HAL.C",
-      "title": "Unit Test Coverage for Test_Hal.C Module",
-      "status": "covered",
+      "id": "REQ-UNIT-COMMUNICATION",
+      "title": "Unit Test Coverage for Communication Module",
+      "status": "failed",
       "scenarios": [
-        "Unit Test Coverage - test_hal.c"
+        "Unit Test Coverage - communication"
       ]
     },
     {
-      "id": "REQ-UNIT-MATH.H",
-      "title": "Unit Test Coverage for Math.H Module",
-      "status": "covered",
+      "id": "REQ-UNIT-HAL",
+      "title": "Unit Test Coverage for Hal Module",
+      "status": "failed",
       "scenarios": [
-        "Unit Test Coverage - math.h"
+        "Unit Test Coverage - hal"
       ]
     },
     {
-      "id": "REQ-UNIT-TEST_COMMUNICATION.C",
-      "title": "Unit Test Coverage for Test_Communication.C Module",
+      "id": "REQ-UNIT-CONTROL",
+      "title": "Unit Test Coverage for Control Module",
       "status": "covered",
       "scenarios": [
-        "Unit Test Coverage - test_communication.c"
+        "Unit Test Coverage - control"
       ]
     },
     {
-      "id": "REQ-UNIT-TEST_SONICATOR.C",
-      "title": "Unit Test Coverage for Test_Sonicator.C Module",
+      "id": "REQ-UNIT-SONICATOR",
+      "title": "Unit Test Coverage for Sonicator Module",
       "status": "covered",
       "scenarios": [
-        "Unit Test Coverage - test_sonicator.c"
-      ]
-    },
-    {
-      "id": "REQ-UNIT-TEST_CONTROL.C",
-      "title": "Unit Test Coverage for Test_Control.C Module",
-      "status": "covered",
-      "scenarios": [
-        "Unit Test Coverage - test_control.c"
+        "Unit Test Coverage - sonicator"
       ]
     }
   ]

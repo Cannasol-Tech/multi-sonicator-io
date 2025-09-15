@@ -1,4 +1,4 @@
-<testsuite name="features.amplitude_control.Amplitude control (common)" tests="4" errors="4" failures="0" skipped="0" time="4.029837" timestamp="2025-09-12T22:02:54.699627" hostname="Corbans-Mini.home"><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range for Sonicator 4 and verify mapping -- @1.1 " status="cleanup_error" time="1.011282"><error type="UnknownError" message="">
+<testsuite name="features.amplitude_control.Amplitude control (common)" tests="4" errors="4" failures="0" skipped="0" time="0.0" timestamp="2025-09-15T17:33:55.689335" hostname="Corbans-Mini.home"><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range for Sonicator 4 and verify mapping -- @1.1 " status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -7,7 +7,7 @@
 
   @us-003
   Scenario Outline: Set amplitude within range for Sonicator 4 and verify mapping -- @1.1 
-    Given the HIL wrapper is connected and ready ... failed in 1.011s
+    Given the HIL wrapper is connected and ready ... skipped in 0.000s
     And the DUT is powered and at safe defaults ... skipped in 0.000s
     When I write 20 to holding register 40001 ... skipped in 0.000s
     Then within 100 ms the amplitude output maps to 20 percent within tolerance 2% ... skipped in 0.000s
@@ -15,7 +15,7 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range for Sonicator 4 and verify mapping -- @1.2 " status="cleanup_error" time="1.007191"><error type="UnknownError" message="">
+</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range for Sonicator 4 and verify mapping -- @1.2 " status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -24,7 +24,7 @@
 
   @us-003
   Scenario Outline: Set amplitude within range for Sonicator 4 and verify mapping -- @1.2 
-    Given the HIL wrapper is connected and ready ... failed in 1.007s
+    Given the HIL wrapper is connected and ready ... skipped in 0.000s
     And the DUT is powered and at safe defaults ... skipped in 0.000s
     When I write 60 to holding register 40001 ... skipped in 0.000s
     Then within 100 ms the amplitude output maps to 60 percent within tolerance 2% ... skipped in 0.000s
@@ -32,7 +32,7 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range for Sonicator 4 and verify mapping -- @1.3 " status="cleanup_error" time="1.002241"><error type="UnknownError" message="">
+</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Set amplitude within range for Sonicator 4 and verify mapping -- @1.3 " status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -41,7 +41,7 @@
 
   @us-003
   Scenario Outline: Set amplitude within range for Sonicator 4 and verify mapping -- @1.3 
-    Given the HIL wrapper is connected and ready ... failed in 1.002s
+    Given the HIL wrapper is connected and ready ... skipped in 0.000s
     And the DUT is powered and at safe defaults ... skipped in 0.000s
     When I write 100 to holding register 40001 ... skipped in 0.000s
     Then within 100 ms the amplitude output maps to 100 percent within tolerance 2% ... skipped in 0.000s
@@ -49,7 +49,7 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Reject out-of-range amplitude for Sonicator 4" status="cleanup_error" time="1.009123"><error type="UnknownError" message="">
+</system-out></testcase><testcase classname="features.amplitude_control.Amplitude control (common)" name="Reject out-of-range amplitude for Sonicator 4" status="cleanup_error" time="0"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -58,7 +58,7 @@
 
   @us-003 @invalid
   Scenario: Reject out-of-range amplitude for Sonicator 4
-    Given the HIL wrapper is connected and ready ... failed in 1.009s
+    Given the HIL wrapper is connected and ready ... skipped in 0.000s
     And the DUT is powered and at safe defaults ... skipped in 0.000s
     When I write 5 to holding register 40001 ... skipped in 0.000s
     Then the write is rejected or the register value is clamped per spec ... skipped in 0.000s

@@ -153,7 +153,7 @@ docs/prd.md
 # Company standards
 docs/sop/coding-style.md
 docs/sop/project-structure.md
-docs/sop/sw-testing-standard.md
+docs/sop/sw-testing.md
 ```
 
 ---

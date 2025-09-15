@@ -175,7 +175,7 @@ make qa-validate-all
 
 - **Stories Index**: `docs/agile/stories/README.md`
 - **Status Dashboard**: `docs/agile/stories/STORY_STATUS_DASHBOARD.md`
-- **QA Standards**: `docs/sop/sw-testing-standard.md`
+- **QA Standards**: `docs/sop/sw-testing.md`
 - **Code Review Guide**: `docs/sop/code-review-checklist.md`
 
 ---

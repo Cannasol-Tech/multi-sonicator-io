@@ -869,7 +869,7 @@ make validate-standards
     |    └── testing-standard.md              # React Testing Standard
     ├──testing-standards-overview.md      # Overview of Testing Standards -- Outlines best practices for testing standards
     ├──testing-framework-guide.md         # Guide to Testing Frameworks -- Outlines best practices for testing frameworks
-    ├──release-report.md                  # Release Report Standard -- Outlines best practices for generating release reports
+    ├──release-format.md                  # Release Report Standard -- Outlines best practices for generating release reports
     ├──coding-style.md                    # Coding Style Standard -- Outlines best practices for coding style
     ├──root-directory.md                  # Root Directory Standard -- Outlines best practices for managing clutter in the root directory of projects
     ├──project-structure.md               # Project Structure Standard -- Outlines best practices for managing the structure of projects

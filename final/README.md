@@ -120,7 +120,7 @@ make generate-complete-executive-report
 
 These reports comply with:
 - **Cannasol Functionality Reports Standard**
-- **Software Testing Standard** (`docs/standards/sw-testing-standard.md`)
-- **PlatformIO Testing Standard** (`docs/standards/platformio-specific/platformio-testing-standard.md`)
+- **Software Testing Standard** (`docs/sop/sw-testing.md`)
+- **PlatformIO Testing Standard** (`docs/sop/platformio-specific/platformio-testing-standard.md`)
 
 All JSON reports use the standardized format for machine consumption and CI/CD integration.

@@ -41,6 +41,11 @@ void ATmegaInterface::begin() {
     for (int i = 0; i < 256; i++) {
         modbus_registers[i] = 0;
     }
+
+    // Initialize test-control flags
+    for (int i = 0; i < 4; ++i) {
+        start_inhibit_flags[i] = false;
+    }
     
     // Set some default register values
     modbus_registers[0x0000] = 0x0001;  // System status - online
@@ -347,4 +352,17 @@ void ATmegaInterface::setModbusSlaveId(uint8_t slave_id) {
 
 void ATmegaInterface::setModbusBaudRate(uint32_t baud_rate) {
     modbus_baud_rate = baud_rate;
+}
+
+void ATmegaInterface::setStartInhibit(uint8_t unit_1_based, bool enable) {
+    if (unit_1_based >= 1 && unit_1_based <= 4) {
+        start_inhibit_flags[unit_1_based - 1] = enable;
+    }
+}
+
+bool ATmegaInterface::getStartInhibit(uint8_t unit_1_based) const {
+    if (unit_1_based >= 1 && unit_1_based <= 4) {
+        return start_inhibit_flags[unit_1_based - 1];
+    }
+    return false;
 }

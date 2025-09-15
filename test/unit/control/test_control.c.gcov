@@ -1,7 +1,7 @@
         -:    0:Source:test_control.c
         -:    0:Graph:test_control.gcno
         -:    0:Data:test_control.gcda
-        -:    0:Runs:8
+        -:    0:Runs:12
         -:    0:Programs:1
         -:    1:/**
         -:    2: * @file test_control.c
@@ -69,209 +69,209 @@
         -:   64:static sonicator_controller_t test_controller;
         -:   65:static sonicator_config_t test_config;
         -:   66:
-      104:   67:void setUp(void) {
+      156:   67:void setUp(void) {
         -:   68:    // Initialize test configuration
-      104:   69:    test_config.max_power_watts = 100.0f;
-      104:   70:    test_config.min_frequency_hz = 20000;
-      104:   71:    test_config.max_frequency_hz = 40000;
-      104:   72:    test_config.default_amplitude = 50;
-      104:   73:    test_config.safety_timeout_ms = 5000;
+      156:   69:    test_config.max_power_watts = 100.0f;
+      156:   70:    test_config.min_frequency_hz = 20000;
+      156:   71:    test_config.max_frequency_hz = 40000;
+      156:   72:    test_config.default_amplitude = 50;
+      156:   73:    test_config.safety_timeout_ms = 5000;
         -:   74:
         -:   75:    // Reset controller state
-      104:   76:    memset(&test_controller, 0, sizeof(test_controller));
-      104:   77:}
+      156:   76:    memset(&test_controller, 0, sizeof(test_controller));
+      156:   77:}
         -:   78:
-      104:   79:void tearDown(void) {
+      156:   79:void tearDown(void) {
         -:   80:    // Clean up after each test
-      104:   81:    sonicator_controller_stop_all(&test_controller);
-      104:   82:}
+      156:   81:    sonicator_controller_stop_all(&test_controller);
+      156:   82:}
         -:   83:
         -:   84:// ============================================================================
         -:   85:// CONTROLLER INITIALIZATION TESTS
         -:   86:// ============================================================================
         -:   87:
-        8:   88:void test_controller_init_valid_config(void) {
-        8:   89:    controller_result_t result = sonicator_controller_init(&test_controller, &test_config);
+       12:   88:void test_controller_init_valid_config(void) {
+       12:   89:    controller_result_t result = sonicator_controller_init(&test_controller, &test_config);
         -:   90:
-        8:   91:    TEST_ASSERT_EQUAL(CONTROLLER_OK, result);
-        8:   92:    TEST_ASSERT_TRUE(test_controller.initialized);
-        8:   93:    TEST_ASSERT_EQUAL(CONTROLLER_STATE_IDLE, test_controller.state);
-        8:   94:    COVERAGE_MARK_FUNCTION(sonicator_controller_init);
-        8:   95:}
+       12:   91:    TEST_ASSERT_EQUAL(CONTROLLER_OK, result);
+       12:   92:    TEST_ASSERT_TRUE(test_controller.initialized);
+       12:   93:    TEST_ASSERT_EQUAL(CONTROLLER_STATE_IDLE, test_controller.state);
+       12:   94:    COVERAGE_MARK_FUNCTION(sonicator_controller_init);
+       12:   95:}
         -:   96:
-        8:   97:void test_controller_init_null_controller(void) {
-        8:   98:    controller_result_t result = sonicator_controller_init(NULL, &test_config);
-        8:   99:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_PARAM, result);
-        8:  100:    COVERAGE_MARK_BRANCH(1);
-        8:  101:}
+       12:   97:void test_controller_init_null_controller(void) {
+       12:   98:    controller_result_t result = sonicator_controller_init(NULL, &test_config);
+       12:   99:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_PARAM, result);
+       12:  100:    COVERAGE_MARK_BRANCH(1);
+       12:  101:}
         -:  102:
-        8:  103:void test_controller_init_null_config(void) {
-        8:  104:    controller_result_t result = sonicator_controller_init(&test_controller, NULL);
-        8:  105:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_PARAM, result);
-        8:  106:    COVERAGE_MARK_BRANCH(2);
-        8:  107:}
+       12:  103:void test_controller_init_null_config(void) {
+       12:  104:    controller_result_t result = sonicator_controller_init(&test_controller, NULL);
+       12:  105:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_PARAM, result);
+       12:  106:    COVERAGE_MARK_BRANCH(2);
+       12:  107:}
         -:  108:
-        8:  109:void test_controller_init_invalid_power_range(void) {
-        8:  110:    test_config.max_power_watts = 0.0f; // Invalid
-        8:  111:    controller_result_t result = sonicator_controller_init(&test_controller, &test_config);
-        8:  112:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_CONFIG, result);
-        8:  113:    COVERAGE_MARK_BRANCH(3);
-        8:  114:}
+       12:  109:void test_controller_init_invalid_power_range(void) {
+       12:  110:    test_config.max_power_watts = 0.0f; // Invalid
+       12:  111:    controller_result_t result = sonicator_controller_init(&test_controller, &test_config);
+       12:  112:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_CONFIG, result);
+       12:  113:    COVERAGE_MARK_BRANCH(3);
+       12:  114:}
         -:  115:
-        8:  116:void test_controller_init_invalid_frequency_range(void) {
-        8:  117:    test_config.min_frequency_hz = test_config.max_frequency_hz + 1000; // Invalid range
-        8:  118:    controller_result_t result = sonicator_controller_init(&test_controller, &test_config);
-        8:  119:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_CONFIG, result);
-        8:  120:    COVERAGE_MARK_BRANCH(4);
-        8:  121:}
+       12:  116:void test_controller_init_invalid_frequency_range(void) {
+       12:  117:    test_config.min_frequency_hz = test_config.max_frequency_hz + 1000; // Invalid range
+       12:  118:    controller_result_t result = sonicator_controller_init(&test_controller, &test_config);
+       12:  119:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_CONFIG, result);
+       12:  120:    COVERAGE_MARK_BRANCH(4);
+       12:  121:}
         -:  122:
         -:  123:// ============================================================================
         -:  124:// SONICATOR CONTROL TESTS
         -:  125:// ============================================================================
         -:  126:
-        8:  127:void test_controller_start_sonicator_valid_id(void) {
-        8:  128:    sonicator_controller_init(&test_controller, &test_config);
+       12:  127:void test_controller_start_sonicator_valid_id(void) {
+       12:  128:    sonicator_controller_init(&test_controller, &test_config);
         -:  129:
-       40:  130:    for (uint8_t id = 1; id <= 4; id++) {
-       32:  131:        controller_result_t result = sonicator_controller_start(&test_controller, id, 50, 25000);
-       32:  132:        TEST_ASSERT_EQUAL(CONTROLLER_OK, result);
-       32:  133:        TEST_ASSERT_TRUE(test_controller.sonicators[id-1].active);
-       32:  134:        TEST_ASSERT_EQUAL(50, test_controller.sonicators[id-1].amplitude);
-       32:  135:        TEST_ASSERT_EQUAL(25000, test_controller.sonicators[id-1].frequency_hz);
-       32:  136:    }
-        8:  137:    COVERAGE_MARK_FUNCTION(sonicator_controller_start);
-        8:  138:}
+       60:  130:    for (uint8_t id = 1; id <= 4; id++) {
+       48:  131:        controller_result_t result = sonicator_controller_start(&test_controller, id, 50, 25000);
+       48:  132:        TEST_ASSERT_EQUAL(CONTROLLER_OK, result);
+       48:  133:        TEST_ASSERT_TRUE(test_controller.sonicators[id-1].active);
+       48:  134:        TEST_ASSERT_EQUAL(50, test_controller.sonicators[id-1].amplitude);
+       48:  135:        TEST_ASSERT_EQUAL(25000, test_controller.sonicators[id-1].frequency_hz);
+       48:  136:    }
+       12:  137:    COVERAGE_MARK_FUNCTION(sonicator_controller_start);
+       12:  138:}
         -:  139:
-        8:  140:void test_controller_start_sonicator_invalid_id(void) {
-        8:  141:    sonicator_controller_init(&test_controller, &test_config);
+       12:  140:void test_controller_start_sonicator_invalid_id(void) {
+       12:  141:    sonicator_controller_init(&test_controller, &test_config);
         -:  142:
         -:  143:    // Test invalid IDs
-        8:  144:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_ID,
+       12:  144:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_ID,
         -:  145:                     sonicator_controller_start(&test_controller, 0, 50, 25000));
-        8:  146:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_ID,
+       12:  146:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_ID,
         -:  147:                     sonicator_controller_start(&test_controller, 5, 50, 25000));
-        8:  148:    COVERAGE_MARK_BRANCH(5);
-        8:  149:}
+       12:  148:    COVERAGE_MARK_BRANCH(5);
+       12:  149:}
         -:  150:
-        8:  151:void test_controller_start_sonicator_invalid_amplitude(void) {
-        8:  152:    sonicator_controller_init(&test_controller, &test_config);
+       12:  151:void test_controller_start_sonicator_invalid_amplitude(void) {
+       12:  152:    sonicator_controller_init(&test_controller, &test_config);
         -:  153:
         -:  154:    // Test invalid amplitude values
-        8:  155:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_PARAM,
+       12:  155:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_PARAM,
         -:  156:                     sonicator_controller_start(&test_controller, 1, 0, 25000));
-        8:  157:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_PARAM,
+       12:  157:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_PARAM,
         -:  158:                     sonicator_controller_start(&test_controller, 1, 101, 25000));
-        8:  159:    COVERAGE_MARK_BRANCH(6);
-        8:  160:}
+       12:  159:    COVERAGE_MARK_BRANCH(6);
+       12:  160:}
         -:  161:
-        8:  162:void test_controller_start_sonicator_invalid_frequency(void) {
-        8:  163:    sonicator_controller_init(&test_controller, &test_config);
+       12:  162:void test_controller_start_sonicator_invalid_frequency(void) {
+       12:  163:    sonicator_controller_init(&test_controller, &test_config);
         -:  164:
         -:  165:    // Test invalid frequency values
-        8:  166:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_PARAM,
+       12:  166:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_PARAM,
         -:  167:                     sonicator_controller_start(&test_controller, 1, 50, 19999));
-        8:  168:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_PARAM,
+       12:  168:    TEST_ASSERT_EQUAL(CONTROLLER_ERROR_INVALID_PARAM,
         -:  169:                     sonicator_controller_start(&test_controller, 1, 50, 40001));
-        8:  170:    COVERAGE_MARK_BRANCH(7);
-        8:  171:}
+       12:  170:    COVERAGE_MARK_BRANCH(7);
+       12:  171:}
         -:  172:
-        8:  173:void test_controller_stop_sonicator_valid_id(void) {
-        8:  174:    sonicator_controller_init(&test_controller, &test_config);
+       12:  173:void test_controller_stop_sonicator_valid_id(void) {
+       12:  174:    sonicator_controller_init(&test_controller, &test_config);
         -:  175:
         -:  176:    // Start then stop each sonicator
-       40:  177:    for (uint8_t id = 1; id <= 4; id++) {
-       32:  178:        sonicator_controller_start(&test_controller, id, 50, 25000);
-       32:  179:        controller_result_t result = sonicator_controller_stop(&test_controller, id);
-       32:  180:        TEST_ASSERT_EQUAL(CONTROLLER_OK, result);
-       32:  181:        TEST_ASSERT_FALSE(test_controller.sonicators[id-1].active);
-       32:  182:    }
-        8:  183:    COVERAGE_MARK_FUNCTION(sonicator_controller_stop);
-        8:  184:}
+       60:  177:    for (uint8_t id = 1; id <= 4; id++) {
+       48:  178:        sonicator_controller_start(&test_controller, id, 50, 25000);
+       48:  179:        controller_result_t result = sonicator_controller_stop(&test_controller, id);
+       48:  180:        TEST_ASSERT_EQUAL(CONTROLLER_OK, result);
+       48:  181:        TEST_ASSERT_FALSE(test_controller.sonicators[id-1].active);
+       48:  182:    }
+       12:  183:    COVERAGE_MARK_FUNCTION(sonicator_controller_stop);
+       12:  184:}
         -:  185:
-        8:  186:void test_controller_stop_all_sonicators(void) {
-        8:  187:    sonicator_controller_init(&test_controller, &test_config);
+       12:  186:void test_controller_stop_all_sonicators(void) {
+       12:  187:    sonicator_controller_init(&test_controller, &test_config);
         -:  188:
         -:  189:    // Start all sonicators
-       40:  190:    for (uint8_t id = 1; id <= 4; id++) {
-       32:  191:        sonicator_controller_start(&test_controller, id, 50, 25000);
-       32:  192:    }
+       60:  190:    for (uint8_t id = 1; id <= 4; id++) {
+       48:  191:        sonicator_controller_start(&test_controller, id, 50, 25000);
+       48:  192:    }
         -:  193:
         -:  194:    // Stop all
-        8:  195:    controller_result_t result = sonicator_controller_stop_all(&test_controller);
-        8:  196:    TEST_ASSERT_EQUAL(CONTROLLER_OK, result);
+       12:  195:    controller_result_t result = sonicator_controller_stop_all(&test_controller);
+       12:  196:    TEST_ASSERT_EQUAL(CONTROLLER_OK, result);
         -:  197:
         -:  198:    // Verify all stopped
-       40:  199:    for (uint8_t i = 0; i < 4; i++) {
-       32:  200:        TEST_ASSERT_FALSE(test_controller.sonicators[i].active);
-       32:  201:    }
-        8:  202:    COVERAGE_MARK_FUNCTION(sonicator_controller_stop_all);
-        8:  203:}
+       60:  199:    for (uint8_t i = 0; i < 4; i++) {
+       48:  200:        TEST_ASSERT_FALSE(test_controller.sonicators[i].active);
+       48:  201:    }
+       12:  202:    COVERAGE_MARK_FUNCTION(sonicator_controller_stop_all);
+       12:  203:}
         -:  204:
-        8:  205:void test_controller_emergency_stop(void) {
-        8:  206:    sonicator_controller_init(&test_controller, &test_config);
+       12:  205:void test_controller_emergency_stop(void) {
+       12:  206:    sonicator_controller_init(&test_controller, &test_config);
         -:  207:
         -:  208:    // Start all sonicators
-       40:  209:    for (uint8_t id = 1; id <= 4; id++) {
-       32:  210:        sonicator_controller_start(&test_controller, id, 50, 25000);
-       32:  211:    }
+       60:  209:    for (uint8_t id = 1; id <= 4; id++) {
+       48:  210:        sonicator_controller_start(&test_controller, id, 50, 25000);
+       48:  211:    }
         -:  212:
         -:  213:    // Emergency stop
-        8:  214:    controller_result_t result = sonicator_controller_emergency_stop(&test_controller);
-        8:  215:    TEST_ASSERT_EQUAL(CONTROLLER_OK, result);
-        8:  216:    TEST_ASSERT_EQUAL(CONTROLLER_STATE_EMERGENCY, test_controller.state);
+       12:  214:    controller_result_t result = sonicator_controller_emergency_stop(&test_controller);
+       12:  215:    TEST_ASSERT_EQUAL(CONTROLLER_OK, result);
+       12:  216:    TEST_ASSERT_EQUAL(CONTROLLER_STATE_EMERGENCY, test_controller.state);
         -:  217:
         -:  218:    // Verify all stopped
-       40:  219:    for (uint8_t i = 0; i < 4; i++) {
-       32:  220:        TEST_ASSERT_FALSE(test_controller.sonicators[i].active);
-       32:  221:    }
-        8:  222:    COVERAGE_MARK_FUNCTION(sonicator_controller_emergency_stop);
-        8:  223:}
+       60:  219:    for (uint8_t i = 0; i < 4; i++) {
+       48:  220:        TEST_ASSERT_FALSE(test_controller.sonicators[i].active);
+       48:  221:    }
+       12:  222:    COVERAGE_MARK_FUNCTION(sonicator_controller_emergency_stop);
+       12:  223:}
         -:  224:
         -:  225:// ============================================================================
         -:  226:// STATE MACHINE TESTS
         -:  227:// ============================================================================
         -:  228:
-        8:  229:void test_controller_state_transitions(void) {
-        8:  230:    sonicator_controller_init(&test_controller, &test_config);
+       12:  229:void test_controller_state_transitions(void) {
+       12:  230:    sonicator_controller_init(&test_controller, &test_config);
         -:  231:
         -:  232:    // Test state transitions
-        8:  233:    TEST_ASSERT_EQUAL(CONTROLLER_STATE_IDLE, test_controller.state);
+       12:  233:    TEST_ASSERT_EQUAL(CONTROLLER_STATE_IDLE, test_controller.state);
         -:  234:
-        8:  235:    sonicator_controller_start(&test_controller, 1, 50, 25000);
-        8:  236:    TEST_ASSERT_EQUAL(CONTROLLER_STATE_RUNNING, test_controller.state);
+       12:  235:    sonicator_controller_start(&test_controller, 1, 50, 25000);
+       12:  236:    TEST_ASSERT_EQUAL(CONTROLLER_STATE_RUNNING, test_controller.state);
         -:  237:
-        8:  238:    sonicator_controller_stop_all(&test_controller);
-        8:  239:    TEST_ASSERT_EQUAL(CONTROLLER_STATE_IDLE, test_controller.state);
-        8:  240:    COVERAGE_MARK_FUNCTION(controller_state_machine);
-        8:  241:}
+       12:  238:    sonicator_controller_stop_all(&test_controller);
+       12:  239:    TEST_ASSERT_EQUAL(CONTROLLER_STATE_IDLE, test_controller.state);
+       12:  240:    COVERAGE_MARK_FUNCTION(controller_state_machine);
+       12:  241:}
         -:  242:
         -:  243:// ============================================================================
         -:  244:// MAIN TEST RUNNER
         -:  245:// ============================================================================
         -:  246:
-        8:  247:int main(void) {
-        8:  248:    UNITY_BEGIN();
+       12:  247:int main(void) {
+       12:  248:    UNITY_BEGIN();
         -:  249:
         -:  250:    // Controller Initialization Tests
-        8:  251:    RUN_TEST(test_controller_init_valid_config);
-        8:  252:    RUN_TEST(test_controller_init_null_controller);
-        8:  253:    RUN_TEST(test_controller_init_null_config);
-        8:  254:    RUN_TEST(test_controller_init_invalid_power_range);
-        8:  255:    RUN_TEST(test_controller_init_invalid_frequency_range);
+       12:  251:    RUN_TEST(test_controller_init_valid_config);
+       12:  252:    RUN_TEST(test_controller_init_null_controller);
+       12:  253:    RUN_TEST(test_controller_init_null_config);
+       12:  254:    RUN_TEST(test_controller_init_invalid_power_range);
+       12:  255:    RUN_TEST(test_controller_init_invalid_frequency_range);
         -:  256:
         -:  257:    // Sonicator Control Tests
-        8:  258:    RUN_TEST(test_controller_start_sonicator_valid_id);
-        8:  259:    RUN_TEST(test_controller_start_sonicator_invalid_id);
-        8:  260:    RUN_TEST(test_controller_start_sonicator_invalid_amplitude);
-        8:  261:    RUN_TEST(test_controller_start_sonicator_invalid_frequency);
-        8:  262:    RUN_TEST(test_controller_stop_sonicator_valid_id);
-        8:  263:    RUN_TEST(test_controller_stop_all_sonicators);
-        8:  264:    RUN_TEST(test_controller_emergency_stop);
+       12:  258:    RUN_TEST(test_controller_start_sonicator_valid_id);
+       12:  259:    RUN_TEST(test_controller_start_sonicator_invalid_id);
+       12:  260:    RUN_TEST(test_controller_start_sonicator_invalid_amplitude);
+       12:  261:    RUN_TEST(test_controller_start_sonicator_invalid_frequency);
+       12:  262:    RUN_TEST(test_controller_stop_sonicator_valid_id);
+       12:  263:    RUN_TEST(test_controller_stop_all_sonicators);
+       12:  264:    RUN_TEST(test_controller_emergency_stop);
         -:  265:
         -:  266:    // State Machine Tests
-        8:  267:    RUN_TEST(test_controller_state_transitions);
+       12:  267:    RUN_TEST(test_controller_state_transitions);
         -:  268:
-        8:  269:    return UNITY_END();
+       12:  269:    return UNITY_END();
         -:  270:}
         -:  271:
         -:  272:#endif // UNIT_TEST

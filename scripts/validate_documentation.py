@@ -58,7 +58,7 @@ def validate_prd_completeness():
 def validate_architecture_completeness():
     """Validate that Architecture document contains required sections."""
     project_root = Path(__file__).parent.parent
-    arch_file = project_root / "docs" / "architecture.md"
+    arch_file = project_root / "docs" / "architecture" / "architecture.md"
     
     if not arch_file.exists():
         print("❌ Architecture file not found")
@@ -98,7 +98,7 @@ def validate_architecture_completeness():
 def validate_story_structure():
     """Validate that story files follow proper structure."""
     project_root = Path(__file__).parent.parent
-    stories_dir = project_root / "docs" / "stories"
+    stories_dir = project_root / "docs" / "agile" / "stories"
     
     if not stories_dir.exists():
         print("❌ Stories directory not found")
@@ -150,7 +150,7 @@ def validate_story_structure():
 def validate_testing_standards():
     """Validate testing standards documentation exists and is complete."""
     project_root = Path(__file__).parent.parent
-    testing_standard = project_root / "docs" / "standards" / "sw-testing-standard.md"
+    testing_standard = project_root / "docs" / "sop" / "sw-testing.md"
     
     if not testing_standard.exists():
         print("❌ Software testing standard not found")
@@ -160,8 +160,8 @@ def validate_testing_standards():
     
     required_sections = [
         "# Software Testing Official Organization-Wide Standards",
-        "## Testing Strategy",
-        "### Three-Stage Testing Approach",
+        "## Universal Testing Strategy",
+        "### Three-Stage Foundation",
         "## Standardized Make Targets",
         "## BMad-Core Integration"
     ]
