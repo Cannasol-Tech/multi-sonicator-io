@@ -340,6 +340,14 @@ static bool modbus_write_register_internal(uint16_t address, uint16_t value) {
             modbus_register_map_t* register_map = REGMAP();
             uint16_t* son_regs = (uint16_t*)&register_map->sonicators[sonicator_id];
             son_regs[reg_offset] = value;
+            // Map per-unit start/stop control to multi-unit controller
+            if (reg_offset == MODBUS_REG_SON_START_STOP) {
+                if (value) {
+                    (void)multi_sonicator_request_unit_start((uint8_t)sonicator_id);
+                } else {
+                    (void)multi_sonicator_request_unit_stop((uint8_t)sonicator_id);
+                }
+            }
             return true;
         }
     }
