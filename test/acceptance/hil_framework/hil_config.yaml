@@ -168,3 +168,39 @@ feature_flags:
   performance_profiling: false    # Enable performance profiling
   automated_calibration: true     # Enable automated sensor calibration
   parallel_testing: false         # Enable parallel test execution
+
+# Timeout configuration for various operations
+timeouts:
+  # Hardware interface timeouts
+  hardware_interface:
+    serial_connect: 2.0           # Serial connection timeout (seconds)
+    serial_write: 2.0             # Serial write timeout (seconds)
+    command_response: 1.0         # Default command response timeout (seconds)
+    ping: 1.0                     # Ping command timeout (seconds)
+    info: 1.0                     # Info command timeout (seconds)
+    status: 1.0                   # Status read timeout (seconds)
+    power_read: 1.0               # Power measurement timeout (seconds)
+    overload_set: 1.0             # Overload set timeout (seconds)
+    frequency_lock: 1.0           # Frequency lock timeout (seconds)
+    adc_read: 1.0                 # ADC read timeout (seconds)
+    pwm_read: 1.0                 # PWM read timeout (seconds)
+    send_command_min: 0.05        # Minimum send command timeout (seconds)
+  
+  # Programmer timeouts
+  programmer:
+    avrdude_check: 10             # Avrdude availability check timeout (seconds)
+    connection_test: 30           # Programmer connection test timeout (seconds)
+    firmware_programming: 120     # Firmware programming timeout (seconds)
+    fuse_read: 30                 # Fuse reading timeout (seconds)
+    firmware_verification: 60     # Firmware verification timeout (seconds)
+    chip_erase: 30                # Chip erase timeout (seconds)
+    pid_detection: 5              # PID detection timeout (seconds)
+    arduino_check: 10             # Arduino presence check timeout (seconds)
+    platformio_upload: 300        # PlatformIO upload timeout (seconds)
+  
+  # Safety system timeouts
+  safety_system:
+    emergency_stop: 0.1           # Emergency stop response time requirement (seconds)
+    communication_timeout: 5.0    # Communication timeout (seconds)
+    monitoring_interval: 0.1      # Safety monitoring interval (seconds)
+    safe_state_timeout: 30.0      # Timeout for returning to safe state (seconds)

@@ -149,197 +149,197 @@ export class HardwareInterface extends EventEmitter {
 import sys
 import os
 import time
+import json
+import threading
 
 # Add paths for HIL framework
 sys.path.insert(0, '${process.cwd()}/test/acceptance')
 sys.path.insert(0, '${process.cwd()}/scripts')
 
-# Try to import HIL framework with fallback
-try:
-    from hil_framework.hardware_interface import HardwareInterface
-except ImportError:
-    # Fallback: create a mock hardware interface for development
-    class HardwareInterface:
-        def __init__(self):
-            self.connected = False
-            self.serial_port = None
-            # Mock pin states for testing
-            self.pin_states = {
-                'FREQ_DIV10_4': 'LOW',
-                'FREQ_LOCK_4': 'LOW',
-                'OVERLOAD_4': 'LOW',
-                'START_4': 'LOW',
-                'RESET_4': 'LOW',
-                'POWER_SENSE_4': 512,  # ADC value
-                'AMPLITUDE_ALL': '0.0%',
-                'UART_TXD': 'LOW',
-                'STATUS_LED': 'LOW'
+class MockHardwareInterface:
+    def __init__(self):
+        self.connected = True
+        self.serial_port = 'mock'
+        # Mock pin states for testing
+        self.pin_states = {
+            'FREQ_DIV10_4': 'LOW',
+            'FREQ_LOCK_4': 'LOW',
+            'OVERLOAD_4': 'LOW',
+            'START_4': 'LOW',
+            'RESET_4': 'LOW',
+            'POWER_SENSE_4': 512,  # ADC value
+            'AMPLITUDE_ALL': '0.0%',
+            'UART_TXD': 'LOW',
+            'STATUS_LED': 'LOW'
+        }
+        # Frequency generation configuration
+        self.frequency_config = {
+            'FREQ_DIV10_4': {
+                'frequency_hz': 2000,  # Default 2kHz (20kHz / 10)
+                'enabled': True,
+                'last_toggle': time.time(),
+                'state': False
             }
-            # Frequency generation configuration
-            self.frequency_config = {
-                'FREQ_DIV10_4': {
-                    'frequency_hz': 2000,  # Default 2kHz (20kHz / 10)
-                    'enabled': True,
-                    'last_toggle': time.time(),
-                    'state': False
-                }
-            }
-            # Start frequency generation thread
-            self.frequency_thread = threading.Thread(target=self.frequency_generator, daemon=True)
-            self.frequency_thread.start()
+        }
+        # Start frequency generation thread
+        self.frequency_thread = threading.Thread(target=self.frequency_generator, daemon=True)
+        self.frequency_thread.start()
 
-        def verify_connection(self):
-            print('{"type": "connection", "status": "connected", "port": "mock"}')
-            return True
+    def verify_connection(self):
+        print(json.dumps({"type": "connection", "status": "connected", "port": "mock"}))
+        sys.stdout.flush()
+        return True
 
-        def disconnect(self):
-            self.connected = False
+    def disconnect(self):
+        self.connected = False
 
-        def frequency_generator(self):
-            """Generate frequency signals and monitor PWM for configured pins"""
-            pwm_update_counter = 0
-            while True:
-                try:
-                    current_time = time.time()
-
-                    # Update frequency pins
-                    for signal, config in self.frequency_config.items():
-                        if config['enabled'] and config['frequency_hz'] > 0:
-                            period = 1.0 / config['frequency_hz']
-                            half_period = period / 2.0
-
-                            if current_time - config['last_toggle'] >= half_period:
-                                # Toggle the pin state
-                                config['state'] = not config['state']
-                                config['last_toggle'] = current_time
-
-                                # Update pin state and send update
-                                new_state = 'HIGH' if config['state'] else 'LOW'
-                                self.pin_states[signal] = new_state
-
-                                # Send pin state update
-                                print(json.dumps({"type": "pin_state", "pin": signal, "data": new_state}))
-                                sys.stdout.flush()
-
-                    # Update PWM pins every 100ms (reduce update frequency for PWM)
-                    pwm_update_counter += 1
-                    if pwm_update_counter >= 100:  # Update PWM every 100ms
-                        pwm_update_counter = 0
-                        self.update_pwm_monitoring()
-
-                    time.sleep(0.001)  # 1ms sleep for reasonable precision
-                except Exception as e:
-                    print(f"Frequency generator error: {e}")
-                    time.sleep(0.1)
-
-        def update_pwm_monitoring(self):
-            """Continuously monitor PWM signals"""
-            import random
-
-            # Simulate AMPLITUDE_ALL PWM monitoring with varying duty cycle
-            # In real hardware, this would read the actual PWM signal from the ATmega32A
-            duty_cycle = random.uniform(0, 100)
-            pwm_value = f"{duty_cycle:.1f}%"
-
-            # Only update if value changed significantly (reduce noise)
-            current_value = self.pin_states.get('AMPLITUDE_ALL', '0.0%')
+    def frequency_generator(self):
+        """Generate frequency signals and monitor PWM for configured pins"""
+        pwm_update_counter = 0
+        while True:
             try:
-                current_duty = float(current_value.replace('%', ''))
-                new_duty = float(pwm_value.replace('%', ''))
+                current_time = time.time()
 
-                # Update if difference is > 1% to reduce noise
-                if abs(new_duty - current_duty) > 1.0:
-                    self.pin_states['AMPLITUDE_ALL'] = pwm_value
+                # Update frequency pins
+                for signal, config in self.frequency_config.items():
+                    if config['enabled'] and config['frequency_hz'] > 0:
+                        period = 1.0 / config['frequency_hz']
+                        half_period = period / 2.0
 
-                    # Send PWM state update
-                    print(json.dumps({"type": "pin_state", "pin": "AMPLITUDE_ALL", "data": pwm_value}))
-                    sys.stdout.flush()
-            except:
-                # Fallback: always update if parsing fails
+                        if current_time - config['last_toggle'] >= half_period:
+                            # Toggle the pin state
+                            config['state'] = not config['state']
+                            config['last_toggle'] = current_time
+
+                            # Update pin state and send update
+                            new_state = 'HIGH' if config['state'] else 'LOW'
+                            self.pin_states[signal] = new_state
+
+                            # Send pin state update
+                            print(json.dumps({"type": "pin_state", "pin": signal, "data": new_state}))
+                            sys.stdout.flush()
+
+                # Update PWM pins every 100ms
+                pwm_update_counter += 1
+                if pwm_update_counter >= 100:
+                    pwm_update_counter = 0
+                    self.update_pwm_monitoring()
+
+                time.sleep(0.001)
+            except Exception as e:
+                print(f"Frequency generator error: {e}")
+                time.sleep(0.1)
+
+    def update_pwm_monitoring(self):
+        import random
+        duty_cycle = random.uniform(0, 100)
+        pwm_value = f"{duty_cycle:.1f}%"
+        current_value = self.pin_states.get('AMPLITUDE_ALL', '0.0%')
+        try:
+            current_duty = float(current_value.replace('%', ''))
+            new_duty = float(pwm_value.replace('%', ''))
+            if abs(new_duty - current_duty) > 1.0:
                 self.pin_states['AMPLITUDE_ALL'] = pwm_value
                 print(json.dumps({"type": "pin_state", "pin": "AMPLITUDE_ALL", "data": pwm_value}))
                 sys.stdout.flush()
+        except:
+            self.pin_states['AMPLITUDE_ALL'] = pwm_value
+            print(json.dumps({"type": "pin_state", "pin": "AMPLITUDE_ALL", "data": pwm_value}))
+            sys.stdout.flush()
 
-        def send_command(self, cmd):
-            # Parse command and update mock states
-            parts = cmd.split()
-            if parts[0] == 'PING':
-                return "PONG - Multi-Sonicator-IO Mock Hardware v1.0"
-            elif len(parts) >= 3 and parts[0] == 'SET_FREQUENCY':
-                signal = parts[1]
-                frequency_hz = float(parts[2])
-                if signal in self.frequency_config:
-                    self.frequency_config[signal]['frequency_hz'] = frequency_hz
-                    print(f"Set {signal} frequency to {frequency_hz}Hz")
-                return "OK"
-            elif len(parts) >= 3 and parts[0] == 'WRITE_PIN':
-                signal = parts[1]
-                state = parts[2]
-                if signal in self.pin_states:
-                    self.pin_states[signal] = state
-                    # Send pin state update
-                    print(json.dumps({"type": "pin_state", "pin": signal, "data": state}))
-                    sys.stdout.flush()
-                return "OK"
-            elif len(parts) >= 2 and parts[0] == 'READ_PIN':
-                signal_or_pin = parts[1]
-                # Map Arduino pin names to signal names
-                pin_to_signal = {
-                    'D7': 'FREQ_DIV10_4',
-                    'D8': 'FREQ_LOCK_4',
-                    'A2': 'OVERLOAD_4',
-                    'A3': 'START_4',
-                    'A4': 'RESET_4',
-                    'A1': 'POWER_SENSE_4',
-                    'D9': 'AMPLITUDE_ALL',
-                    'D10': 'UART_RXD',
-                    'D11': 'UART_TXD',
-                    'D12': 'STATUS_LED'
-                }
-
-                # Check if it's an Arduino pin name, convert to signal name
-                if signal_or_pin in pin_to_signal:
-                    signal = pin_to_signal[signal_or_pin]
-                else:
-                    signal = signal_or_pin
-
-                if signal in self.pin_states:
-                    return str(self.pin_states[signal])
-                return "UNKNOWN"
-            elif len(parts) >= 2 and parts[0] == 'READ_PWM':
-                signal_or_pin = parts[1]
-                # Map Arduino pin names to signal names
-                pin_to_signal = {
-                    'D9': 'AMPLITUDE_ALL',
-                    'AMPLITUDE_ALL': 'AMPLITUDE_ALL'
-                }
-
-                # Check if it's an Arduino pin name, convert to signal name
-                if signal_or_pin in pin_to_signal:
-                    signal = pin_to_signal[signal_or_pin]
-                else:
-                    signal = signal_or_pin
-
-                if signal == 'AMPLITUDE_ALL':
-                    # Simulate continuous PWM monitoring with varying duty cycle
-                    import random
-                    duty_cycle = random.uniform(0, 100)
-                    # Update pin state for continuous monitoring
-                    self.pin_states[signal] = f"{duty_cycle:.1f}%"
-                    return f"OK PWM={duty_cycle:.1f}%"
-                return "ERR INVALID_PWM_CHANNEL"
+    def send_command(self, cmd):
+        parts = cmd.split()
+        if not parts:
             return "OK"
+        if parts[0] == 'PING':
+            return "PONG - Multi-Sonicator-IO Mock Hardware v1.0"
+        elif len(parts) >= 3 and parts[0] == 'SET_FREQUENCY':
+            signal = parts[1]
+            frequency_hz = float(parts[2])
+            if signal in self.frequency_config:
+                self.frequency_config[signal]['frequency_hz'] = frequency_hz
+            return "OK"
+        elif len(parts) >= 3 and parts[0] == 'WRITE_PIN':
+            signal = parts[1]
+            state = parts[2]
+            self.pin_states[signal] = state
+            print(json.dumps({"type": "pin_state", "pin": signal, "data": state}))
+            sys.stdout.flush()
+            return "OK"
+        elif len(parts) >= 2 and parts[0] == 'READ_PIN':
+            signal_or_pin = parts[1]
+            pin_to_signal = {
+                'D7': 'FREQ_DIV10_4',
+                'D8': 'FREQ_LOCK_4',
+                'A2': 'OVERLOAD_4',
+                'A3': 'START_4',
+                'A4': 'RESET_4',
+                'A1': 'POWER_SENSE_4',
+                'D9': 'AMPLITUDE_ALL',
+                'D10': 'UART_RXD',
+                'D11': 'UART_TXD',
+                'D12': 'STATUS_LED'
+            }
+            signal = pin_to_signal.get(signal_or_pin, signal_or_pin)
+            return str(self.pin_states.get(signal, 'LOW'))
+        elif len(parts) >= 2 and parts[0] == 'READ_PWM':
+            return f"OK PWM={self.pin_states.get('AMPLITUDE_ALL', '0.0%')}"
+        return "OK"
+
+# Try to import real HIL interface
+RealHardwareInterface = None
+try:
+    from hil_framework.hardware_interface import HardwareInterface as RealHardwareInterface
+except Exception:
+    RealHardwareInterface = None
 
 import json
 import time
 import threading
 
 # Initialize HIL hardware interface
-hil = HardwareInterface()
+use_mock = False
+if os.environ.get('HARDWARE_MOCK', '0') in ('1', 'true', 'True'):
+    use_mock = True
 
+hil = None
+if not use_mock and RealHardwareInterface is not None:
+    try:
+        hil = RealHardwareInterface()
+        if not hil.verify_connection():
+            # If in CI/pipeline, do not fallback; otherwise use mock
+            if os.environ.get('CI') or os.environ.get('GITHUB_ACTIONS'):
+                print(json.dumps({"type": "connection", "status": "failed", "error": "Could not connect to hardware"}))
+                sys.stdout.flush()
+                sys.exit(1)
+            else:
+                use_mock = True
+    except Exception as e:
+        # Any runtime error: fallback to mock when not CI
+        if os.environ.get('CI') or os.environ.get('GITHUB_ACTIONS'):
+            print(json.dumps({"type": "connection", "status": "failed", "error": str(e)}))
+            sys.stdout.flush()
+            sys.exit(1)
+        else:
+            use_mock = True
+
+# If the real interface is unavailable and we're not explicitly in mock mode yet,
+# decide based on CI context to avoid None dereferences.
+if hil is None and not use_mock and RealHardwareInterface is None:
+    if os.environ.get('CI') or os.environ.get('GITHUB_ACTIONS'):
+        print(json.dumps({"type": "connection", "status": "failed", "error": "HIL interface not available (import failed)"}))
+        sys.stdout.flush()
+        sys.exit(1)
+    else:
+        use_mock = True
+
+if use_mock:
+    hil = MockHardwareInterface()
+
+# At this point, hil is initialized and ready
 try:
-    if hil.verify_connection():
-        print(json.dumps({"type": "connection", "status": "connected", "port": hil.serial_port}))
+    if hil is not None and hil.verify_connection():
+        print(json.dumps({"type": "connection", "status": "connected", "port": getattr(hil, 'serial_port', 'mock')}))
         sys.stdout.flush()
 
         # Continuous monitoring loop for sandbox mode

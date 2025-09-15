@@ -37,6 +37,30 @@ class HardwareValidator:
         # Load hardware configuration
         self._load_hardware_config()
         
+        # Load configuration from HIL config
+        self._load_hil_config()
+    
+    def _load_hil_config(self):
+        """Load HIL configuration from config file"""
+        try:
+            import yaml
+            from pathlib import Path
+            config_path = Path(__file__).parent.parent / 'acceptance' / 'hil_framework' / 'hil_config.yaml'
+            if config_path.exists():
+                with open(config_path, 'r') as f:
+                    config = yaml.safe_load(f)
+                    testing_config = config.get('testing', {})
+                    # Load any relevant configuration values
+                    self.voltage_tolerance = testing_config.get('voltage_tolerance', 0.2)
+                    self.timing_tolerance = testing_config.get('timing_tolerance', 0.1)
+                    self.adc_reference_voltage = testing_config.get('adc_reference_voltage', 5.0)
+        except Exception as e:
+            self.logger.warning(f"Failed to load HIL configuration: {e}. Using defaults.")
+            # Default values if config loading fails
+            self.voltage_tolerance = 0.2
+            self.timing_tolerance = 0.1
+            self.adc_reference_voltage = 5.0
+        
         self.logger.info("Hardware Validator initialized")
     
     def _load_hardware_config(self):

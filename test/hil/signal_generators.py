@@ -65,6 +65,28 @@ class SignalGenerators:
             'update_interval_ms': 10        # Signal update interval
         }
         
+        # Load configuration from HIL config
+        self._load_config()
+    
+    def _load_config(self):
+        """Load configuration from HIL config file"""
+        try:
+            import yaml
+            from pathlib import Path
+            config_path = Path(__file__).parent.parent / 'acceptance' / 'hil_framework' / 'hil_config.yaml'
+            if config_path.exists():
+                with open(config_path, 'r') as f:
+                    config = yaml.safe_load(f)
+                    testing_config = config.get('testing', {})
+                    self.config['max_frequency_hz'] = testing_config.get('max_frequency_hz', 50000)
+                    self.config['min_frequency_hz'] = testing_config.get('min_frequency_hz', 1)
+                    self.config['pwm_resolution'] = testing_config.get('pwm_resolution', 8)
+                    self.config['analog_resolution'] = testing_config.get('analog_resolution', 10)
+                    self.config['max_voltage'] = testing_config.get('max_voltage', 5.0)
+                    self.config['update_interval_ms'] = int(testing_config.get('update_interval_ms', 10))
+        except Exception as e:
+            self.logger.warning(f"Failed to load configuration: {e}. Using defaults.")
+        
         self.logger.info("Signal Generators initialized")
     
     def generate_digital_signal(self, channel: str, state: bool) -> bool:

@@ -18,12 +18,16 @@
  * - 0x0171: Frequency (R, Hz)
  * - 0x0172: Status flags (R, bit-mapped)
  * - 0x0173: Actual amplitude (R, %)
+ *  
+ * @note > > > > > > > > > > > > > > > > > > > > > > > > 
+ * - Sonicator 4 is zero-based ID 3 in the register map 
+ * - MODBUS response time target is 100ms per Story 1.4
  */
 
-#include "sonicator_modbus_bridge.h"
-#include "sonicator_control.h"
 #include "modules/communication/modbus_register_manager.h"
 #include "modules/communication/modbus_registers.h"
+#include "sonicator_modbus_bridge.h"
+#include "sonicator_control.h"
 #include "register_map.h"
 #include <Arduino.h>
 

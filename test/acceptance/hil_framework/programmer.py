@@ -37,6 +37,52 @@ class ArduinoISPProgrammer:
         self.programmer_type = 'stk500v1'
         self.baud_rate = 19200
         
+        # Load timeout configuration
+        self._load_timeout_config()
+    
+    def _load_timeout_config(self):
+        """Load timeout configuration from HIL config file"""
+        try:
+            import yaml
+            from pathlib import Path
+            config_path = Path(__file__).parent / 'hil_config.yaml'
+            if config_path.exists():
+                with open(config_path, 'r') as f:
+                    config = yaml.safe_load(f)
+                    timeouts = config.get('timeouts', {}).get('programmer', {})
+                    self.avrdude_check_timeout = timeouts.get('avrdude_check', 10)
+                    self.connection_test_timeout = timeouts.get('connection_test', 30)
+                    self.firmware_programming_timeout = timeouts.get('firmware_programming', 120)
+                    self.fuse_read_timeout = timeouts.get('fuse_read', 30)
+                    self.firmware_verification_timeout = timeouts.get('firmware_verification', 60)
+                    self.chip_erase_timeout = timeouts.get('chip_erase', 30)
+                    self.pid_detection_timeout = timeouts.get('pid_detection', 5)
+                    self.arduino_check_timeout = timeouts.get('arduino_check', 10)
+                    self.platformio_upload_timeout = timeouts.get('platformio_upload', 300)
+            else:
+                # Default values if config file not found
+                self.avrdude_check_timeout = 10
+                self.connection_test_timeout = 30
+                self.firmware_programming_timeout = 120
+                self.fuse_read_timeout = 30
+                self.firmware_verification_timeout = 60
+                self.chip_erase_timeout = 30
+                self.pid_detection_timeout = 5
+                self.arduino_check_timeout = 10
+                self.platformio_upload_timeout = 300
+        except Exception as e:
+            self.logger.warning(f"Failed to load timeout configuration: {e}. Using defaults.")
+            # Default values if config loading fails
+            self.avrdude_check_timeout = 10
+            self.connection_test_timeout = 30
+            self.firmware_programming_timeout = 120
+            self.fuse_read_timeout = 30
+            self.firmware_verification_timeout = 60
+            self.chip_erase_timeout = 30
+            self.pid_detection_timeout = 5
+            self.arduino_check_timeout = 10
+            self.platformio_upload_timeout = 300
+        
     def verify_connection(self) -> bool:
         """Verify Arduino ISP programmer connection"""
         try:
@@ -45,7 +91,7 @@ class ArduinoISPProgrammer:
                 [self.avrdude_cmd, '-v'],
                 capture_output=True,
                 text=True,
-                timeout=10
+                timeout=self.avrdude_check_timeout
             )
             
             if result.returncode != 0:
@@ -53,7 +99,7 @@ class ArduinoISPProgrammer:
                 # Attempt to fallback to PlatformIO-bundled avrdude
                 self.avrdude_cmd = self._resolve_avrdude(force_fallback=True)
                 self.avrdude_conf = self.avrdude_conf or self._resolve_avrdude_conf()
-                result2 = subprocess.run([self.avrdude_cmd, '-v'], capture_output=True, text=True, timeout=10)
+                result2 = subprocess.run([self.avrdude_cmd, '-v'], capture_output=True, text=True, timeout=self.avrdude_check_timeout)
                 if result2.returncode != 0:
                     return False
             
@@ -74,7 +120,7 @@ class ArduinoISPProgrammer:
                 cmd,
                 capture_output=True,
                 text=True,
-                timeout=30
+                timeout=self.connection_test_timeout
             )
             
             if result.returncode == 0:
@@ -134,7 +180,7 @@ class ArduinoISPProgrammer:
                     cmd,
                     capture_output=True,
                     text=True,
-                    timeout=120
+                    timeout=self.firmware_programming_timeout
                 )
                 if result.returncode == 0:
                     self.logger.info("Firmware programming completed successfully")
@@ -176,7 +222,7 @@ class ArduinoISPProgrammer:
                 '-U', 'lfuse:r:-:h'
             ]
             
-            result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=self.fuse_read_timeout)
             if result.returncode == 0:
                 # Parse fuse value from output
                 for line in result.stderr.split('\n'):
@@ -214,7 +260,7 @@ class ArduinoISPProgrammer:
                 cmd,
                 capture_output=True,
                 text=True,
-                timeout=60
+                timeout=self.firmware_verification_timeout
             )
             
             if result.returncode == 0:
@@ -247,7 +293,7 @@ class ArduinoISPProgrammer:
                 cmd,
                 capture_output=True,
                 text=True,
-                timeout=30
+                timeout=self.chip_erase_timeout
             )
             
             if result.returncode == 0:
@@ -321,7 +367,7 @@ class ArduinoISPProgrammer:
                 ['lsof', '-t', device_path],
                 capture_output=True,
                 text=True,
-                timeout=5
+                timeout=self.pid_detection_timeout
             )
             if result.returncode != 0:
                 return []
@@ -372,7 +418,7 @@ class ArduinoISPProgrammer:
             script = repo_root / 'scripts' / 'detect_hardware.py'
             if not script.exists():
                 return True  # cannot verify, do not block
-            result = subprocess.run([sys.executable, str(script), '--check-arduino'], capture_output=True, text=True, timeout=10)
+            result = subprocess.run([sys.executable, str(script), '--check-arduino'], capture_output=True, text=True, timeout=self.arduino_check_timeout)
             return result.returncode == 0
         except Exception:
             return True
@@ -382,7 +428,7 @@ class ArduinoISPProgrammer:
         try:
             repo_root = Path(__file__).resolve().parents[3]
             # Use platformio to upload with atmega32a env; relies on config/platformio.ini
-            result = subprocess.run(['pio', 'run', '-e', 'atmega32a', '-t', 'upload'], cwd=str(repo_root), capture_output=True, text=True, timeout=300)
+            result = subprocess.run(['pio', 'run', '-e', 'atmega32a', '-t', 'upload'], cwd=str(repo_root), capture_output=True, text=True, timeout=self.platformio_upload_timeout)
             if result.returncode != 0:
                 self.logger.error(f"PlatformIO upload failed: {result.stderr}")
                 return False

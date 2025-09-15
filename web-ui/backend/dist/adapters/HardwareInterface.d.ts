@@ -11,6 +11,27 @@ export interface PinState {
     enabled?: boolean;
     isActive?: boolean;
 }
+
+/**
+ * @class HardwareInterface
+ * @classdesc Adapter for communicating with the hardware via the Arduino Test Wrapper
+ * Based on scripts/hil_serial.py and test/acceptance/hil_framework/hardware_interface.py
+ * @emits 'pinStateChange' when a pin state changes
+ * @emits 'connectionChange' when the connection status changes
+ * @emits 'commandResponse' when a command response is received
+ * @emits 'error' when an error occurs
+ * @emits 'arduinoCommand' when a command is sent to the Arduino
+ * @emits 'arduinoLog' when a log message is received from the Arduino
+ * @emits 'arduinoResponse' when a response is received from the Arduino
+ * @emits 'arduinoError' when an error is received from the Arduino
+ * @emits 'arduinoStatus' when a status update is received from the Arduino
+ * @emits 'arduinoPinState' when a pin state update is received from the Arduino
+ * @emits 'arduinoConnection' when a connection status update is received from the Arduino
+ * @emits 'arduinoPinUpdate' when a pin state update is received from the Arduino
+ * @emits 'arduinoPinMonitoring' when a pin monitoring status update is received from the Arduino
+ * @emits 'arduinoPinMonitoringChange' when a pin monitoring status change is received from the Arduino
+ * @emits 'arduinoPinMonitoringStart' when a pin monitoring start is received from the Arduino
+ */
 export interface HardwareCommand {
     command: string;
     args?: string[];

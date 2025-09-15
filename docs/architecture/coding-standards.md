@@ -42,12 +42,12 @@ This is the global coding standard for all projects, always adhere to this stand
 
 > Always adhere to the company standards when writing code.
 
-- **File Location of Global standard:** `.kilocode/rules/coding-standards.md`
+- **File Location of Global standard:** `docs/sop/coding-style.md`
 
 ## Guidelines
 
 - If you are ever unsure of any implementation details, ask for clarification before proceeding.
-- If you need any information from the Human for implementation, create an issue in the Github Repository and assign it to `sboyett31`
+- If you need any information from the Human for implementation, create an issue in the Github Repository and assign it to `sboyett31`.
 
 ## Critical Fullstack Rules
 

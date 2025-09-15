@@ -4,7 +4,7 @@
 
 from dataclasses import dataclass
 import logging
-from typing import Optional
+from typing import Optional, Dict, Any, List, Union
 
 import glob
 
@@ -15,29 +15,29 @@ import platform
 
 @dataclass
 class WRAPPER_PINS:
-    UART_RXD = "D2"
-    UART_TXD = "D3"
-    STATUS_LED = "D4"
+    UART_RXD: str = "D2"
+    UART_TXD: str = "D3"
+    STATUS_LED: str = "D4"
     class SONICATOR_4:
-        FREQ_DIV10_4 = "D7"
-        FREQ_LOCK_4 = "D8"
-        OVERLOAD_4 = "A2"
-        START_4 = "A3"
-        RESET_4 = "A4"
-        POWER_SENSE_4 = "A1"
-        AMPLITUDE_ALL = "D9"
+        FREQ_DIV10_4: str = "D7"
+        FREQ_LOCK_4: str = "D8"
+        OVERLOAD_4: str = "A2"
+        START_4: str = "A3"
+        RESET_4: str = "A4"
+        POWER_SENSE_4: str = "A1"
+        AMPLITUDE_ALL: str = "D9"
     
 
 
 class HardwareInterface:
-    def __init__(self, serial_port=None, baud_rate=115200):
-        self.baud_rate = baud_rate
-        self.serial_connection = None
-        self.logger = logging.getLogger(__name__)
-        self.connected = False
-        self.serial_port = serial_port
+    def __init__(self, serial_port: Optional[str] = None, baud_rate: int = 115200) -> None:
+        self.baud_rate: int = baud_rate
+        self.serial_connection: Optional[serial.Serial] = None
+        self.logger: logging.Logger = logging.getLogger(__name__)
+        self.connected: bool = False
+        self.serial_port: Optional[str] = serial_port
         # Pin mapping verified against docs/planning/pin-matrix.md (SOLE SOURCE OF TRUTH)
-        self.pin_mapping = {
+        self.pin_mapping: Dict[str, str] = {
             'FREQ_DIV10_4': WRAPPER_PINS.SONICATOR_4.FREQ_DIV10_4,
             'FREQ_LOCK_4': WRAPPER_PINS.SONICATOR_4.FREQ_LOCK_4,
             'OVERLOAD_4': WRAPPER_PINS.SONICATOR_4.OVERLOAD_4,
@@ -49,8 +49,63 @@ class HardwareInterface:
             'UART_TXD': WRAPPER_PINS.UART_TXD,        # MODBUS RTU TX
             'STATUS_LED': WRAPPER_PINS.STATUS_LED       # Status LED
         }
+        
+        # Load timeout configuration
+        self._load_timeout_config()
+    
+    def _load_timeout_config(self) -> None:
+        """Load timeout configuration from HIL config file"""
+        try:
+            import yaml
+            from pathlib import Path
+            config_path = Path(__file__).parent / 'hil_config.yaml'
+            if config_path.exists():
+                with open(config_path, 'r') as f:
+                    config = yaml.safe_load(f)
+                    timeouts = config.get('timeouts', {}).get('hardware_interface', {})
+                    self.serial_connect_timeout: float = timeouts.get('serial_connect', 2.0)
+                    self.serial_write_timeout: float = timeouts.get('serial_write', 2.0)
+                    self.command_response_timeout: float = timeouts.get('command_response', 1.0)
+                    self.ping_timeout: float = timeouts.get('ping', 1.0)
+                    self.info_timeout: float = timeouts.get('info', 1.0)
+                    self.status_timeout: float = timeouts.get('status', 1.0)
+                    self.power_read_timeout: float = timeouts.get('power_read', 1.0)
+                    self.overload_set_timeout: float = timeouts.get('overload_set', 1.0)
+                    self.frequency_lock_timeout: float = timeouts.get('frequency_lock', 1.0)
+                    self.adc_read_timeout: float = timeouts.get('adc_read', 1.0)
+                    self.pwm_read_timeout: float = timeouts.get('pwm_read', 1.0)
+                    self.send_command_min_timeout: float = timeouts.get('send_command_min', 0.05)
+            else:
+                # Default values if config file not found
+                self.serial_connect_timeout: float = 2.0
+                self.serial_write_timeout: float = 2.0
+                self.command_response_timeout: float = 1.0
+                self.ping_timeout: float = 1.0
+                self.info_timeout: float = 1.0
+                self.status_timeout: float = 1.0
+                self.power_read_timeout: float = 1.0
+                self.overload_set_timeout: float = 1.0
+                self.frequency_lock_timeout: float = 1.0
+                self.adc_read_timeout: float = 1.0
+                self.pwm_read_timeout: float = 1.0
+                self.send_command_min_timeout: float = 0.05
+        except Exception as e:
+            self.logger.warning(f"Failed to load timeout configuration: {e}. Using defaults.")
+            # Default values if config loading fails
+            self.serial_connect_timeout: float = 2.0
+            self.serial_write_timeout: float = 2.0
+            self.command_response_timeout: float = 1.0
+            self.ping_timeout: float = 1.0
+            self.info_timeout: float = 1.0
+            self.status_timeout: float = 1.0
+            self.power_read_timeout: float = 1.0
+            self.overload_set_timeout: float = 1.0
+            self.frequency_lock_timeout: float = 1.0
+            self.adc_read_timeout: float = 1.0
+            self.pwm_read_timeout: float = 1.0
+            self.send_command_min_timeout: float = 0.05
 
-    def _find_macos_usb_serial_ports(self) -> list:
+    def _find_macos_usb_serial_ports(self) -> List[str]:
         patterns = [
             "/dev/tty.usbserial-*",
             "/dev/tty.usbmodem*",
@@ -105,18 +160,18 @@ class HardwareInterface:
                 self.serial_connection = serial.Serial(
                     port=port,
                     baudrate=self.baud_rate,
-                    timeout=2.0,
-                    write_timeout=2.0
+                    timeout=self.serial_connect_timeout,
+                    write_timeout=self.serial_write_timeout
                 )
 
                 # TIMING FIX: Extended wait for Arduino initialization
                 self.logger.debug(f"Waiting for Arduino initialization on {port}...")
-                time.sleep(3.0)
+                time.sleep(3.0)  # This is a fixed delay for Arduino boot, not configurable
 
                 # BUFFER CLEARING FIX: More thorough startup message clearing
                 start = time.time()
                 startup_messages = []
-                while time.time() - start < 2.0:  # Extended clearing time
+                while time.time() - start < 2.0:  # Extended clearing time (fixed)
                     try:
                         if self.serial_connection.in_waiting:
                             data = self.serial_connection.read(self.serial_connection.in_waiting)
@@ -126,7 +181,7 @@ class HardwareInterface:
                             break
                     except Exception:
                         break
-                    time.sleep(0.05)  # Slightly longer sleep for stability
+                    time.sleep(0.05)  # Slightly longer sleep for stability (fixed)
 
                 if startup_messages:
                     self.logger.debug(f"Cleared startup messages: {startup_messages}")
@@ -138,7 +193,7 @@ class HardwareInterface:
                 self.serial_connection.flush()
                 line = None
                 start = time.time()
-                while time.time() - start < 0.6:
+                while time.time() - start < self.ping_timeout * 0.6:
                     try:
                         if self.serial_connection.in_waiting:
                             line = self.serial_connection.readline()
@@ -157,7 +212,7 @@ class HardwareInterface:
                     self.serial_connection.flush()
                     start = time.time()
                     line = None
-                    while time.time() - start < 0.6:
+                    while time.time() - start < self.ping_timeout * 0.6:
                         try:
                             if self.serial_connection.in_waiting:
                                 line = self.serial_connection.readline()
@@ -192,7 +247,7 @@ class HardwareInterface:
             pin = str(pin)
         return self.pin_mapping.get(pin, pin)
 
-    def _ensure_serial(self):
+    def _ensure_serial(self) -> serial.Serial:
         """Ensure the serial port is open and ready with proper Arduino initialization."""
         if self.serial_connection and getattr(self.serial_connection, 'is_open', False):
             return self.serial_connection
@@ -203,8 +258,8 @@ class HardwareInterface:
                 self.serial_connection = serial.Serial(
                     port=self.serial_port,
                     baudrate=self.baud_rate,
-                    timeout=2.0,  # Increased timeout for Arduino communication
-                    write_timeout=2.0,
+                    timeout=self.serial_connect_timeout,  # Increased timeout for Arduino communication
+                    write_timeout=self.serial_write_timeout,
                 )
 
                 # TIMING FIX: Allow Arduino to initialize after reconnection
@@ -239,7 +294,7 @@ class HardwareInterface:
     def ping(self) -> bool:
         """Test basic connectivity with Arduino Test Wrapper"""
         try:
-            response = self.send_command("PING", read_timeout=1.0)
+            response = self.send_command("PING", read_timeout=self.ping_timeout)
             return response and "PONG" in response.upper()
         except Exception as e:
             self.logger.debug(f"Ping failed: {e}")
@@ -248,7 +303,7 @@ class HardwareInterface:
     def get_info(self) -> str:
         """Get Arduino Test Wrapper version and info"""
         try:
-            return self.send_command("INFO", read_timeout=1.0)
+            return self.send_command("INFO", read_timeout=self.info_timeout)
         except Exception as e:
             self.logger.debug(f"Info command failed: {e}")
             return ""
@@ -256,7 +311,7 @@ class HardwareInterface:
     def get_status(self, sonicator: int) -> Optional[str]:
         """Get sonicator status"""
         try:
-            response = self.send_command(f"READ STATUS {sonicator}", read_timeout=1.0)
+            response = self.send_command(f"READ STATUS {sonicator}", read_timeout=self.status_timeout)
             return response if response and "OK" in response else None
         except Exception as e:
             self.logger.debug(f"Status read failed for sonicator {sonicator}: {e}")
@@ -265,7 +320,7 @@ class HardwareInterface:
     def read_power(self, sonicator: int) -> Optional[float]:
         """Read power measurement for sonicator"""
         try:
-            response = self.send_command(f"READ POWER {sonicator}", read_timeout=1.0)
+            response = self.send_command(f"READ POWER {sonicator}", read_timeout=self.power_read_timeout)
             if response and "POWER=" in response:
                 # Extract power value from response like "OK POWER=428"
                 power_str = response.split("POWER=")[1].split()[0]
@@ -278,7 +333,7 @@ class HardwareInterface:
     def set_overload(self, sonicator: int, state: bool) -> bool:
         """Set overload condition for sonicator"""
         try:
-            response = self.send_command(f"SET OVERLOAD {sonicator} {1 if state else 0}", read_timeout=1.0)
+            response = self.send_command(f"SET OVERLOAD {sonicator} {1 if state else 0}", read_timeout=self.overload_set_timeout)
             return response and "OK" in response
         except Exception as e:
             self.logger.debug(f"Set overload failed for sonicator {sonicator}: {e}")
@@ -287,7 +342,7 @@ class HardwareInterface:
     def set_frequency_lock(self, sonicator: int, state: bool) -> bool:
         """Set frequency lock for sonicator"""
         try:
-            response = self.send_command(f"SET LOCK {sonicator} {1 if state else 0}", read_timeout=1.0)
+            response = self.send_command(f"SET LOCK {sonicator} {1 if state else 0}", read_timeout=self.frequency_lock_timeout)
             return response and "OK" in response
         except Exception as e:
             self.logger.debug(f"Set frequency lock failed for sonicator {sonicator}: {e}")
@@ -296,7 +351,7 @@ class HardwareInterface:
     def read_adc(self, channel: str) -> Optional[int]:
         """Read ADC value from channel"""
         try:
-            response = self.send_command(f"READ ADC {channel}", read_timeout=1.0)
+            response = self.send_command(f"READ ADC {channel}", read_timeout=self.adc_read_timeout)
             if response and "ADC=" in response:
                 # Extract ADC value from response like "OK ADC=512"
                 adc_str = response.split("ADC=")[1].split()[0]
@@ -309,7 +364,7 @@ class HardwareInterface:
     def read_pwm(self, channel: str) -> Optional[float]:
         """Read PWM duty cycle from channel"""
         try:
-            response = self.send_command(f"READ PWM {channel}", read_timeout=1.0)
+            response = self.send_command(f"READ PWM {channel}", read_timeout=self.pwm_read_timeout)
             if response and "PWM=" in response:
                 # Extract PWM value from response like "OK PWM=50%"
                 pwm_str = response.split("PWM=")[1].split("%")[0]
@@ -319,10 +374,14 @@ class HardwareInterface:
             self.logger.debug(f"PWM read failed for channel {channel}: {e}")
             return None
 
-    def send_command(self, command: str, read_timeout: float = 1.0) -> str:
+    def send_command(self, command: str, read_timeout: float = None) -> str:
         """Send a single-line ASCII command to the Arduino Test Harness and return one line of response.
         Returns empty string on timeout.
         """
+        # Use configured default timeout if none provided
+        if read_timeout is None:
+            read_timeout = self.command_response_timeout
+            
         try:
             import time
             ser = self._ensure_serial()
@@ -339,7 +398,7 @@ class HardwareInterface:
             # Read one line with a short timeout loop
             start = time.time()
             response = b""
-            while time.time() - start < max(0.05, read_timeout):
+            while time.time() - start < max(self.send_command_min_timeout, read_timeout):
                 try:
                     if ser.in_waiting:
                         response = ser.readline()

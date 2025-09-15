@@ -69,6 +69,26 @@ class SafetyInterlocks:
             'safe_state_timeout_s': 30         # Timeout for returning to safe state
         }
         
+        # Load timeout configuration from HIL config
+        self._load_timeout_config()
+    
+    def _load_timeout_config(self):
+        """Load timeout configuration from HIL config file"""
+        try:
+            import yaml
+            from pathlib import Path
+            config_path = Path(__file__).parent.parent / 'acceptance' / 'hil_framework' / 'hil_config.yaml'
+            if config_path.exists():
+                with open(config_path, 'r') as f:
+                    config = yaml.safe_load(f)
+                    timeouts = config.get('timeouts', {}).get('safety_system', {})
+                    self.config['emergency_stop_timeout_ms'] = int(timeouts.get('emergency_stop', 0.1) * 1000)
+                    self.config['communication_timeout_s'] = timeouts.get('communication_timeout', 5.0)
+                    self.config['monitoring_interval_s'] = timeouts.get('monitoring_interval', 0.1)
+                    self.config['safe_state_timeout_s'] = timeouts.get('safe_state_timeout', 30.0)
+        except Exception as e:
+            self.logger.warning(f"Failed to load timeout configuration: {e}. Using defaults.")
+        
         # Safety event log
         self.safety_events = []
         

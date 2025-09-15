@@ -7,9 +7,21 @@ brief: Company-wide standard for coding style and conventions
 version: 1.0
 
 dependencies:
+  - file: docs/sop/file-header.md
+    type: standard
+    required: true
+    description: File header standard
+  - file: docs/sop/root-directory.md
+    type: standard
+    required: true
+    description: Root directory standard
 
 tags:
   - coding-style
+  - coding-standards
+  - standards
+  - style
+  -     
 ---
 
 # Coding Style Standards

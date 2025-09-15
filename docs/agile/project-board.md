@@ -15,7 +15,7 @@ __metadata:
 
 # 📊 Multi-Sonicator I/O Project Stories Dashboard
 
-**Last Updated**: 2025-09-14T23:13:18Z
+**Last Updated**: 2025-09-15T02:03:19Z
 **Total Stories**: 25  
 **Project Completion**: 8%  
 
@@ -60,7 +60,7 @@ __metadata:
 |-------|-------|--------|----------|---------|-------------------|------------|-----------------|
 | **0.1** | Project Structure & CI/CD Pipeline | ✅ **COMPLETED** | 100% | ✅ PASS | 2025-09-14T19:09:35Z | 2025-09-14 | - |
 | **0.2** | HIL Test Harness Setup | ⚠️ **CONCERNS** | 70% | ⚠️ CONCERNS | N/A | N/A | Unit test coverage <85% |
-| **0.3** | BDD Acceptance Testing Framework | 📋 **DRAFT** | 0% | 🔒 BLOCKED | N/A | N/A | Depends on 0.2 |
+| **0.3** | BDD Acceptance Testing Framework | 📋 **DRAFT** | 0% | ⏳ PENDING DEP (0.2) | 2025-09-14T22:03:19-04:00 | Validation updated; duplication cleared | Depends on 0.2 |
 | **0.4** | Hardware Connection Verification | 📋 **NOT STARTED** | 0% | - | N/A | N/A | Depends on 0.2, 0.3 |
 | **0.5** | Arduino Test Wrapper Validation | 📋 **NOT STARTED** | 0% | - | N/A | N/A | Depends on 0.2, 0.3 |
 | **0.6** | Sandbox CLI Manual Testing | 📋 **NOT STARTED** | 0% | - | N/A | N/A | Depends on 0.2, 0.3 |
@@ -83,7 +83,7 @@ __metadata:
 
 | Story | Title | Status | Progress | QA Gate | QA Gate Timestamp | Assessment | Dependencies |
 |-------|-------|--------|----------|---------|-------------------|------------|-------------|
-| **1.1** | Hardware Abstraction Layer | 📋 **NOT STARTED** | 0% | - | N/A | N/A | Epic 0 completion |
+| **1.1** | Hardware Abstraction Layer | 📋 **NOT STARTED** | 0% | 🔒 BLOCKED | 2025-09-14T21:09:09-04:00 | N/A | Epic 0 completion |
 | **1.2** | HIL Test Harness | ✅ **COMPLETED** | 100% | ✅ PASS | 2025-09-14T04:47:18Z | 2025-09-14 | - |
 | **1.3** | MODBUS Framework | 📋 **NOT STARTED** | 0% | - | N/A | N/A | Epic 0 completion |
 | **1.4** | Single Sonicator Control | 📋 **NOT STARTED** | 0% | - | N/A | N/A | 1.1, 1.3 completion |
@@ -161,6 +161,7 @@ __metadata:
 ### **Priority 2: Enable Next Phase** ⚡
 
 3. **Start Story 0.3** - BDD Acceptance Testing
+   - **Note**: Duplication gate cleared; technical examples aligned with repo
    - **Trigger**: After 0.2 completion
    - **Dependencies**: Story 0.2 complete
    - **Timeline**: 1 week

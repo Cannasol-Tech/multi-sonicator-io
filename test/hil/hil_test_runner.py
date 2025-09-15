@@ -48,7 +48,33 @@ class HILTestRunner:
         self.results_dir.mkdir(parents=True, exist_ok=True)
         self.logs_dir.mkdir(parents=True, exist_ok=True)
         
+        # Ensure directories exist
+        self.results_dir.mkdir(parents=True, exist_ok=True)
+        self.logs_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Load configuration from HIL config
+        self._load_hil_config()
+        
         self.logger.info("HIL Test Runner initialized")
+    
+    def _load_hil_config(self):
+        """Load HIL configuration from config file"""
+        try:
+            import yaml
+            from pathlib import Path
+            config_path = Path(__file__).parent.parent / 'acceptance' / 'hil_framework' / 'hil_config.yaml'
+            if config_path.exists():
+                with open(config_path, 'r') as f:
+                    config = yaml.safe_load(f)
+                    testing_config = config.get('testing', {})
+                    # Load any relevant configuration values
+                    self.voltage_tolerance = testing_config.get('voltage_tolerance', 0.2)
+                    self.timing_tolerance = testing_config.get('timing_tolerance', 0.1)
+        except Exception as e:
+            self.logger.warning(f"Failed to load HIL configuration: {e}. Using defaults.")
+            # Default values if config loading fails
+            self.voltage_tolerance = 0.2
+            self.timing_tolerance = 0.1
     
     def run_basic_connectivity_tests(self) -> Dict[str, Any]:
         """Run basic hardware connectivity tests"""
