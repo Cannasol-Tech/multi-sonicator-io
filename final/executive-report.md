@@ -3,25 +3,20 @@
 ## Executive Summary
 
 **Release**: v0.0.0-dev  
-**Commit**: b91a1f2  
-**Generated**: 2025-09-09T04:04:36.252976Z
+**Commit**: f9e6660  
+**Generated**: 2025-09-14T23:45:30.087111Z
 **Test Type**: Unit Tests Only (CI Pipeline)
 
 ## Unit Test Results
 
-- **Total Test Scenarios**: 5
-- **Passed**: 5 ✅
+- **Total Test Scenarios**: 0
+- **Passed**: 0 ✅
 - **Failed**: 0 ❌  
-- **Coverage**: 100.0%
-- **Coverage Requirement (≥90%)**: ✅ MET
+- **Coverage**: 0.0%
+- **Coverage Requirement (≥85%)**: ❌ NOT MET
 
 ## Test Coverage by Module
 
-- **Test_Hal.C**: 100.0% ✅
-- **Math.H**: 100.0% ✅
-- **Test_Communication.C**: 100.0% ✅
-- **Test_Sonicator.C**: 100.0% ✅
-- **Test_Control.C**: 100.0% ✅
 
 ## CI Pipeline Notes
 

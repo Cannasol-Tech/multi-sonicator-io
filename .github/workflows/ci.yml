@@ -2,9 +2,9 @@ name: Multi-Sonicator CI/CD Pipeline
 
 on:
   push:
-    branches: [main, develop]
+    branches: [master, develop]
   pull_request:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
     inputs:
       release_candidate:
@@ -230,7 +230,7 @@ jobs:
           make test-acceptance
       - name: Archive BDD artifacts (optional)
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: bdd-smoke-logs
           path: |
@@ -278,7 +278,7 @@ jobs:
 
   stage-release:
     needs: build-firmware
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: Download Artifacts
