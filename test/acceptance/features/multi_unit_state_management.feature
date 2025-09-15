@@ -166,3 +166,50 @@ Feature: Multi-Unit State Management (Story 4.1)
       | 1    | 4          | OVERLOAD       |
       | 1    | 5          | FAULT          |
       | 1    | 6          | UNKNOWN        |
+
+  @ac-3 @trace:S-4.1 @sync
+  Scenario: Coordinated start uses an all-or-none barrier
+    Given all units are in normal operating condition
+    When a coordinated start is requested for units 1-4
+    Then within 100 ms the system count should be 4
+    And within 100 ms all units 1-4 should be in "RUNNING" state
+    And the master coordination state should be RUNNING
+
+  @ac-3 @trace:S-4.1 @sync
+  Scenario: Partial mask coordinated start (units 1 and 3)
+    Given all units are in normal operating condition
+    When a coordinated start is requested for units 1 and 3
+    Then within 50 ms the system count should be 2
+    And within 50 ms the system mask should be 0x0005
+    And units 1 and 3 should be in "RUNNING" state
+    And units 2 and 4 should be in "STOPPED" state
+
+  @ac-4 @trace:S-4.1 @conflict
+  Scenario: Concurrent stop command during coordinated start is rejected
+    Given all units are in normal operating condition
+    When a coordinated start is requested for units 1-4
+    And a stop command is issued for unit 1 during coordination
+    Then the master should reject unsafe transitions
+    And within 100 ms all units 1-4 should be in "RUNNING" state
+
+  @ac-4 @trace:S-4.1 @conflict @fault-gating
+  Scenario: Faulted unit blocks coordinated start per safety policy
+    Given unit 3 is in FAULT condition
+    When a coordinated start is requested for units 1-4
+    Then the coordinated start should be rejected
+    And the master coordination state should be FAULT_ISOLATION
+    And all units should be in safe state
+
+  @ac-4 @trace:S-4.1 @conflict
+  Scenario: Emergency stop overrides any in-flight coordination
+    Given a coordinated start is in progress for units 1-4
+    When an emergency stop is issued
+    Then the system should enter emergency stop mode
+    And all units should be in safe state
+
+  @ac-3 @trace:S-4.1 @sync
+  Scenario: Coordinated stop brings all active units down together
+    Given units 1-4 are RUNNING under coordinated control
+    When a coordinated stop is requested for units 1-4
+    Then within 100 ms the system count should be 0
+    And all units should be in stopped state

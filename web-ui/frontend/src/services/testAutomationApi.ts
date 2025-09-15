@@ -6,40 +6,29 @@ const API_BASE = '/api'
 const MOCK_SCENARIOS: TestScenario[] = [
   {
     id: 'scenario-1',
-    name: 'Basic Pin Control Test',
-    description: 'Test basic pin control operations for START_4 and RESET_4 pins',
-    feature_file: 'pin-control.feature',
-    tags: ['@smoke', '@pin-control', '@hil'],
+    name: 'Basic Power Control',
+    description: 'Test basic power on/off functionality',
+    feature_file: 'power-control.feature',
+    tags: ['@smoke', '@power'],
+    status: 'pending',
     steps: [
       {
         step_type: 'Given',
-        description: 'the Arduino is connected and ready',
-        pin_interactions: [],
-        status: 'pending'
+        description: 'the system is powered off',
+        status: 'pending',
+        pin_interactions: ['POWER_SENSE_4']
       },
       {
         step_type: 'When',
-        description: 'I set START_4 pin to HIGH',
-        pin_interactions: ['START_4'],
-        status: 'pending'
+        description: 'power is turned on',
+        status: 'pending',
+        pin_interactions: ['START_4']
       },
       {
         step_type: 'Then',
-        description: 'the START_4 pin should be HIGH',
-        pin_interactions: ['START_4'],
-        status: 'pending'
-      },
-      {
-        step_type: 'When',
-        description: 'I set RESET_4 pin to HIGH',
-        pin_interactions: ['RESET_4'],
-        status: 'pending'
-      },
-      {
-        step_type: 'Then',
-        description: 'the RESET_4 pin should be HIGH',
-        pin_interactions: ['RESET_4'],
-        status: 'pending'
+        description: 'power sensor detects power',
+        status: 'pending',
+        pin_interactions: ['POWER_SENSE_4']
       }
     ]
   },
@@ -49,154 +38,143 @@ const MOCK_SCENARIOS: TestScenario[] = [
     description: 'Test power level sensing functionality using POWER_SENSE_4 pin',
     feature_file: 'power-sensing.feature',
     tags: ['@power', '@analog', '@hil'],
+    status: 'pending',
     steps: [
       {
         step_type: 'Given',
-        description: 'the power sensing circuit is connected',
-        pin_interactions: [],
-        status: 'pending'
+        description: 'the Arduino Test Harness is connected',
+        status: 'pending',
+        pin_interactions: ['UART_TXD']
       },
       {
         step_type: 'When',
-        description: 'I read the POWER_SENSE_4 analog value',
-        pin_interactions: ['POWER_SENSE_4'],
-        status: 'pending'
+        description: 'power sensing is enabled',
+        status: 'pending',
+        pin_interactions: ['POWER_SENSE_4']
       },
       {
         step_type: 'Then',
-        description: 'the power level should be within expected range',
-        pin_interactions: ['POWER_SENSE_4'],
-        status: 'pending'
+        description: 'power levels are accurately measured',
+        status: 'pending',
+        pin_interactions: ['POWER_SENSE_4']
       }
     ]
   },
   {
     id: 'scenario-3',
-    name: 'Frequency Lock Test',
-    description: 'Test frequency lock detection using FREQ_LOCK_4 pin',
-    feature_file: 'frequency-control.feature',
+    name: 'Frequency Lock Control',
+    description: 'Test frequency lock functionality using FREQ_LOCK_4 pin',
+    feature_file: 'frequency-lock.feature',
     tags: ['@frequency', '@digital', '@hil'],
+    status: 'pending',
     steps: [
       {
         step_type: 'Given',
-        description: 'the frequency generator is connected',
-        pin_interactions: [],
-        status: 'pending'
+        description: 'the system is in frequency unlocked state',
+        status: 'pending',
+        pin_interactions: ['FREQ_LOCK_4']
       },
       {
         step_type: 'When',
-        description: 'I monitor FREQ_LOCK_4 pin state',
-        pin_interactions: ['FREQ_LOCK_4'],
-        status: 'pending'
+        description: 'frequency lock is activated',
+        status: 'pending',
+        pin_interactions: ['FREQ_LOCK_4']
       },
       {
         step_type: 'Then',
-        description: 'the frequency lock should be detected',
-        pin_interactions: ['FREQ_LOCK_4'],
-        status: 'pending'
+        description: 'frequency lock status is confirmed',
+        status: 'pending',
+        pin_interactions: ['FREQ_LOCK_4']
       }
     ]
   },
   {
     id: 'scenario-4',
-    name: 'Overload Protection Test',
-    description: 'Test overload protection using OVERLOAD_4 pin monitoring',
+    name: 'Overload Protection',
+    description: 'Test overload protection using OVERLOAD_4 pin',
     feature_file: 'overload-protection.feature',
-    tags: ['@safety', '@overload', '@hil'],
+    tags: ['@safety', '@analog', '@hil'],
+    status: 'pending',
     steps: [
       {
         step_type: 'Given',
-        description: 'the overload protection circuit is active',
-        pin_interactions: [],
-        status: 'pending'
+        description: 'normal operating conditions',
+        status: 'pending',
+        pin_interactions: ['OVERLOAD_4']
       },
       {
         step_type: 'When',
-        description: 'I simulate an overload condition',
-        pin_interactions: ['OVERLOAD_4'],
-        status: 'pending'
+        description: 'overload condition is detected',
+        status: 'pending',
+        pin_interactions: ['OVERLOAD_4']
       },
       {
         step_type: 'Then',
-        description: 'the OVERLOAD_4 pin should trigger',
-        pin_interactions: ['OVERLOAD_4'],
-        status: 'pending'
-      },
-      {
-        step_type: 'And',
-        description: 'the system should enter safe mode',
-        pin_interactions: ['START_4', 'RESET_4'],
-        status: 'pending'
+        description: 'system enters safe state',
+        status: 'pending',
+        pin_interactions: ['RESET_4']
       }
     ]
   },
   {
     id: 'scenario-5',
-    name: 'Frequency Division Test',
-    description: 'Test frequency division output on FREQ_DIV10_4 pin',
-    feature_file: 'frequency-control.feature',
-    tags: ['@frequency', '@output', '@hil'],
+    name: 'PWM Amplitude Control',
+    description: 'Test PWM amplitude control using AMPLITUDE_ALL pin',
+    feature_file: 'amplitude-control.feature',
+    tags: ['@pwm', '@analog', '@hil'],
+    status: 'pending',
     steps: [
       {
         step_type: 'Given',
-        description: 'the frequency generator is running',
-        pin_interactions: [],
-        status: 'pending'
+        description: 'PWM output is configured',
+        status: 'pending',
+        pin_interactions: ['AMPLITUDE_ALL']
       },
       {
         step_type: 'When',
-        description: 'I enable frequency division',
-        pin_interactions: ['START_4'],
-        status: 'pending'
+        description: 'amplitude is set to 50%',
+        status: 'pending',
+        pin_interactions: ['AMPLITUDE_ALL']
       },
       {
         step_type: 'Then',
-        description: 'FREQ_DIV10_4 should output divided frequency',
-        pin_interactions: ['FREQ_DIV10_4'],
-        status: 'pending'
+        description: 'PWM duty cycle reflects 50% amplitude',
+        status: 'pending',
+        pin_interactions: ['AMPLITUDE_ALL']
       }
     ]
   },
   {
     id: 'scenario-6',
-    name: 'Complete System Test',
-    description: 'Comprehensive test of all Multi-Sonicator IO functionality',
-    feature_file: 'system-integration.feature',
-    tags: ['@integration', '@system', '@hil', '@smoke'],
+    name: 'Frequency Division Monitoring',
+    description: 'Test frequency division monitoring using FREQ_DIV10_4 pin',
+    feature_file: 'frequency-division.feature',
+    tags: ['@frequency', '@digital', '@hil'],
+    status: 'pending',
     steps: [
       {
         step_type: 'Given',
-        description: 'all hardware components are connected',
-        pin_interactions: [],
-        status: 'pending'
+        description: 'operating frequency is 20kHz',
+        status: 'pending',
+        pin_interactions: ['FREQ_DIV10_4']
       },
       {
         step_type: 'When',
-        description: 'I initialize the system',
-        pin_interactions: ['START_4', 'RESET_4'],
-        status: 'pending'
+        description: 'frequency division is enabled',
+        status: 'pending',
+        pin_interactions: ['FREQ_DIV10_4']
       },
       {
         step_type: 'Then',
-        description: 'all pins should be in expected states',
-        pin_interactions: ['START_4', 'RESET_4', 'POWER_SENSE_4', 'FREQ_LOCK_4', 'OVERLOAD_4', 'FREQ_DIV10_4'],
-        status: 'pending'
-      },
-      {
-        step_type: 'When',
-        description: 'I run a complete test cycle',
-        pin_interactions: ['START_4', 'RESET_4', 'POWER_SENSE_4', 'FREQ_LOCK_4'],
-        status: 'pending'
-      },
-      {
-        step_type: 'Then',
-        description: 'the system should operate correctly',
-        pin_interactions: ['FREQ_DIV10_4', 'OVERLOAD_4'],
-        status: 'pending'
+        description: 'output frequency is 2kHz',
+        status: 'pending',
+        pin_interactions: ['FREQ_DIV10_4']
       }
     ]
   }
 ]
+
+export class TestAutomationAPI {
 
 const MOCK_TAGS = ['@smoke', '@pin-control', '@hil', '@power', '@analog', '@frequency', '@digital', '@safety', '@overload', '@output', '@integration', '@system']
 
@@ -212,143 +190,7 @@ const shouldUseMockData = () => {
   return false
 }
 
-// Mock execution state for development
-class MockExecutionManager {
-  private static instance: MockExecutionManager
-  private currentExecution: TestExecution | null = null
-  private isInProgress = false
-  private progressInterval: NodeJS.Timeout | null = null
-
-  static getInstance(): MockExecutionManager {
-    if (!MockExecutionManager.instance) {
-      MockExecutionManager.instance = new MockExecutionManager()
-    }
-    return MockExecutionManager.instance
-  }
-
-  async startExecution(scenarioNames: string[], executionId: string): Promise<boolean> {
-    if (this.isInProgress) {
-      return false
-    }
-
-    // Find scenarios to execute
-    const scenariosToExecute = MOCK_SCENARIOS.filter(s => scenarioNames.includes(s.name))
-    if (scenariosToExecute.length === 0) {
-      return false
-    }
-
-    // Create mock execution
-    this.currentExecution = {
-      execution_id: executionId,
-      status: 'running',
-      start_time: Date.now(),
-      end_time: undefined,
-      total_scenarios: scenariosToExecute.length,
-      passed_scenarios: 0,
-      failed_scenarios: 0,
-      current_scenario_index: 0,
-      current_step_index: 0,
-      scenarios: scenariosToExecute,
-      results: []
-    }
-
-    this.isInProgress = true
-
-    // Simulate execution progress
-    this.simulateExecution()
-
-    return true
-  }
-
-  private simulateExecution() {
-    if (!this.currentExecution) return
-
-    const totalSteps = MOCK_SCENARIOS
-      .filter(s => this.currentExecution!.scenarios.some(scenario => scenario.name === s.name))
-      .reduce((total, scenario) => total + scenario.steps.length, 0)
-
-    let currentStep = 0
-
-    this.progressInterval = setInterval(() => {
-      if (!this.currentExecution || !this.isInProgress) {
-        if (this.progressInterval) {
-          clearInterval(this.progressInterval)
-          this.progressInterval = null
-        }
-        return
-      }
-
-      currentStep++
-
-      // Update progress
-      const progress = currentStep / totalSteps
-      const scenarioProgress = Math.floor(progress * this.currentExecution.total_scenarios)
-
-      // Simulate some failures (10% failure rate)
-      if (Math.random() < 0.1 && currentStep % 5 === 0) {
-        this.currentExecution.failed_scenarios = Math.min(
-          this.currentExecution.failed_scenarios + 1,
-          scenarioProgress
-        )
-      }
-
-      this.currentExecution.passed_scenarios = Math.max(
-        0,
-        scenarioProgress - this.currentExecution.failed_scenarios
-      )
-
-      this.currentExecution.current_scenario_index = Math.min(
-        scenarioProgress,
-        this.currentExecution.total_scenarios - 1
-      )
-
-      // Complete execution
-      if (currentStep >= totalSteps) {
-        this.currentExecution.status = this.currentExecution.failed_scenarios > 0 ? 'failed' : 'passed'
-        this.currentExecution.end_time = Date.now()
-        this.isInProgress = false
-
-        if (this.progressInterval) {
-          clearInterval(this.progressInterval)
-          this.progressInterval = null
-        }
-      }
-    }, 200) // Update every 200ms for smooth progress
-  }
-
-  stopExecution(): boolean {
-    if (!this.isInProgress || !this.currentExecution) {
-      return false
-    }
-
-    this.isInProgress = false
-    this.currentExecution.status = 'failed' // Use 'failed' instead of 'stopped'
-    this.currentExecution.end_time = Date.now()
-
-    if (this.progressInterval) {
-      clearInterval(this.progressInterval)
-      this.progressInterval = null
-    }
-
-    return true
-  }
-
-  getExecutionStatus(): {execution: TestExecution | null, in_progress: boolean} {
-    return {
-      execution: this.currentExecution,
-      in_progress: this.isInProgress
-    }
-  }
-
-  clearExecution() {
-    this.currentExecution = null
-    this.isInProgress = false
-    if (this.progressInterval) {
-      clearInterval(this.progressInterval)
-      this.progressInterval = null
-    }
-  }
-}
+const MOCK_TAGS = ['@smoke', '@pin-control', '@hil', '@power', '@analog', '@frequency', '@digital', '@safety', '@overload', '@output', '@integration', '@system']
 
 export class TestAutomationAPI {
   /**
@@ -473,7 +315,7 @@ export class TestAutomationAPI {
   static async executeScenarios(scenarioNames: string[], executionId: string): Promise<boolean> {
     // Use mock execution in development or when backend is not available
     if (shouldUseMockData()) {
-      const mockManager = MockExecutionManager.getInstance()
+      const mockManager = TestAutomationAPI.MockExecutionManager.getInstance()
       return await mockManager.startExecution(scenarioNames, executionId)
     }
 
@@ -491,7 +333,7 @@ export class TestAutomationAPI {
 
       if (!response.ok) {
         console.warn('Backend not available, falling back to mock execution')
-        const mockManager = MockExecutionManager.getInstance()
+        const mockManager = TestAutomationAPI.MockExecutionManager.getInstance()
         return await mockManager.startExecution(scenarioNames, executionId)
       }
 
@@ -499,7 +341,7 @@ export class TestAutomationAPI {
       return data.success
     } catch (error) {
       console.warn('Backend not available, falling back to mock execution:', error)
-      const mockManager = MockExecutionManager.getInstance()
+      const mockManager = TestAutomationAPI.MockExecutionManager.getInstance()
       return await mockManager.startExecution(scenarioNames, executionId)
     }
   }
@@ -510,7 +352,7 @@ export class TestAutomationAPI {
   static async getExecutionStatus(): Promise<{execution: TestExecution | null, in_progress: boolean}> {
     // Use mock execution in development or when backend is not available
     if (shouldUseMockData()) {
-      const mockManager = MockExecutionManager.getInstance()
+      const mockManager = TestAutomationAPI.MockExecutionManager.getInstance()
       return mockManager.getExecutionStatus()
     }
 
@@ -519,7 +361,7 @@ export class TestAutomationAPI {
 
       if (!response.ok) {
         console.warn('Backend not available, falling back to mock execution status')
-        const mockManager = MockExecutionManager.getInstance()
+        const mockManager = TestAutomationAPI.MockExecutionManager.getInstance()
         return mockManager.getExecutionStatus()
       }
 
@@ -530,7 +372,7 @@ export class TestAutomationAPI {
       }
     } catch (error) {
       console.warn('Backend not available, falling back to mock execution status:', error)
-      const mockManager = MockExecutionManager.getInstance()
+      const mockManager = TestAutomationAPI.MockExecutionManager.getInstance()
       return mockManager.getExecutionStatus()
     }
   }
@@ -542,7 +384,7 @@ export class TestAutomationAPI {
     // Use mock execution in development or when backend is not available
     if (shouldUseMockData()) {
       console.log('Using mock execution for stop')
-      const mockManager = MockExecutionManager.getInstance()
+      const mockManager = TestAutomationAPI.MockExecutionManager.getInstance()
       return mockManager.stopExecution()
     }
 
@@ -554,7 +396,7 @@ export class TestAutomationAPI {
 
       if (!response.ok) {
         console.warn('Backend not available, falling back to mock execution stop')
-        const mockManager = MockExecutionManager.getInstance()
+        const mockManager = TestAutomationAPI.MockExecutionManager.getInstance()
         return mockManager.stopExecution()
       }
 

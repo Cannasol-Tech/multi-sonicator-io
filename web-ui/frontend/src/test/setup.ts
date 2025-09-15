@@ -1,57 +1,70 @@
 import '@testing-library/jest-dom'
 import { expect, afterEach, vi } from 'vitest'
 import { cleanup } from '@testing-library/react'
+import * as matchers from '@testing-library/jest-dom/matchers'
 
-// Cleanup after each test case (e.g. clearing jsdom)
+// Extend expect with jest-dom matchers
+expect.extend(matchers)
+
 afterEach(() => {
   cleanup()
 })
 
 // Mock WebSocket for tests
-global.WebSocket = class MockWebSocket {
+class MockWebSocket {
   static CONNECTING = 0
   static OPEN = 1
   static CLOSING = 2
   static CLOSED = 3
 
-  readyState = MockWebSocket.OPEN  // Start as OPEN to avoid async issues
   url: string
+  readyState: number = MockWebSocket.CONNECTING
+  binaryType: BinaryType = 'blob'
+  bufferedAmount: number = 0
+  extensions: string = ''
+  protocol: string = ''
   onopen: ((event: Event) => void) | null = null
-  onclose: ((event: CloseEvent) => void) | null = null
   onmessage: ((event: MessageEvent) => void) | null = null
+  onclose: ((event: CloseEvent) => void) | null = null
   onerror: ((event: Event) => void) | null = null
 
-  constructor(url: string) {
-    this.url = url
-    // Immediately trigger onopen if set (synchronous for tests)
-    if (this.onopen) {
-      this.onopen(new Event('open'))
-    }
+  constructor(url: string | URL, protocols?: string | string[]) {
+    this.url = url.toString()
+    this.protocol = Array.isArray(protocols) ? protocols[0] || '' : protocols || ''
+    // Simulate immediate connection for tests
+    setTimeout(() => {
+      this.readyState = MockWebSocket.OPEN
+      if (this.onopen) {
+        this.onopen(new Event('open'))
+      }
+    }, 0)
   }
 
-  send(data: string | ArrayBufferLike | Blob | ArrayBufferView) {
-    // Mock send - do nothing in tests
+  send(data: string | ArrayBufferLike | Blob | ArrayBufferView): void {
+    // Mock send - do nothing
   }
 
-  close() {
+  close(code?: number, reason?: string): void {
     this.readyState = MockWebSocket.CLOSED
     if (this.onclose) {
-      this.onclose(new CloseEvent('close'))
+      this.onclose(new CloseEvent('close', { code: code || 1000, reason: reason || '' }))
     }
   }
 
-  addEventListener(type: string, listener: EventListener) {
-    // Mock addEventListener
+  addEventListener(type: string, listener: EventListener): void {
+    // Mock implementation - simplified
   }
 
-  removeEventListener(type: string, listener: EventListener) {
-    // Mock removeEventListener
+  removeEventListener(type: string, listener: EventListener): void {
+    // Mock implementation - simplified
   }
 
   dispatchEvent(event: Event): boolean {
     return true
   }
 }
+
+global.WebSocket = MockWebSocket as any
 
 // Mock localStorage
 const localStorageMock = {

@@ -90,6 +90,7 @@
   - Lab availability for HIL; production PLC environment for final validation.
 - Assumptions
   - MODBUS RTU is the integration protocol; PLC/HMI expects a stable register map.
+  - See: docs/architecture/modbus-previous-state-registers.md for diagnostic, read-only "previous state" registers (no auto-resume).
   - Four units are sufficient for target throughput in Phase 1.
   - Schematics provide clear pin/header references to finalize the pin matrix.
 

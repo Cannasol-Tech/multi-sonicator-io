@@ -131,6 +131,7 @@ export interface TestStep {
 }
 
 export interface TestScenario {
+  id?: string;  // Added missing id property
   name: string;
   description: string;
   feature_file: string;
@@ -152,6 +153,7 @@ export interface TestExecution {
   passed_scenarios: number;
   failed_scenarios: number;
   current_scenario_index: number;
+  current_step_index?: number;  // Added missing property
 }
 
 export interface TestAutomationState {

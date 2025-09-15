@@ -8,9 +8,9 @@ export const formatTimestamp = (timestamp: number): string => {
     hour12: false, 
     hour: '2-digit', 
     minute: '2-digit', 
-    second: '2-digit',
-    fractionalSecondDigits: 3
-  })
+    second: '2-digit'
+    // Note: fractionalSecondDigits is not supported in all environments, removed for compatibility
+  }) + '.' + String(date.getMilliseconds()).padStart(3, '0')
 }
 
 export const formatPinState = (state: string): string => {

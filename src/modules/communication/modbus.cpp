@@ -293,6 +293,9 @@ static bool modbus_write_register_internal(uint16_t address, uint16_t value) {
                 } else {
                     modbus_register_map_t* register_map = REGMAP();
                     register_map->system_status.system_status &= ~SYSTEM_STATUS_OK;
+                    // Snapshot a normal shutdown event if disabling globally
+                    register_map->system_status.prev_active_mask = register_map->system_status.active_mask;
+                    register_map->system_status.last_shutdown_reason = 0; // normal
                 }
                 break;
                 
@@ -300,6 +303,17 @@ static bool modbus_write_register_internal(uint16_t address, uint16_t value) {
                 if (value) {
                     modbus_register_map_t* register_map = REGMAP();
                     register_map->system_status.system_status |= SYSTEM_STATUS_EMERGENCY_STOP;
+                    // Snapshot previous-state context for diagnostics
+                    register_map->system_status.prev_active_mask = register_map->system_status.active_mask;
+                    register_map->system_status.last_shutdown_reason = 3; // e-stop
+                    // Persist per-unit previous state and amplitude
+                    for (int i = 0; i < MODBUS_MAX_SONICATORS; ++i) {
+                        const uint16_t flags = register_map->sonicators[i].status_flags;
+                        const bool running = (flags & SON_STATUS_RUNNING) != 0;
+                        register_map->sonicators[i].prev_state = running ? 2 /*RUNNING*/ : 0 /*STOPPED*/;
+                        register_map->sonicators[i].persisted_amplitude = register_map->sonicators[i].amplitude_setpoint;
+                        // Leave last_fault_code/timestamp as-is for now
+                    }
                 }
                 break;
         }

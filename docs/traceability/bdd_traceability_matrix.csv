@@ -190,6 +190,17 @@ test/acceptance/features/system_integration_complete.feature,System configuratio
 test/acceptance/features/system_integration_complete.feature,Advanced diagnostics and health monitoring,,,pending,@pending @system @integration @networking
 test/acceptance/features/system_integration_complete.feature,Multi-controller network operation,,,pending,@pending @system @integration @calibration
 test/acceptance/features/system_integration_complete.feature,Automated system calibration,,,ready,
+test/acceptance/features/multi_unit_state_management.feature,Individual state machines exist for 4 units,,S-4.1,pending,@pending @hil @story-4-1 @epic-4 @state-management @ac-1 @trace:S-4.1 @ac-2 @trace:S-4.1
+test/acceptance/features/multi_unit_state_management.feature,Master coordination state machine exists,,S-4.1,ready,@ac-3 @trace:S-4.1
+test/acceptance/features/multi_unit_state_management.feature,State synchronization during coordinated start,,S-4.1,ready,@ac-4 @trace:S-4.1 @safety
+test/acceptance/features/multi_unit_state_management.feature,Safe transitions and interlocks,,S-4.1,ready,@ac-5 @trace:S-4.1
+test/acceptance/features/multi_unit_state_management.feature,State persistence and safe recovery without auto-resume,,S-4.1,ready,@ac-6 @trace:S-4.1 @modbus
+test/acceptance/features/multi_unit_state_management.feature,Real-time state reporting via MODBUS,,S-4.1,ready,@ac-7 @trace:S-4.1 @safety
+test/acceptance/features/multi_unit_state_management.feature,Emergency stop handling,,S-4.1,ready,@ac-8 @trace:S-4.1
+test/acceptance/features/multi_unit_state_management.feature,Transition coverage completeness,,S-4.1,ready,@ac-9 @trace:S-4.1 @performance
+test/acceptance/features/multi_unit_state_management.feature,Real-time performance under 4-unit coordination,,S-4.1,ready,@ac-10 @trace:S-4.1 @safety
+test/acceptance/features/multi_unit_state_management.feature,Safety integration and overload protection,,S-4.1,ready,@ac-11 @trace:S-4.1 @modbus @read-only @ac-11 @trace:S-4.1 @modbus @read-only @ac-11 @trace:S-4.1 @modbus @ac-11 @trace:S-4.1 @modbus
+test/acceptance/features/multi_unit_state_management.feature,System previous-active mask reflects last known running units,,S-4.1,ready,@ac-11 @trace:S-4.1 @modbus @ac-11 @trace:S-4.1 @modbus
 test/acceptance/features/hil_framework_hardware_verification.feature,Pin Matrix Verification against authoritative mapping,pin-matrix-verification,hil-testing-framework,pending,@hil @hardware @documentation @trace:hil-testing-framework @pending @hil @TODO:pin-matrix-verification @trace:hil-pin-matrix @pending @hil @TODO:hil-bdd-execution @trace:hil-bdd-execution
 test/acceptance/features/hil_framework_hardware_verification.feature,Execute BDD scenarios on physical hardware,web-ui-modbus-monitoring,web-ui-modbus,pending,@pending @hil @web-ui @TODO:web-ui-modbus-monitoring @trace:web-ui-modbus
 test/acceptance/features/hil_framework_hardware_verification.feature,Web UI displays real-time MODBUS values,sandbox-cli-debug,sandbox-cli,pending,@pending @hil @cli @TODO:sandbox-cli-debug @trace:sandbox-cli

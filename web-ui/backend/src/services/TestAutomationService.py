@@ -469,9 +469,10 @@ def main():
         sys.exit(1)
 
     command = sys.argv[1]
-    service = TestAutomationService()
 
     try:
+        service = TestAutomationService()
+
         if command == 'get_scenarios':
             # Get all available scenarios
             scenarios = service.get_available_scenarios()
