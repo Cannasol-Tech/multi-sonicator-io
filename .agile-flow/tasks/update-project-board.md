@@ -29,12 +29,12 @@ Inputs
 QA Gate: Choose One: ⚠️ CONCERNS / ⚠️ READY FOR REVIEW / ⚠️ BLOCKED / ✅ PASS
 
 ```md
-| Story | Title | Status | Progress | QA Gate | Blocking Issues |
-|-------|-------|--------|----------|---------|-----------------|
-| {story_id} | {title} | {status} | {progress} | {qa_gate} | {blocking_issues} |
-| {story_id} | {title} | {status} | {progress} | {qa_gate} | {blocking_issues} |
-| {story_id} | {title} | {status} | {progress} | {qa_gate} | {blocking_issues} |
-| ... | ... | ... | ... | ... | ... |
+| Story | Title | Status | Progress | QA Gate | QA Gate Timestamp | Assessment | Blocking Issues |
+|-------|-------|--------|----------|---------|-------------------|------------|-----------------|
+| {story_id} | {title} | {status} | {progress} | {qa_gate} | {qa_gate_timestamp} | {assessment} | {blocking_issues} |
+| {story_id} | {title} | {status} | {progress} | {qa_gate} | {qa_gate_timestamp} | {assessment} | {blocking_issues} |
+| {story_id} | {title} | {status} | {progress} | {qa_gate} | {qa_gate_timestamp} | {assessment} | {blocking_issues} |
+| ... | ... | ... | ... | ... | ... | ... | ... |
 
 ```
 ---
