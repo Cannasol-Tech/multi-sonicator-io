@@ -1,0 +1,1436 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="dd/dce/class_sonicator_interface" kind="class" language="C++" prot="public">
+    <compoundname>SonicatorInterface</compoundname>
+    <includes refid="dc/d16/sonicator_8h" local="no">sonicator.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a2fe3e77f10c20895e36c5ff4392932b6" prot="private" static="no" mutable="no">
+        <type><ref refid="d2/d25/structsonicator__hardware__config__t" kindref="compound">sonicator_hardware_config_t</ref></type>
+        <definition>sonicator_hardware_config_t SonicatorInterface::hardware_config</definition>
+        <argsstring></argsstring>
+        <name>hardware_config</name>
+        <qualifiedname>SonicatorInterface::hardware_config</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="45" column="33" bodyfile="src/modules/sonicator/sonicator.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a65fff958a9446231ce597cb1b7ebd9cc" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t SonicatorInterface::sonicator_id</definition>
+        <argsstring></argsstring>
+        <name>sonicator_id</name>
+        <qualifiedname>SonicatorInterface::sonicator_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="46" column="13" bodyfile="src/modules/sonicator/sonicator.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a72b0e3d12401a71499658e9adfc09346" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::interface_enabled</definition>
+        <argsstring></argsstring>
+        <name>interface_enabled</name>
+        <qualifiedname>SonicatorInterface::interface_enabled</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="47" column="10" bodyfile="src/modules/sonicator/sonicator.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a541d8a6be57ba12efd470e3d872adf2b" prot="private" static="no" mutable="no">
+        <type><ref refid="d6/d4e/structsonicator__status__t" kindref="compound">sonicator_status_t</ref></type>
+        <definition>sonicator_status_t SonicatorInterface::current_status</definition>
+        <argsstring></argsstring>
+        <name>current_status</name>
+        <qualifiedname>SonicatorInterface::current_status</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="50" column="24" bodyfile="src/modules/sonicator/sonicator.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a2f2120b66f2896a5392aae07749d135f" prot="private" static="no" mutable="no">
+        <type><ref refid="de/d13/sonicator__control_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref></type>
+        <definition>sonicator_state_t SonicatorInterface::previous_state</definition>
+        <argsstring></argsstring>
+        <name>previous_state</name>
+        <qualifiedname>SonicatorInterface::previous_state</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="51" column="23" bodyfile="src/modules/sonicator/sonicator.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a4c64661df750149c6e37c08d5a9b691a" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::state_change_timestamp</definition>
+        <argsstring></argsstring>
+        <name>state_change_timestamp</name>
+        <qualifiedname>SonicatorInterface::state_change_timestamp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="52" column="14" bodyfile="src/modules/sonicator/sonicator.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a12f0436b7ebcecb78c506ce79dd46b5b" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::start_command_pending</definition>
+        <argsstring></argsstring>
+        <name>start_command_pending</name>
+        <qualifiedname>SonicatorInterface::start_command_pending</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="55" column="10" bodyfile="src/modules/sonicator/sonicator.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1aad4641462705b7e3bf1778435b1ad279" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::reset_command_pending</definition>
+        <argsstring></argsstring>
+        <name>reset_command_pending</name>
+        <qualifiedname>SonicatorInterface::reset_command_pending</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="56" column="10" bodyfile="src/modules/sonicator/sonicator.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a2035ff310fc4dde54c0c6a50f8836a8f" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::reset_pulse_start_time</definition>
+        <argsstring></argsstring>
+        <name>reset_pulse_start_time</name>
+        <qualifiedname>SonicatorInterface::reset_pulse_start_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="57" column="14" bodyfile="src/modules/sonicator/sonicator.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1aee05a846667b5de7a37957c8a8031107" prot="private" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t SonicatorInterface::frequency_measurement_buffer[10]</definition>
+        <argsstring>[10]</argsstring>
+        <name>frequency_measurement_buffer</name>
+        <qualifiedname>SonicatorInterface::frequency_measurement_buffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="60" column="14" bodyfile="src/modules/sonicator/sonicator.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a7b8b34e7078707be26bd3f71c8c194aa" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t SonicatorInterface::frequency_buffer_index</definition>
+        <argsstring></argsstring>
+        <name>frequency_buffer_index</name>
+        <qualifiedname>SonicatorInterface::frequency_buffer_index</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="61" column="13" bodyfile="src/modules/sonicator/sonicator.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a532aabf3357f6f7d4316f88b83903600" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::last_frequency_measurement</definition>
+        <argsstring></argsstring>
+        <name>last_frequency_measurement</name>
+        <qualifiedname>SonicatorInterface::last_frequency_measurement</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="62" column="14" bodyfile="src/modules/sonicator/sonicator.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1ac2b7f86295785a23228198f5ecce3d2f" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::last_power_measurement</definition>
+        <argsstring></argsstring>
+        <name>last_power_measurement</name>
+        <qualifiedname>SonicatorInterface::last_power_measurement</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="63" column="14" bodyfile="src/modules/sonicator/sonicator.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1ad2fb85cf7da61d4547f30335b81335d1" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::overload_detected</definition>
+        <argsstring></argsstring>
+        <name>overload_detected</name>
+        <qualifiedname>SonicatorInterface::overload_detected</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="66" column="10" bodyfile="src/modules/sonicator/sonicator.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a17dab9d99d9d766ca99f424752db0b79" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::overload_detection_time</definition>
+        <argsstring></argsstring>
+        <name>overload_detection_time</name>
+        <qualifiedname>SonicatorInterface::overload_detection_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="67" column="14" bodyfile="src/modules/sonicator/sonicator.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a2dd3690a2fab885af124a67e5c8e50c4" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::last_safety_check</definition>
+        <argsstring></argsstring>
+        <name>last_safety_check</name>
+        <qualifiedname>SonicatorInterface::last_safety_check</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="68" column="14" bodyfile="src/modules/sonicator/sonicator.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a5323469df4216038f057b1af5c1eec93" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::total_start_cycles</definition>
+        <argsstring></argsstring>
+        <name>total_start_cycles</name>
+        <qualifiedname>SonicatorInterface::total_start_cycles</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="71" column="14" bodyfile="src/modules/sonicator/sonicator.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a9814db409e06c56493a0e1ffed89ddb2" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::total_overload_events</definition>
+        <argsstring></argsstring>
+        <name>total_overload_events</name>
+        <qualifiedname>SonicatorInterface::total_overload_events</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="72" column="14" bodyfile="src/modules/sonicator/sonicator.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1ac6a6ceb1263e595c01324c73cbdb78b0" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::last_start_time</definition>
+        <argsstring></argsstring>
+        <name>last_start_time</name>
+        <qualifiedname>SonicatorInterface::last_start_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="73" column="14" bodyfile="src/modules/sonicator/sonicator.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a9fa92d159079dc6f3a5bfce9b1bed002" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::total_runtime_ms</definition>
+        <argsstring></argsstring>
+        <name>total_runtime_ms</name>
+        <qualifiedname>SonicatorInterface::total_runtime_ms</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="74" column="14" bodyfile="src/modules/sonicator/sonicator.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a70715395c6ebd08d046ee1ef0f12b822" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::last_update_timestamp</definition>
+        <argsstring></argsstring>
+        <name>last_update_timestamp</name>
+        <qualifiedname>SonicatorInterface::last_update_timestamp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="75" column="14" bodyfile="src/modules/sonicator/sonicator.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a997090f08b5a838c3e57e46da7ed6766" prot="private" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t SonicatorInterface::update_call_count</definition>
+        <argsstring></argsstring>
+        <name>update_call_count</name>
+        <qualifiedname>SonicatorInterface::update_call_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="76" column="14" bodyfile="src/modules/sonicator/sonicator.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a0975b3bb41bb05a1276e4c953d048552" prot="private" static="no" mutable="no">
+        <type><ref refid="db/d16/config_8h_1a7d80c3b410035aed9cd8484552186f92" kindref="member">error_code_t</ref></type>
+        <definition>error_code_t SonicatorInterface::last_error_code</definition>
+        <argsstring></argsstring>
+        <name>last_error_code</name>
+        <qualifiedname>SonicatorInterface::last_error_code</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="79" column="18" bodyfile="src/modules/sonicator/sonicator.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a8dd3c4be3c67fb93342403460f4cbd22" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::consecutive_error_count</definition>
+        <argsstring></argsstring>
+        <name>consecutive_error_count</name>
+        <qualifiedname>SonicatorInterface::consecutive_error_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="80" column="14" bodyfile="src/modules/sonicator/sonicator.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a5d90282fdc5b9553cbe74d550ddbf184" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::last_error_timestamp</definition>
+        <argsstring></argsstring>
+        <name>last_error_timestamp</name>
+        <qualifiedname>SonicatorInterface::last_error_timestamp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="81" column="14" bodyfile="src/modules/sonicator/sonicator.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a717061cbe899c35fda9a2417162e7519" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::critical_error_flag</definition>
+        <argsstring></argsstring>
+        <name>critical_error_flag</name>
+        <qualifiedname>SonicatorInterface::critical_error_flag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="82" column="10" bodyfile="src/modules/sonicator/sonicator.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a48dff56661f08f1d568672af38685f41" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::min_update_time_us</definition>
+        <argsstring></argsstring>
+        <name>min_update_time_us</name>
+        <qualifiedname>SonicatorInterface::min_update_time_us</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="85" column="14" bodyfile="src/modules/sonicator/sonicator.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1ae480f6efa00121ddbfa9181262078bb0" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::max_update_time_us</definition>
+        <argsstring></argsstring>
+        <name>max_update_time_us</name>
+        <qualifiedname>SonicatorInterface::max_update_time_us</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="86" column="14" bodyfile="src/modules/sonicator/sonicator.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1a88ac6d8c87860ff88e1793517eec5886" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::avg_update_time_us</definition>
+        <argsstring></argsstring>
+        <name>avg_update_time_us</name>
+        <qualifiedname>SonicatorInterface::avg_update_time_us</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="87" column="14" bodyfile="src/modules/sonicator/sonicator.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/dce/class_sonicator_interface_1aaa877b33621b36a50ea198b3e231c8ad" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::performance_monitoring_enabled</definition>
+        <argsstring></argsstring>
+        <name>performance_monitoring_enabled</name>
+        <qualifiedname>SonicatorInterface::performance_monitoring_enabled</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="88" column="10" bodyfile="src/modules/sonicator/sonicator.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a16757aa724245368102e4624aca97695" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SonicatorInterface::updateHardwareOutputs</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>updateHardwareOutputs</name>
+        <qualifiedname>SonicatorInterface::updateHardwareOutputs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="91" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a5ca4249fb8cb8e460309f83cb2245eba" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SonicatorInterface::readHardwareInputs</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>readHardwareInputs</name>
+        <qualifiedname>SonicatorInterface::readHardwareInputs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="92" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a5433db11821c0a2be9557b33f81f2323" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SonicatorInterface::updateStateMachine</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>updateStateMachine</name>
+        <qualifiedname>SonicatorInterface::updateStateMachine</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="93" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1ac918141f1734df6f59e8716a102accf9" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SonicatorInterface::handleOverloadCondition</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>handleOverloadCondition</name>
+        <qualifiedname>SonicatorInterface::handleOverloadCondition</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="94" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a8eecab92e4dda502f91ea85ee6d541f5" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SonicatorInterface::updateStatistics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>updateStatistics</name>
+        <qualifiedname>SonicatorInterface::updateStatistics</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="95" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1aeccea5cf2af150e11aae7f286c7b1995" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SonicatorInterface::logStateChange</definition>
+        <argsstring>(sonicator_state_t new_state) noexcept</argsstring>
+        <name>logStateChange</name>
+        <qualifiedname>SonicatorInterface::logStateChange</qualifiedname>
+        <param>
+          <type><ref refid="de/d13/sonicator__control_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref></type>
+          <declname>new_state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="96" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a24ba5faafc05ad3f257dc613e86d6fb7" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t SonicatorInterface::measureFrequency</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>measureFrequency</name>
+        <qualifiedname>SonicatorInterface::measureFrequency</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="99" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a7a6b185c9b469b4891ae1b028c8d2efa" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t SonicatorInterface::measurePower</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>measurePower</name>
+        <qualifiedname>SonicatorInterface::measurePower</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="100" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1aea0868a5425fd49b3d8bcc1879752c98" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::validateAmplitudeRange</definition>
+        <argsstring>(uint8_t amplitude) const noexcept</argsstring>
+        <name>validateAmplitudeRange</name>
+        <qualifiedname>SonicatorInterface::validateAmplitudeRange</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>amplitude</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="101" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1aca57a3ea2f07627b1b50a0726df93400" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::validateSystemState</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>validateSystemState</name>
+        <qualifiedname>SonicatorInterface::validateSystemState</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="102" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a5410dd13a29602ab37ecf37a47f4fab2" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::checkSafetyConstraints</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>checkSafetyConstraints</name>
+        <qualifiedname>SonicatorInterface::checkSafetyConstraints</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="105" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a6aeb4c283690e95c2dac215d43d20e1c" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SonicatorInterface::handleSystemError</definition>
+        <argsstring>(error_code_t error) noexcept</argsstring>
+        <name>handleSystemError</name>
+        <qualifiedname>SonicatorInterface::handleSystemError</qualifiedname>
+        <param>
+          <type><ref refid="db/d16/config_8h_1a7d80c3b410035aed9cd8484552186f92" kindref="member">error_code_t</ref></type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="106" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a6787eabab5b53fcbb6b26db184c9c366" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::isWithinOperatingLimits</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isWithinOperatingLimits</name>
+        <qualifiedname>SonicatorInterface::isWithinOperatingLimits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="107" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a128caf091657a2067f4d64b8507f3f3f" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::getCurrentTimestamp</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getCurrentTimestamp</name>
+        <qualifiedname>SonicatorInterface::getCurrentTimestamp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="110" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1aa855bac6c46168e166d24f5f88b8ffb2" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::hasTimedOut</definition>
+        <argsstring>(uint32_t start_time, uint32_t timeout_ms) const noexcept</argsstring>
+        <name>hasTimedOut</name>
+        <qualifiedname>SonicatorInterface::hasTimedOut</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>start_time</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="111" column="10"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a14c5eed7faace30384b7a5d4919359bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SonicatorInterface::SonicatorInterface</definition>
+        <argsstring>(uint8_t id, const sonicator_hardware_config_t &amp;config)</argsstring>
+        <name>SonicatorInterface</name>
+        <qualifiedname>SonicatorInterface::SonicatorInterface</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="d2/d25/structsonicator__hardware__config__t" kindref="compound">sonicator_hardware_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator ID (1-4) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Hardware pin configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="119" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1aa8ac180541322a6e69ee2802e3be6091" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SonicatorInterface::~SonicatorInterface</definition>
+        <argsstring>()</argsstring>
+        <name>~SonicatorInterface</name>
+        <qualifiedname>SonicatorInterface::~SonicatorInterface</qualifiedname>
+        <briefdescription>
+<para>Destructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="124" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a7418834bdc4be6c2e1eee1b2f1b3b15e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::initialize</definition>
+        <argsstring>()</argsstring>
+        <name>initialize</name>
+        <qualifiedname>SonicatorInterface::initialize</qualifiedname>
+        <briefdescription>
+<para>Initialize the sonicator interface. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialization successful </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="134" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1ae3623736e301160b3712ff595b4e934a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SonicatorInterface::setEnabled</definition>
+        <argsstring>(bool enabled)</argsstring>
+        <name>setEnabled</name>
+        <qualifiedname>SonicatorInterface::setEnabled</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>enabled</declname>
+        </param>
+        <briefdescription>
+<para>Enable or disable the interface. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enabled</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true to enable, false to disable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="140" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a8e65a63ba8922a95fbc9f783cdfd2c34" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::isEnabled</definition>
+        <argsstring>() const</argsstring>
+        <name>isEnabled</name>
+        <qualifiedname>SonicatorInterface::isEnabled</qualifiedname>
+        <briefdescription>
+<para>Check if interface is enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if enabled </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="146" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a9a4c574c27676d093bd76b33064c3930" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::performSelfDiagnostic</definition>
+        <argsstring>()</argsstring>
+        <name>performSelfDiagnostic</name>
+        <qualifiedname>SonicatorInterface::performSelfDiagnostic</qualifiedname>
+        <briefdescription>
+<para>Perform self-diagnostic test. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if all tests pass </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="152" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a6cd65bcdb1ff7fcb24544ab9febcdf08" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::setAmplitude</definition>
+        <argsstring>(uint8_t percentage)</argsstring>
+        <name>setAmplitude</name>
+        <qualifiedname>SonicatorInterface::setAmplitude</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>percentage</declname>
+        </param>
+        <briefdescription>
+<para>Set sonicator amplitude. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>percentage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Amplitude percentage (20-100%) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if command accepted </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="163" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1ae76f9d2b29475476cbf03ad93d0673ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::startSonication</definition>
+        <argsstring>()</argsstring>
+        <name>startSonication</name>
+        <qualifiedname>SonicatorInterface::startSonication</qualifiedname>
+        <briefdescription>
+<para>Start sonication. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if command accepted </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="169" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a2183503a913727e97aa7bf9ceaae3817" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::stopSonication</definition>
+        <argsstring>()</argsstring>
+        <name>stopSonication</name>
+        <qualifiedname>SonicatorInterface::stopSonication</qualifiedname>
+        <briefdescription>
+<para>Stop sonication. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if command accepted </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="175" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a157296b7d71c223d92e16415c0c2bfda" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::resetOverload</definition>
+        <argsstring>()</argsstring>
+        <name>resetOverload</name>
+        <qualifiedname>SonicatorInterface::resetOverload</qualifiedname>
+        <briefdescription>
+<para>Reset overload condition. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if reset command issued </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="181" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1ab0e056f9600f2fba656f1b9dfdd3703b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::emergencyStop</definition>
+        <argsstring>()</argsstring>
+        <name>emergencyStop</name>
+        <qualifiedname>SonicatorInterface::emergencyStop</qualifiedname>
+        <briefdescription>
+<para>Emergency stop (immediate) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if emergency stop executed </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="187" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a1cdab069d27da7a3e61bb2b8156cac7d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::isRunning</definition>
+        <argsstring>() const</argsstring>
+        <name>isRunning</name>
+        <qualifiedname>SonicatorInterface::isRunning</qualifiedname>
+        <briefdescription>
+<para>Check if sonicator is currently running. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if running </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="197" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a24b0d0d71eae6c21a18e7731ffcb9300" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::isOverloaded</definition>
+        <argsstring>() const</argsstring>
+        <name>isOverloaded</name>
+        <qualifiedname>SonicatorInterface::isOverloaded</qualifiedname>
+        <briefdescription>
+<para>Check if overload condition exists and throw an interrupt if so. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if overloaded </para>
+</simplesect>
+<simplesect kind="note"><para>this should throw an interrupt handled by the main loop if an Overload occurs </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="204" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a9ad1a62da0e2178cfc8f6dd4aa4e6545" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::isFrequencyLocked</definition>
+        <argsstring>() const</argsstring>
+        <name>isFrequencyLocked</name>
+        <qualifiedname>SonicatorInterface::isFrequencyLocked</qualifiedname>
+        <briefdescription>
+<para>Check if frequency is locked. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if frequency locked </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="210" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1aaad4d3d53e2ed8c6f1012e7d7cff7f57" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t SonicatorInterface::getCurrentFrequency</definition>
+        <argsstring>() const</argsstring>
+        <name>getCurrentFrequency</name>
+        <qualifiedname>SonicatorInterface::getCurrentFrequency</qualifiedname>
+        <briefdescription>
+<para>Get current operating frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Frequency in Hz </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="216" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a0e9fc5bfcffd7f3e4ee9741bdf44d8f1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t SonicatorInterface::getCurrentPowerOutput</definition>
+        <argsstring>() const</argsstring>
+        <name>getCurrentPowerOutput</name>
+        <qualifiedname>SonicatorInterface::getCurrentPowerOutput</qualifiedname>
+        <briefdescription>
+<para>Get current power output. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Power in watts </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="222" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1af6490bba00931c9bb3079785996553f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t SonicatorInterface::getCurrentAmplitude</definition>
+        <argsstring>() const</argsstring>
+        <name>getCurrentAmplitude</name>
+        <qualifiedname>SonicatorInterface::getCurrentAmplitude</qualifiedname>
+        <briefdescription>
+<para>Get current amplitude setpoint. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Amplitude percentage (20-100%) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="228" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a1a8248642fd9bd863f4775b57eabfc66" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d13/sonicator__control_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref></type>
+        <definition>sonicator_state_t SonicatorInterface::getCurrentState</definition>
+        <argsstring>() const</argsstring>
+        <name>getCurrentState</name>
+        <qualifiedname>SonicatorInterface::getCurrentState</qualifiedname>
+        <briefdescription>
+<para>Get current operating state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current sonicator state </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="234" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a0b955ac432c4636244689cdbf390e0a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d4e/structsonicator__status__t" kindref="compound">sonicator_status_t</ref></type>
+        <definition>sonicator_status_t SonicatorInterface::getCompleteStatus</definition>
+        <argsstring>() const</argsstring>
+        <name>getCompleteStatus</name>
+        <qualifiedname>SonicatorInterface::getCompleteStatus</qualifiedname>
+        <briefdescription>
+<para>Get complete status structure. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Complete sonicator status </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="244" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1aaff0620f0a30cd3070db7e2117aa46b7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::getTotalRuntime</definition>
+        <argsstring>() const</argsstring>
+        <name>getTotalRuntime</name>
+        <qualifiedname>SonicatorInterface::getTotalRuntime</qualifiedname>
+        <briefdescription>
+<para>Get total runtime in seconds. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Total runtime </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="250" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1ac2ceee5afa9d1717f277aa03caa475ba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::getOverloadCount</definition>
+        <argsstring>() const</argsstring>
+        <name>getOverloadCount</name>
+        <qualifiedname>SonicatorInterface::getOverloadCount</qualifiedname>
+        <briefdescription>
+<para>Get overload event count. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of overload events </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="256" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1ae41d0fc8cca174a25ec0b27986d36883" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::getStartCount</definition>
+        <argsstring>() const</argsstring>
+        <name>getStartCount</name>
+        <qualifiedname>SonicatorInterface::getStartCount</qualifiedname>
+        <briefdescription>
+<para>Get start cycle count. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of start cycles </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="262" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1af2147bf41bdeb579b1ec815ea1de82fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="db/d16/config_8h_1a7d80c3b410035aed9cd8484552186f92" kindref="member">error_code_t</ref></type>
+        <definition>error_code_t SonicatorInterface::getLastError</definition>
+        <argsstring>() const</argsstring>
+        <name>getLastError</name>
+        <qualifiedname>SonicatorInterface::getLastError</qualifiedname>
+        <briefdescription>
+<para>Get last error code. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Most recent error </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="268" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a91c071b685fe26dc3696ef1735232db2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::isCommunicationHealthy</definition>
+        <argsstring>() const</argsstring>
+        <name>isCommunicationHealthy</name>
+        <qualifiedname>SonicatorInterface::isCommunicationHealthy</qualifiedname>
+        <briefdescription>
+<para>Check interface communication health. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if communication OK </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="274" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1ad428ac09f03b84ec947f32de88374aa3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="de/d13/sonicator__control_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref></type>
+        <definition>sonicator_state_t SonicatorInterface::update</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>update</name>
+        <qualifiedname>SonicatorInterface::update</qualifiedname>
+        <briefdescription>
+<para>Main update function (call from main loop) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current sonicator state @mandatory Must be called at least every 10ms for proper operation @performance Optimized for real-time execution, typically completes in &lt;1ms @thread_safety Not thread-safe - call only from main thread @error_handling Returns SONICATOR_STATE_FAULT on critical errors </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="288" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a72aa19a31d509a70a98e1fd3c8f43ed9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SonicatorInterface::resetStatistics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>resetStatistics</name>
+        <qualifiedname>SonicatorInterface::resetStatistics</qualifiedname>
+        <briefdescription>
+<para>Reset all statistics and counters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This is a void operation that doesn&apos;t affect current state @thread_safety Not thread-safe - call only when sonicator is stopped </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="295" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a1cc44112dc876c6246f881a89d366945" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::updateControlOutputs</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>updateControlOutputs</name>
+        <qualifiedname>SonicatorInterface::updateControlOutputs</qualifiedname>
+        <briefdescription>
+<para>Update control outputs based on current state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if outputs updated successfully, false on hardware error </para>
+</simplesect>
+<simplesect kind="note"><para>Called internally by <ref refid="dd/dce/class_sonicator_interface_1ad428ac09f03b84ec947f32de88374aa3" kindref="member">update()</ref> - typically not called directly @performance Optimized for minimal latency (&lt;100μs typical) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="303" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1ab280f266432621a0d585235f3e1610c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::start</definition>
+        <argsstring>()</argsstring>
+        <name>start</name>
+        <qualifiedname>SonicatorInterface::start</qualifiedname>
+        <briefdescription>
+<para>Start the sonicator (legacy compatibility) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if start command accepted, false on error </para>
+</simplesect>
+<xrefsect id="da/d58/deprecated_1_deprecated000001"><xreftitle>Deprecated</xreftitle><xrefdescription><para>Use <ref refid="dd/dce/class_sonicator_interface_1ae76f9d2b29475476cbf03ad93d0673ba" kindref="member">startSonication()</ref> instead for better error handling </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="315" column="10" bodyfile="src/modules/sonicator/sonicator.h" bodystart="315" bodyend="315"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a54b625277a171d4b84634f3771369648" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::stop</definition>
+        <argsstring>()</argsstring>
+        <name>stop</name>
+        <qualifiedname>SonicatorInterface::stop</qualifiedname>
+        <briefdescription>
+<para>Stop the sonicator (legacy compatibility) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if stop command accepted, false on error </para>
+</simplesect>
+<xrefsect id="da/d58/deprecated_1_deprecated000002"><xreftitle>Deprecated</xreftitle><xrefdescription><para>Use <ref refid="dd/dce/class_sonicator_interface_1a2183503a913727e97aa7bf9ceaae3817" kindref="member">stopSonication()</ref> instead for better error handling </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="323" column="10" bodyfile="src/modules/sonicator/sonicator.h" bodystart="323" bodyend="323"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1ae9dd37de6a2aa741f00270b5233de82d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t SonicatorInterface::getFrequency</definition>
+        <argsstring>() const</argsstring>
+        <name>getFrequency</name>
+        <qualifiedname>SonicatorInterface::getFrequency</qualifiedname>
+        <briefdescription>
+<para>Get the current frequency of the sonicator (legacy compatibility) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current frequency in Hz </para>
+</simplesect>
+<xrefsect id="da/d58/deprecated_1_deprecated000003"><xreftitle>Deprecated</xreftitle><xrefdescription><para>Use <ref refid="dd/dce/class_sonicator_interface_1aaad4d3d53e2ed8c6f1012e7d7cff7f57" kindref="member">getCurrentFrequency()</ref> instead for consistency </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="331" column="14" bodyfile="src/modules/sonicator/sonicator.h" bodystart="331" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a3bd70bd4d174b9e24383c4a21a0b1e36" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t SonicatorInterface::getAmplitude</definition>
+        <argsstring>() const</argsstring>
+        <name>getAmplitude</name>
+        <qualifiedname>SonicatorInterface::getAmplitude</qualifiedname>
+        <briefdescription>
+<para>Get the current amplitude of the sonicator (legacy compatibility) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current amplitude percentage (20-100%) </para>
+</simplesect>
+<xrefsect id="da/d58/deprecated_1_deprecated000004"><xreftitle>Deprecated</xreftitle><xrefdescription><para>Use <ref refid="dd/dce/class_sonicator_interface_1af6490bba00931c9bb3079785996553f3" kindref="member">getCurrentAmplitude()</ref> instead for consistency </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="339" column="13" bodyfile="src/modules/sonicator/sonicator.h" bodystart="339" bodyend="339"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1a32fcd1cd39c0242443fad9d717f388e0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::setAmplitudeLegacy</definition>
+        <argsstring>(uint8_t amplitude)</argsstring>
+        <name>setAmplitudeLegacy</name>
+        <qualifiedname>SonicatorInterface::setAmplitudeLegacy</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>amplitude</declname>
+        </param>
+        <briefdescription>
+<para>Set the amplitude of the sonicator (legacy compatibility) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>amplitude</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Amplitude percentage (20-100) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if amplitude set successfully, false on error </para>
+</simplesect>
+<xrefsect id="da/d58/deprecated_1_deprecated000005"><xreftitle>Deprecated</xreftitle><xrefdescription><para>Use <ref refid="dd/dce/class_sonicator_interface_1a6cd65bcdb1ff7fcb24544ab9febcdf08" kindref="member">setAmplitude()</ref> instead for better error handling </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="348" column="10" bodyfile="src/modules/sonicator/sonicator.h" bodystart="348" bodyend="348"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/dce/class_sonicator_interface_1adb08014dcad992cdd386f4e8de5220dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::setFrequency</definition>
+        <argsstring>(int frequency)</argsstring>
+        <name>setFrequency</name>
+        <qualifiedname>SonicatorInterface::setFrequency</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>frequency</declname>
+        </param>
+        <briefdescription>
+<para>Set the frequency of the sonicator (legacy compatibility - no-op) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>frequency</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Frequency (ignored - CT2000 frequency is read-only) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>false always (operation not supported) </para>
+</simplesect>
+<xrefsect id="da/d58/deprecated_1_deprecated000006"><xreftitle>Deprecated</xreftitle><xrefdescription><para>CT2000 frequency is read-only and cannot be set </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/sonicator/sonicator.h" line="357" column="10" bodyfile="src/modules/sonicator/sonicator.h" bodystart="357" bodyend="360"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Enhanced Sonicator Interface Class. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides complete control and monitoring interface for a single CT2000 sonicator unit via DB9 connector.</para>
+<para>Features:<itemizedlist>
+<listitem><para>Control Signals: Amplitude, Start/Stop, Overload Reset</para>
+</listitem><listitem><para>Monitoring Signals:</para>
+</listitem><listitem><para>Full amplitude control (20-100% via 0-10V DAC)</para>
+</listitem><listitem><para>Start/stop control via relay output</para>
+</listitem><listitem><para>Overload reset control</para>
+</listitem><listitem><para>Real-time power monitoring</para>
+</listitem><listitem><para>Frequency monitoring and lock detection</para>
+</listitem><listitem><para>Safety monitoring with response time faster than MODBUS protocol requirements</para>
+</listitem><listitem><para>Runtime statistics and fault logging </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+    <location file="src/modules/sonicator/sonicator.h" line="40" column="1" bodyfile="src/modules/sonicator/sonicator.h" bodystart="40" bodyend="361"/>
+    <listofallmembers>
+      <member refid="dd/dce/class_sonicator_interface_1a88ac6d8c87860ff88e1793517eec5886" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>avg_update_time_us</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a5410dd13a29602ab37ecf37a47f4fab2" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>checkSafetyConstraints</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a8dd3c4be3c67fb93342403460f4cbd22" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>consecutive_error_count</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a717061cbe899c35fda9a2417162e7519" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>critical_error_flag</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a541d8a6be57ba12efd470e3d872adf2b" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>current_status</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1ab0e056f9600f2fba656f1b9dfdd3703b" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>emergencyStop</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a7b8b34e7078707be26bd3f71c8c194aa" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>frequency_buffer_index</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1aee05a846667b5de7a37957c8a8031107" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>frequency_measurement_buffer</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a3bd70bd4d174b9e24383c4a21a0b1e36" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>getAmplitude</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a0b955ac432c4636244689cdbf390e0a8" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>getCompleteStatus</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1af6490bba00931c9bb3079785996553f3" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>getCurrentAmplitude</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1aaad4d3d53e2ed8c6f1012e7d7cff7f57" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>getCurrentFrequency</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a0e9fc5bfcffd7f3e4ee9741bdf44d8f1" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>getCurrentPowerOutput</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a1a8248642fd9bd863f4775b57eabfc66" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>getCurrentState</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a128caf091657a2067f4d64b8507f3f3f" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>getCurrentTimestamp</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1ae9dd37de6a2aa741f00270b5233de82d" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>getFrequency</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1af2147bf41bdeb579b1ec815ea1de82fc" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>getLastError</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1ac2ceee5afa9d1717f277aa03caa475ba" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>getOverloadCount</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1ae41d0fc8cca174a25ec0b27986d36883" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>getStartCount</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1aaff0620f0a30cd3070db7e2117aa46b7" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>getTotalRuntime</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1ac918141f1734df6f59e8716a102accf9" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>handleOverloadCondition</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a6aeb4c283690e95c2dac215d43d20e1c" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>handleSystemError</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a2fe3e77f10c20895e36c5ff4392932b6" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>hardware_config</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1aa855bac6c46168e166d24f5f88b8ffb2" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>hasTimedOut</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a7418834bdc4be6c2e1eee1b2f1b3b15e" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>initialize</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a72b0e3d12401a71499658e9adfc09346" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>interface_enabled</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a91c071b685fe26dc3696ef1735232db2" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>isCommunicationHealthy</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a8e65a63ba8922a95fbc9f783cdfd2c34" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>isEnabled</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a9ad1a62da0e2178cfc8f6dd4aa4e6545" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>isFrequencyLocked</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a24b0d0d71eae6c21a18e7731ffcb9300" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>isOverloaded</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a1cdab069d27da7a3e61bb2b8156cac7d" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>isRunning</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a6787eabab5b53fcbb6b26db184c9c366" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>isWithinOperatingLimits</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a0975b3bb41bb05a1276e4c953d048552" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>last_error_code</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a5d90282fdc5b9553cbe74d550ddbf184" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>last_error_timestamp</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a532aabf3357f6f7d4316f88b83903600" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>last_frequency_measurement</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1ac2b7f86295785a23228198f5ecce3d2f" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>last_power_measurement</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a2dd3690a2fab885af124a67e5c8e50c4" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>last_safety_check</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1ac6a6ceb1263e595c01324c73cbdb78b0" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>last_start_time</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a70715395c6ebd08d046ee1ef0f12b822" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>last_update_timestamp</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1aeccea5cf2af150e11aae7f286c7b1995" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>logStateChange</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1ae480f6efa00121ddbfa9181262078bb0" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>max_update_time_us</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a24ba5faafc05ad3f257dc613e86d6fb7" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>measureFrequency</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a7a6b185c9b469b4891ae1b028c8d2efa" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>measurePower</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a48dff56661f08f1d568672af38685f41" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>min_update_time_us</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1ad2fb85cf7da61d4547f30335b81335d1" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>overload_detected</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a17dab9d99d9d766ca99f424752db0b79" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>overload_detection_time</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1aaa877b33621b36a50ea198b3e231c8ad" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>performance_monitoring_enabled</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a9a4c574c27676d093bd76b33064c3930" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>performSelfDiagnostic</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a2f2120b66f2896a5392aae07749d135f" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>previous_state</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a5ca4249fb8cb8e460309f83cb2245eba" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>readHardwareInputs</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1aad4641462705b7e3bf1778435b1ad279" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>reset_command_pending</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a2035ff310fc4dde54c0c6a50f8836a8f" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>reset_pulse_start_time</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a157296b7d71c223d92e16415c0c2bfda" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>resetOverload</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a72aa19a31d509a70a98e1fd3c8f43ed9" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>resetStatistics</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a6cd65bcdb1ff7fcb24544ab9febcdf08" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>setAmplitude</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a32fcd1cd39c0242443fad9d717f388e0" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>setAmplitudeLegacy</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1ae3623736e301160b3712ff595b4e934a" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>setEnabled</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1adb08014dcad992cdd386f4e8de5220dc" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>setFrequency</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a65fff958a9446231ce597cb1b7ebd9cc" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>sonicator_id</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a14c5eed7faace30384b7a5d4919359bd" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>SonicatorInterface</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1ab280f266432621a0d585235f3e1610c3" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>start</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a12f0436b7ebcecb78c506ce79dd46b5b" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>start_command_pending</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1ae76f9d2b29475476cbf03ad93d0673ba" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>startSonication</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a4c64661df750149c6e37c08d5a9b691a" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>state_change_timestamp</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a54b625277a171d4b84634f3771369648" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>stop</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a2183503a913727e97aa7bf9ceaae3817" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>stopSonication</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a9814db409e06c56493a0e1ffed89ddb2" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>total_overload_events</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a9fa92d159079dc6f3a5bfce9b1bed002" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>total_runtime_ms</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a5323469df4216038f057b1af5c1eec93" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>total_start_cycles</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1ad428ac09f03b84ec947f32de88374aa3" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>update</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a997090f08b5a838c3e57e46da7ed6766" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>update_call_count</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a1cc44112dc876c6246f881a89d366945" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>updateControlOutputs</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a16757aa724245368102e4624aca97695" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>updateHardwareOutputs</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a5433db11821c0a2be9557b33f81f2323" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>updateStateMachine</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1a8eecab92e4dda502f91ea85ee6d541f5" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>updateStatistics</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1aea0868a5425fd49b3d8bcc1879752c98" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>validateAmplitudeRange</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1aca57a3ea2f07627b1b50a0726df93400" prot="private" virt="non-virtual"><scope>SonicatorInterface</scope><name>validateSystemState</name></member>
+      <member refid="dd/dce/class_sonicator_interface_1aa8ac180541322a6e69ee2802e3be6091" prot="public" virt="non-virtual"><scope>SonicatorInterface</scope><name>~SonicatorInterface</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -30,6 +30,8 @@ bool register_manager_init(void) {
     register_map.system_status.active_mask = 0;
     register_map.system_status.watchdog_status = 1; // Watchdog OK
     register_map.system_status.comm_errors = 0;
+    register_map.system_status.prev_active_mask = 0;    // None active before boot (default)
+    register_map.system_status.last_shutdown_reason = 0; // 0=normal default
     
     // Initialize all sonicators to safe defaults
     for (int i = 0; i < MODBUS_MAX_SONICATORS; i++) {
@@ -40,6 +42,10 @@ bool register_manager_init(void) {
         register_map.sonicators[i].frequency_hz = 20000;    // 20kHz default
         register_map.sonicators[i].status_flags = 0;
         register_map.sonicators[i].amplitude_actual = 0;
+        register_map.sonicators[i].prev_state = 0;            // STOPPED
+        register_map.sonicators[i].persisted_amplitude = 50;  // Persist default setpoint
+        register_map.sonicators[i].last_fault_code = 0;       // No fault
+        register_map.sonicators[i].last_state_timestamp_lo = 0;
     }
     
     manager_initialized = true;

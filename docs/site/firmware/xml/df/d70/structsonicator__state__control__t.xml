@@ -1,0 +1,332 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="df/d70/structsonicator__state__control__t" kind="struct" language="C++" prot="public">
+    <compoundname>sonicator_state_control_t</compoundname>
+    <includes refid="de/d13/sonicator__control_8h" local="no">sonicator_control.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1a6cd8bcb50e1b5c930526cb95e0a268ce" prot="public" static="no" mutable="no">
+        <type><ref refid="de/d13/sonicator__control_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref></type>
+        <definition>sonicator_state_t sonicator_state_control_t::state</definition>
+        <argsstring></argsstring>
+        <name>state</name>
+        <qualifiedname>sonicator_state_control_t::state</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="100" column="23" bodyfile="include/sonicator_control.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1a901de2eae303626f6398b04a41e1c0bf" prot="public" static="no" mutable="no">
+        <type><ref refid="de/d13/sonicator__control_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref></type>
+        <definition>sonicator_state_t sonicator_state_control_t::previous_state</definition>
+        <argsstring></argsstring>
+        <name>previous_state</name>
+        <qualifiedname>sonicator_state_control_t::previous_state</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="101" column="23" bodyfile="include/sonicator_control.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1ac9189d4a7addd0a1424450e59036e713" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t sonicator_state_control_t::state_entry_time</definition>
+        <argsstring></argsstring>
+        <name>state_entry_time</name>
+        <qualifiedname>sonicator_state_control_t::state_entry_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="102" column="14" bodyfile="include/sonicator_control.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1afcd4300c11230d9f9b052e12e3f2e112" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t sonicator_state_control_t::amplitude_percent</definition>
+        <argsstring></argsstring>
+        <name>amplitude_percent</name>
+        <qualifiedname>sonicator_state_control_t::amplitude_percent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="105" column="13" bodyfile="include/sonicator_control.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1aa84df142871608374a7fa8c1896fe4b3" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool sonicator_state_control_t::start_requested</definition>
+        <argsstring></argsstring>
+        <name>start_requested</name>
+        <qualifiedname>sonicator_state_control_t::start_requested</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="106" column="10" bodyfile="include/sonicator_control.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1ab8ced15f04b13bb1d6a77a5afc2be801" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool sonicator_state_control_t::stop_requested</definition>
+        <argsstring></argsstring>
+        <name>stop_requested</name>
+        <qualifiedname>sonicator_state_control_t::stop_requested</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="107" column="10" bodyfile="include/sonicator_control.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1a564ae0b4b90fc1410ad2ca17b78419ea" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool sonicator_state_control_t::reset_requested</definition>
+        <argsstring></argsstring>
+        <name>reset_requested</name>
+        <qualifiedname>sonicator_state_control_t::reset_requested</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="108" column="10" bodyfile="include/sonicator_control.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1a0d5c51ab2346e7db197ae25fc7260907" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool sonicator_state_control_t::is_running</definition>
+        <argsstring></argsstring>
+        <name>is_running</name>
+        <qualifiedname>sonicator_state_control_t::is_running</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="111" column="10" bodyfile="include/sonicator_control.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1a97a7e3df02d7732869f5bd7ce6bbe263" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool sonicator_state_control_t::overload_active</definition>
+        <argsstring></argsstring>
+        <name>overload_active</name>
+        <qualifiedname>sonicator_state_control_t::overload_active</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="112" column="10" bodyfile="include/sonicator_control.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1a3995a54ccc06cc04d3279b6cba29caae" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool sonicator_state_control_t::frequency_locked</definition>
+        <argsstring></argsstring>
+        <name>frequency_locked</name>
+        <qualifiedname>sonicator_state_control_t::frequency_locked</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="113" column="10" bodyfile="include/sonicator_control.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1abcaae5e9e93498e549afd71298e9096b" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float sonicator_state_control_t::power_watts</definition>
+        <argsstring></argsstring>
+        <name>power_watts</name>
+        <qualifiedname>sonicator_state_control_t::power_watts</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="114" column="11" bodyfile="include/sonicator_control.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1a3021ec989df15e775e6cd13891369875" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t sonicator_state_control_t::frequency_hz</definition>
+        <argsstring></argsstring>
+        <name>frequency_hz</name>
+        <qualifiedname>sonicator_state_control_t::frequency_hz</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="115" column="14" bodyfile="include/sonicator_control.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1aea26e6db5046274c9b121183c4d1abd8" prot="public" static="no" mutable="no">
+        <type><ref refid="de/d13/sonicator__control_8h_1a361c37dbeedf89f2fe09845eab7f0a99" kindref="member">sonicator_fault_t</ref></type>
+        <definition>sonicator_fault_t sonicator_state_control_t::active_faults</definition>
+        <argsstring></argsstring>
+        <name>active_faults</name>
+        <qualifiedname>sonicator_state_control_t::active_faults</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="118" column="23" bodyfile="include/sonicator_control.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1a0faeb93a22f6239bd9ac1803cfda4ee9" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t sonicator_state_control_t::fault_count</definition>
+        <argsstring></argsstring>
+        <name>fault_count</name>
+        <qualifiedname>sonicator_state_control_t::fault_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="119" column="14" bodyfile="include/sonicator_control.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1ac810ff8433cec8225356eefabcdcf810" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t sonicator_state_control_t::last_fault_time</definition>
+        <argsstring></argsstring>
+        <name>last_fault_time</name>
+        <qualifiedname>sonicator_state_control_t::last_fault_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="120" column="14" bodyfile="include/sonicator_control.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1aa7007812c1aa0b399b4e7624727b5e0d" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t sonicator_state_control_t::last_update_time</definition>
+        <argsstring></argsstring>
+        <name>last_update_time</name>
+        <qualifiedname>sonicator_state_control_t::last_update_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="123" column="14" bodyfile="include/sonicator_control.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1a81faba2b646684d9911224bccf329353" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t sonicator_state_control_t::watchdog_last_reset</definition>
+        <argsstring></argsstring>
+        <name>watchdog_last_reset</name>
+        <qualifiedname>sonicator_state_control_t::watchdog_last_reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="124" column="14" bodyfile="include/sonicator_control.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1a8f109c10ee2156084fe94757e665480d" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool sonicator_state_control_t::safety_override</definition>
+        <argsstring></argsstring>
+        <name>safety_override</name>
+        <qualifiedname>sonicator_state_control_t::safety_override</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="125" column="10" bodyfile="include/sonicator_control.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1a189d2cb7b5214386dead8021cbccdfa7" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t sonicator_state_control_t::start_count</definition>
+        <argsstring></argsstring>
+        <name>start_count</name>
+        <qualifiedname>sonicator_state_control_t::start_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="128" column="14" bodyfile="include/sonicator_control.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1a9b3b5c28ba93ade6dd7a6b89ec2386d7" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t sonicator_state_control_t::total_runtime_ms</definition>
+        <argsstring></argsstring>
+        <name>total_runtime_ms</name>
+        <qualifiedname>sonicator_state_control_t::total_runtime_ms</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="129" column="14" bodyfile="include/sonicator_control.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/d70/structsonicator__state__control__t_1aef9c8009b1353420849b57fd8629cf2c" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t sonicator_state_control_t::last_start_time</definition>
+        <argsstring></argsstring>
+        <name>last_start_time</name>
+        <qualifiedname>sonicator_state_control_t::last_start_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator_control.h" line="130" column="14" bodyfile="include/sonicator_control.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Complete sonicator control and status structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/sonicator_control.h" line="98" column="1" bodyfile="include/sonicator_control.h" bodystart="98" bodyend="131"/>
+    <listofallmembers>
+      <member refid="df/d70/structsonicator__state__control__t_1aea26e6db5046274c9b121183c4d1abd8" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>active_faults</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1afcd4300c11230d9f9b052e12e3f2e112" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>amplitude_percent</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1a0faeb93a22f6239bd9ac1803cfda4ee9" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>fault_count</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1a3021ec989df15e775e6cd13891369875" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>frequency_hz</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1a3995a54ccc06cc04d3279b6cba29caae" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>frequency_locked</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1a0d5c51ab2346e7db197ae25fc7260907" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>is_running</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1ac810ff8433cec8225356eefabcdcf810" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>last_fault_time</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1aef9c8009b1353420849b57fd8629cf2c" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>last_start_time</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1aa7007812c1aa0b399b4e7624727b5e0d" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>last_update_time</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1a97a7e3df02d7732869f5bd7ce6bbe263" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>overload_active</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1abcaae5e9e93498e549afd71298e9096b" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>power_watts</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1a901de2eae303626f6398b04a41e1c0bf" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>previous_state</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1a564ae0b4b90fc1410ad2ca17b78419ea" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>reset_requested</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1a8f109c10ee2156084fe94757e665480d" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>safety_override</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1a189d2cb7b5214386dead8021cbccdfa7" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>start_count</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1aa84df142871608374a7fa8c1896fe4b3" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>start_requested</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1a6cd8bcb50e1b5c930526cb95e0a268ce" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>state</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1ac9189d4a7addd0a1424450e59036e713" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>state_entry_time</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1ab8ced15f04b13bb1d6a77a5afc2be801" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>stop_requested</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1a9b3b5c28ba93ade6dd7a6b89ec2386d7" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>total_runtime_ms</name></member>
+      <member refid="df/d70/structsonicator__state__control__t_1a81faba2b646684d9911224bccf329353" prot="public" virt="non-virtual"><scope>sonicator_state_control_t</scope><name>watchdog_last_reset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

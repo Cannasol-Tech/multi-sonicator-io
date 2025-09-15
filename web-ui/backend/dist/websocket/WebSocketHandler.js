@@ -2,59 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WebSocketHandler = void 0;
 const ws_1 = require("ws");
-
-/**
- * WebSocket transport for broadcasting hardware and test-automation events
- * and handling incoming UI commands.
- *
- * This module exposes a single class, {@link WebSocketHandler}, that bridges
- * the server-side domain (hardware interface + test automation service) with
- * browser clients connected over WebSockets. It fans out status/events to all
- * clients and routes client requests back to the hardware layer.
- *
- * Design goals:
- * - Minimal overhead: pre-stringify payloads for broadcast and reuse buffers.
- * - Clear message schema: each message has `type`, `data`, and `timestamp`.
- * - Robustness: input validation and graceful error reporting to clients.
- *
- * Message envelope:
- *   {
- *     type: string,
- *     data: any,
- *     timestamp: number // ms since epoch (Date.now())
- *   }
- *
- * Known outbound `type` values include:
- * - `connection_status`, `pin_update`, `error`
- * - `arduino_command_sent`, `arduino_command_response`
- * - `test_progress`, `test_complete`, `test_error`, `test_stopped`
- * - `initial_state`, `pong`, `pin_states`, `command_response`
- *
- * Known inbound `type` values include:
- * - `hardware_command` | `ping` | `get_pin_states`
- *
- * Note: This file is a compiled JS artifact that intentionally carries rich
- * JSDoc so downstream documentation generators can consume it.
- * @module websocket/WebSocketHandler
- */
-/**
- * Orchestrates WebSocket client connections and message routing.
- *
- * @example
- * const wss = new WebSocketServer({ server });
- * const handler = new WebSocketHandler(hardwareInterface, testService);
- * wss.on('connection', (ws) => handler.handleConnection(ws));
- */
 class WebSocketHandler {
-    /**
-     * @param {object} hardwareInterface - Hardware adapter that emits events and accepts commands.
-     * @param {function} hardwareInterface.on - Event emitter interface.
-     * @param {function} hardwareInterface.sendCommand - Sends a low-level command and resolves with a response.
-     * @param {function} hardwareInterface.isConnected - Returns boolean connection state.
-     * @param {function} hardwareInterface.getSerialPort - Returns current serial port identifier.
-     * @param {function} hardwareInterface.getPinStates - Returns iterable of [signal, state].
-     * @param {object} [testAutomationService] - Optional test execution service emitting progress/completion events.
-     */
     constructor(hardwareInterface, testAutomationService) {
         this.clients = new Set();
         this.pendingCommands = new Map();
@@ -63,11 +11,6 @@ class WebSocketHandler {
         this.setupHardwareListeners();
         this.setupTestAutomationListeners();
     }
-    /**
-     * Subscribes to hardware layer events and broadcasts them to clients.
-     * Pairs sent Arduino commands with received responses when possible.
-     * @private
-     */
     setupHardwareListeners() {
         // Listen for hardware events and broadcast to all connected clients
         this.hardwareInterface.on('connected', (data) => {
@@ -122,24 +65,40 @@ class WebSocketHandler {
                 // Find matching sent command and create response pair
                 let matchedCommand = null;
                 let responseTime = 0;
-                // Look for most recent matching command (simple approach)
-                const recentCommands = Array.from(this.pendingCommands.entries())
+                // Enhanced matching algorithm: prefer same-type command, then fallback to most recent
+                let matchedEntry = null;
+                const commandType = commandData.type;
+                const sameTypeCommands = Array.from(this.pendingCommands.entries())
+                    .filter(([id]) => id.endsWith(`-${commandType}`))
                     .sort((a, b) => b[1].timestamp - a[1].timestamp);
-                if (recentCommands.length > 0) {
-                    const [commandId, commandInfo] = recentCommands[0];
-                    matchedCommand = commandInfo.command;
-                    responseTime = commandData.timestamp - commandInfo.timestamp;
-                    this.pendingCommands.delete(commandId);
+                if (sameTypeCommands.length > 0) {
+                    const [commandId, commandInfo] = sameTypeCommands[0];
+                    matchedEntry = { commandId, commandInfo };
+                }
+                else {
+                    const recentCommands = Array.from(this.pendingCommands.entries())
+                        .sort((a, b) => b[1].timestamp - a[1].timestamp);
+                    if (recentCommands.length > 0) {
+                        const [commandId, commandInfo] = recentCommands[0];
+                        matchedEntry = { commandId, commandInfo };
+                    }
+                }
+                if (matchedEntry) {
+                    matchedCommand = matchedEntry.commandInfo.command;
+                    responseTime = commandData.timestamp - matchedEntry.commandInfo.timestamp;
+                    this.pendingCommands.delete(matchedEntry.commandId);
                 }
                 // Broadcast arduino_command_response message
+                const dataStr = typeof commandData.data === 'string' ? commandData.data : JSON.stringify(commandData.data);
+                const dataLower = dataStr.toLowerCase();
                 this.broadcast({
                     type: 'arduino_command_response',
                     data: {
                         command: matchedCommand || 'Unknown command',
                         response: commandData.data,
                         responseTime: Math.max(responseTime, 0),
-                        success: !commandData.data.includes('ERROR') && !commandData.data.includes('FAIL'),
-                        error: commandData.data.includes('ERROR') || commandData.data.includes('FAIL') ? commandData.data : undefined,
+                        success: !dataLower.includes('error') && !dataLower.includes('fail'),
+                        error: (dataLower.includes('error') || dataLower.includes('fail')) ? dataStr : undefined,
                         timestamp: commandData.timestamp
                     },
                     timestamp: Date.now()
@@ -147,11 +106,6 @@ class WebSocketHandler {
             }
         });
     }
-    /**
-     * Subscribes to test automation events for real-time UI updates.
-     * No-ops when service is not provided.
-     * @private
-     */
     setupTestAutomationListeners() {
         if (!this.testAutomationService) {
             return;
@@ -189,11 +143,6 @@ class WebSocketHandler {
             });
         });
     }
-    /**
-     * Handles a new WebSocket client connection.
-     * Sends initial state and wires message/close/error handlers.
-     * @param {import('ws').WebSocket} ws - Client socket connection.
-     */
     handleConnection(ws) {
         this.clients.add(ws);
         console.log(`WebSocket client connected. Total clients: ${this.clients.size}`);
@@ -218,10 +167,6 @@ class WebSocketHandler {
             this.clients.delete(ws);
         });
     }
-    /**
-     * Sends current connection status, pin states, and test execution snapshot to one client.
-     * @param {import('ws').WebSocket} ws - Target client socket.
-     */
     sendInitialState(ws) {
         // Send current connection status
         const message = {
@@ -237,12 +182,6 @@ class WebSocketHandler {
         };
         this.sendToClient(ws, message);
     }
-    /**
-     * Routes an inbound client message based on its `type`.
-     * @param {import('ws').WebSocket} ws - Source client.
-     * @param {{type:string,data?:any,timestamp?:number}} message - Parsed message envelope.
-     * @returns {Promise<void>}
-     */
     async handleMessage(ws, message) {
         try {
             switch (message.type) {
@@ -273,15 +212,6 @@ class WebSocketHandler {
             this.sendError(ws, 'Failed to process message');
         }
     }
-    /**
-     * Translates a high-level hardware command from the UI into the
-     * low-level protocol understood by the hardware interface.
-     * Responds to the caller with a `command_response` message.
-     *
-     * @param {import('ws').WebSocket} ws - Requesting client.
-     * @param {{command:string,pin?:number|string,value?:any}} commandData - Command payload.
-     * @returns {Promise<void>}
-     */
     async handleHardwareCommand(ws, commandData) {
         const { command, pin, value } = commandData;
         try {
@@ -343,11 +273,6 @@ class WebSocketHandler {
             this.sendError(ws, `Hardware command failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
         }
     }
-    /**
-     * Sends a message to a single WebSocket client if the socket is open.
-     * @param {import('ws').WebSocket} ws - Target client.
-     * @param {{type:string,data?:any,timestamp:number}} message - Message envelope.
-     */
     sendToClient(ws, message) {
         if (ws.readyState === ws_1.WebSocket.OPEN) {
             try {
@@ -358,11 +283,6 @@ class WebSocketHandler {
             }
         }
     }
-    /**
-     * Sends a standardized error envelope to a single client.
-     * @param {import('ws').WebSocket} ws - Target client.
-     * @param {string} error - Human-readable error message.
-     */
     sendError(ws, error) {
         this.sendToClient(ws, {
             type: 'error',
@@ -370,11 +290,6 @@ class WebSocketHandler {
             timestamp: Date.now()
         });
     }
-    /**
-     * Broadcasts a pre-structured message to all connected clients.
-     * Uses pre-serialization for efficiency.
-     * @param {{type:string,data?:any,timestamp:number}} message - Message envelope.
-     */
     broadcast(message) {
         const messageStr = JSON.stringify(message);
         this.clients.forEach(client => {
@@ -392,10 +307,6 @@ class WebSocketHandler {
             }
         });
     }
-    /**
-     * Returns the number of currently connected WebSocket clients.
-     * @returns {number}
-     */
     getClientCount() {
         return this.clients.size;
     }

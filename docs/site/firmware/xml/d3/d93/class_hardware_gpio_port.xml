@@ -1,0 +1,278 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d3/d93/class_hardware_gpio_port" kind="class" language="C++" prot="public">
+    <compoundname>HardwareGpioPort</compoundname>
+    <basecompoundref refid="d4/d45/class_i_gpio_port" prot="public" virt="non-virtual">IGpioPort</basecompoundref>
+    <includes refid="d2/db1/hal__hardware__factory_8h" local="no">hal_hardware_factory.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d3/d93/class_hardware_gpio_port_1a7ca78023c04db3695ee0841c046828a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareGpioPort::init</definition>
+        <argsstring>(void) override</argsstring>
+        <name>init</name>
+        <qualifiedname>HardwareGpioPort::init</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a60c1a7430f3e5bae47f5c62130ab989a">init</reimplements>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="26" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d93/class_hardware_gpio_port_1a7d565aa13195d74552f557120ff911d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareGpioPort::setPinMode</definition>
+        <argsstring>(uint8_t pin, uint8_t mode) override</argsstring>
+        <name>setPinMode</name>
+        <qualifiedname>HardwareGpioPort::setPinMode</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1ac9d71023f4ce28da95f68c4c9df4dab0">setPinMode</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="27" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d93/class_hardware_gpio_port_1aa11001608a0abee300487366b2817b49" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareGpioPort::digitalWrite</definition>
+        <argsstring>(uint8_t pin, uint8_t value) override</argsstring>
+        <name>digitalWrite</name>
+        <qualifiedname>HardwareGpioPort::digitalWrite</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1add58b07a6da42c6bcbd986f4507da15a">digitalWrite</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="28" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d93/class_hardware_gpio_port_1a8e3baae202165cc4e57f9fcc56d1538d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t HardwareGpioPort::digitalRead</definition>
+        <argsstring>(uint8_t pin) override</argsstring>
+        <name>digitalRead</name>
+        <qualifiedname>HardwareGpioPort::digitalRead</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a1f9e986f6414805bc3ad867e251af024">digitalRead</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="29" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d93/class_hardware_gpio_port_1aa8329dd04c495ed4b187d58472cf6b8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareGpioPort::togglePin</definition>
+        <argsstring>(uint8_t pin) override</argsstring>
+        <name>togglePin</name>
+        <qualifiedname>HardwareGpioPort::togglePin</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a23039e24be8f75e22b60cfe17d91b1cc">togglePin</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="30" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d93/class_hardware_gpio_port_1a56f6ec5177399be8d3bfd5919a70e5b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareGpioPort::sonicatorStart</definition>
+        <argsstring>(uint8_t sonicator_id) override</argsstring>
+        <name>sonicatorStart</name>
+        <qualifiedname>HardwareGpioPort::sonicatorStart</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a2d1b5a7f40485ffbce7eaf966e5068eb">sonicatorStart</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="32" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d93/class_hardware_gpio_port_1ab206a2fe0d8d1a5ea5e4d938db24ff5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareGpioPort::sonicatorStop</definition>
+        <argsstring>(uint8_t sonicator_id) override</argsstring>
+        <name>sonicatorStop</name>
+        <qualifiedname>HardwareGpioPort::sonicatorStop</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a01cc2219c0d670eded2410efcc41eb73">sonicatorStop</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="33" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d93/class_hardware_gpio_port_1ac79d99c0f4f649cf52cfd46ad6059d2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareGpioPort::sonicatorReset</definition>
+        <argsstring>(uint8_t sonicator_id) override</argsstring>
+        <name>sonicatorReset</name>
+        <qualifiedname>HardwareGpioPort::sonicatorReset</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a6b753a07382868258b938d839dddaaeb">sonicatorReset</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="34" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d93/class_hardware_gpio_port_1aedc46533862bedbf48a9d7ccf5ad8e7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareGpioPort::sonicatorReadOverload</definition>
+        <argsstring>(uint8_t sonicator_id, bool *state) override</argsstring>
+        <name>sonicatorReadOverload</name>
+        <qualifiedname>HardwareGpioPort::sonicatorReadOverload</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1ac449ea85a3924a8aa7a7a03afe092a76">sonicatorReadOverload</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="35" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d93/class_hardware_gpio_port_1a0c831a3462e04f5e211575a06d403a3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareGpioPort::sonicatorReadFreqLock</definition>
+        <argsstring>(uint8_t sonicator_id, bool *state) override</argsstring>
+        <name>sonicatorReadFreqLock</name>
+        <qualifiedname>HardwareGpioPort::sonicatorReadFreqLock</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1ac98cefcacbe7cfd43bf5cf28d8dee833">sonicatorReadFreqLock</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="36" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d93/class_hardware_gpio_port_1a88cda63901325fd2a4c41b65af9a6e34" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareGpioPort::statusLed</definition>
+        <argsstring>(bool state) override</argsstring>
+        <name>statusLed</name>
+        <qualifiedname>HardwareGpioPort::statusLed</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a77a29641b3e8f4e58d5741483a1bfc89">statusLed</reimplements>
+        <param>
+          <type>bool</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="37" column="10"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Real ATmega32A GPIO implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>HardwareGpioPort</label>
+        <link refid="d3/d93/class_hardware_gpio_port"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>IGpioPort</label>
+        <link refid="d4/d45/class_i_gpio_port"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>HardwareGpioPort</label>
+        <link refid="d3/d93/class_hardware_gpio_port"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>IGpioPort</label>
+        <link refid="d4/d45/class_i_gpio_port"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/modules/hal/hal_hardware_factory.h" line="24" column="1" bodyfile="src/modules/hal/hal_hardware_factory.h" bodystart="24" bodyend="38"/>
+    <listofallmembers>
+      <member refid="d3/d93/class_hardware_gpio_port_1a8e3baae202165cc4e57f9fcc56d1538d" prot="public" virt="virtual"><scope>HardwareGpioPort</scope><name>digitalRead</name></member>
+      <member refid="d3/d93/class_hardware_gpio_port_1aa11001608a0abee300487366b2817b49" prot="public" virt="virtual"><scope>HardwareGpioPort</scope><name>digitalWrite</name></member>
+      <member refid="d3/d93/class_hardware_gpio_port_1a7ca78023c04db3695ee0841c046828a1" prot="public" virt="virtual"><scope>HardwareGpioPort</scope><name>init</name></member>
+      <member refid="d3/d93/class_hardware_gpio_port_1a7d565aa13195d74552f557120ff911d6" prot="public" virt="virtual"><scope>HardwareGpioPort</scope><name>setPinMode</name></member>
+      <member refid="d3/d93/class_hardware_gpio_port_1a0c831a3462e04f5e211575a06d403a3e" prot="public" virt="virtual"><scope>HardwareGpioPort</scope><name>sonicatorReadFreqLock</name></member>
+      <member refid="d3/d93/class_hardware_gpio_port_1aedc46533862bedbf48a9d7ccf5ad8e7e" prot="public" virt="virtual"><scope>HardwareGpioPort</scope><name>sonicatorReadOverload</name></member>
+      <member refid="d3/d93/class_hardware_gpio_port_1ac79d99c0f4f649cf52cfd46ad6059d2b" prot="public" virt="virtual"><scope>HardwareGpioPort</scope><name>sonicatorReset</name></member>
+      <member refid="d3/d93/class_hardware_gpio_port_1a56f6ec5177399be8d3bfd5919a70e5b9" prot="public" virt="virtual"><scope>HardwareGpioPort</scope><name>sonicatorStart</name></member>
+      <member refid="d3/d93/class_hardware_gpio_port_1ab206a2fe0d8d1a5ea5e4d938db24ff5e" prot="public" virt="virtual"><scope>HardwareGpioPort</scope><name>sonicatorStop</name></member>
+      <member refid="d3/d93/class_hardware_gpio_port_1a88cda63901325fd2a4c41b65af9a6e34" prot="public" virt="virtual"><scope>HardwareGpioPort</scope><name>statusLed</name></member>
+      <member refid="d3/d93/class_hardware_gpio_port_1aa8329dd04c495ed4b187d58472cf6b8c" prot="public" virt="virtual"><scope>HardwareGpioPort</scope><name>togglePin</name></member>
+      <member refid="d4/d45/class_i_gpio_port_1ae486ebd5281bd9ab60879c24300112b5" prot="public" virt="virtual"><scope>HardwareGpioPort</scope><name>~IGpioPort</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

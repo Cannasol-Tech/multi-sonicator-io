@@ -850,10 +850,19 @@ update-project-board:
 ## =============================================================================
 ## DOCUMENTATION BUILD TARGETS
 ## =============================================================================
-.PHONY: docs-firmware docs-web-backend docs-web-frontend docs-all
+.PHONY: check-doxygen docs-firmware docs-web-backend docs-web-frontend docs-all
+
+# Ensure Doxygen is available and give installation guidance if missing
+check-doxygen:
+	@which doxygen >/dev/null 2>&1 || { \
+	  echo "❌ Doxygen not found on PATH."; \
+	  echo "👉 Install on macOS with: brew install doxygen graphviz"; \
+	  echo "   Or download from: https://www.doxygen.nl/download.html"; \
+	  exit 1; \
+	}
 
 # Build firmware docs with Doxygen
-docs-firmware:
+docs-firmware: check-doxygen
 	@echo "📚 Building firmware documentation (Doxygen)..."
 	@doxygen docs/doxygen/Doxyfile
 	@echo "✅ Firmware docs built in docs/site/firmware"
@@ -873,3 +882,12 @@ docs-web-frontend:
 # Build all docs
 docs-all: docs-firmware docs-web-backend docs-web-frontend
 	@echo "🎉 All documentation generated under docs/site/"
+
+# Compute documentation coverage and enforce no-drop against baseline
+.PHONY: doc-coverage
+doc-coverage:
+	@echo "📊 Checking documentation coverage (no drop gate)..."
+	@python3 scripts/doc_coverage_check.py \
+		--baseline docs/coverage/doc_coverage_baseline.json \
+		--min-firmware 0.0 --min-backend 0.0 --min-frontend 0.0 
+	@echo "✅ Documentation coverage check completed"

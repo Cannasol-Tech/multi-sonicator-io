@@ -1,0 +1,770 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d9/d49/types_8h" kind="file" language="C++">
+    <compoundname>types.h</compoundname>
+    <includes local="no">Arduino.h</includes>
+    <includes refid="db/d16/config_8h" local="yes">config.h</includes>
+    <includedby refid="dc/d16/sonicator_8h" local="no">src/modules/sonicator/sonicator.h</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>config.h</label>
+        <link refid="db/d16/config_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/types.h</label>
+        <link refid="d9/d49/types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>include/types.h</label>
+        <link refid="d9/d49/types_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/modules/sonicator/sonicator.h</label>
+        <link refid="dc/d16/sonicator_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d6/d4e/structsonicator__status__t" prot="public">sonicator_status_t</innerclass>
+    <innerclass refid="d7/dc4/structsystem__status__t" prot="public">system_status_t</innerclass>
+    <innerclass refid="db/dc0/structmodbus__frame__t" prot="public">modbus_frame_t</innerclass>
+    <innerclass refid="dc/d5b/structsafety__event__log__t" prot="public">safety_event_log_t</innerclass>
+    <innerclass refid="d2/d25/structsonicator__hardware__config__t" prot="public">sonicator_hardware_config_t</innerclass>
+    <innerclass refid="d3/dd5/structdiagnostics__metrics__t" prot="public">diagnostics_metrics_t</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="d9/d49/types_8h_1a1d9bd7e7dc0195463abf28b5271a9c5b" prot="public" static="no">
+        <name>MAX_SAFETY_EVENT_LOG_ENTRIES</name>
+        <initializer>50</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="251" column="9" bodyfile="include/types.h" bodystart="251" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d9/d49/types_8h_1ae13fb6cbf3f5eb5a55230133ed2a2c92" prot="public" static="no">
+        <name>MAX_MODBUS_FRAME_SIZE</name>
+        <initializer>256</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="252" column="9" bodyfile="include/types.h" bodystart="252" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d9/d49/types_8h_1a16b0016b468df936da40743a62b4a2d0" prot="public" static="no">
+        <name>MAX_MODULE_NAME_LENGTH</name>
+        <initializer>16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="253" column="9" bodyfile="include/types.h" bodystart="253" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d9/d49/types_8h_1ac1eac485f524973d8f37410bbbba29fc" prot="public" static="no">
+        <name>MAX_ERROR_DESCRIPTION_LENGTH</name>
+        <initializer>32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="254" column="9" bodyfile="include/types.h" bodystart="254" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d9/d49/types_8h_1a3139e8684f9794262c232d838b002e1a" prot="public" static="no">
+        <name>MIN_VALID_FREQUENCY_HZ</name>
+        <initializer>19900</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="257" column="9" bodyfile="include/types.h" bodystart="257" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d9/d49/types_8h_1a0a53f1a64d59fec2e98829145301a317" prot="public" static="no">
+        <name>MAX_VALID_FREQUENCY_HZ</name>
+        <initializer>20100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="258" column="9" bodyfile="include/types.h" bodystart="258" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d9/d49/types_8h_1a4447fc1370b6e0464d1077b2d48a9b91" prot="public" static="no">
+        <name>MIN_VALID_POWER_WATTS</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="259" column="9" bodyfile="include/types.h" bodystart="259" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d9/d49/types_8h_1aa1a402f7e264b32ea6504618594d269d" prot="public" static="no">
+        <name>MAX_VALID_POWER_WATTS</name>
+        <initializer>2200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="260" column="9" bodyfile="include/types.h" bodystart="260" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d9/d49/types_8h_1a810d719081a1e85f300a4109054a0343" prot="public" static="no">
+        <name>MIN_VALID_AMPLITUDE_PERCENT</name>
+        <initializer>20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="261" column="9" bodyfile="include/types.h" bodystart="261" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d9/d49/types_8h_1a5075f8b1e5ab01e5c1b6da79df5c4e1a" prot="public" static="no">
+        <name>MAX_VALID_AMPLITUDE_PERCENT</name>
+        <initializer>100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="262" column="9" bodyfile="include/types.h" bodystart="262" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d9/d49/types_8h_1a59ae6fbc737635c08aee64e3de257d36" prot="public" static="no">
+        <name>MAX_ACCEPTABLE_LOOP_TIME_US</name>
+        <initializer>5000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="265" column="9" bodyfile="include/types.h" bodystart="265" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d9/d49/types_8h_1a65d5ca1d014a3b9a604c2aca65711df3" prot="public" static="no">
+        <name>MIN_MODBUS_RESPONSE_TIME_US</name>
+        <initializer>1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="266" column="9" bodyfile="include/types.h" bodystart="266" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d9/d49/types_8h_1aac24cc0d01cf1d82a0896b9ba26dc5d3" prot="public" static="no">
+        <name>MAX_MODBUS_RESPONSE_TIME_US</name>
+        <initializer>50000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="267" column="9" bodyfile="include/types.h" bodystart="267" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315" prot="public" static="no" strong="no">
+        <type></type>
+        <name>sonicator_state_t</name>
+        <enumvalue id="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a200f691f290ab37f5eaac8ff0ee00470" prot="public">
+          <name>SONICATOR_STATE_STOPPED</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a34a68840cf8e7502193a12370a443e01" prot="public">
+          <name>SONICATOR_STATE_STARTING</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315aefd4187011c854e789baa073995f0def" prot="public">
+          <name>SONICATOR_STATE_RUNNING</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a68fc7fb7e15c844aa2c6cda43bcc8d09" prot="public">
+          <name>SONICATOR_STATE_STOPPING</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a3490ae32e9b66bd79211d1421e7a387d" prot="public">
+          <name>SONICATOR_STATE_OVERLOAD</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a7ef335199557a3658616b70275094a47" prot="public">
+          <name>SONICATOR_STATE_FAULT</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a02f13d1f0ad8e9fc52f93cf9c25ad0cf" prot="public">
+          <name>SONICATOR_STATE_UNKNOWN</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Sonicator operating states. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="36" column="1" bodyfile="include/types.h" bodystart="36" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="enum" id="d9/d49/types_8h_1a6e4cea4b6246f491c526211f5405627d" prot="public" static="no" strong="no">
+        <type></type>
+        <name>system_mode_t</name>
+        <enumvalue id="d9/d49/types_8h_1a6e4cea4b6246f491c526211f5405627da6283084993ae74b2bafd95e0122af9db" prot="public">
+          <name>SYSTEM_MODE_INIT</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d49/types_8h_1a6e4cea4b6246f491c526211f5405627da3a1be6cdf32c139caca02cab153f375e" prot="public">
+          <name>SYSTEM_MODE_NORMAL</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d49/types_8h_1a6e4cea4b6246f491c526211f5405627da76b5230a9956b2906e1984afa6726d19" prot="public">
+          <name>SYSTEM_MODE_SAFETY</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d49/types_8h_1a6e4cea4b6246f491c526211f5405627daa20d7f19f485c84a41680d91b139c1b8" prot="public">
+          <name>SYSTEM_MODE_MAINTENANCE</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d49/types_8h_1a6e4cea4b6246f491c526211f5405627da8635d2327dabfaa62a927aa2445f39aa" prot="public">
+          <name>SYSTEM_MODE_ERROR</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>System operating modes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="49" column="1" bodyfile="include/types.h" bodystart="49" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="enum" id="d9/d49/types_8h_1a015c3588744a0406fafc81fecb3eddfd" prot="public" static="no" strong="no">
+        <type></type>
+        <name>modbus_function_t</name>
+        <enumvalue id="d9/d49/types_8h_1a015c3588744a0406fafc81fecb3eddfda45071a1751fc71d424b7b639b03a4377" prot="public">
+          <name>MODBUS_FUNC_READ_HOLDING_REGISTERS</name>
+          <initializer>= 0x03</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d49/types_8h_1a015c3588744a0406fafc81fecb3eddfda9fafa7e8ac52121d0f458f635e9c21cc" prot="public">
+          <name>MODBUS_FUNC_WRITE_SINGLE_REGISTER</name>
+          <initializer>= 0x06</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d49/types_8h_1a015c3588744a0406fafc81fecb3eddfda894ba7dc5dc8061c14150b4cfaddb3cb" prot="public">
+          <name>MODBUS_FUNC_WRITE_MULTIPLE_REGISTERS</name>
+          <initializer>= 0x10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>MODBUS function codes (subset for this application) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="60" column="1" bodyfile="include/types.h" bodystart="60" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="enum" id="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17" prot="public" static="no" strong="no">
+        <type></type>
+        <name>safety_event_t</name>
+        <enumvalue id="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17aef847846a908427acf9943865820c8af" prot="public">
+          <name>SAFETY_EVENT_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17aa916098bab572ce0e56dd72098970f14" prot="public">
+          <name>SAFETY_EVENT_EMERGENCY_STOP</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17ad9a3e628a6414e395bac93f4db580f02" prot="public">
+          <name>SAFETY_EVENT_OVERLOAD_DETECTED</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17a69e682d24fee34f6913505d236440f12" prot="public">
+          <name>SAFETY_EVENT_FREQUENCY_LOCK_LOST</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17a12c38dd39f00d9aee894ab7c6cfe6923" prot="public">
+          <name>SAFETY_EVENT_POWER_FAULT</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17a805859073dcd71ab349ad315a62db61d" prot="public">
+          <name>SAFETY_EVENT_COMMUNICATION_TIMEOUT</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17af3d3df530924f0f1c85a7b876913e18a" prot="public">
+          <name>SAFETY_EVENT_WATCHDOG_TIMEOUT</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17ac18fd24a02f4c590141013434299376e" prot="public">
+          <name>SAFETY_EVENT_SYSTEM_FAULT</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Safety event types for logging and alarm management. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="69" column="1" bodyfile="include/types.h" bodystart="69" bodyend="78"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="d9/d49/types_8h_1a1ccd0b4ac559edcdc9963b4d2708f375" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* safety_event_callback_t) (safety_event_t event_type, uint8_t sonicator_id, uint16_t event_data)</definition>
+        <argsstring>)(safety_event_t event_type, uint8_t sonicator_id, uint16_t event_data)</argsstring>
+        <name>safety_event_callback_t</name>
+        <briefdescription>
+<para>Callback function type for safety events. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>event_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of safety event that occurred </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sonicator_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ID of associated sonicator (0 for system events) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>event_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Additional event-specific data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="227" column="9" bodyfile="include/types.h" bodystart="227" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="d9/d49/types_8h_1a5d685fcbe0b5481ba6f61a0669210084" prot="public" static="no">
+        <type>uint16_t(*</type>
+        <definition>typedef uint16_t(* modbus_register_callback_t) (uint16_t register_address, uint16_t value, bool is_write)</definition>
+        <argsstring>)(uint16_t register_address, uint16_t value, bool is_write)</argsstring>
+        <name>modbus_register_callback_t</name>
+        <briefdescription>
+<para>Callback function type for MODBUS register access. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>register_address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MODBUS register address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Register value for write operations </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>is_write</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>True for write operations, false for read </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Register value for read operations, 0 for write operations </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="236" column="9" bodyfile="include/types.h" bodystart="236" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="d9/d49/types_8h_1a3aecb52560f25e335b14a24291bfeaaa" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* error_notification_callback_t) (error_code_t error_code, const char *source_module, uint16_t additional_info)</definition>
+        <argsstring>)(error_code_t error_code, const char *source_module, uint16_t additional_info)</argsstring>
+        <name>error_notification_callback_t</name>
+        <briefdescription>
+<para>Callback function type for error notifications. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>error_code</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error code that occurred </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>source_module</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of module that generated the error </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>additional_info</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Additional error context information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="244" column="9" bodyfile="include/types.h" bodystart="244" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Multi Sonicator I/O Controller - Common Type Definitions. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Cannasol Technologies </para>
+</simplesect>
+<simplesect kind="date"><para>2025-06-27 </para>
+</simplesect>
+<simplesect kind="version"><para>1.0.0 @framework Arduino Framework (chosen for rapid development and proven libraries)</para>
+</simplesect>
+Common data structures, enumerations, and type definitions used throughout the Multi Sonicator I/O Controller system. Optimized for Arduino Framework with ATmega32A microcontroller. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>TYPES_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TYPES_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Arduino.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="db/d16/config_8h" kindref="compound">config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>FORWARD<sp/>DECLARATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="dd/dce/class_sonicator_interface" kindref="compound">SonicatorInterface</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">SystemController;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">ModbusRTUSlave;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">SafetyMonitor;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">DiagnosticsSystem;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ENUMERATION<sp/>TYPES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="37" refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a200f691f290ab37f5eaac8ff0ee00470" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a200f691f290ab37f5eaac8ff0ee00470" kindref="member">SONICATOR_STATE_STOPPED</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="38" refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a34a68840cf8e7502193a12370a443e01" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="de/d13/sonicator__control_8h_1ad0aeab8703f3a1439806186cba759315a34a68840cf8e7502193a12370a443e01" kindref="member">SONICATOR_STATE_STARTING</ref><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="39" refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315aefd4187011c854e789baa073995f0def" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="de/d13/sonicator__control_8h_1ad0aeab8703f3a1439806186cba759315aefd4187011c854e789baa073995f0def" kindref="member">SONICATOR_STATE_RUNNING</ref><sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="40" refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a68fc7fb7e15c844aa2c6cda43bcc8d09" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="de/d13/sonicator__control_8h_1ad0aeab8703f3a1439806186cba759315a68fc7fb7e15c844aa2c6cda43bcc8d09" kindref="member">SONICATOR_STATE_STOPPING</ref><sp/>=<sp/>3,</highlight></codeline>
+<codeline lineno="41" refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a3490ae32e9b66bd79211d1421e7a387d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a3490ae32e9b66bd79211d1421e7a387d" kindref="member">SONICATOR_STATE_OVERLOAD</ref><sp/>=<sp/>4,</highlight></codeline>
+<codeline lineno="42" refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a7ef335199557a3658616b70275094a47" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="de/d13/sonicator__control_8h_1ad0aeab8703f3a1439806186cba759315a7ef335199557a3658616b70275094a47" kindref="member">SONICATOR_STATE_FAULT</ref><sp/>=<sp/>5,</highlight></codeline>
+<codeline lineno="43" refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a02f13d1f0ad8e9fc52f93cf9c25ad0cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="de/d13/sonicator__control_8h_1ad0aeab8703f3a1439806186cba759315a02f13d1f0ad8e9fc52f93cf9c25ad0cf" kindref="member">SONICATOR_STATE_UNKNOWN</ref><sp/>=<sp/>6</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}<sp/><ref refid="de/d13/sonicator__control_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="d9/d49/types_8h_1a6e4cea4b6246f491c526211f5405627d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="50" refid="d9/d49/types_8h_1a6e4cea4b6246f491c526211f5405627da6283084993ae74b2bafd95e0122af9db" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1a6e4cea4b6246f491c526211f5405627da6283084993ae74b2bafd95e0122af9db" kindref="member">SYSTEM_MODE_INIT</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="51" refid="d9/d49/types_8h_1a6e4cea4b6246f491c526211f5405627da3a1be6cdf32c139caca02cab153f375e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1a6e4cea4b6246f491c526211f5405627da3a1be6cdf32c139caca02cab153f375e" kindref="member">SYSTEM_MODE_NORMAL</ref><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="52" refid="d9/d49/types_8h_1a6e4cea4b6246f491c526211f5405627da76b5230a9956b2906e1984afa6726d19" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1a6e4cea4b6246f491c526211f5405627da76b5230a9956b2906e1984afa6726d19" kindref="member">SYSTEM_MODE_SAFETY</ref><sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="53" refid="d9/d49/types_8h_1a6e4cea4b6246f491c526211f5405627daa20d7f19f485c84a41680d91b139c1b8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1a6e4cea4b6246f491c526211f5405627daa20d7f19f485c84a41680d91b139c1b8" kindref="member">SYSTEM_MODE_MAINTENANCE</ref><sp/>=<sp/>3,</highlight></codeline>
+<codeline lineno="54" refid="d9/d49/types_8h_1a6e4cea4b6246f491c526211f5405627da8635d2327dabfaa62a927aa2445f39aa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1a6e4cea4b6246f491c526211f5405627da8635d2327dabfaa62a927aa2445f39aa" kindref="member">SYSTEM_MODE_ERROR</ref><sp/>=<sp/>4</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}<sp/><ref refid="d9/d49/types_8h_1a6e4cea4b6246f491c526211f5405627d" kindref="member">system_mode_t</ref>;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="d9/d49/types_8h_1a015c3588744a0406fafc81fecb3eddfd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="61" refid="d9/d49/types_8h_1a015c3588744a0406fafc81fecb3eddfda45071a1751fc71d424b7b639b03a4377" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1a015c3588744a0406fafc81fecb3eddfda45071a1751fc71d424b7b639b03a4377" kindref="member">MODBUS_FUNC_READ_HOLDING_REGISTERS</ref><sp/>=<sp/>0x03,</highlight></codeline>
+<codeline lineno="62" refid="d9/d49/types_8h_1a015c3588744a0406fafc81fecb3eddfda9fafa7e8ac52121d0f458f635e9c21cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1a015c3588744a0406fafc81fecb3eddfda9fafa7e8ac52121d0f458f635e9c21cc" kindref="member">MODBUS_FUNC_WRITE_SINGLE_REGISTER</ref><sp/>=<sp/>0x06,</highlight></codeline>
+<codeline lineno="63" refid="d9/d49/types_8h_1a015c3588744a0406fafc81fecb3eddfda894ba7dc5dc8061c14150b4cfaddb3cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1a015c3588744a0406fafc81fecb3eddfda894ba7dc5dc8061c14150b4cfaddb3cb" kindref="member">MODBUS_FUNC_WRITE_MULTIPLE_REGISTERS</ref><sp/>=<sp/>0x10</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}<sp/><ref refid="d9/d49/types_8h_1a015c3588744a0406fafc81fecb3eddfd" kindref="member">modbus_function_t</ref>;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="70" refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17aef847846a908427acf9943865820c8af" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17aef847846a908427acf9943865820c8af" kindref="member">SAFETY_EVENT_NONE</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="71" refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17aa916098bab572ce0e56dd72098970f14" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17aa916098bab572ce0e56dd72098970f14" kindref="member">SAFETY_EVENT_EMERGENCY_STOP</ref><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="72" refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17ad9a3e628a6414e395bac93f4db580f02" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17ad9a3e628a6414e395bac93f4db580f02" kindref="member">SAFETY_EVENT_OVERLOAD_DETECTED</ref><sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="73" refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17a69e682d24fee34f6913505d236440f12" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17a69e682d24fee34f6913505d236440f12" kindref="member">SAFETY_EVENT_FREQUENCY_LOCK_LOST</ref><sp/>=<sp/>3,</highlight></codeline>
+<codeline lineno="74" refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17a12c38dd39f00d9aee894ab7c6cfe6923" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17a12c38dd39f00d9aee894ab7c6cfe6923" kindref="member">SAFETY_EVENT_POWER_FAULT</ref><sp/>=<sp/>4,</highlight></codeline>
+<codeline lineno="75" refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17a805859073dcd71ab349ad315a62db61d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17a805859073dcd71ab349ad315a62db61d" kindref="member">SAFETY_EVENT_COMMUNICATION_TIMEOUT</ref><sp/>=<sp/>5,</highlight></codeline>
+<codeline lineno="76" refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17af3d3df530924f0f1c85a7b876913e18a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17af3d3df530924f0f1c85a7b876913e18a" kindref="member">SAFETY_EVENT_WATCHDOG_TIMEOUT</ref><sp/>=<sp/>6,</highlight></codeline>
+<codeline lineno="77" refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17ac18fd24a02f4c590141013434299376e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17ac18fd24a02f4c590141013434299376e" kindref="member">SAFETY_EVENT_SYSTEM_FAULT</ref><sp/>=<sp/>7</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}<sp/><ref refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17" kindref="member">safety_event_t</ref>;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//<sp/>STRUCTURE<sp/>DEFINITIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Control<sp/>parameters</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="d6/d4e/structsonicator__status__t_1adf4237e4f429abd3d5f6ca5023f00c9e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="d6/d4e/structsonicator__status__t_1adf4237e4f429abd3d5f6ca5023f00c9e" kindref="member">amplitude_setpoint</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Commanded<sp/>amplitude<sp/>(20-100%)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="d6/d4e/structsonicator__status__t_1a5533c0861e3ac935c7a3993a6074c28b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/d4e/structsonicator__status__t_1a5533c0861e3ac935c7a3993a6074c28b" kindref="member">start_command</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Start/stop<sp/>command<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="d6/d4e/structsonicator__status__t_1ad42e8a4fc11d51cfebc926686b4b528f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/d4e/structsonicator__status__t_1ad42e8a4fc11d51cfebc926686b4b528f" kindref="member">reset_command</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Overload<sp/>reset<sp/>command<sp/>(pulsed)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Measured<sp/>parameters<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="d6/d4e/structsonicator__status__t_1a7f1cfd3fe1cad256f701af432da1f90d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="d6/d4e/structsonicator__status__t_1a7f1cfd3fe1cad256f701af432da1f90d" kindref="member">actual_frequency_hz</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Measured<sp/>frequency<sp/>(Hz)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="d6/d4e/structsonicator__status__t_1a8275dd84fe2d32c6a3fcc006ae774391" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="d6/d4e/structsonicator__status__t_1a8275dd84fe2d32c6a3fcc006ae774391" kindref="member">actual_power_watts</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Measured<sp/>power<sp/>output<sp/>(W)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Status<sp/>flags</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="d6/d4e/structsonicator__status__t_1a7fcd0a6c9ed3dc9c3f45dabba66be309" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref><sp/><ref refid="d6/d4e/structsonicator__status__t_1a7fcd0a6c9ed3dc9c3f45dabba66be309" kindref="member">state</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Current<sp/>operating<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="d6/d4e/structsonicator__status__t_1a453e96c5d2d6535d9b3024601a14e28c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/d4e/structsonicator__status__t_1a453e96c5d2d6535d9b3024601a14e28c" kindref="member">is_running</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Sonics<sp/>active<sp/>flag</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="d6/d4e/structsonicator__status__t_1a3eb15a12d9e78e3edbc73e38e70a5c95" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/d4e/structsonicator__status__t_1a3eb15a12d9e78e3edbc73e38e70a5c95" kindref="member">is_overloaded</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Overload<sp/>condition<sp/>flag</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="d6/d4e/structsonicator__status__t_1a89a98d73a6c96d8c07abd4b86dc46688" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/d4e/structsonicator__status__t_1a89a98d73a6c96d8c07abd4b86dc46688" kindref="member">is_frequency_locked</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Frequency<sp/>lock<sp/>status<sp/>flag</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="d6/d4e/structsonicator__status__t_1a784ff46d396914ee8634b637b7febdd3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/d4e/structsonicator__status__t_1a784ff46d396914ee8634b637b7febdd3" kindref="member">communication_ok</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Interface<sp/>communication<sp/>status</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Statistics<sp/>and<sp/>counters</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="d6/d4e/structsonicator__status__t_1aa4edaeff0ec04cc18d2aa5295c8a3dea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d6/d4e/structsonicator__status__t_1aa4edaeff0ec04cc18d2aa5295c8a3dea" kindref="member">total_runtime_seconds</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Accumulated<sp/>runtime</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="d6/d4e/structsonicator__status__t_1aa29e2a5ea585804794a4991d4a1ab09d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d6/d4e/structsonicator__status__t_1aa29e2a5ea585804794a4991d4a1ab09d" kindref="member">overload_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Number<sp/>of<sp/>overload<sp/>events</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="d6/d4e/structsonicator__status__t_1a3af8a26d9aafacae19faba376f1a299e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d6/d4e/structsonicator__status__t_1a3af8a26d9aafacae19faba376f1a299e" kindref="member">start_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Number<sp/>of<sp/>start<sp/>cycles</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="d6/d4e/structsonicator__status__t_1ad3a213e37e0c295ee7e0ea3c1d2ed843" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d6/d4e/structsonicator__status__t_1ad3a213e37e0c295ee7e0ea3c1d2ed843" kindref="member">last_start_timestamp</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Timestamp<sp/>of<sp/>last<sp/>start</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="d6/d4e/structsonicator__status__t_1a4800d0c0d301dcfd16c549fad66796b7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d6/d4e/structsonicator__status__t_1a4800d0c0d301dcfd16c549fad66796b7" kindref="member">last_overload_timestamp</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Timestamp<sp/>of<sp/>last<sp/>overload</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Hardware<sp/>interface<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="d6/d4e/structsonicator__status__t_1acbaaed9865fb9170e45f137b0ae020f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="d6/d4e/structsonicator__status__t_1acbaaed9865fb9170e45f137b0ae020f5" kindref="member">sonicator_id</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Sonicator<sp/>number<sp/>(1-4)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="d6/d4e/structsonicator__status__t_1a9f3c2e2cc30125b84095c7837248a65f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/d4e/structsonicator__status__t_1a9f3c2e2cc30125b84095c7837248a65f" kindref="member">interface_enabled</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Interface<sp/>enable<sp/>flag</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="d6/d4e/structsonicator__status__t_1ad833e72233d412aeb9e373fdc35d2406" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d16/config_8h_1a7d80c3b410035aed9cd8484552186f92" kindref="member">error_code_t</ref><sp/><ref refid="d6/d4e/structsonicator__status__t_1ad833e72233d412aeb9e373fdc35d2406" kindref="member">last_error</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Most<sp/>recent<sp/>error<sp/>code</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal">}<sp/><ref refid="d6/d4e/structsonicator__status__t" kindref="compound">sonicator_status_t</ref>;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="d7/dc4/structsystem__status__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Overall<sp/>system<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="d7/dc4/structsystem__status__t_1a5aaf3afecc7b14be78d36ef7511d2d10" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1a6e4cea4b6246f491c526211f5405627d" kindref="member">system_mode_t</ref><sp/><ref refid="d7/dc4/structsystem__status__t_1a5aaf3afecc7b14be78d36ef7511d2d10" kindref="member">operating_mode</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Current<sp/>system<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="d7/dc4/structsystem__status__t_1a6530b8dab728a0aff2e617ddda68a1ab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="d7/dc4/structsystem__status__t_1a6530b8dab728a0aff2e617ddda68a1ab" kindref="member">system_status_flags</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Status<sp/>bit<sp/>field<sp/>(see<sp/>config.h)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="d7/dc4/structsystem__status__t_1adfa1b39b400852e20a205cb1f9898049" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d7/dc4/structsystem__status__t_1adfa1b39b400852e20a205cb1f9898049" kindref="member">emergency_stop_active</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Master<sp/>emergency<sp/>stop<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="d7/dc4/structsystem__status__t_1a033f24f6a9be1d651775be12905205d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d7/dc4/structsystem__status__t_1a033f24f6a9be1d651775be12905205d2" kindref="member">system_uptime_seconds</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Total<sp/>system<sp/>runtime</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Connected<sp/>sonicators</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="d7/dc4/structsystem__status__t_1a5c04742b0d5a41aefaedd60323b1d1d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="d7/dc4/structsystem__status__t_1a5c04742b0d5a41aefaedd60323b1d1d3" kindref="member">sonicator_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Number<sp/>of<sp/>connected<sp/>sonicators</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="d7/dc4/structsystem__status__t_1aaa74968b404e21321d72a2e34d9e0967" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="d7/dc4/structsystem__status__t_1aaa74968b404e21321d72a2e34d9e0967" kindref="member">active_sonicator_mask</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Bitmask<sp/>of<sp/>active<sp/>sonicators</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Communication<sp/>status</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="d7/dc4/structsystem__status__t_1a123a700fb1ad8136b3d3f21087704a0d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d7/dc4/structsystem__status__t_1a123a700fb1ad8136b3d3f21087704a0d" kindref="member">modbus_communication_ok</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>MODBUS<sp/>RTU<sp/>communication<sp/>status</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="d7/dc4/structsystem__status__t_1aabc708cf5ca065fa02a48de26251cfe0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d7/dc4/structsystem__status__t_1aabc708cf5ca065fa02a48de26251cfe0" kindref="member">modbus_request_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Total<sp/>MODBUS<sp/>requests<sp/>received</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="d7/dc4/structsystem__status__t_1ae3717e2f8b32d6236fe1a77d4b9332a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d7/dc4/structsystem__status__t_1ae3717e2f8b32d6236fe1a77d4b9332a0" kindref="member">modbus_error_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>MODBUS<sp/>communication<sp/>errors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138" refid="d7/dc4/structsystem__status__t_1afe046724d578b7ab2ce181f4097750d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d7/dc4/structsystem__status__t_1afe046724d578b7ab2ce181f4097750d2" kindref="member">last_modbus_activity</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Timestamp<sp/>of<sp/>last<sp/>MODBUS<sp/>activity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Performance<sp/>monitoring</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="d7/dc4/structsystem__status__t_1ad726d8bc65ec29c86fff1c6e5fd30c85" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="d7/dc4/structsystem__status__t_1ad726d8bc65ec29c86fff1c6e5fd30c85" kindref="member">cpu_usage_percent</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Estimated<sp/>CPU<sp/>utilization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="d7/dc4/structsystem__status__t_1a69d0efac13464518f4858ae0d76d5ed9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="d7/dc4/structsystem__status__t_1a69d0efac13464518f4858ae0d76d5ed9" kindref="member">memory_usage_bytes</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Dynamic<sp/>memory<sp/>usage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="d7/dc4/structsystem__status__t_1a8e59e80625a4cccc69f9fdccf04dfe4b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="d7/dc4/structsystem__status__t_1a8e59e80625a4cccc69f9fdccf04dfe4b" kindref="member">main_loop_frequency_hz</ref>;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Actual<sp/>main<sp/>loop<sp/>rate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Error<sp/>tracking</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="d7/dc4/structsystem__status__t_1a99de2faad467f95f864e9ebb1307a576" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d16/config_8h_1a7d80c3b410035aed9cd8484552186f92" kindref="member">error_code_t</ref><sp/><ref refid="d7/dc4/structsystem__status__t_1a99de2faad467f95f864e9ebb1307a576" kindref="member">last_system_error</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Most<sp/>recent<sp/>system<sp/>error</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="d7/dc4/structsystem__status__t_1ab0724afb512da27b6cca9d7ca2ed5ef4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d7/dc4/structsystem__status__t_1ab0724afb512da27b6cca9d7ca2ed5ef4" kindref="member">total_error_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Total<sp/>error<sp/>events</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148" refid="d7/dc4/structsystem__status__t_1a15f25c21a268eee39829b1e9e5e31645" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d7/dc4/structsystem__status__t_1a15f25c21a268eee39829b1e9e5e31645" kindref="member">watchdog_reset_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Number<sp/>of<sp/>watchdog<sp/>resets</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}<sp/><ref refid="d7/dc4/structsystem__status__t" kindref="compound">system_status_t</ref>;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="db/dc0/structmodbus__frame__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="155" refid="db/dc0/structmodbus__frame__t_1a206d80ab395705fff6914f00d4e115f6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="db/dc0/structmodbus__frame__t_1a206d80ab395705fff6914f00d4e115f6" kindref="member">slave_address</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Target<sp/>slave<sp/>address</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156" refid="db/dc0/structmodbus__frame__t_1a93ddd225747dd6bb811ebfbac92fa9c9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="db/dc0/structmodbus__frame__t_1a93ddd225747dd6bb811ebfbac92fa9c9" kindref="member">function_code</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>MODBUS<sp/>function<sp/>code</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="db/dc0/structmodbus__frame__t_1a075bba6391512db9bf7455a4cdf8b367" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="db/dc0/structmodbus__frame__t_1a075bba6391512db9bf7455a4cdf8b367" kindref="member">starting_address</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Register<sp/>starting<sp/>address</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158" refid="db/dc0/structmodbus__frame__t_1a808bbabaa08deb2d8ffe0262b7854c18" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="db/dc0/structmodbus__frame__t_1a808bbabaa08deb2d8ffe0262b7854c18" kindref="member">quantity</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Number<sp/>of<sp/>registers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="db/dc0/structmodbus__frame__t_1a3a4c30bcce376287e8a2059af9fcad6b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="db/dc0/structmodbus__frame__t_1a3a4c30bcce376287e8a2059af9fcad6b" kindref="member">byte_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Data<sp/>byte<sp/>count</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160" refid="db/dc0/structmodbus__frame__t_1ac005e43a4f5de3dd5d255db41d1c839e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t*<sp/><ref refid="db/dc0/structmodbus__frame__t_1ac005e43a4f5de3dd5d255db41d1c839e" kindref="member">data</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Pointer<sp/>to<sp/>data<sp/>payload</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161" refid="db/dc0/structmodbus__frame__t_1a3532c75e04e4d9e07a3ca606a97dc286" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="db/dc0/structmodbus__frame__t_1a3532c75e04e4d9e07a3ca606a97dc286" kindref="member">crc</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>CRC-16<sp/>checksum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162" refid="db/dc0/structmodbus__frame__t_1a073bc157920a302e18c8fdeb86c9e2ef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="db/dc0/structmodbus__frame__t_1a073bc157920a302e18c8fdeb86c9e2ef" kindref="member">frame_length</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Total<sp/>frame<sp/>length<sp/>in<sp/>bytes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal">}<sp/><ref refid="db/dc0/structmodbus__frame__t" kindref="compound">modbus_frame_t</ref>;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="dc/d5b/structsafety__event__log__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="169" refid="dc/d5b/structsafety__event__log__t_1ab3d1303c4dd223ff4269d69a39365e5d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="dc/d5b/structsafety__event__log__t_1ab3d1303c4dd223ff4269d69a39365e5d" kindref="member">timestamp</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Event<sp/>timestamp<sp/>(seconds<sp/>since<sp/>boot)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170" refid="dc/d5b/structsafety__event__log__t_1a81f3cdd3312d9575ae97bdb0c6502e43" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17" kindref="member">safety_event_t</ref><sp/><ref refid="dc/d5b/structsafety__event__log__t_1a81f3cdd3312d9575ae97bdb0c6502e43" kindref="member">event_type</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Type<sp/>of<sp/>safety<sp/>event</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="dc/d5b/structsafety__event__log__t_1a7133cdddc14663f447ad8919f11966ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="dc/d5b/structsafety__event__log__t_1a7133cdddc14663f447ad8919f11966ae" kindref="member">sonicator_id</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Associated<sp/>sonicator<sp/>(0<sp/>=<sp/>system-wide)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172" refid="dc/d5b/structsafety__event__log__t_1a2302e23f039133d3360a874971ac93d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="dc/d5b/structsafety__event__log__t_1a2302e23f039133d3360a874971ac93d2" kindref="member">event_data</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Event-specific<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173" refid="dc/d5b/structsafety__event__log__t_1aecf0c6574cf0679d8769074a6ce06cfc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="dc/d5b/structsafety__event__log__t_1aecf0c6574cf0679d8769074a6ce06cfc" kindref="member">description</ref>[32];<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Human-readable<sp/>description</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal">}<sp/><ref refid="dc/d5b/structsafety__event__log__t" kindref="compound">safety_event_log_t</ref>;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179" refid="d2/d25/structsonicator__hardware__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="180" refid="d2/d25/structsonicator__hardware__config__t_1a7575fd750535076f6a07827269401fc2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="d2/d25/structsonicator__hardware__config__t_1a7575fd750535076f6a07827269401fc2" kindref="member">overload_input_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Overload<sp/>indication<sp/>input</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181" refid="d2/d25/structsonicator__hardware__config__t_1a61954c61bdc394c8009589f201e2c83e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="d2/d25/structsonicator__hardware__config__t_1a61954c61bdc394c8009589f201e2c83e" kindref="member">frequency_output_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Frequency<sp/>output<sp/>input<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182" refid="d2/d25/structsonicator__hardware__config__t_1ada1d21ffb277df43bc08ccd840a0c2cd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="d2/d25/structsonicator__hardware__config__t_1ada1d21ffb277df43bc08ccd840a0c2cd" kindref="member">frequency_lock_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Frequency<sp/>lock<sp/>input</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183" refid="d2/d25/structsonicator__hardware__config__t_1a20dc5ff1bb946975ecf1476caba17381" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="d2/d25/structsonicator__hardware__config__t_1a20dc5ff1bb946975ecf1476caba17381" kindref="member">start_output_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Start<sp/>control<sp/>output</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184" refid="d2/d25/structsonicator__hardware__config__t_1a83433aa295ed16b273ff8c2874797764" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="d2/d25/structsonicator__hardware__config__t_1a83433aa295ed16b273ff8c2874797764" kindref="member">reset_output_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Overload<sp/>reset<sp/>output</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185" refid="d2/d25/structsonicator__hardware__config__t_1aa6a1062ac979a5852a2fb94190f9335a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="d2/d25/structsonicator__hardware__config__t_1aa6a1062ac979a5852a2fb94190f9335a" kindref="member">pwm_amplitude_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PWM<sp/>pin<sp/>for<sp/>amplitude<sp/>control</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186" refid="d2/d25/structsonicator__hardware__config__t_1ade5ff9578c371d696f8df4fa796e8b80" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="d2/d25/structsonicator__hardware__config__t_1ade5ff9578c371d696f8df4fa796e8b80" kindref="member">adc_power_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Built-in<sp/>ADC<sp/>pin<sp/>for<sp/>power<sp/>monitoring</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187" refid="d2/d25/structsonicator__hardware__config__t_1ab4778bccc7c86fb5a1bdfa645680e426" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="d2/d25/structsonicator__hardware__config__t_1ab4778bccc7c86fb5a1bdfa645680e426" kindref="member">adc_channel</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>ADC<sp/>channel<sp/>for<sp/>power<sp/>monitoring</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188" refid="d2/d25/structsonicator__hardware__config__t_1a28c14a6fa1cfef0300321f0b24290b45" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="d2/d25/structsonicator__hardware__config__t_1a28c14a6fa1cfef0300321f0b24290b45" kindref="member">status_led_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Individual<sp/>status<sp/>LED<sp/>pin</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal">}<sp/><ref refid="d2/d25/structsonicator__hardware__config__t" kindref="compound">sonicator_hardware_config_t</ref>;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194" refid="d3/dd5/structdiagnostics__metrics__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Timing<sp/>measurements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196" refid="d3/dd5/structdiagnostics__metrics__t_1af5160e0dfdd717cda9866f4dceb93106" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d3/dd5/structdiagnostics__metrics__t_1af5160e0dfdd717cda9866f4dceb93106" kindref="member">main_loop_min_us</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Minimum<sp/>main<sp/>loop<sp/>execution<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197" refid="d3/dd5/structdiagnostics__metrics__t_1a0c039d1d0669ec51fc9d23a3ac30bf0a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d3/dd5/structdiagnostics__metrics__t_1a0c039d1d0669ec51fc9d23a3ac30bf0a" kindref="member">main_loop_max_us</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Maximum<sp/>main<sp/>loop<sp/>execution<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="d3/dd5/structdiagnostics__metrics__t_1ad4f8ff29073e9307f923c17807e75dd7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d3/dd5/structdiagnostics__metrics__t_1ad4f8ff29073e9307f923c17807e75dd7" kindref="member">main_loop_avg_us</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Average<sp/>main<sp/>loop<sp/>execution<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Interrupt<sp/>statistics<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201" refid="d3/dd5/structdiagnostics__metrics__t_1ad4c9115b4637608adcfd72aae07e534c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d3/dd5/structdiagnostics__metrics__t_1ad4c9115b4637608adcfd72aae07e534c" kindref="member">timer_interrupt_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Timer<sp/>interrupt<sp/>counter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202" refid="d3/dd5/structdiagnostics__metrics__t_1a5751c371f5cf9702ca517e517dccffc3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d3/dd5/structdiagnostics__metrics__t_1a5751c371f5cf9702ca517e517dccffc3" kindref="member">safety_interrupt_count</ref>;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Safety<sp/>interrupt<sp/>counter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203" refid="d3/dd5/structdiagnostics__metrics__t_1af51cb5ea834228c92649a8e6448c4a97" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d3/dd5/structdiagnostics__metrics__t_1af51cb5ea834228c92649a8e6448c4a97" kindref="member">modbus_interrupt_count</ref>;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>MODBUS<sp/>UART<sp/>interrupt<sp/>counter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Communication<sp/>statistics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206" refid="d3/dd5/structdiagnostics__metrics__t_1a41fbdd5c1086204c6ae1528c6a64fcd5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d3/dd5/structdiagnostics__metrics__t_1a41fbdd5c1086204c6ae1528c6a64fcd5" kindref="member">i2c_transaction_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>I2C<sp/>transaction<sp/>counter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207" refid="d3/dd5/structdiagnostics__metrics__t_1a1da611e2da258e907fc2b348777718ef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d3/dd5/structdiagnostics__metrics__t_1a1da611e2da258e907fc2b348777718ef" kindref="member">i2c_error_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>I2C<sp/>communication<sp/>errors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208" refid="d3/dd5/structdiagnostics__metrics__t_1a06605a9789341f25beccdf9f2e2c904c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d3/dd5/structdiagnostics__metrics__t_1a06605a9789341f25beccdf9f2e2c904c" kindref="member">uart_byte_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Total<sp/>UART<sp/>bytes<sp/>transferred</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209" refid="d3/dd5/structdiagnostics__metrics__t_1ad60d8f093c4ecc64b1005b3b6673fdd9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d3/dd5/structdiagnostics__metrics__t_1ad60d8f093c4ecc64b1005b3b6673fdd9" kindref="member">uart_error_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>UART<sp/>communication<sp/>errors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Memory<sp/>and<sp/>resource<sp/>usage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212" refid="d3/dd5/structdiagnostics__metrics__t_1a9ae7a44a1e79e8f2ace0aa847c2842b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="d3/dd5/structdiagnostics__metrics__t_1a9ae7a44a1e79e8f2ace0aa847c2842b1" kindref="member">stack_usage_bytes</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Estimated<sp/>stack<sp/>usage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213" refid="d3/dd5/structdiagnostics__metrics__t_1afbb378fa561cc56b5033bac80af978e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="d3/dd5/structdiagnostics__metrics__t_1afbb378fa561cc56b5033bac80af978e8" kindref="member">heap_usage_bytes</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Dynamic<sp/>memory<sp/>usage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214" refid="d3/dd5/structdiagnostics__metrics__t_1afe390958b4c296dfb1de226494b4aca4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="d3/dd5/structdiagnostics__metrics__t_1afe390958b4c296dfb1de226494b4aca4" kindref="member">free_ram_percent</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Percentage<sp/>of<sp/>free<sp/>RAM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal">}<sp/><ref refid="d3/dd5/structdiagnostics__metrics__t" kindref="compound">diagnostics_metrics_t</ref>;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CALLBACK<sp/>FUNCTION<sp/>TYPES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227" refid="d9/d49/types_8h_1a1ccd0b4ac559edcdc9963b4d2708f375" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*<ref refid="d9/d49/types_8h_1a1ccd0b4ac559edcdc9963b4d2708f375" kindref="member">safety_event_callback_t</ref>)(<ref refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17" kindref="member">safety_event_t</ref><sp/>event_type,<sp/>uint8_t<sp/>sonicator_id,<sp/>uint16_t<sp/>event_data);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236" refid="d9/d49/types_8h_1a5d685fcbe0b5481ba6f61a0669210084" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>uint16_t<sp/>(*<ref refid="d9/d49/types_8h_1a5d685fcbe0b5481ba6f61a0669210084" kindref="member">modbus_register_callback_t</ref>)(uint16_t<sp/>register_address,<sp/>uint16_t<sp/>value,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_write);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244" refid="d9/d49/types_8h_1a3aecb52560f25e335b14a24291bfeaaa" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*<ref refid="d9/d49/types_8h_1a3aecb52560f25e335b14a24291bfeaaa" kindref="member">error_notification_callback_t</ref>)(<ref refid="db/d16/config_8h_1a7d80c3b410035aed9cd8484552186f92" kindref="member">error_code_t</ref><sp/>error_code,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>source_module,<sp/>uint16_t<sp/>additional_info);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="comment">//<sp/>COMPILE-TIME<sp/>CONSTANTS<sp/>AND<sp/>LIMITS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Array<sp/>sizing<sp/>constants</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251" refid="d9/d49/types_8h_1a1d9bd7e7dc0195463abf28b5271a9c5b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_SAFETY_EVENT_LOG_ENTRIES<sp/><sp/><sp/><sp/><sp/>50</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252" refid="d9/d49/types_8h_1ae13fb6cbf3f5eb5a55230133ed2a2c92" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_MODBUS_FRAME_SIZE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>256</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253" refid="d9/d49/types_8h_1a16b0016b468df936da40743a62b4a2d0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_MODULE_NAME_LENGTH<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>16</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254" refid="d9/d49/types_8h_1ac1eac485f524973d8f37410bbbba29fc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_ERROR_DESCRIPTION_LENGTH<sp/><sp/><sp/><sp/><sp/><sp/>32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Validation<sp/>limits</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257" refid="d9/d49/types_8h_1a3139e8684f9794262c232d838b002e1a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MIN_VALID_FREQUENCY_HZ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>19900</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="258" refid="d9/d49/types_8h_1a0a53f1a64d59fec2e98829145301a317" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_VALID_FREQUENCY_HZ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>20100</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259" refid="d9/d49/types_8h_1a4447fc1370b6e0464d1077b2d48a9b91" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MIN_VALID_POWER_WATTS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260" refid="d9/d49/types_8h_1aa1a402f7e264b32ea6504618594d269d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_VALID_POWER_WATTS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2200</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261" refid="d9/d49/types_8h_1a810d719081a1e85f300a4109054a0343" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MIN_VALID_AMPLITUDE_PERCENT<sp/><sp/><sp/><sp/><sp/><sp/><sp/>20</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="262" refid="d9/d49/types_8h_1a5075f8b1e5ab01e5c1b6da79df5c4e1a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_VALID_AMPLITUDE_PERCENT<sp/><sp/><sp/><sp/><sp/><sp/><sp/>100</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Timing<sp/>constraints</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265" refid="d9/d49/types_8h_1a59ae6fbc737635c08aee64e3de257d36" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_ACCEPTABLE_LOOP_TIME_US<sp/><sp/><sp/><sp/><sp/><sp/><sp/>5000<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>5ms<sp/>max<sp/>loop<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266" refid="d9/d49/types_8h_1a65d5ca1d014a3b9a604c2aca65711df3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MIN_MODBUS_RESPONSE_TIME_US<sp/><sp/><sp/><sp/><sp/><sp/><sp/>1000<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>1ms<sp/>min<sp/>response<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267" refid="d9/d49/types_8h_1aac24cc0d01cf1d82a0896b9ba26dc5d3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_MODBUS_RESPONSE_TIME_US<sp/><sp/><sp/><sp/><sp/><sp/><sp/>50000<sp/><sp/></highlight><highlight class="comment">//<sp/>MODBUS<sp/>bottleneck<sp/>-<sp/>system<sp/>responds<sp/>faster</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>TYPES_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/types.h"/>
+  </compounddef>
+</doxygen>

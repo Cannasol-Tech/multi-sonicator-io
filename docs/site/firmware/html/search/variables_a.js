@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['main_5floop_5favg_5fus_0',['main_loop_avg_us',['../d3/dd5/structdiagnostics__metrics__t.html#ad4f8ff29073e9307f923c17807e75dd7',1,'diagnostics_metrics_t']]],
+  ['main_5floop_5ffrequency_5fhz_1',['main_loop_frequency_hz',['../d7/dc4/structsystem__status__t.html#a8e59e80625a4cccc69f9fdccf04dfe4b',1,'system_status_t']]],
+  ['main_5floop_5fmax_5fus_2',['main_loop_max_us',['../d3/dd5/structdiagnostics__metrics__t.html#a0c039d1d0669ec51fc9d23a3ac30bf0a',1,'diagnostics_metrics_t']]],
+  ['main_5floop_5fmin_5fus_3',['main_loop_min_us',['../d3/dd5/structdiagnostics__metrics__t.html#af5160e0dfdd717cda9866f4dceb93106',1,'diagnostics_metrics_t']]],
+  ['manager_5finitialized_4',['manager_initialized',['../db/d0f/modbus__register__manager_8cpp.html#a056b36df10f165cd5a6b993fc63fa152',1,'modbus_register_manager.cpp']]],
+  ['max_5fresponse_5ftime_5',['max_response_time',['../d3/d0c/structmodbus__statistics__t.html#a8847fbfaef8f4d8940128cbc9f9b8d5b',1,'modbus_statistics_t']]],
+  ['memory_5fusage_5fbytes_6',['memory_usage_bytes',['../d7/dc4/structsystem__status__t.html#a69d0efac13464518f4858ae0d76d5ed9',1,'system_status_t']]],
+  ['modbus_5fchar_5fstart_5ftime_7',['modbus_char_start_time',['../dc/de5/timer_8cpp.html#ae09d35869515cf58e268ef5924f63c9f',1,'timer.cpp']]],
+  ['modbus_5fcommunication_5fok_8',['modbus_communication_ok',['../d7/dc4/structsystem__status__t.html#a123a700fb1ad8136b3d3f21087704a0d',1,'system_status_t']]],
+  ['modbus_5fconfig_9',['modbus_config',['../d8/d00/modbus_8cpp.html#a66193f2ecdb36e7c08aae865766630a0',1,'modbus.cpp']]],
+  ['modbus_5fcurrent_5fstate_10',['modbus_current_state',['../d8/d00/modbus_8cpp.html#a5e3059d398e534d01a730420495ab79f',1,'modbus.cpp']]],
+  ['modbus_5fenabled_11',['modbus_enabled',['../d8/d00/modbus_8cpp.html#a104086346bf05a48f455537637baa1f3',1,'modbus.cpp']]],
+  ['modbus_5ferror_5fcount_12',['modbus_error_count',['../d7/dc4/structsystem__status__t.html#ae3717e2f8b32d6236fe1a77d4b9332a0',1,'system_status_t']]],
+  ['modbus_5fframe_5fgap_5fstart_5ftime_13',['modbus_frame_gap_start_time',['../dc/de5/timer_8cpp.html#aa53ad81d8dfa96db0c380e445378fa2d',1,'timer.cpp']]],
+  ['modbus_5finterrupt_5fcount_14',['modbus_interrupt_count',['../d3/dd5/structdiagnostics__metrics__t.html#af51cb5ea834228c92649a8e6448c4a97',1,'diagnostics_metrics_t']]],
+  ['modbus_5frequest_5fcount_15',['modbus_request_count',['../d7/dc4/structsystem__status__t.html#aabc708cf5ca065fa02a48de26251cfe0',1,'system_status_t']]],
+  ['modbus_5fstats_16',['modbus_stats',['../d8/d00/modbus_8cpp.html#ab53f4bfea0ccc98c591cf1e679f72db4',1,'modbus.cpp']]],
+  ['mode_17',['mode',['../d4/de4/structtimer__config__t.html#a39d568114a16b0eb358c3facef8a0ed5',1,'timer_config_t']]]
+];

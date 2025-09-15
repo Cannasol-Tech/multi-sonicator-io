@@ -93,7 +93,9 @@ typedef struct {
     uint16_t active_mask;          //< 0x0002: Bitmask of running units
     uint16_t watchdog_status;      //< 0x0003: Watchdog timer status
     uint16_t comm_errors;          //< 0x0004: Communication error count
-    uint16_t reserved[11];         //< 0x0005-0x000F: Reserved for future use
+    uint16_t prev_active_mask;     //< 0x0005: Previous active units mask (read-only)
+    uint16_t last_shutdown_reason; //< 0x0006: Last shutdown reason code (read-only)
+    uint16_t reserved[9];          //< 0x0007-0x000F: Reserved for future use
 } system_status_registers_t;
 
 /**
@@ -122,7 +124,11 @@ typedef struct {
     uint16_t frequency_hz;         //< 0xN11: Operating frequency (Hz)
     uint16_t status_flags;         //< 0xN12: Status flags
     uint16_t amplitude_actual;     //< 0xN13: Actual amplitude reading
-    uint16_t reserved_status[12];  //< 0xN14-0xN1F: Reserved for future use
+    uint16_t prev_state;           //< 0xN14: Previous state enum (read-only)
+    uint16_t persisted_amplitude;  //< 0xN15: Last setpoint before shutdown (read-only)
+    uint16_t last_fault_code;      //< 0xN16: Last fault code (read-only)
+    uint16_t last_state_timestamp_lo; //< 0xN17: Low 16 bits of timestamp (read-only)
+    uint16_t reserved_status[8];   //< 0xN18-0xN1F: Reserved for future use
 } sonicator_registers_t;
 
 /**

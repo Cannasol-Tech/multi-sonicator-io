@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="dc/d5b/structsafety__event__log__t" kind="struct" language="C++" prot="public">
+    <compoundname>safety_event_log_t</compoundname>
+    <includes refid="d9/d49/types_8h" local="no">types.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="dc/d5b/structsafety__event__log__t_1ab3d1303c4dd223ff4269d69a39365e5d" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t safety_event_log_t::timestamp</definition>
+        <argsstring></argsstring>
+        <name>timestamp</name>
+        <qualifiedname>safety_event_log_t::timestamp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="169" column="14" bodyfile="include/types.h" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dc/d5b/structsafety__event__log__t_1a81f3cdd3312d9575ae97bdb0c6502e43" prot="public" static="no" mutable="no">
+        <type><ref refid="d9/d49/types_8h_1a90bdcf2de6b5ad6ab40abac0b872ba17" kindref="member">safety_event_t</ref></type>
+        <definition>safety_event_t safety_event_log_t::event_type</definition>
+        <argsstring></argsstring>
+        <name>event_type</name>
+        <qualifiedname>safety_event_log_t::event_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="170" column="20" bodyfile="include/types.h" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dc/d5b/structsafety__event__log__t_1a7133cdddc14663f447ad8919f11966ae" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t safety_event_log_t::sonicator_id</definition>
+        <argsstring></argsstring>
+        <name>sonicator_id</name>
+        <qualifiedname>safety_event_log_t::sonicator_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="171" column="13" bodyfile="include/types.h" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dc/d5b/structsafety__event__log__t_1a2302e23f039133d3360a874971ac93d2" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t safety_event_log_t::event_data</definition>
+        <argsstring></argsstring>
+        <name>event_data</name>
+        <qualifiedname>safety_event_log_t::event_data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="172" column="14" bodyfile="include/types.h" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dc/d5b/structsafety__event__log__t_1aecf0c6574cf0679d8769074a6ce06cfc" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char safety_event_log_t::description[32]</definition>
+        <argsstring>[32]</argsstring>
+        <name>description</name>
+        <qualifiedname>safety_event_log_t::description</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="173" column="10" bodyfile="include/types.h" bodystart="173" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Safety event log entry for audit trail. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/types.h" line="168" column="1" bodyfile="include/types.h" bodystart="168" bodyend="174"/>
+    <listofallmembers>
+      <member refid="dc/d5b/structsafety__event__log__t_1aecf0c6574cf0679d8769074a6ce06cfc" prot="public" virt="non-virtual"><scope>safety_event_log_t</scope><name>description</name></member>
+      <member refid="dc/d5b/structsafety__event__log__t_1a2302e23f039133d3360a874971ac93d2" prot="public" virt="non-virtual"><scope>safety_event_log_t</scope><name>event_data</name></member>
+      <member refid="dc/d5b/structsafety__event__log__t_1a81f3cdd3312d9575ae97bdb0c6502e43" prot="public" virt="non-virtual"><scope>safety_event_log_t</scope><name>event_type</name></member>
+      <member refid="dc/d5b/structsafety__event__log__t_1a7133cdddc14663f447ad8919f11966ae" prot="public" virt="non-virtual"><scope>safety_event_log_t</scope><name>sonicator_id</name></member>
+      <member refid="dc/d5b/structsafety__event__log__t_1ab3d1303c4dd223ff4269d69a39365e5d" prot="public" virt="non-virtual"><scope>safety_event_log_t</scope><name>timestamp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

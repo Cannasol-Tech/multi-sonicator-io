@@ -38,12 +38,28 @@ jobs:
           npm ci
           npx typedoc
 
+      - name: Documentation coverage gate (no drop)
+        run: |
+          python3 scripts/doc_coverage_check.py \
+            --baseline docs/coverage/doc_coverage_baseline.json \
+            --min-firmware 0.0 --min-backend 0.0 --min-frontend 0.0
+
+      - name: Generate executive report
+        run: |
+          make generate-executive-report
+
+      - name: Generate coverage summary
+        run: |
+          make generate-coverage-report
+
       - name: Upload docs artifact
         uses: actions/upload-artifact@v4
         with:
-          name: site-docs
+          name: documentation-and-reports
           path: |
             docs/site/**
+            final/**
+            docs/traceability/**
 
       # Optional: publish to GitHub Pages
       # - name: Upload Pages artifact

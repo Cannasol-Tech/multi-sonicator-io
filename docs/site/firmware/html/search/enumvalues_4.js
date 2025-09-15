@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['modbus_5ferror_5facknowledge_0',['MODBUS_ERROR_ACKNOWLEDGE',['../da/dae/modbus_8h.html#a2e498f171730dc5b51e62483fe2f977eabe47a513086c1b00acf3b4e5128e57ed',1,'modbus.h']]],
+  ['modbus_5ferror_5fcrc_1',['MODBUS_ERROR_CRC',['../da/dae/modbus_8h.html#a2e498f171730dc5b51e62483fe2f977ea30e0fa05d0cd54528b75d0b1a217ca99',1,'modbus.h']]],
+  ['modbus_5ferror_5fgateway_5fpath_2',['MODBUS_ERROR_GATEWAY_PATH',['../da/dae/modbus_8h.html#a2e498f171730dc5b51e62483fe2f977ea249e12026e5e6b422dca62461a196eb6',1,'modbus.h']]],
+  ['modbus_5ferror_5fgateway_5ftarget_3',['MODBUS_ERROR_GATEWAY_TARGET',['../da/dae/modbus_8h.html#a2e498f171730dc5b51e62483fe2f977eae7b3566ecdd07795c5aa58d7aa4cd484',1,'modbus.h']]],
+  ['modbus_5ferror_5fillegal_5faddress_4',['MODBUS_ERROR_ILLEGAL_ADDRESS',['../da/dae/modbus_8h.html#a2e498f171730dc5b51e62483fe2f977ea0f4d5543accf517df02f9ace9bba8472',1,'modbus.h']]],
+  ['modbus_5ferror_5fillegal_5ffunction_5',['MODBUS_ERROR_ILLEGAL_FUNCTION',['../da/dae/modbus_8h.html#a2e498f171730dc5b51e62483fe2f977ea5170c8fd52bca089584396b5afecea31',1,'modbus.h']]],
+  ['modbus_5ferror_5fillegal_5fvalue_6',['MODBUS_ERROR_ILLEGAL_VALUE',['../da/dae/modbus_8h.html#a2e498f171730dc5b51e62483fe2f977eac6009826490fee81b3373ca8142ae9d3',1,'modbus.h']]],
+  ['modbus_5ferror_5finvalid_5flength_7',['MODBUS_ERROR_INVALID_LENGTH',['../da/dae/modbus_8h.html#a2e498f171730dc5b51e62483fe2f977ea00d0aa97c9b2e9dae729cf2a35649461',1,'modbus.h']]],
+  ['modbus_5ferror_5fmemory_5fparity_8',['MODBUS_ERROR_MEMORY_PARITY',['../da/dae/modbus_8h.html#a2e498f171730dc5b51e62483fe2f977eaa04fa475a456ccbc93e6bcb7e58f02eb',1,'modbus.h']]],
+  ['modbus_5ferror_5fslave_5fbusy_9',['MODBUS_ERROR_SLAVE_BUSY',['../da/dae/modbus_8h.html#a2e498f171730dc5b51e62483fe2f977ea21487fd20f34a129faf98508ae5c4084',1,'modbus.h']]],
+  ['modbus_5ferror_5fslave_5ffailure_10',['MODBUS_ERROR_SLAVE_FAILURE',['../da/dae/modbus_8h.html#a2e498f171730dc5b51e62483fe2f977ea6004e8d1493f3ffab63af86f76b3d072',1,'modbus.h']]],
+  ['modbus_5ferror_5ftimeout_11',['MODBUS_ERROR_TIMEOUT',['../da/dae/modbus_8h.html#a2e498f171730dc5b51e62483fe2f977eabac8c226f41c07c5659ffb9f0dd55e82',1,'modbus.h']]],
+  ['modbus_5ffunc_5fread_5fholding_5fregisters_12',['MODBUS_FUNC_READ_HOLDING_REGISTERS',['../d9/d49/types_8h.html#a015c3588744a0406fafc81fecb3eddfda45071a1751fc71d424b7b639b03a4377',1,'types.h']]],
+  ['modbus_5ffunc_5fwrite_5fmultiple_5fregisters_13',['MODBUS_FUNC_WRITE_MULTIPLE_REGISTERS',['../d9/d49/types_8h.html#a015c3588744a0406fafc81fecb3eddfda894ba7dc5dc8061c14150b4cfaddb3cb',1,'types.h']]],
+  ['modbus_5ffunc_5fwrite_5fsingle_5fregister_14',['MODBUS_FUNC_WRITE_SINGLE_REGISTER',['../d9/d49/types_8h.html#a015c3588744a0406fafc81fecb3eddfda9fafa7e8ac52121d0f458f635e9c21cc',1,'types.h']]],
+  ['modbus_5fok_15',['MODBUS_OK',['../da/dae/modbus_8h.html#a2e498f171730dc5b51e62483fe2f977eafbb178df49063323a6dcbf03dd0d88d2',1,'modbus.h']]],
+  ['modbus_5fstate_5ferror_16',['MODBUS_STATE_ERROR',['../da/dae/modbus_8h.html#afec312b4c8bf1dd2b9b68c21bbfd7450a2556f398ffc8e2d0b8a59a881ff0051c',1,'modbus.h']]],
+  ['modbus_5fstate_5fidle_17',['MODBUS_STATE_IDLE',['../da/dae/modbus_8h.html#afec312b4c8bf1dd2b9b68c21bbfd7450a5549ed95eb5fccae99b5ba7d3ef55d88',1,'modbus.h']]],
+  ['modbus_5fstate_5fprocessing_18',['MODBUS_STATE_PROCESSING',['../da/dae/modbus_8h.html#afec312b4c8bf1dd2b9b68c21bbfd7450a645eda5ec22879da61838ebfe6cd2d60',1,'modbus.h']]],
+  ['modbus_5fstate_5freceiving_19',['MODBUS_STATE_RECEIVING',['../da/dae/modbus_8h.html#afec312b4c8bf1dd2b9b68c21bbfd7450aaec8fed787da2875e9d52a57fdc6dd4c',1,'modbus.h']]],
+  ['modbus_5fstate_5fresponding_20',['MODBUS_STATE_RESPONDING',['../da/dae/modbus_8h.html#afec312b4c8bf1dd2b9b68c21bbfd7450a03ac19e85d12e7c90b074e3c6db491c7',1,'modbus.h']]],
+  ['modbus_5fstate_5ftimeout_21',['MODBUS_STATE_TIMEOUT',['../da/dae/modbus_8h.html#afec312b4c8bf1dd2b9b68c21bbfd7450a33f1a1b3e94766200bc586cbfab5c909',1,'modbus.h']]]
+];

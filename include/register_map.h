@@ -35,6 +35,8 @@ typedef enum {
     REG_ACTIVE_MASK          = MODBUS_REG_ACTIVE_MASK,         //< 0x0002
     REG_WATCHDOG_STATUS      = MODBUS_REG_WATCHDOG_STATUS,     //< 0x0003
     REG_COMM_ERRORS          = MODBUS_REG_COMM_ERRORS,         //< 0x0004
+    REG_PREV_ACTIVE_MASK     = 0x0005,                          //< 0x0005
+    REG_LAST_SHUTDOWN_REASON = 0x0006,                          //< 0x0006
 
     // Global Control (0x0010-0x001F)
     REG_GLOBAL_ENABLE        = MODBUS_REG_GLOBAL_ENABLE,       //< 0x0010
@@ -51,6 +53,10 @@ typedef enum {
     REG_SON4_FREQUENCY_HZ    = SONICATOR_REG_ADDR(3, MODBUS_REG_SON_FREQUENCY_HZ),   //< 0x0171
     REG_SON4_STATUS_FLAGS    = SONICATOR_REG_ADDR(3, MODBUS_REG_SON_STATUS_FLAGS),   //< 0x0172
     REG_SON4_AMPLITUDE_ACT   = SONICATOR_REG_ADDR(3, MODBUS_REG_SON_AMPLITUDE_ACT),  //< 0x0173
+    REG_SON4_PREV_STATE      = SONICATOR_REG_ADDR(3, 0x14),     //< 0x0174
+    REG_SON4_PERSISTED_AMPLITUDE = SONICATOR_REG_ADDR(3, 0x15), //< 0x0175
+    REG_SON4_LAST_FAULT_CODE = SONICATOR_REG_ADDR(3, 0x16),     //< 0x0176
+    REG_SON4_LAST_STATE_TIMESTAMP_LO = SONICATOR_REG_ADDR(3, 0x17), //< 0x0177
 
     // Example placeholders for gaps (reserve explicitly as needed)
     // REG_UNUSED_0005 = 0x0005,
@@ -62,4 +68,3 @@ typedef enum {
 #endif
 
 #endif // REGISTER_MAP_H
-

@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['emergency_5fstop_0',['emergency_stop',['../d7/dc5/structglobal__control__registers__t.html#ad0fdb895b35ce4b20688e93e61feb2db',1,'global_control_registers_t']]],
+  ['emergency_5fstop_5factive_1',['emergency_stop_active',['../d7/dc4/structsystem__status__t.html#adfa1b39b400852e20a205cb1f9898049',1,'system_status_t']]],
+  ['emergency_5fstop_5fresponse_5fus_2',['EMERGENCY_STOP_RESPONSE_US',['../db/d16/config_8h.html#a71b23a7ad1ea1e1adbda7452761f0d66',1,'config.h']]],
+  ['emergencystop_3',['emergencyStop',['../d2/db1/class_hardware_pwm_generator.html#abca07b75a1cbe74491cfafb7fc5aef97',1,'HardwarePwmGenerator::emergencyStop()'],['../d3/d56/class_i_pwm_generator.html#a31aceffa580e9c95ba1a3e4988725d5f',1,'IPwmGenerator::emergencyStop()'],['../df/de4/class_mock_pwm_generator.html#a104300a5e8611e84d6028ef61fadd1e9',1,'MockPwmGenerator::emergencyStop()'],['../dd/dce/class_sonicator_interface.html#ab0e056f9600f2fba656f1b9dfdd3703b',1,'SonicatorInterface::emergencyStop()']]],
+  ['enable_5finterrupt_4',['enable_interrupt',['../d4/de4/structtimer__config__t.html#a35cd482793a229acc0bbe4e0f5821a99',1,'timer_config_t']]],
+  ['enablechannel_5',['enableChannel',['../d2/db1/class_hardware_pwm_generator.html#aafb16d00f23bec1776ea815b89eab116',1,'HardwarePwmGenerator::enableChannel()'],['../d3/d56/class_i_pwm_generator.html#a3151d26a8c8a9ff2c1e9f29fc847dde3',1,'IPwmGenerator::enableChannel()'],['../df/de4/class_mock_pwm_generator.html#a064d09bbe8d314a0f732f80266bc2cfb',1,'MockPwmGenerator::enableChannel()']]],
+  ['error_5fadc_5fpower_5ffailure_6',['ERROR_ADC_POWER_FAILURE',['../db/d16/config_8h.html#a7d80c3b410035aed9cd8484552186f92aeb3d51523d7f54b10fe466f98dc4501a',1,'config.h']]],
+  ['error_5fcallback_7',['error_callback',['../d5/dea/structmodbus__config__t.html#a8dc179a89b19610e2028b829592116a7',1,'modbus_config_t']]],
+  ['error_5fcode_5ft_8',['error_code_t',['../db/d16/config_8h.html#a7d80c3b410035aed9cd8484552186f92',1,'config.h']]],
+  ['error_5fcount_9',['error_count',['../dc/db6/hal_8cpp.html#a6800052094ccb53d87268696730f0d54',1,'hal.cpp']]],
+  ['error_5femergency_5fstop_10',['ERROR_EMERGENCY_STOP',['../db/d16/config_8h.html#a7d80c3b410035aed9cd8484552186f92a583e790a8b83852d6cf1c5505f682acd',1,'config.h']]],
+  ['error_5ffrequency_5flock_5flost_11',['ERROR_FREQUENCY_LOCK_LOST',['../db/d16/config_8h.html#a7d80c3b410035aed9cd8484552186f92a2798e7b43c79c1a5135989223e3be229',1,'config.h']]],
+  ['error_5fmodbus_5fcrc_12',['ERROR_MODBUS_CRC',['../db/d16/config_8h.html#a7d80c3b410035aed9cd8484552186f92a5f3e3d78cab4cf983464f963dc9957ba',1,'config.h']]],
+  ['error_5fmodbus_5ftimeout_13',['ERROR_MODBUS_TIMEOUT',['../db/d16/config_8h.html#a7d80c3b410035aed9cd8484552186f92a3fb2c7ed36a1e56392d80bbfb815acba',1,'config.h']]],
+  ['error_5fnone_14',['ERROR_NONE',['../db/d16/config_8h.html#a7d80c3b410035aed9cd8484552186f92a4edc8aade11e1de7bbbdc04704baae5f',1,'config.h']]],
+  ['error_5fnotification_5fcallback_5ft_15',['error_notification_callback_t',['../d9/d49/types_8h.html#a3aecb52560f25e335b14a24291bfeaaa',1,'types.h']]],
+  ['error_5fpower_5fout_5fof_5frange_16',['ERROR_POWER_OUT_OF_RANGE',['../db/d16/config_8h.html#a7d80c3b410035aed9cd8484552186f92af8f7858f229659e267d4dd12a4c7697f',1,'config.h']]],
+  ['error_5fpwm_5famplitude_5ffailure_17',['ERROR_PWM_AMPLITUDE_FAILURE',['../db/d16/config_8h.html#a7d80c3b410035aed9cd8484552186f92a124c7e1f536cc667d69471f0989dcff8',1,'config.h']]],
+  ['error_5fsonicator_5foverload_18',['ERROR_SONICATOR_OVERLOAD',['../db/d16/config_8h.html#a7d80c3b410035aed9cd8484552186f92ab93e7ee2254628713bb387c3cb6346dc',1,'config.h']]],
+  ['error_5fsystem_5ffault_19',['ERROR_SYSTEM_FAULT',['../db/d16/config_8h.html#a7d80c3b410035aed9cd8484552186f92a4f4d68e0b143ee73752c8f65f8d0c756',1,'config.h']]],
+  ['error_5fwatchdog_5ftimeout_20',['ERROR_WATCHDOG_TIMEOUT',['../db/d16/config_8h.html#a7d80c3b410035aed9cd8484552186f92a15cffd517a3340c5048c58f07e7975ee',1,'config.h']]],
+  ['event_5fdata_21',['event_data',['../dc/d5b/structsafety__event__log__t.html#a2302e23f039133d3360a874971ac93d2',1,'safety_event_log_t']]],
+  ['event_5ftype_22',['event_type',['../dc/d5b/structsafety__event__log__t.html#a81f3cdd3312d9575ae97bdb0c6502e43',1,'safety_event_log_t']]]
+];

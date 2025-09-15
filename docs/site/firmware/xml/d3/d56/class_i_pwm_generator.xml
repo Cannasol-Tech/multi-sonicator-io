@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d3/d56/class_i_pwm_generator" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>IPwmGenerator</compoundname>
+    <derivedcompoundref refid="d2/db1/class_hardware_pwm_generator" prot="public" virt="non-virtual">HardwarePwmGenerator</derivedcompoundref>
+    <derivedcompoundref refid="df/de4/class_mock_pwm_generator" prot="public" virt="non-virtual">MockPwmGenerator</derivedcompoundref>
+    <includes refid="de/dca/hal__interfaces_8h" local="no">hal_interfaces.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d3/d56/class_i_pwm_generator_1ab0271bc4a8f6a070667e267c3a564526" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual IPwmGenerator::~IPwmGenerator</definition>
+        <argsstring>()=default</argsstring>
+        <name>~IPwmGenerator</name>
+        <qualifiedname>IPwmGenerator::~IPwmGenerator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="80" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d56/class_i_pwm_generator_1a38acf604b647789966b99cf3e3bfb749" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IPwmGenerator::init</definition>
+        <argsstring>(void)=0</argsstring>
+        <name>init</name>
+        <qualifiedname>IPwmGenerator::init</qualifiedname>
+        <reimplementedby refid="d2/db1/class_hardware_pwm_generator_1aaf61b39f4393cbde532fc867790d84a4">init</reimplementedby>
+        <reimplementedby refid="df/de4/class_mock_pwm_generator_1a4ecad2716ca79e79c8a5b4315206c30c">init</reimplementedby>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="83" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d56/class_i_pwm_generator_1a7805b61fe91158281e214a20f773eb85" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IPwmGenerator::setFrequency</definition>
+        <argsstring>(uint8_t channel, uint32_t frequency)=0</argsstring>
+        <name>setFrequency</name>
+        <qualifiedname>IPwmGenerator::setFrequency</qualifiedname>
+        <reimplementedby refid="d2/db1/class_hardware_pwm_generator_1ad25e1059497554055c6f8fd0e25ef63d">setFrequency</reimplementedby>
+        <reimplementedby refid="df/de4/class_mock_pwm_generator_1a033760fdadd8626d8b90a6d400b3ea53">setFrequency</reimplementedby>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>frequency</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="84" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d56/class_i_pwm_generator_1a966b66b2213a5e55de8a3cd726f1d6ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IPwmGenerator::setDutyCycle</definition>
+        <argsstring>(uint8_t channel, uint8_t duty_percent)=0</argsstring>
+        <name>setDutyCycle</name>
+        <qualifiedname>IPwmGenerator::setDutyCycle</qualifiedname>
+        <reimplementedby refid="d2/db1/class_hardware_pwm_generator_1af49d9d315982cb0b88e8db42fe22ef8d">setDutyCycle</reimplementedby>
+        <reimplementedby refid="df/de4/class_mock_pwm_generator_1a1b07479894e8ae7777479afb8f96b89f">setDutyCycle</reimplementedby>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>duty_percent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="85" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d56/class_i_pwm_generator_1a3151d26a8c8a9ff2c1e9f29fc847dde3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IPwmGenerator::enableChannel</definition>
+        <argsstring>(uint8_t channel)=0</argsstring>
+        <name>enableChannel</name>
+        <qualifiedname>IPwmGenerator::enableChannel</qualifiedname>
+        <reimplementedby refid="d2/db1/class_hardware_pwm_generator_1aafb16d00f23bec1776ea815b89eab116">enableChannel</reimplementedby>
+        <reimplementedby refid="df/de4/class_mock_pwm_generator_1a064d09bbe8d314a0f732f80266bc2cfb">enableChannel</reimplementedby>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="86" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d56/class_i_pwm_generator_1a20812ca3553b9b7bbfa753b62e396834" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IPwmGenerator::disableChannel</definition>
+        <argsstring>(uint8_t channel)=0</argsstring>
+        <name>disableChannel</name>
+        <qualifiedname>IPwmGenerator::disableChannel</qualifiedname>
+        <reimplementedby refid="d2/db1/class_hardware_pwm_generator_1a0198998a7bc261b3dd232d0d19f0d92c">disableChannel</reimplementedby>
+        <reimplementedby refid="df/de4/class_mock_pwm_generator_1a0c2c39dc8e4deb8dd70179539ef38be0">disableChannel</reimplementedby>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="87" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d56/class_i_pwm_generator_1a94f8be474f12adaa53a75675eef9bc29" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IPwmGenerator::setAmplitude</definition>
+        <argsstring>(uint8_t amplitude_percent)=0</argsstring>
+        <name>setAmplitude</name>
+        <qualifiedname>IPwmGenerator::setAmplitude</qualifiedname>
+        <reimplementedby refid="d2/db1/class_hardware_pwm_generator_1aa79244d74ff48139a7f822295069f4a6">setAmplitude</reimplementedby>
+        <reimplementedby refid="df/de4/class_mock_pwm_generator_1ab647c99114bcde54799ff4488f108436">setAmplitude</reimplementedby>
+        <param>
+          <type>uint8_t</type>
+          <declname>amplitude_percent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="90" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d56/class_i_pwm_generator_1a31aceffa580e9c95ba1a3e4988725d5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IPwmGenerator::emergencyStop</definition>
+        <argsstring>(void)=0</argsstring>
+        <name>emergencyStop</name>
+        <qualifiedname>IPwmGenerator::emergencyStop</qualifiedname>
+        <reimplementedby refid="d2/db1/class_hardware_pwm_generator_1abca07b75a1cbe74491cfafb7fc5aef97">emergencyStop</reimplementedby>
+        <reimplementedby refid="df/de4/class_mock_pwm_generator_1a104300a5e8611e84d6028ef61fadd1e9">emergencyStop</reimplementedby>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="91" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d56/class_i_pwm_generator_1a650304aab283911f751c26c34230106d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IPwmGenerator::testPattern</definition>
+        <argsstring>(void)=0</argsstring>
+        <name>testPattern</name>
+        <qualifiedname>IPwmGenerator::testPattern</qualifiedname>
+        <reimplementedby refid="d2/db1/class_hardware_pwm_generator_1aaaf51db7a3381e021cc18a687d3c848d">testPattern</reimplementedby>
+        <reimplementedby refid="df/de4/class_mock_pwm_generator_1a61a19d6bce986589dd9ca5c63726063a">testPattern</reimplementedby>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="92" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>PWM abstraction interface for testability. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>HardwarePwmGenerator</label>
+        <link refid="d2/db1/class_hardware_pwm_generator"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>IPwmGenerator</label>
+        <link refid="d3/d56/class_i_pwm_generator"/>
+      </node>
+      <node id="3">
+        <label>MockPwmGenerator</label>
+        <link refid="df/de4/class_mock_pwm_generator"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/modules/hal/hal_interfaces.h" line="78" column="1" bodyfile="src/modules/hal/hal_interfaces.h" bodystart="78" bodyend="93"/>
+    <listofallmembers>
+      <member refid="d3/d56/class_i_pwm_generator_1a20812ca3553b9b7bbfa753b62e396834" prot="public" virt="pure-virtual"><scope>IPwmGenerator</scope><name>disableChannel</name></member>
+      <member refid="d3/d56/class_i_pwm_generator_1a31aceffa580e9c95ba1a3e4988725d5f" prot="public" virt="pure-virtual"><scope>IPwmGenerator</scope><name>emergencyStop</name></member>
+      <member refid="d3/d56/class_i_pwm_generator_1a3151d26a8c8a9ff2c1e9f29fc847dde3" prot="public" virt="pure-virtual"><scope>IPwmGenerator</scope><name>enableChannel</name></member>
+      <member refid="d3/d56/class_i_pwm_generator_1a38acf604b647789966b99cf3e3bfb749" prot="public" virt="pure-virtual"><scope>IPwmGenerator</scope><name>init</name></member>
+      <member refid="d3/d56/class_i_pwm_generator_1a94f8be474f12adaa53a75675eef9bc29" prot="public" virt="pure-virtual"><scope>IPwmGenerator</scope><name>setAmplitude</name></member>
+      <member refid="d3/d56/class_i_pwm_generator_1a966b66b2213a5e55de8a3cd726f1d6ec" prot="public" virt="pure-virtual"><scope>IPwmGenerator</scope><name>setDutyCycle</name></member>
+      <member refid="d3/d56/class_i_pwm_generator_1a7805b61fe91158281e214a20f773eb85" prot="public" virt="pure-virtual"><scope>IPwmGenerator</scope><name>setFrequency</name></member>
+      <member refid="d3/d56/class_i_pwm_generator_1a650304aab283911f751c26c34230106d" prot="public" virt="pure-virtual"><scope>IPwmGenerator</scope><name>testPattern</name></member>
+      <member refid="d3/d56/class_i_pwm_generator_1ab0271bc4a8f6a070667e267c3a564526" prot="public" virt="virtual"><scope>IPwmGenerator</scope><name>~IPwmGenerator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

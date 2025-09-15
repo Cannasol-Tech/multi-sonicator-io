@@ -1,0 +1,253 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d2/d2d/class_i_uart_port" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>IUartPort</compoundname>
+    <derivedcompoundref refid="dd/d9b/class_hardware_uart_port" prot="public" virt="non-virtual">HardwareUartPort</derivedcompoundref>
+    <includes refid="de/dca/hal__interfaces_8h" local="no">hal_interfaces.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d2/d2d/class_i_uart_port_1a1590f92e5906d65381271721554e7efc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual IUartPort::~IUartPort</definition>
+        <argsstring>()=default</argsstring>
+        <name>~IUartPort</name>
+        <qualifiedname>IUartPort::~IUartPort</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="104" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d2d/class_i_uart_port_1afb2bfcc66d733bb9331f9045d301d7fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IUartPort::init</definition>
+        <argsstring>(uint32_t baud_rate)=0</argsstring>
+        <name>init</name>
+        <qualifiedname>IUartPort::init</qualifiedname>
+        <reimplementedby refid="dd/d9b/class_hardware_uart_port_1a683e353a2463b7fdbedd28c3ddcca7cf">init</reimplementedby>
+        <param>
+          <type>uint32_t</type>
+          <declname>baud_rate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="107" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d2d/class_i_uart_port_1a643a7aa32075ecccd835020c6c6ed123" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IUartPort::sendByte</definition>
+        <argsstring>(uint8_t data)=0</argsstring>
+        <name>sendByte</name>
+        <qualifiedname>IUartPort::sendByte</qualifiedname>
+        <reimplementedby refid="dd/d9b/class_hardware_uart_port_1a70a950ebf4ca7e41a22f00c78553e38a">sendByte</reimplementedby>
+        <param>
+          <type>uint8_t</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="108" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d2d/class_i_uart_port_1a6ca91d5a0918bf5ff5e6820166e0e718" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IUartPort::receiveByte</definition>
+        <argsstring>(uint8_t *data)=0</argsstring>
+        <name>receiveByte</name>
+        <qualifiedname>IUartPort::receiveByte</qualifiedname>
+        <reimplementedby refid="dd/d9b/class_hardware_uart_port_1ae986a11a14f9590e75983cb1484784fe">receiveByte</reimplementedby>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="109" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d2d/class_i_uart_port_1a84d263a9fcaf4cfde7b1362d3c0ab732" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IUartPort::dataAvailable</definition>
+        <argsstring>(void)=0</argsstring>
+        <name>dataAvailable</name>
+        <qualifiedname>IUartPort::dataAvailable</qualifiedname>
+        <reimplementedby refid="dd/d9b/class_hardware_uart_port_1af925ed861f3bc6ec2aad27fc50b826e7">dataAvailable</reimplementedby>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="110" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d2d/class_i_uart_port_1afcbd92b173b1e59c992c21f969044e15" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IUartPort::sendBuffer</definition>
+        <argsstring>(const uint8_t *buffer, uint16_t length)=0</argsstring>
+        <name>sendBuffer</name>
+        <qualifiedname>IUartPort::sendBuffer</qualifiedname>
+        <reimplementedby refid="dd/d9b/class_hardware_uart_port_1ae563ba3b39ec499c9176ab9140931e80">sendBuffer</reimplementedby>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="111" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d2d/class_i_uart_port_1a41ed803ca9d883b1e7e1ed20905bc4c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IUartPort::receiveBuffer</definition>
+        <argsstring>(uint8_t *buffer, uint16_t max_length, uint16_t *received)=0</argsstring>
+        <name>receiveBuffer</name>
+        <qualifiedname>IUartPort::receiveBuffer</qualifiedname>
+        <reimplementedby refid="dd/d9b/class_hardware_uart_port_1afc5b78d7d73dd68e8a6493146256aa75">receiveBuffer</reimplementedby>
+        <param>
+          <type>uint8_t *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>max_length</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>received</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="112" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d2d/class_i_uart_port_1a00ac88691a1133ef4fc34828c644bee6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IUartPort::flushTx</definition>
+        <argsstring>(void)=0</argsstring>
+        <name>flushTx</name>
+        <qualifiedname>IUartPort::flushTx</qualifiedname>
+        <reimplementedby refid="dd/d9b/class_hardware_uart_port_1a827e6daf290a8796ab5859d3c9f3fe62">flushTx</reimplementedby>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="115" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d2d/class_i_uart_port_1a0611b15c5b2acd429b3275383216fab4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IUartPort::flushRx</definition>
+        <argsstring>(void)=0</argsstring>
+        <name>flushRx</name>
+        <qualifiedname>IUartPort::flushRx</qualifiedname>
+        <reimplementedby refid="dd/d9b/class_hardware_uart_port_1ae246de628514fd125a07a79414cfcfa5">flushRx</reimplementedby>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="116" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d2d/class_i_uart_port_1af0fc96d917ade8a8e926bb3cc9afd219" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IUartPort::clearErrors</definition>
+        <argsstring>(void)=0</argsstring>
+        <name>clearErrors</name>
+        <qualifiedname>IUartPort::clearErrors</qualifiedname>
+        <reimplementedby refid="dd/d9b/class_hardware_uart_port_1ab817229ebc4779e7cc004de3a164285e">clearErrors</reimplementedby>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="117" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d2d/class_i_uart_port_1ac167f3d2feb7eff9bd009c715101493b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IUartPort::testLoopback</definition>
+        <argsstring>(bool *success)=0</argsstring>
+        <name>testLoopback</name>
+        <qualifiedname>IUartPort::testLoopback</qualifiedname>
+        <reimplementedby refid="dd/d9b/class_hardware_uart_port_1a687a85e6ba6965357c7482e5d1d0e654">testLoopback</reimplementedby>
+        <param>
+          <type>bool *</type>
+          <declname>success</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="118" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>UART abstraction interface for testability. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>HardwareUartPort</label>
+        <link refid="dd/d9b/class_hardware_uart_port"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>IUartPort</label>
+        <link refid="d2/d2d/class_i_uart_port"/>
+      </node>
+    </inheritancegraph>
+    <location file="src/modules/hal/hal_interfaces.h" line="102" column="1" bodyfile="src/modules/hal/hal_interfaces.h" bodystart="102" bodyend="119"/>
+    <listofallmembers>
+      <member refid="d2/d2d/class_i_uart_port_1af0fc96d917ade8a8e926bb3cc9afd219" prot="public" virt="pure-virtual"><scope>IUartPort</scope><name>clearErrors</name></member>
+      <member refid="d2/d2d/class_i_uart_port_1a84d263a9fcaf4cfde7b1362d3c0ab732" prot="public" virt="pure-virtual"><scope>IUartPort</scope><name>dataAvailable</name></member>
+      <member refid="d2/d2d/class_i_uart_port_1a0611b15c5b2acd429b3275383216fab4" prot="public" virt="pure-virtual"><scope>IUartPort</scope><name>flushRx</name></member>
+      <member refid="d2/d2d/class_i_uart_port_1a00ac88691a1133ef4fc34828c644bee6" prot="public" virt="pure-virtual"><scope>IUartPort</scope><name>flushTx</name></member>
+      <member refid="d2/d2d/class_i_uart_port_1afb2bfcc66d733bb9331f9045d301d7fe" prot="public" virt="pure-virtual"><scope>IUartPort</scope><name>init</name></member>
+      <member refid="d2/d2d/class_i_uart_port_1a41ed803ca9d883b1e7e1ed20905bc4c5" prot="public" virt="pure-virtual"><scope>IUartPort</scope><name>receiveBuffer</name></member>
+      <member refid="d2/d2d/class_i_uart_port_1a6ca91d5a0918bf5ff5e6820166e0e718" prot="public" virt="pure-virtual"><scope>IUartPort</scope><name>receiveByte</name></member>
+      <member refid="d2/d2d/class_i_uart_port_1afcbd92b173b1e59c992c21f969044e15" prot="public" virt="pure-virtual"><scope>IUartPort</scope><name>sendBuffer</name></member>
+      <member refid="d2/d2d/class_i_uart_port_1a643a7aa32075ecccd835020c6c6ed123" prot="public" virt="pure-virtual"><scope>IUartPort</scope><name>sendByte</name></member>
+      <member refid="d2/d2d/class_i_uart_port_1ac167f3d2feb7eff9bd009c715101493b" prot="public" virt="pure-virtual"><scope>IUartPort</scope><name>testLoopback</name></member>
+      <member refid="d2/d2d/class_i_uart_port_1a1590f92e5906d65381271721554e7efc" prot="public" virt="virtual"><scope>IUartPort</scope><name>~IUartPort</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

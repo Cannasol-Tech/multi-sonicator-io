@@ -1,0 +1,1205 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d2/d86/uart_8h" kind="file" language="C++">
+    <compoundname>uart.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includedby refid="d8/d4b/hal_8h" local="yes">src/modules/hal/hal.h</includedby>
+    <includedby refid="db/d23/uart_8cpp" local="yes">src/modules/hal/uart.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/modules/hal/uart.h</label>
+        <link refid="d2/d86/uart_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>include/sonicator_control.h</label>
+        <link refid="de/d13/sonicator__control_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/main.cpp</label>
+        <link refid="df/d0a/main_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/modules/control/sonicator.cpp</label>
+        <link refid="d2/db9/sonicator_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/modules/control/sonicator4_controller.h</label>
+        <link refid="d2/dbc/sonicator4__controller_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/modules/control/sonicator_modbus_bridge.cpp</label>
+        <link refid="d5/dea/sonicator__modbus__bridge_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/modules/hal/hal.cpp</label>
+        <link refid="dc/db6/hal_8cpp"/>
+      </node>
+      <node id="2">
+        <label>src/modules/hal/hal.h</label>
+        <link refid="d8/d4b/hal_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/modules/hal/uart.cpp</label>
+        <link refid="db/d23/uart_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/modules/hal/uart.h</label>
+        <link refid="d2/d86/uart_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d1/dce/structuart__config__t" prot="public">uart_config_t</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="d2/d86/uart_8h_1a67405a6e6e4427b2fb7ca73182212bf1" prot="public" static="no">
+        <name>UART_DEFAULT_BAUD</name>
+        <initializer>115200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="86" column="9" bodyfile="src/modules/hal/uart.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d2/d86/uart_8h_1aca2271fbb6e29e7fff7c92b30defa089" prot="public" static="no">
+        <name>UART_MIN_BAUD</name>
+        <initializer>9600</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="87" column="9" bodyfile="src/modules/hal/uart.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d2/d86/uart_8h_1aa0394fc6f4ab8e23d754833bff3a0c72" prot="public" static="no">
+        <name>UART_MAX_BAUD</name>
+        <initializer>230400</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="88" column="9" bodyfile="src/modules/hal/uart.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d2/d86/uart_8h_1a05f5d709605c6317c97e4974bec3402a" prot="public" static="no">
+        <name>UART_TX_BUFFER_SIZE</name>
+        <initializer>256</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="90" column="9" bodyfile="src/modules/hal/uart.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d2/d86/uart_8h_1a5bdd6772c246436bb14377095de79b31" prot="public" static="no">
+        <name>UART_RX_BUFFER_SIZE</name>
+        <initializer>256</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="91" column="9" bodyfile="src/modules/hal/uart.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d2/d86/uart_8h_1a6bfddf84ea47d906536cc8ffcc9dd5cc" prot="public" static="no">
+        <name>UART_TIMEOUT_MS</name>
+        <initializer>1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="93" column="9" bodyfile="src/modules/hal/uart.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d2/d86/uart_8h_1afe774ce5bc34a94e73118a8692cccc2f" prot="public" static="no">
+        <name>UART_CHAR_TIMEOUT_MS</name>
+        <initializer>10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="94" column="9" bodyfile="src/modules/hal/uart.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d2/d86/uart_8h_1a3e078d838f7350973300002eeb3006a5" prot="public" static="no">
+        <name>UART_MODBUS_T1_5_US</name>
+        <initializer>130</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="97" column="9" bodyfile="src/modules/hal/uart.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d2/d86/uart_8h_1a93535c98d400695ea6330bd51843e4e6" prot="public" static="no">
+        <name>UART_MODBUS_T3_5_US</name>
+        <initializer>304</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="98" column="9" bodyfile="src/modules/hal/uart.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="d2/d86/uart_8h_1a6bcc37e31dd40c204b4ac6f6189e8878" prot="public" static="no" strong="no">
+        <type></type>
+        <name>uart_parity_t</name>
+        <enumvalue id="d2/d86/uart_8h_1a6bcc37e31dd40c204b4ac6f6189e8878aa80d2d8ea61454045ebe71d155e85b3d" prot="public">
+          <name>UART_PARITY_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d2/d86/uart_8h_1a6bcc37e31dd40c204b4ac6f6189e8878ad908a637b1dd23f93b149dd2d8bdfdb8" prot="public">
+          <name>UART_PARITY_EVEN</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d2/d86/uart_8h_1a6bcc37e31dd40c204b4ac6f6189e8878ad90cc425f5ba447773a44a75be6593e2" prot="public">
+          <name>UART_PARITY_ODD</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>UART parity settings. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="34" column="1" bodyfile="src/modules/hal/uart.h" bodystart="34" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="enum" id="d2/d86/uart_8h_1a6da57a73bbdbf830b845d4116f8341d7" prot="public" static="no" strong="no">
+        <type></type>
+        <name>uart_stop_bits_t</name>
+        <enumvalue id="d2/d86/uart_8h_1a6da57a73bbdbf830b845d4116f8341d7ab82524ae02e9a2f83a2879afe1c49c98" prot="public">
+          <name>UART_STOP_1BIT</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d2/d86/uart_8h_1a6da57a73bbdbf830b845d4116f8341d7ac161d02326b891764627425309c51b53" prot="public">
+          <name>UART_STOP_2BIT</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>UART stop bit settings. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="43" column="1" bodyfile="src/modules/hal/uart.h" bodystart="43" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="enum" id="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798" prot="public" static="no" strong="no">
+        <type></type>
+        <name>uart_data_bits_t</name>
+        <enumvalue id="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798a550737a56f9f06a10b5aa2faab1b0d26" prot="public">
+          <name>UART_DATA_5BIT</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798a522546f06cc688d7614b1cc16ef79b57" prot="public">
+          <name>UART_DATA_6BIT</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798adef31df2de2eea36b9958a2b4e772311" prot="public">
+          <name>UART_DATA_7BIT</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798a92bcb9dce0caedc782f09b55b28e0856" prot="public">
+          <name>UART_DATA_8BIT</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798aaaf9e74e13d7f283dec97a5d26a63b17" prot="public">
+          <name>UART_DATA_9BIT</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>UART data bit settings. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="51" column="1" bodyfile="src/modules/hal/uart.h" bodystart="51" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="enum" id="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" prot="public" static="no" strong="no">
+        <type></type>
+        <name>uart_result_t</name>
+        <enumvalue id="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" prot="public">
+          <name>UART_OK</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a3683e0576febb2329261685a69c94c52" prot="public">
+          <name>UART_ERROR_INVALID_BAUD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a4c8e3a233531175bd36386d24f6fdaca" prot="public">
+          <name>UART_ERROR_INVALID_CONFIG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a3fb85c3a9f5a74da94fb54a39f87e243" prot="public">
+          <name>UART_ERROR_BUFFER_FULL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2ac8723155b4e7bfb98ef671c9aade95b3" prot="public">
+          <name>UART_ERROR_BUFFER_EMPTY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a62c2571e244067bcd6d45dc89d45e4b2" prot="public">
+          <name>UART_ERROR_TIMEOUT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2aab0d25ae60a715cab154d889092fba90" prot="public">
+          <name>UART_ERROR_NOT_INITIALIZED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>HAL function return codes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="72" column="1" bodyfile="src/modules/hal/uart.h" bodystart="72" bodyend="80"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="d2/d86/uart_8h_1a291c562f366dda51665637a2d8cc8447" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>uart_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize UART hardware abstraction layer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Configures USART0 with default settings:<itemizedlist>
+<listitem><para>115200 baud, 8N1 (8 data, no parity, 1 stop)</para>
+</listitem><listitem><para>Interrupt-driven RX/TX with circular buffers</para>
+</listitem><listitem><para>MODBUS RTU compatible timing</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="return"><para>UART_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="114" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="64" bodyend="73" declfile="src/modules/hal/uart.h" declline="114" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d86/uart_8h_1aa933dceadce526b41a736197e3093005" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_init_config</definition>
+        <argsstring>(const uart_config_t *config)</argsstring>
+        <name>uart_init_config</name>
+        <param>
+          <type>const <ref refid="d1/dce/structuart__config__t" kindref="compound">uart_config_t</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Initialize UART with custom configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to UART configuration structure </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UART_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="122" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="75" bodyend="179" declfile="src/modules/hal/uart.h" declline="122" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d86/uart_8h_1ad94b530602f07127f460511015915700" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_set_baud_rate</definition>
+        <argsstring>(uint32_t baud_rate)</argsstring>
+        <name>uart_set_baud_rate</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>baud_rate</declname>
+        </param>
+        <briefdescription>
+<para>Configure UART baud rate. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>baud_rate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Desired baud rate (9600-230400) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UART_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="130" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="181" bodyend="203" declfile="src/modules/hal/uart.h" declline="130" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d86/uart_8h_1aa76cf405135227baee4370fa3707d3c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_send_byte</definition>
+        <argsstring>(uint8_t data)</argsstring>
+        <name>uart_send_byte</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Send single byte via UART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Byte to transmit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UART_OK on success, error code on failure</para>
+</simplesect>
+<simplesect kind="note"><para>Non-blocking if TX buffer has space </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="140" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="205" bodyend="219" declfile="src/modules/hal/uart.h" declline="140" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d86/uart_8h_1aa5e3b4f3521be702d022ceb3bc1fe56e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_receive_byte</definition>
+        <argsstring>(uint8_t *data)</argsstring>
+        <name>uart_receive_byte</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Receive single byte from UART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store received byte </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UART_OK on success, UART_ERROR_BUFFER_EMPTY if no data </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="148" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="221" bodyend="242" declfile="src/modules/hal/uart.h" declline="148" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d86/uart_8h_1a40c5f34c4b43d068db84cd9afa24bc89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_data_available</definition>
+        <argsstring>(bool *available)</argsstring>
+        <name>uart_data_available</name>
+        <param>
+          <type>bool *</type>
+          <declname>available</declname>
+        </param>
+        <briefdescription>
+<para>Check if UART data is available for reading. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>available</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store availability status </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UART_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="156" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="244" bodyend="260" declfile="src/modules/hal/uart.h" declline="156" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d86/uart_8h_1a8c78732609067ae2bd35ef44120aa6d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_get_rx_count</definition>
+        <argsstring>(uint16_t *count)</argsstring>
+        <name>uart_get_rx_count</name>
+        <param>
+          <type>uint16_t *</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+<para>Get number of bytes available in receive buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store byte count </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UART_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="164" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="262" bodyend="273" declfile="src/modules/hal/uart.h" declline="164" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d86/uart_8h_1aae390a43a1728bf2f345bfb1ac2e0ede" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_send_buffer</definition>
+        <argsstring>(const uint8_t *buffer, uint16_t length)</argsstring>
+        <name>uart_send_buffer</name>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+<para>Send buffer of bytes via UART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to data buffer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to send </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UART_OK on success, error code on failure</para>
+</simplesect>
+<simplesect kind="note"><para>Blocks if buffer cannot accommodate all data </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="175" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="275" bodyend="293" declfile="src/modules/hal/uart.h" declline="175" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d86/uart_8h_1a39e1c2f3baa35c209847b249e9cdb49c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_receive_buffer</definition>
+        <argsstring>(uint8_t *buffer, uint16_t max_length, uint16_t *received)</argsstring>
+        <name>uart_receive_buffer</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>max_length</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>received</declname>
+        </param>
+        <briefdescription>
+<para>Receive buffer of bytes from UART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to destination buffer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum bytes to receive </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>received</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store actual bytes received </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UART_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="185" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="295" bodyend="321" declfile="src/modules/hal/uart.h" declline="185" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d86/uart_8h_1aca0ce44bb4b9fedc156ffd006bccbc95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_flush_tx</definition>
+        <argsstring>(void)</argsstring>
+        <name>uart_flush_tx</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Flush transmit buffer (wait for all data to be sent) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>UART_OK on success, UART_ERROR_TIMEOUT on timeout </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="192" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="323" bodyend="335" declfile="src/modules/hal/uart.h" declline="192" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d86/uart_8h_1aa0ba1394c3e54d2bba6d501db9ee7660" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_flush_rx</definition>
+        <argsstring>(void)</argsstring>
+        <name>uart_flush_rx</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Clear receive buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>UART_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="199" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="337" bodyend="351" declfile="src/modules/hal/uart.h" declline="199" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d86/uart_8h_1a2b8b8eea4fec91f6fd7c6773f4d08511" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_send_modbus_frame</definition>
+        <argsstring>(const uint8_t *frame, uint16_t length)</argsstring>
+        <name>uart_send_modbus_frame</name>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>frame</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+<para>Send MODBUS RTU frame. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Handles proper frame timing with 3.5 character gaps. Automatically calculates and appends CRC16.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>frame</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to MODBUS frame (without CRC) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Frame length (excluding CRC) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UART_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="215" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="357" bodyend="377" declfile="src/modules/hal/uart.h" declline="215" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d86/uart_8h_1a0b8696fe9a133f2130d7fb795d19273f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_receive_modbus_frame</definition>
+        <argsstring>(uint8_t *frame, uint16_t max_length, uint16_t *received, uint32_t timeout_ms)</argsstring>
+        <name>uart_receive_modbus_frame</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>frame</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>max_length</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>received</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+<para>Receive MODBUS RTU frame. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Waits for frame with proper inter-character timing. Validates CRC16 and removes it from returned frame.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>frame</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to destination buffer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum frame length </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>received</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store actual frame length </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UART_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="229" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="379" bodyend="410" declfile="src/modules/hal/uart.h" declline="229" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d86/uart_8h_1ae6f8e525675dfbc78c5c44a9298b1beb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_modbus_gap_detected</definition>
+        <argsstring>(bool *gap_detected)</argsstring>
+        <name>uart_modbus_gap_detected</name>
+        <param>
+          <type>bool *</type>
+          <declname>gap_detected</declname>
+        </param>
+        <briefdescription>
+<para>Check for MODBUS frame gap (3.5 character silence) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>gap_detected</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store gap detection status </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UART_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="238" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="412" bodyend="425" declfile="src/modules/hal/uart.h" declline="238" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d86/uart_8h_1ae8fefb7831fe3654b5fae24f5978bf3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_get_idle_time</definition>
+        <argsstring>(uint32_t *time_us)</argsstring>
+        <name>uart_get_idle_time</name>
+        <param>
+          <type>uint32_t *</type>
+          <declname>time_us</declname>
+        </param>
+        <briefdescription>
+<para>Get time since last received character. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>time_us</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store time in microseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UART_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="246" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="427" bodyend="438" declfile="src/modules/hal/uart.h" declline="246" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d86/uart_8h_1a5d553ac4c4d446e97d254c655e0d12cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_get_status</definition>
+        <argsstring>(bool *tx_busy, bool *rx_overflow, bool *frame_error, bool *parity_error)</argsstring>
+        <name>uart_get_status</name>
+        <param>
+          <type>bool *</type>
+          <declname>tx_busy</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>rx_overflow</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>frame_error</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>parity_error</declname>
+        </param>
+        <briefdescription>
+<para>Get UART status flags. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tx_busy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store TX busy status </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rx_overflow</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store RX overflow status </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>frame_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store frame error status </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parity_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store parity error status </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UART_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="261" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="444" bodyend="456" declfile="src/modules/hal/uart.h" declline="261" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d86/uart_8h_1a77f2f49b95f115fcb9e2be99657c9c75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_get_tx_free</definition>
+        <argsstring>(uint16_t *free_bytes)</argsstring>
+        <name>uart_get_tx_free</name>
+        <param>
+          <type>uint16_t *</type>
+          <declname>free_bytes</declname>
+        </param>
+        <briefdescription>
+<para>Get TX buffer space available. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>free_bytes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store free byte count </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UART_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="270" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="458" bodyend="469" declfile="src/modules/hal/uart.h" declline="270" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d86/uart_8h_1a79ad1801b886ffa306c7c27e2a2cc80f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_clear_errors</definition>
+        <argsstring>(void)</argsstring>
+        <name>uart_clear_errors</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Clear error flags. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>UART_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="277" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="471" bodyend="487" declfile="src/modules/hal/uart.h" declline="277" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d86/uart_8h_1ab32630c96ee1ca5d2533ead0a41cb5cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_get_char_time</definition>
+        <argsstring>(uint16_t *char_time_us)</argsstring>
+        <name>uart_get_char_time</name>
+        <param>
+          <type>uint16_t *</type>
+          <declname>char_time_us</declname>
+        </param>
+        <briefdescription>
+<para>Calculate character time for current baud rate. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>char_time_us</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store character time in microseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UART_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="285" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="489" bodyend="500" declfile="src/modules/hal/uart.h" declline="285" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d86/uart_8h_1a5af63458c33759ed51ed861621a87cce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+        <definition>uart_result_t uart_test_loopback</definition>
+        <argsstring>(bool *success)</argsstring>
+        <name>uart_test_loopback</name>
+        <param>
+          <type>bool *</type>
+          <declname>success</declname>
+        </param>
+        <briefdescription>
+<para>Test UART loopback (TX connected to RX) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>success</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store test result </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UART_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/uart.h" line="293" column="15" bodyfile="src/modules/hal/uart.cpp" bodystart="502" bodyend="531" declfile="src/modules/hal/uart.h" declline="293" declcolumn="15"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>UART Hardware Abstraction Layer for ATmega32A. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Cannasol Technologies </para>
+</simplesect>
+<simplesect kind="date"><para>2025-09-02 </para>
+</simplesect>
+<simplesect kind="version"><para>1.0.0</para>
+</simplesect>
+Provides hardware-agnostic UART interface for MODBUS RTU communication. Uses USART0 on PD0 (RXD) and PD1 (TXD) for RS-485 communication at 115200 baud.</para>
+<para>Supports interrupt-driven transmission/reception with circular buffers for reliable MODBUS frame handling without blocking main application. Pin assignments per config/hardware-config.yaml (SOLE SOURCE OF TRUTH). </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HAL_UART_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HAL_UART_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TYPE<sp/>DEFINITIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="d2/d86/uart_8h_1a6bcc37e31dd40c204b4ac6f6189e8878" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="35" refid="d2/d86/uart_8h_1a6bcc37e31dd40c204b4ac6f6189e8878aa80d2d8ea61454045ebe71d155e85b3d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1a6bcc37e31dd40c204b4ac6f6189e8878aa80d2d8ea61454045ebe71d155e85b3d" kindref="member">UART_PARITY_NONE</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>No<sp/>parity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="d2/d86/uart_8h_1a6bcc37e31dd40c204b4ac6f6189e8878ad908a637b1dd23f93b149dd2d8bdfdb8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1a6bcc37e31dd40c204b4ac6f6189e8878ad908a637b1dd23f93b149dd2d8bdfdb8" kindref="member">UART_PARITY_EVEN</ref><sp/>=<sp/>2,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Even<sp/>parity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="d2/d86/uart_8h_1a6bcc37e31dd40c204b4ac6f6189e8878ad90cc425f5ba447773a44a75be6593e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1a6bcc37e31dd40c204b4ac6f6189e8878ad90cc425f5ba447773a44a75be6593e2" kindref="member">UART_PARITY_ODD</ref><sp/>=<sp/>3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Odd<sp/>parity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}<sp/><ref refid="d2/d86/uart_8h_1a6bcc37e31dd40c204b4ac6f6189e8878" kindref="member">uart_parity_t</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="d2/d86/uart_8h_1a6da57a73bbdbf830b845d4116f8341d7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="44" refid="d2/d86/uart_8h_1a6da57a73bbdbf830b845d4116f8341d7ab82524ae02e9a2f83a2879afe1c49c98" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1a6da57a73bbdbf830b845d4116f8341d7ab82524ae02e9a2f83a2879afe1c49c98" kindref="member">UART_STOP_1BIT</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>1<sp/>stop<sp/>bit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="d2/d86/uart_8h_1a6da57a73bbdbf830b845d4116f8341d7ac161d02326b891764627425309c51b53" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1a6da57a73bbdbf830b845d4116f8341d7ac161d02326b891764627425309c51b53" kindref="member">UART_STOP_2BIT</ref><sp/>=<sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>2<sp/>stop<sp/>bits</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}<sp/><ref refid="d2/d86/uart_8h_1a6da57a73bbdbf830b845d4116f8341d7" kindref="member">uart_stop_bits_t</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="52" refid="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798a550737a56f9f06a10b5aa2faab1b0d26" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798a550737a56f9f06a10b5aa2faab1b0d26" kindref="member">UART_DATA_5BIT</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>5<sp/>data<sp/>bits</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798a522546f06cc688d7614b1cc16ef79b57" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798a522546f06cc688d7614b1cc16ef79b57" kindref="member">UART_DATA_6BIT</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>6<sp/>data<sp/>bits</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798adef31df2de2eea36b9958a2b4e772311" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798adef31df2de2eea36b9958a2b4e772311" kindref="member">UART_DATA_7BIT</ref><sp/>=<sp/>2,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>7<sp/>data<sp/>bits</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798a92bcb9dce0caedc782f09b55b28e0856" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798a92bcb9dce0caedc782f09b55b28e0856" kindref="member">UART_DATA_8BIT</ref><sp/>=<sp/>3,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>8<sp/>data<sp/>bits</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798aaaf9e74e13d7f283dec97a5d26a63b17" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798aaaf9e74e13d7f283dec97a5d26a63b17" kindref="member">UART_DATA_9BIT</ref><sp/>=<sp/>7<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>9<sp/>data<sp/>bits</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}<sp/><ref refid="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798" kindref="member">uart_data_bits_t</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="d1/dce/structuart__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63" refid="d1/dce/structuart__config__t_1a988fe3be69cba628a241033f1b16f35e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d1/dce/structuart__config__t_1a988fe3be69cba628a241033f1b16f35e" kindref="member">baud_rate</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Baud<sp/>rate<sp/>(bps)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="d1/dce/structuart__config__t_1ae568b92a4a64a148c136dd511a3aefe1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798" kindref="member">uart_data_bits_t</ref><sp/><ref refid="d1/dce/structuart__config__t_1ae568b92a4a64a148c136dd511a3aefe1" kindref="member">data_bits</ref>;<sp/></highlight><highlight class="comment">//&lt;<sp/>Number<sp/>of<sp/>data<sp/>bits</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="d1/dce/structuart__config__t_1a157fe675a803f44325017b6b32a20824" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1a6bcc37e31dd40c204b4ac6f6189e8878" kindref="member">uart_parity_t</ref><sp/><ref refid="d1/dce/structuart__config__t_1a157fe675a803f44325017b6b32a20824" kindref="member">parity</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Parity<sp/>setting</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="d1/dce/structuart__config__t_1ac90c1cc43e3e84befa5f6e98d63bb2d8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1a6da57a73bbdbf830b845d4116f8341d7" kindref="member">uart_stop_bits_t</ref><sp/><ref refid="d1/dce/structuart__config__t_1ac90c1cc43e3e84befa5f6e98d63bb2d8" kindref="member">stop_bits</ref>;<sp/></highlight><highlight class="comment">//&lt;<sp/>Number<sp/>of<sp/>stop<sp/>bits</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}<sp/><ref refid="d1/dce/structuart__config__t" kindref="compound">uart_config_t</ref>;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="73" refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Operation<sp/>successful</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a3683e0576febb2329261685a69c94c52" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a3683e0576febb2329261685a69c94c52" kindref="member">UART_ERROR_INVALID_BAUD</ref>,<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Invalid<sp/>baud<sp/>rate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a4c8e3a233531175bd36386d24f6fdaca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a4c8e3a233531175bd36386d24f6fdaca" kindref="member">UART_ERROR_INVALID_CONFIG</ref>,<sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Invalid<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a3fb85c3a9f5a74da94fb54a39f87e243" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a3fb85c3a9f5a74da94fb54a39f87e243" kindref="member">UART_ERROR_BUFFER_FULL</ref>,<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Transmit<sp/>buffer<sp/>full</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2ac8723155b4e7bfb98ef671c9aade95b3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2ac8723155b4e7bfb98ef671c9aade95b3" kindref="member">UART_ERROR_BUFFER_EMPTY</ref>,<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Receive<sp/>buffer<sp/>empty</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a62c2571e244067bcd6d45dc89d45e4b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a62c2571e244067bcd6d45dc89d45e4b2" kindref="member">UART_ERROR_TIMEOUT</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Operation<sp/>timeout</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2aab0d25ae60a715cab154d889092fba90" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2aab0d25ae60a715cab154d889092fba90" kindref="member">UART_ERROR_NOT_INITIALIZED</ref><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>UART<sp/>not<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CONFIGURATION<sp/>CONSTANTS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="d2/d86/uart_8h_1a67405a6e6e4427b2fb7ca73182212bf1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_DEFAULT_BAUD<sp/><sp/><sp/><sp/><sp/><sp/><sp/>115200<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Default<sp/>baud<sp/>rate<sp/>for<sp/>MODBUS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="d2/d86/uart_8h_1aca2271fbb6e29e7fff7c92b30defa089" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_MIN_BAUD<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>9600<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Minimum<sp/>supported<sp/>baud<sp/>rate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="d2/d86/uart_8h_1aa0394fc6f4ab8e23d754833bff3a0c72" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_MAX_BAUD<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>230400<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Maximum<sp/>supported<sp/>baud<sp/>rate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="d2/d86/uart_8h_1a05f5d709605c6317c97e4974bec3402a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_TX_BUFFER_SIZE<sp/><sp/><sp/><sp/><sp/>256<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Transmit<sp/>buffer<sp/>size</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="d2/d86/uart_8h_1a5bdd6772c246436bb14377095de79b31" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_RX_BUFFER_SIZE<sp/><sp/><sp/><sp/><sp/>256<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Receive<sp/>buffer<sp/>size</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="d2/d86/uart_8h_1a6bfddf84ea47d906536cc8ffcc9dd5cc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_TIMEOUT_MS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1000<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Default<sp/>timeout<sp/>(1<sp/>second)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="d2/d86/uart_8h_1afe774ce5bc34a94e73118a8692cccc2f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_CHAR_TIMEOUT_MS<sp/><sp/><sp/><sp/>10<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Character<sp/>timeout<sp/>for<sp/>MODBUS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MODBUS<sp/>RTU<sp/>timing<sp/>requirements<sp/>(at<sp/>115200<sp/>baud)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="d2/d86/uart_8h_1a3e078d838f7350973300002eeb3006a5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_MODBUS_T1_5_US<sp/><sp/><sp/><sp/><sp/>130<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>1.5<sp/>character<sp/>time<sp/>(μs)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="d2/d86/uart_8h_1a93535c98d400695ea6330bd51843e4e6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_MODBUS_T3_5_US<sp/><sp/><sp/><sp/><sp/>304<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>3.5<sp/>character<sp/>time<sp/>(μs)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PUBLIC<sp/>INTERFACE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1a291c562f366dda51665637a2d8cc8447" kindref="member">uart_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1aa933dceadce526b41a736197e3093005" kindref="member">uart_init_config</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d1/dce/structuart__config__t" kindref="compound">uart_config_t</ref>*<sp/>config);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1ad94b530602f07127f460511015915700" kindref="member">uart_set_baud_rate</ref>(uint32_t<sp/>baud_rate);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1aa76cf405135227baee4370fa3707d3c8" kindref="member">uart_send_byte</ref>(uint8_t<sp/>data);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1aa5e3b4f3521be702d022ceb3bc1fe56e" kindref="member">uart_receive_byte</ref>(uint8_t*<sp/>data);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1a40c5f34c4b43d068db84cd9afa24bc89" kindref="member">uart_data_available</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>available);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1a8c78732609067ae2bd35ef44120aa6d7" kindref="member">uart_get_rx_count</ref>(uint16_t*<sp/>count);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1aae390a43a1728bf2f345bfb1ac2e0ede" kindref="member">uart_send_buffer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/>buffer,<sp/>uint16_t<sp/>length);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1a39e1c2f3baa35c209847b249e9cdb49c" kindref="member">uart_receive_buffer</ref>(uint8_t*<sp/>buffer,<sp/>uint16_t<sp/>max_length,<sp/>uint16_t*<sp/>received);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1aca0ce44bb4b9fedc156ffd006bccbc95" kindref="member">uart_flush_tx</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1aa0ba1394c3e54d2bba6d501db9ee7660" kindref="member">uart_flush_rx</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MODBUS<sp/>RTU<sp/>SPECIFIC<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1a2b8b8eea4fec91f6fd7c6773f4d08511" kindref="member">uart_send_modbus_frame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/>frame,<sp/>uint16_t<sp/>length);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1a0b8696fe9a133f2130d7fb795d19273f" kindref="member">uart_receive_modbus_frame</ref>(uint8_t*<sp/>frame,<sp/>uint16_t<sp/>max_length,<sp/></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t*<sp/>received,<sp/>uint32_t<sp/>timeout_ms);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1ae6f8e525675dfbc78c5c44a9298b1beb" kindref="member">uart_modbus_gap_detected</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>gap_detected);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1ae8fefb7831fe3654b5fae24f5978bf3d" kindref="member">uart_get_idle_time</ref>(uint32_t*<sp/>time_us);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight><highlight class="comment">//<sp/>DIAGNOSTIC<sp/>AND<sp/>STATUS<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1a5d553ac4c4d446e97d254c655e0d12cf" kindref="member">uart_get_status</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/><ref refid="db/d23/uart_8cpp_1a8b9682c4c0897c35f9e60b20e473210d" kindref="member">tx_busy</ref>,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/><ref refid="db/d23/uart_8cpp_1a854e3e6c9be5a2748e88235db8274c03" kindref="member">rx_overflow</ref>,<sp/></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/><ref refid="db/d23/uart_8cpp_1a2e7fe25823c47c43b987be6cf4275282" kindref="member">frame_error</ref>,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/><ref refid="db/d23/uart_8cpp_1a024ae533cc0baf8b1dba9f83f10a714c" kindref="member">parity_error</ref>);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1a77f2f49b95f115fcb9e2be99657c9c75" kindref="member">uart_get_tx_free</ref>(uint16_t*<sp/>free_bytes);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1a79ad1801b886ffa306c7c27e2a2cc80f" kindref="member">uart_clear_errors</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1ab32630c96ee1ca5d2533ead0a41cb5cc" kindref="member">uart_get_char_time</ref>(uint16_t*<sp/><ref refid="db/d23/uart_8cpp_1a8eef656f756f781fd823edd1df257b04" kindref="member">char_time_us</ref>);</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/><ref refid="d2/d86/uart_8h_1a5af63458c33759ed51ed861621a87cce" kindref="member">uart_test_loopback</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>success);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>HAL_UART_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/modules/hal/uart.h"/>
+  </compounddef>
+</doxygen>

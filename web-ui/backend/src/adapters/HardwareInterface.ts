@@ -363,7 +363,7 @@ try:
 
                 if cmd["type"] == "ping":
                     response = hil.send_command("PING")
-                    print(json.dumps({"type": "response", "data": response}))
+                    print(json.dumps({"type": "response", "data": response, "command_type": "ping"}))
 
                 elif cmd["type"] == "command":
                     # Handle generic commands from the API
@@ -372,19 +372,19 @@ try:
 
                     if command == "ping":
                         response = hil.send_command("PING")
-                        print(json.dumps({"type": "response", "data": response}))
+                        print(json.dumps({"type": "response", "data": response, "command_type": "ping"}))
 
                     elif command == "set_frequency" and len(args) >= 2:
                         signal = args[0]
                         frequency_hz = args[1]
                         response = hil.send_command(f"SET_FREQUENCY {signal} {frequency_hz}")
-                        print(json.dumps({"type": "response", "data": response}))
+                        print(json.dumps({"type": "response", "data": response, "command_type": "set_frequency"}))
 
                     elif command == "write_pin" and len(args) >= 2:
                         signal = args[0]
                         state = args[1]
                         response = hil.send_command(f"WRITE_PIN {signal} {state}")
-                        print(json.dumps({"type": "response", "data": response}))
+                        print(json.dumps({"type": "response", "data": response, "command_type": "write_pin"}))
 
                     elif command == "read_pin" and len(args) >= 1:
                         signal = args[0]
@@ -395,7 +395,7 @@ try:
                         # Generic command
                         cmd_str = f"{command} {' '.join(args)}" if args else command
                         response = hil.send_command(cmd_str)
-                        print(json.dumps({"type": "response", "data": response}))
+                        print(json.dumps({"type": "response", "data": response, "command_type": command}))
 
                 elif cmd["type"] == "pin_read":
                     pin = cmd["pin"]
@@ -511,7 +511,7 @@ except Exception as e:
           direction: 'received',
           data: message.data,
           timestamp: Date.now(),
-          type: 'response'
+          type: message.command_type || 'response'
         })
         this.emit('command_response', message.data)
         break

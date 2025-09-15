@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="da/d58/deprecated" kind="page">
+    <compoundname>deprecated</compoundname>
+    <title>Deprecated List</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term>Member <ref refid="dd/dce/class_sonicator_interface_1a3bd70bd4d174b9e24383c4a21a0b1e36" kindref="member">SonicatorInterface::getAmplitude</ref>  () const</term></varlistentry>
+<listitem><para><anchor id="da/d58/deprecated_1_deprecated000004"/>Use <ref refid="dd/dce/class_sonicator_interface_1af6490bba00931c9bb3079785996553f3" kindref="member">getCurrentAmplitude()</ref> instead for consistency  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="dd/dce/class_sonicator_interface_1ae9dd37de6a2aa741f00270b5233de82d" kindref="member">SonicatorInterface::getFrequency</ref>  () const</term></varlistentry>
+<listitem><para><anchor id="da/d58/deprecated_1_deprecated000003"/>Use <ref refid="dd/dce/class_sonicator_interface_1aaad4d3d53e2ed8c6f1012e7d7cff7f57" kindref="member">getCurrentFrequency()</ref> instead for consistency  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="dd/dce/class_sonicator_interface_1a32fcd1cd39c0242443fad9d717f388e0" kindref="member">SonicatorInterface::setAmplitudeLegacy</ref>  (uint8_t amplitude)</term></varlistentry>
+<listitem><para><anchor id="da/d58/deprecated_1_deprecated000005"/>Use <ref refid="dd/dce/class_sonicator_interface_1a6cd65bcdb1ff7fcb24544ab9febcdf08" kindref="member">setAmplitude()</ref> instead for better error handling  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="dd/dce/class_sonicator_interface_1adb08014dcad992cdd386f4e8de5220dc" kindref="member">SonicatorInterface::setFrequency</ref>  (int frequency)</term></varlistentry>
+<listitem><para><anchor id="da/d58/deprecated_1_deprecated000006"/>CT2000 frequency is read-only and cannot be set  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="dd/dce/class_sonicator_interface_1ab280f266432621a0d585235f3e1610c3" kindref="member">SonicatorInterface::start</ref>  ()</term></varlistentry>
+<listitem><para><anchor id="da/d58/deprecated_1_deprecated000001"/>Use <ref refid="dd/dce/class_sonicator_interface_1ae76f9d2b29475476cbf03ad93d0673ba" kindref="member">startSonication()</ref> instead for better error handling  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="dd/dce/class_sonicator_interface_1a54b625277a171d4b84634f3771369648" kindref="member">SonicatorInterface::stop</ref>  ()</term></varlistentry>
+<listitem><para><anchor id="da/d58/deprecated_1_deprecated000002"/>Use <ref refid="dd/dce/class_sonicator_interface_1a2183503a913727e97aa7bf9ceaae3817" kindref="member">stopSonication()</ref> instead for better error handling </para>
+</listitem>
+</variablelist>
+</para>
+    </detaileddescription>
+    <location file="da/d58/deprecated"/>
+  </compounddef>
+</doxygen>

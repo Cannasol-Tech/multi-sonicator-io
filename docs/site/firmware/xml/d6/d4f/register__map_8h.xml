@@ -1,0 +1,308 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d6/d4f/register__map_8h" kind="file" language="C++">
+    <compoundname>register_map.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes refid="d4/d9a/modbus__registers_8h" local="yes">modules/communication/modbus_registers.h</includes>
+    <includedby refid="df/d0a/main_8cpp" local="yes">src/main.cpp</includedby>
+    <includedby refid="d2/dbc/sonicator4__controller_8h" local="yes">src/modules/control/sonicator4_controller.h</includedby>
+    <includedby refid="d5/dea/sonicator__modbus__bridge_8cpp" local="yes">src/modules/control/sonicator_modbus_bridge.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/register_map.h</label>
+        <link refid="d6/d4f/register__map_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>modules/communication/modbus_registers.h</label>
+        <link refid="d4/d9a/modbus__registers_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>include/register_map.h</label>
+        <link refid="d6/d4f/register__map_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/main.cpp</label>
+        <link refid="df/d0a/main_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/modules/control/sonicator4_controller.h</label>
+        <link refid="d2/dbc/sonicator4__controller_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/modules/control/sonicator_modbus_bridge.cpp</label>
+        <link refid="d5/dea/sonicator__modbus__bridge_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726" prot="public" static="no" strong="no">
+        <type></type>
+        <name>register_address_t</name>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a393a07480d822d7e5511f3925ba418c6" prot="public">
+          <name>REG_SYSTEM_STATUS</name>
+          <initializer>= MODBUS_REG_SYSTEM_STATUS</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726af028b8847956e409e7f4121747edc69b" prot="public">
+          <name>REG_ACTIVE_COUNT</name>
+          <initializer>= MODBUS_REG_ACTIVE_COUNT</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726ad88b2cdc35bf7cf6e5a225d4930de9f2" prot="public">
+          <name>REG_ACTIVE_MASK</name>
+          <initializer>= MODBUS_REG_ACTIVE_MASK</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a3140d8e36831e5f03eeb6652bf192a14" prot="public">
+          <name>REG_WATCHDOG_STATUS</name>
+          <initializer>= MODBUS_REG_WATCHDOG_STATUS</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a48f53dadf9ce1fd04313a0a42c366f2c" prot="public">
+          <name>REG_COMM_ERRORS</name>
+          <initializer>= MODBUS_REG_COMM_ERRORS</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a20784c4f196d00b965d2c14c26fe952b" prot="public">
+          <name>REG_PREV_ACTIVE_MASK</name>
+          <initializer>= 0x0005</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a542c4715169cae5ae165287b8c576771" prot="public">
+          <name>REG_LAST_SHUTDOWN_REASON</name>
+          <initializer>= 0x0006</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a32434d3f39c14b8553fdc073cd216ad5" prot="public">
+          <name>REG_GLOBAL_ENABLE</name>
+          <initializer>= MODBUS_REG_GLOBAL_ENABLE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a757fe24c8ee4b5a0456907279a8e2f34" prot="public">
+          <name>REG_EMERGENCY_STOP</name>
+          <initializer>= MODBUS_REG_EMERGENCY_STOP</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726adfcf9de3f62294a4af156b322d779332" prot="public">
+          <name>REG_SYSTEM_RESET</name>
+          <initializer>= MODBUS_REG_SYSTEM_RESET</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726aa7a1febf73d0599107ee120e1b91318f" prot="public">
+          <name>REG_SON4_START_STOP</name>
+          <initializer>= SONICATOR_REG_ADDR(3, MODBUS_REG_SON_START_STOP)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726ac8758e2fbf2279b73ea43f8b84b64135" prot="public">
+          <name>REG_SON4_AMPLITUDE_SP</name>
+          <initializer>= SONICATOR_REG_ADDR(3, MODBUS_REG_SON_AMPLITUDE_SP)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a306f383a86476107500862b9f599d2e0" prot="public">
+          <name>REG_SON4_OVERLOAD_RESET</name>
+          <initializer>= SONICATOR_REG_ADDR(3, MODBUS_REG_SON_OVERLOAD_RESET)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a74eedecc86a03bec1faab1e15f93362f" prot="public">
+          <name>REG_SON4_POWER_WATTS</name>
+          <initializer>= SONICATOR_REG_ADDR(3, MODBUS_REG_SON_POWER_WATTS)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a6ebe000dae6bcc9527d5305af861cd8b" prot="public">
+          <name>REG_SON4_FREQUENCY_HZ</name>
+          <initializer>= SONICATOR_REG_ADDR(3, MODBUS_REG_SON_FREQUENCY_HZ)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726adf98f2cd5aa5d6dd842c50710fa0cf5e" prot="public">
+          <name>REG_SON4_STATUS_FLAGS</name>
+          <initializer>= SONICATOR_REG_ADDR(3, MODBUS_REG_SON_STATUS_FLAGS)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a6b2d4a01b3e96ed180f5568f37186350" prot="public">
+          <name>REG_SON4_AMPLITUDE_ACT</name>
+          <initializer>= SONICATOR_REG_ADDR(3, MODBUS_REG_SON_AMPLITUDE_ACT)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726aa011f93fcd063c1c4078c13221c03ab8" prot="public">
+          <name>REG_SON4_PREV_STATE</name>
+          <initializer>= SONICATOR_REG_ADDR(3, 0x14)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a1d9757d7efc55de1d629ed355c7a0ac6" prot="public">
+          <name>REG_SON4_PERSISTED_AMPLITUDE</name>
+          <initializer>= SONICATOR_REG_ADDR(3, 0x15)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726ab4fca97745804aadb2a8324271aa5d12" prot="public">
+          <name>REG_SON4_LAST_FAULT_CODE</name>
+          <initializer>= SONICATOR_REG_ADDR(3, 0x16)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a7e6d85905dd8d47c7932f60bc433a2fd" prot="public">
+          <name>REG_SON4_LAST_STATE_TIMESTAMP_LO</name>
+          <initializer>= SONICATOR_REG_ADDR(3, 0x17)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Canonical register addresses. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Notes:<itemizedlist>
+<listitem><para>Sonicator IDs in <ref refid="d4/d9a/modbus__registers_8h_1a49d5030e372b350d95c6a27f6a31e20a" kindref="member">SONICATOR_REG_ADDR()</ref> are zero-based (0..31).</para>
+</listitem><listitem><para>Unit 4 (per pin-matrix) corresponds to sonicator_id = 3. </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/register_map.h" line="31" column="1" bodyfile="include/register_map.h" bodystart="31" bodyend="64"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Single source-of-truth register address enumeration for MODBUS map. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Cannasol Technologies </para>
+</simplesect>
+<simplesect kind="date"><para>2025-09-03</para>
+</simplesect>
+Defines canonical register address names that align with <ref refid="d4/d9a/modbus__registers_8h" kindref="compound">modbus_registers.h</ref> macros. Prefer using these names across firmware and tests so addressing stays consistent. Unused addresses may be reserved as REG_UNUSED_XXXX enumerators to avoid collisions and keep layout explicit. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>REGISTER_MAP_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REGISTER_MAP_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d4/d9a/modbus__registers_8h" kindref="compound">modules/communication/modbus_registers.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>System<sp/>Status<sp/>(0x0000-0x000F)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a393a07480d822d7e5511f3925ba418c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d16/config_8h_1ae36580ffdad83a0e90856c127cc1a825" kindref="member">REG_SYSTEM_STATUS</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a3d519f60d2e7f2d390a0bd88d101ef37" kindref="member">MODBUS_REG_SYSTEM_STATUS</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>0x0000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726af028b8847956e409e7f4121747edc69b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726af028b8847956e409e7f4121747edc69b" kindref="member">REG_ACTIVE_COUNT</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a2115aee3113810de73e72a058650a448" kindref="member">MODBUS_REG_ACTIVE_COUNT</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>0x0001</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726ad88b2cdc35bf7cf6e5a225d4930de9f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726ad88b2cdc35bf7cf6e5a225d4930de9f2" kindref="member">REG_ACTIVE_MASK</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a5c8c455a1b2ee4d7473a97f28d93b35a" kindref="member">MODBUS_REG_ACTIVE_MASK</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>0x0002</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a3140d8e36831e5f03eeb6652bf192a14" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a3140d8e36831e5f03eeb6652bf192a14" kindref="member">REG_WATCHDOG_STATUS</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a5d98f6211954dace5b619cc5e7456f29" kindref="member">MODBUS_REG_WATCHDOG_STATUS</ref>,<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>0x0003</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a48f53dadf9ce1fd04313a0a42c366f2c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a48f53dadf9ce1fd04313a0a42c366f2c" kindref="member">REG_COMM_ERRORS</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1aa21406ad744f6687fee12a0879e4cc53" kindref="member">MODBUS_REG_COMM_ERRORS</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>0x0004</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a20784c4f196d00b965d2c14c26fe952b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a20784c4f196d00b965d2c14c26fe952b" kindref="member">REG_PREV_ACTIVE_MASK</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>0x0005,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>0x0005</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a542c4715169cae5ae165287b8c576771" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a542c4715169cae5ae165287b8c576771" kindref="member">REG_LAST_SHUTDOWN_REASON</ref><sp/>=<sp/>0x0006,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>0x0006</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Global<sp/>Control<sp/>(0x0010-0x001F)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a32434d3f39c14b8553fdc073cd216ad5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a32434d3f39c14b8553fdc073cd216ad5" kindref="member">REG_GLOBAL_ENABLE</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1aa7bc9f873d93d522cb31d1ab66400555" kindref="member">MODBUS_REG_GLOBAL_ENABLE</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>0x0010</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a757fe24c8ee4b5a0456907279a8e2f34" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d16/config_8h_1a50cb00113c414208697557330319e0db" kindref="member">REG_EMERGENCY_STOP</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a5f7977d9e3f6247551f1eae1b0c6abab" kindref="member">MODBUS_REG_EMERGENCY_STOP</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>0x0011</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726adfcf9de3f62294a4af156b322d779332" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726adfcf9de3f62294a4af156b322d779332" kindref="member">REG_SYSTEM_RESET</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a46b469407a45b72338274b8f7d532728" kindref="member">MODBUS_REG_SYSTEM_RESET</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>0x0012</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Sonicator<sp/>4<sp/>(id=3)<sp/>Control<sp/>(0x0160-0x016F)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726aa7a1febf73d0599107ee120e1b91318f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726aa7a1febf73d0599107ee120e1b91318f" kindref="member">REG_SON4_START_STOP</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a49d5030e372b350d95c6a27f6a31e20a" kindref="member">SONICATOR_REG_ADDR</ref>(3,<sp/><ref refid="d4/d9a/modbus__registers_8h_1a7c0241be1c209f82af3c322fc38a3e7d" kindref="member">MODBUS_REG_SON_START_STOP</ref>),<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>0x0160</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726ac8758e2fbf2279b73ea43f8b84b64135" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726ac8758e2fbf2279b73ea43f8b84b64135" kindref="member">REG_SON4_AMPLITUDE_SP</ref><sp/><sp/><sp/><sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a49d5030e372b350d95c6a27f6a31e20a" kindref="member">SONICATOR_REG_ADDR</ref>(3,<sp/><ref refid="d4/d9a/modbus__registers_8h_1ad8a4a9a42107369ac7cf03b200161313" kindref="member">MODBUS_REG_SON_AMPLITUDE_SP</ref>),<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>0x0161</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a306f383a86476107500862b9f599d2e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a306f383a86476107500862b9f599d2e0" kindref="member">REG_SON4_OVERLOAD_RESET</ref><sp/><sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a49d5030e372b350d95c6a27f6a31e20a" kindref="member">SONICATOR_REG_ADDR</ref>(3,<sp/><ref refid="d4/d9a/modbus__registers_8h_1a38632a2131745a67e303c3f41e22109d" kindref="member">MODBUS_REG_SON_OVERLOAD_RESET</ref>),<sp/></highlight><highlight class="comment">//&lt;<sp/>0x0162</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Sonicator<sp/>4<sp/>(id=3)<sp/>Status<sp/>(0x0170-0x017F)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a74eedecc86a03bec1faab1e15f93362f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a74eedecc86a03bec1faab1e15f93362f" kindref="member">REG_SON4_POWER_WATTS</ref><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a49d5030e372b350d95c6a27f6a31e20a" kindref="member">SONICATOR_REG_ADDR</ref>(3,<sp/><ref refid="d4/d9a/modbus__registers_8h_1a5527310f6050f7e85dcbd02fea85807e" kindref="member">MODBUS_REG_SON_POWER_WATTS</ref>),<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>0x0170</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a6ebe000dae6bcc9527d5305af861cd8b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a6ebe000dae6bcc9527d5305af861cd8b" kindref="member">REG_SON4_FREQUENCY_HZ</ref><sp/><sp/><sp/><sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a49d5030e372b350d95c6a27f6a31e20a" kindref="member">SONICATOR_REG_ADDR</ref>(3,<sp/><ref refid="d4/d9a/modbus__registers_8h_1a187c620d72d0d99d07caab4efb343c25" kindref="member">MODBUS_REG_SON_FREQUENCY_HZ</ref>),<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>0x0171</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726adf98f2cd5aa5d6dd842c50710fa0cf5e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726adf98f2cd5aa5d6dd842c50710fa0cf5e" kindref="member">REG_SON4_STATUS_FLAGS</ref><sp/><sp/><sp/><sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a49d5030e372b350d95c6a27f6a31e20a" kindref="member">SONICATOR_REG_ADDR</ref>(3,<sp/><ref refid="d4/d9a/modbus__registers_8h_1a41c1b53b90b4e3da150f009019a25e84" kindref="member">MODBUS_REG_SON_STATUS_FLAGS</ref>),<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>0x0172</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a6b2d4a01b3e96ed180f5568f37186350" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a6b2d4a01b3e96ed180f5568f37186350" kindref="member">REG_SON4_AMPLITUDE_ACT</ref><sp/><sp/><sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a49d5030e372b350d95c6a27f6a31e20a" kindref="member">SONICATOR_REG_ADDR</ref>(3,<sp/><ref refid="d4/d9a/modbus__registers_8h_1a9367fb952a1aa616a0054ee6e262836a" kindref="member">MODBUS_REG_SON_AMPLITUDE_ACT</ref>),<sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>0x0173</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726aa011f93fcd063c1c4078c13221c03ab8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726aa011f93fcd063c1c4078c13221c03ab8" kindref="member">REG_SON4_PREV_STATE</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a49d5030e372b350d95c6a27f6a31e20a" kindref="member">SONICATOR_REG_ADDR</ref>(3,<sp/>0x14),<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>0x0174</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a1d9757d7efc55de1d629ed355c7a0ac6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a1d9757d7efc55de1d629ed355c7a0ac6" kindref="member">REG_SON4_PERSISTED_AMPLITUDE</ref><sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a49d5030e372b350d95c6a27f6a31e20a" kindref="member">SONICATOR_REG_ADDR</ref>(3,<sp/>0x15),<sp/></highlight><highlight class="comment">//&lt;<sp/>0x0175</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726ab4fca97745804aadb2a8324271aa5d12" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726ab4fca97745804aadb2a8324271aa5d12" kindref="member">REG_SON4_LAST_FAULT_CODE</ref><sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a49d5030e372b350d95c6a27f6a31e20a" kindref="member">SONICATOR_REG_ADDR</ref>(3,<sp/>0x16),<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>0x0176</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a7e6d85905dd8d47c7932f60bc433a2fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726a7e6d85905dd8d47c7932f60bc433a2fd" kindref="member">REG_SON4_LAST_STATE_TIMESTAMP_LO</ref><sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a49d5030e372b350d95c6a27f6a31e20a" kindref="member">SONICATOR_REG_ADDR</ref>(3,<sp/>0x17),<sp/></highlight><highlight class="comment">//&lt;<sp/>0x0177</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Example<sp/>placeholders<sp/>for<sp/>gaps<sp/>(reserve<sp/>explicitly<sp/>as<sp/>needed)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>REG_UNUSED_0005<sp/>=<sp/>0x0005,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>REG_UNUSED_0006<sp/>=<sp/>0x0006,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}<sp/><ref refid="d6/d4f/register__map_8h_1aa5f2b4cc60075063f2a61ef2dbcff726" kindref="member">register_address_t</ref>;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>REGISTER_MAP_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/register_map.h"/>
+  </compounddef>
+</doxygen>

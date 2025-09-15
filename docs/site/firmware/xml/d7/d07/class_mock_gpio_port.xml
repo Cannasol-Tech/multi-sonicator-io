@@ -1,0 +1,544 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d7/d07/class_mock_gpio_port" kind="class" language="C++" prot="public">
+    <compoundname>MockGpioPort</compoundname>
+    <basecompoundref refid="d4/d45/class_i_gpio_port" prot="public" virt="non-virtual">IGpioPort</basecompoundref>
+    <includes refid="d6/d83/hal__mock__factory_8h" local="no">hal_mock_factory.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d7/d07/class_mock_gpio_port_1abe351df7473a1667815687f10fa2b869" prot="private" static="no" mutable="no">
+        <type>std::map&lt; uint8_t, uint8_t &gt;</type>
+        <definition>std::map&lt;uint8_t, uint8_t&gt; MockGpioPort::pin_modes</definition>
+        <argsstring></argsstring>
+        <name>pin_modes</name>
+        <qualifiedname>MockGpioPort::pin_modes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="31" column="14" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/d07/class_mock_gpio_port_1abae4307c4ef4e4f927500a4cc42c4fa4" prot="private" static="no" mutable="no">
+        <type>std::map&lt; uint8_t, uint8_t &gt;</type>
+        <definition>std::map&lt;uint8_t, uint8_t&gt; MockGpioPort::pin_states</definition>
+        <argsstring></argsstring>
+        <name>pin_states</name>
+        <qualifiedname>MockGpioPort::pin_states</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="32" column="14" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/d07/class_mock_gpio_port_1a07498279343e2b98d575114ff4f4eb03" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::pair&lt; uint8_t, uint8_t &gt; &gt;</type>
+        <definition>std::vector&lt;std::pair&lt;uint8_t, uint8_t&gt; &gt; MockGpioPort::write_history</definition>
+        <argsstring></argsstring>
+        <name>write_history</name>
+        <qualifiedname>MockGpioPort::write_history</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="33" column="17" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/d07/class_mock_gpio_port_1a49089ab76018f9f10718b552cd279692" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool MockGpioPort::initialized</definition>
+        <argsstring></argsstring>
+        <name>initialized</name>
+        <qualifiedname>MockGpioPort::initialized</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="34" column="10" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/d07/class_mock_gpio_port_1ad1b64713bdc730c6864fed4f0f147bd3" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t MockGpioPort::error_pin</definition>
+        <argsstring></argsstring>
+        <name>error_pin</name>
+        <qualifiedname>MockGpioPort::error_pin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="35" column="13" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1a5ea5234151bacb3474e32c21a6349ddd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>MockGpioPort::MockGpioPort</definition>
+        <argsstring>()</argsstring>
+        <name>MockGpioPort</name>
+        <qualifiedname>MockGpioPort::MockGpioPort</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="38" column="5" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="38" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1a2eb5720f07654fb082c1265a29bf3cf2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool MockGpioPort::init</definition>
+        <argsstring>(void) override</argsstring>
+        <name>init</name>
+        <qualifiedname>MockGpioPort::init</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a60c1a7430f3e5bae47f5c62130ab989a">init</reimplements>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="41" column="10" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="41" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1abb0bf775a8c86b8341956caf03a3c165" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool MockGpioPort::setPinMode</definition>
+        <argsstring>(uint8_t pin, uint8_t mode) override</argsstring>
+        <name>setPinMode</name>
+        <qualifiedname>MockGpioPort::setPinMode</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1ac9d71023f4ce28da95f68c4c9df4dab0">setPinMode</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="46" column="10" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="46" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1a07787ad41b1c15f3c5a3d99c320b24f6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool MockGpioPort::digitalWrite</definition>
+        <argsstring>(uint8_t pin, uint8_t value) override</argsstring>
+        <name>digitalWrite</name>
+        <qualifiedname>MockGpioPort::digitalWrite</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1add58b07a6da42c6bcbd986f4507da15a">digitalWrite</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="52" column="10" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="52" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1ad350f07fabe443e0fa532dd10a779dd5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t MockGpioPort::digitalRead</definition>
+        <argsstring>(uint8_t pin) override</argsstring>
+        <name>digitalRead</name>
+        <qualifiedname>MockGpioPort::digitalRead</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a1f9e986f6414805bc3ad867e251af024">digitalRead</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="59" column="13" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="59" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1a91a1bd309b32c83cadb0e41d74264ae2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool MockGpioPort::togglePin</definition>
+        <argsstring>(uint8_t pin) override</argsstring>
+        <name>togglePin</name>
+        <qualifiedname>MockGpioPort::togglePin</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a23039e24be8f75e22b60cfe17d91b1cc">togglePin</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="64" column="10" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="64" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1a70d1fd52c67968e8c24740c793c96e1a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool MockGpioPort::sonicatorStart</definition>
+        <argsstring>(uint8_t sonicator_id) override</argsstring>
+        <name>sonicatorStart</name>
+        <qualifiedname>MockGpioPort::sonicatorStart</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a2d1b5a7f40485ffbce7eaf966e5068eb">sonicatorStart</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="71" column="10" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="71" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1a85df89de507fee86b7e71db42289a328" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool MockGpioPort::sonicatorStop</definition>
+        <argsstring>(uint8_t sonicator_id) override</argsstring>
+        <name>sonicatorStop</name>
+        <qualifiedname>MockGpioPort::sonicatorStop</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a01cc2219c0d670eded2410efcc41eb73">sonicatorStop</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="75" column="10" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="75" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1a07c9e8661d4ed4c372dd26e177682f2b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool MockGpioPort::sonicatorReset</definition>
+        <argsstring>(uint8_t sonicator_id) override</argsstring>
+        <name>sonicatorReset</name>
+        <qualifiedname>MockGpioPort::sonicatorReset</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a6b753a07382868258b938d839dddaaeb">sonicatorReset</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="79" column="10" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="79" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1a20b83addc28c3f42e61c13f1dc3ffa02" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool MockGpioPort::sonicatorReadOverload</definition>
+        <argsstring>(uint8_t sonicator_id, bool *state) override</argsstring>
+        <name>sonicatorReadOverload</name>
+        <qualifiedname>MockGpioPort::sonicatorReadOverload</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1ac449ea85a3924a8aa7a7a03afe092a76">sonicatorReadOverload</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="83" column="10" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="83" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1a8ac345a28dc8a7326cf311790dad7d7d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool MockGpioPort::sonicatorReadFreqLock</definition>
+        <argsstring>(uint8_t sonicator_id, bool *state) override</argsstring>
+        <name>sonicatorReadFreqLock</name>
+        <qualifiedname>MockGpioPort::sonicatorReadFreqLock</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1ac98cefcacbe7cfd43bf5cf28d8dee833">sonicatorReadFreqLock</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="89" column="10" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="89" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1ad95e5c8a45538a81beedd042f9d3f4db" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool MockGpioPort::statusLed</definition>
+        <argsstring>(bool state) override</argsstring>
+        <name>statusLed</name>
+        <qualifiedname>MockGpioPort::statusLed</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a77a29641b3e8f4e58d5741483a1bfc89">statusLed</reimplements>
+        <param>
+          <type>bool</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="95" column="10" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="95" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1a34e08c917478658390ffacd042e61243" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void MockGpioPort::setReadValue</definition>
+        <argsstring>(uint8_t pin, uint8_t value)</argsstring>
+        <name>setReadValue</name>
+        <qualifiedname>MockGpioPort::setReadValue</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="100" column="10" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="100" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1a9426a5b6c5e58dd735d43a8bbafd9e27" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool MockGpioPort::wasWritten</definition>
+        <argsstring>(uint8_t pin, uint8_t value)</argsstring>
+        <name>wasWritten</name>
+        <qualifiedname>MockGpioPort::wasWritten</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="104" column="10" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="104" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1a82bd5503f655e2521d6105767d82371a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void MockGpioPort::setErrorPin</definition>
+        <argsstring>(uint8_t pin)</argsstring>
+        <name>setErrorPin</name>
+        <qualifiedname>MockGpioPort::setErrorPin</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="113" column="10" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="113" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1a490aed1db447610a83161feef2eb2570" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void MockGpioPort::clearErrorPin</definition>
+        <argsstring>()</argsstring>
+        <name>clearErrorPin</name>
+        <qualifiedname>MockGpioPort::clearErrorPin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="114" column="10" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="114" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1a14eb1507e34430ebe65dad6c0eb1b192" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void MockGpioPort::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <qualifiedname>MockGpioPort::reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="116" column="10" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="116" bodyend="122"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1aad1330b0934402f98157994025e8df7a" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t MockGpioPort::getSonicatorStartPin</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>getSonicatorStartPin</name>
+        <qualifiedname>MockGpioPort::getSonicatorStartPin</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="125" column="13" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="125" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1ae60ca557dc096dd4e065369687395be2" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t MockGpioPort::getSonicatorResetPin</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>getSonicatorResetPin</name>
+        <qualifiedname>MockGpioPort::getSonicatorResetPin</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="136" column="13" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="136" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1a9a19591938bbfeb718efb3bc4a61fa47" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t MockGpioPort::getSonicatorOverloadPin</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>getSonicatorOverloadPin</name>
+        <qualifiedname>MockGpioPort::getSonicatorOverloadPin</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="147" column="13" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="147" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d07/class_mock_gpio_port_1a982c51d09a6652dfc86b86bb385467d0" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t MockGpioPort::getSonicatorFreqLockPin</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>getSonicatorFreqLockPin</name>
+        <qualifiedname>MockGpioPort::getSonicatorFreqLockPin</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="158" column="13" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="158" bodyend="167"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Mock GPIO implementation for testing. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Following mock patterns from unity-testing-guide.md with state tracking and verification helpers. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>IGpioPort</label>
+        <link refid="d4/d45/class_i_gpio_port"/>
+      </node>
+      <node id="1">
+        <label>MockGpioPort</label>
+        <link refid="d7/d07/class_mock_gpio_port"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>IGpioPort</label>
+        <link refid="d4/d45/class_i_gpio_port"/>
+      </node>
+      <node id="1">
+        <label>MockGpioPort</label>
+        <link refid="d7/d07/class_mock_gpio_port"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/modules/hal/hal_mock_factory.h" line="29" column="1" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="29" bodyend="168"/>
+    <listofallmembers>
+      <member refid="d7/d07/class_mock_gpio_port_1a490aed1db447610a83161feef2eb2570" prot="public" virt="non-virtual"><scope>MockGpioPort</scope><name>clearErrorPin</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1ad350f07fabe443e0fa532dd10a779dd5" prot="public" virt="virtual"><scope>MockGpioPort</scope><name>digitalRead</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1a07787ad41b1c15f3c5a3d99c320b24f6" prot="public" virt="virtual"><scope>MockGpioPort</scope><name>digitalWrite</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1ad1b64713bdc730c6864fed4f0f147bd3" prot="private" virt="non-virtual"><scope>MockGpioPort</scope><name>error_pin</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1a982c51d09a6652dfc86b86bb385467d0" prot="private" virt="non-virtual"><scope>MockGpioPort</scope><name>getSonicatorFreqLockPin</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1a9a19591938bbfeb718efb3bc4a61fa47" prot="private" virt="non-virtual"><scope>MockGpioPort</scope><name>getSonicatorOverloadPin</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1ae60ca557dc096dd4e065369687395be2" prot="private" virt="non-virtual"><scope>MockGpioPort</scope><name>getSonicatorResetPin</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1aad1330b0934402f98157994025e8df7a" prot="private" virt="non-virtual"><scope>MockGpioPort</scope><name>getSonicatorStartPin</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1a2eb5720f07654fb082c1265a29bf3cf2" prot="public" virt="virtual"><scope>MockGpioPort</scope><name>init</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1a49089ab76018f9f10718b552cd279692" prot="private" virt="non-virtual"><scope>MockGpioPort</scope><name>initialized</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1a5ea5234151bacb3474e32c21a6349ddd" prot="public" virt="non-virtual"><scope>MockGpioPort</scope><name>MockGpioPort</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1abe351df7473a1667815687f10fa2b869" prot="private" virt="non-virtual"><scope>MockGpioPort</scope><name>pin_modes</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1abae4307c4ef4e4f927500a4cc42c4fa4" prot="private" virt="non-virtual"><scope>MockGpioPort</scope><name>pin_states</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1a14eb1507e34430ebe65dad6c0eb1b192" prot="public" virt="non-virtual"><scope>MockGpioPort</scope><name>reset</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1a82bd5503f655e2521d6105767d82371a" prot="public" virt="non-virtual"><scope>MockGpioPort</scope><name>setErrorPin</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1abb0bf775a8c86b8341956caf03a3c165" prot="public" virt="virtual"><scope>MockGpioPort</scope><name>setPinMode</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1a34e08c917478658390ffacd042e61243" prot="public" virt="non-virtual"><scope>MockGpioPort</scope><name>setReadValue</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1a8ac345a28dc8a7326cf311790dad7d7d" prot="public" virt="virtual"><scope>MockGpioPort</scope><name>sonicatorReadFreqLock</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1a20b83addc28c3f42e61c13f1dc3ffa02" prot="public" virt="virtual"><scope>MockGpioPort</scope><name>sonicatorReadOverload</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1a07c9e8661d4ed4c372dd26e177682f2b" prot="public" virt="virtual"><scope>MockGpioPort</scope><name>sonicatorReset</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1a70d1fd52c67968e8c24740c793c96e1a" prot="public" virt="virtual"><scope>MockGpioPort</scope><name>sonicatorStart</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1a85df89de507fee86b7e71db42289a328" prot="public" virt="virtual"><scope>MockGpioPort</scope><name>sonicatorStop</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1ad95e5c8a45538a81beedd042f9d3f4db" prot="public" virt="virtual"><scope>MockGpioPort</scope><name>statusLed</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1a91a1bd309b32c83cadb0e41d74264ae2" prot="public" virt="virtual"><scope>MockGpioPort</scope><name>togglePin</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1a9426a5b6c5e58dd735d43a8bbafd9e27" prot="public" virt="non-virtual"><scope>MockGpioPort</scope><name>wasWritten</name></member>
+      <member refid="d7/d07/class_mock_gpio_port_1a07498279343e2b98d575114ff4f4eb03" prot="private" virt="non-virtual"><scope>MockGpioPort</scope><name>write_history</name></member>
+      <member refid="d4/d45/class_i_gpio_port_1ae486ebd5281bd9ab60879c24300112b5" prot="public" virt="virtual"><scope>MockGpioPort</scope><name>~IGpioPort</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
