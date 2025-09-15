@@ -17,17 +17,17 @@ vi.mock('../../services/testAutomationApi', () => ({
 }))
 
 const mockHardwareState: HardwareState = {
-  connection: { connected: true, lastUpdate: Date.now() },
+  connection: { connected: true },
   pins: {
-    'FREQ_DIV10_4': { state: 'LOW', lastUpdated: '12:31:45 AM' },
-    'FREQ_LOCK_4': { state: 'HIGH', lastUpdated: '12:31:45 AM' },
-    'RESET_4': { state: 'HIGH', lastUpdated: '12:31:45 AM' },
-    'POWER_SENSE_4': { state: 512, lastUpdated: '12:31:45 AM' },
-    'ENABLE_4': { state: 'HIGH', lastUpdated: '12:31:45 AM' },
-    'AMPLITUDE_ALL': { state: 128, lastUpdated: '12:31:45 AM' },
-    'UART_RXD': { state: 'LOW', lastUpdated: '12:31:45 AM' },
-    'UART_TXD': { state: 'LOW', lastUpdated: '12:31:45 AM' },
-    'STATUS_LED': { state: 'LOW', lastUpdated: '12:31:45 AM' }
+    'FREQ_DIV10_4': { pin: 'FREQ_DIV10_4', signal: 'FREQ_DIV10_4', direction: 'IN', state: 'LOW', timestamp: Date.now() },
+    'FREQ_LOCK_4': { pin: 'FREQ_LOCK_4', signal: 'FREQ_LOCK_4', direction: 'IN', state: 'HIGH', timestamp: Date.now() },
+    'RESET_4': { pin: 'RESET_4', signal: 'RESET_4', direction: 'OUT', state: 'HIGH', timestamp: Date.now() },
+    'POWER_SENSE_4': { pin: 'POWER_SENSE_4', signal: 'POWER_SENSE_4', direction: 'ANALOG', state: 512, timestamp: Date.now() },
+    'ENABLE_4': { pin: 'ENABLE_4', signal: 'ENABLE_4', direction: 'OUT', state: 'HIGH', timestamp: Date.now() },
+    'AMPLITUDE_ALL': { pin: 'AMPLITUDE_ALL', signal: 'AMPLITUDE_ALL', direction: 'OUT', state: 128, timestamp: Date.now() },
+    'UART_RXD': { pin: 'UART_RXD', signal: 'UART_RXD', direction: 'IN', state: 'LOW', timestamp: Date.now() },
+    'UART_TXD': { pin: 'UART_TXD', signal: 'UART_TXD', direction: 'OUT', state: 'LOW', timestamp: Date.now() },
+    'STATUS_LED': { pin: 'STATUS_LED', signal: 'STATUS_LED', direction: 'OUT', state: 'LOW', timestamp: Date.now() }
   }
 }
 

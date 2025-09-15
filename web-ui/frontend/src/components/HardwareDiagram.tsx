@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { HardwareState } from '../types'
+import { HardwareState, PinState, EnhancedPinState, PinConnection } from '../types'
 import { useArduinoCommandLog } from '../hooks/useArduinoCommandLog'
 import ArduinoCommandHistory from './ArduinoCommandHistory'
 
@@ -8,17 +8,6 @@ interface HardwareDiagramProps {
   onPinClick: (signal: string, action: string, value?: any) => void
   highlightedPins?: string[]
   onPinHighlight?: (pins: string[]) => void
-}
-
-interface PinConnection {
-  arduino: string
-  atmega: string
-  signal: string
-  direction: 'IN' | 'OUT' | 'ANALOG' | 'COMM'
-  description: string
-  arduinoPos?: { x: number; y: number }
-  atmegaPos?: { x: number; y: number }
-  readonly?: boolean // Prevents manual control for communication pins
 }
 
 interface DetailedConnectionInfo {
@@ -349,25 +338,33 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
   }
 
   // Get enhanced pin state with additional visual information
-  const getEnhancedPinState = (signal: string) => {
+  const getEnhancedPinState = (signal: string): EnhancedPinState => {
     const state = getPinState(signal)
     const connection = PIN_CONNECTIONS.find(c => c.signal === signal)
     const isActive = highlightedPins.includes(signal) ||
-                    hoveredConnection === signal ||
-                    selectedConnection === signal
+                     hoveredConnection === signal ||
+                     selectedConnection === signal
 
     return {
       ...state,
       connection,
       isActive,
       isSelected: selectedConnection === signal,
-      lastUpdated: (state as any).timestamp ? new Date((state as any).timestamp).toLocaleTimeString() : 'Unknown'
+      lastUpdated: state.timestamp ? new Date(state.timestamp).toLocaleTimeString() : 'Unknown'
     }
   }
 
-  const getPinState = (signal: string) => {
+  const getPinState = (signal: string): PinState => {
     const state = hardwareState.pins[signal]
-    if (!state) return { pin: '?', direction: 'UNKNOWN', state: 'UNKNOWN' }
+    if (!state) {
+      return {
+        pin: '?',
+        signal,
+        direction: 'IN',
+        state: 'UNKNOWN',
+        timestamp: Date.now()
+      }
+    }
     return state
   }
 

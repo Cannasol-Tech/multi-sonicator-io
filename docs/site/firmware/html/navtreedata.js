@@ -45,7 +45,7 @@ var NAVTREE =
         [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", null ],
+        [ "Enumerator", "globals_eval.html", "globals_eval" ],
         [ "Macros", "globals_defs.html", "globals_defs" ]
       ] ]
     ] ]
@@ -56,10 +56,10 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "d4/d9a/modbus__registers_8h.html#a7c0241be1c209f82af3c322fc38a3e7d",
-"d6/db9/pwm_8h.html#a73584aae2de7d25291409df5601af1eaa0b9e8c6c363f4625301784880963992e",
-"d9/d49/types_8h.html#ad0aeab8703f3a1439806186cba759315a7ef335199557a3658616b70275094a47",
-"db/d23/uart_8cpp.html#ac95c1eb9f418305b09c61288a640b077",
-"de/d31/gpio_8cpp.html#abc081dd26e4791dc70d4d11406c60d34"
+"d6/db9/pwm_8h.html#a193a9d45b4c3b39c0bdf3f071909d3f3",
+"d9/d49/types_8h.html#a6e4cea4b6246f491c526211f5405627daa20d7f19f485c84a41680d91b139c1b8",
+"db/d23/uart_8cpp.html#a5af63458c33759ed51ed861621a87cce",
+"de/d13/sonicator__control_8h.html#ac88614577067020f420441ba689e7241"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

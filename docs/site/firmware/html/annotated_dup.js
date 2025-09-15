@@ -22,6 +22,7 @@ var annotated_dup =
     [ "modbus_frame_t", "db/dc0/structmodbus__frame__t.html", "db/dc0/structmodbus__frame__t" ],
     [ "modbus_register_map_t", "d5/d1a/structmodbus__register__map__t.html", "d5/d1a/structmodbus__register__map__t" ],
     [ "modbus_statistics_t", "d3/d0c/structmodbus__statistics__t.html", "d3/d0c/structmodbus__statistics__t" ],
+    [ "multi_status_t", "db/d86/structmulti__status__t.html", "db/d86/structmulti__status__t" ],
     [ "safety_event_log_t", "dc/d5b/structsafety__event__log__t.html", "dc/d5b/structsafety__event__log__t" ],
     [ "sonicator_control_t", "d7/dd6/structsonicator__control__t.html", "d7/dd6/structsonicator__control__t" ],
     [ "sonicator_hardware_config_t", "d2/d25/structsonicator__hardware__config__t.html", "d2/d25/structsonicator__hardware__config__t" ],

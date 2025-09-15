@@ -58,10 +58,11 @@ var searchData=
   ['uart_5ftimeout_5fms_55',['UART_TIMEOUT_MS',['../d2/d86/uart_8h.html#a6bfddf84ea47d906536cc8ffcc9dd5cc',1,'uart.h']]],
   ['uart_5ftx_5fbuffer_5fsize_56',['UART_TX_BUFFER_SIZE',['../d2/d86/uart_8h.html#a05f5d709605c6317c97e4974bec3402a',1,'uart.h']]],
   ['uart_5ftx_5fpin_57',['UART_TX_PIN',['../db/d16/config_8h.html#a6c82a6844388a551e8f06d249598989e',1,'config.h']]],
-  ['update_58',['update',['../dd/dce/class_sonicator_interface.html#ad428ac09f03b84ec947f32de88374aa3',1,'SonicatorInterface']]],
-  ['update_5fhardware_5foutputs_59',['update_hardware_outputs',['../d2/db9/sonicator_8cpp.html#ada89ba9b127e4beefebcf0437c3d3706',1,'sonicator.cpp']]],
-  ['update_5fmodbus_5fregisters_5ffrom_5fsonicator_60',['update_modbus_registers_from_sonicator',['../d5/dea/sonicator__modbus__bridge_8cpp.html#a9045fab5a69e2236ecfaa2b4acba43bc',1,'sonicator_modbus_bridge.cpp']]],
-  ['update_5fsonicator_5ffrom_5fmodbus_5fregisters_61',['update_sonicator_from_modbus_registers',['../d5/dea/sonicator__modbus__bridge_8cpp.html#ad4d1ebf594c2087ad59dbbbcf9f5a479',1,'sonicator_modbus_bridge.cpp']]],
-  ['update_5fsonicator_5fstatus_62',['update_sonicator_status',['../da/d9e/modbus__example_8cpp.html#a53c830da4dfec0ef1ab77c8615623af1',1,'modbus_example.cpp']]],
-  ['updatecontroloutputs_63',['updateControlOutputs',['../dd/dce/class_sonicator_interface.html#a1cc44112dc876c6246f881a89d366945',1,'SonicatorInterface']]]
+  ['unit_5fstate_58',['unit_state',['../db/d86/structmulti__status__t.html#a65bd6f3cb6133e97291ed14d702a0a5c',1,'multi_status_t']]],
+  ['update_59',['update',['../dd/dce/class_sonicator_interface.html#ad428ac09f03b84ec947f32de88374aa3',1,'SonicatorInterface']]],
+  ['update_5fhardware_5foutputs_60',['update_hardware_outputs',['../d2/db9/sonicator_8cpp.html#ada89ba9b127e4beefebcf0437c3d3706',1,'sonicator.cpp']]],
+  ['update_5fmodbus_5fregisters_5ffrom_5fsonicator_61',['update_modbus_registers_from_sonicator',['../d5/dea/sonicator__modbus__bridge_8cpp.html#a9045fab5a69e2236ecfaa2b4acba43bc',1,'sonicator_modbus_bridge.cpp']]],
+  ['update_5fsonicator_5ffrom_5fmodbus_5fregisters_62',['update_sonicator_from_modbus_registers',['../d5/dea/sonicator__modbus__bridge_8cpp.html#ad4d1ebf594c2087ad59dbbbcf9f5a479',1,'sonicator_modbus_bridge.cpp']]],
+  ['update_5fsonicator_5fstatus_63',['update_sonicator_status',['../da/d9e/modbus__example_8cpp.html#a53c830da4dfec0ef1ab77c8615623af1',1,'modbus_example.cpp']]],
+  ['updatecontroloutputs_64',['updateControlOutputs',['../dd/dce/class_sonicator_interface.html#a1cc44112dc876c6246f881a89d366945',1,'SonicatorInterface']]]
 ];

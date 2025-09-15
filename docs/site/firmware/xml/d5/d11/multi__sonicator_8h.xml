@@ -1,0 +1,248 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d5/d11/multi__sonicator_8h" kind="file" language="C++">
+    <compoundname>multi_sonicator.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includes refid="d9/d49/types_8h" local="yes">types.h</includes>
+    <includedby refid="d6/dab/multi__sonicator_8cpp" local="yes">src/modules/control/multi_sonicator.cpp</includedby>
+    <incdepgraph>
+      <node id="6">
+        <label>config.h</label>
+        <link refid="db/d16/config_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/multi_sonicator.h</label>
+        <link refid="d5/d11/multi__sonicator_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>types.h</label>
+        <link refid="d9/d49/types_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Arduino.h</label>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>include/multi_sonicator.h</label>
+        <link refid="d5/d11/multi__sonicator_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/modules/control/multi_sonicator.cpp</label>
+        <link refid="d6/dab/multi__sonicator_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="db/d86/structmulti__status__t" prot="public">multi_status_t</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398" prot="public" static="no" strong="no">
+        <type></type>
+        <name>master_state_t</name>
+        <enumvalue id="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398a4f77d0a956ce1cd48e8213f7202979e4" prot="public">
+          <name>MASTER_STATE_IDLE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398afd5843c80f602ed57ea84fa7f77b6d92" prot="public">
+          <name>MASTER_STATE_COORDINATED_START</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398af64482b47693f4449a9b174c7beef1b4" prot="public">
+          <name>MASTER_STATE_RUNNING</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398a790c33f92f35b1a7eee14f38474e79f7" prot="public">
+          <name>MASTER_STATE_EMERGENCY_STOP</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398a39dc65b2e4486769f20f30adb7392bfa" prot="public">
+          <name>MASTER_STATE_FAULT_ISOLATION</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/multi_sonicator.h" line="17" column="1" bodyfile="include/multi_sonicator.h" bodystart="17" bodyend="23"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="d5/d11/multi__sonicator_8h_1a060568980bb741acf21a23a285d0589e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool multi_sonicator_begin</definition>
+        <argsstring>(void)</argsstring>
+        <name>multi_sonicator_begin</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/multi_sonicator.h" line="34" column="6" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="17" bodyend="26" declfile="include/multi_sonicator.h" declline="34" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d11/multi__sonicator_8h_1aab1152cce0dec605b2fcead87d278c53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool multi_sonicator_request_coordinated_start</definition>
+        <argsstring>(uint8_t unit_mask)</argsstring>
+        <name>multi_sonicator_request_coordinated_start</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>unit_mask</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/multi_sonicator.h" line="37" column="6" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="28" bodyend="42" declfile="include/multi_sonicator.h" declline="37" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d11/multi__sonicator_8h_1a567f0e25f4d4739b894bc96c6326f2d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool multi_sonicator_emergency_stop</definition>
+        <argsstring>(void)</argsstring>
+        <name>multi_sonicator_emergency_stop</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/multi_sonicator.h" line="38" column="6" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="44" bodyend="51" declfile="include/multi_sonicator.h" declline="38" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d11/multi__sonicator_8h_1ab27d110fab9d852323dfad0e2d9e8e7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398" kindref="member">master_state_t</ref></type>
+        <definition>master_state_t multi_sonicator_update</definition>
+        <argsstring>(void)</argsstring>
+        <name>multi_sonicator_update</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/multi_sonicator.h" line="41" column="16" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="53" bodyend="73" declfile="include/multi_sonicator.h" declline="41" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d11/multi__sonicator_8h_1a6f2a01048fa73aa4a239fdd978a6c4cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="db/d86/structmulti__status__t" kindref="compound">multi_status_t</ref> *</type>
+        <definition>const multi_status_t * multi_sonicator_get_status</definition>
+        <argsstring>(void)</argsstring>
+        <name>multi_sonicator_get_status</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/multi_sonicator.h" line="42" column="22" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="75" bodyend="77" declfile="include/multi_sonicator.h" declline="42" declcolumn="22"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Master coordination for multi-unit sonicator control (Story 4.1) </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MULTI_SONICATOR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MULTI_SONICATOR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d9/d49/types_8h" kindref="compound">types.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="18" refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398a4f77d0a956ce1cd48e8213f7202979e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398a4f77d0a956ce1cd48e8213f7202979e4" kindref="member">MASTER_STATE_IDLE</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="19" refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398afd5843c80f602ed57ea84fa7f77b6d92" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398afd5843c80f602ed57ea84fa7f77b6d92" kindref="member">MASTER_STATE_COORDINATED_START</ref><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="20" refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398af64482b47693f4449a9b174c7beef1b4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398af64482b47693f4449a9b174c7beef1b4" kindref="member">MASTER_STATE_RUNNING</ref><sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="21" refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398a790c33f92f35b1a7eee14f38474e79f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398a790c33f92f35b1a7eee14f38474e79f7" kindref="member">MASTER_STATE_EMERGENCY_STOP</ref><sp/>=<sp/>3,</highlight></codeline>
+<codeline lineno="22" refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398a39dc65b2e4486769f20f30adb7392bfa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398a39dc65b2e4486769f20f30adb7392bfa" kindref="member">MASTER_STATE_FAULT_ISOLATION</ref><sp/>=<sp/>4</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}<sp/><ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398" kindref="member">master_state_t</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="db/d86/structmulti__status__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26" refid="db/d86/structmulti__status__t_1a70abf968f501b54be996557ff653b6b4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398" kindref="member">master_state_t</ref><sp/><ref refid="db/d86/structmulti__status__t_1a70abf968f501b54be996557ff653b6b4" kindref="member">master_state</ref>;</highlight></codeline>
+<codeline lineno="27" refid="db/d86/structmulti__status__t_1a3553822adcbd067d9846049411acfe53" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="db/d86/structmulti__status__t_1a3553822adcbd067d9846049411acfe53" kindref="member">active_mask</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>bitmask<sp/>of<sp/>units<sp/>[b0..b3]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="db/d86/structmulti__status__t_1a65bd6f3cb6133e97291ed14d702a0a5c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="de/d13/sonicator__control_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref><sp/><ref refid="db/d86/structmulti__status__t_1a65bd6f3cb6133e97291ed14d702a0a5c" kindref="member">unit_state</ref>[4];<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>per‑unit<sp/>states</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="db/d86/structmulti__status__t_1af4edd4148787e47c5a2f28cda6ba5dba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="db/d86/structmulti__status__t_1af4edd4148787e47c5a2f28cda6ba5dba" kindref="member">fault_code</ref>;</highlight></codeline>
+<codeline lineno="30" refid="db/d86/structmulti__status__t_1a0644363013284a9323e833dcd8dd0e02" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="db/d86/structmulti__status__t_1a0644363013284a9323e833dcd8dd0e02" kindref="member">last_transition_time_ms</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}<sp/><ref refid="db/d86/structmulti__status__t" kindref="compound">multi_status_t</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Lifecycle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d5/d11/multi__sonicator_8h_1a060568980bb741acf21a23a285d0589e" kindref="member">multi_sonicator_begin</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Commands</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d5/d11/multi__sonicator_8h_1aab1152cce0dec605b2fcead87d278c53" kindref="member">multi_sonicator_request_coordinated_start</ref>(uint8_t<sp/>unit_mask);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d5/d11/multi__sonicator_8h_1a567f0e25f4d4739b894bc96c6326f2d2" kindref="member">multi_sonicator_emergency_stop</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Update<sp/>and<sp/>status</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398" kindref="member">master_state_t</ref><sp/><ref refid="d5/d11/multi__sonicator_8h_1ab27d110fab9d852323dfad0e2d9e8e7f" kindref="member">multi_sonicator_update</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="db/d86/structmulti__status__t" kindref="compound">multi_status_t</ref>*<sp/><ref refid="d5/d11/multi__sonicator_8h_1a6f2a01048fa73aa4a239fdd978a6c4cb" kindref="member">multi_sonicator_get_status</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>MULTI_SONICATOR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/multi_sonicator.h"/>
+  </compounddef>
+</doxygen>

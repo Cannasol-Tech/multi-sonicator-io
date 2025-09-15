@@ -4,6 +4,7 @@
     <compoundname>types.h</compoundname>
     <includes local="no">Arduino.h</includes>
     <includes refid="db/d16/config_8h" local="yes">config.h</includes>
+    <includedby refid="d5/d11/multi__sonicator_8h" local="yes">include/multi_sonicator.h</includedby>
     <includedby refid="dc/d16/sonicator_8h" local="no">src/modules/sonicator/sonicator.h</includedby>
     <incdepgraph>
       <node id="3">
@@ -25,13 +26,25 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="2">
+        <label>include/multi_sonicator.h</label>
+        <link refid="d5/d11/multi__sonicator_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
       <node id="1">
         <label>include/types.h</label>
         <link refid="d9/d49/types_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
       </node>
-      <node id="2">
+      <node id="3">
+        <label>src/modules/control/multi_sonicator.cpp</label>
+        <link refid="d6/dab/multi__sonicator_8cpp"/>
+      </node>
+      <node id="4">
         <label>src/modules/sonicator/sonicator.h</label>
         <link refid="dc/d16/sonicator_8h"/>
       </node>

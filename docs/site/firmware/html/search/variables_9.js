@@ -17,5 +17,6 @@ var searchData=
   ['last_5fstate_5ftimestamp_5flo_14',['last_state_timestamp_lo',['../d4/d97/structsonicator__registers__t.html#a4979494c03692c663491fe98a02d2168',1,'sonicator_registers_t']]],
   ['last_5fstatus_5fupdate_15',['last_status_update',['../da/d9e/modbus__example_8cpp.html#a484df318d4270158a32154ad7b372e86',1,'modbus_example.cpp']]],
   ['last_5fsystem_5ferror_16',['last_system_error',['../d7/dc4/structsystem__status__t.html#a99de2faad467f95f864e9ebb1307a576',1,'system_status_t']]],
-  ['last_5fupdate_5ftime_17',['last_update_time',['../df/d70/structsonicator__state__control__t.html#aa7007812c1aa0b399b4e7624727b5e0d',1,'sonicator_state_control_t']]]
+  ['last_5ftransition_5ftime_5fms_17',['last_transition_time_ms',['../db/d86/structmulti__status__t.html#a0644363013284a9323e833dcd8dd0e02',1,'multi_status_t']]],
+  ['last_5fupdate_5ftime_18',['last_update_time',['../df/d70/structsonicator__state__control__t.html#aa7007812c1aa0b399b4e7624727b5e0d',1,'sonicator_state_control_t']]]
 ];

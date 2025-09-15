@@ -6,5 +6,7 @@ var searchData=
   ['modbus_5fexample_2ecpp_3',['modbus_example.cpp',['../da/d9e/modbus__example_8cpp.html',1,'']]],
   ['modbus_5fregister_5fmanager_2ecpp_4',['modbus_register_manager.cpp',['../db/d0f/modbus__register__manager_8cpp.html',1,'']]],
   ['modbus_5fregister_5fmanager_2eh_5',['modbus_register_manager.h',['../dd/df5/modbus__register__manager_8h.html',1,'']]],
-  ['modbus_5fregisters_2eh_6',['modbus_registers.h',['../d4/d9a/modbus__registers_8h.html',1,'']]]
+  ['modbus_5fregisters_2eh_6',['modbus_registers.h',['../d4/d9a/modbus__registers_8h.html',1,'']]],
+  ['multi_5fsonicator_2ecpp_7',['multi_sonicator.cpp',['../d6/dab/multi__sonicator_8cpp.html',1,'']]],
+  ['multi_5fsonicator_2eh_8',['multi_sonicator.h',['../d5/d11/multi__sonicator_8h.html',1,'']]]
 ];

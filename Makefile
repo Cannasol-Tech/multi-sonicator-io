@@ -393,32 +393,44 @@ generate-complete-executive-report: check-deps
 web-ui-install:
 	@echo "📦 Installing Web UI dependencies..."
 	@echo "📦 Installing frontend dependencies..."
-	cd web-ui/frontend && npm install
+	@cd web-ui/frontend && npm install --legacy-peer-deps || (echo "❌ Frontend dependency installation failed" && exit 1)
 	@echo "📦 Installing backend dependencies..."
-	cd web-ui/backend && npm install
+	@cd web-ui/backend && npm install --legacy-peer-deps || (echo "❌ Backend dependency installation failed" && exit 1)
 	@echo "📦 Installing Python test dependencies..."
-	python3 -m venv web-ui/venv
-	web-ui/venv/bin/python -m pip install --upgrade pip
-	web-ui/venv/bin/python -m pip install pytest pytest-asyncio pytest-mock requests websocket-client pytest-cov
-	@echo "✅ Web UI dependencies installed"
+	@if [ ! -d "web-ui/venv" ]; then \
+		python3 -m venv web-ui/venv || (echo "❌ Python venv creation failed" && exit 1); \
+	fi
+	@web-ui/venv/bin/python -m pip install --upgrade pip >/dev/null 2>&1
+	@web-ui/venv/bin/python -m pip install pytest pytest-asyncio pytest-mock requests websocket-client pytest-cov || (echo "❌ Python test dependencies installation failed" && exit 1)
+	@echo "✅ Web UI dependencies installed successfully"
 
 # Development mode - start both frontend and backend
-web-ui-dev: check-deps
+web-ui-dev: web-ui-install web-ui-build
 	@echo "🚀 Starting Web UI in development mode..."
+	@echo "🔧 Checking HARDWARE_PRESENT environment variable..."
+	@if [ -z "$(HARDWARE_PRESENT)" ]; then \
+		echo "⚠️  HARDWARE_PRESENT not set, defaulting to simulation mode (HARDWARE_PRESENT=false)"; \
+		export HARDWARE_PRESENT=false; \
+	fi
+	@echo "🔧 HARDWARE_PRESENT=$(HARDWARE_PRESENT) -> $(shell [ "$(HARDWARE_PRESENT)" = "true" ] && echo "Hardware Mode" || echo "Simulation Mode")"
 	@echo "🔧 Cleaning up any processes on ports 3001 and 3101..."
 	@lsof -ti:3001 | xargs -r kill -9 2>/dev/null || true
 	@lsof -ti:3101 | xargs -r kill -9 2>/dev/null || true
 	@sleep 2
 	@echo "🔧 Starting backend server on port 3001..."
-	@cd web-ui/backend && PORT=3001 npm run dev &
+	@cd web-ui/backend && HARDWARE_PRESENT=$(HARDWARE_PRESENT) PORT=3001 npm run dev &
 	@echo "🔧 Starting frontend development server on port 3101..."
 	@cd web-ui/frontend && PORT=3101 npm run dev &
 	@echo "⏳ Waiting for servers to initialize..."
-	@sleep 5
+	@sleep 8
+	@echo "🔍 Checking server status..."
+	@curl -s http://localhost:3001/api/health > /dev/null 2>&1 || echo "⚠️ Backend server may not be ready yet"
+	@curl -s http://localhost:3101 > /dev/null 2>&1 || echo "⚠️ Frontend server may not be ready yet"
 	@echo "✅ Web UI development servers started"
 	@echo "📱 Frontend: http://localhost:3101"
 	@echo "🔌 Backend API: http://localhost:3001/api"
 	@echo "🔗 WebSocket: ws://localhost:3001/ws"
+	@echo "🎯 Mode: $(shell [ "$(HARDWARE_PRESENT)" = "true" ] && echo "Hardware Connected" || echo "Simulation Mode")"
 
 # Production build
 web-ui-build:

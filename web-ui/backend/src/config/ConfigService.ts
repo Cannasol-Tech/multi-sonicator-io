@@ -132,6 +132,16 @@ export class ConfigService {
         throw new Error('Failed to parse configuration file');
       }
 
+      // Override simulation mode based on HARDWARE_PRESENT environment variable
+      // HARDWARE_PRESENT=true means hardware mode (simulation_mode=false)
+      // HARDWARE_PRESENT=false means simulation mode (simulation_mode=true)
+      const hardwarePresent = process.env.HARDWARE_PRESENT;
+      if (hardwarePresent !== undefined) {
+        const isHardwarePresent = hardwarePresent.toLowerCase() === 'true';
+        this.config.environment.simulation_mode = !isHardwarePresent;
+        console.log(`🔧 HARDWARE_PRESENT=${hardwarePresent} -> Simulation mode: ${this.config.environment.simulation_mode ? 'enabled' : 'disabled'}`);
+      }
+
       console.log(`✅ Hardware configuration loaded: ${this.config.project.name} v${this.config.project.version}`);
       return this.config;
     } catch (error) {

@@ -1,0 +1,242 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d6/dab/multi__sonicator_8cpp" kind="file" language="C++">
+    <compoundname>multi_sonicator.cpp</compoundname>
+    <includes refid="d5/d11/multi__sonicator_8h" local="yes">multi_sonicator.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="7">
+        <label>config.h</label>
+        <link refid="db/d16/config_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>multi_sonicator.h</label>
+        <link refid="d5/d11/multi__sonicator_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>types.h</label>
+        <link refid="d9/d49/types_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/modules/control/multi_sonicator.cpp</label>
+        <link refid="d6/dab/multi__sonicator_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Arduino.h</label>
+      </node>
+      <node id="4">
+        <label>stdbool.h</label>
+      </node>
+      <node id="3">
+        <label>stdint.h</label>
+      </node>
+      <node id="8">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" prot="public" static="yes" mutable="no">
+        <type><ref refid="db/d86/structmulti__status__t" kindref="compound">multi_status_t</ref></type>
+        <definition>multi_status_t g_multi</definition>
+        <argsstring></argsstring>
+        <name>g_multi</name>
+        <initializer>= {
+    <ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398a4f77d0a956ce1cd48e8213f7202979e4" kindref="member">MASTER_STATE_IDLE</ref>,
+    0u,
+    { <ref refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a200f691f290ab37f5eaac8ff0ee00470" kindref="member">SONICATOR_STATE_STOPPED</ref>, <ref refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a200f691f290ab37f5eaac8ff0ee00470" kindref="member">SONICATOR_STATE_STOPPED</ref>, <ref refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a200f691f290ab37f5eaac8ff0ee00470" kindref="member">SONICATOR_STATE_STOPPED</ref>, <ref refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a200f691f290ab37f5eaac8ff0ee00470" kindref="member">SONICATOR_STATE_STOPPED</ref> },
+    0u,
+    0u
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="9" column="23" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="9" bodyend="15"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="d6/dab/multi__sonicator_8cpp_1a060568980bb741acf21a23a285d0589e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool multi_sonicator_begin</definition>
+        <argsstring>(void)</argsstring>
+        <name>multi_sonicator_begin</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="17" column="6" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="17" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/dab/multi__sonicator_8cpp_1aab1152cce0dec605b2fcead87d278c53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool multi_sonicator_request_coordinated_start</definition>
+        <argsstring>(uint8_t unit_mask)</argsstring>
+        <name>multi_sonicator_request_coordinated_start</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>unit_mask</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="28" column="6" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="28" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/dab/multi__sonicator_8cpp_1a567f0e25f4d4739b894bc96c6326f2d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool multi_sonicator_emergency_stop</definition>
+        <argsstring>(void)</argsstring>
+        <name>multi_sonicator_emergency_stop</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="44" column="6" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="44" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/dab/multi__sonicator_8cpp_1ab27d110fab9d852323dfad0e2d9e8e7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398" kindref="member">master_state_t</ref></type>
+        <definition>master_state_t multi_sonicator_update</definition>
+        <argsstring>(void)</argsstring>
+        <name>multi_sonicator_update</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="53" column="16" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="53" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/dab/multi__sonicator_8cpp_1a6f2a01048fa73aa4a239fdd978a6c4cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="db/d86/structmulti__status__t" kindref="compound">multi_status_t</ref> *</type>
+        <definition>const multi_status_t * multi_sonicator_get_status</definition>
+        <argsstring>(void)</argsstring>
+        <name>multi_sonicator_get_status</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="75" column="22" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="75" bodyend="77"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Minimal master coordination state machine for 4 units (Story 4.1) </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d5/d11/multi__sonicator_8h" kindref="compound">multi_sonicator.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="db/d86/structmulti__status__t" kindref="compound">multi_status_t</ref><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref><sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398a4f77d0a956ce1cd48e8213f7202979e4" kindref="member">MASTER_STATE_IDLE</ref>,</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>0u,</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/><ref refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a200f691f290ab37f5eaac8ff0ee00470" kindref="member">SONICATOR_STATE_STOPPED</ref>,<sp/><ref refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a200f691f290ab37f5eaac8ff0ee00470" kindref="member">SONICATOR_STATE_STOPPED</ref>,<sp/><ref refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a200f691f290ab37f5eaac8ff0ee00470" kindref="member">SONICATOR_STATE_STOPPED</ref>,<sp/><ref refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a200f691f290ab37f5eaac8ff0ee00470" kindref="member">SONICATOR_STATE_STOPPED</ref><sp/>},</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>0u,</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>0u</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1a060568980bb741acf21a23a285d0589e" kindref="member">multi_sonicator_begin</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.master_state<sp/>=<sp/><ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398a4f77d0a956ce1cd48e8213f7202979e4" kindref="member">MASTER_STATE_IDLE</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.active_mask<sp/>=<sp/>0u;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.fault_code<sp/>=<sp/>0u;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>4;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.unit_state[i]<sp/>=<sp/><ref refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a200f691f290ab37f5eaac8ff0ee00470" kindref="member">SONICATOR_STATE_STOPPED</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.last_transition_time_ms<sp/>=<sp/>0u;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1aab1152cce0dec605b2fcead87d278c53" kindref="member">multi_sonicator_request_coordinated_start</ref>(uint8_t<sp/>unit_mask)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(unit_mask<sp/>==<sp/>0u)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.master_state<sp/>==<sp/><ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398a790c33f92f35b1a7eee14f38474e79f7" kindref="member">MASTER_STATE_EMERGENCY_STOP</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.active_mask<sp/>=<sp/>(uint8_t)(unit_mask<sp/>&amp;<sp/>0x0Fu);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.master_state<sp/>=<sp/><ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398afd5843c80f602ed57ea84fa7f77b6d92" kindref="member">MASTER_STATE_COORDINATED_START</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.last_transition_time_ms++;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>4;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.active_mask<sp/>&amp;<sp/>(1u<sp/>&lt;&lt;<sp/>i))<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.unit_state[i]<sp/>=<sp/><ref refid="de/d13/sonicator__control_8h_1ad0aeab8703f3a1439806186cba759315a34a68840cf8e7502193a12370a443e01" kindref="member">SONICATOR_STATE_STARTING</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1a567f0e25f4d4739b894bc96c6326f2d2" kindref="member">multi_sonicator_emergency_stop</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.master_state<sp/>=<sp/><ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398a790c33f92f35b1a7eee14f38474e79f7" kindref="member">MASTER_STATE_EMERGENCY_STOP</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.last_transition_time_ms++;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>4;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.unit_state[i]<sp/>=<sp/><ref refid="de/d13/sonicator__control_8h_1ad0aeab8703f3a1439806186cba759315a68fc7fb7e15c844aa2c6cda43bcc8d09" kindref="member">SONICATOR_STATE_STOPPING</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398" kindref="member">master_state_t</ref><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1ab27d110fab9d852323dfad0e2d9e8e7f" kindref="member">multi_sonicator_update</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.master_state)<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398afd5843c80f602ed57ea84fa7f77b6d92" kindref="member">MASTER_STATE_COORDINATED_START</ref>:</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>4;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.active_mask<sp/>&amp;<sp/>(1u<sp/>&lt;&lt;<sp/>i))<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.unit_state[i]<sp/>=<sp/><ref refid="de/d13/sonicator__control_8h_1ad0aeab8703f3a1439806186cba759315aefd4187011c854e789baa073995f0def" kindref="member">SONICATOR_STATE_RUNNING</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.master_state<sp/>=<sp/><ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398af64482b47693f4449a9b174c7beef1b4" kindref="member">MASTER_STATE_RUNNING</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.last_transition_time_ms++;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d5/d11/multi__sonicator_8h_1a5883b01d55edd95a7af1598a35f6a398a790c33f92f35b1a7eee14f38474e79f7" kindref="member">MASTER_STATE_EMERGENCY_STOP</ref>:</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>4;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.unit_state[i]<sp/>=<sp/><ref refid="d9/d49/types_8h_1ad0aeab8703f3a1439806186cba759315a200f691f290ab37f5eaac8ff0ee00470" kindref="member">SONICATOR_STATE_STOPPED</ref>;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>.master_state;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="db/d86/structmulti__status__t" kindref="compound">multi_status_t</ref>*<sp/><ref refid="d6/dab/multi__sonicator_8cpp_1a6f2a01048fa73aa4a239fdd978a6c4cb" kindref="member">multi_sonicator_get_status</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<ref refid="d6/dab/multi__sonicator_8cpp_1af63efc1af5ba81f5719b9dd3cff35a19" kindref="member">g_multi</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/modules/control/multi_sonicator.cpp"/>
+  </compounddef>
+</doxygen>
