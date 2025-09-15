@@ -1,8 +1,18 @@
 {
   "$schema": "https://typedoc.org/schema.json",
   "entryPoints": ["src"],
+  "entryPointStrategy": "expand",
   "tsconfig": "tsconfig.json",
   "out": "../../docs/site/web/frontend",
+  "json": "../../docs/site/web/frontend/typedoc.json",
+  "exclude": [
+    "**/__tests__/**",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "src/test/**",
+    "src/services/__tests__/**"
+  ],
+  "skipErrorChecking": true,
   "excludePrivate": true,
   "excludeProtected": false,
   "excludeExternals": false,

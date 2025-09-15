@@ -1,8 +1,10 @@
 {
   "$schema": "https://typedoc.org/schema.json",
   "entryPoints": ["src"],
+  "entryPointStrategy": "expand",
   "tsconfig": "tsconfig.json",
   "out": "../../docs/site/web/backend",
+  "json": "../../docs/site/web/backend/typedoc.json",
   "excludePrivate": true,
   "excludeProtected": false,
   "excludeExternals": false,

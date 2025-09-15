@@ -299,8 +299,17 @@ import threading
 
 # Initialize HIL hardware interface
 use_mock = False
-if os.environ.get('HARDWARE_MOCK', '0') in ('1', 'true', 'True'):
+# Highest-precedence override: HARDWARE_MOCK
+if os.environ.get('HARDWARE_MOCK', '0').lower() in ('1', 'true', 'yes'):
     use_mock = True
+# Next: HARDWARE_PRESENT hint
+hardware_present = os.environ.get('HARDWARE_PRESENT')
+if hardware_present is not None:
+    if hardware_present.lower() in ('0', 'false', 'no'):
+        use_mock = True
+    elif hardware_present.lower() in ('1', 'true', 'yes'):
+        # Explicitly request real hardware; do not set use_mock here, but enforce below
+        pass
 
 hil = None
 if not use_mock and RealHardwareInterface is not None:
@@ -308,7 +317,7 @@ if not use_mock and RealHardwareInterface is not None:
         hil = RealHardwareInterface()
         if not hil.verify_connection():
             # If in CI/pipeline, do not fallback; otherwise use mock
-            if os.environ.get('CI') or os.environ.get('GITHUB_ACTIONS'):
+            if os.environ.get('CI') or os.environ.get('GITHUB_ACTIONS') or (hardware_present and hardware_present.lower() in ('1','true','yes')):
                 print(json.dumps({"type": "connection", "status": "failed", "error": "Could not connect to hardware"}))
                 sys.stdout.flush()
                 sys.exit(1)
@@ -316,7 +325,7 @@ if not use_mock and RealHardwareInterface is not None:
                 use_mock = True
     except Exception as e:
         # Any runtime error: fallback to mock when not CI
-        if os.environ.get('CI') or os.environ.get('GITHUB_ACTIONS'):
+        if os.environ.get('CI') or os.environ.get('GITHUB_ACTIONS') or (hardware_present and hardware_present.lower() in ('1','true','yes')):
             print(json.dumps({"type": "connection", "status": "failed", "error": str(e)}))
             sys.stdout.flush()
             sys.exit(1)

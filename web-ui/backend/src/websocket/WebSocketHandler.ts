@@ -79,27 +79,44 @@ export class WebSocketHandler {
         // Find matching sent command and create response pair
         let matchedCommand = null
         let responseTime = 0
-        
-        // Look for most recent matching command (simple approach)
-        const recentCommands = Array.from(this.pendingCommands.entries())
+
+        // Enhanced matching algorithm: prefer same-type command, then fallback to most recent
+        let matchedEntry: { commandId: string; commandInfo: { command: string; timestamp: number } } | null = null
+
+        const commandType = commandData.type
+        const sameTypeCommands = Array.from(this.pendingCommands.entries())
+          .filter(([id]) => id.endsWith(`-${commandType}`))
           .sort((a, b) => b[1].timestamp - a[1].timestamp)
-          
-        if (recentCommands.length > 0) {
-          const [commandId, commandInfo] = recentCommands[0]
-          matchedCommand = commandInfo.command
-          responseTime = commandData.timestamp - commandInfo.timestamp
-          this.pendingCommands.delete(commandId)
+
+        if (sameTypeCommands.length > 0) {
+          const [commandId, commandInfo] = sameTypeCommands[0]
+          matchedEntry = { commandId, commandInfo }
+        } else {
+          const recentCommands = Array.from(this.pendingCommands.entries())
+            .sort((a, b) => b[1].timestamp - a[1].timestamp)
+          if (recentCommands.length > 0) {
+            const [commandId, commandInfo] = recentCommands[0]
+            matchedEntry = { commandId, commandInfo }
+          }
         }
-        
+
+        if (matchedEntry) {
+          matchedCommand = matchedEntry.commandInfo.command
+          responseTime = commandData.timestamp - matchedEntry.commandInfo.timestamp
+          this.pendingCommands.delete(matchedEntry.commandId)
+        }
+
         // Broadcast arduino_command_response message
+        const dataStr: string = typeof commandData.data === 'string' ? commandData.data : JSON.stringify(commandData.data)
+        const dataLower = dataStr.toLowerCase()
         this.broadcast({
           type: 'arduino_command_response',
           data: {
             command: matchedCommand || 'Unknown command',
             response: commandData.data,
             responseTime: Math.max(responseTime, 0),
-            success: !commandData.data.includes('ERROR') && !commandData.data.includes('FAIL'),
-            error: commandData.data.includes('ERROR') || commandData.data.includes('FAIL') ? commandData.data : undefined,
+            success: !dataLower.includes('error') && !dataLower.includes('fail'),
+            error: (dataLower.includes('error') || dataLower.includes('fail')) ? dataStr : undefined,
             timestamp: commandData.timestamp
           },
           timestamp: Date.now()
