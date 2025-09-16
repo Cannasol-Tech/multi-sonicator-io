@@ -48,6 +48,20 @@ Feature: Single Sonicator Control (Story 1.4)
     Then the response should arrive within 100ms
     And the control action should be executed within 100ms
 
+  @acceptance @hil @story-1.4 @critical @frequency
+  Scenario: AC-5 HIL Frequency Generation and MODBUS Reading
+    Given the HIL wrapper is connected and ready
+    And the DUT is powered and at safe defaults
+    When unit 4 receives a frequency of 2000 Hz on the ÷10 input
+    Then the HIL wrapper reports frequency 2000 Hz for unit 4
+    And within 500 ms holding register 40370 is approximately 20000 Hz
+    When unit 4 receives a frequency of 1800 Hz on the ÷10 input
+    Then the HIL wrapper reports frequency 1800 Hz for unit 4
+    And within 500 ms holding register 40370 is approximately 18000 Hz
+    When unit 4 receives a frequency of 0 Hz on the ÷10 input
+    Then the HIL wrapper reports frequency 0 Hz for unit 4
+    And within 500 ms holding register 40370 is approximately 0 Hz
+
   @acceptance @hil @story-1.4 @critical
   Scenario: AC-5 Complete Control Loop Validation
     Given the system is in a clean initial state
