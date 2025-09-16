@@ -11,7 +11,7 @@
  * and HAL integration.
  */
 
-#include "sonicator/interface.h"
+#include "include/sonicator/sonicator.h"
 #include "sonicator/types/state.h"
 #include "sonicator/types/errors.h"
 #include "system_config.h"
@@ -80,7 +80,7 @@ sonicator_state_t SONICATOR_DEFAULT_STATE = {
 CT2000Sonicator::CT2000Sonicator() : simulation_mode_(SONICATOR_SIMULATION_MODE)
     {   
         // Initialize state structure
-        state_ = SONICATOR_DEFAULT_STATE;
+        state_control_ = SONICATOR_DEFAULT_STATE;
     }
 
 /**
@@ -387,3 +387,191 @@ void CT2000Sonicator::processStateMachine() {
             static uint32_t last_runtime_update = 0;
             if (now - last_runtime_update >= 1000) { // Update every second
                 state_.total_runtime_ms += (now - last_runtime_update);
+                last_runtime_update = now;
+            }
+            break;
+
+        case SONICATOR_STATE_STOPPING:
+            state_.is_running = false;
+
+            // Transition: STOPPING → IDLE (after delay)
+            if (state_duration >= SONICATOR_STOP_DELAY_MS) {
+                state_.previous_state = state_.state;
+                state_.state = SONICATOR_STATE_IDLE;
+                state_.state_entry_time = now;
+                state_.stop_requested = false;
+                SONICATOR_LOG("State: STOPPING -> IDLE");
+            }
+            break;
+
+        case SONICATOR_STATE_FAULT:
+            state_.is_running = false;
+            // Stay in FAULT state until reset
+            break;
+
+        default:
+            // Unknown state - transition to IDLE
+            state_.previous_state = state_.state;
+            state_.state = SONICATOR_STATE_IDLE;
+            state_.state_entry_time = now;
+            break;
+    }
+}
+
+// ============================================================================
+// PUBLIC API METHODS (match header declarations)
+// ============================================================================
+
+/**
+ * @brief Start sonicator operation
+ */
+bool CT2000Sonicator::start(void) {
+    if (state_control_.state == SONICATOR_STATE_IDLE && 
+        state_control_.active_faults == SONICATOR_FAULT_NONE) {
+        state_control_.start_requested = true;
+        SONICATOR_LOG("Start command accepted");
+        return true;
+    }
+    return false;
+}
+
+/**
+ * @brief Stop sonicator operation
+ */
+bool CT2000Sonicator::stop(void) {
+    if (state_control_.state == SONICATOR_STATE_RUNNING || 
+        state_control_.state == SONICATOR_STATE_STARTING) {
+        state_control_.stop_requested = true;
+        SONICATOR_LOG("Stop command accepted");
+        return true;
+    }
+    return false;
+}
+
+/**
+ * @brief Set sonicator amplitude
+ */
+bool CT2000Sonicator::setAmplitude(uint8_t amplitude_percent) {
+    if (amplitude_percent >= SONICATOR_MIN_AMPLITUDE_PERCENT && 
+        amplitude_percent <= SONICATOR_MAX_AMPLITUDE_PERCENT) {
+        state_control_.amplitude_percent = amplitude_percent;
+        SONICATOR_LOG("Amplitude set");
+        return true;
+    }
+    return false;
+}
+
+/**
+ * @brief Reset overload condition
+ */
+bool CT2000Sonicator::resetOverload(void) {
+    if (state_control_.state == SONICATOR_STATE_FAULT && 
+        (state_control_.active_faults & SONICATOR_FAULT_OVERLOAD)) {
+        state_control_.reset_requested = true;
+        SONICATOR_LOG("Reset overload command sent");
+        return true;
+    }
+    return false;
+}
+
+/**
+ * @brief Emergency stop (immediate)
+ */
+bool CT2000Sonicator::emergencyStop(void) {
+    // Immediate stop regardless of state
+    halGpioWriteSafe(SON4_START_PIN, false);
+    halPwmSetSafe(PWM_AMPLITUDE_CONTROL_PIN, 0);
+    
+    state_control_.previous_state = state_control_.state;
+    state_control_.state = SONICATOR_STATE_IDLE;
+    state_control_.state_entry_time = getTimestampMs();
+    state_control_.is_running = false;
+    state_control_.start_requested = false;
+    state_control_.stop_requested = false;
+    
+    SONICATOR_LOG("Emergency stop activated");
+    return true;
+}
+
+/**
+ * @brief Main control update function
+ */
+sonicator_state_t CT2000Sonicator::update(void) {
+    uint32_t now = getTimestampMs();
+    state_control_.last_update_time = now;
+    
+    // Read hardware inputs
+    readHardwareInputs();
+    
+    // Check for faults
+    sonicator_fault_t faults = checkFaultConditions();
+    if (faults != SONICATOR_FAULT_NONE) {
+        handleFaultConditions(faults);
+    }
+    
+    // Process state machine
+    processStateMachine();
+    
+    // Update hardware outputs
+    updateHardwareOutputs();
+    
+    // Reset watchdog
+    state_control_.watchdog_last_reset = now;
+    
+    return state_control_.state;
+}
+
+/**
+ * @brief Get current sonicator status
+ */
+const sonicator_state_t* CT2000Sonicator::getStatus(void) const {
+    return &state_control_;
+}
+
+/**
+ * @brief Get current state as string (for debugging)
+ */
+const char* CT2000Sonicator::stateToString(sonicator_state_t state) {
+    switch (state) {
+        case SONICATOR_STATE_IDLE: return "IDLE";
+        case SONICATOR_STATE_STARTING: return "STARTING";
+        case SONICATOR_STATE_RUNNING: return "RUNNING";
+        case SONICATOR_STATE_STOPPING: return "STOPPING";
+        case SONICATOR_STATE_FAULT: return "FAULT";
+        case SONICATOR_STATE_UNKNOWN: return "UNKNOWN";
+        default: return "INVALID";
+    }
+}
+
+/**
+ * @brief Check if sonicator is in safe state
+ */
+bool CT2000Sonicator::isSafe(void) const {
+    uint32_t now = getTimestampMs();
+    
+    // Check safety conditions
+    bool no_active_faults = (state_control_.active_faults == SONICATOR_FAULT_NONE);
+    bool watchdog_ok = (now - state_control_.watchdog_last_reset) < SONICATOR_WATCHDOG_TIMEOUT_MS;
+    bool comm_ok = (now - state_control_.last_update_time) < SONICATOR_COMM_TIMEOUT_MS;
+    
+    return no_active_faults && watchdog_ok && comm_ok;
+}
+
+/**
+ * @brief Reset all statistics and counters
+ */
+void CT2000Sonicator::resetStatistics(void) {
+    state_control_.start_count = 0;
+    state_control_.total_runtime_ms = 0;
+    state_control_.fault_count = 0;
+    state_control_.last_fault_time = 0;
+    SONICATOR_LOG("Statistics reset");
+}
+
+/**
+ * @brief Enable/disable simulation mode
+ */
+void CT2000Sonicator::setSimulationMode(bool enable) {
+    simulation_mode_ = enable;
+    SONICATOR_LOG(enable ? "Simulation mode enabled" : "Simulation mode disabled");
+}

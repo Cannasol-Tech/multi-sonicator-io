@@ -3,6 +3,14 @@
  * @brief Master coordination for multi-unit sonicator control (Story 4.1)
  */
 
+ typedef enum {
+    MASTER_STATE_IDLE = 0,
+    MASTER_STATE_COORDINATED_START = 1,
+    MASTER_STATE_RUNNING = 2,
+    MASTER_STATE_EMERGENCY_STOP = 3,
+    MASTER_STATE_FAULT_ISOLATION = 4
+} master_state_t;
+
 #ifndef MULTI_SONICATOR_H
 #define MULTI_SONICATOR_H
 
@@ -13,14 +21,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-typedef enum {
-    MASTER_STATE_IDLE = 0,
-    MASTER_STATE_COORDINATED_START = 1,
-    MASTER_STATE_RUNNING = 2,
-    MASTER_STATE_EMERGENCY_STOP = 3,
-    MASTER_STATE_FAULT_ISOLATION = 4
-} master_state_t;
 
 typedef struct {
     master_state_t master_state;

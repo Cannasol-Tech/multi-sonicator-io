@@ -189,4 +189,24 @@ gpio_result_t gpio_status_led(gpio_state_t state);
 }
 #endif
 
-#endif // HAL_GPIO_H
+/**
+ * @brief GPIO HAL Template Usage Examples
+ *
+ * These examples show how to use the template-based GPIO HAL
+ * for both production and testing scenarios.
+ */
+
+// Production usage with ATmega32A HAL
+#include "atmega_hal_impl.h"
+#include "hal_template_interfaces.h"
+
+// Create GPIO instance for production
+using ProductionGpio = GpioHal<AtmegaHal>;
+using ProductionHal = HalTemplate<AtmegaHal>;
+
+// Testing usage with Mock HAL
+#include "mock_hal_impl.h"
+
+// Create GPIO instance for testing
+using TestGpio = GpioHal<MockHal>;
+using TestHal = HalTemplate<MockHal>;
