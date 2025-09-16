@@ -1,0 +1,128 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Multi-Sonicator-IO Web UI - Acceptance Testing Demo</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+            .header { background: #2c3e50; color: white; padding: 15px; border-radius: 5px; }
+            .container { background: white; margin: 20px 0; padding: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+            .test-panel { border: 1px solid #ddd; border-radius: 5px; margin: 10px 0; }
+            .test-scenario { padding: 10px; border-bottom: 1px solid #eee; }
+            .test-scenario:last-child { border-bottom: none; }
+            .test-tag { background: #3498db; color: white; padding: 2px 6px; border-radius: 3px; font-size: 12px; margin-right: 5px; }
+            .test-status { padding: 3px 8px; border-radius: 3px; font-size: 12px; }
+            .status-ready { background: #2ecc71; color: white; }
+            .status-running { background: #f39c12; color: white; }
+            .status-passed { background: #27ae60; color: white; }
+            .control-panel { background: #ecf0f1; padding: 15px; border-radius: 5px; margin: 10px 0; }
+            .btn { padding: 8px 16px; background: #3498db; color: white; border: none; border-radius: 3px; margin-right: 10px; cursor: pointer; }
+            .btn:hover { background: #2980b9; }
+            .progress-bar { width: 100%; height: 20px; background: #ecf0f1; border-radius: 10px; overflow: hidden; }
+            .progress-fill { height: 100%; background: #3498db; transition: width 0.3s ease; }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>🧪 Multi-Sonicator-IO Web UI - Acceptance Testing</h1>
+            <p>Comprehensive BDD test automation interface with hardware mock support</p>
+        </div>
+        
+        <div class="container">
+            <h2>Test Automation Panel</h2>
+            <div class="control-panel">
+                <button class="btn">Load Scenarios</button>
+                <button class="btn">Run Selected</button>
+                <button class="btn">Run All</button>
+                <button class="btn">Stop Execution</button>
+                <select style="padding: 8px; margin-left: 10px;">
+                    <option>Filter by Tag</option>
+                    <option>@smoke</option>
+                    <option>@ui-loading</option>
+                    <option>@tag-filtering</option>
+                    <option>@single-test</option>
+                    <option>@multiple-tests</option>
+                </select>
+            </div>
+            
+            <div class="test-panel">
+                <h3>Available Test Scenarios (28 scenarios loaded)</h3>
+                
+                <div class="test-scenario">
+                    <input type="checkbox" id="test1"> 
+                    <label for="test1"><strong>Load acceptance test scenarios into web-ui interface</strong></label>
+                    <br><small>Verify that acceptance tests are loaded from the backend with hardware mock</small>
+                    <br><span class="test-tag">@smoke</span><span class="test-tag">@ui-loading</span>
+                    <span class="test-status status-ready">Ready</span>
+                </div>
+                
+                <div class="test-scenario">
+                    <input type="checkbox" id="test2"> 
+                    <label for="test2"><strong>Filter acceptance tests by single tag</strong></label>
+                    <br><small>Search and filter acceptance tests using tag-based filtering</small>
+                    <br><span class="test-tag">@tag-filtering</span><span class="test-tag">@search</span>
+                    <span class="test-status status-ready">Ready</span>
+                </div>
+                
+                <div class="test-scenario">
+                    <input type="checkbox" id="test3" checked> 
+                    <label for="test3"><strong>Execute single acceptance test and wait for completion</strong></label>
+                    <br><small>Run individual acceptance test with real-time progress monitoring</small>
+                    <br><span class="test-tag">@single-test</span><span class="test-tag">@execution</span>
+                    <span class="test-status status-running">Running</span>
+                </div>
+                
+                <div class="test-scenario">
+                    <input type="checkbox" id="test4"> 
+                    <label for="test4"><strong>Execute multiple acceptance tests and wait for completion</strong></label>
+                    <br><small>Batch execution of test suites with comprehensive result reporting</small>
+                    <br><span class="test-tag">@multiple-tests</span><span class="test-tag">@execution</span>
+                    <span class="test-status status-ready">Ready</span>
+                </div>
+            </div>
+            
+            <div class="container">
+                <h3>Test Execution Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 35%;"></div>
+                </div>
+                <p>Executing: <strong>Execute single acceptance test and wait for completion</strong></p>
+                <p>Progress: 35% (Step 3 of 8) - Waiting for test automation panel to load...</p>
+            </div>
+            
+            <div class="container">
+                <h3>Test Results Summary</h3>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; text-align: center;">
+                    <div style="background: #27ae60; color: white; padding: 15px; border-radius: 5px;">
+                        <h4>Passed</h4>
+                        <div style="font-size: 24px;">12</div>
+                    </div>
+                    <div style="background: #e74c3c; color: white; padding: 15px; border-radius: 5px;">
+                        <h4>Failed</h4>
+                        <div style="font-size: 24px;">2</div>
+                    </div>
+                    <div style="background: #f39c12; color: white; padding: 15px; border-radius: 5px;">
+                        <h4>Running</h4>
+                        <div style="font-size: 24px;">1</div>
+                    </div>
+                    <div style="background: #95a5a6; color: white; padding: 15px; border-radius: 5px;">
+                        <h4>Pending</h4>
+                        <div style="font-size: 24px;">13</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            // Simulate real-time updates
+            setInterval(function() {
+                var progress = document.querySelector('.progress-fill');
+                var currentWidth = parseInt(progress.style.width);
+                if (currentWidth < 100) {
+                    progress.style.width = (currentWidth + 2) + '%';
+                }
+            }, 1000);
+        </script>
+    </body>
+    </html>
+    

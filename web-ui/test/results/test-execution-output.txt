@@ -1,0 +1,844 @@
+=== STDOUT ===
+🔍 Checking Python dependencies...
+✅ All Python dependencies available
+🧪 Running Web UI acceptance tests...
+🔧 Installing Python dependencies for web-ui acceptance testing...
+🌐 Starting web-ui acceptance test suite...
+USING RUNNER: behave.runner:Runner
+Setting up web-ui acceptance test environment...
+⚠️  Selenium not available - browser automation tests will be skipped
+Web-UI acceptance test environment setup complete!
+
+Errored scenarios:
+  features/web_ui_acceptance_test_loading.feature:13  Load acceptance test scenarios into web-ui interface
+  features/web_ui_acceptance_test_loading.feature:22  Verify acceptance test scenario details are displayed
+  features/web_ui_acceptance_test_loading.feature:33  Verify acceptance tests load with hardware mock enabled
+  features/web_ui_acceptance_test_loading.feature:43  Refresh acceptance test scenarios
+  features/web_ui_acceptance_test_loading.feature:53  Handle backend connection errors gracefully
+  features/web_ui_acceptance_test_search_by_tag.feature:14  Filter acceptance tests by single tag
+  features/web_ui_acceptance_test_search_by_tag.feature:24  Filter acceptance tests by multiple tags
+  features/web_ui_acceptance_test_search_by_tag.feature:34  Search acceptance tests by tag with OR logic
+  features/web_ui_acceptance_test_search_by_tag.feature:44  Clear tag filters to show all scenarios
+  features/web_ui_acceptance_test_search_by_tag.feature:53  Display tag counts for filtering
+  features/web_ui_acceptance_test_search_by_tag.feature:63  Handle no matching results for tag search
+  features/web_ui_acceptance_test_search_by_tag.feature:73  Real-time tag search as user types
+  features/web_ui_multiple_acceptance_test_execution.feature:14  Execute multiple acceptance tests and wait for completion
+  features/web_ui_multiple_acceptance_test_execution.feature:27  Execute full test suite (all scenarios)
+  features/web_ui_multiple_acceptance_test_execution.feature:40  Verify multiple test results summary is displayed
+  features/web_ui_multiple_acceptance_test_execution.feature:52  Track progress during multiple test execution
+  features/web_ui_multiple_acceptance_test_execution.feature:63  Handle mixed results (some pass, some fail) in multiple test execution
+  features/web_ui_multiple_acceptance_test_execution.feature:74  Stop multiple test execution mid-run
+  features/web_ui_multiple_acceptance_test_execution.feature:86  Execute multiple tests filtered by tags
+  features/web_ui_multiple_acceptance_test_execution.feature:98  Export multiple test results
+  features/web_ui_multiple_acceptance_test_execution.feature:110  Re-run only failed scenarios from multiple test execution
+  features/web_ui_single_acceptance_test_execution.feature:14  Execute single acceptance test and wait for completion
+  features/web_ui_single_acceptance_test_execution.feature:26  Verify single test results are displayed correctly
+  features/web_ui_single_acceptance_test_execution.feature:38  Verify real-time progress updates during single test execution
+  features/web_ui_single_acceptance_test_execution.feature:49  Export single test results
+  features/web_ui_single_acceptance_test_execution.feature:60  Handle single test execution errors gracefully
+  features/web_ui_single_acceptance_test_execution.feature:72  Stop single test execution mid-run
+  features/web_ui_single_acceptance_test_execution.feature:83  View detailed information for individual test steps
+
+0 features passed, 0 failed, 4 error, 0 skipped
+0 scenarios passed, 0 failed, 28 error, 0 skipped
+0 steps passed, 0 failed, 28 error, 125 skipped, 179 undefined
+Took 0min 0.027s
+⚠️ Some web-ui acceptance tests may have failed
+✅ Web UI acceptance tests completed
+📊 Results available in web-ui/results/
+
+=== STDERR ===
+
+You can implement step definitions for undefined steps with these snippets:
+
+from behave.api.pending_step import StepNotImplementedError
+@when(u'I select a specific acceptance test scenario')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I select a specific acceptance test scenario')
+
+
+@then(u'I should see detailed scenario information')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then I should see detailed scenario information')
+
+
+@then(u'the scenario should show its feature file name')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the scenario should show its feature file name')
+
+
+@then(u'the scenario should display all associated tags')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the scenario should display all associated tags')
+
+
+@then(u'the scenario should show the number of steps')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the scenario should show the number of steps')
+
+
+@then(u'the scenario description should be visible')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the scenario description should be visible')
+
+
+@given(u'the hardware mock is enabled in the backend')
+def step_impl(context):
+    raise StepNotImplementedError(u'Given the hardware mock is enabled in the backend')
+
+
+@when(u'I load acceptance test scenarios')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I load acceptance test scenarios')
+
+
+@then(u'all acceptance test scenarios should be available')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then all acceptance test scenarios should be available')
+
+
+@then(u'no hardware connectivity errors should be displayed')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then no hardware connectivity errors should be displayed')
+
+
+@then(u'the interface should indicate simulation mode is active')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the interface should indicate simulation mode is active')
+
+
+@then(u'all test scenarios should be executable in mock mode')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then all test scenarios should be executable in mock mode')
+
+
+@given(u'I am on the Test Automation panel')
+def step_impl(context):
+    raise StepNotImplementedError(u'Given I am on the Test Automation panel')
+
+
+@when(u'I click the refresh scenarios button')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I click the refresh scenarios button')
+
+
+@then(u'the scenarios should be reloaded from the backend')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the scenarios should be reloaded from the backend')
+
+
+@then(u'the scenario count should remain consistent')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the scenario count should remain consistent')
+
+
+@then(u'any new scenarios should appear in the list')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then any new scenarios should appear in the list')
+
+
+@then(u'the loading indicator should be displayed during refresh')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the loading indicator should be displayed during refresh')
+
+
+@when(u'I navigate to the Test Automation panel')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I navigate to the Test Automation panel')
+
+
+@when(u'I attempt to load acceptance test scenarios')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I attempt to load acceptance test scenarios')
+
+
+@then(u'the interface should indicate the backend is not available')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the interface should indicate the backend is not available')
+
+
+@then(u'the error should not crash the web interface')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the error should not crash the web interface')
+
+
+@then(u'each displayed scenario should have the "smoke" tag')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then each displayed scenario should have the "smoke" tag')
+
+
+@when(u'I select multiple tags: "hil" and "gpio"')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I select multiple tags: "hil" and "gpio"')
+
+
+@when(u'I apply the tag filter')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I apply the tag filter')
+
+
+@then(u'only scenarios with both "hil" and "gpio" tags should be displayed')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then only scenarios with both "hil" and "gpio" tags should be displayed')
+
+
+@then(u'the scenario count should reflect the combined filter')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the scenario count should reflect the combined filter')
+
+
+@then(u'each displayed scenario should have both selected tags')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then each displayed scenario should have both selected tags')
+
+
+@when(u'I enable OR logic for tag filtering')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I enable OR logic for tag filtering')
+
+
+@when(u'I select multiple tags: "smoke" or "critical"')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I select multiple tags: "smoke" or "critical"')
+
+
+@then(u'scenarios with either "smoke" OR "critical" tags should be displayed')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then scenarios with either "smoke" OR "critical" tags should be displayed')
+
+
+@then(u'the result set should be larger than AND logic filtering')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the result set should be larger than AND logic filtering')
+
+
+@then(u'scenarios with only one of the selected tags should be included')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then scenarios with only one of the selected tags should be included')
+
+
+@given(u'I have applied tag filters to the scenario list')
+def step_impl(context):
+    raise StepNotImplementedError(u'Given I have applied tag filters to the scenario list')
+
+
+@given(u'only filtered scenarios are displayed')
+def step_impl(context):
+    raise StepNotImplementedError(u'Given only filtered scenarios are displayed')
+
+
+@when(u'I click the "Clear Filters" button')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I click the "Clear Filters" button')
+
+
+@then(u'all acceptance test scenarios should be displayed again')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then all acceptance test scenarios should be displayed again')
+
+
+@then(u'the scenario count should return to the original total')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the scenario count should return to the original total')
+
+
+@then(u'no tag filters should be active')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then no tag filters should be active')
+
+
+@when(u'I open the tag filter dropdown')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I open the tag filter dropdown')
+
+
+@then(u'each available tag should display its occurrence count')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then each available tag should display its occurrence count')
+
+
+@then(u'the counts should add up correctly')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the counts should add up correctly')
+
+
+@then(u'tags should be sorted by name or frequency')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then tags should be sorted by name or frequency')
+
+
+@then(u'only tags that exist in scenarios should be displayed')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then only tags that exist in scenarios should be displayed')
+
+
+@when(u'I search for a tag combination that has no matches')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I search for a tag combination that has no matches')
+
+
+@then(u'I should see a "No matching scenarios found" message')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then I should see a "No matching scenarios found" message')
+
+
+@then(u'the scenario list should be empty')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the scenario list should be empty')
+
+
+@then(u'there should be an option to clear the filters')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then there should be an option to clear the filters')
+
+
+@then(u'a suggestion to try different tags should be displayed')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then a suggestion to try different tags should be displayed')
+
+
+@when(u'I start typing in the tag search box')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I start typing in the tag search box')
+
+
+@when(u'I type "sm" for "smoke" tag')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I type "sm" for "smoke" tag')
+
+
+@then(u'tag suggestions should appear as I type')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then tag suggestions should appear as I type')
+
+
+@then(u'matching scenarios should be filtered in real-time')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then matching scenarios should be filtered in real-time')
+
+
+@then(u'the scenario count should update with each keystroke')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the scenario count should update with each keystroke')
+
+
+@then(u'I should be able to select from the suggested tags')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then I should be able to select from the suggested tags')
+
+
+@when(u'I select multiple test scenarios: "Hardware Basic Connectivity" and "GPIO Functionality"')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I select multiple test scenarios: "Hardware Basic Connectivity" and "GPIO Functionality"')
+
+
+@then(u'I should see a progress indicator for the overall execution')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then I should see a progress indicator for the overall execution')
+
+
+@then(u'I should see which scenario is currently executing')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then I should see which scenario is currently executing')
+
+
+@then(u'I should wait for all tests to finish')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then I should wait for all tests to finish')
+
+
+@then(u'the final status should show overall results (passed/failed/mixed)')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the final status should show overall results (passed/failed/mixed)')
+
+
+@when(u'I click the "Select All" button')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I click the "Select All" button')
+
+
+@then(u'all acceptance test scenarios should start executing')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then all acceptance test scenarios should start executing')
+
+
+@then(u'I should see the total number of scenarios to be executed')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then I should see the total number of scenarios to be executed')
+
+
+@then(u'the progress should show "X of Y scenarios completed"')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the progress should show "X of Y scenarios completed"')
+
+
+@then(u'each scenario should execute in sequence')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then each scenario should execute in sequence')
+
+
+@then(u'I should wait for the entire suite to complete')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then I should wait for the entire suite to complete')
+
+
+@then(u'the final results should show aggregate statistics')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the final results should show aggregate statistics')
+
+
+@given(u'I have executed multiple acceptance tests')
+def step_impl(context):
+    raise StepNotImplementedError(u'Given I have executed multiple acceptance tests')
+
+
+@given(u'all tests have completed')
+def step_impl(context):
+    raise StepNotImplementedError(u'Given all tests have completed')
+
+
+@then(u'I should see a comprehensive results summary')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then I should see a comprehensive results summary')
+
+
+@then(u'the summary should show total scenarios executed')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the summary should show total scenarios executed')
+
+
+@then(u'the summary should display passed/failed/error counts')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the summary should display passed/failed/error counts')
+
+
+@then(u'the summary should show total execution time')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the summary should show total execution time')
+
+
+@then(u'individual scenario results should be listed below')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then individual scenario results should be listed below')
+
+
+@then(u'each scenario should show its name, status, and duration')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then each scenario should show its name, status, and duration')
+
+
+@given(u'I am running multiple acceptance tests')
+def step_impl(context):
+    raise StepNotImplementedError(u'Given I am running multiple acceptance tests')
+
+
+@given(u'the execution is in progress')
+def step_impl(context):
+    raise StepNotImplementedError(u'Given the execution is in progress')
+
+
+@when(u'I monitor the test progress')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I monitor the test progress')
+
+
+@then(u'I should see the current scenario being executed')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then I should see the current scenario being executed')
+
+
+@then(u'the overall progress percentage should update')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the overall progress percentage should update')
+
+
+@then(u'the number of completed vs total scenarios should be shown')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the number of completed vs total scenarios should be shown')
+
+
+@then(u'the estimated remaining time should be displayed (if available)')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the estimated remaining time should be displayed (if available)')
+
+
+@then(u'previously completed scenarios should show their final status')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then previously completed scenarios should show their final status')
+
+
+@given(u'some tests passed while others failed')
+def step_impl(context):
+    raise StepNotImplementedError(u'Given some tests passed while others failed')
+
+
+@when(u'I view the results')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I view the results')
+
+
+@then(u'the overall status should indicate "mixed" or "partial success"')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the overall status should indicate "mixed" or "partial success"')
+
+
+@then(u'passed scenarios should be clearly marked as successful')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then passed scenarios should be clearly marked as successful')
+
+
+@then(u'failed scenarios should be highlighted with error indicators')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then failed scenarios should be highlighted with error indicators')
+
+
+@then(u'I should be able to filter results by status (passed/failed)')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then I should be able to filter results by status (passed/failed)')
+
+
+@then(u'there should be an option to re-run only failed tests')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then there should be an option to re-run only failed tests')
+
+
+@given(u'several scenarios have completed')
+def step_impl(context):
+    raise StepNotImplementedError(u'Given several scenarios have completed')
+
+
+@given(u'at least one scenario is still executing')
+def step_impl(context):
+    raise StepNotImplementedError(u'Given at least one scenario is still executing')
+
+
+@when(u'I click the "Stop Execution" button')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I click the "Stop Execution" button')
+
+
+@then(u'the current scenario execution should stop')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the current scenario execution should stop')
+
+
+@then(u'any remaining queued scenarios should be cancelled')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then any remaining queued scenarios should be cancelled')
+
+
+@then(u'completed scenarios should retain their results')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then completed scenarios should retain their results')
+
+
+@then(u'the overall status should show "stopped" or "cancelled"')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the overall status should show "stopped" or "cancelled"')
+
+
+@then(u'I should be able to start a new execution')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then I should be able to start a new execution')
+
+
+@when(u'I filter scenarios by the "smoke" tag')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I filter scenarios by the "smoke" tag')
+
+
+@when(u'I select all filtered scenarios')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I select all filtered scenarios')
+
+
+@then(u'only the scenarios with "smoke" tags should execute')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then only the scenarios with "smoke" tags should execute')
+
+
+@then(u'the progress should reflect the filtered scenario count')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the progress should reflect the filtered scenario count')
+
+
+@then(u'the results should only show the executed scenarios')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the results should only show the executed scenarios')
+
+
+@then(u'tag information should be preserved in the results')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then tag information should be preserved in the results')
+
+
+@given(u'I have completed multiple acceptance tests')
+def step_impl(context):
+    raise StepNotImplementedError(u'Given I have completed multiple acceptance tests')
+
+
+@given(u'the results are displayed')
+def step_impl(context):
+    raise StepNotImplementedError(u'Given the results are displayed')
+
+
+@when(u'I click the "Export Results" button')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I click the "Export Results" button')
+
+
+@when(u'I select "HTML" format')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I select "HTML" format')
+
+
+@then(u'the test results should be exported as an HTML report')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the test results should be exported as an HTML report')
+
+
+@then(u'the report should include the summary statistics')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the report should include the summary statistics')
+
+
+@then(u'the report should list all individual scenario results')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the report should list all individual scenario results')
+
+
+@then(u'the report should be formatted for easy reading')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the report should be formatted for easy reading')
+
+
+@then(u'the export should be downloadable')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the export should be downloadable')
+
+
+@given(u'some tests have failed')
+def step_impl(context):
+    raise StepNotImplementedError(u'Given some tests have failed')
+
+
+@when(u'I view the results summary')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I view the results summary')
+
+
+@when(u'I click the "Retry Failed Tests" button')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I click the "Retry Failed Tests" button')
+
+
+@then(u'only the previously failed scenarios should be queued for execution')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then only the previously failed scenarios should be queued for execution')
+
+
+@then(u'the execution should start with just the failed tests')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the execution should start with just the failed tests')
+
+
+@then(u'the progress should show the count of scenarios being retried')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the progress should show the count of scenarios being retried')
+
+
+@then(u'upon completion, the results should be updated with new outcomes')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then upon completion, the results should be updated with new outcomes')
+
+
+@then(u'the retry attempt should be recorded in the test history')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the retry attempt should be recorded in the test history')
+
+
+@then(u'the results should show the scenario name and description')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the results should show the scenario name and description')
+
+
+@then(u'the results should display the execution time')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the results should display the execution time')
+
+
+@then(u'the results should show the final status (passed/failed)')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the results should show the final status (passed/failed)')
+
+
+@then(u'if failed, error details should be visible')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then if failed, error details should be visible')
+
+
+@then(u'all test steps should be listed with their individual status')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then all test steps should be listed with their individual status')
+
+
+@given(u'I have selected a single test scenario')
+def step_impl(context):
+    raise StepNotImplementedError(u'Given I have selected a single test scenario')
+
+
+@when(u'I start the test execution')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I start the test execution')
+
+
+@then(u'I should see real-time progress updates')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then I should see real-time progress updates')
+
+
+@then(u'the current step being executed should be highlighted')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the current step being executed should be highlighted')
+
+
+@then(u'step completion should be indicated as it happens')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then step completion should be indicated as it happens')
+
+
+@then(u'any step failures should be immediately visible')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then any step failures should be immediately visible')
+
+
+@when(u'I select "JSON" format')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I select "JSON" format')
+
+
+@then(u'the test results should be exported as a JSON file')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the test results should be exported as a JSON file')
+
+
+@then(u'the exported file should contain all test details')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the exported file should contain all test details')
+
+
+@then(u'the file should include scenario information, steps, and outcomes')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the file should include scenario information, steps, and outcomes')
+
+
+@given(u'I select a test scenario that will fail')
+def step_impl(context):
+    raise StepNotImplementedError(u'Given I select a test scenario that will fail')
+
+
+@when(u'I run the selected test')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I run the selected test')
+
+
+@when(u'the test fails during execution')
+def step_impl(context):
+    raise StepNotImplementedError(u'When the test fails during execution')
+
+
+@then(u'I should see a clear error message')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then I should see a clear error message')
+
+
+@then(u'the error details should be displayed')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the error details should be displayed')
+
+
+@then(u'the failed step should be highlighted')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the failed step should be highlighted')
+
+
+@then(u'there should be an option to retry the test')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then there should be an option to retry the test')
+
+
+@then(u'the interface should remain stable after the error')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the interface should remain stable after the error')
+
+
+@given(u'I am running a single acceptance test')
+def step_impl(context):
+    raise StepNotImplementedError(u'Given I am running a single acceptance test')
+
+
+@given(u'the test is currently executing')
+def step_impl(context):
+    raise StepNotImplementedError(u'Given the test is currently executing')
+
+
+@then(u'the test execution should stop immediately')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the test execution should stop immediately')
+
+
+@then(u'the status should show "stopped" or "cancelled"')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the status should show "stopped" or "cancelled"')
+
+
+@then(u'any partial results should be preserved')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then any partial results should be preserved')
+
+
+@then(u'I should be able to start a new test execution')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then I should be able to start a new test execution')
+
+
+@then(u'the interface should return to the ready state')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the interface should return to the ready state')
+
+
+@when(u'I click on a specific test step in the results')
+def step_impl(context):
+    raise StepNotImplementedError(u'When I click on a specific test step in the results')
+
+
+@then(u'I should see detailed step information')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then I should see detailed step information')
+
+
+@then(u'the step should show its type (Given/When/Then)')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the step should show its type (Given/When/Then)')
+
+
+@then(u'the step description should be fully visible')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then the step description should be fully visible')
+
+
+@then(u'any pin interactions should be listed')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then any pin interactions should be listed')
+
+
+@then(u'step execution time should be displayed')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then step execution time should be displayed')
+
+
+@then(u'for failed steps, detailed error information should be shown')
+def step_impl(context):
+    raise StepNotImplementedError(u'Then for failed steps, detailed error information should be shown')
+
+
