@@ -11,12 +11,23 @@ License: Proprietary
 
 import time
 import json
-import requests
 from behave import given, when, then, step
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
+
+# Try to import optional dependencies
+try:
+    import requests
+    HAS_REQUESTS = True
+except ImportError:
+    HAS_REQUESTS = False
+
+try:
+    from selenium.webdriver.common.by import By
+    from selenium.webdriver.support.ui import WebDriverWait
+    from selenium.webdriver.support import expected_conditions as EC
+    from selenium.common.exceptions import TimeoutException, NoSuchElementException
+    HAS_SELENIUM = True
+except ImportError:
+    HAS_SELENIUM = False
 
 
 # ============================================================================

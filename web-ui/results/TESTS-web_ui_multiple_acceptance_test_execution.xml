@@ -1,0 +1,352 @@
+<testsuite name="web_ui_multiple_acceptance_test_execution.Multiple Acceptance Test Web-UI Execution and Results Verification" tests="9" errors="9" failures="0" skipped="0" time="0.008236" timestamp="2025-09-16T01:11:46.652234" hostname="runnervmf4ws1"><testcase classname="web_ui_multiple_acceptance_test_execution.Multiple Acceptance Test Web-UI Execution and Results Verification" name="Execute multiple acceptance tests and wait for completion" status="error" time="0.000912"><error type="AttributeError" message="'Context' object has no attribute 'backend_url'">
+<![CDATA[
+Failing step: Given the web-ui is running in simulation mode ... error in 0.001s
+Location: features/web_ui_multiple_acceptance_test_execution.feature:8
+Traceback (most recent call last):
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+  File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+    response = requests.get(f"{context.backend_url}/api/health")
+                               ^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+    raise AttributeError(msg)
+AttributeError: 'Context' object has no attribute 'backend_url'
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+
+  @smoke @multiple-tests @execution
+  Scenario: Execute multiple acceptance tests and wait for completion
+    Given the web-ui is running in simulation mode ... error in 0.001s
+    And the Test Automation panel is loaded ... skipped in 0.000s
+    And acceptance test scenarios are loaded from the backend ... skipped in 0.000s
+    And the hardware mock is enabled ... skipped in 0.000s
+    Given I am on the Test Automation panel ... undefined in 0.000s
+    And acceptance test scenarios are loaded ... skipped in 0.000s
+    When I select multiple test scenarios: "Hardware Basic Connectivity" and "GPIO Functionality" ... undefined in 0.000s
+    And I click the "Run Selected" button ... skipped in 0.000s
+    Then the test execution should start ... skipped in 0.000s
+    And I should see a progress indicator for the overall execution ... undefined in 0.000s
+    And the execution status should show "running" ... skipped in 0.000s
+    And I should see which scenario is currently executing ... undefined in 0.000s
+    And I should wait for all tests to finish ... undefined in 0.000s
+    And the final status should show overall results (passed/failed/mixed) ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="web_ui_multiple_acceptance_test_execution.Multiple Acceptance Test Web-UI Execution and Results Verification" name="Execute full test suite (all scenarios)" status="error" time="0.000918"><error type="AttributeError" message="'Context' object has no attribute 'backend_url'">
+<![CDATA[
+Failing step: Given the web-ui is running in simulation mode ... error in 0.001s
+Location: features/web_ui_multiple_acceptance_test_execution.feature:8
+Traceback (most recent call last):
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+  File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+    response = requests.get(f"{context.backend_url}/api/health")
+                               ^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+    raise AttributeError(msg)
+AttributeError: 'Context' object has no attribute 'backend_url'
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+
+  @multiple-tests @batch-execution
+  Scenario: Execute full test suite (all scenarios)
+    Given the web-ui is running in simulation mode ... error in 0.001s
+    And the Test Automation panel is loaded ... skipped in 0.000s
+    And acceptance test scenarios are loaded from the backend ... skipped in 0.000s
+    And the hardware mock is enabled ... skipped in 0.000s
+    Given I am on the Test Automation panel ... undefined in 0.000s
+    And acceptance test scenarios are loaded ... skipped in 0.000s
+    When I click the "Select All" button ... undefined in 0.000s
+    And I click the "Run Selected" button ... skipped in 0.000s
+    Then all acceptance test scenarios should start executing ... undefined in 0.000s
+    And I should see the total number of scenarios to be executed ... undefined in 0.000s
+    And the progress should show "X of Y scenarios completed" ... undefined in 0.000s
+    And each scenario should execute in sequence ... undefined in 0.000s
+    And I should wait for the entire suite to complete ... undefined in 0.000s
+    And the final results should show aggregate statistics ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="web_ui_multiple_acceptance_test_execution.Multiple Acceptance Test Web-UI Execution and Results Verification" name="Verify multiple test results summary is displayed" status="error" time="0.000923"><error type="AttributeError" message="'Context' object has no attribute 'backend_url'">
+<![CDATA[
+Failing step: Given the web-ui is running in simulation mode ... error in 0.001s
+Location: features/web_ui_multiple_acceptance_test_execution.feature:8
+Traceback (most recent call last):
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+  File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+    response = requests.get(f"{context.backend_url}/api/health")
+                               ^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+    raise AttributeError(msg)
+AttributeError: 'Context' object has no attribute 'backend_url'
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+
+  @multiple-tests @results-summary
+  Scenario: Verify multiple test results summary is displayed
+    Given the web-ui is running in simulation mode ... error in 0.001s
+    And the Test Automation panel is loaded ... skipped in 0.000s
+    And acceptance test scenarios are loaded from the backend ... skipped in 0.000s
+    And the hardware mock is enabled ... skipped in 0.000s
+    Given I have executed multiple acceptance tests ... undefined in 0.000s
+    And all tests have completed ... undefined in 0.000s
+    When I view the test results ... skipped in 0.000s
+    Then I should see a comprehensive results summary ... undefined in 0.000s
+    And the summary should show total scenarios executed ... undefined in 0.000s
+    And the summary should display passed/failed/error counts ... undefined in 0.000s
+    And the summary should show total execution time ... undefined in 0.000s
+    And individual scenario results should be listed below ... undefined in 0.000s
+    And each scenario should show its name, status, and duration ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="web_ui_multiple_acceptance_test_execution.Multiple Acceptance Test Web-UI Execution and Results Verification" name="Track progress during multiple test execution" status="error" time="0.000907"><error type="AttributeError" message="'Context' object has no attribute 'backend_url'">
+<![CDATA[
+Failing step: Given the web-ui is running in simulation mode ... error in 0.001s
+Location: features/web_ui_multiple_acceptance_test_execution.feature:8
+Traceback (most recent call last):
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+  File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+    response = requests.get(f"{context.backend_url}/api/health")
+                               ^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+    raise AttributeError(msg)
+AttributeError: 'Context' object has no attribute 'backend_url'
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+
+  @multiple-tests @progress-tracking
+  Scenario: Track progress during multiple test execution
+    Given the web-ui is running in simulation mode ... error in 0.001s
+    And the Test Automation panel is loaded ... skipped in 0.000s
+    And acceptance test scenarios are loaded from the backend ... skipped in 0.000s
+    And the hardware mock is enabled ... skipped in 0.000s
+    Given I am running multiple acceptance tests ... undefined in 0.000s
+    And the execution is in progress ... undefined in 0.000s
+    When I monitor the test progress ... undefined in 0.000s
+    Then I should see the current scenario being executed ... undefined in 0.000s
+    And the overall progress percentage should update ... undefined in 0.000s
+    And the number of completed vs total scenarios should be shown ... undefined in 0.000s
+    And the estimated remaining time should be displayed (if available) ... undefined in 0.000s
+    And previously completed scenarios should show their final status ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="web_ui_multiple_acceptance_test_execution.Multiple Acceptance Test Web-UI Execution and Results Verification" name="Handle mixed results (some pass, some fail) in multiple test execution" status="error" time="0.000907"><error type="AttributeError" message="'Context' object has no attribute 'backend_url'">
+<![CDATA[
+Failing step: Given the web-ui is running in simulation mode ... error in 0.001s
+Location: features/web_ui_multiple_acceptance_test_execution.feature:8
+Traceback (most recent call last):
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+  File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+    response = requests.get(f"{context.backend_url}/api/health")
+                               ^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+    raise AttributeError(msg)
+AttributeError: 'Context' object has no attribute 'backend_url'
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+
+  @multiple-tests @mixed-results
+  Scenario: Handle mixed results (some pass, some fail) in multiple test execution
+    Given the web-ui is running in simulation mode ... error in 0.001s
+    And the Test Automation panel is loaded ... skipped in 0.000s
+    And acceptance test scenarios are loaded from the backend ... skipped in 0.000s
+    And the hardware mock is enabled ... skipped in 0.000s
+    Given I have executed multiple acceptance tests ... undefined in 0.000s
+    And some tests passed while others failed ... undefined in 0.000s
+    When I view the results ... undefined in 0.000s
+    Then the overall status should indicate "mixed" or "partial success" ... undefined in 0.000s
+    And passed scenarios should be clearly marked as successful ... undefined in 0.000s
+    And failed scenarios should be highlighted with error indicators ... undefined in 0.000s
+    And I should be able to filter results by status (passed/failed) ... undefined in 0.000s
+    And there should be an option to re-run only failed tests ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="web_ui_multiple_acceptance_test_execution.Multiple Acceptance Test Web-UI Execution and Results Verification" name="Stop multiple test execution mid-run" status="error" time="0.000907"><error type="AttributeError" message="'Context' object has no attribute 'backend_url'">
+<![CDATA[
+Failing step: Given the web-ui is running in simulation mode ... error in 0.001s
+Location: features/web_ui_multiple_acceptance_test_execution.feature:8
+Traceback (most recent call last):
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+  File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+    response = requests.get(f"{context.backend_url}/api/health")
+                               ^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+    raise AttributeError(msg)
+AttributeError: 'Context' object has no attribute 'backend_url'
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+
+  @multiple-tests @execution-interruption
+  Scenario: Stop multiple test execution mid-run
+    Given the web-ui is running in simulation mode ... error in 0.001s
+    And the Test Automation panel is loaded ... skipped in 0.000s
+    And acceptance test scenarios are loaded from the backend ... skipped in 0.000s
+    And the hardware mock is enabled ... skipped in 0.000s
+    Given I am running multiple acceptance tests ... undefined in 0.000s
+    And several scenarios have completed ... undefined in 0.000s
+    And at least one scenario is still executing ... undefined in 0.000s
+    When I click the "Stop Execution" button ... undefined in 0.000s
+    Then the current scenario execution should stop ... undefined in 0.000s
+    And any remaining queued scenarios should be cancelled ... undefined in 0.000s
+    And completed scenarios should retain their results ... undefined in 0.000s
+    And the overall status should show "stopped" or "cancelled" ... undefined in 0.000s
+    And I should be able to start a new execution ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="web_ui_multiple_acceptance_test_execution.Multiple Acceptance Test Web-UI Execution and Results Verification" name="Execute multiple tests filtered by tags" status="error" time="0.000925"><error type="AttributeError" message="'Context' object has no attribute 'backend_url'">
+<![CDATA[
+Failing step: Given the web-ui is running in simulation mode ... error in 0.001s
+Location: features/web_ui_multiple_acceptance_test_execution.feature:8
+Traceback (most recent call last):
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+  File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+    response = requests.get(f"{context.backend_url}/api/health")
+                               ^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+    raise AttributeError(msg)
+AttributeError: 'Context' object has no attribute 'backend_url'
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+
+  @multiple-tests @tag-based-execution
+  Scenario: Execute multiple tests filtered by tags
+    Given the web-ui is running in simulation mode ... error in 0.001s
+    And the Test Automation panel is loaded ... skipped in 0.000s
+    And acceptance test scenarios are loaded from the backend ... skipped in 0.000s
+    And the hardware mock is enabled ... skipped in 0.000s
+    Given I am on the Test Automation panel ... undefined in 0.000s
+    And acceptance test scenarios are loaded ... skipped in 0.000s
+    When I filter scenarios by the "smoke" tag ... undefined in 0.000s
+    And I select all filtered scenarios ... undefined in 0.000s
+    And I click the "Run Selected" button ... skipped in 0.000s
+    Then only the scenarios with "smoke" tags should execute ... undefined in 0.000s
+    And the progress should reflect the filtered scenario count ... undefined in 0.000s
+    And the results should only show the executed scenarios ... undefined in 0.000s
+    And tag information should be preserved in the results ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="web_ui_multiple_acceptance_test_execution.Multiple Acceptance Test Web-UI Execution and Results Verification" name="Export multiple test results" status="error" time="0.000913"><error type="AttributeError" message="'Context' object has no attribute 'backend_url'">
+<![CDATA[
+Failing step: Given the web-ui is running in simulation mode ... error in 0.001s
+Location: features/web_ui_multiple_acceptance_test_execution.feature:8
+Traceback (most recent call last):
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+  File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+    response = requests.get(f"{context.backend_url}/api/health")
+                               ^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+    raise AttributeError(msg)
+AttributeError: 'Context' object has no attribute 'backend_url'
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+
+  @multiple-tests @results-export
+  Scenario: Export multiple test results
+    Given the web-ui is running in simulation mode ... error in 0.001s
+    And the Test Automation panel is loaded ... skipped in 0.000s
+    And acceptance test scenarios are loaded from the backend ... skipped in 0.000s
+    And the hardware mock is enabled ... skipped in 0.000s
+    Given I have completed multiple acceptance tests ... undefined in 0.000s
+    And the results are displayed ... undefined in 0.000s
+    When I click the "Export Results" button ... undefined in 0.000s
+    And I select "HTML" format ... undefined in 0.000s
+    Then the test results should be exported as an HTML report ... undefined in 0.000s
+    And the report should include the summary statistics ... undefined in 0.000s
+    And the report should list all individual scenario results ... undefined in 0.000s
+    And the report should be formatted for easy reading ... undefined in 0.000s
+    And the export should be downloadable ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="web_ui_multiple_acceptance_test_execution.Multiple Acceptance Test Web-UI Execution and Results Verification" name="Re-run only failed scenarios from multiple test execution" status="error" time="0.000925"><error type="AttributeError" message="'Context' object has no attribute 'backend_url'">
+<![CDATA[
+Failing step: Given the web-ui is running in simulation mode ... error in 0.001s
+Location: features/web_ui_multiple_acceptance_test_execution.feature:8
+Traceback (most recent call last):
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+  File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+    response = requests.get(f"{context.backend_url}/api/health")
+                               ^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+    raise AttributeError(msg)
+AttributeError: 'Context' object has no attribute 'backend_url'
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+
+  @multiple-tests @retry-failed
+  Scenario: Re-run only failed scenarios from multiple test execution
+    Given the web-ui is running in simulation mode ... error in 0.001s
+    And the Test Automation panel is loaded ... skipped in 0.000s
+    And acceptance test scenarios are loaded from the backend ... skipped in 0.000s
+    And the hardware mock is enabled ... skipped in 0.000s
+    Given I have executed multiple acceptance tests ... undefined in 0.000s
+    And some tests have failed ... undefined in 0.000s
+    When I view the results summary ... undefined in 0.000s
+    And I click the "Retry Failed Tests" button ... undefined in 0.000s
+    Then only the previously failed scenarios should be queued for execution ... undefined in 0.000s
+    And the execution should start with just the failed tests ... undefined in 0.000s
+    And the progress should show the count of scenarios being retried ... undefined in 0.000s
+    And upon completion, the results should be updated with new outcomes ... undefined in 0.000s
+    And the retry attempt should be recorded in the test history ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

@@ -21,7 +21,5 @@ log_capture = true
 stop = false
 tags = ~@skip
 
-# User-defined data
-define = simulation_mode=true
-define = headless=true
-define = browser=chrome
+# User-defined data (combined into single define line)
+define = simulation_mode=true,headless=true,browser=chrome

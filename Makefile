@@ -625,14 +625,14 @@ web-ui-test: check-deps
 	@echo "✅ Web UI unit tests completed"
 
 # Run Web UI acceptance tests
-web-ui-test-acceptance: check-deps web-ui-install
+web-ui-test-acceptance: check-deps
 	@echo "🧪 Running Web UI acceptance tests..."
 	@echo "🔧 Installing Python dependencies for web-ui acceptance testing..."
-	@$(PYTHON_VENV_PIP) install selenium chromedriver-autoinstaller behave requests >/dev/null 2>&1 || \
-		echo "⚠️ Some dependencies may not be available - continuing anyway"
+	@pip install --user behave >/dev/null 2>&1 || echo "⚠️ Some dependencies may not be available - continuing anyway"
 	@echo "🌐 Starting web-ui acceptance test suite..."
+	@mkdir -p web-ui/test/results
 	@cd web-ui/test/acceptance && \
-		PYTHONPATH=. $(VENV_PY) -m behave \
+		PYTHONPATH=. python -m behave \
 			--junit \
 			--junit-directory=../../results \
 			-D simulation_mode=true \

@@ -1,0 +1,260 @@
+<testsuite name="web_ui_acceptance_test_search_by_tag.Web-UI Acceptance Test Search by Tag" tests="7" errors="7" failures="0" skipped="0" time="0.006528" timestamp="2025-09-16T01:11:46.636358" hostname="runnervmf4ws1"><testcase classname="web_ui_acceptance_test_search_by_tag.Web-UI Acceptance Test Search by Tag" name="Filter acceptance tests by single tag" status="error" time="0.000952"><error type="AttributeError" message="'Context' object has no attribute 'backend_url'">
+<![CDATA[
+Failing step: Given the web-ui is running in simulation mode ... error in 0.001s
+Location: features/web_ui_acceptance_test_search_by_tag.feature:8
+Traceback (most recent call last):
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+  File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+    response = requests.get(f"{context.backend_url}/api/health")
+                               ^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+    raise AttributeError(msg)
+AttributeError: 'Context' object has no attribute 'backend_url'
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+
+  @smoke @tag-filtering @search
+  Scenario: Filter acceptance tests by single tag
+    Given the web-ui is running in simulation mode ... error in 0.001s
+    And the Test Automation panel is loaded ... skipped in 0.000s
+    And acceptance test scenarios are loaded from the backend ... skipped in 0.000s
+    And the hardware mock is enabled ... skipped in 0.000s
+    Given I am on the Test Automation panel ... undefined in 0.000s
+    And acceptance test scenarios are loaded ... skipped in 0.000s
+    When I select the tag filter dropdown ... skipped in 0.000s
+    And I select the "smoke" tag filter ... skipped in 0.000s
+    Then only scenarios with the "smoke" tag should be displayed ... skipped in 0.000s
+    And the scenario count should update to reflect the filtered results ... skipped in 0.000s
+    And each displayed scenario should have the "smoke" tag ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="web_ui_acceptance_test_search_by_tag.Web-UI Acceptance Test Search by Tag" name="Filter acceptance tests by multiple tags" status="error" time="0.000923"><error type="AttributeError" message="'Context' object has no attribute 'backend_url'">
+<![CDATA[
+Failing step: Given the web-ui is running in simulation mode ... error in 0.001s
+Location: features/web_ui_acceptance_test_search_by_tag.feature:8
+Traceback (most recent call last):
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+  File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+    response = requests.get(f"{context.backend_url}/api/health")
+                               ^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+    raise AttributeError(msg)
+AttributeError: 'Context' object has no attribute 'backend_url'
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+
+  @tag-filtering @multiple-tags
+  Scenario: Filter acceptance tests by multiple tags
+    Given the web-ui is running in simulation mode ... error in 0.001s
+    And the Test Automation panel is loaded ... skipped in 0.000s
+    And acceptance test scenarios are loaded from the backend ... skipped in 0.000s
+    And the hardware mock is enabled ... skipped in 0.000s
+    Given I am on the Test Automation panel ... undefined in 0.000s
+    And acceptance test scenarios are loaded ... skipped in 0.000s
+    When I select multiple tags: "hil" and "gpio" ... undefined in 0.000s
+    And I apply the tag filter ... undefined in 0.000s
+    Then only scenarios with both "hil" and "gpio" tags should be displayed ... undefined in 0.000s
+    And the scenario count should reflect the combined filter ... undefined in 0.000s
+    And each displayed scenario should have both selected tags ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="web_ui_acceptance_test_search_by_tag.Web-UI Acceptance Test Search by Tag" name="Search acceptance tests by tag with OR logic" status="error" time="0.000922"><error type="AttributeError" message="'Context' object has no attribute 'backend_url'">
+<![CDATA[
+Failing step: Given the web-ui is running in simulation mode ... error in 0.001s
+Location: features/web_ui_acceptance_test_search_by_tag.feature:8
+Traceback (most recent call last):
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+  File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+    response = requests.get(f"{context.backend_url}/api/health")
+                               ^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+    raise AttributeError(msg)
+AttributeError: 'Context' object has no attribute 'backend_url'
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+
+  @tag-filtering @OR-logic
+  Scenario: Search acceptance tests by tag with OR logic
+    Given the web-ui is running in simulation mode ... error in 0.001s
+    And the Test Automation panel is loaded ... skipped in 0.000s
+    And acceptance test scenarios are loaded from the backend ... skipped in 0.000s
+    And the hardware mock is enabled ... skipped in 0.000s
+    Given I am on the Test Automation panel ... undefined in 0.000s
+    And acceptance test scenarios are loaded ... skipped in 0.000s
+    When I enable OR logic for tag filtering ... undefined in 0.000s
+    And I select multiple tags: "smoke" or "critical" ... undefined in 0.000s
+    Then scenarios with either "smoke" OR "critical" tags should be displayed ... undefined in 0.000s
+    And the result set should be larger than AND logic filtering ... undefined in 0.000s
+    And scenarios with only one of the selected tags should be included ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="web_ui_acceptance_test_search_by_tag.Web-UI Acceptance Test Search by Tag" name="Clear tag filters to show all scenarios" status="error" time="0.000938"><error type="AttributeError" message="'Context' object has no attribute 'backend_url'">
+<![CDATA[
+Failing step: Given the web-ui is running in simulation mode ... error in 0.001s
+Location: features/web_ui_acceptance_test_search_by_tag.feature:8
+Traceback (most recent call last):
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+  File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+    response = requests.get(f"{context.backend_url}/api/health")
+                               ^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+    raise AttributeError(msg)
+AttributeError: 'Context' object has no attribute 'backend_url'
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+
+  @tag-filtering @clear-filters
+  Scenario: Clear tag filters to show all scenarios
+    Given the web-ui is running in simulation mode ... error in 0.001s
+    And the Test Automation panel is loaded ... skipped in 0.000s
+    And acceptance test scenarios are loaded from the backend ... skipped in 0.000s
+    And the hardware mock is enabled ... skipped in 0.000s
+    Given I have applied tag filters to the scenario list ... undefined in 0.000s
+    And only filtered scenarios are displayed ... undefined in 0.000s
+    When I click the "Clear Filters" button ... undefined in 0.000s
+    Then all acceptance test scenarios should be displayed again ... undefined in 0.000s
+    And the scenario count should return to the original total ... undefined in 0.000s
+    And no tag filters should be active ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="web_ui_acceptance_test_search_by_tag.Web-UI Acceptance Test Search by Tag" name="Display tag counts for filtering" status="error" time="0.000943"><error type="AttributeError" message="'Context' object has no attribute 'backend_url'">
+<![CDATA[
+Failing step: Given the web-ui is running in simulation mode ... error in 0.001s
+Location: features/web_ui_acceptance_test_search_by_tag.feature:8
+Traceback (most recent call last):
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+  File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+    response = requests.get(f"{context.backend_url}/api/health")
+                               ^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+    raise AttributeError(msg)
+AttributeError: 'Context' object has no attribute 'backend_url'
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+
+  @tag-filtering @tag-count
+  Scenario: Display tag counts for filtering
+    Given the web-ui is running in simulation mode ... error in 0.001s
+    And the Test Automation panel is loaded ... skipped in 0.000s
+    And acceptance test scenarios are loaded from the backend ... skipped in 0.000s
+    And the hardware mock is enabled ... skipped in 0.000s
+    Given I am on the Test Automation panel ... undefined in 0.000s
+    And acceptance test scenarios are loaded ... skipped in 0.000s
+    When I open the tag filter dropdown ... undefined in 0.000s
+    Then each available tag should display its occurrence count ... undefined in 0.000s
+    And the counts should add up correctly ... undefined in 0.000s
+    And tags should be sorted by name or frequency ... undefined in 0.000s
+    And only tags that exist in scenarios should be displayed ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="web_ui_acceptance_test_search_by_tag.Web-UI Acceptance Test Search by Tag" name="Handle no matching results for tag search" status="error" time="0.000937"><error type="AttributeError" message="'Context' object has no attribute 'backend_url'">
+<![CDATA[
+Failing step: Given the web-ui is running in simulation mode ... error in 0.001s
+Location: features/web_ui_acceptance_test_search_by_tag.feature:8
+Traceback (most recent call last):
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+  File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+    response = requests.get(f"{context.backend_url}/api/health")
+                               ^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+    raise AttributeError(msg)
+AttributeError: 'Context' object has no attribute 'backend_url'
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+
+  @tag-filtering @no-results
+  Scenario: Handle no matching results for tag search
+    Given the web-ui is running in simulation mode ... error in 0.001s
+    And the Test Automation panel is loaded ... skipped in 0.000s
+    And acceptance test scenarios are loaded from the backend ... skipped in 0.000s
+    And the hardware mock is enabled ... skipped in 0.000s
+    Given I am on the Test Automation panel ... undefined in 0.000s
+    And acceptance test scenarios are loaded ... skipped in 0.000s
+    When I search for a tag combination that has no matches ... undefined in 0.000s
+    Then I should see a "No matching scenarios found" message ... undefined in 0.000s
+    And the scenario list should be empty ... undefined in 0.000s
+    And there should be an option to clear the filters ... undefined in 0.000s
+    And a suggestion to try different tags should be displayed ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="web_ui_acceptance_test_search_by_tag.Web-UI Acceptance Test Search by Tag" name="Real-time tag search as user types" status="error" time="0.000914"><error type="AttributeError" message="'Context' object has no attribute 'backend_url'">
+<![CDATA[
+Failing step: Given the web-ui is running in simulation mode ... error in 0.001s
+Location: features/web_ui_acceptance_test_search_by_tag.feature:8
+Traceback (most recent call last):
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+  File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+    response = requests.get(f"{context.backend_url}/api/health")
+                               ^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+    raise AttributeError(msg)
+AttributeError: 'Context' object has no attribute 'backend_url'
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+
+  @tag-filtering @real-time-search
+  Scenario: Real-time tag search as user types
+    Given the web-ui is running in simulation mode ... error in 0.001s
+    And the Test Automation panel is loaded ... skipped in 0.000s
+    And acceptance test scenarios are loaded from the backend ... skipped in 0.000s
+    And the hardware mock is enabled ... skipped in 0.000s
+    Given I am on the Test Automation panel ... undefined in 0.000s
+    And acceptance test scenarios are loaded ... skipped in 0.000s
+    When I start typing in the tag search box ... undefined in 0.000s
+    And I type "sm" for "smoke" tag ... undefined in 0.000s
+    Then tag suggestions should appear as I type ... undefined in 0.000s
+    And matching scenarios should be filtered in real-time ... undefined in 0.000s
+    And the scenario count should update with each keystroke ... undefined in 0.000s
+    And I should be able to select from the suggested tags ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>
