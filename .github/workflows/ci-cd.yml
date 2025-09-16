@@ -36,7 +36,7 @@ jobs:
       run: pio run -e atmega32a
       
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: firmware-build
         path: .pio/build/atmega32a/firmware.*
@@ -78,7 +78,7 @@ jobs:
         echo "Coverage reporting will be implemented with Unity test framework"
       
     - name: Upload test results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: unit-test-results
@@ -148,7 +148,7 @@ jobs:
         behave test/acceptance -D profile=emulation --junit --junit-directory=acceptance-junit || true
         
     - name: Upload acceptance test results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: acceptance-test-results
@@ -182,7 +182,7 @@ jobs:
         python scripts/validate_documentation.py || true
         
     - name: Upload documentation
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: generated-docs
         path: docs/generated/
@@ -226,7 +226,7 @@ jobs:
           --output=release-artifacts/ || echo "Executive report generation placeholder"
           
     - name: Upload release artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: release-package
         path: release-artifacts/

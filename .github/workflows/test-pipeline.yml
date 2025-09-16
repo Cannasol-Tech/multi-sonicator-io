@@ -74,7 +74,7 @@ jobs:
         make ci
         
     - name: Upload CI reports
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ci-reports
         path: |
@@ -130,7 +130,7 @@ jobs:
         python3 scripts/manage_pending_scenarios.py
         
     - name: Upload BDD validation reports
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: bdd-validation-reports
         path: |
@@ -178,7 +178,7 @@ jobs:
         python3 scripts/generate_traceability_report.py
         
     - name: Upload final reports
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: integration-reports
         path: |
@@ -263,7 +263,7 @@ jobs:
       continue-on-error: true
         
     - name: Upload HIL test results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: hil-test-results
         path: |
