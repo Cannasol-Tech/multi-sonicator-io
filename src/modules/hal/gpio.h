@@ -210,3 +210,5 @@ using ProductionHal = HalTemplate<AtmegaHal>;
 // Create GPIO instance for testing
 using TestGpio = GpioHal<MockHal>;
 using TestHal = HalTemplate<MockHal>;
+
+#endif // HAL_GPIO_H

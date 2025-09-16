@@ -28,16 +28,16 @@ So that the codebase is more modular, maintainable, and aligned with the project
 
 **Functional Requirements:**
 
-1.  A `CT2000Sonicator` abstract class (or equivalent) shall be created to define the contract for all sonicator objects.
-2.  A concrete `CT2000Sonicator` class shall be implemented, inheriting from `CT2000Sonicator`.
-3.  All existing functionality for controlling a sonicator (start, stop, set amplitude, reset) must be encapsulated within the `CT2000Sonicator` class.
-4.  All existing telemetry for a sonicator (power, frequency, status) must be encapsulated within the `CT2000Sonicator` class.
+1.  A `SonicatorInterface` abstract class (or equivalent) shall be created to define the contract for all sonicator objects.
+2.  A concrete `SonicatorInterface` class shall be implemented, inheriting from `SonicatorInterface`.
+3.  All existing functionality for controlling a sonicator (start, stop, set amplitude, reset) must be encapsulated within the `SonicatorInterface` class.
+4.  All existing telemetry for a sonicator (power, frequency, status) must be encapsulated within the `SonicatorInterface` class.
 
 **Integration Requirements:**
 
-5.  The main application loop in `main.cpp` shall be updated to use an array of `CT2000Sonicator` pointers to manage the four sonicator units.
+5.  The main application loop in `main.cpp` shall be updated to use an array of `SonicatorInterface` pointers to manage the four sonicator units.
 6.  Existing functionality for all four sonicators must continue to work as before the refactoring.
-7.  The MODBUS communication layer must correctly interact with the new `CT2000Sonicator` objects to get and set data.
+7.  The MODBUS communication layer must correctly interact with the new `SonicatorInterface` objects to get and set data.
 
 **Quality Requirements:**
 
@@ -47,14 +47,14 @@ So that the codebase is more modular, maintainable, and aligned with the project
 
 ## Technical Notes
 
-- **Integration Approach:** The existing procedural code for managing sonicators will be moved into the new `CT2000Sonicator` class. The `main.cpp` file will be updated to instantiate and manage four instances of this class.
+- **Integration Approach:** The existing procedural code for managing sonicators will be moved into the new `SonicatorInterface` class. The `main.cpp` file will be updated to instantiate and manage four instances of this class.
 - **Existing Pattern Reference:** This will establish a new, foundational OOP pattern for the project, as described in PRD sections NFR3 and 3.4.
 - **Key Constraints:** The solution must be mindful of the memory and processing limitations of the ATmega32A microcontroller.
 
 ## Definition of Done
 
-- [ ] `CT2000Sonicator` and `CT2000Sonicator` classes are implemented.
-- [ ] All sonicator control and telemetry logic is encapsulated in the `CT2000Sonicator` class.
+- [ ] `SonicatorInterface` and `SonicatorInterface` classes are implemented.
+- [ ] All sonicator control and telemetry logic is encapsulated in the `SonicatorInterface` class.
 - [ ] `main.cpp` is refactored to use the new classes.
 - [ ] All functional and integration requirements are met and verified.
 - [ ] Unit tests for the new classes are written and passing.

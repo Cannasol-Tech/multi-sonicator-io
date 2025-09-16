@@ -37,7 +37,7 @@
 
  
 
-class CT2000Sonicator {
+class SonicatorInterface {
 //@brief Basie Sonicator Interface Class
 
 private:
@@ -117,12 +117,12 @@ public:
      * @param id Sonicator ID (1-4)
      * @param config Hardware pin configuration
      */
-    CT2000Sonicator(uint8_t id, const sonicator_hardware_config_t& config);
+    SonicatorInterface(uint8_t id, const sonicator_hardware_config_t& config);
     
     /**
      * @brief Destructor
      */
-    ~CT2000Sonicator();
+    ~SonicatorInterface();
     
     // ========================================================================
     // INITIALIZATION AND CONFIGURATION

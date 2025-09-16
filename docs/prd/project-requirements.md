@@ -238,10 +238,10 @@ private:
     ATmega32A microcontroller;           // Main processing unit
     
     // Four separate interface circuits on PCB
-    CT2000Sonicator sonicator1;       // Connected to front panel DB9 #1
-    CT2000Sonicator sonicator2;       // Connected to front panel DB9 #2  
-    CT2000Sonicator sonicator3;       // Connected to front panel DB9 #3
-    CT2000Sonicator sonicator4;       // Connected to front panel DB9 #4
+    SonicatorInterface sonicator1;       // Connected to front panel DB9 #1
+    SonicatorInterface sonicator2;       // Connected to front panel DB9 #2  
+    SonicatorInterface sonicator3;       // Connected to front panel DB9 #3
+    SonicatorInterface sonicator4;       // Connected to front panel DB9 #4
     
     // Single communication interface
     ModbusSerial main_automation_comm;   // Connected to back panel DB9
@@ -338,7 +338,7 @@ Option 2: Panel Mount
 
 ```cpp
 // Main system classes with expanded CT2000 control capabilities
-class CT2000Sonicator {
+class SonicatorInterface {
     // Full CT2000 control and monitoring (instantiated 4x)
     
     // CONTROL FUNCTIONS (New capabilities)

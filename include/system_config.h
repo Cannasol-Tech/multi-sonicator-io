@@ -88,7 +88,7 @@
 #define SERIAL_BAUD_RATE 115200  // Debug serial communication speed
 
 /**
- * @defgroup CT2000Sonicator Sonicator Interface Pin Mapping
+ * @defgroup SonicatorInterface Sonicator Interface Pin Mapping
  * @brief ATmega32A pin assignments for CT2000 sonicator control interfaces
  * @details Based on schematic design with 6N137 optocouplers and ULN2003A drivers.
  * See also: config/hardware-config.yaml (SOLE SOURCE OF TRUTH) and PRD sections.
@@ -187,7 +187,7 @@
 /** @} */
 
 /**
- * @defgroup LM2907FrequencyConverter LM2907 Frequency-to-Voltage Converter
+ * @defgroup Frequency Input Pin
  * @brief Configuration for LM2907 frequency-to-voltage converter (Sonicator 4)
  * @details Converts CT2000 frequency output to 0-5V analog signal for ADC measurement
  * @{

@@ -124,7 +124,7 @@ typedef struct {
     bool start;                 //< Start/stop control
     uint8_t amplitude_percent;  //< Amplitude setting (20-100%)
     bool reset_overload;        //< Reset overload condition
-} sonicator_control_t;
+} hal_sonicator_control_t;
 
 /**
  * @brief Complete sonicator status structure
@@ -134,7 +134,7 @@ typedef struct {
     bool frequency_locked;      //< Frequency lock status
     float power_watts;          //< Current power output
     uint16_t frequency_hz;      //< Operating frequency
-} sonicator_status_t;
+} hal_sonicator_status_t;
 
 /**
  * @brief Control single sonicator
@@ -143,7 +143,7 @@ typedef struct {
  * @param control Pointer to control structure
  * @return HAL_OK on success, error code on failure
  */
-hal_result_t hal_control_sonicator(uint8_t sonicator_id, const sonicator_control_t* control);
+hal_result_t hal_control_sonicator(uint8_t sonicator_id, const hal_sonicator_control_t* control);
 
 /**
  * @brief Read single sonicator status
@@ -152,7 +152,7 @@ hal_result_t hal_control_sonicator(uint8_t sonicator_id, const sonicator_control
  * @param status Pointer to status structure
  * @return HAL_OK on success, error code on failure
  */
-hal_result_t hal_read_sonicator_status(uint8_t sonicator_id, sonicator_status_t* status);
+hal_result_t hal_read_sonicator_status(uint8_t sonicator_id, hal_sonicator_status_t* status);
 
 /**
  * @brief Control all sonicators simultaneously
@@ -160,7 +160,7 @@ hal_result_t hal_read_sonicator_status(uint8_t sonicator_id, sonicator_status_t*
  * @param control_array Array of 4 control structures
  * @return HAL_OK on success, error code on failure
  */
-hal_result_t hal_control_all_sonicators(const sonicator_control_t control_array[4]);
+hal_result_t hal_control_all_sonicators(const hal_sonicator_control_t control_array[4]);
 
 /**
  * @brief Read all sonicator statuses
@@ -168,7 +168,7 @@ hal_result_t hal_control_all_sonicators(const sonicator_control_t control_array[
  * @param status_array Array to store 4 status structures
  * @return HAL_OK on success, error code on failure
  */
-hal_result_t hal_read_all_sonicator_status(sonicator_status_t status_array[4]);
+hal_result_t hal_read_all_sonicator_status(hal_sonicator_status_t status_array[4]);
 
 /**
  * @brief Emergency stop all sonicators

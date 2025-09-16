@@ -24,7 +24,7 @@
 // ============================================================================
 // FORWARD DECLARATIONS
 // ============================================================================
-class CT2000Sonicator;
+class SonicatorInterface;
 class SystemController;
 class ModbusRTUSlave;
 class SafetyMonitor;
