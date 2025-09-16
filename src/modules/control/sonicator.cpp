@@ -163,7 +163,7 @@ void SonicatorInterface::halPwmSetSafe(uint8_t pin, uint8_t duty_cycle) {
 
 uint16_t SonicatorInterface::halAdcReadSafe(adc_channel_t channel) {
     if (simulation_mode_) {
-        return (uint16_t)((500UL * 1023UL) / 2000UL);
+        return 272;  // Simulate ~245W power (raw ADC value for testing)
     }
     uint16_t value;
     return (adc_read_channel(channel, &value) == ADC_OK) ? value : 0;
@@ -205,9 +205,9 @@ void SonicatorInterface::readHardwareInputs() {
     state_.overload_active = halGpioReadSafe(pins_.overload_pin);
     state_.frequency_locked = halGpioReadSafe(pins_.freq_lock_pin);
 
-    // Read power from ADC
+    // Read raw ADC power value (no conversion - cloud handles scaling)
     uint16_t adc_value = halAdcReadSafe(pins_.power_sense_channel);
-    state_.power_watts = (float)(adc_value * 2000) / 1023.0f;
+    state_.power_watts = (float)adc_value;  // Store raw ADC value (0-1023)
 
     // Read frequency using ISR-based edge counting
     uint8_t freq_channel = pins_.sonicator_id - 1; // Convert to 0-3 range

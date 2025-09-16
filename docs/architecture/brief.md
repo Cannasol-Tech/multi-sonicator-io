@@ -18,6 +18,11 @@
 - Implement a microcontroller-based multiplexer that exposes a stable MODBUS RTU contract to the PLC/HMI while managing four CT2000 units concurrently.
 - Provide per-unit control: amplitude setpoint, start/stop, overload reset, and safety interlocks; and per-unit monitoring: power (W), frequency (Hz), overload, frequency lock.
 - Establish a hardware harness and HIL wrapper (`test/acceptance/sketches/arduino_test_wrapper/`) to validate I/O semantics, timing, and error handling pre-integration.
+- Adopt a core object model with a Global Static Singleton controller:
+  - SonicMultiplexer (singleton) owns and orchestrates four SonicatorInterface instances (S1..S4)
+  - Non-blocking, cooperative design: SonicMultiplexer::tick() advances unit state in taskLoop(); public APIs are fast and side-effect minimal
+  - Centralizes safety gates (overload, freq-lock), aggregates telemetry, and exposes a stable MODBUS register contract
+
 - Deliver acceptance tests (unit, HIL, and BDD acceptance in `test/acceptance/`) tied to PRD requirements; integrate in CI (`.github/workflows/ci.yml`).
 - Maintain a single source of truth for pins in `config/hardware-config.yaml` (SOLE SOURCE OF TRUTH) synchronized with `include/system_config.h`.
 

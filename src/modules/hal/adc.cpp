@@ -6,6 +6,30 @@
  * @version 1.0.0
  */
 
+/**
+ * @defgroup HAL_ADC ADC HAL (ATmega32A)
+ * @ingroup HAL
+ * @brief Implementation notes for analog sampling and conversions.
+ *
+ * @section hal_adc_overview Overview
+ * - 10-bit ADC with VCC reference (default) and prescaler for 125 kHz clock.
+ * - Provides blocking and non-blocking conversions and utility conversions
+ *   (raw→voltage, raw→power, raw→frequency) aligned to system_config.h constants.
+ *
+ * @section hal_adc_cal Calibration
+ * - Supports calibration factor to correct for reference/component tolerances.
+ * - Allow 2 ms settling after reference changes.
+ *
+ * @section hal_adc_safety Safety & Performance
+ * - Validate channels and pointers; time out if conversion exceeds 1 ms.
+ * - Avoids floating point in ISR paths; uses integer math where practical.
+ *
+ * @section hal_adc_related Related
+ * - @see adc.h Public API and constants
+ * - @see system_config.h Analog scaling and channel assignments
+ */
+
+
 #include "adc.h"
 #include <system_config.h>
 #include <Arduino.h>
@@ -76,20 +100,20 @@ adc_result_t adc_init(void) {
     if (result != ADC_OK) {
         return result;
     }
-    
+
     // Set prescaler for 125kHz ADC clock (16MHz / 128 = 125kHz)
     result = adc_set_prescaler(ADC_PRESCALER_128);
     if (result != ADC_OK) {
         return result;
     }
-    
+
     // Enable ADC subsystem
     ADCSRA |= (1 << ADEN);
-    
+
     // Perform dummy conversion to stabilize ADC
     uint16_t dummy_value;
     adc_read_channel(ADC_CHANNEL_0, &dummy_value);
-    
+
     adc_initialized = true;
     return ADC_OK;
 }
@@ -136,14 +160,14 @@ inline constexpr adc_result_t adc_set_reference(adc_reference_t reference) {
         default:
             return ADC_ERROR_INVALID_REF;
     }
-    
+
     /**
      * @brief Updates current reference tracking variable
      * @details Stores the newly configured reference for use in voltage
      *          conversion calculations
      */
     current_reference = reference;
-    
+
     // Allow reference to settle
     /**
      * @brief Reference settling delay
@@ -151,7 +175,7 @@ inline constexpr adc_result_t adc_set_reference(adc_reference_t reference) {
      *          after configuration change
      */
     delay(2);
-    
+
     return ADC_OK;
 }
 
@@ -166,7 +190,7 @@ inline constexpr adc_result_t adc_set_prescaler(adc_prescaler_t prescaler) {
     if (prescaler > ADC_PRESCALER_128) {
         return ADC_ERROR_INVALID_REF;
     }
-    
+
     // Clear prescaler bits and set new value
     /**
      * @brief ADCSRA prescaler bits manipulation
@@ -175,7 +199,7 @@ inline constexpr adc_result_t adc_set_prescaler(adc_prescaler_t prescaler) {
      */
     ADCSRA &= ~((1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0));
     ADCSRA |= prescaler;
-    
+
     return ADC_OK;
 }
 
@@ -191,11 +215,11 @@ inline constexpr adc_result_t adc_read_channel(adc_channel_t channel, uint16_t* 
     if (!adc_initialized) {
         return ADC_ERROR_NOT_INITIALIZED;
     }
-    
+
     if (!is_valid_channel(channel) || value == nullptr) {
         return ADC_ERROR_INVALID_CHANNEL;
     }
-    
+
     // Select ADC channel (MUX4:0 bits)
     /**
      * @brief ADMUX channel selection
@@ -203,7 +227,7 @@ inline constexpr adc_result_t adc_read_channel(adc_channel_t channel, uint16_t* 
      *          while setting lower 5 bits (MUX4:0) to select input channel
      */
     ADMUX = (ADMUX & 0xE0) | (channel & 0x1F);
-    
+
     // Start conversion
     /**
      * @brief Conversion start trigger
@@ -211,7 +235,7 @@ inline constexpr adc_result_t adc_read_channel(adc_channel_t channel, uint16_t* 
      *          to begin analog-to-digital conversion
      */
     ADCSRA |= (1 << ADSC);
-    
+
     // Wait for conversion to complete (timeout after 1ms)
     /**
      * @brief Conversion timeout counter
@@ -228,11 +252,11 @@ inline constexpr adc_result_t adc_read_channel(adc_channel_t channel, uint16_t* 
         delayMicroseconds(1);
         timeout--;
     }
-    
+
     if (timeout == 0) {
         return ADC_ERROR_TIMEOUT;
     }
-    
+
     // Read result (ADCL must be read first)
     /**
      * @brief ADC result register reading sequence
@@ -241,14 +265,14 @@ inline constexpr adc_result_t adc_read_channel(adc_channel_t channel, uint16_t* 
      */
     uint8_t low = ADCL;   ///< ADC Data Register Low byte (bits 7:0)
     uint8_t high = ADCH;  ///< ADC Data Register High byte (bits 9:8)
-    
+
     /**
      * @brief 10-bit result reconstruction
      * @details Combines high and low bytes into complete 10-bit value
      *          with proper bit positioning
      */
     *value = (high << 8) | low;
-    
+
     return ADC_OK;
 }
 
@@ -263,11 +287,11 @@ inline constexpr adc_result_t adc_start_conversion(adc_channel_t channel) {
     if (!adc_initialized) {
         return ADC_ERROR_NOT_INITIALIZED;
     }
-    
+
     if (!is_valid_channel(channel)) {
         return ADC_ERROR_INVALID_CHANNEL;
     }
-    
+
     // Select ADC channel
     /**
      * @brief Non-blocking channel selection
@@ -275,7 +299,7 @@ inline constexpr adc_result_t adc_start_conversion(adc_channel_t channel) {
      *          waiting for conversion completion
      */
     ADMUX = (ADMUX & 0xE0) | (channel & 0x1F);
-    
+
     // Start conversion
     /**
      * @brief Non-blocking conversion start
@@ -283,7 +307,7 @@ inline constexpr adc_result_t adc_start_conversion(adc_channel_t channel) {
      *          allowing other code to execute during conversion time
      */
     ADCSRA |= (1 << ADSC);
-    
+
     return ADC_OK;
 }
 
@@ -298,11 +322,11 @@ inline constexpr adc_result_t adc_conversion_complete(bool* complete) {
     if (!adc_initialized) {
         return ADC_ERROR_NOT_INITIALIZED;
     }
-    
+
     if (complete == nullptr) {
         return ADC_ERROR_INVALID_CHANNEL;
     }
-    
+
     /**
      * @brief ADSC bit status check
      * @details ADSC (ADC Start Conversion) bit is automatically cleared
@@ -324,11 +348,11 @@ inline constexpr adc_result_t adc_get_result(uint16_t* value) {
     if (!adc_initialized) {
         return ADC_ERROR_NOT_INITIALIZED;
     }
-    
+
     if (value == nullptr) {
         return ADC_ERROR_INVALID_CHANNEL;
     }
-    
+
     // Check if conversion is still running
     /**
      * @brief Conversion status verification
@@ -338,7 +362,7 @@ inline constexpr adc_result_t adc_get_result(uint16_t* value) {
     if (ADCSRA & (1 << ADSC)) {
         return ADC_ERROR_TIMEOUT;
     }
-    
+
     // Read result (ADCL must be read first)
     /**
      * @brief Atomic result register reading
@@ -347,15 +371,15 @@ inline constexpr adc_result_t adc_get_result(uint16_t* value) {
      */
     uint8_t low = ADCL;   ///< ADC Data Register Low byte
     uint8_t high = ADCH;  ///< ADC Data Register High byte
-    
+
     /**
      * @brief Result value reconstruction
      * @details Combines register bytes into complete 10-bit ADC result
      */
     *value = (high << 8) | low;
-    
+
     return ADC_OK;
-}   
+}
 
 /**
  * @brief Converts raw ADC value to actual voltage measurement
@@ -369,7 +393,7 @@ inline adc_result_t adc_to_voltage(uint16_t raw_value, float* voltage) {
     if (voltage == nullptr) {
         return ADC_ERROR_INVALID_CHANNEL;
     }
-    
+
     /**
      * @brief Reference voltage determination
      * @details Selects appropriate reference voltage based on current
@@ -397,3 +421,70 @@ inline adc_result_t adc_to_voltage(uint16_t raw_value, float* voltage) {
             /**
              * @brief External reference voltage
              * @details Assumes external AREF matches system VCC
+             */
+            reference_voltage = ADC_REFERENCE_VOLTAGE;
+            break;
+        default:
+            return ADC_ERROR_INVALID_CHANNEL;
+    }
+
+    /**
+     * @brief Voltage calculation
+     * @details Applies linear scaling based on ADC resolution and reference
+     */
+    *voltage = (raw_value * reference_voltage) / ADC_MAX_VALUE;
+
+    return ADC_OK;
+}
+
+// ============================================================================
+// SONICATOR POWER MONITORING FUNCTIONS
+// ============================================================================
+
+/**
+ * @brief Read sonicator power level as raw ADC value
+ * @details Returns raw 10-bit ADC reading without conversion for maximum
+ *          efficiency. Cloud/PLC performs scaling using 5.44mV/W factor.
+ * @param sonicator_id Sonicator number (1-4)
+ * @param raw_adc Pointer to store raw ADC reading (0-1023)
+ * @return ADC_OK on success, error code on failure
+ */
+adc_result_t adc_read_sonicator_power_raw(uint8_t sonicator_id, uint16_t* raw_adc) {
+    if (raw_adc == nullptr || sonicator_id < 1 || sonicator_id > 4) {
+        return ADC_ERROR_INVALID_CHANNEL;
+    }
+
+    // Map sonicator ID to ADC channel (sonicators 1-4 use ADC channels 4-7)
+    adc_channel_t channel = (adc_channel_t)(sonicator_id + 3);
+
+    return adc_read_channel(channel, raw_adc);
+}
+
+/**
+ * @brief Read sonicator power level converted to watts
+ * @deprecated Use adc_read_sonicator_power_raw() for efficiency
+ * @details Converts raw ADC reading to power using 5.44mV/W scaling.
+ *          Provided for backward compatibility but raw ADC is preferred.
+ * @param sonicator_id Sonicator number (1-4)
+ * @param power_watts Pointer to store power in watts
+ * @return ADC_OK on success, error code on failure
+ */
+adc_result_t adc_read_sonicator_power(uint8_t sonicator_id, float* power_watts) {
+    if (power_watts == nullptr) {
+        return ADC_ERROR_INVALID_CHANNEL;
+    }
+
+    uint16_t raw_adc;
+    adc_result_t result = adc_read_sonicator_power_raw(sonicator_id, &raw_adc);
+    if (result != ADC_OK) {
+        return result;
+    }
+
+    // Convert raw ADC to voltage
+    float voltage = (raw_adc * ADC_REFERENCE_VOLTAGE) / ADC_MAX_VALUE;
+
+    // Apply 5.44mV/W scaling
+    *power_watts = voltage / ADC_POWER_SCALING_MV_PER_W * 1000.0f;  // Convert mV to V
+
+    return ADC_OK;
+}

@@ -1,13 +1,152 @@
 /**
  * @file test_control.c
- * @brief Comprehensive Unit Tests for Control Module
- * @author Cannasol Technologies
- * @date 2025-09-04
- * @version 1.0.0
+ * @title Comprehensive Unit Tests for Control Module
+ * @company Axovia AI
+ * @date 2025-09-16
+ * @brief Unity-based unit tests for control module achieving ≥85% code coverage
+ * @version 1.1.0
  *
  * @details
- * Unity-based unit tests for control module achieving ≥85% code coverage.
- * Tests sonicator control logic, state machines, and safety systems.
+ * This file contains comprehensive unit tests for the ultrasonic transducer control module,
+ * utilizing the Unity testing framework to achieve ≥85% code coverage. The tests validate
+ * critical control logic, state machines, safety systems, and parameter validation to ensure
+ * robust operation of the Multi-Sonicator-IO system.
+ *
+ * The test suite covers:
+ * - Sonicator control state machine transitions
+ * - Parameter validation and limit enforcement
+ * - Safety interlock and emergency stop functionality
+ * - Multi-sonicator coordination and synchronization
+ * - Error handling and fault recovery scenarios
+ * - Configuration management and validation
+ *
+ * @section test_coverage Test Coverage
+ *
+ * The test suite is designed to achieve comprehensive code coverage:
+ * - **Line Coverage**: ≥85% of executable lines
+ * - **Branch Coverage**: ≥80% of decision points
+ * - **Function Coverage**: 100% of public functions
+ * - **Statement Coverage**: ≥90% of statements
+ *
+ * Coverage areas include:
+ * - **Initialization**: Controller setup and configuration validation
+ * - **State Management**: Running, idle, and emergency states
+ * - **Parameter Handling**: Amplitude, frequency, and power limits
+ * - **Safety Systems**: Emergency stops and fault detection
+ * - **Multi-Unit Operation**: Coordinated control of multiple sonicators
+ * - **Error Recovery**: Fault handling and system recovery
+ *
+ * @section test_cases Test Cases
+ *
+ * Major test categories and scenarios:
+ *
+ * **Initialization Tests**
+ * - @c test_control_initialization_success - Valid configuration initialization
+ * - @c test_control_initialization_invalid_config - Invalid parameter rejection
+ * - @c test_control_initialization_null_pointers - NULL pointer handling
+ *
+ * **State Machine Tests**
+ * - @c test_control_state_transitions - Normal state transitions
+ * - @c test_control_emergency_stop - Emergency stop functionality
+ * - @c test_control_fault_recovery - Fault detection and recovery
+ *
+ * **Parameter Validation Tests**
+ * - @c test_control_amplitude_limits - Amplitude range validation
+ * - @c test_control_frequency_limits - Frequency range validation
+ * - @c test_control_power_limits - Power consumption limits
+ *
+ * **Multi-Unit Tests**
+ * - @c test_control_multi_unit_sync - Synchronized operation
+ * - @c test_control_unit_isolation - Independent unit operation
+ * - @c test_control_system_coordination - System-wide coordination
+ *
+ * @section setup Setup and Fixtures
+ *
+ * Test setup uses Unity framework with custom fixtures:
+ *
+ * @code{.c}
+ * // Test setup function
+ * void setUp(void) {
+ *     // Reset mock state
+ *     control_mock_reset();
+ *     
+ *     // Initialize test configuration
+ *     test_config.max_power_watts = 100.0f;
+ *     test_config.min_frequency_hz = 20000;
+ *     test_config.max_frequency_hz = 40000;
+ *     test_config.default_amplitude = 50;
+ *     test_config.safety_timeout_ms = 5000;
+ * }
+ *
+ * // Test teardown function
+ * void tearDown(void) {
+ *     // Clean up after each test
+ *     control_mock_reset();
+ * }
+ * @endcode
+ *
+ * @section running_tests Running Tests
+ *
+ * Tests are executed using the Unity test runner:
+ *
+ * @code{.bash}
+ * # Build and run all control tests
+ * make test-control
+ *
+ * # Run specific test
+ * make test TEST_FILTER=test_control_initialization_success
+ *
+ * # Generate coverage report
+ * make coverage
+ * @endcode
+ *
+ * @section test_framework Test Framework
+ *
+ * The test suite utilizes the Unity testing framework with custom extensions:
+ * - **Unity**: Lightweight unit testing framework for embedded systems
+ * - **Mock Objects**: Simulated hardware interfaces for isolated testing
+ * - **Test Doubles**: Fakes and stubs for dependency injection
+ * - **Test Fixtures**: Setup and teardown for test isolation
+ *
+ * @section coverage_reporting Coverage Reporting
+ *
+ * Code coverage is measured using gcov and lcov:
+ *
+ * @code{.bash}
+ * # Generate coverage report
+ * make coverage
+ *
+ * # View HTML coverage report
+ * firefox coverage/index.html
+ * @endcode
+ *
+ * Coverage reports show:
+ * - Line-by-line coverage with execution counts
+ * - Branch coverage for conditional statements
+ * - Function coverage statistics
+ * - Uncovered code identification
+ *
+ * @section test_maintenance Test Maintenance
+ *
+ * Test suite maintenance guidelines:
+ * - Keep tests synchronized with code changes
+ * - Update test cases when requirements change
+ * - Maintain ≥85% coverage threshold
+ * - Review and update mock expectations regularly
+ * - Add tests for bug fixes and edge cases
+ *
+ * @warning Tests must be run in isolation to prevent interference
+ * @warning Mock state should be reset between tests
+ * @warning Coverage reports must be reviewed before releases
+ *
+ * @see src/modules/control/sonicator_controller.h Control module interface
+ * @see test/mocks/control_mock.h Control mock implementation
+ * @see docs/testing-standards.md Testing framework documentation
+ *
+ * @note All tests use the Unity testing framework
+ * @note Mock objects are automatically included when UNIT_TEST is defined
+ * @note Test execution time should remain under 100ms per test
+ * @note Coverage reports are generated automatically in CI/CD pipeline
  */
 
 #ifdef UNIT_TEST

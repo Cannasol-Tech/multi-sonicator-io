@@ -93,6 +93,71 @@ HMI System (MODBUS Master)
 - Frequency generation and monitoring
 - State machine management per unit
 
+
+#### Core Object Model: SonicMultiplexer (Global Static Singleton)
+
+- Pattern & lifetime
+  - A single global, statically-initialized SonicMultiplexer orchestrates 4 SonicatorInterface instances for S1..S4
+  - Constructed in a safe, function-static way (per C++ standard) to avoid static init order issues on AVR; explicitly initialized from setup() via SonicMultiplexer::instance().init()
+  - Non-blocking: all public methods are fast; work is advanced by taskLoop()-driven SonicMultiplexer::tick()
+
+- Responsibilities
+  - Owns and initializes 4 SonicatorInterface objects (index 0..3) bound to pins from include/system_config.h (mirrors config/hardware-config.yaml)
+  - Central safety gate: enforces overload/lock interlocks; coordinates resets; rate-limits actions
+  - Global coordination: maintains Active Mask, Active Count, Previous-State registers; sequences multi-unit operations
+  - Telemetry aggregation: computes per-unit and aggregate flags/metrics for MODBUS register map
+  - Status LED policy: updates PD2 patterns for boot, run, error
+
+- Public API (sketch; cooperative, non-blocking)
+
+```c++
+class SonicMultiplexer {
+ public:
+  static SonicMultiplexer& instance();
+  void init();                   // configure pins, timers, ADC refs, etc.
+  void tick(uint32_t now_ms);    // advance all units; called from taskLoop()
+
+  // Control
+  void start(uint8_t unitMask);  // bitmask S1..S4
+  void stop(uint8_t unitMask);
+  void resetOverload(uint8_t unitIndex);
+  void setAmplitude(uint8_t unitIndex, uint16_t milliVolts0to10000);
+
+  // Telemetry
+  uint8_t activeMask() const;
+  uint8_t faultMask() const;     // overload, freq lock loss, etc.
+  const SonicatorInterface& unit(uint8_t i) const;
+};
+```
+
+- SonicatorInterface (per-unit responsibilities)
+  - Drive outputs: START level, RESET one-shot, AMPLITUDE (PWM→RC→0–10 V)
+  - Sense inputs: OVERLOAD, FREQ_LOCK, FREQ_DIV10 (edge counting)
+  - Maintain per-unit state machine: IDLE→RUNNING→FAULT; expose flags/counters
+  - Provide getters for power (via ADC scaling), frequency (via counter), uptime, last-fault
+
+- MODBUS integration
+  - SonicMultiplexer owns the register map adapters; maps global and per-unit registers:
+    - Global: Status, Active Mask/Count, Fault summary, diag counters
+    - Per-unit blocks (S1..S4): Control (start/stop, amplitude, reset), Status (power, freq, flags)
+  - Previous-State registers are maintained within SonicMultiplexer to aid diagnostics
+
+Class relationships (conceptual)
+
+```text
+┌──────────────────────┐
+│  SonicMultiplexer    │  (singleton)
+│  - units[4]          │──┬──► SonicatorInterface #1
+│  - activeMask        │  ├──► SonicatorInterface #2
+│  - faultMask         │  ├──► SonicatorInterface #3
+│  - status LED ctrl   │  └──► SonicatorInterface #4
+└──────────────────────┘
+        ▲
+        │ tick()/init(), MODBUS mapping, safety gate
+        │
+  taskLoop() scheduler (cooperative)
+```
+
 ### 4. Safety and Monitoring System
 
 **Purpose**: Ensures safe operation and fault detection
@@ -396,8 +461,8 @@ The extender mirrors the same command set (SET/READ/INFO) over the UART link.
 - **Safety:** Real-time overload detection and emergency shutdown capabilities
 - **Testing:** HIL harness must simulate 4 sonicator units concurrently
 
-**Architecture Version**: 0.1.0  
-**Last Updated**: December 2024  
+**Architecture Version**: 0.1.0
+**Last Updated**: December 2024
 **Review Status**: Approved for implementation
 
 ## 3. Enhancement Scope and Integration Strategy

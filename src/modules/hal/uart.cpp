@@ -6,6 +6,33 @@
  * @version 1.0.0
  */
 
+/**
+ * @defgroup HAL_UART UART HAL (ATmega32A)
+ * @ingroup HAL
+ * @brief Implementation notes for MODBUS‑friendly UART operations.
+ *
+ * @section hal_uart_overview Overview
+ * - Default 115200 8N1; integrates with Arduino Serial for footprint and stability.
+ * - Provides helpers for MODBUS frame timing (T1.5/T3.5) and gap detection.
+ *
+ * @section hal_uart_buffers Buffers & Flow
+ * - TX uses Serial.write() in Arduino build; RX is polled with non‑blocking reads.
+ * - Optional circular buffers are kept minimal to preserve SRAM.
+ *
+ * @section hal_uart_timing Timing
+ * - Character time derived from baud for gap/timeout computations.
+ * - Frame receive honors 3.5 char gaps to detect frame boundaries.
+ *
+ * @section hal_uart_errors Error Handling
+ * - Returns UART_OK or UART_ERROR_* for invalid params/timeouts.
+ * - Status helpers expose frame/parity/overflow flags if maintained.
+ *
+ * @section hal_uart_related Related
+ * - @see uart.h Public API and MODBUS helpers
+ * - @see timer.h for microsecond timing used by gaps/timeouts
+ */
+
+
 #include "uart.h"
 #include "system_config.h"
 #include <Arduino.h>

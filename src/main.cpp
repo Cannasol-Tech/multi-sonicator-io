@@ -17,6 +17,7 @@
 #include "register_map.h"
 #include "multiplexer/Multiplexer.h"
 #include "frequency_counter.h"
+#include "constants.h"
 
 // Global Multiplexer instance
 Multiplexer multiplexer;
@@ -66,9 +67,6 @@ void loop() {
     static unsigned long last_multiplexer_update_time = 0;
     static unsigned long last_modbus_sync_time = 0;
 
-    const unsigned long MODBUS_PROCESS_INTERVAL_MS = 5;
-    const unsigned long MULTIPLEXER_UPDATE_INTERVAL_MS = 10;
-    const unsigned long MODBUS_SYNC_INTERVAL_MS = 50;
     
     unsigned long current_time = millis();
     

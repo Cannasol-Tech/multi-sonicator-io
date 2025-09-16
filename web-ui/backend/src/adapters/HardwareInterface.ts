@@ -39,6 +39,11 @@ export class HardwareInterface extends EventEmitter {
   private pythonProcess: ChildProcess | null = null
 
   private connected = false
+
+  constructor() {
+    super()
+    this.setMaxListeners(50) // Increase max listeners to prevent memory leak warnings
+  }
   private serialPort: string | null = null
 
   private pinStates: Map<string, PinState> = new Map()
@@ -373,6 +378,7 @@ try:
                     if command == "ping":
                         response = hil.send_command("PING")
                         print(json.dumps({"type": "response", "data": response, "command_type": "ping"}))
+                        sys.stdout.flush()
 
                     elif command == "set_frequency" and len(args) >= 2:
                         signal = args[0]
@@ -615,8 +621,29 @@ except Exception as e:
 
       try {
         const commandStr = JSON.stringify(command)
+        const timeout = 5000 // 5 second timeout
 
-        // Emit command being sent for logging (reduced verbosity)
+        // Set up response handler
+        const responseHandler = (data: any) => {
+          clearTimeout(timeoutHandle)
+          resolve(data)
+        }
+
+        const errorHandler = (error: any) => {
+          clearTimeout(timeoutHandle)
+          reject(new Error(`Hardware error: ${error}`))
+        }
+
+        // Set up timeout
+        const timeoutHandle = setTimeout(() => {
+          reject(new Error(`Command timeout after ${timeout}ms`))
+        }, timeout)
+
+        // Listen for response (using once to avoid memory leaks)
+        this.once('command_response', responseHandler)
+        this.once('error', errorHandler)
+
+        // Emit command being sent for logging
         this.emit('arduino_command', {
           direction: 'sent',
           data: commandStr,
@@ -624,8 +651,8 @@ except Exception as e:
           type: command.type || 'unknown'
         })
 
+        // Send command to Python process
         this.pythonProcess.stdin?.write(commandStr + '\n')
-        resolve(true)
       } catch (error) {
         reject(error)
       }
@@ -642,7 +669,7 @@ except Exception as e:
     }
 
     try {
-      await this.sendPythonCommand({
+      const response = await this.sendPythonCommand({
         type: 'command',
         command: command.command,
         args: command.args
@@ -650,6 +677,7 @@ except Exception as e:
 
       return {
         success: true,
+        data: response,
         timestamp: Date.now()
       }
     } catch (error) {

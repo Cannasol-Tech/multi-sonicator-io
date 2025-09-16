@@ -1,0 +1,319 @@
+
+  # Pin definitions with complete pin matrix information
+  pins:
+    # Port B - Frequency inputs
+    PB0:
+      name: Sonicator #4 Frequency Input
+      pin: 1
+      signal: "FREQ_DIV10_4"
+      direction: "IN"
+      sonicator: 4
+      header_ref: "DB9-4 Pin 4"
+      scale_notes: "÷10 frequency (S4)"
+      wrapper_pin: "D7"
+      test_point: "TBD"
+
+    PB1:
+      name: Sonicator #3 Frequency Input
+      pin: 2
+      signal: "FREQ_DIV10_3"
+      direction: "IN"
+      sonicator: 3
+      header_ref: "DB9-3 Pin 4"
+      scale_notes: "÷10 frequency (S3)"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+
+    PB2:
+      name: Sonicator #2 Frequency Input
+      pin: 3
+      signal: "FREQ_DIV10_2"
+      direction: "IN"
+      sonicator: 2
+      header_ref: "DB9-2 Pin 4"
+      scale_notes: "÷10 frequency (S2)"
+      wrapper_pin: "N/A (Uno R4 single-channel)"
+      test_point: "N/A"
+
+    PB3:
+      name: Sonicator #1 Frequency Input
+      pin: 4
+      signal: "FREQ_DIV10_1"
+      direction: "IN"
+      sonicator: 1
+      header_ref: "DB9-1 Pin 4"
+      scale_notes: "÷10 frequency (S1)"
+      wrapper_pin: "N/A"
+      test_point: "TBD"
+
+    PB4:
+      name: Sonicator #4 Frequency Lock
+      pin: 5
+      signal: "FREQ_LOCK_4"
+      direction: "IN"
+      sonicator: 4
+      header_ref: "DB9-4 Pin 3"
+      scale_notes: "FLCK_4 via opto"
+      wrapper_pin: "D8"
+      test_point: "TBD"
+
+    PB5:
+      name: Sonicator #3 Frequency Lock
+      pin: 6
+      signal: "FREQ_LOCK_3"
+      direction: "IN"
+      sonicator: 3
+      header_ref: "DB9-3 Pin 3"
+      scale_notes: "FLCK_3 via opto"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+
+    PB6:
+      name: Sonicator #2 Frequency Lock
+      pin: 7
+      signal: "FREQ_LOCK_2"
+      direction: "IN"
+      sonicator: 2
+      header_ref: "DB9-2 Pin 3"
+      scale_notes: "FLCK_2 via opto"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+
+    PB7:
+      name: Sonicator #1 Frequency Lock
+      pin: 8
+      signal: "FREQ_LOCK_1"
+      direction: "IN"
+      sonicator: 1
+      header_ref: "DB9-1 Pin 3"
+      scale_notes: "FLCK_1 via opto"
+      wrapper_pin: "N/A"
+      test_point: "TBD"
+
+    # Port C - Control outputs
+    PC0:
+      name: Sonicator #4 Start Control
+      pin: 22
+      signal: "START_4"
+      direction: "OUT"
+      sonicator: 4
+      header_ref: "DB9-4 Pin 7"
+      scale_notes: "ULN2003A open-collector"
+      wrapper_pin: "A3"
+      test_point: "TBD"
+
+    PC1:
+      name: Sonicator #4 Reset Control
+      pin: 23
+      signal: "RESET_4"
+      direction: "OUT"
+      sonicator: 4
+      header_ref: "DB9-4 Pin 2"
+      scale_notes: "ULN2003A open-collector"
+      wrapper_pin: "A4"
+      test_point: "TBD"
+
+    PC2:
+      name: Sonicator #3 Start Control
+      pin: 24
+      signal: "START_3"
+      direction: "OUT"
+      sonicator: 3
+      header_ref: "DB9-3 Pin 7"
+      scale_notes: "ULN2003A open-collector"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+
+    PC3:
+      name: Sonicator #3 Reset Control
+      pin: 25
+      signal: "RESET_3"
+      direction: "OUT"
+      sonicator: 3
+      header_ref: "DB9-3 Pin 2"
+      scale_notes: "ULN2003A open-collector"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+
+    PC4:
+      name: Sonicator #2 Start Control
+      pin: 26
+      signal: "START_2"
+      direction: "OUT"
+      sonicator: 2
+      header_ref: "DB9-2 Pin 7"
+      scale_notes: "ULN2003A open-collector"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+
+    PC5:
+      name: Sonicator #2 Reset Control
+      pin: 27
+      signal: "RESET_2"
+      direction: "OUT"
+      sonicator: 2
+      header_ref: "DB9-2 Pin 2"
+      scale_notes: "ULN2003A open-collector"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+
+    PC6:
+      name: Sonicator #1 Start Control
+      pin: 28
+      signal: "START_1"
+      direction: "OUT"
+      sonicator: 1
+      header_ref: "DB9-1 Pin 7"
+      scale_notes: "ULN2003A open-collector"
+      wrapper_pin: "N/A"
+      test_point: "TBD"
+
+    PC7:
+      name: Sonicator #1 Reset Control
+      pin: 29
+      signal: "RESET_1"
+      direction: "OUT"
+      sonicator: 1
+      header_ref: "DB9-1 Pin 2"
+      scale_notes: "ULN2003A open-collector"
+      wrapper_pin: "N/A"
+      test_point: "TBD"
+
+    # Port D - Communication, status, and overload inputs
+    PD0:
+      name: MODBUS RTU Receive
+      pin: 14
+      signal: "UART_RXD"
+      direction: "IN"
+      header_ref: "DB9-0 Pin 8"
+      scale_notes: "MODBUS RTU RX"
+      wrapper_pin: "D2 (drive to DUT RX)"
+      test_point: "TBD"
+      function: "MODBUS RTU RX"
+
+    PD1:
+      name: MODBUS RTU Transmit
+      pin: 15
+      signal: "UART_TXD"
+      direction: "OUT"
+      header_ref: "DB9-0 Pin 9"
+      scale_notes: "MODBUS RTU TX"
+      wrapper_pin: "D3 (read from DUT TX)"
+      test_point: "TBD"
+      function: "MODBUS RTU TX"
+
+    PD2:
+      name: System Status LED
+      pin: 16
+      signal: "STATUS_LED"
+      direction: "OUT"
+      header_ref: "LED-TERM"
+      scale_notes: "Status LED drive"
+      wrapper_pin: "D4"
+      test_point: "LED-TERM"
+      function: "System status"
+
+    PD3:
+      name: Sonicator #4 Overload
+      pin: 17
+      signal: "OVERLOAD_4"
+      direction: "IN"
+      sonicator: 4
+      header_ref: "DB9-4 Pin 1"
+      scale_notes: "OL_4 via opto"
+      wrapper_pin: "A2"
+      test_point: "TBD"
+
+    PD4:
+      name: Sonicator #3 Overload
+      pin: 18
+      signal: "OVERLOAD_3"
+      direction: "IN"
+      sonicator: 3
+      header_ref: "DB9-3 Pin 1"
+      scale_notes: "OL_3 via opto"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+
+    PD5:
+      name: Sonicator #2 Overload
+      pin: 19
+      signal: "OVERLOAD_2"
+      direction: "IN"
+      sonicator: 2
+      header_ref: "DB9-2 Pin 1"
+      scale_notes: "OL_2 via opto"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+
+    PD6:
+      name: Sonicator #1 Overload
+      pin: 20
+      signal: "OVERLOAD_1"
+      direction: "IN"
+      sonicator: 1
+      header_ref: "DB9-1 Pin 1"
+      scale_notes: "OL_1 via opto"
+      wrapper_pin: "N/A"
+      test_point: "TBD"
+
+    PD7:
+      name: Global Sonicator Amplitude Control
+      pin: 21
+      port: D
+      signal: "AMPLITUDE_ALL"
+      direction: "OUT"
+      header_ref: "DB9-1/2/3/4 Pin 8"
+      scale_notes: "Shared AMP_C (0–10V), common"
+      wrapper_pin: "D9 (PWM)"
+      test_point: "TBD"
+      function: "Global Sonicator amplitude control"
+
+    # Port A - Sonicator power monitoring
+    PA4:
+      name: Sonicator #1 Power Monitor
+      pin: 36
+      signal: "POWER_SENSE_1"
+      direction: "ANALOG"
+      sonicator: 1
+      header_ref: "DB9-1 Pin 5"
+      scale_notes: "5.44 mV/W scaling"
+      wrapper_pin: "N/A"
+      test_point: "TBD"
+      scaling: "5.44 mV/W"
+
+    PA5:
+      name: Sonicator #2 Power Monitor
+      pin: 35
+      signal: "POWER_SENSE_2"
+      direction: "ANALOG"
+      sonicator: 2
+      header_ref: "DB9-2 Pin 5"
+      scale_notes: "5.44 mV/W scaling"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+      scaling: "5.44 mV/W"
+
+    PA6:
+      name: Sonicator #3 Power Monitor
+      pin: 34
+      signal: "POWER_SENSE_3"
+      direction: "ANALOG"
+      sonicator: 3
+      header_ref: "DB9-3 Pin 5"
+      scale_notes: "5.44 mV/W scaling"
+      wrapper_pin: "N/A"
+      test_point: "N/A"
+      scaling: "5.44 mV/W"
+
+    PA7:
+      name: Sonicator #4 Power Monitor
+      pin: 33
+      signal: "POWER_SENSE_4"
+      direction: "ANALOG"
+      sonicator: 4
+      header_ref: "DB9-4 Pin 5"
+      scale_notes: "5.44 mV/W scaling"
+      wrapper_pin: "A1"
+      test_point: "TBD"
+      scaling: "5.44 mV/W"

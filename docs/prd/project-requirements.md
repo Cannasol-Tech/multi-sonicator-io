@@ -233,7 +233,7 @@ Son4: PD3(OverLD), PB0(FreqOut), PB4(FreqLk), PC0(Start), PC1(Reset), PA7(ADC), 
 
 ```cpp
 // Inside the Multi-Sonicator I/O Controller enclosure:
-class MultiSonicatorController {
+class Multiplexer {
 private:
     ATmega32A microcontroller;           // Main processing unit
     

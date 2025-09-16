@@ -1,13 +1,153 @@
 /**
  * @file test_communication.c
- * @brief Comprehensive Unit Tests for MODBUS Communication Module
- * @author Cannasol Technologies
- * @date 2025-09-04
- * @version 1.0.0
+ * @title Comprehensive Unit Tests for MODBUS Communication Module
+ * @company Axovia AI
+ * @date 2025-09-16
+ * @brief Unity-based unit tests for MODBUS communication achieving ≥90% code coverage
+ * @version 1.1.0
  *
  * @details
- * Unity-based unit tests for MODBUS communication module achieving 90% code coverage.
- * Tests MODBUS RTU protocol implementation, register management, and error handling.
+ * This file contains comprehensive unit tests for the MODBUS RTU communication module,
+ * utilizing the Unity testing framework to achieve ≥90% code coverage. The tests validate
+ * critical MODBUS protocol implementation, register management, error handling, and communication
+ * reliability to ensure robust industrial automation integration in the Multi-Sonicator-IO system.
+ *
+ * The test suite covers:
+ * - MODBUS RTU protocol frame handling and validation
+ * - Register read/write operations (holding registers, coils)
+ * - Address boundary validation and error checking
+ * - Communication error recovery and timeout handling
+ * - CRC calculation and frame integrity verification
+ * - Slave/master role simulation and response formatting
+ *
+ * @section test_coverage Test Coverage
+ *
+ * The test suite is designed to achieve comprehensive code coverage:
+ * - **Line Coverage**: ≥90% of executable lines
+ * - **Branch Coverage**: ≥85% of decision points
+ * - **Function Coverage**: 100% of public functions
+ * - **Statement Coverage**: ≥95% of statements
+ *
+ * Coverage areas include:
+ * - **Protocol Implementation**: MODBUS RTU frame parsing and generation
+ * - **Register Operations**: Read/write access to all register types
+ * - **Error Handling**: Exception responses and error recovery
+ * - **Address Validation**: Boundary checking and invalid address handling
+ * - **Communication Layer**: Serial communication and timing
+ *
+ * @section test_cases Test Cases
+ *
+ * Major test categories and scenarios:
+ *
+ * **Address Validation Tests**
+ * - @c test_modbus_validate_address_boundaries - Global and sonicator address ranges
+ * - @c test_modbus_invalid_address_handling - Invalid address error responses
+ * - @c test_modbus_register_access_permissions - Read/write permission validation
+ *
+ * **Protocol Tests**
+ * - @c test_modbus_frame_parsing - MODBUS RTU frame structure validation
+ * - @c test_modbus_crc_calculation - CRC-16 calculation and verification
+ * - @c test_modbus_function_code_handling - Supported function code processing
+ *
+ * **Register Operation Tests**
+ * - @c test_modbus_holding_register_operations - Read/write holding registers
+ * - @c test_modbus_coil_operations - Digital output control
+ * - @c test_modbus_input_register_access - Read-only register access
+ *
+ * **Error Handling Tests**
+ * - @c test_modbus_exception_responses - MODBUS exception code generation
+ * - @c test_modbus_timeout_handling - Communication timeout scenarios
+ * - @c test_modbus_error_recovery - Error state recovery mechanisms
+ *
+ * @section setup Setup and Fixtures
+ *
+ * Test setup uses Unity framework with comprehensive fixtures:
+ *
+ * @code{.c}
+ * // Test setup function
+ * void setUp(void) {
+ *     // Initialize test configuration
+ *     test_config.slave_id = 2;
+ *     test_config.baud_rate = 115200;
+ *     test_config.timeout_ms = 1000;
+ *     test_config.read_callback = test_read_callback;
+ *     
+ *     // Reset test state
+ *     test_read_value = 0;
+ *     test_timeout_called = false;
+ *     test_error_called = false;
+ *     test_last_error = MODBUS_OK;
+ * }
+ *
+ * // Test teardown function
+ * void tearDown(void) {
+ *     // Clean up after each test
+ *     modbus_reset();
+ * }
+ * @endcode
+ *
+ * @section running_tests Running Tests
+ *
+ * Tests are executed using the Unity test runner:
+ *
+ * @code{.bash}
+ * # Build and run all communication tests
+ * make test-communication
+ *
+ * # Run specific test
+ * make test TEST_FILTER=test_modbus_validate_address_boundaries
+ *
+ * # Generate coverage report
+ * make coverage
+ * @endcode
+ *
+ * @section test_framework Test Framework
+ *
+ * The test suite utilizes the Unity testing framework with custom extensions:
+ * - **Unity**: Lightweight unit testing framework for embedded systems
+ * - **Test Callbacks**: Simulated MODBUS callback functions
+ * - **State Verification**: Comprehensive state checking after operations
+ * - **Error Injection**: Controlled error simulation for robustness testing
+ *
+ * @section coverage_reporting Coverage Reporting
+ *
+ * Code coverage is measured using gcov and lcov:
+ *
+ * @code{.bash}
+ * # Generate coverage report
+ * make coverage
+ *
+ * # View HTML coverage report
+ * firefox coverage/index.html
+ * @endcode
+ *
+ * Coverage reports show:
+ * - Line-by-line coverage with execution counts
+ * - Branch coverage for conditional statements
+ * - Function coverage statistics
+ * - Uncovered code identification
+ *
+ * @section test_maintenance Test Maintenance
+ *
+ * Test suite maintenance guidelines:
+ * - Keep tests synchronized with MODBUS specification changes
+ * - Update test cases when communication requirements change
+ * - Maintain ≥90% coverage threshold
+ * - Add tests for new MODBUS function codes
+ * - Validate against MODBUS RTU protocol conformance
+ *
+ * @warning Tests assume proper serial hardware initialization
+ * @warning Mock callbacks may not replicate exact timing behavior
+ * @warning Coverage reports must be reviewed before releases
+ *
+ * @see src/modules/communication/modbus.h MODBUS communication interface
+ * @see src/modules/communication/modbus_register_manager.h Register management interface
+ * @see docs/modbus-protocol-guide.md MODBUS RTU protocol documentation
+ *
+ * @note Tests use callback-based architecture for modularity
+ * @note Address validation covers all defined register ranges
+ * @note Test execution time should remain under 100ms per test
+ * @note CRC validation is tested for all frame types
  */
 
 #ifdef UNIT_TEST

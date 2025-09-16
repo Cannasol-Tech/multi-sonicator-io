@@ -1,10 +1,187 @@
 /**
  * @file modbus_mock.c
- * @brief Mock implementation of MODBUS functions for unit testing
- * @author Cannasol Technologies
- * @date 2025-09-04
- * @version 1.0.0
+ * @title Modbus RTU Mock Implementation for Unit Testing
+ * @company Axovia AI
+ * @date 2025-09-16
+ * @brief Mock implementation providing simulated Modbus RTU communication for comprehensive unit testing
+ * @version 1.1.0
+ *
+ * @details
+ * This file provides a complete mock implementation of Modbus RTU communication functions
+ * for unit testing purposes. It simulates the behavior of serial Modbus communication,
+ * enabling tests to run without physical serial ports and ensuring robust validation of
+ * Modbus protocol handling, register access, and error recovery.
+ *
+ * The mock implementation supports:
+ * - Complete Modbus RTU protocol simulation
+ * - Configurable register map with read/write operations
+ * - Error injection for fault testing
+ * - Communication statistics and diagnostics
+ * - Slave/master role simulation
+ * - CRC validation and timeout handling
+ *
+ * @section overview Overview
+ *
+ * The Modbus mock provides a software simulation of Modbus RTU communication protocol.
+ * It implements the same interface as the real Modbus module but operates entirely in memory,
+ * making it perfect for testing Modbus-based control systems and industrial automation interfaces.
+ *
+ * Key features:
+ * - **Protocol Simulation**: Complete Modbus RTU frame handling
+ * - **Register Map**: Simulated holding registers, coils, and input registers
+ * - **Error Simulation**: Configurable fault injection for robustness testing
+ * - **Statistics**: Communication metrics and diagnostic counters
+ * - **State Management**: Connection state and error status tracking
+ *
+ * @section mocked_functions Mocked Functions
+ *
+ * The mock implements all public functions from the real Modbus interface:
+ * - @c modbus_init() - Initialize Modbus communication with configuration
+ * - @c modbus_read_holding_registers() - Read holding register values
+ * - @c modbus_write_single_register() - Write single register value
+ * - @c modbus_write_multiple_registers() - Write multiple register values
+ * - @c modbus_read_coils() - Read coil (digital output) status
+ * - @c modbus_write_single_coil() - Write single coil value
+ * - @c modbus_get_statistics() - Get communication statistics
+ * - @c modbus_reset() - Reset Modbus communication state
+ *
+ * @section usage Usage
+ *
+ * To use the Modbus mock in unit tests:
+ *
+ * @code{.c}
+ * // Include mock header (automatically included when UNIT_TEST is defined)
+ * #include "test/mocks/modbus_mock.h"
+ *
+ * // In test setup
+ * void setUp(void) {
+ *     modbus_mock_reset();  // Reset to clean state
+ *     modbus_mock_enable(); // Enable mock communication
+ * }
+ *
+ * // In test function
+ * void test_modbus_register_operations(void) {
+ *     modbus_config_t config = {
+ *         .slave_id = 2,
+ *         .baud_rate = 115200,
+ *         .timeout_ms = 1000
+ *     };
+ *
+ *     modbus_error_t result = modbus_init(&config);
+ *     TEST_ASSERT_EQUAL(MODBUS_OK, result);
+ *
+ *     // Test register read
+ *     uint16_t value;
+ *     result = modbus_read_holding_registers(0x0100, 1, &value);
+ *     TEST_ASSERT_EQUAL(MODBUS_OK, result);
+ *
+ *     // Test register write
+ *     result = modbus_write_single_register(0x0100, 75);
+ *     TEST_ASSERT_EQUAL(MODBUS_OK, result);
+ *
+ *     // Verify write
+ *     result = modbus_read_holding_registers(0x0100, 1, &value);
+ *     TEST_ASSERT_EQUAL(MODBUS_OK, result);
+ *     TEST_ASSERT_EQUAL(75, value);
+ * }
+ * @endcode
+ *
+ * @section error_simulation Error Simulation
+ *
+ * The mock supports error injection to test fault handling:
+ *
+ * @code{.c}
+ * void test_modbus_error_handling(void) {
+ *     modbus_mock_reset();
+ *     modbus_mock_set_error_injection(MODBUS_ERROR_INVALID_LENGTH);
+ *
+ *     uint16_t value;
+ *     modbus_error_t result = modbus_read_holding_registers(0x0100, 0, &value);  // Invalid length
+ *     TEST_ASSERT_EQUAL(MODBUS_ERROR_INVALID_LENGTH, result);
+ * }
+ * @endcode
+ *
+ * Available error injection codes:
+ * - @c MODBUS_ERROR_INVALID_LENGTH - Invalid request/response length
+ * - @c MODBUS_ERROR_CRC - CRC validation failure
+ * - @c MODBUS_ERROR_TIMEOUT - Communication timeout
+ * - @c MODBUS_ERROR_SLAVE_ID - Invalid slave ID
+ * - @c MODBUS_ERROR_FUNCTION_CODE - Unsupported function code
+ *
+ * @section register_simulation Register Map Simulation
+ *
+ * The mock maintains a simulated register map with configurable values:
+ *
+ * @code{.c}
+ * void test_modbus_register_simulation(void) {
+ *     modbus_mock_reset();
+ *
+ *     // Set initial register values
+ *     modbus_mock_set_register_value(0x0100, 100);  // Amplitude setpoint
+ *     modbus_mock_set_register_value(0x0101, 25000); // Frequency setpoint
+ *
+ *     // Test register access
+ *     uint16_t amplitude, frequency;
+ *     modbus_read_holding_registers(0x0100, 1, &amplitude);
+ *     modbus_read_holding_registers(0x0101, 1, &frequency);
+ *
+ *     TEST_ASSERT_EQUAL(100, amplitude);
+ *     TEST_ASSERT_EQUAL(25000, frequency);
+ * }
+ * @endcode
+ *
+ * @section statistics_tracking Statistics Tracking
+ *
+ * The mock provides comprehensive communication statistics:
+ *
+ * @code{.c}
+ * void test_modbus_statistics(void) {
+ *     modbus_mock_reset();
+ *
+ *     // Perform some operations
+ *     modbus_read_holding_registers(0x0100, 1, NULL);
+ *     modbus_write_single_register(0x0101, 50);
+ *
+ *     modbus_statistics_t stats;
+ *     modbus_get_statistics(&stats);
+ *
+ *     TEST_ASSERT_EQUAL(1, stats.requests_received);
+ *     TEST_ASSERT_EQUAL(1, stats.responses_sent);
+ * }
+ * @endcode
+ *
+ * @section state_management State Management
+ *
+ * The mock maintains internal state for Modbus communication:
+ * - **Connection State**: Enabled/disabled status
+ * - **Configuration State**: Slave ID, baud rate, timeouts
+ * - **Register State**: Current register values and access permissions
+ * - **Error State**: Last error code and diagnostic information
+ * - **Statistics State**: Communication counters and metrics
+ *
+ * @section protocol_compliance Protocol Compliance
+ *
+ * The mock ensures compliance with Modbus RTU specifications:
+ * - **Frame Format**: Proper Modbus RTU frame structure
+ * - **CRC Calculation**: 16-bit CRC validation
+ * - **Function Codes**: Support for standard function codes (3, 6, 15, 16)
+ * - **Exception Responses**: Proper error response formatting
+ * - **Timeout Handling**: Configurable response timeouts
+ *
+ * @warning This mock implementation is for testing purposes only.
+ * @warning Do not include this file in production builds.
+ * @warning Mock timing may not perfectly replicate serial communication delays.
+ *
+ * @see src/modules/communication/modbus.h Real Modbus interface definition
+ * @see test/unit/communication/test_communication.c Example usage in unit tests
+ * @see docs/modbus-protocol-guide.md Modbus RTU protocol documentation
+ *
+ * @note Mock state is automatically reset at the beginning of each test function
+ * @note Register values default to 0 if not explicitly set
+ * @note CRC validation is performed on all frames
+ * @note Statistics are cleared on reset
  */
+
 
 #ifdef UNIT_TEST
 

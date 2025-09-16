@@ -18,19 +18,37 @@
 #include "sonicator/sonicator.h"
 #include "system_config.h"
 
-#define NUM_SONICATORS 4
 
-class Multiplexer {
+/**
+ * @class SonicMultiplexer
+ * @brief Manages multiple CT2000 SonicatorInterface units running Simultaneously
+ * @details This class manages multiple Concurrent CT2000 SonicatorInterface units and provides a clean interface to manage the entire system.
+ * @param count_ - The number of Sonicators that will be managed by this instance of the Multiplexer
+ * @note This class is a singleton and should be used as a global instance.
+ * @note This class is responsible for managing the shared resources such as the amplitude PWM output.
+ * @note Product Names Multi-Sonicator I/O Controller and Sonic Multiplexer
+ * @
+ */
+class SonicMultiplexer {
+private:
+    uint8_t sonicator_count_m;
+    uint8_t amplitude_ctrl_duty_m;    ///<! The duty cycle of the amplitude control signal (20-100%)
+
+    sonicator_interface_t sonicators_m;
+
 public:
     /**
      * @brief Constructor for the Multiplexer class.
      */
-    Multiplexer();
+    SonicMultiplexer(uint8_t count_) {
+        sonicator_count_m = count_;
+        initSonicators_();
+     };
 
     /**
      * @brief Destructor for the Multiplexer class.
      */
-    ~Multiplexer();
+    ~SonicMultiplexer() { for (uint8_t i = 0; i < sonicator_count_m; i++) { sonicators_m[i].~sonicator_interface_t(); } }
 
     /**
      * @brief Initializes the multiplexer and all sonicator units.
@@ -39,7 +57,7 @@ public:
      * sonicators and initializes them. It must be called in the setup
      * phase of the application.
      */
-    void begin();
+    static inline svoid begin() { for (uint8_t i = 0; i < sonicator_count_m; i++) { sonicators_m[i].begin(); } }
 
     /**
      * @brief Main update loop for the multiplexer.
@@ -48,28 +66,28 @@ public:
      * It updates the state of all sonicator units and handles the shared
      * hardware resources, like the amplitude PWM.
      */
-    void update();
+    static inline void update() { for (uint8_t i = 0; i < sonicator_count_m; i++) { sonicators_m[i].update(); } }
 
     /**
      * @brief Starts a specific sonicator.
      * @param index The index of the sonicator to start (0-3).
      * @return true if the start command was accepted, false otherwise.
      */
-    bool start(uint8_t index);
+    static inline bool start(uint8_t index) { return sonicators_m[index].start(); }
 
     /**
      * @brief Stops a specific sonicator.
      * @param index The index of the sonicator to stop (0-3).
      * @return true if the stop command was accepted, false otherwise.
      */
-    bool stop(uint8_t index);
+    static inline bool stop(uint8_t index) { return sonicators_m[index].stop(); }
 
     /**
      * @brief Sets the shared amplitude for all sonicators.
      * @param amplitude_percent The desired amplitude (20-100%).
      * @return true if the amplitude was set, false if the value is out of range.
      */
-    bool setAmplitude(uint8_t amplitude_percent);
+    static inline bool setAmplitude(uint8_t amplitude_percent) { return amplitude_percent >= 20 && amplitude_percent <= 100; }
 
     /**
      * @brief Resets a fault condition on a specific sonicator.
@@ -79,24 +97,22 @@ public:
     bool resetOverload(uint8_t index);
 
     /**
-     * @brief Gets the status of a specific sonicator.
+     * @brief Retrieves the status of a specific sonicator.
      * @param index The index of the sonicator to query (0-3).
-     * @return A pointer to the sonicator's state structure, or nullptr if the index is invalid.
+     * @return A pointer to the status structure of the sonicator, or nullptr if the index is invalid.
      */
     const sonicator_status_t* getStatus(uint8_t index) const;
 
 private:
-    // An array to hold the four sonicator instances.
-    // This will be properly initialized in the .cpp file.
-    SonicatorInterface* sonicators[NUM_SONICATORS];
 
-    // The shared amplitude setpoint.
-    uint8_t shared_amplitude_percent_;
+    inline constexpr initSonicators_(uint8_t _count) : numSonicators_m(_count) {
+        sonicators_m<_count> = new sonicator_interface_t();
+    }
 
-    /**
-     * @brief Updates the shared amplitude PWM output.
-     */
-    void updateSharedAmplitude();
+    sonicator_interface_t sonicators_m[sonicator_count_m];
+    uint8_t amplitude_percent;
+    void initSonicators_();
+    void updateSharedAmplitude_();
 };
 
 #endif // MULTIPLEXER_H

@@ -180,7 +180,7 @@ export class ConfigService {
    */
   public getHarnessConnection(arduinoPin: string): HarnessConnection | null {
     const config = this.getConfig();
-    return system_config.harness.connections[arduinoPin] || null;
+    return config.harness.connections[arduinoPin] || null;
   }
 
   /**
@@ -272,7 +272,7 @@ export class ConfigService {
       project: config.project.name,
       version: config.project.version,
       dut: config.dut.microcontroller.type,
-      harness: system_config.harness.type,
+      harness: config.harness.type,
       sonicators: {
         total: config.sonicators.count,
         connected: connectedSonicators.length,
@@ -335,7 +335,7 @@ export class ConfigService {
       }
 
       // Validate harness configuration
-      if (!system_config.harness?.connections || Object.keys(system_config.harness.connections).length === 0) {
+      if (!config.harness?.connections || Object.keys(config.harness.connections).length === 0) {
         errors.push('Missing harness connection configuration');
       }
 

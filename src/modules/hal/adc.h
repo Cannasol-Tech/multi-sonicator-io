@@ -199,8 +199,18 @@ adc_result_t adc_to_frequency(uint16_t raw_value, float* frequency_hz);
 // ============================================================================
 
 /**
- * @brief Read sonicator power level
- * 
+ * @brief Read sonicator power level (raw ADC value)
+ *
+ * @param sonicator_id Sonicator number (1-4)
+ * @param raw_adc Pointer to store raw ADC reading (0-1023)
+ * @return ADC_OK on success, error code on failure
+ */
+adc_result_t adc_read_sonicator_power_raw(uint8_t sonicator_id, uint16_t* raw_adc);
+
+/**
+ * @brief Read sonicator power level (converted to watts)
+ * @deprecated Use adc_read_sonicator_power_raw() for efficiency
+ *
  * @param sonicator_id Sonicator number (1-4)
  * @param power_watts Pointer to store power in watts
  * @return ADC_OK on success, error code on failure

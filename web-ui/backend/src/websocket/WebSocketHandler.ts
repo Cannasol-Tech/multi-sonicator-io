@@ -1,6 +1,7 @@
 import { WebSocket } from 'ws'
 import { HardwareInterface } from '../adapters/HardwareInterface.js'
 import { TestAutomationService } from '../services/TestAutomationService.js'
+import { modularConfigService } from '../config/ModularConfigService'
 
 export interface WebSocketMessage {
   type: string
@@ -19,6 +20,7 @@ export class WebSocketHandler {
     this.testAutomationService = testAutomationService
     this.setupHardwareListeners()
     this.setupTestAutomationListeners()
+    this.setupConfigurationListeners()
   }
 
   private setupHardwareListeners() {
@@ -162,6 +164,41 @@ export class WebSocketHandler {
       this.broadcast({
         type: 'test_stopped',
         data: execution,
+        timestamp: Date.now()
+      })
+    })
+  }
+
+  private setupConfigurationListeners() {
+    // Listen for configuration events and broadcast to all connected clients
+    modularConfigService.on('configurationLoaded', (data) => {
+      this.broadcast({
+        type: 'configuration_loaded',
+        data,
+        timestamp: Date.now()
+      })
+    })
+
+    modularConfigService.on('configurationError', (error) => {
+      this.broadcast({
+        type: 'configuration_error',
+        data: { error: error.message },
+        timestamp: Date.now()
+      })
+    })
+
+    modularConfigService.on('moduleUpdated', (data) => {
+      this.broadcast({
+        type: 'module_updated',
+        data,
+        timestamp: Date.now()
+      })
+    })
+
+    modularConfigService.on('moduleUpdateError', (data) => {
+      this.broadcast({
+        type: 'module_update_error',
+        data,
         timestamp: Date.now()
       })
     })

@@ -8,6 +8,7 @@ import Header from './components/Header'
 import HelpSystem from './components/HelpSystem'
 import SettingsPanel from './components/SettingsPanel'
 import HardwareConfigPanel from './components/HardwareConfigPanel'
+import ModularConfigPanel from './components/ModularConfigPanel'
 import ProgressBarDemo from './components/ProgressBarDemo'
 
 
@@ -22,7 +23,7 @@ import { useKeyboardShortcuts, createAppShortcuts } from './hooks/useKeyboardSho
 function App() {
   const [helpVisible, setHelpVisible] = useState(false)
   const [highlightedPins, setHighlightedPins] = useState<string[]>([])
-  const [activeTab, setActiveTab] = useState<'hardware' | 'testing' | 'arduino-commands' | 'settings' | 'config'>('hardware')
+  const [activeTab, setActiveTab] = useState<'hardware' | 'testing' | 'arduino-commands' | 'settings' | 'config' | 'modular-config'>('hardware')
   const [currentTestExecution, setCurrentTestExecution] = useState<any>(null)
   const [keyboardShortcutsEnabled, setKeyboardShortcutsEnabled] = useState(true)
 
@@ -260,6 +261,12 @@ function App() {
             >
               🔧 Hardware Config
             </button>
+            <button
+              className={`tab-button ${activeTab === 'modular-config' ? 'active' : ''}`}
+              onClick={() => setActiveTab('modular-config')}
+            >
+              ⚙️ Modular Config
+            </button>
           </div>
 
           {/* Tab Content */}
@@ -305,6 +312,12 @@ function App() {
             {activeTab === 'config' && (
               <div className="config-tab">
                 <HardwareConfigPanel />
+              </div>
+            )}
+
+            {activeTab === 'modular-config' && (
+              <div className="modular-config-tab">
+                <ModularConfigPanel />
               </div>
             )}
           </div>
