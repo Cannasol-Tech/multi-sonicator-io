@@ -67,7 +67,7 @@ jobs:
         fi
     
     - name: Upload hardware check results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: hil-hardware-check
@@ -148,7 +148,7 @@ jobs:
         fi
     
     - name: Upload HIL test results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: hil-test-results-${{ matrix.test-suite }}
@@ -161,7 +161,7 @@ jobs:
         retention-days: 30
     
     - name: Upload test logs
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: failure()
       with:
         name: hil-test-logs-${{ matrix.test-suite }}
