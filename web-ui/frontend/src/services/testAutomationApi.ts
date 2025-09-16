@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import { TestScenario, TestExecution } from '../types'
 
 const API_BASE = '/api'
@@ -400,7 +398,7 @@ export class TestAutomationAPI {
       return data.success
     } catch (error) {
       console.warn('Backend not available, falling back to mock execution stop:', error)
-      const mockManager = MockExecutionManager.getInstance()
+      const mockManager = TestAutomationAPI.MockExecutionManager.getInstance()
       return mockManager.stopExecution()
     }
   }
@@ -557,4 +555,3 @@ export class TestAutomationAPI {
     }
   }
 }
->>>>>>> 336e1cdd01d268b7126721c3ec21eabf0039a2e1

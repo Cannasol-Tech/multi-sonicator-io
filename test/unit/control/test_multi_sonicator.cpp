@@ -254,6 +254,15 @@ int main(void) {
     RUN_TEST(test_invalid_requests_and_bounds);
     RUN_TEST(test_partial_coordinated_stop_targets_only_active_units);
     RUN_TEST(test_requests_blocked_during_emergency);
+    // New tests to increase branch coverage
+    RUN_TEST(test_unit_start_idempotent_when_running_and_starting);
+    RUN_TEST(test_unit_start_rejected_when_fault_or_overload);
+    RUN_TEST(test_unit_stop_idempotent_and_noop_on_fault_states);
+    RUN_TEST(test_confirm_unit_started_promotes_and_clears_inhibit);
+    RUN_TEST(test_confirm_unit_started_return_values);
+    RUN_TEST(test_master_state_coordinated_start_when_any_starting);
+    RUN_TEST(test_coordinated_stop_no_target_mask_noop);
+    RUN_TEST(test_coordinated_stop_rejected_during_emergency);
     return UNITY_END();
 }
 
@@ -300,4 +309,111 @@ void test_requests_blocked_during_emergency(void) {
     for (int i = 0; i < 4; ++i) {
         TEST_ASSERT_EQUAL(SONICATOR_STATE_STOPPED, st->unit_state[i]);
     }
+}
+
+// ---- New coverage-focused tests ----
+
+void test_unit_start_idempotent_when_running_and_starting(void) {
+    // From STOPPED, request per‑unit start (no update yet) → STARTING
+    TEST_ASSERT_TRUE(multi_sonicator_request_unit_start(0));
+    // Idempotent: request start again while STARTING
+    TEST_ASSERT_TRUE(multi_sonicator_request_unit_start(0));
+
+    // Promote to RUNNING via update()
+    (void)multi_sonicator_update();
+    const multi_status_t* st1 = multi_sonicator_get_status();
+    TEST_ASSERT_EQUAL(SONICATOR_STATE_RUNNING, st1->unit_state[0]);
+
+    // Idempotent: request start again while RUNNING
+    TEST_ASSERT_TRUE(multi_sonicator_request_unit_start(0));
+    (void)multi_sonicator_update();
+    const multi_status_t* st2 = multi_sonicator_get_status();
+    TEST_ASSERT_EQUAL(SONICATOR_STATE_RUNNING, st2->unit_state[0]);
+}
+
+void test_unit_start_rejected_when_fault_or_overload(void) {
+    // Request coordinated start; then fault unit 2 before RUNNING
+    TEST_ASSERT_TRUE(multi_sonicator_request_coordinated_start(0x0F));
+    TEST_ASSERT_TRUE(multi_sonicator_report_unit_fault(1, /*overload=*/false)); // FAULT
+    // Starting unit 2 should be rejected due to FAULT
+    TEST_ASSERT_FALSE(multi_sonicator_request_unit_start(1));
+
+    // Also set overload on unit 3 and verify start rejected
+    TEST_ASSERT_TRUE(multi_sonicator_report_unit_fault(2, /*overload=*/true));
+    TEST_ASSERT_FALSE(multi_sonicator_request_unit_start(2));
+}
+
+void test_unit_stop_idempotent_and_noop_on_fault_states(void) {
+    // Stop is idempotent when already STOPPED
+    TEST_ASSERT_TRUE(multi_sonicator_request_unit_stop(0));
+
+    // Bring unit 1 to RUNNING, then fault it and verify STOP is a no‑op but returns true
+    multi_sonicator_begin();
+    TEST_ASSERT_TRUE(multi_sonicator_request_unit_start(0));
+    (void)multi_sonicator_update();
+    TEST_ASSERT_TRUE(multi_sonicator_report_unit_fault(0, /*overload=*/false));
+    TEST_ASSERT_TRUE(multi_sonicator_request_unit_stop(0)); // no‑op allowed on FAULT
+}
+
+void test_confirm_unit_started_promotes_and_clears_inhibit(void) {
+    multi_sonicator_begin();
+    // Inhibit unit 1 start, request start, then confirm explicitly
+    multi_sonicator_set_start_inhibit(0, true);
+    TEST_ASSERT_TRUE(multi_sonicator_request_unit_start(0));
+    // While inhibited and in STARTING, confirm should promote to RUNNING and clear inhibit
+    TEST_ASSERT_TRUE(multi_sonicator_confirm_unit_started(0));
+    const multi_status_t* st = multi_sonicator_get_status();
+    TEST_ASSERT_EQUAL(SONICATOR_STATE_RUNNING, st->unit_state[0]);
+    // Additional update should keep it RUNNING
+    (void)multi_sonicator_update();
+    const multi_status_t* st2 = multi_sonicator_get_status();
+    TEST_ASSERT_EQUAL(SONICATOR_STATE_RUNNING, st2->unit_state[0]);
+}
+
+void test_confirm_unit_started_return_values(void) {
+    multi_sonicator_begin();
+    // STOPPED → confirm returns false
+    TEST_ASSERT_FALSE(multi_sonicator_confirm_unit_started(0));
+
+    // STARTING → confirm returns true and promotes
+    TEST_ASSERT_TRUE(multi_sonicator_request_unit_start(1));
+    TEST_ASSERT_TRUE(multi_sonicator_confirm_unit_started(1));
+    // RUNNING → confirm returns true (already running)
+    TEST_ASSERT_TRUE(multi_sonicator_confirm_unit_started(1));
+}
+
+void test_master_state_coordinated_start_when_any_starting(void) {
+    multi_sonicator_begin();
+    // Inhibit unit 2 so it remains STARTING
+    multi_sonicator_set_start_inhibit(1, true);
+    TEST_ASSERT_TRUE(multi_sonicator_request_coordinated_start(0x03)); // units 1 and 2
+    // First update: unit 1 will RUNNING, unit 2 remains STARTING → master should be COORDINATED_START
+    master_state_t ms = multi_sonicator_update();
+    TEST_ASSERT_EQUAL(MASTER_STATE_COORDINATED_START, ms);
+}
+
+void test_coordinated_stop_no_target_mask_noop(void) {
+    // Start only units 0..2
+    TEST_ASSERT_TRUE(multi_sonicator_request_coordinated_start(0x07));
+    (void)multi_sonicator_update();
+    const multi_status_t* st1 = multi_sonicator_get_status();
+    TEST_ASSERT_EQUAL_UINT8(0x07, st1->active_mask);
+
+    // Request stop for unit 3 only (not active) → no changes
+    TEST_ASSERT_TRUE(multi_sonicator_request_coordinated_stop(0x08));
+    (void)multi_sonicator_update();
+    const multi_status_t* st2 = multi_sonicator_get_status();
+    TEST_ASSERT_EQUAL_UINT8(0x07, st2->active_mask);
+    TEST_ASSERT_EQUAL(SONICATOR_STATE_RUNNING, st2->unit_state[0]);
+    TEST_ASSERT_EQUAL(SONICATOR_STATE_RUNNING, st2->unit_state[1]);
+    TEST_ASSERT_EQUAL(SONICATOR_STATE_RUNNING, st2->unit_state[2]);
+    TEST_ASSERT_EQUAL(SONICATOR_STATE_STOPPED, st2->unit_state[3]);
+}
+
+void test_coordinated_stop_rejected_during_emergency(void) {
+    // Enter emergency stop
+    TEST_ASSERT_TRUE(multi_sonicator_emergency_stop());
+    (void)multi_sonicator_update();
+    // Coordinated stop should be rejected while in emergency
+    TEST_ASSERT_FALSE(multi_sonicator_request_coordinated_stop(0x0F));
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { TestExecution, TestAutomationState } from '../types'
+import { TestExecution, TestAutomationState, TestScenario } from '../types'
 import { TestAutomationAPI } from '../services/testAutomationApi'
 
 export function useTestAutomation() {
@@ -29,7 +29,7 @@ export function useTestAutomation() {
         TestAutomationAPI.getExecutionStatus()
       ])
 
-      setState(prev => ({
+      setState((prev: TestAutomationState) => ({
         ...prev,
         availableScenarios: scenarios,
         availableTags: tags,
@@ -53,7 +53,7 @@ export function useTestAutomation() {
 
     try {
       const scenarios = await TestAutomationAPI.getScenariosByTags(tags)
-      setState(prev => ({
+      setState((prev: TestAutomationState) => ({
         ...prev,
         availableScenarios: scenarios,
         filterTags: tags
@@ -80,7 +80,7 @@ export function useTestAutomation() {
       const success = await TestAutomationAPI.executeScenarios(scenarioNames, executionId)
 
       if (success) {
-        setState(prev => ({
+        setState((prev: TestAutomationState) => ({
           ...prev,
           isExecutionInProgress: true,
           selectedScenarios: scenarioNames
@@ -106,7 +106,7 @@ export function useTestAutomation() {
       console.log('Stop execution result:', success)
 
       if (success) {
-        setState(prev => ({
+        setState((prev: TestAutomationState) => ({
           ...prev,
           isExecutionInProgress: false
         }))
@@ -126,7 +126,7 @@ export function useTestAutomation() {
 
   // Update execution progress (called from WebSocket updates)
   const updateExecutionProgress = useCallback((execution: TestExecution) => {
-    setState(prev => ({
+    setState((prev: TestAutomationState) => ({
       ...prev,
       currentExecution: execution,
       isExecutionInProgress: execution.status === 'running'
@@ -135,7 +135,7 @@ export function useTestAutomation() {
 
   // Handle execution completion
   const handleExecutionComplete = useCallback((execution: TestExecution) => {
-    setState(prev => ({
+    setState((prev: TestAutomationState) => ({
       ...prev,
       currentExecution: execution,
       isExecutionInProgress: false
@@ -145,7 +145,7 @@ export function useTestAutomation() {
   // Handle execution error
   const handleExecutionError = useCallback((errorMessage: string) => {
     setError(errorMessage)
-    setState(prev => ({
+    setState((prev: TestAutomationState) => ({
       ...prev,
       isExecutionInProgress: false
     }))
@@ -153,25 +153,25 @@ export function useTestAutomation() {
 
   // Select/deselect scenarios
   const toggleScenarioSelection = useCallback((scenarioName: string) => {
-    setState(prev => ({
+    setState((prev: TestAutomationState) => ({
       ...prev,
       selectedScenarios: prev.selectedScenarios.includes(scenarioName)
-        ? prev.selectedScenarios.filter(name => name !== scenarioName)
+        ? prev.selectedScenarios.filter((name: string) => name !== scenarioName)
         : [...prev.selectedScenarios, scenarioName]
     }))
   }, [])
 
   // Select all scenarios
   const selectAllScenarios = useCallback(() => {
-    setState(prev => ({
+    setState((prev: TestAutomationState) => ({
       ...prev,
-      selectedScenarios: prev.availableScenarios.map(s => s.name)
+      selectedScenarios: prev.availableScenarios.map((s: TestScenario) => s.name)
     }))
   }, [])
 
   // Clear scenario selection
   const clearScenarioSelection = useCallback(() => {
-    setState(prev => ({
+    setState((prev: TestAutomationState) => ({
       ...prev,
       selectedScenarios: []
     }))
@@ -179,7 +179,7 @@ export function useTestAutomation() {
 
   // Filter scenarios by tags
   const setFilterTags = useCallback((tags: string[]) => {
-    setState(prev => ({
+    setState((prev: TestAutomationState) => ({
       ...prev,
       filterTags: tags
     }))

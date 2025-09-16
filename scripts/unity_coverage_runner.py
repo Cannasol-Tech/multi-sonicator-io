@@ -23,6 +23,24 @@ class UnityCoverageRunner:
         self.coverage_dir.mkdir(exist_ok=True)
         
         self.modules = ["communication", "hal", "control", "sonicator"]
+        # Additional C++ unit tests not covered by the module C test harness
+        self.cpp_tests = [
+            {
+                "name": "multi_sonicator",
+                "test_file": self.project_root / "test" / "unit" / "control" / "test_multi_sonicator.cpp",
+                "sources": [
+                    self.project_root / "src" / "modules" / "control" / "multi_sonicator.cpp",
+                    self.project_root / "test" / "mocks" / "Arduino.cpp",
+                ],
+                "include_dirs": [
+                    self.project_root / "include",
+                    self.project_root / "test" / "unit",
+                    self.project_root / "src",
+                    self.project_root / "src" / "modules" / "control",
+                    self.project_root / "test" / "mocks",
+                ],
+            }
+        ]
         self.coverage_data = {
             "timestamp": None,
             "modules": {},
@@ -181,9 +199,16 @@ class UnityCoverageRunner:
         print("🚀 Starting Unity test suite with coverage...")
         
         success_count = 0
+        total_count = 0
         for module in self.modules:
+            total_count += 1
             if self.run_module_tests(module):
                 success_count += 1
+
+        # Run additional C++ tests for Story 4.1 (multi_sonicator)
+        cpp_passed, cpp_total = self.run_cpp_tests()
+        success_count += cpp_passed
+        total_count += cpp_total
         
         # Calculate overall coverage
         self.calculate_overall_coverage()
@@ -192,7 +217,7 @@ class UnityCoverageRunner:
         self.generate_coverage_json()
         self.generate_coverage_html()
         
-        print(f"\n📊 Test Summary: {success_count}/{len(self.modules)} modules passed")
+        print(f"\n📊 Test Summary: {success_count}/{total_count} test suites passed")
         print(f"📈 Overall Coverage: {self.coverage_data['overall']['coverage_percentage']:.1f}%")
         
         # Check 85% requirement
@@ -203,7 +228,92 @@ class UnityCoverageRunner:
             print("⚠️  Coverage requirement not met (<85%)")
             self.coverage_data['overall']['meets_requirement'] = False
         
-        return success_count == len(self.modules)
+        return success_count == total_count
+
+    def run_cpp_tests(self):
+        """Compile and run additional C++ Unity tests (e.g., Story 4.1 multi_sonicator)."""
+        passed = 0
+        total = 0
+        for cfg in self.cpp_tests:
+            name = cfg["name"]
+            test_file = cfg["test_file"]
+            sources = cfg["sources"]
+            include_dirs = cfg["include_dirs"]
+
+            if not test_file.exists():
+                continue
+
+            total += 1
+            print(f"🧪 Running C++ tests for {name}...")
+            # Build command
+            output_file = test_file.parent / f"{test_file.stem}.out"
+            cmd = [
+                "g++",
+                "-std=c++11",
+                "-DUNIT_TEST",
+                "-DNATIVE_TEST",
+                "-O0",
+                "-g",
+                "-fprofile-arcs",
+                "-ftest-coverage",
+            ]
+            for inc in include_dirs:
+                cmd += ["-I", str(inc)]
+            cmd += [
+                str(test_file),
+            ] + [str(s) for s in sources] + [
+                "-o", str(output_file),
+                "--coverage",
+            ]
+
+            try:
+                result = subprocess.run(cmd, cwd=test_file.parent, capture_output=True, text=True)
+                if result.returncode != 0:
+                    print(f"❌ Compilation failed for {name} C++ tests:")
+                    print(result.stderr)
+                    continue
+
+                # Execute
+                result = subprocess.run([str(output_file)], cwd=test_file.parent, capture_output=True, text=True)
+                if result.returncode != 0:
+                    print(f"❌ Test execution failed for {name}:")
+                    print(result.stdout)
+                    print(result.stderr)
+                    continue
+
+                print(f"✅ Tests passed for {name}")
+                print(result.stdout)
+
+                # Coverage: run gcov for primary source(s)
+                for src in sources:
+                    if src.suffix in (".cpp", ".c") and src.name != "Arduino.cpp":
+                        self.generate_cpp_coverage(name, src, test_file.parent)
+                passed += 1
+            except Exception as e:
+                print(f"❌ Error running C++ tests for {name}: {e}")
+        return passed, total
+
+    def generate_cpp_coverage(self, module_name, source_path: Path, workdir: Path):
+        """Run gcov on a specific C/C++ source and record coverage under module_name."""
+        try:
+            subprocess.run(["gcov", str(source_path.name)], cwd=workdir, capture_output=True)
+            gcov_file = workdir / f"{source_path.name}.gcov"
+            if gcov_file.exists():
+                lines_covered, lines_total = self.parse_gcov_file(gcov_file)
+                pct = (lines_covered / lines_total * 100) if lines_total > 0 else 0
+                # Aggregate: if module already exists, sum
+                prev = self.coverage_data["modules"].get(module_name, {"lines_covered":0, "lines_total":0})
+                agg = {
+                    "lines_covered": prev["lines_covered"] + lines_covered,
+                    "lines_total": prev["lines_total"] + lines_total,
+                }
+                agg["coverage_percentage"] = round((agg["lines_covered"]/agg["lines_total"]*100) if agg["lines_total"] else 0.0, 2)
+                self.coverage_data["modules"][module_name] = agg
+                print(f"📈 {module_name}: {agg['lines_covered']}/{agg['lines_total']} lines ({agg['coverage_percentage']:.1f}%)")
+            else:
+                print(f"⚠️  No gcov produced for {source_path.name}")
+        except Exception as e:
+            print(f"❌ Error generating C++ coverage for {module_name}: {e}")
     
     def calculate_overall_coverage(self):
         """Calculate overall coverage across all modules"""

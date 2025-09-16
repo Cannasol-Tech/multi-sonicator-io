@@ -1,0 +1,92 @@
+# QA Gate: Story 4.1 — Multi‑Unit State Management
+status_contexts:
+  - ci/unit
+  - ci/integration
+  - ci/acceptance
+  - standards/check
+  - lint/markdown
+
+risk_profile:
+  safety_critical: true
+  timing_sensitive: true
+  hardware_dependent: true
+
+requirements:
+  unit_tests:
+    coverage_min: 0.85
+    files:
+      - test/unit/control/test_multi_sonicator.cpp
+      - test/unit/test_prev_state_registers.cpp
+  integration_tests:
+    required: true
+    files:
+      - test/integration/coordination/
+  acceptance_tests:
+    required: true
+    files:
+      - test/acceptance/features/multi_unit_state_management.feature
+  hil_tests:
+    required: true
+    files:
+      - test/hil/test_multi_unit_coordination.py
+  performance:
+    state_transition_time_ms_max: 10
+  documentation:
+    story_doc: docs/agile/stories/4.1.multi-unit-state-management.md
+
+checks:
+  - id: modbus-prev-state-ro
+    description: "AC‑11: Previous‑state MODBUS registers are read‑only and mapped as specified"
+    must_pass: true
+  - id: per-unit-abort-semantics
+    description: "AC‑12/14/15: Per‑unit START/STOP abort semantics verified in unit + acceptance tests"
+    must_pass: true
+  - id: partial-success-coordination
+    description: "AC‑13: Coordinated START allows partial success without auto‑resume"
+    must_pass: true
+  - id: state-persistence-recovery
+    description: "AC‑5/6: State persistence to EEPROM and safe recovery implemented and tested"
+    must_pass: true
+  - id: safety-and-interlocks
+    description: "AC‑7/10: Emergency stop and safety interlocks integrated and tested"
+    must_pass: true
+  - id: transition-coverage
+    description: "AC‑8/9: Comprehensive transition coverage and real‑time performance validated"
+    must_pass: true
+
+---
+# QA Gate Decision (schema v1)
+schema: 1
+story: '4.1'
+gate: CONCERNS
+status_reason: 'Partial implementation present; core safety, persistence/recovery, and HIL/acceptance validation remain incomplete.'
+reviewer: 'Quinn'
+updated: '2025-09-16T00:22:42Z'
+top_issues:
+  - id: 'AC-5-6-PERSISTENCE'
+    severity: high
+    finding: 'State persistence to EEPROM and safe recovery paths not implemented or verified.'
+    suggested_action: 'Implement persistence/recovery logic with power‑cycle tests and add acceptance scenarios; verify no auto‑resume on boot.'
+    evidence: 'Story tasks 3 pending; acceptance @pending for recovery; story doc indicates TODOs.'
+  - id: 'AC-7-10-SAFETY'
+    severity: high
+    finding: 'Emergency stop handling and safety interlock integration not completed; no HIL evidence.'
+    suggested_action: 'Implement E‑STOP transitions and interlocks; add unit/integration tests and HIL validation.'
+    evidence: 'Story tasks 4 pending; no executed HIL tests recorded.'
+  - id: 'AC-13-PARTIAL-SUCCESS'
+    severity: medium
+    finding: 'Acceptance scenarios for partial success marked @pending; behavior not validated end‑to‑end.'
+    suggested_action: 'Activate and pass BDD scenarios in test/acceptance/features/multi_unit_state_management.feature.'
+    evidence: 'Story dev notes: AC‑13 present and @pending.'
+  - id: 'AC-8-9-PERFORMANCE'
+    severity: medium
+    finding: 'Real‑time transition timing and transition coverage completeness not demonstrated.'
+    suggested_action: 'Add performance assertions and transition coverage tests; document metrics in QA report.'
+    evidence: 'No metrics/results linked; tasks 5 pending.'
+  - id: 'AC-11-MODBUS-PREV-STATE'
+    severity: low
+    finding: 'Previous‑state register fields added with unit tests, but acceptance/HIL validation is pending.'
+    suggested_action: 'Confirm RO behavior and mapping via integration/HIL tests.'
+    evidence: 'Story dev notes and unit test additions noted; acceptance coverage pending.'
+waiver: { active: false }
+
