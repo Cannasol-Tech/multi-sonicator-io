@@ -26,7 +26,7 @@
  * - Global control and configuration (0x0010-0x001F)
  *
  * **Sonicator Level (0x0100-0x041F):**
- * - Up to 32 sonicators supported
+ * - Up to 4 Sonicators currently supported, register space for 32 sonicators in Future
  * - 32 registers per sonicator (0x20 stride)
  * - Control block (0xN00-0xN0F) and Status block (0xN10-0xN1F)
  *

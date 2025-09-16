@@ -1,4 +1,4 @@
-<testsuite name="features.hil_gpio_functionality.GPIO Hardware Functionality" tests="6" errors="6" failures="0" skipped="0" time="6.093058" timestamp="2025-09-12T01:41:18.929275" hostname="Corbans-Mini.home"><testcase classname="features.hil_gpio_functionality.GPIO Hardware Functionality" name="Digital output control - START_4 pin" status="cleanup_error" time="1.026128"><error type="UnknownError" message="">
+<testsuite name="features.hil_gpio_functionality.GPIO Hardware Functionality" tests="6" errors="6" failures="0" skipped="0" time="6.060278" timestamp="2025-09-16T18:32:49.934675" hostname="Corbans-Mini.home"><testcase classname="features.hil_gpio_functionality.GPIO Hardware Functionality" name="Digital output control - START_4 pin" status="cleanup_error" time="1.00258"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -8,7 +8,7 @@
   @hil @hardware @gpio
   Scenario: Digital output control - START_4 pin
     Given the HIL framework is connected to ATmega32A ... passed in 0.000s
-    And the GPIO HAL is loaded on the target ... failed in 1.026s
+    And the GPIO HAL is loaded on the target ... failed in 1.003s
     When I set pin "START_4" to HIGH via HIL framework ... skipped in 0.000s
     Then the pin voltage should be approximately 5.0V ... skipped in 0.000s
     When I set pin "START_4" to LOW via HIL framework ... skipped in 0.000s
@@ -29,7 +29,7 @@ Captured stderr:
 
 
 ]]>
-</system-err></testcase><testcase classname="features.hil_gpio_functionality.GPIO Hardware Functionality" name="Digital output control - RESET_4 pin" status="cleanup_error" time="1.005436"><error type="UnknownError" message="">
+</system-err></testcase><testcase classname="features.hil_gpio_functionality.GPIO Hardware Functionality" name="Digital output control - RESET_4 pin" status="cleanup_error" time="1.031604"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -39,7 +39,7 @@ Captured stderr:
   @hil @hardware @gpio
   Scenario: Digital output control - RESET_4 pin
     Given the HIL framework is connected to ATmega32A ... passed in 0.000s
-    And the GPIO HAL is loaded on the target ... failed in 1.005s
+    And the GPIO HAL is loaded on the target ... failed in 1.032s
     When I set pin "RESET_4" to HIGH via HIL framework ... skipped in 0.000s
     Then the pin voltage should be approximately 5.0V ... skipped in 0.000s
     When I set pin "RESET_4" to LOW via HIL framework ... skipped in 0.000s
@@ -60,7 +60,7 @@ Captured stderr:
 
 
 ]]>
-</system-err></testcase><testcase classname="features.hil_gpio_functionality.GPIO Hardware Functionality" name="Digital input reading - OVERLOAD_4 pin" status="cleanup_error" time="1.022274"><error type="UnknownError" message="">
+</system-err></testcase><testcase classname="features.hil_gpio_functionality.GPIO Hardware Functionality" name="Digital input reading - OVERLOAD_4 pin" status="cleanup_error" time="1.007244"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -70,7 +70,7 @@ Captured stderr:
   @hil @hardware @gpio
   Scenario: Digital input reading - OVERLOAD_4 pin
     Given the HIL framework is connected to ATmega32A ... passed in 0.000s
-    And the GPIO HAL is loaded on the target ... failed in 1.022s
+    And the GPIO HAL is loaded on the target ... failed in 1.007s
     Given pin "OVERLOAD_4" is configured as input with pull-up ... skipped in 0.000s
     When the HIL framework applies 0V to pin "OVERLOAD_4" externally ... skipped in 0.000s
     Then reading pin "OVERLOAD_4" should return LOW ... skipped in 0.000s
@@ -92,7 +92,7 @@ Captured stderr:
 
 
 ]]>
-</system-err></testcase><testcase classname="features.hil_gpio_functionality.GPIO Hardware Functionality" name="Digital input reading - FREQ_LOCK_4 pin" status="cleanup_error" time="1.018431"><error type="UnknownError" message="">
+</system-err></testcase><testcase classname="features.hil_gpio_functionality.GPIO Hardware Functionality" name="Digital input reading - FREQ_LOCK_4 pin" status="cleanup_error" time="1.004041"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -101,8 +101,8 @@ Captured stderr:
 
   @hil @hardware @gpio
   Scenario: Digital input reading - FREQ_LOCK_4 pin
-    Given the HIL framework is connected to ATmega32A ... passed in 0.001s
-    And the GPIO HAL is loaded on the target ... failed in 1.017s
+    Given the HIL framework is connected to ATmega32A ... passed in 0.000s
+    And the GPIO HAL is loaded on the target ... failed in 1.004s
     Given pin "FREQ_LOCK_4" is configured as input ... skipped in 0.000s
     When the HIL framework applies 5V to pin "FREQ_LOCK_4" ... skipped in 0.000s
     Then reading pin "FREQ_LOCK_4" should return HIGH ... skipped in 0.000s
@@ -124,7 +124,7 @@ Captured stderr:
 
 
 ]]>
-</system-err></testcase><testcase classname="features.hil_gpio_functionality.GPIO Hardware Functionality" name="Pin state persistence" status="cleanup_error" time="1.01063"><error type="UnknownError" message="">
+</system-err></testcase><testcase classname="features.hil_gpio_functionality.GPIO Hardware Functionality" name="Pin state persistence" status="cleanup_error" time="1.006445"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -134,7 +134,7 @@ Captured stderr:
   @hil @hardware @gpio
   Scenario: Pin state persistence
     Given the HIL framework is connected to ATmega32A ... passed in 0.000s
-    And the GPIO HAL is loaded on the target ... failed in 1.010s
+    And the GPIO HAL is loaded on the target ... failed in 1.006s
     When I set pin "START_4" to HIGH ... skipped in 0.000s
     And I set pin "RESET_4" to LOW ... skipped in 0.000s
     And I wait for 5 seconds ... skipped in 0.000s
@@ -156,7 +156,7 @@ Captured stderr:
 
 
 ]]>
-</system-err></testcase><testcase classname="features.hil_gpio_functionality.GPIO Hardware Functionality" name="Status LED control" status="cleanup_error" time="1.010159"><error type="UnknownError" message="">
+</system-err></testcase><testcase classname="features.hil_gpio_functionality.GPIO Hardware Functionality" name="Status LED control" status="cleanup_error" time="1.008365"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -166,7 +166,7 @@ Captured stderr:
   @hil @hardware @gpio
   Scenario: Status LED control
     Given the HIL framework is connected to ATmega32A ... passed in 0.000s
-    And the GPIO HAL is loaded on the target ... failed in 1.010s
+    And the GPIO HAL is loaded on the target ... failed in 1.008s
     When I set pin "STATUS_LED" to HIGH ... skipped in 0.000s
     Then the status LED should be visible on the hardware ... skipped in 0.000s
     When I set pin "STATUS_LED" to LOW ... skipped in 0.000s

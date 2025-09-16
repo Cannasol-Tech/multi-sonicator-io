@@ -1,4 +1,7 @@
-<testsuite name="features.timing.Timing" tests="2" errors="1" failures="0" skipped="1" time="8.5e-05" timestamp="2025-09-05T20:57:35.020132" hostname="Corbans-Mini.home"><testcase classname="features.timing.Timing" name="SC-009 Latency ≤100 ms (representative)" status="skipped" time="0"><skipped /><system-out>
+<testsuite name="features.timing.Timing" tests="2" errors="2" failures="0" skipped="0" time="0.000174" timestamp="2025-09-16T18:33:09.404110" hostname="Corbans-Mini.home"><testcase classname="features.timing.Timing" name="SC-009 Latency ≤100 ms (representative)" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
@@ -11,20 +14,8 @@
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.timing.Timing" name="SC-009B Latency matrix (overload reset, frequency)" status="failed" time="8.5e-05"><error type="AttributeError" message="'dict' object has no attribute 'userdata'">
-<![CDATA[
-Failing step: Given the system is initialized ... failed in 0.000s
-Location: test/acceptance/features/timing.feature:13
-Traceback (most recent call last):
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/Stephen/Library/Python/3.9/lib/python/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "test/acceptance/steps/common_steps.py", line 113, in step_system_initialized
-    if _profile(context) == "hil":
-  File "test/acceptance/steps/common_steps.py", line 24, in _profile
-    return getattr(context.config.userdata, "get", lambda k, d=None: d)("profile", None) or getattr(context, "profile", "hil")
-AttributeError: 'dict' object has no attribute 'userdata'
+</system-out></testcase><testcase classname="features.timing.Timing" name="SC-009B Latency matrix (overload reset, frequency)" status="cleanup_error" time="0.000174"><error type="UnknownError" message="">
+<![CDATA[Traceback:
 ]]>
 </error><system-out>
 <![CDATA[
@@ -32,11 +23,23 @@ AttributeError: 'dict' object has no attribute 'userdata'
 
   @req-latency @hil
   Scenario: SC-009B Latency matrix (overload reset, frequency)
-    Given the system is initialized ... failed in 0.000s
+    Given the system is initialized ... passed in 0.000s
     When I write holding register 40009 with value 1 ... skipped in 0.000s
     Then holding register 40009 should equal 0 within 100 ms ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
+
+Captured stdout:
+🔧 HIL scenario setup: SC-009B Latency matrix (overload reset, frequency)
+
+
 ]]>
-</system-out></testcase></testsuite>
+</system-out><system-err>
+<![CDATA[
+Captured stderr:
+
+SKIP Scenario SC-009B Latency matrix (overload reset, frequency): pending: pymodbus not available
+
+]]>
+</system-err></testcase></testsuite>

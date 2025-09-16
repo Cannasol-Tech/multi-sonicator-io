@@ -1,9 +1,9 @@
-<testsuite name="features.system_integration_complete.Complete System Integration Testing" tests="13" errors="0" failures="10" skipped="3" time="0.0" timestamp="2025-09-05T20:57:35.017290" hostname="Corbans-Mini.home"><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Complete system startup and initialization" status="failed" time="0"><failure type="NoneType" message="None">
+<testsuite name="features.system_integration_complete.Complete System Integration Testing" tests="13" errors="13" failures="0" skipped="0" time="0.0" timestamp="2025-09-16T18:33:09.399687" hostname="Corbans-Mini.home"><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Complete system startup and initialization" status="cleanup_error" time="0"><error type="NoneType" message="None">
 <![CDATA[
 Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
 Location: test/acceptance/features/system_integration_complete.feature:7
 None]]>
-</failure><system-out>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
@@ -16,21 +16,21 @@ None]]>
     Given the system has been powered off ... undefined in 0.000s
     When I power on the Multi-Sonicator I/O Controller ... undefined in 0.000s
     Then within 2 seconds the system status register should indicate "READY" ... undefined in 0.000s
-    And all sonicator units should be in "STOPPED" state ... undefined in 0.000s
-    And the active sonicator count should be 0 ... undefined in 0.000s
-    And the active sonicator mask should be 0x0000 ... undefined in 0.000s
-    And the watchdog status should indicate "HEALTHY" ... undefined in 0.000s
-    And all amplitude setpoints should default to 50% ... undefined in 0.000s
+    And all sonicator units should be in "STOPPED" state ... skipped in 0.000s
+    And the active sonicator count should be 0 ... skipped in 0.000s
+    And the active sonicator mask should be 0x0000 ... skipped in 0.000s
+    And the watchdog status should indicate "HEALTHY" ... skipped in 0.000s
+    And all amplitude setpoints should default to 50% ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Four-sonicator simultaneous operation" status="failed" time="0"><failure type="NoneType" message="None">
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Four-sonicator simultaneous operation" status="cleanup_error" time="0"><error type="NoneType" message="None">
 <![CDATA[
 Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
 Location: test/acceptance/features/system_integration_complete.feature:7
 None]]>
-</failure><system-out>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
@@ -47,8 +47,8 @@ None]]>
     And I set sonicator 3 amplitude to 75% ... undefined in 0.000s
     And I set sonicator 4 amplitude to 100% ... undefined in 0.000s
     Then within 200ms all sonicators should be running ... undefined in 0.000s
-    And the active sonicator count should be 4 ... undefined in 0.000s
-    And the active sonicator mask should be 0x000F ... undefined in 0.000s
+    And the active sonicator count should be 4 ... skipped in 0.000s
+    And the active sonicator mask should be 0x000F ... skipped in 0.000s
     And each sonicator should report its correct amplitude ... undefined in 0.000s
     And each sonicator should report power consumption > 0 watts ... undefined in 0.000s
     And each sonicator should report frequency within operational range ... undefined in 0.000s
@@ -56,12 +56,12 @@ None]]>
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Sequential sonicator control with monitoring" status="failed" time="0"><failure type="NoneType" message="None">
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Sequential sonicator control with monitoring" status="cleanup_error" time="0"><error type="NoneType" message="None">
 <![CDATA[
 Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
 Location: test/acceptance/features/system_integration_complete.feature:7
 None]]>
-</failure><system-out>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
@@ -88,12 +88,12 @@ None]]>
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Emergency stop functionality" status="failed" time="0"><failure type="NoneType" message="None">
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Emergency stop functionality" status="cleanup_error" time="0"><error type="NoneType" message="None">
 <![CDATA[
 Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
 Location: test/acceptance/features/system_integration_complete.feature:7
 None]]>
-</failure><system-out>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
@@ -107,8 +107,8 @@ None]]>
     When I trigger the emergency stop command ... undefined in 0.000s
     Then within 50ms all sonicators should be stopped ... undefined in 0.000s
     And the emergency stop flag should be set in system status ... undefined in 0.000s
-    And the active sonicator count should be 0 ... undefined in 0.000s
-    And the active sonicator mask should be 0x0000 ... undefined in 0.000s
+    And the active sonicator count should be 0 ... skipped in 0.000s
+    And the active sonicator mask should be 0x0000 ... skipped in 0.000s
     And no sonicator should accept start commands until emergency stop is cleared ... undefined in 0.000s
     When I clear the emergency stop condition ... undefined in 0.000s
     Then the system should return to normal operation mode ... undefined in 0.000s
@@ -117,12 +117,12 @@ None]]>
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Overload detection and recovery" status="failed" time="0"><failure type="NoneType" message="None">
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Overload detection and recovery" status="cleanup_error" time="0"><error type="NoneType" message="None">
 <![CDATA[
 Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
 Location: test/acceptance/features/system_integration_complete.feature:7
 None]]>
-</failure><system-out>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
@@ -147,12 +147,12 @@ None]]>
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="MODBUS communication reliability under load" status="failed" time="0"><failure type="NoneType" message="None">
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="MODBUS communication reliability under load" status="cleanup_error" time="0"><error type="NoneType" message="None">
 <![CDATA[
 Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
 Location: test/acceptance/features/system_integration_complete.feature:7
 None]]>
-</failure><system-out>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
@@ -170,17 +170,17 @@ None]]>
     When I perform 50 consecutive MODBUS write operations ... undefined in 0.000s
     Then all writes should complete successfully within 100ms each ... undefined in 0.000s
     And all register values should be updated correctly ... undefined in 0.000s
-    And the system should maintain stable operation throughout ... undefined in 0.000s
+    And the system should maintain stable operation throughout ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="System performance under maximum load" status="failed" time="0"><failure type="NoneType" message="None">
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="System performance under maximum load" status="cleanup_error" time="0"><error type="NoneType" message="None">
 <![CDATA[
 Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
 Location: test/acceptance/features/system_integration_complete.feature:7
 None]]>
-</failure><system-out>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
@@ -201,12 +201,12 @@ None]]>
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Response time requirements validation" status="failed" time="0"><failure type="NoneType" message="None">
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Response time requirements validation" status="cleanup_error" time="0"><error type="NoneType" message="None">
 <![CDATA[
 Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
 Location: test/acceptance/features/system_integration_complete.feature:7
 None]]>
-</failure><system-out>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
@@ -228,12 +228,12 @@ None]]>
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Telemetry data accuracy and consistency" status="failed" time="0"><failure type="NoneType" message="None">
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Telemetry data accuracy and consistency" status="cleanup_error" time="0"><error type="NoneType" message="None">
 <![CDATA[
 Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
 Location: test/acceptance/features/system_integration_complete.feature:7
 None]]>
-</failure><system-out>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
@@ -254,12 +254,12 @@ None]]>
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="System configuration persistence" status="failed" time="0"><failure type="NoneType" message="None">
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="System configuration persistence" status="cleanup_error" time="0"><error type="NoneType" message="None">
 <![CDATA[
 Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
 Location: test/acceptance/features/system_integration_complete.feature:7
 None]]>
-</failure><system-out>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
@@ -280,7 +280,10 @@ None]]>
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Advanced diagnostics and health monitoring" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Advanced diagnostics and health monitoring" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
@@ -301,7 +304,10 @@ None]]>
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Multi-controller network operation" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Multi-controller network operation" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
@@ -321,7 +327,10 @@ None]]>
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Automated system calibration" status="skipped" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Automated system calibration" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 

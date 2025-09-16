@@ -47,17 +47,9 @@ void register_manager_update_system_status(uint16_t status_bits, bool set);
 
 /**
  * @brief Update sonicator status
- * @param sonicator_id Sonicator ID (0-31)
- * @param power_watts Current power consumption
- * @param frequency_hz Operating frequency
- * @param amplitude_actual Actual amplitude percentage
- * @param status_flags Status flags to update
+ * @param sonicator_status Pointer to sonicator status structure
  */
-void register_manager_update_sonicator_status(uint8_t sonicator_id,
-                                             uint16_t power_watts,
-                                             uint16_t frequency_hz,
-                                             uint16_t amplitude_actual,
-                                             uint16_t status_flags);
+void register_manager_update_sonicator_status(sonicator_status_t * sonicator_status);
 
 /**
  * @brief Get sonicator control settings

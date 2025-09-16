@@ -19,6 +19,8 @@
 #include "frequency_counter.h"
 #include "constants.h"
 
+#define DEFAULT_SONICATOR_AMPLITUDE 80
+
 // Global Multiplexer instance
 Multiplexer multiplexer;
 
@@ -55,9 +57,10 @@ void setup() {
     
     // Set default values from register map
     auto* map = register_manager_get_map();
+    
     map->global_control.global_enable = 1;
     for (int i = 0; i < 4; ++i) {
-        map->sonicators[i].amplitude_setpoint = 50;
+        map->sonicators[i].amplitude_setpoint = DEFAULT_SONICATOR_AMPLITUDE;
     }
     multiplexer.setAmplitude(map->sonicators[0].amplitude_setpoint);
 }

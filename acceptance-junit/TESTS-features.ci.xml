@@ -1,4 +1,4 @@
-<testsuite name="features.ci.CI drift checks" tests="1" errors="1" failures="0" skipped="0" time="0.000879" timestamp="2025-09-15T17:35:02.971953" hostname="Corbans-Mini.home"><testcase classname="features.ci.CI drift checks" name="SC-025 CI drift check: PRD vs include/config.h" status="cleanup_error" time="0.000879"><error type="UnknownError" message="">
+<testsuite name="features.ci.CI drift checks" tests="1" errors="1" failures="0" skipped="0" time="0.000416" timestamp="2025-09-16T18:32:29.695791" hostname="Corbans-Mini.home"><testcase classname="features.ci.CI drift checks" name="SC-025 CI drift check: PRD vs include/system_config.h" status="cleanup_error" time="0.000416"><error type="UnknownError" message="">
 <![CDATA[Traceback:
 ]]>
 </error><system-out>
@@ -6,10 +6,10 @@
 @scenario.begin
 
   @req-ci-drift @prd-17-risk @hil
-  Scenario: SC-025 CI drift check: PRD vs include/config.h
-    Given the CI environment is configured ... passed in 0.001s
+  Scenario: SC-025 CI drift check: PRD vs include/system_config.h
+    Given the CI environment is configured ... passed in 0.000s
     And the PRD requirements are documented in project-requirements.md ... passed in 0.000s
-    And the implementation constants are defined in include/config.h ... passed in 0.000s
+    And the implementation constants are defined in include/system_config.h ... passed in 0.000s
     When the CI drift check script runs ... passed in 0.000s
     Then it should compare PRD requirements against implementation ... passed in 0.000s
     And it should flag any mismatches between documentation and code ... passed in 0.000s
@@ -20,11 +20,11 @@
 --------------------------------------------------------------------------------
 
 Captured stdout:
-🔧 HIL scenario setup: SC-025 CI drift check: PRD vs include/config.h
+🔧 HIL scenario setup: SC-025 CI drift check: PRD vs include/system_config.h
 
 ✅ CI environment configuration assumed (local development)
 ✅ PRD requirements documented
-✅ Implementation constants defined in include/config.h
+✅ Implementation constants defined in include/system_config.h
 ✅ CI drift check script executed
 ✅ PRD requirements compared against implementation
 ✅ Documentation/code mismatches flagged (if any)

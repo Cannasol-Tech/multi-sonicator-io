@@ -17,31 +17,11 @@
 
 #include <Arduino.h>
 
-// ----------------------------------------------------------------------------
-// See config/hardware-config.yaml — SOLE SOURCE OF TRUTH for hardware pin assignments. This file mirrors the configuration; do not modify mappings here without updating the configuration first.
-// -----------------------------------------------------------------------------
-
-// Backward-compatible aliases for unit tests targeting legacy pin names
-
-
-#ifndef PWM_SONICATOR_1_PIN
-#define PWM_SONICATOR_1_PIN  PWM_AMPLITUDE_CONTROL_PIN
-#endif
-#ifndef PWM_SONICATOR_2_PIN
-#define PWM_SONICATOR_2_PIN  PWM_AMPLITUDE_CONTROL_PIN
-#endif
-#ifndef PWM_SONICATOR_3_PIN
-#define PWM_SONICATOR_3_PIN  PWM_AMPLITUDE_CONTROL_PIN
-#endif
-#ifndef PWM_SONICATOR_4_PIN
-#define PWM_SONICATOR_4_PIN  PWM_AMPLITUDE_CONTROL_PIN
-#endif
-
 // ============================================================================
 // PROJECT INFORMATION
 // ============================================================================
 #define PROJECT_NAME "Multi Sonicator I/O Controller"
-#define PROJECT_MODEL "CAN-SON-CTRL-4"
+#define PROJECT_MODEL "CT2000-4-MSIO-v1"
 #define PROJECT_VERSION "1.0.0"
 #define PROJECT_BUILD_DATE __DATE__ " " __TIME__
 #define MANUFACTURER "Cannasol Technologies"
@@ -68,7 +48,6 @@
 // ============================================================================
 // PIN DEFINITIONS - ATmega32A (DIP-40) - Arduino Framework Compatible
 // ============================================================================
-
 // UART Communication (MODBUS RTU) - Arduino Serial uses these automatically
 #define UART_RX_PIN 0     // PD0 (Physical pin 14) - DB9-0 Pin 8 (MODBUS RTU RX) - See hardware-config.yaml
 #define UART_TX_PIN 1     // PD1 (Physical pin 15) - DB9-0 Pin 9 (MODBUS RTU TX) - See hardware-config.yaml

@@ -1,79 +1,146 @@
-<testsuite name="features.monitoring.Monitoring via MODBUS" tests="6" errors="0" failures="0" skipped="6" time="0.0" timestamp="2025-09-12T01:57:26.125359" hostname="Corbans-Mini.home"><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-004 Power monitoring scaling" status="untested" time="0"><skipped /><system-out>
+<testsuite name="features.monitoring.Monitoring via MODBUS" tests="6" errors="6" failures="0" skipped="0" time="3.013114" timestamp="2025-09-16T18:33:01.260743" hostname="Corbans-Mini.home"><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-004 Power monitoring scaling" status="cleanup_error" time="1.001415"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
-  @pending @req-power @prd-10-api @reg-40013-40016 @hil
+  @req-power @prd-10-api @reg-40013-40016 @hil @requirement_FR5
   Scenario: SC-004 Power monitoring scaling
-    Given the system is initialized ... untested in 0.000s
-    When I simulate power reading of 100 ... untested in 0.000s
-    Then holding register 40013 should equal 100 within 100 ms ... untested in 0.000s
+    Given the system is initialized ... passed in 0.000s
+    When I simulate power reading of 100 ... skipped in 1.001s
+    Then holding register 40013 should equal 100 within 100 ms ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
+
+Captured stdout:
+🔧 HIL scenario setup: SC-004 Power monitoring scaling
+
+
 ]]>
-</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-005 Frequency monitoring" status="untested" time="0"><skipped /><system-out>
+</system-out><system-err>
+<![CDATA[
+Captured stderr:
+
+SKIP Scenario SC-004 Power monitoring scaling: cannot simulate power reading via HIL modbus write
+
+]]>
+</system-err></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-005 Frequency monitoring" status="cleanup_error" time="1.003993"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
   @req-frequency @prd-10-api @reg-40017-40020 @hil
   Scenario: SC-005 Frequency monitoring
-    Given the system is initialized ... untested in 0.000s
-    When I simulate frequency reading of 20000 ... untested in 0.000s
-    Then holding register 40017 should equal 20000 within 100 ms ... untested in 0.000s
+    Given the system is initialized ... passed in 0.000s
+    When I simulate frequency reading of 20000 ... skipped in 1.004s
+    Then holding register 40017 should equal 20000 within 100 ms ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
+
+Captured stdout:
+🔧 HIL scenario setup: SC-005 Frequency monitoring
+
+
 ]]>
-</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-006 Status flags" status="untested" time="0"><skipped /><system-out>
+</system-out><system-err>
+<![CDATA[
+Captured stderr:
+
+SKIP Scenario SC-005 Frequency monitoring: cannot simulate frequency reading via HIL modbus write
+
+]]>
+</system-err></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-006 Status flags" status="cleanup_error" time="0.00048"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
   @req-status-flags @prd-10-api @reg-40021-40024 @hil
   Scenario: SC-006 Status flags
-    Given the system is initialized ... untested in 0.000s
-    When I simulate starting sonicator 1 ... untested in 0.000s
-    Then status flag bit 0 for unit 1 is 1 ... untested in 0.000s
+    Given the system is initialized ... passed in 0.000s
+    When I simulate starting sonicator 1 ... skipped in 0.000s
+    Then status flag bit 0 for unit 1 is 1 ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
+
+Captured stdout:
+🔧 HIL scenario setup: SC-006 Status flags
+
+
 ]]>
-</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-015 Per-unit runtimes" status="untested" time="0"><skipped /><system-out>
+</system-out><system-err>
+<![CDATA[
+Captured stderr:
+
+SKIP Scenario SC-006 Status flags: pending: pymodbus not available
+SKIP Scenario SC-006 Status flags: no MODBUS client available to set running state
+
+]]>
+</system-err></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-015 Per-unit runtimes" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
-  @req-runtimes @reg-40027-40030 @hil
+  @req-runtimes @reg-40027-40030 @hil @pending
   Scenario: SC-015 Per-unit runtimes
-    Given the system is initialized ... untested in 0.000s
-    When I simulate starting sonicator 1 ... untested in 0.000s
-    Then holding register 40027 should equal 5 within 1000 ms ... untested in 0.000s
+    Given the system is initialized ... skipped in 0.000s
+    When I simulate starting sonicator 1 ... skipped in 0.000s
+    Then holding register 40027 should equal 5 within 1000 ms ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-016 Overload counts" status="untested" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-016 Overload counts" status="cleanup_error" time="0"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
-  @req-overload-counts @reg-40031-40034 @hil
+  @req-overload-counts @reg-40031-40034 @hil @pending
   Scenario: SC-016 Overload counts
-    Given the system is initialized ... untested in 0.000s
-    When I simulate overload on sonicator 1 ... untested in 0.000s
-    Then holding register 40031 should equal 1 within 200 ms ... untested in 0.000s
+    Given the system is initialized ... skipped in 0.000s
+    When I simulate overload on sonicator 1 ... skipped in 0.000s
+    Then holding register 40031 should equal 1 within 200 ms ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-019 Frequency lock behavior" status="untested" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.monitoring.Monitoring via MODBUS" name="SC-019 Frequency lock behavior" status="cleanup_error" time="1.007226"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
   @req-freq-lock @hil
   Scenario: SC-019 Frequency lock behavior
-    Given the system is initialized ... untested in 0.000s
-    When I simulate frequency lock on sonicator 1 ... untested in 0.000s
-    Then status flag bit 2 for unit 1 is 1 ... untested in 0.000s
+    Given the system is initialized ... passed in 0.000s
+    When I simulate frequency lock on sonicator 1 ... skipped in 1.007s
+    Then status flag bit 2 for unit 1 is 1 ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
+
+Captured stdout:
+🔧 HIL scenario setup: SC-019 Frequency lock behavior
+
+
 ]]>
-</system-out></testcase></testsuite>
+</system-out><system-err>
+<![CDATA[
+Captured stderr:
+
+SKIP Scenario SC-019 Frequency lock behavior: HIL failed to set frequency lock
+
+]]>
+</system-err></testcase></testsuite>

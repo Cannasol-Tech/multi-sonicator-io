@@ -56,60 +56,33 @@ Sonicator 4 - Verified by Product Owner
 6	PA7/A7 (Pin 33)	DB9-4 Pin 5	POWER_SENSE_4	ANALOG	5.44 mV/W scaling	A1	TBD
 7	PD7 (Pin 21)	DB9-4 Pin 8	AMPLITUDE_ALL	OUT	Shared AMP_C (0–10V), common	D9 (PWM)	TBD
 */
+
+
 Multiplexer::Multiplexer() : shared_amplitude_percent_(SONICATOR_MIN_AMPLITUDE_PERCENT) {
     // Pin configurations for each sonicator, from system_config.h
-    const SonicatorPins pins[NUM_SONICATORS] = {
-        1: { signal: "OVERLOAD_1", dut_pin: "PD6" }
-        2: { signal: "RESET_1", dut_pin: "PC7" }
-        3: { signal: "FREQ_LOCK_1", dut_pin: "PB7" }
-        4: { signal: "FREQ_DIV10_1", dut_pin: "PB3" }
-        5: { signal: "POWER_SENSE_1", dut_pin: "PA4" }
-        7: { signal: "START_1", dut_pin: "PC6" }
-        8: { signal: "AMPLITUDE_ALL", dut_pin: "PD7" }
-        { // Sonicator 1
-            .start_pin = SON1_START_PIN,
-            .reset_pin = SON1_RESET_PIN,
-            .overload_pin = SON1_OVERLOAD_PIN,
-            .freq_lock_pin = SON1_FREQ_LOCK_PIN,
-            .power_sense_channel = ADC_SONICATOR_1_PIN
-        },
-        { // Sonicator 2
-            .start_pin = SON2_START_PIN,
-            .reset_pin = SON2_RESET_PIN,
-            .overload_pin = SON2_OVERLOAD_PIN,
-            .freq_lock_pin = SON2_FREQ_LOCK_PIN,
-            .power_sense_channel = ADC_SONICATOR_2_PIN
-        },
-        { // Sonicator 3
-            .start_pin = SON3_START_PIN,
-            .reset_pin = SON3_RESET_PIN,
-            .overload_pin = SON3_OVERLOAD_PIN,
-            .freq_lock_pin = SON3_FREQ_LOCK_PIN,
-            .power_sense_channel = ADC_SONICATOR_3_PIN
-        },
-        { // Sonicator 4
-            .start_pin = SON4_START_PIN,
-            .reset_pin = SON4_RESET_PIN,
-            .overload_pin = SON4_OVERLOAD_PIN,
-            .freq_lock_pin = SON4_FREQ_LOCK_PIN,
-            .power_sense_channel = ADC_SONICATOR_4_PIN
-        }
+    static soncicator
     };
 
     // Allocate and initialize each sonicator
     for (int i = 0; i < NUM_SONICATORS; ++i) {
         sonicators[i] = new SonicatorInterface(pins[i]);
     }
+    updateSharedAmplitude();
 }
 
 Multiplexer::~Multiplexer() {
     for (int i = 0; i < NUM_SONICATORS; ++i) {
         delete sonicators[i];
     }
+    updateSharedAmplitude();
 }
 
 void Multiplexer::begin() {
     // Initialization is handled in the constructor
+    for (int i = 0; i < NUM_SONICATORS; ++i) {
+        sonicators[i] = new SonicatorInterface(pins[i]);
+    }
+    updateSharedAmplitude();
 }
 
 void Multiplexer::update() {
@@ -118,7 +91,6 @@ void Multiplexer::update() {
             sonicators[i]->update();
         }
     }
-    updateSharedAmplitude();
 }
 
 bool Multiplexer::start(uint8_t index) {

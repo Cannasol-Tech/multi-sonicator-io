@@ -1,27 +1,33 @@
-<testsuite name="features.smoke.Smoke" tests="2" errors="0" failures="0" skipped="2" time="0.0" timestamp="2025-09-12T01:57:26.188561" hostname="Corbans-Mini.home"><testcase classname="features.smoke.Smoke" name="SMK-001 Harness runs a passing step" status="untested" time="0"><skipped /><system-out>
+<testsuite name="features.smoke.Smoke" tests="2" errors="2" failures="0" skipped="0" time="0.010574" timestamp="2025-09-16T18:33:04.343540" hostname="Corbans-Mini.home"><testcase classname="features.smoke.Smoke" name="SMK-001 Harness runs a passing step" status="cleanup_error" time="0.000513"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
   Scenario: SMK-001 Harness runs a passing step
-    Given the HIL test harness is connected ... untested in 0.000s
-    Then the harness sanity check passes ... untested in 0.000s
-    And the Arduino Test Wrapper is available for testing ... untested in 0.000s
+    Given the HIL test harness is connected ... passed in 0.000s
+    Then the harness sanity check passes ... passed in 0.000s
+    And the Arduino Test Wrapper is available for testing ... passed in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.smoke.Smoke" name="SMK-002 Web UI Smoke Acceptance Test" status="untested" time="0"><skipped /><system-out>
+</system-out></testcase><testcase classname="features.smoke.Smoke" name="SMK-002 Web UI Smoke Acceptance Test" status="cleanup_error" time="0.010061"><error type="UnknownError" message="">
+<![CDATA[Traceback:
+]]>
+</error><system-out>
 <![CDATA[
 @scenario.begin
 
   @smoke @web-ui @acceptance
   Scenario: SMK-002 Web UI Smoke Acceptance Test
-    Given the web UI backend is running and healthy ... untested in 0.000s
-    And the web UI frontend is accessible ... untested in 0.000s
-    When I verify all Sonicator #4 pins are accessible ... untested in 0.000s
-    Then all pin control APIs respond correctly ... untested in 0.000s
-    And the frequency generation system is functional ... untested in 0.000s
-    And the PWM monitoring system is operational ... untested in 0.000s
-    And the theme toggle system works correctly ... untested in 0.000s
+    Given the web UI backend is running and healthy ... failed in 0.010s
+    And the web UI frontend is accessible ... skipped in 0.000s
+    When I verify all Sonicator #4 pins are accessible ... skipped in 0.000s
+    Then all pin control APIs respond correctly ... skipped in 0.000s
+    And the frequency generation system is functional ... skipped in 0.000s
+    And the PWM monitoring system is operational ... skipped in 0.000s
+    And the theme toggle system works correctly ... skipped in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
