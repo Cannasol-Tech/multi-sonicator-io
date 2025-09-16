@@ -1,0 +1,25 @@
+# Web-UI Acceptance Test Configuration for Behave
+
+[behave]
+# Test discovery
+paths = features
+step_dirs = steps
+
+# Output configuration
+format = pretty
+outfiles = results/web-ui-acceptance-output.txt
+junit = true
+junit_directory = results
+show_timings = true
+show_source = true
+
+# Logging
+logging_level = INFO
+log_capture = true
+
+# Execution
+stop = false
+tags = ~@skip
+
+# User-defined data (combined into single define line)
+define = simulation_mode=true,headless=true,browser=chrome

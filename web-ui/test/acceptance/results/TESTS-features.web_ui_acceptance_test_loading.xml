@@ -1,0 +1,101 @@
+<testsuite name="features.web_ui_acceptance_test_loading.Web-UI Acceptance Test Loading" tests="5" errors="0" failures="4" skipped="5" time="0.0" timestamp="2025-09-16T01:11:11.690751" hostname="runnervmf4ws1"><testcase classname="features.web_ui_acceptance_test_loading.Web-UI Acceptance Test Loading" name="Load acceptance test scenarios into web-ui interface" status="untested" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @smoke @ui-loading
+  Scenario: Load acceptance test scenarios into web-ui interface
+    Given the web-ui is running in simulation mode ... untested in 0.000s
+    And the backend test automation service is available ... untested in 0.000s
+    And the hardware mock is enabled ... untested in 0.000s
+    Given I navigate to the Test Automation panel ... untested in 0.000s
+    When I request the list of available test scenarios ... untested in 0.000s
+    Then I should see acceptance test scenarios loaded from the backend ... untested in 0.000s
+    And each scenario should display its name and description ... untested in 0.000s
+    And each scenario should show its associated tags ... untested in 0.000s
+    And the total scenario count should be greater than 0 ... untested in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.web_ui_acceptance_test_loading.Web-UI Acceptance Test Loading" name="Verify acceptance test scenario details are displayed" status="untested" time="0"><failure type="undefined" message="Undefined Step: I select a specific acceptance test scenario" /><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @ui-loading @scenario-details
+  Scenario: Verify acceptance test scenario details are displayed
+    Given the web-ui is running in simulation mode ... untested in 0.000s
+    And the backend test automation service is available ... untested in 0.000s
+    And the hardware mock is enabled ... untested in 0.000s
+    Given I navigate to the Test Automation panel ... untested in 0.000s
+    And acceptance test scenarios are loaded ... untested in 0.000s
+    When I select a specific acceptance test scenario ... undefined in 0.000s
+    Then I should see detailed scenario information ... undefined in 0.000s
+    And the scenario should show its feature file name ... undefined in 0.000s
+    And the scenario should display all associated tags ... undefined in 0.000s
+    And the scenario should show the number of steps ... undefined in 0.000s
+    And the scenario description should be visible ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.web_ui_acceptance_test_loading.Web-UI Acceptance Test Loading" name="Verify acceptance tests load with hardware mock enabled" status="untested" time="0"><failure type="undefined" message="Undefined Step: the hardware mock is enabled in the backend" /><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @ui-loading @hardware-mock
+  Scenario: Verify acceptance tests load with hardware mock enabled
+    Given the web-ui is running in simulation mode ... untested in 0.000s
+    And the backend test automation service is available ... untested in 0.000s
+    And the hardware mock is enabled ... untested in 0.000s
+    Given the hardware mock is enabled in the backend ... undefined in 0.000s
+    And I navigate to the Test Automation panel ... untested in 0.000s
+    When I load acceptance test scenarios ... undefined in 0.000s
+    Then all acceptance test scenarios should be available ... undefined in 0.000s
+    And no hardware connectivity errors should be displayed ... undefined in 0.000s
+    And the interface should indicate simulation mode is active ... undefined in 0.000s
+    And all test scenarios should be executable in mock mode ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.web_ui_acceptance_test_loading.Web-UI Acceptance Test Loading" name="Refresh acceptance test scenarios" status="untested" time="0"><failure type="undefined" message="Undefined Step: I am on the Test Automation panel" /><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @ui-loading @refresh-scenarios
+  Scenario: Refresh acceptance test scenarios
+    Given the web-ui is running in simulation mode ... untested in 0.000s
+    And the backend test automation service is available ... untested in 0.000s
+    And the hardware mock is enabled ... untested in 0.000s
+    Given I am on the Test Automation panel ... undefined in 0.000s
+    And acceptance test scenarios are loaded ... untested in 0.000s
+    When I click the refresh scenarios button ... undefined in 0.000s
+    Then the scenarios should be reloaded from the backend ... undefined in 0.000s
+    And the scenario count should remain consistent ... undefined in 0.000s
+    And any new scenarios should appear in the list ... undefined in 0.000s
+    And the loading indicator should be displayed during refresh ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.web_ui_acceptance_test_loading.Web-UI Acceptance Test Loading" name="Handle backend connection errors gracefully" status="untested" time="0"><failure type="undefined" message="Undefined Step: I navigate to the Test Automation panel" /><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @ui-loading @error-handling
+  Scenario: Handle backend connection errors gracefully
+    Given the web-ui is running in simulation mode ... untested in 0.000s
+    And the backend test automation service is available ... untested in 0.000s
+    And the hardware mock is enabled ... untested in 0.000s
+    Given the backend test automation service is unavailable ... untested in 0.000s
+    When I navigate to the Test Automation panel ... undefined in 0.000s
+    And I attempt to load acceptance test scenarios ... undefined in 0.000s
+    Then I should see a user-friendly error message ... untested in 0.000s
+    And the interface should indicate the backend is not available ... undefined in 0.000s
+    And there should be a retry button available ... untested in 0.000s
+    And the error should not crash the web interface ... undefined in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

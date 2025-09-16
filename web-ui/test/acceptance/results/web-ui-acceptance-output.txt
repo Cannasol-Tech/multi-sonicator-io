@@ -1,0 +1,784 @@
+@web-ui @acceptance-testing @loading
+Feature: Web-UI Acceptance Test Loading # features/web_ui_acceptance_test_loading.feature:2
+  As a test engineer
+  I want to verify that acceptance tests are loaded into the web-ui
+  So that I can run acceptance tests through the web interface with hardware mock
+  @web-ui @acceptance-testing @loading
+  Feature: Web-UI Acceptance Test Loading  # features/web_ui_acceptance_test_loading.feature:2
+
+  @smoke @ui-loading
+  Scenario: Load acceptance test scenarios into web-ui interface        # features/web_ui_acceptance_test_loading.feature:13
+    Given the web-ui is running in simulation mode                      # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the backend test automation service is available                # None
+    And the hardware mock is enabled                                    # None
+    Given I navigate to the Test Automation panel                       # None
+    When I request the list of available test scenarios                 # None
+    Then I should see acceptance test scenarios loaded from the backend # None
+    And each scenario should display its name and description           # None
+    And each scenario should show its associated tags                   # None
+    And the total scenario count should be greater than 0               # None
+
+  @ui-loading @scenario-details
+  Scenario: Verify acceptance test scenario details are displayed  # features/web_ui_acceptance_test_loading.feature:22
+    Given the web-ui is running in simulation mode                 # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the backend test automation service is available           # None
+    And the hardware mock is enabled                               # None
+    Given I navigate to the Test Automation panel                  # None
+    And acceptance test scenarios are loaded                       # None
+    When I select a specific acceptance test scenario              # None
+    Then I should see detailed scenario information                # None
+    And the scenario should show its feature file name             # None
+    And the scenario should display all associated tags            # None
+    And the scenario should show the number of steps               # None
+    And the scenario description should be visible                 # None
+
+  @ui-loading @hardware-mock
+  Scenario: Verify acceptance tests load with hardware mock enabled  # features/web_ui_acceptance_test_loading.feature:33
+    Given the web-ui is running in simulation mode                   # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the backend test automation service is available             # None
+    And the hardware mock is enabled                                 # None
+    Given the hardware mock is enabled in the backend                # None
+    And I navigate to the Test Automation panel                      # None
+    When I load acceptance test scenarios                            # None
+    Then all acceptance test scenarios should be available           # None
+    And no hardware connectivity errors should be displayed          # None
+    And the interface should indicate simulation mode is active      # None
+    And all test scenarios should be executable in mock mode         # None
+
+  @ui-loading @refresh-scenarios
+  Scenario: Refresh acceptance test scenarios                    # features/web_ui_acceptance_test_loading.feature:43
+    Given the web-ui is running in simulation mode               # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the backend test automation service is available         # None
+    And the hardware mock is enabled                             # None
+    Given I am on the Test Automation panel                      # None
+    And acceptance test scenarios are loaded                     # None
+    When I click the refresh scenarios button                    # None
+    Then the scenarios should be reloaded from the backend       # None
+    And the scenario count should remain consistent              # None
+    And any new scenarios should appear in the list              # None
+    And the loading indicator should be displayed during refresh # None
+
+  @ui-loading @error-handling
+  Scenario: Handle backend connection errors gracefully            # features/web_ui_acceptance_test_loading.feature:53
+    Given the web-ui is running in simulation mode                 # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the backend test automation service is available           # None
+    And the hardware mock is enabled                               # None
+    Given the backend test automation service is unavailable       # None
+    When I navigate to the Test Automation panel                   # None
+    And I attempt to load acceptance test scenarios                # None
+    Then I should see a user-friendly error message                # None
+    And the interface should indicate the backend is not available # None
+    And there should be a retry button available                   # None
+    And the error should not crash the web interface               # None
+
+@web-ui @acceptance-testing @tag-search
+Feature: Web-UI Acceptance Test Search by Tag # features/web_ui_acceptance_test_search_by_tag.feature:2
+  As a test engineer
+  I want to search and filter acceptance tests by tags in the web-ui
+  So that I can efficiently find and run specific test categories
+  @web-ui @acceptance-testing @tag-search
+  Feature: Web-UI Acceptance Test Search by Tag  # features/web_ui_acceptance_test_search_by_tag.feature:2
+
+  @smoke @tag-filtering @search
+  Scenario: Filter acceptance tests by single tag                        # features/web_ui_acceptance_test_search_by_tag.feature:14
+    Given the web-ui is running in simulation mode                       # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                              # None
+    And acceptance test scenarios are loaded from the backend            # None
+    And the hardware mock is enabled                                     # None
+    Given I am on the Test Automation panel                              # None
+    And acceptance test scenarios are loaded                             # None
+    When I select the tag filter dropdown                                # None
+    And I select the "smoke" tag filter                                  # None
+    Then only scenarios with the "smoke" tag should be displayed         # None
+    And the scenario count should update to reflect the filtered results # None
+    And each displayed scenario should have the "smoke" tag              # None
+
+  @tag-filtering @multiple-tags
+  Scenario: Filter acceptance tests by multiple tags                        # features/web_ui_acceptance_test_search_by_tag.feature:24
+    Given the web-ui is running in simulation mode                          # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                                 # None
+    And acceptance test scenarios are loaded from the backend               # None
+    And the hardware mock is enabled                                        # None
+    Given I am on the Test Automation panel                                 # None
+    And acceptance test scenarios are loaded                                # None
+    When I select multiple tags: "hil" and "gpio"                           # None
+    And I apply the tag filter                                              # None
+    Then only scenarios with both "hil" and "gpio" tags should be displayed # None
+    And the scenario count should reflect the combined filter               # None
+    And each displayed scenario should have both selected tags              # None
+
+  @tag-filtering @OR-logic
+  Scenario: Search acceptance tests by tag with OR logic                      # features/web_ui_acceptance_test_search_by_tag.feature:34
+    Given the web-ui is running in simulation mode                            # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                                   # None
+    And acceptance test scenarios are loaded from the backend                 # None
+    And the hardware mock is enabled                                          # None
+    Given I am on the Test Automation panel                                   # None
+    And acceptance test scenarios are loaded                                  # None
+    When I enable OR logic for tag filtering                                  # None
+    And I select multiple tags: "smoke" or "critical"                         # None
+    Then scenarios with either "smoke" OR "critical" tags should be displayed # None
+    And the result set should be larger than AND logic filtering              # None
+    And scenarios with only one of the selected tags should be included       # None
+
+  @tag-filtering @clear-filters
+  Scenario: Clear tag filters to show all scenarios              # features/web_ui_acceptance_test_search_by_tag.feature:44
+    Given the web-ui is running in simulation mode               # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                      # None
+    And acceptance test scenarios are loaded from the backend    # None
+    And the hardware mock is enabled                             # None
+    Given I have applied tag filters to the scenario list        # None
+    And only filtered scenarios are displayed                    # None
+    When I click the "Clear Filters" button                      # None
+    Then all acceptance test scenarios should be displayed again # None
+    And the scenario count should return to the original total   # None
+    And no tag filters should be active                          # None
+
+  @tag-filtering @tag-count
+  Scenario: Display tag counts for filtering                    # features/web_ui_acceptance_test_search_by_tag.feature:53
+    Given the web-ui is running in simulation mode              # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                     # None
+    And acceptance test scenarios are loaded from the backend   # None
+    And the hardware mock is enabled                            # None
+    Given I am on the Test Automation panel                     # None
+    And acceptance test scenarios are loaded                    # None
+    When I open the tag filter dropdown                         # None
+    Then each available tag should display its occurrence count # None
+    And the counts should add up correctly                      # None
+    And tags should be sorted by name or frequency              # None
+    And only tags that exist in scenarios should be displayed   # None
+
+  @tag-filtering @no-results
+  Scenario: Handle no matching results for tag search          # features/web_ui_acceptance_test_search_by_tag.feature:63
+    Given the web-ui is running in simulation mode             # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                    # None
+    And acceptance test scenarios are loaded from the backend  # None
+    And the hardware mock is enabled                           # None
+    Given I am on the Test Automation panel                    # None
+    And acceptance test scenarios are loaded                   # None
+    When I search for a tag combination that has no matches    # None
+    Then I should see a "No matching scenarios found" message  # None
+    And the scenario list should be empty                      # None
+    And there should be an option to clear the filters         # None
+    And a suggestion to try different tags should be displayed # None
+
+  @tag-filtering @real-time-search
+  Scenario: Real-time tag search as user types                # features/web_ui_acceptance_test_search_by_tag.feature:73
+    Given the web-ui is running in simulation mode            # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                   # None
+    And acceptance test scenarios are loaded from the backend # None
+    And the hardware mock is enabled                          # None
+    Given I am on the Test Automation panel                   # None
+    And acceptance test scenarios are loaded                  # None
+    When I start typing in the tag search box                 # None
+    And I type "sm" for "smoke" tag                           # None
+    Then tag suggestions should appear as I type              # None
+    And matching scenarios should be filtered in real-time    # None
+    And the scenario count should update with each keystroke  # None
+    And I should be able to select from the suggested tags    # None
+
+@web-ui @acceptance-testing @multiple-execution
+Feature: Multiple Acceptance Test Web-UI Execution and Results Verification # features/web_ui_multiple_acceptance_test_execution.feature:2
+  As a test engineer
+  I want to run multiple acceptance tests from the web-ui and verify the results
+  So that I can execute test suites and view comprehensive results
+  @web-ui @acceptance-testing @multiple-execution
+  Feature: Multiple Acceptance Test Web-UI Execution and Results Verification  # features/web_ui_multiple_acceptance_test_execution.feature:2
+
+  @smoke @multiple-tests @execution
+  Scenario: Execute multiple acceptance tests and wait for completion                             # features/web_ui_multiple_acceptance_test_execution.feature:14
+    Given the web-ui is running in simulation mode                                                # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                                                       # None
+    And acceptance test scenarios are loaded from the backend                                     # None
+    And the hardware mock is enabled                                                              # None
+    Given I am on the Test Automation panel                                                       # None
+    And acceptance test scenarios are loaded                                                      # None
+    When I select multiple test scenarios: "Hardware Basic Connectivity" and "GPIO Functionality" # None
+    And I click the "Run Selected" button                                                         # None
+    Then the test execution should start                                                          # None
+    And I should see a progress indicator for the overall execution                               # None
+    And the execution status should show "running"                                                # None
+    And I should see which scenario is currently executing                                        # None
+    And I should wait for all tests to finish                                                     # None
+    And the final status should show overall results (passed/failed/mixed)                        # None
+
+  @multiple-tests @batch-execution
+  Scenario: Execute full test suite (all scenarios)               # features/web_ui_multiple_acceptance_test_execution.feature:27
+    Given the web-ui is running in simulation mode                # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                       # None
+    And acceptance test scenarios are loaded from the backend     # None
+    And the hardware mock is enabled                              # None
+    Given I am on the Test Automation panel                       # None
+    And acceptance test scenarios are loaded                      # None
+    When I click the "Select All" button                          # None
+    And I click the "Run Selected" button                         # None
+    Then all acceptance test scenarios should start executing     # None
+    And I should see the total number of scenarios to be executed # None
+    And the progress should show "X of Y scenarios completed"     # None
+    And each scenario should execute in sequence                  # None
+    And I should wait for the entire suite to complete            # None
+    And the final results should show aggregate statistics        # None
+
+  @multiple-tests @results-summary
+  Scenario: Verify multiple test results summary is displayed    # features/web_ui_multiple_acceptance_test_execution.feature:40
+    Given the web-ui is running in simulation mode               # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                      # None
+    And acceptance test scenarios are loaded from the backend    # None
+    And the hardware mock is enabled                             # None
+    Given I have executed multiple acceptance tests              # None
+    And all tests have completed                                 # None
+    When I view the test results                                 # None
+    Then I should see a comprehensive results summary            # None
+    And the summary should show total scenarios executed         # None
+    And the summary should display passed/failed/error counts    # None
+    And the summary should show total execution time             # None
+    And individual scenario results should be listed below       # None
+    And each scenario should show its name, status, and duration # None
+
+  @multiple-tests @progress-tracking
+  Scenario: Track progress during multiple test execution               # features/web_ui_multiple_acceptance_test_execution.feature:52
+    Given the web-ui is running in simulation mode                      # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                             # None
+    And acceptance test scenarios are loaded from the backend           # None
+    And the hardware mock is enabled                                    # None
+    Given I am running multiple acceptance tests                        # None
+    And the execution is in progress                                    # None
+    When I monitor the test progress                                    # None
+    Then I should see the current scenario being executed               # None
+    And the overall progress percentage should update                   # None
+    And the number of completed vs total scenarios should be shown      # None
+    And the estimated remaining time should be displayed (if available) # None
+    And previously completed scenarios should show their final status   # None
+
+  @multiple-tests @mixed-results
+  Scenario: Handle mixed results (some pass, some fail) in multiple test execution  # features/web_ui_multiple_acceptance_test_execution.feature:63
+    Given the web-ui is running in simulation mode                                  # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                                         # None
+    And acceptance test scenarios are loaded from the backend                       # None
+    And the hardware mock is enabled                                                # None
+    Given I have executed multiple acceptance tests                                 # None
+    And some tests passed while others failed                                       # None
+    When I view the results                                                         # None
+    Then the overall status should indicate "mixed" or "partial success"            # None
+    And passed scenarios should be clearly marked as successful                     # None
+    And failed scenarios should be highlighted with error indicators                # None
+    And I should be able to filter results by status (passed/failed)                # None
+    And there should be an option to re-run only failed tests                       # None
+
+  @multiple-tests @execution-interruption
+  Scenario: Stop multiple test execution mid-run                # features/web_ui_multiple_acceptance_test_execution.feature:74
+    Given the web-ui is running in simulation mode              # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                     # None
+    And acceptance test scenarios are loaded from the backend   # None
+    And the hardware mock is enabled                            # None
+    Given I am running multiple acceptance tests                # None
+    And several scenarios have completed                        # None
+    And at least one scenario is still executing                # None
+    When I click the "Stop Execution" button                    # None
+    Then the current scenario execution should stop             # None
+    And any remaining queued scenarios should be cancelled      # None
+    And completed scenarios should retain their results         # None
+    And the overall status should show "stopped" or "cancelled" # None
+    And I should be able to start a new execution               # None
+
+  @multiple-tests @tag-based-execution
+  Scenario: Execute multiple tests filtered by tags             # features/web_ui_multiple_acceptance_test_execution.feature:86
+    Given the web-ui is running in simulation mode              # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                     # None
+    And acceptance test scenarios are loaded from the backend   # None
+    And the hardware mock is enabled                            # None
+    Given I am on the Test Automation panel                     # None
+    And acceptance test scenarios are loaded                    # None
+    When I filter scenarios by the "smoke" tag                  # None
+    And I select all filtered scenarios                         # None
+    And I click the "Run Selected" button                       # None
+    Then only the scenarios with "smoke" tags should execute    # None
+    And the progress should reflect the filtered scenario count # None
+    And the results should only show the executed scenarios     # None
+    And tag information should be preserved in the results      # None
+
+  @multiple-tests @results-export
+  Scenario: Export multiple test results                       # features/web_ui_multiple_acceptance_test_execution.feature:98
+    Given the web-ui is running in simulation mode             # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                    # None
+    And acceptance test scenarios are loaded from the backend  # None
+    And the hardware mock is enabled                           # None
+    Given I have completed multiple acceptance tests           # None
+    And the results are displayed                              # None
+    When I click the "Export Results" button                   # None
+    And I select "HTML" format                                 # None
+    Then the test results should be exported as an HTML report # None
+    And the report should include the summary statistics       # None
+    And the report should list all individual scenario results # None
+    And the report should be formatted for easy reading        # None
+    And the export should be downloadable                      # None
+
+  @multiple-tests @retry-failed
+  Scenario: Re-run only failed scenarios from multiple test execution        # features/web_ui_multiple_acceptance_test_execution.feature:110
+    Given the web-ui is running in simulation mode                           # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                                  # None
+    And acceptance test scenarios are loaded from the backend                # None
+    And the hardware mock is enabled                                         # None
+    Given I have executed multiple acceptance tests                          # None
+    And some tests have failed                                               # None
+    When I view the results summary                                          # None
+    And I click the "Retry Failed Tests" button                              # None
+    Then only the previously failed scenarios should be queued for execution # None
+    And the execution should start with just the failed tests                # None
+    And the progress should show the count of scenarios being retried        # None
+    And upon completion, the results should be updated with new outcomes     # None
+    And the retry attempt should be recorded in the test history             # None
+
+@web-ui @acceptance-testing @single-execution
+Feature: Single Acceptance Test Web-UI Execution and Results Verification # features/web_ui_single_acceptance_test_execution.feature:2
+  As a test engineer
+  I want to run a single acceptance test from the web-ui and verify the results
+  So that I can validate individual test scenarios and view detailed results
+  @web-ui @acceptance-testing @single-execution
+  Feature: Single Acceptance Test Web-UI Execution and Results Verification  # features/web_ui_single_acceptance_test_execution.feature:2
+
+  @smoke @single-test @execution
+  Scenario: Execute single acceptance test and wait for completion     # features/web_ui_single_acceptance_test_execution.feature:14
+    Given the web-ui is running in simulation mode                     # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                            # None
+    And acceptance test scenarios are loaded from the backend          # None
+    And the hardware mock is enabled                                   # None
+    Given I am on the Test Automation panel                            # None
+    And acceptance test scenarios are loaded                           # None
+    When I select a single test scenario "Hardware Basic Connectivity" # None
+    And I click the "Run Selected" button                              # None
+    Then the test execution should start                               # None
+    And I should see a progress indicator showing test execution       # None
+    And the execution status should show "running"                     # None
+    And I should wait for the test to finish                           # None
+    And the final status should be either "passed" or "failed"         # None
+
+  @single-test @results-display
+  Scenario: Verify single test results are displayed correctly       # features/web_ui_single_acceptance_test_execution.feature:26
+    Given the web-ui is running in simulation mode                   # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                          # None
+    And acceptance test scenarios are loaded from the backend        # None
+    And the hardware mock is enabled                                 # None
+    Given I have executed a single acceptance test                   # None
+    And the test has completed                                       # None
+    When I view the test results                                     # None
+    Then I should see the detailed test results displayed            # None
+    And the results should show the scenario name and description    # None
+    And the results should display the execution time                # None
+    And the results should show the final status (passed/failed)     # None
+    And if failed, error details should be visible                   # None
+    And all test steps should be listed with their individual status # None
+
+  @single-test @real-time-updates
+  Scenario: Verify real-time progress updates during single test execution  # features/web_ui_single_acceptance_test_execution.feature:38
+    Given the web-ui is running in simulation mode                          # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                                 # None
+    And acceptance test scenarios are loaded from the backend               # None
+    And the hardware mock is enabled                                        # None
+    Given I am on the Test Automation panel                                 # None
+    And I have selected a single test scenario                              # None
+    When I start the test execution                                         # None
+    Then I should see real-time progress updates                            # None
+    And the current step being executed should be highlighted               # None
+    And step completion should be indicated as it happens                   # None
+    And the overall progress percentage should update                       # None
+    And any step failures should be immediately visible                     # None
+
+  @single-test @results-export
+  Scenario: Export single test results                                    # features/web_ui_single_acceptance_test_execution.feature:49
+    Given the web-ui is running in simulation mode                        # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                               # None
+    And acceptance test scenarios are loaded from the backend             # None
+    And the hardware mock is enabled                                      # None
+    Given I have completed a single acceptance test                       # None
+    And the results are displayed                                         # None
+    When I click the "Export Results" button                              # None
+    And I select "JSON" format                                            # None
+    Then the test results should be exported as a JSON file               # None
+    And the exported file should contain all test details                 # None
+    And the file should include scenario information, steps, and outcomes # None
+    And the export should be downloadable                                 # None
+
+  @single-test @error-handling
+  Scenario: Handle single test execution errors gracefully    # features/web_ui_single_acceptance_test_execution.feature:60
+    Given the web-ui is running in simulation mode            # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                   # None
+    And acceptance test scenarios are loaded from the backend # None
+    And the hardware mock is enabled                          # None
+    Given I am on the Test Automation panel                   # None
+    And I select a test scenario that will fail               # None
+    When I run the selected test                              # None
+    And the test fails during execution                       # None
+    Then I should see a clear error message                   # None
+    And the error details should be displayed                 # None
+    And the failed step should be highlighted                 # None
+    And there should be an option to retry the test           # None
+    And the interface should remain stable after the error    # None
+
+  @single-test @test-interruption
+  Scenario: Stop single test execution mid-run                # features/web_ui_single_acceptance_test_execution.feature:72
+    Given the web-ui is running in simulation mode            # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                   # None
+    And acceptance test scenarios are loaded from the backend # None
+    And the hardware mock is enabled                          # None
+    Given I am running a single acceptance test               # None
+    And the test is currently executing                       # None
+    When I click the "Stop Execution" button                  # None
+    Then the test execution should stop immediately           # None
+    And the status should show "stopped" or "cancelled"       # None
+    And any partial results should be preserved               # None
+    And I should be able to start a new test execution        # None
+    And the interface should return to the ready state        # None
+
+  @single-test @detailed-step-view
+  Scenario: View detailed information for individual test steps      # features/web_ui_single_acceptance_test_execution.feature:83
+    Given the web-ui is running in simulation mode                   # steps/web_ui_acceptance_steps.py:37
+      Traceback (most recent call last):
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/model.py", line 1991, in run
+          match.run(runner.context)
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/matchers.py", line 105, in run
+          self.func(context, *args, **kwargs)
+        File "steps/web_ui_acceptance_steps.py", line 41, in step_web_ui_running_simulation_mode
+          response = requests.get(f"{context.backend_url}/api/health")
+                                     ^^^^^^^^^^^^^^^^^^^
+        File "/home/runner/.local/lib/python3.12/site-packages/behave/runner.py", line 430, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'backend_url'
+
+    And the Test Automation panel is loaded                          # None
+    And acceptance test scenarios are loaded from the backend        # None
+    And the hardware mock is enabled                                 # None
+    Given I have completed a single acceptance test                  # None
+    And the results are displayed                                    # None
+    When I click on a specific test step in the results              # None
+    Then I should see detailed step information                      # None
+    And the step should show its type (Given/When/Then)              # None
+    And the step description should be fully visible                 # None
+    And any pin interactions should be listed                        # None
+    And step execution time should be displayed                      # None
+    And for failed steps, detailed error information should be shown # None
+
