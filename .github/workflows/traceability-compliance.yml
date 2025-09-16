@@ -7,14 +7,14 @@ on:
       - 'docs/prd-shards/**'
       - 'test/acceptance/features/**'
       - 'docs/prd/**'
-      - 'include/config.h'
+      - 'include/system_config.h'
   pull_request:
     branches: [ master, main ]
     paths:
       - 'docs/prd-shards/**'
       - 'test/acceptance/features/**'
       - 'docs/prd/**'
-      - 'include/config.h'
+      - 'include/system_config.h'
   schedule:
     # Run daily at 6 AM UTC to catch drift
     - cron: '0 6 * * *'

@@ -15,7 +15,7 @@
 #define TYPES_H
 
 #include <Arduino.h>
-#include "config.h"
+#include "system_config.h"
 
 // Include the proper header files to avoid redeclaration conflicts
 #include "sonicator_control.h"
@@ -24,7 +24,7 @@
 // ============================================================================
 // FORWARD DECLARATIONS
 // ============================================================================
-class SonicatorInterface;
+class CT2000Sonicator;
 class SystemController;
 class ModbusRTUSlave;
 class SafetyMonitor;
@@ -78,7 +78,7 @@ typedef enum {
 typedef struct {
     // Overall system state
     system_mode_t operating_mode;        //< Current system mode
-    uint16_t system_status_flags;        //< Status bit field (see config.h)
+    uint16_t system_status_flags;        //< Status bit field (see system_config.h)
     bool emergency_stop_active;          //< Master emergency stop state
     uint32_t system_uptime_seconds;      //< Total system runtime
     

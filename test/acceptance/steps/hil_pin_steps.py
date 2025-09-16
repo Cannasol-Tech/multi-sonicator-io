@@ -24,14 +24,6 @@ def _require_hw(context):
         "HIL hardware interface not available"
 
 
-@when('I set pin "{signal}" to {level:w} via harness')
-def step_set_pin_level(context, signal, level):
-    _require_hw(context)
-    val = 1 if str(level).upper() in ("HIGH", "1", "ON") else 0
-    resp = context.hardware_interface.send_command(f"PIN_SET {signal} {val}")
-    assert resp and "OK" in resp, f"Failed to set {signal} to {val}: resp={resp!r}"
-
-
 @then('pin "{signal}" should be {level:w}')
 def step_pin_should_be_level(context, signal, level):
     _require_hw(context)
@@ -85,4 +77,3 @@ def step_sim_freq_lock(context, ch, state):
     mode = "ON" if str(state).upper() in ("ON", "HIGH", "1") else "OFF"
     resp = context.hardware_interface.send_command(f"SIM_FREQ_LOCK {ch} {mode}")
     assert resp and "OK" in resp, f"SIM_FREQ_LOCK failed: {resp!r}"
-

@@ -15,8 +15,8 @@ def get_current_version():
     """
     Get current version from various sources
     """
-    # Try to get from config.h
-    config_path = 'include/config.h'
+    # Try to get from system_config.h
+    config_path = 'include/system_config.h'
     if os.path.exists(config_path):
         with open(config_path, 'r') as f:
             content = f.read()
@@ -29,9 +29,9 @@ def get_current_version():
 
 def update_version_in_config(new_version):
     """
-    Update version in config.h
+    Update version in system_config.h
     """
-    config_path = 'include/config.h'
+    config_path = 'include/system_config.h'
     if not os.path.exists(config_path):
         return False
     

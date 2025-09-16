@@ -5,8 +5,8 @@ import configRoutes from './config'
 import testRoutes from './tests'
 
 export function setupRoutes(app: Express, hardwareInterface: HardwareInterface, testAutomationService?: TestAutomationService) {
-  // Hardware configuration management routes
-  app.use('/api/hardware-config', configRoutes)
+  // Hardware configuration management routes - make sure this is the first route
+  app.use('/api/config', configRoutes)
 
   // Hardware test execution routes
   app.use('/api/tests', testRoutes)

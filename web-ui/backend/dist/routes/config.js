@@ -269,6 +269,38 @@ router.get('/limitations', (req, res) => {
     }
 });
 /**
+ * POST /api/config/save
+ * Save configuration changes to YAML file
+ */
+router.post('/save', (req, res) => {
+    try {
+        const { config } = req.body;
+        if (!config) {
+            return res.status(400).json({
+                success: false,
+                error: 'Invalid request',
+                message: 'Configuration data is required'
+            });
+        }
+        ConfigService_1.configService.saveConfig(config);
+        res.json({
+            success: true,
+            data: {
+                message: 'Configuration saved successfully'
+            },
+            timestamp: Date.now()
+        });
+    }
+    catch (error) {
+        console.error('Failed to save configuration:', error);
+        res.status(500).json({
+            success: false,
+            error: 'Failed to save configuration',
+            message: error instanceof Error ? error.message : 'Unknown error'
+        });
+    }
+});
+/**
  * POST /api/config/reload
  * Reload configuration from file
  */

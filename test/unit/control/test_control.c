@@ -12,7 +12,7 @@
 
 #ifdef UNIT_TEST
 
-#include "../unity_config.h"
+#include "../unity_system_config.h"
 // Mock implementation - don't include actual headers
 // #include "../../../src/modules/control/sonicator4_controller.h"
 

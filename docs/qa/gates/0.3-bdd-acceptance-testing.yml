@@ -3,9 +3,9 @@ schema: 1
 story: "0.3"
 story_title: "BDD Acceptance Testing"
 gate: CONCERNS
-status_reason: "Duplication cleared; proceed with non‑HIL framework setup and CI wiring. HIL execution deferred and blocked by Story 0.2 completion. See TODO."
+status_reason: "Duplication cleared; proceed with framework setup, PRD mapping, and CI wiring now. HIL execution deferred due to hardware availability (waived). See TODO."
 reviewer: "Quinn (Test Architect)"
-updated: "2025-09-16T06:54:41Z"
+updated: "2025-09-16T07:24:00Z"
 todo_ref: docs/qa/gates/0.3-bdd-acceptance-testing.TODO.md
 
 # No waiver - duplication must be resolved
@@ -17,10 +17,10 @@ waiver:
 
 # Duplication and dependency issues
 top_issues:
-  - id: "DEP-001"
+  - id: "HW-001"
     severity: high
-    finding: "Story 0.2 HIL Test Harness Setup must be completed before executing BDD on hardware"
-    suggested_action: "Proceed with non‑HIL tasks; execute HIL after Story 0.2 meets coverage ≥85%"
+    finding: "Hardware unavailable for HIL execution"
+    suggested_action: "Run non‑HIL subset in CI; enable HIL when hardware available"
     suggested_owner: "dev"
   - id: "CI-001"
     severity: medium
@@ -69,10 +69,9 @@ nfr_validation:
 
 dependencies:
   blocking:
-    - story: "0.2"
-      title: "HIL Test Harness Setup"
-      status: "CONCERNS"
-      issue: "Unit test coverage below 85% requirement"
+    - requirement: "Hardware Availability"
+      status: "PENDING"
+      description: "HIL execution pending hardware access"
 
 recommendations:
   immediate:

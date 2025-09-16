@@ -484,6 +484,57 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
                 )
               })}
             </div>
+            {selectedConnection && DETAILED_CONNECTION_INFO[selectedConnection] && (
+              <div className="connection-details-compact">
+                {(() => {
+                  const info = DETAILED_CONNECTION_INFO[selectedConnection]
+                  return (
+                    <div className="compact-info-container">
+                      <div className="compact-info-header">
+                        <div className="compact-signal-info">
+                          <span className="compact-signal-name">{info.signal}</span>
+                          <span className={`compact-direction-badge ${info.direction.toLowerCase()}`}>
+                            {info.direction}
+                          </span>
+                        </div>
+                        <button
+                          className="expand-details-button"
+                          onClick={() => setShowDetailedModal(true)}
+                        >
+                          📋 View Details
+                        </button>
+                      </div>
+
+                      <div className="compact-info-content">
+                        <div className="compact-info-row">
+                          <span className="compact-label">Pins:</span>
+                          <span className="compact-value">
+                            {info.testHarnessPin.split(' ')[0]} ↔ {info.dutPin.split(' ')[0]}
+                          </span>
+                        </div>
+
+                        <div className="compact-info-row">
+                          <span className="compact-label">Purpose:</span>
+                          <span className="compact-value">{info.description}</span>
+                        </div>
+
+                        {info.modbusRegister && (
+                          <div className="compact-info-row">
+                            <span className="compact-label">Modbus:</span>
+                            <span className="compact-value modbus-compact">{info.modbusRegister}</span>
+                          </div>
+                        )}
+
+                        <div className="compact-info-row">
+                          <span className="compact-label">Range:</span>
+                          <span className="compact-value">{info.valueRange}</span>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })()}
+              </div>
+            )}
           </div>
 
           {/* ATmega32A DUT */}
@@ -535,58 +586,6 @@ export const HardwareDiagram: React.FC<HardwareDiagramProps> = ({
           maxEntries={5}
         />
 
-        {/* Compact Connection Information Section */}
-        {selectedConnection && DETAILED_CONNECTION_INFO[selectedConnection] && (
-          <div className="connection-details-compact">
-            {(() => {
-              const info = DETAILED_CONNECTION_INFO[selectedConnection]
-              return (
-                <div className="compact-info-container">
-                  <div className="compact-info-header">
-                    <div className="compact-signal-info">
-                      <span className="compact-signal-name">{info.signal}</span>
-                      <span className={`compact-direction-badge ${info.direction.toLowerCase()}`}>
-                        {info.direction}
-                      </span>
-                    </div>
-                    <button
-                      className="expand-details-button"
-                      onClick={() => setShowDetailedModal(true)}
-                    >
-                      📋 View Details
-                    </button>
-                  </div>
-
-                  <div className="compact-info-content">
-                    <div className="compact-info-row">
-                      <span className="compact-label">Pins:</span>
-                      <span className="compact-value">
-                        {info.testHarnessPin.split(' ')[0]} ↔ {info.dutPin.split(' ')[0]}
-                      </span>
-                    </div>
-
-                    <div className="compact-info-row">
-                      <span className="compact-label">Purpose:</span>
-                      <span className="compact-value">{info.description}</span>
-                    </div>
-
-                    {info.modbusRegister && (
-                      <div className="compact-info-row">
-                        <span className="compact-label">Modbus:</span>
-                        <span className="compact-value modbus-compact">{info.modbusRegister}</span>
-                      </div>
-                    )}
-
-                    <div className="compact-info-row">
-                      <span className="compact-label">Range:</span>
-                      <span className="compact-value">{info.valueRange}</span>
-                    </div>
-                  </div>
-                </div>
-              )
-            })()}
-          </div>
-        )}
 
         {/* Detailed Connection Modal */}
         {showDetailedModal && selectedConnection && DETAILED_CONNECTION_INFO[selectedConnection] && (

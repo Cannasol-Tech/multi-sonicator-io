@@ -20,7 +20,7 @@ This document defines the design for single sonicator control implementation, co
 5. HIL acceptance tests validate full control loop on hardware
 
 ### Safety Requirements (from Epic 1)
-- Emergency stop response <50μs (per config.h)
+- Emergency stop response <50μs (per system_config.h)
 - Watchdog timeout 1000ms monitoring
 - Overload detection and failsafe activation
 - Communication loss detection and safe state transition

@@ -58,7 +58,7 @@ Protocol (draft):
   - `SET FREQ_LOCK <unit> <0|1>`
   - `READ STATUS <unit>`
   - `PULSE RESET <unit> <ms>`
-- Finalize command set alongside DUT harness and keep in sync with `include/config.h`.
+- Finalize command set alongside DUT harness and keep in sync with `include/system_config.h`.
 
 Getting Started:
 

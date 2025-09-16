@@ -7,7 +7,7 @@
  */
 
 #include "pwm.h"
-#include <config.h>
+#include <system_config.h>
 #include <Arduino.h>
 
 // ============================================================================
@@ -338,7 +338,7 @@ pwm_result_t pwm_test_pattern(void) {
 // PRIVATE FUNCTION IMPLEMENTATIONS
 // ============================================================================
 
-static bool is_valid_channel(pwm_channel_t channel) {
+static inline constexpr bool is_valid_channel(pwm_channel_t channel) {
     return (channel < PWM_CHANNEL_MAX);
 }
 
@@ -375,7 +375,7 @@ static pwm_result_t calculate_timer_settings(uint32_t frequency, uint8_t* presca
     return PWM_OK;
 }
 
-static uint8_t amplitude_to_duty_cycle(uint8_t amplitude_percent) {
+static inline constexpr uint8_t amplitude_to_duty_cycle(uint8_t amplitude_percent) {
     // Map amplitude (20-100%) to duty cycle (20-100%)
     // This assumes linear relationship between duty cycle and output voltage
     if (amplitude_percent < PWM_AMPLITUDE_MIN) {
@@ -388,7 +388,7 @@ static uint8_t amplitude_to_duty_cycle(uint8_t amplitude_percent) {
     return amplitude_percent;
 }
 
-static uint8_t duty_cycle_to_amplitude(uint8_t duty_percent) {
+static inline constexpr uint8_t duty_cycle_to_amplitude(uint8_t duty_percent) {
     // Convert duty cycle back to amplitude percentage
     if (duty_percent < PWM_AMPLITUDE_MIN) {
         return PWM_AMPLITUDE_MIN;

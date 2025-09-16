@@ -278,3 +278,50 @@ export interface TestScenario {
  * @property {'pending' | 'running' | 'passed' | 'failed' | 'skipped' | 'error'} status - Overall execution status
  * @property {number} [start_time] - Execution start timestamp
  */
+// === Extended Types for UI Components and Test Automation ===
+
+// Test execution session containing multiple scenarios and execution state.
+export interface TestExecution {
+  execution_id: string;
+  scenarios: TestScenario[];
+  status: 'pending' | 'running' | 'passed' | 'failed' | 'skipped' | 'error';
+  start_time?: number;
+  end_time?: number;
+  total_scenarios: number;
+  passed_scenarios: number;
+  failed_scenarios: number;
+  current_scenario_index: number;
+  current_step_index?: number;
+  results?: any[];
+}
+
+// Centralized state for test automation UI
+export interface TestAutomationState {
+  availableScenarios: TestScenario[];
+  availableTags: string[];
+  availableFeatures: string[];
+  currentExecution: TestExecution | null;
+  isExecutionInProgress: boolean;
+  selectedScenarios: string[];
+  filterTags: string[];
+}
+
+// Pin connection interface for UI visualization
+export interface PinConnection {
+  arduino: string;
+  atmega: string;
+  signal: string;
+  direction: 'IN' | 'OUT' | 'ANALOG' | 'COMM';
+  description: string;
+  arduinoPos?: { x: number; y: number };
+  atmegaPos?: { x: number; y: number };
+  readonly?: boolean;
+}
+
+// Enhanced pin state for UI components with additional visual properties
+export interface EnhancedPinState extends PinState {
+  connection?: PinConnection;
+  isActive: boolean;
+  isSelected: boolean;
+  lastUpdated: string;
+}

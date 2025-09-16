@@ -26,8 +26,8 @@ P25-09-14
 - **Not Started**: 19 stories (76%)
 
 ### **Critical Path Status**
-- ⚠️ **Epic 0 Foundation** - Blocked by unit test coverage issues
-- 🚧 **Dependency Chain** - Story 0.2 → 0.3 → remaining Epic 0 stories
+- ✅ **Epic 0 Foundation** - 0.2 PASS (87.9%); proceed with non‑HIL work
+- 🚧 **Dependency Chain** - Story 0.3 proceeds (non‑HIL); hardware‑dependent stories await availability
 - 🎯 **Priority Focus** - Complete Epic 0 before advancing to Epic 1
 
 ---
@@ -55,7 +55,7 @@ P25-09-14
 |-------|-------|--------|----------|---------|-----------------|
 | **0.1** | Project Structure & CI/CD Pipeline | ✅ **COMPLETED** | 100% | ✅ PASS | - |
 | **0.2** | HIL Test Harness Setup | ⚠️ **CONCERNS** | 70% | ⚠️ CONCERNS | Unit test coverage <85% |
-|**0.3**|BDD Acceptance Testing Framework| 📋 **DRAFT** |0%| - |Depends on 0.2|
+|**0.3**|BDD Acceptance Testing Framework| 🟡 **IN PROGRESS** |0%| - |Depends on 0.2|
 | **0.4** | Hardware Connection Verification | 📋 **NOT STARTED** | 0% | - | Depends on 0.2, 0.3 |
 | **0.5** | Arduino Test Wrapper Validation | 📋 **NOT STARTED** | 0% | - | Depends on 0.2, 0.3 |
 | **0.6** | Sandbox CLI Manual Testing | 📋 **NOT STARTED** | 0% | - | Depends on 0.2, 0.3 |
@@ -64,7 +64,7 @@ P25-09-14
 | **0.9** | Test Coverage & Documentation | 📋 **NOT STARTED** | 0% | - | **FINAL STORY** - Depends on ALL others |
 
 ### **🚨 Critical Path Issues**
-1. **Story 0.2** - Must achieve ≥85% unit test coverage (currently ~70%)
+1. **Story 0.2** - Achieved ≥85% unit test coverage (87.9%)
 2. **Dependency Cascade** - 7 stories blocked until 0.2 is complete
 3. **Quality Gates** - Epic 0 completion required for Epic 1 start
 
@@ -144,7 +144,7 @@ P25-09-14
 
 ### **Priority 1: Unblock Critical Path** 🚨
 
-1. **Fix Story 0.2** - HIL Test Harness Setup
+1. ~~Fix Story 0.2~~ - HIL Test Harness Setup — PASS
    - **Issue**: Unit test coverage ~70% (need ≥85%)
    - **Owner**: Development Team
    - **Timeline**: 1-2 days
@@ -189,7 +189,7 @@ P25-09-14
 ## 🔧 **Development Team Focus Areas**
 
 ### **This Sprint (Current)**
-- [ ] **Story 0.2**: Implement unit test logic to achieve ≥85% coverage
+- [x] **Story 0.2**: Unit test coverage ≥85% achieved (87.9%)
 - [ ] ~~**Story 3.0**: Add 0.13% test coverage for TestAutomationService.py~~
 - [ ] **Story 0.3**: Prepare BDD framework (pending 0.2)
 

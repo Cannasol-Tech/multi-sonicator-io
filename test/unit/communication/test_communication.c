@@ -12,7 +12,7 @@
 
 #ifdef UNIT_TEST
 
-#include "../unity_config.h"
+#include "../unity_system_config.h"
 
 #ifndef NOINLINE
 #if defined(__GNUC__)

@@ -49,6 +49,8 @@ export default function HardwareConfigPanel() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [simulationMode, setSimulationMode] = useState(false)
+  const [editing, setEditing] = useState(false)
+  const [editedData, setEditedData] = useState<any>(null)
 
   // Load configuration data
   useEffect(() => {
@@ -61,20 +63,20 @@ export default function HardwareConfigPanel() {
       setError(null)
 
       // Load configuration summary
-      const summaryResponse = await fetch('/api/hardware-config/summary')
+      const summaryResponse = await fetch('/api/config/summary')
       if (!summaryResponse.ok) throw new Error('Failed to load configuration summary')
       const summaryData = await summaryResponse.json()
       setConfigSummary(summaryData.data)
       setSimulationMode(summaryData.data.simulation_mode)
 
       // Load sonicator configuration
-      const sonicatorsResponse = await fetch('/api/hardware-config/sonicators')
+      const sonicatorsResponse = await fetch('/api/config/sonicators')
       if (!sonicatorsResponse.ok) throw new Error('Failed to load sonicator configuration')
       const sonicatorsData = await sonicatorsResponse.json()
       setSonicators(sonicatorsData.data.channels)
 
       // Load test capabilities
-      const capabilitiesResponse = await fetch('/api/hardware-config/capabilities')
+      const capabilitiesResponse = await fetch('/api/config/capabilities')
       if (!capabilitiesResponse.ok) throw new Error('Failed to load test capabilities')
       const capabilitiesData = await capabilitiesResponse.json()
       setCapabilities(capabilitiesData.data.all)
@@ -89,7 +91,7 @@ export default function HardwareConfigPanel() {
 
   const toggleSimulationMode = async () => {
     try {
-      const response = await fetch('/api/hardware-config/simulation', {
+      const response = await fetch('/api/config/simulation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ enabled: !simulationMode })
@@ -110,9 +112,9 @@ export default function HardwareConfigPanel() {
 
   const reloadConfiguration = async () => {
     try {
-      const response = await fetch('/api/hardware-config/reload', { method: 'POST' })
+      const response = await fetch('/api/config/reload', { method: 'POST' })
       if (!response.ok) throw new Error('Failed to reload configuration')
-      
+
       await loadConfigurationData()
     } catch (err) {
       console.error('Failed to reload configuration:', err)
@@ -122,9 +124,9 @@ export default function HardwareConfigPanel() {
 
   const validateConfiguration = async () => {
     try {
-      const response = await fetch('/api/hardware-config/validate')
+      const response = await fetch('/api/config/validate')
       if (!response.ok) throw new Error('Failed to validate configuration')
-      
+
       const data = await response.json()
       if (data.data.valid) {
         alert('✅ Configuration validation passed!')
@@ -134,6 +136,58 @@ export default function HardwareConfigPanel() {
     } catch (err) {
       console.error('Failed to validate configuration:', err)
       alert(`❌ Configuration validation error: ${err instanceof Error ? err.message : 'Unknown error'}`)
+    }
+  }
+
+  const startEditing = () => {
+    // Load full configuration for editing
+    fetch('/api/config')
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          setEditedData(data.data)
+          setEditing(true)
+        } else {
+          throw new Error('Failed to load full configuration')
+        }
+      })
+      .catch(err => {
+        setError('Failed to load configuration for editing')
+        console.error('Failed to load config for editing:', err)
+      })
+  }
+
+  const cancelEditing = () => {
+    setEditing(false)
+    setEditedData(null)
+  }
+
+  const saveConfiguration = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+
+      const response = await fetch('/api/config/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ config: editedData })
+      })
+
+      if (!response.ok) throw new Error('Failed to save configuration')
+
+      // Parse response but don't store it since we don't use it
+      await response.json()
+      setEditing(false)
+      setEditedData(null)
+
+      // Reload configuration to show updated data
+      await loadConfigurationData()
+
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unknown error')
+      console.error('Failed to save configuration:', err)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -171,6 +225,20 @@ export default function HardwareConfigPanel() {
           <button onClick={reloadConfiguration} className="btn-secondary">
             Reload Config
           </button>
+          {editing ? (
+            <>
+              <button onClick={saveConfiguration} className="btn-primary">
+                💾 Save Changes
+              </button>
+              <button onClick={cancelEditing} className="btn-secondary">
+                ❌ Cancel
+              </button>
+            </>
+          ) : (
+            <button onClick={startEditing} className="btn-edit">
+              ✏️ Edit Configuration
+            </button>
+          )}
           <button 
             onClick={toggleSimulationMode} 
             className={`btn-toggle ${simulationMode ? 'active' : ''}`}

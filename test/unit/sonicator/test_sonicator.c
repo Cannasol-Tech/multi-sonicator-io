@@ -11,7 +11,7 @@
 
 #ifdef UNIT_TEST
 
-#include "../unity_config.h"
+#include "../unity_system_config.h"
 #include "../../../include/sonicator_control.h"
 
 // ============================================================================

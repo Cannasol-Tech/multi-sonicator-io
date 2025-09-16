@@ -1,5 +1,5 @@
 /**
- * @file unity_config.h
+ * @file unity_system_config.h
  * @brief Unity test framework configuration for Multi-Sonicator I/O Controller
  * @author Cannasol Technologies
  * @date 2025-09-02

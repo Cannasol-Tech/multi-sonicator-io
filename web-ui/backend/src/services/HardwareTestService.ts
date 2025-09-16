@@ -196,7 +196,7 @@ export class HardwareTestService {
     
     try {
       const config = configService.getConfig()
-      const connections = Object.keys(config.harness.connections)
+      const connections = Object.keys(system_config.harness.connections)
       
       // Simulate connection testing
       await new Promise(resolve => setTimeout(resolve, 100))

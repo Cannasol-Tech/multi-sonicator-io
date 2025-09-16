@@ -53,7 +53,7 @@ docs/agile/stories/
 | **0.9** | `0.9.test-coverage-and-documentation.md` | 📋 NOT STARTED | Final quality validation and documentation |
 
 ### **Epic 0 Critical Path** 🚨
-- **Blocker**: Story 0.2 needs ≥85% unit test coverage
+- **Update**: Story 0.2 PASSED (87.9% unit test coverage)
 - **Dependency Chain**: 0.2 → 0.3 → 0.4-0.8 → 0.9 (final)
 - **Impact**: Epic 0 completion enables Epic 1 development
 
@@ -130,13 +130,13 @@ docs/agile/stories/
 ## 🎯 **Quick Navigation**
 
 ### **By Priority (Current Sprint Focus)**
-1. 🚨 **Story 0.2**: `__COMPLETE/0.2.hil-test-harness-setup.md` - Fix unit test coverage
+1. ✅ **Story 0.2**: `docs/agile/stories/0.2.hil-test-harness-setup.md` - PASS (87.9% coverage)
 2. ⚡ **Story 3.0**: `3.0.integration-story.md` - Fix test coverage gap (0.13%)
 3. 📋 **Story 0.3**: `0.3.bdd-acceptance-testing-framework.md` - Prepare for development
 
 ### **By Status**
 - ✅ **Completed**: Stories in `__COMPLETE/` directory
-- ⚠️ **Needs Attention**: Stories 0.2 and 3.0 (test coverage issues)
+- ⚠️ **Needs Attention**: Story 3.0 (integration readiness); hardware-dependent stories pending hardware
 - 🔒 **Blocked**: Story 0.3 (depends on 0.2)
 - 📋 **Ready for Planning**: All other Epic 0 stories
 

@@ -18,14 +18,14 @@
  *      READ STATUS <unit>           // read back status pins
  *      READ POWER <unit>            // read analog power proxy (if configured)
  *      PULSE RESET <unit> <ms>      // generate reset pulse and report timing
- *  - TODO: finalize mapping to DUT headers per include/config.h and harness doc.
+ *  - TODO: finalize mapping to DUT headers per include/system_config.h and harness doc.
  *
  * Safety:
  *  - Always default outputs to safe/neutral states on boot and on protocol errors.
  *
  * Notes:
  *  - This is a stub to establish structure. Pin mappings and concrete behavior must be implemented
- *    alongside harness documentation and kept in sync with include/config.h.
+ *    alongside harness documentation and kept in sync with include/system_config.h.
  */
 
 #include <Arduino.h>

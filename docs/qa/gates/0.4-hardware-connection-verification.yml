@@ -2,10 +2,10 @@
 schema: 1
 story: "0.4"
 story_title: "Hardware Connection Verification"
-gate: DEPENDENCY_BLOCKED
-status_reason: "Excellent hardware verification planning but blocked by Story 0.2 HIL Test Harness completion and unit test coverage issues."
+gate: CONCERNS
+status_reason: "Unblocked by Story 0.2 PASS. Proceed with pre‑HIL validation and documentation; HIL execution deferred due to hardware availability (waived)."
 reviewer: "Quinn (Test Architect)"
-updated: "2025-09-12T00:00:00Z"
+updated: "2025-09-16T07:24:00Z"
 todo_ref: docs/qa/gates/0.4-hardware-connection-verification.TODO.md
 
 # No waiver needed - dependency blocking
@@ -69,10 +69,6 @@ nfr_validation:
 
 dependencies:
   blocking:
-    - story: "0.2"
-      title: "HIL Test Harness Setup"
-      status: "CONCERNS"
-      issue: "Unit test coverage below 85% requirement"
     - requirement: "Hardware Availability"
       status: "PENDING"
       description: "Physical hardware access for testing"

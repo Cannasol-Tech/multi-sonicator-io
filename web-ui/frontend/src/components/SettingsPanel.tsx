@@ -161,10 +161,10 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ onPreferencesChange }) =>
         {/* Section Navigation */}
         <div className="settings-nav">
           {[
-            { id: 'appearance', label: '🎨 Appearance', icon: '🎨' },
-            { id: 'behavior', label: '⚡ Behavior', icon: '⚡' },
-            { id: 'data', label: '📊 Data', icon: '📊' },
-            { id: 'shortcuts', label: '⌨️ Shortcuts', icon: '⌨️' }
+            { id: 'appearance', label: 'Appearance', icon: '🎨' },
+            { id: 'behavior', label: 'Behavior', icon: '⚡' },
+            { id: 'data', label: 'Data', icon: '📊' },
+            { id: 'shortcuts', label: 'Shortcuts', icon: '⌨️' }
           ].map(section => (
             <button
               key={section.id}

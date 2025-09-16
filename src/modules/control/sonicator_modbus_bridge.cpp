@@ -54,7 +54,7 @@ static uint32_t last_control_update = 0;
  * @param status Sonicator status structure
  * @return MODBUS status flags (bit-mapped)
  */
-static uint16_t build_status_flags(const sonicator_state_control_t* status) {
+static uint16_t build_status_flags(const sonicator_state_t* status) {
     uint16_t flags = 0;
     
     if (status->is_running) {
@@ -86,7 +86,7 @@ static uint16_t build_status_flags(const sonicator_state_control_t* status) {
  * @brief Update MODBUS registers from sonicator status
  */
 static void update_modbus_registers_from_sonicator(void) {
-    const sonicator_state_control_t* status = sonicator_get_status();
+    const sonicator_state_t* status = sonicator_get_status();
     if (!status) {
         return;
     }
@@ -122,7 +122,7 @@ static bool update_sonicator_from_modbus_registers(void) {
     bool action_taken = false;
     
     // Handle start/stop command
-    const sonicator_state_control_t* status = sonicator_get_status();
+    const sonicator_state_t* status = sonicator_get_status();
     if (status) {
         // Start command
         if (start_stop && !status->is_running && 

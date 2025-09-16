@@ -94,7 +94,7 @@ const helpContent: Record<string, HelpContent> = {
       'AMPLITUDE_ALL (PD7) is shared across all channels',
       'Only Sonicator 4 has Arduino wrapper pins for HIL testing',
       'All pin assignments verified by Product Owner',
-      'Changes must be reflected in include/config.h'
+      'Changes must be reflected in include/system_config.h'
     ]
   },
 
@@ -335,7 +335,7 @@ export default function HelpSystem({ visible, onClose }: HelpSystemProps) {
                 </h4>
                 <p className="help-warning-text">
                   This pin matrix is the authoritative reference for all hardware connections.
-                  Any changes must be reflected in <code className="help-code">include/config.h</code> and
+                  Any changes must be reflected in <code className="help-code">include/system_config.h</code> and
                   the HIL wrapper under <code className="help-code">test/acceptance/sketches/arduino_test_wrapper/</code>.
                 </p>
               </div>

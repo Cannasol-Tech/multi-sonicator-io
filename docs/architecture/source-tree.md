@@ -76,7 +76,7 @@ Authoritative indices:
 ## `/config` — Configuration
 
 - `hardware-config.yaml` — Canonical pin/connector/signal matrix and test capabilities.
-  - Any change here must be reflected in `include/config.h` and HIL wrapper constants (see actions_on_update in the YAML).
+  - Any change here must be reflected in `include/system_config.h` and HIL wrapper constants (see actions_on_update in the YAML).
 
 ## `/web-ui` — Test UI for DUT
 

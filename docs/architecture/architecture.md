@@ -284,7 +284,7 @@ Host (Behave BDD + pytest infrastructure) ⇄ USB Serial ⇄ Arduino Wrapper (ar
                                         ATmega32A DUT (Sonicator Controller)
 ```
 
-**Pin mapping (conceptual; see `config/hardware-config.yaml` as SOLE SOURCE OF TRUTH; `include/config.h` mirrors the YAML)**
+**Pin mapping (conceptual; see `config/hardware-config.yaml` as SOLE SOURCE OF TRUTH; `include/system_config.h` mirrors the YAML)**
 
 | Function | DUT Signal | Wrapper Role |
 |----------|------------|--------------|
@@ -319,7 +319,7 @@ To increase I/O headroom and improve timing fidelity, an auxiliary ATmega can ac
   - `X READ START <unit>` → `X RESP START <unit> <0|1>`
   - `X READ RESET_PULSE <unit>` → `X RESP RESET_PULSE <unit> <0|1>`
   - `X INFO` → `X RESP INFO <version> <mapping_checksum>`
-- **Pin groups on extender (conceptual mapping to DUT signals; see `include/config.h`)**
+- **Pin groups on extender (conceptual mapping to DUT signals; see `include/system_config.h`)**
   - Outputs → DUT inputs: Overload[4], FreqLock[4], Freq[4]
   - Inputs ← DUT outputs: Start[4], Reset[4]
   - Analog: Power[4] sources, Amplitude monitor (1) via divider
@@ -349,7 +349,7 @@ Test one sonicator channel at a time by moving a small 6–7 wire harness betwee
 Notes:
 
 - Move this harness to headers for S1, S2, S3, S4 to run identical tests per unit.
-- See `include/config.h` for authoritative DUT pin roles; this mapping is wrapper‑side only.
+- See `include/system_config.h` for authoritative DUT pin roles; this mapping is wrapper‑side only.
 
 ###### Profile B — Uno + Smart I/O Extender (full parallel)
 

@@ -7,7 +7,7 @@
  */
 
 #include "adc.h"
-#include <config.h>
+#include <system_config.h>
 #include <Arduino.h>
 
 // ============================================================================
@@ -53,7 +53,7 @@ adc_result_t adc_init(void) {
     return ADC_OK;
 }
 
-adc_result_t adc_set_reference(adc_reference_t reference) {
+inline constexpr adc_result_t adc_set_reference(adc_reference_t reference) {
     switch (reference) {
         case ADC_REF_EXTERNAL:
             // REFS1=0, REFS0=0: External AREF
@@ -80,7 +80,7 @@ adc_result_t adc_set_reference(adc_reference_t reference) {
     return ADC_OK;
 }
 
-adc_result_t adc_set_prescaler(adc_prescaler_t prescaler) {
+inline constexpr adc_result_t adc_set_prescaler(adc_prescaler_t prescaler) {
     if (prescaler > ADC_PRESCALER_128) {
         return ADC_ERROR_INVALID_REF;
     }
@@ -92,7 +92,7 @@ adc_result_t adc_set_prescaler(adc_prescaler_t prescaler) {
     return ADC_OK;
 }
 
-adc_result_t adc_read_channel(adc_channel_t channel, uint16_t* value) {
+inline constexpr adc_result_t adc_read_channel(adc_channel_t channel, uint16_t* value) {
     if (!adc_initialized) {
         return ADC_ERROR_NOT_INITIALIZED;
     }
@@ -126,7 +126,7 @@ adc_result_t adc_read_channel(adc_channel_t channel, uint16_t* value) {
     return ADC_OK;
 }
 
-adc_result_t adc_start_conversion(adc_channel_t channel) {
+inline constexpr adc_result_t adc_start_conversion(adc_channel_t channel) {
     if (!adc_initialized) {
         return ADC_ERROR_NOT_INITIALIZED;
     }
@@ -144,7 +144,7 @@ adc_result_t adc_start_conversion(adc_channel_t channel) {
     return ADC_OK;
 }
 
-adc_result_t adc_conversion_complete(bool* complete) {
+inline constexpr adc_result_t adc_conversion_complete(bool* complete) {
     if (!adc_initialized) {
         return ADC_ERROR_NOT_INITIALIZED;
     }
@@ -157,7 +157,7 @@ adc_result_t adc_conversion_complete(bool* complete) {
     return ADC_OK;
 }
 
-adc_result_t adc_get_result(uint16_t* value) {
+inline constexpr adc_result_t adc_get_result(uint16_t* value) {
     if (!adc_initialized) {
         return ADC_ERROR_NOT_INITIALIZED;
     }
@@ -177,9 +177,9 @@ adc_result_t adc_get_result(uint16_t* value) {
     *value = (high << 8) | low;
     
     return ADC_OK;
-}
+}   
 
-adc_result_t adc_to_voltage(uint16_t raw_value, float* voltage) {
+inline adc_result_t adc_to_voltage(uint16_t raw_value, float* voltage) {
     if (voltage == nullptr) {
         return ADC_ERROR_INVALID_CHANNEL;
     }
@@ -203,7 +203,7 @@ adc_result_t adc_to_voltage(uint16_t raw_value, float* voltage) {
     return ADC_OK;
 }
 
-adc_result_t adc_to_power(uint16_t raw_value, float* power_watts) {
+inline adc_result_t adc_to_power(uint16_t raw_value, float* power_watts) {
     if (power_watts == nullptr) {
         return ADC_ERROR_INVALID_CHANNEL;
     }
@@ -292,7 +292,7 @@ adc_result_t adc_read_frequency(float* frequency_hz) {
     return adc_to_frequency(raw_value, frequency_hz);
 }
 
-adc_result_t adc_calibrate(float reference_voltage) {
+inline constexpr    adc_result_t adc_calibrate(float reference_voltage) {
     if (reference_voltage <= 0.0f) {
         return ADC_ERROR_INVALID_REF;
     }
@@ -322,11 +322,11 @@ adc_result_t adc_calibrate(float reference_voltage) {
 // PRIVATE FUNCTION IMPLEMENTATIONS
 // ============================================================================
 
-static bool is_valid_channel(adc_channel_t channel) {
+static inline constexpr bool is_valid_channel(adc_channel_t channel) {
     return (channel < ADC_CHANNEL_MAX);
 }
 
-static adc_channel_t sonicator_to_adc_channel(uint8_t sonicator_id) {
+static inline constexpr adc_channel_t sonicator_to_adc_channel(uint8_t sonicator_id) {
     switch (sonicator_id) {
         case 1: return ADC_CHANNEL_4; // PA4
         case 2: return ADC_CHANNEL_5; // PA5

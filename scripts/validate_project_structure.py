@@ -35,7 +35,7 @@ def validate_project_structure():
         "docs/architecture/architecture.md",
         "docs/sop/sw-testing.md",
         "src/main.cpp",
-        "include/config.h",
+        "include/system_config.h",
         "include/types.h"
     ]
     

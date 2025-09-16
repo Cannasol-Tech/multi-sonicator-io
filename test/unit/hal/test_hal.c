@@ -12,7 +12,7 @@
 
 #ifdef UNIT_TEST
 
-#include "../unity_config.h"
+#include "../unity_system_config.h"
 #include "../../../src/modules/hal/hal.h"
 #include "../../../src/modules/hal/gpio.h"
 #include "../../../src/modules/hal/adc.h"

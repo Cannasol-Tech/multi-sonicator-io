@@ -3,7 +3,7 @@
 **Last Updated:** September 5, 2025 - Automated compliance validation implemented
 Source PRD: `docs/prd/prd-v1.0.0.md`
 Authoritative requirements sources: `docs/prd/project-requirements.md`, `docs/prd/project-reqs-qna.md`
-Implementation mirror: `include/config.h`
+Implementation mirror: `include/system_config.h`
 
 Profiles:
 
@@ -36,7 +36,7 @@ Tagging conventions:
 | §6, §10 | CRC errors and error rate tracking (if exposed) | `test/bdd/features/modbus.feature` | SC-023 | @req-crc @prd-6-nfr @prd-10-api | @hil | Corrupt frames rejected; optional stats sane | modbus.crc_handling |
 | §9, §10 | HMI addressing examples (4xxxx vs offsets) | `test/bdd/features/hmi_integration.feature` | SC-024 | @req-hmi-addressing @prd-9-ui @prd-10-api | @hil | Validate read/write flows with 4xxxx convention | integration.hmi_addressing |
 | §5, §6 | State→register reflection ≤100 ms (expanded cases) | `test/bdd/features/timing.feature` | SC-009B | @req-latency @prd-5-functional @prd-6-nfr | @hil | Multiple signals incl. overload reset and freq changes | nfr.latency_matrix |
-| §17 | CI drift check: PRD vs include/config.h | `test/bdd/features/ci.feature` | SC-025 | @req-ci-drift @prd-17-risk | @hil | CI script flags mismatches; block merge | ci.drift_check |
+| §17 | CI drift check: PRD vs include/system_config.h | `test/bdd/features/ci.feature` | SC-025 | @req-ci-drift @prd-17-risk | @hil | CI script flags mismatches; block merge | ci.drift_check |
 | §4, §5, §10 | Overload Reset pulse via 40009–40012 | `test/bdd/features/control.feature` | SC-003 | @req-overload-reset @prd-5-functional @prd-10-api @reg-40009-40012 | @hil | Write 1 then auto-clear; electrical pulse observed in HIL | control.overload_reset |
 | §4, §5, §10 | Power monitoring 40013–40016 (5.44 mV/W scaling) | `test/bdd/features/monitoring.feature` | SC-004 | @req-power @prd-5-functional @prd-10-api @reg-40013-40016 | @hil | Inject power signal; check scaling and units | monitoring.power |
 | §4, §5, §10 | Frequency monitoring 40017–40020 (÷10 input) | `test/bdd/features/monitoring.feature` | SC-005 | @req-frequency @prd-5-functional @prd-10-api @reg-40017-40020 | @hil | Inject frequency; verify computed Hz | monitoring.frequency |
@@ -77,7 +77,7 @@ Tagging conventions:
 ## Maintenance
 
 - Any change to the register map in `docs/prd/project-requirements.md` must update:
-  - `include/config.h`
+  - `include/system_config.h`
   - This traceability matrix
   - Behave feature files and tags
 - CI gate should validate that every PRD requirement here has a corresponding scenario (at least stubbed) and that executive report keys are present in `final/executive-report.json`.

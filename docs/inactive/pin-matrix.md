@@ -12,7 +12,7 @@
 
 *Original content below (now inactive):*
 
-SOLE SOURCE OF TRUTH for hardware pin assignments. Changes here must be reflected in `include/config.h` and the HIL wrapper under `test/acceptance/sketches/arduino_test_wrapper/`.
+SOLE SOURCE OF TRUTH for hardware pin assignments. Changes here must be reflected in `include/system_config.h` and the HIL wrapper under `test/acceptance/sketches/arduino_test_wrapper/`.
 
 Status: FINAL — Sole Source of Truth confirmed by Product Owner (Approved). Single-channel Uno R4 WiFi HIL harness prototype is documented; wrapper mapping must mirror this matrix.
 
@@ -86,12 +86,12 @@ Note: DB9-0 is the communications connector back to the main automation system (
 
 ## Actions on Approval
 
-- Update `include/config.h` to match matrix, with doxygen comments citing this file and PRD sections.
+- Update `include/system_config.h` to match matrix, with doxygen comments citing this file and PRD sections.
 - Update `test/acceptance/sketches/arduino_test_wrapper/arduino_test_wrapper.ino` constants to match Wrapper Pins.
 - Update `test/acceptance/README.md` harness diagram and mapping.
 
 ## References
 
 - `docs/prd/prd-v1.0.0.md` — Sections 5, 7, 10
-- `include/config.h` — Register map, constants
+- `include/system_config.h` — Register map, constants
 - Schematics/Hardware docs — pin headers and electrical characteristics

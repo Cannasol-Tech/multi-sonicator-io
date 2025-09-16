@@ -58,7 +58,7 @@ provenance:
 
 ### **Epic 0** ⚡ CRITICAL (Foundation)
 - **Status**: 11% complete (1/9 stories)
-- **Blocker**: Story 0.2 unit test coverage
+- **Update**: Story 0.2 PASSED (87.9% coverage); proceed with non‑HIL tasks while hardware is unavailable
 - **Next**: Fix 0.2 → Start 0.3 → Continue 0.4-0.9
 
 ### **Epic 1** ⚡ CRITICAL (Core Functionality)  
@@ -204,7 +204,7 @@ grep -r "depends on\|blocked by" docs/agile/stories/
 ## 🔄 **Next Sprint Planning**
 
 ### **Week 1 Focus** 
-- [ ] **Fix Story 0.2** - Implement unit tests to reach 85% coverage
+- [x] **Story 0.2** - Unit test coverage achieved (87.9%)
 - [ ] ~~**Fix Story 3.0** - Add 0.13% test coverage (46 statements)~~
 - [ ] **Prepare Story 0.3** - Plan BDD framework (unblocked after 0.2)
 
@@ -238,7 +238,8 @@ grep -r "depends on\|blocked by" docs/agile/stories/
 
 ## 🆘 **Escalation Path**
 
-### **If Story 0.2 Coverage Issues Persist**
+### **0.2 Status**
+Story 0.2 is PASS. Use its harness for non‑HIL CI runs; schedule HIL when hardware is available.
 1. **Immediate**: Assign senior developer to unit test implementation
 2. **Escalate**: Contact Test Architect (Quinn) for guidance
 3. **Alternative**: Consider reducing coverage requirement with architectural review

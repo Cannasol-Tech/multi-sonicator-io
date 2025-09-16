@@ -7,8 +7,8 @@ exports.setupRoutes = setupRoutes;
 const config_1 = __importDefault(require("./config"));
 const tests_1 = __importDefault(require("./tests"));
 function setupRoutes(app, hardwareInterface, testAutomationService) {
-    // Hardware configuration management routes
-    app.use('/api/hardware-config', config_1.default);
+    // Hardware configuration management routes - make sure this is the first route
+    app.use('/api/config', config_1.default);
     // Hardware test execution routes
     app.use('/api/tests', tests_1.default);
     // Health check endpoint

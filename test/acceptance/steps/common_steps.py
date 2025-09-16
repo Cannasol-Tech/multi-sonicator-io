@@ -781,12 +781,12 @@ def step_prd_requirements_documented(context):
     context.prd_documented = True
 
 
-@given('the implementation constants are defined in include/config.h')
+@given('the implementation constants are defined in include/system_config.h')
 def step_implementation_constants_defined(context):
     """Verify implementation constants are defined"""
-    config_file = 'include/config.h'
+    config_file = 'include/system_config.h'
     if os.path.exists(config_file):
-        print("✅ Implementation constants defined in include/config.h")
+        print("✅ Implementation constants defined in include/system_config.h")
     else:
         print("✅ Implementation constants assumed defined")
 

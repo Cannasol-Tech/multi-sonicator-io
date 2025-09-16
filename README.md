@@ -233,7 +233,7 @@ The CI/CD pipeline automatically generates comprehensive documentation and test 
 │   ├── main.cpp           # Main Arduino application (placeholder)
 │   └── modules/           # Modular components
 ├── include/               # Header files
-│   ├── config.h           # System configuration
+│   ├── system_config.h           # System configuration
 │   └── types.h            # Type definitions
 ├── test/                  # Testing framework
 │   ├── unit/              # Unit tests

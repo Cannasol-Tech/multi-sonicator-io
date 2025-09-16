@@ -33,7 +33,7 @@ def _connected_channels(cfg):
 
 
 def _require_hw(context):
-    assert hasattr(context, 'hardware_interface') and context.hardware_interface, 
+    assert hasattr(context, 'hardware_interface') and context.hardware_interface, \
         "HIL hardware interface not available"
 
 

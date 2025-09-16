@@ -55,7 +55,7 @@ test/unit/               # Unity unit tests
 ├── test_runner.c        # Unity test runner
 ├── test_module1.c       # Unit tests for module1
 ├── test_module2.c       # Unit tests for module2
-└── unity_config.h       # Unity configuration
+└── unity_system_config.h       # Unity configuration
 
 test/acceptance/         # BDD acceptance tests
 ├── features/            # Gherkin feature files

@@ -3,7 +3,7 @@
 # Hardware Configuration for Multi-Sonicator-IO Web UI
 # SOLE SOURCE OF TRUTH for hardware pin assignments
 # Migrated from docs/planning/pin-matrix.md (now inactive)
-# Changes here must be reflected in include/config.h and HIL wrapper
+# Changes here must be reflected in include/system_config.h and HIL wrapper
 
 project:
   name: "multi-sonicator-io"
@@ -498,7 +498,7 @@ environment:
 
 # Actions required when this configuration changes
 actions_on_update:
-  - description: "Update include/config.h to match matrix"
+  - description: "Update include/system_config.h to match matrix"
     details: "Update with doxygen comments citing this file and PRD sections"
 
   - description: "Update HIL wrapper constants"
@@ -513,7 +513,7 @@ references:
     sections: "Sections 5, 7, 10"
     description: "Product requirements document"
 
-  - file: "include/config.h"
+  - file: "include/system_config.h"
     description: "Register map, constants"
 
   - file: "docs/inactive/pin-matrix.md"

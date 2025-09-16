@@ -22,8 +22,8 @@ class DocumentationGenerator:
         os.makedirs(output_dir, exist_ok=True)
     
     def get_version(self):
-        """Get version from config.h or default"""
-        config_path = os.path.join(self.source_dir, 'include/config.h')
+        """Get version from system_config.h or default"""
+        config_path = os.path.join(self.source_dir, 'include/system_config.h')
         if os.path.exists(config_path):
             with open(config_path, 'r') as f:
                 content = f.read()

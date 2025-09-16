@@ -162,18 +162,6 @@ export declare class ConfigService {
         command: number;
     };
     /**
-     * Get pin mapping for web UI
-     * Converts configuration to format expected by existing types
-     */
-    getPinMapping(): Record<string, any>;
-    /**
-     * Validate configuration integrity
-     */
-    validateConfig(): {
-        valid: boolean;
-        errors: string[];
-    };
-    /**
      * Get configuration summary for status display
      */
     getConfigSummary(): {
@@ -194,5 +182,21 @@ export declare class ConfigService {
         simulation_mode: boolean;
         limitations: string;
     };
+    /**
+     * Get pin mapping for web UI
+     * Converts configuration to format expected by existing types
+     */
+    getPinMapping(): Record<string, any>;
+    /**
+     * Validate configuration integrity
+     */
+    validateConfig(): {
+        valid: boolean;
+        errors: string[];
+    };
+    /**
+     * Save configuration to YAML file
+     */
+    saveConfig(config: HardwareConfig): void;
 }
 export declare const configService: ConfigService;

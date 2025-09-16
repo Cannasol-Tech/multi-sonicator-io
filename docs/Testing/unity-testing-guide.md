@@ -52,14 +52,14 @@ project_root/
 ├── test/
 │   ├── test_native/
 │   │   ├── test_algorithms.cpp
-│   │   └── unity_config.h
+│   │   └── unity_system_config.h
 │   └── test_embedded/
 │       ├── test_hardware/
 │       │   ├── test_led_controller.cpp
 │       │   └── test_sensor_reader.cpp
-│       └── unity_config.h
+│       └── unity_system_config.h
 └── include/
-    └── project_config.h
+    └── project_system_config.h
 ```
 
 ## PlatformIO Configuration
@@ -132,7 +132,7 @@ build_flags =
 
 ## Unity Framework Setup
 
-### Custom Unity Configuration (test/unity_config.h)
+### Custom Unity Configuration (test/unity_system_config.h)
 
 ```c
 #ifndef UNITY_CONFIG_H

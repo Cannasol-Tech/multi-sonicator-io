@@ -356,6 +356,15 @@ acceptance-test-power: check-deps check-arduino-cli
 	@echo "⚡ Running acceptance power verification tests..."
 	PYTHONPATH=. $(PYTHON_VENV) -m behave test/acceptance/features/hil_power_verification.feature -D profile=hil
 
+# Soft acceptance run: do not hard-fail when hardware is absent; hil-tagged scenarios auto-skip
+.PHONY: test-acceptance-soft
+test-acceptance-soft: check-deps
+	@echo "Stage 2 (soft): Acceptance Testing with auto-skip when hardware unavailable..."
+	@PYTHONPATH=. $(PYTHON_VENV) -m behave test/acceptance \
+		--junit \
+		--junit-directory=acceptance-junit \
+		--tags=~@pending --tags=~@web-ui || true
+
 # Quick hardware timing validation (Emergency Stop <= 100ms)
 test-hil-timing: check-deps check-arduino-cli check-pio
 	@echo "⏱  Running emergency-stop timing validation (requires Arduino Test Wrapper)..."

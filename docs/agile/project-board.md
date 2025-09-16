@@ -60,7 +60,7 @@ P25-09-16T05:02:00Z
 |-------|-------|--------|----------|---------|-------------------|------------|-----------------|
 | **0.1** | Project Structure & CI/CD Pipeline | ✅ **COMPLETED** | 100% | ✅ PASS | 2025-09-14 | 2025-09-14 | - |
 | **0.2** | HIL Test Harness Setup | ✅ **COMPLETED** | 100% | ✅ PASS | 2025-09-16T04:39:04Z | 2025-09-16 | Coverage 87.9% (meets ≥85%) |
-|**0.3**|BDD Acceptance Testing Framework| 🟡 **IN PROGRESS** | 0% | - | 2025-09-10 | Validation updated; duplication cleared|Depends on 0.2|
+|**0.3**|BDD Acceptance Testing Framework| 🟡 **IN PROGRESS** |0%| - | 2025-09-12T00:00:00Z |Validation updated; duplication cleared|Depends on 0.2|
 | **0.4** | Hardware Connection Verification | 🟡 **IN PROGRESS** | 0% | - | 2025-09-14 | N/A | Depends on 0.2, 0.3 |
 | **0.5** | Arduino Test Wrapper Validation | 🟡 **IN PROGRESS** | 0% | - | N/A | N/A | Depends on 0.2, 0.3 |
 | **0.6** | Sandbox CLI Manual Testing | 📋 **NOT STARTED** | 0% | - | N/A | N/A | Depends on 0.2, 0.3 |

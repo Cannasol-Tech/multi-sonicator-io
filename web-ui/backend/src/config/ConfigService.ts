@@ -180,7 +180,7 @@ export class ConfigService {
    */
   public getHarnessConnection(arduinoPin: string): HarnessConnection | null {
     const config = this.getConfig();
-    return config.harness.connections[arduinoPin] || null;
+    return system_config.harness.connections[arduinoPin] || null;
   }
 
   /**
@@ -261,6 +261,34 @@ export class ConfigService {
   }
 
   /**
+   * Get configuration summary for status display
+   */
+  public getConfigSummary() {
+    const config = this.getConfig();
+    const connectedSonicators = this.getConnectedSonicators();
+    const supportedCapabilities = this.getSupportedCapabilities();
+
+    return {
+      project: config.project.name,
+      version: config.project.version,
+      dut: config.dut.microcontroller.type,
+      harness: system_config.harness.type,
+      sonicators: {
+        total: config.sonicators.count,
+        connected: connectedSonicators.length,
+        channels: connectedSonicators.map(ch => ch.id)
+      },
+      capabilities: {
+        total: config.test_capabilities.length,
+        supported: supportedCapabilities.length,
+        names: supportedCapabilities.map(cap => cap.name)
+      },
+      simulation_mode: config.environment.simulation_mode,
+      limitations: config.limitations.current_prototype
+    };
+  }
+
+  /**
    * Get pin mapping for web UI
    * Converts configuration to format expected by existing types
    */
@@ -307,7 +335,7 @@ export class ConfigService {
       }
 
       // Validate harness configuration
-      if (!config.harness?.connections || Object.keys(config.harness.connections).length === 0) {
+      if (!system_config.harness?.connections || Object.keys(system_config.harness.connections).length === 0) {
         errors.push('Missing harness connection configuration');
       }
 
@@ -334,31 +362,33 @@ export class ConfigService {
   }
 
   /**
-   * Get configuration summary for status display
+   * Save configuration to YAML file
    */
-  public getConfigSummary() {
-    const config = this.getConfig();
-    const connectedSonicators = this.getConnectedSonicators();
-    const supportedCapabilities = this.getSupportedCapabilities();
+  public saveConfig(config: HardwareConfig): void {
+    try {
+      // Validate the configuration before saving
+      const validation = this.validateConfig();
+      if (!validation.valid) {
+        throw new Error(`Configuration validation failed: ${validation.errors.join(', ')}`);
+      }
 
-    return {
-      project: config.project.name,
-      version: config.project.version,
-      dut: config.dut.microcontroller.type,
-      harness: config.harness.type,
-      sonicators: {
-        total: config.sonicators.count,
-        connected: connectedSonicators.length,
-        channels: connectedSonicators.map(ch => ch.id)
-      },
-      capabilities: {
-        total: config.test_capabilities.length,
-        supported: supportedCapabilities.length,
-        names: supportedCapabilities.map(cap => cap.name)
-      },
-      simulation_mode: config.environment.simulation_mode,
-      limitations: config.limitations.current_prototype
-    };
+      // Convert to YAML and save
+      const yamlContent = yaml.dump(config, {
+        indent: 2,
+        lineWidth: -1,
+        noRefs: true
+      });
+
+      fs.writeFileSync(this.configPath, yamlContent, 'utf8');
+
+      // Update the cached config
+      this.config = config;
+
+      console.log(`✅ Configuration saved to: ${this.configPath}`);
+    } catch (error) {
+      console.error('❌ Failed to save configuration:', error);
+      throw error;
+    }
   }
 }
 

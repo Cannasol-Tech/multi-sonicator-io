@@ -39,7 +39,7 @@ Epic 1: Foundational Control & Communication is **95% complete** with exceptiona
 ## Pin Assignment Validation
 
 ### ✅ **Configuration Alignment: EXCELLENT**
-Analyzed `include/config.h` vs `config/hardware-config.yaml`:
+Analyzed `include/system_config.h` vs `config/hardware-config.yaml`:
 
 **Port C (Control Outputs) - ALIGNED**:
 - `PC0` (Pin 22): `START_4` → `SON4_START_PIN` ✅

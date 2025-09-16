@@ -34,7 +34,7 @@ void test_start_stop_command_timing(void) {
     sonicator_update();
     
     // Verify start was processed
-    const sonicator_state_control_t* status = sonicator_get_status();
+    const sonicator_state_t* status = sonicator_get_status();
     TEST_ASSERT_NOT_NULL(status);
     TEST_ASSERT_TRUE(status->start_requested);
     
@@ -53,7 +53,7 @@ void test_start_stop_command_timing(void) {
 void test_amplitude_control_tolerance(void) {
     // Test valid amplitude setting
     TEST_ASSERT_TRUE(sonicator_set_amplitude(75));
-    const sonicator_state_control_t* status = sonicator_get_status();
+    const sonicator_state_t* status = sonicator_get_status();
     TEST_ASSERT_EQUAL(75, status->amplitude_percent);
     
     // Test amplitude clamping - minimum
@@ -118,7 +118,7 @@ void test_complete_control_loop(void) {
     sonicator_update();
     
     // Verify control actions were executed
-    const sonicator_state_control_t* status = sonicator_get_status();
+    const sonicator_state_t* status = sonicator_get_status();
     TEST_ASSERT_NOT_NULL(status);
     TEST_ASSERT_EQUAL(60, status->amplitude_percent);
     
@@ -136,7 +136,7 @@ void test_overload_reset_command(void) {
     TEST_ASSERT_TRUE(sonicator_reset_overload());
     
     // Verify reset was processed
-    const sonicator_state_control_t* status = sonicator_get_status();
+    const sonicator_state_t* status = sonicator_get_status();
     TEST_ASSERT_NOT_NULL(status);
     TEST_ASSERT_TRUE(status->reset_requested);
 }
@@ -145,7 +145,7 @@ void test_overload_reset_command(void) {
  * @brief Test State Machine Basic Transitions
  */
 void test_state_machine_transitions(void) {
-    const sonicator_state_control_t* status = sonicator_get_status();
+    const sonicator_state_t* status = sonicator_get_status();
     TEST_ASSERT_NOT_NULL(status);
     
     // Should start in UNKNOWN state

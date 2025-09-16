@@ -14,7 +14,7 @@
 #define SONICATOR_H
 
 #include <Arduino.h>
-#include <config.h>
+#include <system_config.h>
 #include <types.h>
 
 /**
@@ -37,78 +37,79 @@
 
  
 
-class SonicatorInterface {
+class CT2000Sonicator {
 //@brief Basie Sonicator Interface Class
 
 private:
     // Hardware configuration
-    sonicator_hardware_config_t hardware_config;
-    uint8_t sonicator_id;
-    bool interface_enabled;
+    uint8_t sonicator_id_;                                  //!< Unique identifier for this sonicator (1-4)
+
+    static sonicator_hardware_config_t hardware_config_;   //!< Hardware pin configuration for all instances
+    bool interface_enabled_;                                //!< Interface enable/disable flag
     
     // Current status and state
-    sonicator_status_t current_status;
-    sonicator_state_t previous_state;
-    uint32_t state_change_timestamp;
+    sonicator_status_t current_status_;                     //!< Current complete status structure
+    sonicator_state_t previous_state_;                      //!< Previous state for transition tracking
+    uint32_t state_change_timestamp_;                       //!< Timestamp of last state change
     
     // Control command tracking
-    bool start_command_pending;
-    bool reset_command_pending;
-    uint32_t reset_pulse_start_time;
+    bool start_command_pending_;                            //!< Flag indicating start command is pending
+    bool reset_command_pending_;                            //!< Flag indicating reset command is pending
+    uint32_t reset_pulse_start_time_;                       //!< Timestamp when reset pulse started
     
     // Monitoring and measurement
-    uint16_t frequency_measurement_buffer[10];
-    uint8_t frequency_buffer_index;
-    uint32_t last_frequency_measurement;
-    uint32_t last_power_measurement;
+    uint16_t frequency_measurement_buffer_[10];             //!< Circular buffer for frequency measurements
+    uint8_t frequency_buffer_index_;                        //!< Current index in frequency buffer
+    uint32_t last_frequency_measurement_;                   //!< Timestamp of last frequency measurement
+    uint32_t last_power_measurement_;                       //!< Timestamp of last power measurement
     
     // Safety monitoring
-    bool overload_detected;
-    uint32_t overload_detection_time;
-    uint32_t last_safety_check;
+    bool overload_detected_;                                //!< Flag indicating overload condition detected
+    uint32_t last_safety_check_;                            //!< Timestamp of last safety check
+    uint32_t overload_detection_time_;                      //!< Timestamp when overload was first detected
     
     // Statistics and monitoring
-    uint32_t total_start_cycles;
-    uint32_t total_overload_events;
-    uint32_t last_start_time;
-    uint32_t total_runtime_ms;
-    uint32_t last_update_timestamp;
-    uint16_t update_call_count;
+    uint32_t last_start_time_;                              //!< Timestamp of last start command
+    uint32_t total_runtime_ms_;                             //!< Total accumulated runtime in milliseconds
+    uint16_t update_call_count_;                            //!< Counter for update() function calls
+    uint32_t total_start_cycles_;                           //!< Total number of start cycles executed
+    uint32_t total_overload_events_;                        //!< Total number of overload events detected
+    uint32_t last_update_timestamp_;                        //!< Timestamp of last update() call
     
     // Error handling and diagnostics
-    error_code_t last_error_code;
-    uint32_t consecutive_error_count;
-    uint32_t last_error_timestamp;
-    bool critical_error_flag;
+    error_code_t last_error_code_;                          //!< Most recent error code encountered
+    uint32_t consecutive_error_count_;                      //!< Number of consecutive errors
+    uint32_t last_error_timestamp_;                         //!< Timestamp of last error occurrence
+    bool critical_error_flag_;                              //!< Flag indicating critical error state
     
     // Performance monitoring
-    uint32_t min_update_time_us;
-    uint32_t max_update_time_us;
-    uint32_t avg_update_time_us;
-    bool performance_monitoring_enabled;
+    uint32_t min_update_time_us_;                           //!< Minimum update() execution time in microseconds
+    uint32_t max_update_time_us_;                           //!< Maximum update() execution time in microseconds
+    uint32_t avg_update_time_us_;                           //!< Average update() execution time in microseconds
+    bool performance_monitoring_enabled_;                   //!< Enable/disable performance monitoring
     
     // Private methods - Core functionality
-    void updateHardwareOutputs() noexcept;
-    void readHardwareInputs() noexcept;
-    void updateStateMachine() noexcept;
-    void handleOverloadCondition() noexcept;
-    void updateStatistics() noexcept;
-    void logStateChange(sonicator_state_t new_state) noexcept;
+    void updateHardwareOutputs_() noexcept;
+    void readHardwareInputs_() noexcept;
+    void updateStateMachine_() noexcept;
+    void handleOverloadCondition_() noexcept;
+    void updateStatistics_() noexcept;
+    void logStateChange_(sonicator_state_t new_state) noexcept;
     
     // Private methods - Measurement and validation
-    uint16_t measureFrequency() const noexcept;
-    uint16_t measurePower() const noexcept;
-    bool validateAmplitudeRange(uint8_t amplitude) const noexcept;
-    bool validateSystemState() const noexcept;
+    uint16_t measureFrequency_() const noexcept;
+    uint16_t measurePower_() const noexcept;
+    bool validateAmplitudeRange_(uint8_t amplitude) const noexcept;
+    bool validateSystemState_() const noexcept;
     
     // Private methods - Safety and error handling
-    bool checkSafetyConstraints() const noexcept;
-    void handleSystemError(error_code_t error) noexcept;
-    bool isWithinOperatingLimits() const noexcept;
+    bool checkSafetyConstraints_() const noexcept;
+    void handleSystemError_(error_code_t error) noexcept;
+    bool isWithinOperatingLimits_() const noexcept;
     
     // Private methods - Timing and performance
-    uint32_t getCurrentTimestamp() const noexcept;
-    bool hasTimedOut(uint32_t start_time, uint32_t timeout_ms) const noexcept;
+    uint32_t getCurrentTimestamp_() const noexcept;
+    bool hasTimedOut_(uint32_t start_time, uint32_t timeout_ms) const noexcept;
 
 public:
     /**
@@ -116,12 +117,12 @@ public:
      * @param id Sonicator ID (1-4)
      * @param config Hardware pin configuration
      */
-    SonicatorInterface(uint8_t id, const sonicator_hardware_config_t& config);
+    CT2000Sonicator(uint8_t id, const sonicator_hardware_config_t& config);
     
     /**
      * @brief Destructor
      */
-    ~SonicatorInterface();
+    ~CT2000Sonicator();
     
     // ========================================================================
     // INITIALIZATION AND CONFIGURATION
@@ -301,63 +302,6 @@ public:
      * @performance Optimized for minimal latency (<100μs typical)
      */
     bool updateControlOutputs() noexcept;
-    
-    // ========================================================================
-    // LEGACY COMPATIBILITY (for existing code)
-    // ========================================================================
-    
-    /**
-     * @brief Start the sonicator (legacy compatibility)
-     * @return true if start command accepted, false on error
-     * @deprecated Use startSonication() instead for better error handling
-     */
-    [[deprecated("Use startSonication() instead")]]
-    bool start() { return startSonication(); }
-    
-    /**
-     * @brief Stop the sonicator (legacy compatibility)
-     * @return true if stop command accepted, false on error
-     * @deprecated Use stopSonication() instead for better error handling
-     */
-    [[deprecated("Use stopSonication() instead")]]
-    bool stop() { return stopSonication(); }
-    
-    /**
-     * @brief Get the current frequency of the sonicator (legacy compatibility)
-     * @return Current frequency in Hz
-     * @deprecated Use getCurrentFrequency() instead for consistency
-     */
-    [[deprecated("Use getCurrentFrequency() instead")]]
-    uint16_t getFrequency() const { return getCurrentFrequency(); }
-    
-    /**
-     * @brief Get the current amplitude of the sonicator (legacy compatibility)
-     * @return Current amplitude percentage (20-100%)
-     * @deprecated Use getCurrentAmplitude() instead for consistency
-     */
-    [[deprecated("Use getCurrentAmplitude() instead")]]
-    uint8_t getAmplitude() const { return getCurrentAmplitude(); }
-    
-    /**
-     * @brief Set the amplitude of the sonicator (legacy compatibility)
-     * @param amplitude Amplitude percentage (20-100)
-     * @return true if amplitude set successfully, false on error
-     * @deprecated Use setAmplitude() instead for better error handling
-     */
-    [[deprecated("Use the non-legacy setAmplitude() instead")]]
-    bool setAmplitudeLegacy(uint8_t amplitude) { return setAmplitude(amplitude); }
-    
-    /**
-     * @brief Set the frequency of the sonicator (legacy compatibility - no-op)
-     * @param frequency Frequency (ignored - CT2000 frequency is read-only)
-     * @return false always (operation not supported)
-     * @deprecated CT2000 frequency is read-only and cannot be set
-     */
-    [[deprecated("CT2000 frequency is read-only")]]
-    bool setFrequency(int frequency) {
-        (void)frequency; // Suppress unused parameter warning
-        return false; // CT2000 frequency is read-only
-    }
 };
 
 #endif // SONICATOR_H

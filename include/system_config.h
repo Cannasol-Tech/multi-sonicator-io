@@ -1,5 +1,5 @@
 /**
- * @file config.h
+ * @file system_config.h
  * @brief Multi Sonicator I/O Controller configuration
  * @author Cannasol Technologies
  * @date 2025-06-27
@@ -88,7 +88,7 @@
 #define SERIAL_BAUD_RATE 115200  // Debug serial communication speed
 
 /**
- * @defgroup SonicatorInterface Sonicator Interface Pin Mapping
+ * @defgroup CT2000Sonicator Sonicator Interface Pin Mapping
  * @brief ATmega32A pin assignments for CT2000 sonicator control interfaces
  * @details Based on schematic design with 6N137 optocouplers and ULN2003A drivers.
  * See also: config/hardware-config.yaml (SOLE SOURCE OF TRUTH) and PRD sections.

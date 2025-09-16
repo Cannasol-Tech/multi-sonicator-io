@@ -7,7 +7,7 @@
  */
 
 #include "hal.h"
-#include <config.h>
+#include <system_config.h>
 
 // ============================================================================
 // PRIVATE VARIABLES

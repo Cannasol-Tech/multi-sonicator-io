@@ -82,7 +82,7 @@ make generate-traceability-report  # Coverage and traceability reports
 ### Test Structure
 ```
 test/unit/
-├── unity_config.h              # Unity framework configuration
+├── unity_system_config.h              # Unity framework configuration
 ├── communication/
 │   └── test_communication.c    # MODBUS protocol tests
 ├── hal/
