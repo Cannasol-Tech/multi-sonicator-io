@@ -71,7 +71,7 @@ top_issues:
   - id: 'AC-7-10-SAFETY'
     severity: high
     finding: 'Emergency stop handling and safety interlock integration not completed; no HIL evidence.'
-    suggested_action: 'Implement E‑STOP transitions and interlocks; add unit/integration tests and HIL validation.'
+    suggested_action: 'Implement E‑STOP transitions and interlocks; add unit/integration tests now; HIL validation can be deferred until hardware is available.'
     evidence: 'Story tasks 4 pending; no executed HIL tests recorded.'
   - id: 'AC-13-PARTIAL-SUCCESS'
     severity: medium
@@ -88,5 +88,8 @@ top_issues:
     finding: 'Previous‑state register fields added with unit tests, but acceptance/HIL validation is pending.'
     suggested_action: 'Confirm RO behavior and mapping via integration/HIL tests.'
     evidence: 'Story dev notes and unit test additions noted; acceptance coverage pending.'
-waiver: { active: false }
-
+waiver:
+  active: true
+  scope: 'hil'
+  reason: 'Hardware temporarily unavailable; HIL verification deferred. Proceed with software + CI validation.'
+  until: 'hardware-available'
