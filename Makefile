@@ -97,9 +97,15 @@ check-npm:
 
 ## Firmware Related Make Targets (Arduino Framework)
 
+.PHONY: build build-debug
+
 build: check-pio
-	# Build ATmega32A firmware using Arduino Framework via PlatformIO
+	@echo "Building release firmware..."
 	pio run -e atmega32a
+
+build-debug: check-pio
+	@echo "Building debug firmware..."
+	pio run -e atmega32a-debug
 
 clean: check-pio
 	# Clean Arduino Framework build artifacts
