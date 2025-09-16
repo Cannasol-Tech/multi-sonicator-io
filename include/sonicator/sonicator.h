@@ -105,10 +105,15 @@ public:
     bool injectFault(const sonicator_fault_t& faultMask);
 
 private:
-    // Member variables
-    sonicator_status_t state_;
-    const SonicatorPins pins_;
+    // Testing Only
     bool simulation_mode_;
+
+    // Register Space for this Sonicator
+    sonicator_status_t status_regs_;
+    sonicator_control_t control_regs_;
+
+    // Hardware Pin Definitions
+    const SonicatorPins pins_;
 
     // Private utility methods
     uint32_t getTimestampMs() const;
@@ -123,10 +128,9 @@ private:
     uint16_t halAdcReadSafe(adc_channel_t channel);
 
     // Private hardware interface methods
-    void updateHardwareOutputs();
-    void readHardwareInputs();
-    sonicator_fault_t checkFaultConditions();
-    void handleFaultConditions(sonicator_fault_t faults);
+    void updateHardwareControl();
+    void updateHardwareStatus();
+    void handleHardwareFaults();
 
     // Private state machine method
     void processStateMachine();
