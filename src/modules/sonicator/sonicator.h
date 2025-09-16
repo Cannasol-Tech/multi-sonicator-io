@@ -16,6 +16,7 @@
 #include <Arduino.h>
 #include <system_config.h>
 #include <types.h>
+#include "frequency_counter.h"
 
 /**
  * @brief Enhanced Sonicator Interface Class

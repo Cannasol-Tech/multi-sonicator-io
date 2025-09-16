@@ -16,6 +16,7 @@
 #include "modules/communication/modbus_register_manager.h"
 #include "register_map.h"
 #include "multiplexer/Multiplexer.h"
+#include "frequency_counter.h"
 
 // Global Multiplexer instance
 Multiplexer multiplexer;
@@ -37,6 +38,12 @@ static void setup_modbus(void) {
 
 void setup() {
     (void)hal_init();
+    
+    // Initialize frequency counting system
+    if (!frequency_counter_init()) {
+        // Handle frequency counter initialization failure
+        // Could set error LED or enter safe mode
+    }
     
     register_manager_init();
     setup_modbus();
