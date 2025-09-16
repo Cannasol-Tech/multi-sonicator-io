@@ -13,6 +13,15 @@ void tearDown(void) {}
 void test_invalid_requests_and_bounds(void);
 void test_partial_coordinated_stop_targets_only_active_units(void);
 void test_requests_blocked_during_emergency(void);
+// New coverage-focused tests forward declarations
+void test_unit_start_idempotent_when_running_and_starting(void);
+void test_unit_start_rejected_when_fault_or_overload(void);
+void test_unit_stop_idempotent_and_noop_on_fault_states(void);
+void test_confirm_unit_started_promotes_and_clears_inhibit(void);
+void test_confirm_unit_started_return_values(void);
+void test_master_state_coordinated_start_when_any_starting(void);
+void test_coordinated_stop_no_target_mask_noop(void);
+void test_coordinated_stop_rejected_during_emergency(void);
 
 void test_initial_state_idle(void) {
     const multi_status_t* st = multi_sonicator_get_status();

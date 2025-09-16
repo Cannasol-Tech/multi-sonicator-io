@@ -22,7 +22,7 @@ extern "C" {
 #include "../src/modules/hal/hal.h"
 #include "../src/modules/communication/modbus_register_manager.h"
 }
-#include "../src/modules/control/multi_sonicator.h"
+#include "multi_sonicator.h"
 
 // Test configuration
 #define MAX_TEST_BUFFER_SIZE 1024

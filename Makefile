@@ -10,8 +10,11 @@
 .PHONY: test-unit-communication test-unit-hal test-unit-control test-unit-sonicator validate-config generate-traceability-report manage-pending-scenarios update-pending-scenarios ci-local
 .PHONY: web-ui-install web-ui-dev web-ui-build web-ui-sandbox web-ui-test web-ui-clean web-ui-stop
 .PHONY: web-ui-docker-build web-ui-docker-dev web-ui-docker-prod web-ui-docker-stop web-ui-docker-clean
+.PHONY: hardware-present hardware-absent
 .PHONY: validate-traceability check-compliance update-standards sync-standards check-standards generate-executive-report generate-coverage-report generate-complete-executive-report coverage update-tools install-tools check-tools run-tool
 .PHONY: validate-dod check-dod-compliance enforce-dod-gate validate-story-completion
+.PHONY: hardware-verify
+.PHONY: hardware-db9-verify
 
 #  Make Targets
 
@@ -450,15 +453,15 @@ web-ui-dev: web-ui-install web-ui-build
 	@echo "🔧 Checking HARDWARE_PRESENT environment variable..."
 	@if [ -z "$(HARDWARE_PRESENT)" ]; then \
 		echo "⚠️  HARDWARE_PRESENT not set, defaulting to simulation mode (HARDWARE_PRESENT=false)"; \
-		export HARDWARE_PRESENT=false; \
-	fi
-	@echo "🔧 HARDWARE_PRESENT=$(HARDWARE_PRESENT) -> $(shell [ "$(HARDWARE_PRESENT)" = "true" ] && echo "Hardware Mode" || echo "Simulation Mode")"
+		HARDWARE_PRESENT=false; \
+	fi; \
+	echo "🔧 HARDWARE_PRESENT=$$HARDWARE_PRESENT -> $$( [ "$$HARDWARE_PRESENT" = "true" ] && echo "Hardware Mode" || echo "Simulation Mode" )"
 	@echo "🔧 Cleaning up any processes on ports 3001 and 3101..."
 	@lsof -ti:3001 | xargs -r kill -9 2>/dev/null || true
 	@lsof -ti:3101 | xargs -r kill -9 2>/dev/null || true
 	@sleep 2
 	@echo "🔧 Starting backend server on port 3001..."
-	@cd web-ui/backend && HARDWARE_PRESENT=$(HARDWARE_PRESENT) PORT=3001 npm run dev &
+	@cd web-ui/backend && HARDWARE_PRESENT=$$HARDWARE_PRESENT PORT=3001 npm run dev &
 	@echo "🔧 Starting frontend development server on port 3101..."
 	@cd web-ui/frontend && PORT=3101 npm run dev &
 	@echo "⏳ Waiting for servers to initialize..."
@@ -470,7 +473,13 @@ web-ui-dev: web-ui-install web-ui-build
 	@echo "📱 Frontend: http://localhost:3101"
 	@echo "🔌 Backend API: http://localhost:3001/api"
 	@echo "🔗 WebSocket: ws://localhost:3001/ws"
-	@echo "🎯 Mode: $(shell [ "$(HARDWARE_PRESENT)" = "true" ] && echo "Hardware Connected" || echo "Simulation Mode")"
+	@echo "🎯 Mode: $$( [ "$$HARDWARE_PRESENT" = "true" ] && echo "Hardware Connected" || echo "Simulation Mode" )"
+	@echo ""
+	@echo "💡 Usage Examples:"
+	@echo "   make hardware-present && make web-ui-dev"
+	@echo "   make hardware-absent && make web-ui-dev"
+	@echo "   make web-ui-dev HARDWARE_PRESENT=true"
+	@echo "   make web-ui-dev HARDWARE_PRESENT=false"
 
 # Production build
 web-ui-build:
@@ -496,6 +505,12 @@ web-ui-build:
 #    8. Open the web interface in the default browser
 #    9. Verify that the web interface is running and that the HIL framework is integrated
 web-ui-sandbox: check-deps check-pio check-arduino-cli
+	@echo "🔧 Checking HARDWARE_PRESENT environment variable..."
+	@if [ -z "$(HARDWARE_PRESENT)" ]; then \
+		echo "⚠️  HARDWARE_PRESENT not set, defaulting to hardware mode for sandbox (HARDWARE_PRESENT=true)"; \
+		HARDWARE_PRESENT=true; \
+	fi; \
+	echo "🔧 HARDWARE_PRESENT=$$HARDWARE_PRESENT -> $$( [ "$$HARDWARE_PRESENT" = "true" ] && echo "Hardware Mode" || echo "Simulation Mode" )"
 	@echo "🧪 Starting Web UI in sandbox mode..."
 	@echo ""
 	@echo "Step 1: Setting up Arduino as ISP (auto-upload if needed)..."
@@ -542,7 +557,7 @@ web-ui-sandbox: check-deps check-pio check-arduino-cli
 	@lsof -ti:3101 | xargs -r kill -9 2>/dev/null || true
 	@sleep 2
 	@echo "🔧 Starting Web UI backend with HIL integration..."
-	@cd web-ui/backend && PORT=3001 npm run dev > /tmp/web-ui-backend.log 2>&1 &
+	@cd web-ui/backend && HARDWARE_PRESENT=$(HARDWARE_PRESENT) PORT=3001 npm run dev > /tmp/web-ui-backend.log 2>&1 &
 	@echo "🔧 Starting Web UI frontend..."
 	@cd web-ui/frontend && PORT=3101 npm run dev > /tmp/web-ui-frontend.log 2>&1 &
 	@echo "⏳ Waiting for servers to start..."
@@ -565,6 +580,12 @@ web-ui-sandbox: check-deps check-pio check-arduino-cli
 
 # Automated sandbox mode - skips hardware setup prompt (for CI/CD)
 web-ui-sandbox-auto: check-deps check-pio check-arduino-cli
+	@echo "🔧 Checking HARDWARE_PRESENT environment variable..."
+	@if [ -z "$(HARDWARE_PRESENT)" ]; then \
+		echo "⚠️  HARDWARE_PRESENT not set, defaulting to hardware mode for automated sandbox (HARDWARE_PRESENT=true)"; \
+		HARDWARE_PRESENT=true; \
+	fi; \
+	echo "🔧 HARDWARE_PRESENT=$$HARDWARE_PRESENT -> $$( [ "$$HARDWARE_PRESENT" = "true" ] && echo "Hardware Mode" || echo "Simulation Mode" )"
 	@echo "🧪 Starting Web UI in automated sandbox mode..."
 	@echo ""
 	@echo "Step 1: Setting up Arduino as ISP (auto-upload if needed)..."
@@ -602,7 +623,7 @@ web-ui-sandbox-auto: check-deps check-pio check-arduino-cli
 	@echo ""
 	@echo "Step 8: Starting Web UI servers..."
 	@echo "🔧 Starting Web UI backend with HIL integration..."
-	@cd web-ui/backend && npm run dev &
+	@cd web-ui/backend && HARDWARE_PRESENT=$(HARDWARE_PRESENT) npm run dev &
 	@echo "🔧 Starting Web UI frontend..."
 	@cd web-ui/frontend && npm run dev &
 	@echo "⏳ Waiting for servers to start..."
@@ -610,7 +631,7 @@ web-ui-sandbox-auto: check-deps check-pio check-arduino-cli
 
 	@echo ""
 	@echo "✅ Web UI automated sandbox mode active"
-	@echo "📱 Web Interface: http://localhost:3000"
+	@echo "📱 Web Interface: http://localhost:3101"
 	@echo "🔌 Backend API: http://localhost:3001/api"
 	@echo "🔗 WebSocket: ws://localhost:3001/ws"
 	@echo "🎯 Hardware: Arduino Test Harness ↔ ATmega32A DUT"
@@ -695,6 +716,26 @@ web-ui-docker-clean: web-ui-docker-stop
 	@echo "🧹 Pruning unused Docker resources..."
 	docker system prune -f
 	@echo "✅ Web UI Docker resources cleaned"
+
+# Hardware presence configuration targets
+hardware-present:
+	@echo "🔧 Setting HARDWARE_PRESENT=true (Hardware Connected Mode)"
+	@echo "export HARDWARE_PRESENT=true"
+	@echo "🎯 Web UI will connect to physical Arduino Test Harness"
+	@echo "📋 Pin mapping: docs/planning/pin-matrix.md (SOLE SOURCE OF TRUTH)"
+	@echo "💡 Usage Examples:"
+	@echo "   make hardware-present && make web-ui-dev"
+	@echo "   make web-ui-dev HARDWARE_PRESENT=true"
+	@echo "   make web-ui-sandbox HARDWARE_PRESENT=true"
+
+hardware-absent:
+	@echo "🔧 Setting HARDWARE_PRESENT=false (Simulation Mode)"
+	@echo "export HARDWARE_PRESENT=false"
+	@echo "🎯 Web UI will run in simulation mode without hardware"
+	@echo "💡 Usage Examples:"
+	@echo "   make hardware-absent && make web-ui-dev"
+	@echo "   make web-ui-dev HARDWARE_PRESENT=false"
+	@echo "   make web-ui-sandbox HARDWARE_PRESENT=false"
 
 ## Company Standards Management
 
@@ -992,3 +1033,14 @@ doc-coverage: check-doxygen
 		--baseline docs/coverage/doc_coverage_baseline.json \
 		--min-firmware 0.0 --min-backend 0.0 --min-frontend 0.0 
 	@echo "✅ Documentation coverage check completed"
+# Validate hardware pin matrix against DB9 mappings and capabilities
+hardware-verify: check-deps
+	@echo "🔌 Validating hardware pin matrix (config/hardware-config.yaml)..."
+	@python3 scripts/hardware/pin_matrix_validator.py || (echo "❌ Hardware pin matrix validation failed. See test/reports/hardware/pin_matrix_report.md" && exit 1)
+	@echo "✅ Hardware pin matrix validation passed. Report: test/reports/hardware/pin_matrix_report.md"
+
+# Verify DB9 connectors (static config-level checks; HIL hooks pending)
+hardware-db9-verify: check-deps
+	@echo "🔗 Verifying DB9 interface mappings (DB9-1..4, DB9-0/DB9-5)..."
+	@python3 scripts/hardware/db9_interface_verify.py || (echo "❌ DB9 interface verification failed. See test/reports/hardware/db9_interface_report.md" && exit 1)
+	@echo "✅ DB9 interface verification passed. Report: test/reports/hardware/db9_interface_report.md"

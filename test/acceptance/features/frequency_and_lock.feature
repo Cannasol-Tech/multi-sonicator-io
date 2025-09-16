@@ -1,3 +1,4 @@
+@requirement_FR6 @requirement_FR7 @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC6
 Feature: Frequency measurement and lock status per unit
   As an operator I can see frequency and lock status accurately per unit.
 

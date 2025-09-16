@@ -1,3 +1,4 @@
+@requirement_FR2 @requirement_FR9 @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC5
 Feature: Start and stop a single sonicator
   As an operator I can start/stop any unit and see status reflected promptly.
 

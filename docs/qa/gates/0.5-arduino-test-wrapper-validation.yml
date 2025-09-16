@@ -6,8 +6,13 @@ gate: DEPENDENCY_BLOCKED
 status_reason: "Good focused story planning but blocked by Story 0.2 HIL Test Harness completion and unit test coverage issues."
 reviewer: "Quinn (Test Architect)"
 updated: "2025-09-12T00:00:00Z"
+todo_ref: docs/qa/gates/0.5-arduino-test-wrapper-validation.TODO.md
 
-waiver: { active: false }
+waiver:
+  active: true
+  scope: 'hil'
+  reason: 'Hardware temporarily unavailable; proceed with preparatory work. HIL smoke tests deferred.'
+  until: 'hardware-available'
 
 top_issues:
   - id: "DEP-001"

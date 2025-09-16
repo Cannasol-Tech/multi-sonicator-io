@@ -449,6 +449,45 @@ def step_verify_write_rejected_or_clamped(context):
         print(f"✅ Write rejection/clamping verification failed, assumed correct: {e}")
 
 
+# FILESYSTEM AND CONFIGURATION ASSERTIONS
+# =======================================
+
+@then('the file "{path}" exists')
+def step_file_exists(context, path):
+    if not os.path.exists(path):
+        raise AssertionError(f"Expected file to exist: {path}")
+    print(f"✅ File exists: {path}")
+
+
+@then("the Makefile target '{target}' exists")
+def step_makefile_target_exists(context, target):
+    mk = 'Makefile'
+    if not os.path.exists(mk):
+        raise AssertionError("Makefile not found")
+    with open(mk, 'r', encoding='utf-8') as f:
+        txt = f.read()
+    if f"\n{target}:" not in txt and not txt.startswith(f"{target}:"):
+        raise AssertionError(f"Makefile target not found: {target}")
+    print(f"✅ Makefile target exists: {target}")
+
+
+@then('a coverage step validates all FR tags are present')
+def step_validate_all_fr_tags(context):
+    """Generate coverage from current feature set and assert FR1–FR11 are tagged."""
+    try:
+        # Import locally to avoid side effects
+        import os as _os
+        from test.acceptance import requirement_mapping as _rm
+        features_dir = _os.path.join(_os.path.dirname(__file__), '..', 'features')
+        cov = _rm.summarize(features_dir=_os.path.abspath(features_dir))
+        missing = [fr for fr in _rm.PRD_FUNCTIONAL_REQUIREMENTS.keys() if fr not in cov.found]
+        if missing:
+            raise AssertionError(f"Missing FR tags for: {', '.join(missing)}")
+        print("✅ All PRD FR tags present in feature set")
+    except Exception as e:
+        raise AssertionError(f"FR coverage validation failed: {e}")
+
+
 # MODBUS CONNECTION AND COMMUNICATION STEPS
 # =========================================
 

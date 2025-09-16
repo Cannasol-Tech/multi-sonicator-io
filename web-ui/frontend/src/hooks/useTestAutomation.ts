@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { TestExecution, TestAutomationState, TestScenario } from '../types'
+import { TestAutomationState, TestExecution, TestScenario } from '../types'
 import { TestAutomationAPI } from '../services/testAutomationApi'
 
 export function useTestAutomation() {

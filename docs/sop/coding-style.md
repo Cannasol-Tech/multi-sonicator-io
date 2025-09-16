@@ -21,7 +21,6 @@ tags:
   - coding-standards
   - standards
   - style
-  -     
 ---
 
 # Coding Style Standards
@@ -30,15 +29,22 @@ tags:
 
 This document defines the coding style standards for all development work in Agile Flow projects. These standards ensure consistency, readability, and maintainability across the codebase.
 
-## General Coding Standard Principles
-
-### General Coding Principles
-
-
+> <!-- ~•Axovia•ƒløw™•~ Agentic Framework Agent Instructions -->
 This is the global coding standard for all projects, always adhere to this standard when writing code.
 
+---
+> !!! CRITICAL AGENT INSTRUCTIONS !!!
+***STRICTLY ADHERE TO THE INSTRUCTIONS BELOW***
+
+![Company Standard Operating Procedures](docs/sop/index.json)
+
+## General Coding Principles
 - **ALWAYS** write clean, easy to understand, modular, reusable, well documented per company standards code.
-- **ALWAYS** execute tests using make targets only unless specifial permission is granted
+- **ALWAYS** write tests for all code you write
+- **ALWAYS** write **DOCUMENT GENERATING COMMENTS** for all code you implement. 
+- **ALWAYS** Include all Class, function and variable names and class member variables in the generated documentation.  
+- **ALWAYS** Reference the Company SOP for documentation generation in `docs/sop/`  
+- **ALWAYS** execute tests using make targets only unless special permission is granted
 - **ALWAYS** write code in a modular OOP format if possible
 - **ALWAYS** write short, reusable functions with a clear, single purpose
 - **ALWAYS** use descriptive comments to enable documentation generation
@@ -53,35 +59,21 @@ This is the global coding standard for all projects, always adhere to this stand
 - **ALWAYS** use the `bin/` directory to store any binaries
 - **ALWAYS** use the `build/` directory to store any build artifacts
 - **ALWAYS** use the `dist/` directory to store any distribution artifacts
-- **NEVER** implement any un-standardized functionality withouth verifying in detail with the Project Manager (Human User)
+- **NEVER** implement any un-standardized functionality without verifying in detail with the Project Manager (Human User)
 - **ALWAYS** verify that you are aligned with the Human/Project Manager's vision for the project you are working on before implementing anything.
 - **ALWAYS** adhere to `.agile-flow/flow-config.yaml` as the highest source of truth for project configuration and rules if available.
 - **ALWAYS** adhere to `.bmad-core/core-config.yaml` as the **SECONDARY** source of truth for project configuration and rules **IF** available.
 - **ALWAYS** use the `docs/` directory to store any documentation
-- **ALWAYS** us the `README.md` file at the root of a given directory for documenting and indexing the given directory.
+- **ALWAYS** use the `README.md` file at the root of a given directory for documenting and indexing the given directory.
 - ***NEVER*** keep unnecessary files in the root directory
 
-## Agent Instruction File Locations
-
-> Always adhere to the company standards when writing code.
-
-- **File Location of Global standard:** `.kilocode/rules/coding-standards.md`
-
-## Guidelines
-
-- If you are ever unsure of any implementation details, ask for clarification before proceeding.
-- If you need any information from the Human for implementation, create an issue in the Github Repository and assign it to `sboyett31`
-
-
-### Code Quality
-
+## Code Quality
 - **Clean Code**: Write code that is self-documenting and easy to understand
 - **SOLID Principles**: Follow Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion
 - **DRY Principle**: Don't Repeat Yourself - create reusable components
 - **KISS Principle**: Keep It Simple, Stupid - avoid unnecessary complexity
 
-### Documentation
-
+## Documentation
 - **Docstrings**: All functions, classes, and modules must have comprehensive docstrings
 - **Comments**: Use comments to explain WHY, not WHAT
 - **README Files**: Every module/package should have a README explaining its purpose
@@ -122,7 +114,6 @@ All Agile Flow projects must adhere to the strict root directory standard:
 - [Complete Root Directory Standard](../standards/root-directory.md) - Detailed implementation guide
 - [Project Structure Standards](project-structure.md) - Overall project organization
 - [README Root Directory Section](../../README.md#root-directory-standard) - Quick reference
-
 **🔧 Practical Guidelines:**
 
 - Always check root directory compliance before committing
@@ -265,6 +256,50 @@ def test_user_processor_should_return_formatted_data_when_given_valid_input():
     pass
 ```
 
+## Performance Guidelines
+
+### General Rules
+
+- Profile before optimizing
+- Use appropriate data structures
+- Avoid premature optimization
+- Cache expensive operations when appropriate
+
+### Database Queries
+
+- Use indexes appropriately
+- Avoid N+1 query problems
+- Use connection pooling
+- Implement query timeouts
+
+## Tools and Automation
+
+### Linting
+
+- **Python**: flake8, black, mypy
+- **JavaScript/TypeScript**: ESLint, Prettier
+- **YAML**: yamllint
+
+### Pre-commit Hooks
+
+- Run linters and formatters
+- Execute tests
+- Check for secrets
+- Validate commit messages
+
+## Build System Standards
+
+**CRITICAL**: All projects must use Makefile targets for common operations. Never create standalone scripts in the root directory - use make targets that may reference scripts in `scripts/` directory.
+
+## Makefile Requirements
+
+- **ALWAYS** adhere to the Standard Operating Proecdure for creating and utilize Makefiles.
+- **NEVER** create make targets that are not defined in the Makefiles SOP
+- **IF** you need to add a new make target, raise an issue on Github in the Agile Flow™ Project Repository (<https://github.com/Axovia-AI/agile-flow/issues> )
+  - *NOTE:* ALWAYS follow the procedure included int the Makefile SOP for proposing a new make target.
+- **RETAIN** the Makefile SOP as the single source of truth for all makefile targets utilized across the company.
+- **UNDERSTAND** that the purpose of this standard is to unify operations and increase efficiency.
+
 ## Version Control
 
 ### Commit Messages
@@ -284,22 +319,6 @@ Closes #123
 - Feature branches: `feature/user-data-processing`
 - Bug fixes: `fix/user-validation-error`
 - Hotfixes: `hotfix/critical-security-patch`
-
-## Performance Guidelines
-
-### General Rules
-
-- Profile before optimizing
-- Use appropriate data structures
-- Avoid premature optimization
-- Cache expensive operations when appropriate
-
-### Database Queries
-
-- Use indexes appropriately
-- Avoid N+1 query problems
-- Use connection pooling
-- Implement query timeouts
 
 ## Security Standards
 
@@ -335,34 +354,41 @@ Closes #123
 - [ ] Tests cover edge cases
 - [ ] Documentation is accurate
 
-## Tools and Automation
-
-### Linting
-
-- **Python**: flake8, black, mypy
-- **JavaScript/TypeScript**: ESLint, Prettier
-- **YAML**: yamllint
-
-### Pre-commit Hooks
-
-- Run linters and formatters
-- Execute tests
-- Check for secrets
-- Validate commit messages
-
-## Build System Standards
-
-**CRITICAL**: All projects must use Makefile targets for common operations. Never create standalone scripts in the root directory - use make targets that may reference scripts in `scripts/` directory.
-
-## Makefile Requirements
-
-- **ALWAYS** adhere to the Standard Operating Proecdure for creating and utilize Makefiles.
-- **NEVER** create make targets that are not defined in the Makefiles SOP
-- **IF** you need to add a new make target, raise an issue on Github in the Agile Flow™ Project Repository (<https://github.com/Axovia-AI/agile-flow/issues> )
-  - *NOTE:* ALWAYS follow the procedure included int the Makefile SOP for proposing a new make target.
-- **RETAIN** the Makefile SOP as the single source of truth for all makefile targets utilized across the company.
-- **UNDERSTAND** that the purpose of this standard is to unify operations and increase efficiency.
-
 ## Continuous Improvement
 
 This document is living and should be updated as the project evolves. Suggestions for improvements should be discussed with the team and documented through pull requests.
+
+## Definition of Done
+
+- All code must be fully tested and passing all tests before being marked complete. 
+- All code must be peer reviewed and approved by me before being marked complete. 
+- All code must be documented with doxygen (or similar) comments before being marked complete.
+- All code must be committed and pushed to the remote repository before being marked complete.
+- Test Coverage >85% and tests passing 100% 
+- Test must be 100% passing 
+
+## General Architecture & Style 
+
+- Always write code in modular object oriented format when possible. 
+- Create reusable functions with one clear, distinct purpose. 
+- Never duplicate code. 
+- Always keep one source of truth for everything you can.  The more places we have to change the same thing the worst!  
+- Always write code with clean architecture containing centralized services/modules that other parts of the code can easily access.  
+- Always get architecture decisions approved by me before proceeding. 
+- Always use doxygen comments when possible for easy document generation.
+- Always update implementation-plan documents every time you finish a task contained in one.  
+-  Always verify your added code works by adding as much testing as possible until you are sure you are delivering the right product!
+- Never be afraid to ask questions.  Always make sure we are on the same page and have the same vision for any given project at any given time.
+- Suggest improvements wherever you can if you do not agree with my approach or think you know a more efficient / cheaper / or just generally better solution,  I love having conversations and learning new things.
+- When working on a User Interface of any kind, never use fallback data or hardcoded data when displaying unless it is just for a quick demo, we should always be able to retrieve the real data from the necessary resource - if not we should display an error message. 
+
+## Tool Usage
+
+- When accessing any external resource always use your tools you have available
+- Use your Github Tool for any Github interactions
+- If you find a tool on the web that would benefit you, ask me for access to it!
+
+---
+- ***IF*** you are ever unsure of any implementation details, ask for clarification before proceeding.
+- ***IF*** you need any information from the Human for implementation, create an issue in the Github Repository and assign it to `sboyett31`
+---

@@ -6,9 +6,14 @@ gate: DEPENDENCY_BLOCKED
 status_reason: "Excellent hardware verification planning but blocked by Story 0.2 HIL Test Harness completion and unit test coverage issues."
 reviewer: "Quinn (Test Architect)"
 updated: "2025-09-12T00:00:00Z"
+todo_ref: docs/qa/gates/0.4-hardware-connection-verification.TODO.md
 
 # No waiver needed - dependency blocking
-waiver: { active: false }
+waiver:
+  active: true
+  scope: 'hil'
+  reason: 'Hardware temporarily unavailable; proceed with pre-HIL validation and documentation. HIL steps deferred.'
+  until: 'hardware-available'
 
 # Dependency blocking issues
 top_issues:

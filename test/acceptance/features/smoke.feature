@@ -1,4 +1,4 @@
-@smoke @hil
+@smoke @hil @story_0_3_AC1
 Feature: Smoke
   Verify BDD harness and Arduino Test Wrapper can execute a passing test.
 

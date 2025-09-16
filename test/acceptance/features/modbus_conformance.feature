@@ -1,5 +1,6 @@
 @modbus @documentation
 @trace:modbus-interface
+@requirement_FR8 @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC6
 Feature: MODBUS RTU Conformance & Performance
   As a PLC integration engineer
   I need the device to conform to MODBUS RTU and meet performance targets

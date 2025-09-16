@@ -3,50 +3,21 @@ markdownExploder: true
 qa:
   qaLocation: docs/qa
 prd:
-  prdFile: docs/prd/index.md
+  prdFile: docs/prd.md
   prdVersion: v4
   prdSharded: true
   prdShardedLocation: docs/prd
-epics:
-  epicLocation: docs/agile/epics
   epicFilePattern: epic-{n}*.md
 architecture:
-  architectureFile: docs/architecture/architecture.md
+  architectureFile: docs/architecture.md
   architectureVersion: v4
   architectureSharded: true
   architectureShardedLocation: docs/architecture
-customTechnicalDocuments: 
-  - docs/sop/provenance-tags.md
-  - docs/sop/communication.md
-  - docs/sop/agent-metadata.md
-  - docs/sop/makefile-standard.md
-  - docs/sop/root-directory.md
-  - docs/sop/project-structure.md
-  - docs/sop/coding-style.md
-  - docs/sop/sw-testing.md
-  - docs/sop/release-format.md
-  - docs/sop/repository-auditing.md
-  - docs/sop/security-audit.md
-  - docs/sop/pull-requests.md
-  - docs/sop/code-review.md
-  - docs/sop/feature-specification.md
-  - docs/sop/implementation-plans.md
-  - docs/sop/planning-definition-of-done.md
-  - docs/sop/README.md
+customTechnicalDocuments: null
 devLoadAlwaysFiles:
   - docs/architecture/coding-standards.md
   - docs/architecture/tech-stack.md
   - docs/architecture/source-tree.md
-  - docs/agile/project-board.md
 devDebugLog: .ai/debug-log.md
-devStoryLocation: docs/agile/stories
-devStoryFilePattern: {n}.{n}*.md
+devStoryLocation: docs/stories
 slashPrefix: BMad
-
-extension:
-  name: "Agile Flow™"
-  configFile: ".agile-flow/flow-config.yaml"
-  overrides: true
-  extends: true
-  version: "1.0"
-  description: "Axovia AI extension"

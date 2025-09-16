@@ -1,21 +1,3 @@
----
-__metadata:
-  title: Create Brownfield Epic Task
-  author: Stephen Boyett
-  company: Axovia AI
-  version: 1.0
-  brief: Executable workflow to create a brownfield epic for small enhancements
-  date: 2025-09-14
-  tags:
-    - "agile-flow"
-    - "axovia"
-    - "ai"
-    - "agentic"
-    - "framework"
-    - "config"
-    - "fileLocations"
----
-
 <!-- Powered by BMAD™ Core -->
 
 # Create Brownfield Epic Task

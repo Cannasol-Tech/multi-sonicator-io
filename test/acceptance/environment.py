@@ -99,6 +99,18 @@ def after_all(context):
     if hasattr(context, 'hil_controller') and context.hil_controller:
         context.hil_controller.cleanup_hardware()
 
+    # Generate PRD requirements and Story S-0.3 coverage summaries from feature tags
+    try:
+        from test.acceptance import requirement_mapping as rm
+        cov = rm.summarize(features_dir=os.path.join(os.path.dirname(__file__), 'features'))
+        print("\n[PRD] Requirements coverage summary written to final/requirements-coverage.md and acceptance-junit/requirements_coverage.json")
+        print("[STORY] S-0.3 coverage summary written to acceptance-junit/story_S-0.3_coverage.json\n")
+        missing = [fr for fr in rm.PRD_FUNCTIONAL_REQUIREMENTS.keys() if fr not in cov.found]
+        if missing:
+            print(f"[PRD] Missing FR tags for: {', '.join(missing)}")
+    except Exception as e:
+        print(f"[PRD] Failed to generate requirements coverage: {e}")
+
 
 def before_scenario(context, scenario):
     # Enforce skipping of @pending scenarios regardless of CLI tag filters

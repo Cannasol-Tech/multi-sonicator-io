@@ -18,6 +18,75 @@ The Multi-Sonicator I/O Controller extends Cannasol Technologies' proprietary au
 - **Cloud Connectivity**: Firebase integration via ESP32 for remote monitoring
 - **Safety Systems**: Comprehensive monitoring and alarm management
 
+## Connector Topology
+
+The controller uses five DB9 connectors routed directly from the PCB to external systems:
+
+```
+   CT2000 Sonicator #1   CT2000 Sonicator #2   CT2000 Sonicator #3   CT2000 Sonicator #4
+            │                     │                     │                     │
+         DB9-1                 DB9-2                 DB9-3                 DB9-4
+            │                     │                     │                     │
+            └─────── PCB Traces ──────────────────────────────────────────────┘
+                                 │
+                            ATmega32A (DUT)
+                                 │
+                                DB9-0 / DB9-5  ←→  Main Automation System (MODBUS RTU)
+
+   [HIL] Arduino Test Wrapper simulates the DB9 interfaces during tests
+         (drives/reads the same signals defined in config/hardware-config.yaml)
+```
+
+DB9 mapping (validated against `config/hardware-config.yaml`):
+
+- DB9-0 (Main Automation MODBUS):
+  - Pin 8 → UART_RXD (DUT PD0)
+  - Pin 9 → UART_TXD (DUT PD1)
+
+- DB9-5 (CT-IAS-001 Main Automation Box — alias of DB9-0):
+  - Pin 8 → UART_RXD (DUT PD0)
+  - Pin 9 → UART_TXD (DUT PD1)
+
+- DB9-1 (Sonicator 1):
+  - Pin 1 → OVERLOAD_1 (PD6)
+  - Pin 2 → RESET_1 (PC7)
+  - Pin 3 → FREQ_LOCK_1 (PB7)
+  - Pin 4 → FREQ_DIV10_1 (PB3)
+  - Pin 5 → POWER_SENSE_1 (PA4)
+  - Pin 7 → START_1 (PC6)
+  - Pin 8 → AMPLITUDE_ALL (PD7)
+
+- DB9-2 (Sonicator 2):
+  - Pin 1 → OVERLOAD_2 (PD5)
+  - Pin 2 → RESET_2 (PC5)
+  - Pin 3 → FREQ_LOCK_2 (PB6)
+  - Pin 4 → FREQ_DIV10_2 (PB2)
+  - Pin 5 → POWER_SENSE_2 (PA5)
+  - Pin 7 → START_2 (PC4)
+  - Pin 8 → AMPLITUDE_ALL (PD7)
+
+- DB9-3 (Sonicator 3):
+  - Pin 1 → OVERLOAD_3 (PD4)
+  - Pin 2 → RESET_3 (PC3)
+  - Pin 3 → FREQ_LOCK_3 (PB5)
+  - Pin 4 → FREQ_DIV10_3 (PB1)
+  - Pin 5 → POWER_SENSE_3 (PA6)
+  - Pin 7 → START_3 (PC2)
+  - Pin 8 → AMPLITUDE_ALL (PD7)
+
+- DB9-4 (Sonicator 4):
+  - Pin 1 → OVERLOAD_4 (PD3)
+  - Pin 2 → RESET_4 (PC1)
+  - Pin 3 → FREQ_LOCK_4 (PB4)
+  - Pin 4 → FREQ_DIV10_4 (PB0)
+  - Pin 5 → POWER_SENSE_4 (PA7)
+  - Pin 7 → START_4 (PC0)
+  - Pin 8 → AMPLITUDE_ALL (PD7)
+
+Notes:
+- The Arduino Test Wrapper is used only in HIL/testing to simulate/observe these DB9 signals.
+- `config/hardware-config.yaml` is the authoritative source of truth for these mappings.
+
 ## Quick Start
 
 ### Hardware Requirements

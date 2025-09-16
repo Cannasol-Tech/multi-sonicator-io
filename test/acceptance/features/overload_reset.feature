@@ -1,3 +1,4 @@
+@requirement_FR4 @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC5
 Feature: Overload detection and reset per unit
   As an operator I can see overload per unit and clear it safely.
 

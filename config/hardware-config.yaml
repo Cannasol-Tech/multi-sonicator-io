@@ -322,6 +322,13 @@ db9_connectors:
       8: { signal: "UART_RXD", dut_pin: "PD0" }
       9: { signal: "UART_TXD", dut_pin: "PD1" }
 
+  DB9-5:
+    description: "CT-IAS-001 Main Automation Box (MODBUS RTU)"
+    note: "Panel-alternate connector for MODBUS; mirrors DB9-0 pinout"
+    pins:
+      8: { signal: "UART_RXD", dut_pin: "PD0" }
+      9: { signal: "UART_TXD", dut_pin: "PD1" }
+
   DB9-1:
     description: "Sonicator 1 interface"
     pins:

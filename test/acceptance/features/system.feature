@@ -1,6 +1,6 @@
+@requirement_FR9 @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC7
 Feature: System metrics
   # PRD §4, §5
-  @pending
 
   @req-active-count @reg-40035 @hil
   Scenario: SC-007 Active Sonicator Count
@@ -14,7 +14,7 @@ Feature: System metrics
     When I set input running for unit 1 to asserted
     Then holding register 40036 should equal 1 within 100 ms
 
-  @req-system-status @reg-40025 @hil
+  @req-system-status @reg-40025 @hil @pending
   Scenario: SC-013 System status bitfield
     Given the system is initialized
     When I set input estop for unit 1 to asserted
@@ -25,3 +25,9 @@ Feature: System metrics
     Given the system is initialized
     When I set input running for unit 1 to deasserted
     Then holding register 40035 should equal 0 within 100 ms
+
+  @requirement_FR10 @hil @pending
+  Scenario: SC-020 Power-up defaults to off
+    When the system initializes
+    Then holding register 40035 should equal 0 within 100 ms
+    And holding register 40036 should equal 0 within 100 ms

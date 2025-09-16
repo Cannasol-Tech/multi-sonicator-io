@@ -1,3 +1,4 @@
+@requirement_FR3 @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC5
 Feature: Amplitude control (common)
   As an operator I can set amplitude within range and see it reflected on hardware.
 

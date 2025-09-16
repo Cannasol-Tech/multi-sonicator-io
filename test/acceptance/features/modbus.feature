@@ -1,3 +1,4 @@
+@requirement_FR8 @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC6
 Feature: MODBUS protocol behaviors
   # PRD §10
   @pending
