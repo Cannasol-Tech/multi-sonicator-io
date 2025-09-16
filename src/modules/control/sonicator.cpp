@@ -205,10 +205,25 @@ void SonicatorInterface::readHardwareInputs() {
     state_.overload_active = halGpioReadSafe(pins_.overload_pin);
     state_.frequency_locked = halGpioReadSafe(pins_.freq_lock_pin);
 
+    // Read power from ADC
     uint16_t adc_value = halAdcReadSafe(pins_.power_sense_channel);
     state_.power_watts = (float)(adc_value * 2000) / 1023.0f;
 
-    state_.frequency_hz = state_.frequency_locked ? 20000 : 0;
+    // Read frequency using ISR-based edge counting
+    uint8_t freq_channel = pins_.sonicator_id - 1; // Convert to 0-3 range
+    state_.frequency_hz = frequency_calculate(freq_channel);
+    
+    // Update frequency lock status based on measured frequency
+    if (state_.frequency_hz >= 18000 && state_.frequency_hz <= 22000) {
+        // Frequency is within CT2000 operating range
+        state_.frequency_locked = true;
+    } else if (state_.frequency_hz == 0) {
+        // No valid measurement, use hardware frequency lock pin
+        state_.frequency_locked = halGpioReadSafe(pins_.freq_lock_pin);
+    } else {
+        // Frequency out of range - indicates problem
+        state_.frequency_locked = false;
+    }
 }
 
 sonicator_fault_t SonicatorInterface::checkFaultConditions() {

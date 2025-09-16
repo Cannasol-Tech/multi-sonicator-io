@@ -52,6 +52,8 @@ User Stories (planning checklist — creation of story docs)
 Execution Tasks (TDD-first)
 - [ ] Define register map tables for control/telemetry (`include/register_map.h`)
 - [ ] Implement HAL modules (GPIO, ADC, PWM, UART) with unit tests
+- [ ] **CRITICAL**: Implement frequency counting HAL module using Pin Change Interrupts for PB0-PB3 (FREQ_DIV10_# pins)
+- [ ] Replace existing frequency measurement (currently assumes frequency-to-voltage converter) with edge counting
 - [ ] Implement MODBUS slave handlers with boundary and negative tests
 - [ ] Implement single sonicator control (start/stop/amplitude) with HIL tests
 
@@ -60,6 +62,8 @@ Execution Tasks (TDD-first)
 ## Notes & Assumptions
 
 - Scope temporarily constrained to S4-only simulation/wrapper mapping per `docs/planning/pin-matrix.md` and `config/hardware-config.yaml`.
+- **FREQUENCY INPUT CLARIFICATION**: There is NO frequency-to-voltage converter hardware. Frequency measurement requires counting rising edges on FREQ_DIV10_# pins (PB0-PB3) using ISR or polling approach.
+- **PRIMARY FREQUENCY METHOD**: Pin Change Interrupts (ISR) recommended for real-time edge counting on all 4 frequency input pins.
 - QA Gates exist under `docs/qa/gates/` and should be extended for any newly added stories.
 
 ## Tracking
@@ -96,6 +100,7 @@ User Stories (planning checklist — creation of story docs)
 
 Execution Tasks (TDD-first)
 - [ ] Write unit tests for `SonicatorUnit` (start/stop, amplitude bounds, safety)
+- [ ] **CRITICAL**: Update frequency measurement in `SonicatorInterface` to use edge counting instead of frequency-to-voltage conversion
 - [ ] Implement per-unit MODBUS handlers with boundary/negative tests
 - [ ] Add HIL tests for S4-first control per current scope (see `docs/planning/pin-matrix.md`)
 - [ ] Validate response times <100ms in integration tests; log artifacts under `test/data/results/`

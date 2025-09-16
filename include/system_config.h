@@ -187,25 +187,31 @@
 /** @} */
 
 /**
- * @defgroup Frequency Input Pin
- * @brief Configuration for LM2907 frequency-to-voltage converter (Sonicator 4)
- * @details Converts CT2000 frequency output to 0-5V analog signal for ADC measurement
+ * @defgroup FrequencyMeasurement Frequency Input Pin Configuration
+ * @brief Configuration for direct frequency counting on FREQ_DIV10_# pins
+ * @details Counts rising edges on CT2000 frequency output (÷10) to measure actual frequency
  * @{
  */
 
-/** @brief LM2907 frequency-to-voltage converter configuration */
-#define LM2907_FREQ_INPUT_PIN     A0   //< PA0 (Physical pin 40) - ADC0
-#define LM2907_FREQ_MIN_VOLTAGE   0.0  //< Minimum voltage (0Hz)
-#define LM2907_FREQ_MAX_VOLTAGE   5.0  //< Maximum voltage (2500Hz)
-#define LM2907_FREQ_SCALE_FACTOR  500  //< Hz per volt (2500Hz / 5V)
+/** @brief Frequency measurement pin assignments */
+#define FREQ_COUNT_PIN_1          4    //< PB3 (Physical pin 4)  - FREQ_DIV10_1
+#define FREQ_COUNT_PIN_2          3    //< PB2 (Physical pin 3)  - FREQ_DIV10_2
+#define FREQ_COUNT_PIN_3          2    //< PB1 (Physical pin 2)  - FREQ_DIV10_3
+#define FREQ_COUNT_PIN_4          1    //< PB0 (Physical pin 1)  - FREQ_DIV10_4
 
 /**
- * @brief LM2907 Scaling Configuration
+ * @brief Frequency Measurement Configuration
  * - Input: 1.9-2.1 kHz (CT2000 frequency ÷ 10)
- * - Output: 1.9-2.1V (at 1V/kHz scaling)
- * - ADC Reading: 389-430 counts (at 5V reference)
- * - Frequency Resolution: ~5Hz per ADC count
+ * - Method: Pin Change Interrupt edge counting
+ * - Measurement Window: 1 second typical
+ * - Output: Calculated frequency * 10 = actual sonicator frequency
+ * - Expected Range: 19-21 kHz actual frequency
  */
+#define FREQ_MEASUREMENT_WINDOW_MS    1000     // 1 second measurement window
+#define FREQ_MIN_EDGES                10       // Minimum edges for valid measurement
+#define FREQ_EXPECTED_MIN             1900     // Minimum expected input frequency (Hz)
+#define FREQ_EXPECTED_MAX             2100     // Maximum expected input frequency (Hz)
+#define FREQ_HARDWARE_DIVIDER         10       // CT2000 hardware divides by 10
 /** @} */
 
 // ============================================================================
