@@ -12,7 +12,7 @@
 static multi_status_t g_multi = {
     MASTER_STATE_IDLE,
     0u,
-    { SONICATOR_STATE_STOPPED, SONICATOR_STATE_STOPPED, SONICATOR_STATE_STOPPED, SONICATOR_STATE_STOPPED },
+    { SONICATOR_STATE_IDLE, SONICATOR_STATE_IDLE, SONICATOR_STATE_IDLE, SONICATOR_STATE_IDLE },
     0u,
     0u
 };
@@ -34,7 +34,7 @@ bool multi_sonicator_begin(void) {
     g_multi.active_mask = 0u;
     g_multi.fault_code = 0u;
     for (int i = 0; i < 4; ++i) {
-        g_multi.unit_state[i] = SONICATOR_STATE_STOPPED;
+        g_multi.unit_state[i] = SONICATOR_STATE_IDLE;
     }
     g_multi.last_transition_time_ms = 0u;
     g_start_inhibit_mask = 0u;
@@ -115,7 +115,7 @@ bool multi_sonicator_request_unit_start(uint8_t unit_index) {
     sonicator_state_t st = g_multi.unit_state[unit_index];
     switch (st) {
         case SONICATOR_STATE_STOPPING:
-        case SONICATOR_STATE_STOPPED:
+        case SONICATOR_STATE_IDLE:
             g_multi.unit_state[unit_index] = SONICATOR_STATE_STARTING;
             g_multi.active_mask = (uint8_t)(g_multi.active_mask | (1u << unit_index));
             g_multi.last_transition_time_ms++;
@@ -148,7 +148,7 @@ bool multi_sonicator_request_unit_stop(uint8_t unit_index) {
             g_multi.last_transition_time_ms++;
             return true;
         case SONICATOR_STATE_STOPPING:
-        case SONICATOR_STATE_STOPPED:
+        case SONICATOR_STATE_IDLE:
             return true; // idempotent
         case SONICATOR_STATE_OVERLOAD:
         case SONICATOR_STATE_FAULT:
@@ -202,7 +202,7 @@ master_state_t multi_sonicator_update(void) {
     // Emergency stop dominates normal progress
     if (g_multi.master_state == MASTER_STATE_EMERGENCY_STOP) {
         for (int i = 0; i < 4; ++i) {
-            g_multi.unit_state[i] = SONICATOR_STATE_STOPPED;
+            g_multi.unit_state[i] = SONICATOR_STATE_IDLE;
         }
         return g_multi.master_state;
     }
@@ -230,7 +230,7 @@ master_state_t multi_sonicator_update(void) {
                 }
             }
         } else if (g_multi.unit_state[i] == SONICATOR_STATE_STOPPING) {
-            g_multi.unit_state[i] = SONICATOR_STATE_STOPPED;
+            g_multi.unit_state[i] = SONICATOR_STATE_IDLE;
             new_mask = (uint8_t)(new_mask & (uint8_t)~(1u << i));
         } else if (g_multi.unit_state[i] == SONICATOR_STATE_RUNNING) {
             any_running = true;

@@ -1,5 +1,5 @@
 @pending @hil @story-4-1 @epic-4 @state-management
-@requirement_FR1 @requirement_FR9 @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC5
+@story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC5
 Feature: Multi-Unit State Management (Story 4.1)
   As a Control Systems Engineer
   I want coordinated state machines for up to 4 units

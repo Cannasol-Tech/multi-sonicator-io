@@ -74,7 +74,8 @@ void loop() {
                     flags &= (uint16_t)~SON_STATUS_RUNNING;
                 }
                 // FAULT indication for non-running error states (FAULT/OVERLOAD)
-                bool error_state = (m->unit_state[i] == SONICATOR_STATE_FAULT) || (m->unit_state[i] == SONICATOR_STATE_OVERLOAD);
+                bool error_state = ((int)m->unit_state[i] == (int)SONICATOR_STATE_FAULT) ||
+                                 ((int)m->unit_state[i] == (int)SONICATOR_STATE_OVERLOAD);
                 if (error_state) {
                     flags |= SON_STATUS_FAULT;
                 } else {

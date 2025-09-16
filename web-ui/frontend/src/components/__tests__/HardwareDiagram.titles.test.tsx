@@ -18,6 +18,7 @@ vi.mock('../../services/testAutomationApi', () => ({
 
 const mockHardwareState: HardwareState = {
   connection: { connected: true },
+  lastUpdate: Date.now(),
   pins: {
     'FREQ_DIV10_4': { pin: 'FREQ_DIV10_4', signal: 'FREQ_DIV10_4', direction: 'IN', state: 'LOW', timestamp: Date.now() },
     'FREQ_LOCK_4': { pin: 'FREQ_LOCK_4', signal: 'FREQ_LOCK_4', direction: 'IN', state: 'HIGH', timestamp: Date.now() },

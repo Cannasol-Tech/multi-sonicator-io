@@ -17,6 +17,10 @@
 #include <Arduino.h>
 #include "config.h"
 
+// Include the proper header files to avoid redeclaration conflicts
+#include "sonicator_control.h"
+#include "modules/hal/hal.h"
+
 // ============================================================================
 // FORWARD DECLARATIONS
 // ============================================================================
@@ -29,19 +33,6 @@ class DiagnosticsSystem;
 // ============================================================================
 // ENUMERATION TYPES
 // ============================================================================
-
-/**
- * @brief Sonicator operating states
- */
-typedef enum {
-    SONICATOR_STATE_STOPPED = 0,
-    SONICATOR_STATE_STARTING = 1,
-    SONICATOR_STATE_RUNNING = 2,
-    SONICATOR_STATE_STOPPING = 3,
-    SONICATOR_STATE_OVERLOAD = 4,
-    SONICATOR_STATE_FAULT = 5,
-    SONICATOR_STATE_UNKNOWN = 6
-} sonicator_state_t;
 
 /**
  * @brief System operating modes
@@ -80,42 +71,6 @@ typedef enum {
 // ============================================================================
 // STRUCTURE DEFINITIONS
 // ============================================================================
-
-/**
- * @brief Complete status information for a single sonicator
- * 
- * This structure contains all monitoring and control state
- * information for one CT2000 sonicator unit.
- */
-typedef struct {
-    // Control parameters
-    uint8_t amplitude_setpoint;          //< Commanded amplitude (20-100%)
-    bool start_command;                  //< Start/stop command state
-    bool reset_command;                  //< Overload reset command (pulsed)
-    
-    // Measured parameters  
-    uint16_t actual_frequency_hz;        //< Measured frequency (Hz)
-    uint16_t actual_power_watts;         //< Measured power output (W)
-    
-    // Status flags
-    sonicator_state_t state;             //< Current operating state
-    bool is_running;                     //< Sonics active flag
-    bool is_overloaded;                  //< Overload condition flag
-    bool is_frequency_locked;            //< Frequency lock status flag
-    bool communication_ok;               //< Interface communication status
-    
-    // Statistics and counters
-    uint32_t total_runtime_seconds;      //< Accumulated runtime
-    uint32_t overload_count;             //< Number of overload events
-    uint32_t start_count;                //< Number of start cycles
-    uint32_t last_start_timestamp;       //< Timestamp of last start
-    uint32_t last_overload_timestamp;    //< Timestamp of last overload
-    
-    // Hardware interface state
-    uint8_t sonicator_id;                //< Sonicator number (1-4)
-    bool interface_enabled;              //< Interface enable flag
-    error_code_t last_error;             //< Most recent error code
-} sonicator_status_t;
 
 /**
  * @brief System-wide status and health information

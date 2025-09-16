@@ -10,7 +10,7 @@ import json
 import os
 import re
 from dataclasses import dataclass, field
-from typing import Dict, List, Set
+from typing import Dict, List, Set, Tuple
 
 
 PRD_FUNCTIONAL_REQUIREMENTS: Dict[str, str] = {
@@ -35,7 +35,9 @@ RE_AC = re.compile(r"@story_0_3_AC(\d+)\b")
 @dataclass
 class Coverage:
     found: Dict[str, List[str]] = field(default_factory=dict)
-    pending: Set[str] = field(default_factory=set)
+    # Track per-FR whether any non-pending or pending tags were seen
+    fr_pending_seen: Dict[str, bool] = field(default_factory=dict)
+    fr_nonpending_seen: Dict[str, bool] = field(default_factory=dict)
     ac_found: Dict[str, List[str]] = field(default_factory=dict)
     ac_pending: Set[str] = field(default_factory=set)
 
@@ -43,8 +45,11 @@ class Coverage:
         self.found.setdefault(fr, [])
         if path not in self.found[fr]:
             self.found[fr].append(path)
+        # Update pending/non-pending seen flags
         if is_pending:
-            self.pending.add(fr)
+            self.fr_pending_seen[fr] = True
+        else:
+            self.fr_nonpending_seen[fr] = True
 
     def add_ac(self, ac: str, path: str, is_pending: bool):
         self.ac_found.setdefault(ac, [])
@@ -61,20 +66,53 @@ def scan_feature_tags(features_dir: str) -> Coverage:
             if not name.endswith(".feature"):
                 continue
             path = os.path.join(root, name)
+            rel = os.path.relpath(path)
             try:
                 with open(path, "r", encoding="utf-8") as f:
-                    content = f.read()
+                    lines = f.readlines()
             except Exception:
                 continue
-            is_pending = "@pending" in content
-            for m in RE_TAG.finditer(content):
-                fr_num = m.group(1)
-                fr = f"FR{fr_num}"
-                cov.add(fr, os.path.relpath(path), is_pending)
-            for m in RE_AC.finditer(content):
-                ac_num = m.group(1)
-                ac = f"AC{ac_num}"
-                cov.add_ac(ac, os.path.relpath(path), is_pending)
+
+            feature_fr_tags: Set[str] = set()
+            any_scenario_nonpending = False
+
+            # First pass: collect feature-level FR tags (before first Scenario)
+            for line in lines:
+                s = line.strip()
+                if s.lower().startswith("feature:"):
+                    break
+                for m in RE_TAG.finditer(s):
+                    feature_fr_tags.add(f"FR{m.group(1)}")
+
+            # Second pass: scenarios with their own tags and pending flags
+            current_tags: Set[str] = set()
+            next_pending = False
+            for line in lines:
+                s = line.strip()
+                if s.startswith("@"):
+                    # Collect tags for the upcoming scenario
+                    if "@pending" in s:
+                        next_pending = True
+                    for m in RE_TAG.finditer(s):
+                        current_tags.add(f"FR{m.group(1)}")
+                    for m in RE_AC.finditer(s):
+                        ac = f"AC{m.group(1)}"
+                        cov.add_ac(ac, rel, next_pending)
+                elif s.lower().startswith("scenario"):
+                    # Assign collected tags to this scenario
+                    if current_tags:
+                        for fr in current_tags:
+                            cov.add(fr, rel, next_pending)
+                            if not next_pending:
+                                any_scenario_nonpending = True
+                    # reset for next scenario
+                    current_tags = set()
+                    next_pending = False
+
+            # Apply feature-level tags: mark as non-pending if any scenario is non-pending
+            for fr in feature_fr_tags:
+                cov.add(fr, rel, not any_scenario_nonpending)
+
     return cov
 
 
@@ -89,10 +127,14 @@ def to_markdown(cov: Coverage) -> str:
         "| FR | Description | Tagged In | Pending? |",
         "|----|-------------|-----------|----------|",
     ]
+    # Determine pending set from seen flags
+    pending_set = {
+        fr for fr in all_frs if cov.fr_pending_seen.get(fr, False) and not cov.fr_nonpending_seen.get(fr, False)
+    }
     for fr in all_frs:
         desc = PRD_FUNCTIONAL_REQUIREMENTS[fr]
         files = cov.found.get(fr, [])
-        pending = (fr in cov.pending)
+        pending = (fr in pending_set)
         files_str = "<none>" if not files else "<br/>".join(files)
         lines.append(f"| {fr} | {desc} | {files_str} | {'yes' if pending else 'no'} |")
     return "\n".join(lines) + "\n"
@@ -104,10 +146,16 @@ def write_reports(cov: Coverage, out_dir_md: str = "final", junit_dir_json: str 
     md = to_markdown(cov)
     with open(os.path.join(out_dir_md, "requirements-coverage.md"), "w", encoding="utf-8") as f:
         f.write(md)
+    # Determine FRs that are still pending (no non-pending occurrences seen)
+    pending_frs = [
+        fr for fr in PRD_FUNCTIONAL_REQUIREMENTS.keys()
+        if cov.fr_pending_seen.get(fr, False) and not cov.fr_nonpending_seen.get(fr, False)
+    ]
+
     payload = {
         "requirements": PRD_FUNCTIONAL_REQUIREMENTS,
         "coverage": cov.found,
-        "pending": sorted(list(cov.pending)),
+        "pending": sorted(pending_frs),
     }
     with open(os.path.join(junit_dir_json, "requirements_coverage.json"), "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2)

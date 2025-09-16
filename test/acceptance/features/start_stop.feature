@@ -1,4 +1,4 @@
-@requirement_FR2 @requirement_FR9 @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC5
+@story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC5
 Feature: Start and stop a single sonicator
   As an operator I can start/stop any unit and see status reflected promptly.
 
@@ -6,7 +6,7 @@ Feature: Start and stop a single sonicator
     Given the HIL wrapper is connected and ready
     And the DUT is powered and at safe defaults
 
-  @smoke @us-001
+  @smoke @us-001 @requirement_FR2 @requirement_FR9
   Scenario Outline: Start/Stop reflects in status and system count/mask within 100 ms
     When I write <cmd> to holding register <addr>
     Then within 100 ms the status flag bit0 for unit <unit> equals <expected>

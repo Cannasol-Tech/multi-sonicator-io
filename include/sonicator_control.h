@@ -46,6 +46,7 @@ typedef enum {
     SONICATOR_STATE_STARTING,       //< Start sequence in progress (50ms)
     SONICATOR_STATE_RUNNING,        //< Sonicator operating normally
     SONICATOR_STATE_STOPPING,      //< Stop sequence in progress (100ms)
+    SONICATOR_STATE_OVERLOAD,      //< Overload condition detected
     SONICATOR_STATE_FAULT,          //< Fault condition detected
     SONICATOR_STATE_UNKNOWN         //< State unknown (initialization)
 } sonicator_state_t;

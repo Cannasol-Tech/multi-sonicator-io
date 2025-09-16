@@ -241,6 +241,14 @@ except ValidationError as e:
 
 ## Testing Standards
 
+- All tests should be run solely by make targets as defined in the Company's Software Testing Standards!
+- Follow testing guidance in `docs/sop/sw-testing.md`
+- Enforce coverage thresholds as defined in canonical standards
+- For conflicts between testing standards, prefer `docs/sop/` and report deltas
+- **Verification Requirement**: For every code change, add/update tests until behavior is verified
+- Prefer fast, deterministic tests
+- Provide test plans and execution commands
+
 ### Test Organization
 
 - Mirror source code structure in test directories
@@ -360,12 +368,16 @@ This document is living and should be updated as the project evolves. Suggestion
 
 ## Definition of Done
 
-- All code must be fully tested and passing all tests before being marked complete. 
-- All code must be peer reviewed and approved by me before being marked complete. 
-- All code must be documented with doxygen (or similar) comments before being marked complete.
-- All code must be committed and pushed to the remote repository before being marked complete.
-- Test Coverage >85% and tests passing 100% 
-- Test must be 100% passing 
+- Unit Tests must be completed for all newly implemented features
+- Unit Test Coverage must be ≥85% statement coverage (per SOP)
+- Unit Test Coverage must be neatly displayed in the test report after running make test-unit
+- The test report must follow the standards listed in `docs/sop/sw-testing.md` and `docs/sop/release-format.md`
+- The feature must be verified through Acceptance BDD Tests with scenarios that are neatly mapped to PRD Requirements.
+- The Acceptance BDD Tests must be run through the make target: make test-acceptance
+- The Acceptance BDD Test Report must follow the standards listed in `docs/sop/sw-testing.md` and `docs/sop/release-format.md`
+- The new functionality must be triple-checked for any code duplication or integration issues with existing systems.
+- Regression: All previously written tests should pass after the new functionality is implemented.
+- Previously written tests that are failing after the new feature has been implemented should be elevated to Project Management's attention by creating a file in the repository called `REGRESSION-ISSUES.md` which should clearly outline which tests are now failing and why they are failing.  The file should also outline potential solutions to fix the issues with pro's and cons for each solution clearly listed.
 
 ## General Architecture & Style 
 

@@ -1,4 +1,4 @@
-@requirement_FR3 @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC5
+@story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC5
 Feature: Amplitude control (common)
   As an operator I can set amplitude within range and see it reflected on hardware.
 
@@ -6,7 +6,7 @@ Feature: Amplitude control (common)
     Given the HIL wrapper is connected and ready
     And the DUT is powered and at safe defaults
 
-  @us-003
+  @us-003 @requirement_FR3
   Scenario Outline: Set amplitude within range for Sonicator 4 and verify mapping
     When I write <value> to holding register <addr>
     Then within 100 ms the amplitude output maps to <value> percent within tolerance 2%

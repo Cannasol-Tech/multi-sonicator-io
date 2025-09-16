@@ -1,8 +1,10 @@
 import React from 'react'
 import { render, screen, fireEvent, act, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { vi } from 'vitest'
+import { describe, expect, vi } from 'vitest'
+import '@testing-library/jest-dom'
 import ProgressBarDemo from '../ProgressBarDemo'
+import { afterEach, beforeEach, it } from 'node:test'
 
 describe('ProgressBarDemo', () => {
   beforeEach(() => {

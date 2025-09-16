@@ -1,4 +1,4 @@
-@requirement_FR6 @requirement_FR7 @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC6
+@story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC6
 Feature: Frequency measurement and lock status per unit
   As an operator I can see frequency and lock status accurately per unit.
 
@@ -6,7 +6,7 @@ Feature: Frequency measurement and lock status per unit
     Given the HIL wrapper is connected and ready
     And the DUT is powered and at safe defaults
 
-  @us-004
+  @us-004 @requirement_FR6 @requirement_FR7
   Scenario Outline: Frequency and lock reflected within 100 ms
     Given unit <unit> receives a frequency of <hz> Hz on the ÷10 input
     And unit <unit> lock input is set to <lock>
