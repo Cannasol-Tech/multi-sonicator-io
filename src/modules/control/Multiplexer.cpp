@@ -181,12 +181,12 @@ bool Multiplexer::setAmplitude(uint8_t amplitude_percent) {
             }
         }
 
-        // Directly update the HAL
-        uint8_t pwm_value = 0;
-        if (shared_amplitude_percent_ >= SONICATOR_MIN_AMPLITUDE_PERCENT) {
-            pwm_value = ((uint32_t)(shared_amplitude_percent_ - SONICATOR_MIN_AMPLITUDE_PERCENT) * 255) / (SONICATOR_MAX_AMPLITUDE_PERCENT - SONICATOR_MIN_AMPLITUDE_PERCENT);
+        // Directly update the PWM HAL using the proper amplitude control function
+        if (pwm_set_amplitude(shared_amplitude_percent_) != PWM_OK) {
+            // PWM amplitude setting failed, but continue with state machine updates
+            // Log error if logging is available
+            return false;
         }
-        pwm_set_duty_cycle(PWM_AMPLITUDE_CONTROL_PIN, pwm_value);
 
         return true;
     }
@@ -228,16 +228,11 @@ void Multiplexer::updateSharedAmplitude() {
         }
     }
 
-    uint8_t pwm_value = 0;
     if (any_running) {
-        // A simple approach: use the shared amplitude. The individual sonicator's
-        // logic will ultimately decide if it outputs power.
-        if (shared_amplitude_percent_ >= SONICATOR_MIN_AMPLITUDE_PERCENT) {
-            pwm_value = ((uint32_t)(shared_amplitude_percent_ - SONICATOR_MIN_AMPLITUDE_PERCENT) * 255) / (SONICATOR_MAX_AMPLITUDE_PERCENT - SONICATOR_MIN_AMPLITUDE_PERCENT);
-        }
+        // Use the proper PWM amplitude control function
+        pwm_set_amplitude(shared_amplitude_percent_);
+    } else {
+        // No sonicators running, set to minimum safe amplitude
+        pwm_set_amplitude(PWM_AMPLITUDE_MIN);
     }
-
-    // This assumes a HAL function exists to set the shared PWM.
-    // We need to ensure the HAL is designed for this.
-    pwm_set_duty_cycle(PWM_CHANNEL_AMPLITUDE, pwm_value);
 }
