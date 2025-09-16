@@ -177,7 +177,7 @@ const MOCK_SCENARIOS: TestScenario[] = [
 // Check if we should use mock data (when backend is not available)
 const shouldUseMockData = () => {
   // Force mock data if explicitly requested
-  if (process.env.REACT_APP_USE_MOCK_DATA === 'true') {
+  if (import.meta.env.VITE_USE_MOCK_DATA === 'true') {
     return true
   }
 

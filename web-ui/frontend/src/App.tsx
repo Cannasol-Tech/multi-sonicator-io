@@ -26,7 +26,7 @@ function App() {
   const [currentTestExecution, setCurrentTestExecution] = useState<any>(null)
   const [keyboardShortcutsEnabled, setKeyboardShortcutsEnabled] = useState(true)
 
-  const { connected, sendMessage, lastMessage } = useWebSocket('ws://localhost:3102/ws')
+  const { connected, sendMessage, lastMessage } = useWebSocket('ws://localhost:3001/ws')
   const { hardwareState, updatePinState, updateMultiplePins, setConnectionStatus } = useHardwareState()
   const { addHistoryEntry } = usePinHistory()
   const { addCommandPair } = useArduinoCommandLog({ maxEntries: 100 })
