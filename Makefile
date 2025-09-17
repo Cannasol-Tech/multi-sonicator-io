@@ -15,6 +15,7 @@
 .PHONY: validate-dod check-dod-compliance enforce-dod-gate validate-story-completion
 .PHONY: hardware-verify
 .PHONY: hardware-db9-verify
+.PHONY: test-hardware-frequency test-frequency-monitor acceptance-test-frequency
 
 #  Make Targets
 
@@ -361,6 +362,23 @@ acceptance-test-modbus: check-deps check-arduino-cli
 acceptance-test-power: check-deps check-arduino-cli
 	@echo "⚡ Running acceptance power verification tests..."
 	PYTHONPATH=. $(PYTHON_VENV) -m behave test/acceptance/features/hil_power_verification.feature -D profile=hil
+
+acceptance-test-frequency: check-deps check-arduino-cli
+	@echo "📡 Running acceptance frequency verification tests..."
+	PYTHONPATH=. $(PYTHON_VENV) -m behave test/acceptance/features/hardware_frequency_verification.feature -D profile=hil
+
+# Hardware frequency verification with actual ATmega32A
+test-hardware-frequency: check-deps check-arduino-cli
+	@echo "🎯 Running comprehensive hardware frequency verification..."
+	@echo "Testing complete frequency pipeline: HIL → Arduino D7 → ATmega32A → MODBUS register 40370"
+	$(PYTHON_VENV) scripts/test_hardware_frequency_verification.py
+
+# MODBUS frequency register monitoring tool
+test-frequency-monitor: check-deps
+	@echo "📊 Starting MODBUS frequency register monitor..."
+	@echo "Monitor MODBUS register 40370 (REG_SON4_FREQ_DIV10_HZ) in real-time"
+	@echo "Press Ctrl+C to stop monitoring"
+	$(PYTHON_VENV) scripts/frequency_modbus_monitor.py
 
 # Soft acceptance run: do not hard-fail when hardware is absent; hil-tagged scenarios auto-skip
 .PHONY: test-acceptance-soft
