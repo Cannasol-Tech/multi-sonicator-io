@@ -28,6 +28,7 @@ public:
     // GPIO IMPLEMENTATION
     // ============================================================================
 
+    // Map ATMega32A pins to Arduino pins
     static bool gpioInit() {
         // Initialize all pins used in the system
         // Map ATMega32A pins to Arduino pins

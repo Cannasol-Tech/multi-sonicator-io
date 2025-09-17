@@ -22,7 +22,7 @@
 #define DEFAULT_SONICATOR_AMPLITUDE 80
 
 // Global Multiplexer instance
-Multiplexer multiplexer;
+SonicMultiplexer multiplexer(4);
 
 // Forward declaration
 static void update_modbus_registers();

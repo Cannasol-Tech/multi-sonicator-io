@@ -35,11 +35,8 @@
  * - Safety monitoring with response time faster than MODBUS protocol requirements
  * - Runtime statistics and fault logging
  */
-
- 
-
 class SonicatorInterface {
-//@brief Basie Sonicator Interface Class
+//@brief Base Sonicator Interface Class
 
 private:
     // Hardware configuration

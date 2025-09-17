@@ -20,14 +20,16 @@
 
 /**
  * @brief Real ATmega32A GPIO implementation
+ * 
+ * Provides real hardware implementation for GPIO operations.
  */
 class HardwareGpioPort : public IGpioPort {
 public:
     bool init(void) override;
+    bool togglePin(uint8_t pin) override;
+    uint8_t digitalRead(uint8_t pin) override;
     bool setPinMode(uint8_t pin, uint8_t mode) override;
     bool digitalWrite(uint8_t pin, uint8_t value) override;
-    uint8_t digitalRead(uint8_t pin) override;
-    bool togglePin(uint8_t pin) override;
     
     bool sonicatorStart(uint8_t sonicator_id) override;
     bool sonicatorStop(uint8_t sonicator_id) override;

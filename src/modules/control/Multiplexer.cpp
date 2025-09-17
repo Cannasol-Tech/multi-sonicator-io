@@ -58,7 +58,7 @@ Sonicator 4 - Verified by Product Owner
 */
 
 
-Multiplexer::Multiplexer() : shared_amplitude_percent_(SONICATOR_MIN_AMPLITUDE_PERCENT) {
+SonicMultiplexer::Multiplexer() : shared_amplitude_percent_(SONICATOR_MIN_AMPLITUDE_PERCENT) {
     // Pin configurations for each sonicator, from system_config.h
     static soncicator
     };

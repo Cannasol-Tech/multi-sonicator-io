@@ -9,10 +9,19 @@ test/acceptance/features/hil_signal_testing.feature,Signal generation edge cases
 test/acceptance/features/control.feature,SC-001 Amplitude control per unit,,,pending,@pending @pending @req-amplitude @prd-5-functional @prd-10-api @reg-40001-40004 @hil @pending @req-startstop @prd-5-functional @prd-10-api @reg-40005-40008 @hil
 test/acceptance/features/control.feature,SC-002 Start/Stop per unit,,,pending,@pending @req-overload-reset @prd-5-functional @prd-10-api @reg-40009-40012 @hil
 test/acceptance/features/control.feature,SC-003 Overload Reset pulse semantics,,,pending,@pending @req-amplitude-clamp @prd-6-nfr @reg-40001-40004 @hil
+test/acceptance/features/hil_db9_continuity.feature,START_4 control toggles via MODBUS reflects on DB9-4 START_4,,S04-AC2,ready,@hil @hardware @trace:S04-AC2 @trace:S04-AC6 @hil @hardware @trace:S04-AC2 @trace:S04-AC6
+test/acceptance/features/hil_db9_continuity.feature,Simulated OVERLOAD and FREQ_LOCK reflect on inputs,,S04-AC6,ready,@hil @hardware @trace:S04-AC6
+test/acceptance/features/hil_db9_continuity.feature,POWER_SENSE_4 ADC range sanity,,S04-AC2,ready,@hil @hardware @trace:S04-AC2 @trace:S04-AC6
+test/acceptance/features/hil_db9_continuity.feature,All connected channels — START control toggles via MODBUS,,S04-AC2,ready,@hil @hardware @trace:S04-AC2
+test/acceptance/features/hil_db9_continuity.feature,All connected channels — OVERLOAD and FREQ_LOCK reflect on inputs,,S04-AC6,ready,@hil @hardware @trace:S04-AC6
+test/acceptance/features/hil_db9_continuity.feature,All connected channels — POWER_SENSE ADC range sanity,,S04-AC2,ready,@hil @hardware @trace:S04-AC2
+test/acceptance/features/hil_db9_continuity.feature,All connected channels — RESET pulses via MODBUS command,,S04-AC2,ready,@hil @hardware @trace:S04-AC2
+test/acceptance/features/hil_db9_continuity.feature,All connected channels — AMPLITUDE setpoints are writable/readable,,S04-AC2,ready,@hil @hardware @trace:S04-AC2
+test/acceptance/features/hil_db9_continuity.feature,All connected channels — MODBUS status flags reflect simulated inputs,,,ready,
 test/acceptance/features/ci.feature,SC-025 CI drift check: PRD vs include/system_config.h,,,ready,@req-ci-drift @prd-17-risk @hil
 test/acceptance/features/hal.feature,HAL basic acceptance,,,pending,@hal @implemented @pending
 test/acceptance/features/hal.feature,HAL advanced acceptance (pending implementation),,,ready,
-test/acceptance/features/modbus_conformance.feature,MODBUS protocol conformance (FC03/FC06/FC16 basics),modbus-rtu-conformance,modbus-interface,pending,@modbus @documentation @trace:modbus-interface @requirement_FR8 @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC6 @pending @hil @TODO:modbus-rtu-conformance @trace:modbus-conformance @pending @hil @TODO:modbus-performance @trace:modbus-performance
+test/acceptance/features/modbus_conformance.feature,MODBUS protocol conformance (FC03/FC06/FC16 basics),modbus-rtu-conformance,modbus-interface,pending,@modbus @documentation @trace:modbus-interface @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC6 @pending @hil @TODO:modbus-rtu-conformance @trace:modbus-conformance @pending @hil @TODO:modbus-performance @trace:modbus-performance
 test/acceptance/features/modbus_conformance.feature,Communication performance under load,modbus-error-handling,modbus-errors,pending,@pending @hil @TODO:modbus-error-handling @trace:modbus-errors
 test/acceptance/features/modbus_conformance.feature,Illegal address and CRC error handling,modbus-legacy-addressing,modbus-legacy,pending,@pending @hil @TODO:modbus-legacy-addressing @trace:modbus-legacy
 test/acceptance/features/modbus_conformance.feature,Legacy 4xxxx addressing examples for HMI,,,ready,
@@ -46,7 +55,7 @@ test/acceptance/features/hil_hardware_setup.feature,AC3 - ISP programming interf
 test/acceptance/features/hil_hardware_setup.feature,Power supply validation and ISP functionality,,,ready,@hil @ac1 @ac2 @ac3 @integration
 test/acceptance/features/hil_hardware_setup.feature,Complete hardware setup integration test,,,ready,
 test/acceptance/features/communication.feature,Communication basic acceptance,,,ready,@communication @implemented
-test/acceptance/features/amplitude_control.feature,Reject out-of-range amplitude for Sonicator 4,,,ready,@requirement_FR3 @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC5 @us-003 @us-003 @invalid
+test/acceptance/features/amplitude_control.feature,Reject out-of-range amplitude for Sonicator 4,,,ready,@story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC5 @us-003 @requirement_FR3 @us-003 @invalid
 test/acceptance/features/hil_automated_testing.feature,AC6 - Automated test execution with hardware validation,,,ready,@hil @automated_testing @hil @ac6 @automated_execution @hil @ac6 @hardware_validation
 test/acceptance/features/hil_automated_testing.feature,Hardware validation during automated testing,,,ready,@hil @ac7 @result_collection
 test/acceptance/features/hil_automated_testing.feature,AC7 - Test result collection and reporting from physical hardware,,,ready,@hil @ac7 @comprehensive_reporting
@@ -55,11 +64,11 @@ test/acceptance/features/hil_automated_testing.feature,Automated test scheduling
 test/acceptance/features/hil_automated_testing.feature,Parallel test execution capabilities,,,ready,@hil @ac7 @real_time_monitoring
 test/acceptance/features/hil_automated_testing.feature,Real-time test monitoring and data collection,,,ready,@hil @ac6 @ac7 @regression_testing
 test/acceptance/features/hil_automated_testing.feature,Automated regression testing with historical comparison,,,ready,
-test/acceptance/features/monitoring.feature,SC-004 Power monitoring scaling,,,pending,@requirement_FR5 @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC7 @req-power @prd-10-api @reg-40013-40016 @hil @pending @req-frequency @prd-10-api @reg-40017-40020 @hil @pending
-test/acceptance/features/monitoring.feature,SC-005 Frequency monitoring,,,pending,@req-status-flags @prd-10-api @reg-40021-40024 @hil @pending
+test/acceptance/features/monitoring.feature,SC-004 Power monitoring scaling,,,ready,@story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC7 @req-power @prd-10-api @reg-40013-40016 @hil @requirement_FR5 @req-frequency @prd-10-api @reg-40017-40020 @hil
+test/acceptance/features/monitoring.feature,SC-005 Frequency monitoring,,,ready,@req-status-flags @prd-10-api @reg-40021-40024 @hil
 test/acceptance/features/monitoring.feature,SC-006 Status flags,,,pending,@req-runtimes @reg-40027-40030 @hil @pending
 test/acceptance/features/monitoring.feature,SC-015 Per-unit runtimes,,,pending,@req-overload-counts @reg-40031-40034 @hil @pending
-test/acceptance/features/monitoring.feature,SC-016 Overload counts,,,pending,@req-freq-lock @hil @pending
+test/acceptance/features/monitoring.feature,SC-016 Overload counts,,,ready,@req-freq-lock @hil
 test/acceptance/features/monitoring.feature,SC-019 Frequency lock behavior,,,ready,
 test/acceptance/features/hil_hardware_abstraction.feature,AC4 - Test wrapper communication protocol implementation,,,ready,@hil @hardware_abstraction @hil @ac4 @communication_protocol @hil @ac4 @hardware_abstraction
 test/acceptance/features/hil_hardware_abstraction.feature,Hardware abstraction for test automation,,,ready,@hil @ac4 @signal_abstraction
@@ -76,7 +85,7 @@ test/acceptance/features/hil_power_verification.feature,Power supply load regula
 test/acceptance/features/hil_power_verification.feature,Crystal oscillator verification,,,ready,@hil @hardware @power
 test/acceptance/features/hil_power_verification.feature,Power-on sequence verification,,,ready,@hil @hardware @power
 test/acceptance/features/hil_power_verification.feature,Brown-out detection verification,,,ready,
-test/acceptance/features/modbus.feature,SC-020 FC16 multiple write boundary cases,,,pending,@requirement_FR8 @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC6 @pending @req-fc16 @hil @req-illegal-address @hil
+test/acceptance/features/modbus.feature,SC-020 FC16 multiple write boundary cases,,,ready,@requirement_FR8 @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC6 @req-fc16 @hil @req-illegal-address @hil
 test/acceptance/features/modbus.feature,SC-021 Illegal address handling,,,ready,@req-slave-id @hil
 test/acceptance/features/modbus.feature,SC-022 Slave ID configuration,,,ready,@req-crc @hil
 test/acceptance/features/modbus.feature,SC-023 CRC error handling,,,ready,
@@ -163,10 +172,10 @@ test/acceptance/features/web_ui_test_automation.feature,TAU-006 Stop running tes
 test/acceptance/features/web_ui_test_automation.feature,TAU-007 View detailed test results,,,ready,@test-results @export
 test/acceptance/features/web_ui_test_automation.feature,TAU-008 Export test execution results,,,ready,
 test/acceptance/features/bdd_ac10.feature,AC10 - Requirements traceability JSON is produced,,,ready,@story_0_3_AC10
-test/acceptance/features/system.feature,SC-007 Active Sonicator Count,,,ready,@requirement_FR9 @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC7 @req-active-count @reg-40035 @hil @req-active-mask @reg-40036 @hil
+test/acceptance/features/system.feature,SC-007 Active Sonicator Count,,,ready,@story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC7 @req-active-count @reg-40035 @hil @requirement_FR9 @req-active-mask @reg-40036 @hil @requirement_FR9
 test/acceptance/features/system.feature,SC-008 Active Sonicator Mask,,,pending,@req-system-status @reg-40025 @hil @pending
-test/acceptance/features/system.feature,SC-013 System status bitfield,,,ready,@req-active-transitions @reg-40035 @reg-40036 @hil
-test/acceptance/features/system.feature,SC-017 Active transitions stability,,,pending,@requirement_FR10 @hil @pending
+test/acceptance/features/system.feature,SC-013 System status bitfield,,,ready,@req-active-transitions @reg-40035 @reg-40036 @hil @requirement_FR9
+test/acceptance/features/system.feature,SC-017 Active transitions stability,,,ready,@requirement_FR10 @hil
 test/acceptance/features/system.feature,SC-020 Power-up defaults to off,,,ready,
 test/acceptance/features/web_ui_progress_monitoring.feature,TPM-001 Display basic progress information,,,ready,@web-ui @progress-monitoring @real-time @critical @smoke @basic-progress @progress-bar @iridescent
 test/acceptance/features/web_ui_progress_monitoring.feature,TPM-002 Show iridescent progress bar animation,,,ready,@step-tracking @detailed-progress
@@ -193,7 +202,7 @@ test/acceptance/features/system_integration_complete.feature,System configuratio
 test/acceptance/features/system_integration_complete.feature,Advanced diagnostics and health monitoring,,,pending,@pending @system @integration @networking
 test/acceptance/features/system_integration_complete.feature,Multi-controller network operation,,,pending,@pending @system @integration @calibration
 test/acceptance/features/system_integration_complete.feature,Automated system calibration,,,ready,
-test/acceptance/features/multi_unit_state_management.feature,Individual state machines exist for 4 units,,S-4.1,pending,@pending @hil @story-4-1 @epic-4 @state-management @requirement_FR1 @requirement_FR9 @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC5 @ac-1 @trace:S-4.1 @ac-2 @trace:S-4.1
+test/acceptance/features/multi_unit_state_management.feature,Individual state machines exist for 4 units,,S-4.1,pending,@pending @hil @story-4-1 @epic-4 @state-management @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC5 @ac-1 @trace:S-4.1 @ac-2 @trace:S-4.1
 test/acceptance/features/multi_unit_state_management.feature,Master coordination state machine exists,,S-4.1,ready,@ac-3 @trace:S-4.1
 test/acceptance/features/multi_unit_state_management.feature,State synchronization during coordinated start,,S-4.1,ready,@ac-4 @trace:S-4.1 @safety
 test/acceptance/features/multi_unit_state_management.feature,Safe transitions and interlocks,,S-4.1,ready,@ac-5 @trace:S-4.1
@@ -258,8 +267,8 @@ test/acceptance/features/web_ui_advanced_automation.feature,TAA-012 Perform secu
 test/acceptance/features/bdd_ac9.feature,AC9 - Makefile contains acceptance test target,,,ready,@story_0_3_AC9
 test/acceptance/features/modbus_topology.feature,MODBUS connector and config alignment,,S04-AC3,ready,@hil @modbus @hardware @trace:S04-AC3 @hil @modbus @hardware @trace:S04-AC3
 test/acceptance/features/modbus_topology.feature,Establish MODBUS link on configured settings,,,ready,
-test/acceptance/features/safety.feature,SC-012 Watchdog policy is documented,,,pending,@requirement_FR11 @story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC8 @req-watchdog-docs @pending @req-estop @hil @pending
-test/acceptance/features/safety.feature,SC-014 Emergency stop register behavior,,,pending,@requirement_FR11 @pending
+test/acceptance/features/safety.feature,SC-012 Watchdog policy is documented,,,ready,@story_0_3_AC3 @story_0_3_AC4 @story_0_3_AC8 @req-watchdog-docs @requirement_FR11 @req-estop @hil @requirement_FR11
+test/acceptance/features/safety.feature,SC-014 Emergency stop register behavior,,,ready,@requirement_FR11
 test/acceptance/features/safety.feature,SC-021 Loss of communication triggers safe state,,,ready,
 test/acceptance/features/hmi_integration.feature,SC-010 HMI contract adherence (4xxxx convention),,,pending,@pending @req-hmi @hil @pending @req-hmi-addressing @hil
 test/acceptance/features/hmi_integration.feature,SC-024 HMI addressing examples,,,ready,

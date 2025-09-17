@@ -240,9 +240,9 @@
 class SonicMultiplexer {
 private:
     uint8_t sonicator_count_m;
-    uint8_t amplitude_ctrl_duty_m;    ///< The duty cycle of the amplitude control signal (20-100%)
+    uint8_t amplitude_ctrl_duty_m;    ///< Shared amplitude percentage (20-100)
 
-    sonicator_interface_t sonicators_m;
+    SonicatorInterface* sonicators_m[MAX_SONICATORS] = {nullptr};
 
 public:
     /**
@@ -262,10 +262,11 @@ public:
      * @details Properly cleans up resources and shuts down all sonicator units.
      * Ensures safe hardware state before destruction.
      */
-    ~SonicMultiplexer() { 
-        for (uint8_t i = 0; i < sonicator_count_m; i++) { 
-            sonicators_m[i].~sonicator_interface_t(); 
-        } 
+    ~SonicMultiplexer() {
+        for (uint8_t i = 0; i < sonicator_count_m && i < MAX_SONICATORS; i++) {
+            delete sonicators_m[i];
+            sonicators_m[i] = nullptr;
+        }
     }
 
     /**
