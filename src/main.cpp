@@ -12,6 +12,7 @@
 
 #include <Arduino.h>
 #include "modules/hal/hal.h"
+#include "modules/hal/pwm.h"
 #include "modules/communication/modbus.h"
 #include "modules/communication/modbus_register_manager.h"
 #include "register_map.h"
@@ -41,6 +42,11 @@ static void setup_modbus(void) {
 
 void setup() {
     (void)hal_init();
+    
+    // Enable PWM amplitude control channel
+    if (pwm_enable_channel(PWM_CHANNEL_AMPLITUDE) != PWM_OK) {
+        // PWM enable failed - could set error state or continue with limited functionality
+    }
     
     // Initialize frequency counting system
     if (!frequency_counter_init()) {
@@ -100,6 +106,18 @@ void loop() {
 static void update_modbus_registers() {
     modbus_register_map_t* map = register_manager_get_map();
     if (!map) return;
+
+    // Check for emergency stop first
+    if (register_manager_is_emergency_stop_active()) {
+        // Emergency stop activated - immediately set amplitude to minimum
+        if (pwm_emergency_stop() == PWM_OK) {
+            // Stop all sonicators
+            for (int i = 0; i < NUM_SONICATORS; ++i) {
+                multiplexer.stop(i);
+            }
+        }
+        return; // Skip normal processing during emergency stop
+    }
 
     uint16_t active_mask = 0;
     uint16_t active_count = 0;
