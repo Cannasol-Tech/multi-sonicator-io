@@ -76,6 +76,13 @@ volatile unsigned long pwm_last_change = 0;
 volatile bool pwm_measuring = false;
 float last_measured_duty_cycle = 0.0;
 
+// Frequency generation variables
+volatile unsigned long current_frequency_hz = 0;
+volatile bool frequency_generation_enabled = false;
+volatile unsigned long frequency_half_period_micros = 0;
+volatile unsigned long frequency_last_toggle_micros = 0;
+volatile bool frequency_pin_state = false;
+
 static void setSafeDefaults() {
   // Configure S4 pins (only physically implemented unit)
   pinMode(S4_PINS.OVERLOAD_IN, OUTPUT);   digitalWrite(S4_PINS.OVERLOAD_IN, LOW);
@@ -165,7 +172,8 @@ static void handleLine(String line) {
   }
 
   if (line.startsWith("SET FREQ 4 ")) {
-    // For now, just acknowledge - frequency generation would need timer setup
+    unsigned long frequency_hz = line.substring(11).toInt();
+    setFrequencyGeneration(frequency_hz);
     Serial.println("OK");
     return;
   }
@@ -204,6 +212,13 @@ static void handleLine(String line) {
     }
     Serial.print("OK POWER=");
     Serial.println(adc);
+    return;
+  }
+
+  if (line.equalsIgnoreCase("READ FREQ 4")) {
+    // Return current frequency generation setting
+    Serial.print("OK FREQ=");
+    Serial.println(current_frequency_hz);
     return;
   }
 
@@ -289,15 +304,70 @@ static void handleLine(String line) {
   Serial.println("ERR UNKNOWN_COMMAND");
 }
 
+/**
+ * Set frequency generation on FREQ_DIV10_4 pin (D7)
+ * Uses software-based frequency generation for accurate control
+ */
+void setFrequencyGeneration(unsigned long frequency_hz) {
+  current_frequency_hz = frequency_hz;
+  
+  if (frequency_hz == 0) {
+    // Disable frequency generation
+    frequency_generation_enabled = false;
+    digitalWrite(S4_PINS.FREQ_DIV10_IN, LOW);
+    return;
+  }
+  
+  // Calculate half period in microseconds for 50% duty cycle
+  frequency_half_period_micros = (1000000UL / frequency_hz) / 2;
+  frequency_generation_enabled = true;
+  frequency_pin_state = false;
+  frequency_last_toggle_micros = micros();
+  
+  // Set pin as output
+  pinMode(S4_PINS.FREQ_DIV10_IN, OUTPUT);
+  digitalWrite(S4_PINS.FREQ_DIV10_IN, LOW);
+}
+
+/**
+ * Update frequency generation - should be called frequently in loop
+ */
+void updateFrequencyGeneration() {
+  if (!frequency_generation_enabled || current_frequency_hz == 0) {
+    return;
+  }
+  
+  unsigned long current_time = micros();
+  
+  // Check if it's time to toggle the pin
+  if (current_time - frequency_last_toggle_micros >= frequency_half_period_micros) {
+    frequency_pin_state = !frequency_pin_state;
+    digitalWrite(S4_PINS.FREQ_DIV10_IN, frequency_pin_state ? HIGH : LOW);
+    frequency_last_toggle_micros = current_time;
+  }
+}
+
 void setup() {
   Serial.begin(115200);
   while (!Serial) { ; }
   setSafeDefaults();
+  
+  // Initialize frequency generation variables
+  current_frequency_hz = 0;
+  frequency_generation_enabled = false;
+  frequency_half_period_micros = 0;
+  frequency_last_toggle_micros = 0;
+  frequency_pin_state = false;
+  
   Serial.println("OK WRAPPER_READY S4-ONLY");
 }
 
 void loop() {
   static String buf;
+  
+  // Update frequency generation if enabled
+  updateFrequencyGeneration();
+  
   while (Serial.available() > 0) {
     char c = (char)Serial.read();
     if (c == '\n') { handleLine(buf); buf = ""; }

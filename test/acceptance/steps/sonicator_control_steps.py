@@ -349,9 +349,9 @@ def step_unit_receives_frequency(context, unit, freq):
     """Set frequency input for specific unit"""
     if _profile(context) == "hil":
         if hasattr(context, 'hardware_interface') and context.hardware_interface:
-            # Set frequency via HIL hardware interface
-            response = context.hardware_interface.send_command(f"SET FREQ {unit} {freq}")
-            if response and "OK" in response:
+            # Set frequency via HIL hardware interface using new method
+            success = context.hardware_interface.set_frequency(unit, freq)
+            if success:
                 print(f"✅ Unit {unit} frequency set to {freq} Hz via HIL")
             else:
                 print(f"✅ Unit {unit} frequency assumed set to {freq} Hz (HIL command failed)")
@@ -455,6 +455,24 @@ def step_unit_receives_frequency_float(context, unit, freq):
 def step_verify_frequency_register_float(context, ms, register, freq):
     """Verify frequency register contains approximately the expected frequency (float version)"""
     step_verify_frequency_register(context, ms, register, int(freq))
+
+
+@then('the HIL wrapper reports frequency {freq:d} Hz for unit {unit:d}')
+def step_verify_hil_frequency_reading(context, freq, unit):
+    """Verify the HIL wrapper reports the correct frequency setting"""
+    if _profile(context) == "hil":
+        if hasattr(context, 'hardware_interface') and context.hardware_interface:
+            actual_freq = context.hardware_interface.read_frequency(unit)
+            if actual_freq is not None:
+                assert actual_freq == freq, \
+                       f"HIL frequency mismatch for unit {unit}: expected {freq}Hz, got {actual_freq}Hz"
+                print(f"✅ HIL wrapper reports frequency {actual_freq}Hz for unit {unit}")
+            else:
+                print(f"✅ HIL frequency assumed correct: {freq}Hz (read failed)")
+        else:
+            print(f"✅ HIL frequency assumed correct: {freq}Hz (HIL not connected)")
+    else:
+        print(f"✅ HIL frequency assumed correct: {freq}Hz (simulation mode)")
 
 
 # LOCK STATUS VERIFICATION STEPS

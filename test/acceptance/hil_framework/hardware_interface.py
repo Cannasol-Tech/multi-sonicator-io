@@ -348,6 +348,28 @@ class HardwareInterface:
             self.logger.debug(f"Set frequency lock failed for sonicator {sonicator}: {e}")
             return False
 
+    def set_frequency(self, sonicator: int, frequency_hz: int) -> bool:
+        """Set frequency generation for sonicator (÷10 input simulation)"""
+        try:
+            response = self.send_command(f"SET FREQ {sonicator} {frequency_hz}", read_timeout=self.frequency_lock_timeout)
+            return response and "OK" in response
+        except Exception as e:
+            self.logger.debug(f"Set frequency failed for sonicator {sonicator}: {e}")
+            return False
+
+    def read_frequency(self, sonicator: int) -> Optional[int]:
+        """Read current frequency setting for sonicator"""
+        try:
+            response = self.send_command(f"READ FREQ {sonicator}", read_timeout=self.frequency_lock_timeout)
+            if response and "FREQ=" in response:
+                # Extract frequency value from response like "OK FREQ=2000"
+                freq_str = response.split("FREQ=")[1].split()[0]
+                return int(freq_str)
+            return None
+        except Exception as e:
+            self.logger.debug(f"Read frequency failed for sonicator {sonicator}: {e}")
+            return None
+
     def read_adc(self, channel: str) -> Optional[int]:
         """Read ADC value from channel"""
         try:

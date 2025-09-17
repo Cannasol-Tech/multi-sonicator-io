@@ -40,10 +40,6 @@ export class HardwareInterface extends EventEmitter {
 
   private connected = false
 
-  constructor() {
-    super()
-    this.setMaxListeners(50) // Increase max listeners to prevent memory leak warnings
-  }
   private serialPort: string | null = null
 
   private pinStates: Map<string, PinState> = new Map()
@@ -74,6 +70,7 @@ export class HardwareInterface extends EventEmitter {
 
   constructor() {
     super()
+    this.setMaxListeners(50) // Increase max listeners to prevent memory leak warnings
     this.initializePinStates()
   }
 
