@@ -1,0 +1,398 @@
+{
+  "summary": {
+    "duration_seconds": 1.482436,
+    "total_tests": 4,
+    "passed_tests": 4,
+    "success_rate": 1.0
+  },
+  "test_results": [
+    {
+      "test_name": "High Frequency CT2000 Range",
+      "input_frequency_hz": 2200,
+      "expected_dut_frequency_hz": 22000,
+      "measured_frequency_hz": 22000,
+      "modbus_register": 40370,
+      "success": true
+    },
+    {
+      "test_name": "Nominal Frequency",
+      "input_frequency_hz": 2000,
+      "expected_dut_frequency_hz": 20000,
+      "measured_frequency_hz": 20000,
+      "modbus_register": 40370,
+      "success": true
+    },
+    {
+      "test_name": "Low Frequency CT2000 Range",
+      "input_frequency_hz": 1800,
+      "expected_dut_frequency_hz": 18000,
+      "measured_frequency_hz": 18000,
+      "modbus_register": 40370,
+      "success": true
+    },
+    {
+      "test_name": "Zero Frequency (Off State)",
+      "input_frequency_hz": 0,
+      "expected_dut_frequency_hz": 0,
+      "measured_frequency_hz": 0,
+      "modbus_register": 40370,
+      "success": true
+    }
+  ],
+  "simulation_log": [
+    {
+      "timestamp": "0.000s",
+      "component": "HIL Test Framework",
+      "action": "send_command()",
+      "details": "SET FREQ 4 2200"
+    },
+    {
+      "timestamp": "0.050s",
+      "component": "Arduino Test Wrapper",
+      "action": "setFrequencyGeneration()",
+      "details": "freq_hz = 2200"
+    },
+    {
+      "timestamp": "0.050s",
+      "component": "Arduino Test Wrapper",
+      "action": "updateFrequencyGeneration()",
+      "details": "D7 pin toggling at 2200Hz"
+    },
+    {
+      "timestamp": "0.050s",
+      "component": "Arduino Pin D7",
+      "action": "frequency_generation",
+      "details": "Period: 454\u00b5s, Half-period: 227\u00b5s"
+    },
+    {
+      "timestamp": "0.050s",
+      "component": "Arduino Pin D7",
+      "action": "signal_output",
+      "details": "Square wave: 2200Hz, 50% duty cycle"
+    },
+    {
+      "timestamp": "0.050s",
+      "component": "DUT Pin PB0",
+      "action": "signal_input",
+      "details": "Receiving 2200Hz from Arduino D7"
+    },
+    {
+      "timestamp": "0.150s",
+      "component": "DUT Frequency Counter",
+      "action": "frequency_calculate()",
+      "details": "Channel 3 (PB0) measuring..."
+    },
+    {
+      "timestamp": "0.150s",
+      "component": "DUT Frequency Counter",
+      "action": "edge_counting",
+      "details": "Detected 22000Hz"
+    },
+    {
+      "timestamp": "0.150s",
+      "component": "DUT Sonicator Module",
+      "action": "status_update",
+      "details": "frequency_hz = 22000"
+    },
+    {
+      "timestamp": "0.150s",
+      "component": "DUT Main Loop",
+      "action": "update_modbus_registers()",
+      "details": "Syncing sonicator status to MODBUS"
+    },
+    {
+      "timestamp": "0.150s",
+      "component": "MODBUS Register Map",
+      "action": "write_register",
+      "details": "0x0171 = 22000"
+    },
+    {
+      "timestamp": "0.150s",
+      "component": "MODBUS Register Map",
+      "action": "modbus_address",
+      "details": "Register 40370 = 22000"
+    },
+    {
+      "timestamp": "0.150s",
+      "component": "Test Framework",
+      "action": "modbus_read",
+      "details": "Reading register 40370"
+    },
+    {
+      "timestamp": "0.170s",
+      "component": "MODBUS RTU",
+      "action": "register_read",
+      "details": "Register 40370 = 22000"
+    },
+    {
+      "timestamp": "0.171s",
+      "component": "Test Verification",
+      "action": "frequency_check",
+      "details": "\u2705 PASS: 22000Hz within tolerance of 22000Hz"
+    },
+    {
+      "timestamp": "0.371s",
+      "component": "HIL Test Framework",
+      "action": "send_command()",
+      "details": "SET FREQ 4 2000"
+    },
+    {
+      "timestamp": "0.421s",
+      "component": "Arduino Test Wrapper",
+      "action": "setFrequencyGeneration()",
+      "details": "freq_hz = 2000"
+    },
+    {
+      "timestamp": "0.421s",
+      "component": "Arduino Test Wrapper",
+      "action": "updateFrequencyGeneration()",
+      "details": "D7 pin toggling at 2000Hz"
+    },
+    {
+      "timestamp": "0.421s",
+      "component": "Arduino Pin D7",
+      "action": "frequency_generation",
+      "details": "Period: 500\u00b5s, Half-period: 250\u00b5s"
+    },
+    {
+      "timestamp": "0.421s",
+      "component": "Arduino Pin D7",
+      "action": "signal_output",
+      "details": "Square wave: 2000Hz, 50% duty cycle"
+    },
+    {
+      "timestamp": "0.421s",
+      "component": "DUT Pin PB0",
+      "action": "signal_input",
+      "details": "Receiving 2000Hz from Arduino D7"
+    },
+    {
+      "timestamp": "0.521s",
+      "component": "DUT Frequency Counter",
+      "action": "frequency_calculate()",
+      "details": "Channel 3 (PB0) measuring..."
+    },
+    {
+      "timestamp": "0.521s",
+      "component": "DUT Frequency Counter",
+      "action": "edge_counting",
+      "details": "Detected 20000Hz"
+    },
+    {
+      "timestamp": "0.521s",
+      "component": "DUT Sonicator Module",
+      "action": "status_update",
+      "details": "frequency_hz = 20000"
+    },
+    {
+      "timestamp": "0.521s",
+      "component": "DUT Main Loop",
+      "action": "update_modbus_registers()",
+      "details": "Syncing sonicator status to MODBUS"
+    },
+    {
+      "timestamp": "0.521s",
+      "component": "MODBUS Register Map",
+      "action": "write_register",
+      "details": "0x0171 = 20000"
+    },
+    {
+      "timestamp": "0.521s",
+      "component": "MODBUS Register Map",
+      "action": "modbus_address",
+      "details": "Register 40370 = 20000"
+    },
+    {
+      "timestamp": "0.521s",
+      "component": "Test Framework",
+      "action": "modbus_read",
+      "details": "Reading register 40370"
+    },
+    {
+      "timestamp": "0.541s",
+      "component": "MODBUS RTU",
+      "action": "register_read",
+      "details": "Register 40370 = 20000"
+    },
+    {
+      "timestamp": "0.541s",
+      "component": "Test Verification",
+      "action": "frequency_check",
+      "details": "\u2705 PASS: 20000Hz within tolerance of 20000Hz"
+    },
+    {
+      "timestamp": "0.741s",
+      "component": "HIL Test Framework",
+      "action": "send_command()",
+      "details": "SET FREQ 4 1800"
+    },
+    {
+      "timestamp": "0.791s",
+      "component": "Arduino Test Wrapper",
+      "action": "setFrequencyGeneration()",
+      "details": "freq_hz = 1800"
+    },
+    {
+      "timestamp": "0.791s",
+      "component": "Arduino Test Wrapper",
+      "action": "updateFrequencyGeneration()",
+      "details": "D7 pin toggling at 1800Hz"
+    },
+    {
+      "timestamp": "0.791s",
+      "component": "Arduino Pin D7",
+      "action": "frequency_generation",
+      "details": "Period: 555\u00b5s, Half-period: 277\u00b5s"
+    },
+    {
+      "timestamp": "0.791s",
+      "component": "Arduino Pin D7",
+      "action": "signal_output",
+      "details": "Square wave: 1800Hz, 50% duty cycle"
+    },
+    {
+      "timestamp": "0.791s",
+      "component": "DUT Pin PB0",
+      "action": "signal_input",
+      "details": "Receiving 1800Hz from Arduino D7"
+    },
+    {
+      "timestamp": "0.892s",
+      "component": "DUT Frequency Counter",
+      "action": "frequency_calculate()",
+      "details": "Channel 3 (PB0) measuring..."
+    },
+    {
+      "timestamp": "0.892s",
+      "component": "DUT Frequency Counter",
+      "action": "edge_counting",
+      "details": "Detected 18000Hz"
+    },
+    {
+      "timestamp": "0.892s",
+      "component": "DUT Sonicator Module",
+      "action": "status_update",
+      "details": "frequency_hz = 18000"
+    },
+    {
+      "timestamp": "0.892s",
+      "component": "DUT Main Loop",
+      "action": "update_modbus_registers()",
+      "details": "Syncing sonicator status to MODBUS"
+    },
+    {
+      "timestamp": "0.892s",
+      "component": "MODBUS Register Map",
+      "action": "write_register",
+      "details": "0x0171 = 18000"
+    },
+    {
+      "timestamp": "0.892s",
+      "component": "MODBUS Register Map",
+      "action": "modbus_address",
+      "details": "Register 40370 = 18000"
+    },
+    {
+      "timestamp": "0.892s",
+      "component": "Test Framework",
+      "action": "modbus_read",
+      "details": "Reading register 40370"
+    },
+    {
+      "timestamp": "0.912s",
+      "component": "MODBUS RTU",
+      "action": "register_read",
+      "details": "Register 40370 = 18000"
+    },
+    {
+      "timestamp": "0.912s",
+      "component": "Test Verification",
+      "action": "frequency_check",
+      "details": "\u2705 PASS: 18000Hz within tolerance of 18000Hz"
+    },
+    {
+      "timestamp": "1.112s",
+      "component": "HIL Test Framework",
+      "action": "send_command()",
+      "details": "SET FREQ 4 0"
+    },
+    {
+      "timestamp": "1.162s",
+      "component": "Arduino Test Wrapper",
+      "action": "setFrequencyGeneration()",
+      "details": "freq_hz = 0"
+    },
+    {
+      "timestamp": "1.162s",
+      "component": "Arduino Test Wrapper",
+      "action": "updateFrequencyGeneration()",
+      "details": "D7 pin toggling at 0Hz"
+    },
+    {
+      "timestamp": "1.162s",
+      "component": "Arduino Pin D7",
+      "action": "signal_output",
+      "details": "LOW (no frequency generation)"
+    },
+    {
+      "timestamp": "1.162s",
+      "component": "DUT Pin PB0",
+      "action": "signal_input",
+      "details": "Receiving 0Hz from Arduino D7"
+    },
+    {
+      "timestamp": "1.262s",
+      "component": "DUT Frequency Counter",
+      "action": "frequency_calculate()",
+      "details": "Channel 3 (PB0) measuring..."
+    },
+    {
+      "timestamp": "1.262s",
+      "component": "DUT Frequency Counter",
+      "action": "edge_counting",
+      "details": "Detected 0Hz"
+    },
+    {
+      "timestamp": "1.262s",
+      "component": "DUT Sonicator Module",
+      "action": "status_update",
+      "details": "frequency_hz = 0"
+    },
+    {
+      "timestamp": "1.262s",
+      "component": "DUT Main Loop",
+      "action": "update_modbus_registers()",
+      "details": "Syncing sonicator status to MODBUS"
+    },
+    {
+      "timestamp": "1.262s",
+      "component": "MODBUS Register Map",
+      "action": "write_register",
+      "details": "0x0171 = 0"
+    },
+    {
+      "timestamp": "1.262s",
+      "component": "MODBUS Register Map",
+      "action": "modbus_address",
+      "details": "Register 40370 = 0"
+    },
+    {
+      "timestamp": "1.262s",
+      "component": "Test Framework",
+      "action": "modbus_read",
+      "details": "Reading register 40370"
+    },
+    {
+      "timestamp": "1.282s",
+      "component": "MODBUS RTU",
+      "action": "register_read",
+      "details": "Register 40370 = 0"
+    },
+    {
+      "timestamp": "1.282s",
+      "component": "Test Verification",
+      "action": "frequency_check",
+      "details": "\u2705 PASS: 0Hz within tolerance of 0Hz"
+    }
+  ]
+}
