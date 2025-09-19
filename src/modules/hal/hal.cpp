@@ -35,6 +35,8 @@
 #include "hal.h"
 #include <system_config.h>
 
+#include "frequency_counter.h"
+
 // ============================================================================
 // PRIVATE VARIABLES
 // ============================================================================
@@ -120,15 +122,10 @@ hal_result_t hal_self_test(bool* gpio_ok, bool* adc_ok, bool* pwm_ok,
 
     // Test ADC subsystem
     if (adc_ok != nullptr) {
-        // Test power channel reading
+        // Test power channel reading only (frequency via ISR now; not part of ADC test)
         float power_reading;
         adc_result_t adc_result = adc_read_sonicator_power(1, &power_reading);
-
-        // Test frequency channel reading
-        float freq_reading;
-        adc_result_t r2 = adc_read_frequency(&freq_reading);
-
-        *adc_ok = (adc_result == ADC_OK) && (r2 == ADC_OK) && (power_reading >= 0.0f) && (freq_reading >= 0.0f);
+        *adc_ok = (adc_result == ADC_OK) && (power_reading >= 0.0f);
     }
 
     // Test PWM subsystem
@@ -298,17 +295,10 @@ hal_result_t hal_read_sonicator_status(uint8_t sonicator_id, hal_sonicator_statu
     }
     status->power_watts = (float)raw_adc_value;  // Store raw ADC as float for compatibility
 
-    // Read frequency (available for Sonicator 4 via LM2907 F-V converter on ADC0)
-    if (sonicator_id == 4) {
-        float frequency_hz;
-        adc_result = adc_read_frequency(&frequency_hz);
-        if (adc_result == ADC_OK) {
-            status->frequency_hz = (uint16_t)frequency_hz;
-        } else {
-            status->frequency_hz = 0;
-        }
-    } else {
-        status->frequency_hz = 0; // Not measured for other sonicators in current hardware
+    // Read frequency via ISR-based edge counting for all sonicators
+    {
+        uint8_t channel = sonicator_id - 1; // 0-3
+        status->frequency_hz = frequency_calculate(channel);
     }
 
     return HAL_OK;

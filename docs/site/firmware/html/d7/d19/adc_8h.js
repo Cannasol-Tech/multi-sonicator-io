@@ -1,9 +1,6 @@
 var adc_8h =
 [
     [ "ADC_CONVERSION_TIME_US", "d7/d19/adc_8h.html#ac6db242e3a8af3e8727a744fb750f725", null ],
-    [ "ADC_FREQ_MAX_HZ", "d7/d19/adc_8h.html#a401ef003fbd849c1cac9d50da154c838", null ],
-    [ "ADC_FREQ_MIN_HZ", "d7/d19/adc_8h.html#a6e9d11a7d0f4e632327ba4bef48e210c", null ],
-    [ "ADC_FREQ_SCALE_HZ_PER_V", "d7/d19/adc_8h.html#ac9333f389d5bc9df799133cfaabbc71b", null ],
     [ "ADC_MAX_VALUE", "d7/d19/adc_8h.html#a8e965b09ba8c46425032e6dd576f9bce", null ],
     [ "ADC_POWER_MAX_WATTS", "d7/d19/adc_8h.html#ae53d4195383f50a07517ba118304d0ba", null ],
     [ "ADC_POWER_SCALING_MV_PER_W", "d7/d19/adc_8h.html#ac53c0e95f5cf5ba60707194645a8378f", null ],
@@ -48,13 +45,11 @@ var adc_8h =
     [ "adc_init", "d7/d19/adc_8h.html#aa540e6dad1cfb7b5a1a70ac688003aee", null ],
     [ "adc_read_all_power", "d7/d19/adc_8h.html#a970824a5c5394c11a8e2d2f644a50545", null ],
     [ "adc_read_channel", "d7/d19/adc_8h.html#a97f090840a901f0e030625d8e6d3a35c", null ],
-    [ "adc_read_frequency", "d7/d19/adc_8h.html#af2f4baab2e0b0c058249c42763ad6c6e", null ],
     [ "adc_read_sonicator_power", "d7/d19/adc_8h.html#a9f0fae67bdf3bebce28e5f22dbc6c324", null ],
     [ "adc_read_sonicator_power_raw", "d7/d19/adc_8h.html#a6eff5ebe7332c348d75634c1e327533c", null ],
     [ "adc_set_prescaler", "d7/d19/adc_8h.html#a8de284571c4bb5302f8585d8e755982a", null ],
     [ "adc_set_reference", "d7/d19/adc_8h.html#aadbff6cdc8330baec6d7be50cc7bc119", null ],
     [ "adc_start_conversion", "d7/d19/adc_8h.html#a9b109efc89d01d4f4ca18ef7b6a28239", null ],
-    [ "adc_to_frequency", "d7/d19/adc_8h.html#ae252efb579f7c862c5295bb9630ef4ca", null ],
     [ "adc_to_power", "d7/d19/adc_8h.html#ae819e339e328d8c133be660604c27200", null ],
     [ "adc_to_voltage", "d7/d19/adc_8h.html#a9a3589be2e6a1f230b71db35c5a4aed0", null ]
 ];

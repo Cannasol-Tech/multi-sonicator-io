@@ -20,7 +20,7 @@ def analyze_hal_coverage():
     
     # Analyze each HAL module
     for hal_file in hal_dir.glob("*.h"):
-        if hal_file.name in ["hal_interfaces.h", "hal_hardware_factory.h", "hal_mock_factory.h"]:
+        if hal_file.name in ["mock_hal_impl.h"]:
             continue
             
         with open(hal_file, 'r') as f:

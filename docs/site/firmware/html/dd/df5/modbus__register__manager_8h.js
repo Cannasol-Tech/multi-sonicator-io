@@ -9,7 +9,7 @@ var modbus__register__manager_8h =
     [ "register_manager_is_emergency_stop_active", "dd/df5/modbus__register__manager_8h.html#ac2f186865e2f446d349f113c0b3803a3", null ],
     [ "register_manager_is_global_enabled", "dd/df5/modbus__register__manager_8h.html#a2b383d8aebef164afa19c0a0e20990dd", null ],
     [ "register_manager_reset_comm_errors", "dd/df5/modbus__register__manager_8h.html#aab108d99c4b064a1a7c60ec755b36faf", null ],
-    [ "register_manager_update_sonicator_status", "dd/df5/modbus__register__manager_8h.html#aa03af3f0481ccf69450e5bcbf11b2c87", null ],
+    [ "register_manager_update_sonicator_status", "dd/df5/modbus__register__manager_8h.html#a0a9d7d9107de9f0576725cdbeceb21ec", null ],
     [ "register_manager_update_system_status", "dd/df5/modbus__register__manager_8h.html#ad1c5af6cb55c225fa9f8b84d18cbe33a", null ],
     [ "register_manager_validate_value", "dd/df5/modbus__register__manager_8h.html#af7c26893e897c5b073ee4b8c977a6a4c", null ]
 ];

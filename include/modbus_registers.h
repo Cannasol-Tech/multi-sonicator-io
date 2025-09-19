@@ -89,32 +89,6 @@ extern "C" {
  */
 
 /**
- * @brief Overall system status register address (0x0000)
- * @details Bitfield register containing system-wide status indicators
- *
- * This register provides a consolidated view of system health and operational state.
- * Each bit represents a specific system condition that can be monitored by PLC/HMI
- * systems for automated fault detection and response.
- *
- * @note Updated every 10ms by system monitor task
- * @see system_status_registers_t.system_status for bit definitions
- */
-#define MODBUS_REG_SYSTEM_STATUS        0x0000  //< Overall system status bitfield
-
-/**
- * @brief Active sonicator count register address (0x0001)
- * @details Contains the current number of sonicators in running state (0-4)
- *
- * This register provides a quick way to determine system loading without
- * having to decode the active mask bitfield. Useful for load balancing
- * and power management calculations.
- *
- * @note Automatically calculated from individual sonicator states
- * @see MODBUS_REG_ACTIVE_MASK for individual sonicator status
- */
-#define MODBUS_REG_ACTIVE_COUNT         0x0001  //< Number of active sonicators (0-4)
-
-/**
  * @brief Active sonicator bitmask register address (0x0002)
  * @details Bitfield indicating which sonicators are currently running
  *
@@ -320,10 +294,11 @@ typedef struct {
  */
 typedef struct {
     uint16_t global_enable;        //< 0x0010: Global system enable
-    uint16_t emergency_stop;       //< 0x0011: Emergency stop command
-    uint16_t system_reset;         //< 0x0012: System reset command
-    uint16_t test_start_inhibit_mask; //< 0x0013: Per-unit start inhibit mask (test-only)
-    uint16_t reserved[13];         //< 0x0013-0x001F: Reserved for future use
+    uint16_t global_amplitude_sp;  //< 0x0011: Global amplitude setpoint (20-100%)
+    uint16_t emergency_stop;       //< 0x0012: Emergency stop command
+    uint16_t system_reset;         //< 0x0013: System reset command
+    uint16_t test_start_inhibit_mask; //< 0x0014: Per-unit start inhibit mask (test-only)
+    uint16_t reserved[12];         //< 0x0015-0x001F: Reserved for future use
 } global_control_registers_t;
 
 /**

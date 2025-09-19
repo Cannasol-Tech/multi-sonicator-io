@@ -189,11 +189,15 @@
 </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4">
+      <node id="2">
+        <label>hal_sonicator_status_t</label>
+        <link refid="db/de2/structhal__sonicator__status__t"/>
+      </node>
+      <node id="3">
         <label>sonicator_control_s</label>
         <link refid="d2/d72/structsonicator__control__s"/>
       </node>
-      <node id="5">
+      <node id="4">
         <label>sonicator_history_s</label>
         <link refid="d5/d74/structsonicator__history__s"/>
       </node>
@@ -203,22 +207,11 @@
         <childnode refid="2" relation="usage">
           <edgelabel>status</edgelabel>
         </childnode>
-        <childnode refid="4" relation="usage">
+        <childnode refid="3" relation="usage">
           <edgelabel>control</edgelabel>
         </childnode>
-        <childnode refid="5" relation="usage">
+        <childnode refid="4" relation="usage">
           <edgelabel>history</edgelabel>
-        </childnode>
-      </node>
-      <node id="3">
-        <label>sonicator_state_</label>
-        <link refid="da/de7/structsonicator__state__"/>
-      </node>
-      <node id="2">
-        <label>sonicator_status_s</label>
-        <link refid="db/dd3/structsonicator__status__s"/>
-        <childnode refid="3" relation="usage">
-          <edgelabel>state_machine</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>

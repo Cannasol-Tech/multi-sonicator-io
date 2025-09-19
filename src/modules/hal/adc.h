@@ -31,7 +31,7 @@ extern "C" {
  * @brief ADC channel identifiers
  */
 typedef enum {
-    ADC_CHANNEL_0 = 0,          //< ADC0 - LM2907 frequency converter
+    ADC_CHANNEL_0 = 0,          //< ADC0 - Reserved (frequency measured via ISR; not via ADC)
     ADC_CHANNEL_1 = 1,          //< ADC1 - Reserved
     ADC_CHANNEL_2 = 2,          //< ADC2 - Reserved  
     ADC_CHANNEL_3 = 3,          //< ADC3 - Reserved
@@ -89,10 +89,7 @@ typedef enum {
 #define ADC_POWER_MAX_WATTS        2000     //< Maximum power (2000W)
 #define ADC_POWER_VOLTAGE_DIVIDER   2.0f    //< 10kΩ voltage divider ratio
 
-// Frequency monitoring constants (LM2907)
-#define ADC_FREQ_SCALE_HZ_PER_V    500      //< 500 Hz per volt
-#define ADC_FREQ_MIN_HZ            1900     //< Minimum frequency (1.9kHz)
-#define ADC_FREQ_MAX_HZ            2100     //< Maximum frequency (2.1kHz)
+// Frequency reading via ADC removed; using ISR-based edge counting (frequency_counter)
 
 // ============================================================================
 // PUBLIC INTERFACE
@@ -183,16 +180,7 @@ adc_result_t adc_to_voltage(uint16_t raw_value, float* voltage);
  */
 adc_result_t adc_to_power(uint16_t raw_value, float* power_watts);
 
-/**
- * @brief Convert raw ADC value to frequency (Hz)
- * 
- * Applies LM2907 frequency converter scaling for channel 0
- * 
- * @param raw_value Raw ADC reading from frequency channel
- * @param frequency_hz Pointer to store frequency result in Hz
- * @return ADC_OK on success, error code on failure
- */
-adc_result_t adc_to_frequency(uint16_t raw_value, float* frequency_hz);
+/* Frequency conversion helpers removed; ISR-based edge counting is now the source of truth */
 
 // ============================================================================
 // SONICATOR POWER MONITORING CONVENIENCE FUNCTIONS
@@ -225,13 +213,7 @@ adc_result_t adc_read_sonicator_power(uint8_t sonicator_id, float* power_watts);
  */
 adc_result_t adc_read_all_power(float power_array[4]);
 
-/**
- * @brief Read frequency from LM2907 converter
- * 
- * @param frequency_hz Pointer to store frequency in Hz
- * @return ADC_OK on success, error code on failure
- */
-adc_result_t adc_read_frequency(float* frequency_hz);
+/* LM2907 frequency read removed; use frequency_calculate() from frequency_counter */
 
 /**
  * @brief Calibrate ADC with known reference voltage

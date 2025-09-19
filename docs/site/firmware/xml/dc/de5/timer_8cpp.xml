@@ -163,9 +163,9 @@
         </inbodydescription>
         <location file="src/modules/hal/timer.cpp" line="53" column="1" bodyfile="src/modules/hal/timer.cpp" bodystart="53" bodyend="56"/>
       </memberdef>
-      <memberdef kind="function" id="dc/de5/timer_8cpp_1a2880ac0b54395e726dfbe50b2a92086f" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="dc/de5/timer_8cpp_1a8cae423d1a900ad3f386f66269c82200" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
-        <definition>static constexpr bool is_valid_timer_id</definition>
+        <definition>static bool is_valid_timer_id</definition>
         <argsstring>(timer_id_t timer_id)</argsstring>
         <name>is_valid_timer_id</name>
         <param>
@@ -178,7 +178,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/timer.cpp" line="575" column="30" bodyfile="src/modules/hal/timer.cpp" bodystart="575" bodyend="577" declfile="src/modules/hal/timer.cpp" declline="63" declcolumn="13"/>
+        <location file="src/modules/hal/timer.cpp" line="575" column="20" bodyfile="src/modules/hal/timer.cpp" bodystart="575" bodyend="577" declfile="src/modules/hal/timer.cpp" declline="63" declcolumn="13"/>
       </memberdef>
       <memberdef kind="function" id="dc/de5/timer_8cpp_1aeffc8e05915f6c28d1a2d05ec1cda0e6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
@@ -1228,7 +1228,7 @@
 <codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PRIVATE<sp/>FUNCTION<sp/>DECLARATIONS</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1a2880ac0b54395e726dfbe50b2a92086f" kindref="member">is_valid_timer_id</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1a8cae423d1a900ad3f386f66269c82200" kindref="member">is_valid_timer_id</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id);</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="dc/de5/timer_8cpp_1aeffc8e05915f6c28d1a2d05ec1cda0e6" kindref="member">configure_timer0</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d4/de4/structtimer__config__t" kindref="compound">timer_config_t</ref>*<sp/>config);</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="dc/de5/timer_8cpp_1a5bded2fd67bb665d23447e734ff364a8" kindref="member">configure_timer1</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d4/de4/structtimer__config__t" kindref="compound">timer_config_t</ref>*<sp/>config);</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1a1661343d8c5da1afb88e4910b3f17c2a" kindref="member">reset_timer_state</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id);</highlight></codeline>
@@ -1264,7 +1264,7 @@
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a1eb567cf4b8241838896c6c0ab94d23a" kindref="member">TIMER_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/de5/timer_8cpp_1a2880ac0b54395e726dfbe50b2a92086f" kindref="member">is_valid_timer_id</ref>(timer_id)<sp/>||<sp/>config<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/de5/timer_8cpp_1a8cae423d1a900ad3f386f66269c82200" kindref="member">is_valid_timer_id</ref>(timer_id)<sp/>||<sp/>config<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a4276a650072a3f49c6d48f926f572dc6" kindref="member">TIMER_ERROR_INVALID_CONFIG</ref>;</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight></codeline>
@@ -1283,7 +1283,7 @@
 <codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a1eb567cf4b8241838896c6c0ab94d23a" kindref="member">TIMER_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="117"><highlight class="normal"></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/de5/timer_8cpp_1a2880ac0b54395e726dfbe50b2a92086f" kindref="member">is_valid_timer_id</ref>(timer_id))<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/de5/timer_8cpp_1a8cae423d1a900ad3f386f66269c82200" kindref="member">is_valid_timer_id</ref>(timer_id))<sp/>{</highlight></codeline>
 <codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a52d98ea1047cbd1544ff69efa0257ec2" kindref="member">TIMER_ERROR_INVALID_ID</ref>;</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"></highlight></codeline>
@@ -1305,7 +1305,7 @@
 <codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a1eb567cf4b8241838896c6c0ab94d23a" kindref="member">TIMER_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="139"><highlight class="normal"></highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/de5/timer_8cpp_1a2880ac0b54395e726dfbe50b2a92086f" kindref="member">is_valid_timer_id</ref>(timer_id))<sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/de5/timer_8cpp_1a8cae423d1a900ad3f386f66269c82200" kindref="member">is_valid_timer_id</ref>(timer_id))<sp/>{</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a52d98ea1047cbd1544ff69efa0257ec2" kindref="member">TIMER_ERROR_INVALID_ID</ref>;</highlight></codeline>
 <codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="143"><highlight class="normal"></highlight></codeline>
@@ -1318,7 +1318,7 @@
 <codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a1eb567cf4b8241838896c6c0ab94d23a" kindref="member">TIMER_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="152"><highlight class="normal"></highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/de5/timer_8cpp_1a2880ac0b54395e726dfbe50b2a92086f" kindref="member">is_valid_timer_id</ref>(timer_id)<sp/>||<sp/>expired<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/de5/timer_8cpp_1a8cae423d1a900ad3f386f66269c82200" kindref="member">is_valid_timer_id</ref>(timer_id)<sp/>||<sp/>expired<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a52d98ea1047cbd1544ff69efa0257ec2" kindref="member">TIMER_ERROR_INVALID_ID</ref>;</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"></highlight></codeline>
@@ -1339,7 +1339,7 @@
 <codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a1eb567cf4b8241838896c6c0ab94d23a" kindref="member">TIMER_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="173"><highlight class="normal"></highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/de5/timer_8cpp_1a2880ac0b54395e726dfbe50b2a92086f" kindref="member">is_valid_timer_id</ref>(timer_id))<sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/de5/timer_8cpp_1a8cae423d1a900ad3f386f66269c82200" kindref="member">is_valid_timer_id</ref>(timer_id))<sp/>{</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a52d98ea1047cbd1544ff69efa0257ec2" kindref="member">TIMER_ERROR_INVALID_ID</ref>;</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="177"><highlight class="normal"></highlight></codeline>
@@ -1352,7 +1352,7 @@
 <codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a1eb567cf4b8241838896c6c0ab94d23a" kindref="member">TIMER_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="186"><highlight class="normal"></highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/de5/timer_8cpp_1a2880ac0b54395e726dfbe50b2a92086f" kindref="member">is_valid_timer_id</ref>(timer_id)<sp/>||<sp/>value<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/de5/timer_8cpp_1a8cae423d1a900ad3f386f66269c82200" kindref="member">is_valid_timer_id</ref>(timer_id)<sp/>||<sp/>value<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a52d98ea1047cbd1544ff69efa0257ec2" kindref="member">TIMER_ERROR_INVALID_ID</ref>;</highlight></codeline>
 <codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="190"><highlight class="normal"></highlight></codeline>
@@ -1376,7 +1376,7 @@
 <codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a1eb567cf4b8241838896c6c0ab94d23a" kindref="member">TIMER_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="210"><highlight class="normal"></highlight></codeline>
-<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/de5/timer_8cpp_1a2880ac0b54395e726dfbe50b2a92086f" kindref="member">is_valid_timer_id</ref>(timer_id)<sp/>||<sp/>elapsed_ms<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/de5/timer_8cpp_1a8cae423d1a900ad3f386f66269c82200" kindref="member">is_valid_timer_id</ref>(timer_id)<sp/>||<sp/>elapsed_ms<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a52d98ea1047cbd1544ff69efa0257ec2" kindref="member">TIMER_ERROR_INVALID_ID</ref>;</highlight></codeline>
 <codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="214"><highlight class="normal"></highlight></codeline>
@@ -1649,7 +1649,7 @@
 <codeline lineno="481"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a1eb567cf4b8241838896c6c0ab94d23a" kindref="member">TIMER_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="482"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="483"><highlight class="normal"></highlight></codeline>
-<codeline lineno="484"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/de5/timer_8cpp_1a2880ac0b54395e726dfbe50b2a92086f" kindref="member">is_valid_timer_id</ref>(timer_id)<sp/>||<sp/>actual_ms<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>||<sp/>accuracy_percent<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="484"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/de5/timer_8cpp_1a8cae423d1a900ad3f386f66269c82200" kindref="member">is_valid_timer_id</ref>(timer_id)<sp/>||<sp/>actual_ms<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>||<sp/>accuracy_percent<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="485"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a52d98ea1047cbd1544ff69efa0257ec2" kindref="member">TIMER_ERROR_INVALID_ID</ref>;</highlight></codeline>
 <codeline lineno="486"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="487"><highlight class="normal"></highlight></codeline>
@@ -1725,7 +1725,7 @@
 <codeline lineno="557"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a1eb567cf4b8241838896c6c0ab94d23a" kindref="member">TIMER_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="558"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="559"><highlight class="normal"></highlight></codeline>
-<codeline lineno="560"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/de5/timer_8cpp_1a2880ac0b54395e726dfbe50b2a92086f" kindref="member">is_valid_timer_id</ref>(timer_id))<sp/>{</highlight></codeline>
+<codeline lineno="560"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/de5/timer_8cpp_1a8cae423d1a900ad3f386f66269c82200" kindref="member">is_valid_timer_id</ref>(timer_id))<sp/>{</highlight></codeline>
 <codeline lineno="561"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a52d98ea1047cbd1544ff69efa0257ec2" kindref="member">TIMER_ERROR_INVALID_ID</ref>;</highlight></codeline>
 <codeline lineno="562"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="563"><highlight class="normal"></highlight></codeline>
@@ -1740,7 +1740,7 @@
 <codeline lineno="572"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PRIVATE<sp/>FUNCTION<sp/>IMPLEMENTATIONS</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="573"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="574"><highlight class="normal"></highlight></codeline>
-<codeline lineno="575"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1a2880ac0b54395e726dfbe50b2a92086f" kindref="member">is_valid_timer_id</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id)<sp/>{</highlight></codeline>
+<codeline lineno="575"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1a8cae423d1a900ad3f386f66269c82200" kindref="member">is_valid_timer_id</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id)<sp/>{</highlight></codeline>
 <codeline lineno="576"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(timer_id<sp/>&lt;<sp/><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392aacb7163f3ddbcdee2a162c6a6872dce3" kindref="member">TIMER_ID_MAX</ref>);</highlight></codeline>
 <codeline lineno="577"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="578"><highlight class="normal"></highlight></codeline>

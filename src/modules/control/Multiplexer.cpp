@@ -7,13 +7,22 @@
 #include "system_config.h"
 #include "modules/hal/pwm.h"
 
-// Local helpers
+/**
+ * @brief Clamps a percentage value to valid sonicator amplitude range
+ * @param pct Percentage value to clamp
+ * @return Clamped percentage within [SONICATOR_MIN_AMPLITUDE_PERCENT, SONICATOR_MAX_AMPLITUDE_PERCENT]
+ */
 static inline uint8_t clamp_percent(uint8_t pct) {
     if (pct < SONICATOR_MIN_AMPLITUDE_PERCENT) return SONICATOR_MIN_AMPLITUDE_PERCENT;
     if (pct > SONICATOR_MAX_AMPLITUDE_PERCENT) return SONICATOR_MAX_AMPLITUDE_PERCENT;
     return pct;
 }
 
+/**
+ * @brief Converts amplitude percentage to PWM duty cycle value
+ * @param amplitude_percent Amplitude percentage (20-100%)
+ * @return PWM duty cycle value (0-255), or 0 if amplitude is below minimum
+ */
 static inline uint8_t amplitude_to_duty(uint8_t amplitude_percent) {
     if (amplitude_percent < SONICATOR_MIN_AMPLITUDE_PERCENT) {
         return 0;
@@ -24,11 +33,31 @@ static inline uint8_t amplitude_to_duty(uint8_t amplitude_percent) {
     );
 }
 
+void SonicMultiplexer::update_led_state() {
+    bool any_running = false;
+    for (uint8_t i = 0; i < sonicator_count_m && i < MAX_SONICATORS; ++i) {
+        if (sonicators_m[i] && sonicators_m[i]->isRunning()) {
+            any_running = true;
+            break;
+        }
+    }
+    halGpioWriteSafe(STATUS_LED_PIN, any_running);
+}
+
+/**
+ * @brief Initializes the multiplexer system
+ * @details No-op implementation since HAL/PWM are initialized by hal_init().
+ *          Ensures shared amplitude reflects current value.
+ */
 void SonicMultiplexer::begin() {
     // No-op: HAL/PWM are initialized by hal_init(). Ensure shared amplitude reflects current value.
     updateSharedAmplitude_();
 }
 
+/**
+ * @brief Updates all sonicators and shared amplitude control
+ * @details Calls update() on each active sonicator and synchronizes the shared amplitude PWM
+ */
 void SonicMultiplexer::update() {
     // Update each sonicator (includes its own MODBUS sync once integrated at unit level)
     for (uint8_t i = 0; i < sonicator_count_m && i < MAX_SONICATORS; ++i) {
@@ -43,6 +72,9 @@ void SonicMultiplexer::update() {
 
 /**
  * @brief Sets the shared amplitude for all sonicators
+ * @param amplitude_percent Desired amplitude percentage (will be clamped to valid range)
+ * @return true on success
+ * @details Updates all individual sonicator amplitude setpoints and the shared PWM output
  */
 bool SonicMultiplexer::setAmplitude(uint8_t amplitude_percent) {
     amplitude_ctrl_duty_m = clamp_percent(amplitude_percent);
@@ -59,11 +91,21 @@ bool SonicMultiplexer::setAmplitude(uint8_t amplitude_percent) {
     return true;
 }
 
+/**
+ * @brief Gets the status of a specific sonicator
+ * @param index Zero-based index of the sonicator (0-3)
+ * @return Pointer to sonicator status structure, or nullptr if invalid index
+ */
 const sonicator_status_t* SonicMultiplexer::getStatus(uint8_t index) const {
     if (index >= sonicator_count_m || !sonicators_m[index]) return nullptr;
     return sonicators_m[index]->getStatus();
 }
 
+/**
+ * @brief Initializes all sonicator interfaces with their hardware pin configurations
+ * @details Creates SonicatorInterface instances for each configured sonicator unit,
+ *          sets up pin mappings from system_config.h, and initializes default amplitude
+ */
 void SonicMultiplexer::initSonicators_() {
     // Instantiate per-unit SonicatorInterface with pins derived from system_config.h
     // ID 1
@@ -132,6 +174,11 @@ void SonicMultiplexer::initSonicators_() {
     updateSharedAmplitude_();
 }
 
+/**
+ * @brief Updates the shared amplitude PWM output
+ * @details Converts the current amplitude control duty cycle to PWM duty and
+ *          drives the hardware PWM channel for amplitude control
+ */
 void SonicMultiplexer::updateSharedAmplitude_() {
     // Shared amplitude PWM: drive HAL channel for amplitude output.
     const uint8_t duty = amplitude_to_duty(amplitude_ctrl_duty_m);

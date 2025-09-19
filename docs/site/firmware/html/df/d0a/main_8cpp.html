@@ -96,9 +96,9 @@ $(function(){initNavTree('df/d0a/main_8cpp.html','../../',''); });
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;Arduino.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="../../d8/d4b/hal_8h_source.html">modules/hal/hal.h</a>&quot;</code><br />
-<code>#include &quot;modules/communication/modbus.h&quot;</code><br />
-<code>#include &quot;modules/communication/modbus_register_manager.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d6/d4f/register__map_8h_source.html">register_map.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../da/dae/modbus_8h_source.html">modbus.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../dd/df5/modbus__register__manager_8h_source.html">modbus_register_manager.h</a>&quot;</code><br />
+<code>#include &quot;register_map.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../dc/dc2/_multiplexer_8h_source.html">multiplexer/Multiplexer.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../de/d01/frequency__counter_8h_source.html">frequency_counter.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d2/d6f/constants_8h_source.html">constants.h</a>&quot;</code><br />
@@ -109,8 +109,6 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a9cc8156acfaa6e057945f6df5708310d" id="r_a9cc8156acfaa6e057945f6df5708310d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9cc8156acfaa6e057945f6df5708310d">update_modbus_registers</a> ()</td></tr>
-<tr class="memdesc:a9cc8156acfaa6e057945f6df5708310d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronizes the Multiplexer state with the MODBUS register map.  <br /></td></tr>
 <tr class="memitem:a488409a11fd01b25bd3302f3e4315483" id="r_a488409a11fd01b25bd3302f3e4315483"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a488409a11fd01b25bd3302f3e4315483">setup_modbus</a> (void)</td></tr>
 <tr class="memitem:a4fc01d736fe50cf5b977f755b675f11d" id="r_a4fc01d736fe50cf5b977f755b675f11d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fc01d736fe50cf5b977f755b675f11d">setup</a> ()</td></tr>
 <tr class="memitem:afe461d27b9c48d5921c00d521181f12f" id="r_afe461d27b9c48d5921c00d521181f12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe461d27b9c48d5921c00d521181f12f">loop</a> ()</td></tr>
@@ -197,34 +195,6 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9cc8156acfaa6e057945f6df5708310d" name="a9cc8156acfaa6e057945f6df5708310d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9cc8156acfaa6e057945f6df5708310d">&#9670;&#160;</a></span>update_modbus_registers()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void update_modbus_registers </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Synchronizes the Multiplexer state with the MODBUS register map. </p>
-<p>Reads control values from MODBUS and applies them to the multiplexer. Reads status values from the multiplexer and writes them to MODBUS. </p>
 
 </div>
 </div>

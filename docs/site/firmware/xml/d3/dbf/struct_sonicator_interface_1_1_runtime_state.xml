@@ -1,0 +1,374 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d3/dbf/struct_sonicator_interface_1_1_runtime_state" kind="struct" language="C++" prot="private">
+    <compoundname>SonicatorInterface::RuntimeState</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a6f3049f397069e58f71215ca208f5871" prot="public" static="no" mutable="no">
+        <type><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref></type>
+        <definition>sonicator_state_t SonicatorInterface::RuntimeState::state</definition>
+        <argsstring></argsstring>
+        <name>state</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::state</qualifiedname>
+        <initializer>{<ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a02f13d1f0ad8e9fc52f93cf9c25ad0cf" kindref="member">SONICATOR_STATE_UNKNOWN</ref>}</initializer>
+        <briefdescription>
+<para>Current state machine state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="209" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="209" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a66849819a0d9411c1b8cd9d2440c950c" prot="public" static="no" mutable="no">
+        <type><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref></type>
+        <definition>sonicator_state_t SonicatorInterface::RuntimeState::previous_state</definition>
+        <argsstring></argsstring>
+        <name>previous_state</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::previous_state</qualifiedname>
+        <initializer>{<ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a02f13d1f0ad8e9fc52f93cf9c25ad0cf" kindref="member">SONICATOR_STATE_UNKNOWN</ref>}</initializer>
+        <briefdescription>
+<para>Previous state for transition tracking. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="210" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="210" bodyend="210"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a9875afabcf38ae469f72dc4486628065" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::RuntimeState::state_entry_time</definition>
+        <argsstring></argsstring>
+        <name>state_entry_time</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::state_entry_time</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Timestamp when current state was entered. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="211" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="211" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a58c78deede8fb518348ea4bcf8127c69" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t SonicatorInterface::RuntimeState::amplitude_percent</definition>
+        <argsstring></argsstring>
+        <name>amplitude_percent</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::amplitude_percent</qualifiedname>
+        <initializer>{<ref refid="dc/d16/sonicator_8h_1abe06b5505cf15123b31cf8b029b59679" kindref="member">SONICATOR_MIN_AMPLITUDE_PERCENT</ref>}</initializer>
+        <briefdescription>
+<para>Current amplitude setpoint (%) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="214" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="214" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a97eacaf104e82ecbd5596f09ce6c61b0" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::RuntimeState::start_requested</definition>
+        <argsstring></argsstring>
+        <name>start_requested</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::start_requested</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+<para>Start command pending. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="215" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="215" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a75e75030df1a54f9fdf9e9ce51aa5e53" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::RuntimeState::stop_requested</definition>
+        <argsstring></argsstring>
+        <name>stop_requested</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::stop_requested</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+<para>Stop command pending. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="216" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="216" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a11dbbd309586ea3023f57303870aecbe" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::RuntimeState::reset_requested</definition>
+        <argsstring></argsstring>
+        <name>reset_requested</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::reset_requested</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+<para>Reset command pending. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="217" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="217" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a1783a026a49ddfdcde26434fae78f858" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::RuntimeState::is_running</definition>
+        <argsstring></argsstring>
+        <name>is_running</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::is_running</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+<para>True when sonicator is actively running. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="220" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="220" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a71aa0ef83a7b66ccc655b0b98a7dde68" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::RuntimeState::overload_active</definition>
+        <argsstring></argsstring>
+        <name>overload_active</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::overload_active</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+<para>True when overload condition detected. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="221" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="221" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a544e28eeeaa71e3a3a0417a0fea0a85d" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::RuntimeState::frequency_locked</definition>
+        <argsstring></argsstring>
+        <name>frequency_locked</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::frequency_locked</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+<para>True when frequency is locked. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="222" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="222" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1ad9f287fe57f0d6d0abd974e8d6e52866" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float SonicatorInterface::RuntimeState::power_watts</definition>
+        <argsstring></argsstring>
+        <name>power_watts</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::power_watts</qualifiedname>
+        <initializer>{0.0f}</initializer>
+        <briefdescription>
+<para>Power reading (stores raw ADC as float) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="223" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="223" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1afc47a069bb423b15928cc2d9275a74c0" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t SonicatorInterface::RuntimeState::frequency_hz</definition>
+        <argsstring></argsstring>
+        <name>frequency_hz</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::frequency_hz</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Measured frequency in Hz. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="224" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="224" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1ad3aab82f7111eaf1a5ee3c744480cf83" prot="public" static="no" mutable="no">
+        <type><ref refid="de/d45/errors_8h_1a361c37dbeedf89f2fe09845eab7f0a99" kindref="member">sonicator_fault_t</ref></type>
+        <definition>sonicator_fault_t SonicatorInterface::RuntimeState::active_faults</definition>
+        <argsstring></argsstring>
+        <name>active_faults</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::active_faults</qualifiedname>
+        <initializer>{(<ref refid="de/d45/errors_8h_1a361c37dbeedf89f2fe09845eab7f0a99" kindref="member">sonicator_fault_t</ref>)0}</initializer>
+        <briefdescription>
+<para>Currently active fault conditions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="227" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="227" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1aa7e23c40e245f3ffa0b2c38909ac3995" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::RuntimeState::fault_count</definition>
+        <argsstring></argsstring>
+        <name>fault_count</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::fault_count</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Total number of faults encountered. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="228" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="228" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1add69df8424b7b13dfb477841d0e4b1a6" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::RuntimeState::last_fault_time</definition>
+        <argsstring></argsstring>
+        <name>last_fault_time</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::last_fault_time</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Timestamp of last fault occurrence. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="229" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="229" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a0de0476ad61e53b1317f81e4174ed6ad" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::RuntimeState::last_update_time</definition>
+        <argsstring></argsstring>
+        <name>last_update_time</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::last_update_time</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Timestamp of last update call. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="230" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="230" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1acec36a57dac76111f882d2caee280878" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::RuntimeState::watchdog_last_reset</definition>
+        <argsstring></argsstring>
+        <name>watchdog_last_reset</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::watchdog_last_reset</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Timestamp of last watchdog reset. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="231" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="231" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a9723001e6a983a07c52abdca4914a81b" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SonicatorInterface::RuntimeState::safety_override</definition>
+        <argsstring></argsstring>
+        <name>safety_override</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::safety_override</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+<para>Safety override flag. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="232" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="232" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1abbd008ad7206b5a077aefc9f7d4fab44" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::RuntimeState::start_count</definition>
+        <argsstring></argsstring>
+        <name>start_count</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::start_count</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Total number of start operations. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="235" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="235" bodyend="235"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a9f47e68a6f1265d9596e07d966086b4e" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::RuntimeState::total_runtime_ms</definition>
+        <argsstring></argsstring>
+        <name>total_runtime_ms</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::total_runtime_ms</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Cumulative runtime in milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="236" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="236" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a5479419d758dabbc92128500d6c06d59" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SonicatorInterface::RuntimeState::last_start_time</definition>
+        <argsstring></argsstring>
+        <name>last_start_time</name>
+        <qualifiedname>SonicatorInterface::RuntimeState::last_start_time</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Timestamp of last start operation. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="237" column="29" bodyfile="include/sonicator/sonicator.h" bodystart="237" bodyend="237"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Internal runtime state structure. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This structure contains all the internal state variables needed for sonicator operation, including control state, monitoring data, fault tracking, and statistics. </para>
+    </detaileddescription>
+    <location file="include/sonicator/sonicator.h" line="206" column="5" bodyfile="include/sonicator/sonicator.h" bodystart="206" bodyend="238"/>
+    <listofallmembers>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1ad3aab82f7111eaf1a5ee3c744480cf83" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>active_faults</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a58c78deede8fb518348ea4bcf8127c69" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>amplitude_percent</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1aa7e23c40e245f3ffa0b2c38909ac3995" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>fault_count</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1afc47a069bb423b15928cc2d9275a74c0" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>frequency_hz</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a544e28eeeaa71e3a3a0417a0fea0a85d" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>frequency_locked</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a1783a026a49ddfdcde26434fae78f858" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>is_running</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1add69df8424b7b13dfb477841d0e4b1a6" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>last_fault_time</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a5479419d758dabbc92128500d6c06d59" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>last_start_time</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a0de0476ad61e53b1317f81e4174ed6ad" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>last_update_time</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a71aa0ef83a7b66ccc655b0b98a7dde68" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>overload_active</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1ad9f287fe57f0d6d0abd974e8d6e52866" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>power_watts</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a66849819a0d9411c1b8cd9d2440c950c" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>previous_state</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a11dbbd309586ea3023f57303870aecbe" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>reset_requested</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a9723001e6a983a07c52abdca4914a81b" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>safety_override</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1abbd008ad7206b5a077aefc9f7d4fab44" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>start_count</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a97eacaf104e82ecbd5596f09ce6c61b0" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>start_requested</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a6f3049f397069e58f71215ca208f5871" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>state</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a9875afabcf38ae469f72dc4486628065" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>state_entry_time</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a75e75030df1a54f9fdf9e9ce51aa5e53" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>stop_requested</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1a9f47e68a6f1265d9596e07d966086b4e" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>total_runtime_ms</name></member>
+      <member refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state_1acec36a57dac76111f882d2caee280878" prot="public" virt="non-virtual"><scope>SonicatorInterface::RuntimeState</scope><name>watchdog_last_reset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -4,6 +4,7 @@
     <compoundname>sonicator.h</compoundname>
     <includes local="no">stdint.h</includes>
     <includes local="no">stdbool.h</includes>
+    <includes refid="d7/d19/adc_8h" local="yes">modules/hal/adc.h</includes>
     <includes refid="d8/d4b/hal_8h" local="yes">modules/hal/hal.h</includes>
     <includes refid="db/d3b/state_8h" local="yes">sonicator/types/state.h</includes>
     <includes refid="de/d45/errors_8h" local="yes">sonicator/types/errors.h</includes>
@@ -20,33 +21,35 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="12">
         <label>sonicator/types/control.h</label>
         <link refid="d9/d02/control_8h"/>
       </node>
-      <node id="15">
+      <node id="11">
         <label>errors.h</label>
         <link refid="de/d45/errors_8h"/>
       </node>
-      <node id="14">
+      <node id="10">
         <label>sonicator/types/state.h</label>
         <link refid="db/d3b/state_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="7">
-        <label>adc.h</label>
+      <node id="4">
+        <label>modules/hal/adc.h</label>
         <link refid="d7/d19/adc_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -54,70 +57,28 @@
         </childnode>
       </node>
       <node id="6">
-        <label>atmega_hal_impl.h</label>
-        <link refid="d2/d92/atmega__hal__impl_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
         <label>gpio.h</label>
         <link refid="d6/d7c/gpio_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
       </node>
-      <node id="4">
+      <node id="5">
         <label>modules/hal/hal.h</label>
         <link refid="d8/d4b/hal_8h"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="11">
-        <label>hal_template_interfaces.h</label>
-        <link refid="de/d2b/hal__template__interfaces_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>mock_hal_impl.h</label>
-        <link refid="de/d8d/mock__hal__impl_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-      </node>
-      <node id="8">
+      <node id="7">
         <label>pwm.h</label>
         <link refid="d6/db9/pwm_8h"/>
         <childnode refid="2" relation="include">
@@ -133,7 +94,7 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="10">
+      <node id="8">
         <label>uart.h</label>
         <link refid="d2/d86/uart_8h"/>
         <childnode refid="2" relation="include">
@@ -146,9 +107,6 @@
       </node>
       <node id="2">
         <label>stdint.h</label>
-      </node>
-      <node id="13">
-        <label>string.h</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
@@ -181,34 +139,15 @@
         <link refid="d2/db9/sonicator_8cpp"/>
       </node>
     </invincdepgraph>
+    <innerclass refid="de/d5a/struct_sonicator_pins" prot="public">SonicatorPins</innerclass>
     <innerclass refid="dd/dce/class_sonicator_interface" prot="public">SonicatorInterface</innerclass>
+    <innerclass refid="d3/dbf/struct_sonicator_interface_1_1_runtime_state" prot="private">SonicatorInterface::RuntimeState</innerclass>
     <sectiondef kind="define">
       <memberdef kind="define" id="dc/d16/sonicator_8h_1a0f1d094ebabfc54ecb3292163fbb97b7" prot="public" static="no">
         <name>SONICATOR_STOP_DELAY_MS</name>
         <initializer>100</initializer>
         <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/sonicator/sonicator.h" line="28" column="9" bodyfile="include/sonicator/sonicator.h" bodystart="28" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="define" id="dc/d16/sonicator_8h_1a73ff3fa20f363956206243467723cfdb" prot="public" static="no">
-        <name>SONICATOR_START_DELAY_MS</name>
-        <initializer>50</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/sonicator/sonicator.h" line="29" column="9" bodyfile="include/sonicator/sonicator.h" bodystart="29" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="define" id="dc/d16/sonicator_8h_1a91c49141120b41b4039582f54a59d839" prot="public" static="no">
-        <name>SONICATOR_RESET_PULSE_MS</name>
-        <initializer>20</initializer>
-        <briefdescription>
+<para>Delay after stop command before transitioning to idle state (ms) </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
@@ -216,32 +155,11 @@
         </inbodydescription>
         <location file="include/sonicator/sonicator.h" line="30" column="9" bodyfile="include/sonicator/sonicator.h" bodystart="30" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="dc/d16/sonicator_8h_1a3a8bcea46ab85058d6fd1ad4c3c32ad4" prot="public" static="no">
-        <name>SONICATOR_COMM_TIMEOUT_MS</name>
-        <initializer>2000</initializer>
+      <memberdef kind="define" id="dc/d16/sonicator_8h_1a73ff3fa20f363956206243467723cfdb" prot="public" static="no">
+        <name>SONICATOR_START_DELAY_MS</name>
+        <initializer>50</initializer>
         <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/sonicator/sonicator.h" line="31" column="9" bodyfile="include/sonicator/sonicator.h" bodystart="31" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="define" id="dc/d16/sonicator_8h_1aa1c769c234868a66d06b393acfbf20cb" prot="public" static="no">
-        <name>SONICATOR_FAULT_DEBOUNCE_MS</name>
-        <initializer>10</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/sonicator/sonicator.h" line="32" column="9" bodyfile="include/sonicator/sonicator.h" bodystart="32" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="define" id="dc/d16/sonicator_8h_1aafedba2f7dd17703f2fee746b1096bcf" prot="public" static="no">
-        <name>SONICATOR_WATCHDOG_TIMEOUT_MS</name>
-        <initializer>1000</initializer>
-        <briefdescription>
+<para>Delay after start command before transitioning to running state (ms) </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
@@ -249,10 +167,11 @@
         </inbodydescription>
         <location file="include/sonicator/sonicator.h" line="33" column="9" bodyfile="include/sonicator/sonicator.h" bodystart="33" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="dc/d16/sonicator_8h_1abe06b5505cf15123b31cf8b029b59679" prot="public" static="no">
-        <name>SONICATOR_MIN_AMPLITUDE_PERCENT</name>
+      <memberdef kind="define" id="dc/d16/sonicator_8h_1a91c49141120b41b4039582f54a59d839" prot="public" static="no">
+        <name>SONICATOR_RESET_PULSE_MS</name>
         <initializer>20</initializer>
         <briefdescription>
+<para>Duration of reset pulse sent to CT2000 (ms) </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
@@ -260,229 +179,242 @@
         </inbodydescription>
         <location file="include/sonicator/sonicator.h" line="36" column="9" bodyfile="include/sonicator/sonicator.h" bodystart="36" bodyend="-1"/>
       </memberdef>
+      <memberdef kind="define" id="dc/d16/sonicator_8h_1a3a8bcea46ab85058d6fd1ad4c3c32ad4" prot="public" static="no">
+        <name>SONICATOR_COMM_TIMEOUT_MS</name>
+        <initializer>2000</initializer>
+        <briefdescription>
+<para>Communication timeout threshold (ms) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="39" column="9" bodyfile="include/sonicator/sonicator.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/d16/sonicator_8h_1aa1c769c234868a66d06b393acfbf20cb" prot="public" static="no">
+        <name>SONICATOR_FAULT_DEBOUNCE_MS</name>
+        <initializer>10</initializer>
+        <briefdescription>
+<para>Fault condition debounce time (ms) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="42" column="9" bodyfile="include/sonicator/sonicator.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/d16/sonicator_8h_1aafedba2f7dd17703f2fee746b1096bcf" prot="public" static="no">
+        <name>SONICATOR_WATCHDOG_TIMEOUT_MS</name>
+        <initializer>1000</initializer>
+        <briefdescription>
+<para>Watchdog timeout threshold (ms) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="45" column="9" bodyfile="include/sonicator/sonicator.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dc/d16/sonicator_8h_1abe06b5505cf15123b31cf8b029b59679" prot="public" static="no">
+        <name>SONICATOR_MIN_AMPLITUDE_PERCENT</name>
+        <initializer>20</initializer>
+        <briefdescription>
+<para>Minimum allowed amplitude percentage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/sonicator.h" line="48" column="9" bodyfile="include/sonicator/sonicator.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="define" id="dc/d16/sonicator_8h_1a9266e0128c993063b7b3aac98faf4e9b" prot="public" static="no">
         <name>SONICATOR_MAX_AMPLITUDE_PERCENT</name>
         <initializer>100</initializer>
         <briefdescription>
+<para>Maximum allowed amplitude percentage. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/sonicator/sonicator.h" line="37" column="9" bodyfile="include/sonicator/sonicator.h" bodystart="37" bodyend="-1"/>
-      </memberdef>
-    </sectiondef>
-    <sectiondef kind="var">
-      <memberdef kind="variable" id="dc/d16/sonicator_8h_1a608db01f4df35bb5d2fc9137140993bc" prot="public" static="no" mutable="no">
-        <type>_p</type>
-        <definition>_p reset_pin</definition>
-        <argsstring></argsstring>
-        <name>reset_pin</name>
-        <initializer>= SON##id##_RESET_PIN</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/sonicator/sonicator.h" line="45" column="7" bodyfile="include/sonicator/sonicator.h" bodystart="45" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="dc/d16/sonicator_8h_1af64695e062ad45b326b59c2cb88a56d0" prot="public" static="no" mutable="no">
-        <type>_p</type>
-        <definition>_p overload_pin</definition>
-        <argsstring></argsstring>
-        <name>overload_pin</name>
-        <initializer>= SON##id##_OVERLOAD_PIN</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/sonicator/sonicator.h" line="46" column="7" bodyfile="include/sonicator/sonicator.h" bodystart="46" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="dc/d16/sonicator_8h_1ad09a021ad4441f9f17a7ff6ebe8c7b29" prot="public" static="no" mutable="no">
-        <type>_p</type>
-        <definition>_p freq_lock_pin</definition>
-        <argsstring></argsstring>
-        <name>freq_lock_pin</name>
-        <initializer>= SON##id##_FREQ_LOCK_PIN</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/sonicator/sonicator.h" line="47" column="7" bodyfile="include/sonicator/sonicator.h" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="dc/d16/sonicator_8h_1addaac23dc8df041533eec3f5c2651696" prot="public" static="no" mutable="no">
-        <type>_p</type>
-        <definition>_p freq_div10_pin</definition>
-        <argsstring></argsstring>
-        <name>freq_div10_pin</name>
-        <initializer>= SON##id##_FREQ_DIV10_PIN</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/sonicator/sonicator.h" line="48" column="7" bodyfile="include/sonicator/sonicator.h" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="dc/d16/sonicator_8h_1ad10926f894dc3201ed7e4b2970f85e73" prot="public" static="no" mutable="no">
-        <type>_p</type>
-        <definition>_p power_sense_channel</definition>
-        <argsstring></argsstring>
-        <name>power_sense_channel</name>
-        <initializer>= ADC_SONICATOR_##id##_PIN</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/sonicator/sonicator.h" line="49" column="7" bodyfile="include/sonicator/sonicator.h" bodystart="49" bodyend="-1"/>
-      </memberdef>
-    </sectiondef>
-    <sectiondef kind="func">
-      <memberdef kind="function" id="dc/d16/sonicator_8h_1a6f02eb6477363058dc8aafc2aedc3f2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>CONFIGURE_SONICATOR_PINS</definition>
-        <argsstring>(id, _p) _p.start_pin</argsstring>
-        <name>CONFIGURE_SONICATOR_PINS</name>
-        <param>
-          <type>id</type>
-        </param>
-        <param>
-          <type>_p</type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/sonicator/sonicator.h" line="43" column="1" declfile="include/sonicator/sonicator.h" declline="43" declcolumn="1"/>
+        <location file="include/sonicator/sonicator.h" line="51" column="9" bodyfile="include/sonicator/sonicator.h" bodystart="51" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>Sonicator IO Control and Monitoring API. </para>
+<para>Sonicator IO Control and Monitoring API (single-unit interface) </para>
     </briefdescription>
     <detaileddescription>
-<para><simplesect kind="author"><para>Cannasol Technologies </para>
-</simplesect>
-<simplesect kind="date"><para>2025-09-16 </para>
-</simplesect>
-<simplesect kind="version"><para>2.0.0</para>
-</simplesect>
-Provides a clean, object-oriented API for single sonicator control. This version is refactored to be generic, accepting pin configurations to allow management of multiple sonicator units by a multiplexer. </para>
+<para>This header defines the <ref refid="dd/dce/class_sonicator_interface" kindref="compound">SonicatorInterface</ref> class which encapsulates the control and monitoring logic for a single CT2000 sonicator channel. It is designed to be instantiated four times by the <ref refid="d3/d00/class_sonic_multiplexer" kindref="compound">SonicMultiplexer</ref>, each with its own pin mapping.</para>
+<para>Architecture:<itemizedlist>
+<listitem><para>Multiplexer owns four <ref refid="dd/dce/class_sonicator_interface" kindref="compound">SonicatorInterface</ref> instances</para>
+</listitem><listitem><para>Multiplexer.update() calls each <ref refid="dd/dce/class_sonicator_interface_1a965dc6480b7931e64a6a0f4a704b96a2" kindref="member">SonicatorInterface::update()</ref></para>
+</listitem><listitem><para>Each <ref refid="dd/dce/class_sonicator_interface" kindref="compound">SonicatorInterface</ref> reads its own MODBUS control, applies HAL actions, and publishes status back to MODBUS (bridge in the unit) </para>
+</listitem></itemizedlist>
+</para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SONICATOR_H</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_H</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d8/d4b/hal_8h" kindref="compound">modules/hal/hal.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="db/d3b/state_8h" kindref="compound">sonicator/types/state.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/d45/errors_8h" kindref="compound">sonicator/types/errors.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d9/d02/control_8h" kindref="compound">sonicator/types/control.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TIMING<sp/>CONSTANTS</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28" refid="dc/d16/sonicator_8h_1a0f1d094ebabfc54ecb3292163fbb97b7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_STOP_DELAY_MS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>100</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29" refid="dc/d16/sonicator_8h_1a73ff3fa20f363956206243467723cfdb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_START_DELAY_MS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>50</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30" refid="dc/d16/sonicator_8h_1a91c49141120b41b4039582f54a59d839" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_RESET_PULSE_MS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>20</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31" refid="dc/d16/sonicator_8h_1a3a8bcea46ab85058d6fd1ad4c3c32ad4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_COMM_TIMEOUT_MS<sp/><sp/><sp/><sp/><sp/><sp/><sp/>2000</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32" refid="dc/d16/sonicator_8h_1aa1c769c234868a66d06b393acfbf20cb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_FAULT_DEBOUNCE_MS<sp/><sp/><sp/><sp/><sp/>10</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33" refid="dc/d16/sonicator_8h_1aafedba2f7dd17703f2fee746b1096bcf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_WATCHDOG_TIMEOUT_MS<sp/><sp/><sp/>1000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SONICATOR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d7/d19/adc_8h" kindref="compound">modules/hal/adc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d8/d4b/hal_8h" kindref="compound">modules/hal/hal.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="db/d3b/state_8h" kindref="compound">sonicator/types/state.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/d45/errors_8h" kindref="compound">sonicator/types/errors.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d9/d02/control_8h" kindref="compound">sonicator/types/control.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="dc/d16/sonicator_8h_1a0f1d094ebabfc54ecb3292163fbb97b7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_STOP_DELAY_MS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>100</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="dc/d16/sonicator_8h_1a73ff3fa20f363956206243467723cfdb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_START_DELAY_MS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>50</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Amplitude<sp/>limits</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36" refid="dc/d16/sonicator_8h_1abe06b5505cf15123b31cf8b029b59679" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_MIN_AMPLITUDE_PERCENT<sp/>20</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37" refid="dc/d16/sonicator_8h_1a9266e0128c993063b7b3aac98faf4e9b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_MAX_AMPLITUDE_PERCENT<sp/>100</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SONICATOR<sp/>CONTROLLER<sp/>CLASS</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43" refid="dc/d16/sonicator_8h_1a6f02eb6477363058dc8aafc2aedc3f2d" refkind="member"><highlight class="normal"><ref refid="dc/d16/sonicator_8h_1a6f02eb6477363058dc8aafc2aedc3f2d" kindref="member">CONFIGURE_SONICATOR_PINS</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>_p)<sp/>\</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>_p.start_pin<sp/>=<sp/>SON##</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">##_START_PIN;<sp/>\</highlight></codeline>
-<codeline lineno="45" refid="dc/d16/sonicator_8h_1a608db01f4df35bb5d2fc9137140993bc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>_p.reset_pin<sp/>=<sp/>SON##</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">##_RESET_PIN;<sp/>\</highlight></codeline>
-<codeline lineno="46" refid="dc/d16/sonicator_8h_1af64695e062ad45b326b59c2cb88a56d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>_p.overload_pin<sp/>=<sp/>SON##</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">##_OVERLOAD_PIN;<sp/>\</highlight></codeline>
-<codeline lineno="47" refid="dc/d16/sonicator_8h_1ad09a021ad4441f9f17a7ff6ebe8c7b29" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>_p.freq_lock_pin<sp/>=<sp/>SON##</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">##_FREQ_LOCK_PIN;<sp/>\</highlight></codeline>
-<codeline lineno="48" refid="dc/d16/sonicator_8h_1addaac23dc8df041533eec3f5c2651696" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>_p.freq_div10_pin<sp/>=<sp/>SON##</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">##_FREQ_DIV10_PIN;<sp/>\</highlight></codeline>
-<codeline lineno="49" refid="dc/d16/sonicator_8h_1ad10926f894dc3201ed7e4b2970f85e73" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>_p.power_sense_channel<sp/>=<sp/>ADC_SONICATOR_##</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">##_PIN;</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70" refid="dd/dce/class_sonicator_interface" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="dd/dce/class_sonicator_interface_1a1c969974a0c83b1abd3f5520bfaaac5f" kindref="member">SonicatorInterface</ref><sp/>{</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Member<sp/>variables</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>id_;</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>simulation_mode_;</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1afeb77d5a88e0115b4344d7f6ed578ec8" kindref="member">sonicator_status_t</ref><sp/>state_;</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sonicator_pins_s<sp/>pins_;</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="82" refid="dd/dce/class_sonicator_interface_1a1c969974a0c83b1abd3f5520bfaaac5f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dd/dce/class_sonicator_interface_1a1c969974a0c83b1abd3f5520bfaaac5f" kindref="member">SonicatorInterface</ref>(uint8_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>:<sp/>id(id_)<sp/>{</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/d16/sonicator_8h_1a6f02eb6477363058dc8aafc2aedc3f2d" kindref="member">CONFIGURE_SONICATOR_PINS</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>pins_);</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"></highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dd/dce/class_sonicator_interface_1aa8ac180541322a6e69ee2802e3be6091" kindref="member">~SonicatorInterface</ref>();</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1adf75054e417d3ab85dacf74271c06839" kindref="member">start</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1aca9b5a2d1a1f5115815dbe4f3b298788" kindref="member">stop</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1ad713a871961b48d00981e575eabbf8cb" kindref="member">setAmplitude</ref>(uint8_t<sp/>amplitude_percent);</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1adbe33916b6344b7cb53d49a038e0b981" kindref="member">resetOverload</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1a3147a3631f7696163334c948288f84f2" kindref="member">emergencyStop</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref><sp/><ref refid="dd/dce/class_sonicator_interface_1a965dc6480b7931e64a6a0f4a704b96a2" kindref="member">update</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="db/d3b/state_8h_1afeb77d5a88e0115b4344d7f6ed578ec8" kindref="member">sonicator_status_t</ref>*<sp/><ref refid="dd/dce/class_sonicator_interface_1a1eba2deaa7375360d42dc30141d32d98" kindref="member">getStatus</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="dd/dce/class_sonicator_interface_1adb823dc5c7bea02cae667f3d51283b05" kindref="member">stateToString</ref>(<ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref><sp/>state);</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1afd89b065fa49ffe9192637a70b5d7c62" kindref="member">isSafe</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1a7df86f8e26cf646bc2759ab61d987797" kindref="member">resetStatistics</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Advanced<sp/>functions<sp/>for<sp/>testing</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1aa67103634c6336b95401033177050ad7" kindref="member">setSimulationMode</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable);</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1a9f7a094a5349c9486b5e6bfa0acefb37" kindref="member">forceState</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="db/d3b/state_8h_1afeb77d5a88e0115b4344d7f6ed578ec8" kindref="member">sonicator_status_t</ref>&amp;<sp/>newState);</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1ac194747a2a520ff9e39606ed1879fe16" kindref="member">injectFault</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="de/d45/errors_8h_1a361c37dbeedf89f2fe09845eab7f0a99" kindref="member">sonicator_fault_t</ref>&amp;<sp/>faultMask);</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Testing<sp/>Only</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>simulation_mode_;</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Register<sp/>Space<sp/>for<sp/>this<sp/>Sonicator</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1afeb77d5a88e0115b4344d7f6ed578ec8" kindref="member">sonicator_status_t</ref><sp/>status_regs_;</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1af132973e9c955228c4f718796bec3640" kindref="member">sonicator_control_t</ref><sp/>control_regs_;</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Hardware<sp/>Pin<sp/>Definitions</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="de/d5a/struct_sonicator_pins" kindref="compound">SonicatorPins</ref><sp/>pins_;</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Private<sp/>utility<sp/>methods</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>getTimestampMs()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isTimeout(uint32_t<sp/>start_time,<sp/>uint32_t<sp/>timeout_ms)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>clampAmplitude(uint8_t<sp/>amplitude)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>amplitudeToPwm(uint8_t<sp/>amplitude_percent)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"></highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Private<sp/>HAL<sp/>interface<sp/>methods</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>halGpioWriteSafe(uint8_t<sp/>pin,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>state);</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>halGpioReadSafe(uint8_t<sp/>pin);</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>halPwmSetSafe(uint8_t<sp/>pin,<sp/>uint8_t<sp/>duty_cycle);</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>halAdcReadSafe(<ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref><sp/>channel);</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Private<sp/>hardware<sp/>interface<sp/>methods</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>updateHardwareControl();</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>updateHardwareStatus();</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>handleHardwareFaults();</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Private<sp/>state<sp/>machine<sp/>method</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>processStateMachine();</highlight></codeline>
-<codeline lineno="137"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>SONICATOR_H</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="140"><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="36" refid="dc/d16/sonicator_8h_1a91c49141120b41b4039582f54a59d839" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_RESET_PULSE_MS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>20</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="dc/d16/sonicator_8h_1a3a8bcea46ab85058d6fd1ad4c3c32ad4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_COMM_TIMEOUT_MS<sp/><sp/><sp/><sp/><sp/><sp/><sp/>2000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="dc/d16/sonicator_8h_1aa1c769c234868a66d06b393acfbf20cb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_FAULT_DEBOUNCE_MS<sp/><sp/><sp/><sp/><sp/>10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="dc/d16/sonicator_8h_1aafedba2f7dd17703f2fee746b1096bcf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_WATCHDOG_TIMEOUT_MS<sp/><sp/><sp/>1000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="dc/d16/sonicator_8h_1abe06b5505cf15123b31cf8b029b59679" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_MIN_AMPLITUDE_PERCENT<sp/>20</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="dc/d16/sonicator_8h_1a9266e0128c993063b7b3aac98faf4e9b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_MAX_AMPLITUDE_PERCENT<sp/>100</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="de/d5a/struct_sonicator_pins" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60" refid="de/d5a/struct_sonicator_pins_1ad6a9c4ffb30ccff3633e653f13c4aacd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d5a/struct_sonicator_pins_1ad6a9c4ffb30ccff3633e653f13c4aacd" kindref="member">sonicator_id</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="61" refid="de/d5a/struct_sonicator_pins_1aade86cc331059ac42b918d5c4601cfba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d5a/struct_sonicator_pins_1aade86cc331059ac42b918d5c4601cfba" kindref="member">start_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="62" refid="de/d5a/struct_sonicator_pins_1adb56b7285e08ae5590664013aea0dc5b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d5a/struct_sonicator_pins_1adb56b7285e08ae5590664013aea0dc5b" kindref="member">reset_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="63" refid="de/d5a/struct_sonicator_pins_1a9f2610ad98a5973f58cc32c714f7bfc9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d5a/struct_sonicator_pins_1a9f2610ad98a5973f58cc32c714f7bfc9" kindref="member">overload_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="64" refid="de/d5a/struct_sonicator_pins_1a8572c5252876bfb33ae862600951ce83" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d5a/struct_sonicator_pins_1a8572c5252876bfb33ae862600951ce83" kindref="member">freq_lock_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65" refid="de/d5a/struct_sonicator_pins_1a12ff06055b9989f979fd34daff37d1b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d5a/struct_sonicator_pins_1a12ff06055b9989f979fd34daff37d1b2" kindref="member">freq_div10_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="66" refid="de/d5a/struct_sonicator_pins_1a3523cd65a350ce8ff85b9166bb46f73c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref><sp/><ref refid="de/d5a/struct_sonicator_pins_1a3523cd65a350ce8ff85b9166bb46f73c" kindref="member">power_sense_channel</ref>;<sp/></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}<sp/><ref refid="de/d5a/struct_sonicator_pins" kindref="compound">SonicatorPins</ref>;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="dd/dce/class_sonicator_interface" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="dd/dce/class_sonicator_interface_1a6002a7b64e7fa43381777bdc41ec007d" kindref="member">SonicatorInterface</ref><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1a6002a7b64e7fa43381777bdc41ec007d" kindref="member">SonicatorInterface</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="de/d5a/struct_sonicator_pins" kindref="compound">SonicatorPins</ref>&amp;<sp/>pins);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dd/dce/class_sonicator_interface_1aa8ac180541322a6e69ee2802e3be6091" kindref="member">~SonicatorInterface</ref>();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Control<sp/>API<sp/>(logical)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1adf75054e417d3ab85dacf74271c06839" kindref="member">start</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1aca9b5a2d1a1f5115815dbe4f3b298788" kindref="member">stop</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1ad713a871961b48d00981e575eabbf8cb" kindref="member">setAmplitude</ref>(uint8_t<sp/>amplitude_percent);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1adbe33916b6344b7cb53d49a038e0b981" kindref="member">resetOverload</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1a3147a3631f7696163334c948288f84f2" kindref="member">emergencyStop</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Main<sp/>periodic<sp/>update<sp/>(called<sp/>by<sp/>multiplexer)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref><sp/><ref refid="dd/dce/class_sonicator_interface_1a965dc6480b7931e64a6a0f4a704b96a2" kindref="member">update</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Status<sp/>/<sp/>diagnostics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1a5db44754abe690dd04b3f2abe5a075c8" kindref="member">sonicator_status_t</ref>*<sp/><ref refid="dd/dce/class_sonicator_interface_1a878b1f0ce1b9466530cfad5c966782a6" kindref="member">getStatus</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="dd/dce/class_sonicator_interface_1adb823dc5c7bea02cae667f3d51283b05" kindref="member">stateToString</ref>(<ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref><sp/>state);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1afd89b065fa49ffe9192637a70b5d7c62" kindref="member">isSafe</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1a7df86f8e26cf646bc2759ab61d987797" kindref="member">resetStatistics</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>hooks</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1aa67103634c6336b95401033177050ad7" kindref="member">setSimulationMode</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1a9f7a094a5349c9486b5e6bfa0acefb37" kindref="member">forceState</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1a5db44754abe690dd04b3f2abe5a075c8" kindref="member">sonicator_status_t</ref>&amp;<sp/>newState);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface_1ac194747a2a520ff9e39606ed1879fe16" kindref="member">injectFault</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="de/d45/errors_8h_1a361c37dbeedf89f2fe09845eab7f0a99" kindref="member">sonicator_fault_t</ref>&amp;<sp/>faultMask);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="de/d5a/struct_sonicator_pins" kindref="compound">SonicatorPins</ref><sp/>pins_;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">RuntimeState<sp/>{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Control/state<sp/>machine</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref><sp/><sp/><sp/>state{<ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a02f13d1f0ad8e9fc52f93cf9c25ad0cf" kindref="member">SONICATOR_STATE_UNKNOWN</ref>};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref><sp/><sp/><sp/>previous_state{<ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a02f13d1f0ad8e9fc52f93cf9c25ad0cf" kindref="member">SONICATOR_STATE_UNKNOWN</ref>};<sp/></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_entry_time{0};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Control<sp/>inputs<sp/>and<sp/>setpoints</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>amplitude_percent{<ref refid="dc/d16/sonicator_8h_1abe06b5505cf15123b31cf8b029b59679" kindref="member">SONICATOR_MIN_AMPLITUDE_PERCENT</ref>};<sp/></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>start_requested{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stop_requested{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reset_requested{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Derived/monitoring</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is_running{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>overload_active{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frequency_locked{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>power_watts{0.0f};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frequency_hz{0};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Faults<sp/>and<sp/>watches</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d45/errors_8h_1a361c37dbeedf89f2fe09845eab7f0a99" kindref="member">sonicator_fault_t</ref><sp/><sp/><sp/>active_faults{(<ref refid="de/d45/errors_8h_1a361c37dbeedf89f2fe09845eab7f0a99" kindref="member">sonicator_fault_t</ref>)0};<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fault_count{0};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>last_fault_time{0};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>last_update_time{0};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/de5/timer_8cpp_1aca086a046c5ca350c9a5a8b1f716fd7d" kindref="member">watchdog_last_reset</ref>{0};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>safety_override{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>History</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>start_count{0};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>total_runtime_ms{0};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>last_start_time{0};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>simulation_mode_{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>RuntimeState<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_{};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1a5db44754abe690dd04b3f2abe5a075c8" kindref="member">sonicator_status_t</ref><sp/>status_view_{};<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Utilities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>getTimestampMs()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>isTimeout(uint32_t<sp/>start_time,<sp/>uint32_t<sp/>timeout_ms)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><sp/>clampAmplitude(uint8_t<sp/>amplitude)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><sp/>amplitudeToPwm(uint8_t<sp/>amplitude_percent)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>HAL<sp/>adapters<sp/>(safe<sp/>wrappers)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>halGpioWriteSafe(uint8_t<sp/>pin,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>state);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>halGpioReadSafe(uint8_t<sp/>pin);</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>halPwmSetSafe(uint8_t<sp/>duty_cycle);</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>halAdcReadSafe(<ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref><sp/>channel);</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Hardware<sp/>interaction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/>updateHardwareOutputs();</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/>readHardwareInputs();</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fault<sp/>management</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="de/d45/errors_8h_1a361c37dbeedf89f2fe09845eab7f0a99" kindref="member">sonicator_fault_t</ref><sp/>checkFaultConditions();</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/>handleFaultConditions(<ref refid="de/d45/errors_8h_1a361c37dbeedf89f2fe09845eab7f0a99" kindref="member">sonicator_fault_t</ref><sp/>faults);</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>State<sp/>machine</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/>processStateMachine();</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/>buildStatusView_()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>SONICATOR_H</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/sonicator/sonicator.h"/>
   </compounddef>

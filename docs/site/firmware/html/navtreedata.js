@@ -30,10 +30,9 @@ var NAVTREE =
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
-      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
@@ -45,7 +44,7 @@ var NAVTREE =
         [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", "globals_eval" ],
+        [ "Enumerator", "globals_eval.html", null ],
         [ "Macros", "globals_defs.html", "globals_defs" ]
       ] ]
     ] ]
@@ -55,13 +54,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d3/d3b/class_atmega_hal.html#a19575fab3faeb4302d098adaad0b69c3",
-"d4/d7e/system__config_8h.html#a7d80c3b410035aed9cd8484552186f92aeb3d51523d7f54b10fe466f98dc4501a",
-"d5/dea/structmodbus__config__t.html#a60457aa22ba8273dc67ea526f0d69f97",
-"d7/d19/adc_8h.html#ab0d58a8b58b229a1ef66fd3ba5d848b9a2a42b5274ff05f6886c1737eb964b6f4",
-"da/d9e/modbus__example_8cpp.html#ac88ac912d80ab6055dd99db268d6e13d",
-"dc/db6/hal_8cpp.html#acc4a464eefe13ab6eee4a21bc0f1a1d8",
-"de/d93/class_arduino_hal.html#a40c4ecc0052700584ed5073ffdb11aa1"
+"d4/d7e/system__config_8h.html#a747ab812e6efcb05a0a50d963f861f36",
+"d6/d7c/gpio_8h.html#a1044034cb78746356ec8ae1b4b33419e",
+"d9/d49/types_8h.html#a1ccd0b4ac559edcdc9963b4d2708f375",
+"dc/db6/hal_8cpp.html#a5b5e63353fed4bfb72b1509fab9b3d40",
+"globals_func.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

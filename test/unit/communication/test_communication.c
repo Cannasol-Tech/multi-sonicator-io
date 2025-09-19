@@ -161,9 +161,9 @@
 #define NOINLINE
 #endif
 #endif
-#include "../../../src/modules/communication/modbus.h"
-#include "../../../src/modules/communication/modbus_register_manager.h"
-#include "../../../src/modules/communication/modbus_registers.h"
+#include "../../../include/modbus.h"
+#include "../../../include/modbus_register_manager.h"
+#include "../../../include/modbus_registers.h"
 
 // ============================================================================
 // TEST FIXTURE SETUP

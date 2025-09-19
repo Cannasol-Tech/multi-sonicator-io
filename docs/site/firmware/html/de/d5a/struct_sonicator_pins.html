@@ -92,30 +92,52 @@ $(function(){initNavTree('de/d5a/struct_sonicator_pins.html','../../','da/dca/st
 </div><!--header-->
 <div class="contents">
 
-<p>Defines the hardware pins for a single sonicator channel.  
+<p>Pin bundle describing a single sonicator channel.  
  <a href="#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="../../da/de1/pins_8h_source.html">pins.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="../../dc/d16/sonicator_8h_source.html">sonicator.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:ad6a9c4ffb30ccff3633e653f13c4aacd" id="r_ad6a9c4ffb30ccff3633e653f13c4aacd"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6a9c4ffb30ccff3633e653f13c4aacd">sonicator_id</a></td></tr>
+<tr class="memdesc:ad6a9c4ffb30ccff3633e653f13c4aacd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logical ID (1..4) used for MODBUS index and frequency channel select.  <br /></td></tr>
 <tr class="memitem:aade86cc331059ac42b918d5c4601cfba" id="r_aade86cc331059ac42b918d5c4601cfba"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aade86cc331059ac42b918d5c4601cfba">start_pin</a></td></tr>
-<tr class="memdesc:aade86cc331059ac42b918d5c4601cfba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output: start/enable control line.  <br /></td></tr>
+<tr class="memdesc:aade86cc331059ac42b918d5c4601cfba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Digital output pin to start sonics (ULN2003A -&gt; CT2000)  <br /></td></tr>
 <tr class="memitem:adb56b7285e08ae5590664013aea0dc5b" id="r_adb56b7285e08ae5590664013aea0dc5b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb56b7285e08ae5590664013aea0dc5b">reset_pin</a></td></tr>
-<tr class="memdesc:adb56b7285e08ae5590664013aea0dc5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output: reset/clear overload (pulse for SONICATOR_RESET_PULSE_MS)  <br /></td></tr>
+<tr class="memdesc:adb56b7285e08ae5590664013aea0dc5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Digital output pin to reset overload (ULN2003A -&gt; CT2000)  <br /></td></tr>
 <tr class="memitem:a9f2610ad98a5973f58cc32c714f7bfc9" id="r_a9f2610ad98a5973f58cc32c714f7bfc9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f2610ad98a5973f58cc32c714f7bfc9">overload_pin</a></td></tr>
-<tr class="memdesc:a9f2610ad98a5973f58cc32c714f7bfc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input: overload status from sonicator.  <br /></td></tr>
+<tr class="memdesc:a9f2610ad98a5973f58cc32c714f7bfc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Digital input (6N137 -&gt; CT2000 overload)  <br /></td></tr>
 <tr class="memitem:a8572c5252876bfb33ae862600951ce83" id="r_a8572c5252876bfb33ae862600951ce83"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8572c5252876bfb33ae862600951ce83">freq_lock_pin</a></td></tr>
-<tr class="memdesc:a8572c5252876bfb33ae862600951ce83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input: frequency-lock indicator.  <br /></td></tr>
+<tr class="memdesc:a8572c5252876bfb33ae862600951ce83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Digital input (6N137 -&gt; CT2000 frequency lock)  <br /></td></tr>
+<tr class="memitem:a12ff06055b9989f979fd34daff37d1b2" id="r_a12ff06055b9989f979fd34daff37d1b2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12ff06055b9989f979fd34daff37d1b2">freq_div10_pin</a></td></tr>
+<tr class="memdesc:a12ff06055b9989f979fd34daff37d1b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Digital input for frequency ÷10 (pin change ISR channel select)  <br /></td></tr>
+<tr class="memitem:a3523cd65a350ce8ff85b9166bb46f73c" id="r_a3523cd65a350ce8ff85b9166bb46f73c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d19/adc_8h.html#aafc4060027875f8fe46242b0656d7814">adc_channel_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3523cd65a350ce8ff85b9166bb46f73c">power_sense_channel</a></td></tr>
+<tr class="memdesc:a3523cd65a350ce8ff85b9166bb46f73c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADC channel for 0-10V power monitor (raw ADC stored)  <br /></td></tr>
 <tr class="memitem:ac081e0e9cc64b41ad1f5716d202c1cb3" id="r_ac081e0e9cc64b41ad1f5716d202c1cb3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac081e0e9cc64b41ad1f5716d202c1cb3">operating_freq_div10</a></td></tr>
 <tr class="memdesc:ac081e0e9cc64b41ad1f5716d202c1cb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input: frequency/10 measurement source.  <br /></td></tr>
-<tr class="memitem:a3523cd65a350ce8ff85b9166bb46f73c" id="r_a3523cd65a350ce8ff85b9166bb46f73c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d19/adc_8h.html#aafc4060027875f8fe46242b0656d7814">adc_channel_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3523cd65a350ce8ff85b9166bb46f73c">power_sense_channel</a></td></tr>
-<tr class="memdesc:a3523cd65a350ce8ff85b9166bb46f73c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Analog input channel for power sensing.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Defines the hardware pins for a single sonicator channel. </p>
+<div class="textblock"><p>Pin bundle describing a single sonicator channel. </p>
+<p>Defines the hardware pins for a single sonicator channel.</p>
+<p>This structure contains all the hardware pin assignments needed to control and monitor a single CT2000 sonicator channel.</p>
 <dl class="section note"><dt>Note</dt><dd>All outputs are assumed active-high. If your hardware differs, normalize polarity in the HAL layer or handle it explicitly here. </dd></dl>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
+<a id="a12ff06055b9989f979fd34daff37d1b2" name="a12ff06055b9989f979fd34daff37d1b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12ff06055b9989f979fd34daff37d1b2">&#9670;&#160;</a></span>freq_div10_pin</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t SonicatorPins::freq_div10_pin</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Digital input for frequency ÷10 (pin change ISR channel select) </p>
+
+</div>
+</div>
 <a id="a8572c5252876bfb33ae862600951ce83" name="a8572c5252876bfb33ae862600951ce83"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8572c5252876bfb33ae862600951ce83">&#9670;&#160;</a></span>freq_lock_pin</h2>
 
@@ -128,6 +150,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Digital input (6N137 -&gt; CT2000 frequency lock) </p>
 <p>Input: frequency-lock indicator. </p>
 
 </div>
@@ -160,6 +183,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Digital input (6N137 -&gt; CT2000 overload) </p>
 <p>Input: overload status from sonicator. </p>
 
 </div>
@@ -176,6 +200,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>ADC channel for 0-10V power monitor (raw ADC stored) </p>
 <p>Analog input channel for power sensing. </p>
 
 </div>
@@ -192,7 +217,24 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Digital output pin to reset overload (ULN2003A -&gt; CT2000) </p>
 <p>Output: reset/clear overload (pulse for SONICATOR_RESET_PULSE_MS) </p>
+
+</div>
+</div>
+<a id="ad6a9c4ffb30ccff3633e653f13c4aacd" name="ad6a9c4ffb30ccff3633e653f13c4aacd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6a9c4ffb30ccff3633e653f13c4aacd">&#9670;&#160;</a></span>sonicator_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t SonicatorPins::sonicator_id</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Logical ID (1..4) used for MODBUS index and frequency channel select. </p>
 
 </div>
 </div>
@@ -208,11 +250,13 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Digital output pin to start sonics (ULN2003A -&gt; CT2000) </p>
 <p>Output: start/enable control line. </p>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/>The documentation for this struct was generated from the following files:<ul>
+<li>include/sonicator/<a class="el" href="../../dc/d16/sonicator_8h_source.html">sonicator.h</a></li>
 <li>include/sonicator/types/<a class="el" href="../../da/de1/pins_8h_source.html">pins.h</a></li>
 </ul>
 </div><!-- contents -->

@@ -26,134 +26,317 @@
 #include "sonicator/types/errors.h"
 #include "sonicator/types/control.h"
 
-// Timing constants (kept here for unit-level logic; must match implementation)
+/** @brief Delay after stop command before transitioning to idle state (ms) */
 #define SONICATOR_STOP_DELAY_MS         100
+
+/** @brief Delay after start command before transitioning to running state (ms) */
 #define SONICATOR_START_DELAY_MS        50
+
+/** @brief Duration of reset pulse sent to CT2000 (ms) */
 #define SONICATOR_RESET_PULSE_MS        20
+
+/** @brief Communication timeout threshold (ms) */
 #define SONICATOR_COMM_TIMEOUT_MS       2000
+
+/** @brief Fault condition debounce time (ms) */
 #define SONICATOR_FAULT_DEBOUNCE_MS     10
+
+/** @brief Watchdog timeout threshold (ms) */
 #define SONICATOR_WATCHDOG_TIMEOUT_MS   1000
 
-// Amplitude limits
+/** @brief Minimum allowed amplitude percentage */
 #define SONICATOR_MIN_AMPLITUDE_PERCENT 20
+
+/** @brief Maximum allowed amplitude percentage */
 #define SONICATOR_MAX_AMPLITUDE_PERCENT 100
 
 /**
  * @brief Pin bundle describing a single sonicator channel
+ * 
+ * This structure contains all the hardware pin assignments needed to control
+ * and monitor a single CT2000 sonicator channel.
  */
 typedef struct {
-    uint8_t       sonicator_id;        // 1..4 logical ID (used for MODBUS index and frequency channel select)
-    uint8_t       start_pin;           // Digital output pin to start sonics (ULN2003A -> CT2000)
-    uint8_t       reset_pin;           // Digital output pin to reset overload (ULN2003A -> CT2000)
-    uint8_t       overload_pin;        // Digital input (6N137 -> CT2000 overload)
-    uint8_t       freq_lock_pin;       // Digital input (6N137 -> CT2000 frequency lock)
-    uint8_t       freq_div10_pin;      // Digital input for frequency ÷10 (pin change ISR channel select)
-    adc_channel_t power_sense_channel; // ADC channel for 0-10V power monitor (raw ADC stored)
+    uint8_t       sonicator_id;        /**< Logical ID (1..4) used for MODBUS index and frequency channel select */
+    uint8_t       start_pin;           /**< Digital output pin to start sonics (ULN2003A -> CT2000) */
+    uint8_t       reset_pin;           /**< Digital output pin to reset overload (ULN2003A -> CT2000) */
+    uint8_t       overload_pin;        /**< Digital input (6N137 -> CT2000 overload) */
+    uint8_t       freq_lock_pin;       /**< Digital input (6N137 -> CT2000 frequency lock) */
+    uint8_t       freq_div10_pin;      /**< Digital input for frequency ÷10 (pin change ISR channel select) */
+    adc_channel_t power_sense_channel; /**< ADC channel for 0-10V power monitor (raw ADC stored) */
 } SonicatorPins;
 
 /**
  * @class SonicatorInterface
  * @brief Manages a single sonicator channel via a defined pin structure.
  *
- * Usage:
- *   SonicatorPins p{1, SON1_START_PIN, SON1_RESET_PIN, SON1_OVERLOAD_PIN, SON1_FREQ_LOCK_PIN, SON1_FREQ_OUTPUT_PIN, ADC_SONICATOR_1_PIN};
- *   SonicatorInterface s1(p);
- *   s1.update(); // reads control from MODBUS, applies to HAL, writes status to MODBUS
+ * This class provides a complete interface for controlling and monitoring a single
+ * CT2000 sonicator channel. It handles state machine logic, fault detection,
+ * hardware I/O, and MODBUS communication.
+ *
+ * @par Usage Example:
+ * @code
+ * SonicatorPins p{1, SON1_START_PIN, SON1_RESET_PIN, SON1_OVERLOAD_PIN, 
+ *                 SON1_FREQ_LOCK_PIN, SON1_FREQ_OUTPUT_PIN, ADC_SONICATOR_1_PIN};
+ * SonicatorInterface s1(p);
+ * s1.update(); // reads control from MODBUS, applies to HAL, writes status to MODBUS
+ * @endcode
  */
 class SonicatorInterface {
 public:
+    /**
+     * @brief Construct a new SonicatorInterface object
+     * @param pins Pin configuration for this sonicator channel
+     */
     explicit SonicatorInterface(const SonicatorPins& pins);
+    
+    /**
+     * @brief Destroy the SonicatorInterface object
+     */
     ~SonicatorInterface();
 
     // Control API (logical)
+    
+    /**
+     * @brief Start the sonicator
+     * @return true if start command was accepted, false otherwise
+     */
     bool start(void);
+    
+    /**
+     * @brief Stop the sonicator
+     * @return true if stop command was accepted, false otherwise
+     */
     bool stop(void);
+    
+    /**
+     * @brief Set the amplitude percentage
+     * @param amplitude_percent Desired amplitude (20-100%)
+     * @return true if amplitude was set successfully, false otherwise
+     */
     bool setAmplitude(uint8_t amplitude_percent);
+    
+    /**
+     * @brief Reset overload condition
+     * @return true if reset command was accepted, false otherwise
+     */
     bool resetOverload(void);
+    
+    /**
+     * @brief Emergency stop - immediately halt operation
+     * @return true if emergency stop was executed, false otherwise
+     */
     bool emergencyStop(void);
 
     // Main periodic update (called by multiplexer)
+    
+    /**
+     * @brief Main periodic update function
+     * 
+     * This function should be called regularly to:
+     * - Read MODBUS control commands
+     * - Update state machine
+     * - Process hardware I/O
+     * - Detect and handle faults
+     * - Publish status to MODBUS
+     * 
+     * @return Current sonicator state
+     */
     sonicator_state_t update(void);
 
     // Status / diagnostics
+    
+    /**
+     * @brief Get current status
+     * @return Pointer to current status structure
+     */
     const sonicator_status_t* getStatus(void) const;
+    
+    /**
+     * @brief Convert state enum to human-readable string
+     * @param state State to convert
+     * @return String representation of the state
+     */
     static const char* stateToString(sonicator_state_t state);
+    
+    /**
+     * @brief Check if sonicator is in a safe operating condition
+     * @return true if safe, false if faults are present
+     */
     bool isSafe(void) const;
+    
+    /**
+     * @brief Reset runtime statistics counters
+     */
     void resetStatistics(void);
 
     // Test hooks
+    
+    /**
+     * @brief Enable or disable simulation mode for testing
+     * @param enable true to enable simulation mode, false for normal operation
+     */
     void setSimulationMode(bool enable);
+    
+    /**
+     * @brief Force sonicator to a specific state (for testing)
+     * @param newState Desired state to force
+     * @return true if state was forced successfully, false otherwise
+     */
     bool forceState(const sonicator_status_t& newState);
+    
+    /**
+     * @brief Inject a fault condition (for testing)
+     * @param faultMask Fault condition(s) to inject
+     * @return true if fault was injected successfully, false otherwise
+     */
     bool injectFault(const sonicator_fault_t& faultMask);
 
 private:
-    // Configuration
+    /** @brief Pin configuration for this sonicator channel */
     const SonicatorPins pins_;
 
-    // Internal runtime state (implementation detail)
+    /**
+     * @brief Internal runtime state structure
+     * 
+     * This structure contains all the internal state variables needed
+     * for sonicator operation, including control state, monitoring data,
+     * fault tracking, and statistics.
+     */
     struct RuntimeState {
         
         // Control/state machine
-        sonicator_state_t   state{SONICATOR_STATE_UNKNOWN};
-        sonicator_state_t   previous_state{SONICATOR_STATE_UNKNOWN};
-        uint32_t            state_entry_time{0};
+        sonicator_state_t   state{SONICATOR_STATE_UNKNOWN};          /**< Current state machine state */
+        sonicator_state_t   previous_state{SONICATOR_STATE_UNKNOWN}; /**< Previous state for transition tracking */
+        uint32_t            state_entry_time{0};                     /**< Timestamp when current state was entered */
 
         // Control inputs and setpoints
-        uint8_t             amplitude_percent{SONICATOR_MIN_AMPLITUDE_PERCENT};
-        bool                start_requested{false};
-        bool                stop_requested{false};
-        bool                reset_requested{false};
+        uint8_t             amplitude_percent{SONICATOR_MIN_AMPLITUDE_PERCENT}; /**< Current amplitude setpoint (%) */
+        bool                start_requested{false};                  /**< Start command pending */
+        bool                stop_requested{false};                   /**< Stop command pending */
+        bool                reset_requested{false};                  /**< Reset command pending */
 
         // Derived/monitoring
-        bool                is_running{false};
-        bool                overload_active{false};
-        bool                frequency_locked{false};
-        float               power_watts{0.0f};       // stores raw ADC as float for simplicity
-        uint16_t            frequency_hz{0};
+        bool                is_running{false};                       /**< True when sonicator is actively running */
+        bool                overload_active{false};                  /**< True when overload condition detected */
+        bool                frequency_locked{false};                 /**< True when frequency is locked */
+        float               power_watts{0.0f};                       /**< Power reading (stores raw ADC as float) */
+        uint16_t            frequency_hz{0};                         /**< Measured frequency in Hz */
 
         // Faults and watches
-        sonicator_fault_t   active_faults{(sonicator_fault_t)0};
-        uint32_t            fault_count{0};
-        uint32_t            last_fault_time{0};
-        uint32_t            last_update_time{0};
-        uint32_t            watchdog_last_reset{0};
-        bool                safety_override{false};
+        sonicator_fault_t   active_faults{(sonicator_fault_t)0};     /**< Currently active fault conditions */
+        uint32_t            fault_count{0};                          /**< Total number of faults encountered */
+        uint32_t            last_fault_time{0};                      /**< Timestamp of last fault occurrence */
+        uint32_t            last_update_time{0};                     /**< Timestamp of last update call */
+        uint32_t            watchdog_last_reset{0};                  /**< Timestamp of last watchdog reset */
+        bool                safety_override{false};                  /**< Safety override flag */
 
         // History
-        uint32_t            start_count{0};
-        uint32_t            total_runtime_ms{0};
-        uint32_t            last_start_time{0};
+        uint32_t            start_count{0};                          /**< Total number of start operations */
+        uint32_t            total_runtime_ms{0};                     /**< Cumulative runtime in milliseconds */
+        uint32_t            last_start_time{0};                      /**< Timestamp of last start operation */
     };
 
-    bool                 simulation_mode_{false};
-    RuntimeState         state_{};
-    mutable sonicator_status_t status_view_{}; // built on demand from runtime
+    bool                 simulation_mode_{false};    /**< True when in simulation mode */
+    RuntimeState         state_{};                   /**< Internal runtime state */
+    mutable sonicator_status_t status_view_{};       /**< Public status view built on demand */
 
     // Utilities
+    
+    /**
+     * @brief Get current timestamp in milliseconds
+     * @return Current timestamp
+     */
     uint32_t getTimestampMs() const;
+    
+    /**
+     * @brief Check if a timeout has occurred
+     * @param start_time Starting timestamp
+     * @param timeout_ms Timeout duration in milliseconds
+     * @return true if timeout has occurred, false otherwise
+     */
     bool     isTimeout(uint32_t start_time, uint32_t timeout_ms) const;
+    
+    /**
+     * @brief Clamp amplitude to valid range
+     * @param amplitude Input amplitude value
+     * @return Clamped amplitude value
+     */
     uint8_t  clampAmplitude(uint8_t amplitude) const;
+    
+    /**
+     * @brief Convert amplitude percentage to PWM duty cycle
+     * @param amplitude_percent Amplitude percentage (20-100%)
+     * @return PWM duty cycle value (0-255)
+     */
     uint8_t  amplitudeToPwm(uint8_t amplitude_percent) const;
 
     // HAL adapters (safe wrappers)
+    
+    /**
+     * @brief Safe GPIO write operation
+     * @param pin GPIO pin number
+     * @param state Desired pin state
+     */
     void     halGpioWriteSafe(uint8_t pin, bool state);
+    
+    /**
+     * @brief Safe GPIO read operation
+     * @param pin GPIO pin number
+     * @return Current pin state
+     */
     bool     halGpioReadSafe(uint8_t pin);
-    void     halPwmSetSafe(uint8_t pin, uint8_t duty_cycle);
+    
+    /**
+     * @brief Safe PWM set operation
+     * @param duty_cycle PWM duty cycle (0-255)
+     */
+    void     halPwmSetSafe(uint8_t duty_cycle);
+    
+    /**
+     * @brief Safe ADC read operation
+     * @param channel ADC channel to read
+     * @return ADC reading value
+     */
     uint16_t halAdcReadSafe(adc_channel_t channel);
 
     // Hardware interaction
-    void     updateHardwareOutputs();
-    void     readHardwareInputs();
+    
+    /**
+     * @brief Update all hardware outputs based on current state
+     */
+    void    updateHardwareOutputs();
+    
+    /**
+     * @brief Read all hardware inputs and update state
+     */
+    void    readHardwareInputs();
 
     // Fault management
+    
+    /**
+     * @brief Check for fault conditions
+     * @return Bitmask of detected fault conditions
+     */
     sonicator_fault_t checkFaultConditions();
-    void              handleFaultConditions(sonicator_fault_t faults);
+    
+    /**
+     * @brief Handle detected fault conditions
+     * @param faults Bitmask of fault conditions to handle
+     */
+    void    handleFaultConditions(sonicator_fault_t faults);
 
     // State machine
-    void     processStateMachine();
+    
+    /**
+     * @brief Process state machine transitions
+     */
+    void    processStateMachine();
 
-    // Build public status view (maps RuntimeState -> sonicator_status_t)
-    void     buildStatusView_() const;
+    /**
+     * @brief Build public status view from internal runtime state
+     */
+    void    buildStatusView_() const;
 };
 
 #endif // SONICATOR_H

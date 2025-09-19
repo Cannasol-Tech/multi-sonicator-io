@@ -96,20 +96,9 @@ $(function(){initNavTree('d6/d7c/gpio_8h.html','../../',''); });
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="../../d2/d92/atmega__hal__impl_8h_source.html">atmega_hal_impl.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../de/d2b/hal__template__interfaces_8h_source.html">hal_template_interfaces.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../de/d8d/mock__hal__impl_8h_source.html">mock_hal_impl.h</a>&quot;</code><br />
 </div>
 <p><a href="../../d6/d7c/gpio_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:a5a14777a91770ca47d09c3b5cc319619" id="r_a5a14777a91770ca47d09c3b5cc319619"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a14777a91770ca47d09c3b5cc319619">ProductionGpio</a> = <a class="el" href="../../d9/d2e/class_gpio_hal.html">GpioHal</a>&lt;<a class="el" href="../../d3/d3b/class_atmega_hal.html">AtmegaHal</a>&gt;</td></tr>
-<tr class="memdesc:a5a14777a91770ca47d09c3b5cc319619"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO HAL Template Usage Examples.  <br /></td></tr>
-<tr class="memitem:a68819ef1c88e14a2978dbdb5366175ed" id="r_a68819ef1c88e14a2978dbdb5366175ed"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68819ef1c88e14a2978dbdb5366175ed">ProductionHal</a> = <a class="el" href="../../d1/d54/class_hal_template.html">HalTemplate</a>&lt;<a class="el" href="../../d3/d3b/class_atmega_hal.html">AtmegaHal</a>&gt;</td></tr>
-<tr class="memitem:aec2e78074365439a63360cf81dca5bef" id="r_aec2e78074365439a63360cf81dca5bef"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec2e78074365439a63360cf81dca5bef">TestGpio</a> = <a class="el" href="../../d9/d2e/class_gpio_hal.html">GpioHal</a>&lt;<a class="el" href="../../d2/d0d/class_mock_hal.html">MockHal</a>&gt;</td></tr>
-<tr class="memitem:a8f54280a14948a2021c912ac21177e6a" id="r_a8f54280a14948a2021c912ac21177e6a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f54280a14948a2021c912ac21177e6a">TestHal</a> = <a class="el" href="../../d1/d54/class_hal_template.html">HalTemplate</a>&lt;<a class="el" href="../../d2/d0d/class_mock_hal.html">MockHal</a>&gt;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:a491a2cbfb4e94f2afcc0d5bdef2dc454" id="r_a491a2cbfb4e94f2afcc0d5bdef2dc454"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a491a2cbfb4e94f2afcc0d5bdef2dc454">gpio_mode_t</a> { <a class="el" href="#a491a2cbfb4e94f2afcc0d5bdef2dc454a61ddb59c5e9a9cc6d9cf99d11a36920b">GPIO_MODE_INPUT</a> = 0
@@ -165,67 +154,7 @@ Functions</h2></td></tr>
 <dl class="section version"><dt>Version</dt><dd>1.0.0</dd></dl>
 <p>Provides hardware-agnostic GPIO control interface for sonicator interfaces, status indicators, and digital I/O operations. Abstracts ATmega32A port manipulation for consistent cross-platform development.</p>
 <p>Pin assignments per config/hardware-config.yaml (SOLE SOURCE OF TRUTH). Supports all sonicator control signals, status LED, and system I/O. </p>
-</div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Typedef Documentation</h2>
-<a id="a5a14777a91770ca47d09c3b5cc319619" name="a5a14777a91770ca47d09c3b5cc319619"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a14777a91770ca47d09c3b5cc319619">&#9670;&#160;</a></span>ProductionGpio</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="#a5a14777a91770ca47d09c3b5cc319619">ProductionGpio</a> = <a class="el" href="../../d9/d2e/class_gpio_hal.html">GpioHal</a>&lt;<a class="el" href="../../d3/d3b/class_atmega_hal.html">AtmegaHal</a>&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>GPIO HAL Template Usage Examples. </p>
-<p>These examples show how to use the template-based GPIO HAL for both production and testing scenarios. </p>
-
-</div>
-</div>
-<a id="a68819ef1c88e14a2978dbdb5366175ed" name="a68819ef1c88e14a2978dbdb5366175ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68819ef1c88e14a2978dbdb5366175ed">&#9670;&#160;</a></span>ProductionHal</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="#a68819ef1c88e14a2978dbdb5366175ed">ProductionHal</a> = <a class="el" href="../../d1/d54/class_hal_template.html">HalTemplate</a>&lt;<a class="el" href="../../d3/d3b/class_atmega_hal.html">AtmegaHal</a>&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aec2e78074365439a63360cf81dca5bef" name="aec2e78074365439a63360cf81dca5bef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec2e78074365439a63360cf81dca5bef">&#9670;&#160;</a></span>TestGpio</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="#aec2e78074365439a63360cf81dca5bef">TestGpio</a> = <a class="el" href="../../d9/d2e/class_gpio_hal.html">GpioHal</a>&lt;<a class="el" href="../../d2/d0d/class_mock_hal.html">MockHal</a>&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8f54280a14948a2021c912ac21177e6a" name="a8f54280a14948a2021c912ac21177e6a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f54280a14948a2021c912ac21177e6a">&#9670;&#160;</a></span>TestHal</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="#a8f54280a14948a2021c912ac21177e6a">TestHal</a> = <a class="el" href="../../d1/d54/class_hal_template.html">HalTemplate</a>&lt;<a class="el" href="../../d2/d0d/class_mock_hal.html">MockHal</a>&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Enumeration Type Documentation</h2>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Enumeration Type Documentation</h2>
 <a id="a491a2cbfb4e94f2afcc0d5bdef2dc454" name="a491a2cbfb4e94f2afcc0d5bdef2dc454"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a491a2cbfb4e94f2afcc0d5bdef2dc454">&#9670;&#160;</a></span>gpio_mode_t</h2>
 

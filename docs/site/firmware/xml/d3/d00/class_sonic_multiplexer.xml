@@ -3,8 +3,8 @@
   <compounddef id="d3/d00/class_sonic_multiplexer" kind="class" language="C++" prot="public">
     <compoundname>SonicMultiplexer</compoundname>
     <includes refid="dc/dc2/_multiplexer_8h" local="no">Multiplexer.h</includes>
-    <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="d3/d00/class_sonic_multiplexer_1ab003130bae8972a1e084c0ce422fd0af" prot="private" static="no" mutable="no">
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="d3/d00/class_sonic_multiplexer_1ab003130bae8972a1e084c0ce422fd0af" prot="private" static="yes" mutable="no">
         <type>uint8_t</type>
         <definition>uint8_t SonicMultiplexer::sonicator_count_m</definition>
         <argsstring></argsstring>
@@ -16,9 +16,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/multiplexer/Multiplexer.h" line="242" column="13" bodyfile="include/multiplexer/Multiplexer.h" bodystart="242" bodyend="-1"/>
+        <location file="include/multiplexer/Multiplexer.h" line="242" column="20" bodyfile="include/multiplexer/Multiplexer.h" bodystart="242" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="d3/d00/class_sonic_multiplexer_1a204ca236baef3319e62026fe2f8d25c7" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="d3/d00/class_sonic_multiplexer_1a204ca236baef3319e62026fe2f8d25c7" prot="private" static="yes" mutable="no">
         <type>uint8_t</type>
         <definition>uint8_t SonicMultiplexer::amplitude_ctrl_duty_m</definition>
         <argsstring></argsstring>
@@ -31,8 +31,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/multiplexer/Multiplexer.h" line="243" column="13" bodyfile="include/multiplexer/Multiplexer.h" bodystart="243" bodyend="-1"/>
+        <location file="include/multiplexer/Multiplexer.h" line="243" column="20" bodyfile="include/multiplexer/Multiplexer.h" bodystart="243" bodyend="-1"/>
       </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="d3/d00/class_sonic_multiplexer_1a2e413122ce2473945e77d8028b58d2c9" prot="private" static="no" mutable="no">
         <type><ref refid="dd/dce/class_sonicator_interface" kindref="compound">SonicatorInterface</ref> *</type>
         <definition>SonicatorInterface* SonicMultiplexer::sonicators_m[MAX_SONICATORS]</definition>
@@ -107,15 +109,16 @@ Initializes the multiplexer with the specified number of sonicator units. The co
 <para>Initializes the multiplexer and all sonicator units. </para>
         </briefdescription>
         <detaileddescription>
+<para>Initializes the multiplexer system.</para>
 <para>Sets up pin configurations, initializes hardware interfaces, and prepares all sonicator units for operation. Must be called before any other operations. <simplesect kind="note"><para>This method configures shared resources like PWM amplitude control </para>
 </simplesect>
-<simplesect kind="warning"><para>Must be called in system setup phase </para>
+<simplesect kind="warning"><para>Must be called in system setup phase</para>
 </simplesect>
-</para>
+No-op implementation since HAL/PWM are initialized by <ref refid="dc/db6/hal_8cpp_1aa09745b395496b11ba076700d91d8e21" kindref="member">hal_init()</ref>. Ensures shared amplitude reflects current value. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/multiplexer/Multiplexer.h" line="280" column="10"/>
+        <location file="include/multiplexer/Multiplexer.h" line="280" column="10" bodyfile="src/modules/control/Multiplexer.cpp" bodystart="52" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="d3/d00/class_sonic_multiplexer_1a3b5d36789802ae0f7b310710d6bdf9c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -127,79 +130,33 @@ Initializes the multiplexer with the specified number of sonicator units. The co
 <para>Main update loop for the multiplexer. </para>
         </briefdescription>
         <detaileddescription>
-<para>Processes all sonicator units, updates shared resources, and handles state transitions. Should be called regularly in the main application loop. <simplesect kind="note"><para>Handles amplitude PWM updates and status synchronization </para>
+<para>Updates all sonicators and shared amplitude control.</para>
+<para>Processes all sonicator units, updates shared resources, and handles state transitions. Should be called regularly in the main application loop. <simplesect kind="note"><para>Handles amplitude PWM updates and status synchronization</para>
 </simplesect>
-</para>
+Calls <ref refid="d3/d00/class_sonic_multiplexer_1a3b5d36789802ae0f7b310710d6bdf9c2" kindref="member">update()</ref> on each active sonicator and synchronizes the shared amplitude PWM </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/multiplexer/Multiplexer.h" line="289" column="10"/>
+        <location file="include/multiplexer/Multiplexer.h" line="289" column="10" bodyfile="src/modules/control/Multiplexer.cpp" bodystart="61" bodyend="71"/>
       </memberdef>
-      <memberdef kind="function" id="d3/d00/class_sonic_multiplexer_1a7bd54b7f9c5ecde9cb0b43f8b9899559" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool SonicMultiplexer::start</definition>
-        <argsstring>(uint8_t index)</argsstring>
-        <name>start</name>
-        <qualifiedname>SonicMultiplexer::start</qualifiedname>
+      <memberdef kind="function" id="d3/d00/class_sonic_multiplexer_1a1fc8e13f3e9a3e0ebc47783df9b05b90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SonicMultiplexer::set_led_state</definition>
+        <argsstring>(led_mode_t mode)</argsstring>
+        <name>set_led_state</name>
+        <qualifiedname>SonicMultiplexer::set_led_state</qualifiedname>
         <param>
-          <type>uint8_t</type>
-          <declname>index</declname>
+          <type><ref refid="d9/d49/types_8h_1a6ad21e6046b97022390d7b38aa87ca7e" kindref="member">led_mode_t</ref></type>
+          <declname>mode</declname>
         </param>
         <briefdescription>
-<para>Starts a specific sonicator unit. </para>
+<para>Updates the status LED based on sonicator states. </para>
         </briefdescription>
         <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>index</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The index of the sonicator to start (0 to count-1) </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>true if the start command was accepted, false otherwise</para>
-</simplesect>
-Initiates operation of the specified sonicator unit. The unit will begin ultrasonic generation at the current amplitude setting. <simplesect kind="warning"><para>index must be within valid range </para>
-</simplesect>
-</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/multiplexer/Multiplexer.h" line="299" column="10"/>
-      </memberdef>
-      <memberdef kind="function" id="d3/d00/class_sonic_multiplexer_1a167199a863bbf5cc93eb280298f79621" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool SonicMultiplexer::stop</definition>
-        <argsstring>(uint8_t index)</argsstring>
-        <name>stop</name>
-        <qualifiedname>SonicMultiplexer::stop</qualifiedname>
-        <param>
-          <type>uint8_t</type>
-          <declname>index</declname>
-        </param>
-        <briefdescription>
-<para>Stops a specific sonicator unit. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>index</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The index of the sonicator to stop (0 to count-1) </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>true if the stop command was accepted, false otherwise</para>
-</simplesect>
-Terminates operation of the specified sonicator unit. The unit will cease ultrasonic generation immediately. <simplesect kind="warning"><para>index must be within valid range </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/multiplexer/Multiplexer.h" line="309" column="10"/>
+        <location file="include/multiplexer/Multiplexer.h" line="294" column="10"/>
       </memberdef>
       <memberdef kind="function" id="d3/d00/class_sonic_multiplexer_1a596760891dda39b8235afe9b708a531d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -226,49 +183,27 @@ Terminates operation of the specified sonicator unit. The unit will cease ultras
 </parameterlist>
 <simplesect kind="return"><para>true if the amplitude was set successfully, false if out of range</para>
 </simplesect>
-Sets the global amplitude level that affects all active sonicator units. The change takes effect immediately for all running units. <simplesect kind="note"><para>Amplitude range is validated (20-100% only) </para>
+Sets the global amplitude level that affects all active sonicator units. The change takes effect immediately for all running units. <simplesect kind="note"><para>Amplitude range is validated (20-100% only)</para>
 </simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/multiplexer/Multiplexer.h" line="319" column="10"/>
-      </memberdef>
-      <memberdef kind="function" id="d3/d00/class_sonic_multiplexer_1a6f44d834f83c19ab9ca4d65e3811435a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool SonicMultiplexer::resetOverload</definition>
-        <argsstring>(uint8_t index)</argsstring>
-        <name>resetOverload</name>
-        <qualifiedname>SonicMultiplexer::resetOverload</qualifiedname>
-        <param>
-          <type>uint8_t</type>
-          <declname>index</declname>
-        </param>
-        <briefdescription>
-<para>Resets overload condition on a specific sonicator. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
+<parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername>index</parametername>
+<parametername>amplitude_percent</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The index of the sonicator to reset (0 to count-1) </para>
+<para>Desired amplitude percentage (will be clamped to valid range) </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>true if the reset was successful, false otherwise</para>
+<simplesect kind="return"><para>true on success</para>
 </simplesect>
-Clears overload fault conditions and attempts to restart the unit. Useful for recovering from temporary fault conditions. <simplesect kind="warning"><para>index must be within valid range </para>
-</simplesect>
-</para>
+Updates all individual sonicator amplitude setpoints and the shared PWM output </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/multiplexer/Multiplexer.h" line="329" column="10"/>
+        <location file="include/multiplexer/Multiplexer.h" line="304" column="10" bodyfile="src/modules/control/Multiplexer.cpp" bodystart="79" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="d3/d00/class_sonic_multiplexer_1abd1acc3f50cf65b7ad55edd66e278b7c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="db/d3b/state_8h_1afeb77d5a88e0115b4344d7f6ed578ec8" kindref="member">sonicator_status_t</ref> *</type>
+        <type>const <ref refid="d8/d4b/hal_8h_1a5db44754abe690dd04b3f2abe5a075c8" kindref="member">sonicator_status_t</ref> *</type>
         <definition>const sonicator_status_t * SonicMultiplexer::getStatus</definition>
         <argsstring>(uint8_t index) const</argsstring>
         <name>getStatus</name>
@@ -278,27 +213,30 @@ Clears overload fault conditions and attempts to restart the unit. Useful for re
           <declname>index</declname>
         </param>
         <briefdescription>
-<para>Retrieves the status of a specific sonicator. </para>
+<para>Retrieves the status of the Multiplexer System. </para>
         </briefdescription>
         <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
+<para>Gets the status of a specific sonicator.</para>
+<para><simplesect kind="return"><para>Pointer to the status structure, or nullptr if invalid index</para>
+</simplesect>
+Returns current operational status of the specified sonicator unit. The returned pointer is valid until the next multiplexer operation. <simplesect kind="warning"><para>index must be within valid range</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>index</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The index of the sonicator to query (0 to count-1) </para>
+<para>Zero-based index of the sonicator (0-3) </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>Pointer to the status structure, or nullptr if invalid index</para>
-</simplesect>
-Returns current operational status of the specified sonicator unit. The returned pointer is valid until the next multiplexer operation. <simplesect kind="warning"><para>index must be within valid range </para>
+<simplesect kind="return"><para>Pointer to sonicator status structure, or nullptr if invalid index </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/multiplexer/Multiplexer.h" line="339" column="30"/>
+        <location file="include/multiplexer/Multiplexer.h" line="313" column="30" bodyfile="src/modules/control/Multiplexer.cpp" bodystart="99" bodyend="102"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -312,11 +250,13 @@ Returns current operational status of the specified sonicator unit. The returned
 <para>Initializes the sonicator units. </para>
         </briefdescription>
         <detaileddescription>
-<para>Internal method for setting up individual sonicator interfaces. </para>
+<para>Initializes all sonicator interfaces with their hardware pin configurations.</para>
+<para>Internal method for setting up individual sonicator interfaces.</para>
+<para>Creates <ref refid="dd/dce/class_sonicator_interface" kindref="compound">SonicatorInterface</ref> instances for each configured sonicator unit, sets up pin mappings from <ref refid="d4/d7e/system__config_8h" kindref="compound">system_config.h</ref>, and initializes default amplitude </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/multiplexer/Multiplexer.h" line="346" column="10"/>
+        <location file="include/multiplexer/Multiplexer.h" line="320" column="10" bodyfile="src/modules/control/Multiplexer.cpp" bodystart="109" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="d3/d00/class_sonic_multiplexer_1a2429784543c154452c73fe860412998a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -328,11 +268,13 @@ Returns current operational status of the specified sonicator unit. The returned
 <para>Updates the shared amplitude control. </para>
         </briefdescription>
         <detaileddescription>
-<para>Internal method for synchronizing amplitude PWM across units. </para>
+<para>Updates the shared amplitude PWM output.</para>
+<para>Internal method for synchronizing amplitude PWM across units.</para>
+<para>Converts the current amplitude control duty cycle to PWM duty and drives the hardware PWM channel for amplitude control </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/multiplexer/Multiplexer.h" line="352" column="10"/>
+        <location file="include/multiplexer/Multiplexer.h" line="326" column="10" bodyfile="src/modules/control/Multiplexer.cpp" bodystart="182" bodyend="186"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -388,7 +330,7 @@ Returns current operational status of the specified sonicator unit. The returned
 <title>Public Interface</title><para>The public interface provides methods for:<itemizedlist>
 <listitem><para><bold>Initialization</bold>: <ref refid="d3/d00/class_sonic_multiplexer_1a0491dfe76449ae9a9b2cdd73a9c86af4" kindref="member">begin()</ref> - Setup hardware and initialize units</para>
 </listitem><listitem><para><bold>Runtime Control</bold>: <ref refid="d3/d00/class_sonic_multiplexer_1a3b5d36789802ae0f7b310710d6bdf9c2" kindref="member">update()</ref> - Main loop processing</para>
-</listitem><listitem><para><bold>Unit Control</bold>: <ref refid="d3/d00/class_sonic_multiplexer_1a7bd54b7f9c5ecde9cb0b43f8b9899559" kindref="member">start()</ref>, <ref refid="d3/d00/class_sonic_multiplexer_1a167199a863bbf5cc93eb280298f79621" kindref="member">stop()</ref>, <ref refid="d3/d00/class_sonic_multiplexer_1a6f44d834f83c19ab9ca4d65e3811435a" kindref="member">resetOverload()</ref> - Individual unit operations</para>
+</listitem><listitem><para><bold>Unit Control</bold>: start(), stop(), resetOverload() - Individual unit operations</para>
 </listitem><listitem><para><bold>Shared Control</bold>: <ref refid="d3/d00/class_sonic_multiplexer_1a596760891dda39b8235afe9b708a531d" kindref="member">setAmplitude()</ref> - Global amplitude setting</para>
 </listitem><listitem><para><bold>Monitoring</bold>: <ref refid="d3/d00/class_sonic_multiplexer_1abd1acc3f50cf65b7ad55edd66e278b7c" kindref="member">getStatus()</ref> - Status retrieval</para>
 </listitem></itemizedlist>
@@ -407,7 +349,7 @@ Returns current operational status of the specified sonicator unit. The returned
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" kindref="member">multiplexer</ref>.<ref refid="d3/d00/class_sonic_multiplexer_1a3b5d36789802ae0f7b310710d6bdf9c2" kindref="member">update</ref>();<sp/></highlight><highlight class="comment">//<sp/>Call<sp/>regularly</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Control<sp/>operations<sp/>as<sp/>needed</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" kindref="member">multiplexer</ref>.<ref refid="d3/d00/class_sonic_multiplexer_1a7bd54b7f9c5ecde9cb0b43f8b9899559" kindref="member">start</ref>(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" kindref="member">multiplexer</ref>.start(0);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" kindref="member">multiplexer</ref>.<ref refid="d3/d00/class_sonic_multiplexer_1a596760891dda39b8235afe9b708a531d" kindref="member">setAmplitude</ref>(80);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -457,7 +399,7 @@ Returns current operational status of the specified sonicator unit. The returned
 </simplesect>
 <simplesect kind="see"><para>sonicator_interface_t Individual sonicator interface </para>
 </simplesect>
-<simplesect kind="see"><para><ref refid="db/d3b/state_8h_1afeb77d5a88e0115b4344d7f6ed578ec8" kindref="member">sonicator_status_t</ref> Status structure definition </para>
+<simplesect kind="see"><para><ref refid="d8/d4b/hal_8h_1a5db44754abe690dd04b3f2abe5a075c8" kindref="member">sonicator_status_t</ref> Status structure definition </para>
 </simplesect>
 <simplesect kind="see"><para>docs/multiplexer-design.md Detailed design documentation</para>
 </simplesect>
@@ -472,19 +414,17 @@ Returns current operational status of the specified sonicator unit. The returned
 </para>
 </sect1>
     </detaileddescription>
-    <location file="include/multiplexer/Multiplexer.h" line="240" column="1" bodyfile="include/multiplexer/Multiplexer.h" bodystart="240" bodyend="353"/>
+    <location file="include/multiplexer/Multiplexer.h" line="240" column="1" bodyfile="include/multiplexer/Multiplexer.h" bodystart="240" bodyend="327"/>
     <listofallmembers>
       <member refid="d3/d00/class_sonic_multiplexer_1a204ca236baef3319e62026fe2f8d25c7" prot="private" virt="non-virtual"><scope>SonicMultiplexer</scope><name>amplitude_ctrl_duty_m</name></member>
       <member refid="d3/d00/class_sonic_multiplexer_1a0491dfe76449ae9a9b2cdd73a9c86af4" prot="public" virt="non-virtual"><scope>SonicMultiplexer</scope><name>begin</name></member>
       <member refid="d3/d00/class_sonic_multiplexer_1abd1acc3f50cf65b7ad55edd66e278b7c" prot="public" virt="non-virtual"><scope>SonicMultiplexer</scope><name>getStatus</name></member>
       <member refid="d3/d00/class_sonic_multiplexer_1a07a6fdb0b9107f316bd68720aff93c7b" prot="private" virt="non-virtual"><scope>SonicMultiplexer</scope><name>initSonicators_</name></member>
-      <member refid="d3/d00/class_sonic_multiplexer_1a6f44d834f83c19ab9ca4d65e3811435a" prot="public" virt="non-virtual"><scope>SonicMultiplexer</scope><name>resetOverload</name></member>
+      <member refid="d3/d00/class_sonic_multiplexer_1a1fc8e13f3e9a3e0ebc47783df9b05b90" prot="public" virt="non-virtual"><scope>SonicMultiplexer</scope><name>set_led_state</name></member>
       <member refid="d3/d00/class_sonic_multiplexer_1a596760891dda39b8235afe9b708a531d" prot="public" virt="non-virtual"><scope>SonicMultiplexer</scope><name>setAmplitude</name></member>
       <member refid="d3/d00/class_sonic_multiplexer_1ab003130bae8972a1e084c0ce422fd0af" prot="private" virt="non-virtual"><scope>SonicMultiplexer</scope><name>sonicator_count_m</name></member>
       <member refid="d3/d00/class_sonic_multiplexer_1a2e413122ce2473945e77d8028b58d2c9" prot="private" virt="non-virtual"><scope>SonicMultiplexer</scope><name>sonicators_m</name></member>
       <member refid="d3/d00/class_sonic_multiplexer_1a10cce18264d6e52d28b5e6f9fd708ed0" prot="public" virt="non-virtual"><scope>SonicMultiplexer</scope><name>SonicMultiplexer</name></member>
-      <member refid="d3/d00/class_sonic_multiplexer_1a7bd54b7f9c5ecde9cb0b43f8b9899559" prot="public" virt="non-virtual"><scope>SonicMultiplexer</scope><name>start</name></member>
-      <member refid="d3/d00/class_sonic_multiplexer_1a167199a863bbf5cc93eb280298f79621" prot="public" virt="non-virtual"><scope>SonicMultiplexer</scope><name>stop</name></member>
       <member refid="d3/d00/class_sonic_multiplexer_1a3b5d36789802ae0f7b310710d6bdf9c2" prot="public" virt="non-virtual"><scope>SonicMultiplexer</scope><name>update</name></member>
       <member refid="d3/d00/class_sonic_multiplexer_1a2429784543c154452c73fe860412998a" prot="private" virt="non-virtual"><scope>SonicMultiplexer</scope><name>updateSharedAmplitude_</name></member>
       <member refid="d3/d00/class_sonic_multiplexer_1a355c82d39b9ac7d1f466e8dcc155fe29" prot="public" virt="non-virtual"><scope>SonicMultiplexer</scope><name>~SonicMultiplexer</name></member>

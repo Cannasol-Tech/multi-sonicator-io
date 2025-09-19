@@ -1,5 +1,5 @@
 var _multiplexer_8cpp =
 [
-    [ "for", "d8/d25/_multiplexer_8cpp.html#a3dfcc3ae027703a8472e799a42a22d9f", null ],
-    [ "updateSharedAmplitude", "d8/d25/_multiplexer_8cpp.html#a4402c8356b6430348971cff78914d26e", null ]
+    [ "amplitude_to_duty", "d8/d25/_multiplexer_8cpp.html#ad797d79122aa69e05398a91c75a34fbe", null ],
+    [ "clamp_percent", "d8/d25/_multiplexer_8cpp.html#ac95afb7adf42ab2c5286a579ba147451", null ]
 ];

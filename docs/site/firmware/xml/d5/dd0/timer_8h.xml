@@ -4,9 +4,8 @@
     <compoundname>timer.h</compoundname>
     <includes local="no">stdint.h</includes>
     <includes local="no">stdbool.h</includes>
-    <includedby refid="da/d18/arduino__hal__impl_8h" local="yes">src/modules/hal/arduino/arduino_hal_impl.h</includedby>
-    <includedby refid="d2/d92/atmega__hal__impl_8h" local="yes">src/modules/hal/atmega_hal_impl.h</includedby>
     <includedby refid="d8/d4b/hal_8h" local="yes">src/modules/hal/hal.h</includedby>
+    <includedby refid="de/d8d/mock__hal__impl_8h" local="yes">src/modules/hal/mock_hal_impl.h</includedby>
     <includedby refid="dc/de5/timer_8cpp" local="yes">src/modules/hal/timer.cpp</includedby>
     <incdepgraph>
       <node id="1">
@@ -25,95 +24,65 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="10">
+      <node id="4">
         <label>include/multiplexer/Multiplexer.h</label>
         <link refid="dc/dc2/_multiplexer_8h"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>include/sonicator/sonicator.h</label>
-        <link refid="dc/d16/sonicator_8h"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="13">
-        <label>include/types.h</label>
-        <link refid="d9/d49/types_8h"/>
-      </node>
-      <node id="11">
-        <label>src/main.cpp</label>
-        <link refid="df/d0a/main_8cpp"/>
-      </node>
-      <node id="12">
-        <label>src/modules/control/Multiplexer.cpp</label>
-        <link refid="d8/d25/_multiplexer_8cpp"/>
-      </node>
-      <node id="6">
-        <label>src/modules/control/sonicator.cpp</label>
-        <link refid="d2/db9/sonicator_8cpp"/>
-      </node>
-      <node id="14">
-        <label>src/modules/control/sonicator_modbus_bridge.cpp</label>
-        <link refid="d5/dea/sonicator__modbus__bridge_8cpp"/>
-      </node>
-      <node id="3">
-        <label>src/modules/hal/arduino/arduino_hal_factory.h</label>
-        <link refid="d8/d61/arduino__hal__factory_8h"/>
-      </node>
-      <node id="2">
-        <label>src/modules/hal/arduino/arduino_hal_impl.h</label>
-        <link refid="da/d18/arduino__hal__impl_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>src/modules/hal/atmega_hal_impl.h</label>
-        <link refid="d2/d92/atmega__hal__impl_8h"/>
         <childnode refid="5" relation="include">
         </childnode>
-      </node>
-      <node id="7">
-        <label>src/modules/hal/gpio.cpp</label>
-        <link refid="de/d31/gpio_8cpp"/>
-      </node>
-      <node id="5">
-        <label>src/modules/hal/gpio.h</label>
-        <link refid="d6/d7c/gpio_8h"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
+      </node>
+      <node id="3">
+        <label>include/sonicator/sonicator.h</label>
+        <link refid="dc/d16/sonicator_8h"/>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
       </node>
-      <node id="15">
+      <node id="8">
+        <label>include/types.h</label>
+        <link refid="d9/d49/types_8h"/>
+      </node>
+      <node id="5">
+        <label>src/main.cpp</label>
+        <link refid="df/d0a/main_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/modules/control/Multiplexer.cpp</label>
+        <link refid="d8/d25/_multiplexer_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/modules/control/sonicator.cpp</label>
+        <link refid="d2/db9/sonicator_8cpp"/>
+      </node>
+      <node id="9">
         <label>src/modules/hal/hal.cpp</label>
         <link refid="dc/db6/hal_8cpp"/>
       </node>
-      <node id="8">
+      <node id="2">
         <label>src/modules/hal/hal.h</label>
         <link refid="d8/d4b/hal_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
+      </node>
+      <node id="11">
+        <label>src/modules/hal/mock_hal_impl.cpp</label>
+        <link refid="d6/d79/mock__hal__impl_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/modules/hal/mock_hal_impl.h</label>
+        <link refid="de/d8d/mock__hal__impl_8h"/>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
       </node>
-      <node id="16">
+      <node id="12">
         <label>src/modules/hal/timer.cpp</label>
         <link refid="dc/de5/timer_8cpp"/>
       </node>
@@ -122,11 +91,9 @@
         <link refid="d5/dd0/timer_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

@@ -4,11 +4,11 @@
  * @author Cannasol Technologies
  * @date 2025-09-02
  * @version 1.0.0
- * 
+ *
  * @details
  * Master header file that includes all HAL modules for the Multi-Sonicator
  * I/O Controller. Provides unified interface to hardware peripherals.
- * 
+ *
  * Includes:
  * - GPIO: Digital I/O control for sonicator interfaces
  * - ADC: Analog-to-digital conversion for power monitoring
@@ -50,28 +50,28 @@ typedef enum {
 
 /**
  * @brief Initialize all HAL subsystems
- * 
+ *
  * Configures all hardware peripherals according to pin matrix specifications:
  * - GPIO pins for sonicator interfaces and status LED
  * - ADC channels for power monitoring (5.44mV/W scaling)
  * - PWM channel for amplitude control (0-10V output)
  * - UART interface for MODBUS RTU at 115200 baud
  * - Timer subsystems for scheduler and watchdog
- * 
+ *
  * @return HAL_OK on success, error code on failure
  */
 hal_result_t hal_init(void);
 
 /**
  * @brief Perform HAL system self-test
- * 
+ *
  * Tests all HAL subsystems for proper operation:
  * - GPIO pin control and reading
  * - ADC conversion accuracy
  * - PWM frequency and duty cycle
  * - UART loopback communication
  * - Timer accuracy and scheduling
- * 
+ *
  * @param gpio_ok Pointer to store GPIO test result
  * @param adc_ok Pointer to store ADC test result
  * @param pwm_ok Pointer to store PWM test result
@@ -79,12 +79,12 @@ hal_result_t hal_init(void);
  * @param timer_ok Pointer to store Timer test result
  * @return HAL_OK on success, error code on failure
  */
-hal_result_t hal_self_test(bool* gpio_ok, bool* adc_ok, bool* pwm_ok, 
+hal_result_t hal_self_test(bool* gpio_ok, bool* adc_ok, bool* pwm_ok,
                           bool* uart_ok, bool* timer_ok);
 
 /**
  * @brief Get HAL system status
- * 
+ *
  * @param initialized Pointer to store initialization status
  * @param uptime_ms Pointer to store system uptime
  * @param errors Pointer to store error count
@@ -94,21 +94,21 @@ hal_result_t hal_get_status(bool* initialized, uint32_t* uptime_ms, uint16_t* er
 
 /**
  * @brief Reset HAL error counters
- * 
+ *
  * @return HAL_OK on success, error code on failure
  */
 hal_result_t hal_clear_errors(void);
 
 /**
  * @brief Emergency shutdown of all HAL subsystems
- * 
+ *
  * Safely disables all outputs and sets hardware to safe state:
  * - Stop all sonicators (GPIO outputs LOW)
  * - Set amplitude to minimum (20%)
  * - Disable PWM output
  * - Flush UART buffers
  * - Reset watchdog timer
- * 
+ *
  * @return HAL_OK on success, error code on failure
  */
 hal_result_t hal_emergency_shutdown(void);
@@ -136,9 +136,15 @@ typedef struct {
     uint16_t frequency_hz;      //< Operating frequency
 } hal_sonicator_status_t;
 
+// Backward-compatibility alias for legacy C tests expecting sonicator_status_t
+#ifndef __cplusplus
+typedef hal_sonicator_status_t sonicator_status_t;
+#endif
+
+
 /**
  * @brief Control single sonicator
- * 
+ *
  * @param sonicator_id Sonicator number (1-4)
  * @param control Pointer to control structure
  * @return HAL_OK on success, error code on failure
@@ -147,7 +153,7 @@ hal_result_t hal_control_sonicator(uint8_t sonicator_id, const hal_sonicator_con
 
 /**
  * @brief Read single sonicator status
- * 
+ *
  * @param sonicator_id Sonicator number (1-4)
  * @param status Pointer to status structure
  * @return HAL_OK on success, error code on failure
@@ -156,7 +162,7 @@ hal_result_t hal_read_sonicator_status(uint8_t sonicator_id, hal_sonicator_statu
 
 /**
  * @brief Control all sonicators simultaneously
- * 
+ *
  * @param control_array Array of 4 control structures
  * @return HAL_OK on success, error code on failure
  */
@@ -164,7 +170,7 @@ hal_result_t hal_control_all_sonicators(const hal_sonicator_control_t control_ar
 
 /**
  * @brief Read all sonicator statuses
- * 
+ *
  * @param status_array Array to store 4 status structures
  * @return HAL_OK on success, error code on failure
  */
@@ -172,7 +178,7 @@ hal_result_t hal_read_all_sonicator_status(hal_sonicator_status_t status_array[4
 
 /**
  * @brief Emergency stop all sonicators
- * 
+ *
  * @return HAL_OK on success, error code on failure
  */
 hal_result_t hal_emergency_stop_all(void);

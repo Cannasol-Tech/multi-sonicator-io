@@ -190,7 +190,7 @@
 #include <string.h>
 
 // Use real register map definitions to satisfy tests that inspect fields
-#include "../../src/modules/communication/modbus_registers.h"
+#include "../../../include/modbus_registers.h"
 
 // Mock MODBUS types and constants
 #define MODBUS_OK 0

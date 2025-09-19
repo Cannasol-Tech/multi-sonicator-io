@@ -107,16 +107,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a0491dfe76449ae9a9b2cdd73a9c86af4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the multiplexer and all sonicator units.  <br /></td></tr>
 <tr class="memitem:a3b5d36789802ae0f7b310710d6bdf9c2" id="r_a3b5d36789802ae0f7b310710d6bdf9c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b5d36789802ae0f7b310710d6bdf9c2">update</a> ()</td></tr>
 <tr class="memdesc:a3b5d36789802ae0f7b310710d6bdf9c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main update loop for the multiplexer.  <br /></td></tr>
-<tr class="memitem:a7bd54b7f9c5ecde9cb0b43f8b9899559" id="r_a7bd54b7f9c5ecde9cb0b43f8b9899559"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7bd54b7f9c5ecde9cb0b43f8b9899559">start</a> (uint8_t index)</td></tr>
-<tr class="memdesc:a7bd54b7f9c5ecde9cb0b43f8b9899559"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts a specific sonicator unit.  <br /></td></tr>
-<tr class="memitem:a167199a863bbf5cc93eb280298f79621" id="r_a167199a863bbf5cc93eb280298f79621"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a167199a863bbf5cc93eb280298f79621">stop</a> (uint8_t index)</td></tr>
-<tr class="memdesc:a167199a863bbf5cc93eb280298f79621"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops a specific sonicator unit.  <br /></td></tr>
+<tr class="memitem:a1fc8e13f3e9a3e0ebc47783df9b05b90" id="r_a1fc8e13f3e9a3e0ebc47783df9b05b90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1fc8e13f3e9a3e0ebc47783df9b05b90">set_led_state</a> (<a class="el" href="../../d9/d49/types_8h.html#a6ad21e6046b97022390d7b38aa87ca7e">led_mode_t</a> mode)</td></tr>
+<tr class="memdesc:a1fc8e13f3e9a3e0ebc47783df9b05b90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the status LED based on sonicator states.  <br /></td></tr>
 <tr class="memitem:a596760891dda39b8235afe9b708a531d" id="r_a596760891dda39b8235afe9b708a531d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a596760891dda39b8235afe9b708a531d">setAmplitude</a> (uint8_t amplitude_percent)</td></tr>
 <tr class="memdesc:a596760891dda39b8235afe9b708a531d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the shared amplitude for all sonicators.  <br /></td></tr>
-<tr class="memitem:a6f44d834f83c19ab9ca4d65e3811435a" id="r_a6f44d834f83c19ab9ca4d65e3811435a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f44d834f83c19ab9ca4d65e3811435a">resetOverload</a> (uint8_t index)</td></tr>
-<tr class="memdesc:a6f44d834f83c19ab9ca4d65e3811435a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets overload condition on a specific sonicator.  <br /></td></tr>
-<tr class="memitem:abd1acc3f50cf65b7ad55edd66e278b7c" id="r_abd1acc3f50cf65b7ad55edd66e278b7c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../db/d3b/state_8h.html#afeb77d5a88e0115b4344d7f6ed578ec8">sonicator_status_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd1acc3f50cf65b7ad55edd66e278b7c">getStatus</a> (uint8_t index) const</td></tr>
-<tr class="memdesc:abd1acc3f50cf65b7ad55edd66e278b7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the status of a specific sonicator.  <br /></td></tr>
+<tr class="memitem:abd1acc3f50cf65b7ad55edd66e278b7c" id="r_abd1acc3f50cf65b7ad55edd66e278b7c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d8/d4b/hal_8h.html#a5db44754abe690dd04b3f2abe5a075c8">sonicator_status_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd1acc3f50cf65b7ad55edd66e278b7c">getStatus</a> (uint8_t index) const</td></tr>
+<tr class="memdesc:abd1acc3f50cf65b7ad55edd66e278b7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the status of the Multiplexer System.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Object-oriented multiplexer for managing multiple CT2000 sonicator units. </p>
@@ -164,9 +160,9 @@ Public Interface</h1>
 <p>The public interface provides methods for:</p><ul>
 <li><b>Initialization</b>: <a class="el" href="#a0491dfe76449ae9a9b2cdd73a9c86af4" title="Initializes the multiplexer and all sonicator units.">begin()</a> - Setup hardware and initialize units</li>
 <li><b>Runtime Control</b>: <a class="el" href="#a3b5d36789802ae0f7b310710d6bdf9c2" title="Main update loop for the multiplexer.">update()</a> - Main loop processing</li>
-<li><b>Unit Control</b>: <a class="el" href="#a7bd54b7f9c5ecde9cb0b43f8b9899559" title="Starts a specific sonicator unit.">start()</a>, <a class="el" href="#a167199a863bbf5cc93eb280298f79621" title="Stops a specific sonicator unit.">stop()</a>, <a class="el" href="#a6f44d834f83c19ab9ca4d65e3811435a" title="Resets overload condition on a specific sonicator.">resetOverload()</a> - Individual unit operations</li>
+<li><b>Unit Control</b>: start(), stop(), resetOverload() - Individual unit operations</li>
 <li><b>Shared Control</b>: <a class="el" href="#a596760891dda39b8235afe9b708a531d" title="Sets the shared amplitude for all sonicators.">setAmplitude()</a> - Global amplitude setting</li>
-<li><b>Monitoring</b>: <a class="el" href="#abd1acc3f50cf65b7ad55edd66e278b7c" title="Retrieves the status of a specific sonicator.">getStatus()</a> - Status retrieval</li>
+<li><b>Monitoring</b>: <a class="el" href="#abd1acc3f50cf65b7ad55edd66e278b7c" title="Retrieves the status of the Multiplexer System.">getStatus()</a> - Status retrieval</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="lifecycle_management"></a>
 Lifecycle Management</h1>
@@ -226,7 +222,7 @@ Thread Safety</h1>
 Shared amplitude affects all active sonicators</dd></dl>
 <dl class="section see"><dt>See also</dt><dd>sonicator_interface_t Individual sonicator interface </dd>
 <dd>
-<a class="el" href="../../db/d3b/state_8h.html#afeb77d5a88e0115b4344d7f6ed578ec8" title="Sonicator status structure.">sonicator_status_t</a> Status structure definition </dd>
+<a class="el" href="../../d8/d4b/hal_8h.html#a5db44754abe690dd04b3f2abe5a075c8">sonicator_status_t</a> Status structure definition </dd>
 <dd>
 docs/multiplexer-design.md Detailed design documentation</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The multiplexer uses RAII principles for resource management </dd>
@@ -316,8 +312,10 @@ Error conditions are logged but don't halt operation </dd></dl>
 </div><div class="memdoc">
 
 <p>Initializes the multiplexer and all sonicator units. </p>
+<p>Initializes the multiplexer system.</p>
 <p>Sets up pin configurations, initializes hardware interfaces, and prepares all sonicator units for operation. Must be called before any other operations. </p><dl class="section note"><dt>Note</dt><dd>This method configures shared resources like PWM amplitude control </dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>Must be called in system setup phase </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Must be called in system setup phase</dd></dl>
+<p>No-op implementation since HAL/PWM are initialized by <a class="el" href="../../dc/db6/hal_8cpp.html#aa09745b395496b11ba076700d91d8e21" title="Initialize all HAL subsystems.">hal_init()</a>. Ensures shared amplitude reflects current value. </p>
 
 </div>
 </div>
@@ -328,7 +326,7 @@ Error conditions are logged but don't halt operation </dd></dl>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="../../db/d3b/state_8h.html#afeb77d5a88e0115b4344d7f6ed578ec8">sonicator_status_t</a> * SonicMultiplexer::getStatus </td>
+          <td class="memname">const <a class="el" href="../../d8/d4b/hal_8h.html#a5db44754abe690dd04b3f2abe5a075c8">sonicator_status_t</a> * SonicMultiplexer::getStatus </td>
           <td>(</td>
           <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
           <td> const</td>
@@ -336,42 +334,36 @@ Error conditions are logged but don't halt operation </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Retrieves the status of a specific sonicator. </p>
+<p>Retrieves the status of the Multiplexer System. </p>
+<p>Gets the status of a specific sonicator.</p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the status structure, or nullptr if invalid index</dd></dl>
+<p>Returns current operational status of the specified sonicator unit. The returned pointer is valid until the next multiplexer operation. </p><dl class="section warning"><dt>Warning</dt><dd>index must be within valid range</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td>The index of the sonicator to query (0 to count-1) </td></tr>
+    <tr><td class="paramname">index</td><td>Zero-based index of the sonicator (0-3) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the status structure, or nullptr if invalid index</dd></dl>
-<p>Returns current operational status of the specified sonicator unit. The returned pointer is valid until the next multiplexer operation. </p><dl class="section warning"><dt>Warning</dt><dd>index must be within valid range </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to sonicator status structure, or nullptr if invalid index </dd></dl>
 
 </div>
 </div>
-<a id="a6f44d834f83c19ab9ca4d65e3811435a" name="a6f44d834f83c19ab9ca4d65e3811435a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f44d834f83c19ab9ca4d65e3811435a">&#9670;&#160;</a></span>resetOverload()</h2>
+<a id="a1fc8e13f3e9a3e0ebc47783df9b05b90" name="a1fc8e13f3e9a3e0ebc47783df9b05b90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fc8e13f3e9a3e0ebc47783df9b05b90">&#9670;&#160;</a></span>set_led_state()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool SonicMultiplexer::resetOverload </td>
+          <td class="memname">void SonicMultiplexer::set_led_state </td>
           <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#a6ad21e6046b97022390d7b38aa87ca7e">led_mode_t</a></td>          <td class="paramname"><span class="paramname"><em>mode</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Resets overload condition on a specific sonicator. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">index</td><td>The index of the sonicator to reset (0 to count-1) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the reset was successful, false otherwise</dd></dl>
-<p>Clears overload fault conditions and attempts to restart the unit. Useful for recovering from temporary fault conditions. </p><dl class="section warning"><dt>Warning</dt><dd>index must be within valid range </dd></dl>
+<p>Updates the status LED based on sonicator states. </p>
 
 </div>
 </div>
@@ -398,61 +390,15 @@ Error conditions are logged but don't halt operation </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the amplitude was set successfully, false if out of range</dd></dl>
-<p>Sets the global amplitude level that affects all active sonicator units. The change takes effect immediately for all running units. </p><dl class="section note"><dt>Note</dt><dd>Amplitude range is validated (20-100% only) </dd></dl>
-
-</div>
-</div>
-<a id="a7bd54b7f9c5ecde9cb0b43f8b9899559" name="a7bd54b7f9c5ecde9cb0b43f8b9899559"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7bd54b7f9c5ecde9cb0b43f8b9899559">&#9670;&#160;</a></span>start()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool SonicMultiplexer::start </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Starts a specific sonicator unit. </p>
+<p>Sets the global amplitude level that affects all active sonicator units. The change takes effect immediately for all running units. </p><dl class="section note"><dt>Note</dt><dd>Amplitude range is validated (20-100% only)</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td>The index of the sonicator to start (0 to count-1) </td></tr>
+    <tr><td class="paramname">amplitude_percent</td><td>Desired amplitude percentage (will be clamped to valid range) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the start command was accepted, false otherwise</dd></dl>
-<p>Initiates operation of the specified sonicator unit. The unit will begin ultrasonic generation at the current amplitude setting. </p><dl class="section warning"><dt>Warning</dt><dd>index must be within valid range </dd></dl>
-
-</div>
-</div>
-<a id="a167199a863bbf5cc93eb280298f79621" name="a167199a863bbf5cc93eb280298f79621"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a167199a863bbf5cc93eb280298f79621">&#9670;&#160;</a></span>stop()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool SonicMultiplexer::stop </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Stops a specific sonicator unit. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">index</td><td>The index of the sonicator to stop (0 to count-1) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the stop command was accepted, false otherwise</dd></dl>
-<p>Terminates operation of the specified sonicator unit. The unit will cease ultrasonic generation immediately. </p><dl class="section warning"><dt>Warning</dt><dd>index must be within valid range </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true on success</dd></dl>
+<p>Updates all individual sonicator amplitude setpoints and the shared PWM output </p>
 
 </div>
 </div>
@@ -472,12 +418,15 @@ Error conditions are logged but don't halt operation </dd></dl>
 </div><div class="memdoc">
 
 <p>Main update loop for the multiplexer. </p>
-<p>Processes all sonicator units, updates shared resources, and handles state transitions. Should be called regularly in the main application loop. </p><dl class="section note"><dt>Note</dt><dd>Handles amplitude PWM updates and status synchronization </dd></dl>
+<p>Updates all sonicators and shared amplitude control.</p>
+<p>Processes all sonicator units, updates shared resources, and handles state transitions. Should be called regularly in the main application loop. </p><dl class="section note"><dt>Note</dt><dd>Handles amplitude PWM updates and status synchronization</dd></dl>
+<p>Calls <a class="el" href="#a3b5d36789802ae0f7b310710d6bdf9c2" title="Main update loop for the multiplexer.">update()</a> on each active sonicator and synchronizes the shared amplitude PWM </p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/multiplexer/<a class="el" href="../../dc/dc2/_multiplexer_8h_source.html">Multiplexer.h</a></li>
+<li>src/modules/control/<a class="el" href="../../d8/d25/_multiplexer_8cpp.html">Multiplexer.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

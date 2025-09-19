@@ -6,6 +6,6 @@ var searchData=
   ['overload_3',['overload',['../db/de2/structhal__sonicator__status__t.html#ad810674402bc9120308c6520a8daf0b3',1,'hal_sonicator_status_t']]],
   ['overload_5factive_4',['overload_active',['../db/dd3/structsonicator__status__s.html#a8a654dda1c8479aa7b0603d9f189a392',1,'sonicator_status_s']]],
   ['overload_5finput_5fpin_5',['overload_input_pin',['../d2/d25/structsonicator__hardware__config__t.html#a7575fd750535076f6a07827269401fc2',1,'sonicator_hardware_config_t']]],
-  ['overload_5fpin_6',['overload_pin',['../de/d5a/struct_sonicator_pins.html#a9f2610ad98a5973f58cc32c714f7bfc9',1,'SonicatorPins::overload_pin'],['../dc/d16/sonicator_8h.html#af64695e062ad45b326b59c2cb88a56d0',1,'overload_pin:&#160;sonicator.h']]],
+  ['overload_5fpin_6',['overload_pin',['../de/d5a/struct_sonicator_pins.html#a9f2610ad98a5973f58cc32c714f7bfc9',1,'SonicatorPins']]],
   ['overload_5freset_7',['overload_reset',['../d4/d97/structsonicator__registers__t.html#a1272f5c84e823d8a0fc64ee6ead65f45',1,'sonicator_registers_t']]]
 ];

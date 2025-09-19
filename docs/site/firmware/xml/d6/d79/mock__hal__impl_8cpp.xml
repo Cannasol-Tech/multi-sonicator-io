@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d6/d79/mock__hal__impl_8cpp" kind="file" language="C++">
+    <compoundname>mock_hal_impl.cpp</compoundname>
+    <includes refid="de/d8d/mock__hal__impl_8h" local="yes">mock_hal_impl.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>src/modules/hal/mock_hal_impl.cpp</label>
+        <link refid="d6/d79/mock__hal__impl_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>mock_hal_impl.h</label>
+        <link refid="de/d8d/mock__hal__impl_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>timer.h</label>
+        <link refid="d5/dd0/timer_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>stdbool.h</label>
+      </node>
+      <node id="3">
+        <label>stdint.h</label>
+      </node>
+      <node id="5">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>Definitions of <ref refid="d2/d0d/class_mock_hal" kindref="compound">MockHal</ref> static members. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/d8d/mock__hal__impl_8h" kindref="compound">mock_hal_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>MockHal::gpio_initialized<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">uint8_t<sp/>MockHal::pin_states[32]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">uint8_t<sp/>MockHal::pin_modes[32]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>MockHal::adc_initialized<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">uint16_t<sp/>MockHal::adc_channel_values[8]<sp/>=<sp/>{512,<sp/>256,<sp/>768,<sp/>384,<sp/>640,<sp/>128,<sp/>896,<sp/>0};</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>MockHal::adc_conversion_started<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>MockHal::adc_conversion_complete<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>MockHal::pwm_initialized<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">uint8_t<sp/>MockHal::pwm_duty_cycles[4]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">uint32_t<sp/>MockHal::pwm_frequencies[4]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>MockHal::pwm_channels_enabled[4]<sp/>=<sp/>{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>MockHal::timer_initialized<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>MockHal::timer_expired_flags[4]<sp/>=<sp/>{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">uint32_t<sp/>MockHal::timer_start_times[4]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">uint32_t<sp/>MockHal::timer_periods[4]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">uint16_t<sp/>MockHal::timer_values[4]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">uint32_t<sp/>MockHal::mock_millis<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">uint32_t<sp/>MockHal::mock_micros<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>MockHal::uart_initialized<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">uint32_t<sp/>MockHal::uart_baud_rate<sp/>=<sp/>9600;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">uint8_t<sp/>MockHal::uart_tx_buffer[256]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">uint8_t<sp/>MockHal::uart_rx_buffer[256]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">uint16_t<sp/>MockHal::uart_tx_head<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">uint16_t<sp/>MockHal::uart_rx_head<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">uint16_t<sp/>MockHal::uart_tx_tail<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">uint16_t<sp/>MockHal::uart_rx_tail<sp/>=<sp/>0;</highlight></codeline>
+    </programlisting>
+    <location file="src/modules/hal/mock_hal_impl.cpp"/>
+  </compounddef>
+</doxygen>

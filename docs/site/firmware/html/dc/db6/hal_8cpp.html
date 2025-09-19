@@ -96,6 +96,7 @@ $(function(){initNavTree('dc/db6/hal_8cpp.html','../../',''); });
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d8/d4b/hal_8h_source.html">hal.h</a>&quot;</code><br />
 <code>#include &lt;<a class="el" href="../../d4/d7e/system__config_8h_source.html">system_config.h</a>&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../de/d01/frequency__counter_8h_source.html">frequency_counter.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -114,10 +115,14 @@ Functions</h2></td></tr>
 <tr class="memdesc:ac4d228c6c0dea1248daddffa2b8cc6aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset HAL error counters.  <br /></td></tr>
 <tr class="memitem:a5b5e63353fed4bfb72b1509fab9b3d40" id="r_a5b5e63353fed4bfb72b1509fab9b3d40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d4b/hal_8h.html#ace8e76cd091b757cacd51778764dd9a6">hal_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b5e63353fed4bfb72b1509fab9b3d40">hal_emergency_shutdown</a> (void)</td></tr>
 <tr class="memdesc:a5b5e63353fed4bfb72b1509fab9b3d40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emergency shutdown of all HAL subsystems.  <br /></td></tr>
-<tr class="memitem:a25dd966a4c5c3b9737da5b65dee9c3b0" id="r_a25dd966a4c5c3b9737da5b65dee9c3b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d4b/hal_8h.html#ace8e76cd091b757cacd51778764dd9a6">hal_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25dd966a4c5c3b9737da5b65dee9c3b0">hal_control_sonicator</a> (uint8_t sonicator_id, const <a class="el" href="../../db/d3b/state_8h.html#af132973e9c955228c4f718796bec3640">sonicator_control_t</a> *control)</td></tr>
-<tr class="memitem:a79df73bca16a4d09f8820b3af83f1c44" id="r_a79df73bca16a4d09f8820b3af83f1c44"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d4b/hal_8h.html#ace8e76cd091b757cacd51778764dd9a6">hal_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79df73bca16a4d09f8820b3af83f1c44">hal_read_sonicator_status</a> (uint8_t sonicator_id, <a class="el" href="../../db/d3b/state_8h.html#afeb77d5a88e0115b4344d7f6ed578ec8">sonicator_status_t</a> *status)</td></tr>
-<tr class="memitem:a6ad69832d659a117bfa3b1713496a37e" id="r_a6ad69832d659a117bfa3b1713496a37e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d4b/hal_8h.html#ace8e76cd091b757cacd51778764dd9a6">hal_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ad69832d659a117bfa3b1713496a37e">hal_control_all_sonicators</a> (const <a class="el" href="../../db/d3b/state_8h.html#af132973e9c955228c4f718796bec3640">sonicator_control_t</a> control_array[4])</td></tr>
-<tr class="memitem:a4da6622db3be649a8152d6562db7167f" id="r_a4da6622db3be649a8152d6562db7167f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d4b/hal_8h.html#ace8e76cd091b757cacd51778764dd9a6">hal_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4da6622db3be649a8152d6562db7167f">hal_read_all_sonicator_status</a> (<a class="el" href="../../db/d3b/state_8h.html#afeb77d5a88e0115b4344d7f6ed578ec8">sonicator_status_t</a> status_array[4])</td></tr>
+<tr class="memitem:ae2a8edd9f82c37d2c8b8380df50f6d38" id="r_ae2a8edd9f82c37d2c8b8380df50f6d38"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d4b/hal_8h.html#ace8e76cd091b757cacd51778764dd9a6">hal_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2a8edd9f82c37d2c8b8380df50f6d38">hal_control_sonicator</a> (uint8_t sonicator_id, const <a class="el" href="../../dc/db3/structhal__sonicator__control__t.html">hal_sonicator_control_t</a> *control)</td></tr>
+<tr class="memdesc:ae2a8edd9f82c37d2c8b8380df50f6d38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Control single sonicator.  <br /></td></tr>
+<tr class="memitem:a16dae83a26a56a47a0c33b338ae89912" id="r_a16dae83a26a56a47a0c33b338ae89912"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d4b/hal_8h.html#ace8e76cd091b757cacd51778764dd9a6">hal_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16dae83a26a56a47a0c33b338ae89912">hal_read_sonicator_status</a> (uint8_t sonicator_id, <a class="el" href="../../db/de2/structhal__sonicator__status__t.html">hal_sonicator_status_t</a> *status)</td></tr>
+<tr class="memdesc:a16dae83a26a56a47a0c33b338ae89912"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read single sonicator status.  <br /></td></tr>
+<tr class="memitem:a7d63b7145ac96884c17789dfa39f93e7" id="r_a7d63b7145ac96884c17789dfa39f93e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d4b/hal_8h.html#ace8e76cd091b757cacd51778764dd9a6">hal_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d63b7145ac96884c17789dfa39f93e7">hal_control_all_sonicators</a> (const <a class="el" href="../../dc/db3/structhal__sonicator__control__t.html">hal_sonicator_control_t</a> control_array[4])</td></tr>
+<tr class="memdesc:a7d63b7145ac96884c17789dfa39f93e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Control all sonicators simultaneously.  <br /></td></tr>
+<tr class="memitem:aeb293a50a4363248f9353779707c5837" id="r_aeb293a50a4363248f9353779707c5837"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d4b/hal_8h.html#ace8e76cd091b757cacd51778764dd9a6">hal_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb293a50a4363248f9353779707c5837">hal_read_all_sonicator_status</a> (<a class="el" href="../../db/de2/structhal__sonicator__status__t.html">hal_sonicator_status_t</a> status_array[4])</td></tr>
+<tr class="memdesc:aeb293a50a4363248f9353779707c5837"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read all sonicator statuses.  <br /></td></tr>
 <tr class="memitem:a42682f6be8bc89646e8cb60411e1dded" id="r_a42682f6be8bc89646e8cb60411e1dded"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d4b/hal_8h.html#ace8e76cd091b757cacd51778764dd9a6">hal_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42682f6be8bc89646e8cb60411e1dded">hal_emergency_stop_all</a> (void)</td></tr>
 <tr class="memdesc:a42682f6be8bc89646e8cb60411e1dded"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emergency stop all sonicators.  <br /></td></tr>
 </table><table class="memberdecls">
@@ -153,8 +158,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a6ad69832d659a117bfa3b1713496a37e" name="a6ad69832d659a117bfa3b1713496a37e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ad69832d659a117bfa3b1713496a37e">&#9670;&#160;</a></span>hal_control_all_sonicators()</h2>
+<a id="a7d63b7145ac96884c17789dfa39f93e7" name="a7d63b7145ac96884c17789dfa39f93e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d63b7145ac96884c17789dfa39f93e7">&#9670;&#160;</a></span>hal_control_all_sonicators()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -162,16 +167,25 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="../../d8/d4b/hal_8h.html#ace8e76cd091b757cacd51778764dd9a6">hal_result_t</a> hal_control_all_sonicators </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../db/d3b/state_8h.html#af132973e9c955228c4f718796bec3640">sonicator_control_t</a></td>          <td class="paramname"><span class="paramname"><em>control_array</em></span>[4]</td><td>)</td>
+          <td class="paramtype">const <a class="el" href="../../dc/db3/structhal__sonicator__control__t.html">hal_sonicator_control_t</a></td>          <td class="paramname"><span class="paramname"><em>control_array</em></span>[4]</td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Control all sonicators simultaneously. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">control_array</td><td>Array of 4 control structures </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>HAL_OK on success, error code on failure </dd></dl>
+
 </div>
 </div>
-<a id="a25dd966a4c5c3b9737da5b65dee9c3b0" name="a25dd966a4c5c3b9737da5b65dee9c3b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25dd966a4c5c3b9737da5b65dee9c3b0">&#9670;&#160;</a></span>hal_control_sonicator()</h2>
+<a id="ae2a8edd9f82c37d2c8b8380df50f6d38" name="ae2a8edd9f82c37d2c8b8380df50f6d38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2a8edd9f82c37d2c8b8380df50f6d38">&#9670;&#160;</a></span>hal_control_sonicator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -184,10 +198,20 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="../../db/d3b/state_8h.html#af132973e9c955228c4f718796bec3640">sonicator_control_t</a> *</td>          <td class="paramname"><span class="paramname"><em>control</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="../../dc/db3/structhal__sonicator__control__t.html">hal_sonicator_control_t</a> *</td>          <td class="paramname"><span class="paramname"><em>control</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Control single sonicator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sonicator_id</td><td>Sonicator number (1-4) </td></tr>
+    <tr><td class="paramname">control</td><td>Pointer to control structure </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>HAL_OK on success, error code on failure </dd></dl>
 
 </div>
 </div>
@@ -302,8 +326,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a4da6622db3be649a8152d6562db7167f" name="a4da6622db3be649a8152d6562db7167f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4da6622db3be649a8152d6562db7167f">&#9670;&#160;</a></span>hal_read_all_sonicator_status()</h2>
+<a id="aeb293a50a4363248f9353779707c5837" name="aeb293a50a4363248f9353779707c5837"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb293a50a4363248f9353779707c5837">&#9670;&#160;</a></span>hal_read_all_sonicator_status()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -311,16 +335,25 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="../../d8/d4b/hal_8h.html#ace8e76cd091b757cacd51778764dd9a6">hal_result_t</a> hal_read_all_sonicator_status </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../db/d3b/state_8h.html#afeb77d5a88e0115b4344d7f6ed578ec8">sonicator_status_t</a></td>          <td class="paramname"><span class="paramname"><em>status_array</em></span>[4]</td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../db/de2/structhal__sonicator__status__t.html">hal_sonicator_status_t</a></td>          <td class="paramname"><span class="paramname"><em>status_array</em></span>[4]</td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Read all sonicator statuses. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">status_array</td><td>Array to store 4 status structures </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>HAL_OK on success, error code on failure </dd></dl>
+
 </div>
 </div>
-<a id="a79df73bca16a4d09f8820b3af83f1c44" name="a79df73bca16a4d09f8820b3af83f1c44"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79df73bca16a4d09f8820b3af83f1c44">&#9670;&#160;</a></span>hal_read_sonicator_status()</h2>
+<a id="a16dae83a26a56a47a0c33b338ae89912" name="a16dae83a26a56a47a0c33b338ae89912"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16dae83a26a56a47a0c33b338ae89912">&#9670;&#160;</a></span>hal_read_sonicator_status()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -333,10 +366,20 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../db/d3b/state_8h.html#afeb77d5a88e0115b4344d7f6ed578ec8">sonicator_status_t</a> *</td>          <td class="paramname"><span class="paramname"><em>status</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="../../db/de2/structhal__sonicator__status__t.html">hal_sonicator_status_t</a> *</td>          <td class="paramname"><span class="paramname"><em>status</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Read single sonicator status. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sonicator_id</td><td>Sonicator number (1-4) </td></tr>
+    <tr><td class="paramname">status</td><td>Pointer to status structure </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>HAL_OK on success, error code on failure </dd></dl>
 
 </div>
 </div>

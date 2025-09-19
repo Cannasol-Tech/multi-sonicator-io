@@ -100,10 +100,8 @@ $(function(){initNavTree('d4/d18/frequency__counter_8cpp.html','../../',''); });
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:afe6035149a64d5f448fbda08e9d1b67f" id="r_afe6035149a64d5f448fbda08e9d1b67f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe6035149a64d5f448fbda08e9d1b67f">ISR</a> (PCINT1_vect)</td></tr>
-<tr class="memdesc:afe6035149a64d5f448fbda08e9d1b67f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pin Change Interrupt for Port B (FREQ_DIV10_# pins)  <br /></td></tr>
 <tr class="memitem:a32db71b05f686868ba23198a67d4c3cd" id="r_a32db71b05f686868ba23198a67d4c3cd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a32db71b05f686868ba23198a67d4c3cd">frequency_counter_init</a> (void)</td></tr>
-<tr class="memdesc:a32db71b05f686868ba23198a67d4c3cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize frequency counting system.  <br /></td></tr>
+<tr class="memdesc:a32db71b05f686868ba23198a67d4c3cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pin Change Interrupt for Port B (FREQ_DIV10_# pins)  <br /></td></tr>
 <tr class="memitem:a04851abee44a28fb5f885b7418f915d4" id="r_a04851abee44a28fb5f885b7418f915d4"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04851abee44a28fb5f885b7418f915d4">frequency_calculate</a> (uint8_t channel)</td></tr>
 <tr class="memdesc:a04851abee44a28fb5f885b7418f915d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate frequency for specified channel.  <br /></td></tr>
 <tr class="memitem:a6275d3d673d15714777f3f9de2b6d638" id="r_a6275d3d673d15714777f3f9de2b6d638"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6275d3d673d15714777f3f9de2b6d638">frequency_get_current</a> (uint8_t channel)</td></tr>
@@ -194,13 +192,14 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initialize frequency counting system. </p>
-<dl class="section return"><dt>Returns</dt><dd>true if initialization successful</dd></dl>
-<ul>
-<li>Configures PB0-PB3 as inputs with pull-ups</li>
-<li>Sets up Pin Change Interrupt for Port B</li>
-<li>Initializes all frequency counter structures</li>
-<li>Enables global interrupts </li>
+<p>Pin Change Interrupt for Port B (FREQ_DIV10_# pins) </p>
+<p>Initialize frequency counting system.</p>
+<dl class="section note"><dt>Note</dt><dd>This ISR handles all 4 frequency input pins simultaneously</dd></dl>
+<p>Optimized for minimal execution time while maintaining accuracy.</p><ul>
+<li>Captures timestamp immediately for precision</li>
+<li>Detects edges by comparing current vs previous port state</li>
+<li>Applies noise filtering to reject spurious edges</li>
+<li>Updates measurement window completion flags </li>
 </ul>
 
 </div>
@@ -452,32 +451,6 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if parameter set successfully </dd></dl>
-
-</div>
-</div>
-<a id="afe6035149a64d5f448fbda08e9d1b67f" name="afe6035149a64d5f448fbda08e9d1b67f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe6035149a64d5f448fbda08e9d1b67f">&#9670;&#160;</a></span>ISR()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">ISR </td>
-          <td>(</td>
-          <td class="paramtype">PCINT1_vect</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pin Change Interrupt for Port B (FREQ_DIV10_# pins) </p>
-<dl class="section note"><dt>Note</dt><dd>This ISR handles all 4 frequency input pins simultaneously</dd></dl>
-<p>Optimized for minimal execution time while maintaining accuracy.</p><ul>
-<li>Captures timestamp immediately for precision</li>
-<li>Detects edges by comparing current vs previous port state</li>
-<li>Applies noise filtering to reject spurious edges</li>
-<li>Updates measurement window completion flags </li>
-</ul>
 
 </div>
 </div>

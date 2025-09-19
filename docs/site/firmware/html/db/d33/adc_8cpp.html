@@ -106,18 +106,18 @@ Functions</h2></td></tr>
 <tr class="memdesc:a4b0617b93ab926cd6acb0523bfc379d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps sonicator ID to corresponding ADC channel.  <br /></td></tr>
 <tr class="memitem:aa540e6dad1cfb7b5a1a70ac688003aee" id="r_aa540e6dad1cfb7b5a1a70ac688003aee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa540e6dad1cfb7b5a1a70ac688003aee">adc_init</a> (void)</td></tr>
 <tr class="memdesc:aa540e6dad1cfb7b5a1a70ac688003aee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the ADC subsystem with default configuration.  <br /></td></tr>
-<tr class="memitem:aed5a363f6b2bd62dc96e66ae7e85048e" id="r_aed5a363f6b2bd62dc96e66ae7e85048e"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed5a363f6b2bd62dc96e66ae7e85048e">adc_set_reference</a> (<a class="el" href="../../d7/d19/adc_8h.html#ab0d58a8b58b229a1ef66fd3ba5d848b9">adc_reference_t</a> reference)</td></tr>
-<tr class="memdesc:aed5a363f6b2bd62dc96e66ae7e85048e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures ADC voltage reference source.  <br /></td></tr>
-<tr class="memitem:a0ac73f1ed6dc07bb1f08beb4628a81d4" id="r_a0ac73f1ed6dc07bb1f08beb4628a81d4"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ac73f1ed6dc07bb1f08beb4628a81d4">adc_set_prescaler</a> (<a class="el" href="../../d7/d19/adc_8h.html#a4111b7f88d7ec4a4752800a672fdb425">adc_prescaler_t</a> prescaler)</td></tr>
-<tr class="memdesc:a0ac73f1ed6dc07bb1f08beb4628a81d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures ADC clock prescaler for optimal conversion timing.  <br /></td></tr>
-<tr class="memitem:a9b6db774acc8d6f9333606ef726b2e19" id="r_a9b6db774acc8d6f9333606ef726b2e19"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b6db774acc8d6f9333606ef726b2e19">adc_read_channel</a> (<a class="el" href="../../d7/d19/adc_8h.html#aafc4060027875f8fe46242b0656d7814">adc_channel_t</a> channel, uint16_t *value)</td></tr>
-<tr class="memdesc:a9b6db774acc8d6f9333606ef726b2e19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs complete ADC conversion on specified channel.  <br /></td></tr>
-<tr class="memitem:a4fb418ca663a4feb4922a02f2f4f98da" id="r_a4fb418ca663a4feb4922a02f2f4f98da"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fb418ca663a4feb4922a02f2f4f98da">adc_start_conversion</a> (<a class="el" href="../../d7/d19/adc_8h.html#aafc4060027875f8fe46242b0656d7814">adc_channel_t</a> channel)</td></tr>
-<tr class="memdesc:a4fb418ca663a4feb4922a02f2f4f98da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates ADC conversion without waiting for completion.  <br /></td></tr>
-<tr class="memitem:a8fec558ec28116e82584e76a36254598" id="r_a8fec558ec28116e82584e76a36254598"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8fec558ec28116e82584e76a36254598">adc_conversion_complete</a> (bool *complete)</td></tr>
-<tr class="memdesc:a8fec558ec28116e82584e76a36254598"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if ADC conversion has completed.  <br /></td></tr>
-<tr class="memitem:a9b8d042910a2b4d5e4442955fe79d301" id="r_a9b8d042910a2b4d5e4442955fe79d301"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b8d042910a2b4d5e4442955fe79d301">adc_get_result</a> (uint16_t *value)</td></tr>
-<tr class="memdesc:a9b8d042910a2b4d5e4442955fe79d301"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves completed ADC conversion result.  <br /></td></tr>
+<tr class="memitem:aadbff6cdc8330baec6d7be50cc7bc119" id="r_aadbff6cdc8330baec6d7be50cc7bc119"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aadbff6cdc8330baec6d7be50cc7bc119">adc_set_reference</a> (<a class="el" href="../../d7/d19/adc_8h.html#ab0d58a8b58b229a1ef66fd3ba5d848b9">adc_reference_t</a> reference)</td></tr>
+<tr class="memdesc:aadbff6cdc8330baec6d7be50cc7bc119"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures ADC voltage reference source.  <br /></td></tr>
+<tr class="memitem:a8de284571c4bb5302f8585d8e755982a" id="r_a8de284571c4bb5302f8585d8e755982a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8de284571c4bb5302f8585d8e755982a">adc_set_prescaler</a> (<a class="el" href="../../d7/d19/adc_8h.html#a4111b7f88d7ec4a4752800a672fdb425">adc_prescaler_t</a> prescaler)</td></tr>
+<tr class="memdesc:a8de284571c4bb5302f8585d8e755982a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures ADC clock prescaler for optimal conversion timing.  <br /></td></tr>
+<tr class="memitem:a97f090840a901f0e030625d8e6d3a35c" id="r_a97f090840a901f0e030625d8e6d3a35c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97f090840a901f0e030625d8e6d3a35c">adc_read_channel</a> (<a class="el" href="../../d7/d19/adc_8h.html#aafc4060027875f8fe46242b0656d7814">adc_channel_t</a> channel, uint16_t *value)</td></tr>
+<tr class="memdesc:a97f090840a901f0e030625d8e6d3a35c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs complete ADC conversion on specified channel.  <br /></td></tr>
+<tr class="memitem:a9b109efc89d01d4f4ca18ef7b6a28239" id="r_a9b109efc89d01d4f4ca18ef7b6a28239"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b109efc89d01d4f4ca18ef7b6a28239">adc_start_conversion</a> (<a class="el" href="../../d7/d19/adc_8h.html#aafc4060027875f8fe46242b0656d7814">adc_channel_t</a> channel)</td></tr>
+<tr class="memdesc:a9b109efc89d01d4f4ca18ef7b6a28239"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates ADC conversion without waiting for completion.  <br /></td></tr>
+<tr class="memitem:ac092476d046800c923017c8a44f3bf0a" id="r_ac092476d046800c923017c8a44f3bf0a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac092476d046800c923017c8a44f3bf0a">adc_conversion_complete</a> (bool *complete)</td></tr>
+<tr class="memdesc:ac092476d046800c923017c8a44f3bf0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if ADC conversion has completed.  <br /></td></tr>
+<tr class="memitem:a9deec53ff9391b6faa57b3167d61fff7" id="r_a9deec53ff9391b6faa57b3167d61fff7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9deec53ff9391b6faa57b3167d61fff7">adc_get_result</a> (uint16_t *value)</td></tr>
+<tr class="memdesc:a9deec53ff9391b6faa57b3167d61fff7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves completed ADC conversion result.  <br /></td></tr>
 <tr class="memitem:a9a3589be2e6a1f230b71db35c5a4aed0" id="r_a9a3589be2e6a1f230b71db35c5a4aed0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a3589be2e6a1f230b71db35c5a4aed0">adc_to_voltage</a> (uint16_t raw_value, float *voltage)</td></tr>
 <tr class="memdesc:a9a3589be2e6a1f230b71db35c5a4aed0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts raw ADC value to actual voltage measurement.  <br /></td></tr>
 <tr class="memitem:a6eff5ebe7332c348d75634c1e327533c" id="r_a6eff5ebe7332c348d75634c1e327533c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6eff5ebe7332c348d75634c1e327533c">adc_read_sonicator_power_raw</a> (uint8_t sonicator_id, uint16_t *raw_adc)</td></tr>
@@ -140,14 +140,11 @@ Variables</h2></td></tr>
 <dl class="section date"><dt>Date</dt><dd>2025-09-02 </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0.0 </dd></dl>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="a8fec558ec28116e82584e76a36254598" name="a8fec558ec28116e82584e76a36254598"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8fec558ec28116e82584e76a36254598">&#9670;&#160;</a></span>adc_conversion_complete()</h2>
+<a id="ac092476d046800c923017c8a44f3bf0a" name="ac092476d046800c923017c8a44f3bf0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac092476d046800c923017c8a44f3bf0a">&#9670;&#160;</a></span>adc_conversion_complete()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a> adc_conversion_complete </td>
@@ -156,11 +153,6 @@ Variables</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel constexpr">constexpr</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Checks if ADC conversion has completed. </p>
@@ -177,14 +169,11 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a9b8d042910a2b4d5e4442955fe79d301" name="a9b8d042910a2b4d5e4442955fe79d301"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b8d042910a2b4d5e4442955fe79d301">&#9670;&#160;</a></span>adc_get_result()</h2>
+<a id="a9deec53ff9391b6faa57b3167d61fff7" name="a9deec53ff9391b6faa57b3167d61fff7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9deec53ff9391b6faa57b3167d61fff7">&#9670;&#160;</a></span>adc_get_result()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a> adc_get_result </td>
@@ -193,11 +182,6 @@ Variables</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel constexpr">constexpr</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Retrieves completed ADC conversion result. </p>
@@ -247,14 +231,11 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a9b6db774acc8d6f9333606ef726b2e19" name="a9b6db774acc8d6f9333606ef726b2e19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b6db774acc8d6f9333606ef726b2e19">&#9670;&#160;</a></span>adc_read_channel()</h2>
+<a id="a97f090840a901f0e030625d8e6d3a35c" name="a97f090840a901f0e030625d8e6d3a35c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97f090840a901f0e030625d8e6d3a35c">&#9670;&#160;</a></span>adc_read_channel()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a> adc_read_channel </td>
@@ -267,11 +248,6 @@ Variables</h2></td></tr>
           <td class="paramtype">uint16_t *</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel constexpr">constexpr</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Performs complete ADC conversion on specified channel. </p>
@@ -366,14 +342,11 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a0ac73f1ed6dc07bb1f08beb4628a81d4" name="a0ac73f1ed6dc07bb1f08beb4628a81d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ac73f1ed6dc07bb1f08beb4628a81d4">&#9670;&#160;</a></span>adc_set_prescaler()</h2>
+<a id="a8de284571c4bb5302f8585d8e755982a" name="a8de284571c4bb5302f8585d8e755982a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8de284571c4bb5302f8585d8e755982a">&#9670;&#160;</a></span>adc_set_prescaler()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a> adc_set_prescaler </td>
@@ -382,11 +355,6 @@ Variables</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel constexpr">constexpr</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Configures ADC clock prescaler for optimal conversion timing. </p>
@@ -403,14 +371,11 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aed5a363f6b2bd62dc96e66ae7e85048e" name="aed5a363f6b2bd62dc96e66ae7e85048e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed5a363f6b2bd62dc96e66ae7e85048e">&#9670;&#160;</a></span>adc_set_reference()</h2>
+<a id="aadbff6cdc8330baec6d7be50cc7bc119" name="aadbff6cdc8330baec6d7be50cc7bc119"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadbff6cdc8330baec6d7be50cc7bc119">&#9670;&#160;</a></span>adc_set_reference()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a> adc_set_reference </td>
@@ -419,11 +384,6 @@ Variables</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel constexpr">constexpr</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Configures ADC voltage reference source. </p>
@@ -453,14 +413,11 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a4fb418ca663a4feb4922a02f2f4f98da" name="a4fb418ca663a4feb4922a02f2f4f98da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4fb418ca663a4feb4922a02f2f4f98da">&#9670;&#160;</a></span>adc_start_conversion()</h2>
+<a id="a9b109efc89d01d4f4ca18ef7b6a28239" name="a9b109efc89d01d4f4ca18ef7b6a28239"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b109efc89d01d4f4ca18ef7b6a28239">&#9670;&#160;</a></span>adc_start_conversion()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="../../d7/d19/adc_8h.html#a2e870a0e6f5efcac7b66ad2ede52ee52">adc_result_t</a> adc_start_conversion </td>
@@ -469,11 +426,6 @@ Variables</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel constexpr">constexpr</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Initiates ADC conversion without waiting for completion. </p>

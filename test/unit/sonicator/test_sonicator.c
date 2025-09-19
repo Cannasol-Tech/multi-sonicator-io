@@ -144,7 +144,9 @@
 #ifdef UNIT_TEST
 
 #include "../unity_system_config.h"
-#include "../../../include/sonicator_control.h"
+#include "../../../include/sonicator/sonicator_constants.h"
+#include "../../../include/sonicator/types/errors.h"
+#include "../../../include/sonicator/types/state.h"
 
 // ============================================================================
 // TEST FIXTURE SETUP

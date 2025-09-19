@@ -196,19 +196,10 @@ gpio_result_t gpio_status_led(gpio_state_t state);
  * for both production and testing scenarios.
  */
 
-// Production usage with ATmega32A HAL
-#include "atmega_hal_impl.h"
-#include "hal_template_interfaces.h"
-
-// Create GPIO instance for production
-using ProductionGpio = GpioHal<AtmegaHal>;
-using ProductionHal = HalTemplate<AtmegaHal>;
-
-// Testing usage with Mock HAL
+#ifdef __cplusplus
+// Template-based examples removed as part of HAL simplification.
+// Keep mock include available for C++ unit tests if needed.
 #include "mock_hal_impl.h"
-
-// Create GPIO instance for testing
-using TestGpio = GpioHal<MockHal>;
-using TestHal = HalTemplate<MockHal>;
+#endif // __cplusplus
 
 #endif // HAL_GPIO_H

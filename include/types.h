@@ -68,6 +68,17 @@ typedef enum {
     SAFETY_EVENT_SYSTEM_FAULT = 7
 } safety_event_t;
 
+
+/**
+ * @brief LED modes for visual status indication
+ */
+typedef enum {
+    LED_MODE_OFF = 0,
+    LED_MODE_ON = 1,
+    LED_MODE_BLINK_SLOW = 2,
+    LED_MODE_BLINK_FAST = 3
+} led_mode_t;
+
 // ============================================================================
 // STRUCTURE DEFINITIONS
 // ============================================================================

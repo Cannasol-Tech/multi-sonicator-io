@@ -5,6 +5,7 @@
     <includes local="no">stdint.h</includes>
     <includes local="no">stdbool.h</includes>
     <includes refid="d4/d9a/modbus__registers_8h" local="yes">modbus_registers.h</includes>
+    <includedby refid="df/d0a/main_8cpp" local="yes">src/main.cpp</includedby>
     <includedby refid="d8/d00/modbus_8cpp" local="yes">src/modules/communication/modbus.cpp</includedby>
     <incdepgraph>
       <node id="1">
@@ -36,8 +37,14 @@
         <link refid="da/dae/modbus_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
       </node>
       <node id="2">
+        <label>src/main.cpp</label>
+        <link refid="df/d0a/main_8cpp"/>
+      </node>
+      <node id="3">
         <label>src/modules/communication/modbus.cpp</label>
         <link refid="d8/d00/modbus_8cpp"/>
       </node>
@@ -418,7 +425,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/modbus.h" line="229" column="16" bodyfile="src/modules/communication/modbus.cpp" bodystart="79" bodyend="108" declfile="include/modbus.h" declline="229" declcolumn="16"/>
+        <location file="include/modbus.h" line="229" column="16" bodyfile="src/modules/communication/modbus.cpp" bodystart="78" bodyend="107" declfile="include/modbus.h" declline="229" declcolumn="16"/>
       </memberdef>
       <memberdef kind="function" id="da/dae/modbus_8h_1a5fd500ab836fc4f5f8704d8c709163c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450" kindref="member">modbus_state_t</ref></type>
@@ -438,7 +445,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/modbus.h" line="235" column="16" bodyfile="src/modules/communication/modbus.cpp" bodystart="110" bodyend="159" declfile="include/modbus.h" declline="235" declcolumn="16"/>
+        <location file="include/modbus.h" line="235" column="16" bodyfile="src/modules/communication/modbus.cpp" bodystart="109" bodyend="158" declfile="include/modbus.h" declline="235" declcolumn="16"/>
       </memberdef>
       <memberdef kind="function" id="da/dae/modbus_8h_1a8a7d7933723cdf4d7d2663a479acc18e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -458,7 +465,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/modbus.h" line="241" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="161" bodyend="164" declfile="include/modbus.h" declline="241" declcolumn="6"/>
+        <location file="include/modbus.h" line="241" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="160" bodyend="163" declfile="include/modbus.h" declline="241" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="da/dae/modbus_8h_1aac1e55025fc39022813c3301193475f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -475,7 +482,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/modbus.h" line="246" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="166" bodyend="168" declfile="include/modbus.h" declline="246" declcolumn="6"/>
+        <location file="include/modbus.h" line="246" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="165" bodyend="167" declfile="include/modbus.h" declline="246" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="da/dae/modbus_8h_1a6448441f6c9c07a5f0aa9fd9cfd3df04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="d3/d0c/structmodbus__statistics__t" kindref="compound">modbus_statistics_t</ref> *</type>
@@ -495,7 +502,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/modbus.h" line="252" column="27" bodyfile="src/modules/communication/modbus.cpp" bodystart="170" bodyend="172" declfile="include/modbus.h" declline="252" declcolumn="27"/>
+        <location file="include/modbus.h" line="252" column="27" bodyfile="src/modules/communication/modbus.cpp" bodystart="169" bodyend="171" declfile="include/modbus.h" declline="252" declcolumn="27"/>
       </memberdef>
       <memberdef kind="function" id="da/dae/modbus_8h_1ab2b0c68a0945f77de7365473d0556004" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -512,7 +519,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/modbus.h" line="257" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="174" bodyend="176" declfile="include/modbus.h" declline="257" declcolumn="6"/>
+        <location file="include/modbus.h" line="257" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="173" bodyend="175" declfile="include/modbus.h" declline="257" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="da/dae/modbus_8h_1ab54e698995237d7cbd3e499e7bc90c98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450" kindref="member">modbus_state_t</ref></type>
@@ -532,7 +539,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/modbus.h" line="263" column="16" bodyfile="src/modules/communication/modbus.cpp" bodystart="178" bodyend="180" declfile="include/modbus.h" declline="263" declcolumn="16"/>
+        <location file="include/modbus.h" line="263" column="16" bodyfile="src/modules/communication/modbus.cpp" bodystart="177" bodyend="179" declfile="include/modbus.h" declline="263" declcolumn="16"/>
       </memberdef>
       <memberdef kind="function" id="da/dae/modbus_8h_1a018a8ad71c133ab6479c7482e20978a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -560,7 +567,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/modbus.h" line="269" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="182" bodyend="184" declfile="include/modbus.h" declline="269" declcolumn="6"/>
+        <location file="include/modbus.h" line="269" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="181" bodyend="183" declfile="include/modbus.h" declline="269" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="da/dae/modbus_8h_1a6c74499e6c161114e88e278d87fd3462" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -602,7 +609,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/modbus.h" line="277" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="186" bodyend="200" declfile="include/modbus.h" declline="277" declcolumn="6"/>
+        <location file="include/modbus.h" line="277" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="185" bodyend="199" declfile="include/modbus.h" declline="277" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="da/dae/modbus_8h_1a7fd85103f18a4fd1c2e58d69470088e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint16_t</type>
@@ -644,7 +651,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/modbus.h" line="285" column="10" bodyfile="src/modules/communication/modbus.cpp" bodystart="202" bodyend="223" declfile="include/modbus.h" declline="285" declcolumn="10"/>
+        <location file="include/modbus.h" line="285" column="10" bodyfile="src/modules/communication/modbus.cpp" bodystart="201" bodyend="222" declfile="include/modbus.h" declline="285" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="da/dae/modbus_8h_1a61c9b77bd9ac121e66f4689104ca9520" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -672,7 +679,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/modbus.h" line="291" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="225" bodyend="233" declfile="include/modbus.h" declline="291" declcolumn="6"/>
+        <location file="include/modbus.h" line="291" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="224" bodyend="232" declfile="include/modbus.h" declline="291" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="da/dae/modbus_8h_1a597eaa69c6f1718adc29b91dcd4cddbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -692,7 +699,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/modbus.h" line="297" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="235" bodyend="237" declfile="include/modbus.h" declline="297" declcolumn="6"/>
+        <location file="include/modbus.h" line="297" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="234" bodyend="236" declfile="include/modbus.h" declline="297" declcolumn="6"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

@@ -11,7 +11,6 @@ var frequency__counter_8cpp =
     [ "frequency_reset_stats", "d4/d18/frequency__counter_8cpp.html#ad403235b359f53e21865ae2f572f9957", null ],
     [ "frequency_set_noise_filter", "d4/d18/frequency__counter_8cpp.html#a3d6110339a7085a38f9fe1f0083b1dab", null ],
     [ "frequency_set_window", "d4/d18/frequency__counter_8cpp.html#a1770280d6beb9fd8e76c824f750074a4", null ],
-    [ "ISR", "d4/d18/frequency__counter_8cpp.html#afe6035149a64d5f448fbda08e9d1b67f", null ],
     [ "custom_windows", "d4/d18/frequency__counter_8cpp.html#abd932c4b9c4b5b5f58541f1535f80ae1", null ],
     [ "freq_counters", "d4/d18/frequency__counter_8cpp.html#a853f9ac2214946dd2f65fb8dff4d95be", null ],
     [ "last_isr_timestamp", "d4/d18/frequency__counter_8cpp.html#af60251a59e7aaa16566f482be62a6258", null ],

@@ -92,32 +92,10 @@ $(function(){initNavTree('d2/d0d/class_mock_hal.html','../../','d3/d6a/class_moc
 </div><!--header-->
 <div class="contents">
 
-<p>Mock HAL Implementation for Unit Testing.  
- <a href="#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="../../da/dd9/hal__template__example_8h_source.html">hal_template_example.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="../../de/d8d/mock__hal__impl_8h_source.html">mock_hal_impl.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a78ae34eec4fe43bbde6726250a687de3" id="r_a78ae34eec4fe43bbde6726250a687de3"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78ae34eec4fe43bbde6726250a687de3">gpioInit</a> ()</td></tr>
-<tr class="memitem:a0239f12123835113d15c00fdf79c43e7" id="r_a0239f12123835113d15c00fdf79c43e7"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0239f12123835113d15c00fdf79c43e7">gpioSetPinMode</a> (uint8_t pin, uint8_t mode)</td></tr>
-<tr class="memitem:a0b1a8a781257caa68acf226154182d05" id="r_a0b1a8a781257caa68acf226154182d05"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b1a8a781257caa68acf226154182d05">gpioDigitalWrite</a> (uint8_t pin, uint8_t value)</td></tr>
-<tr class="memitem:ae5f5c033d5956b817987286edacf5f79" id="r_ae5f5c033d5956b817987286edacf5f79"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5f5c033d5956b817987286edacf5f79">gpioDigitalRead</a> (uint8_t pin)</td></tr>
-<tr class="memitem:a18c43402e24956fed88656082a0fedd9" id="r_a18c43402e24956fed88656082a0fedd9"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18c43402e24956fed88656082a0fedd9">gpioTogglePin</a> (uint8_t pin)</td></tr>
-<tr class="memitem:a44f1c18fca396af55bec3c315b9c009c" id="r_a44f1c18fca396af55bec3c315b9c009c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44f1c18fca396af55bec3c315b9c009c">gpioSonicatorStart</a> (uint8_t id)</td></tr>
-<tr class="memitem:ae4b02fdf0b8e1c4d2cfa9c0adebb1045" id="r_ae4b02fdf0b8e1c4d2cfa9c0adebb1045"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4b02fdf0b8e1c4d2cfa9c0adebb1045">gpioSonicatorStop</a> (uint8_t id)</td></tr>
-<tr class="memitem:acf7099fa13bb352f4e9e3461bc355ed3" id="r_acf7099fa13bb352f4e9e3461bc355ed3"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf7099fa13bb352f4e9e3461bc355ed3">gpioSonicatorReset</a> (uint8_t id)</td></tr>
-<tr class="memitem:acceb7f6aca6366ad3dd623ac6e2f5013" id="r_acceb7f6aca6366ad3dd623ac6e2f5013"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acceb7f6aca6366ad3dd623ac6e2f5013">gpioSonicatorReadOverload</a> (uint8_t id, bool *state)</td></tr>
-<tr class="memitem:af095b6ca872fda8d39a60b5bae1e70e5" id="r_af095b6ca872fda8d39a60b5bae1e70e5"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af095b6ca872fda8d39a60b5bae1e70e5">gpioSonicatorReadFreqLock</a> (uint8_t id, bool *state)</td></tr>
-<tr class="memitem:a9dc0a813cf7fd5e56afedf3c118320ca" id="r_a9dc0a813cf7fd5e56afedf3c118320ca"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9dc0a813cf7fd5e56afedf3c118320ca">gpioStatusLed</a> (bool state)</td></tr>
-<tr class="memitem:aee05dab2558b220a9886934730a605fb" id="r_aee05dab2558b220a9886934730a605fb"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee05dab2558b220a9886934730a605fb">adcInit</a> ()</td></tr>
-<tr class="memitem:a4dbebac56f72dc31d2763527e5a49bbb" id="r_a4dbebac56f72dc31d2763527e5a49bbb"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4dbebac56f72dc31d2763527e5a49bbb">adcReadChannel</a> (uint8_t channel, uint16_t *value)</td></tr>
-<tr class="memitem:ae4f8a8718a5e93b170521cbc70ad834a" id="r_ae4f8a8718a5e93b170521cbc70ad834a"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4f8a8718a5e93b170521cbc70ad834a">adcRawToVoltage</a> (uint16_t raw)</td></tr>
-<tr class="memitem:affa021fd5c0058d8e7467821900ff8d9" id="r_affa021fd5c0058d8e7467821900ff8d9"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#affa021fd5c0058d8e7467821900ff8d9">adcReadSonicatorPower</a> (uint8_t id, float *power)</td></tr>
-<tr class="memitem:a025d4d4b158e5c11cdd8c3e98ccd7820" id="r_a025d4d4b158e5c11cdd8c3e98ccd7820"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a025d4d4b158e5c11cdd8c3e98ccd7820">pwmInit</a> ()</td></tr>
-<tr class="memitem:acd554e15bceff498fa134bae804aa2c2" id="r_acd554e15bceff498fa134bae804aa2c2"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd554e15bceff498fa134bae804aa2c2">pwmSetDutyCycle</a> (uint8_t channel, uint8_t duty)</td></tr>
-<tr class="memitem:a935b2b5faee9d2b36df4e7c57b6bac1e" id="r_a935b2b5faee9d2b36df4e7c57b6bac1e"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a935b2b5faee9d2b36df4e7c57b6bac1e">pwmSetAmplitude</a> (uint8_t amplitude)</td></tr>
-<tr class="memitem:a1c5aadc38e3e6ff0b1e7b727f9aba6e7" id="r_a1c5aadc38e3e6ff0b1e7b727f9aba6e7"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c5aadc38e3e6ff0b1e7b727f9aba6e7">pwmEmergencyStop</a> ()</td></tr>
 <tr class="memitem:a78ae34eec4fe43bbde6726250a687de3" id="r_a78ae34eec4fe43bbde6726250a687de3"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78ae34eec4fe43bbde6726250a687de3">gpioInit</a> ()</td></tr>
 <tr class="memitem:a0239f12123835113d15c00fdf79c43e7" id="r_a0239f12123835113d15c00fdf79c43e7"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0239f12123835113d15c00fdf79c43e7">gpioSetPinMode</a> (uint8_t pin, uint8_t mode)</td></tr>
 <tr class="memitem:a0b1a8a781257caa68acf226154182d05" id="r_a0b1a8a781257caa68acf226154182d05"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b1a8a781257caa68acf226154182d05">gpioDigitalWrite</a> (uint8_t pin, uint8_t value)</td></tr>
@@ -166,9 +144,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a49210da8721ec17604df8a963daa48de" id="r_a49210da8721ec17604df8a963daa48de"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49210da8721ec17604df8a963daa48de">advanceTimeMs</a> (uint32_t ms)</td></tr>
 <tr class="memitem:ab93e76b38cd90b4807e9bac524f5bdcd" id="r_ab93e76b38cd90b4807e9bac524f5bdcd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab93e76b38cd90b4807e9bac524f5bdcd">advanceTimeUs</a> (uint32_t us)</td></tr>
 </table>
-<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Mock HAL Implementation for Unit Testing. </p>
-</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="ab73ca09cdc54de321858b196469fa74a" name="ab73ca09cdc54de321858b196469fa74a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab73ca09cdc54de321858b196469fa74a">&#9670;&#160;</a></span>adcCalibrate()</h2>
 
@@ -195,32 +171,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="aee05dab2558b220a9886934730a605fb" name="aee05dab2558b220a9886934730a605fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee05dab2558b220a9886934730a605fb">&#9670;&#160;</a></span>adcInit() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MockHal::adcInit </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aee05dab2558b220a9886934730a605fb" name="aee05dab2558b220a9886934730a605fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee05dab2558b220a9886934730a605fb">&#9670;&#160;</a></span>adcInit() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aee05dab2558b220a9886934730a605fb">&#9670;&#160;</a></span>adcInit()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -269,33 +220,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae4f8a8718a5e93b170521cbc70ad834a" name="ae4f8a8718a5e93b170521cbc70ad834a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4f8a8718a5e93b170521cbc70ad834a">&#9670;&#160;</a></span>adcRawToVoltage() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float MockHal::adcRawToVoltage </td>
-          <td>(</td>
-          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>raw</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ae5aa9f6ac1757b2cad17fc6f1cbcac5d" name="ae5aa9f6ac1757b2cad17fc6f1cbcac5d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae5aa9f6ac1757b2cad17fc6f1cbcac5d">&#9670;&#160;</a></span>adcRawToVoltage() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5aa9f6ac1757b2cad17fc6f1cbcac5d">&#9670;&#160;</a></span>adcRawToVoltage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -320,36 +246,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="a4dbebac56f72dc31d2763527e5a49bbb" name="a4dbebac56f72dc31d2763527e5a49bbb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4dbebac56f72dc31d2763527e5a49bbb">&#9670;&#160;</a></span>adcReadChannel() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MockHal::adcReadChannel </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>channel</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t *</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4dbebac56f72dc31d2763527e5a49bbb" name="a4dbebac56f72dc31d2763527e5a49bbb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4dbebac56f72dc31d2763527e5a49bbb">&#9670;&#160;</a></span>adcReadChannel() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dbebac56f72dc31d2763527e5a49bbb">&#9670;&#160;</a></span>adcReadChannel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -402,37 +299,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="affa021fd5c0058d8e7467821900ff8d9" name="affa021fd5c0058d8e7467821900ff8d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affa021fd5c0058d8e7467821900ff8d9">&#9670;&#160;</a></span>adcReadSonicatorPower() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MockHal::adcReadSonicatorPower </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>power</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="aacd6075a288ba079072edabd42fb45cd" name="aacd6075a288ba079072edabd42fb45cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aacd6075a288ba079072edabd42fb45cd">&#9670;&#160;</a></span>adcReadSonicatorPower() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aacd6075a288ba079072edabd42fb45cd">&#9670;&#160;</a></span>adcReadSonicatorPower()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -536,32 +404,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="ae5f5c033d5956b817987286edacf5f79" name="ae5f5c033d5956b817987286edacf5f79"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae5f5c033d5956b817987286edacf5f79">&#9670;&#160;</a></span>gpioDigitalRead() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t MockHal::gpioDigitalRead </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>pin</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae5f5c033d5956b817987286edacf5f79" name="ae5f5c033d5956b817987286edacf5f79"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae5f5c033d5956b817987286edacf5f79">&#9670;&#160;</a></span>gpioDigitalRead() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5f5c033d5956b817987286edacf5f79">&#9670;&#160;</a></span>gpioDigitalRead()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -586,36 +429,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="a0b1a8a781257caa68acf226154182d05" name="a0b1a8a781257caa68acf226154182d05"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b1a8a781257caa68acf226154182d05">&#9670;&#160;</a></span>gpioDigitalWrite() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MockHal::gpioDigitalWrite </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>pin</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0b1a8a781257caa68acf226154182d05" name="a0b1a8a781257caa68acf226154182d05"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b1a8a781257caa68acf226154182d05">&#9670;&#160;</a></span>gpioDigitalWrite() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b1a8a781257caa68acf226154182d05">&#9670;&#160;</a></span>gpioDigitalWrite()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -644,32 +458,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="a78ae34eec4fe43bbde6726250a687de3" name="a78ae34eec4fe43bbde6726250a687de3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78ae34eec4fe43bbde6726250a687de3">&#9670;&#160;</a></span>gpioInit() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MockHal::gpioInit </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a78ae34eec4fe43bbde6726250a687de3" name="a78ae34eec4fe43bbde6726250a687de3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78ae34eec4fe43bbde6726250a687de3">&#9670;&#160;</a></span>gpioInit() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a78ae34eec4fe43bbde6726250a687de3">&#9670;&#160;</a></span>gpioInit()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -694,7 +483,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="a0239f12123835113d15c00fdf79c43e7" name="a0239f12123835113d15c00fdf79c43e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0239f12123835113d15c00fdf79c43e7">&#9670;&#160;</a></span>gpioSetPinMode() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0239f12123835113d15c00fdf79c43e7">&#9670;&#160;</a></span>gpioSetPinMode()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -711,64 +500,6 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>mode</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0239f12123835113d15c00fdf79c43e7" name="a0239f12123835113d15c00fdf79c43e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0239f12123835113d15c00fdf79c43e7">&#9670;&#160;</a></span>gpioSetPinMode() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MockHal::gpioSetPinMode </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>pin</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>mode</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af095b6ca872fda8d39a60b5bae1e70e5" name="af095b6ca872fda8d39a60b5bae1e70e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af095b6ca872fda8d39a60b5bae1e70e5">&#9670;&#160;</a></span>gpioSonicatorReadFreqLock() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MockHal::gpioSonicatorReadFreqLock </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool *</td>          <td class="paramname"><span class="paramname"><em>state</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -781,7 +512,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="af1b860aa0fe5bf1fb44a02c390f555ac" name="af1b860aa0fe5bf1fb44a02c390f555ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1b860aa0fe5bf1fb44a02c390f555ac">&#9670;&#160;</a></span>gpioSonicatorReadFreqLock() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af1b860aa0fe5bf1fb44a02c390f555ac">&#9670;&#160;</a></span>gpioSonicatorReadFreqLock()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -793,35 +524,6 @@ Static Public Member Functions</h2></td></tr>
           <td class="memname">bool MockHal::gpioSonicatorReadFreqLock </td>
           <td>(</td>
           <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>sonicator_id</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool *</td>          <td class="paramname"><span class="paramname"><em>state</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="acceb7f6aca6366ad3dd623ac6e2f5013" name="acceb7f6aca6366ad3dd623ac6e2f5013"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acceb7f6aca6366ad3dd623ac6e2f5013">&#9670;&#160;</a></span>gpioSonicatorReadOverload() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MockHal::gpioSonicatorReadOverload </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -839,7 +541,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="afbeb206828e2de90d5ab8b5e1eaf1d43" name="afbeb206828e2de90d5ab8b5e1eaf1d43"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afbeb206828e2de90d5ab8b5e1eaf1d43">&#9670;&#160;</a></span>gpioSonicatorReadOverload() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afbeb206828e2de90d5ab8b5e1eaf1d43">&#9670;&#160;</a></span>gpioSonicatorReadOverload()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -867,33 +569,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="acf7099fa13bb352f4e9e3461bc355ed3" name="acf7099fa13bb352f4e9e3461bc355ed3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf7099fa13bb352f4e9e3461bc355ed3">&#9670;&#160;</a></span>gpioSonicatorReset() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MockHal::gpioSonicatorReset </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a575fbe87c0bdb16179e02ce6a656872f" name="a575fbe87c0bdb16179e02ce6a656872f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a575fbe87c0bdb16179e02ce6a656872f">&#9670;&#160;</a></span>gpioSonicatorReset() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a575fbe87c0bdb16179e02ce6a656872f">&#9670;&#160;</a></span>gpioSonicatorReset()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -905,31 +582,6 @@ Static Public Member Functions</h2></td></tr>
           <td class="memname">bool MockHal::gpioSonicatorReset </td>
           <td>(</td>
           <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>sonicator_id</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a44f1c18fca396af55bec3c315b9c009c" name="a44f1c18fca396af55bec3c315b9c009c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a44f1c18fca396af55bec3c315b9c009c">&#9670;&#160;</a></span>gpioSonicatorStart() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MockHal::gpioSonicatorStart </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -943,7 +595,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="a187b6399e198a091b3375ef8aefae61e" name="a187b6399e198a091b3375ef8aefae61e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a187b6399e198a091b3375ef8aefae61e">&#9670;&#160;</a></span>gpioSonicatorStart() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a187b6399e198a091b3375ef8aefae61e">&#9670;&#160;</a></span>gpioSonicatorStart()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -967,33 +619,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae4b02fdf0b8e1c4d2cfa9c0adebb1045" name="ae4b02fdf0b8e1c4d2cfa9c0adebb1045"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4b02fdf0b8e1c4d2cfa9c0adebb1045">&#9670;&#160;</a></span>gpioSonicatorStop() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MockHal::gpioSonicatorStop </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="afea97794a28a30c5dde2651ed48a4ac7" name="afea97794a28a30c5dde2651ed48a4ac7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afea97794a28a30c5dde2651ed48a4ac7">&#9670;&#160;</a></span>gpioSonicatorStop() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afea97794a28a30c5dde2651ed48a4ac7">&#9670;&#160;</a></span>gpioSonicatorStop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1018,32 +645,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="a9dc0a813cf7fd5e56afedf3c118320ca" name="a9dc0a813cf7fd5e56afedf3c118320ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9dc0a813cf7fd5e56afedf3c118320ca">&#9670;&#160;</a></span>gpioStatusLed() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MockHal::gpioStatusLed </td>
-          <td>(</td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>state</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9dc0a813cf7fd5e56afedf3c118320ca" name="a9dc0a813cf7fd5e56afedf3c118320ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9dc0a813cf7fd5e56afedf3c118320ca">&#9670;&#160;</a></span>gpioStatusLed() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dc0a813cf7fd5e56afedf3c118320ca">&#9670;&#160;</a></span>gpioStatusLed()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1068,32 +670,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="a18c43402e24956fed88656082a0fedd9" name="a18c43402e24956fed88656082a0fedd9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18c43402e24956fed88656082a0fedd9">&#9670;&#160;</a></span>gpioTogglePin() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MockHal::gpioTogglePin </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>pin</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a18c43402e24956fed88656082a0fedd9" name="a18c43402e24956fed88656082a0fedd9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18c43402e24956fed88656082a0fedd9">&#9670;&#160;</a></span>gpioTogglePin() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a18c43402e24956fed88656082a0fedd9">&#9670;&#160;</a></span>gpioTogglePin()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1230,32 +807,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="a1c5aadc38e3e6ff0b1e7b727f9aba6e7" name="a1c5aadc38e3e6ff0b1e7b727f9aba6e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c5aadc38e3e6ff0b1e7b727f9aba6e7">&#9670;&#160;</a></span>pwmEmergencyStop() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MockHal::pwmEmergencyStop </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1c5aadc38e3e6ff0b1e7b727f9aba6e7" name="a1c5aadc38e3e6ff0b1e7b727f9aba6e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c5aadc38e3e6ff0b1e7b727f9aba6e7">&#9670;&#160;</a></span>pwmEmergencyStop() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c5aadc38e3e6ff0b1e7b727f9aba6e7">&#9670;&#160;</a></span>pwmEmergencyStop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1330,32 +882,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="a025d4d4b158e5c11cdd8c3e98ccd7820" name="a025d4d4b158e5c11cdd8c3e98ccd7820"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a025d4d4b158e5c11cdd8c3e98ccd7820">&#9670;&#160;</a></span>pwmInit() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MockHal::pwmInit </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a025d4d4b158e5c11cdd8c3e98ccd7820" name="a025d4d4b158e5c11cdd8c3e98ccd7820"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a025d4d4b158e5c11cdd8c3e98ccd7820">&#9670;&#160;</a></span>pwmInit() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a025d4d4b158e5c11cdd8c3e98ccd7820">&#9670;&#160;</a></span>pwmInit()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1404,33 +931,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a935b2b5faee9d2b36df4e7c57b6bac1e" name="a935b2b5faee9d2b36df4e7c57b6bac1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a935b2b5faee9d2b36df4e7c57b6bac1e">&#9670;&#160;</a></span>pwmSetAmplitude() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MockHal::pwmSetAmplitude </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>amplitude</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a034d488032e7fd0ffc042481369fd3b2" name="a034d488032e7fd0ffc042481369fd3b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a034d488032e7fd0ffc042481369fd3b2">&#9670;&#160;</a></span>pwmSetAmplitude() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a034d488032e7fd0ffc042481369fd3b2">&#9670;&#160;</a></span>pwmSetAmplitude()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1454,37 +956,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="acd554e15bceff498fa134bae804aa2c2" name="acd554e15bceff498fa134bae804aa2c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acd554e15bceff498fa134bae804aa2c2">&#9670;&#160;</a></span>pwmSetDutyCycle() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MockHal::pwmSetDutyCycle </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>channel</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>duty</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a4dd176132166bed272509979db306be7" name="a4dd176132166bed272509979db306be7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4dd176132166bed272509979db306be7">&#9670;&#160;</a></span>pwmSetDutyCycle() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dd176132166bed272509979db306be7">&#9670;&#160;</a></span>pwmSetDutyCycle()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1921,8 +1394,8 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/modules/hal/<a class="el" href="../../da/dd9/hal__template__example_8h_source.html">hal_template_example.h</a></li>
 <li>src/modules/hal/<a class="el" href="../../de/d8d/mock__hal__impl_8h_source.html">mock_hal_impl.h</a></li>
+<li>src/modules/hal/<a class="el" href="../../d6/d79/mock__hal__impl_8cpp.html">mock_hal_impl.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

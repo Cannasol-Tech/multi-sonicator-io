@@ -1,9 +1,5 @@
 var gpio_8h =
 [
-    [ "ProductionGpio", "d6/d7c/gpio_8h.html#a5a14777a91770ca47d09c3b5cc319619", null ],
-    [ "ProductionHal", "d6/d7c/gpio_8h.html#a68819ef1c88e14a2978dbdb5366175ed", null ],
-    [ "TestGpio", "d6/d7c/gpio_8h.html#aec2e78074365439a63360cf81dca5bef", null ],
-    [ "TestHal", "d6/d7c/gpio_8h.html#a8f54280a14948a2021c912ac21177e6a", null ],
     [ "gpio_mode_t", "d6/d7c/gpio_8h.html#a491a2cbfb4e94f2afcc0d5bdef2dc454", [
       [ "GPIO_MODE_INPUT", "d6/d7c/gpio_8h.html#a491a2cbfb4e94f2afcc0d5bdef2dc454a61ddb59c5e9a9cc6d9cf99d11a36920b", null ],
       [ "GPIO_MODE_INPUT_PULLUP", "d6/d7c/gpio_8h.html#a491a2cbfb4e94f2afcc0d5bdef2dc454a946f5f8d0fa3b4199c28a63446095cb9", null ],

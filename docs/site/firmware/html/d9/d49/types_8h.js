@@ -21,6 +21,12 @@ var types_8h =
     [ "error_notification_callback_t", "d9/d49/types_8h.html#a3aecb52560f25e335b14a24291bfeaaa", null ],
     [ "modbus_register_callback_t", "d9/d49/types_8h.html#a5d685fcbe0b5481ba6f61a0669210084", null ],
     [ "safety_event_callback_t", "d9/d49/types_8h.html#a1ccd0b4ac559edcdc9963b4d2708f375", null ],
+    [ "led_mode_t", "d9/d49/types_8h.html#a6ad21e6046b97022390d7b38aa87ca7e", [
+      [ "LED_MODE_OFF", "d9/d49/types_8h.html#a6ad21e6046b97022390d7b38aa87ca7ea5a472505476f1d9c473bacb9450dd003", null ],
+      [ "LED_MODE_ON", "d9/d49/types_8h.html#a6ad21e6046b97022390d7b38aa87ca7ea93ba1b43b2933514d8f0172d5fb9ff0a", null ],
+      [ "LED_MODE_BLINK_SLOW", "d9/d49/types_8h.html#a6ad21e6046b97022390d7b38aa87ca7eaad274940a97455f16e268e36b469ee50", null ],
+      [ "LED_MODE_BLINK_FAST", "d9/d49/types_8h.html#a6ad21e6046b97022390d7b38aa87ca7eac5a6ac5071ad0d0794f5af505d535277", null ]
+    ] ],
     [ "modbus_function_t", "d9/d49/types_8h.html#a015c3588744a0406fafc81fecb3eddfd", [
       [ "MODBUS_FUNC_READ_HOLDING_REGISTERS", "d9/d49/types_8h.html#a015c3588744a0406fafc81fecb3eddfda45071a1751fc71d424b7b639b03a4377", null ],
       [ "MODBUS_FUNC_WRITE_SINGLE_REGISTER", "d9/d49/types_8h.html#a015c3588744a0406fafc81fecb3eddfda9fafa7e8ac52121d0f458f635e9c21cc", null ],

@@ -1,9 +1,14 @@
 var searchData=
 [
-  ['timer_5femergency_5fresponse_5fus_0',['TIMER_EMERGENCY_RESPONSE_US',['../d5/dd0/timer_8h.html#aff87cd300e49df1a8f3597dd8fd92473',1,'timer.h']]],
-  ['timer_5fmax_5fperiod_5fms_1',['TIMER_MAX_PERIOD_MS',['../d5/dd0/timer_8h.html#aa1c7d4a89844bea99ff34f27f46498fc',1,'timer.h']]],
-  ['timer_5fmodbus_5fchar_5ftimeout_2',['TIMER_MODBUS_CHAR_TIMEOUT',['../d5/dd0/timer_8h.html#a0e0abc3d8ba95dd0a756f38aff949f36',1,'timer.h']]],
-  ['timer_5fresolution_5fus_3',['TIMER_RESOLUTION_US',['../d5/dd0/timer_8h.html#a0770f3d3924bef9d267887eb7e25fec3',1,'timer.h']]],
-  ['timer_5fscheduler_5fperiod_4',['TIMER_SCHEDULER_PERIOD',['../d5/dd0/timer_8h.html#aa1c225f9e96739525fd3c44150a22d08',1,'timer.h']]],
-  ['timer_5fwatchdog_5fperiod_5',['TIMER_WATCHDOG_PERIOD',['../d5/dd0/timer_8h.html#a5f28efad24c6697e7988aa1988f986ab',1,'timer.h']]]
+  ['uart_5fchar_5ftimeout_5fms_0',['UART_CHAR_TIMEOUT_MS',['../d2/d86/uart_8h.html#afe774ce5bc34a94e73118a8692cccc2f',1,'uart.h']]],
+  ['uart_5fdefault_5fbaud_1',['UART_DEFAULT_BAUD',['../d2/d86/uart_8h.html#a67405a6e6e4427b2fb7ca73182212bf1',1,'uart.h']]],
+  ['uart_5fmax_5fbaud_2',['UART_MAX_BAUD',['../d2/d86/uart_8h.html#aa0394fc6f4ab8e23d754833bff3a0c72',1,'uart.h']]],
+  ['uart_5fmin_5fbaud_3',['UART_MIN_BAUD',['../d2/d86/uart_8h.html#aca2271fbb6e29e7fff7c92b30defa089',1,'uart.h']]],
+  ['uart_5fmodbus_5ft1_5f5_5fus_4',['UART_MODBUS_T1_5_US',['../d2/d86/uart_8h.html#a3e078d838f7350973300002eeb3006a5',1,'uart.h']]],
+  ['uart_5fmodbus_5ft3_5f5_5fus_5',['UART_MODBUS_T3_5_US',['../d2/d86/uart_8h.html#a93535c98d400695ea6330bd51843e4e6',1,'uart.h']]],
+  ['uart_5frx_5fbuffer_5fsize_6',['UART_RX_BUFFER_SIZE',['../d2/d86/uart_8h.html#a5bdd6772c246436bb14377095de79b31',1,'uart.h']]],
+  ['uart_5frx_5fpin_7',['UART_RX_PIN',['../d4/d7e/system__config_8h.html#aa37eca6fe61f6938d925975dff27c8fd',1,'system_config.h']]],
+  ['uart_5ftimeout_5fms_8',['UART_TIMEOUT_MS',['../d2/d86/uart_8h.html#a6bfddf84ea47d906536cc8ffcc9dd5cc',1,'uart.h']]],
+  ['uart_5ftx_5fbuffer_5fsize_9',['UART_TX_BUFFER_SIZE',['../d2/d86/uart_8h.html#a05f5d709605c6317c97e4974bec3402a',1,'uart.h']]],
+  ['uart_5ftx_5fpin_10',['UART_TX_PIN',['../d4/d7e/system__config_8h.html#a6c82a6844388a551e8f06d249598989e',1,'system_config.h']]]
 ];

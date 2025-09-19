@@ -25,6 +25,10 @@ interface AdvancedControlPanelProps {
   hardwareState: HardwareState
   onPinClick: (signal: string, action: string, value?: any) => void
   onBatchOperation?: (operation: BatchOperation) => void
+  enableDelays?: boolean
+  presetCommandDelayMs?: number
+  batchInterStepDelayMs?: number
+  selectionClearDelayMs?: number
 }
 
 const DEFAULT_PRESETS: PinPreset[] = [
@@ -107,7 +111,11 @@ const DEFAULT_BATCH_OPERATIONS: BatchOperation[] = [
 const AdvancedControlPanel: React.FC<AdvancedControlPanelProps> = ({
   hardwareState,
   onPinClick,
-  onBatchOperation
+  onBatchOperation,
+  enableDelays = true,
+  presetCommandDelayMs = 100,
+  batchInterStepDelayMs = 50,
+  selectionClearDelayMs = 2000
 }) => {
   const [presets, setPresets] = useState<PinPreset[]>(DEFAULT_PRESETS)
   const [batchOperations] = useState<BatchOperation[]>(DEFAULT_BATCH_OPERATIONS)
@@ -120,14 +128,18 @@ const AdvancedControlPanel: React.FC<AdvancedControlPanelProps> = ({
 
   // Load saved presets from localStorage
   useEffect(() => {
-    const savedPresets = localStorage.getItem('multi-sonicator-presets')
-    if (savedPresets) {
-      try {
-        const parsed = JSON.parse(savedPresets)
-        setPresets([...DEFAULT_PRESETS, ...parsed])
-      } catch (error) {
-        console.error('Failed to load saved presets:', error)
+    try {
+      const savedPresets = localStorage.getItem('multi-sonicator-presets')
+      if (savedPresets) {
+        try {
+          const parsed = JSON.parse(savedPresets)
+          setPresets([...DEFAULT_PRESETS, ...parsed])
+        } catch (error) {
+          console.error('Failed to load saved presets:', error)
+        }
       }
+    } catch (error) {
+      console.error('Failed to load saved presets:', error)
     }
   }, [])
 
@@ -138,14 +150,21 @@ const AdvancedControlPanel: React.FC<AdvancedControlPanelProps> = ({
 
   const applyPreset = async (preset: PinPreset) => {
     setSelectedPreset(preset.id)
-    
+
+    const shouldDelay = enableDelays && presetCommandDelayMs > 0
+
     for (const [signal, value] of Object.entries(preset.pinStates)) {
       onPinClick(signal, 'set', value)
-      await new Promise(resolve => setTimeout(resolve, 100)) // Small delay between commands
+      if (shouldDelay) {
+        await new Promise(resolve => setTimeout(resolve, presetCommandDelayMs))
+      }
     }
 
-    // Clear selection after a delay
-    setTimeout(() => setSelectedPreset(null), 2000)
+    if (enableDelays && selectionClearDelayMs > 0) {
+      setTimeout(() => setSelectedPreset(null), selectionClearDelayMs)
+    } else {
+      setSelectedPreset(null)
+    }
   }
 
   const executeBatchOperation = async (operation: BatchOperation) => {
@@ -175,14 +194,16 @@ const AdvancedControlPanel: React.FC<AdvancedControlPanelProps> = ({
             fetch('/api/ping', { method: 'POST' })
             break
           case 'wait':
-            if (step.duration) {
+            if (step.duration && enableDelays) {
               await new Promise(resolve => setTimeout(resolve, step.duration))
             }
             break
         }
 
         // Small delay between steps
-        await new Promise(resolve => setTimeout(resolve, 50))
+        if (enableDelays && batchInterStepDelayMs > 0) {
+          await new Promise(resolve => setTimeout(resolve, batchInterStepDelayMs))
+        }
       }
 
       onBatchOperation?.(operation)

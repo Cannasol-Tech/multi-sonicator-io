@@ -239,8 +239,8 @@
  */
 class SonicMultiplexer {
 private:
-    uint8_t sonicator_count_m;
-    uint8_t amplitude_ctrl_duty_m;    ///< Shared amplitude percentage (20-100)
+    static uint8_t sonicator_count_m;
+    static uint8_t amplitude_ctrl_duty_m;    ///< Shared amplitude percentage (20-100)
 
     SonicatorInterface* sonicators_m[MAX_SONICATORS] = {nullptr};
 
@@ -287,6 +287,11 @@ public:
      * @note Handles amplitude PWM updates and status synchronization
      */
     void update();
+
+    /**
+     * @brief Updates the status LED based on sonicator states
+     */
+    void set_led_state(led_mode_t mode);
 
     /**
      * @brief Sets the shared amplitude for all sonicators

@@ -3,7 +3,7 @@ var timer_8cpp =
     [ "timer_state_t", "d0/d84/structtimer__state__t.html", "d0/d84/structtimer__state__t" ],
     [ "configure_timer0", "dc/de5/timer_8cpp.html#aeffc8e05915f6c28d1a2d05ec1cda0e6", null ],
     [ "configure_timer1", "dc/de5/timer_8cpp.html#a5bded2fd67bb665d23447e734ff364a8", null ],
-    [ "is_valid_timer_id", "dc/de5/timer_8cpp.html#a2880ac0b54395e726dfbe50b2a92086f", null ],
+    [ "is_valid_timer_id", "dc/de5/timer_8cpp.html#a8cae423d1a900ad3f386f66269c82200", null ],
     [ "ISR", "dc/de5/timer_8cpp.html#ab16889ae984b9b798989a0d239283cac", null ],
     [ "reset_timer_state", "dc/de5/timer_8cpp.html#a1661343d8c5da1afb88e4910b3f17c2a", null ],
     [ "timer_configure", "dc/de5/timer_8cpp.html#aceb5c83a1e22ed3c35e72e46f29a9240", null ],

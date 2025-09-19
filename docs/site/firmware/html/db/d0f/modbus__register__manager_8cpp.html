@@ -103,8 +103,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:a87e393a356f5b647a98e8decf5574601"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the register manager.  <br /></td></tr>
 <tr class="memitem:ab07eb4458680115587cf910a7532e6d3" id="r_ab07eb4458680115587cf910a7532e6d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d1a/structmodbus__register__map__t.html">modbus_register_map_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab07eb4458680115587cf910a7532e6d3">register_manager_get_map</a> (void)</td></tr>
 <tr class="memdesc:ab07eb4458680115587cf910a7532e6d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get pointer to the register map.  <br /></td></tr>
-<tr class="memitem:aad5c57b8dbf817632bd779b04202eb5d" id="r_aad5c57b8dbf817632bd779b04202eb5d"><td class="memItemLeft" align="right" valign="top">static constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad5c57b8dbf817632bd779b04202eb5d">register_manager_update_system_status</a> (uint16_t status_bits, bool set)</td></tr>
+<tr class="memitem:ad1c5af6cb55c225fa9f8b84d18cbe33a" id="r_ad1c5af6cb55c225fa9f8b84d18cbe33a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1c5af6cb55c225fa9f8b84d18cbe33a">register_manager_update_system_status</a> (uint16_t status_bits, bool set)</td></tr>
+<tr class="memdesc:ad1c5af6cb55c225fa9f8b84d18cbe33a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update system status register.  <br /></td></tr>
 <tr class="memitem:a0a9d7d9107de9f0576725cdbeceb21ec" id="r_a0a9d7d9107de9f0576725cdbeceb21ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a9d7d9107de9f0576725cdbeceb21ec">register_manager_update_sonicator_status</a> (uint8_t sonicator_id, uint16_t power_watts, uint16_t frequency_hz, uint16_t amplitude_actual, uint16_t status_flags)</td></tr>
+<tr class="memdesc:a0a9d7d9107de9f0576725cdbeceb21ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update per-sonicator status into the MODBUS map.  <br /></td></tr>
 <tr class="memitem:a709b2e60133ad61693f7320436aee775" id="r_a709b2e60133ad61693f7320436aee775"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a709b2e60133ad61693f7320436aee775">register_manager_get_sonicator_control</a> (uint8_t sonicator_id, uint16_t *start_stop, uint16_t *amplitude_sp)</td></tr>
 <tr class="memdesc:a709b2e60133ad61693f7320436aee775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get sonicator control settings.  <br /></td></tr>
 <tr class="memitem:a2b383d8aebef164afa19c0a0e20990dd" id="r_a2b383d8aebef164afa19c0a0e20990dd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b383d8aebef164afa19c0a0e20990dd">register_manager_is_global_enabled</a> (void)</td></tr>
@@ -372,19 +374,28 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Update per-sonicator status into the MODBUS map. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sonicator_id</td><td>0-based sonicator index (0..MODBUS_MAX_SONICATORS-1) </td></tr>
+    <tr><td class="paramname">power_watts</td><td>Power reading (raw ADC or scaled watts depending on system usage) </td></tr>
+    <tr><td class="paramname">frequency_hz</td><td>Frequency value (Hz÷10 per register map) </td></tr>
+    <tr><td class="paramname">amplitude_actual</td><td>Amplitude actually applied (0-100%) </td></tr>
+    <tr><td class="paramname">status_flags</td><td>Bitfield composed of SON_STATUS_* bits </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="aad5c57b8dbf817632bd779b04202eb5d" name="aad5c57b8dbf817632bd779b04202eb5d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad5c57b8dbf817632bd779b04202eb5d">&#9670;&#160;</a></span>register_manager_update_system_status()</h2>
+<a id="ad1c5af6cb55c225fa9f8b84d18cbe33a" name="ad1c5af6cb55c225fa9f8b84d18cbe33a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1c5af6cb55c225fa9f8b84d18cbe33a">&#9670;&#160;</a></span>register_manager_update_system_status()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr void register_manager_update_system_status </td>
+          <td class="memname">void register_manager_update_system_status </td>
           <td>(</td>
           <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>status_bits</em></span>, </td>
         </tr>
@@ -394,12 +405,16 @@ Variables</h2></td></tr>
           <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>set</em></span>&#160;)</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
+
+<p>Update system status register. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">status_bits</td><td>Status bits to set/clear </td></tr>
+    <tr><td class="paramname">set</td><td>true to set bits, false to clear bits </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

@@ -23,7 +23,6 @@ static bool manager_initialized = false;
 bool register_manager_init(void) {
     // Initialize register map to default values
     memset(&register_map, 0, sizeof(register_map));
-    
     // Set default system status
     register_map.system_status.system_status = SYSTEM_STATUS_OK;
     register_map.system_status.active_count = 0;

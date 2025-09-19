@@ -1,9 +1,9 @@
 var pwm_8cpp =
 [
-    [ "amplitude_to_duty_cycle", "d5/d84/pwm_8cpp.html#aeb5f5c3c94df4a13b0b9eacf0f51a106", null ],
+    [ "amplitude_to_duty_cycle", "d5/d84/pwm_8cpp.html#ad403e52fd0d4c4bb0949aab1f32a084c", null ],
     [ "calculate_timer_settings", "d5/d84/pwm_8cpp.html#a3e637c11c9071996379c04f0d2400903", null ],
-    [ "duty_cycle_to_amplitude", "d5/d84/pwm_8cpp.html#acd891ba0477b23eebd3f99cb50fe9245", null ],
-    [ "is_valid_channel", "d5/d84/pwm_8cpp.html#ae399e3b03d2582ace6b43f06d89e2aa7", null ],
+    [ "duty_cycle_to_amplitude", "d5/d84/pwm_8cpp.html#ad4f5c43ec5db8c9356982bfd6fe02f7d", null ],
+    [ "is_valid_channel", "d5/d84/pwm_8cpp.html#afac769cb12dce92f0d7b182e105d9319", null ],
     [ "pwm_amplitude_maximum", "d5/d84/pwm_8cpp.html#aa221ba29bc076a4b5a7b7ecbbd6cd90f", null ],
     [ "pwm_amplitude_minimum", "d5/d84/pwm_8cpp.html#a7c49dc3ef037df990300e701fe139207", null ],
     [ "pwm_amplitude_ramp", "d5/d84/pwm_8cpp.html#ab8104c242afbf3fca789fcb4ab714d73", null ],

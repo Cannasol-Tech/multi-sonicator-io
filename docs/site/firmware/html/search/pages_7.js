@@ -10,6 +10,5 @@ var searchData=
   ['concurrency_7',['Concurrency',['../d6/de8/group___h_a_l___p_w_m.html#hal_pwm_concurrency',1,'Concurrency'],['../d1/dcb/group___h_a_l___g_p_i_o.html#hal_gpio_timing',1,'Timing &amp; Concurrency']]],
   ['considerations_8',['Performance Considerations',['../dc/dc2/_multiplexer_8h.html#performance_considerations',1,'']]],
   ['constructor_20usage_9',['Constructor Usage',['../d3/d00/class_sonic_multiplexer.html#constructor_usage',1,'']]],
-  ['control_20registers_200x0010_200x001f_20read_20write_10',['Global Control Registers (0x0010-0x001F) - Read/Write',['../da/de1/pins_8h.html#global_control_registers',1,'']]],
-  ['convention_11',['Register Naming Convention',['../d6/d4f/register__map_8h.html#register_naming_convention',1,'']]]
+  ['control_20registers_200x0010_200x001f_20read_20write_10',['Global Control Registers (0x0010-0x001F) - Read/Write',['../da/de1/pins_8h.html#global_control_registers',1,'']]]
 ];

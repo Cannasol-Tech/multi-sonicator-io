@@ -6,7 +6,7 @@ var searchData=
   ['period_5fms_3',['period_ms',['../d0/d84/structtimer__state__t.html#a6b63043030d4e4baa58553214777a078',1,'timer_state_t']]],
   ['persisted_5famplitude_4',['persisted_amplitude',['../d4/d97/structsonicator__registers__t.html#a4da00db940870c548d63b2ab85b04d6b',1,'sonicator_registers_t']]],
   ['power_5fraw_5fadc_5',['power_raw_adc',['../db/dd3/structsonicator__status__s.html#ab8933db45e8370241297c7392ba04df9',1,'sonicator_status_s']]],
-  ['power_5fsense_5fchannel_6',['power_sense_channel',['../de/d5a/struct_sonicator_pins.html#a3523cd65a350ce8ff85b9166bb46f73c',1,'SonicatorPins::power_sense_channel'],['../dc/d16/sonicator_8h.html#ad10926f894dc3201ed7e4b2970f85e73',1,'power_sense_channel:&#160;sonicator.h']]],
+  ['power_5fsense_5fchannel_6',['power_sense_channel',['../de/d5a/struct_sonicator_pins.html#a3523cd65a350ce8ff85b9166bb46f73c',1,'SonicatorPins']]],
   ['power_5fwatts_7',['power_watts',['../db/de2/structhal__sonicator__status__t.html#a546e97d31b025a2ad2a120b390185e32',1,'hal_sonicator_status_t::power_watts'],['../d4/d97/structsonicator__registers__t.html#a147a2fb453612d64ac43d310f93474db',1,'sonicator_registers_t::power_watts']]],
   ['prescaler_8',['prescaler',['../d4/de4/structtimer__config__t.html#ab86b8a9a0a36960738d97b745c99ce81',1,'timer_config_t']]],
   ['prev_5factive_5fmask_9',['prev_active_mask',['../d5/d00/structsystem__status__registers__t.html#a884a0cb352f23918d3ab82c3fdc14aa2',1,'system_status_registers_t']]],

@@ -92,7 +92,7 @@ $(function(){initNavTree('d8/d25/_multiplexer_8cpp.html','../../',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>Implementation of the Multiplexer class.  
+<p><a class="el" href="../../d3/d00/class_sonic_multiplexer.html" title="Object-oriented multiplexer for managing multiple CT2000 sonicator units.">SonicMultiplexer</a> implementation: master controller for 4 sonicators.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../dc/dc2/_multiplexer_8h_source.html">multiplexer/Multiplexer.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d4/d7e/system__config_8h_source.html">system_config.h</a>&quot;</code><br />
@@ -100,46 +100,79 @@ $(function(){initNavTree('d8/d25/_multiplexer_8cpp.html','../../',''); });
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a3dfcc3ae027703a8472e799a42a22d9f" id="r_a3dfcc3ae027703a8472e799a42a22d9f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3dfcc3ae027703a8472e799a42a22d9f">for</a> (int i=0;i&lt; NUM_SONICATORS;++i)</td></tr>
-<tr class="memitem:a4402c8356b6430348971cff78914d26e" id="r_a4402c8356b6430348971cff78914d26e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4402c8356b6430348971cff78914d26e">updateSharedAmplitude</a> ()</td></tr>
+<tr class="memitem:ac95afb7adf42ab2c5286a579ba147451" id="r_ac95afb7adf42ab2c5286a579ba147451"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac95afb7adf42ab2c5286a579ba147451">clamp_percent</a> (uint8_t pct)</td></tr>
+<tr class="memdesc:ac95afb7adf42ab2c5286a579ba147451"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clamps a percentage value to valid sonicator amplitude range.  <br /></td></tr>
+<tr class="memitem:ad797d79122aa69e05398a91c75a34fbe" id="r_ad797d79122aa69e05398a91c75a34fbe"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad797d79122aa69e05398a91c75a34fbe">amplitude_to_duty</a> (uint8_t amplitude_percent)</td></tr>
+<tr class="memdesc:ad797d79122aa69e05398a91c75a34fbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts amplitude percentage to PWM duty cycle value.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implementation of the Multiplexer class. </p>
-<dl class="section author"><dt>Author</dt><dd>James (AI Developer) </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2025-09-16 </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>1.0.0 </dd></dl>
+<div class="textblock"><p><a class="el" href="../../d3/d00/class_sonic_multiplexer.html" title="Object-oriented multiplexer for managing multiple CT2000 sonicator units.">SonicMultiplexer</a> implementation: master controller for 4 sonicators. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="a3dfcc3ae027703a8472e799a42a22d9f" name="a3dfcc3ae027703a8472e799a42a22d9f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3dfcc3ae027703a8472e799a42a22d9f">&#9670;&#160;</a></span>for()</h2>
+<a id="ad797d79122aa69e05398a91c75a34fbe" name="ad797d79122aa69e05398a91c75a34fbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad797d79122aa69e05398a91c75a34fbe">&#9670;&#160;</a></span>amplitude_to_duty()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">for </td>
+          <td class="memname">uint8_t amplitude_to_duty </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>amplitude_percent</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p>Converts amplitude percentage to PWM duty cycle value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">amplitude_percent</td><td>Amplitude percentage (20-100%) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>PWM duty cycle value (0-255), or 0 if amplitude is below minimum </dd></dl>
 
 </div>
 </div>
-<a id="a4402c8356b6430348971cff78914d26e" name="a4402c8356b6430348971cff78914d26e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4402c8356b6430348971cff78914d26e">&#9670;&#160;</a></span>updateSharedAmplitude()</h2>
+<a id="ac95afb7adf42ab2c5286a579ba147451" name="ac95afb7adf42ab2c5286a579ba147451"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac95afb7adf42ab2c5286a579ba147451">&#9670;&#160;</a></span>clamp_percent()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Multiplexer::updateSharedAmplitude </td>
+          <td class="memname">uint8_t clamp_percent </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>pct</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p>Clamps a percentage value to valid sonicator amplitude range. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pct</td><td>Percentage value to clamp </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Clamped percentage within [SONICATOR_MIN_AMPLITUDE_PERCENT, SONICATOR_MAX_AMPLITUDE_PERCENT] </dd></dl>
 
 </div>
 </div>

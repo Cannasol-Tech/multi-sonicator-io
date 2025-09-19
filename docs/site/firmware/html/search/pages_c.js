@@ -1,7 +1,5 @@
 var searchData=
 [
   ['handling_0',['Handling',['../d1/dcb/group___h_a_l___g_p_i_o.html#hal_gpio_errors',1,'Error Handling'],['../d6/de8/group___h_a_l___p_w_m.html#hal_pwm_errors',1,'Error Handling'],['../d6/dff/group___h_a_l___u_a_r_t.html#hal_uart_errors',1,'Error Handling']]],
-  ['handling_20and_20diagnostics_1',['Error Handling and Diagnostics',['../dc/dc2/_multiplexer_8h.html#error_handling',1,'']]],
-  ['hardware_20pin_20mapping_2',['Hardware Pin Mapping',['../d6/d4f/register__map_8h.html#hardware_mapping',1,'']]],
-  ['header_20ref_20signal_20dir_20scale_20notes_20wrapper_20pin_20test_20point_3',['Header Ref Signal Dir Scale Notes Wrapper Pin Test Point',['..//Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/src/modules/control/Multiplexer.cpp#autotoc_md0',1,'DUT Pin (Port/Pad) Header Ref Signal Dir Scale/Notes Wrapper Pin Test Point'],['..//Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/src/modules/control/Multiplexer.cpp#autotoc_md1',1,'DUT Pin (Port/Pad) Header Ref Signal Dir Scale/Notes Wrapper Pin Test Point'],['..//Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/src/modules/control/Multiplexer.cpp#autotoc_md2',1,'DUT Pin (Port/Pad) Header Ref Signal Dir Scale/Notes Wrapper Pin Test Point'],['..//Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/src/modules/control/Multiplexer.cpp#autotoc_md3',1,'DUT Pin (Port/Pad) Header Ref Signal Dir Scale/Notes Wrapper Pin Test Point']]]
+  ['handling_20and_20diagnostics_1',['Error Handling and Diagnostics',['../dc/dc2/_multiplexer_8h.html#error_handling',1,'']]]
 ];

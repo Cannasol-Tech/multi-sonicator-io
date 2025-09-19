@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['frequency_5fcounter_5ft_0',['frequency_counter_t',['../d5/d29/structfrequency__counter__t.html',1,'']]],
-  ['frequency_5fstats_5ft_1',['frequency_stats_t',['../d7/da4/structfrequency__stats__t.html',1,'']]]
+  ['global_5fcontrol_5fregisters_5ft_0',['global_control_registers_t',['../d7/dc5/structglobal__control__registers__t.html',1,'']]]
 ];

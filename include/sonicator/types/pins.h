@@ -42,7 +42,7 @@
  * | 28  | START_1       | OUT       | REG_SON1_START_STOP | 0x0100 | Start/enable control ← MODBUS command |
  * | 29  | RESET_1       | OUT       | REG_SON1_OVERLOAD_RESET | 0x0102 | Reset control ← MODBUS pulse command |
  * | 36  | POWER_SENSE_1 | IN (ADC)  | REG_SON1_POWER_RAW_ADC | 0x0110 | Power level analog → raw ADC (0-1023, cloud converts) |
- * | 21  | AMPLITUDE_ALL | OUT (PWM) | REG_SON1_AMPLITUDE_SP | 0x0101 | Amplitude control ← MODBUS setpoint (20-100%) |
+ * | 21  | AMPLITUDE_ALL | OUT (PWM) | REG_AMPLITUDE_ALL_SP | 0x0101 | Amplitude control ← MODBUS setpoint (20-100%) |
  *
  * @subsection sonicator2_pins Sonicator 2 ATMega32a Pin-to-MODBUS Register Mapping
  * | Pin | Signal        | Direction | MODBUS Register | Address | Description |
@@ -53,7 +53,7 @@
  * | 26  | START_2       | OUT       | REG_SON2_START_STOP | 0x0120 | Start/enable control ← MODBUS command |
  * | 27  | RESET_2       | OUT       | REG_SON2_OVERLOAD_RESET | 0x0122 | Reset control ← MODBUS pulse command |
  * | 35  | POWER_SENSE_2 | IN (ADC)  | REG_SON2_POWER_RAW_ADC | 0x0130 | Power level analog → raw ADC (0-1023, cloud converts) |
- * | 21  | AMPLITUDE_ALL | OUT (PWM) | REG_SON2_AMPLITUDE_SP | 0x0121 | Amplitude control ← MODBUS setpoint (20-100%) |
+ * | 21  | AMPLITUDE_ALL | OUT (PWM) | REG_AMPLITUDE_ALL_SP | 0x0121 | Amplitude control ← MODBUS setpoint (20-100%) |
  *
  * @subsection sonicator3_pins Sonicator 3 ATMega32a Pin-to-MODBUS Register Mapping
  * | Pin | Signal        | Direction | MODBUS Register | Address | Description |
@@ -64,7 +64,7 @@
  * | 24  | START_3       | OUT       | REG_SON3_START_STOP | 0x0140 | Start/enable control ← MODBUS command |
  * | 25  | RESET_3       | OUT       | REG_SON3_OVERLOAD_RESET | 0x0142 | Reset control ← MODBUS pulse command |
  * | 34  | POWER_SENSE_3 | IN (ADC)  | REG_SON3_POWER_RAW_ADC | 0x0150 | Power level analog → raw ADC (0-1023, cloud converts) |
- * | 21  | AMPLITUDE_ALL | OUT (PWM) | REG_SON3_AMPLITUDE_SP | 0x0141 | Amplitude control ← MODBUS setpoint (20-100%) |
+ * | 21  | AMPLITUDE_ALL | OUT (PWM) | REG_AMPLITUDE_ALL_SP | 0x0141 | Amplitude control ← MODBUS setpoint (20-100%) |
  *
  * @subsection sonicator4_pins Sonicator 4 ATMega32a Pin-to-MODBUS Register Mapping
  * | Pin | Signal        | Direction | MODBUS Register | Address | Description |
@@ -75,7 +75,7 @@
  * | 22  | START_4       | OUT       | REG_SON4_START_STOP | 0x0160 | Start/enable control ← MODBUS command |
  * | 23  | RESET_4       | OUT       | REG_SON4_OVERLOAD_RESET | 0x0162 | Reset control ← MODBUS pulse command |
  * | 33  | POWER_SENSE_4 | IN (ADC)  | REG_SON4_POWER_RAW_ADC | 0x0170 | Power level analog → raw ADC (0-1023, cloud converts) |
- * | 21  | AMPLITUDE_ALL | OUT (PWM) | REG_SON4_AMPLITUDE_SP | 0x0161 | Amplitude control ← MODBUS setpoint (20-100%) |
+ * | 21  | AMPLITUDE_ALL | OUT (PWM) | REG_AMPLITUDE_ALL_SP | 0x0161 | Amplitude control ← MODBUS setpoint (20-100%) |
  *
  * @subsection system_pins System/Communication Pin-to-MODBUS Register Mapping
  * | ATMega32A Pin | Signal     | Direction | MODBUS Register | Address | Description |

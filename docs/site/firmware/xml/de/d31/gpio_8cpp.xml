@@ -6,36 +6,10 @@
     <includes refid="d4/d7e/system__config_8h" local="no">system_config.h</includes>
     <includes local="no">Arduino.h</includes>
     <incdepgraph>
-      <node id="13">
+      <node id="5">
         <label>system_config.h</label>
         <link refid="d4/d7e/system__config_8h"/>
-        <childnode refid="14" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>adc.h</label>
-        <link refid="d7/d19/adc_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>atmega_hal_impl.h</label>
-        <link refid="d2/d92/atmega__hal__impl_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -43,9 +17,9 @@
         <link refid="de/d31/gpio_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -55,56 +29,8 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
       </node>
-      <node id="10">
-        <label>hal_template_interfaces.h</label>
-        <link refid="de/d2b/hal__template__interfaces_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>mock_hal_impl.h</label>
-        <link refid="de/d8d/mock__hal__impl_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>pwm.h</label>
-        <link refid="d6/db9/pwm_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="8">
-        <label>timer.h</label>
-        <link refid="d5/dd0/timer_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>uart.h</label>
-        <link refid="d2/d86/uart_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="14">
+      <node id="6">
         <label>Arduino.h</label>
       </node>
       <node id="4">
@@ -113,11 +39,7 @@
       <node id="3">
         <label>stdint.h</label>
       </node>
-      <node id="12">
-        <label>string.h</label>
-      </node>
     </incdepgraph>
-    <innerclass refid="da/d2b/class_atmega_gpio" prot="public">AtmegaGpio</innerclass>
     <sectiondef kind="var">
       <memberdef kind="variable" id="de/d31/gpio_8cpp_1a2d025711ab1bd01530ad8583cc46c96a" prot="public" static="yes" mutable="no">
         <type>bool</type>
@@ -133,39 +55,11 @@
         </inbodydescription>
         <location file="src/modules/hal/gpio.cpp" line="50" column="13" bodyfile="src/modules/hal/gpio.cpp" bodystart="50" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="de/d31/gpio_8cpp_1a027d78497d8287aa52ef0ea358c40c4f" prot="public" static="yes" mutable="no">
-        <type><ref refid="da/d2b/class_atmega_gpio" kindref="compound">AtmegaGpio</ref> *</type>
-        <definition>AtmegaGpio* g_gpio_instance</definition>
-        <argsstring></argsstring>
-        <name>g_gpio_instance</name>
-        <initializer>= nullptr</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="369" column="19" bodyfile="src/modules/hal/gpio.cpp" bodystart="369" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="de/d31/gpio_8cpp_1a04523bca2df9f5c06205deb08f385d9c" prot="public" static="yes" mutable="no">
-        <type>bool</type>
-        <definition>bool g_gpio_c_api_initialized</definition>
-        <argsstring></argsstring>
-        <name>g_gpio_c_api_initialized</name>
-        <initializer>= false</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="370" column="13" bodyfile="src/modules/hal/gpio.cpp" bodystart="370" bodyend="-1"/>
-      </memberdef>
     </sectiondef>
     <sectiondef kind="func">
-      <memberdef kind="function" id="de/d31/gpio_8cpp_1a46af2ad3bbaea3a17376f67d85b8f282" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="de/d31/gpio_8cpp_1aae33f92699625dcbd0fa4201b2a87167" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
-        <definition>static constexpr bool is_valid_pin</definition>
+        <definition>static bool is_valid_pin</definition>
         <argsstring>(uint8_t pin)</argsstring>
         <name>is_valid_pin</name>
         <param>
@@ -173,16 +67,17 @@
           <declname>pin</declname>
         </param>
         <briefdescription>
+<para>ATmega32A GPIO Implementation Class. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="444" column="30" bodyfile="src/modules/hal/gpio.cpp" bodystart="444" bodyend="447" declfile="src/modules/hal/gpio.cpp" declline="56" declcolumn="13"/>
+        <location file="src/modules/hal/gpio.cpp" line="445" column="20" bodyfile="src/modules/hal/gpio.cpp" bodystart="445" bodyend="448" declfile="src/modules/hal/gpio.cpp" declline="56" declcolumn="13"/>
       </memberdef>
-      <memberdef kind="function" id="de/d31/gpio_8cpp_1a57d27869d3322aa9d080bb0f941c236b" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="de/d31/gpio_8cpp_1a7686bcda780a34231dff43b5bcd17ce5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>uint8_t</type>
-        <definition>static constexpr uint8_t get_sonicator_start_pin</definition>
+        <definition>static uint8_t get_sonicator_start_pin</definition>
         <argsstring>(uint8_t sonicator_id)</argsstring>
         <name>get_sonicator_start_pin</name>
         <param>
@@ -195,11 +90,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="449" column="33" bodyfile="src/modules/hal/gpio.cpp" bodystart="449" bodyend="457" declfile="src/modules/hal/gpio.cpp" declline="57" declcolumn="16"/>
+        <location file="src/modules/hal/gpio.cpp" line="450" column="23" bodyfile="src/modules/hal/gpio.cpp" bodystart="450" bodyend="458" declfile="src/modules/hal/gpio.cpp" declline="57" declcolumn="16"/>
       </memberdef>
-      <memberdef kind="function" id="de/d31/gpio_8cpp_1a787f438593a73fef9fbbc5e438e22794" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="de/d31/gpio_8cpp_1a56de2ecfb9bce3ba21f4b964d7b98ede" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>uint8_t</type>
-        <definition>static constexpr uint8_t get_sonicator_reset_pin</definition>
+        <definition>static uint8_t get_sonicator_reset_pin</definition>
         <argsstring>(uint8_t sonicator_id)</argsstring>
         <name>get_sonicator_reset_pin</name>
         <param>
@@ -212,11 +107,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="459" column="33" bodyfile="src/modules/hal/gpio.cpp" bodystart="459" bodyend="467" declfile="src/modules/hal/gpio.cpp" declline="58" declcolumn="16"/>
+        <location file="src/modules/hal/gpio.cpp" line="460" column="23" bodyfile="src/modules/hal/gpio.cpp" bodystart="460" bodyend="468" declfile="src/modules/hal/gpio.cpp" declline="58" declcolumn="16"/>
       </memberdef>
-      <memberdef kind="function" id="de/d31/gpio_8cpp_1a2aa6e65b96acd03e30c50bcdcc0430f1" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="de/d31/gpio_8cpp_1aee7e2b8fb5feff86e9832e9fb3581840" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>uint8_t</type>
-        <definition>static constexpr uint8_t get_sonicator_overload_pin</definition>
+        <definition>static uint8_t get_sonicator_overload_pin</definition>
         <argsstring>(uint8_t sonicator_id)</argsstring>
         <name>get_sonicator_overload_pin</name>
         <param>
@@ -229,11 +124,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="469" column="33" bodyfile="src/modules/hal/gpio.cpp" bodystart="469" bodyend="477" declfile="src/modules/hal/gpio.cpp" declline="59" declcolumn="16"/>
+        <location file="src/modules/hal/gpio.cpp" line="470" column="23" bodyfile="src/modules/hal/gpio.cpp" bodystart="470" bodyend="478" declfile="src/modules/hal/gpio.cpp" declline="59" declcolumn="16"/>
       </memberdef>
-      <memberdef kind="function" id="de/d31/gpio_8cpp_1a0de5a132719a12c27ee8dfc42277d3b7" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="de/d31/gpio_8cpp_1abc081dd26e4791dc70d4d11406c60d34" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>uint8_t</type>
-        <definition>static constexpr uint8_t get_sonicator_freq_lock_pin</definition>
+        <definition>static uint8_t get_sonicator_freq_lock_pin</definition>
         <argsstring>(uint8_t sonicator_id)</argsstring>
         <name>get_sonicator_freq_lock_pin</name>
         <param>
@@ -246,7 +141,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="479" column="33" bodyfile="src/modules/hal/gpio.cpp" bodystart="479" bodyend="487" declfile="src/modules/hal/gpio.cpp" declline="60" declcolumn="16"/>
+        <location file="src/modules/hal/gpio.cpp" line="480" column="23" bodyfile="src/modules/hal/gpio.cpp" bodystart="480" bodyend="488" declfile="src/modules/hal/gpio.cpp" declline="60" declcolumn="16"/>
       </memberdef>
       <memberdef kind="function" id="de/d31/gpio_8cpp_1a33d278bd8510192b4fdadf20fa22fe61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref></type>
@@ -702,278 +597,6 @@
         </inbodydescription>
         <location file="src/modules/hal/gpio.cpp" line="285" column="15" bodyfile="src/modules/hal/gpio.cpp" bodystart="285" bodyend="287"/>
       </memberdef>
-      <memberdef kind="function" id="de/d31/gpio_8cpp_1a5cbeac76ddc98b8d6ae87cde6c461d6e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="da/d2b/class_atmega_gpio" kindref="compound">AtmegaGpio</ref> *</type>
-        <definition>static AtmegaGpio * getGpioInstance</definition>
-        <argsstring>()</argsstring>
-        <name>getGpioInstance</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="373" column="19" bodyfile="src/modules/hal/gpio.cpp" bodystart="373" bodyend="378"/>
-      </memberdef>
-      <memberdef kind="function" id="de/d31/gpio_8cpp_1a81706c4c31a95b436011dd257c30522e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref> *</type>
-        <definition>IGpioPort * gpio_create_instance</definition>
-        <argsstring>(void)</argsstring>
-        <name>gpio_create_instance</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="383" column="11" bodyfile="src/modules/hal/gpio.cpp" bodystart="383" bodyend="385"/>
-      </memberdef>
-      <memberdef kind="function" id="de/d31/gpio_8cpp_1a911872f876b7b79de64b35e7bcd0132e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool gpio_oop_init</definition>
-        <argsstring>(IGpioPort *instance)</argsstring>
-        <name>gpio_oop_init</name>
-        <param>
-          <type><ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref> *</type>
-          <declname>instance</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="387" column="6" bodyfile="src/modules/hal/gpio.cpp" bodystart="387" bodyend="390"/>
-      </memberdef>
-      <memberdef kind="function" id="de/d31/gpio_8cpp_1afed04aa8be982c750c589dbaf7da18e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool gpio_oop_set_pin_mode</definition>
-        <argsstring>(IGpioPort *instance, uint8_t pin, uint8_t mode)</argsstring>
-        <name>gpio_oop_set_pin_mode</name>
-        <param>
-          <type><ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref> *</type>
-          <declname>instance</declname>
-        </param>
-        <param>
-          <type>uint8_t</type>
-          <declname>pin</declname>
-        </param>
-        <param>
-          <type>uint8_t</type>
-          <declname>mode</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="392" column="6" bodyfile="src/modules/hal/gpio.cpp" bodystart="392" bodyend="395"/>
-      </memberdef>
-      <memberdef kind="function" id="de/d31/gpio_8cpp_1a8d2269970e16f0b00c8c05b3f3a171d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool gpio_oop_digital_write</definition>
-        <argsstring>(IGpioPort *instance, uint8_t pin, uint8_t value)</argsstring>
-        <name>gpio_oop_digital_write</name>
-        <param>
-          <type><ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref> *</type>
-          <declname>instance</declname>
-        </param>
-        <param>
-          <type>uint8_t</type>
-          <declname>pin</declname>
-        </param>
-        <param>
-          <type>uint8_t</type>
-          <declname>value</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="397" column="6" bodyfile="src/modules/hal/gpio.cpp" bodystart="397" bodyend="400"/>
-      </memberdef>
-      <memberdef kind="function" id="de/d31/gpio_8cpp_1ad676442d117e07eddf128a1d7e3d9588" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>uint8_t</type>
-        <definition>uint8_t gpio_oop_digital_read</definition>
-        <argsstring>(IGpioPort *instance, uint8_t pin)</argsstring>
-        <name>gpio_oop_digital_read</name>
-        <param>
-          <type><ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref> *</type>
-          <declname>instance</declname>
-        </param>
-        <param>
-          <type>uint8_t</type>
-          <declname>pin</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="402" column="9" bodyfile="src/modules/hal/gpio.cpp" bodystart="402" bodyend="405"/>
-      </memberdef>
-      <memberdef kind="function" id="de/d31/gpio_8cpp_1a109debb44598253f26bfd3547a861fca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool gpio_oop_toggle_pin</definition>
-        <argsstring>(IGpioPort *instance, uint8_t pin)</argsstring>
-        <name>gpio_oop_toggle_pin</name>
-        <param>
-          <type><ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref> *</type>
-          <declname>instance</declname>
-        </param>
-        <param>
-          <type>uint8_t</type>
-          <declname>pin</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="407" column="6" bodyfile="src/modules/hal/gpio.cpp" bodystart="407" bodyend="410"/>
-      </memberdef>
-      <memberdef kind="function" id="de/d31/gpio_8cpp_1a8a48d759e8b77d8fa0a2d3be206c2a9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool gpio_oop_sonicator_start</definition>
-        <argsstring>(IGpioPort *instance, uint8_t sonicator_id)</argsstring>
-        <name>gpio_oop_sonicator_start</name>
-        <param>
-          <type><ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref> *</type>
-          <declname>instance</declname>
-        </param>
-        <param>
-          <type>uint8_t</type>
-          <declname>sonicator_id</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="412" column="6" bodyfile="src/modules/hal/gpio.cpp" bodystart="412" bodyend="415"/>
-      </memberdef>
-      <memberdef kind="function" id="de/d31/gpio_8cpp_1a595d3b18773140384a755f22e239e206" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool gpio_oop_sonicator_stop</definition>
-        <argsstring>(IGpioPort *instance, uint8_t sonicator_id)</argsstring>
-        <name>gpio_oop_sonicator_stop</name>
-        <param>
-          <type><ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref> *</type>
-          <declname>instance</declname>
-        </param>
-        <param>
-          <type>uint8_t</type>
-          <declname>sonicator_id</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="417" column="6" bodyfile="src/modules/hal/gpio.cpp" bodystart="417" bodyend="420"/>
-      </memberdef>
-      <memberdef kind="function" id="de/d31/gpio_8cpp_1a4b837126b7aa7967d18206cdc0ae82f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool gpio_oop_sonicator_reset</definition>
-        <argsstring>(IGpioPort *instance, uint8_t sonicator_id)</argsstring>
-        <name>gpio_oop_sonicator_reset</name>
-        <param>
-          <type><ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref> *</type>
-          <declname>instance</declname>
-        </param>
-        <param>
-          <type>uint8_t</type>
-          <declname>sonicator_id</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="422" column="6" bodyfile="src/modules/hal/gpio.cpp" bodystart="422" bodyend="425"/>
-      </memberdef>
-      <memberdef kind="function" id="de/d31/gpio_8cpp_1a36f759cb0836bc79f44c9a55a5203296" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool gpio_oop_sonicator_read_overload</definition>
-        <argsstring>(IGpioPort *instance, uint8_t sonicator_id, bool *state)</argsstring>
-        <name>gpio_oop_sonicator_read_overload</name>
-        <param>
-          <type><ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref> *</type>
-          <declname>instance</declname>
-        </param>
-        <param>
-          <type>uint8_t</type>
-          <declname>sonicator_id</declname>
-        </param>
-        <param>
-          <type>bool *</type>
-          <declname>state</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="427" column="6" bodyfile="src/modules/hal/gpio.cpp" bodystart="427" bodyend="430"/>
-      </memberdef>
-      <memberdef kind="function" id="de/d31/gpio_8cpp_1a6f90b9bece4d16ffc3e226c6d5a11b3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool gpio_oop_sonicator_read_freq_lock</definition>
-        <argsstring>(IGpioPort *instance, uint8_t sonicator_id, bool *state)</argsstring>
-        <name>gpio_oop_sonicator_read_freq_lock</name>
-        <param>
-          <type><ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref> *</type>
-          <declname>instance</declname>
-        </param>
-        <param>
-          <type>uint8_t</type>
-          <declname>sonicator_id</declname>
-        </param>
-        <param>
-          <type>bool *</type>
-          <declname>state</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="432" column="6" bodyfile="src/modules/hal/gpio.cpp" bodystart="432" bodyend="435"/>
-      </memberdef>
-      <memberdef kind="function" id="de/d31/gpio_8cpp_1a182a5c8639b12137915c83d04853c3c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool gpio_oop_status_led</definition>
-        <argsstring>(IGpioPort *instance, bool state)</argsstring>
-        <name>gpio_oop_status_led</name>
-        <param>
-          <type><ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref> *</type>
-          <declname>instance</declname>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>state</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/modules/hal/gpio.cpp" line="437" column="6" bodyfile="src/modules/hal/gpio.cpp" bodystart="437" bodyend="440"/>
-      </memberdef>
     </sectiondef>
     <briefdescription>
 <para>GPIO Hardware Abstraction Layer Implementation for ATmega32A. </para>
@@ -1006,11 +629,11 @@
 <codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PRIVATE<sp/>FUNCTION<sp/>DECLARATIONS</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a46af2ad3bbaea3a17376f67d85b8f282" kindref="member">is_valid_pin</ref>(uint8_t<sp/>pin);</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="de/d31/gpio_8cpp_1a57d27869d3322aa9d080bb0f941c236b" kindref="member">get_sonicator_start_pin</ref>(uint8_t<sp/>sonicator_id);</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="de/d31/gpio_8cpp_1a787f438593a73fef9fbbc5e438e22794" kindref="member">get_sonicator_reset_pin</ref>(uint8_t<sp/>sonicator_id);</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="de/d31/gpio_8cpp_1a2aa6e65b96acd03e30c50bcdcc0430f1" kindref="member">get_sonicator_overload_pin</ref>(uint8_t<sp/>sonicator_id);</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="de/d31/gpio_8cpp_1a0de5a132719a12c27ee8dfc42277d3b7" kindref="member">get_sonicator_freq_lock_pin</ref>(uint8_t<sp/>sonicator_id);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1aae33f92699625dcbd0fa4201b2a87167" kindref="member">is_valid_pin</ref>(uint8_t<sp/>pin);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="de/d31/gpio_8cpp_1a7686bcda780a34231dff43b5bcd17ce5" kindref="member">get_sonicator_start_pin</ref>(uint8_t<sp/>sonicator_id);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="de/d31/gpio_8cpp_1a56de2ecfb9bce3ba21f4b964d7b98ede" kindref="member">get_sonicator_reset_pin</ref>(uint8_t<sp/>sonicator_id);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="de/d31/gpio_8cpp_1aee7e2b8fb5feff86e9832e9fb3581840" kindref="member">get_sonicator_overload_pin</ref>(uint8_t<sp/>sonicator_id);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="de/d31/gpio_8cpp_1abc081dd26e4791dc70d4d11406c60d34" kindref="member">get_sonicator_freq_lock_pin</ref>(uint8_t<sp/>sonicator_id);</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"></highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PUBLIC<sp/>FUNCTION<sp/>IMPLEMENTATIONS</highlight><highlight class="normal"></highlight></codeline>
@@ -1036,7 +659,7 @@
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa320026ede7c2fe87281558840cbeaf64" kindref="member">GPIO_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="de/d31/gpio_8cpp_1a46af2ad3bbaea3a17376f67d85b8f282" kindref="member">is_valid_pin</ref>(pin))<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="de/d31/gpio_8cpp_1aae33f92699625dcbd0fa4201b2a87167" kindref="member">is_valid_pin</ref>(pin))<sp/>{</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa38941804734708507b91d11f81513c60" kindref="member">GPIO_ERROR_INVALID_PIN</ref>;</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight></codeline>
@@ -1067,7 +690,7 @@
 <codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa320026ede7c2fe87281558840cbeaf64" kindref="member">GPIO_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="de/d31/gpio_8cpp_1a46af2ad3bbaea3a17376f67d85b8f282" kindref="member">is_valid_pin</ref>(pin))<sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="de/d31/gpio_8cpp_1aae33f92699625dcbd0fa4201b2a87167" kindref="member">is_valid_pin</ref>(pin))<sp/>{</highlight></codeline>
 <codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa38941804734708507b91d11f81513c60" kindref="member">GPIO_ERROR_INVALID_PIN</ref>;</highlight></codeline>
 <codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"></highlight></codeline>
@@ -1080,7 +703,7 @@
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa320026ede7c2fe87281558840cbeaf64" kindref="member">GPIO_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="de/d31/gpio_8cpp_1a46af2ad3bbaea3a17376f67d85b8f282" kindref="member">is_valid_pin</ref>(pin)<sp/>||<sp/>state<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="de/d31/gpio_8cpp_1aae33f92699625dcbd0fa4201b2a87167" kindref="member">is_valid_pin</ref>(pin)<sp/>||<sp/>state<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa38941804734708507b91d11f81513c60" kindref="member">GPIO_ERROR_INVALID_PIN</ref>;</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"></highlight></codeline>
@@ -1093,7 +716,7 @@
 <codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa320026ede7c2fe87281558840cbeaf64" kindref="member">GPIO_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="142"><highlight class="normal"></highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="de/d31/gpio_8cpp_1a46af2ad3bbaea3a17376f67d85b8f282" kindref="member">is_valid_pin</ref>(pin))<sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="de/d31/gpio_8cpp_1aae33f92699625dcbd0fa4201b2a87167" kindref="member">is_valid_pin</ref>(pin))<sp/>{</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa38941804734708507b91d11f81513c60" kindref="member">GPIO_ERROR_INVALID_PIN</ref>;</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"></highlight></codeline>
@@ -1112,7 +735,7 @@
 <codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa320026ede7c2fe87281558840cbeaf64" kindref="member">GPIO_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="161"><highlight class="normal"></highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="de/d31/gpio_8cpp_1a46af2ad3bbaea3a17376f67d85b8f282" kindref="member">is_valid_pin</ref>(pin)<sp/>||<sp/>mode<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="de/d31/gpio_8cpp_1aae33f92699625dcbd0fa4201b2a87167" kindref="member">is_valid_pin</ref>(pin)<sp/>||<sp/>mode<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa38941804734708507b91d11f81513c60" kindref="member">GPIO_ERROR_INVALID_PIN</ref>;</highlight></codeline>
 <codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="165"><highlight class="normal"></highlight></codeline>
@@ -1170,7 +793,7 @@
 <codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa38941804734708507b91d11f81513c60" kindref="member">GPIO_ERROR_INVALID_PIN</ref>;</highlight></codeline>
 <codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="219"><highlight class="normal"></highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>start_pin<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1a57d27869d3322aa9d080bb0f941c236b" kindref="member">get_sonicator_start_pin</ref>(sonicator_id);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>start_pin<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1a7686bcda780a34231dff43b5bcd17ce5" kindref="member">get_sonicator_start_pin</ref>(sonicator_id);</highlight></codeline>
 <codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a3356861ebced78ebc885c06a9abad081" kindref="member">gpio_write_pin</ref>(start_pin,<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ab05c5a854da4602143b6bd6096d86c4d" kindref="member">GPIO_HIGH</ref>);</highlight></codeline>
 <codeline lineno="222"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="223"><highlight class="normal"></highlight></codeline>
@@ -1179,7 +802,7 @@
 <codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa38941804734708507b91d11f81513c60" kindref="member">GPIO_ERROR_INVALID_PIN</ref>;</highlight></codeline>
 <codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="228"><highlight class="normal"></highlight></codeline>
-<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>start_pin<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1a57d27869d3322aa9d080bb0f941c236b" kindref="member">get_sonicator_start_pin</ref>(sonicator_id);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>start_pin<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1a7686bcda780a34231dff43b5bcd17ce5" kindref="member">get_sonicator_start_pin</ref>(sonicator_id);</highlight></codeline>
 <codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a3356861ebced78ebc885c06a9abad081" kindref="member">gpio_write_pin</ref>(start_pin,<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ad41cdd897d9b8714ef45ed6e9eba0dfa" kindref="member">GPIO_LOW</ref>);</highlight></codeline>
 <codeline lineno="231"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="232"><highlight class="normal"></highlight></codeline>
@@ -1188,17 +811,17 @@
 <codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa38941804734708507b91d11f81513c60" kindref="member">GPIO_ERROR_INVALID_PIN</ref>;</highlight></codeline>
 <codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="237"><highlight class="normal"></highlight></codeline>
-<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="dc/d16/sonicator_8h_1a608db01f4df35bb5d2fc9137140993bc" kindref="member">reset_pin</ref><sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1a787f438593a73fef9fbbc5e438e22794" kindref="member">get_sonicator_reset_pin</ref>(sonicator_id);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>reset_pin<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1a56de2ecfb9bce3ba21f4b964d7b98ede" kindref="member">get_sonicator_reset_pin</ref>(sonicator_id);</highlight></codeline>
 <codeline lineno="239"><highlight class="normal"></highlight></codeline>
 <codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pulse<sp/>reset<sp/>pin<sp/>(active<sp/>high<sp/>for<sp/>50ms)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/>result<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1a3356861ebced78ebc885c06a9abad081" kindref="member">gpio_write_pin</ref>(<ref refid="dc/d16/sonicator_8h_1a608db01f4df35bb5d2fc9137140993bc" kindref="member">reset_pin</ref>,<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ab05c5a854da4602143b6bd6096d86c4d" kindref="member">GPIO_HIGH</ref>);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/>result<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1a3356861ebced78ebc885c06a9abad081" kindref="member">gpio_write_pin</ref>(reset_pin,<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ab05c5a854da4602143b6bd6096d86c4d" kindref="member">GPIO_HIGH</ref>);</highlight></codeline>
 <codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>!=<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
 <codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="245"><highlight class="normal"></highlight></codeline>
 <codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>delay(50);<sp/></highlight><highlight class="comment">//<sp/>50ms<sp/>reset<sp/>pulse</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="247"><highlight class="normal"></highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a3356861ebced78ebc885c06a9abad081" kindref="member">gpio_write_pin</ref>(<ref refid="dc/d16/sonicator_8h_1a608db01f4df35bb5d2fc9137140993bc" kindref="member">reset_pin</ref>,<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ad41cdd897d9b8714ef45ed6e9eba0dfa" kindref="member">GPIO_LOW</ref>);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a3356861ebced78ebc885c06a9abad081" kindref="member">gpio_write_pin</ref>(reset_pin,<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ad41cdd897d9b8714ef45ed6e9eba0dfa" kindref="member">GPIO_LOW</ref>);</highlight></codeline>
 <codeline lineno="249"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="250"><highlight class="normal"></highlight></codeline>
 <codeline lineno="251"><highlight class="normal"><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/><ref refid="de/d31/gpio_8cpp_1af4700a3e3d882c0cc3d14a3ba5e0c66d" kindref="member">gpio_sonicator_read_overload</ref>(uint8_t<sp/>sonicator_id,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>overload)<sp/>{</highlight></codeline>
@@ -1206,9 +829,9 @@
 <codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa38941804734708507b91d11f81513c60" kindref="member">GPIO_ERROR_INVALID_PIN</ref>;</highlight></codeline>
 <codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="255"><highlight class="normal"></highlight></codeline>
-<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="dc/d16/sonicator_8h_1af64695e062ad45b326b59c2cb88a56d0" kindref="member">overload_pin</ref><sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1a2aa6e65b96acd03e30c50bcdcc0430f1" kindref="member">get_sonicator_overload_pin</ref>(sonicator_id);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>overload_pin<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1aee7e2b8fb5feff86e9832e9fb3581840" kindref="member">get_sonicator_overload_pin</ref>(sonicator_id);</highlight></codeline>
 <codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>state;</highlight></codeline>
-<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/>result<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1af23d343920eacb1d974f8d9bed1c2fec" kindref="member">gpio_read_pin</ref>(<ref refid="dc/d16/sonicator_8h_1af64695e062ad45b326b59c2cb88a56d0" kindref="member">overload_pin</ref>,<sp/>&amp;state);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/>result<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1af23d343920eacb1d974f8d9bed1c2fec" kindref="member">gpio_read_pin</ref>(overload_pin,<sp/>&amp;state);</highlight></codeline>
 <codeline lineno="259"><highlight class="normal"></highlight></codeline>
 <codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Overload<sp/>is<sp/>active<sp/>LOW<sp/>(via<sp/>optocoupler)</highlight><highlight class="normal"></highlight></codeline>
@@ -1223,9 +846,9 @@
 <codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa38941804734708507b91d11f81513c60" kindref="member">GPIO_ERROR_INVALID_PIN</ref>;</highlight></codeline>
 <codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="272"><highlight class="normal"></highlight></codeline>
-<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="dc/d16/sonicator_8h_1ad09a021ad4441f9f17a7ff6ebe8c7b29" kindref="member">freq_lock_pin</ref><sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1a0de5a132719a12c27ee8dfc42277d3b7" kindref="member">get_sonicator_freq_lock_pin</ref>(sonicator_id);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>freq_lock_pin<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1abc081dd26e4791dc70d4d11406c60d34" kindref="member">get_sonicator_freq_lock_pin</ref>(sonicator_id);</highlight></codeline>
 <codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>state;</highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/>result<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1af23d343920eacb1d974f8d9bed1c2fec" kindref="member">gpio_read_pin</ref>(<ref refid="dc/d16/sonicator_8h_1ad09a021ad4441f9f17a7ff6ebe8c7b29" kindref="member">freq_lock_pin</ref>,<sp/>&amp;state);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/>result<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1af23d343920eacb1d974f8d9bed1c2fec" kindref="member">gpio_read_pin</ref>(freq_lock_pin,<sp/>&amp;state);</highlight></codeline>
 <codeline lineno="276"><highlight class="normal"></highlight></codeline>
 <codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Frequency<sp/>lock<sp/>is<sp/>active<sp/>HIGH<sp/>(via<sp/>optocoupler)</highlight><highlight class="normal"></highlight></codeline>
@@ -1239,202 +862,203 @@
 <codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a3356861ebced78ebc885c06a9abad081" kindref="member">gpio_write_pin</ref>(<ref refid="d4/d7e/system__config_8h_1a089a71f836911c71b3f73fdd3b4b890b" kindref="member">STATUS_LED_PIN</ref>,<sp/>state);</highlight></codeline>
 <codeline lineno="287"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="288"><highlight class="normal"></highlight></codeline>
-<codeline lineno="292" refid="da/d2b/class_atmega_gpio" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="da/d2b/class_atmega_gpio_1af2a15925181bb6028f1d38abd12d66f6" kindref="member">AtmegaGpio</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref><sp/>{</highlight></codeline>
-<codeline lineno="293"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>initialized_;</highlight></codeline>
-<codeline lineno="295"><highlight class="normal"></highlight></codeline>
-<codeline lineno="296"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/d2b/class_atmega_gpio_1af2a15925181bb6028f1d38abd12d66f6" kindref="member">AtmegaGpio</ref>()<sp/>:<sp/>initialized_(</highlight><highlight class="keyword">false</highlight><highlight class="normal">)<sp/>{}</highlight></codeline>
-<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="da/d2b/class_atmega_gpio_1a23fb76168dfae602d1c39aac82e94b54" kindref="member">~AtmegaGpio</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="299"><highlight class="normal"></highlight></codeline>
-<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Core<sp/>GPIO<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="da/d2b/class_atmega_gpio_1a16e0bcae1d97ee6245adebde7e23d600" kindref="member">init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1a33d278bd8510192b4fdadf20fa22fe61" kindref="member">gpio_init</ref>()<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>initialized_<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="308"><highlight class="normal"></highlight></codeline>
-<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="da/d2b/class_atmega_gpio_1a55d776d5c810d4ec1fa38b02903db710" kindref="member">setPinMode</ref>(uint8_t<sp/>pin,<sp/>uint8_t<sp/>mode)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454" kindref="member">gpio_mode_t</ref><sp/>gpio_mode;</highlight></codeline>
-<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(mode)<sp/>{</highlight></codeline>
-<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:<sp/>gpio_mode<sp/>=<sp/><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454a61ddb59c5e9a9cc6d9cf99d11a36920b" kindref="member">GPIO_MODE_INPUT</ref>;<sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:<sp/>gpio_mode<sp/>=<sp/><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454aa5824cd687ac84449b093087c25cec7c" kindref="member">GPIO_MODE_OUTPUT</ref>;<sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2:<sp/>gpio_mode<sp/>=<sp/><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454a946f5f8d0fa3b4199c28a63446095cb9" kindref="member">GPIO_MODE_INPUT_PULLUP</ref>;<sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1a6627ec6372faceba7b8edb638cc94580" kindref="member">gpio_set_pin_mode</ref>(pin,<sp/>gpio_mode)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>);</highlight></codeline>
-<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="319"><highlight class="normal"></highlight></codeline>
-<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="da/d2b/class_atmega_gpio_1a2d86ba45e177565b041c852e7315a043" kindref="member">digitalWrite</ref>(uint8_t<sp/>pin,<sp/>uint8_t<sp/>value)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>state<sp/>=<sp/>(value<sp/>==<sp/>0)<sp/>?<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ad41cdd897d9b8714ef45ed6e9eba0dfa" kindref="member">GPIO_LOW</ref><sp/>:<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ab05c5a854da4602143b6bd6096d86c4d" kindref="member">GPIO_HIGH</ref>;</highlight></codeline>
-<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1a3356861ebced78ebc885c06a9abad081" kindref="member">gpio_write_pin</ref>(pin,<sp/>state)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>);</highlight></codeline>
-<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="324"><highlight class="normal"></highlight></codeline>
-<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="da/d2b/class_atmega_gpio_1a5f829675cc361384a99f5b8ffb74a5f5" kindref="member">digitalRead</ref>(uint8_t<sp/>pin)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>state;</highlight></codeline>
-<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1af23d343920eacb1d974f8d9bed1c2fec" kindref="member">gpio_read_pin</ref>(pin,<sp/>&amp;state)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(state<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ab05c5a854da4602143b6bd6096d86c4d" kindref="member">GPIO_HIGH</ref>)<sp/>?<sp/>1<sp/>:<sp/>0;</highlight></codeline>
-<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;<sp/></highlight><highlight class="comment">//<sp/>Default<sp/>to<sp/>LOW<sp/>on<sp/>error</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="332"><highlight class="normal"></highlight></codeline>
-<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="da/d2b/class_atmega_gpio_1aaec357028ffcf87142b0f14305abcdea" kindref="member">togglePin</ref>(uint8_t<sp/>pin)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1a1044034cb78746356ec8ae1b4b33419e" kindref="member">gpio_toggle_pin</ref>(pin)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>);</highlight></codeline>
-<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="336"><highlight class="normal"></highlight></codeline>
-<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Sonicator-specific<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="da/d2b/class_atmega_gpio_1a7ad874c13e514feb1c955cccecd34d78" kindref="member">sonicatorStart</ref>(uint8_t<sp/>sonicator_id)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1a6697ca0fd5b0210af4d5c97e11efa3c9" kindref="member">gpio_sonicator_start</ref>(sonicator_id)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>);</highlight></codeline>
-<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="341"><highlight class="normal"></highlight></codeline>
-<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="da/d2b/class_atmega_gpio_1a315fbbb515aa04e8dd380283171b4e04" kindref="member">sonicatorStop</ref>(uint8_t<sp/>sonicator_id)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1a33a32957b81034c07f3685b90580d482" kindref="member">gpio_sonicator_stop</ref>(sonicator_id)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>);</highlight></codeline>
-<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="345"><highlight class="normal"></highlight></codeline>
-<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="da/d2b/class_atmega_gpio_1ab62475065592fde9b6cc1cc78b21cbed" kindref="member">sonicatorReset</ref>(uint8_t<sp/>sonicator_id)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1a9b325245641aadf28c1c28e70fc3d355" kindref="member">gpio_sonicator_reset</ref>(sonicator_id)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>);</highlight></codeline>
-<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="349"><highlight class="normal"></highlight></codeline>
-<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="da/d2b/class_atmega_gpio_1a140b942b2478d4c878b5e1c2a3724d36" kindref="member">sonicatorReadOverload</ref>(uint8_t<sp/>sonicator_id,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>state)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1af4700a3e3d882c0cc3d14a3ba5e0c66d" kindref="member">gpio_sonicator_read_overload</ref>(sonicator_id,<sp/>state)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>);</highlight></codeline>
-<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="353"><highlight class="normal"></highlight></codeline>
-<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="da/d2b/class_atmega_gpio_1a1037ffea170bdaf84630785a40a5f07e" kindref="member">sonicatorReadFreqLock</ref>(uint8_t<sp/>sonicator_id,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>state)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1af3b6ea8f9b5c77e43fa4d22fffc2c872" kindref="member">gpio_sonicator_read_freq_lock</ref>(sonicator_id,<sp/>state)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>);</highlight></codeline>
-<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="357"><highlight class="normal"></highlight></codeline>
-<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="da/d2b/class_atmega_gpio_1a1131f0e828be3842bdbc749e64a7c442" kindref="member">statusLed</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>state)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>gpio_state<sp/>=<sp/>state<sp/>?<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ab05c5a854da4602143b6bd6096d86c4d" kindref="member">GPIO_HIGH</ref><sp/>:<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ad41cdd897d9b8714ef45ed6e9eba0dfa" kindref="member">GPIO_LOW</ref>;</highlight></codeline>
-<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1a868df198e014b5e9b2ab134a16384683" kindref="member">gpio_status_led</ref>(gpio_state)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>);</highlight></codeline>
-<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="362"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="363"><highlight class="normal"></highlight></codeline>
-<codeline lineno="364"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="365"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SINGLETON<sp/>INSTANCE<sp/>AND<sp/>C<sp/>API<sp/>WRAPPER<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="366"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="367"><highlight class="normal"></highlight></codeline>
-<codeline lineno="368"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Singleton<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="369"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="da/d2b/class_atmega_gpio" kindref="compound">AtmegaGpio</ref>*<sp/><ref refid="de/d31/gpio_8cpp_1a027d78497d8287aa52ef0ea358c40c4f" kindref="member">g_gpio_instance</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="370"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a04523bca2df9f5c06205deb08f385d9c" kindref="member">g_gpio_c_api_initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="371"><highlight class="normal"></highlight></codeline>
-<codeline lineno="372"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Get<sp/>or<sp/>create<sp/>singleton<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="373"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="da/d2b/class_atmega_gpio" kindref="compound">AtmegaGpio</ref>*<sp/><ref refid="de/d31/gpio_8cpp_1a5cbeac76ddc98b8d6ae87cde6c461d6e" kindref="member">getGpioInstance</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="de/d31/gpio_8cpp_1a027d78497d8287aa52ef0ea358c40c4f" kindref="member">g_gpio_instance</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d31/gpio_8cpp_1a027d78497d8287aa52ef0ea358c40c4f" kindref="member">g_gpio_instance</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="da/d2b/class_atmega_gpio" kindref="compound">AtmegaGpio</ref>();</highlight></codeline>
-<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a027d78497d8287aa52ef0ea358c40c4f" kindref="member">g_gpio_instance</ref>;</highlight></codeline>
-<codeline lineno="378"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="379"><highlight class="normal"></highlight></codeline>
-<codeline lineno="380"><highlight class="normal"></highlight><highlight class="comment">//<sp/>C<sp/>API<sp/>wrapper<sp/>for<sp/>OOP<sp/>GPIO</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="381"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="382"><highlight class="normal"></highlight></codeline>
-<codeline lineno="383"><highlight class="normal"><ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref>*<sp/><ref refid="de/d31/gpio_8cpp_1a81706c4c31a95b436011dd257c30522e" kindref="member">gpio_create_instance</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a5cbeac76ddc98b8d6ae87cde6c461d6e" kindref="member">getGpioInstance</ref>();</highlight></codeline>
-<codeline lineno="385"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="386"><highlight class="normal"></highlight></codeline>
-<codeline lineno="387"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a911872f876b7b79de64b35e7bcd0132e" kindref="member">gpio_oop_init</ref>(<ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref>*<sp/>instance)<sp/>{</highlight></codeline>
-<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;<ref refid="d4/d45/class_i_gpio_port_1a60c1a7430f3e5bae47f5c62130ab989a" kindref="member">init</ref>();</highlight></codeline>
-<codeline lineno="390"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="391"><highlight class="normal"></highlight></codeline>
-<codeline lineno="392"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1afed04aa8be982c750c589dbaf7da18e9" kindref="member">gpio_oop_set_pin_mode</ref>(<ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref>*<sp/>instance,<sp/>uint8_t<sp/>pin,<sp/>uint8_t<sp/>mode)<sp/>{</highlight></codeline>
-<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;<ref refid="d4/d45/class_i_gpio_port_1ac9d71023f4ce28da95f68c4c9df4dab0" kindref="member">setPinMode</ref>(pin,<sp/>mode);</highlight></codeline>
-<codeline lineno="395"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="396"><highlight class="normal"></highlight></codeline>
-<codeline lineno="397"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a8d2269970e16f0b00c8c05b3f3a171d6" kindref="member">gpio_oop_digital_write</ref>(<ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref>*<sp/>instance,<sp/>uint8_t<sp/>pin,<sp/>uint8_t<sp/>value)<sp/>{</highlight></codeline>
-<codeline lineno="398"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;<ref refid="d4/d45/class_i_gpio_port_1add58b07a6da42c6bcbd986f4507da15a" kindref="member">digitalWrite</ref>(pin,<sp/>value);</highlight></codeline>
-<codeline lineno="400"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="401"><highlight class="normal"></highlight></codeline>
-<codeline lineno="402"><highlight class="normal">uint8_t<sp/><ref refid="de/d31/gpio_8cpp_1ad676442d117e07eddf128a1d7e3d9588" kindref="member">gpio_oop_digital_read</ref>(<ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref>*<sp/>instance,<sp/>uint8_t<sp/>pin)<sp/>{</highlight></codeline>
-<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="404"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;<ref refid="d4/d45/class_i_gpio_port_1a1f9e986f6414805bc3ad867e251af024" kindref="member">digitalRead</ref>(pin);</highlight></codeline>
-<codeline lineno="405"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="406"><highlight class="normal"></highlight></codeline>
-<codeline lineno="407"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a109debb44598253f26bfd3547a861fca" kindref="member">gpio_oop_toggle_pin</ref>(<ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref>*<sp/>instance,<sp/>uint8_t<sp/>pin)<sp/>{</highlight></codeline>
-<codeline lineno="408"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="409"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;<ref refid="d4/d45/class_i_gpio_port_1a23039e24be8f75e22b60cfe17d91b1cc" kindref="member">togglePin</ref>(pin);</highlight></codeline>
-<codeline lineno="410"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="411"><highlight class="normal"></highlight></codeline>
-<codeline lineno="412"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a8a48d759e8b77d8fa0a2d3be206c2a9f" kindref="member">gpio_oop_sonicator_start</ref>(<ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref>*<sp/>instance,<sp/>uint8_t<sp/>sonicator_id)<sp/>{</highlight></codeline>
-<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;<ref refid="d4/d45/class_i_gpio_port_1a2d1b5a7f40485ffbce7eaf966e5068eb" kindref="member">sonicatorStart</ref>(sonicator_id);</highlight></codeline>
-<codeline lineno="415"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="416"><highlight class="normal"></highlight></codeline>
-<codeline lineno="417"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a595d3b18773140384a755f22e239e206" kindref="member">gpio_oop_sonicator_stop</ref>(<ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref>*<sp/>instance,<sp/>uint8_t<sp/>sonicator_id)<sp/>{</highlight></codeline>
-<codeline lineno="418"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="419"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;<ref refid="d4/d45/class_i_gpio_port_1a01cc2219c0d670eded2410efcc41eb73" kindref="member">sonicatorStop</ref>(sonicator_id);</highlight></codeline>
-<codeline lineno="420"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="421"><highlight class="normal"></highlight></codeline>
-<codeline lineno="422"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a4b837126b7aa7967d18206cdc0ae82f7" kindref="member">gpio_oop_sonicator_reset</ref>(<ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref>*<sp/>instance,<sp/>uint8_t<sp/>sonicator_id)<sp/>{</highlight></codeline>
-<codeline lineno="423"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;<ref refid="d4/d45/class_i_gpio_port_1a6b753a07382868258b938d839dddaaeb" kindref="member">sonicatorReset</ref>(sonicator_id);</highlight></codeline>
-<codeline lineno="425"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="426"><highlight class="normal"></highlight></codeline>
-<codeline lineno="427"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a36f759cb0836bc79f44c9a55a5203296" kindref="member">gpio_oop_sonicator_read_overload</ref>(<ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref>*<sp/>instance,<sp/>uint8_t<sp/>sonicator_id,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>state)<sp/>{</highlight></codeline>
-<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;<ref refid="d4/d45/class_i_gpio_port_1ac449ea85a3924a8aa7a7a03afe092a76" kindref="member">sonicatorReadOverload</ref>(sonicator_id,<sp/>state);</highlight></codeline>
-<codeline lineno="430"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="431"><highlight class="normal"></highlight></codeline>
-<codeline lineno="432"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a6f90b9bece4d16ffc3e226c6d5a11b3e" kindref="member">gpio_oop_sonicator_read_freq_lock</ref>(<ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref>*<sp/>instance,<sp/>uint8_t<sp/>sonicator_id,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>state)<sp/>{</highlight></codeline>
-<codeline lineno="433"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="434"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;<ref refid="d4/d45/class_i_gpio_port_1ac98cefcacbe7cfd43bf5cf28d8dee833" kindref="member">sonicatorReadFreqLock</ref>(sonicator_id,<sp/>state);</highlight></codeline>
-<codeline lineno="435"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="436"><highlight class="normal"></highlight></codeline>
-<codeline lineno="437"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a182a5c8639b12137915c83d04853c3c5" kindref="member">gpio_oop_status_led</ref>(<ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref>*<sp/>instance,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>state)<sp/>{</highlight></codeline>
-<codeline lineno="438"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="439"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;<ref refid="d4/d45/class_i_gpio_port_1a77a29641b3e8f4e58d5741483a1bfc89" kindref="member">statusLed</ref>(state);</highlight></codeline>
-<codeline lineno="440"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="441"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">AtmegaGpio<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>IGpioPort<sp/>{</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>initialized_;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>AtmegaGpio()<sp/>:<sp/>initialized_(false)<sp/>{}</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~AtmegaGpio()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Core<sp/>GPIO<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>init(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1a33d278bd8510192b4fdadf20fa22fe61" kindref="member">gpio_init</ref>()<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>initialized_<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>setPinMode(uint8_t<sp/>pin,<sp/>uint8_t<sp/>mode)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454" kindref="member">gpio_mode_t</ref><sp/>gpio_mode;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(mode)<sp/>{</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:<sp/>gpio_mode<sp/>=<sp/><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454a61ddb59c5e9a9cc6d9cf99d11a36920b" kindref="member">GPIO_MODE_INPUT</ref>;<sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:<sp/>gpio_mode<sp/>=<sp/><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454aa5824cd687ac84449b093087c25cec7c" kindref="member">GPIO_MODE_OUTPUT</ref>;<sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2:<sp/>gpio_mode<sp/>=<sp/><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454a946f5f8d0fa3b4199c28a63446095cb9" kindref="member">GPIO_MODE_INPUT_PULLUP</ref>;<sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1a6627ec6372faceba7b8edb638cc94580" kindref="member">gpio_set_pin_mode</ref>(pin,<sp/>gpio_mode)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>);</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>digitalWrite(uint8_t<sp/>pin,<sp/>uint8_t<sp/>value)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>state<sp/>=<sp/>(value<sp/>==<sp/>0)<sp/>?<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ad41cdd897d9b8714ef45ed6e9eba0dfa" kindref="member">GPIO_LOW</ref><sp/>:<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ab05c5a854da4602143b6bd6096d86c4d" kindref="member">GPIO_HIGH</ref>;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1a3356861ebced78ebc885c06a9abad081" kindref="member">gpio_write_pin</ref>(pin,<sp/>state)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>);</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>digitalRead(uint8_t<sp/>pin)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>state;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1af23d343920eacb1d974f8d9bed1c2fec" kindref="member">gpio_read_pin</ref>(pin,<sp/>&amp;state)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(state<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ab05c5a854da4602143b6bd6096d86c4d" kindref="member">GPIO_HIGH</ref>)<sp/>?<sp/>1<sp/>:<sp/>0;</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;<sp/></highlight><highlight class="comment">//<sp/>Default<sp/>to<sp/>LOW<sp/>on<sp/>error</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>togglePin(uint8_t<sp/>pin)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1a1044034cb78746356ec8ae1b4b33419e" kindref="member">gpio_toggle_pin</ref>(pin)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>);</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Sonicator-specific<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>sonicatorStart(uint8_t<sp/>sonicator_id)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1a6697ca0fd5b0210af4d5c97e11efa3c9" kindref="member">gpio_sonicator_start</ref>(sonicator_id)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>);</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>sonicatorStop(uint8_t<sp/>sonicator_id)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1a33a32957b81034c07f3685b90580d482" kindref="member">gpio_sonicator_stop</ref>(sonicator_id)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>);</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>sonicatorReset(uint8_t<sp/>sonicator_id)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1a9b325245641aadf28c1c28e70fc3d355" kindref="member">gpio_sonicator_reset</ref>(sonicator_id)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>);</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>sonicatorReadOverload(uint8_t<sp/>sonicator_id,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>state)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1af4700a3e3d882c0cc3d14a3ba5e0c66d" kindref="member">gpio_sonicator_read_overload</ref>(sonicator_id,<sp/>state)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>);</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>sonicatorReadFreqLock(uint8_t<sp/>sonicator_id,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>state)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1af3b6ea8f9b5c77e43fa4d22fffc2c872" kindref="member">gpio_sonicator_read_freq_lock</ref>(sonicator_id,<sp/>state)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>);</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>statusLed(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>state)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>gpio_state<sp/>=<sp/>state<sp/>?<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ab05c5a854da4602143b6bd6096d86c4d" kindref="member">GPIO_HIGH</ref><sp/>:<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ad41cdd897d9b8714ef45ed6e9eba0dfa" kindref="member">GPIO_LOW</ref>;</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1a868df198e014b5e9b2ab134a16384683" kindref="member">gpio_status_led</ref>(gpio_state)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>);</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="363"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SINGLETON<sp/>INSTANCE<sp/>AND<sp/>C<sp/>API<sp/>WRAPPER<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Singleton<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>AtmegaGpio*<sp/>g_gpio_instance<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>g_gpio_c_api_initialized<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Get<sp/>or<sp/>create<sp/>singleton<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="374"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>AtmegaGpio*<sp/>getGpioInstance()<sp/>{</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!g_gpio_instance)<sp/>{</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_gpio_instance<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>AtmegaGpio();</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>g_gpio_instance;</highlight></codeline>
+<codeline lineno="379"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight></codeline>
+<codeline lineno="381"><highlight class="normal"></highlight><highlight class="comment">//<sp/>C<sp/>API<sp/>wrapper<sp/>for<sp/>OOP<sp/>GPIO</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"></highlight></codeline>
+<codeline lineno="384"><highlight class="normal">IGpioPort*<sp/>gpio_create_instance(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>getGpioInstance();</highlight></codeline>
+<codeline lineno="386"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"></highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>gpio_oop_init(IGpioPort*<sp/>instance)<sp/>{</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;init();</highlight></codeline>
+<codeline lineno="391"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"></highlight></codeline>
+<codeline lineno="393"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>gpio_oop_set_pin_mode(IGpioPort*<sp/>instance,<sp/>uint8_t<sp/>pin,<sp/>uint8_t<sp/>mode)<sp/>{</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;setPinMode(pin,<sp/>mode);</highlight></codeline>
+<codeline lineno="396"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"></highlight></codeline>
+<codeline lineno="398"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>gpio_oop_digital_write(IGpioPort*<sp/>instance,<sp/>uint8_t<sp/>pin,<sp/>uint8_t<sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;digitalWrite(pin,<sp/>value);</highlight></codeline>
+<codeline lineno="401"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"></highlight></codeline>
+<codeline lineno="403"><highlight class="normal">uint8_t<sp/>gpio_oop_digital_read(IGpioPort*<sp/>instance,<sp/>uint8_t<sp/>pin)<sp/>{</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;digitalRead(pin);</highlight></codeline>
+<codeline lineno="406"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="407"><highlight class="normal"></highlight></codeline>
+<codeline lineno="408"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>gpio_oop_toggle_pin(IGpioPort*<sp/>instance,<sp/>uint8_t<sp/>pin)<sp/>{</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;togglePin(pin);</highlight></codeline>
+<codeline lineno="411"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"></highlight></codeline>
+<codeline lineno="413"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>gpio_oop_sonicator_start(IGpioPort*<sp/>instance,<sp/>uint8_t<sp/>sonicator_id)<sp/>{</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;sonicatorStart(sonicator_id);</highlight></codeline>
+<codeline lineno="416"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"></highlight></codeline>
+<codeline lineno="418"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>gpio_oop_sonicator_stop(IGpioPort*<sp/>instance,<sp/>uint8_t<sp/>sonicator_id)<sp/>{</highlight></codeline>
+<codeline lineno="419"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;sonicatorStop(sonicator_id);</highlight></codeline>
+<codeline lineno="421"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="422"><highlight class="normal"></highlight></codeline>
+<codeline lineno="423"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>gpio_oop_sonicator_reset(IGpioPort*<sp/>instance,<sp/>uint8_t<sp/>sonicator_id)<sp/>{</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="425"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;sonicatorReset(sonicator_id);</highlight></codeline>
+<codeline lineno="426"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"></highlight></codeline>
+<codeline lineno="428"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>gpio_oop_sonicator_read_overload(IGpioPort*<sp/>instance,<sp/>uint8_t<sp/>sonicator_id,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>state)<sp/>{</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;sonicatorReadOverload(sonicator_id,<sp/>state);</highlight></codeline>
+<codeline lineno="431"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"></highlight></codeline>
+<codeline lineno="433"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>gpio_oop_sonicator_read_freq_lock(IGpioPort*<sp/>instance,<sp/>uint8_t<sp/>sonicator_id,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>state)<sp/>{</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="435"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;sonicatorReadFreqLock(sonicator_id,<sp/>state);</highlight></codeline>
+<codeline lineno="436"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="437"><highlight class="normal"></highlight></codeline>
+<codeline lineno="438"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>gpio_oop_status_led(IGpioPort*<sp/>instance,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>state)<sp/>{</highlight></codeline>
+<codeline lineno="439"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!instance)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="440"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>instance-&gt;statusLed(state);</highlight></codeline>
+<codeline lineno="441"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="442"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>extern<sp/>&quot;C&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="443"><highlight class="normal"></highlight></codeline>
-<codeline lineno="444"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a46af2ad3bbaea3a17376f67d85b8f282" kindref="member">is_valid_pin</ref>(uint8_t<sp/>pin)<sp/>{</highlight></codeline>
-<codeline lineno="445"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ATmega32A<sp/>has<sp/>32<sp/>GPIO<sp/>pins<sp/>(4<sp/>ports<sp/>×<sp/>8<sp/>pins)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="446"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(pin<sp/>&lt;=<sp/>31);</highlight></codeline>
-<codeline lineno="447"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="448"><highlight class="normal"></highlight></codeline>
-<codeline lineno="449"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="de/d31/gpio_8cpp_1a57d27869d3322aa9d080bb0f941c236b" kindref="member">get_sonicator_start_pin</ref>(uint8_t<sp/>sonicator_id)<sp/>{</highlight></codeline>
-<codeline lineno="450"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(sonicator_id)<sp/>{</highlight></codeline>
-<codeline lineno="451"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/daa/group___sonicator1_1gaae4fd2379cc5fbdc73e55d3c3ba60295" kindref="member">SON1_START_PIN</ref>;</highlight></codeline>
-<codeline lineno="452"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d2/d37/group___sonicator2_1gab33ac39513191b46f1e56efe3b903f90" kindref="member">SON2_START_PIN</ref>;</highlight></codeline>
-<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>3:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/dd5/group___sonicator3_1gadf3d1736d4bbe2a9877a400912b3878e" kindref="member">SON3_START_PIN</ref>;</highlight></codeline>
-<codeline lineno="454"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>4:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dd/d28/group___sonicator4_1ga984840f9d3a5e89fbaedc95dbb27d454" kindref="member">SON4_START_PIN</ref>;</highlight></codeline>
-<codeline lineno="455"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0xFF;<sp/></highlight><highlight class="comment">//<sp/>Invalid</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="456"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="457"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="458"><highlight class="normal"></highlight></codeline>
-<codeline lineno="459"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="de/d31/gpio_8cpp_1a787f438593a73fef9fbbc5e438e22794" kindref="member">get_sonicator_reset_pin</ref>(uint8_t<sp/>sonicator_id)<sp/>{</highlight></codeline>
-<codeline lineno="460"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(sonicator_id)<sp/>{</highlight></codeline>
-<codeline lineno="461"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/daa/group___sonicator1_1gabc7bc420dadb6a321ca215951cec19ca" kindref="member">SON1_RESET_PIN</ref>;</highlight></codeline>
-<codeline lineno="462"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d2/d37/group___sonicator2_1ga8cf17babe13b3877fb67d2dadaaa622e" kindref="member">SON2_RESET_PIN</ref>;</highlight></codeline>
-<codeline lineno="463"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>3:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/dd5/group___sonicator3_1gac6cece380c77920cabc81a8c6bbb085c" kindref="member">SON3_RESET_PIN</ref>;</highlight></codeline>
-<codeline lineno="464"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>4:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dd/d28/group___sonicator4_1gaffd40dfb916a5b6133e06da57654bd0a" kindref="member">SON4_RESET_PIN</ref>;</highlight></codeline>
-<codeline lineno="465"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0xFF;<sp/></highlight><highlight class="comment">//<sp/>Invalid</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="466"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="467"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="468"><highlight class="normal"></highlight></codeline>
-<codeline lineno="469"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="de/d31/gpio_8cpp_1a2aa6e65b96acd03e30c50bcdcc0430f1" kindref="member">get_sonicator_overload_pin</ref>(uint8_t<sp/>sonicator_id)<sp/>{</highlight></codeline>
-<codeline lineno="470"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(sonicator_id)<sp/>{</highlight></codeline>
-<codeline lineno="471"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/daa/group___sonicator1_1ga7f0be9975baddeff02c6056ffe6d636c" kindref="member">SON1_OVERLOAD_PIN</ref>;</highlight></codeline>
-<codeline lineno="472"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d2/d37/group___sonicator2_1gaf3ec0a2a5f64f58fa6203b1724cf6f87" kindref="member">SON2_OVERLOAD_PIN</ref>;</highlight></codeline>
-<codeline lineno="473"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>3:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/dd5/group___sonicator3_1ga6c7f25996ac91220ca3948c24df60d8e" kindref="member">SON3_OVERLOAD_PIN</ref>;</highlight></codeline>
-<codeline lineno="474"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>4:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dd/d28/group___sonicator4_1ga786fd798d58acee8c64231ceee026427" kindref="member">SON4_OVERLOAD_PIN</ref>;</highlight></codeline>
-<codeline lineno="475"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0xFF;<sp/></highlight><highlight class="comment">//<sp/>Invalid</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="476"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="477"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="478"><highlight class="normal"></highlight></codeline>
-<codeline lineno="479"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="de/d31/gpio_8cpp_1a0de5a132719a12c27ee8dfc42277d3b7" kindref="member">get_sonicator_freq_lock_pin</ref>(uint8_t<sp/>sonicator_id)<sp/>{</highlight></codeline>
-<codeline lineno="480"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(sonicator_id)<sp/>{</highlight></codeline>
-<codeline lineno="481"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/daa/group___sonicator1_1gad06198bc2ba85e227f39e226f18920ab" kindref="member">SON1_FREQ_LOCK_PIN</ref>;</highlight></codeline>
-<codeline lineno="482"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d2/d37/group___sonicator2_1ga720ab8aa137d5232b080de2d589beb4a" kindref="member">SON2_FREQ_LOCK_PIN</ref>;</highlight></codeline>
-<codeline lineno="483"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>3:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/dd5/group___sonicator3_1ga25c84b644eac031310445f8ceed65ec2" kindref="member">SON3_FREQ_LOCK_PIN</ref>;</highlight></codeline>
-<codeline lineno="484"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>4:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dd/d28/group___sonicator4_1gacd39ea816c2641f2f23d9df198bf018d" kindref="member">SON4_FREQ_LOCK_PIN</ref>;</highlight></codeline>
-<codeline lineno="485"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0xFF;<sp/></highlight><highlight class="comment">//<sp/>Invalid</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="486"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="487"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="443"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="444"><highlight class="normal"></highlight></codeline>
+<codeline lineno="445"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1aae33f92699625dcbd0fa4201b2a87167" kindref="member">is_valid_pin</ref>(uint8_t<sp/>pin)<sp/>{</highlight></codeline>
+<codeline lineno="446"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ATmega32A<sp/>has<sp/>32<sp/>GPIO<sp/>pins<sp/>(4<sp/>ports<sp/>×<sp/>8<sp/>pins)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="447"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(pin<sp/>&lt;=<sp/>31);</highlight></codeline>
+<codeline lineno="448"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="449"><highlight class="normal"></highlight></codeline>
+<codeline lineno="450"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="de/d31/gpio_8cpp_1a7686bcda780a34231dff43b5bcd17ce5" kindref="member">get_sonicator_start_pin</ref>(uint8_t<sp/>sonicator_id)<sp/>{</highlight></codeline>
+<codeline lineno="451"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(sonicator_id)<sp/>{</highlight></codeline>
+<codeline lineno="452"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/daa/group___sonicator1_1gaae4fd2379cc5fbdc73e55d3c3ba60295" kindref="member">SON1_START_PIN</ref>;</highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d2/d37/group___sonicator2_1gab33ac39513191b46f1e56efe3b903f90" kindref="member">SON2_START_PIN</ref>;</highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>3:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/dd5/group___sonicator3_1gadf3d1736d4bbe2a9877a400912b3878e" kindref="member">SON3_START_PIN</ref>;</highlight></codeline>
+<codeline lineno="455"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>4:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dd/d28/group___sonicator4_1ga984840f9d3a5e89fbaedc95dbb27d454" kindref="member">SON4_START_PIN</ref>;</highlight></codeline>
+<codeline lineno="456"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0xFF;<sp/></highlight><highlight class="comment">//<sp/>Invalid</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="457"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="458"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="459"><highlight class="normal"></highlight></codeline>
+<codeline lineno="460"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="de/d31/gpio_8cpp_1a56de2ecfb9bce3ba21f4b964d7b98ede" kindref="member">get_sonicator_reset_pin</ref>(uint8_t<sp/>sonicator_id)<sp/>{</highlight></codeline>
+<codeline lineno="461"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(sonicator_id)<sp/>{</highlight></codeline>
+<codeline lineno="462"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/daa/group___sonicator1_1gabc7bc420dadb6a321ca215951cec19ca" kindref="member">SON1_RESET_PIN</ref>;</highlight></codeline>
+<codeline lineno="463"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d2/d37/group___sonicator2_1ga8cf17babe13b3877fb67d2dadaaa622e" kindref="member">SON2_RESET_PIN</ref>;</highlight></codeline>
+<codeline lineno="464"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>3:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/dd5/group___sonicator3_1gac6cece380c77920cabc81a8c6bbb085c" kindref="member">SON3_RESET_PIN</ref>;</highlight></codeline>
+<codeline lineno="465"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>4:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dd/d28/group___sonicator4_1gaffd40dfb916a5b6133e06da57654bd0a" kindref="member">SON4_RESET_PIN</ref>;</highlight></codeline>
+<codeline lineno="466"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0xFF;<sp/></highlight><highlight class="comment">//<sp/>Invalid</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="467"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="468"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="469"><highlight class="normal"></highlight></codeline>
+<codeline lineno="470"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="de/d31/gpio_8cpp_1aee7e2b8fb5feff86e9832e9fb3581840" kindref="member">get_sonicator_overload_pin</ref>(uint8_t<sp/>sonicator_id)<sp/>{</highlight></codeline>
+<codeline lineno="471"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(sonicator_id)<sp/>{</highlight></codeline>
+<codeline lineno="472"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/daa/group___sonicator1_1ga7f0be9975baddeff02c6056ffe6d636c" kindref="member">SON1_OVERLOAD_PIN</ref>;</highlight></codeline>
+<codeline lineno="473"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d2/d37/group___sonicator2_1gaf3ec0a2a5f64f58fa6203b1724cf6f87" kindref="member">SON2_OVERLOAD_PIN</ref>;</highlight></codeline>
+<codeline lineno="474"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>3:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/dd5/group___sonicator3_1ga6c7f25996ac91220ca3948c24df60d8e" kindref="member">SON3_OVERLOAD_PIN</ref>;</highlight></codeline>
+<codeline lineno="475"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>4:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dd/d28/group___sonicator4_1ga786fd798d58acee8c64231ceee026427" kindref="member">SON4_OVERLOAD_PIN</ref>;</highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0xFF;<sp/></highlight><highlight class="comment">//<sp/>Invalid</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="477"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="478"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="479"><highlight class="normal"></highlight></codeline>
+<codeline lineno="480"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="de/d31/gpio_8cpp_1abc081dd26e4791dc70d4d11406c60d34" kindref="member">get_sonicator_freq_lock_pin</ref>(uint8_t<sp/>sonicator_id)<sp/>{</highlight></codeline>
+<codeline lineno="481"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(sonicator_id)<sp/>{</highlight></codeline>
+<codeline lineno="482"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/daa/group___sonicator1_1gad06198bc2ba85e227f39e226f18920ab" kindref="member">SON1_FREQ_LOCK_PIN</ref>;</highlight></codeline>
+<codeline lineno="483"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d2/d37/group___sonicator2_1ga720ab8aa137d5232b080de2d589beb4a" kindref="member">SON2_FREQ_LOCK_PIN</ref>;</highlight></codeline>
+<codeline lineno="484"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>3:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d6/dd5/group___sonicator3_1ga25c84b644eac031310445f8ceed65ec2" kindref="member">SON3_FREQ_LOCK_PIN</ref>;</highlight></codeline>
+<codeline lineno="485"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>4:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dd/d28/group___sonicator4_1gacd39ea816c2641f2f23d9df198bf018d" kindref="member">SON4_FREQ_LOCK_PIN</ref>;</highlight></codeline>
+<codeline lineno="486"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0xFF;<sp/></highlight><highlight class="comment">//<sp/>Invalid</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="487"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="488"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="src/modules/hal/gpio.cpp"/>
   </compounddef>

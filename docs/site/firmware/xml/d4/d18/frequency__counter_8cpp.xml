@@ -130,18 +130,19 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
-      <memberdef kind="function" id="d4/d18/frequency__counter_8cpp_1afe6035149a64d5f448fbda08e9d1b67f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>ISR</definition>
-        <argsstring>(PCINT1_vect)</argsstring>
-        <name>ISR</name>
+      <memberdef kind="function" id="d4/d18/frequency__counter_8cpp_1a32db71b05f686868ba23198a67d4c3cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool frequency_counter_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>frequency_counter_init</name>
         <param>
-          <type>PCINT1_vect</type>
+          <type>void</type>
         </param>
         <briefdescription>
 <para>Pin Change Interrupt for Port B (FREQ_DIV10_# pins) </para>
         </briefdescription>
         <detaileddescription>
+<para>Initialize frequency counting system.</para>
 <para><simplesect kind="note"><para>This ISR handles all 4 frequency input pins simultaneously</para>
 </simplesect>
 Optimized for minimal execution time while maintaining accuracy.<itemizedlist>
@@ -154,33 +155,7 @@ Optimized for minimal execution time while maintaining accuracy.<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/frequency_counter.cpp" line="53" column="1" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="53" bodyend="93"/>
-      </memberdef>
-      <memberdef kind="function" id="d4/d18/frequency__counter_8cpp_1a32db71b05f686868ba23198a67d4c3cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool frequency_counter_init</definition>
-        <argsstring>(void)</argsstring>
-        <name>frequency_counter_init</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Initialize frequency counting system. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>true if initialization successful</para>
-</simplesect>
-<itemizedlist>
-<listitem><para>Configures PB0-PB3 as inputs with pull-ups</para>
-</listitem><listitem><para>Sets up Pin Change Interrupt for Port B</para>
-</listitem><listitem><para>Initializes all frequency counter structures</para>
-</listitem><listitem><para>Enables global interrupts </para>
-</listitem></itemizedlist>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/modules/hal/frequency_counter.cpp" line="99" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="99" bodyend="144"/>
+        <location file="src/modules/hal/frequency_counter.cpp" line="101" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="101" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="d4/d18/frequency__counter_8cpp_1a04851abee44a28fb5f885b7418f915d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint16_t</type>
@@ -217,7 +192,7 @@ Optimized for minimal execution time while maintaining accuracy.<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/frequency_counter.cpp" line="146" column="10" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="146" bodyend="206"/>
+        <location file="src/modules/hal/frequency_counter.cpp" line="150" column="10" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="150" bodyend="210"/>
       </memberdef>
       <memberdef kind="function" id="d4/d18/frequency__counter_8cpp_1a6275d3d673d15714777f3f9de2b6d638" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint16_t</type>
@@ -247,7 +222,7 @@ Optimized for minimal execution time while maintaining accuracy.<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/frequency_counter.cpp" line="208" column="10" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="208" bodyend="214"/>
+        <location file="src/modules/hal/frequency_counter.cpp" line="212" column="10" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="212" bodyend="218"/>
       </memberdef>
       <memberdef kind="function" id="d4/d18/frequency__counter_8cpp_1a78324a942c9ab1188d1025eef62bdf30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -289,7 +264,7 @@ Optimized for minimal execution time while maintaining accuracy.<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/frequency_counter.cpp" line="216" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="216" bodyend="235"/>
+        <location file="src/modules/hal/frequency_counter.cpp" line="220" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="220" bodyend="239"/>
       </memberdef>
       <memberdef kind="function" id="d4/d18/frequency__counter_8cpp_1a87adb92382104661d9c6f069d8060a56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560" kindref="member">frequency_error_t</ref></type>
@@ -319,7 +294,7 @@ Optimized for minimal execution time while maintaining accuracy.<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/frequency_counter.cpp" line="237" column="19" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="237" bodyend="262"/>
+        <location file="src/modules/hal/frequency_counter.cpp" line="241" column="19" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="241" bodyend="266"/>
       </memberdef>
       <memberdef kind="function" id="d4/d18/frequency__counter_8cpp_1ad403235b359f53e21865ae2f572f9957" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -349,7 +324,7 @@ Optimized for minimal execution time while maintaining accuracy.<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/frequency_counter.cpp" line="264" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="264" bodyend="290"/>
+        <location file="src/modules/hal/frequency_counter.cpp" line="268" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="268" bodyend="294"/>
       </memberdef>
       <memberdef kind="function" id="d4/d18/frequency__counter_8cpp_1a6c72007a92de1bcc5635aa102d93c549" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -369,7 +344,7 @@ Verifies that the Pin Change Interrupt is working by checking if any edges have 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/frequency_counter.cpp" line="292" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="292" bodyend="308"/>
+        <location file="src/modules/hal/frequency_counter.cpp" line="296" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="296" bodyend="312"/>
       </memberdef>
       <memberdef kind="function" id="d4/d18/frequency__counter_8cpp_1a2fe922c0ba91e88d90cb10d9751ed8ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -411,7 +386,7 @@ Verifies that the Pin Change Interrupt is working by checking if any edges have 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/frequency_counter.cpp" line="310" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="310" bodyend="319"/>
+        <location file="src/modules/hal/frequency_counter.cpp" line="314" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="314" bodyend="323"/>
       </memberdef>
       <memberdef kind="function" id="d4/d18/frequency__counter_8cpp_1a1770280d6beb9fd8e76c824f750074a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -453,7 +428,7 @@ Verifies that the Pin Change Interrupt is working by checking if any edges have 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/frequency_counter.cpp" line="321" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="321" bodyend="328"/>
+        <location file="src/modules/hal/frequency_counter.cpp" line="325" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="325" bodyend="332"/>
       </memberdef>
       <memberdef kind="function" id="d4/d18/frequency__counter_8cpp_1a3d6110339a7085a38f9fe1f0083b1dab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -495,7 +470,7 @@ Verifies that the Pin Change Interrupt is working by checking if any edges have 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/frequency_counter.cpp" line="330" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="330" bodyend="345"/>
+        <location file="src/modules/hal/frequency_counter.cpp" line="334" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="334" bodyend="349"/>
       </memberdef>
       <memberdef kind="function" id="d4/d18/frequency__counter_8cpp_1a36519859f92bb1168f619d453d91e920" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint16_t</type>
@@ -525,7 +500,7 @@ Provides faster frequency updates by measuring time between consecutive edges ra
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/frequency_counter.cpp" line="351" column="10" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="351" bodyend="375"/>
+        <location file="src/modules/hal/frequency_counter.cpp" line="355" column="10" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="355" bodyend="379"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -566,332 +541,336 @@ Implements real-time frequency measurement for FREQ_DIV10_# pins using Pin Chang
 <codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>INTERRUPT<sp/>SERVICE<sp/>ROUTINE</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><ref refid="d4/d18/frequency__counter_8cpp_1afe6035149a64d5f448fbda08e9d1b67f" kindref="member">ISR</ref>(PCINT1_vect)<sp/>{</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Capture<sp/>timestamp<sp/>as<sp/>early<sp/>as<sp/>possible<sp/>for<sp/>precision</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>current_time<sp/>=<sp/>micros();</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>current_portb<sp/>=<sp/>PINB;</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>changed_bits<sp/>=<sp/>current_portb<sp/>^<sp/><ref refid="d4/d18/frequency__counter_8cpp_1a09a4fb83d3d9c7e713b1bee0875328ec" kindref="member">prev_portb_state</ref>;</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>ISR<sp/>statistics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d18/frequency__counter_8cpp_1aeb04237b94198876553cdd1733871568" kindref="member">total_isr_executions</ref>++;</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d18/frequency__counter_8cpp_1af60251a59e7aaa16566f482be62a6258" kindref="member">last_isr_timestamp</ref><sp/>=<sp/>current_time;</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>each<sp/>frequency<sp/>pin<sp/>for<sp/>rising<sp/>edge</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref>;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>pin_mask<sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>i);<sp/><sp/></highlight><highlight class="comment">//<sp/>PB0,<sp/>PB1,<sp/>PB2,<sp/>PB3</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Rising<sp/>edge<sp/>detected<sp/>on<sp/>this<sp/>pin?</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((changed_bits<sp/>&amp;<sp/>pin_mask)<sp/>&amp;&amp;<sp/>(current_portb<sp/>&amp;<sp/>pin_mask))<sp/>{</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/><ref refid="d5/d29/structfrequency__counter__t" kindref="compound">frequency_counter_t</ref>*<sp/>counter<sp/>=<sp/>&amp;<ref refid="d4/d18/frequency__counter_8cpp_1a853f9ac2214946dd2f65fb8dff4d95be" kindref="member">freq_counters</ref>[i];</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Apply<sp/>noise<sp/>filtering<sp/>if<sp/>enabled</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d4/d18/frequency__counter_8cpp_1a73c03c2d5cdc56297d1e90999adad845" kindref="member">noise_filter_enabled</ref>[i])<sp/>{</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_time<sp/>-<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1afad7a71a2d4032e5a9720d56f83f92fd" kindref="member">last_edge_timestamp</ref><sp/>&lt;<sp/><ref refid="de/d01/frequency__counter_8h_1aa901e4895ef2a8c808e4a7e95d33e88a" kindref="member">FREQ_NOISE_THRESHOLD_US</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ac5eb0f8b55423751597a91826158dc26" kindref="member">noise_filter_count</ref>++;</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>Skip<sp/>this<sp/>edge<sp/>-<sp/>too<sp/>soon<sp/>after<sp/>previous</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Valid<sp/>edge<sp/>detected</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a4a590aeff3ba50ea731a442e3a685ec7" kindref="member">edge_count</ref>++;</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a40b17164d0dc2868d05fc54f28f9a6a4" kindref="member">total_edges</ref>++;</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1afad7a71a2d4032e5a9720d56f83f92fd" kindref="member">last_edge_timestamp</ref><sp/>=<sp/>current_time;</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>measurement<sp/>window<sp/>completed</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>window_ms<sp/>=<sp/><ref refid="d4/d18/frequency__counter_8cpp_1abd932c4b9c4b5b5f58541f1535f80ae1" kindref="member">custom_windows</ref>[i]<sp/>?<sp/><ref refid="d4/d18/frequency__counter_8cpp_1abd932c4b9c4b5b5f58541f1535f80ae1" kindref="member">custom_windows</ref>[i]<sp/>:<sp/><ref refid="de/d01/frequency__counter_8h_1ab614cd2d53c453a37a253b15e49239be" kindref="member">FREQ_SAMPLE_WINDOW_MS</ref>;</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_time<sp/>-<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a1b37db7c3ff2e1db2017fb87f86bba22" kindref="member">window_start_time</ref><sp/>&gt;=<sp/>(window_ms<sp/>*<sp/>1000UL))<sp/>{</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a884e59e4d8c68c1dd60083afd13fdbc1" kindref="member">measurement_ready</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a09a4fb83d3d9c7e713b1bee0875328ec" kindref="member">prev_portb_state</ref><sp/>=<sp/>current_portb;</highlight></codeline>
-<codeline lineno="93"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PUBLIC<sp/>FUNCTION<sp/>IMPLEMENTATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PCICR)<sp/>&amp;&amp;<sp/>defined(PCMSK1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><ref refid="dc/de5/timer_8cpp_1ab16889ae984b9b798989a0d239283cac" kindref="member">ISR</ref>(PCINT1_vect)<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Capture<sp/>timestamp<sp/>as<sp/>early<sp/>as<sp/>possible<sp/>for<sp/>precision</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>current_time<sp/>=<sp/>micros();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>current_portb<sp/>=<sp/>PINB;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>changed_bits<sp/>=<sp/>current_portb<sp/>^<sp/><ref refid="d4/d18/frequency__counter_8cpp_1a09a4fb83d3d9c7e713b1bee0875328ec" kindref="member">prev_portb_state</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>ISR<sp/>statistics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d18/frequency__counter_8cpp_1aeb04237b94198876553cdd1733871568" kindref="member">total_isr_executions</ref>++;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d18/frequency__counter_8cpp_1af60251a59e7aaa16566f482be62a6258" kindref="member">last_isr_timestamp</ref><sp/>=<sp/>current_time;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>each<sp/>frequency<sp/>pin<sp/>for<sp/>rising<sp/>edge</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>pin_mask<sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>i);<sp/><sp/></highlight><highlight class="comment">//<sp/>PB0,<sp/>PB1,<sp/>PB2,<sp/>PB3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Rising<sp/>edge<sp/>detected<sp/>on<sp/>this<sp/>pin?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((changed_bits<sp/>&amp;<sp/>pin_mask)<sp/>&amp;&amp;<sp/>(current_portb<sp/>&amp;<sp/>pin_mask))<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/><ref refid="d5/d29/structfrequency__counter__t" kindref="compound">frequency_counter_t</ref>*<sp/>counter<sp/>=<sp/>&amp;<ref refid="d4/d18/frequency__counter_8cpp_1a853f9ac2214946dd2f65fb8dff4d95be" kindref="member">freq_counters</ref>[i];</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Apply<sp/>noise<sp/>filtering<sp/>if<sp/>enabled</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d4/d18/frequency__counter_8cpp_1a73c03c2d5cdc56297d1e90999adad845" kindref="member">noise_filter_enabled</ref>[i])<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_time<sp/>-<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1afad7a71a2d4032e5a9720d56f83f92fd" kindref="member">last_edge_timestamp</ref><sp/>&lt;<sp/><ref refid="de/d01/frequency__counter_8h_1aa901e4895ef2a8c808e4a7e95d33e88a" kindref="member">FREQ_NOISE_THRESHOLD_US</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ac5eb0f8b55423751597a91826158dc26" kindref="member">noise_filter_count</ref>++;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>Skip<sp/>this<sp/>edge<sp/>-<sp/>too<sp/>soon<sp/>after<sp/>previous</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Valid<sp/>edge<sp/>detected</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a4a590aeff3ba50ea731a442e3a685ec7" kindref="member">edge_count</ref>++;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a40b17164d0dc2868d05fc54f28f9a6a4" kindref="member">total_edges</ref>++;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1afad7a71a2d4032e5a9720d56f83f92fd" kindref="member">last_edge_timestamp</ref><sp/>=<sp/>current_time;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>measurement<sp/>window<sp/>completed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>window_ms<sp/>=<sp/><ref refid="d4/d18/frequency__counter_8cpp_1abd932c4b9c4b5b5f58541f1535f80ae1" kindref="member">custom_windows</ref>[i]<sp/>?<sp/><ref refid="d4/d18/frequency__counter_8cpp_1abd932c4b9c4b5b5f58541f1535f80ae1" kindref="member">custom_windows</ref>[i]<sp/>:<sp/><ref refid="de/d01/frequency__counter_8h_1ab614cd2d53c453a37a253b15e49239be" kindref="member">FREQ_SAMPLE_WINDOW_MS</ref>;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_time<sp/>-<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a1b37db7c3ff2e1db2017fb87f86bba22" kindref="member">window_start_time</ref><sp/>&gt;=<sp/>(window_ms<sp/>*<sp/>1000UL))<sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a884e59e4d8c68c1dd60083afd13fdbc1" kindref="member">measurement_ready</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a09a4fb83d3d9c7e713b1bee0875328ec" kindref="member">prev_portb_state</ref><sp/>=<sp/>current_portb;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
 <codeline lineno="97"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a32db71b05f686868ba23198a67d4c3cd" kindref="member">frequency_counter_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>interrupts<sp/>during<sp/>initialization</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>cli();</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>pins<sp/>as<sp/>inputs<sp/>with<sp/>pull-ups</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>DDRB<sp/>&amp;=<sp/>~0x0F;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PB0-PB3<sp/>as<sp/>inputs</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>PORTB<sp/>|=<sp/>0x0F;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>pull-ups</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>counter<sp/>structures</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/>micros();</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref>;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/><ref refid="d5/d29/structfrequency__counter__t" kindref="compound">frequency_counter_t</ref>*<sp/>counter<sp/>=<sp/>&amp;<ref refid="d4/d18/frequency__counter_8cpp_1a853f9ac2214946dd2f65fb8dff4d95be" kindref="member">freq_counters</ref>[i];</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>all<sp/>counters<sp/>and<sp/>flags</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a4a590aeff3ba50ea731a442e3a685ec7" kindref="member">edge_count</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1afad7a71a2d4032e5a9720d56f83f92fd" kindref="member">last_edge_timestamp</ref><sp/>=<sp/>now;</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a1b37db7c3ff2e1db2017fb87f86bba22" kindref="member">window_start_time</ref><sp/>=<sp/>now;</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a884e59e4d8c68c1dd60083afd13fdbc1" kindref="member">measurement_ready</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>statistics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a8e24a856728835fd91511845132ae866" kindref="member">calculated_frequency</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a040de51c9d1083ef321de5875a4fb1e1" kindref="member">total_measurements</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ade80daab29211faabc706d7be47ae8f2" kindref="member">error_count</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ac5eb0f8b55423751597a91826158dc26" kindref="member">noise_filter_count</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1acc7abfe168e61a0c97013433c4ba0543" kindref="member">min_frequency</ref><sp/>=<sp/>UINT16_MAX;</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a6af755d960a12acb09af33877efcd84f" kindref="member">max_frequency</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a40b17164d0dc2868d05fc54f28f9a6a4" kindref="member">total_edges</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ae803968ce093443c8a59649c40f5d5c6" kindref="member">last_calculation_time</ref><sp/>=<sp/>now;</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>ISR<sp/>statistics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d18/frequency__counter_8cpp_1aeb04237b94198876553cdd1733871568" kindref="member">total_isr_executions</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d18/frequency__counter_8cpp_1af60251a59e7aaa16566f482be62a6258" kindref="member">last_isr_timestamp</ref><sp/>=<sp/>now;</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>Pin<sp/>Change<sp/>Interrupt<sp/>for<sp/>Port<sp/>B</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>PCICR<sp/>|=<sp/>(1<sp/>&lt;&lt;<sp/>PCIE1);<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>PCINT1<sp/>group</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>PCMSK1<sp/>|=<sp/>0x0F;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>PCINT8-PCINT11<sp/>(PB0-PB3)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>initial<sp/>port<sp/>state</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a09a4fb83d3d9c7e713b1bee0875328ec" kindref="member">prev_portb_state</ref><sp/>=<sp/>PINB;</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>global<sp/>interrupts</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>sei();</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="144"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"></highlight></codeline>
-<codeline lineno="146"><highlight class="normal">uint16_t<sp/><ref refid="d4/d18/frequency__counter_8cpp_1a04851abee44a28fb5f885b7418f915d4" kindref="member">frequency_calculate</ref>(uint8_t<sp/>channel)<sp/>{</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/><ref refid="d5/d29/structfrequency__counter__t" kindref="compound">frequency_counter_t</ref>*<sp/>counter<sp/>=<sp/>&amp;<ref refid="d4/d18/frequency__counter_8cpp_1a853f9ac2214946dd2f65fb8dff4d95be" kindref="member">freq_counters</ref>[channel];</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>last<sp/>frequency<sp/>if<sp/>no<sp/>new<sp/>measurement<sp/>ready</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a884e59e4d8c68c1dd60083afd13fdbc1" kindref="member">measurement_ready</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a8e24a856728835fd91511845132ae866" kindref="member">calculated_frequency</ref>;</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>interrupts<sp/>briefly<sp/>to<sp/>get<sp/>consistent<sp/>snapshot</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>cli();</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>current_time<sp/>=<sp/>micros();</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>window_duration_us<sp/>=<sp/>current_time<sp/>-<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a1b37db7c3ff2e1db2017fb87f86bba22" kindref="member">window_start_time</ref>;</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>edge_count<sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a4a590aeff3ba50ea731a442e3a685ec7" kindref="member">edge_count</ref>;</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>for<sp/>next<sp/>measurement<sp/>window</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a4a590aeff3ba50ea731a442e3a685ec7" kindref="member">edge_count</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a1b37db7c3ff2e1db2017fb87f86bba22" kindref="member">window_start_time</ref><sp/>=<sp/>current_time;</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a884e59e4d8c68c1dd60083afd13fdbc1" kindref="member">measurement_ready</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>sei();</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Validate<sp/>measurement<sp/>has<sp/>sufficient<sp/>edges</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(edge_count<sp/>&lt;<sp/><ref refid="de/d01/frequency__counter_8h_1a4c68a1a1970f0a1b56a0049a439506e7" kindref="member">FREQ_MIN_EDGES</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ade80daab29211faabc706d7be47ae8f2" kindref="member">error_count</ref>++;</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ae803968ce093443c8a59649c40f5d5c6" kindref="member">last_calculation_time</ref><sp/>=<sp/>current_time;</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;<sp/></highlight><highlight class="comment">//<sp/>Not<sp/>enough<sp/>edges<sp/>for<sp/>reliable<sp/>measurement</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calculate<sp/>frequency:<sp/>(edges<sp/>/<sp/>window_seconds)<sp/>*<sp/>multiplier</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Avoid<sp/>floating<sp/>point:<sp/>(edges<sp/>*<sp/>1000000<sp/>/<sp/>window_us)<sp/>*<sp/>multiplier</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>frequency_raw<sp/>=<sp/>(edge_count<sp/>*<sp/>1000000UL)<sp/>/<sp/>window_duration_us;</highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>frequency_with_multiplier<sp/>=<sp/>frequency_raw<sp/>*<sp/><ref refid="de/d01/frequency__counter_8h_1a67f44a4ec4d5d5640d6b66b96e557a18" kindref="member">FREQ_MULTIPLIER</ref>;</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Validate<sp/>result<sp/>is<sp/>within<sp/>reasonable<sp/>range</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(frequency_with_multiplier<sp/>&gt;<sp/><ref refid="de/d01/frequency__counter_8h_1a4d2701f727c3ada07e38c1e5dd967ab8" kindref="member">FREQ_OUTPUT_MAX_HZ</ref><sp/>||<sp/></highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frequency_with_multiplier<sp/>&lt;<sp/><ref refid="de/d01/frequency__counter_8h_1adfcb70e034efc90d1d3c8cb1d71367ea" kindref="member">FREQ_OUTPUT_MIN_HZ</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ade80daab29211faabc706d7be47ae8f2" kindref="member">error_count</ref>++;</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ae803968ce093443c8a59649c40f5d5c6" kindref="member">last_calculation_time</ref><sp/>=<sp/>current_time;</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a8e24a856728835fd91511845132ae866" kindref="member">calculated_frequency</ref>;<sp/></highlight><highlight class="comment">//<sp/>Keep<sp/>last<sp/>good<sp/>value</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>frequency_result<sp/>=<sp/>(uint16_t)frequency_with_multiplier;</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>statistics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a8e24a856728835fd91511845132ae866" kindref="member">calculated_frequency</ref><sp/>=<sp/>frequency_result;</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a040de51c9d1083ef321de5875a4fb1e1" kindref="member">total_measurements</ref>++;</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ae803968ce093443c8a59649c40f5d5c6" kindref="member">last_calculation_time</ref><sp/>=<sp/>current_time;</highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>min/max<sp/>tracking</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(frequency_result<sp/>&lt;<sp/>counter-&gt;min_frequency)<sp/>{</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1acc7abfe168e61a0c97013433c4ba0543" kindref="member">min_frequency</ref><sp/>=<sp/>frequency_result;</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(frequency_result<sp/>&gt;<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a6af755d960a12acb09af33877efcd84f" kindref="member">max_frequency</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a6af755d960a12acb09af33877efcd84f" kindref="member">max_frequency</ref><sp/>=<sp/>frequency_result;</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>frequency_result;</highlight></codeline>
-<codeline lineno="206"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"></highlight></codeline>
-<codeline lineno="208"><highlight class="normal">uint16_t<sp/><ref refid="d4/d18/frequency__counter_8cpp_1a6275d3d673d15714777f3f9de2b6d638" kindref="member">frequency_get_current</ref>(uint8_t<sp/>channel)<sp/>{</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a853f9ac2214946dd2f65fb8dff4d95be" kindref="member">freq_counters</ref>[channel].calculated_frequency;</highlight></codeline>
-<codeline lineno="214"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="215"><highlight class="normal"></highlight></codeline>
-<codeline lineno="216"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a78324a942c9ab1188d1025eef62bdf30" kindref="member">frequency_get_stats</ref>(uint8_t<sp/>channel,<sp/><ref refid="d7/da4/structfrequency__stats__t" kindref="compound">frequency_stats_t</ref>*<sp/>stats)<sp/>{</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref><sp/>||<sp/>!stats)<sp/>{</highlight></codeline>
-<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/><ref refid="d5/d29/structfrequency__counter__t" kindref="compound">frequency_counter_t</ref>*<sp/>counter<sp/>=<sp/>&amp;<ref refid="d4/d18/frequency__counter_8cpp_1a853f9ac2214946dd2f65fb8dff4d95be" kindref="member">freq_counters</ref>[channel];</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Populate<sp/>statistics<sp/>structure</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>stats-&gt;<ref refid="d7/da4/structfrequency__stats__t_1aace5d26813d5ea00f9b75d65bc4ee385" kindref="member">current_frequency</ref><sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a8e24a856728835fd91511845132ae866" kindref="member">calculated_frequency</ref>;</highlight></codeline>
-<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>stats-&gt;<ref refid="d7/da4/structfrequency__stats__t_1a9601311cdf0d8fc51e100db4faa5bc6a" kindref="member">total_measurements</ref><sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a040de51c9d1083ef321de5875a4fb1e1" kindref="member">total_measurements</ref>;</highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>stats-&gt;<ref refid="d7/da4/structfrequency__stats__t_1a6f20a877d3f86ed67924bb9ec3152469" kindref="member">error_count</ref><sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ade80daab29211faabc706d7be47ae8f2" kindref="member">error_count</ref>;</highlight></codeline>
-<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>stats-&gt;<ref refid="d7/da4/structfrequency__stats__t_1a2c4f4ba91dbcbd6764d1cb99cadd18bb" kindref="member">noise_filter_count</ref><sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ac5eb0f8b55423751597a91826158dc26" kindref="member">noise_filter_count</ref>;</highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>stats-&gt;<ref refid="d7/da4/structfrequency__stats__t_1af68d150f61d1323c0f6615a20ece5577" kindref="member">last_edge_timestamp</ref><sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1afad7a71a2d4032e5a9720d56f83f92fd" kindref="member">last_edge_timestamp</ref>;</highlight></codeline>
-<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>stats-&gt;<ref refid="d7/da4/structfrequency__stats__t_1ace0c84c38598242e46f2a288c5754bb0" kindref="member">min_frequency</ref><sp/>=<sp/>(counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1acc7abfe168e61a0c97013433c4ba0543" kindref="member">min_frequency</ref><sp/>==<sp/>UINT16_MAX)<sp/>?<sp/>0<sp/>:<sp/>counter-&gt;min_frequency;</highlight></codeline>
-<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>stats-&gt;<ref refid="d7/da4/structfrequency__stats__t_1a3a0b123f41bb2057ac14c337a18085f1" kindref="member">max_frequency</ref><sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a6af755d960a12acb09af33877efcd84f" kindref="member">max_frequency</ref>;</highlight></codeline>
-<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>stats-&gt;<ref refid="d7/da4/structfrequency__stats__t_1a7b6e74cf90b96f854f6f7ce7437427aa" kindref="member">total_edges</ref><sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a40b17164d0dc2868d05fc54f28f9a6a4" kindref="member">total_edges</ref>;</highlight></codeline>
-<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>stats-&gt;<ref refid="d7/da4/structfrequency__stats__t_1aa95cf532abf4e3c76e1d0051f822f928" kindref="member">measurement_active</ref><sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a884e59e4d8c68c1dd60083afd13fdbc1" kindref="member">measurement_ready</ref>;</highlight></codeline>
-<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="235"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="236"><highlight class="normal"></highlight></codeline>
-<codeline lineno="237"><highlight class="normal"><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560" kindref="member">frequency_error_t</ref><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a87adb92382104661d9c6f069d8060a56" kindref="member">frequency_get_error</ref>(uint8_t<sp/>channel)<sp/>{</highlight></codeline>
-<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a7815b630bbfcafaedab7caae1cd9883c" kindref="member">FREQ_ERROR_INVALID_CHANNEL</ref>;</highlight></codeline>
-<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/><ref refid="d5/d29/structfrequency__counter__t" kindref="compound">frequency_counter_t</ref>*<sp/>counter<sp/>=<sp/>&amp;<ref refid="d4/d18/frequency__counter_8cpp_1a853f9ac2214946dd2f65fb8dff4d95be" kindref="member">freq_counters</ref>[channel];</highlight></codeline>
-<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>current_time<sp/>=<sp/>micros();</highlight></codeline>
-<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>for<sp/>no<sp/>signal<sp/>(no<sp/>edges<sp/>for<sp/>&gt;<sp/>2<sp/>seconds)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_time<sp/>-<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1afad7a71a2d4032e5a9720d56f83f92fd" kindref="member">last_edge_timestamp</ref><sp/>&gt;<sp/>2000000UL)<sp/>{</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a68b9ff2ab9abe0c28b7f43659d11d462" kindref="member">FREQ_ERROR_NO_SIGNAL</ref>;</highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>for<sp/>excessive<sp/>noise</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ac5eb0f8b55423751597a91826158dc26" kindref="member">noise_filter_count</ref><sp/>&gt;<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a40b17164d0dc2868d05fc54f28f9a6a4" kindref="member">total_edges</ref><sp/>/<sp/>2)<sp/>{</highlight></codeline>
-<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a946cc4e91ecd33b895fd8a6d4d6f6e45" kindref="member">FREQ_ERROR_NOISE</ref>;</highlight></codeline>
-<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>frequency<sp/>is<sp/>out<sp/>of<sp/>expected<sp/>range</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>freq<sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a8e24a856728835fd91511845132ae866" kindref="member">calculated_frequency</ref>;</highlight></codeline>
-<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(freq<sp/>&gt;<sp/>0<sp/>&amp;&amp;<sp/>(freq<sp/>&lt;<sp/>FREQ_OUTPUT_MIN_HZ<sp/>||<sp/>freq<sp/>&gt;<sp/><ref refid="de/d01/frequency__counter_8h_1a4d2701f727c3ada07e38c1e5dd967ab8" kindref="member">FREQ_OUTPUT_MAX_HZ</ref>))<sp/>{</highlight></codeline>
-<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a536fc0611d10d36c7bc45b6b4af68a51" kindref="member">FREQ_ERROR_OUT_OF_RANGE</ref>;</highlight></codeline>
-<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a17415ef26f093257875d10a50893b48d" kindref="member">FREQ_ERROR_NONE</ref>;</highlight></codeline>
-<codeline lineno="262"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="263"><highlight class="normal"></highlight></codeline>
-<codeline lineno="264"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d4/d18/frequency__counter_8cpp_1ad403235b359f53e21865ae2f572f9957" kindref="member">frequency_reset_stats</ref>(uint8_t<sp/>channel)<sp/>{</highlight></codeline>
-<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref><sp/>&amp;&amp;<sp/>channel<sp/>!=<sp/>0xFF)<sp/>{</highlight></codeline>
-<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>start_ch<sp/>=<sp/>(channel<sp/>==<sp/>0xFF)<sp/>?<sp/>0<sp/>:<sp/>channel;</highlight></codeline>
-<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>end_ch<sp/>=<sp/>(channel<sp/>==<sp/>0xFF)<sp/>?<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref><sp/>-<sp/>1<sp/>:<sp/>channel;</highlight></codeline>
-<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/>micros();</highlight></codeline>
-<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>start_ch;<sp/>i<sp/>&lt;=<sp/>end_ch;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/><ref refid="d5/d29/structfrequency__counter__t" kindref="compound">frequency_counter_t</ref>*<sp/>counter<sp/>=<sp/>&amp;<ref refid="d4/d18/frequency__counter_8cpp_1a853f9ac2214946dd2f65fb8dff4d95be" kindref="member">freq_counters</ref>[i];</highlight></codeline>
-<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>interrupts<sp/>to<sp/>ensure<sp/>atomic<sp/>reset</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cli();</highlight></codeline>
-<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a040de51c9d1083ef321de5875a4fb1e1" kindref="member">total_measurements</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ade80daab29211faabc706d7be47ae8f2" kindref="member">error_count</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ac5eb0f8b55423751597a91826158dc26" kindref="member">noise_filter_count</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1acc7abfe168e61a0c97013433c4ba0543" kindref="member">min_frequency</ref><sp/>=<sp/>UINT16_MAX;</highlight></codeline>
-<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a6af755d960a12acb09af33877efcd84f" kindref="member">max_frequency</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a40b17164d0dc2868d05fc54f28f9a6a4" kindref="member">total_edges</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ae803968ce093443c8a59649c40f5d5c6" kindref="member">last_calculation_time</ref><sp/>=<sp/>now;</highlight></codeline>
-<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sei();</highlight></codeline>
-<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="290"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="291"><highlight class="normal"></highlight></codeline>
-<codeline lineno="292"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a6c72007a92de1bcc5635aa102d93c549" kindref="member">frequency_isr_health_check</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>current_time<sp/>=<sp/>micros();</highlight></codeline>
-<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>ISR<sp/>has<sp/>executed<sp/>recently<sp/>(within<sp/>last<sp/>5<sp/>seconds)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_time<sp/>-<sp/><ref refid="d4/d18/frequency__counter_8cpp_1af60251a59e7aaa16566f482be62a6258" kindref="member">last_isr_timestamp</ref><sp/>&gt;<sp/>5000000UL)<sp/>{</highlight></codeline>
-<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>ISR<sp/>not<sp/>executing</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>any<sp/>channel<sp/>has<sp/>received<sp/>edges<sp/>recently</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref>;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_time<sp/>-<sp/><ref refid="d4/d18/frequency__counter_8cpp_1a853f9ac2214946dd2f65fb8dff4d95be" kindref="member">freq_counters</ref>[i].last_edge_timestamp<sp/>&lt;<sp/>5000000UL)<sp/>{</highlight></codeline>
-<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>At<sp/>least<sp/>one<sp/>channel<sp/>active</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>No<sp/>recent<sp/>activity<sp/>on<sp/>any<sp/>channel</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="308"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="309"><highlight class="normal"></highlight></codeline>
-<codeline lineno="310"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a2fe922c0ba91e88d90cb10d9751ed8ce" kindref="member">frequency_get_isr_stats</ref>(uint32_t*<sp/>total_interrupts,<sp/>uint32_t*<sp/>last_isr_time)<sp/>{</highlight></codeline>
-<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!total_interrupts<sp/>||<sp/>!last_isr_time)<sp/>{</highlight></codeline>
-<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/>*total_interrupts<sp/>=<sp/><ref refid="d4/d18/frequency__counter_8cpp_1aeb04237b94198876553cdd1733871568" kindref="member">total_isr_executions</ref>;</highlight></codeline>
-<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/>*last_isr_time<sp/>=<sp/><ref refid="d4/d18/frequency__counter_8cpp_1af60251a59e7aaa16566f482be62a6258" kindref="member">last_isr_timestamp</ref>;</highlight></codeline>
-<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="319"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="320"><highlight class="normal"></highlight></codeline>
-<codeline lineno="321"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a1770280d6beb9fd8e76c824f750074a4" kindref="member">frequency_set_window</ref>(uint8_t<sp/>channel,<sp/>uint16_t<sp/>window_ms)<sp/>{</highlight></codeline>
-<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref><sp/>||<sp/>window_ms<sp/>&lt;<sp/>100<sp/>||<sp/>window_ms<sp/>&gt;<sp/>5000)<sp/>{</highlight></codeline>
-<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d18/frequency__counter_8cpp_1abd932c4b9c4b5b5f58541f1535f80ae1" kindref="member">custom_windows</ref>[channel]<sp/>=<sp/>window_ms;</highlight></codeline>
-<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="328"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="329"><highlight class="normal"></highlight></codeline>
-<codeline lineno="330"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a3d6110339a7085a38f9fe1f0083b1dab" kindref="member">frequency_set_noise_filter</ref>(uint8_t<sp/>channel,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable)<sp/>{</highlight></codeline>
-<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref><sp/>&amp;&amp;<sp/>channel<sp/>!=<sp/>0xFF)<sp/>{</highlight></codeline>
-<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>==<sp/>0xFF)<sp/>{</highlight></codeline>
-<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Apply<sp/>to<sp/>all<sp/>channels</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref>;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a73c03c2d5cdc56297d1e90999adad845" kindref="member">noise_filter_enabled</ref>[i]<sp/>=<sp/>enable;</highlight></codeline>
-<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a73c03c2d5cdc56297d1e90999adad845" kindref="member">noise_filter_enabled</ref>[channel]<sp/>=<sp/>enable;</highlight></codeline>
-<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="345"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="346"><highlight class="normal"></highlight></codeline>
-<codeline lineno="347"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="348"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ADVANCED<sp/>FEATURES<sp/>IMPLEMENTATION</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="349"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PUBLIC<sp/>FUNCTION<sp/>IMPLEMENTATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a32db71b05f686868ba23198a67d4c3cd" kindref="member">frequency_counter_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>interrupts<sp/>during<sp/>initialization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>cli();</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>pins<sp/>as<sp/>inputs<sp/>with<sp/>pull-ups</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>DDRB<sp/>&amp;=<sp/>~0x0F;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PB0-PB3<sp/>as<sp/>inputs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>PORTB<sp/>|=<sp/>0x0F;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>pull-ups</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>counter<sp/>structures</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/>micros();</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/><ref refid="d5/d29/structfrequency__counter__t" kindref="compound">frequency_counter_t</ref>*<sp/>counter<sp/>=<sp/>&amp;<ref refid="d4/d18/frequency__counter_8cpp_1a853f9ac2214946dd2f65fb8dff4d95be" kindref="member">freq_counters</ref>[i];</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>all<sp/>counters<sp/>and<sp/>flags</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a4a590aeff3ba50ea731a442e3a685ec7" kindref="member">edge_count</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1afad7a71a2d4032e5a9720d56f83f92fd" kindref="member">last_edge_timestamp</ref><sp/>=<sp/>now;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a1b37db7c3ff2e1db2017fb87f86bba22" kindref="member">window_start_time</ref><sp/>=<sp/>now;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a884e59e4d8c68c1dd60083afd13fdbc1" kindref="member">measurement_ready</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>statistics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a8e24a856728835fd91511845132ae866" kindref="member">calculated_frequency</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a040de51c9d1083ef321de5875a4fb1e1" kindref="member">total_measurements</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ade80daab29211faabc706d7be47ae8f2" kindref="member">error_count</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ac5eb0f8b55423751597a91826158dc26" kindref="member">noise_filter_count</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1acc7abfe168e61a0c97013433c4ba0543" kindref="member">min_frequency</ref><sp/>=<sp/>UINT16_MAX;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a6af755d960a12acb09af33877efcd84f" kindref="member">max_frequency</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a40b17164d0dc2868d05fc54f28f9a6a4" kindref="member">total_edges</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ae803968ce093443c8a59649c40f5d5c6" kindref="member">last_calculation_time</ref><sp/>=<sp/>now;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>ISR<sp/>statistics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d18/frequency__counter_8cpp_1aeb04237b94198876553cdd1733871568" kindref="member">total_isr_executions</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d18/frequency__counter_8cpp_1af60251a59e7aaa16566f482be62a6258" kindref="member">last_isr_timestamp</ref><sp/>=<sp/>now;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>Pin<sp/>Change<sp/>Interrupt<sp/>for<sp/>Port<sp/>B<sp/>(if<sp/>available<sp/>on<sp/>this<sp/>MCU)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(PCICR)<sp/>&amp;&amp;<sp/>defined(PCMSK1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>PCICR<sp/>|=<sp/>(1<sp/>&lt;&lt;<sp/>PCIE1);<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>PCINT1<sp/>group</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>PCMSK1<sp/>|=<sp/>0x0F;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>PCINT8-PCINT11<sp/>(PB0-PB3)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>initial<sp/>port<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a09a4fb83d3d9c7e713b1bee0875328ec" kindref="member">prev_portb_state</ref><sp/>=<sp/>PINB;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>global<sp/>interrupts</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>sei();</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal">uint16_t<sp/><ref refid="d4/d18/frequency__counter_8cpp_1a04851abee44a28fb5f885b7418f915d4" kindref="member">frequency_calculate</ref>(uint8_t<sp/>channel)<sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/><ref refid="d5/d29/structfrequency__counter__t" kindref="compound">frequency_counter_t</ref>*<sp/>counter<sp/>=<sp/>&amp;<ref refid="d4/d18/frequency__counter_8cpp_1a853f9ac2214946dd2f65fb8dff4d95be" kindref="member">freq_counters</ref>[channel];</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>last<sp/>frequency<sp/>if<sp/>no<sp/>new<sp/>measurement<sp/>ready</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a884e59e4d8c68c1dd60083afd13fdbc1" kindref="member">measurement_ready</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a8e24a856728835fd91511845132ae866" kindref="member">calculated_frequency</ref>;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>interrupts<sp/>briefly<sp/>to<sp/>get<sp/>consistent<sp/>snapshot</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>cli();</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>current_time<sp/>=<sp/>micros();</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>window_duration_us<sp/>=<sp/>current_time<sp/>-<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a1b37db7c3ff2e1db2017fb87f86bba22" kindref="member">window_start_time</ref>;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>edge_count<sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a4a590aeff3ba50ea731a442e3a685ec7" kindref="member">edge_count</ref>;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>for<sp/>next<sp/>measurement<sp/>window</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a4a590aeff3ba50ea731a442e3a685ec7" kindref="member">edge_count</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a1b37db7c3ff2e1db2017fb87f86bba22" kindref="member">window_start_time</ref><sp/>=<sp/>current_time;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a884e59e4d8c68c1dd60083afd13fdbc1" kindref="member">measurement_ready</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>sei();</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Validate<sp/>measurement<sp/>has<sp/>sufficient<sp/>edges</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(edge_count<sp/>&lt;<sp/><ref refid="de/d01/frequency__counter_8h_1a4c68a1a1970f0a1b56a0049a439506e7" kindref="member">FREQ_MIN_EDGES</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ade80daab29211faabc706d7be47ae8f2" kindref="member">error_count</ref>++;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ae803968ce093443c8a59649c40f5d5c6" kindref="member">last_calculation_time</ref><sp/>=<sp/>current_time;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;<sp/></highlight><highlight class="comment">//<sp/>Not<sp/>enough<sp/>edges<sp/>for<sp/>reliable<sp/>measurement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calculate<sp/>frequency:<sp/>(edges<sp/>/<sp/>window_seconds)<sp/>*<sp/>multiplier</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Avoid<sp/>floating<sp/>point:<sp/>(edges<sp/>*<sp/>1000000<sp/>/<sp/>window_us)<sp/>*<sp/>multiplier</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>frequency_raw<sp/>=<sp/>(edge_count<sp/>*<sp/>1000000UL)<sp/>/<sp/>window_duration_us;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>frequency_with_multiplier<sp/>=<sp/>frequency_raw<sp/>*<sp/><ref refid="de/d01/frequency__counter_8h_1a67f44a4ec4d5d5640d6b66b96e557a18" kindref="member">FREQ_MULTIPLIER</ref>;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Validate<sp/>result<sp/>is<sp/>within<sp/>reasonable<sp/>range</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(frequency_with_multiplier<sp/>&gt;<sp/><ref refid="de/d01/frequency__counter_8h_1a4d2701f727c3ada07e38c1e5dd967ab8" kindref="member">FREQ_OUTPUT_MAX_HZ</ref><sp/>||<sp/></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frequency_with_multiplier<sp/>&lt;<sp/><ref refid="de/d01/frequency__counter_8h_1adfcb70e034efc90d1d3c8cb1d71367ea" kindref="member">FREQ_OUTPUT_MIN_HZ</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ade80daab29211faabc706d7be47ae8f2" kindref="member">error_count</ref>++;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ae803968ce093443c8a59649c40f5d5c6" kindref="member">last_calculation_time</ref><sp/>=<sp/>current_time;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a8e24a856728835fd91511845132ae866" kindref="member">calculated_frequency</ref>;<sp/></highlight><highlight class="comment">//<sp/>Keep<sp/>last<sp/>good<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>frequency_result<sp/>=<sp/>(uint16_t)frequency_with_multiplier;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>statistics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a8e24a856728835fd91511845132ae866" kindref="member">calculated_frequency</ref><sp/>=<sp/>frequency_result;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a040de51c9d1083ef321de5875a4fb1e1" kindref="member">total_measurements</ref>++;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ae803968ce093443c8a59649c40f5d5c6" kindref="member">last_calculation_time</ref><sp/>=<sp/>current_time;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>min/max<sp/>tracking</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(frequency_result<sp/>&lt;<sp/>counter-&gt;min_frequency)<sp/>{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1acc7abfe168e61a0c97013433c4ba0543" kindref="member">min_frequency</ref><sp/>=<sp/>frequency_result;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(frequency_result<sp/>&gt;<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a6af755d960a12acb09af33877efcd84f" kindref="member">max_frequency</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a6af755d960a12acb09af33877efcd84f" kindref="member">max_frequency</ref><sp/>=<sp/>frequency_result;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>frequency_result;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal">uint16_t<sp/><ref refid="d4/d18/frequency__counter_8cpp_1a6275d3d673d15714777f3f9de2b6d638" kindref="member">frequency_get_current</ref>(uint8_t<sp/>channel)<sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a853f9ac2214946dd2f65fb8dff4d95be" kindref="member">freq_counters</ref>[channel].calculated_frequency;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a78324a942c9ab1188d1025eef62bdf30" kindref="member">frequency_get_stats</ref>(uint8_t<sp/>channel,<sp/><ref refid="d7/da4/structfrequency__stats__t" kindref="compound">frequency_stats_t</ref>*<sp/>stats)<sp/>{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref><sp/>||<sp/>!stats)<sp/>{</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/><ref refid="d5/d29/structfrequency__counter__t" kindref="compound">frequency_counter_t</ref>*<sp/>counter<sp/>=<sp/>&amp;<ref refid="d4/d18/frequency__counter_8cpp_1a853f9ac2214946dd2f65fb8dff4d95be" kindref="member">freq_counters</ref>[channel];</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Populate<sp/>statistics<sp/>structure</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>stats-&gt;<ref refid="d7/da4/structfrequency__stats__t_1aace5d26813d5ea00f9b75d65bc4ee385" kindref="member">current_frequency</ref><sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a8e24a856728835fd91511845132ae866" kindref="member">calculated_frequency</ref>;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>stats-&gt;<ref refid="d7/da4/structfrequency__stats__t_1a9601311cdf0d8fc51e100db4faa5bc6a" kindref="member">total_measurements</ref><sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a040de51c9d1083ef321de5875a4fb1e1" kindref="member">total_measurements</ref>;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>stats-&gt;<ref refid="d7/da4/structfrequency__stats__t_1a6f20a877d3f86ed67924bb9ec3152469" kindref="member">error_count</ref><sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ade80daab29211faabc706d7be47ae8f2" kindref="member">error_count</ref>;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>stats-&gt;<ref refid="d7/da4/structfrequency__stats__t_1a2c4f4ba91dbcbd6764d1cb99cadd18bb" kindref="member">noise_filter_count</ref><sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ac5eb0f8b55423751597a91826158dc26" kindref="member">noise_filter_count</ref>;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>stats-&gt;<ref refid="d7/da4/structfrequency__stats__t_1af68d150f61d1323c0f6615a20ece5577" kindref="member">last_edge_timestamp</ref><sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1afad7a71a2d4032e5a9720d56f83f92fd" kindref="member">last_edge_timestamp</ref>;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>stats-&gt;<ref refid="d7/da4/structfrequency__stats__t_1ace0c84c38598242e46f2a288c5754bb0" kindref="member">min_frequency</ref><sp/>=<sp/>(counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1acc7abfe168e61a0c97013433c4ba0543" kindref="member">min_frequency</ref><sp/>==<sp/>UINT16_MAX)<sp/>?<sp/>0<sp/>:<sp/>counter-&gt;min_frequency;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>stats-&gt;<ref refid="d7/da4/structfrequency__stats__t_1a3a0b123f41bb2057ac14c337a18085f1" kindref="member">max_frequency</ref><sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a6af755d960a12acb09af33877efcd84f" kindref="member">max_frequency</ref>;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/>stats-&gt;<ref refid="d7/da4/structfrequency__stats__t_1a7b6e74cf90b96f854f6f7ce7437427aa" kindref="member">total_edges</ref><sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a40b17164d0dc2868d05fc54f28f9a6a4" kindref="member">total_edges</ref>;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>stats-&gt;<ref refid="d7/da4/structfrequency__stats__t_1aa95cf532abf4e3c76e1d0051f822f928" kindref="member">measurement_active</ref><sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a884e59e4d8c68c1dd60083afd13fdbc1" kindref="member">measurement_ready</ref>;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560" kindref="member">frequency_error_t</ref><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a87adb92382104661d9c6f069d8060a56" kindref="member">frequency_get_error</ref>(uint8_t<sp/>channel)<sp/>{</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a7815b630bbfcafaedab7caae1cd9883c" kindref="member">FREQ_ERROR_INVALID_CHANNEL</ref>;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/><ref refid="d5/d29/structfrequency__counter__t" kindref="compound">frequency_counter_t</ref>*<sp/>counter<sp/>=<sp/>&amp;<ref refid="d4/d18/frequency__counter_8cpp_1a853f9ac2214946dd2f65fb8dff4d95be" kindref="member">freq_counters</ref>[channel];</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>current_time<sp/>=<sp/>micros();</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>for<sp/>no<sp/>signal<sp/>(no<sp/>edges<sp/>for<sp/>&gt;<sp/>2<sp/>seconds)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_time<sp/>-<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1afad7a71a2d4032e5a9720d56f83f92fd" kindref="member">last_edge_timestamp</ref><sp/>&gt;<sp/>2000000UL)<sp/>{</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a68b9ff2ab9abe0c28b7f43659d11d462" kindref="member">FREQ_ERROR_NO_SIGNAL</ref>;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>for<sp/>excessive<sp/>noise</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ac5eb0f8b55423751597a91826158dc26" kindref="member">noise_filter_count</ref><sp/>&gt;<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a40b17164d0dc2868d05fc54f28f9a6a4" kindref="member">total_edges</ref><sp/>/<sp/>2)<sp/>{</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a946cc4e91ecd33b895fd8a6d4d6f6e45" kindref="member">FREQ_ERROR_NOISE</ref>;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>frequency<sp/>is<sp/>out<sp/>of<sp/>expected<sp/>range</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>freq<sp/>=<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a8e24a856728835fd91511845132ae866" kindref="member">calculated_frequency</ref>;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(freq<sp/>&gt;<sp/>0<sp/>&amp;&amp;<sp/>(freq<sp/>&lt;<sp/>FREQ_OUTPUT_MIN_HZ<sp/>||<sp/>freq<sp/>&gt;<sp/><ref refid="de/d01/frequency__counter_8h_1a4d2701f727c3ada07e38c1e5dd967ab8" kindref="member">FREQ_OUTPUT_MAX_HZ</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a536fc0611d10d36c7bc45b6b4af68a51" kindref="member">FREQ_ERROR_OUT_OF_RANGE</ref>;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a17415ef26f093257875d10a50893b48d" kindref="member">FREQ_ERROR_NONE</ref>;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d4/d18/frequency__counter_8cpp_1ad403235b359f53e21865ae2f572f9957" kindref="member">frequency_reset_stats</ref>(uint8_t<sp/>channel)<sp/>{</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref><sp/>&amp;&amp;<sp/>channel<sp/>!=<sp/>0xFF)<sp/>{</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>start_ch<sp/>=<sp/>(channel<sp/>==<sp/>0xFF)<sp/>?<sp/>0<sp/>:<sp/>channel;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>end_ch<sp/>=<sp/>(channel<sp/>==<sp/>0xFF)<sp/>?<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref><sp/>-<sp/>1<sp/>:<sp/>channel;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/>micros();</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>start_ch;<sp/>i<sp/>&lt;=<sp/>end_ch;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/><ref refid="d5/d29/structfrequency__counter__t" kindref="compound">frequency_counter_t</ref>*<sp/>counter<sp/>=<sp/>&amp;<ref refid="d4/d18/frequency__counter_8cpp_1a853f9ac2214946dd2f65fb8dff4d95be" kindref="member">freq_counters</ref>[i];</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>interrupts<sp/>to<sp/>ensure<sp/>atomic<sp/>reset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cli();</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a040de51c9d1083ef321de5875a4fb1e1" kindref="member">total_measurements</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ade80daab29211faabc706d7be47ae8f2" kindref="member">error_count</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ac5eb0f8b55423751597a91826158dc26" kindref="member">noise_filter_count</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1acc7abfe168e61a0c97013433c4ba0543" kindref="member">min_frequency</ref><sp/>=<sp/>UINT16_MAX;</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a6af755d960a12acb09af33877efcd84f" kindref="member">max_frequency</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a40b17164d0dc2868d05fc54f28f9a6a4" kindref="member">total_edges</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1ae803968ce093443c8a59649c40f5d5c6" kindref="member">last_calculation_time</ref><sp/>=<sp/>now;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sei();</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="294"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a6c72007a92de1bcc5635aa102d93c549" kindref="member">frequency_isr_health_check</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>current_time<sp/>=<sp/>micros();</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>ISR<sp/>has<sp/>executed<sp/>recently<sp/>(within<sp/>last<sp/>5<sp/>seconds)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_time<sp/>-<sp/><ref refid="d4/d18/frequency__counter_8cpp_1af60251a59e7aaa16566f482be62a6258" kindref="member">last_isr_timestamp</ref><sp/>&gt;<sp/>5000000UL)<sp/>{</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>ISR<sp/>not<sp/>executing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>any<sp/>channel<sp/>has<sp/>received<sp/>edges<sp/>recently</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_time<sp/>-<sp/><ref refid="d4/d18/frequency__counter_8cpp_1a853f9ac2214946dd2f65fb8dff4d95be" kindref="member">freq_counters</ref>[i].last_edge_timestamp<sp/>&lt;<sp/>5000000UL)<sp/>{</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>At<sp/>least<sp/>one<sp/>channel<sp/>active</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>No<sp/>recent<sp/>activity<sp/>on<sp/>any<sp/>channel</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="312"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a2fe922c0ba91e88d90cb10d9751ed8ce" kindref="member">frequency_get_isr_stats</ref>(uint32_t*<sp/>total_interrupts,<sp/>uint32_t*<sp/>last_isr_time)<sp/>{</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!total_interrupts<sp/>||<sp/>!last_isr_time)<sp/>{</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>*total_interrupts<sp/>=<sp/><ref refid="d4/d18/frequency__counter_8cpp_1aeb04237b94198876553cdd1733871568" kindref="member">total_isr_executions</ref>;</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/>*last_isr_time<sp/>=<sp/><ref refid="d4/d18/frequency__counter_8cpp_1af60251a59e7aaa16566f482be62a6258" kindref="member">last_isr_timestamp</ref>;</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a1770280d6beb9fd8e76c824f750074a4" kindref="member">frequency_set_window</ref>(uint8_t<sp/>channel,<sp/>uint16_t<sp/>window_ms)<sp/>{</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref><sp/>||<sp/>window_ms<sp/>&lt;<sp/>100<sp/>||<sp/>window_ms<sp/>&gt;<sp/>5000)<sp/>{</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d18/frequency__counter_8cpp_1abd932c4b9c4b5b5f58541f1535f80ae1" kindref="member">custom_windows</ref>[channel]<sp/>=<sp/>window_ms;</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="332"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a3d6110339a7085a38f9fe1f0083b1dab" kindref="member">frequency_set_noise_filter</ref>(uint8_t<sp/>channel,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable)<sp/>{</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref><sp/>&amp;&amp;<sp/>channel<sp/>!=<sp/>0xFF)<sp/>{</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>==<sp/>0xFF)<sp/>{</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Apply<sp/>to<sp/>all<sp/>channels</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a73c03c2d5cdc56297d1e90999adad845" kindref="member">noise_filter_enabled</ref>[i]<sp/>=<sp/>enable;</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a73c03c2d5cdc56297d1e90999adad845" kindref="member">noise_filter_enabled</ref>[channel]<sp/>=<sp/>enable;</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="349"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="350"><highlight class="normal"></highlight></codeline>
-<codeline lineno="351"><highlight class="normal">uint16_t<sp/><ref refid="d4/d18/frequency__counter_8cpp_1a36519859f92bb1168f619d453d91e920" kindref="member">frequency_get_instantaneous</ref>(uint8_t<sp/>channel)<sp/>{</highlight></codeline>
-<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/><ref refid="d5/d29/structfrequency__counter__t" kindref="compound">frequency_counter_t</ref>*<sp/>counter<sp/>=<sp/>&amp;<ref refid="d4/d18/frequency__counter_8cpp_1a853f9ac2214946dd2f65fb8dff4d95be" kindref="member">freq_counters</ref>[channel];</highlight></codeline>
-<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Need<sp/>at<sp/>least<sp/>2<sp/>edges<sp/>for<sp/>period<sp/>calculation</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a40b17164d0dc2868d05fc54f28f9a6a4" kindref="member">total_edges</ref><sp/>&lt;<sp/>2)<sp/>{</highlight></codeline>
-<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>a<sp/>simplified<sp/>implementation<sp/>-<sp/>in<sp/>practice<sp/>would<sp/>need</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>to<sp/>store<sp/>timestamps<sp/>of<sp/>last<sp/>few<sp/>edges<sp/>for<sp/>accurate<sp/>calculation</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>current_time<sp/>=<sp/>micros();</highlight></codeline>
-<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>time_since_last_edge<sp/>=<sp/>current_time<sp/>-<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1afad7a71a2d4032e5a9720d56f83f92fd" kindref="member">last_edge_timestamp</ref>;</highlight></codeline>
-<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>too<sp/>much<sp/>time<sp/>has<sp/>passed,<sp/>no<sp/>instantaneous<sp/>measurement<sp/>available</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(time_since_last_edge<sp/>&gt;<sp/>10000)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>10ms<sp/>timeout</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>current<sp/>calculated<sp/>frequency<sp/>as<sp/>approximation</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a8e24a856728835fd91511845132ae866" kindref="member">calculated_frequency</ref>;</highlight></codeline>
-<codeline lineno="375"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="376"><highlight class="normal"></highlight></codeline>
-<codeline lineno="377"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Callback<sp/>functionality<sp/>would<sp/>require<sp/>additional<sp/>storage<sp/>and<sp/>complexity</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="378"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Omitted<sp/>from<sp/>this<sp/>implementation<sp/>for<sp/>simplicity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ADVANCED<sp/>FEATURES<sp/>IMPLEMENTATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal">uint16_t<sp/><ref refid="d4/d18/frequency__counter_8cpp_1a36519859f92bb1168f619d453d91e920" kindref="member">frequency_get_instantaneous</ref>(uint8_t<sp/>channel)<sp/>{</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(channel<sp/>&gt;=<sp/><ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/><ref refid="d5/d29/structfrequency__counter__t" kindref="compound">frequency_counter_t</ref>*<sp/>counter<sp/>=<sp/>&amp;<ref refid="d4/d18/frequency__counter_8cpp_1a853f9ac2214946dd2f65fb8dff4d95be" kindref="member">freq_counters</ref>[channel];</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Need<sp/>at<sp/>least<sp/>2<sp/>edges<sp/>for<sp/>period<sp/>calculation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a40b17164d0dc2868d05fc54f28f9a6a4" kindref="member">total_edges</ref><sp/>&lt;<sp/>2)<sp/>{</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>a<sp/>simplified<sp/>implementation<sp/>-<sp/>in<sp/>practice<sp/>would<sp/>need</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>to<sp/>store<sp/>timestamps<sp/>of<sp/>last<sp/>few<sp/>edges<sp/>for<sp/>accurate<sp/>calculation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>current_time<sp/>=<sp/>micros();</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>time_since_last_edge<sp/>=<sp/>current_time<sp/>-<sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1afad7a71a2d4032e5a9720d56f83f92fd" kindref="member">last_edge_timestamp</ref>;</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>too<sp/>much<sp/>time<sp/>has<sp/>passed,<sp/>no<sp/>instantaneous<sp/>measurement<sp/>available</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(time_since_last_edge<sp/>&gt;<sp/>10000)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>10ms<sp/>timeout</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>current<sp/>calculated<sp/>frequency<sp/>as<sp/>approximation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>counter-&gt;<ref refid="d5/d29/structfrequency__counter__t_1a8e24a856728835fd91511845132ae866" kindref="member">calculated_frequency</ref>;</highlight></codeline>
+<codeline lineno="379"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight></codeline>
+<codeline lineno="381"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Callback<sp/>functionality<sp/>would<sp/>require<sp/>additional<sp/>storage<sp/>and<sp/>complexity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Omitted<sp/>from<sp/>this<sp/>implementation<sp/>for<sp/>simplicity</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/modules/hal/frequency_counter.cpp"/>
   </compounddef>

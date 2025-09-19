@@ -67,7 +67,6 @@ void loop() {
     static unsigned long last_modbus_process_time = 0;
     static unsigned long last_multiplexer_update_time = 0;
 
-    
     unsigned long current_time = millis();
     
     if (current_time - last_modbus_process_time >= MODBUS_PROCESS_INTERVAL_MS) {

@@ -10,33 +10,14 @@
     <includedby refid="dc/d16/sonicator_8h" local="yes">include/sonicator/sonicator.h</includedby>
     <includedby refid="d9/d49/types_8h" local="yes">include/types.h</includedby>
     <includedby refid="df/d0a/main_8cpp" local="yes">src/main.cpp</includedby>
-    <includedby refid="d5/dea/sonicator__modbus__bridge_8cpp" local="yes">src/modules/control/sonicator_modbus_bridge.cpp</includedby>
     <includedby refid="dc/db6/hal_8cpp" local="yes">src/modules/hal/hal.cpp</includedby>
     <incdepgraph>
-      <node id="6">
+      <node id="5">
         <label>adc.h</label>
         <link refid="d7/d19/adc_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>atmega_hal_impl.h</label>
-        <link refid="d2/d92/atmega__hal__impl_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -46,46 +27,22 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
       </node>
       <node id="1">
         <label>src/modules/hal/hal.h</label>
         <link refid="d8/d4b/hal_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="10">
-        <label>hal_template_interfaces.h</label>
-        <link refid="de/d2b/hal__template__interfaces_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>mock_hal_impl.h</label>
-        <link refid="de/d8d/mock__hal__impl_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
+      <node id="6">
         <label>pwm.h</label>
         <link refid="d6/db9/pwm_8h"/>
         <childnode refid="3" relation="include">
@@ -101,7 +58,7 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="9">
+      <node id="7">
         <label>uart.h</label>
         <link refid="d2/d86/uart_8h"/>
         <childnode refid="3" relation="include">
@@ -114,9 +71,6 @@
       </node>
       <node id="3">
         <label>stdint.h</label>
-      </node>
-      <node id="12">
-        <label>string.h</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
@@ -153,10 +107,6 @@
         <link refid="d2/db9/sonicator_8cpp"/>
       </node>
       <node id="8">
-        <label>src/modules/control/sonicator_modbus_bridge.cpp</label>
-        <link refid="d5/dea/sonicator__modbus__bridge_8cpp"/>
-      </node>
-      <node id="9">
         <label>src/modules/hal/hal.cpp</label>
         <link refid="dc/db6/hal_8cpp"/>
       </node>
@@ -170,8 +120,6 @@
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -241,6 +189,21 @@
         <location file="src/modules/hal/hal.h" line="41" column="1" bodyfile="src/modules/hal/hal.h" bodystart="41" bodyend="49"/>
       </memberdef>
     </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="d8/d4b/hal_8h_1a5db44754abe690dd04b3f2abe5a075c8" prot="public" static="no">
+        <type><ref refid="db/de2/structhal__sonicator__status__t" kindref="compound">hal_sonicator_status_t</ref></type>
+        <definition>typedef hal_sonicator_status_t sonicator_status_t</definition>
+        <argsstring></argsstring>
+        <name>sonicator_status_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal.h" line="141" column="32" bodyfile="src/modules/hal/hal.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
     <sectiondef kind="func">
       <memberdef kind="function" id="d8/d4b/hal_8h_1aa09745b395496b11ba076700d91d8e21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
@@ -268,7 +231,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/hal.h" line="63" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="60" bodyend="98" declfile="src/modules/hal/hal.h" declline="63" declcolumn="14"/>
+        <location file="src/modules/hal/hal.h" line="63" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="62" bodyend="100" declfile="src/modules/hal/hal.h" declline="63" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="d8/d4b/hal_8h_1a6613a740f474578c7a3028157d453abe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
@@ -354,7 +317,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/hal.h" line="82" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="100" bodyend="157" declfile="src/modules/hal/hal.h" declline="82" declcolumn="14"/>
+        <location file="src/modules/hal/hal.h" line="82" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="102" bodyend="154" declfile="src/modules/hal/hal.h" declline="82" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="d8/d4b/hal_8h_1abda7de3090b510179a16211a02b87bb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
@@ -408,7 +371,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/hal.h" line="93" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="159" bodyend="179" declfile="src/modules/hal/hal.h" declline="93" declcolumn="14"/>
+        <location file="src/modules/hal/hal.h" line="93" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="156" bodyend="176" declfile="src/modules/hal/hal.h" declline="93" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="d8/d4b/hal_8h_1ac4d228c6c0dea1248daddffa2b8cc6aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
@@ -428,7 +391,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/hal.h" line="100" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="181" bodyend="192" declfile="src/modules/hal/hal.h" declline="100" declcolumn="14"/>
+        <location file="src/modules/hal/hal.h" line="100" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="178" bodyend="189" declfile="src/modules/hal/hal.h" declline="100" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="d8/d4b/hal_8h_1a5b5e63353fed4bfb72b1509fab9b3d40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
@@ -456,7 +419,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/hal.h" line="114" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="194" bodyend="219" declfile="src/modules/hal/hal.h" declline="114" declcolumn="14"/>
+        <location file="src/modules/hal/hal.h" line="114" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="191" bodyend="216" declfile="src/modules/hal/hal.h" declline="114" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="d8/d4b/hal_8h_1ae2a8edd9f82c37d2c8b8380df50f6d38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
@@ -498,7 +461,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/hal.h" line="146" column="14" declfile="src/modules/hal/hal.h" declline="146" declcolumn="14"/>
+        <location file="src/modules/hal/hal.h" line="152" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="222" bodyend="264" declfile="src/modules/hal/hal.h" declline="152" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="d8/d4b/hal_8h_1a16dae83a26a56a47a0c33b338ae89912" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
@@ -540,7 +503,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/hal.h" line="155" column="14" declfile="src/modules/hal/hal.h" declline="155" declcolumn="14"/>
+        <location file="src/modules/hal/hal.h" line="161" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="266" bodyend="305" declfile="src/modules/hal/hal.h" declline="161" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="d8/d4b/hal_8h_1a7d63b7145ac96884c17789dfa39f93e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
@@ -571,7 +534,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/hal.h" line="163" column="14" declfile="src/modules/hal/hal.h" declline="163" declcolumn="14"/>
+        <location file="src/modules/hal/hal.h" line="169" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="307" bodyend="327" declfile="src/modules/hal/hal.h" declline="169" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="d8/d4b/hal_8h_1aeb293a50a4363248f9353779707c5837" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
@@ -602,7 +565,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/hal.h" line="171" column="14" declfile="src/modules/hal/hal.h" declline="171" declcolumn="14"/>
+        <location file="src/modules/hal/hal.h" line="177" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="329" bodyend="349" declfile="src/modules/hal/hal.h" declline="177" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="d8/d4b/hal_8h_1a42682f6be8bc89646e8cb60411e1dded" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
@@ -622,7 +585,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/modules/hal/hal.h" line="178" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="361" bodyend="375" declfile="src/modules/hal/hal.h" declline="178" declcolumn="14"/>
+        <location file="src/modules/hal/hal.h" line="184" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="351" bodyend="365" declfile="src/modules/hal/hal.h" declline="184" declcolumn="14"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -678,7 +641,7 @@ Master header file that includes all HAL modules for the Multi-Sonicator I/O Con
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="d8/d4b/hal_8h_1aa09745b395496b11ba076700d91d8e21" kindref="member">hal_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="d8/d4b/hal_8h_1a6613a740f474578c7a3028157d453abe" kindref="member">hal_self_test</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>gpio_ok,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>adc_ok,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>pwm_ok,<sp/></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="d8/d4b/hal_8h_1a6613a740f474578c7a3028157d453abe" kindref="member">hal_self_test</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>gpio_ok,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>adc_ok,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>pwm_ok,</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>uart_ok,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>timer_ok);</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="d8/d4b/hal_8h_1abda7de3090b510179a16211a02b87bb5" kindref="member">hal_get_status</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>initialized,<sp/>uint32_t*<sp/>uptime_ms,<sp/>uint16_t*<sp/>errors);</highlight></codeline>
@@ -704,21 +667,27 @@ Master header file that includes all HAL modules for the Multi-Sonicator I/O Con
 <codeline lineno="136" refid="db/de2/structhal__sonicator__status__t_1a21fb855fea6177f31698a437ab3e8ab0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="db/de2/structhal__sonicator__status__t_1a21fb855fea6177f31698a437ab3e8ab0" kindref="member">frequency_hz</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Operating<sp/>frequency</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="137"><highlight class="normal">}<sp/><ref refid="db/de2/structhal__sonicator__status__t" kindref="compound">hal_sonicator_status_t</ref>;</highlight></codeline>
 <codeline lineno="138"><highlight class="normal"></highlight></codeline>
-<codeline lineno="146" refid="d8/d4b/hal_8h_1ae2a8edd9f82c37d2c8b8380df50f6d38" refkind="member"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="d8/d4b/hal_8h_1ae2a8edd9f82c37d2c8b8380df50f6d38" kindref="member">hal_control_sonicator</ref>(uint8_t<sp/>sonicator_id,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dc/db3/structhal__sonicator__control__t" kindref="compound">hal_sonicator_control_t</ref>*<sp/>control);</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"></highlight></codeline>
-<codeline lineno="155" refid="d8/d4b/hal_8h_1a16dae83a26a56a47a0c33b338ae89912" refkind="member"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="d8/d4b/hal_8h_1a16dae83a26a56a47a0c33b338ae89912" kindref="member">hal_read_sonicator_status</ref>(uint8_t<sp/>sonicator_id,<sp/><ref refid="db/de2/structhal__sonicator__status__t" kindref="compound">hal_sonicator_status_t</ref>*<sp/>status);</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"></highlight></codeline>
-<codeline lineno="163" refid="d8/d4b/hal_8h_1a7d63b7145ac96884c17789dfa39f93e7" refkind="member"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="d8/d4b/hal_8h_1a7d63b7145ac96884c17789dfa39f93e7" kindref="member">hal_control_all_sonicators</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dc/db3/structhal__sonicator__control__t" kindref="compound">hal_sonicator_control_t</ref><sp/>control_array[4]);</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"></highlight></codeline>
-<codeline lineno="171" refid="d8/d4b/hal_8h_1aeb293a50a4363248f9353779707c5837" refkind="member"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="d8/d4b/hal_8h_1aeb293a50a4363248f9353779707c5837" kindref="member">hal_read_all_sonicator_status</ref>(<ref refid="db/de2/structhal__sonicator__status__t" kindref="compound">hal_sonicator_status_t</ref><sp/>status_array[4]);</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"></highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="d8/d4b/hal_8h_1a42682f6be8bc89646e8cb60411e1dded" kindref="member">hal_emergency_stop_all</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"></highlight></codeline>
-<codeline lineno="180"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="181"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="183"><highlight class="normal"></highlight></codeline>
-<codeline lineno="184"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>HAL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Backward-compatibility<sp/>alias<sp/>for<sp/>legacy<sp/>C<sp/>tests<sp/>expecting<sp/>sonicator_status_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="d8/d4b/hal_8h_1a5db44754abe690dd04b3f2abe5a075c8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="db/de2/structhal__sonicator__status__t" kindref="compound">hal_sonicator_status_t</ref><sp/><ref refid="d8/d4b/hal_8h_1a5db44754abe690dd04b3f2abe5a075c8" kindref="member">sonicator_status_t</ref>;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="d8/d4b/hal_8h_1ae2a8edd9f82c37d2c8b8380df50f6d38" kindref="member">hal_control_sonicator</ref>(uint8_t<sp/>sonicator_id,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dc/db3/structhal__sonicator__control__t" kindref="compound">hal_sonicator_control_t</ref>*<sp/>control);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="d8/d4b/hal_8h_1a16dae83a26a56a47a0c33b338ae89912" kindref="member">hal_read_sonicator_status</ref>(uint8_t<sp/>sonicator_id,<sp/><ref refid="db/de2/structhal__sonicator__status__t" kindref="compound">hal_sonicator_status_t</ref>*<sp/>status);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="d8/d4b/hal_8h_1a7d63b7145ac96884c17789dfa39f93e7" kindref="member">hal_control_all_sonicators</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="dc/db3/structhal__sonicator__control__t" kindref="compound">hal_sonicator_control_t</ref><sp/>control_array[4]);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="d8/d4b/hal_8h_1aeb293a50a4363248f9353779707c5837" kindref="member">hal_read_all_sonicator_status</ref>(<ref refid="db/de2/structhal__sonicator__status__t" kindref="compound">hal_sonicator_status_t</ref><sp/>status_array[4]);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="d8/d4b/hal_8h_1a42682f6be8bc89646e8cb60411e1dded" kindref="member">hal_emergency_stop_all</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>HAL_H</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/modules/hal/hal.h"/>
   </compounddef>

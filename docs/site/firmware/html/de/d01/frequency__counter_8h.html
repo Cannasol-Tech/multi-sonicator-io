@@ -462,7 +462,15 @@ Variables</h2></td></tr>
 <li>Configures PB0-PB3 as inputs with pull-ups</li>
 <li>Sets up Pin Change Interrupt for Port B</li>
 <li>Initializes all frequency counter structures</li>
-<li>Enables global interrupts </li>
+<li>Enables global interrupts</li>
+</ul>
+<p>Initialize frequency counting system.</p>
+<dl class="section note"><dt>Note</dt><dd>This ISR handles all 4 frequency input pins simultaneously</dd></dl>
+<p>Optimized for minimal execution time while maintaining accuracy.</p><ul>
+<li>Captures timestamp immediately for precision</li>
+<li>Detects edges by comparing current vs previous port state</li>
+<li>Applies noise filtering to reject spurious edges</li>
+<li>Updates measurement window completion flags </li>
 </ul>
 
 </div>

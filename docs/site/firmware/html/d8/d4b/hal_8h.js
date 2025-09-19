@@ -2,6 +2,7 @@ var hal_8h =
 [
     [ "hal_sonicator_control_t", "dc/db3/structhal__sonicator__control__t.html", "dc/db3/structhal__sonicator__control__t" ],
     [ "hal_sonicator_status_t", "db/de2/structhal__sonicator__status__t.html", "db/de2/structhal__sonicator__status__t" ],
+    [ "sonicator_status_t", "d8/d4b/hal_8h.html#a5db44754abe690dd04b3f2abe5a075c8", null ],
     [ "hal_result_t", "d8/d4b/hal_8h.html#ace8e76cd091b757cacd51778764dd9a6", [
       [ "HAL_OK", "d8/d4b/hal_8h.html#ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632", null ],
       [ "HAL_ERROR_GPIO", "d8/d4b/hal_8h.html#ace8e76cd091b757cacd51778764dd9a6acba2484c22dba92b9ab60b25529fdd1e", null ],

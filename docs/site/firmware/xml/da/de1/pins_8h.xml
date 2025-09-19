@@ -92,7 +92,7 @@ for MONITORED signals, we should pass the value to it&apos;s correct MODBUS regi
 <entry thead="no"><para>21  </para>
 </entry><entry thead="no"><para>AMPLITUDE_ALL  </para>
 </entry><entry thead="no"><para>OUT (PWM)  </para>
-</entry><entry thead="no"><para>REG_SON1_AMPLITUDE_SP  </para>
+</entry><entry thead="no"><para>REG_AMPLITUDE_ALL_SP  </para>
 </entry><entry thead="no"><para>0x0101  </para>
 </entry><entry thead="no"><para>Amplitude control ← MODBUS setpoint (20-100%)  </para>
 </entry></row>
@@ -160,7 +160,7 @@ for MONITORED signals, we should pass the value to it&apos;s correct MODBUS regi
 <entry thead="no"><para>21  </para>
 </entry><entry thead="no"><para>AMPLITUDE_ALL  </para>
 </entry><entry thead="no"><para>OUT (PWM)  </para>
-</entry><entry thead="no"><para>REG_SON2_AMPLITUDE_SP  </para>
+</entry><entry thead="no"><para>REG_AMPLITUDE_ALL_SP  </para>
 </entry><entry thead="no"><para>0x0121  </para>
 </entry><entry thead="no"><para>Amplitude control ← MODBUS setpoint (20-100%)  </para>
 </entry></row>
@@ -228,7 +228,7 @@ for MONITORED signals, we should pass the value to it&apos;s correct MODBUS regi
 <entry thead="no"><para>21  </para>
 </entry><entry thead="no"><para>AMPLITUDE_ALL  </para>
 </entry><entry thead="no"><para>OUT (PWM)  </para>
-</entry><entry thead="no"><para>REG_SON3_AMPLITUDE_SP  </para>
+</entry><entry thead="no"><para>REG_AMPLITUDE_ALL_SP  </para>
 </entry><entry thead="no"><para>0x0141  </para>
 </entry><entry thead="no"><para>Amplitude control ← MODBUS setpoint (20-100%)  </para>
 </entry></row>
@@ -296,7 +296,7 @@ for MONITORED signals, we should pass the value to it&apos;s correct MODBUS regi
 <entry thead="no"><para>21  </para>
 </entry><entry thead="no"><para>AMPLITUDE_ALL  </para>
 </entry><entry thead="no"><para>OUT (PWM)  </para>
-</entry><entry thead="no"><para>REG_SON4_AMPLITUDE_SP  </para>
+</entry><entry thead="no"><para>REG_AMPLITUDE_ALL_SP  </para>
 </entry><entry thead="no"><para>0x0161  </para>
 </entry><entry thead="no"><para>Amplitude control ← MODBUS setpoint (20-100%)  </para>
 </entry></row>
@@ -1100,13 +1100,13 @@ for MONITORED signals, we should pass the value to it&apos;s correct MODBUS regi
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_PINS_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight></codeline>
 <codeline lineno="271"><highlight class="normal"></highlight></codeline>
-<codeline lineno="279" refid="de/d5a/struct_sonicator_pins" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="de/d5a/struct_sonicator_pins" kindref="compound">SonicatorPins</ref><sp/>{</highlight></codeline>
-<codeline lineno="280" refid="de/d5a/struct_sonicator_pins_1aade86cc331059ac42b918d5c4601cfba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="de/d5a/struct_sonicator_pins_1aade86cc331059ac42b918d5c4601cfba" kindref="member">start_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="281" refid="de/d5a/struct_sonicator_pins_1adb56b7285e08ae5590664013aea0dc5b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="de/d5a/struct_sonicator_pins_1adb56b7285e08ae5590664013aea0dc5b" kindref="member">reset_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="282" refid="de/d5a/struct_sonicator_pins_1a9f2610ad98a5973f58cc32c714f7bfc9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="de/d5a/struct_sonicator_pins_1a9f2610ad98a5973f58cc32c714f7bfc9" kindref="member">overload_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="283" refid="de/d5a/struct_sonicator_pins_1a8572c5252876bfb33ae862600951ce83" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="de/d5a/struct_sonicator_pins_1a8572c5252876bfb33ae862600951ce83" kindref="member">freq_lock_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="de/d5a/struct_sonicator_pins" kindref="compound">SonicatorPins</ref><sp/>{</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="de/d5a/struct_sonicator_pins_1aade86cc331059ac42b918d5c4601cfba" kindref="member">start_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="de/d5a/struct_sonicator_pins_1adb56b7285e08ae5590664013aea0dc5b" kindref="member">reset_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="de/d5a/struct_sonicator_pins_1a9f2610ad98a5973f58cc32c714f7bfc9" kindref="member">overload_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="de/d5a/struct_sonicator_pins_1a8572c5252876bfb33ae862600951ce83" kindref="member">freq_lock_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="284" refid="de/d5a/struct_sonicator_pins_1ac081e0e9cc64b41ad1f5716d202c1cb3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="de/d5a/struct_sonicator_pins_1ac081e0e9cc64b41ad1f5716d202c1cb3" kindref="member">operating_freq_div10</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="285" refid="de/d5a/struct_sonicator_pins_1a3523cd65a350ce8ff85b9166bb46f73c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref><sp/><ref refid="de/d5a/struct_sonicator_pins_1a3523cd65a350ce8ff85b9166bb46f73c" kindref="member">power_sense_channel</ref>;<sp/></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref><sp/><ref refid="de/d5a/struct_sonicator_pins_1a3523cd65a350ce8ff85b9166bb46f73c" kindref="member">power_sense_channel</ref>;<sp/></highlight></codeline>
 <codeline lineno="286"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="287"><highlight class="normal"></highlight></codeline>
 <codeline lineno="288"><highlight class="normal"></highlight></codeline>
