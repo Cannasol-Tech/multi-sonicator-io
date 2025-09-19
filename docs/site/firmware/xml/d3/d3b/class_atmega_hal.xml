@@ -1,0 +1,1815 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d3/d3b/class_atmega_hal" kind="class" language="C++" prot="public">
+    <compoundname>AtmegaHal</compoundname>
+    <includes refid="d2/d92/atmega__hal__impl_8h" local="no">atmega_hal_impl.h</includes>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1acc7867c91075652d2fe02ad7089e1273" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioInit</definition>
+        <argsstring>()</argsstring>
+        <name>gpioInit</name>
+        <qualifiedname>AtmegaHal::gpioInit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="30" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="30" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1acce57ae7cff865cade50de2de5e104cf" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioSetPinMode</definition>
+        <argsstring>(uint8_t pin, uint8_t mode)</argsstring>
+        <name>gpioSetPinMode</name>
+        <qualifiedname>AtmegaHal::gpioSetPinMode</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="34" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="34" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a4b98f311b471be23fc7c23e72ab6b286" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioDigitalWrite</definition>
+        <argsstring>(uint8_t pin, uint8_t value)</argsstring>
+        <name>gpioDigitalWrite</name>
+        <qualifiedname>AtmegaHal::gpioDigitalWrite</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="45" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="45" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1af5b8f8c0dc9a1e4d8f95ebcd0b784709" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>static uint8_t AtmegaHal::gpioDigitalRead</definition>
+        <argsstring>(uint8_t pin)</argsstring>
+        <name>gpioDigitalRead</name>
+        <qualifiedname>AtmegaHal::gpioDigitalRead</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="50" column="20" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="50" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a63d10f63378a5ef62bbe9234c46df278" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioTogglePin</definition>
+        <argsstring>(uint8_t pin)</argsstring>
+        <name>gpioTogglePin</name>
+        <qualifiedname>AtmegaHal::gpioTogglePin</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="58" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="58" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a0f67f641eee1943e756dcce7bfda514e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioSonicatorStart</definition>
+        <argsstring>(uint8_t sonicator_id)</argsstring>
+        <name>gpioSonicatorStart</name>
+        <qualifiedname>AtmegaHal::gpioSonicatorStart</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="63" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="63" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a21130918b4f33dd80617e7db95ee9873" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioSonicatorStop</definition>
+        <argsstring>(uint8_t sonicator_id)</argsstring>
+        <name>gpioSonicatorStop</name>
+        <qualifiedname>AtmegaHal::gpioSonicatorStop</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="67" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="67" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1af6d26c98aec0e0b03d8998b8abc6105c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioSonicatorReset</definition>
+        <argsstring>(uint8_t sonicator_id)</argsstring>
+        <name>gpioSonicatorReset</name>
+        <qualifiedname>AtmegaHal::gpioSonicatorReset</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="71" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="71" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a8c662a07b79d2fa55a4adfd131d220cc" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioSonicatorReadOverload</definition>
+        <argsstring>(uint8_t sonicator_id, bool *state)</argsstring>
+        <name>gpioSonicatorReadOverload</name>
+        <qualifiedname>AtmegaHal::gpioSonicatorReadOverload</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="75" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="75" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1ad166e2ee764cd85a82cfe7d00cc07275" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioSonicatorReadFreqLock</definition>
+        <argsstring>(uint8_t sonicator_id, bool *state)</argsstring>
+        <name>gpioSonicatorReadFreqLock</name>
+        <qualifiedname>AtmegaHal::gpioSonicatorReadFreqLock</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="79" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="79" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1af3a5a5c8140ebaef0cbbc278bc5f4337" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioStatusLed</definition>
+        <argsstring>(bool state)</argsstring>
+        <name>gpioStatusLed</name>
+        <qualifiedname>AtmegaHal::gpioStatusLed</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="83" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="83" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a79f6c3a90f41a51c346380ac33f12a2f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::adcInit</definition>
+        <argsstring>()</argsstring>
+        <name>adcInit</name>
+        <qualifiedname>AtmegaHal::adcInit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="92" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="92" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a2b7947081abb07966e848ceb26f0bf28" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::adcReadChannel</definition>
+        <argsstring>(uint8_t channel, uint16_t *value)</argsstring>
+        <name>adcReadChannel</name>
+        <qualifiedname>AtmegaHal::adcReadChannel</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="96" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="96" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a703c515245ffe9dcdff0856bc1d8ed94" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::adcStartConversion</definition>
+        <argsstring>(uint8_t channel)</argsstring>
+        <name>adcStartConversion</name>
+        <qualifiedname>AtmegaHal::adcStartConversion</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="100" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="100" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1ab554dde7f092a27c49a346d3a6c2b0ae" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::adcIsConversionComplete</definition>
+        <argsstring>()</argsstring>
+        <name>adcIsConversionComplete</name>
+        <qualifiedname>AtmegaHal::adcIsConversionComplete</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="104" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="104" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a1020a4be86be2d5dbbc0a40d49aa85ef" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float AtmegaHal::adcRawToVoltage</definition>
+        <argsstring>(uint16_t raw_value)</argsstring>
+        <name>adcRawToVoltage</name>
+        <qualifiedname>AtmegaHal::adcRawToVoltage</qualifiedname>
+        <param>
+          <type>uint16_t</type>
+          <declname>raw_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="108" column="18" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="108" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a711df21a43c1500c9abc12b1d53036a0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::adcReadSonicatorPower</definition>
+        <argsstring>(uint8_t sonicator_id, float *power_watts)</argsstring>
+        <name>adcReadSonicatorPower</name>
+        <qualifiedname>AtmegaHal::adcReadSonicatorPower</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>power_watts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="117" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="117" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1acb8920854a07884864dc1b7445c5fc1b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::adcReadFrequency</definition>
+        <argsstring>(float *frequency_hz)</argsstring>
+        <name>adcReadFrequency</name>
+        <qualifiedname>AtmegaHal::adcReadFrequency</qualifiedname>
+        <param>
+          <type>float *</type>
+          <declname>frequency_hz</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="121" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="121" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a8828c128c97c34d470747e6cf22ae049" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::adcCalibrate</definition>
+        <argsstring>(float reference_voltage)</argsstring>
+        <name>adcCalibrate</name>
+        <qualifiedname>AtmegaHal::adcCalibrate</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>reference_voltage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="125" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="125" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1ab21e232c0400f238affc8661e49de244" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::pwmInit</definition>
+        <argsstring>()</argsstring>
+        <name>pwmInit</name>
+        <qualifiedname>AtmegaHal::pwmInit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="133" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="133" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a11c9550e8a002332815f083413271d98" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::pwmSetFrequency</definition>
+        <argsstring>(uint8_t channel, uint32_t frequency)</argsstring>
+        <name>pwmSetFrequency</name>
+        <qualifiedname>AtmegaHal::pwmSetFrequency</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>frequency</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="137" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="137" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1afbb85779bc78a399e56d54958b584564" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::pwmSetDutyCycle</definition>
+        <argsstring>(uint8_t channel, uint8_t duty_percent)</argsstring>
+        <name>pwmSetDutyCycle</name>
+        <qualifiedname>AtmegaHal::pwmSetDutyCycle</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>duty_percent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="141" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="141" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a39913c92d8b86f0b98df9993d3020743" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::pwmEnableChannel</definition>
+        <argsstring>(uint8_t channel)</argsstring>
+        <name>pwmEnableChannel</name>
+        <qualifiedname>AtmegaHal::pwmEnableChannel</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="145" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="145" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a459c1867e7aa82be7227ef841dd9c654" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::pwmDisableChannel</definition>
+        <argsstring>(uint8_t channel)</argsstring>
+        <name>pwmDisableChannel</name>
+        <qualifiedname>AtmegaHal::pwmDisableChannel</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="149" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="149" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a7dfa96a853cd077994e98679c74d483a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::pwmSetAmplitude</definition>
+        <argsstring>(uint8_t amplitude_percent)</argsstring>
+        <name>pwmSetAmplitude</name>
+        <qualifiedname>AtmegaHal::pwmSetAmplitude</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>amplitude_percent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="154" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="154" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a5b68689d708590e69bf43c692dfda8e8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::pwmGetAmplitude</definition>
+        <argsstring>(uint8_t *amplitude_percent)</argsstring>
+        <name>pwmGetAmplitude</name>
+        <qualifiedname>AtmegaHal::pwmGetAmplitude</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>amplitude_percent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="158" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="158" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a5fb12e99ed8cc1c56d1c3b5d12a2a836" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::pwmAmplitudeRamp</definition>
+        <argsstring>(uint8_t target_percent, uint16_t ramp_time_ms)</argsstring>
+        <name>pwmAmplitudeRamp</name>
+        <qualifiedname>AtmegaHal::pwmAmplitudeRamp</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>target_percent</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>ramp_time_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="162" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="162" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a5075d44c96dc6776c769e8076a4bf4fb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::pwmRampComplete</definition>
+        <argsstring>(bool *complete)</argsstring>
+        <name>pwmRampComplete</name>
+        <qualifiedname>AtmegaHal::pwmRampComplete</qualifiedname>
+        <param>
+          <type>bool *</type>
+          <declname>complete</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="166" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="166" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a2a1dc6db939ed4c07e01767537aef9b9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::pwmEmergencyStop</definition>
+        <argsstring>()</argsstring>
+        <name>pwmEmergencyStop</name>
+        <qualifiedname>AtmegaHal::pwmEmergencyStop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="170" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="170" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1ac67d5bc03ca38bdb9595e811f1024a63" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::pwmDutyToVoltage</definition>
+        <argsstring>(uint8_t duty_percent, float *output_voltage)</argsstring>
+        <name>pwmDutyToVoltage</name>
+        <qualifiedname>AtmegaHal::pwmDutyToVoltage</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>duty_percent</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>output_voltage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="175" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="175" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1ada5d5da8d50f27e9845f62cd617b978d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::pwmAmplitudeToVoltage</definition>
+        <argsstring>(uint8_t amplitude_percent, float *output_voltage)</argsstring>
+        <name>pwmAmplitudeToVoltage</name>
+        <qualifiedname>AtmegaHal::pwmAmplitudeToVoltage</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>amplitude_percent</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>output_voltage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="179" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="179" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a191162fe81a3d48ebc05e5838ada8671" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::pwmTestPattern</definition>
+        <argsstring>()</argsstring>
+        <name>pwmTestPattern</name>
+        <qualifiedname>AtmegaHal::pwmTestPattern</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="183" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="183" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1af41e85b7622eca85801f6e30571ba940" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerInit</definition>
+        <argsstring>()</argsstring>
+        <name>timerInit</name>
+        <qualifiedname>AtmegaHal::timerInit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="191" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="191" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a1b496f549d82235968adec0ccd8a8778" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerConfigure</definition>
+        <argsstring>(timer_id_t timer_id, const timer_config_t *config)</argsstring>
+        <name>timerConfigure</name>
+        <qualifiedname>AtmegaHal::timerConfigure</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="d4/de4/structtimer__config__t" kindref="compound">timer_config_t</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="195" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="195" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a16b42fc6539c73fe680d0fead98d7fd1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerStart</definition>
+        <argsstring>(timer_id_t timer_id, uint32_t period_ms)</argsstring>
+        <name>timerStart</name>
+        <qualifiedname>AtmegaHal::timerStart</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>period_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="199" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="199" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a959a6d438692a6d5342be9c6ec274723" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerStop</definition>
+        <argsstring>(timer_id_t timer_id)</argsstring>
+        <name>timerStop</name>
+        <qualifiedname>AtmegaHal::timerStop</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="203" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="203" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a25b8678d73526c600acb195fd03518d3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerExpired</definition>
+        <argsstring>(timer_id_t timer_id, bool *expired)</argsstring>
+        <name>timerExpired</name>
+        <qualifiedname>AtmegaHal::timerExpired</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>expired</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="207" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="207" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1ac146647e137b0a1726db0524c7ea9544" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerReset</definition>
+        <argsstring>(timer_id_t timer_id)</argsstring>
+        <name>timerReset</name>
+        <qualifiedname>AtmegaHal::timerReset</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="211" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="211" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1ab08bc6b8c7adf39d84eb68d2e03f24a3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerGetValue</definition>
+        <argsstring>(timer_id_t timer_id, uint16_t *value)</argsstring>
+        <name>timerGetValue</name>
+        <qualifiedname>AtmegaHal::timerGetValue</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="215" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="215" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a3fb074c1a3e7c8e04721e6d3b783df20" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerGetElapsed</definition>
+        <argsstring>(timer_id_t timer_id, uint32_t *elapsed_ms)</argsstring>
+        <name>timerGetElapsed</name>
+        <qualifiedname>AtmegaHal::timerGetElapsed</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>elapsed_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="219" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="219" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a9b79ab5d441cb74726b8f876f8404cbf" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerGetMillis</definition>
+        <argsstring>(uint32_t *uptime_ms)</argsstring>
+        <name>timerGetMillis</name>
+        <qualifiedname>AtmegaHal::timerGetMillis</qualifiedname>
+        <param>
+          <type>uint32_t *</type>
+          <declname>uptime_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="224" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="224" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a022076cce483d8eec2ca6dd61e88e060" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerGetMicros</definition>
+        <argsstring>(uint32_t *uptime_us)</argsstring>
+        <name>timerGetMicros</name>
+        <qualifiedname>AtmegaHal::timerGetMicros</qualifiedname>
+        <param>
+          <type>uint32_t *</type>
+          <declname>uptime_us</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="228" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="228" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1afeba94e88a256a04b8dbc0c16cf38bb0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerDelayMs</definition>
+        <argsstring>(uint32_t delay_ms)</argsstring>
+        <name>timerDelayMs</name>
+        <qualifiedname>AtmegaHal::timerDelayMs</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>delay_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="232" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="232" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a7ac721f1eeae08f4cca374393a3deba5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerDelayUs</definition>
+        <argsstring>(uint32_t delay_us)</argsstring>
+        <name>timerDelayUs</name>
+        <qualifiedname>AtmegaHal::timerDelayUs</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>delay_us</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="236" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="236" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1aa3b7bc5a03d10961deedffa53bb48f7e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerDelayComplete</definition>
+        <argsstring>(uint32_t start_time_ms, uint32_t delay_ms, bool *complete)</argsstring>
+        <name>timerDelayComplete</name>
+        <qualifiedname>AtmegaHal::timerDelayComplete</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>start_time_ms</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>delay_ms</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>complete</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="240" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="240" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a0e719a9a81d4a285649171a6e73b2425" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerSchedulerInit</definition>
+        <argsstring>()</argsstring>
+        <name>timerSchedulerInit</name>
+        <qualifiedname>AtmegaHal::timerSchedulerInit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="245" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="245" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a0b146423e8cad56d9c11fc9117e6f4c7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerSchedulerTick</definition>
+        <argsstring>(bool *tick_available)</argsstring>
+        <name>timerSchedulerTick</name>
+        <qualifiedname>AtmegaHal::timerSchedulerTick</qualifiedname>
+        <param>
+          <type>bool *</type>
+          <declname>tick_available</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="249" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="249" bodyend="251"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a7414bee3e120b789f6297cb99d5c5b0c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerSchedulerGetTicks</definition>
+        <argsstring>(uint32_t *tick_count)</argsstring>
+        <name>timerSchedulerGetTicks</name>
+        <qualifiedname>AtmegaHal::timerSchedulerGetTicks</qualifiedname>
+        <param>
+          <type>uint32_t *</type>
+          <declname>tick_count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="253" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="253" bodyend="255"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a39ca9eefe82a291fb2469ec659fec6a6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerSchedulerReset</definition>
+        <argsstring>()</argsstring>
+        <name>timerSchedulerReset</name>
+        <qualifiedname>AtmegaHal::timerSchedulerReset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="257" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="257" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a3561395e8f8c7f977d8b44e9b3436b65" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerWatchdogInit</definition>
+        <argsstring>()</argsstring>
+        <name>timerWatchdogInit</name>
+        <qualifiedname>AtmegaHal::timerWatchdogInit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="262" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="262" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a237bc211ec1cfd4bc43ae716d700666b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerWatchdogReset</definition>
+        <argsstring>()</argsstring>
+        <name>timerWatchdogReset</name>
+        <qualifiedname>AtmegaHal::timerWatchdogReset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="266" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="266" bodyend="268"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a709b6922cf7be6e42b564839eaaf15b3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerWatchdogExpired</definition>
+        <argsstring>(bool *expired)</argsstring>
+        <name>timerWatchdogExpired</name>
+        <qualifiedname>AtmegaHal::timerWatchdogExpired</qualifiedname>
+        <param>
+          <type>bool *</type>
+          <declname>expired</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="270" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="270" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1ae517ccf94c5144108e1156d831de5ab9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::timerWatchdogTimeRemaining</definition>
+        <argsstring>(uint32_t *time_remaining_ms)</argsstring>
+        <name>timerWatchdogTimeRemaining</name>
+        <qualifiedname>AtmegaHal::timerWatchdogTimeRemaining</qualifiedname>
+        <param>
+          <type>uint32_t *</type>
+          <declname>time_remaining_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="274" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="274" bodyend="276"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a80958b0f666408645114b173e6a29174" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::uartInit</definition>
+        <argsstring>(uint32_t baud_rate)</argsstring>
+        <name>uartInit</name>
+        <qualifiedname>AtmegaHal::uartInit</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>baud_rate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="282" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="282" bodyend="290"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a47a35626e2df31cec11340003a22c012" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::uartSetBaudRate</definition>
+        <argsstring>(uint32_t baud_rate)</argsstring>
+        <name>uartSetBaudRate</name>
+        <qualifiedname>AtmegaHal::uartSetBaudRate</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>baud_rate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="292" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="292" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a276651938ccfee5cd8f90944f7dec25f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::uartSendByte</definition>
+        <argsstring>(uint8_t data)</argsstring>
+        <name>uartSendByte</name>
+        <qualifiedname>AtmegaHal::uartSendByte</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="296" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="296" bodyend="298"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a74f75a6ff7e5ab73d8713e81ba55c04e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::uartReceiveByte</definition>
+        <argsstring>(uint8_t *data)</argsstring>
+        <name>uartReceiveByte</name>
+        <qualifiedname>AtmegaHal::uartReceiveByte</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="300" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="300" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1ab062cc59bbe4bd3adbbcbb8271af4be1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::uartDataAvailable</definition>
+        <argsstring>(bool *available)</argsstring>
+        <name>uartDataAvailable</name>
+        <qualifiedname>AtmegaHal::uartDataAvailable</qualifiedname>
+        <param>
+          <type>bool *</type>
+          <declname>available</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="304" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="304" bodyend="306"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1ade3a8f874da142dc44df01ccbe021e33" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::uartGetRxCount</definition>
+        <argsstring>(uint16_t *count)</argsstring>
+        <name>uartGetRxCount</name>
+        <qualifiedname>AtmegaHal::uartGetRxCount</qualifiedname>
+        <param>
+          <type>uint16_t *</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="308" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="308" bodyend="310"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a1395c0b3f087423ef2d1837ef3fb4273" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::uartSendBuffer</definition>
+        <argsstring>(const uint8_t *buffer, uint16_t length)</argsstring>
+        <name>uartSendBuffer</name>
+        <qualifiedname>AtmegaHal::uartSendBuffer</qualifiedname>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="312" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="312" bodyend="314"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a989eea460432ec67b6f789d416e0b074" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::uartReceiveBuffer</definition>
+        <argsstring>(uint8_t *buffer, uint16_t max_length, uint16_t *received)</argsstring>
+        <name>uartReceiveBuffer</name>
+        <qualifiedname>AtmegaHal::uartReceiveBuffer</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>max_length</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>received</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="316" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="316" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a534b0562724caef8da43f476e5c172b9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::uartFlushTx</definition>
+        <argsstring>()</argsstring>
+        <name>uartFlushTx</name>
+        <qualifiedname>AtmegaHal::uartFlushTx</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="320" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="320" bodyend="322"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a1806384c34e3cef350b9bd6190d3b8af" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::uartFlushRx</definition>
+        <argsstring>()</argsstring>
+        <name>uartFlushRx</name>
+        <qualifiedname>AtmegaHal::uartFlushRx</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="324" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="324" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1ae569ea59caa355ceb46e16dbad2582eb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::uartSendModbusFrame</definition>
+        <argsstring>(const uint8_t *frame, uint16_t length)</argsstring>
+        <name>uartSendModbusFrame</name>
+        <qualifiedname>AtmegaHal::uartSendModbusFrame</qualifiedname>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>frame</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="329" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="329" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a846ac2107db8f97d9dc3b50ce3bdc772" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::uartReceiveModbusFrame</definition>
+        <argsstring>(uint8_t *frame, uint16_t max_length, uint16_t *received, uint32_t timeout_ms)</argsstring>
+        <name>uartReceiveModbusFrame</name>
+        <qualifiedname>AtmegaHal::uartReceiveModbusFrame</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>frame</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>max_length</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>received</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="333" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="333" bodyend="336"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a24c282f3ce64714fd247eab767f37928" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::uartModbusGapDetected</definition>
+        <argsstring>(bool *gap_detected)</argsstring>
+        <name>uartModbusGapDetected</name>
+        <qualifiedname>AtmegaHal::uartModbusGapDetected</qualifiedname>
+        <param>
+          <type>bool *</type>
+          <declname>gap_detected</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="338" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="338" bodyend="340"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a150b569b33db80fc86081469f3c9eabb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::uartGetIdleTime</definition>
+        <argsstring>(uint32_t *time_us)</argsstring>
+        <name>uartGetIdleTime</name>
+        <qualifiedname>AtmegaHal::uartGetIdleTime</qualifiedname>
+        <param>
+          <type>uint32_t *</type>
+          <declname>time_us</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="342" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="342" bodyend="344"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a723660151b4454f821d7b3975d5028be" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::uartGetStatus</definition>
+        <argsstring>(bool *tx_busy, bool *rx_overflow, bool *frame_error, bool *parity_error)</argsstring>
+        <name>uartGetStatus</name>
+        <qualifiedname>AtmegaHal::uartGetStatus</qualifiedname>
+        <param>
+          <type>bool *</type>
+          <declname>tx_busy</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>rx_overflow</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>frame_error</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>parity_error</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="347" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="347" bodyend="350"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a1ae41499ce3edd1ed408c1917a8f55cc" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::uartGetTxFree</definition>
+        <argsstring>(uint16_t *free_bytes)</argsstring>
+        <name>uartGetTxFree</name>
+        <qualifiedname>AtmegaHal::uartGetTxFree</qualifiedname>
+        <param>
+          <type>uint16_t *</type>
+          <declname>free_bytes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="352" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="352" bodyend="354"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1ab0643eac3d604c6574ba122a7ef71a30" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::uartClearErrors</definition>
+        <argsstring>()</argsstring>
+        <name>uartClearErrors</name>
+        <qualifiedname>AtmegaHal::uartClearErrors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="356" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="356" bodyend="358"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a28b767a48ccf1ffcea19aef878be315e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::uartGetCharTime</definition>
+        <argsstring>(uint16_t *char_time_us)</argsstring>
+        <name>uartGetCharTime</name>
+        <qualifiedname>AtmegaHal::uartGetCharTime</qualifiedname>
+        <param>
+          <type>uint16_t *</type>
+          <declname>char_time_us</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="360" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="360" bodyend="362"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1ab635109e3fed732d2e52edc746145a7a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::uartTestLoopback</definition>
+        <argsstring>(bool *success)</argsstring>
+        <name>uartTestLoopback</name>
+        <qualifiedname>AtmegaHal::uartTestLoopback</qualifiedname>
+        <param>
+          <type>bool *</type>
+          <declname>success</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/atmega_hal_impl.h" line="364" column="17" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="364" bodyend="366"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1acc7867c91075652d2fe02ad7089e1273" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioInit</definition>
+        <argsstring>()</argsstring>
+        <name>gpioInit</name>
+        <qualifiedname>AtmegaHal::gpioInit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="105" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="105" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1acce57ae7cff865cade50de2de5e104cf" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioSetPinMode</definition>
+        <argsstring>(uint8_t pin, uint8_t mode)</argsstring>
+        <name>gpioSetPinMode</name>
+        <qualifiedname>AtmegaHal::gpioSetPinMode</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="106" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="106" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a4b98f311b471be23fc7c23e72ab6b286" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioDigitalWrite</definition>
+        <argsstring>(uint8_t pin, uint8_t value)</argsstring>
+        <name>gpioDigitalWrite</name>
+        <qualifiedname>AtmegaHal::gpioDigitalWrite</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="116" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="116" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1af5b8f8c0dc9a1e4d8f95ebcd0b784709" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>static uint8_t AtmegaHal::gpioDigitalRead</definition>
+        <argsstring>(uint8_t pin)</argsstring>
+        <name>gpioDigitalRead</name>
+        <qualifiedname>AtmegaHal::gpioDigitalRead</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="120" column="20" bodyfile="src/modules/hal/hal_template_example.h" bodystart="120" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a63d10f63378a5ef62bbe9234c46df278" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioTogglePin</definition>
+        <argsstring>(uint8_t pin)</argsstring>
+        <name>gpioTogglePin</name>
+        <qualifiedname>AtmegaHal::gpioTogglePin</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="125" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="125" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a081390e1e4e209cf3774207a983da8f6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioSonicatorStart</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>gpioSonicatorStart</name>
+        <qualifiedname>AtmegaHal::gpioSonicatorStart</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="128" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="128" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a7ace5f1c8a7248141d11b77d875e60d0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioSonicatorStop</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>gpioSonicatorStop</name>
+        <qualifiedname>AtmegaHal::gpioSonicatorStop</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="131" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="131" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1ab182ff4edf29e3a200c6e68700ffbad9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioSonicatorReset</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>gpioSonicatorReset</name>
+        <qualifiedname>AtmegaHal::gpioSonicatorReset</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="134" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="134" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a19575fab3faeb4302d098adaad0b69c3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioSonicatorReadOverload</definition>
+        <argsstring>(uint8_t id, bool *state)</argsstring>
+        <name>gpioSonicatorReadOverload</name>
+        <qualifiedname>AtmegaHal::gpioSonicatorReadOverload</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="137" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="137" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a291b1d446e36455b269f53e0c24c9ecb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioSonicatorReadFreqLock</definition>
+        <argsstring>(uint8_t id, bool *state)</argsstring>
+        <name>gpioSonicatorReadFreqLock</name>
+        <qualifiedname>AtmegaHal::gpioSonicatorReadFreqLock</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="140" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="140" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1af3a5a5c8140ebaef0cbbc278bc5f4337" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::gpioStatusLed</definition>
+        <argsstring>(bool state)</argsstring>
+        <name>gpioStatusLed</name>
+        <qualifiedname>AtmegaHal::gpioStatusLed</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="143" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="143" bodyend="146"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a79f6c3a90f41a51c346380ac33f12a2f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::adcInit</definition>
+        <argsstring>()</argsstring>
+        <name>adcInit</name>
+        <qualifiedname>AtmegaHal::adcInit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="149" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="149" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a2b7947081abb07966e848ceb26f0bf28" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::adcReadChannel</definition>
+        <argsstring>(uint8_t channel, uint16_t *value)</argsstring>
+        <name>adcReadChannel</name>
+        <qualifiedname>AtmegaHal::adcReadChannel</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="150" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="150" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a55b04ed7f963978db20244fb60c1ee19" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float AtmegaHal::adcRawToVoltage</definition>
+        <argsstring>(uint16_t raw)</argsstring>
+        <name>adcRawToVoltage</name>
+        <qualifiedname>AtmegaHal::adcRawToVoltage</qualifiedname>
+        <param>
+          <type>uint16_t</type>
+          <declname>raw</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="153" column="18" bodyfile="src/modules/hal/hal_template_example.h" bodystart="153" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1ab04abe0a6242df2de3d4ad82bb3a4329" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::adcReadSonicatorPower</definition>
+        <argsstring>(uint8_t id, float *power)</argsstring>
+        <name>adcReadSonicatorPower</name>
+        <qualifiedname>AtmegaHal::adcReadSonicatorPower</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>power</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="158" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="158" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1ab21e232c0400f238affc8661e49de244" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::pwmInit</definition>
+        <argsstring>()</argsstring>
+        <name>pwmInit</name>
+        <qualifiedname>AtmegaHal::pwmInit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="163" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="163" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a6c573351a1d99882d9de401b3bdb20d3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::pwmSetDutyCycle</definition>
+        <argsstring>(uint8_t channel, uint8_t duty)</argsstring>
+        <name>pwmSetDutyCycle</name>
+        <qualifiedname>AtmegaHal::pwmSetDutyCycle</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>duty</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="164" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="164" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a57dec5908103d10405f1f8949f22e892" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::pwmSetAmplitude</definition>
+        <argsstring>(uint8_t amplitude)</argsstring>
+        <name>pwmSetAmplitude</name>
+        <qualifiedname>AtmegaHal::pwmSetAmplitude</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>amplitude</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="167" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="167" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d3b/class_atmega_hal_1a2a1dc6db939ed4c07e01767537aef9b9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool AtmegaHal::pwmEmergencyStop</definition>
+        <argsstring>()</argsstring>
+        <name>pwmEmergencyStop</name>
+        <qualifiedname>AtmegaHal::pwmEmergencyStop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="170" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="170" bodyend="172"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ATmega32A HAL Implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Contains static methods that implement the HAL interface. No virtual methods, no objects - just direct function calls. </para>
+    </detaileddescription>
+    <location file="src/modules/hal/atmega_hal_impl.h" line="24" column="1" bodyfile="src/modules/hal/atmega_hal_impl.h" bodystart="24" bodyend="367"/>
+    <listofallmembers>
+      <member refid="d3/d3b/class_atmega_hal_1a8828c128c97c34d470747e6cf22ae049" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>adcCalibrate</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a79f6c3a90f41a51c346380ac33f12a2f" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>adcInit</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a79f6c3a90f41a51c346380ac33f12a2f" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>adcInit</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1ab554dde7f092a27c49a346d3a6c2b0ae" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>adcIsConversionComplete</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a1020a4be86be2d5dbbc0a40d49aa85ef" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>adcRawToVoltage</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a55b04ed7f963978db20244fb60c1ee19" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>adcRawToVoltage</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a2b7947081abb07966e848ceb26f0bf28" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>adcReadChannel</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a2b7947081abb07966e848ceb26f0bf28" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>adcReadChannel</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1acb8920854a07884864dc1b7445c5fc1b" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>adcReadFrequency</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a711df21a43c1500c9abc12b1d53036a0" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>adcReadSonicatorPower</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1ab04abe0a6242df2de3d4ad82bb3a4329" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>adcReadSonicatorPower</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a703c515245ffe9dcdff0856bc1d8ed94" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>adcStartConversion</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1af5b8f8c0dc9a1e4d8f95ebcd0b784709" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioDigitalRead</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1af5b8f8c0dc9a1e4d8f95ebcd0b784709" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioDigitalRead</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a4b98f311b471be23fc7c23e72ab6b286" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioDigitalWrite</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a4b98f311b471be23fc7c23e72ab6b286" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioDigitalWrite</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1acc7867c91075652d2fe02ad7089e1273" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioInit</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1acc7867c91075652d2fe02ad7089e1273" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioInit</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1acce57ae7cff865cade50de2de5e104cf" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioSetPinMode</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1acce57ae7cff865cade50de2de5e104cf" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioSetPinMode</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1ad166e2ee764cd85a82cfe7d00cc07275" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioSonicatorReadFreqLock</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a291b1d446e36455b269f53e0c24c9ecb" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioSonicatorReadFreqLock</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a8c662a07b79d2fa55a4adfd131d220cc" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioSonicatorReadOverload</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a19575fab3faeb4302d098adaad0b69c3" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioSonicatorReadOverload</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1af6d26c98aec0e0b03d8998b8abc6105c" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioSonicatorReset</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1ab182ff4edf29e3a200c6e68700ffbad9" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioSonicatorReset</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a0f67f641eee1943e756dcce7bfda514e" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioSonicatorStart</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a081390e1e4e209cf3774207a983da8f6" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioSonicatorStart</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a21130918b4f33dd80617e7db95ee9873" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioSonicatorStop</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a7ace5f1c8a7248141d11b77d875e60d0" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioSonicatorStop</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1af3a5a5c8140ebaef0cbbc278bc5f4337" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioStatusLed</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1af3a5a5c8140ebaef0cbbc278bc5f4337" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioStatusLed</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a63d10f63378a5ef62bbe9234c46df278" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioTogglePin</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a63d10f63378a5ef62bbe9234c46df278" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>gpioTogglePin</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a5fb12e99ed8cc1c56d1c3b5d12a2a836" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>pwmAmplitudeRamp</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1ada5d5da8d50f27e9845f62cd617b978d" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>pwmAmplitudeToVoltage</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a459c1867e7aa82be7227ef841dd9c654" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>pwmDisableChannel</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1ac67d5bc03ca38bdb9595e811f1024a63" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>pwmDutyToVoltage</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a2a1dc6db939ed4c07e01767537aef9b9" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>pwmEmergencyStop</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a2a1dc6db939ed4c07e01767537aef9b9" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>pwmEmergencyStop</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a39913c92d8b86f0b98df9993d3020743" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>pwmEnableChannel</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a5b68689d708590e69bf43c692dfda8e8" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>pwmGetAmplitude</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1ab21e232c0400f238affc8661e49de244" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>pwmInit</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1ab21e232c0400f238affc8661e49de244" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>pwmInit</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a5075d44c96dc6776c769e8076a4bf4fb" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>pwmRampComplete</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a7dfa96a853cd077994e98679c74d483a" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>pwmSetAmplitude</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a57dec5908103d10405f1f8949f22e892" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>pwmSetAmplitude</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1afbb85779bc78a399e56d54958b584564" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>pwmSetDutyCycle</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a6c573351a1d99882d9de401b3bdb20d3" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>pwmSetDutyCycle</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a11c9550e8a002332815f083413271d98" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>pwmSetFrequency</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a191162fe81a3d48ebc05e5838ada8671" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>pwmTestPattern</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a1b496f549d82235968adec0ccd8a8778" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerConfigure</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1aa3b7bc5a03d10961deedffa53bb48f7e" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerDelayComplete</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1afeba94e88a256a04b8dbc0c16cf38bb0" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerDelayMs</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a7ac721f1eeae08f4cca374393a3deba5" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerDelayUs</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a25b8678d73526c600acb195fd03518d3" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerExpired</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a3fb074c1a3e7c8e04721e6d3b783df20" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerGetElapsed</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a022076cce483d8eec2ca6dd61e88e060" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerGetMicros</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a9b79ab5d441cb74726b8f876f8404cbf" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerGetMillis</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1ab08bc6b8c7adf39d84eb68d2e03f24a3" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerGetValue</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1af41e85b7622eca85801f6e30571ba940" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerInit</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1ac146647e137b0a1726db0524c7ea9544" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerReset</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a7414bee3e120b789f6297cb99d5c5b0c" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerSchedulerGetTicks</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a0e719a9a81d4a285649171a6e73b2425" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerSchedulerInit</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a39ca9eefe82a291fb2469ec659fec6a6" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerSchedulerReset</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a0b146423e8cad56d9c11fc9117e6f4c7" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerSchedulerTick</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a16b42fc6539c73fe680d0fead98d7fd1" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerStart</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a959a6d438692a6d5342be9c6ec274723" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerStop</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a709b6922cf7be6e42b564839eaaf15b3" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerWatchdogExpired</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a3561395e8f8c7f977d8b44e9b3436b65" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerWatchdogInit</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a237bc211ec1cfd4bc43ae716d700666b" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerWatchdogReset</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1ae517ccf94c5144108e1156d831de5ab9" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>timerWatchdogTimeRemaining</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1ab0643eac3d604c6574ba122a7ef71a30" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>uartClearErrors</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1ab062cc59bbe4bd3adbbcbb8271af4be1" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>uartDataAvailable</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a1806384c34e3cef350b9bd6190d3b8af" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>uartFlushRx</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a534b0562724caef8da43f476e5c172b9" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>uartFlushTx</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a28b767a48ccf1ffcea19aef878be315e" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>uartGetCharTime</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a150b569b33db80fc86081469f3c9eabb" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>uartGetIdleTime</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1ade3a8f874da142dc44df01ccbe021e33" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>uartGetRxCount</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a723660151b4454f821d7b3975d5028be" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>uartGetStatus</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a1ae41499ce3edd1ed408c1917a8f55cc" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>uartGetTxFree</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a80958b0f666408645114b173e6a29174" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>uartInit</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a24c282f3ce64714fd247eab767f37928" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>uartModbusGapDetected</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a989eea460432ec67b6f789d416e0b074" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>uartReceiveBuffer</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a74f75a6ff7e5ab73d8713e81ba55c04e" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>uartReceiveByte</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a846ac2107db8f97d9dc3b50ce3bdc772" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>uartReceiveModbusFrame</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a1395c0b3f087423ef2d1837ef3fb4273" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>uartSendBuffer</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a276651938ccfee5cd8f90944f7dec25f" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>uartSendByte</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1ae569ea59caa355ceb46e16dbad2582eb" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>uartSendModbusFrame</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1a47a35626e2df31cec11340003a22c012" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>uartSetBaudRate</name></member>
+      <member refid="d3/d3b/class_atmega_hal_1ab635109e3fed732d2e52edc746145a7a" prot="public" virt="non-virtual"><scope>AtmegaHal</scope><name>uartTestLoopback</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

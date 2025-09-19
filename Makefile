@@ -1341,6 +1341,7 @@ check-doxygen:
 # Build firmware docs with Doxygen
 docs-firmware: check-doxygen
 	@echo "📚 Building firmware documentation (Doxygen)..."
+	@mkdir -p docs/site/firmware
 	@doxygen docs/doxygen/Doxyfile
 	@echo "✅ Firmware docs built in docs/site/firmware"
 

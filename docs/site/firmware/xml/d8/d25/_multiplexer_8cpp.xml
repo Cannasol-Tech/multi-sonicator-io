@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d8/d25/_multiplexer_8cpp" kind="file" language="C++">
+    <compoundname>Multiplexer.cpp</compoundname>
+    <includes refid="dc/dc2/_multiplexer_8h" local="yes">multiplexer/Multiplexer.h</includes>
+    <includes refid="d4/d7e/system__config_8h" local="yes">system_config.h</includes>
+    <includes refid="d6/db9/pwm_8h" local="yes">modules/hal/pwm.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>multiplexer/Multiplexer.h</label>
+        <link refid="dc/dc2/_multiplexer_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>system_config.h</label>
+        <link refid="d4/d7e/system__config_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/modules/control/Multiplexer.cpp</label>
+        <link refid="d8/d25/_multiplexer_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>modules/hal/pwm.h</label>
+        <link refid="d6/db9/pwm_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Arduino.h</label>
+      </node>
+      <node id="3">
+        <label>sonicator/sonicator.h</label>
+      </node>
+      <node id="8">
+        <label>stdbool.h</label>
+      </node>
+      <node id="7">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>Implementation of the <ref refid="dc/d7a/class_multiplexer" kindref="compound">Multiplexer</ref> class. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>James (AI Developer) </para>
+</simplesect>
+<simplesect kind="date"><para>2025-09-16 </para>
+</simplesect>
+<simplesect kind="version"><para>1.0.0 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dc/dc2/_multiplexer_8h" kindref="compound">multiplexer/Multiplexer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d4/d7e/system__config_8h" kindref="compound">system_config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d6/db9/pwm_8h" kindref="compound">modules/hal/pwm.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><ref refid="dc/d7a/class_multiplexer_1a177aa60233c870d889346d7674e5d90e" kindref="member">Multiplexer::Multiplexer</ref>()<sp/>:<sp/>shared_amplitude_percent_(<ref refid="d8/dff/include_2sonicator_2sonicator_8h_1abe06b5505cf15123b31cf8b029b59679" kindref="member">SONICATOR_MIN_AMPLITUDE_PERCENT</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pin<sp/>configurations<sp/>for<sp/>each<sp/>sonicator,<sp/>from<sp/>system_config.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="de/d5a/struct_sonicator_pins" kindref="compound">SonicatorPins</ref><sp/>pins[<ref refid="dc/dc2/_multiplexer_8h_1aa23d5278cbe4792589d2b47f3b5600b1" kindref="member">NUM_SONICATORS</ref>]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1:<sp/>{<sp/>signal:<sp/></highlight><highlight class="stringliteral">&quot;OVERLOAD_1&quot;</highlight><highlight class="normal">,<sp/>dut_pin:<sp/></highlight><highlight class="stringliteral">&quot;PD6&quot;</highlight><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2:<sp/>{<sp/>signal:<sp/></highlight><highlight class="stringliteral">&quot;RESET_1&quot;</highlight><highlight class="normal">,<sp/>dut_pin:<sp/></highlight><highlight class="stringliteral">&quot;PC7&quot;</highlight><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>3:<sp/>{<sp/>signal:<sp/></highlight><highlight class="stringliteral">&quot;FREQ_LOCK_1&quot;</highlight><highlight class="normal">,<sp/>dut_pin:<sp/></highlight><highlight class="stringliteral">&quot;PB7&quot;</highlight><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>4:<sp/>{<sp/>signal:<sp/></highlight><highlight class="stringliteral">&quot;FREQ_DIV10_1&quot;</highlight><highlight class="normal">,<sp/>dut_pin:<sp/></highlight><highlight class="stringliteral">&quot;PB3&quot;</highlight><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>5:<sp/>{<sp/>signal:<sp/></highlight><highlight class="stringliteral">&quot;POWER_SENSE_1&quot;</highlight><highlight class="normal">,<sp/>dut_pin:<sp/></highlight><highlight class="stringliteral">&quot;PA4&quot;</highlight><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>7:<sp/>{<sp/>signal:<sp/></highlight><highlight class="stringliteral">&quot;START_1&quot;</highlight><highlight class="normal">,<sp/>dut_pin:<sp/></highlight><highlight class="stringliteral">&quot;PC6&quot;</highlight><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>8:<sp/>{<sp/>signal:<sp/></highlight><highlight class="stringliteral">&quot;AMPLITUDE_ALL&quot;</highlight><highlight class="normal">,<sp/>dut_pin:<sp/></highlight><highlight class="stringliteral">&quot;PD7&quot;</highlight><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">//<sp/>Sonicator<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.start_pin<sp/>=<sp/><ref refid="d8/daa/group___sonicator1_1gaae4fd2379cc5fbdc73e55d3c3ba60295" kindref="member">SON1_START_PIN</ref>,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.reset_pin<sp/>=<sp/><ref refid="d8/daa/group___sonicator1_1gabc7bc420dadb6a321ca215951cec19ca" kindref="member">SON1_RESET_PIN</ref>,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.overload_pin<sp/>=<sp/><ref refid="d8/daa/group___sonicator1_1ga7f0be9975baddeff02c6056ffe6d636c" kindref="member">SON1_OVERLOAD_PIN</ref>,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.freq_lock_pin<sp/>=<sp/><ref refid="d8/daa/group___sonicator1_1gad06198bc2ba85e227f39e226f18920ab" kindref="member">SON1_FREQ_LOCK_PIN</ref>,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.power_sense_channel<sp/>=<sp/><ref refid="d6/d77/group___a_d_c_power_monitoring_1ga3c0164f11e49bbc1f308471bc872d919" kindref="member">ADC_SONICATOR_1_PIN</ref></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>},</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">//<sp/>Sonicator<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.start_pin<sp/>=<sp/><ref refid="d2/d37/group___sonicator2_1gab33ac39513191b46f1e56efe3b903f90" kindref="member">SON2_START_PIN</ref>,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.reset_pin<sp/>=<sp/><ref refid="d2/d37/group___sonicator2_1ga8cf17babe13b3877fb67d2dadaaa622e" kindref="member">SON2_RESET_PIN</ref>,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.overload_pin<sp/>=<sp/><ref refid="d2/d37/group___sonicator2_1gaf3ec0a2a5f64f58fa6203b1724cf6f87" kindref="member">SON2_OVERLOAD_PIN</ref>,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.freq_lock_pin<sp/>=<sp/><ref refid="d2/d37/group___sonicator2_1ga720ab8aa137d5232b080de2d589beb4a" kindref="member">SON2_FREQ_LOCK_PIN</ref>,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.power_sense_channel<sp/>=<sp/><ref refid="d6/d77/group___a_d_c_power_monitoring_1gad0ec60ee4c0ba0fcd61f3ab60c9094ca" kindref="member">ADC_SONICATOR_2_PIN</ref></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>},</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">//<sp/>Sonicator<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.start_pin<sp/>=<sp/><ref refid="d6/dd5/group___sonicator3_1gadf3d1736d4bbe2a9877a400912b3878e" kindref="member">SON3_START_PIN</ref>,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.reset_pin<sp/>=<sp/><ref refid="d6/dd5/group___sonicator3_1gac6cece380c77920cabc81a8c6bbb085c" kindref="member">SON3_RESET_PIN</ref>,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.overload_pin<sp/>=<sp/><ref refid="d6/dd5/group___sonicator3_1ga6c7f25996ac91220ca3948c24df60d8e" kindref="member">SON3_OVERLOAD_PIN</ref>,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.freq_lock_pin<sp/>=<sp/><ref refid="d6/dd5/group___sonicator3_1ga25c84b644eac031310445f8ceed65ec2" kindref="member">SON3_FREQ_LOCK_PIN</ref>,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.power_sense_channel<sp/>=<sp/><ref refid="d6/d77/group___a_d_c_power_monitoring_1ga6aa03e96ec1e18fae4a9f215efba52e8" kindref="member">ADC_SONICATOR_3_PIN</ref></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>},</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">//<sp/>Sonicator<sp/>4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.start_pin<sp/>=<sp/><ref refid="dd/d28/group___sonicator4_1ga984840f9d3a5e89fbaedc95dbb27d454" kindref="member">SON4_START_PIN</ref>,</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.reset_pin<sp/>=<sp/><ref refid="dd/d28/group___sonicator4_1gaffd40dfb916a5b6133e06da57654bd0a" kindref="member">SON4_RESET_PIN</ref>,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.overload_pin<sp/>=<sp/><ref refid="dd/d28/group___sonicator4_1ga786fd798d58acee8c64231ceee026427" kindref="member">SON4_OVERLOAD_PIN</ref>,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.freq_lock_pin<sp/>=<sp/><ref refid="dd/d28/group___sonicator4_1gacd39ea816c2641f2f23d9df198bf018d" kindref="member">SON4_FREQ_LOCK_PIN</ref>,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.power_sense_channel<sp/>=<sp/><ref refid="d6/d77/group___a_d_c_power_monitoring_1gaae18663a7f4d1e42463608fd512db5f4" kindref="member">ADC_SONICATOR_4_PIN</ref></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Allocate<sp/>and<sp/>initialize<sp/>each<sp/>sonicator</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="dc/dc2/_multiplexer_8h_1aa23d5278cbe4792589d2b47f3b5600b1" kindref="member">NUM_SONICATORS</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sonicators[i]<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="dd/dce/class_sonicator_interface" kindref="compound">SonicatorInterface</ref>(pins[i]);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><ref refid="dc/d7a/class_multiplexer_1ad014b59567c9c5366e78a85018bfc9b5" kindref="member">Multiplexer::~Multiplexer</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="dc/dc2/_multiplexer_8h_1aa23d5278cbe4792589d2b47f3b5600b1" kindref="member">NUM_SONICATORS</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>sonicators[i];</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dc/d7a/class_multiplexer_1aeb7e2e996a9773bdddb3aa5f9c498be7" kindref="member">Multiplexer::begin</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialization<sp/>is<sp/>handled<sp/>in<sp/>the<sp/>constructor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dc/d7a/class_multiplexer_1ac0caf551bdb00a4183fbd3d88b21ab82" kindref="member">Multiplexer::update</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="dc/dc2/_multiplexer_8h_1aa23d5278cbe4792589d2b47f3b5600b1" kindref="member">NUM_SONICATORS</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sonicators[i])<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sonicators[i]-&gt;update();</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>updateSharedAmplitude();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/d7a/class_multiplexer_1a25bba89e5beb96449789e3a60957f580" kindref="member">Multiplexer::start</ref>(uint8_t<sp/>index)<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(index<sp/>&lt;<sp/><ref refid="dc/dc2/_multiplexer_8h_1aa23d5278cbe4792589d2b47f3b5600b1" kindref="member">NUM_SONICATORS</ref><sp/>&amp;&amp;<sp/>sonicators[index])<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sonicators[index]-&gt;start();</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/d7a/class_multiplexer_1a67607861ef29fece1f11cbdee217ef96" kindref="member">Multiplexer::stop</ref>(uint8_t<sp/>index)<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(index<sp/>&lt;<sp/><ref refid="dc/dc2/_multiplexer_8h_1aa23d5278cbe4792589d2b47f3b5600b1" kindref="member">NUM_SONICATORS</ref><sp/>&amp;&amp;<sp/>sonicators[index])<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sonicators[index]-&gt;stop();</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/d7a/class_multiplexer_1ae98cbf65c102e1b03855b0932926e9c7" kindref="member">Multiplexer::setAmplitude</ref>(uint8_t<sp/>amplitude_percent)<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(amplitude_percent<sp/>&gt;=<sp/><ref refid="d8/dff/include_2sonicator_2sonicator_8h_1abe06b5505cf15123b31cf8b029b59679" kindref="member">SONICATOR_MIN_AMPLITUDE_PERCENT</ref><sp/>&amp;&amp;<sp/>amplitude_percent<sp/>&lt;=<sp/><ref refid="d8/dff/include_2sonicator_2sonicator_8h_1a9266e0128c993063b7b3aac98faf4e9b" kindref="member">SONICATOR_MAX_AMPLITUDE_PERCENT</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shared_amplitude_percent_<sp/>=<sp/>amplitude_percent;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Apply<sp/>the<sp/>amplitude<sp/>to<sp/>all<sp/>sonicator<sp/>state<sp/>machines</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="dc/dc2/_multiplexer_8h_1aa23d5278cbe4792589d2b47f3b5600b1" kindref="member">NUM_SONICATORS</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sonicators[i])<sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sonicators[i]-&gt;setAmplitude(shared_amplitude_percent_);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dc/d7a/class_multiplexer_1ac0caf551bdb00a4183fbd3d88b21ab82" kindref="member">Multiplexer::update</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="dc/dc2/_multiplexer_8h_1aa23d5278cbe4792589d2b47f3b5600b1" kindref="member">NUM_SONICATORS</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sonicators[i])<sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sonicators[i]-&gt;update();</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/d7a/class_multiplexer_1a25bba89e5beb96449789e3a60957f580" kindref="member">Multiplexer::start</ref>(uint8_t<sp/>index)<sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(index<sp/>&lt;<sp/><ref refid="dc/dc2/_multiplexer_8h_1aa23d5278cbe4792589d2b47f3b5600b1" kindref="member">NUM_SONICATORS</ref><sp/>&amp;&amp;<sp/>sonicators[index])<sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sonicators[index]-&gt;start();</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/d7a/class_multiplexer_1a67607861ef29fece1f11cbdee217ef96" kindref="member">Multiplexer::stop</ref>(uint8_t<sp/>index)<sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(index<sp/>&lt;<sp/><ref refid="dc/dc2/_multiplexer_8h_1aa23d5278cbe4792589d2b47f3b5600b1" kindref="member">NUM_SONICATORS</ref><sp/>&amp;&amp;<sp/>sonicators[index])<sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sonicators[index]-&gt;stop();</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/d7a/class_multiplexer_1ae98cbf65c102e1b03855b0932926e9c7" kindref="member">Multiplexer::setAmplitude</ref>(uint8_t<sp/>amplitude_percent)<sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(amplitude_percent<sp/>&gt;=<sp/><ref refid="d8/dff/include_2sonicator_2sonicator_8h_1abe06b5505cf15123b31cf8b029b59679" kindref="member">SONICATOR_MIN_AMPLITUDE_PERCENT</ref><sp/>&amp;&amp;<sp/>amplitude_percent<sp/>&lt;=<sp/><ref refid="d8/dff/include_2sonicator_2sonicator_8h_1a9266e0128c993063b7b3aac98faf4e9b" kindref="member">SONICATOR_MAX_AMPLITUDE_PERCENT</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shared_amplitude_percent_<sp/>=<sp/>amplitude_percent;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Apply<sp/>the<sp/>amplitude<sp/>to<sp/>all<sp/>sonicator<sp/>state<sp/>machines</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="dc/dc2/_multiplexer_8h_1aa23d5278cbe4792589d2b47f3b5600b1" kindref="member">NUM_SONICATORS</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sonicators[i])<sp/>{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sonicators[i]-&gt;setAmplitude(shared_amplitude_percent_);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Directly<sp/>update<sp/>the<sp/>HAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>pwm_value<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(shared_amplitude_percent_<sp/>&gt;=<sp/><ref refid="d8/dff/include_2sonicator_2sonicator_8h_1abe06b5505cf15123b31cf8b029b59679" kindref="member">SONICATOR_MIN_AMPLITUDE_PERCENT</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pwm_value<sp/>=<sp/>((uint32_t)(shared_amplitude_percent_<sp/>-<sp/><ref refid="d8/dff/include_2sonicator_2sonicator_8h_1abe06b5505cf15123b31cf8b029b59679" kindref="member">SONICATOR_MIN_AMPLITUDE_PERCENT</ref>)<sp/>*<sp/>255)<sp/>/<sp/>(<ref refid="d8/dff/include_2sonicator_2sonicator_8h_1a9266e0128c993063b7b3aac98faf4e9b" kindref="member">SONICATOR_MAX_AMPLITUDE_PERCENT</ref><sp/>-<sp/><ref refid="d8/dff/include_2sonicator_2sonicator_8h_1abe06b5505cf15123b31cf8b029b59679" kindref="member">SONICATOR_MIN_AMPLITUDE_PERCENT</ref>);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/d84/pwm_8cpp_1a5d04f0bab99a934ca262108b3cbccea4" kindref="member">pwm_set_duty_cycle</ref>(<ref refid="da/d6a/group___p_w_m_control_1ga0aa83389edb245f5b1ae129e07f474f7" kindref="member">PWM_AMPLITUDE_CONTROL_PIN</ref>,<sp/>pwm_value);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/d7a/class_multiplexer_1a8f9c6d4b6f8bac26b84f2052a024d8ea" kindref="member">Multiplexer::resetOverload</ref>(uint8_t<sp/>index)<sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(index<sp/>&lt;<sp/><ref refid="dc/dc2/_multiplexer_8h_1aa23d5278cbe4792589d2b47f3b5600b1" kindref="member">NUM_SONICATORS</ref><sp/>&amp;&amp;<sp/>sonicators[index])<sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sonicators[index]-&gt;resetOverload();</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d6/d4e/structsonicator__status__t" kindref="compound">sonicator_status_t</ref>*<sp/><ref refid="dc/d7a/class_multiplexer_1ae8d7e64824e31dc62b0533278ce63c48" kindref="member">Multiplexer::getStatus</ref>(uint8_t<sp/>index)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(index<sp/>&lt;<sp/><ref refid="dc/dc2/_multiplexer_8h_1aa23d5278cbe4792589d2b47f3b5600b1" kindref="member">NUM_SONICATORS</ref><sp/>&amp;&amp;<sp/>sonicators[index])<sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sonicators[index]-&gt;getStatus();</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d6/d4e/structsonicator__status__t" kindref="compound">sonicator_status_t</ref>*<sp/><ref refid="dc/d7a/class_multiplexer_1ae8d7e64824e31dc62b0533278ce63c48" kindref="member">Multiplexer::getStatus</ref>(uint8_t<sp/>index)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(index<sp/>&lt;<sp/><ref refid="dc/dc2/_multiplexer_8h_1aa23d5278cbe4792589d2b47f3b5600b1" kindref="member">NUM_SONICATORS</ref><sp/>&amp;&amp;<sp/>sonicators[index])<sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sonicators[index]-&gt;getStatus();</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Multiplexer::updateSharedAmplitude()<sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>amplitude<sp/>PWM<sp/>is<sp/>shared.<sp/>We<sp/>set<sp/>it<sp/>based<sp/>on<sp/>the<sp/>shared<sp/>value,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>but<sp/>only<sp/>if<sp/>at<sp/>least<sp/>one<sp/>sonicator<sp/>is<sp/>in<sp/>the<sp/>RUNNING<sp/>state.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>individual<sp/>sonicator&apos;s<sp/>updateHardwareOutputs<sp/>will<sp/>handle<sp/>the<sp/>logic</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>of<sp/>whether<sp/>to<sp/>use<sp/>this<sp/>PWM<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>any_running<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="dc/dc2/_multiplexer_8h_1aa23d5278cbe4792589d2b47f3b5600b1" kindref="member">NUM_SONICATORS</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sonicator_status_t*<sp/>status<sp/>=<sp/><ref refid="dc/d7a/class_multiplexer_1ae8d7e64824e31dc62b0533278ce63c48" kindref="member">getStatus</ref>(i);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>&amp;&amp;<sp/>status-&gt;<ref refid="d6/d4e/structsonicator__status__t_1a7fcd0a6c9ed3dc9c3f45dabba66be309" kindref="member">state</ref><sp/>==<sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315aefd4187011c854e789baa073995f0def" kindref="member">SONICATOR_STATE_RUNNING</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>any_running<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>pwm_value<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(any_running)<sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>simple<sp/>approach:<sp/>use<sp/>the<sp/>shared<sp/>amplitude.<sp/>The<sp/>individual<sp/>sonicator&apos;s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>logic<sp/>will<sp/>ultimately<sp/>decide<sp/>if<sp/>it<sp/>outputs<sp/>power.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(shared_amplitude_percent_<sp/>&gt;=<sp/><ref refid="d8/dff/include_2sonicator_2sonicator_8h_1abe06b5505cf15123b31cf8b029b59679" kindref="member">SONICATOR_MIN_AMPLITUDE_PERCENT</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pwm_value<sp/>=<sp/>((uint32_t)(shared_amplitude_percent_<sp/>-<sp/><ref refid="d8/dff/include_2sonicator_2sonicator_8h_1abe06b5505cf15123b31cf8b029b59679" kindref="member">SONICATOR_MIN_AMPLITUDE_PERCENT</ref>)<sp/>*<sp/>255)<sp/>/<sp/>(<ref refid="d8/dff/include_2sonicator_2sonicator_8h_1a9266e0128c993063b7b3aac98faf4e9b" kindref="member">SONICATOR_MAX_AMPLITUDE_PERCENT</ref><sp/>-<sp/><ref refid="d8/dff/include_2sonicator_2sonicator_8h_1abe06b5505cf15123b31cf8b029b59679" kindref="member">SONICATOR_MIN_AMPLITUDE_PERCENT</ref>);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>assumes<sp/>a<sp/>HAL<sp/>function<sp/>exists<sp/>to<sp/>set<sp/>the<sp/>shared<sp/>PWM.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>need<sp/>to<sp/>ensure<sp/>the<sp/>HAL<sp/>is<sp/>designed<sp/>for<sp/>this.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/d84/pwm_8cpp_1a5d04f0bab99a934ca262108b3cbccea4" kindref="member">pwm_set_duty_cycle</ref>(<ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afcafe8a051665f6462aa7dcf27f651ad6d9" kindref="member">PWM_CHANNEL_AMPLITUDE</ref>,<sp/>pwm_value);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/modules/control/Multiplexer.cpp"/>
+  </compounddef>
+</doxygen>

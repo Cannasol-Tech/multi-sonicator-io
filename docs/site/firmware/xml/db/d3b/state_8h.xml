@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="db/d3b/state_8h" kind="file" language="C++">
+    <compoundname>state.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includes refid="de/d45/errors_8h" local="yes">errors.h</includes>
+    <includedby refid="d8/dff/include_2sonicator_2sonicator_8h" local="yes">include/sonicator/sonicator.h</includedby>
+    <includedby refid="d2/db9/sonicator_8cpp" local="yes">src/modules/control/sonicator.cpp</includedby>
+    <incdepgraph>
+      <node id="4">
+        <label>errors.h</label>
+        <link refid="de/d45/errors_8h"/>
+      </node>
+      <node id="1">
+        <label>include/sonicator/types/state.h</label>
+        <link refid="db/d3b/state_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/sonicator/sonicator.h</label>
+        <link refid="d8/dff/include_2sonicator_2sonicator_8h"/>
+      </node>
+      <node id="1">
+        <label>include/sonicator/types/state.h</label>
+        <link refid="db/d3b/state_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/modules/control/sonicator.cpp</label>
+        <link refid="d2/db9/sonicator_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d6/d4e/structsonicator__status__t" prot="public">sonicator_status_t</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" prot="public" static="no" strong="no">
+        <type></type>
+        <name>sonicator_state_t</name>
+        <enumvalue id="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a8aaaacd92fec828be10c02ef2696f0b7" prot="public">
+          <name>SONICATOR_STATE_IDLE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a34a68840cf8e7502193a12370a443e01" prot="public">
+          <name>SONICATOR_STATE_STARTING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315aefd4187011c854e789baa073995f0def" prot="public">
+          <name>SONICATOR_STATE_RUNNING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a68fc7fb7e15c844aa2c6cda43bcc8d09" prot="public">
+          <name>SONICATOR_STATE_STOPPING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a7ef335199557a3658616b70275094a47" prot="public">
+          <name>SONICATOR_STATE_FAULT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a02f13d1f0ad8e9fc52f93cf9c25ad0cf" prot="public">
+          <name>SONICATOR_STATE_UNKNOWN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Sonicator control states. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="12" column="1" bodyfile="include/sonicator/types/state.h" bodystart="12" bodyend="19"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SONICATOR_TYPES_STATE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_TYPES_STATE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/d45/errors_8h" kindref="compound">errors.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="13" refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a8aaaacd92fec828be10c02ef2696f0b7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a8aaaacd92fec828be10c02ef2696f0b7" kindref="member">SONICATOR_STATE_IDLE</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="14" refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a34a68840cf8e7502193a12370a443e01" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a34a68840cf8e7502193a12370a443e01" kindref="member">SONICATOR_STATE_STARTING</ref>,</highlight></codeline>
+<codeline lineno="15" refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315aefd4187011c854e789baa073995f0def" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315aefd4187011c854e789baa073995f0def" kindref="member">SONICATOR_STATE_RUNNING</ref>,</highlight></codeline>
+<codeline lineno="16" refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a68fc7fb7e15c844aa2c6cda43bcc8d09" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a68fc7fb7e15c844aa2c6cda43bcc8d09" kindref="member">SONICATOR_STATE_STOPPING</ref>,</highlight></codeline>
+<codeline lineno="17" refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a7ef335199557a3658616b70275094a47" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a7ef335199557a3658616b70275094a47" kindref="member">SONICATOR_STATE_FAULT</ref>,</highlight></codeline>
+<codeline lineno="18" refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a02f13d1f0ad8e9fc52f93cf9c25ad0cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a02f13d1f0ad8e9fc52f93cf9c25ad0cf" kindref="member">SONICATOR_STATE_UNKNOWN</ref></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}<sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="d6/d4e/structsonicator__status__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25" refid="d6/d4e/structsonicator__status__t_1a7fcd0a6c9ed3dc9c3f45dabba66be309" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref><sp/><ref refid="d6/d4e/structsonicator__status__t_1a7fcd0a6c9ed3dc9c3f45dabba66be309" kindref="member">state</ref>;</highlight></codeline>
+<codeline lineno="26" refid="d6/d4e/structsonicator__status__t_1ab7f08da7f418678434b72a53e98038b4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref><sp/><ref refid="d6/d4e/structsonicator__status__t_1ab7f08da7f418678434b72a53e98038b4" kindref="member">previous_state</ref>;</highlight></codeline>
+<codeline lineno="27" refid="d6/d4e/structsonicator__status__t_1ae94a2a1a440ce30c761b5d781f880bcb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d6/d4e/structsonicator__status__t_1ae94a2a1a440ce30c761b5d781f880bcb" kindref="member">state_entry_time</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="29" refid="d6/d4e/structsonicator__status__t_1a85380aa93798a473e4956572027b9d8b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/d4e/structsonicator__status__t_1a85380aa93798a473e4956572027b9d8b" kindref="member">start_requested</ref>;</highlight></codeline>
+<codeline lineno="30" refid="d6/d4e/structsonicator__status__t_1a0516f38d9e3eefc737c0b0a39e5bc5a5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/d4e/structsonicator__status__t_1a0516f38d9e3eefc737c0b0a39e5bc5a5" kindref="member">stop_requested</ref>;</highlight></codeline>
+<codeline lineno="31" refid="d6/d4e/structsonicator__status__t_1ac41bc155366ac89daae9209f4c311e10" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/d4e/structsonicator__status__t_1ac41bc155366ac89daae9209f4c311e10" kindref="member">reset_requested</ref>;</highlight></codeline>
+<codeline lineno="32" refid="d6/d4e/structsonicator__status__t_1a35c8d61b3640672e598638a652343ed1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="d6/d4e/structsonicator__status__t_1a35c8d61b3640672e598638a652343ed1" kindref="member">amplitude_percent</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="d6/d4e/structsonicator__status__t_1a453e96c5d2d6535d9b3024601a14e28c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/d4e/structsonicator__status__t_1a453e96c5d2d6535d9b3024601a14e28c" kindref="member">is_running</ref>;</highlight></codeline>
+<codeline lineno="35" refid="d6/d4e/structsonicator__status__t_1af8637123cb2b4507244b5aa2c59ce1d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/d4e/structsonicator__status__t_1af8637123cb2b4507244b5aa2c59ce1d0" kindref="member">overload_active</ref>;</highlight></codeline>
+<codeline lineno="36" refid="d6/d4e/structsonicator__status__t_1a006c11fcd2b4a17a1c6a89bf81b05bae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/d4e/structsonicator__status__t_1a006c11fcd2b4a17a1c6a89bf81b05bae" kindref="member">frequency_locked</ref>;</highlight></codeline>
+<codeline lineno="37" refid="d6/d4e/structsonicator__status__t_1aead306425b6258abef757ef123e5897f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="d6/d4e/structsonicator__status__t_1aead306425b6258abef757ef123e5897f" kindref="member">power_watts</ref>;</highlight></codeline>
+<codeline lineno="38" refid="d6/d4e/structsonicator__status__t_1a87e230237c8676756cb181df429add81" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="d6/d4e/structsonicator__status__t_1a87e230237c8676756cb181df429add81" kindref="member">frequency_hz</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="40" refid="d6/d4e/structsonicator__status__t_1aa9c20bb07fb5c5025ed9b8ccf445f425" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="de/d45/errors_8h_1a361c37dbeedf89f2fe09845eab7f0a99" kindref="member">sonicator_fault_t</ref><sp/><ref refid="d6/d4e/structsonicator__status__t_1aa9c20bb07fb5c5025ed9b8ccf445f425" kindref="member">active_faults</ref>;</highlight></codeline>
+<codeline lineno="41" refid="d6/d4e/structsonicator__status__t_1a14fae1ffea94192e94dda69c2c169eb2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d6/d4e/structsonicator__status__t_1a14fae1ffea94192e94dda69c2c169eb2" kindref="member">fault_count</ref>;</highlight></codeline>
+<codeline lineno="42" refid="d6/d4e/structsonicator__status__t_1ae938fb5e15c14f6dd3c10c4599ea1b15" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d6/d4e/structsonicator__status__t_1ae938fb5e15c14f6dd3c10c4599ea1b15" kindref="member">last_fault_time</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44" refid="d6/d4e/structsonicator__status__t_1adea4830fdbc4fd5622aa750e4829e06c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d6/d4e/structsonicator__status__t_1adea4830fdbc4fd5622aa750e4829e06c" kindref="member">last_update_time</ref>;</highlight></codeline>
+<codeline lineno="45" refid="d6/d4e/structsonicator__status__t_1a39e936b005553d208d11d6b7b709bfe5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d6/d4e/structsonicator__status__t_1a39e936b005553d208d11d6b7b709bfe5" kindref="member">watchdog_last_reset</ref>;</highlight></codeline>
+<codeline lineno="46" refid="d6/d4e/structsonicator__status__t_1af3b8c7241821bf5919c0580ab0b67888" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d6/d4e/structsonicator__status__t_1af3b8c7241821bf5919c0580ab0b67888" kindref="member">safety_override</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="48" refid="d6/d4e/structsonicator__status__t_1a3af8a26d9aafacae19faba376f1a299e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d6/d4e/structsonicator__status__t_1a3af8a26d9aafacae19faba376f1a299e" kindref="member">start_count</ref>;</highlight></codeline>
+<codeline lineno="49" refid="d6/d4e/structsonicator__status__t_1a79b1759a8fd7f5d05ccd6400df1fffc8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d6/d4e/structsonicator__status__t_1a79b1759a8fd7f5d05ccd6400df1fffc8" kindref="member">total_runtime_ms</ref>;</highlight></codeline>
+<codeline lineno="50" refid="d6/d4e/structsonicator__status__t_1a5f65e8fce8567a27adc930638568228a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d6/d4e/structsonicator__status__t_1a5f65e8fce8567a27adc930638568228a" kindref="member">last_start_time</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}<sp/><ref refid="d6/d4e/structsonicator__status__t" kindref="compound">sonicator_status_t</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>SONICATOR_TYPES_STATE_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/sonicator/types/state.h"/>
+  </compounddef>
+</doxygen>

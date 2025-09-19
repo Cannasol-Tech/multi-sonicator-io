@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d5/dea/structmodbus__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>modbus_config_t</compoundname>
+    <includes refid="da/dae/modbus_8h" local="no">modbus.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d5/dea/structmodbus__config__t_1abfd4559d5083fd78a34dd9364df5c0c4" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t modbus_config_t::slave_id</definition>
+        <argsstring></argsstring>
+        <name>slave_id</name>
+        <qualifiedname>modbus_config_t::slave_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus.h" line="122" column="13" bodyfile="src/modules/communication/modbus.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dea/structmodbus__config__t_1a0657f618b7298a2d04c31dd2d1469409" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t modbus_config_t::baud_rate</definition>
+        <argsstring></argsstring>
+        <name>baud_rate</name>
+        <qualifiedname>modbus_config_t::baud_rate</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus.h" line="123" column="14" bodyfile="src/modules/communication/modbus.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dea/structmodbus__config__t_1a60457aa22ba8273dc67ea526f0d69f97" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t modbus_config_t::timeout_ms</definition>
+        <argsstring></argsstring>
+        <name>timeout_ms</name>
+        <qualifiedname>modbus_config_t::timeout_ms</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus.h" line="124" column="14" bodyfile="src/modules/communication/modbus.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dea/structmodbus__config__t_1af56c9413102d41866cbe63b7c175336d" prot="public" static="no" mutable="no">
+        <type><ref refid="da/dae/modbus_8h_1a4bc72f739fe1ba838717bd3667b9f5d5" kindref="member">modbus_read_callback_t</ref></type>
+        <definition>modbus_read_callback_t modbus_config_t::read_callback</definition>
+        <argsstring></argsstring>
+        <name>read_callback</name>
+        <qualifiedname>modbus_config_t::read_callback</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus.h" line="125" column="28" bodyfile="src/modules/communication/modbus.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dea/structmodbus__config__t_1a02cdef2f270caf7cd6f9c3a45f629279" prot="public" static="no" mutable="no">
+        <type><ref refid="da/dae/modbus_8h_1aef49dfb53a67420942f19e17b2c136fc" kindref="member">modbus_write_callback_t</ref></type>
+        <definition>modbus_write_callback_t modbus_config_t::write_callback</definition>
+        <argsstring></argsstring>
+        <name>write_callback</name>
+        <qualifiedname>modbus_config_t::write_callback</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus.h" line="126" column="29" bodyfile="src/modules/communication/modbus.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dea/structmodbus__config__t_1a6fea6caf7ea1ed7187efb0bcdc785feb" prot="public" static="no" mutable="no">
+        <type><ref refid="da/dae/modbus_8h_1a7beb9c1359192ca91929db8f99512b9f" kindref="member">modbus_timeout_callback_t</ref></type>
+        <definition>modbus_timeout_callback_t modbus_config_t::timeout_callback</definition>
+        <argsstring></argsstring>
+        <name>timeout_callback</name>
+        <qualifiedname>modbus_config_t::timeout_callback</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus.h" line="127" column="31" bodyfile="src/modules/communication/modbus.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dea/structmodbus__config__t_1a8dc179a89b19610e2028b829592116a7" prot="public" static="no" mutable="no">
+        <type><ref refid="da/dae/modbus_8h_1a09252102a3a13352e3bba459729e7f47" kindref="member">modbus_error_callback_t</ref></type>
+        <definition>modbus_error_callback_t modbus_config_t::error_callback</definition>
+        <argsstring></argsstring>
+        <name>error_callback</name>
+        <qualifiedname>modbus_config_t::error_callback</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus.h" line="128" column="29" bodyfile="src/modules/communication/modbus.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/modules/communication/modbus.h" line="121" column="1" bodyfile="src/modules/communication/modbus.h" bodystart="121" bodyend="129"/>
+    <listofallmembers>
+      <member refid="d5/dea/structmodbus__config__t_1a0657f618b7298a2d04c31dd2d1469409" prot="public" virt="non-virtual"><scope>modbus_config_t</scope><name>baud_rate</name></member>
+      <member refid="d5/dea/structmodbus__config__t_1a8dc179a89b19610e2028b829592116a7" prot="public" virt="non-virtual"><scope>modbus_config_t</scope><name>error_callback</name></member>
+      <member refid="d5/dea/structmodbus__config__t_1af56c9413102d41866cbe63b7c175336d" prot="public" virt="non-virtual"><scope>modbus_config_t</scope><name>read_callback</name></member>
+      <member refid="d5/dea/structmodbus__config__t_1abfd4559d5083fd78a34dd9364df5c0c4" prot="public" virt="non-virtual"><scope>modbus_config_t</scope><name>slave_id</name></member>
+      <member refid="d5/dea/structmodbus__config__t_1a6fea6caf7ea1ed7187efb0bcdc785feb" prot="public" virt="non-virtual"><scope>modbus_config_t</scope><name>timeout_callback</name></member>
+      <member refid="d5/dea/structmodbus__config__t_1a60457aa22ba8273dc67ea526f0d69f97" prot="public" virt="non-virtual"><scope>modbus_config_t</scope><name>timeout_ms</name></member>
+      <member refid="d5/dea/structmodbus__config__t_1a02cdef2f270caf7cd6f9c3a45f629279" prot="public" virt="non-virtual"><scope>modbus_config_t</scope><name>write_callback</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

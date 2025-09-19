@@ -17,8 +17,8 @@
 #include "register_map.h"
 #include "multiplexer/Multiplexer.h"
 
-// Global Multiplexer instance
-Multiplexer multiplexer;
+// Global Multiplexer instance (internal linkage)
+static Multiplexer multiplexer;
 
 // Forward declaration
 static void update_modbus_registers();
@@ -55,7 +55,7 @@ void setup() {
 }
 
 void loop() {
-    static unsigned long last_modbus_process_time = 0;
+    static unsigned long last_modbus_process_time = 0;     ///< 
     static unsigned long last_multiplexer_update_time = 0;
     static unsigned long last_modbus_sync_time = 0;
 
@@ -102,7 +102,8 @@ static void update_modbus_registers() {
         if (map->sonicators[i].start_stop == 1) {
             multiplexer.start(i);
             map->sonicators[i].start_stop = 0; // Clear command
-        } else if (map->sonicators[i].start_stop == 2) { // Using 2 for stop
+        } 
+        else if (map->sonicators[i].start_stop == 2) { // Using 2 for stop
             multiplexer.stop(i);
             map->sonicators[i].start_stop = 0; // Clear command
         }

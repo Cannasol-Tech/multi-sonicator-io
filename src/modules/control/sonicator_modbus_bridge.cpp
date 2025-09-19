@@ -25,22 +25,33 @@
 // CONSTANTS
 // ============================================================================
 
+/** @brief Target response time for MODBUS operations in milliseconds */
 #define MODBUS_RESPONSE_TIME_TARGET_MS   100u
+/** @brief Interval for publishing register updates in milliseconds */
 #define REGISTER_PUBLISH_INTERVAL_MS     100u
+/** @brief Timeout for control operations in milliseconds */
 #define CONTROL_TIMEOUT_MS               1000u
 
 // ============================================================================
 // PRIVATE STATE
 // ============================================================================
 
+/** @brief Timestamp of last register update operation */
 static uint32_t last_register_update = 0;
+/** @brief Timestamp of last global control update operation */
 static uint32_t last_control_update = 0;
+/** @brief Per-unit timestamps of last control update operations */
 static uint32_t last_control_update_per_unit[MODBUS_MAX_SONICATORS] = {0, 0, 0, 0};
 
 // ============================================================================
 // UTILITIES
 // ============================================================================
 
+/**
+ * @brief Clamps amplitude setpoint to valid range
+ * @param sp Amplitude setpoint value to clamp
+ * @return Clamped amplitude setpoint (20-100%)
+ */
 static inline uint16_t clamp_amplitude_sp(uint16_t sp) {
     if (sp < 20u)  return 20u;
     if (sp > 100u) return 100u;
@@ -51,6 +62,11 @@ static inline uint16_t clamp_amplitude_sp(uint16_t sp) {
 // PER-UNIT OPERATIONS
 // ============================================================================
 
+/**
+ * @brief Applies control commands from MODBUS registers to a specific sonicator unit
+ * @param unit_id Sonicator unit identifier (0-based)
+ * @return true if control was successfully applied, false otherwise
+ */
 static bool apply_control_from_registers(uint8_t unit_id) {
     uint16_t start_stop = 0;
     uint16_t amplitude_sp = 50;
@@ -77,7 +93,11 @@ static bool apply_control_from_registers(uint8_t unit_id) {
     return action_taken;
 }
 
-static void publish_status_to_registers(uint8_t unit_id) {
+/**
+ * @brief Publishes sonicator status to MODBUS registers for a specific unit
+ * @param unit_id Sonicator unit identifier (0-based)
+ */
+inline static void publish_status_to_registers(uint8_t unit_id) {
     const uint8_t hal_id = (uint8_t)(unit_id + 1);
     sonicator_status_t st = {0};
     if (hal_read_sonicator_status(hal_id, &st) != HAL_OK) {
@@ -118,6 +138,11 @@ static void publish_status_to_registers(uint8_t unit_id) {
 // PUBLIC API
 // ============================================================================
 
+/**
+ * @brief Initializes the sonicator MODBUS bridge
+ * @details Sets up initial state, clears all registers, and establishes timing baselines
+ * @return true if initialization was successful, false otherwise
+ */
 bool sonicator_modbus_bridge_init(void) {
     last_register_update = millis();
     last_control_update = last_register_update;
@@ -140,6 +165,11 @@ bool sonicator_modbus_bridge_init(void) {
     return true;
 }
 
+/**
+ * @brief Updates the sonicator MODBUS bridge state
+ * @details Applies control commands from registers and publishes status updates at configured intervals
+ * @return true if any control action was taken, false otherwise
+ */
 bool sonicator_modbus_bridge_update(void) {
     uint32_t now = millis();
     bool any_action = false;
@@ -157,6 +187,12 @@ bool sonicator_modbus_bridge_update(void) {
     return any_action;
 }
 
+/**
+ * @brief Retrieves status information from the sonicator MODBUS bridge
+ * @param last_register_update_time Pointer to store timestamp of last register update (optional)
+ * @param last_control_update_time Pointer to store timestamp of last control update (optional)
+ * @param response_time_ms Pointer to store current response time in milliseconds (optional)
+ */
 void sonicator_modbus_bridge_get_status(uint32_t* last_register_update_time,
                                         uint32_t* last_control_update_time,
                                         uint32_t* response_time_ms) {
@@ -172,6 +208,11 @@ void sonicator_modbus_bridge_get_status(uint32_t* last_register_update_time,
     }
 }
 
+/**
+ * @brief Checks if the sonicator MODBUS bridge is responsive
+ * @details Determines if the bridge is meeting the target response time requirement
+ * @return true if bridge is responsive (within target time), false otherwise
+ */
 bool sonicator_modbus_bridge_is_responsive(void) {
     uint32_t now = millis();
     uint32_t response_time = (now >= last_control_update) ? (now - last_control_update) : 0u;

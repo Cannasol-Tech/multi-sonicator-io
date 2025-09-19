@@ -34,8 +34,87 @@ Establish a consistent, automated, and maintainable documentation process for fi
 
 ### 5.1 C/C++ (Doxygen)
 - Use Javadoc-style blocks `/** ... */`
-- Required tags where applicable: `@file`, `@brief`, `@details`, `@param`, `@return`, `@note`, `@warning`, `@see`
-- Example: see `src/modules/control/sonicator_modbus_bridge.cpp`
+- Use comprehensive Doxygen tags for complete documentation coverage. All tags should be used where applicable to ensure thorough and searchable documentation. Below is a complete list of available Doxygen tags organized by category:
+
+**File and Group Tags:**
+  - `@file` - Document files (required)
+  - `@defgroup`, `@ingroup`, `@addtogroup` - Group related items
+  - `@dir` - Document directories
+  - `@namespace` - Document namespaces
+
+**Documentation Structure Tags:**
+  - `@brief` - Short description (required for functions/classes)
+  - `@details` - Detailed description
+  - `@fn`, `@var`, `@typedef`, `@property` - Document specific elements
+  - `@class`, `@struct`, `@union`, `@interface` - Document types
+
+**Function/Method Tags:**
+  - `@param` - Document function parameters (required)
+  - `@tparam` - Document template parameters
+  - `@retval` - Document return values with conditions
+  - `@return`/`@returns` - Document return values (required for non-void functions)
+  - `@deprecated` - Mark deprecated items
+  - `@since` - Indicate version when item was added
+
+**Visibility Tags:**
+  - `@public`, `@private`, `@protected` - Document member visibility
+  - `@internal` - Mark internal implementation details
+
+**References and Links:**
+  - `@ref` - Create references to other documented items
+  - `@see`/`@sa` - Add see-also references
+  - `@link`, `@endlink` - Create hyperlinks
+
+**Code Examples:**
+  - `@code`, `@endcode` - Include code snippets
+  - `@verbatim`, `@endverbatim` - Include verbatim text
+  - `@example` - Reference example files
+  - `@include` - Include external files
+
+**Lists and Formatting:**
+  - `@li` - List items
+  - `@arg` - Function arguments in parameter descriptions
+  - `@attention` - Important notes requiring attention
+  - `@note` - General notes
+  - `@warning` - Warnings about usage
+  - `@bug` - Known bugs
+  - `@todo` - TODO items
+  - `@test` - Test-related information
+
+**Relationships:**
+  - `@extends`, `@implements` - Document inheritance/implementations
+  - `@related`, `@relatedalso` - Related items
+  - `@relates`, `@relatesalso` - Relate non-members to classes
+  - `@memberof` - Specify membership
+
+**Miscellaneous Tags:**
+  - `@author` - Document author
+  - `@date` - Document creation/modification date
+  - `@version` - Document version
+  - `@copyright` - Copyright information
+  - `@license` - License information
+  - `@package`, `@subpackage` - Package organization
+  - `@page` - Create documentation pages
+  - `@section`, `@subsection`, `@subsubsection` - Create sections
+  - `@paragraph` - Create paragraphs
+  - `@anchor` - Create anchors for cross-references
+  - `@mainpage` - Define main documentation page
+  - `@htmlonly`, `@endhtmlonly` - HTML-specific content
+  - `@latexonly`, `@endlatexonly` - LaTeX-specific content
+  - `@manonly`, `@endmanonly` - Man-page specific content
+  - `@rtfonly`, `@endrtfonly` - RTF-specific content
+  - `@xmlonly`, `@endxmlonly` - XML-specific content
+  - `@cond`, `@endcond` - Conditional documentation
+  - `@if`, `@endif`, `@else`, `@elseif` - Conditional compilation in docs
+  - `@def` - Define preprocessor macros
+  - `@enum` - Document enumerations
+  - `@name` - Override displayed name
+  - `@overload` - Document overloaded functions
+
+**Usage Notes:**
+  - Use Javadoc-style comment blocks: `/** ... */`
+  - Required tags marked above must be used where applicable
+  - Example implementation available in `src/modules/control/sonicator_modbus_bridge.cpp`
 
 ### 5.2 TypeScript (TypeDoc / JSDoc)
 - Use `/** ... */` with JSDoc/TypeDoc tags

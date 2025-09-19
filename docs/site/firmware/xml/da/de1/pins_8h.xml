@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="da/de1/pins_8h" kind="file" language="C++">
+    <compoundname>pins.h</compoundname>
+    <innerclass refid="de/d5a/struct_sonicator_pins" prot="public">SonicatorPins</innerclass>
+    <briefdescription>
+<para>Sonicator Pinout Definitions. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Cannasol Technologies </para>
+</simplesect>
+<simplesect kind="date"><para>2025-09-16 </para>
+</simplesect>
+<simplesect kind="version"><para>2.0.0</para>
+</simplesect>
+This file defines the ATmega32A Pins used to control and monitor The CT2000 Sonciator devices being interfaced with via DB9 Connectors to our Multi Sonicator I/O Controller ( Sonicator <ref refid="dc/d7a/class_multiplexer" kindref="compound">Multiplexer</ref> ). <linebreak/>
+ THe pin definitions are confirmed and based on the sole source of truth for the hardware configuration in <computeroutput>config/hardware-config.yaml</computeroutput>.</para>
+<sect1 id="da/de1/pins_8h_1pin_matrix">
+<title>Pin Matrix</title><para><simplesect kind="note"><para>Pin = Hardware Pin number on ATMega32a </para>
+</simplesect>
+<simplesect kind="note"><para>Signal = Signal name as defined in <computeroutput>config/hardware-config.yaml</computeroutput> </para>
+</simplesect>
+<simplesect kind="note"><para>Dir = Direction from DUT (ATMega32a) Perspective (IN/OUT)s </para>
+</simplesect>
+<simplesect kind="note"><para>IN is a MONITORED signal output from the CT2000 Sonicator to our ATmega32a </para>
+</simplesect>
+<simplesect kind="note"><para>OUT is a CONTROL signal output by our Multi-Sonicator I/O device to control/configure the CT2000 Sonicator</para>
+</simplesect>
+for MONITORED signals, we should pass the value to it&apos;s correct MODBUS register for handling by the Main Automation System. ( Sonicator -&gt; <bold>ATMega32a</bold> -&gt; MODBUS )</para>
+<para>for CONTROL signals, we should set the signal based on the value in the respective MODBUS register which is being set by the main Automation Box. ( MODBUS -&gt; <bold>ATMega32a</bold> -&gt; Sonicator )</para>
+<para>The Sonicator <ref refid="dc/d7a/class_multiplexer" kindref="compound">Multiplexer</ref> I/O Controller is a MODBUS RTU slave device with four sonicator channels.</para>
+<para>The ATmega32a is the the microcontroller brain of the Multi Sonicator I/O Controller; The Multi Sonicator I/O Controller&apos;s Main purpose is to act as the bridge between the Main Automation Control Box ( Which which has a Human Interface ) and the Sonicators. For monitored signals, we are simply exposing them to the Main Automation Controol Box. <linebreak/>
+ For control signals, we are simply passing the Configuration from the Main Automation Control Box to the correct sonicator based on the MODBUS Register map.</para>
+<sect2 id="da/de1/pins_8h_1sonicator1_pxins">
+<title>Sonicator 1 ATMega32a Pin Assignment</title><para><table rows="8" cols="3"><row>
+<entry thead="yes"><para>Pin  </para>
+</entry><entry thead="yes"><para>Signal  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>4  </para>
+</entry><entry thead="no"><para>FREQ_DIV10_1  </para>
+</entry><entry thead="no"><para>Frequency ÷10 input  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>8  </para>
+</entry><entry thead="no"><para>FREQ_LOCK_1  </para>
+</entry><entry thead="no"><para>Frequency lock status input  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>20  </para>
+</entry><entry thead="no"><para>OVERLOAD_1  </para>
+</entry><entry thead="no"><para>Overload detection input  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>28  </para>
+</entry><entry thead="no"><para>START_1  </para>
+</entry><entry thead="no"><para>Start/enable control output  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>29  </para>
+</entry><entry thead="no"><para>RESET_1  </para>
+</entry><entry thead="no"><para>Reset control output  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>36  </para>
+</entry><entry thead="no"><para>POWER_SENSE_1  </para>
+</entry><entry thead="no"><para>Power level analog input  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>21  </para>
+</entry><entry thead="no"><para>AMPLITUDE_ALL  </para>
+</entry><entry thead="no"><para>Amplitude control (shared)  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="da/de1/pins_8h_1sonicator2_pins">
+<title>Sonicator 2 ATMega32a Pin Assignment</title><para><table rows="8" cols="3"><row>
+<entry thead="yes"><para>Pin  </para>
+</entry><entry thead="yes"><para>Signal  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>3  </para>
+</entry><entry thead="no"><para>FREQ_DIV10_2  </para>
+</entry><entry thead="no"><para>Frequency ÷10 input  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>7  </para>
+</entry><entry thead="no"><para>FREQ_LOCK_2  </para>
+</entry><entry thead="no"><para>Frequency lock status input  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>19  </para>
+</entry><entry thead="no"><para>OVERLOAD_2  </para>
+</entry><entry thead="no"><para>Overload detection input  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>26  </para>
+</entry><entry thead="no"><para>START_2  </para>
+</entry><entry thead="no"><para>Start/enable control output  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>27  </para>
+</entry><entry thead="no"><para>RESET_2  </para>
+</entry><entry thead="no"><para>Reset control output  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>35  </para>
+</entry><entry thead="no"><para>POWER_SENSE_2  </para>
+</entry><entry thead="no"><para>Power level analog input  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>21  </para>
+</entry><entry thead="no"><para>AMPLITUDE_ALL  </para>
+</entry><entry thead="no"><para>Amplitude control (shared)  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="da/de1/pins_8h_1sonicator3_pins">
+<title>Sonicator 3 ATMega32a Pin Assignment</title><para><table rows="8" cols="3"><row>
+<entry thead="yes"><para>Pin  </para>
+</entry><entry thead="yes"><para>Signal  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>2  </para>
+</entry><entry thead="no"><para>FREQ_DIV10_3  </para>
+</entry><entry thead="no"><para>Frequency ÷10 input  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>6  </para>
+</entry><entry thead="no"><para>FREQ_LOCK_3  </para>
+</entry><entry thead="no"><para>Frequency lock status input  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>18  </para>
+</entry><entry thead="no"><para>OVERLOAD_3  </para>
+</entry><entry thead="no"><para>Overload detection input  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>24  </para>
+</entry><entry thead="no"><para>START_3  </para>
+</entry><entry thead="no"><para>Start/enable control output  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>25  </para>
+</entry><entry thead="no"><para>RESET_3  </para>
+</entry><entry thead="no"><para>Reset control output  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>34  </para>
+</entry><entry thead="no"><para>POWER_SENSE_3  </para>
+</entry><entry thead="no"><para>Power level analog input  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>21  </para>
+</entry><entry thead="no"><para>AMPLITUDE_ALL  </para>
+</entry><entry thead="no"><para>Amplitude control (shared)  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="da/de1/pins_8h_1sonicator4_pins">
+<title>Sonicator 4 ATMega32a Pin Assignment</title><para><table rows="8" cols="3"><row>
+<entry thead="yes"><para>Pin  </para>
+</entry><entry thead="yes"><para>Signal  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>1  </para>
+</entry><entry thead="no"><para>FREQ_DIV10_4  </para>
+</entry><entry thead="no"><para>Frequency ÷10 input  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>5  </para>
+</entry><entry thead="no"><para>FREQ_LOCK_4  </para>
+</entry><entry thead="no"><para>Frequency lock status input  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>17  </para>
+</entry><entry thead="no"><para>OVERLOAD_4  </para>
+</entry><entry thead="no"><para>Overload detection input  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>22  </para>
+</entry><entry thead="no"><para>START_4  </para>
+</entry><entry thead="no"><para>Start/enable control output  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>23  </para>
+</entry><entry thead="no"><para>RESET_4  </para>
+</entry><entry thead="no"><para>Reset control output  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>33  </para>
+</entry><entry thead="no"><para>POWER_SENSE_4  </para>
+</entry><entry thead="no"><para>Power level analog input  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>21  </para>
+</entry><entry thead="no"><para>AMPLITUDE_ALL  </para>
+</entry><entry thead="no"><para>Amplitude control (shared)  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="da/de1/pins_8h_1system_pins">
+<title>System/Communication Pins</title><para><table rows="4" cols="3"><row>
+<entry thead="yes"><para>ATMega32A Pin  </para>
+</entry><entry thead="yes"><para>Signal  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>14  </para>
+</entry><entry thead="no"><para>UART_RXD  </para>
+</entry><entry thead="no"><para>MODBUS RTU receive data  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>15  </para>
+</entry><entry thead="no"><para>UART_TXD  </para>
+</entry><entry thead="no"><para>MODBUS RTU transmit data  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>16  </para>
+</entry><entry thead="no"><para>STATUS_LED  </para>
+</entry><entry thead="no"><para>System status LED output  </para>
+</entry></row>
+</table>
+</para>
+<para><simplesect kind="note"><para>DB9-0 is the communications connector for MODBUS RTU network </para>
+</simplesect>
+<simplesect kind="note"><para>All sonicator channels share the AMPLITUDE_ALL signal on pin 21 </para>
+</simplesect>
+</para>
+</sect2>
+</sect1>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>SONICATOR_PINS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_PINS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="de/d5a/struct_sonicator_pins" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="de/d5a/struct_sonicator_pins" kindref="compound">SonicatorPins</ref><sp/>{</highlight></codeline>
+<codeline lineno="99" refid="de/d5a/struct_sonicator_pins_1aade86cc331059ac42b918d5c4601cfba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="de/d5a/struct_sonicator_pins_1aade86cc331059ac42b918d5c4601cfba" kindref="member">start_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="100" refid="de/d5a/struct_sonicator_pins_1adb56b7285e08ae5590664013aea0dc5b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="de/d5a/struct_sonicator_pins_1adb56b7285e08ae5590664013aea0dc5b" kindref="member">reset_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="101" refid="de/d5a/struct_sonicator_pins_1a9f2610ad98a5973f58cc32c714f7bfc9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="de/d5a/struct_sonicator_pins_1a9f2610ad98a5973f58cc32c714f7bfc9" kindref="member">overload_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="102" refid="de/d5a/struct_sonicator_pins_1a8572c5252876bfb33ae862600951ce83" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="de/d5a/struct_sonicator_pins_1a8572c5252876bfb33ae862600951ce83" kindref="member">freq_lock_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="103" refid="de/d5a/struct_sonicator_pins_1a12ff06055b9989f979fd34daff37d1b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="de/d5a/struct_sonicator_pins_1a12ff06055b9989f979fd34daff37d1b2" kindref="member">freq_div10_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="104" refid="de/d5a/struct_sonicator_pins_1a3523cd65a350ce8ff85b9166bb46f73c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref><sp/><ref refid="de/d5a/struct_sonicator_pins_1a3523cd65a350ce8ff85b9166bb46f73c" kindref="member">power_sense_channel</ref>;<sp/></highlight></codeline>
+<codeline lineno="105"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>SONICATOR_PINS_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/sonicator/types/pins.h"/>
+  </compounddef>
+</doxygen>

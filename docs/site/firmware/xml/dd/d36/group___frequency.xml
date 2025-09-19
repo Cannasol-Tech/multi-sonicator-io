@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="dd/d36/group___frequency" kind="group">
+    <compoundname>Frequency</compoundname>
+    <title>Input Pin</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="dd/d36/group___frequency_1ga47c019a4b87fe13a7f580567c30da3b2" prot="public" static="no">
+        <name>LM2907_FREQ_INPUT_PIN</name>
+        <initializer>A0</initializer>
+        <briefdescription>
+<para>LM2907 frequency-to-voltage converter configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="197" column="9" bodyfile="include/system_config.h" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dd/d36/group___frequency_1gad5c14d06916e502df2e02e982799275f" prot="public" static="no">
+        <name>LM2907_FREQ_MIN_VOLTAGE</name>
+        <initializer>0.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="198" column="9" bodyfile="include/system_config.h" bodystart="198" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dd/d36/group___frequency_1ga8b65dfd8166d7905a3c84f6049cd3cb8" prot="public" static="no">
+        <name>LM2907_FREQ_MAX_VOLTAGE</name>
+        <initializer>5.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="199" column="9" bodyfile="include/system_config.h" bodystart="199" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dd/d36/group___frequency_1ga5e48f6282ba8b3017b506dd390d7cb31" prot="public" static="no">
+        <name>LM2907_FREQ_SCALE_FACTOR</name>
+        <initializer>500</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="200" column="9" bodyfile="include/system_config.h" bodystart="200" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ADC Configuration (per channel) </para>
+    </briefdescription>
+    <detaileddescription>
+<para><itemizedlist>
+<listitem><para>10kΩ voltage divider for input protection</para>
+</listitem><listitem><para>0-10.88V input range (2000W × 5.44mV/W)</para>
+</listitem><listitem><para>0-5.44V after divider, 0-1024 ADC counts</para>
+</listitem><listitem><para>Resolution: ~2 watts per count</para>
+</listitem></itemizedlist>
+</para>
+<para>Configuration for LM2907 frequency-to-voltage converter (Sonicator 4)</para>
+<para>Converts CT2000 frequency output to 0-5V analog signal for ADC measurement </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

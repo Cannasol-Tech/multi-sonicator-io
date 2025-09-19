@@ -1,0 +1,912 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d6/d7c/gpio_8h" kind="file" language="C++">
+    <compoundname>gpio.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includes refid="d2/d92/atmega__hal__impl_8h" local="yes">atmega_hal_impl.h</includes>
+    <includes refid="de/d2b/hal__template__interfaces_8h" local="yes">hal_template_interfaces.h</includes>
+    <includes refid="de/d8d/mock__hal__impl_8h" local="yes">mock_hal_impl.h</includes>
+    <includedby refid="d2/db9/sonicator_8cpp" local="yes">src/modules/control/sonicator.cpp</includedby>
+    <includedby refid="d2/d92/atmega__hal__impl_8h" local="yes">src/modules/hal/atmega_hal_impl.h</includedby>
+    <includedby refid="de/d31/gpio_8cpp" local="yes">src/modules/hal/gpio.cpp</includedby>
+    <includedby refid="d8/d4b/hal_8h" local="yes">src/modules/hal/hal.h</includedby>
+    <incdepgraph>
+      <node id="5">
+        <label>adc.h</label>
+        <link refid="d7/d19/adc_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>atmega_hal_impl.h</label>
+        <link refid="d2/d92/atmega__hal__impl_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/modules/hal/gpio.h</label>
+        <link refid="d6/d7c/gpio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>hal_template_interfaces.h</label>
+        <link refid="de/d2b/hal__template__interfaces_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>mock_hal_impl.h</label>
+        <link refid="de/d8d/mock__hal__impl_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>pwm.h</label>
+        <link refid="d6/db9/pwm_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>timer.h</label>
+        <link refid="d5/dd0/timer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>uart.h</label>
+        <link refid="d2/d86/uart_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+      <node id="11">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="8">
+        <label>include/MultiSonicatorSystem.h</label>
+        <link refid="db/dac/_multi_sonicator_system_8h"/>
+      </node>
+      <node id="6">
+        <label>include/sonicator/sonicator.h</label>
+        <link refid="d8/dff/include_2sonicator_2sonicator_8h"/>
+      </node>
+      <node id="7">
+        <label>include/types.h</label>
+        <link refid="d9/d49/types_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/main.cpp</label>
+        <link refid="df/d0a/main_8cpp"/>
+      </node>
+      <node id="2">
+        <label>src/modules/control/sonicator.cpp</label>
+        <link refid="d2/db9/sonicator_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/modules/control/sonicator_modbus_bridge.cpp</label>
+        <link refid="d5/dea/sonicator__modbus__bridge_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/modules/hal/atmega_hal_impl.h</label>
+        <link refid="d2/d92/atmega__hal__impl_8h"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/modules/hal/gpio.cpp</label>
+        <link refid="de/d31/gpio_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/modules/hal/gpio.h</label>
+        <link refid="d6/d7c/gpio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>src/modules/hal/hal.cpp</label>
+        <link refid="dc/db6/hal_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/modules/hal/hal.h</label>
+        <link refid="d8/d4b/hal_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/modules/sonicator/sonicator.h</label>
+        <link refid="d1/d72/src_2modules_2sonicator_2sonicator_8h"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454" prot="public" static="no" strong="no">
+        <type></type>
+        <name>gpio_mode_t</name>
+        <enumvalue id="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454a61ddb59c5e9a9cc6d9cf99d11a36920b" prot="public">
+          <name>GPIO_MODE_INPUT</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454a946f5f8d0fa3b4199c28a63446095cb9" prot="public">
+          <name>GPIO_MODE_INPUT_PULLUP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454aa5824cd687ac84449b093087c25cec7c" prot="public">
+          <name>GPIO_MODE_OUTPUT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454a30572231784d807414cd8e2118e1b5f0" prot="public">
+          <name>GPIO_MODE_OUTPUT_OPEN_DRAIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>GPIO pin modes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="34" column="1" bodyfile="src/modules/hal/gpio.h" bodystart="34" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="enum" id="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" prot="public" static="no" strong="no">
+        <type></type>
+        <name>gpio_state_t</name>
+        <enumvalue id="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ad41cdd897d9b8714ef45ed6e9eba0dfa" prot="public">
+          <name>GPIO_LOW</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ab05c5a854da4602143b6bd6096d86c4d" prot="public">
+          <name>GPIO_HIGH</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>GPIO pin states. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="44" column="1" bodyfile="src/modules/hal/gpio.h" bodystart="44" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="enum" id="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" prot="public" static="no" strong="no">
+        <type></type>
+        <name>gpio_result_t</name>
+        <enumvalue id="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" prot="public">
+          <name>GPIO_OK</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa38941804734708507b91d11f81513c60" prot="public">
+          <name>GPIO_ERROR_INVALID_PIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caae62494c04d16fd43ca44c1867613fffe" prot="public">
+          <name>GPIO_ERROR_INVALID_MODE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa320026ede7c2fe87281558840cbeaf64" prot="public">
+          <name>GPIO_ERROR_NOT_INITIALIZED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>HAL function return codes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="52" column="1" bodyfile="src/modules/hal/gpio.h" bodystart="52" bodyend="57"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="d6/d7c/gpio_8h_1a5a14777a91770ca47d09c3b5cc319619" prot="public" static="no">
+        <type><ref refid="d9/d2e/class_gpio_hal" kindref="compound">GpioHal</ref>&lt; <ref refid="d3/d3b/class_atmega_hal" kindref="compound">AtmegaHal</ref> &gt;</type>
+        <definition>using ProductionGpio =  GpioHal&lt;AtmegaHal&gt;</definition>
+        <argsstring></argsstring>
+        <name>ProductionGpio</name>
+        <briefdescription>
+<para>GPIO HAL Template Usage Examples. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>These examples show how to use the template-based GPIO HAL for both production and testing scenarios. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="204" column="1" bodyfile="src/modules/hal/gpio.h" bodystart="204" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="d6/d7c/gpio_8h_1a68819ef1c88e14a2978dbdb5366175ed" prot="public" static="no">
+        <type><ref refid="d1/d54/class_hal_template" kindref="compound">HalTemplate</ref>&lt; <ref refid="d3/d3b/class_atmega_hal" kindref="compound">AtmegaHal</ref> &gt;</type>
+        <definition>using ProductionHal =  HalTemplate&lt;AtmegaHal&gt;</definition>
+        <argsstring></argsstring>
+        <name>ProductionHal</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="205" column="1" bodyfile="src/modules/hal/gpio.h" bodystart="205" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="d6/d7c/gpio_8h_1aec2e78074365439a63360cf81dca5bef" prot="public" static="no">
+        <type><ref refid="d9/d2e/class_gpio_hal" kindref="compound">GpioHal</ref>&lt; <ref refid="d2/d0d/class_mock_hal" kindref="compound">MockHal</ref> &gt;</type>
+        <definition>using TestGpio =  GpioHal&lt;MockHal&gt;</definition>
+        <argsstring></argsstring>
+        <name>TestGpio</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="211" column="1" bodyfile="src/modules/hal/gpio.h" bodystart="211" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="d6/d7c/gpio_8h_1a8f54280a14948a2021c912ac21177e6a" prot="public" static="no">
+        <type><ref refid="d1/d54/class_hal_template" kindref="compound">HalTemplate</ref>&lt; <ref refid="d2/d0d/class_mock_hal" kindref="compound">MockHal</ref> &gt;</type>
+        <definition>using TestHal =  HalTemplate&lt;MockHal&gt;</definition>
+        <argsstring></argsstring>
+        <name>TestHal</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="212" column="1" bodyfile="src/modules/hal/gpio.h" bodystart="212" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="d6/d7c/gpio_8h_1a33d278bd8510192b4fdadf20fa22fe61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref></type>
+        <definition>gpio_result_t gpio_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>gpio_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize GPIO hardware abstraction layer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Configures all GPIO pins according to pin matrix specifications. Must be called before any other GPIO operations.</para>
+<para><simplesect kind="return"><para>GPIO_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="71" column="15" bodyfile="src/modules/hal/gpio.cpp" bodystart="33" bodyend="46" declfile="src/modules/hal/gpio.h" declline="71" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/gpio_8h_1a6627ec6372faceba7b8edb638cc94580" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref></type>
+        <definition>gpio_result_t gpio_set_pin_mode</definition>
+        <argsstring>(uint8_t pin, gpio_mode_t mode)</argsstring>
+        <name>gpio_set_pin_mode</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454" kindref="member">gpio_mode_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Configure pin mode for specified GPIO pin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arduino pin number (0-31 for ATmega32A) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Desired pin mode configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>GPIO_OK on success, error code on failure</para>
+</simplesect>
+<simplesect kind="note"><para>Pin numbers follow Arduino framework convention </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="82" column="15" bodyfile="src/modules/hal/gpio.cpp" bodystart="48" bodyend="77" declfile="src/modules/hal/gpio.h" declline="82" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/gpio_8h_1a3356861ebced78ebc885c06a9abad081" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref></type>
+        <definition>gpio_result_t gpio_write_pin</definition>
+        <argsstring>(uint8_t pin, gpio_state_t state)</argsstring>
+        <name>gpio_write_pin</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref></type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Write digital state to output pin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arduino pin number </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Desired output state (HIGH/LOW) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>GPIO_OK on success, error code on failure</para>
+</simplesect>
+<simplesect kind="note"><para>Pin must be configured as output before writing </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="93" column="15" bodyfile="src/modules/hal/gpio.cpp" bodystart="79" bodyend="90" declfile="src/modules/hal/gpio.h" declline="93" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/gpio_8h_1af23d343920eacb1d974f8d9bed1c2fec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref></type>
+        <definition>gpio_result_t gpio_read_pin</definition>
+        <argsstring>(uint8_t pin, gpio_state_t *state)</argsstring>
+        <name>gpio_read_pin</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref> *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Read digital state from input pin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arduino pin number </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store read state </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>GPIO_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="102" column="15" bodyfile="src/modules/hal/gpio.cpp" bodystart="92" bodyend="103" declfile="src/modules/hal/gpio.h" declline="102" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/gpio_8h_1a1044034cb78746356ec8ae1b4b33419e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref></type>
+        <definition>gpio_result_t gpio_toggle_pin</definition>
+        <argsstring>(uint8_t pin)</argsstring>
+        <name>gpio_toggle_pin</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+<para>Toggle output pin state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arduino pin number </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>GPIO_OK on success, error code on failure</para>
+</simplesect>
+<simplesect kind="note"><para>Pin must be configured as output </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="112" column="15" bodyfile="src/modules/hal/gpio.cpp" bodystart="105" bodyend="122" declfile="src/modules/hal/gpio.h" declline="112" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/gpio_8h_1aaaa8c0844e001c7c3569149272361638" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref></type>
+        <definition>gpio_result_t gpio_get_pin_mode</definition>
+        <argsstring>(uint8_t pin, gpio_mode_t *mode)</argsstring>
+        <name>gpio_get_pin_mode</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454" kindref="member">gpio_mode_t</ref> *</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Get current pin mode configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arduino pin number </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store current mode </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>GPIO_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="121" column="15" bodyfile="src/modules/hal/gpio.cpp" bodystart="124" bodyend="138" declfile="src/modules/hal/gpio.h" declline="121" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/gpio_8h_1a28bd6f2ab363a3aa8042b8dd2c138d3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref></type>
+        <definition>gpio_result_t gpio_init_sonicator_pins</definition>
+        <argsstring>(void)</argsstring>
+        <name>gpio_init_sonicator_pins</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Configure all sonicator interface pins. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets up all 4 sonicator interfaces according to pin matrix:<itemizedlist>
+<listitem><para>Input pins: OVERLOAD, FREQ_DIV10, FREQ_LOCK</para>
+</listitem><listitem><para>Output pins: START, RESET</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="return"><para>GPIO_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="136" column="15" bodyfile="src/modules/hal/gpio.cpp" bodystart="144" bodyend="180" declfile="src/modules/hal/gpio.h" declline="136" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/gpio_8h_1a6697ca0fd5b0210af4d5c97e11efa3c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref></type>
+        <definition>gpio_result_t gpio_sonicator_start</definition>
+        <argsstring>(uint8_t sonicator_id)</argsstring>
+        <name>gpio_sonicator_start</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+<para>Start sonicator operation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sonicator_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator number (1-4) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>GPIO_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="144" column="15" bodyfile="src/modules/hal/gpio.cpp" bodystart="182" bodyend="189" declfile="src/modules/hal/gpio.h" declline="144" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/gpio_8h_1a33a32957b81034c07f3685b90580d482" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref></type>
+        <definition>gpio_result_t gpio_sonicator_stop</definition>
+        <argsstring>(uint8_t sonicator_id)</argsstring>
+        <name>gpio_sonicator_stop</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+<para>Stop sonicator operation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sonicator_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator number (1-4) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>GPIO_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="152" column="15" bodyfile="src/modules/hal/gpio.cpp" bodystart="191" bodyend="198" declfile="src/modules/hal/gpio.h" declline="152" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/gpio_8h_1a9b325245641aadf28c1c28e70fc3d355" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref></type>
+        <definition>gpio_result_t gpio_sonicator_reset</definition>
+        <argsstring>(uint8_t sonicator_id)</argsstring>
+        <name>gpio_sonicator_reset</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+<para>Reset sonicator overload condition. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sonicator_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator number (1-4) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>GPIO_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="160" column="15" bodyfile="src/modules/hal/gpio.cpp" bodystart="200" bodyend="216" declfile="src/modules/hal/gpio.h" declline="160" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/gpio_8h_1af4700a3e3d882c0cc3d14a3ba5e0c66d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref></type>
+        <definition>gpio_result_t gpio_sonicator_read_overload</definition>
+        <argsstring>(uint8_t sonicator_id, bool *overload)</argsstring>
+        <name>gpio_sonicator_read_overload</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>overload</declname>
+        </param>
+        <briefdescription>
+<para>Read sonicator overload status. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sonicator_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator number (1-4) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>overload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store overload state </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>GPIO_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="169" column="15" bodyfile="src/modules/hal/gpio.cpp" bodystart="218" bodyend="233" declfile="src/modules/hal/gpio.h" declline="169" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/gpio_8h_1af3b6ea8f9b5c77e43fa4d22fffc2c872" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref></type>
+        <definition>gpio_result_t gpio_sonicator_read_freq_lock</definition>
+        <argsstring>(uint8_t sonicator_id, bool *locked)</argsstring>
+        <name>gpio_sonicator_read_freq_lock</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>locked</declname>
+        </param>
+        <briefdescription>
+<para>Read sonicator frequency lock status. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sonicator_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator number (1-4) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>locked</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store lock state </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>GPIO_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="178" column="15" bodyfile="src/modules/hal/gpio.cpp" bodystart="235" bodyend="250" declfile="src/modules/hal/gpio.h" declline="178" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/d7c/gpio_8h_1a868df198e014b5e9b2ab134a16384683" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref></type>
+        <definition>gpio_result_t gpio_status_led</definition>
+        <argsstring>(gpio_state_t state)</argsstring>
+        <name>gpio_status_led</name>
+        <param>
+          <type><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref></type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Control status LED. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>LED state (on/off) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>GPIO_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/gpio.h" line="186" column="15" bodyfile="src/modules/hal/gpio.cpp" bodystart="252" bodyend="254" declfile="src/modules/hal/gpio.h" declline="186" declcolumn="15"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>GPIO Hardware Abstraction Layer for ATmega32A. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Cannasol Technologies </para>
+</simplesect>
+<simplesect kind="date"><para>2025-09-02 </para>
+</simplesect>
+<simplesect kind="version"><para>1.0.0</para>
+</simplesect>
+Provides hardware-agnostic GPIO control interface for sonicator interfaces, status indicators, and digital I/O operations. Abstracts ATmega32A port manipulation for consistent cross-platform development.</para>
+<para>Pin assignments per config/hardware-config.yaml (SOLE SOURCE OF TRUTH). Supports all sonicator control signals, status LED, and system I/O. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HAL_GPIO_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HAL_GPIO_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TYPE<sp/>DEFINITIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="35" refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454a61ddb59c5e9a9cc6d9cf99d11a36920b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454a61ddb59c5e9a9cc6d9cf99d11a36920b" kindref="member">GPIO_MODE_INPUT</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Input<sp/>mode<sp/>(high<sp/>impedance)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454a946f5f8d0fa3b4199c28a63446095cb9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454a946f5f8d0fa3b4199c28a63446095cb9" kindref="member">GPIO_MODE_INPUT_PULLUP</ref>,<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Input<sp/>with<sp/>internal<sp/>pull-up</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454aa5824cd687ac84449b093087c25cec7c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454aa5824cd687ac84449b093087c25cec7c" kindref="member">GPIO_MODE_OUTPUT</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Output<sp/>mode<sp/>(push-pull)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454a30572231784d807414cd8e2118e1b5f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454a30572231784d807414cd8e2118e1b5f0" kindref="member">GPIO_MODE_OUTPUT_OPEN_DRAIN</ref><sp/></highlight><highlight class="comment">//&lt;<sp/>Output<sp/>mode<sp/>(open-drain)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}<sp/><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454" kindref="member">gpio_mode_t</ref>;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="45" refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ad41cdd897d9b8714ef45ed6e9eba0dfa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ad41cdd897d9b8714ef45ed6e9eba0dfa" kindref="member">GPIO_LOW</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Logic<sp/>low<sp/>(0V)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ab05c5a854da4602143b6bd6096d86c4d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ab05c5a854da4602143b6bd6096d86c4d" kindref="member">GPIO_HIGH</ref><sp/>=<sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Logic<sp/>high<sp/>(5V)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="53" refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Operation<sp/>successful</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa38941804734708507b91d11f81513c60" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa38941804734708507b91d11f81513c60" kindref="member">GPIO_ERROR_INVALID_PIN</ref>,<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Invalid<sp/>pin<sp/>number</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caae62494c04d16fd43ca44c1867613fffe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caae62494c04d16fd43ca44c1867613fffe" kindref="member">GPIO_ERROR_INVALID_MODE</ref>,<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Invalid<sp/>pin<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa320026ede7c2fe87281558840cbeaf64" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa320026ede7c2fe87281558840cbeaf64" kindref="member">GPIO_ERROR_NOT_INITIALIZED</ref><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>GPIO<sp/>not<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PUBLIC<sp/>INTERFACE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/><ref refid="d6/d7c/gpio_8h_1a33d278bd8510192b4fdadf20fa22fe61" kindref="member">gpio_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/><ref refid="d6/d7c/gpio_8h_1a6627ec6372faceba7b8edb638cc94580" kindref="member">gpio_set_pin_mode</ref>(uint8_t<sp/>pin,<sp/><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454" kindref="member">gpio_mode_t</ref><sp/>mode);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/><ref refid="d6/d7c/gpio_8h_1a3356861ebced78ebc885c06a9abad081" kindref="member">gpio_write_pin</ref>(uint8_t<sp/>pin,<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>state);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/><ref refid="d6/d7c/gpio_8h_1af23d343920eacb1d974f8d9bed1c2fec" kindref="member">gpio_read_pin</ref>(uint8_t<sp/>pin,<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref>*<sp/>state);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/><ref refid="d6/d7c/gpio_8h_1a1044034cb78746356ec8ae1b4b33419e" kindref="member">gpio_toggle_pin</ref>(uint8_t<sp/>pin);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/><ref refid="d6/d7c/gpio_8h_1aaaa8c0844e001c7c3569149272361638" kindref="member">gpio_get_pin_mode</ref>(uint8_t<sp/>pin,<sp/><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454" kindref="member">gpio_mode_t</ref>*<sp/>mode);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SONICATOR<sp/>INTERFACE<sp/>CONVENIENCE<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/><ref refid="d6/d7c/gpio_8h_1a28bd6f2ab363a3aa8042b8dd2c138d3e" kindref="member">gpio_init_sonicator_pins</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/><ref refid="d6/d7c/gpio_8h_1a6697ca0fd5b0210af4d5c97e11efa3c9" kindref="member">gpio_sonicator_start</ref>(uint8_t<sp/>sonicator_id);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/><ref refid="d6/d7c/gpio_8h_1a33a32957b81034c07f3685b90580d482" kindref="member">gpio_sonicator_stop</ref>(uint8_t<sp/>sonicator_id);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/><ref refid="d6/d7c/gpio_8h_1a9b325245641aadf28c1c28e70fc3d355" kindref="member">gpio_sonicator_reset</ref>(uint8_t<sp/>sonicator_id);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/><ref refid="d6/d7c/gpio_8h_1af4700a3e3d882c0cc3d14a3ba5e0c66d" kindref="member">gpio_sonicator_read_overload</ref>(uint8_t<sp/>sonicator_id,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>overload);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/><ref refid="d6/d7c/gpio_8h_1af3b6ea8f9b5c77e43fa4d22fffc2c872" kindref="member">gpio_sonicator_read_freq_lock</ref>(uint8_t<sp/>sonicator_id,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>locked);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/><ref refid="d6/d7c/gpio_8h_1a868df198e014b5e9b2ab134a16384683" kindref="member">gpio_status_led</ref>(<ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>state);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Production<sp/>usage<sp/>with<sp/>ATmega32A<sp/>HAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/d92/atmega__hal__impl_8h" kindref="compound">atmega_hal_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/d2b/hal__template__interfaces_8h" kindref="compound">hal_template_interfaces.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Create<sp/>GPIO<sp/>instance<sp/>for<sp/>production</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204" refid="d6/d7c/gpio_8h_1a5a14777a91770ca47d09c3b5cc319619" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="d6/d7c/gpio_8h_1a5a14777a91770ca47d09c3b5cc319619" kindref="member">ProductionGpio</ref><sp/>=<sp/><ref refid="d9/d2e/class_gpio_hal" kindref="compound">GpioHal&lt;AtmegaHal&gt;</ref>;</highlight></codeline>
+<codeline lineno="205" refid="d6/d7c/gpio_8h_1a68819ef1c88e14a2978dbdb5366175ed" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="d6/d7c/gpio_8h_1a68819ef1c88e14a2978dbdb5366175ed" kindref="member">ProductionHal</ref><sp/>=<sp/><ref refid="d1/d54/class_hal_template" kindref="compound">HalTemplate&lt;AtmegaHal&gt;</ref>;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Testing<sp/>usage<sp/>with<sp/>Mock<sp/>HAL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/d8d/mock__hal__impl_8h" kindref="compound">mock_hal_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Create<sp/>GPIO<sp/>instance<sp/>for<sp/>testing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211" refid="d6/d7c/gpio_8h_1aec2e78074365439a63360cf81dca5bef" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="d6/d7c/gpio_8h_1aec2e78074365439a63360cf81dca5bef" kindref="member">TestGpio</ref><sp/>=<sp/><ref refid="d9/d2e/class_gpio_hal" kindref="compound">GpioHal&lt;MockHal&gt;</ref>;</highlight></codeline>
+<codeline lineno="212" refid="d6/d7c/gpio_8h_1a8f54280a14948a2021c912ac21177e6a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="d6/d7c/gpio_8h_1a8f54280a14948a2021c912ac21177e6a" kindref="member">TestHal</ref><sp/>=<sp/><ref refid="d1/d54/class_hal_template" kindref="compound">HalTemplate&lt;MockHal&gt;</ref>;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>HAL_GPIO_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/modules/hal/gpio.h"/>
+  </compounddef>
+</doxygen>

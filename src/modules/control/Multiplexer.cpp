@@ -57,46 +57,13 @@ Sonicator 4 - Verified by Product Owner
 7	PD7 (Pin 21)	DB9-4 Pin 8	AMPLITUDE_ALL	OUT	Shared AMP_C (0–10V), common	D9 (PWM)	TBD
 */
 Multiplexer::Multiplexer() : shared_amplitude_percent_(SONICATOR_MIN_AMPLITUDE_PERCENT) {
-    // Pin configurations for each sonicator, from system_config.h
     const SonicatorPins pins[NUM_SONICATORS] = {
-        1: { signal: "OVERLOAD_1", dut_pin: "PD6" }
-        2: { signal: "RESET_1", dut_pin: "PC7" }
-        3: { signal: "FREQ_LOCK_1", dut_pin: "PB7" }
-        4: { signal: "FREQ_DIV10_1", dut_pin: "PB3" }
-        5: { signal: "POWER_SENSE_1", dut_pin: "PA4" }
-        7: { signal: "START_1", dut_pin: "PC6" }
-        8: { signal: "AMPLITUDE_ALL", dut_pin: "PD7" }
-        { // Sonicator 1
-            .start_pin = SON1_START_PIN,
-            .reset_pin = SON1_RESET_PIN,
-            .overload_pin = SON1_OVERLOAD_PIN,
-            .freq_lock_pin = SON1_FREQ_LOCK_PIN,
-            .power_sense_channel = ADC_SONICATOR_1_PIN
-        },
-        { // Sonicator 2
-            .start_pin = SON2_START_PIN,
-            .reset_pin = SON2_RESET_PIN,
-            .overload_pin = SON2_OVERLOAD_PIN,
-            .freq_lock_pin = SON2_FREQ_LOCK_PIN,
-            .power_sense_channel = ADC_SONICATOR_2_PIN
-        },
-        { // Sonicator 3
-            .start_pin = SON3_START_PIN,
-            .reset_pin = SON3_RESET_PIN,
-            .overload_pin = SON3_OVERLOAD_PIN,
-            .freq_lock_pin = SON3_FREQ_LOCK_PIN,
-            .power_sense_channel = ADC_SONICATOR_3_PIN
-        },
-        { // Sonicator 4
-            .start_pin = SON4_START_PIN,
-            .reset_pin = SON4_RESET_PIN,
-            .overload_pin = SON4_OVERLOAD_PIN,
-            .freq_lock_pin = SON4_FREQ_LOCK_PIN,
-            .power_sense_channel = ADC_SONICATOR_4_PIN
-        }
+        { SON1_START_PIN, SON1_RESET_PIN, SON1_OVERLOAD_PIN, SON1_FREQ_LOCK_PIN, SON1_FREQ_OUTPUT_PIN, ADC_SONICATOR_1_PIN },
+        { SON2_START_PIN, SON2_RESET_PIN, SON2_OVERLOAD_PIN, SON2_FREQ_LOCK_PIN, SON2_FREQ_OUTPUT_PIN, ADC_SONICATOR_2_PIN },
+        { SON3_START_PIN, SON3_RESET_PIN, SON3_OVERLOAD_PIN, SON3_FREQ_LOCK_PIN, SON3_FREQ_OUTPUT_PIN, ADC_SONICATOR_3_PIN },
+        { SON4_START_PIN, SON4_RESET_PIN, SON4_OVERLOAD_PIN, SON4_FREQ_LOCK_PIN, SON4_FREQ_OUTPUT_PIN, ADC_SONICATOR_4_PIN }
     };
 
-    // Allocate and initialize each sonicator
     for (int i = 0; i < NUM_SONICATORS; ++i) {
         sonicators[i] = new SonicatorInterface(pins[i]);
     }
@@ -149,49 +116,9 @@ bool Multiplexer::setAmplitude(uint8_t amplitude_percent) {
     return false;
 }
 
-void Multiplexer::update() {
-    for (int i = 0; i < NUM_SONICATORS; ++i) {
-        if (sonicators[i]) {
-            sonicators[i]->update();
-        }
-    }
-}
 
-bool Multiplexer::start(uint8_t index) {
-    if (index < NUM_SONICATORS && sonicators[index]) {
-        return sonicators[index]->start();
-    }
-    return false;
-}
 
-bool Multiplexer::stop(uint8_t index) {
-    if (index < NUM_SONICATORS && sonicators[index]) {
-        return sonicators[index]->stop();
-    }
-    return false;
-}
 
-bool Multiplexer::setAmplitude(uint8_t amplitude_percent) {
-    if (amplitude_percent >= SONICATOR_MIN_AMPLITUDE_PERCENT && amplitude_percent <= SONICATOR_MAX_AMPLITUDE_PERCENT) {
-        shared_amplitude_percent_ = amplitude_percent;
-        // Apply the amplitude to all sonicator state machines
-        for (int i = 0; i < NUM_SONICATORS; ++i) {
-            if (sonicators[i]) {
-                sonicators[i]->setAmplitude(shared_amplitude_percent_);
-            }
-        }
-
-        // Directly update the HAL
-        uint8_t pwm_value = 0;
-        if (shared_amplitude_percent_ >= SONICATOR_MIN_AMPLITUDE_PERCENT) {
-            pwm_value = ((uint32_t)(shared_amplitude_percent_ - SONICATOR_MIN_AMPLITUDE_PERCENT) * 255) / (SONICATOR_MAX_AMPLITUDE_PERCENT - SONICATOR_MIN_AMPLITUDE_PERCENT);
-        }
-        pwm_set_duty_cycle(PWM_AMPLITUDE_CONTROL_PIN, pwm_value);
-
-        return true;
-    }
-    return false;
-}
 
 bool Multiplexer::resetOverload(uint8_t index) {
     if (index < NUM_SONICATORS && sonicators[index]) {
@@ -207,18 +134,8 @@ const sonicator_status_t* Multiplexer::getStatus(uint8_t index) const {
     return nullptr;
 }
 
-const sonicator_status_t* Multiplexer::getStatus(uint8_t index) const {
-    if (index < NUM_SONICATORS && sonicators[index]) {
-        return sonicators[index]->getStatus();
-    }
-    return nullptr;
-}
 
 void Multiplexer::updateSharedAmplitude() {
-    // The amplitude PWM is shared. We set it based on the shared value,
-    // but only if at least one sonicator is in the RUNNING state.
-    // The individual sonicator's updateHardwareOutputs will handle the logic
-    // of whether to use this PWM value.
     bool any_running = false;
     for (int i = 0; i < NUM_SONICATORS; ++i) {
         const sonicator_status_t* status = getStatus(i);
@@ -228,16 +145,9 @@ void Multiplexer::updateSharedAmplitude() {
         }
     }
 
-    uint8_t pwm_value = 0;
     if (any_running) {
-        // A simple approach: use the shared amplitude. The individual sonicator's
-        // logic will ultimately decide if it outputs power.
-        if (shared_amplitude_percent_ >= SONICATOR_MIN_AMPLITUDE_PERCENT) {
-            pwm_value = ((uint32_t)(shared_amplitude_percent_ - SONICATOR_MIN_AMPLITUDE_PERCENT) * 255) / (SONICATOR_MAX_AMPLITUDE_PERCENT - SONICATOR_MIN_AMPLITUDE_PERCENT);
-        }
+        (void)pwm_set_amplitude(shared_amplitude_percent_);
+    } else {
+        (void)pwm_set_duty_cycle(PWM_CHANNEL_AMPLITUDE, 0);
     }
-
-    // This assumes a HAL function exists to set the shared PWM.
-    // We need to ensure the HAL is designed for this.
-    pwm_set_duty_cycle(PWM_CHANNEL_AMPLITUDE, pwm_value);
 }

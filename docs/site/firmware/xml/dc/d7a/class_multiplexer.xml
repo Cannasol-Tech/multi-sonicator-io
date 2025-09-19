@@ -1,0 +1,341 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="dc/d7a/class_multiplexer" kind="class" language="C++" prot="public">
+    <compoundname>Multiplexer</compoundname>
+    <includes refid="dc/dc2/_multiplexer_8h" local="no">Multiplexer.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="dc/d7a/class_multiplexer_1acb644c66e3c2b0a6fc6ef2e3f3d61fc9" prot="private" static="no" mutable="no">
+        <type><ref refid="dd/dce/class_sonicator_interface" kindref="compound">SonicatorInterface</ref> *</type>
+        <definition>SonicatorInterface* Multiplexer::sonicators[NUM_SONICATORS]</definition>
+        <argsstring>[NUM_SONICATORS]</argsstring>
+        <name>sonicators</name>
+        <qualifiedname>Multiplexer::sonicators</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/multiplexer/Multiplexer.h" line="91" column="24" bodyfile="include/multiplexer/Multiplexer.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dc/d7a/class_multiplexer_1ae1fe7dc98a871bc6a5c42e9e4bef9ad5" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Multiplexer::shared_amplitude_percent_</definition>
+        <argsstring></argsstring>
+        <name>shared_amplitude_percent_</name>
+        <qualifiedname>Multiplexer::shared_amplitude_percent_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/multiplexer/Multiplexer.h" line="94" column="13" bodyfile="include/multiplexer/Multiplexer.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dc/d7a/class_multiplexer_1a177aa60233c870d889346d7674e5d90e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Multiplexer::Multiplexer</definition>
+        <argsstring>()</argsstring>
+        <name>Multiplexer</name>
+        <qualifiedname>Multiplexer::Multiplexer</qualifiedname>
+        <briefdescription>
+<para>Constructor for the <ref refid="dc/d7a/class_multiplexer" kindref="compound">Multiplexer</ref> class. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Pin configuration for each sonicator.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sonicator_1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator 1 - Verified by Product Owner </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+<sect1 id="dc/d7a/class_multiplexer_1autotoc_md0">
+<title>DUT Pin (Port/Pad) Header Ref Signal Dir Scale/Notes Wrapper Pin Test Point</title><para>1 PB3 (Pin 4) DB9-1 Pin 4 FREQ_DIV10_1 IN ÷10 frequency (S1) N/A TBD 2 PB7 (Pin 8) DB9-1 Pin 3 FREQ_LOCK_1 IN FLCK_1 via opto N/A TBD 3 PD6 (Pin 20) DB9-1 Pin 1 OVERLOAD_1 IN OL_1 via opto N/A TBD 4 PC6 (Pin 28) DB9-1 Pin 7 START_1 OUT ULN2003A open-collector N/A TBD 5 PC7 (Pin 29) DB9-1 Pin 2 RESET_1 OUT ULN2003A open-collector N/A TBD 6 PA4/A4 (Pin 36) DB9-1 Pin 5 POWER_SENSE_1 ANALOG 5.44 mV/W scaling N/A TBD 7 PD7 (Pin 21) DB9-1 Pin 8 AMPLITUDE_ALL OUT Shared AMP_C (0–10V), common N/A TBD</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sonicator_2</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Sonicator 2 - Verified by Product Owner </para>
+</sect1>
+<sect1 id="dc/d7a/class_multiplexer_1autotoc_md1">
+<title>DUT Pin (Port/Pad) Header Ref Signal Dir Scale/Notes Wrapper Pin Test Point</title><para>1 PB2 (Pin 3) DB9-2 Pin 4 FREQ_DIV10_2 IN ÷10 frequency (S2) N/A (Uno R4 single-channel) N/A 2 PB6 (Pin 7) DB9-2 Pin 3 FREQ_LOCK_2 IN FLCK_2 via opto N/A N/A 3 PD5 (Pin 19) DB9-2 Pin 1 OVERLOAD_2 IN OL_2 via opto N/A N/A 4 PC4 (Pin 26) DB9-2 Pin 7 START_2 OUT ULN2003A open-collector N/A N/A 5 PC5 (Pin 27) DB9-2 Pin 2 RESET_2 OUT ULN2003A open-collector N/A N/A 6 PA5/A5 (Pin 35) DB9-2 Pin 5 POWER_SENSE_2 ANALOG 5.44 mV/W scaling N/A N/A 7 PD7 (Pin 21) DB9-2 Pin 8 AMPLITUDE_ALL OUT Shared AMP_C (0–10V), common N/A N/A <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sonicator_3</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator 3 - Verified by Product Owner </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+</sect1>
+<sect1 id="dc/d7a/class_multiplexer_1autotoc_md2">
+<title>DUT Pin (Port/Pad) Header Ref Signal Dir Scale/Notes Wrapper Pin Test Point</title><para>1 PB1 (Pin 2) DB9-3 Pin 4 FREQ_DIV10_3 IN ÷10 frequency (S3) N/A N/A 2 PB5 (Pin 6) DB9-3 Pin 3 FREQ_LOCK_3 IN FLCK_3 via opto N/A N/A 3 PD4 (Pin 18) DB9-3 Pin 1 OVERLOAD_3 IN OL_3 via opto N/A N/A 4 PC2 (Pin 24) DB9-3 Pin 7 START_3 OUT ULN2003A open-collector N/A N/A 5 PC3 (Pin 25) DB9-3 Pin 2 RESET_3 OUT ULN2003A open-collector N/A N/A 6 PA6/A6 (Pin 34) DB9-3 Pin 5 POWER_SENSE_3 ANALOG 5.44 mV/W scaling N/A N/A <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sonicator_4</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Sonicator 4 - Verified by Product Owner </para>
+</sect1>
+<sect1 id="dc/d7a/class_multiplexer_1autotoc_md3">
+<title>DUT Pin (Port/Pad) Header Ref Signal Dir Scale/Notes Wrapper Pin Test Point</title><para>1 PB0 (Pin 1) DB9-4 Pin 4 FREQ_DIV10_4 IN ÷10 frequency (S4) D7 TBD 2 PB4 (Pin 5) DB9-4 Pin 3 FREQ_LOCK_4 IN FLCK_4 via opto D8 TBD 3 PD3 (Pin 17) DB9-4 Pin 1 OVERLOAD_4 IN OL_4 via opto A2 TBD 4 PC0 (Pin 22) DB9-4 Pin 7 START_4 OUT ULN2003A open-collector A3 TBD 5 PC1 (Pin 23) DB9-4 Pin 2 RESET_4 OUT ULN2003A open-collector A4 TBD 6 PA7/A7 (Pin 33) DB9-4 Pin 5 POWER_SENSE_4 ANALOG 5.44 mV/W scaling A1 TBD 7 PD7 (Pin 21) DB9-4 Pin 8 AMPLITUDE_ALL OUT Shared AMP_C (0–10V), common D9 (PWM) TBD </para>
+</sect1>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/multiplexer/Multiplexer.h" line="28" column="5" bodyfile="src/modules/control/Multiplexer.cpp" bodystart="59" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d7a/class_multiplexer_1ad014b59567c9c5366e78a85018bfc9b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Multiplexer::~Multiplexer</definition>
+        <argsstring>()</argsstring>
+        <name>~Multiplexer</name>
+        <qualifiedname>Multiplexer::~Multiplexer</qualifiedname>
+        <briefdescription>
+<para>Destructor for the <ref refid="dc/d7a/class_multiplexer" kindref="compound">Multiplexer</ref> class. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/multiplexer/Multiplexer.h" line="33" column="5" bodyfile="src/modules/control/Multiplexer.cpp" bodystart="105" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d7a/class_multiplexer_1aeb7e2e996a9773bdddb3aa5f9c498be7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Multiplexer::begin</definition>
+        <argsstring>()</argsstring>
+        <name>begin</name>
+        <qualifiedname>Multiplexer::begin</qualifiedname>
+        <briefdescription>
+<para>Initializes the multiplexer and all sonicator units. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method sets up the pin configurations for each of the four sonicators and initializes them. It must be called in the setup phase of the application. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/multiplexer/Multiplexer.h" line="42" column="10" bodyfile="src/modules/control/Multiplexer.cpp" bodystart="111" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d7a/class_multiplexer_1ac0caf551bdb00a4183fbd3d88b21ab82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Multiplexer::update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <qualifiedname>Multiplexer::update</qualifiedname>
+        <briefdescription>
+<para>Main update loop for the multiplexer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method should be called repeatedly from the main application loop. It updates the state of all sonicator units and handles the shared hardware resources, like the amplitude PWM. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/multiplexer/Multiplexer.h" line="51" column="10" bodyfile="src/modules/control/Multiplexer.cpp" bodystart="115" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d7a/class_multiplexer_1a25bba89e5beb96449789e3a60957f580" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Multiplexer::start</definition>
+        <argsstring>(uint8_t index)</argsstring>
+        <name>start</name>
+        <qualifiedname>Multiplexer::start</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Starts a specific sonicator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the sonicator to start (0-3). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the start command was accepted, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/multiplexer/Multiplexer.h" line="58" column="10" bodyfile="src/modules/control/Multiplexer.cpp" bodystart="124" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d7a/class_multiplexer_1a67607861ef29fece1f11cbdee217ef96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Multiplexer::stop</definition>
+        <argsstring>(uint8_t index)</argsstring>
+        <name>stop</name>
+        <qualifiedname>Multiplexer::stop</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Stops a specific sonicator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the sonicator to stop (0-3). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the stop command was accepted, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/multiplexer/Multiplexer.h" line="65" column="10" bodyfile="src/modules/control/Multiplexer.cpp" bodystart="131" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d7a/class_multiplexer_1ae98cbf65c102e1b03855b0932926e9c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Multiplexer::setAmplitude</definition>
+        <argsstring>(uint8_t amplitude_percent)</argsstring>
+        <name>setAmplitude</name>
+        <qualifiedname>Multiplexer::setAmplitude</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>amplitude_percent</declname>
+        </param>
+        <briefdescription>
+<para>Sets the shared amplitude for all sonicators. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>amplitude_percent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The desired amplitude (20-100%). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the amplitude was set, false if the value is out of range. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/multiplexer/Multiplexer.h" line="72" column="10" bodyfile="src/modules/control/Multiplexer.cpp" bodystart="138" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d7a/class_multiplexer_1a8f9c6d4b6f8bac26b84f2052a024d8ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Multiplexer::resetOverload</definition>
+        <argsstring>(uint8_t index)</argsstring>
+        <name>resetOverload</name>
+        <qualifiedname>Multiplexer::resetOverload</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Resets a fault condition on a specific sonicator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the sonicator to reset (0-3). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the reset command was accepted, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/multiplexer/Multiplexer.h" line="79" column="10" bodyfile="src/modules/control/Multiplexer.cpp" bodystart="196" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/d7a/class_multiplexer_1ae8d7e64824e31dc62b0533278ce63c48" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="d6/d4e/structsonicator__status__t" kindref="compound">sonicator_status_t</ref> *</type>
+        <definition>const sonicator_status_t * Multiplexer::getStatus</definition>
+        <argsstring>(uint8_t index) const</argsstring>
+        <name>getStatus</name>
+        <qualifiedname>Multiplexer::getStatus</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Gets the status of a specific sonicator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the sonicator to query (0-3). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A pointer to the sonicator&apos;s state structure, or nullptr if the index is invalid. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/multiplexer/Multiplexer.h" line="86" column="30" bodyfile="src/modules/control/Multiplexer.cpp" bodystart="203" bodyend="208"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="dc/d7a/class_multiplexer_1a4402c8356b6430348971cff78914d26e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Multiplexer::updateSharedAmplitude</definition>
+        <argsstring>()</argsstring>
+        <name>updateSharedAmplitude</name>
+        <qualifiedname>Multiplexer::updateSharedAmplitude</qualifiedname>
+        <briefdescription>
+<para>Updates the shared amplitude PWM output. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/multiplexer/Multiplexer.h" line="99" column="10" bodyfile="src/modules/control/Multiplexer.cpp" bodystart="217" bodyend="243"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/multiplexer/Multiplexer.h" line="23" column="1" bodyfile="include/multiplexer/Multiplexer.h" bodystart="23" bodyend="100"/>
+    <listofallmembers>
+      <member refid="dc/d7a/class_multiplexer_1aeb7e2e996a9773bdddb3aa5f9c498be7" prot="public" virt="non-virtual"><scope>Multiplexer</scope><name>begin</name></member>
+      <member refid="dc/d7a/class_multiplexer_1ae8d7e64824e31dc62b0533278ce63c48" prot="public" virt="non-virtual"><scope>Multiplexer</scope><name>getStatus</name></member>
+      <member refid="dc/d7a/class_multiplexer_1a177aa60233c870d889346d7674e5d90e" prot="public" virt="non-virtual"><scope>Multiplexer</scope><name>Multiplexer</name></member>
+      <member refid="dc/d7a/class_multiplexer_1a8f9c6d4b6f8bac26b84f2052a024d8ea" prot="public" virt="non-virtual"><scope>Multiplexer</scope><name>resetOverload</name></member>
+      <member refid="dc/d7a/class_multiplexer_1ae98cbf65c102e1b03855b0932926e9c7" prot="public" virt="non-virtual"><scope>Multiplexer</scope><name>setAmplitude</name></member>
+      <member refid="dc/d7a/class_multiplexer_1ae1fe7dc98a871bc6a5c42e9e4bef9ad5" prot="private" virt="non-virtual"><scope>Multiplexer</scope><name>shared_amplitude_percent_</name></member>
+      <member refid="dc/d7a/class_multiplexer_1acb644c66e3c2b0a6fc6ef2e3f3d61fc9" prot="private" virt="non-virtual"><scope>Multiplexer</scope><name>sonicators</name></member>
+      <member refid="dc/d7a/class_multiplexer_1a25bba89e5beb96449789e3a60957f580" prot="public" virt="non-virtual"><scope>Multiplexer</scope><name>start</name></member>
+      <member refid="dc/d7a/class_multiplexer_1a67607861ef29fece1f11cbdee217ef96" prot="public" virt="non-virtual"><scope>Multiplexer</scope><name>stop</name></member>
+      <member refid="dc/d7a/class_multiplexer_1ac0caf551bdb00a4183fbd3d88b21ab82" prot="public" virt="non-virtual"><scope>Multiplexer</scope><name>update</name></member>
+      <member refid="dc/d7a/class_multiplexer_1a4402c8356b6430348971cff78914d26e" prot="private" virt="non-virtual"><scope>Multiplexer</scope><name>updateSharedAmplitude</name></member>
+      <member refid="dc/d7a/class_multiplexer_1ad014b59567c9c5366e78a85018bfc9b5" prot="public" virt="non-virtual"><scope>Multiplexer</scope><name>~Multiplexer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -201,7 +201,14 @@ void test_register_manager_sonicator_control(void) {
 }
 
 void test_register_manager_sonicator_status_update(void) {
-    register_manager_update_sonicator_status(0, 100, 20000, 45, SON_STATUS_RUNNING);
+    sonicator_status_t status = {
+        .sonicator_id = 0,
+        .power_watts = 100,
+        .frequency_hz = 20000,
+        .amplitude_actual = 45,
+        .status_flags = SON_STATUS_RUNNING
+    };
+    register_manager_update_sonicator_status(&status);
     
     modbus_register_map_t* map = register_manager_get_map();
     TEST_ASSERT_EQUAL(100, map->sonicators[0].power_watts);

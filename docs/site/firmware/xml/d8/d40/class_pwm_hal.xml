@@ -1,0 +1,385 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d8/d40/class_pwm_hal" kind="class" language="C++" prot="public">
+    <compoundname>PwmHal</compoundname>
+    <derivedcompoundref refid="d1/d54/class_hal_template" prot="public" virt="non-virtual">HalTemplate&lt; AtmegaHal &gt;</derivedcompoundref>
+    <derivedcompoundref refid="d1/d54/class_hal_template" prot="public" virt="non-virtual">HalTemplate&lt; MockHal &gt;</derivedcompoundref>
+    <derivedcompoundref refid="d1/d54/class_hal_template" prot="public" virt="non-virtual">HalTemplate&lt; AtmegaHal &gt;</derivedcompoundref>
+    <derivedcompoundref refid="d1/d54/class_hal_template" prot="public" virt="non-virtual">HalTemplate&lt; MockHal &gt;</derivedcompoundref>
+    <derivedcompoundref refid="d1/d54/class_hal_template" prot="public" virt="non-virtual">HalTemplate&lt; HalImpl &gt;</derivedcompoundref>
+    <derivedcompoundref refid="d1/d54/class_hal_template" prot="public" virt="non-virtual">HalTemplate&lt; HalImpl &gt;</derivedcompoundref>
+    <includes refid="da/dd9/hal__template__example_8h" local="no">hal_template_example.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename HalImpl</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d8/d40/class_pwm_hal_1a02e48599f1854809ad2ce48bbdcedbf8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PwmHal&lt; HalImpl &gt;::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <qualifiedname>PwmHal::init</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="69" column="10" bodyfile="src/modules/hal/hal_template_example.h" bodystart="69" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d40/class_pwm_hal_1a70131014a71b50d29ecb75970c40dd1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PwmHal&lt; HalImpl &gt;::setDutyCycle</definition>
+        <argsstring>(uint8_t channel, uint8_t duty)</argsstring>
+        <name>setDutyCycle</name>
+        <qualifiedname>PwmHal::setDutyCycle</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>duty</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="70" column="10" bodyfile="src/modules/hal/hal_template_example.h" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d40/class_pwm_hal_1aa0fa9fd798b9e1c7b6dd3d8e8ff75f79" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PwmHal&lt; HalImpl &gt;::setAmplitude</definition>
+        <argsstring>(uint8_t amplitude)</argsstring>
+        <name>setAmplitude</name>
+        <qualifiedname>PwmHal::setAmplitude</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>amplitude</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="71" column="10" bodyfile="src/modules/hal/hal_template_example.h" bodystart="71" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d40/class_pwm_hal_1aad89f8ffbc0b184403a75d82320b7acc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PwmHal&lt; HalImpl &gt;::emergencyStop</definition>
+        <argsstring>()</argsstring>
+        <name>emergencyStop</name>
+        <qualifiedname>PwmHal::emergencyStop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="72" column="10" bodyfile="src/modules/hal/hal_template_example.h" bodystart="72" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d40/class_pwm_hal_1a02e48599f1854809ad2ce48bbdcedbf8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PwmHal&lt; HalImpl &gt;::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <qualifiedname>PwmHal::init</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="82" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="82" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d40/class_pwm_hal_1a302a20423b92a0bf008ee9171ede75ff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PwmHal&lt; HalImpl &gt;::setFrequency</definition>
+        <argsstring>(uint8_t channel, uint32_t frequency)</argsstring>
+        <name>setFrequency</name>
+        <qualifiedname>PwmHal::setFrequency</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>frequency</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="83" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="83" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d40/class_pwm_hal_1a70131014a71b50d29ecb75970c40dd1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PwmHal&lt; HalImpl &gt;::setDutyCycle</definition>
+        <argsstring>(uint8_t channel, uint8_t duty)</argsstring>
+        <name>setDutyCycle</name>
+        <qualifiedname>PwmHal::setDutyCycle</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>duty</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="84" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="84" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d40/class_pwm_hal_1af2050e1221258297228a1529e1e61a6f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PwmHal&lt; HalImpl &gt;::enableChannel</definition>
+        <argsstring>(uint8_t channel)</argsstring>
+        <name>enableChannel</name>
+        <qualifiedname>PwmHal::enableChannel</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="85" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="85" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d40/class_pwm_hal_1a81217fb45a922f2a6b62ba4889bc3642" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PwmHal&lt; HalImpl &gt;::disableChannel</definition>
+        <argsstring>(uint8_t channel)</argsstring>
+        <name>disableChannel</name>
+        <qualifiedname>PwmHal::disableChannel</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="86" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="86" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d40/class_pwm_hal_1aa0fa9fd798b9e1c7b6dd3d8e8ff75f79" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PwmHal&lt; HalImpl &gt;::setAmplitude</definition>
+        <argsstring>(uint8_t amplitude)</argsstring>
+        <name>setAmplitude</name>
+        <qualifiedname>PwmHal::setAmplitude</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>amplitude</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="89" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="89" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d40/class_pwm_hal_1acc53b0204be1663fcdf068b0d62d923b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PwmHal&lt; HalImpl &gt;::getAmplitude</definition>
+        <argsstring>(uint8_t *amplitude)</argsstring>
+        <name>getAmplitude</name>
+        <qualifiedname>PwmHal::getAmplitude</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>amplitude</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="90" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="90" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d40/class_pwm_hal_1abf5dd825a90c3ab3e40ff190f6a194d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PwmHal&lt; HalImpl &gt;::amplitudeRamp</definition>
+        <argsstring>(uint8_t target, uint16_t ramp_time)</argsstring>
+        <name>amplitudeRamp</name>
+        <qualifiedname>PwmHal::amplitudeRamp</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>ramp_time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="91" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="91" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d40/class_pwm_hal_1a82777c0fad68513174c2ef0f9e910a83" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PwmHal&lt; HalImpl &gt;::rampComplete</definition>
+        <argsstring>(bool *complete)</argsstring>
+        <name>rampComplete</name>
+        <qualifiedname>PwmHal::rampComplete</qualifiedname>
+        <param>
+          <type>bool *</type>
+          <declname>complete</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="92" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="92" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d40/class_pwm_hal_1aad89f8ffbc0b184403a75d82320b7acc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PwmHal&lt; HalImpl &gt;::emergencyStop</definition>
+        <argsstring>()</argsstring>
+        <name>emergencyStop</name>
+        <qualifiedname>PwmHal::emergencyStop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="93" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="93" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d40/class_pwm_hal_1adef8f5f5fe27f1f5ab09a5a5d4cb9081" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PwmHal&lt; HalImpl &gt;::dutyToVoltage</definition>
+        <argsstring>(uint8_t duty, float *voltage)</argsstring>
+        <name>dutyToVoltage</name>
+        <qualifiedname>PwmHal::dutyToVoltage</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>duty</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>voltage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="96" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="96" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d40/class_pwm_hal_1a62b1a3d822065526bf871031d1031110" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PwmHal&lt; HalImpl &gt;::amplitudeToVoltage</definition>
+        <argsstring>(uint8_t amplitude, float *voltage)</argsstring>
+        <name>amplitudeToVoltage</name>
+        <qualifiedname>PwmHal::amplitudeToVoltage</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>amplitude</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>voltage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="97" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="97" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/d40/class_pwm_hal_1a7bf57c19891e5ad26bf728973385e8d1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PwmHal&lt; HalImpl &gt;::testPattern</definition>
+        <argsstring>()</argsstring>
+        <name>testPattern</name>
+        <qualifiedname>PwmHal::testPattern</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="98" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="98" bodyend="98"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>PWM HAL Interface (Template-based) </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>HalTemplate&lt; AtmegaHal &gt;</label>
+        <link refid="d1/d54/class_hal_template"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>HalTemplate&lt; HalImpl &gt;</label>
+        <link refid="d1/d54/class_hal_template"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HalTemplate&lt; MockHal &gt;</label>
+        <link refid="d1/d54/class_hal_template"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>PwmHal&lt; HalImpl &gt;</label>
+        <link refid="d8/d40/class_pwm_hal"/>
+      </node>
+    </inheritancegraph>
+    <location file="src/modules/hal/hal_template_example.h" line="67" column="1" bodyfile="src/modules/hal/hal_template_example.h" bodystart="67" bodyend="73"/>
+    <listofallmembers>
+      <member refid="d8/d40/class_pwm_hal_1abf5dd825a90c3ab3e40ff190f6a194d4" prot="public" virt="non-virtual"><scope>PwmHal</scope><name>amplitudeRamp</name></member>
+      <member refid="d8/d40/class_pwm_hal_1a62b1a3d822065526bf871031d1031110" prot="public" virt="non-virtual"><scope>PwmHal</scope><name>amplitudeToVoltage</name></member>
+      <member refid="d8/d40/class_pwm_hal_1a81217fb45a922f2a6b62ba4889bc3642" prot="public" virt="non-virtual"><scope>PwmHal</scope><name>disableChannel</name></member>
+      <member refid="d8/d40/class_pwm_hal_1adef8f5f5fe27f1f5ab09a5a5d4cb9081" prot="public" virt="non-virtual"><scope>PwmHal</scope><name>dutyToVoltage</name></member>
+      <member refid="d8/d40/class_pwm_hal_1aad89f8ffbc0b184403a75d82320b7acc" prot="public" virt="non-virtual"><scope>PwmHal</scope><name>emergencyStop</name></member>
+      <member refid="d8/d40/class_pwm_hal_1aad89f8ffbc0b184403a75d82320b7acc" prot="public" virt="non-virtual"><scope>PwmHal</scope><name>emergencyStop</name></member>
+      <member refid="d8/d40/class_pwm_hal_1af2050e1221258297228a1529e1e61a6f" prot="public" virt="non-virtual"><scope>PwmHal</scope><name>enableChannel</name></member>
+      <member refid="d8/d40/class_pwm_hal_1acc53b0204be1663fcdf068b0d62d923b" prot="public" virt="non-virtual"><scope>PwmHal</scope><name>getAmplitude</name></member>
+      <member refid="d8/d40/class_pwm_hal_1a02e48599f1854809ad2ce48bbdcedbf8" prot="public" virt="non-virtual"><scope>PwmHal</scope><name>init</name></member>
+      <member refid="d8/d40/class_pwm_hal_1a02e48599f1854809ad2ce48bbdcedbf8" prot="public" virt="non-virtual"><scope>PwmHal</scope><name>init</name></member>
+      <member refid="d8/d40/class_pwm_hal_1a82777c0fad68513174c2ef0f9e910a83" prot="public" virt="non-virtual"><scope>PwmHal</scope><name>rampComplete</name></member>
+      <member refid="d8/d40/class_pwm_hal_1aa0fa9fd798b9e1c7b6dd3d8e8ff75f79" prot="public" virt="non-virtual"><scope>PwmHal</scope><name>setAmplitude</name></member>
+      <member refid="d8/d40/class_pwm_hal_1aa0fa9fd798b9e1c7b6dd3d8e8ff75f79" prot="public" virt="non-virtual"><scope>PwmHal</scope><name>setAmplitude</name></member>
+      <member refid="d8/d40/class_pwm_hal_1a70131014a71b50d29ecb75970c40dd1f" prot="public" virt="non-virtual"><scope>PwmHal</scope><name>setDutyCycle</name></member>
+      <member refid="d8/d40/class_pwm_hal_1a70131014a71b50d29ecb75970c40dd1f" prot="public" virt="non-virtual"><scope>PwmHal</scope><name>setDutyCycle</name></member>
+      <member refid="d8/d40/class_pwm_hal_1a302a20423b92a0bf008ee9171ede75ff" prot="public" virt="non-virtual"><scope>PwmHal</scope><name>setFrequency</name></member>
+      <member refid="d8/d40/class_pwm_hal_1a7bf57c19891e5ad26bf728973385e8d1" prot="public" virt="non-virtual"><scope>PwmHal</scope><name>testPattern</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

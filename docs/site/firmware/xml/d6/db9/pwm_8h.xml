@@ -1,0 +1,1157 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d6/db9/pwm_8h" kind="file" language="C++">
+    <compoundname>pwm.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includedby refid="d8/d25/_multiplexer_8cpp" local="yes">src/modules/control/Multiplexer.cpp</includedby>
+    <includedby refid="d2/db9/sonicator_8cpp" local="yes">src/modules/control/sonicator.cpp</includedby>
+    <includedby refid="d2/d92/atmega__hal__impl_8h" local="yes">src/modules/hal/atmega_hal_impl.h</includedby>
+    <includedby refid="d8/d4b/hal_8h" local="yes">src/modules/hal/hal.h</includedby>
+    <includedby refid="d5/d84/pwm_8cpp" local="yes">src/modules/hal/pwm.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/modules/hal/pwm.h</label>
+        <link refid="d6/db9/pwm_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="10">
+        <label>include/MultiSonicatorSystem.h</label>
+        <link refid="db/dac/_multi_sonicator_system_8h"/>
+      </node>
+      <node id="8">
+        <label>include/sonicator/sonicator.h</label>
+        <link refid="d8/dff/include_2sonicator_2sonicator_8h"/>
+      </node>
+      <node id="9">
+        <label>include/types.h</label>
+        <link refid="d9/d49/types_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>src/main.cpp</label>
+        <link refid="df/d0a/main_8cpp"/>
+      </node>
+      <node id="2">
+        <label>src/modules/control/Multiplexer.cpp</label>
+        <link refid="d8/d25/_multiplexer_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/modules/control/sonicator.cpp</label>
+        <link refid="d2/db9/sonicator_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/modules/control/sonicator_modbus_bridge.cpp</label>
+        <link refid="d5/dea/sonicator__modbus__bridge_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/modules/hal/atmega_hal_impl.h</label>
+        <link refid="d2/d92/atmega__hal__impl_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/modules/hal/gpio.cpp</label>
+        <link refid="de/d31/gpio_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/modules/hal/gpio.h</label>
+        <link refid="d6/d7c/gpio_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>src/modules/hal/hal.cpp</label>
+        <link refid="dc/db6/hal_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/modules/hal/hal.h</label>
+        <link refid="d8/d4b/hal_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>src/modules/hal/pwm.cpp</label>
+        <link refid="d5/d84/pwm_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/modules/hal/pwm.h</label>
+        <link refid="d6/db9/pwm_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>src/modules/sonicator/sonicator.h</label>
+        <link refid="d1/d72/src_2modules_2sonicator_2sonicator_8h"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="d6/db9/pwm_8h_1af7b09fc97f1472819f6db76f6a105e0e" prot="public" static="no">
+        <name>PWM_DEFAULT_FREQUENCY</name>
+        <initializer>1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="79" column="9" bodyfile="src/modules/hal/pwm.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d6/db9/pwm_8h_1a9555d69440ad3c3acfd0fc2507e11cbf" prot="public" static="no">
+        <name>PWM_MIN_FREQUENCY</name>
+        <initializer>100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="80" column="9" bodyfile="src/modules/hal/pwm.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d6/db9/pwm_8h_1a89ccbf350c5669385232f8dc4220b1bf" prot="public" static="no">
+        <name>PWM_MAX_FREQUENCY</name>
+        <initializer>50000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="81" column="9" bodyfile="src/modules/hal/pwm.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d6/db9/pwm_8h_1adfb65ecdeb6967cb8a97514034d7edb7" prot="public" static="no">
+        <name>PWM_DUTY_MIN</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="83" column="9" bodyfile="src/modules/hal/pwm.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d6/db9/pwm_8h_1a2831df0aa8b292da039c902373faa384" prot="public" static="no">
+        <name>PWM_DUTY_MAX</name>
+        <initializer>100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="84" column="9" bodyfile="src/modules/hal/pwm.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d6/db9/pwm_8h_1aa746edd64d8c771f527130e6dba835c6" prot="public" static="no">
+        <name>PWM_AMPLITUDE_MIN</name>
+        <initializer>20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="86" column="9" bodyfile="src/modules/hal/pwm.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d6/db9/pwm_8h_1a0e1bd149f5c4f7a879bf47ed7f878d10" prot="public" static="no">
+        <name>PWM_AMPLITUDE_MAX</name>
+        <initializer>100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="87" column="9" bodyfile="src/modules/hal/pwm.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d6/db9/pwm_8h_1a17a4efa5ef3ba01c266962043ed996ff" prot="public" static="no">
+        <name>PWM_FILTER_CUTOFF_HZ</name>
+        <initializer>16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="90" column="9" bodyfile="src/modules/hal/pwm.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d6/db9/pwm_8h_1aa50d107e23177ef9bdf626680661dfe5" prot="public" static="no">
+        <name>PWM_OPAMP_GAIN</name>
+        <initializer>2.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="91" column="9" bodyfile="src/modules/hal/pwm.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" prot="public" static="no" strong="no">
+        <type></type>
+        <name>pwm_channel_t</name>
+        <enumvalue id="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afcafe8a051665f6462aa7dcf27f651ad6d9" prot="public">
+          <name>PWM_CHANNEL_AMPLITUDE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afca5f50d2e34cf489cbbe4050ffe02d5ddc" prot="public">
+          <name>PWM_CHANNEL_MAX</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>PWM channel identifiers. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="34" column="1" bodyfile="src/modules/hal/pwm.h" bodystart="34" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="enum" id="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1ea" prot="public" static="no" strong="no">
+        <type></type>
+        <name>pwm_prescaler_t</name>
+        <enumvalue id="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaa0b9e8c6c363f4625301784880963992e" prot="public">
+          <name>PWM_PRESCALER_1</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaab220f4d0a3aa4500297ec3f0dfa720ca" prot="public">
+          <name>PWM_PRESCALER_8</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaa771e5b734ce2f57eea6560ff9ec01c5f" prot="public">
+          <name>PWM_PRESCALER_32</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaa63e3548e3253466787f670b69b552dcd" prot="public">
+          <name>PWM_PRESCALER_64</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaaba2041b5a8f3116a6d36fde73d93b78a" prot="public">
+          <name>PWM_PRESCALER_128</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaa729e5838e9d1235e2b89cd6bec59b019" prot="public">
+          <name>PWM_PRESCALER_256</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaa2cb32c96eeb6fbfde5d2c729f26b66b4" prot="public">
+          <name>PWM_PRESCALER_1024</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>PWM timer prescaler values. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="42" column="1" bodyfile="src/modules/hal/pwm.h" bodystart="42" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="enum" id="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56" prot="public" static="no" strong="no">
+        <type></type>
+        <name>pwm_mode_t</name>
+        <enumvalue id="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56a80eb0bc2af29697283ab5a40e2ba0395" prot="public">
+          <name>PWM_MODE_FAST_8BIT</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56ad64cf7d2658333ea2bc38dbffc07637f" prot="public">
+          <name>PWM_MODE_FAST_9BIT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56a0aca9e100f00d75a499c6e17bb7d0198" prot="public">
+          <name>PWM_MODE_FAST_10BIT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56a70e00af3b226320468bd30fa55601069" prot="public">
+          <name>PWM_MODE_PHASE_CORRECT_8BIT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56a605b120ca5451e1c43104c53d963a8cf" prot="public">
+          <name>PWM_MODE_PHASE_CORRECT_9BIT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56a8495122113d97c6c891d46d4bd30cb89" prot="public">
+          <name>PWM_MODE_PHASE_CORRECT_10BIT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>PWM waveform generation modes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="55" column="1" bodyfile="src/modules/hal/pwm.h" bodystart="55" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="enum" id="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" prot="public" static="no" strong="no">
+        <type></type>
+        <name>pwm_result_t</name>
+        <enumvalue id="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" prot="public">
+          <name>PWM_OK</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05faec5178881ec92766a5b26b71cdf59572" prot="public">
+          <name>PWM_ERROR_INVALID_CHANNEL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa5203c7984136d4973e753a299e6b93f3" prot="public">
+          <name>PWM_ERROR_INVALID_DUTY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa253854f89dab28c69dd808bef8dd512f" prot="public">
+          <name>PWM_ERROR_INVALID_FREQ</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05faed2e5aea2dea5b0b2c20102a9c1ad574" prot="public">
+          <name>PWM_ERROR_NOT_INITIALIZED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>HAL function return codes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="67" column="1" bodyfile="src/modules/hal/pwm.h" bodystart="67" bodyend="73"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="d6/db9/pwm_8h_1a335d3354861ef1af786744e1d00cf559" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref></type>
+        <definition>pwm_result_t pwm_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>pwm_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize PWM hardware abstraction layer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Configures Timer2 for Fast PWM mode at 1kHz frequency. Sets up amplitude control channel on PD7 with safe initial state (20%).</para>
+<para><simplesect kind="return"><para>PWM_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="105" column="14" bodyfile="src/modules/hal/pwm.cpp" bodystart="42" bodyend="67" declfile="src/modules/hal/pwm.h" declline="105" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/db9/pwm_8h_1a438a0f2bc4393527bcba80464ed06b37" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref></type>
+        <definition>pwm_result_t pwm_set_frequency</definition>
+        <argsstring>(pwm_channel_t channel, uint32_t frequency)</argsstring>
+        <name>pwm_set_frequency</name>
+        <param>
+          <type><ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" kindref="member">pwm_channel_t</ref></type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>frequency</declname>
+        </param>
+        <briefdescription>
+<para>Configure PWM frequency for specified channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>frequency</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Desired frequency in Hz (100-50000) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_OK on success, error code on failure</para>
+</simplesect>
+<simplesect kind="note"><para>Frequency affects all channels using the same timer </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="116" column="14" bodyfile="src/modules/hal/pwm.cpp" bodystart="69" bodyend="94" declfile="src/modules/hal/pwm.h" declline="116" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/db9/pwm_8h_1a5d04f0bab99a934ca262108b3cbccea4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref></type>
+        <definition>pwm_result_t pwm_set_duty_cycle</definition>
+        <argsstring>(pwm_channel_t channel, uint8_t duty_percent)</argsstring>
+        <name>pwm_set_duty_cycle</name>
+        <param>
+          <type><ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" kindref="member">pwm_channel_t</ref></type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>duty_percent</declname>
+        </param>
+        <briefdescription>
+<para>Set duty cycle for specified PWM channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>duty_percent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Duty cycle percentage (0-100) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="125" column="14" bodyfile="src/modules/hal/pwm.cpp" bodystart="96" bodyend="115" declfile="src/modules/hal/pwm.h" declline="125" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/db9/pwm_8h_1a4a4a0f4e5b94843e3a7f767bf9062e3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref></type>
+        <definition>pwm_result_t pwm_enable_channel</definition>
+        <argsstring>(pwm_channel_t channel)</argsstring>
+        <name>pwm_enable_channel</name>
+        <param>
+          <type><ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" kindref="member">pwm_channel_t</ref></type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+<para>Enable PWM output on specified channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM channel identifier </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="133" column="14" bodyfile="src/modules/hal/pwm.cpp" bodystart="117" bodyend="132" declfile="src/modules/hal/pwm.h" declline="133" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/db9/pwm_8h_1a2b8498e02d595d5769afe37b56576fa9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref></type>
+        <definition>pwm_result_t pwm_disable_channel</definition>
+        <argsstring>(pwm_channel_t channel)</argsstring>
+        <name>pwm_disable_channel</name>
+        <param>
+          <type><ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" kindref="member">pwm_channel_t</ref></type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+<para>Disable PWM output on specified channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM channel identifier </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="141" column="14" bodyfile="src/modules/hal/pwm.cpp" bodystart="134" bodyend="151" declfile="src/modules/hal/pwm.h" declline="141" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/db9/pwm_8h_1acd3a1e123b836f73d3383674f8873dff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref></type>
+        <definition>pwm_result_t pwm_get_duty_cycle</definition>
+        <argsstring>(pwm_channel_t channel, uint8_t *duty_percent)</argsstring>
+        <name>pwm_get_duty_cycle</name>
+        <param>
+          <type><ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" kindref="member">pwm_channel_t</ref></type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>duty_percent</declname>
+        </param>
+        <briefdescription>
+<para>Get current duty cycle for specified channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>duty_percent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store current duty cycle </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="150" column="14" bodyfile="src/modules/hal/pwm.cpp" bodystart="153" bodyend="164" declfile="src/modules/hal/pwm.h" declline="150" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/db9/pwm_8h_1a858cd4359aaf14f2b5d450f9e832367c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref></type>
+        <definition>pwm_result_t pwm_get_frequency</definition>
+        <argsstring>(pwm_channel_t channel, uint32_t *frequency)</argsstring>
+        <name>pwm_get_frequency</name>
+        <param>
+          <type><ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" kindref="member">pwm_channel_t</ref></type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>frequency</declname>
+        </param>
+        <briefdescription>
+<para>Get current frequency for specified channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>frequency</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store current frequency </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="159" column="14" bodyfile="src/modules/hal/pwm.cpp" bodystart="166" bodyend="177" declfile="src/modules/hal/pwm.h" declline="159" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/db9/pwm_8h_1a412e5760ba9f47743ecc059a0a6b4810" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref></type>
+        <definition>pwm_result_t pwm_is_enabled</definition>
+        <argsstring>(pwm_channel_t channel, bool *enabled)</argsstring>
+        <name>pwm_is_enabled</name>
+        <param>
+          <type><ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" kindref="member">pwm_channel_t</ref></type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>enabled</declname>
+        </param>
+        <briefdescription>
+<para>Check if PWM channel is enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enabled</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store enable status </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="168" column="14" bodyfile="src/modules/hal/pwm.cpp" bodystart="179" bodyend="190" declfile="src/modules/hal/pwm.h" declline="168" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/db9/pwm_8h_1abac8d7cfdc720fa135fae195ca9fe0a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref></type>
+        <definition>pwm_result_t pwm_set_amplitude</definition>
+        <argsstring>(uint8_t amplitude_percent)</argsstring>
+        <name>pwm_set_amplitude</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>amplitude_percent</declname>
+        </param>
+        <briefdescription>
+<para>Set sonicator amplitude percentage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Converts amplitude percentage to appropriate duty cycle for 0-10V output. Enforces minimum 20% amplitude for stable operation.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>amplitude_percent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Amplitude percentage (20-100) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="183" column="14" bodyfile="src/modules/hal/pwm.cpp" bodystart="196" bodyend="203" declfile="src/modules/hal/pwm.h" declline="183" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/db9/pwm_8h_1a956b342db650a8158960e4cef26ee8c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref></type>
+        <definition>pwm_result_t pwm_get_amplitude</definition>
+        <argsstring>(uint8_t *amplitude_percent)</argsstring>
+        <name>pwm_get_amplitude</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>amplitude_percent</declname>
+        </param>
+        <briefdescription>
+<para>Get current amplitude setting. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>amplitude_percent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store current amplitude </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="191" column="14" bodyfile="src/modules/hal/pwm.cpp" bodystart="205" bodyend="212" declfile="src/modules/hal/pwm.h" declline="191" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/db9/pwm_8h_1a7c49dc3ef037df990300e701fe139207" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref></type>
+        <definition>pwm_result_t pwm_amplitude_minimum</definition>
+        <argsstring>(void)</argsstring>
+        <name>pwm_amplitude_minimum</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Set amplitude to safe minimum (20%) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>PWM_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="198" column="14" bodyfile="src/modules/hal/pwm.cpp" bodystart="214" bodyend="216" declfile="src/modules/hal/pwm.h" declline="198" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/db9/pwm_8h_1aa221ba29bc076a4b5a7b7ecbbd6cd90f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref></type>
+        <definition>pwm_result_t pwm_amplitude_maximum</definition>
+        <argsstring>(void)</argsstring>
+        <name>pwm_amplitude_maximum</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Set amplitude to maximum (100%) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>PWM_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="205" column="14" bodyfile="src/modules/hal/pwm.cpp" bodystart="218" bodyend="220" declfile="src/modules/hal/pwm.h" declline="205" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/db9/pwm_8h_1ab8104c242afbf3fca789fcb4ab714d73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref></type>
+        <definition>pwm_result_t pwm_amplitude_ramp</definition>
+        <argsstring>(uint8_t target_percent, uint16_t ramp_time_ms)</argsstring>
+        <name>pwm_amplitude_ramp</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>target_percent</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>ramp_time_ms</declname>
+        </param>
+        <briefdescription>
+<para>Ramp amplitude from current to target over time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>target_percent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target amplitude percentage </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ramp_time_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time to reach target in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_OK on success, error code on failure</para>
+</simplesect>
+<simplesect kind="note"><para>Non-blocking function, use <ref refid="d6/db9/pwm_8h_1a0e026d312f0f6db227c824f778077262" kindref="member">pwm_ramp_complete()</ref> to check status </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="216" column="14" bodyfile="src/modules/hal/pwm.cpp" bodystart="222" bodyend="239" declfile="src/modules/hal/pwm.h" declline="216" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/db9/pwm_8h_1a0e026d312f0f6db227c824f778077262" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref></type>
+        <definition>pwm_result_t pwm_ramp_complete</definition>
+        <argsstring>(bool *complete)</argsstring>
+        <name>pwm_ramp_complete</name>
+        <param>
+          <type>bool *</type>
+          <declname>complete</declname>
+        </param>
+        <briefdescription>
+<para>Check if amplitude ramp is complete. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>complete</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store completion status </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="224" column="14" bodyfile="src/modules/hal/pwm.cpp" bodystart="241" bodyend="268" declfile="src/modules/hal/pwm.h" declline="224" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/db9/pwm_8h_1a193a9d45b4c3b39c0bdf3f071909d3f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref></type>
+        <definition>pwm_result_t pwm_emergency_stop</definition>
+        <argsstring>(void)</argsstring>
+        <name>pwm_emergency_stop</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Emergency stop - set amplitude to minimum immediately. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>PWM_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="231" column="14" bodyfile="src/modules/hal/pwm.cpp" bodystart="270" bodyend="276" declfile="src/modules/hal/pwm.h" declline="231" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/db9/pwm_8h_1a35e29350587c9ffb6f7f4d8a1f94bc16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref></type>
+        <definition>pwm_result_t pwm_duty_to_voltage</definition>
+        <argsstring>(uint8_t duty_percent, float *output_voltage)</argsstring>
+        <name>pwm_duty_to_voltage</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>duty_percent</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>output_voltage</declname>
+        </param>
+        <briefdescription>
+<para>Convert duty cycle to output voltage (theoretical) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>duty_percent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Duty cycle percentage </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>output_voltage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store calculated voltage </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="244" column="14" bodyfile="src/modules/hal/pwm.cpp" bodystart="282" bodyend="298" declfile="src/modules/hal/pwm.h" declline="244" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/db9/pwm_8h_1a9c6df5edcb08603036ad042429aa6e43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref></type>
+        <definition>pwm_result_t pwm_amplitude_to_voltage</definition>
+        <argsstring>(uint8_t amplitude_percent, float *output_voltage)</argsstring>
+        <name>pwm_amplitude_to_voltage</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>amplitude_percent</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>output_voltage</declname>
+        </param>
+        <briefdescription>
+<para>Convert amplitude to output voltage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>amplitude_percent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Amplitude percentage (20-100) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>output_voltage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store calculated voltage (2-10V) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="253" column="14" bodyfile="src/modules/hal/pwm.cpp" bodystart="300" bodyend="314" declfile="src/modules/hal/pwm.h" declline="253" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/db9/pwm_8h_1af1a6bbb25190133b9e6b522b91271897" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref></type>
+        <definition>pwm_result_t pwm_test_pattern</definition>
+        <argsstring>(void)</argsstring>
+        <name>pwm_test_pattern</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Test PWM output with known pattern. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Generates test pattern for HIL verification: 25% → 50% → 75% → 100% → 25% (1 second each)</para>
+<para><simplesect kind="return"><para>PWM_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/pwm.h" line="263" column="14" bodyfile="src/modules/hal/pwm.cpp" bodystart="316" bodyend="335" declfile="src/modules/hal/pwm.h" declline="263" declcolumn="14"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>PWM Hardware Abstraction Layer for ATmega32A. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Cannasol Technologies </para>
+</simplesect>
+<simplesect kind="date"><para>2025-09-02 </para>
+</simplesect>
+<simplesect kind="version"><para>1.0.0</para>
+</simplesect>
+Provides hardware-agnostic PWM interface for sonicator amplitude control. Uses Timer2 to generate PWM signal on PD7 (pin 21) for shared amplitude control of all 4 sonicators.</para>
+<para>PWM signal feeds 1kΩ + 10µF RC filter and LM358N op-amp for 0-10V output. Pin assignments per config/hardware-config.yaml (SOLE SOURCE OF TRUTH). </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HAL_PWM_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HAL_PWM_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TYPE<sp/>DEFINITIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="35" refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afcafe8a051665f6462aa7dcf27f651ad6d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afcafe8a051665f6462aa7dcf27f651ad6d9" kindref="member">PWM_CHANNEL_AMPLITUDE</ref><sp/>=<sp/>0,<sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Amplitude<sp/>control<sp/>channel<sp/>(PD7)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afca5f50d2e34cf489cbbe4050ffe02d5ddc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afca5f50d2e34cf489cbbe4050ffe02d5ddc" kindref="member">PWM_CHANNEL_MAX</ref><sp/>=<sp/>1</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}<sp/><ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" kindref="member">pwm_channel_t</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1ea" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="43" refid="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaa0b9e8c6c363f4625301784880963992e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaa0b9e8c6c363f4625301784880963992e" kindref="member">PWM_PRESCALER_1</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>No<sp/>prescaling</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaab220f4d0a3aa4500297ec3f0dfa720ca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaab220f4d0a3aa4500297ec3f0dfa720ca" kindref="member">PWM_PRESCALER_8</ref><sp/>=<sp/>2,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Divide<sp/>by<sp/>8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaa771e5b734ce2f57eea6560ff9ec01c5f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaa771e5b734ce2f57eea6560ff9ec01c5f" kindref="member">PWM_PRESCALER_32</ref><sp/>=<sp/>3,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Divide<sp/>by<sp/>32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaa63e3548e3253466787f670b69b552dcd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaa63e3548e3253466787f670b69b552dcd" kindref="member">PWM_PRESCALER_64</ref><sp/>=<sp/>4,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Divide<sp/>by<sp/>64</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaaba2041b5a8f3116a6d36fde73d93b78a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaaba2041b5a8f3116a6d36fde73d93b78a" kindref="member">PWM_PRESCALER_128</ref><sp/>=<sp/>5,<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Divide<sp/>by<sp/>128</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaa729e5838e9d1235e2b89cd6bec59b019" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaa729e5838e9d1235e2b89cd6bec59b019" kindref="member">PWM_PRESCALER_256</ref><sp/>=<sp/>6,<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Divide<sp/>by<sp/>256</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaa2cb32c96eeb6fbfde5d2c729f26b66b4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1eaa2cb32c96eeb6fbfde5d2c729f26b66b4" kindref="member">PWM_PRESCALER_1024</ref><sp/>=<sp/>7<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Divide<sp/>by<sp/>1024</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}<sp/><ref refid="d6/db9/pwm_8h_1a73584aae2de7d25291409df5601af1ea" kindref="member">pwm_prescaler_t</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="56" refid="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56a80eb0bc2af29697283ab5a40e2ba0395" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56a80eb0bc2af29697283ab5a40e2ba0395" kindref="member">PWM_MODE_FAST_8BIT</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Fast<sp/>PWM,<sp/>8-bit<sp/>(0-255)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56ad64cf7d2658333ea2bc38dbffc07637f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56ad64cf7d2658333ea2bc38dbffc07637f" kindref="member">PWM_MODE_FAST_9BIT</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Fast<sp/>PWM,<sp/>9-bit<sp/>(0-511)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56a0aca9e100f00d75a499c6e17bb7d0198" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56a0aca9e100f00d75a499c6e17bb7d0198" kindref="member">PWM_MODE_FAST_10BIT</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Fast<sp/>PWM,<sp/>10-bit<sp/>(0-1023)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56a70e00af3b226320468bd30fa55601069" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56a70e00af3b226320468bd30fa55601069" kindref="member">PWM_MODE_PHASE_CORRECT_8BIT</ref>,</highlight><highlight class="comment">//&lt;<sp/>Phase<sp/>correct<sp/>PWM,<sp/>8-bit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56a605b120ca5451e1c43104c53d963a8cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56a605b120ca5451e1c43104c53d963a8cf" kindref="member">PWM_MODE_PHASE_CORRECT_9BIT</ref>,</highlight><highlight class="comment">//&lt;<sp/>Phase<sp/>correct<sp/>PWM,<sp/>9-bit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56a8495122113d97c6c891d46d4bd30cb89" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56a8495122113d97c6c891d46d4bd30cb89" kindref="member">PWM_MODE_PHASE_CORRECT_10BIT</ref></highlight><highlight class="comment">//&lt;<sp/>Phase<sp/>correct<sp/>PWM,<sp/>10-bit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}<sp/><ref refid="d6/db9/pwm_8h_1a562b5946a0edd6f5eebb63db7d154d56" kindref="member">pwm_mode_t</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="68" refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" kindref="member">PWM_OK</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Operation<sp/>successful</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05faec5178881ec92766a5b26b71cdf59572" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05faec5178881ec92766a5b26b71cdf59572" kindref="member">PWM_ERROR_INVALID_CHANNEL</ref>,<sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Invalid<sp/>channel<sp/>number</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa5203c7984136d4973e753a299e6b93f3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa5203c7984136d4973e753a299e6b93f3" kindref="member">PWM_ERROR_INVALID_DUTY</ref>,<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Invalid<sp/>duty<sp/>cycle<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa253854f89dab28c69dd808bef8dd512f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa253854f89dab28c69dd808bef8dd512f" kindref="member">PWM_ERROR_INVALID_FREQ</ref>,<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Invalid<sp/>frequency<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05faed2e5aea2dea5b0b2c20102a9c1ad574" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05faed2e5aea2dea5b0b2c20102a9c1ad574" kindref="member">PWM_ERROR_NOT_INITIALIZED</ref><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PWM<sp/>not<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}<sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref>;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CONFIGURATION<sp/>CONSTANTS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="d6/db9/pwm_8h_1af7b09fc97f1472819f6db76f6a105e0e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PWM_DEFAULT_FREQUENCY<sp/><sp/><sp/>1000<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Default<sp/>PWM<sp/>frequency<sp/>(1kHz)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="d6/db9/pwm_8h_1a9555d69440ad3c3acfd0fc2507e11cbf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PWM_MIN_FREQUENCY<sp/><sp/><sp/><sp/><sp/><sp/><sp/>100<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Minimum<sp/>PWM<sp/>frequency<sp/>(100Hz)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="d6/db9/pwm_8h_1a89ccbf350c5669385232f8dc4220b1bf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PWM_MAX_FREQUENCY<sp/><sp/><sp/><sp/><sp/><sp/><sp/>50000<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Maximum<sp/>PWM<sp/>frequency<sp/>(50kHz)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="d6/db9/pwm_8h_1adfb65ecdeb6967cb8a97514034d7edb7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PWM_DUTY_MIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Minimum<sp/>duty<sp/>cycle<sp/>(0%)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="d6/db9/pwm_8h_1a2831df0aa8b292da039c902373faa384" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PWM_DUTY_MAX<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>100<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Maximum<sp/>duty<sp/>cycle<sp/>(100%)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="d6/db9/pwm_8h_1aa746edd64d8c771f527130e6dba835c6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PWM_AMPLITUDE_MIN<sp/><sp/><sp/><sp/><sp/><sp/>20<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Minimum<sp/>amplitude<sp/>(20%)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="d6/db9/pwm_8h_1a0e1bd149f5c4f7a879bf47ed7f878d10" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PWM_AMPLITUDE_MAX<sp/><sp/><sp/><sp/><sp/><sp/>100<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Maximum<sp/>amplitude<sp/>(100%)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Filter<sp/>characteristics<sp/>(per<sp/>schematic)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="d6/db9/pwm_8h_1a17a4efa5ef3ba01c266962043ed996ff" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PWM_FILTER_CUTOFF_HZ<sp/><sp/><sp/>16<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>RC<sp/>filter<sp/>cutoff<sp/>frequency</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="d6/db9/pwm_8h_1aa50d107e23177ef9bdf626680661dfe5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PWM_OPAMP_GAIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2.0f<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>LM358N<sp/>gain<sp/>(0-5V<sp/>→<sp/>0-10V)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PUBLIC<sp/>INTERFACE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/><ref refid="d6/db9/pwm_8h_1a335d3354861ef1af786744e1d00cf559" kindref="member">pwm_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/><ref refid="d6/db9/pwm_8h_1a438a0f2bc4393527bcba80464ed06b37" kindref="member">pwm_set_frequency</ref>(<ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" kindref="member">pwm_channel_t</ref><sp/>channel,<sp/>uint32_t<sp/>frequency);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/><ref refid="d6/db9/pwm_8h_1a5d04f0bab99a934ca262108b3cbccea4" kindref="member">pwm_set_duty_cycle</ref>(<ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" kindref="member">pwm_channel_t</ref><sp/>channel,<sp/>uint8_t<sp/>duty_percent);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/><ref refid="d6/db9/pwm_8h_1a4a4a0f4e5b94843e3a7f767bf9062e3d" kindref="member">pwm_enable_channel</ref>(<ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" kindref="member">pwm_channel_t</ref><sp/>channel);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/><ref refid="d6/db9/pwm_8h_1a2b8498e02d595d5769afe37b56576fa9" kindref="member">pwm_disable_channel</ref>(<ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" kindref="member">pwm_channel_t</ref><sp/>channel);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/><ref refid="d6/db9/pwm_8h_1acd3a1e123b836f73d3383674f8873dff" kindref="member">pwm_get_duty_cycle</ref>(<ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" kindref="member">pwm_channel_t</ref><sp/>channel,<sp/>uint8_t*<sp/>duty_percent);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/><ref refid="d6/db9/pwm_8h_1a858cd4359aaf14f2b5d450f9e832367c" kindref="member">pwm_get_frequency</ref>(<ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" kindref="member">pwm_channel_t</ref><sp/>channel,<sp/>uint32_t*<sp/>frequency);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/><ref refid="d6/db9/pwm_8h_1a412e5760ba9f47743ecc059a0a6b4810" kindref="member">pwm_is_enabled</ref>(<ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" kindref="member">pwm_channel_t</ref><sp/>channel,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>enabled);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="comment">//<sp/>AMPLITUDE<sp/>CONTROL<sp/>CONVENIENCE<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/><ref refid="d6/db9/pwm_8h_1abac8d7cfdc720fa135fae195ca9fe0a5" kindref="member">pwm_set_amplitude</ref>(uint8_t<sp/>amplitude_percent);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/><ref refid="d6/db9/pwm_8h_1a956b342db650a8158960e4cef26ee8c4" kindref="member">pwm_get_amplitude</ref>(uint8_t*<sp/>amplitude_percent);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/><ref refid="d6/db9/pwm_8h_1a7c49dc3ef037df990300e701fe139207" kindref="member">pwm_amplitude_minimum</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/><ref refid="d6/db9/pwm_8h_1aa221ba29bc076a4b5a7b7ecbbd6cd90f" kindref="member">pwm_amplitude_maximum</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/><ref refid="d6/db9/pwm_8h_1ab8104c242afbf3fca789fcb4ab714d73" kindref="member">pwm_amplitude_ramp</ref>(uint8_t<sp/>target_percent,<sp/>uint16_t<sp/>ramp_time_ms);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/><ref refid="d6/db9/pwm_8h_1a0e026d312f0f6db227c824f778077262" kindref="member">pwm_ramp_complete</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>complete);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/><ref refid="d6/db9/pwm_8h_1a193a9d45b4c3b39c0bdf3f071909d3f3" kindref="member">pwm_emergency_stop</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight><highlight class="comment">//<sp/>DIAGNOSTIC<sp/>AND<sp/>TESTING<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/><ref refid="d6/db9/pwm_8h_1a35e29350587c9ffb6f7f4d8a1f94bc16" kindref="member">pwm_duty_to_voltage</ref>(uint8_t<sp/>duty_percent,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>output_voltage);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/><ref refid="d6/db9/pwm_8h_1a9c6df5edcb08603036ad042429aa6e43" kindref="member">pwm_amplitude_to_voltage</ref>(uint8_t<sp/>amplitude_percent,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>output_voltage);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/><ref refid="d6/db9/pwm_8h_1af1a6bbb25190133b9e6b522b91271897" kindref="member">pwm_test_pattern</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>HAL_PWM_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/modules/hal/pwm.h"/>
+  </compounddef>
+</doxygen>

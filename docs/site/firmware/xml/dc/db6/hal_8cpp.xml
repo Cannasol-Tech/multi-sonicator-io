@@ -1,0 +1,957 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="dc/db6/hal_8cpp" kind="file" language="C++">
+    <compoundname>hal.cpp</compoundname>
+    <includes refid="d8/d4b/hal_8h" local="yes">hal.h</includes>
+    <includes refid="d4/d7e/system__config_8h" local="no">system_config.h</includes>
+    <incdepgraph>
+      <node id="14">
+        <label>system_config.h</label>
+        <link refid="d4/d7e/system__config_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>adc.h</label>
+        <link refid="d7/d19/adc_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>atmega_hal_impl.h</label>
+        <link refid="d2/d92/atmega__hal__impl_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>gpio.h</label>
+        <link refid="d6/d7c/gpio_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/modules/hal/hal.cpp</label>
+        <link refid="dc/db6/hal_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hal.h</label>
+        <link refid="d8/d4b/hal_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>hal_template_interfaces.h</label>
+        <link refid="de/d2b/hal__template__interfaces_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>mock_hal_impl.h</label>
+        <link refid="de/d8d/mock__hal__impl_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>pwm.h</label>
+        <link refid="d6/db9/pwm_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>timer.h</label>
+        <link refid="d5/dd0/timer_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>uart.h</label>
+        <link refid="d2/d86/uart_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>Arduino.h</label>
+      </node>
+      <node id="5">
+        <label>stdbool.h</label>
+      </node>
+      <node id="4">
+        <label>stdint.h</label>
+      </node>
+      <node id="13">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="dc/db6/hal_8cpp_1a8c4578a2466e7e07f0677547d50ab76d" prot="public" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool hal_initialized</definition>
+        <argsstring></argsstring>
+        <name>hal_initialized</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal.cpp" line="16" column="13" bodyfile="src/modules/hal/hal.cpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dc/db6/hal_8cpp_1a6800052094ccb53d87268696730f0d54" prot="public" static="yes" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t error_count</definition>
+        <argsstring></argsstring>
+        <name>error_count</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal.cpp" line="17" column="17" bodyfile="src/modules/hal/hal.cpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dc/db6/hal_8cpp_1ae6e8ccf386403926abd7f901dd0b87ad" prot="public" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t init_time</definition>
+        <argsstring></argsstring>
+        <name>init_time</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal.cpp" line="18" column="17" bodyfile="src/modules/hal/hal.cpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="dc/db6/hal_8cpp_1acc4a464eefe13ab6eee4a21bc0f1a1d8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
+        <definition>static hal_result_t map_gpio_error</definition>
+        <argsstring>(gpio_result_t result)</argsstring>
+        <name>map_gpio_error</name>
+        <param>
+          <type><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref></type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal.cpp" line="353" column="21" bodyfile="src/modules/hal/hal.cpp" bodystart="353" bodyend="355" declfile="src/modules/hal/hal.cpp" declline="24" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/db6/hal_8cpp_1a28537288f15a1badade04fa3bfe7f4eb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
+        <definition>static hal_result_t map_adc_error</definition>
+        <argsstring>(adc_result_t result)</argsstring>
+        <name>map_adc_error</name>
+        <param>
+          <type><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref></type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal.cpp" line="357" column="21" bodyfile="src/modules/hal/hal.cpp" bodystart="357" bodyend="359" declfile="src/modules/hal/hal.cpp" declline="25" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/db6/hal_8cpp_1a379ec0a0d7c2467c3bc0ae08e63a3339" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
+        <definition>static hal_result_t map_pwm_error</definition>
+        <argsstring>(pwm_result_t result)</argsstring>
+        <name>map_pwm_error</name>
+        <param>
+          <type><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref></type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal.cpp" line="361" column="21" bodyfile="src/modules/hal/hal.cpp" bodystart="361" bodyend="363" declfile="src/modules/hal/hal.cpp" declline="26" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/db6/hal_8cpp_1ac580b945ef79639aafd0eebd9c4bebdb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
+        <definition>static hal_result_t map_uart_error</definition>
+        <argsstring>(uart_result_t result)</argsstring>
+        <name>map_uart_error</name>
+        <param>
+          <type><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref></type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal.cpp" line="365" column="21" bodyfile="src/modules/hal/hal.cpp" bodystart="365" bodyend="367" declfile="src/modules/hal/hal.cpp" declline="27" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/db6/hal_8cpp_1ae63d12da252bc440c4e086bfa8d5757d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
+        <definition>static hal_result_t map_timer_error</definition>
+        <argsstring>(timer_result_t result)</argsstring>
+        <name>map_timer_error</name>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal.cpp" line="369" column="21" bodyfile="src/modules/hal/hal.cpp" bodystart="369" bodyend="371" declfile="src/modules/hal/hal.cpp" declline="28" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/db6/hal_8cpp_1aa09745b395496b11ba076700d91d8e21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
+        <definition>hal_result_t hal_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>hal_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize all HAL subsystems. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Configures all hardware peripherals according to pin matrix specifications:<itemizedlist>
+<listitem><para>GPIO pins for sonicator interfaces and status LED</para>
+</listitem><listitem><para>ADC channels for power monitoring (5.44mV/W scaling)</para>
+</listitem><listitem><para>PWM channel for amplitude control (0-10V output)</para>
+</listitem><listitem><para>UART interface for MODBUS RTU at 115200 baud</para>
+</listitem><listitem><para>Timer subsystems for scheduler and watchdog</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="return"><para>HAL_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal.cpp" line="34" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="34" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/db6/hal_8cpp_1a6613a740f474578c7a3028157d453abe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
+        <definition>hal_result_t hal_self_test</definition>
+        <argsstring>(bool *gpio_ok, bool *adc_ok, bool *pwm_ok, bool *uart_ok, bool *timer_ok)</argsstring>
+        <name>hal_self_test</name>
+        <param>
+          <type>bool *</type>
+          <declname>gpio_ok</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>adc_ok</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>pwm_ok</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>uart_ok</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>timer_ok</declname>
+        </param>
+        <briefdescription>
+<para>Perform HAL system self-test. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Tests all HAL subsystems for proper operation:<itemizedlist>
+<listitem><para>GPIO pin control and reading</para>
+</listitem><listitem><para>ADC conversion accuracy</para>
+</listitem><listitem><para>PWM frequency and duty cycle</para>
+</listitem><listitem><para>UART loopback communication</para>
+</listitem><listitem><para>Timer accuracy and scheduling</para>
+</listitem></itemizedlist>
+</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>gpio_ok</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store GPIO test result </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>adc_ok</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store ADC test result </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pwm_ok</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store PWM test result </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>uart_ok</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store UART test result </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timer_ok</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store Timer test result </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>HAL_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal.cpp" line="74" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="74" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/db6/hal_8cpp_1abda7de3090b510179a16211a02b87bb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
+        <definition>hal_result_t hal_get_status</definition>
+        <argsstring>(bool *initialized, uint32_t *uptime_ms, uint16_t *errors)</argsstring>
+        <name>hal_get_status</name>
+        <param>
+          <type>bool *</type>
+          <declname>initialized</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>uptime_ms</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>errors</declname>
+        </param>
+        <briefdescription>
+<para>Get HAL system status. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>initialized</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store initialization status </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>uptime_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store system uptime </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>errors</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store error count </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>HAL_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal.cpp" line="133" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="133" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/db6/hal_8cpp_1ac4d228c6c0dea1248daddffa2b8cc6aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
+        <definition>hal_result_t hal_clear_errors</definition>
+        <argsstring>(void)</argsstring>
+        <name>hal_clear_errors</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Reset HAL error counters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>HAL_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal.cpp" line="155" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="155" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/db6/hal_8cpp_1a5b5e63353fed4bfb72b1509fab9b3d40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
+        <definition>hal_result_t hal_emergency_shutdown</definition>
+        <argsstring>(void)</argsstring>
+        <name>hal_emergency_shutdown</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Emergency shutdown of all HAL subsystems. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Safely disables all outputs and sets hardware to safe state:<itemizedlist>
+<listitem><para>Stop all sonicators (GPIO outputs LOW)</para>
+</listitem><listitem><para>Set amplitude to minimum (20%)</para>
+</listitem><listitem><para>Disable PWM output</para>
+</listitem><listitem><para>Flush UART buffers</para>
+</listitem><listitem><para>Reset watchdog timer</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="return"><para>HAL_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal.cpp" line="168" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="168" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/db6/hal_8cpp_1a25dd966a4c5c3b9737da5b65dee9c3b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
+        <definition>hal_result_t hal_control_sonicator</definition>
+        <argsstring>(uint8_t sonicator_id, const sonicator_control_t *control)</argsstring>
+        <name>hal_control_sonicator</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>const sonicator_control_t *</type>
+          <declname>control</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal.cpp" line="199" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="199" bodyend="241"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/db6/hal_8cpp_1a79df73bca16a4d09f8820b3af83f1c44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
+        <definition>hal_result_t hal_read_sonicator_status</definition>
+        <argsstring>(uint8_t sonicator_id, sonicator_status_t *status)</argsstring>
+        <name>hal_read_sonicator_status</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type><ref refid="d6/d4e/structsonicator__status__t" kindref="compound">sonicator_status_t</ref> *</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal.cpp" line="243" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="243" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/db6/hal_8cpp_1a6ad69832d659a117bfa3b1713496a37e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
+        <definition>hal_result_t hal_control_all_sonicators</definition>
+        <argsstring>(const sonicator_control_t control_array[4])</argsstring>
+        <name>hal_control_all_sonicators</name>
+        <param>
+          <type>const sonicator_control_t</type>
+          <declname>control_array</declname>
+          <array>[4]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal.cpp" line="289" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="289" bodyend="309"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/db6/hal_8cpp_1a4da6622db3be649a8152d6562db7167f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
+        <definition>hal_result_t hal_read_all_sonicator_status</definition>
+        <argsstring>(sonicator_status_t status_array[4])</argsstring>
+        <name>hal_read_all_sonicator_status</name>
+        <param>
+          <type><ref refid="d6/d4e/structsonicator__status__t" kindref="compound">sonicator_status_t</ref></type>
+          <declname>status_array</declname>
+          <array>[4]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal.cpp" line="311" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="311" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="dc/db6/hal_8cpp_1a42682f6be8bc89646e8cb60411e1dded" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref></type>
+        <definition>hal_result_t hal_emergency_stop_all</definition>
+        <argsstring>(void)</argsstring>
+        <name>hal_emergency_stop_all</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Emergency stop all sonicators. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>HAL_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal.cpp" line="333" column="14" bodyfile="src/modules/hal/hal.cpp" bodystart="333" bodyend="347"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Hardware Abstraction Layer Master Implementation for ATmega32A. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Cannasol Technologies </para>
+</simplesect>
+<simplesect kind="date"><para>2025-09-02 </para>
+</simplesect>
+<simplesect kind="version"><para>1.0.0 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d8/d4b/hal_8h" kindref="compound">hal.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="d4/d7e/system__config_8h" kindref="compound">system_config.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PRIVATE<sp/>VARIABLES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="dc/db6/hal_8cpp_1a8c4578a2466e7e07f0677547d50ab76d" kindref="member">hal_initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint16_t<sp/><ref refid="dc/db6/hal_8cpp_1a6800052094ccb53d87268696730f0d54" kindref="member">error_count</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="dc/db6/hal_8cpp_1ae6e8ccf386403926abd7f901dd0b87ad" kindref="member">init_time</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PRIVATE<sp/>FUNCTION<sp/>DECLARATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1acc4a464eefe13ab6eee4a21bc0f1a1d8" kindref="member">map_gpio_error</ref>(<ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/>result);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1a28537288f15a1badade04fa3bfe7f4eb" kindref="member">map_adc_error</ref>(<ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref><sp/>result);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1a379ec0a0d7c2467c3bc0ae08e63a3339" kindref="member">map_pwm_error</ref>(<ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/>result);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1ac580b945ef79639aafd0eebd9c4bebdb" kindref="member">map_uart_error</ref>(<ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/>result);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1ae63d12da252bc440c4e086bfa8d5757d" kindref="member">map_timer_error</ref>(<ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/>result);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PUBLIC<sp/>FUNCTION<sp/>IMPLEMENTATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1aa09745b395496b11ba076700d91d8e21" kindref="member">hal_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>Timer<sp/>first<sp/>(needed<sp/>for<sp/>other<sp/>subsystems)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/>timer_result<sp/>=<sp/><ref refid="dc/de5/timer_8cpp_1aa96c2aa1b5dac819fd12d27e0a93e714" kindref="member">timer_init</ref>();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(timer_result<sp/>!=<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/db6/hal_8cpp_1ae63d12da252bc440c4e086bfa8d5757d" kindref="member">map_timer_error</ref>(timer_result);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>GPIO<sp/>subsystem</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/>gpio_result<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1a33d278bd8510192b4fdadf20fa22fe61" kindref="member">gpio_init</ref>();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(gpio_result<sp/>!=<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/db6/hal_8cpp_1acc4a464eefe13ab6eee4a21bc0f1a1d8" kindref="member">map_gpio_error</ref>(gpio_result);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>ADC<sp/>subsystem</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref><sp/>adc_result<sp/>=<sp/><ref refid="db/d33/adc_8cpp_1aa540e6dad1cfb7b5a1a70ac688003aee" kindref="member">adc_init</ref>();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(adc_result<sp/>!=<sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/db6/hal_8cpp_1a28537288f15a1badade04fa3bfe7f4eb" kindref="member">map_adc_error</ref>(adc_result);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>PWM<sp/>subsystem</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/>pwm_result<sp/>=<sp/><ref refid="d5/d84/pwm_8cpp_1a335d3354861ef1af786744e1d00cf559" kindref="member">pwm_init</ref>();</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm_result<sp/>!=<sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" kindref="member">PWM_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/db6/hal_8cpp_1a379ec0a0d7c2467c3bc0ae08e63a3339" kindref="member">map_pwm_error</ref>(pwm_result);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>UART<sp/>subsystem</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/>uart_result<sp/>=<sp/><ref refid="db/d23/uart_8cpp_1a291c562f366dda51665637a2d8cc8447" kindref="member">uart_init</ref>();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(uart_result<sp/>!=<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/db6/hal_8cpp_1ac580b945ef79639aafd0eebd9c4bebdb" kindref="member">map_uart_error</ref>(uart_result);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Record<sp/>initialization<sp/>time<sp/>and<sp/>mark<sp/>as<sp/>complete</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dc/de5/timer_8cpp_1aba3463e356a0a943870c1d60e3d26346" kindref="member">timer_get_millis</ref>(&amp;<ref refid="dc/db6/hal_8cpp_1ae6e8ccf386403926abd7f901dd0b87ad" kindref="member">init_time</ref>);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dc/db6/hal_8cpp_1a6800052094ccb53d87268696730f0d54" kindref="member">error_count</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dc/db6/hal_8cpp_1a8c4578a2466e7e07f0677547d50ab76d" kindref="member">hal_initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1a6613a740f474578c7a3028157d453abe" kindref="member">hal_self_test</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>gpio_ok,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>adc_ok,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>pwm_ok,<sp/></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>uart_ok,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>timer_ok)<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/db6/hal_8cpp_1a8c4578a2466e7e07f0677547d50ab76d" kindref="member">hal_initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6ae552acf3a79341e799cb04cf6db0ab2a" kindref="member">HAL_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>GPIO<sp/>subsystem</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(gpio_ok<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>status<sp/>LED<sp/>control</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/>gpio_result<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1a868df198e014b5e9b2ab134a16384683" kindref="member">gpio_status_led</ref>(<ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ab05c5a854da4602143b6bd6096d86c4d" kindref="member">GPIO_HIGH</ref>);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/de5/timer_8cpp_1a94053756b1b19e59b33e0047a21e0181" kindref="member">timer_delay_ms</ref>(100);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1a868df198e014b5e9b2ab134a16384683" kindref="member">gpio_status_led</ref>(<ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ad41cdd897d9b8714ef45ed6e9eba0dfa" kindref="member">GPIO_LOW</ref>)<sp/>!=<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*gpio_ok<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>sonicator<sp/>pin<sp/>reading<sp/>(should<sp/>be<sp/>pulled<sp/>up)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>overload_state;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/>r2<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1af4700a3e3d882c0cc3d14a3ba5e0c66d" kindref="member">gpio_sonicator_read_overload</ref>(1,<sp/>&amp;overload_state);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*gpio_ok<sp/>=<sp/>(gpio_result<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>)<sp/>&amp;&amp;<sp/>(r2<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>ADC<sp/>subsystem</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(adc_ok<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>power<sp/>channel<sp/>reading</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>power_reading;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref><sp/>adc_result<sp/>=<sp/><ref refid="d7/d19/adc_8h_1a9f0fae67bdf3bebce28e5f22dbc6c324" kindref="member">adc_read_sonicator_power</ref>(1,<sp/>&amp;power_reading);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>frequency<sp/>channel<sp/>reading</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>freq_reading;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref><sp/>r2<sp/>=<sp/><ref refid="d7/d19/adc_8h_1af2f4baab2e0b0c058249c42763ad6c6e" kindref="member">adc_read_frequency</ref>(&amp;freq_reading);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*adc_ok<sp/>=<sp/>(adc_result<sp/>==<sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>)<sp/>&amp;&amp;<sp/>(r2<sp/>==<sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>)<sp/>&amp;&amp;<sp/>(power_reading<sp/>&gt;=<sp/>0.0f)<sp/>&amp;&amp;<sp/>(freq_reading<sp/>&gt;=<sp/>0.0f);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>PWM<sp/>subsystem</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm_ok<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/>pwm_result<sp/>=<sp/><ref refid="d5/d84/pwm_8cpp_1af1a6bbb25190133b9e6b522b91271897" kindref="member">pwm_test_pattern</ref>();</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*pwm_ok<sp/>=<sp/>(pwm_result<sp/>==<sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" kindref="member">PWM_OK</ref>);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>UART<sp/>subsystem</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(uart_ok<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/>uart_result<sp/>=<sp/><ref refid="db/d23/uart_8cpp_1a5af63458c33759ed51ed861621a87cce" kindref="member">uart_test_loopback</ref>(uart_ok);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(uart_result<sp/>!=<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*uart_ok<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>Timer<sp/>subsystem</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(timer_ok<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/>timer_result<sp/>=<sp/><ref refid="dc/de5/timer_8cpp_1ac9ebab3446580b033e692f4a1dfa1fb6" kindref="member">timer_test_all</ref>(timer_ok);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(timer_result<sp/>!=<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*timer_ok<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1abda7de3090b510179a16211a02b87bb5" kindref="member">hal_get_status</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>initialized,<sp/>uint32_t*<sp/>uptime_ms,<sp/>uint16_t*<sp/>errors)<sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(initialized<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*initialized<sp/>=<sp/><ref refid="dc/db6/hal_8cpp_1a8c4578a2466e7e07f0677547d50ab76d" kindref="member">hal_initialized</ref>;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(uptime_ms<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="dc/db6/hal_8cpp_1a8c4578a2466e7e07f0677547d50ab76d" kindref="member">hal_initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>current_time;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/de5/timer_8cpp_1aba3463e356a0a943870c1d60e3d26346" kindref="member">timer_get_millis</ref>(&amp;current_time);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*uptime_ms<sp/>=<sp/>current_time<sp/>-<sp/><ref refid="dc/db6/hal_8cpp_1ae6e8ccf386403926abd7f901dd0b87ad" kindref="member">init_time</ref>;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*uptime_ms<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(errors<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*errors<sp/>=<sp/><ref refid="dc/db6/hal_8cpp_1a6800052094ccb53d87268696730f0d54" kindref="member">error_count</ref>;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1ac4d228c6c0dea1248daddffa2b8cc6aa" kindref="member">hal_clear_errors</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/db6/hal_8cpp_1a8c4578a2466e7e07f0677547d50ab76d" kindref="member">hal_initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6ae552acf3a79341e799cb04cf6db0ab2a" kindref="member">HAL_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dc/db6/hal_8cpp_1a6800052094ccb53d87268696730f0d54" kindref="member">error_count</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>errors<sp/>in<sp/>all<sp/>subsystems</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d23/uart_8cpp_1a79ad1801b886ffa306c7c27e2a2cc80f" kindref="member">uart_clear_errors</ref>();</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1a5b5e63353fed4bfb72b1509fab9b3d40" kindref="member">hal_emergency_shutdown</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/db6/hal_8cpp_1a8c4578a2466e7e07f0677547d50ab76d" kindref="member">hal_initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6ae552acf3a79341e799cb04cf6db0ab2a" kindref="member">HAL_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Stop<sp/>all<sp/>sonicators<sp/>immediately</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>1;<sp/>i<sp/>&lt;=<sp/><ref refid="d4/d7e/system__config_8h_1a39f376f71f4405d96e515fbc21fb5fc5" kindref="member">MAX_SONICATORS</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d31/gpio_8cpp_1a33a32957b81034c07f3685b90580d482" kindref="member">gpio_sonicator_stop</ref>(i);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>amplitude<sp/>to<sp/>minimum<sp/>and<sp/>disable<sp/>PWM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/d84/pwm_8cpp_1a193a9d45b4c3b39c0bdf3f071909d3f3" kindref="member">pwm_emergency_stop</ref>();</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/d84/pwm_8cpp_1a2b8498e02d595d5769afe37b56576fa9" kindref="member">pwm_disable_channel</ref>(<ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afcafe8a051665f6462aa7dcf27f651ad6d9" kindref="member">PWM_CHANNEL_AMPLITUDE</ref>);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Turn<sp/>off<sp/>status<sp/>LED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="de/d31/gpio_8cpp_1a868df198e014b5e9b2ab134a16384683" kindref="member">gpio_status_led</ref>(<ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ad41cdd897d9b8714ef45ed6e9eba0dfa" kindref="member">GPIO_LOW</ref>);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Flush<sp/>UART<sp/>buffers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d23/uart_8cpp_1aca0ce44bb4b9fedc156ffd006bccbc95" kindref="member">uart_flush_tx</ref>();</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d23/uart_8cpp_1aa0ba1394c3e54d2bba6d501db9ee7660" kindref="member">uart_flush_rx</ref>();</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>watchdog<sp/>timer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dc/de5/timer_8cpp_1a04b069063b643153cadec91ea37722c8" kindref="member">timer_watchdog_reset</ref>();</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SONICATOR<sp/>CONTROL<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1a25dd966a4c5c3b9737da5b65dee9c3b0" kindref="member">hal_control_sonicator</ref>(uint8_t<sp/>sonicator_id,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sonicator_control_t*<sp/>control)<sp/>{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/db6/hal_8cpp_1a8c4578a2466e7e07f0677547d50ab76d" kindref="member">hal_initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6ae552acf3a79341e799cb04cf6db0ab2a" kindref="member">HAL_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(control<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>||<sp/>sonicator_id<sp/>&lt;<sp/>1<sp/>||<sp/>sonicator_id<sp/>&gt;<sp/><ref refid="d4/d7e/system__config_8h_1a39f376f71f4405d96e515fbc21fb5fc5" kindref="member">MAX_SONICATORS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6acba2484c22dba92b9ab60b25529fdd1e" kindref="member">HAL_ERROR_GPIO</ref>;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>start/stop<sp/>control</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/>gpio_result<sp/>=<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(control-&gt;start)<sp/>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio_result<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1a6697ca0fd5b0210af4d5c97e11efa3c9" kindref="member">gpio_sonicator_start</ref>(sonicator_id);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio_result<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1a33a32957b81034c07f3685b90580d482" kindref="member">gpio_sonicator_stop</ref>(sonicator_id);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(gpio_result<sp/>!=<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/db6/hal_8cpp_1a6800052094ccb53d87268696730f0d54" kindref="member">error_count</ref>++;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/db6/hal_8cpp_1acc4a464eefe13ab6eee4a21bc0f1a1d8" kindref="member">map_gpio_error</ref>(gpio_result);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>amplitude<sp/>control<sp/>(shared<sp/>for<sp/>all<sp/>sonicators)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(control-&gt;amplitude_percent<sp/>&gt;=<sp/><ref refid="d6/db9/pwm_8h_1aa746edd64d8c771f527130e6dba835c6" kindref="member">PWM_AMPLITUDE_MIN</ref><sp/>&amp;&amp;<sp/></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>control-&gt;amplitude_percent<sp/>&lt;=<sp/><ref refid="d6/db9/pwm_8h_1a0e1bd149f5c4f7a879bf47ed7f878d10" kindref="member">PWM_AMPLITUDE_MAX</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/>pwm_result<sp/>=<sp/><ref refid="d5/d84/pwm_8cpp_1abac8d7cfdc720fa135fae195ca9fe0a5" kindref="member">pwm_set_amplitude</ref>(control-&gt;amplitude_percent);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm_result<sp/>!=<sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" kindref="member">PWM_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/db6/hal_8cpp_1a6800052094ccb53d87268696730f0d54" kindref="member">error_count</ref>++;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/db6/hal_8cpp_1a379ec0a0d7c2467c3bc0ae08e63a3339" kindref="member">map_pwm_error</ref>(pwm_result);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>overload<sp/>reset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(control-&gt;reset_overload)<sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio_result<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1a9b325245641aadf28c1c28e70fc3d355" kindref="member">gpio_sonicator_reset</ref>(sonicator_id);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(gpio_result<sp/>!=<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/db6/hal_8cpp_1a6800052094ccb53d87268696730f0d54" kindref="member">error_count</ref>++;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/db6/hal_8cpp_1acc4a464eefe13ab6eee4a21bc0f1a1d8" kindref="member">map_gpio_error</ref>(gpio_result);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1a79df73bca16a4d09f8820b3af83f1c44" kindref="member">hal_read_sonicator_status</ref>(uint8_t<sp/>sonicator_id,<sp/><ref refid="d6/d4e/structsonicator__status__t" kindref="compound">sonicator_status_t</ref>*<sp/>status)<sp/>{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/db6/hal_8cpp_1a8c4578a2466e7e07f0677547d50ab76d" kindref="member">hal_initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6ae552acf3a79341e799cb04cf6db0ab2a" kindref="member">HAL_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>||<sp/>sonicator_id<sp/>&lt;<sp/>1<sp/>||<sp/>sonicator_id<sp/>&gt;<sp/><ref refid="d4/d7e/system__config_8h_1a39f376f71f4405d96e515fbc21fb5fc5" kindref="member">MAX_SONICATORS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6acba2484c22dba92b9ab60b25529fdd1e" kindref="member">HAL_ERROR_GPIO</ref>;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>overload<sp/>status</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/>gpio_result<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1af4700a3e3d882c0cc3d14a3ba5e0c66d" kindref="member">gpio_sonicator_read_overload</ref>(sonicator_id,<sp/>&amp;status-&gt;overload);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(gpio_result<sp/>!=<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/db6/hal_8cpp_1a6800052094ccb53d87268696730f0d54" kindref="member">error_count</ref>++;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/db6/hal_8cpp_1acc4a464eefe13ab6eee4a21bc0f1a1d8" kindref="member">map_gpio_error</ref>(gpio_result);</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>frequency<sp/>lock<sp/>status</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_result<sp/>=<sp/><ref refid="de/d31/gpio_8cpp_1af3b6ea8f9b5c77e43fa4d22fffc2c872" kindref="member">gpio_sonicator_read_freq_lock</ref>(sonicator_id,<sp/>&amp;status-&gt;<ref refid="d6/d4e/structsonicator__status__t_1a006c11fcd2b4a17a1c6a89bf81b05bae" kindref="member">frequency_locked</ref>);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(gpio_result<sp/>!=<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/db6/hal_8cpp_1a6800052094ccb53d87268696730f0d54" kindref="member">error_count</ref>++;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/db6/hal_8cpp_1acc4a464eefe13ab6eee4a21bc0f1a1d8" kindref="member">map_gpio_error</ref>(gpio_result);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>power<sp/>level</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref><sp/>adc_result<sp/>=<sp/><ref refid="d7/d19/adc_8h_1a9f0fae67bdf3bebce28e5f22dbc6c324" kindref="member">adc_read_sonicator_power</ref>(sonicator_id,<sp/>&amp;status-&gt;<ref refid="d6/d4e/structsonicator__status__t_1aead306425b6258abef757ef123e5897f" kindref="member">power_watts</ref>);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(adc_result<sp/>!=<sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="dc/db6/hal_8cpp_1a6800052094ccb53d87268696730f0d54" kindref="member">error_count</ref>++;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/db6/hal_8cpp_1a28537288f15a1badade04fa3bfe7f4eb" kindref="member">map_adc_error</ref>(adc_result);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>frequency<sp/>(available<sp/>for<sp/>Sonicator<sp/>4<sp/>via<sp/>LM2907<sp/>F-V<sp/>converter<sp/>on<sp/>ADC0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sonicator_id<sp/>==<sp/>4)<sp/>{</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>frequency_hz;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>adc_result<sp/>=<sp/><ref refid="d7/d19/adc_8h_1af2f4baab2e0b0c058249c42763ad6c6e" kindref="member">adc_read_frequency</ref>(&amp;frequency_hz);</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(adc_result<sp/>==<sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status-&gt;<ref refid="d6/d4e/structsonicator__status__t_1a87e230237c8676756cb181df429add81" kindref="member">frequency_hz</ref><sp/>=<sp/>(uint16_t)frequency_hz;</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status-&gt;<ref refid="d6/d4e/structsonicator__status__t_1a87e230237c8676756cb181df429add81" kindref="member">frequency_hz</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status-&gt;<ref refid="d6/d4e/structsonicator__status__t_1a87e230237c8676756cb181df429add81" kindref="member">frequency_hz</ref><sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//<sp/>Not<sp/>measured<sp/>for<sp/>other<sp/>sonicators<sp/>in<sp/>current<sp/>hardware</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="287"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1a6ad69832d659a117bfa3b1713496a37e" kindref="member">hal_control_all_sonicators</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sonicator_control_t<sp/>control_array[4])<sp/>{</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/db6/hal_8cpp_1a8c4578a2466e7e07f0677547d50ab76d" kindref="member">hal_initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6ae552acf3a79341e799cb04cf6db0ab2a" kindref="member">HAL_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(control_array<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6acba2484c22dba92b9ab60b25529fdd1e" kindref="member">HAL_ERROR_GPIO</ref>;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/>result<sp/>=<sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Control<sp/>each<sp/>sonicator</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>4;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/>individual_result<sp/>=<sp/><ref refid="dc/db6/hal_8cpp_1a25dd966a4c5c3b9737da5b65dee9c3b0" kindref="member">hal_control_sonicator</ref>(i<sp/>+<sp/>1,<sp/>&amp;control_array[i]);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(individual_result<sp/>!=<sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>individual_result;<sp/></highlight><highlight class="comment">//<sp/>Return<sp/>last<sp/>error</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="309"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1a4da6622db3be649a8152d6562db7167f" kindref="member">hal_read_all_sonicator_status</ref>(<ref refid="d6/d4e/structsonicator__status__t" kindref="compound">sonicator_status_t</ref><sp/>status_array[4])<sp/>{</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/db6/hal_8cpp_1a8c4578a2466e7e07f0677547d50ab76d" kindref="member">hal_initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6ae552acf3a79341e799cb04cf6db0ab2a" kindref="member">HAL_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status_array<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6acba2484c22dba92b9ab60b25529fdd1e" kindref="member">HAL_ERROR_GPIO</ref>;</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/>result<sp/>=<sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>status<sp/>for<sp/>each<sp/>sonicator</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>4;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/>individual_result<sp/>=<sp/><ref refid="dc/db6/hal_8cpp_1a79df73bca16a4d09f8820b3af83f1c44" kindref="member">hal_read_sonicator_status</ref>(i<sp/>+<sp/>1,<sp/>&amp;status_array[i]);</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(individual_result<sp/>!=<sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>individual_result;<sp/></highlight><highlight class="comment">//<sp/>Return<sp/>last<sp/>error</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="331"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1a42682f6be8bc89646e8cb60411e1dded" kindref="member">hal_emergency_stop_all</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="dc/db6/hal_8cpp_1a8c4578a2466e7e07f0677547d50ab76d" kindref="member">hal_initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6ae552acf3a79341e799cb04cf6db0ab2a" kindref="member">HAL_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Stop<sp/>all<sp/>sonicators</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>1;<sp/>i<sp/>&lt;=<sp/><ref refid="d4/d7e/system__config_8h_1a39f376f71f4405d96e515fbc21fb5fc5" kindref="member">MAX_SONICATORS</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="de/d31/gpio_8cpp_1a33a32957b81034c07f3685b90580d482" kindref="member">gpio_sonicator_stop</ref>(i);</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>amplitude<sp/>to<sp/>minimum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/d84/pwm_8cpp_1a193a9d45b4c3b39c0bdf3f071909d3f3" kindref="member">pwm_emergency_stop</ref>();</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>;</highlight></codeline>
+<codeline lineno="347"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PRIVATE<sp/>FUNCTION<sp/>IMPLEMENTATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1acc4a464eefe13ab6eee4a21bc0f1a1d8" kindref="member">map_gpio_error</ref>(<ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780ca" kindref="member">gpio_result_t</ref><sp/>result)<sp/>{</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(result<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>)<sp/>?<sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref><sp/>:<sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6acba2484c22dba92b9ab60b25529fdd1e" kindref="member">HAL_ERROR_GPIO</ref>;</highlight></codeline>
+<codeline lineno="355"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1a28537288f15a1badade04fa3bfe7f4eb" kindref="member">map_adc_error</ref>(<ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref><sp/>result)<sp/>{</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(result<sp/>==<sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>)<sp/>?<sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref><sp/>:<sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a3ed53de8a6fc2a9d2a66095a69855a19" kindref="member">HAL_ERROR_ADC</ref>;</highlight></codeline>
+<codeline lineno="359"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1a379ec0a0d7c2467c3bc0ae08e63a3339" kindref="member">map_pwm_error</ref>(<ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05f" kindref="member">pwm_result_t</ref><sp/>result)<sp/>{</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(result<sp/>==<sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" kindref="member">PWM_OK</ref>)<sp/>?<sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref><sp/>:<sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a5be823d22fb7a02a528e521b3ab94a41" kindref="member">HAL_ERROR_PWM</ref>;</highlight></codeline>
+<codeline lineno="363"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1ac580b945ef79639aafd0eebd9c4bebdb" kindref="member">map_uart_error</ref>(<ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2" kindref="member">uart_result_t</ref><sp/>result)<sp/>{</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(result<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>)<sp/>?<sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref><sp/>:<sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a90f978522c052db2b4a0124a857c67d2" kindref="member">HAL_ERROR_UART</ref>;</highlight></codeline>
+<codeline lineno="367"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref><sp/><ref refid="dc/db6/hal_8cpp_1ae63d12da252bc440c4e086bfa8d5757d" kindref="member">map_timer_error</ref>(<ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/>result)<sp/>{</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(result<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>)<sp/>?<sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref><sp/>:<sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a2cb53ee1197de97e2955bad5703c71ae" kindref="member">HAL_ERROR_TIMER</ref>;</highlight></codeline>
+<codeline lineno="371"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/modules/hal/hal.cpp"/>
+  </compounddef>
+</doxygen>

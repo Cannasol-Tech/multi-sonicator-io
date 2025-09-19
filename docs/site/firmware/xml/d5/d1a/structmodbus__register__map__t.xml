@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d5/d1a/structmodbus__register__map__t" kind="struct" language="C++" prot="public">
+    <compoundname>modbus_register_map_t</compoundname>
+    <includes refid="d4/d9a/modbus__registers_8h" local="no">modbus_registers.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d5/d1a/structmodbus__register__map__t_1ad03c2c350a3c56687d3b08af4f0ac395" prot="public" static="no" mutable="no">
+        <type><ref refid="d5/d00/structsystem__status__registers__t" kindref="compound">system_status_registers_t</ref></type>
+        <definition>system_status_registers_t modbus_register_map_t::system_status</definition>
+        <argsstring></argsstring>
+        <name>system_status</name>
+        <qualifiedname>modbus_register_map_t::system_status</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_registers.h" line="141" column="31" bodyfile="src/modules/communication/modbus_registers.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d1a/structmodbus__register__map__t_1a9bedbd82208d6797f23ab9a648fec66f" prot="public" static="no" mutable="no">
+        <type><ref refid="d7/dc5/structglobal__control__registers__t" kindref="compound">global_control_registers_t</ref></type>
+        <definition>global_control_registers_t modbus_register_map_t::global_control</definition>
+        <argsstring></argsstring>
+        <name>global_control</name>
+        <qualifiedname>modbus_register_map_t::global_control</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_registers.h" line="142" column="32" bodyfile="src/modules/communication/modbus_registers.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" prot="public" static="no" mutable="no">
+        <type><ref refid="d4/d97/structsonicator__registers__t" kindref="compound">sonicator_registers_t</ref></type>
+        <definition>sonicator_registers_t modbus_register_map_t::sonicators[MODBUS_MAX_SONICATORS]</definition>
+        <argsstring>[MODBUS_MAX_SONICATORS]</argsstring>
+        <name>sonicators</name>
+        <qualifiedname>modbus_register_map_t::sonicators</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_registers.h" line="143" column="27" bodyfile="src/modules/communication/modbus_registers.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Complete MODBUS Register Map. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>global_control_registers_t</label>
+        <link refid="d7/dc5/structglobal__control__registers__t"/>
+      </node>
+      <node id="1">
+        <label>modbus_register_map_t</label>
+        <link refid="d5/d1a/structmodbus__register__map__t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>system_status</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>global_control</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>sonicators</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>sonicator_registers_t</label>
+        <link refid="d4/d97/structsonicator__registers__t"/>
+      </node>
+      <node id="2">
+        <label>system_status_registers_t</label>
+        <link refid="d5/d00/structsystem__status__registers__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/modules/communication/modbus_registers.h" line="140" column="1" bodyfile="src/modules/communication/modbus_registers.h" bodystart="140" bodyend="144"/>
+    <listofallmembers>
+      <member refid="d5/d1a/structmodbus__register__map__t_1a9bedbd82208d6797f23ab9a648fec66f" prot="public" virt="non-virtual"><scope>modbus_register_map_t</scope><name>global_control</name></member>
+      <member refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" prot="public" virt="non-virtual"><scope>modbus_register_map_t</scope><name>sonicators</name></member>
+      <member refid="d5/d1a/structmodbus__register__map__t_1ad03c2c350a3c56687d3b08af4f0ac395" prot="public" virt="non-virtual"><scope>modbus_register_map_t</scope><name>system_status</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,556 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d2/d92/atmega__hal__impl_8h" kind="file" language="C++">
+    <compoundname>atmega_hal_impl.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includes refid="d6/d7c/gpio_8h" local="yes">gpio.h</includes>
+    <includes refid="d7/d19/adc_8h" local="yes">adc.h</includes>
+    <includes refid="d6/db9/pwm_8h" local="yes">pwm.h</includes>
+    <includes refid="d5/dd0/timer_8h" local="yes">timer.h</includes>
+    <includes refid="d2/d86/uart_8h" local="yes">uart.h</includes>
+    <includedby refid="d6/d7c/gpio_8h" local="yes">src/modules/hal/gpio.h</includedby>
+    <incdepgraph>
+      <node id="8">
+        <label>adc.h</label>
+        <link refid="d7/d19/adc_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/modules/hal/atmega_hal_impl.h</label>
+        <link refid="d2/d92/atmega__hal__impl_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>gpio.h</label>
+        <link refid="d6/d7c/gpio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>hal_template_interfaces.h</label>
+        <link refid="de/d2b/hal__template__interfaces_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>mock_hal_impl.h</label>
+        <link refid="de/d8d/mock__hal__impl_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>pwm.h</label>
+        <link refid="d6/db9/pwm_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>timer.h</label>
+        <link refid="d5/dd0/timer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>uart.h</label>
+        <link refid="d2/d86/uart_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+      <node id="7">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="8">
+        <label>include/MultiSonicatorSystem.h</label>
+        <link refid="db/dac/_multi_sonicator_system_8h"/>
+      </node>
+      <node id="6">
+        <label>include/sonicator/sonicator.h</label>
+        <link refid="d8/dff/include_2sonicator_2sonicator_8h"/>
+      </node>
+      <node id="7">
+        <label>include/types.h</label>
+        <link refid="d9/d49/types_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/main.cpp</label>
+        <link refid="df/d0a/main_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/modules/control/sonicator.cpp</label>
+        <link refid="d2/db9/sonicator_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/modules/control/sonicator_modbus_bridge.cpp</label>
+        <link refid="d5/dea/sonicator__modbus__bridge_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/modules/hal/atmega_hal_impl.h</label>
+        <link refid="d2/d92/atmega__hal__impl_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/modules/hal/gpio.cpp</label>
+        <link refid="de/d31/gpio_8cpp"/>
+      </node>
+      <node id="2">
+        <label>src/modules/hal/gpio.h</label>
+        <link refid="d6/d7c/gpio_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>src/modules/hal/hal.cpp</label>
+        <link refid="dc/db6/hal_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/modules/hal/hal.h</label>
+        <link refid="d8/d4b/hal_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/modules/sonicator/sonicator.h</label>
+        <link refid="d1/d72/src_2modules_2sonicator_2sonicator_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d3/d3b/class_atmega_hal" prot="public">AtmegaHal</innerclass>
+    <briefdescription>
+<para>ATmega32A HAL Implementation for Template-Based Design. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Cannasol Technologies </para>
+</simplesect>
+<simplesect kind="date"><para>2025-09-16 </para>
+</simplesect>
+<simplesect kind="version"><para>1.0.0</para>
+</simplesect>
+Concrete implementation of HAL operations for ATmega32A microcontroller. Contains static methods that can be used with template-based HAL interfaces for zero-overhead polymorphism. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>ATMEGA_HAL_IMPL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ATMEGA_HAL_IMPL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d6/d7c/gpio_8h" kindref="compound">gpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d7/d19/adc_8h" kindref="compound">adc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d6/db9/pwm_8h" kindref="compound">pwm.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d5/dd0/timer_8h" kindref="compound">timer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/d86/uart_8h" kindref="compound">uart.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="d3/d3b/class_atmega_hal" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d3/d3b/class_atmega_hal" kindref="compound">AtmegaHal</ref><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO<sp/>IMPLEMENTATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="d3/d3b/class_atmega_hal_1acc7867c91075652d2fe02ad7089e1273" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1acc7867c91075652d2fe02ad7089e1273" kindref="member">gpioInit</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a33d278bd8510192b4fdadf20fa22fe61" kindref="member">gpio_init</ref>()<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="d3/d3b/class_atmega_hal_1acce57ae7cff865cade50de2de5e104cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1acce57ae7cff865cade50de2de5e104cf" kindref="member">gpioSetPinMode</ref>(uint8_t<sp/>pin,<sp/>uint8_t<sp/>mode)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454" kindref="member">gpio_mode_t</ref><sp/>gpio_mode;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(mode)<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:<sp/>gpio_mode<sp/>=<sp/><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454a61ddb59c5e9a9cc6d9cf99d11a36920b" kindref="member">GPIO_MODE_INPUT</ref>;<sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:<sp/>gpio_mode<sp/>=<sp/><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454aa5824cd687ac84449b093087c25cec7c" kindref="member">GPIO_MODE_OUTPUT</ref>;<sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2:<sp/>gpio_mode<sp/>=<sp/><ref refid="d6/d7c/gpio_8h_1a491a2cbfb4e94f2afcc0d5bdef2dc454a946f5f8d0fa3b4199c28a63446095cb9" kindref="member">GPIO_MODE_INPUT_PULLUP</ref>;<sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a6627ec6372faceba7b8edb638cc94580" kindref="member">gpio_set_pin_mode</ref>(pin,<sp/>gpio_mode)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="d3/d3b/class_atmega_hal_1a4b98f311b471be23fc7c23e72ab6b286" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a4b98f311b471be23fc7c23e72ab6b286" kindref="member">gpioDigitalWrite</ref>(uint8_t<sp/>pin,<sp/>uint8_t<sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>state<sp/>=<sp/>(value<sp/>==<sp/>0)<sp/>?<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ad41cdd897d9b8714ef45ed6e9eba0dfa" kindref="member">GPIO_LOW</ref><sp/>:<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ab05c5a854da4602143b6bd6096d86c4d" kindref="member">GPIO_HIGH</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a3356861ebced78ebc885c06a9abad081" kindref="member">gpio_write_pin</ref>(pin,<sp/>state)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="d3/d3b/class_atmega_hal_1af5b8f8c0dc9a1e4d8f95ebcd0b784709" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="d3/d3b/class_atmega_hal_1af5b8f8c0dc9a1e4d8f95ebcd0b784709" kindref="member">gpioDigitalRead</ref>(uint8_t<sp/>pin)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>state;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="de/d31/gpio_8cpp_1af23d343920eacb1d974f8d9bed1c2fec" kindref="member">gpio_read_pin</ref>(pin,<sp/>&amp;state)<sp/>!=<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;<sp/></highlight><highlight class="comment">//<sp/>Default<sp/>to<sp/>LOW<sp/>on<sp/>error</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(state<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ab05c5a854da4602143b6bd6096d86c4d" kindref="member">GPIO_HIGH</ref>)<sp/>?<sp/>1<sp/>:<sp/>0;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="d3/d3b/class_atmega_hal_1a63d10f63378a5ef62bbe9234c46df278" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a63d10f63378a5ef62bbe9234c46df278" kindref="member">gpioTogglePin</ref>(uint8_t<sp/>pin)<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a1044034cb78746356ec8ae1b4b33419e" kindref="member">gpio_toggle_pin</ref>(pin)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Sonicator-specific<sp/>GPIO<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="d3/d3b/class_atmega_hal_1a0f67f641eee1943e756dcce7bfda514e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a0f67f641eee1943e756dcce7bfda514e" kindref="member">gpioSonicatorStart</ref>(uint8_t<sp/>sonicator_id)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a6697ca0fd5b0210af4d5c97e11efa3c9" kindref="member">gpio_sonicator_start</ref>(sonicator_id)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="d3/d3b/class_atmega_hal_1a21130918b4f33dd80617e7db95ee9873" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a21130918b4f33dd80617e7db95ee9873" kindref="member">gpioSonicatorStop</ref>(uint8_t<sp/>sonicator_id)<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a33a32957b81034c07f3685b90580d482" kindref="member">gpio_sonicator_stop</ref>(sonicator_id)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="d3/d3b/class_atmega_hal_1af6d26c98aec0e0b03d8998b8abc6105c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1af6d26c98aec0e0b03d8998b8abc6105c" kindref="member">gpioSonicatorReset</ref>(uint8_t<sp/>sonicator_id)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a9b325245641aadf28c1c28e70fc3d355" kindref="member">gpio_sonicator_reset</ref>(sonicator_id)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="d3/d3b/class_atmega_hal_1a8c662a07b79d2fa55a4adfd131d220cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a8c662a07b79d2fa55a4adfd131d220cc" kindref="member">gpioSonicatorReadOverload</ref>(uint8_t<sp/>sonicator_id,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>state)<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1af4700a3e3d882c0cc3d14a3ba5e0c66d" kindref="member">gpio_sonicator_read_overload</ref>(sonicator_id,<sp/>state)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="d3/d3b/class_atmega_hal_1ad166e2ee764cd85a82cfe7d00cc07275" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1ad166e2ee764cd85a82cfe7d00cc07275" kindref="member">gpioSonicatorReadFreqLock</ref>(uint8_t<sp/>sonicator_id,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>state)<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1af3b6ea8f9b5c77e43fa4d22fffc2c872" kindref="member">gpio_sonicator_read_freq_lock</ref>(sonicator_id,<sp/>state)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="d3/d3b/class_atmega_hal_1af3a5a5c8140ebaef0cbbc278bc5f4337" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1af3a5a5c8140ebaef0cbbc278bc5f4337" kindref="member">gpioStatusLed</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>state)<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6" kindref="member">gpio_state_t</ref><sp/>gpio_state<sp/>=<sp/>state<sp/>?<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ab05c5a854da4602143b6bd6096d86c4d" kindref="member">GPIO_HIGH</ref><sp/>:<sp/><ref refid="d6/d7c/gpio_8h_1a2ff5468d5ab752db6fa1fb95363392a6ad41cdd897d9b8714ef45ed6e9eba0dfa" kindref="member">GPIO_LOW</ref>;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="de/d31/gpio_8cpp_1a868df198e014b5e9b2ab134a16384683" kindref="member">gpio_status_led</ref>(gpio_state)<sp/>==<sp/><ref refid="d6/d7c/gpio_8h_1ad485ad00e648009e6e48148732f780caa221c52bb468cb5191edcd5bd3fbd862c" kindref="member">GPIO_OK</ref>;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ADC<sp/>IMPLEMENTATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="d3/d3b/class_atmega_hal_1a79f6c3a90f41a51c346380ac33f12a2f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a79f6c3a90f41a51c346380ac33f12a2f" kindref="member">adcInit</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d33/adc_8cpp_1aa540e6dad1cfb7b5a1a70ac688003aee" kindref="member">adc_init</ref>()<sp/>==<sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="d3/d3b/class_atmega_hal_1a2b7947081abb07966e848ceb26f0bf28" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a2b7947081abb07966e848ceb26f0bf28" kindref="member">adcReadChannel</ref>(uint8_t<sp/>channel,<sp/>uint16_t*<sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d33/adc_8cpp_1a9b6db774acc8d6f9333606ef726b2e19" kindref="member">adc_read_channel</ref>((<ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref>)channel,<sp/>value)<sp/>==<sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="d3/d3b/class_atmega_hal_1a703c515245ffe9dcdff0856bc1d8ed94" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a703c515245ffe9dcdff0856bc1d8ed94" kindref="member">adcStartConversion</ref>(uint8_t<sp/>channel)<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d33/adc_8cpp_1a4fb418ca663a4feb4922a02f2f4f98da" kindref="member">adc_start_conversion</ref>((<ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref>)channel)<sp/>==<sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="d3/d3b/class_atmega_hal_1ab554dde7f092a27c49a346d3a6c2b0ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1ab554dde7f092a27c49a346d3a6c2b0ae" kindref="member">adcIsConversionComplete</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d33/adc_8cpp_1a8fec558ec28116e82584e76a36254598" kindref="member">adc_conversion_complete</ref>();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="d3/d3b/class_atmega_hal_1a1020a4be86be2d5dbbc0a40d49aa85ef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a1020a4be86be2d5dbbc0a40d49aa85ef" kindref="member">adcRawToVoltage</ref>(uint16_t<sp/>raw_value)<sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>voltage;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="db/d33/adc_8cpp_1a9a3589be2e6a1f230b71db35c5a4aed0" kindref="member">adc_to_voltage</ref>(raw_value,<sp/>&amp;voltage)<sp/>==<sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>voltage;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.0f;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Application-specific<sp/>ADC<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="d3/d3b/class_atmega_hal_1a711df21a43c1500c9abc12b1d53036a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a711df21a43c1500c9abc12b1d53036a0" kindref="member">adcReadSonicatorPower</ref>(uint8_t<sp/>sonicator_id,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>power_watts)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a9f0fae67bdf3bebce28e5f22dbc6c324" kindref="member">adc_read_sonicator_power</ref>(sonicator_id,<sp/>power_watts)<sp/>==<sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="d3/d3b/class_atmega_hal_1acb8920854a07884864dc1b7445c5fc1b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1acb8920854a07884864dc1b7445c5fc1b" kindref="member">adcReadFrequency</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>frequency_hz)<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1af2f4baab2e0b0c058249c42763ad6c6e" kindref="member">adc_read_frequency</ref>(frequency_hz)<sp/>==<sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="d3/d3b/class_atmega_hal_1a8828c128c97c34d470747e6cf22ae049" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a8828c128c97c34d470747e6cf22ae049" kindref="member">adcCalibrate</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>reference_voltage)<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2934d301c51ccbaed8e12159ef9a4f08" kindref="member">adc_calibrate</ref>(reference_voltage)<sp/>==<sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PWM<sp/>IMPLEMENTATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="d3/d3b/class_atmega_hal_1ab21e232c0400f238affc8661e49de244" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1ab21e232c0400f238affc8661e49de244" kindref="member">pwmInit</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/d84/pwm_8cpp_1a335d3354861ef1af786744e1d00cf559" kindref="member">pwm_init</ref>()<sp/>==<sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" kindref="member">PWM_OK</ref>;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="d3/d3b/class_atmega_hal_1a11c9550e8a002332815f083413271d98" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a11c9550e8a002332815f083413271d98" kindref="member">pwmSetFrequency</ref>(uint8_t<sp/>channel,<sp/>uint32_t<sp/>frequency)<sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/d84/pwm_8cpp_1a438a0f2bc4393527bcba80464ed06b37" kindref="member">pwm_set_frequency</ref>((<ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" kindref="member">pwm_channel_t</ref>)channel,<sp/>frequency)<sp/>==<sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" kindref="member">PWM_OK</ref>;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="d3/d3b/class_atmega_hal_1afbb85779bc78a399e56d54958b584564" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1afbb85779bc78a399e56d54958b584564" kindref="member">pwmSetDutyCycle</ref>(uint8_t<sp/>channel,<sp/>uint8_t<sp/>duty_percent)<sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/d84/pwm_8cpp_1a5d04f0bab99a934ca262108b3cbccea4" kindref="member">pwm_set_duty_cycle</ref>((<ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" kindref="member">pwm_channel_t</ref>)channel,<sp/>duty_percent)<sp/>==<sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" kindref="member">PWM_OK</ref>;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145" refid="d3/d3b/class_atmega_hal_1a39913c92d8b86f0b98df9993d3020743" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a39913c92d8b86f0b98df9993d3020743" kindref="member">pwmEnableChannel</ref>(uint8_t<sp/>channel)<sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/d84/pwm_8cpp_1a4a4a0f4e5b94843e3a7f767bf9062e3d" kindref="member">pwm_enable_channel</ref>((<ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" kindref="member">pwm_channel_t</ref>)channel)<sp/>==<sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" kindref="member">PWM_OK</ref>;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149" refid="d3/d3b/class_atmega_hal_1a459c1867e7aa82be7227ef841dd9c654" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a459c1867e7aa82be7227ef841dd9c654" kindref="member">pwmDisableChannel</ref>(uint8_t<sp/>channel)<sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/d84/pwm_8cpp_1a2b8498e02d595d5769afe37b56576fa9" kindref="member">pwm_disable_channel</ref>((<ref refid="d6/db9/pwm_8h_1a5113beb40c2e296de6af562228064afc" kindref="member">pwm_channel_t</ref>)channel)<sp/>==<sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" kindref="member">PWM_OK</ref>;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Application-specific<sp/>PWM<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="d3/d3b/class_atmega_hal_1a7dfa96a853cd077994e98679c74d483a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a7dfa96a853cd077994e98679c74d483a" kindref="member">pwmSetAmplitude</ref>(uint8_t<sp/>amplitude_percent)<sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/d84/pwm_8cpp_1abac8d7cfdc720fa135fae195ca9fe0a5" kindref="member">pwm_set_amplitude</ref>(amplitude_percent)<sp/>==<sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" kindref="member">PWM_OK</ref>;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158" refid="d3/d3b/class_atmega_hal_1a5b68689d708590e69bf43c692dfda8e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a5b68689d708590e69bf43c692dfda8e8" kindref="member">pwmGetAmplitude</ref>(uint8_t*<sp/>amplitude_percent)<sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/d84/pwm_8cpp_1a956b342db650a8158960e4cef26ee8c4" kindref="member">pwm_get_amplitude</ref>(amplitude_percent)<sp/>==<sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" kindref="member">PWM_OK</ref>;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162" refid="d3/d3b/class_atmega_hal_1a5fb12e99ed8cc1c56d1c3b5d12a2a836" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a5fb12e99ed8cc1c56d1c3b5d12a2a836" kindref="member">pwmAmplitudeRamp</ref>(uint8_t<sp/>target_percent,<sp/>uint16_t<sp/>ramp_time_ms)<sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/d84/pwm_8cpp_1ab8104c242afbf3fca789fcb4ab714d73" kindref="member">pwm_amplitude_ramp</ref>(target_percent,<sp/>ramp_time_ms)<sp/>==<sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" kindref="member">PWM_OK</ref>;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="d3/d3b/class_atmega_hal_1a5075d44c96dc6776c769e8076a4bf4fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a5075d44c96dc6776c769e8076a4bf4fb" kindref="member">pwmRampComplete</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>complete)<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/d84/pwm_8cpp_1a0e026d312f0f6db227c824f778077262" kindref="member">pwm_ramp_complete</ref>(complete)<sp/>==<sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" kindref="member">PWM_OK</ref>;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170" refid="d3/d3b/class_atmega_hal_1a2a1dc6db939ed4c07e01767537aef9b9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a2a1dc6db939ed4c07e01767537aef9b9" kindref="member">pwmEmergencyStop</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/d84/pwm_8cpp_1a193a9d45b4c3b39c0bdf3f071909d3f3" kindref="member">pwm_emergency_stop</ref>()<sp/>==<sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" kindref="member">PWM_OK</ref>;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Diagnostic<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175" refid="d3/d3b/class_atmega_hal_1ac67d5bc03ca38bdb9595e811f1024a63" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1ac67d5bc03ca38bdb9595e811f1024a63" kindref="member">pwmDutyToVoltage</ref>(uint8_t<sp/>duty_percent,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>output_voltage)<sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/d84/pwm_8cpp_1a35e29350587c9ffb6f7f4d8a1f94bc16" kindref="member">pwm_duty_to_voltage</ref>(duty_percent,<sp/>output_voltage)<sp/>==<sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" kindref="member">PWM_OK</ref>;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179" refid="d3/d3b/class_atmega_hal_1ada5d5da8d50f27e9845f62cd617b978d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1ada5d5da8d50f27e9845f62cd617b978d" kindref="member">pwmAmplitudeToVoltage</ref>(uint8_t<sp/>amplitude_percent,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>output_voltage)<sp/>{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/d84/pwm_8cpp_1a9c6df5edcb08603036ad042429aa6e43" kindref="member">pwm_amplitude_to_voltage</ref>(amplitude_percent,<sp/>output_voltage)<sp/>==<sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" kindref="member">PWM_OK</ref>;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183" refid="d3/d3b/class_atmega_hal_1a191162fe81a3d48ebc05e5838ada8671" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a191162fe81a3d48ebc05e5838ada8671" kindref="member">pwmTestPattern</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d5/d84/pwm_8cpp_1af1a6bbb25190133b9e6b522b91271897" kindref="member">pwm_test_pattern</ref>()<sp/>==<sp/><ref refid="d6/db9/pwm_8h_1ae19268b163f42a214bd91ed7bf64e05fa50382d3888a143556f01a11409caf05c" kindref="member">PWM_OK</ref>;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TIMER<sp/>IMPLEMENTATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191" refid="d3/d3b/class_atmega_hal_1af41e85b7622eca85801f6e30571ba940" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1af41e85b7622eca85801f6e30571ba940" kindref="member">timerInit</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1aa96c2aa1b5dac819fd12d27e0a93e714" kindref="member">timer_init</ref>()<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195" refid="d3/d3b/class_atmega_hal_1a1b496f549d82235968adec0ccd8a8778" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a1b496f549d82235968adec0ccd8a8778" kindref="member">timerConfigure</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d4/de4/structtimer__config__t" kindref="compound">timer_config_t</ref>*<sp/>config)<sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1aceb5c83a1e22ed3c35e72e46f29a9240" kindref="member">timer_configure</ref>(timer_id,<sp/>config)<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199" refid="d3/d3b/class_atmega_hal_1a16b42fc6539c73fe680d0fead98d7fd1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a16b42fc6539c73fe680d0fead98d7fd1" kindref="member">timerStart</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id,<sp/>uint32_t<sp/>period_ms)<sp/>{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1a90c5006cae243490aeb6008629bbd5b4" kindref="member">timer_start</ref>(timer_id,<sp/>period_ms)<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203" refid="d3/d3b/class_atmega_hal_1a959a6d438692a6d5342be9c6ec274723" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a959a6d438692a6d5342be9c6ec274723" kindref="member">timerStop</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id)<sp/>{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1ad4bf06f4fb7fd08f1abae77d6026b360" kindref="member">timer_stop</ref>(timer_id)<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207" refid="d3/d3b/class_atmega_hal_1a25b8678d73526c600acb195fd03518d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a25b8678d73526c600acb195fd03518d3" kindref="member">timerExpired</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>expired)<sp/>{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1a0692af780938348e930a6f5118393414" kindref="member">timer_expired</ref>(timer_id,<sp/>expired)<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211" refid="d3/d3b/class_atmega_hal_1ac146647e137b0a1726db0524c7ea9544" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1ac146647e137b0a1726db0524c7ea9544" kindref="member">timerReset</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id)<sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1a5d7150b3258ca1ef33ce96b80b0a722c" kindref="member">timer_reset</ref>(timer_id)<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215" refid="d3/d3b/class_atmega_hal_1ab08bc6b8c7adf39d84eb68d2e03f24a3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1ab08bc6b8c7adf39d84eb68d2e03f24a3" kindref="member">timerGetValue</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id,<sp/>uint16_t*<sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1a350de4e0a608bbdbb12d24c95efc18c4" kindref="member">timer_get_value</ref>(timer_id,<sp/>value)<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219" refid="d3/d3b/class_atmega_hal_1a3fb074c1a3e7c8e04721e6d3b783df20" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a3fb074c1a3e7c8e04721e6d3b783df20" kindref="member">timerGetElapsed</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id,<sp/>uint32_t*<sp/>elapsed_ms)<sp/>{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1a662a2219dd12663dda5e4deae0b3f898" kindref="member">timer_get_elapsed</ref>(timer_id,<sp/>elapsed_ms)<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>System<sp/>timing<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224" refid="d3/d3b/class_atmega_hal_1a9b79ab5d441cb74726b8f876f8404cbf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a9b79ab5d441cb74726b8f876f8404cbf" kindref="member">timerGetMillis</ref>(uint32_t*<sp/>uptime_ms)<sp/>{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1aba3463e356a0a943870c1d60e3d26346" kindref="member">timer_get_millis</ref>(uptime_ms)<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228" refid="d3/d3b/class_atmega_hal_1a022076cce483d8eec2ca6dd61e88e060" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a022076cce483d8eec2ca6dd61e88e060" kindref="member">timerGetMicros</ref>(uint32_t*<sp/>uptime_us)<sp/>{</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1adbe1084cdeac7575543a2d60a3fdb7fa" kindref="member">timer_get_micros</ref>(uptime_us)<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232" refid="d3/d3b/class_atmega_hal_1afeba94e88a256a04b8dbc0c16cf38bb0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1afeba94e88a256a04b8dbc0c16cf38bb0" kindref="member">timerDelayMs</ref>(uint32_t<sp/>delay_ms)<sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1a94053756b1b19e59b33e0047a21e0181" kindref="member">timer_delay_ms</ref>(delay_ms)<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236" refid="d3/d3b/class_atmega_hal_1a7ac721f1eeae08f4cca374393a3deba5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a7ac721f1eeae08f4cca374393a3deba5" kindref="member">timerDelayUs</ref>(uint32_t<sp/>delay_us)<sp/>{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1af0e90cfa10e966b16b3e1bf74adc4468" kindref="member">timer_delay_us</ref>(delay_us)<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240" refid="d3/d3b/class_atmega_hal_1aa3b7bc5a03d10961deedffa53bb48f7e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1aa3b7bc5a03d10961deedffa53bb48f7e" kindref="member">timerDelayComplete</ref>(uint32_t<sp/>start_time_ms,<sp/>uint32_t<sp/>delay_ms,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>complete)<sp/>{</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1a33943f43701d2041844bd4b2fe183c6f" kindref="member">timer_delay_complete</ref>(start_time_ms,<sp/>delay_ms,<sp/>complete)<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Scheduler<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245" refid="d3/d3b/class_atmega_hal_1a0e719a9a81d4a285649171a6e73b2425" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a0e719a9a81d4a285649171a6e73b2425" kindref="member">timerSchedulerInit</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1aaa036d4b72bc7579d55b44e173be55e3" kindref="member">timer_scheduler_init</ref>()<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249" refid="d3/d3b/class_atmega_hal_1a0b146423e8cad56d9c11fc9117e6f4c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a0b146423e8cad56d9c11fc9117e6f4c7" kindref="member">timerSchedulerTick</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>tick_available)<sp/>{</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1a3ab50c6fc894ce0ea342f2926db79749" kindref="member">timer_scheduler_tick</ref>(tick_available)<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253" refid="d3/d3b/class_atmega_hal_1a7414bee3e120b789f6297cb99d5c5b0c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a7414bee3e120b789f6297cb99d5c5b0c" kindref="member">timerSchedulerGetTicks</ref>(uint32_t*<sp/>tick_count)<sp/>{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1a3518d203c8a849e7ddc23b9910fb9a81" kindref="member">timer_scheduler_get_ticks</ref>(tick_count)<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257" refid="d3/d3b/class_atmega_hal_1a39ca9eefe82a291fb2469ec659fec6a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a39ca9eefe82a291fb2469ec659fec6a6" kindref="member">timerSchedulerReset</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1a97b08f38f7ecba3857a96dc76311f228" kindref="member">timer_scheduler_reset</ref>()<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Watchdog<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="262" refid="d3/d3b/class_atmega_hal_1a3561395e8f8c7f977d8b44e9b3436b65" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a3561395e8f8c7f977d8b44e9b3436b65" kindref="member">timerWatchdogInit</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1afcbd0393e3d16c062afa2b65130631b7" kindref="member">timer_watchdog_init</ref>()<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266" refid="d3/d3b/class_atmega_hal_1a237bc211ec1cfd4bc43ae716d700666b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a237bc211ec1cfd4bc43ae716d700666b" kindref="member">timerWatchdogReset</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1a04b069063b643153cadec91ea37722c8" kindref="member">timer_watchdog_reset</ref>()<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270" refid="d3/d3b/class_atmega_hal_1a709b6922cf7be6e42b564839eaaf15b3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a709b6922cf7be6e42b564839eaaf15b3" kindref="member">timerWatchdogExpired</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>expired)<sp/>{</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1ab832e0d5932906b8379c6c6e9765e2d5" kindref="member">timer_watchdog_expired</ref>(expired)<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274" refid="d3/d3b/class_atmega_hal_1ae517ccf94c5144108e1156d831de5ab9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1ae517ccf94c5144108e1156d831de5ab9" kindref="member">timerWatchdogTimeRemaining</ref>(uint32_t*<sp/>time_remaining_ms)<sp/>{</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="dc/de5/timer_8cpp_1a614857f7bd75988ce4e212a7afc4b1ce" kindref="member">timer_watchdog_time_remaining</ref>(time_remaining_ms)<sp/>==<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref>;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>UART<sp/>IMPLEMENTATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282" refid="d3/d3b/class_atmega_hal_1a80958b0f666408645114b173e6a29174" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a80958b0f666408645114b173e6a29174" kindref="member">uartInit</ref>(uint32_t<sp/>baud_rate)<sp/>{</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d1/dce/structuart__config__t" kindref="compound">uart_config_t</ref><sp/>config<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.baud_rate<sp/>=<sp/>baud_rate,</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.data_bits<sp/>=<sp/><ref refid="d2/d86/uart_8h_1adc68b8fd9ded3990f84129df23fee798a92bcb9dce0caedc782f09b55b28e0856" kindref="member">UART_DATA_8BIT</ref>,</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.parity<sp/>=<sp/><ref refid="d2/d86/uart_8h_1a6bcc37e31dd40c204b4ac6f6189e8878aa80d2d8ea61454045ebe71d155e85b3d" kindref="member">UART_PARITY_NONE</ref>,</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.stop_bits<sp/>=<sp/><ref refid="d2/d86/uart_8h_1a6da57a73bbdbf830b845d4116f8341d7ab82524ae02e9a2f83a2879afe1c49c98" kindref="member">UART_STOP_1BIT</ref></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d23/uart_8cpp_1a291c562f366dda51665637a2d8cc8447" kindref="member">uart_init</ref>(&amp;config)<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292" refid="d3/d3b/class_atmega_hal_1a47a35626e2df31cec11340003a22c012" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a47a35626e2df31cec11340003a22c012" kindref="member">uartSetBaudRate</ref>(uint32_t<sp/>baud_rate)<sp/>{</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d23/uart_8cpp_1ad94b530602f07127f460511015915700" kindref="member">uart_set_baud_rate</ref>(baud_rate)<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>;</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296" refid="d3/d3b/class_atmega_hal_1a276651938ccfee5cd8f90944f7dec25f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a276651938ccfee5cd8f90944f7dec25f" kindref="member">uartSendByte</ref>(uint8_t<sp/>data)<sp/>{</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d23/uart_8cpp_1aa76cf405135227baee4370fa3707d3c8" kindref="member">uart_send_byte</ref>(data)<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300" refid="d3/d3b/class_atmega_hal_1a74f75a6ff7e5ab73d8713e81ba55c04e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a74f75a6ff7e5ab73d8713e81ba55c04e" kindref="member">uartReceiveByte</ref>(uint8_t*<sp/>data)<sp/>{</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d23/uart_8cpp_1aa5e3b4f3521be702d022ceb3bc1fe56e" kindref="member">uart_receive_byte</ref>(data)<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>;</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="304" refid="d3/d3b/class_atmega_hal_1ab062cc59bbe4bd3adbbcbb8271af4be1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1ab062cc59bbe4bd3adbbcbb8271af4be1" kindref="member">uartDataAvailable</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>available)<sp/>{</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d23/uart_8cpp_1a40c5f34c4b43d068db84cd9afa24bc89" kindref="member">uart_data_available</ref>(available)<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308" refid="d3/d3b/class_atmega_hal_1ade3a8f874da142dc44df01ccbe021e33" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1ade3a8f874da142dc44df01ccbe021e33" kindref="member">uartGetRxCount</ref>(uint16_t*<sp/>count)<sp/>{</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d23/uart_8cpp_1a8c78732609067ae2bd35ef44120aa6d7" kindref="member">uart_get_rx_count</ref>(count)<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>;</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"></highlight></codeline>
+<codeline lineno="312" refid="d3/d3b/class_atmega_hal_1a1395c0b3f087423ef2d1837ef3fb4273" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a1395c0b3f087423ef2d1837ef3fb4273" kindref="member">uartSendBuffer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/>buffer,<sp/>uint16_t<sp/>length)<sp/>{</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d23/uart_8cpp_1aae390a43a1728bf2f345bfb1ac2e0ede" kindref="member">uart_send_buffer</ref>(buffer,<sp/>length)<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>;</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="316" refid="d3/d3b/class_atmega_hal_1a989eea460432ec67b6f789d416e0b074" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a989eea460432ec67b6f789d416e0b074" kindref="member">uartReceiveBuffer</ref>(uint8_t*<sp/>buffer,<sp/>uint16_t<sp/>max_length,<sp/>uint16_t*<sp/>received)<sp/>{</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d23/uart_8cpp_1a39e1c2f3baa35c209847b249e9cdb49c" kindref="member">uart_receive_buffer</ref>(buffer,<sp/>max_length,<sp/>received)<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>;</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight></codeline>
+<codeline lineno="320" refid="d3/d3b/class_atmega_hal_1a534b0562724caef8da43f476e5c172b9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a534b0562724caef8da43f476e5c172b9" kindref="member">uartFlushTx</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d23/uart_8cpp_1aca0ce44bb4b9fedc156ffd006bccbc95" kindref="member">uart_flush_tx</ref>()<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>;</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324" refid="d3/d3b/class_atmega_hal_1a1806384c34e3cef350b9bd6190d3b8af" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a1806384c34e3cef350b9bd6190d3b8af" kindref="member">uartFlushRx</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d23/uart_8cpp_1aa0ba1394c3e54d2bba6d501db9ee7660" kindref="member">uart_flush_rx</ref>()<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>;</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>MODBUS<sp/>RTU<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="329" refid="d3/d3b/class_atmega_hal_1ae569ea59caa355ceb46e16dbad2582eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1ae569ea59caa355ceb46e16dbad2582eb" kindref="member">uartSendModbusFrame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/>frame,<sp/>uint16_t<sp/>length)<sp/>{</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d23/uart_8cpp_1a2b8b8eea4fec91f6fd7c6773f4d08511" kindref="member">uart_send_modbus_frame</ref>(frame,<sp/>length)<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>;</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333" refid="d3/d3b/class_atmega_hal_1a846ac2107db8f97d9dc3b50ce3bdc772" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a846ac2107db8f97d9dc3b50ce3bdc772" kindref="member">uartReceiveModbusFrame</ref>(uint8_t*<sp/>frame,<sp/>uint16_t<sp/>max_length,</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t*<sp/>received,<sp/>uint32_t<sp/>timeout_ms)<sp/>{</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d23/uart_8cpp_1a0b8696fe9a133f2130d7fb795d19273f" kindref="member">uart_receive_modbus_frame</ref>(frame,<sp/>max_length,<sp/>received,<sp/>timeout_ms)<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>;</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight></codeline>
+<codeline lineno="338" refid="d3/d3b/class_atmega_hal_1a24c282f3ce64714fd247eab767f37928" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a24c282f3ce64714fd247eab767f37928" kindref="member">uartModbusGapDetected</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>gap_detected)<sp/>{</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d23/uart_8cpp_1ae6f8e525675dfbc78c5c44a9298b1beb" kindref="member">uart_modbus_gap_detected</ref>(gap_detected)<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight></codeline>
+<codeline lineno="342" refid="d3/d3b/class_atmega_hal_1a150b569b33db80fc86081469f3c9eabb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a150b569b33db80fc86081469f3c9eabb" kindref="member">uartGetIdleTime</ref>(uint32_t*<sp/>time_us)<sp/>{</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d23/uart_8cpp_1ae8fefb7831fe3654b5fae24f5978bf3d" kindref="member">uart_get_idle_time</ref>(time_us)<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>;</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Diagnostic<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="347" refid="d3/d3b/class_atmega_hal_1a723660151b4454f821d7b3975d5028be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a723660151b4454f821d7b3975d5028be" kindref="member">uartGetStatus</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/><ref refid="db/d23/uart_8cpp_1a8b9682c4c0897c35f9e60b20e473210d" kindref="member">tx_busy</ref>,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/><ref refid="db/d23/uart_8cpp_1a854e3e6c9be5a2748e88235db8274c03" kindref="member">rx_overflow</ref>,</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/><ref refid="db/d23/uart_8cpp_1a2e7fe25823c47c43b987be6cf4275282" kindref="member">frame_error</ref>,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/><ref refid="db/d23/uart_8cpp_1a024ae533cc0baf8b1dba9f83f10a714c" kindref="member">parity_error</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d23/uart_8cpp_1ac95c1eb9f418305b09c61288a640b077" kindref="member">uart_get_status</ref>(<ref refid="db/d23/uart_8cpp_1a8b9682c4c0897c35f9e60b20e473210d" kindref="member">tx_busy</ref>,<sp/><ref refid="db/d23/uart_8cpp_1a854e3e6c9be5a2748e88235db8274c03" kindref="member">rx_overflow</ref>,<sp/><ref refid="db/d23/uart_8cpp_1a2e7fe25823c47c43b987be6cf4275282" kindref="member">frame_error</ref>,<sp/><ref refid="db/d23/uart_8cpp_1a024ae533cc0baf8b1dba9f83f10a714c" kindref="member">parity_error</ref>)<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>;</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight></codeline>
+<codeline lineno="352" refid="d3/d3b/class_atmega_hal_1a1ae41499ce3edd1ed408c1917a8f55cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a1ae41499ce3edd1ed408c1917a8f55cc" kindref="member">uartGetTxFree</ref>(uint16_t*<sp/>free_bytes)<sp/>{</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d23/uart_8cpp_1a77f2f49b95f115fcb9e2be99657c9c75" kindref="member">uart_get_tx_free</ref>(free_bytes)<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>;</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="356" refid="d3/d3b/class_atmega_hal_1ab0643eac3d604c6574ba122a7ef71a30" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1ab0643eac3d604c6574ba122a7ef71a30" kindref="member">uartClearErrors</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d23/uart_8cpp_1a79ad1801b886ffa306c7c27e2a2cc80f" kindref="member">uart_clear_errors</ref>()<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>;</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"></highlight></codeline>
+<codeline lineno="360" refid="d3/d3b/class_atmega_hal_1a28b767a48ccf1ffcea19aef878be315e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1a28b767a48ccf1ffcea19aef878be315e" kindref="member">uartGetCharTime</ref>(uint16_t*<sp/><ref refid="db/d23/uart_8cpp_1a8eef656f756f781fd823edd1df257b04" kindref="member">char_time_us</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d23/uart_8cpp_1aaa1b5b340b31a04d3cc965b7423ada02" kindref="member">uart_get_char_time</ref>(<ref refid="db/d23/uart_8cpp_1a8eef656f756f781fd823edd1df257b04" kindref="member">char_time_us</ref>)<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>;</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"></highlight></codeline>
+<codeline lineno="364" refid="d3/d3b/class_atmega_hal_1ab635109e3fed732d2e52edc746145a7a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d3b/class_atmega_hal_1ab635109e3fed732d2e52edc746145a7a" kindref="member">uartTestLoopback</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>success)<sp/>{</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d23/uart_8cpp_1a5af63458c33759ed51ed861621a87cce" kindref="member">uart_test_loopback</ref>(success)<sp/>==<sp/><ref refid="d2/d86/uart_8h_1aabc3f7837eaa0a3c2604229c376e88e2a525187963c0aaa465f2a35b30b894d07" kindref="member">UART_OK</ref>;</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="367"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>ATMEGA_HAL_IMPL_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/modules/hal/atmega_hal_impl.h"/>
+  </compounddef>
+</doxygen>

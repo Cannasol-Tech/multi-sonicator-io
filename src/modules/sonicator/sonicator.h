@@ -257,12 +257,6 @@ public:
     uint32_t getOverloadCount() const;
     
     /**
-     * @brief Get start cycle count
-     * @return Number of start cycles
-     */
-    uint32_t getStartCount() const;
-    
-    /**
      * @brief Get last error code
      * @return Most recent error
      */

@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['last_5fcomm_5fcheck_0',['last_comm_check',['../da/d9e/modbus__example_8cpp.html#aa38d0c83368fbc5f84a483f91640523b',1,'modbus_example.cpp']]],
+  ['last_5fcommunication_5ftime_1',['last_communication_time',['../d8/d00/modbus_8cpp.html#a25ff31535482e4bb2b4835ff9ed66ee5',1,'modbus.cpp']]],
+  ['last_5fcontrol_5fupdate_2',['last_control_update',['../d5/dea/sonicator__modbus__bridge_8cpp.html#a49036f90399dec4d9d76399b5a905bcc',1,'sonicator_modbus_bridge.cpp']]],
+  ['last_5fcontrol_5fupdate_5fper_5funit_3',['last_control_update_per_unit',['../d5/dea/sonicator__modbus__bridge_8cpp.html#a7003d3953d6d43b5ef66f78d2068c91f',1,'sonicator_modbus_bridge.cpp']]],
+  ['last_5ffault_5fcode_4',['last_fault_code',['../d4/d97/structsonicator__registers__t.html#ac190c0f9f24ef7fcba94277615210e80',1,'sonicator_registers_t']]],
+  ['last_5ffault_5ftime_5',['last_fault_time',['../d6/d4e/structsonicator__status__t.html#ae938fb5e15c14f6dd3c10c4599ea1b15',1,'sonicator_status_t']]],
+  ['last_5fmodbus_5factivity_6',['last_modbus_activity',['../d7/dc4/structsystem__status__t.html#afe046724d578b7ab2ce181f4097750d2',1,'system_status_t']]],
+  ['last_5fregister_5fupdate_7',['last_register_update',['../d5/dea/sonicator__modbus__bridge_8cpp.html#a3fae530b3d1a20d1edf7ce4de6b98788',1,'sonicator_modbus_bridge.cpp']]],
+  ['last_5frequest_5ftime_8',['last_request_time',['../d3/d0c/structmodbus__statistics__t.html#a4ef350ec6bde9dce159bb2ca62a78cfd',1,'modbus_statistics_t']]],
+  ['last_5frx_5ftime_9',['last_rx_time',['../db/d23/uart_8cpp.html#a683d45ca289424e1d2085bd8c1277f69',1,'uart.cpp']]],
+  ['last_5fshutdown_5freason_10',['last_shutdown_reason',['../d5/d00/structsystem__status__registers__t.html#a38d6ae0a81ab9b7dcfe466bdd1ff18b4',1,'system_status_registers_t']]],
+  ['last_5fstart_5ftime_11',['last_start_time',['../d6/d4e/structsonicator__status__t.html#a5f65e8fce8567a27adc930638568228a',1,'sonicator_status_t']]],
+  ['last_5fstate_5ftimestamp_5flo_12',['last_state_timestamp_lo',['../d4/d97/structsonicator__registers__t.html#a4979494c03692c663491fe98a02d2168',1,'sonicator_registers_t']]],
+  ['last_5fstatus_5fupdate_13',['last_status_update',['../da/d9e/modbus__example_8cpp.html#a484df318d4270158a32154ad7b372e86',1,'modbus_example.cpp']]],
+  ['last_5fsystem_5ferror_14',['last_system_error',['../d7/dc4/structsystem__status__t.html#a99de2faad467f95f864e9ebb1307a576',1,'system_status_t']]],
+  ['last_5ftransition_5ftime_5fms_15',['last_transition_time_ms',['../db/d86/structmulti__status__t.html#a0644363013284a9323e833dcd8dd0e02',1,'multi_status_t']]],
+  ['last_5fupdate_5ftime_16',['last_update_time',['../d6/d4e/structsonicator__status__t.html#adea4830fdbc4fd5622aa750e4829e06c',1,'sonicator_status_t']]]
+];

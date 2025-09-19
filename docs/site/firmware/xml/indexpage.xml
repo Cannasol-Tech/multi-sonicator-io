@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="indexpage" kind="page">
+    <compoundname>index</compoundname>
+    <title>Multi-Sonicator I/O Controller Documentation</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="index_1intro_sec">
+<title>Introduction</title><para>The <bold>Multi-Sonicator I/O Controller</bold> is an industrial automation controller developed by Cannasol Technologies for simultaneous control of up to 4 CT2000 sonicators. This ATmega32A-based system provides seamless integration with existing Velocio PLC and HMI systems through MODBUS RTU communication, enabling precise multi-unit sonicator orchestration for industrial applications.</para>
+</sect1>
+<sect1 id="index_1features">
+<title>Key Features</title><para><itemizedlist>
+<listitem><para><bold>Multi-Unit Control</bold>: Simultaneous management of up to 4 CT2000 sonicators with coordinated operations</para>
+</listitem><listitem><para><bold>Industrial Integration</bold>: Robust MODBUS RTU communication with existing automation infrastructure</para>
+</listitem><listitem><para><bold>DB9 Interface Topology</bold>: Five dedicated DB9 connectors for external system integration</para>
+</listitem><listitem><para><bold>Safety Systems</bold>: Comprehensive monitoring, alarm management, and emergency stop capabilities</para>
+</listitem><listitem><para><bold>Cloud Connectivity</bold>: Firebase integration via ESP32 for remote monitoring and data logging</para>
+</listitem><listitem><para><bold>Hardware-in-the-Loop Testing</bold>: Complete test harness for validation without production hardware</para>
+</listitem><listitem><para><bold>Web UI</bold>: Modern web interface for monitoring, control, and testing operations</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="index_1arch_sec">
+<title>System Architecture</title><sect2 id="index_1hw_arch">
+<title>Hardware Architecture</title><para>The system centers around an ATmega32A microcontroller operating at 16MHz with the following key interfaces:</para>
+<para><itemizedlist>
+<listitem><para><bold>DB9-0/DB9-5</bold>: Main automation system communication (MODBUS RTU)</para>
+</listitem><listitem><para><bold>DB9-1 through DB9-4</bold>: Individual sonicator control interfaces</para>
+</listitem><listitem><para><bold>Power</bold>: 24VDC input with onboard regulation (12V/5V)</para>
+</listitem><listitem><para><bold>Programming</bold>: Arduino-as-ISP interface for firmware updates</para>
+</listitem></itemizedlist>
+</para>
+<para>Each sonicator interface provides:<itemizedlist>
+<listitem><para>Start/Stop control signals</para>
+</listitem><listitem><para>Amplitude control (0-100%)</para>
+</listitem><listitem><para>Frequency monitoring and lock detection</para>
+</listitem><listitem><para>Overload protection and reset</para>
+</listitem><listitem><para>Power sense feedback</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="index_1sw_arch">
+<title>Software Architecture</title><para>The firmware is organized into modular components for maintainability and extensibility:</para>
+<para><itemizedlist>
+<listitem><para><bold>Communication Layer</bold>: MODBUS RTU protocol implementation with register mapping</para>
+</listitem><listitem><para><bold>Control Layer</bold>: Multi-unit sonicator coordination and state management</para>
+</listitem><listitem><para><bold>HAL (Hardware Abstraction Layer)</bold>: Platform-independent hardware interface</para>
+</listitem><listitem><para><bold>Safety Layer</bold>: Emergency stop, fault detection, and isolation mechanisms</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+</sect1>
+<sect1 id="index_1quick_start">
+<title>Quick Start Guide</title><sect2 id="index_1hw_setup">
+<title>Hardware Setup</title><para><orderedlist>
+<listitem><para><bold>Microcontroller</bold>: ATmega32A with 16MHz external crystal</para>
+</listitem><listitem><para><bold>Programmer</bold>: Arduino Uno R4 WiFi configured as ISP</para>
+</listitem><listitem><para><bold>Power Supply</bold>: 24VDC from main automation system via DB9</para>
+</listitem><listitem><para><bold>Connections</bold>: Wire DB9 connectors according to hardware configuration</para>
+</listitem></orderedlist>
+</para>
+</sect2>
+<sect2 id="index_1sw_setup">
+<title>Software Development Setup</title><para><orderedlist>
+<listitem><para><bold>Install PlatformIO</bold> with VSCode extension</para>
+</listitem><listitem><para><bold>Clone Repository</bold> and navigate to project directory</para>
+</listitem><listitem><para><bold>Install Dependencies</bold>: <programlisting filename=".bash"><codeline><highlight class="normal">make<sp/>install-deps</highlight></codeline>
+</programlisting></para>
+</listitem><listitem><para><bold>Build Project</bold>: <programlisting filename=".bash"><codeline><highlight class="normal">make<sp/>build</highlight></codeline>
+</programlisting></para>
+</listitem><listitem><para><bold>Upload Firmware</bold>: <programlisting filename=".bash"><codeline><highlight class="normal">make<sp/>upload-to-device</highlight></codeline>
+</programlisting></para>
+</listitem></orderedlist>
+</para>
+</sect2>
+<sect2 id="index_1web_ui_setup">
+<title>Web UI and Testing</title><para>For development and testing with the web interface:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>Install<sp/>web<sp/>dependencies</highlight></codeline>
+<codeline><highlight class="normal">make<sp/>web-ui-install</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Start<sp/>development<sp/>servers</highlight></codeline>
+<codeline><highlight class="normal">make<sp/>web-ui-dev</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Run<sp/>tests<sp/>with<sp/>coverage</highlight></codeline>
+<codeline><highlight class="normal">make<sp/>web-ui-test</highlight></codeline>
+</programlisting></para>
+</sect2>
+</sect1>
+<sect1 id="index_1modules_sec">
+<title>Core Modules</title><sect2 id="index_1comm_mod">
+<title>Communication Module</title><para>Handles all MODBUS RTU communication with the main automation system:<itemizedlist>
+<listitem><para>Register read/write operations</para>
+</listitem><listitem><para>Protocol error handling</para>
+</listitem><listitem><para>Response time optimization (&lt;100ms target)</para>
+</listitem></itemizedlist>
+</para>
+<para><ref refid="dd/df5/modbus__register__manager_8h" kindref="compound">modbus_register_manager.h</ref> <ref refid="d4/d9a/modbus__registers_8h" kindref="compound">modbus_registers.h</ref></para>
+</sect2>
+<sect2 id="index_1control_mod">
+<title>Control Module</title><para>Manages multi-unit sonicator coordination and individual unit control:<itemizedlist>
+<listitem><para>Coordinated start/stop operations</para>
+</listitem><listitem><para>Per-unit state management</para>
+</listitem><listitem><para>Fault isolation and recovery</para>
+</listitem><listitem><para>Amplitude and timing control</para>
+</listitem></itemizedlist>
+</para>
+<para><ref refid="dc/dc2/_multiplexer_8h" kindref="compound">Multiplexer.h</ref> <ref refid="db/dac/_multi_sonicator_system_8h" kindref="compound">MultiSonicatorSystem.h</ref> <ref refid="dc/d4d/sonicator__modbus__bridge_8h" kindref="compound">sonicator_modbus_bridge.h</ref></para>
+</sect2>
+<sect2 id="index_1hal_mod">
+<title>Hardware Abstraction Layer</title><para>Provides platform-independent hardware interface:<itemizedlist>
+<listitem><para>GPIO management</para>
+</listitem><listitem><para>Timer and PWM control</para>
+</listitem><listitem><para>ADC operations</para>
+</listitem><listitem><para>UART communication</para>
+</listitem></itemizedlist>
+</para>
+<para><ref refid="d8/d4b/hal_8h" kindref="compound">hal.h</ref></para>
+</sect2>
+</sect1>
+<sect1 id="index_1config_sec">
+<title>Configuration</title><sect2 id="index_1hw_config">
+<title>Hardware Configuration</title><para>The authoritative source for all hardware mappings and pin assignments: config/hardware-config.yaml</para>
+<para>This file defines:<itemizedlist>
+<listitem><para>DB9 connector pin mappings</para>
+</listitem><listitem><para>ATmega32A pin assignments</para>
+</listitem><listitem><para>Signal routing and connectivity</para>
+</listitem><listitem><para>Test harness configurations</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="index_1sw_config">
+<title>Software Configuration</title><para>Key configuration parameters defined in headers:<itemizedlist>
+<listitem><para>MODBUS communication settings</para>
+</listitem><listitem><para>Timing and timeout values</para>
+</listitem><listitem><para>Safety thresholds and limits</para>
+</listitem><listitem><para>System constants and constraints</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+</sect1>
+<sect1 id="index_1safety_sec">
+<title>Safety and Reliability</title><para>The system implements multiple layers of safety protection:</para>
+<para><itemizedlist>
+<listitem><para><bold>Emergency Stop</bold>: Immediate shutdown capability across all units</para>
+</listitem><listitem><para><bold>Fault Detection</bold>: Automatic detection of hardware faults and overloads</para>
+</listitem><listitem><para><bold>Isolation</bold>: Faulty units isolated while others continue operation</para>
+</listitem><listitem><para><bold>Monitoring</bold>: Continuous telemetry and status reporting</para>
+</listitem><listitem><para><bold>Reset Mechanisms</bold>: Automatic and manual overload reset capabilities</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="index_1testing_sec">
+<title>Testing and Validation</title><para>Comprehensive testing framework supporting multiple test levels:</para>
+<para><itemizedlist>
+<listitem><para><bold>Unit Tests</bold>: Individual component validation</para>
+</listitem><listitem><para><bold>Integration Tests</bold>: Module interaction verification</para>
+</listitem><listitem><para><bold>Hardware-in-the-Loop (HIL)</bold>: Full system testing with Arduino test harness</para>
+</listitem><listitem><para><bold>Acceptance Tests</bold>: End-to-end behavioral validation</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="index_1docs_sec">
+<title>Documentation Navigation</title><para><itemizedlist>
+<listitem><para>Quick Start Guide</para>
+</listitem><listitem><para>Development Environment Setup</para>
+</listitem><listitem><para>Testing Framework Guide</para>
+</listitem><listitem><para>Troubleshooting Guide</para>
+</listitem><listitem><para>API Reference</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="index_1standards_sec">
+<title>Development Standards</title><para>This project follows Agile Flow company standards:<itemizedlist>
+<listitem><para>Coding Style Standards</para>
+</listitem><listitem><para>Project Structure Standards</para>
+</listitem><listitem><para>Software Testing Standards</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="index_1contact_sec">
+<title>Contact and Support</title><para><itemizedlist>
+<listitem><para><bold>Project Lead</bold>: Stephen Boyett</para>
+</listitem><listitem><para><bold>Hardware Advisor</bold>: Josh (CEO)</para>
+</listitem><listitem><para><bold>Company</bold>: Cannasol Technologies</para>
+</listitem><listitem><para><bold>Repository</bold>: <ulink url="https://github.com/cannasol-technologies/multi-sonicator-io">https://github.com/cannasol-technologies/multi-sonicator-io</ulink></para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="index_1version_sec">
+<title>Version Information</title><para><itemizedlist>
+<listitem><para><bold>Current Version</bold>: 2.0.0</para>
+</listitem><listitem><para><bold>Last Updated</bold>: September 2025</para>
+</listitem><listitem><para><bold>Doxygen Documentation</bold>: Auto-generated from source comments</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Stephen Boyett </para>
+</simplesect>
+<simplesect kind="date"><para>2025-09-17 </para>
+</simplesect>
+<simplesect kind="version"><para>2.0.0 </para>
+</simplesect>
+<simplesect kind="copyright"><para>2025 Cannasol Technologies. All rights reserved. </para>
+</simplesect>
+</para>
+</sect1>
+    </detaileddescription>
+    <location file="include/mainpage.h"/>
+  </compounddef>
+</doxygen>

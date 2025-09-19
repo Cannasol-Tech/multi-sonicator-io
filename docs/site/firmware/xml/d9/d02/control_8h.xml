@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d9/d02/control_8h" kind="file" language="C++">
+    <compoundname>control.h</compoundname>
+    <includedby refid="d8/dff/include_2sonicator_2sonicator_8h" local="yes">include/sonicator/sonicator.h</includedby>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/sonicator/sonicator.h</label>
+        <link refid="d8/dff/include_2sonicator_2sonicator_8h"/>
+      </node>
+      <node id="1">
+        <label>include/sonicator/types/control.h</label>
+        <link refid="d9/d02/control_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="d9/d02/control_8h_1a235d05e692f1aa44c0a7770ba5f87eb4" prot="public" static="no" strong="no">
+        <type></type>
+        <name>sonicator_command_t</name>
+        <enumvalue id="d9/d02/control_8h_1a235d05e692f1aa44c0a7770ba5f87eb4a987db97b0e167389251f476d7c8c22d0" prot="public">
+          <name>SONICATOR_CMD_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d02/control_8h_1a235d05e692f1aa44c0a7770ba5f87eb4a67e775d5c114ee423be652c23762b4e5" prot="public">
+          <name>SONICATOR_CMD_START</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d02/control_8h_1a235d05e692f1aa44c0a7770ba5f87eb4a59cde013ea811598dfd6c4e8f3d3fc44" prot="public">
+          <name>SONICATOR_CMD_STOP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d02/control_8h_1a235d05e692f1aa44c0a7770ba5f87eb4ae468797997229d74ba359310b851b758" prot="public">
+          <name>SONICATOR_CMD_RESET_OVERLOAD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d9/d02/control_8h_1a235d05e692f1aa44c0a7770ba5f87eb4a46c3d8fff15b619067de0d72192b4ae0" prot="public">
+          <name>SONICATOR_CMD_EMERGENCY_STOP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Sonicator control commands. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/control.h" line="7" column="1" bodyfile="include/sonicator/types/control.h" bodystart="7" bodyend="13"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>SONICATOR_CONTROL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_CONTROL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="d9/d02/control_8h_1a235d05e692f1aa44c0a7770ba5f87eb4" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="8" refid="d9/d02/control_8h_1a235d05e692f1aa44c0a7770ba5f87eb4a987db97b0e167389251f476d7c8c22d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d02/control_8h_1a235d05e692f1aa44c0a7770ba5f87eb4a987db97b0e167389251f476d7c8c22d0" kindref="member">SONICATOR_CMD_NONE</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>No<sp/>command<sp/>pending</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="d9/d02/control_8h_1a235d05e692f1aa44c0a7770ba5f87eb4a67e775d5c114ee423be652c23762b4e5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d02/control_8h_1a235d05e692f1aa44c0a7770ba5f87eb4a67e775d5c114ee423be652c23762b4e5" kindref="member">SONICATOR_CMD_START</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Start<sp/>sonicator</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="d9/d02/control_8h_1a235d05e692f1aa44c0a7770ba5f87eb4a59cde013ea811598dfd6c4e8f3d3fc44" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d02/control_8h_1a235d05e692f1aa44c0a7770ba5f87eb4a59cde013ea811598dfd6c4e8f3d3fc44" kindref="member">SONICATOR_CMD_STOP</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Stop<sp/>sonicator<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="d9/d02/control_8h_1a235d05e692f1aa44c0a7770ba5f87eb4ae468797997229d74ba359310b851b758" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d02/control_8h_1a235d05e692f1aa44c0a7770ba5f87eb4ae468797997229d74ba359310b851b758" kindref="member">SONICATOR_CMD_RESET_OVERLOAD</ref>,<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Reset<sp/>overload<sp/>condition</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="d9/d02/control_8h_1a235d05e692f1aa44c0a7770ba5f87eb4a46c3d8fff15b619067de0d72192b4ae0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d9/d02/control_8h_1a235d05e692f1aa44c0a7770ba5f87eb4a46c3d8fff15b619067de0d72192b4ae0" kindref="member">SONICATOR_CMD_EMERGENCY_STOP</ref><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Emergency<sp/>stop<sp/>(immediate)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">}<sp/><ref refid="d9/d02/control_8h_1a235d05e692f1aa44c0a7770ba5f87eb4" kindref="member">sonicator_command_t</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>SONICATOR_CONTROL_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/sonicator/types/control.h"/>
+  </compounddef>
+</doxygen>

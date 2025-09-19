@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="db/d86/structmulti__status__t" kind="struct" language="C++" prot="public">
+    <compoundname>multi_status_t</compoundname>
+    <includes refid="db/dac/_multi_sonicator_system_8h" local="no">MultiSonicatorSystem.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="db/d86/structmulti__status__t_1a70abf968f501b54be996557ff653b6b4" prot="public" static="no" mutable="no">
+        <type><ref refid="db/dac/_multi_sonicator_system_8h_1a5883b01d55edd95a7af1598a35f6a398" kindref="member">master_state_t</ref></type>
+        <definition>master_state_t multi_status_t::master_state</definition>
+        <argsstring></argsstring>
+        <name>master_state</name>
+        <qualifiedname>multi_status_t::master_state</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MultiSonicatorSystem.h" line="26" column="20" bodyfile="include/MultiSonicatorSystem.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/d86/structmulti__status__t_1a3553822adcbd067d9846049411acfe53" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t multi_status_t::active_mask</definition>
+        <argsstring></argsstring>
+        <name>active_mask</name>
+        <qualifiedname>multi_status_t::active_mask</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MultiSonicatorSystem.h" line="27" column="13" bodyfile="include/MultiSonicatorSystem.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/d86/structmulti__status__t_1a65bd6f3cb6133e97291ed14d702a0a5c" prot="public" static="no" mutable="no">
+        <type><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref></type>
+        <definition>sonicator_state_t multi_status_t::unit_state[4]</definition>
+        <argsstring>[4]</argsstring>
+        <name>unit_state</name>
+        <qualifiedname>multi_status_t::unit_state</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MultiSonicatorSystem.h" line="28" column="23" bodyfile="include/MultiSonicatorSystem.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/d86/structmulti__status__t_1af4edd4148787e47c5a2f28cda6ba5dba" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t multi_status_t::fault_code</definition>
+        <argsstring></argsstring>
+        <name>fault_code</name>
+        <qualifiedname>multi_status_t::fault_code</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MultiSonicatorSystem.h" line="29" column="14" bodyfile="include/MultiSonicatorSystem.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/d86/structmulti__status__t_1a0644363013284a9323e833dcd8dd0e02" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t multi_status_t::last_transition_time_ms</definition>
+        <argsstring></argsstring>
+        <name>last_transition_time_ms</name>
+        <qualifiedname>multi_status_t::last_transition_time_ms</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MultiSonicatorSystem.h" line="30" column="14" bodyfile="include/MultiSonicatorSystem.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/MultiSonicatorSystem.h" line="25" column="1" bodyfile="include/MultiSonicatorSystem.h" bodystart="25" bodyend="31"/>
+    <listofallmembers>
+      <member refid="db/d86/structmulti__status__t_1a3553822adcbd067d9846049411acfe53" prot="public" virt="non-virtual"><scope>multi_status_t</scope><name>active_mask</name></member>
+      <member refid="db/d86/structmulti__status__t_1af4edd4148787e47c5a2f28cda6ba5dba" prot="public" virt="non-virtual"><scope>multi_status_t</scope><name>fault_code</name></member>
+      <member refid="db/d86/structmulti__status__t_1a0644363013284a9323e833dcd8dd0e02" prot="public" virt="non-virtual"><scope>multi_status_t</scope><name>last_transition_time_ms</name></member>
+      <member refid="db/d86/structmulti__status__t_1a70abf968f501b54be996557ff653b6b4" prot="public" virt="non-virtual"><scope>multi_status_t</scope><name>master_state</name></member>
+      <member refid="db/d86/structmulti__status__t_1a65bd6f3cb6133e97291ed14d702a0a5c" prot="public" virt="non-virtual"><scope>multi_status_t</scope><name>unit_state</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

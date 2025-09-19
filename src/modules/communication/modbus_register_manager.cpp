@@ -70,18 +70,15 @@ void register_manager_update_system_status(uint16_t status_bits, bool set) {
 }
 
 void register_manager_update_sonicator_status(uint8_t sonicator_id,
-                                             uint16_t power_watts,
-                                             uint16_t frequency_hz,
-                                             uint16_t amplitude_actual,
-                                             uint16_t status_flags) {
+                                             sonicator_status_t * status) {
     if (!manager_initialized || sonicator_id >= MODBUS_MAX_SONICATORS) {
         return;
     }
     
-    register_map.sonicators[sonicator_id].power_watts = power_watts;
-    register_map.sonicators[sonicator_id].frequency_hz = frequency_hz;
-    register_map.sonicators[sonicator_id].amplitude_actual = amplitude_actual;
-    register_map.sonicators[sonicator_id].status_flags = status_flags;
+    register_map.sonicators[sonicator_id].power_watts = status->power_watts;
+    register_map.sonicators[sonicator_id].frequency_hz = status->frequency_hz;
+    register_map.sonicators[sonicator_id].amplitude_actual = status->amplitude_actual;
+    register_map.sonicators[sonicator_id].status_flags = status->status_flags;
     
     // Update system active count and mask
     uint16_t active_count = 0;

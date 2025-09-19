@@ -117,10 +117,10 @@ typedef struct {
  */
 typedef struct {
     // Control Registers (0xN00-0xN0F) - Read/Write
-    uint16_t start_stop;           //< 0xN00: Start/Stop control
-    uint16_t amplitude_setpoint;   //< 0xN01: Amplitude setpoint (20-100%)
-    uint16_t overload_reset;       //< 0xN02: Overload reset command
-    uint16_t reserved_ctrl[13];    //< 0xN03-0xN0F: Reserved for future use
+    uint16_t start_stop;           ///< 0xN00: Start/Stop control
+    uint16_t amplitude_setpoint;   ///< 0xN01: Amplitude setpoint (20-100%)
+    uint16_t overload_reset;       ///< 0xN02: Overload reset command
+    uint16_t reserved_ctrl[13];    ///< 0xN03-0xN0F: Reserved for future use
     
     // Status Registers (0xN10-0xN1F) - Read Only
     uint16_t power_watts;          //< 0xN10: Power consumption (Watts)

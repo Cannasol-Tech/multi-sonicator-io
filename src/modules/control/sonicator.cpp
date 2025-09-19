@@ -63,35 +63,6 @@ static const sonicator_status_t SONICATOR_DEFAULT_STATE = {
     .last_start_time = 0
 };
 
-// ... (rest of the file is the same until getStatus)
-
-const sonicator_status_t* SonicatorInterface::getStatus() const {
-    return &state_;
-}
-
-const char* SonicatorInterface::stateToString(sonicator_state_t state) {
-    switch (state) {
-        case SONICATOR_STATE_IDLE: return "IDLE";
-        case SONICATOR_STATE_STARTING: return "STARTING";
-        case SONICATOR_STATE_RUNNING: return "RUNNING";
-        case SONICATOR_STATE_STOPPING: return "STOPPING";
-        case SONICATOR_STATE_FAULT: return "FAULT";
-        default: return "UNKNOWN";
-    }
-}
-
-// ... (rest of the file is the same until forceState)
-
-bool SonicatorInterface::forceState(const sonicator_status_t& newState) {
-    state_ = newState;
-    return true;
-}
-
-bool SonicatorInterface::injectFault(const sonicator_fault_t& faultMask) {
-    handleFaultConditions(faultMask);
-    return true;
-}
-
 
 // ============================================================================
 // CLASS IMPLEMENTATION
@@ -155,6 +126,7 @@ bool SonicatorInterface::halGpioReadSafe(uint8_t pin) {
 }
 
 void SonicatorInterface::halPwmSetSafe(uint8_t pin, uint8_t duty_cycle) {
+    (void)pin;
     if (!simulation_mode_) {
         pwm_set_duty_cycle(PWM_CHANNEL_AMPLITUDE, duty_cycle);
     }
@@ -177,11 +149,8 @@ void SonicatorInterface::updateHardwareOutputs() {
     bool start_signal = (state_.state == SONICATOR_STATE_RUNNING || state_.state == SONICATOR_STATE_STARTING);
     halGpioWriteSafe(pins_.start_pin, start_signal);
 
-    uint8_t pwm_value = 0;
-    if (state_.state == SONICATOR_STATE_RUNNING) {
-        pwm_value = amplitudeToPwm(state_.amplitude_percent);
-    }
-    halPwmSetSafe(PWM_AMPLITUDE_CONTROL_PIN, pwm_value);
+    // Amplitude PWM is managed globally by the Multiplexer.
+    // No per-channel PWM writes here.
 
     static uint32_t reset_pulse_start = 0;
     static bool reset_pulse_active = false;
@@ -247,7 +216,7 @@ sonicator_fault_t SonicatorInterface::checkFaultConditions() {
 void SonicatorInterface::handleFaultConditions(sonicator_fault_t faults) {
     if (faults != SONICATOR_FAULT_NONE) {
         halGpioWriteSafe(pins_.start_pin, false);
-        halPwmSetSafe(PWM_AMPLITUDE_CONTROL_PIN, 0);
+        // Amplitude PWM is managed by the Multiplexer; do not write here.
 
         state_.previous_state = state_.state;
         state_.state = SONICATOR_STATE_FAULT;
@@ -359,14 +328,13 @@ bool SonicatorInterface::resetOverload() {
 
 bool SonicatorInterface::emergencyStop() {
     halGpioWriteSafe(pins_.start_pin, false);
-    halPwmSetSafe(PWM_AMPLITUDE_CONTROL_PIN, 0);
-    
+
     state_.state = SONICATOR_STATE_IDLE;
     state_.state_entry_time = getTimestampMs();
     state_.is_running = false;
     state_.start_requested = false;
     state_.stop_requested = false;
-    
+
     SONICATOR_LOG("Emergency stop activated");
     return true;
 }
@@ -390,12 +358,12 @@ sonicator_state_t SonicatorInterface::update() {
     return state_.state;
 }
 
-const sonicator_state_t* SonicatorInterface::getStatus() const {
+const sonicator_status_t* SonicatorInterface::getStatus() const {
     return &state_;
 }
 
 const char* SonicatorInterface::stateToString(sonicator_state_t state) {
-    switch (state.state) {
+    switch (state) {
         case SONICATOR_STATE_IDLE: return "IDLE";
         case SONICATOR_STATE_STARTING: return "STARTING";
         case SONICATOR_STATE_RUNNING: return "RUNNING";

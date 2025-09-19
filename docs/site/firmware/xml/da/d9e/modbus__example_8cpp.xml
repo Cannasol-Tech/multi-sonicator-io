@@ -1,0 +1,525 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="da/d9e/modbus__example_8cpp" kind="file" language="C++">
+    <compoundname>modbus_example.cpp</compoundname>
+    <includes local="no">Arduino.h</includes>
+    <includes refid="da/dae/modbus_8h" local="yes">modules/communication/modbus.h</includes>
+    <includes refid="dd/df5/modbus__register__manager_8h" local="yes">modules/communication/modbus_register_manager.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>modules/communication/modbus.h</label>
+        <link refid="da/dae/modbus_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/modules/communication/modbus_example.cpp</label>
+        <link refid="da/d9e/modbus__example_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>modules/communication/modbus_register_manager.h</label>
+        <link refid="dd/df5/modbus__register__manager_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>modbus_registers.h</label>
+        <link refid="d4/d9a/modbus__registers_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+      <node id="5">
+        <label>stdbool.h</label>
+      </node>
+      <node id="4">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="da/d9e/modbus__example_8cpp_1a484df318d4270158a32154ad7b372e86" prot="public" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t last_status_update</definition>
+        <argsstring></argsstring>
+        <name>last_status_update</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_example.cpp" line="22" column="17" bodyfile="src/modules/communication/modbus_example.cpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d9e/modbus__example_8cpp_1aa38d0c83368fbc5f84a483f91640523b" prot="public" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t last_comm_check</definition>
+        <argsstring></argsstring>
+        <name>last_comm_check</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_example.cpp" line="23" column="17" bodyfile="src/modules/communication/modbus_example.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d9e/modbus__example_8cpp_1ab2336e816f0a31f0e3e85fba396e4340" prot="public" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool system_initialized</definition>
+        <argsstring></argsstring>
+        <name>system_initialized</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_example.cpp" line="24" column="13" bodyfile="src/modules/communication/modbus_example.cpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="da/d9e/modbus__example_8cpp_1ac88ac912d80ab6055dd99db268d6e13d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void handle_communication_timeout</definition>
+        <argsstring>(void)</argsstring>
+        <name>handle_communication_timeout</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Handle communication timeout events. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_example.cpp" line="33" column="6" bodyfile="src/modules/communication/modbus_example.cpp" bodystart="33" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d9e/modbus__example_8cpp_1a5a8301d730ec9da5ba8db3e6765b71d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void handle_communication_error</definition>
+        <argsstring>(modbus_error_t error_code)</argsstring>
+        <name>handle_communication_error</name>
+        <param>
+          <type><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977e" kindref="member">modbus_error_t</ref></type>
+          <declname>error_code</declname>
+        </param>
+        <briefdescription>
+<para>Handle communication errors. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_example.cpp" line="51" column="6" bodyfile="src/modules/communication/modbus_example.cpp" bodystart="51" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d9e/modbus__example_8cpp_1a0d252f1adb2b574d527b0d700374d963" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977e" kindref="member">modbus_error_t</ref></type>
+        <definition>modbus_error_t handle_register_read</definition>
+        <argsstring>(uint16_t address, uint16_t *value)</argsstring>
+        <name>handle_register_read</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Custom register read handler for extended functionality. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_example.cpp" line="74" column="16" bodyfile="src/modules/communication/modbus_example.cpp" bodystart="74" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d9e/modbus__example_8cpp_1a76efafb381f16dd94392074d3d53f992" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977e" kindref="member">modbus_error_t</ref></type>
+        <definition>modbus_error_t handle_register_write</definition>
+        <argsstring>(uint16_t address, uint16_t value)</argsstring>
+        <name>handle_register_write</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Custom register write handler for extended functionality. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_example.cpp" line="89" column="16" bodyfile="src/modules/communication/modbus_example.cpp" bodystart="89" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d9e/modbus__example_8cpp_1a53c830da4dfec0ef1ab77c8615623af1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void update_sonicator_status</definition>
+        <argsstring>(uint8_t sonicator_id)</argsstring>
+        <name>update_sonicator_status</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+<para>Simulate sonicator operation and update status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_example.cpp" line="114" column="6" bodyfile="src/modules/communication/modbus_example.cpp" bodystart="114" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d9e/modbus__example_8cpp_1ac111830f60b20e3fc8b5f71be2a4a1b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool initialize_modbus_system</definition>
+        <argsstring>(void)</argsstring>
+        <name>initialize_modbus_system</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize the MODBUS communication system. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_example.cpp" line="169" column="6" bodyfile="src/modules/communication/modbus_example.cpp" bodystart="169" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d9e/modbus__example_8cpp_1a7dfd9b79bc5a37d7df40207afbc5431f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setup</definition>
+        <argsstring>(void)</argsstring>
+        <name>setup</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Main application setup. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_example.cpp" line="209" column="6" bodyfile="src/modules/communication/modbus_example.cpp" bodystart="209" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d9e/modbus__example_8cpp_1a0b33edabd7f1c4e4a0bf32c67269be2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void loop</definition>
+        <argsstring>(void)</argsstring>
+        <name>loop</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Main application loop. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_example.cpp" line="234" column="6" bodyfile="src/modules/communication/modbus_example.cpp" bodystart="234" bodyend="295"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Example implementation showing MODBUS integration. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Cannasol Technologies </para>
+</simplesect>
+<simplesect kind="date"><para>2025-09-02 </para>
+</simplesect>
+<simplesect kind="version"><para>1.0.0</para>
+</simplesect>
+Demonstrates how to integrate the MODBUS framework with the sonicator control system. Shows proper initialization, register handling, and communication management. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Arduino.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="da/dae/modbus_8h" kindref="compound">modules/communication/modbus.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dd/df5/modbus__register__manager_8h" kindref="compound">modules/communication/modbus_register_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>GLOBAL<sp/>VARIABLES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="da/d9e/modbus__example_8cpp_1a484df318d4270158a32154ad7b372e86" kindref="member">last_status_update</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="da/d9e/modbus__example_8cpp_1aa38d0c83368fbc5f84a483f91640523b" kindref="member">last_comm_check</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="da/d9e/modbus__example_8cpp_1ab2336e816f0a31f0e3e85fba396e4340" kindref="member">system_initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CALLBACK<sp/>IMPLEMENTATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d9e/modbus__example_8cpp_1ac88ac912d80ab6055dd99db268d6e13d" kindref="member">handle_communication_timeout</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;MODBUS<sp/>communication<sp/>timeout<sp/>detected<sp/>-<sp/>activating<sp/>failsafe&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Activate<sp/>failsafe<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ad1c5af6cb55c225fa9f8b84d18cbe33a" kindref="member">register_manager_update_system_status</ref>(<ref refid="d4/d9a/modbus__registers_8h_1a837d78990d3a8326898c3a8980c223ff" kindref="member">SYSTEM_STATUS_COMM_FAULT</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Stop<sp/>all<sp/>sonicators<sp/>for<sp/>safety</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="d4/d9a/modbus__registers_8h_1a82619b7f1a537ff2798d4f5658318761" kindref="member">MODBUS_MAX_SONICATORS</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1a0a9d7d9107de9f0576725cdbeceb21ec" kindref="member">register_manager_update_sonicator_status</ref>(i,<sp/>0,<sp/>0,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Increment<sp/>communication<sp/>error<sp/>count</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1a60cf8ef1e58e2d51fb12006450a2ed4b" kindref="member">register_manager_increment_comm_errors</ref>();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d9e/modbus__example_8cpp_1a5a8301d730ec9da5ba8db3e6765b71d0" kindref="member">handle_communication_error</ref>(<ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977e" kindref="member">modbus_error_t</ref><sp/>error_code)<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.print(</highlight><highlight class="stringliteral">&quot;MODBUS<sp/>communication<sp/>error:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.println(error_code);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>system<sp/>status<sp/>based<sp/>on<sp/>error<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(error_code)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea30e0fa05d0cd54528b75d0b1a217ca99" kindref="member">MODBUS_ERROR_CRC</ref>:</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eabac8c226f41c07c5659ffb9f0dd55e82" kindref="member">MODBUS_ERROR_TIMEOUT</ref>:</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ad1c5af6cb55c225fa9f8b84d18cbe33a" kindref="member">register_manager_update_system_status</ref>(<ref refid="d4/d9a/modbus__registers_8h_1a837d78990d3a8326898c3a8980c223ff" kindref="member">SYSTEM_STATUS_COMM_FAULT</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea6004e8d1493f3ffab63af86f76b3d072" kindref="member">MODBUS_ERROR_SLAVE_FAILURE</ref>:</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ad1c5af6cb55c225fa9f8b84d18cbe33a" kindref="member">register_manager_update_system_status</ref>(<ref refid="d4/d9a/modbus__registers_8h_1aa8ec6cf5ed350697c26b5ac7f9b9feca" kindref="member">SYSTEM_STATUS_FAULT</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1a60cf8ef1e58e2d51fb12006450a2ed4b" kindref="member">register_manager_increment_comm_errors</ref>();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977e" kindref="member">modbus_error_t</ref><sp/><ref refid="da/d9e/modbus__example_8cpp_1a0d252f1adb2b574d527b0d700374d963" kindref="member">handle_register_read</ref>(uint16_t<sp/>address,<sp/>uint16_t*<sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Example:<sp/>Add<sp/>custom<sp/>logic<sp/>for<sp/>specific<sp/>registers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(address)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0x0005:<sp/></highlight><highlight class="comment">//<sp/>Custom<sp/>diagnostic<sp/>register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*value<sp/>=<sp/>millis()<sp/>/<sp/>1000;<sp/></highlight><highlight class="comment">//<sp/>System<sp/>uptime<sp/>in<sp/>seconds</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eafbb178df49063323a6dcbf03dd0d88d2" kindref="member">MODBUS_OK</ref>;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>default<sp/>register<sp/>map</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea0f4d5543accf517df02f9ace9bba8472" kindref="member">MODBUS_ERROR_ILLEGAL_ADDRESS</ref>;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977e" kindref="member">modbus_error_t</ref><sp/><ref refid="da/d9e/modbus__example_8cpp_1a76efafb381f16dd94392074d3d53f992" kindref="member">handle_register_write</ref>(uint16_t<sp/>address,<sp/>uint16_t<sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Example:<sp/>Add<sp/>custom<sp/>logic<sp/>for<sp/>specific<sp/>control<sp/>commands</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(address)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d4/d9a/modbus__registers_8h_1a46b469407a45b72338274b8f7d532728" kindref="member">MODBUS_REG_SYSTEM_RESET</ref>:</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(value<sp/>==<sp/>0xABCD)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>Special<sp/>reset<sp/>code</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;System<sp/>reset<sp/>requested<sp/>via<sp/>MODBUS&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>delay(100);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Perform<sp/>controlled<sp/>system<sp/>reset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eafbb178df49063323a6dcbf03dd0d88d2" kindref="member">MODBUS_OK</ref>;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eac6009826490fee81b3373ca8142ae9d3" kindref="member">MODBUS_ERROR_ILLEGAL_VALUE</ref>;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SONICATOR<sp/>SIMULATION<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d9e/modbus__example_8cpp_1a53c830da4dfec0ef1ab77c8615623af1" kindref="member">update_sonicator_status</ref>(uint8_t<sp/>sonicator_id)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sonicator_id<sp/>&gt;=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a82619b7f1a537ff2798d4f5658318761" kindref="member">MODBUS_MAX_SONICATORS</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>start_stop,<sp/>amplitude_sp;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d0f/modbus__register__manager_8cpp_1a709b2e60133ad61693f7320436aee775" kindref="member">register_manager_get_sonicator_control</ref>(sonicator_id,<sp/>&amp;start_stop,<sp/>&amp;amplitude_sp))<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Simulate<sp/>sonicator<sp/>operation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>power_watts<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>frequency_hz<sp/>=<sp/>20000;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>amplitude_actual<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>status_flags<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(start_stop<sp/>&amp;&amp;<sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1a2b383d8aebef164afa19c0a0e20990dd" kindref="member">register_manager_is_global_enabled</ref>()<sp/>&amp;&amp;<sp/></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>!<ref refid="db/d0f/modbus__register__manager_8cpp_1ac2f186865e2f446d349f113c0b3803a3" kindref="member">register_manager_is_emergency_stop_active</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Sonicator<sp/>is<sp/>running</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status_flags<sp/>|=<sp/><ref refid="d4/d9a/modbus__registers_8h_1aee1bf5e1be326c7918d8c78d21020a0e" kindref="member">SON_STATUS_RUNNING</ref>;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Simulate<sp/>power<sp/>consumption<sp/>based<sp/>on<sp/>amplitude</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>power_watts<sp/>=<sp/>(amplitude_sp<sp/>*<sp/>2);<sp/></highlight><highlight class="comment">//<sp/>2W<sp/>per<sp/>percent<sp/>amplitude</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Simulate<sp/>frequency<sp/>variation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frequency_hz<sp/>=<sp/>20000<sp/>+<sp/>(random(-50,<sp/>50));</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Simulate<sp/>amplitude<sp/>tracking<sp/>with<sp/>some<sp/>error</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>amplitude_actual<sp/>=<sp/>amplitude_sp<sp/>+<sp/>random(-2,<sp/>2);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(amplitude_actual<sp/>&gt;<sp/>100)<sp/>amplitude_actual<sp/>=<sp/>100;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(amplitude_actual<sp/>&lt;<sp/>0)<sp/>amplitude_actual<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Simulate<sp/>frequency<sp/>lock<sp/>after<sp/>startup</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(millis()<sp/>%<sp/>10000<sp/>&gt;<sp/>2000)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>After<sp/>2<sp/>seconds</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status_flags<sp/>|=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a31bc5afc0053e70eba740bac819e7c06" kindref="member">SON_STATUS_FREQ_LOCK</ref>;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Simulate<sp/>occasional<sp/>overload</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(random(0,<sp/>1000)<sp/>&lt;<sp/>5)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>0.5%<sp/>chance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status_flags<sp/>|=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a1c51c18601c9c7713fccf9f5739ff584" kindref="member">SON_STATUS_OVERLOAD</ref>;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>power_watts<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>register<sp/>map</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1a0a9d7d9107de9f0576725cdbeceb21ec" kindref="member">register_manager_update_sonicator_status</ref>(sonicator_id,<sp/>power_watts,<sp/></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frequency_hz,<sp/>amplitude_actual,<sp/>status_flags);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MAIN<sp/>APPLICATION<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="da/d9e/modbus__example_8cpp_1ac111830f60b20e3fc8b5f71be2a4a1b8" kindref="member">initialize_modbus_system</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;Initializing<sp/>MODBUS<sp/>RTU<sp/>Communication<sp/>Framework...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>register<sp/>manager</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d0f/modbus__register__manager_8cpp_1a87e393a356f5b647a98e8decf5574601" kindref="member">register_manager_init</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;ERROR:<sp/>Failed<sp/>to<sp/>initialize<sp/>register<sp/>manager&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>MODBUS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dea/structmodbus__config__t" kindref="compound">modbus_config_t</ref><sp/>config;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>config.<ref refid="d5/dea/structmodbus__config__t_1abfd4559d5083fd78a34dd9364df5c0c4" kindref="member">slave_id</ref><sp/>=<sp/><ref refid="da/dae/modbus_8h_1a1aef92ccc58f5b6eb11f9a32c8f1e3d6" kindref="member">MODBUS_SLAVE_ID</ref>;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>config.<ref refid="d5/dea/structmodbus__config__t_1a0657f618b7298a2d04c31dd2d1469409" kindref="member">baud_rate</ref><sp/>=<sp/><ref refid="da/dae/modbus_8h_1a60bd280b8778414fe9cd7546d4a24e1b" kindref="member">MODBUS_BAUD_RATE</ref>;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>config.<ref refid="d5/dea/structmodbus__config__t_1a60457aa22ba8273dc67ea526f0d69f97" kindref="member">timeout_ms</ref><sp/>=<sp/><ref refid="da/dae/modbus_8h_1a346d42f6cda5022fb4c334d6d97216d6" kindref="member">MODBUS_TIMEOUT_MS</ref>;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>config.<ref refid="d5/dea/structmodbus__config__t_1af56c9413102d41866cbe63b7c175336d" kindref="member">read_callback</ref><sp/>=<sp/><ref refid="da/d9e/modbus__example_8cpp_1a0d252f1adb2b574d527b0d700374d963" kindref="member">handle_register_read</ref>;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>config.<ref refid="d5/dea/structmodbus__config__t_1a02cdef2f270caf7cd6f9c3a45f629279" kindref="member">write_callback</ref><sp/>=<sp/><ref refid="da/d9e/modbus__example_8cpp_1a76efafb381f16dd94392074d3d53f992" kindref="member">handle_register_write</ref>;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>config.<ref refid="d5/dea/structmodbus__config__t_1a6fea6caf7ea1ed7187efb0bcdc785feb" kindref="member">timeout_callback</ref><sp/>=<sp/><ref refid="da/d9e/modbus__example_8cpp_1ac88ac912d80ab6055dd99db268d6e13d" kindref="member">handle_communication_timeout</ref>;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>config.<ref refid="d5/dea/structmodbus__config__t_1a8dc179a89b19610e2028b829592116a7" kindref="member">error_callback</ref><sp/>=<sp/><ref refid="da/d9e/modbus__example_8cpp_1a5a8301d730ec9da5ba8db3e6765b71d0" kindref="member">handle_communication_error</ref>;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>MODBUS<sp/>communication</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977e" kindref="member">modbus_error_t</ref><sp/>result<sp/>=<sp/><ref refid="d8/d00/modbus_8cpp_1a9713277eaf362fb046bac801cee5a529" kindref="member">modbus_init</ref>(&amp;config);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>!=<sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eafbb178df49063323a6dcbf03dd0d88d2" kindref="member">MODBUS_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(</highlight><highlight class="stringliteral">&quot;ERROR:<sp/>Failed<sp/>to<sp/>initialize<sp/>MODBUS:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println(result);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;MODBUS<sp/>RTU<sp/>Communication<sp/>initialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.print(</highlight><highlight class="stringliteral">&quot;Slave<sp/>ID:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.println(<ref refid="da/dae/modbus_8h_1a1aef92ccc58f5b6eb11f9a32c8f1e3d6" kindref="member">MODBUS_SLAVE_ID</ref>);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.print(</highlight><highlight class="stringliteral">&quot;Baud<sp/>Rate:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.println(<ref refid="da/dae/modbus_8h_1a60bd280b8778414fe9cd7546d4a24e1b" kindref="member">MODBUS_BAUD_RATE</ref>);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;Register<sp/>map<sp/>ready<sp/>for<sp/>PLC/HMI<sp/>communication&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d9e/modbus__example_8cpp_1a7dfd9b79bc5a37d7df40207afbc5431f" kindref="member">setup</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.begin(115200);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2000);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;=================================================&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;Multi-Sonicator<sp/>MODBUS<sp/>Communication<sp/>Example&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;Epic<sp/>1<sp/>Story<sp/>3:<sp/>MODBUS<sp/>RTU<sp/>Framework&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;=================================================&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>MODBUS<sp/>system</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/d9e/modbus__example_8cpp_1ab2336e816f0a31f0e3e85fba396e4340" kindref="member">system_initialized</ref><sp/>=<sp/><ref refid="da/d9e/modbus__example_8cpp_1ac111830f60b20e3fc8b5f71be2a4a1b8" kindref="member">initialize_modbus_system</ref>();</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="da/d9e/modbus__example_8cpp_1ab2336e816f0a31f0e3e85fba396e4340" kindref="member">system_initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;System<sp/>ready<sp/>for<sp/>operation&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;System<sp/>initialization<sp/>failed!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/d9e/modbus__example_8cpp_1a484df318d4270158a32154ad7b372e86" kindref="member">last_status_update</ref><sp/>=<sp/>millis();</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/d9e/modbus__example_8cpp_1aa38d0c83368fbc5f84a483f91640523b" kindref="member">last_comm_check</ref><sp/>=<sp/>millis();</highlight></codeline>
+<codeline lineno="229"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/d9e/modbus__example_8cpp_1a0b33edabd7f1c4e4a0bf32c67269be2f" kindref="member">loop</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="da/d9e/modbus__example_8cpp_1ab2336e816f0a31f0e3e85fba396e4340" kindref="member">system_initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>current_time<sp/>=<sp/>millis();</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Process<sp/>MODBUS<sp/>communication</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450" kindref="member">modbus_state_t</ref><sp/>state<sp/>=<sp/><ref refid="d8/d00/modbus_8cpp_1a5fd500ab836fc4f5f8704d8c709163c1" kindref="member">modbus_process</ref>();</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>for<sp/>communication<sp/>timeout</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_time<sp/>-<sp/><ref refid="da/d9e/modbus__example_8cpp_1aa38d0c83368fbc5f84a483f91640523b" kindref="member">last_comm_check</ref><sp/>&gt;=<sp/>500)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>Check<sp/>every<sp/>500ms</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d8/d00/modbus_8cpp_1a8a7d7933723cdf4d7d2663a479acc18e" kindref="member">modbus_is_timeout</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;Communication<sp/>timeout<sp/>detected&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="da/d9e/modbus__example_8cpp_1aa38d0c83368fbc5f84a483f91640523b" kindref="member">last_comm_check</ref><sp/>=<sp/>current_time;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>sonicator<sp/>status<sp/>periodically</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_time<sp/>-<sp/><ref refid="da/d9e/modbus__example_8cpp_1a484df318d4270158a32154ad7b372e86" kindref="member">last_status_update</ref><sp/>&gt;=<sp/>100)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>Update<sp/>every<sp/>100ms</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/>current_sonicator<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>one<sp/>sonicator<sp/>per<sp/>cycle<sp/>to<sp/>spread<sp/>the<sp/>load</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="da/d9e/modbus__example_8cpp_1a53c830da4dfec0ef1ab77c8615623af1" kindref="member">update_sonicator_status</ref>(current_sonicator);</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_sonicator<sp/>=<sp/>(current_sonicator<sp/>+<sp/>1)<sp/>%<sp/>4;<sp/></highlight><highlight class="comment">//<sp/>Update<sp/>first<sp/>4<sp/>sonicators</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="da/d9e/modbus__example_8cpp_1a484df318d4270158a32154ad7b372e86" kindref="member">last_status_update</ref><sp/>=<sp/>current_time;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>statistics<sp/>periodically</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>last_stats_print<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_time<sp/>-<sp/>last_stats_print<sp/>&gt;=<sp/>10000)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>Every<sp/>10<sp/>seconds</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d3/d0c/structmodbus__statistics__t" kindref="compound">modbus_statistics_t</ref>*<sp/>stats<sp/>=<sp/><ref refid="d8/d00/modbus_8cpp_1a6448441f6c9c07a5f0aa9fd9cfd3df04" kindref="member">modbus_get_statistics</ref>();</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;===<sp/>MODBUS<sp/>Statistics<sp/>===&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(</highlight><highlight class="stringliteral">&quot;Requests<sp/>received:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println(stats-&gt;<ref refid="d3/d0c/structmodbus__statistics__t_1a8bcc89ffd15afd0b0421459c98968edd" kindref="member">requests_received</ref>);</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(</highlight><highlight class="stringliteral">&quot;Responses<sp/>sent:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println(stats-&gt;<ref refid="d3/d0c/structmodbus__statistics__t_1a132330248df798b4f07a412af9498bb7" kindref="member">responses_sent</ref>);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(</highlight><highlight class="stringliteral">&quot;CRC<sp/>errors:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println(stats-&gt;<ref refid="d3/d0c/structmodbus__statistics__t_1a3ebfb787bbd9733268f0f0533638421c" kindref="member">crc_errors</ref>);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(</highlight><highlight class="stringliteral">&quot;Timeout<sp/>errors:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println(stats-&gt;<ref refid="d3/d0c/structmodbus__statistics__t_1a01fab7947c19a51fc0092ec62160b211" kindref="member">timeout_errors</ref>);</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(</highlight><highlight class="stringliteral">&quot;Max<sp/>response<sp/>time:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(stats-&gt;<ref refid="d3/d0c/structmodbus__statistics__t_1a8847fbfaef8f4d8940128cbc9f9b8d5b" kindref="member">max_response_time</ref>);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;ms&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>active<sp/>sonicator<sp/>status</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/d1a/structmodbus__register__map__t" kindref="compound">modbus_register_map_t</ref>*<sp/>map<sp/>=<sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab07eb4458680115587cf910a7532e6d3" kindref="member">register_manager_get_map</ref>();</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(</highlight><highlight class="stringliteral">&quot;Active<sp/>sonicators:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ad03c2c350a3c56687d3b08af4f0ac395" kindref="member">system_status</ref>.<ref refid="d5/d00/structsystem__status__registers__t_1a442342a3a37e41de612176d9a200769a" kindref="member">active_count</ref>);</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(</highlight><highlight class="stringliteral">&quot;<sp/>(mask:<sp/>0x&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ad03c2c350a3c56687d3b08af4f0ac395" kindref="member">system_status</ref>.<ref refid="d5/d00/structsystem__status__registers__t_1ae3298392dc37ca6fcb2d5cfc18db6dbc" kindref="member">active_mask</ref>,<sp/>HEX);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println(</highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>last_stats_print<sp/>=<sp/>current_time;</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Small<sp/>delay<sp/>to<sp/>prevent<sp/>overwhelming<sp/>the<sp/>system</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/>delay(10);</highlight></codeline>
+<codeline lineno="295"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/modules/communication/modbus_example.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,5 +1,6 @@
 #ifndef SONICATOR_PINS_H
 #define SONICATOR_PINS_H
+#include "modules/hal/adc.h"
 
 /** 
 *@file sonicator/types/pins.h
@@ -17,7 +18,7 @@
  * @section pin_matrix Pin Matrix 
  * @note Pin = Hardware Pin number on ATMega32a
  * @note Signal = Signal name as defined in `config/hardware-config.yaml`
- * @note Dir = Direction from DUT (ATMega32a) Perspective (IN/OUT)
+ * @note Dir = Direction from DUT (ATMega32a) Perspective (IN/OUT)s
  * @note IN is a MONITORED signal output from the CT2000 Sonicator to our ATmega32a 
  * @note OUT is a CONTROL signal output by our Multi-Sonicator I/O device to control/configure the CT2000 Sonicator
  * 
@@ -33,7 +34,7 @@
  *   For control signals, we are simply passing the Configuration from the Main Automation Control Box to the correct sonicator based on the MODBUS Register map. 
  
  
- * @subsection sonicator1_pins Sonicator 1 ATMega32a Pin Assignment
+ * @subsection sonicator1_pxins Sonicator 1 ATMega32a Pin Assignment
  * | Pin | Signal        | Description                    |
  * |-----|---------------|--------------------------------|
  * | 4   | FREQ_DIV10_1  | Frequency ÷10 input           |
