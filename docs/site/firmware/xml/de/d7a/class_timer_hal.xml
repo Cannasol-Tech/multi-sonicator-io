@@ -1,0 +1,456 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="de/d7a/class_timer_hal" kind="class" language="C++" prot="public">
+    <compoundname>TimerHal</compoundname>
+    <derivedcompoundref refid="d1/d54/class_hal_template" prot="public" virt="non-virtual">HalTemplate&lt; AtmegaHal &gt;</derivedcompoundref>
+    <derivedcompoundref refid="d1/d54/class_hal_template" prot="public" virt="non-virtual">HalTemplate&lt; MockHal &gt;</derivedcompoundref>
+    <derivedcompoundref refid="d1/d54/class_hal_template" prot="public" virt="non-virtual">HalTemplate&lt; HalImpl &gt;</derivedcompoundref>
+    <includes refid="de/d2b/hal__template__interfaces_8h" local="no">hal_template_interfaces.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename HalImpl</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1af8fcd8c2a926a0d8645b34a97e0efad7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <qualifiedname>TimerHal::init</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="112" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="112" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1a1f355e4e0a3dc4d08f0e4f5f059d7a4d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::configure</definition>
+        <argsstring>(timer_id_t timer_id, const timer_config_t *config)</argsstring>
+        <name>configure</name>
+        <qualifiedname>TimerHal::configure</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="d4/de4/structtimer__config__t" kindref="compound">timer_config_t</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="113" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="113" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1a4158b7cf8783d2930b8da20631b8e940" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::start</definition>
+        <argsstring>(timer_id_t timer_id, uint32_t period_ms)</argsstring>
+        <name>start</name>
+        <qualifiedname>TimerHal::start</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>period_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="114" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="114" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1a68e47d77b708f61df62364ad0495b669" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::stop</definition>
+        <argsstring>(timer_id_t timer_id)</argsstring>
+        <name>stop</name>
+        <qualifiedname>TimerHal::stop</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="115" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="115" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1aa5485ea6f0aab2fdcbfe357403ce8a2a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::expired</definition>
+        <argsstring>(timer_id_t timer_id, bool *expired)</argsstring>
+        <name>expired</name>
+        <qualifiedname>TimerHal::expired</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>expired</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="116" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="116" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1ae2b07b9146ba47435b52f8f531d59412" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::reset</definition>
+        <argsstring>(timer_id_t timer_id)</argsstring>
+        <name>reset</name>
+        <qualifiedname>TimerHal::reset</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="117" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="117" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1ae7fe181e0d5af1c5870b7d9102658dc9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::getValue</definition>
+        <argsstring>(timer_id_t timer_id, uint16_t *value)</argsstring>
+        <name>getValue</name>
+        <qualifiedname>TimerHal::getValue</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="118" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="118" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1a2fde7f9bc656c91da19fd13b5567b56d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::getElapsed</definition>
+        <argsstring>(timer_id_t timer_id, uint32_t *elapsed_ms)</argsstring>
+        <name>getElapsed</name>
+        <qualifiedname>TimerHal::getElapsed</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>elapsed_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="119" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="119" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1af6d740149c197603171a3eeaaf4c149e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::getMillis</definition>
+        <argsstring>(uint32_t *uptime_ms)</argsstring>
+        <name>getMillis</name>
+        <qualifiedname>TimerHal::getMillis</qualifiedname>
+        <param>
+          <type>uint32_t *</type>
+          <declname>uptime_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="122" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="122" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1ab527be8314453f8398efbca07769916c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::getMicros</definition>
+        <argsstring>(uint32_t *uptime_us)</argsstring>
+        <name>getMicros</name>
+        <qualifiedname>TimerHal::getMicros</qualifiedname>
+        <param>
+          <type>uint32_t *</type>
+          <declname>uptime_us</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="123" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="123" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1a32e9a2c0bdc30c84752752b9000492d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::delayMs</definition>
+        <argsstring>(uint32_t delay_ms)</argsstring>
+        <name>delayMs</name>
+        <qualifiedname>TimerHal::delayMs</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>delay_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="124" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="124" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1afea82d287f267f5cc75ba8acbf7b6e0b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::delayUs</definition>
+        <argsstring>(uint32_t delay_us)</argsstring>
+        <name>delayUs</name>
+        <qualifiedname>TimerHal::delayUs</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>delay_us</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="125" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="125" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1a45fafa7f63ca8b7669de560373dc8b8c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::delayComplete</definition>
+        <argsstring>(uint32_t start_time_ms, uint32_t delay_ms, bool *complete)</argsstring>
+        <name>delayComplete</name>
+        <qualifiedname>TimerHal::delayComplete</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>start_time_ms</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>delay_ms</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>complete</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="126" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="126" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1a3073b43a2a0aeaf341f7956b6e7765dd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::schedulerInit</definition>
+        <argsstring>()</argsstring>
+        <name>schedulerInit</name>
+        <qualifiedname>TimerHal::schedulerInit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="131" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="131" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1a80a3a98d41cb420b4d2c5242876200cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::schedulerTick</definition>
+        <argsstring>(bool *tick_available)</argsstring>
+        <name>schedulerTick</name>
+        <qualifiedname>TimerHal::schedulerTick</qualifiedname>
+        <param>
+          <type>bool *</type>
+          <declname>tick_available</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="132" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="132" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1aad7f48593c5e19e54b3b9b61fde6a28a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::schedulerGetTicks</definition>
+        <argsstring>(uint32_t *tick_count)</argsstring>
+        <name>schedulerGetTicks</name>
+        <qualifiedname>TimerHal::schedulerGetTicks</qualifiedname>
+        <param>
+          <type>uint32_t *</type>
+          <declname>tick_count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="133" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="133" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1adbd26ca429d9a7690eaf227b7ccd8d68" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::schedulerReset</definition>
+        <argsstring>()</argsstring>
+        <name>schedulerReset</name>
+        <qualifiedname>TimerHal::schedulerReset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="134" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="134" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1a8671d831f684345ae866e5e3e8c75a31" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::watchdogInit</definition>
+        <argsstring>()</argsstring>
+        <name>watchdogInit</name>
+        <qualifiedname>TimerHal::watchdogInit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="137" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="137" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1a9dd707d570b9d06088972e3f7222f2e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::watchdogReset</definition>
+        <argsstring>()</argsstring>
+        <name>watchdogReset</name>
+        <qualifiedname>TimerHal::watchdogReset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="138" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="138" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1a2b7b7d613030ae489ce3ed7ee17018d8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::watchdogExpired</definition>
+        <argsstring>(bool *expired)</argsstring>
+        <name>watchdogExpired</name>
+        <qualifiedname>TimerHal::watchdogExpired</qualifiedname>
+        <param>
+          <type>bool *</type>
+          <declname>expired</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="139" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="139" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d7a/class_timer_hal_1a7ec2a57b6e465c64ae8d034c96390879" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TimerHal&lt; HalImpl &gt;::watchdogTimeRemaining</definition>
+        <argsstring>(uint32_t *time_remaining_ms)</argsstring>
+        <name>watchdogTimeRemaining</name>
+        <qualifiedname>TimerHal::watchdogTimeRemaining</qualifiedname>
+        <param>
+          <type>uint32_t *</type>
+          <declname>time_remaining_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="140" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="140" bodyend="140"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Timer HAL Interface (Template-based) </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>HalTemplate&lt; AtmegaHal &gt;</label>
+        <link refid="d1/d54/class_hal_template"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>HalTemplate&lt; HalImpl &gt;</label>
+        <link refid="d1/d54/class_hal_template"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HalTemplate&lt; MockHal &gt;</label>
+        <link refid="d1/d54/class_hal_template"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>TimerHal&lt; HalImpl &gt;</label>
+        <link refid="de/d7a/class_timer_hal"/>
+      </node>
+    </inheritancegraph>
+    <location file="src/modules/hal/hal_template_interfaces.h" line="109" column="1" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="109" bodyend="141"/>
+    <listofallmembers>
+      <member refid="de/d7a/class_timer_hal_1a1f355e4e0a3dc4d08f0e4f5f059d7a4d" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>configure</name></member>
+      <member refid="de/d7a/class_timer_hal_1a45fafa7f63ca8b7669de560373dc8b8c" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>delayComplete</name></member>
+      <member refid="de/d7a/class_timer_hal_1a32e9a2c0bdc30c84752752b9000492d0" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>delayMs</name></member>
+      <member refid="de/d7a/class_timer_hal_1afea82d287f267f5cc75ba8acbf7b6e0b" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>delayUs</name></member>
+      <member refid="de/d7a/class_timer_hal_1aa5485ea6f0aab2fdcbfe357403ce8a2a" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>expired</name></member>
+      <member refid="de/d7a/class_timer_hal_1a2fde7f9bc656c91da19fd13b5567b56d" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>getElapsed</name></member>
+      <member refid="de/d7a/class_timer_hal_1ab527be8314453f8398efbca07769916c" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>getMicros</name></member>
+      <member refid="de/d7a/class_timer_hal_1af6d740149c197603171a3eeaaf4c149e" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>getMillis</name></member>
+      <member refid="de/d7a/class_timer_hal_1ae7fe181e0d5af1c5870b7d9102658dc9" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>getValue</name></member>
+      <member refid="de/d7a/class_timer_hal_1af8fcd8c2a926a0d8645b34a97e0efad7" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>init</name></member>
+      <member refid="de/d7a/class_timer_hal_1ae2b07b9146ba47435b52f8f531d59412" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>reset</name></member>
+      <member refid="de/d7a/class_timer_hal_1aad7f48593c5e19e54b3b9b61fde6a28a" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>schedulerGetTicks</name></member>
+      <member refid="de/d7a/class_timer_hal_1a3073b43a2a0aeaf341f7956b6e7765dd" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>schedulerInit</name></member>
+      <member refid="de/d7a/class_timer_hal_1adbd26ca429d9a7690eaf227b7ccd8d68" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>schedulerReset</name></member>
+      <member refid="de/d7a/class_timer_hal_1a80a3a98d41cb420b4d2c5242876200cb" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>schedulerTick</name></member>
+      <member refid="de/d7a/class_timer_hal_1a4158b7cf8783d2930b8da20631b8e940" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>start</name></member>
+      <member refid="de/d7a/class_timer_hal_1a68e47d77b708f61df62364ad0495b669" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>stop</name></member>
+      <member refid="de/d7a/class_timer_hal_1a2b7b7d613030ae489ce3ed7ee17018d8" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>watchdogExpired</name></member>
+      <member refid="de/d7a/class_timer_hal_1a8671d831f684345ae866e5e3e8c75a31" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>watchdogInit</name></member>
+      <member refid="de/d7a/class_timer_hal_1a9dd707d570b9d06088972e3f7222f2e1" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>watchdogReset</name></member>
+      <member refid="de/d7a/class_timer_hal_1a7ec2a57b6e465c64ae8d034c96390879" prot="public" virt="non-virtual"><scope>TimerHal</scope><name>watchdogTimeRemaining</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

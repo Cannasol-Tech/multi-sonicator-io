@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d0/dc3/class_arduino_timer_manager" kind="class" language="C++" prot="public">
+    <compoundname>ArduinoTimerManager</compoundname>
+    <basecompoundref refid="da/dbb/class_i_timer_manager" prot="public" virt="non-virtual">ITimerManager</basecompoundref>
+    <includes refid="d8/d61/arduino__hal__factory_8h" local="no">arduino_hal_factory.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d0/dc3/class_arduino_timer_manager_1a0d44aec2e282475fff7d2473c7c5d43f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoTimerManager::init</definition>
+        <argsstring>(void) override</argsstring>
+        <name>init</name>
+        <qualifiedname>ArduinoTimerManager::init</qualifiedname>
+        <reimplements refid="da/dbb/class_i_timer_manager_1ad17d858816447f8a289d5158006ae5c9">init</reimplements>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="195" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="195" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/dc3/class_arduino_timer_manager_1acb07fdba9de8bb58b64b607a097460e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoTimerManager::start</definition>
+        <argsstring>(uint8_t timer_id, uint32_t period_ms) override</argsstring>
+        <name>start</name>
+        <qualifiedname>ArduinoTimerManager::start</qualifiedname>
+        <reimplements refid="da/dbb/class_i_timer_manager_1ad16497ee88e75e72292c0b9d32b0d029">start</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>period_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="199" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="199" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/dc3/class_arduino_timer_manager_1a1dab93a086caf564e5da4b4ad57fb69d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoTimerManager::stop</definition>
+        <argsstring>(uint8_t timer_id) override</argsstring>
+        <name>stop</name>
+        <qualifiedname>ArduinoTimerManager::stop</qualifiedname>
+        <reimplements refid="da/dbb/class_i_timer_manager_1a2698f312d8cb5b917306539572698fdf">stop</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>timer_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="203" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="203" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/dc3/class_arduino_timer_manager_1a4a5122d168e14f6e3e979ae871c00f1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoTimerManager::isExpired</definition>
+        <argsstring>(uint8_t timer_id) override</argsstring>
+        <name>isExpired</name>
+        <qualifiedname>ArduinoTimerManager::isExpired</qualifiedname>
+        <reimplements refid="da/dbb/class_i_timer_manager_1a7d78578449fd90a14a45ad40d0d8db16">isExpired</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>timer_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="207" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="207" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/dc3/class_arduino_timer_manager_1a9eca323fd80891efeac86a577e93a346" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoTimerManager::getMillis</definition>
+        <argsstring>(uint32_t *millis) override</argsstring>
+        <name>getMillis</name>
+        <qualifiedname>ArduinoTimerManager::getMillis</qualifiedname>
+        <reimplements refid="da/dbb/class_i_timer_manager_1a342aff91bd8f6daa9a254669479a746d">getMillis</reimplements>
+        <param>
+          <type>uint32_t *</type>
+          <declname>millis</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="211" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="211" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/dc3/class_arduino_timer_manager_1a85abc0d6c6c2683679540790a6b9991b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoTimerManager::delayMs</definition>
+        <argsstring>(uint32_t delay_ms) override</argsstring>
+        <name>delayMs</name>
+        <qualifiedname>ArduinoTimerManager::delayMs</qualifiedname>
+        <reimplements refid="da/dbb/class_i_timer_manager_1ae4236adfc90847c3de8a682629a9a502">delayMs</reimplements>
+        <param>
+          <type>uint32_t</type>
+          <declname>delay_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="215" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="215" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/dc3/class_arduino_timer_manager_1a25603a66957b6d189f5180cec5579c88" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoTimerManager::watchdogReset</definition>
+        <argsstring>(void) override</argsstring>
+        <name>watchdogReset</name>
+        <qualifiedname>ArduinoTimerManager::watchdogReset</qualifiedname>
+        <reimplements refid="da/dbb/class_i_timer_manager_1a75fbc7e3b6a45065864425cac3ff1508">watchdogReset</reimplements>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="219" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="219" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/dc3/class_arduino_timer_manager_1a1915e1cf2eab43fecee684b4d71eef50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoTimerManager::testAll</definition>
+        <argsstring>(bool *success) override</argsstring>
+        <name>testAll</name>
+        <qualifiedname>ArduinoTimerManager::testAll</qualifiedname>
+        <reimplements refid="da/dbb/class_i_timer_manager_1a4a75c2386d08f646723aeb4cc1895f09">testAll</reimplements>
+        <param>
+          <type>bool *</type>
+          <declname>success</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="223" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="223" bodyend="225"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Arduino Timer implementation using Arduino framework. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ArduinoTimerManager</label>
+        <link refid="d0/dc3/class_arduino_timer_manager"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ITimerManager</label>
+        <link refid="da/dbb/class_i_timer_manager"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ArduinoTimerManager</label>
+        <link refid="d0/dc3/class_arduino_timer_manager"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ITimerManager</label>
+        <link refid="da/dbb/class_i_timer_manager"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="193" column="1" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="193" bodyend="226"/>
+    <listofallmembers>
+      <member refid="d0/dc3/class_arduino_timer_manager_1a85abc0d6c6c2683679540790a6b9991b" prot="public" virt="virtual"><scope>ArduinoTimerManager</scope><name>delayMs</name></member>
+      <member refid="d0/dc3/class_arduino_timer_manager_1a9eca323fd80891efeac86a577e93a346" prot="public" virt="virtual"><scope>ArduinoTimerManager</scope><name>getMillis</name></member>
+      <member refid="d0/dc3/class_arduino_timer_manager_1a0d44aec2e282475fff7d2473c7c5d43f" prot="public" virt="virtual"><scope>ArduinoTimerManager</scope><name>init</name></member>
+      <member refid="d0/dc3/class_arduino_timer_manager_1a4a5122d168e14f6e3e979ae871c00f1f" prot="public" virt="virtual"><scope>ArduinoTimerManager</scope><name>isExpired</name></member>
+      <member refid="d0/dc3/class_arduino_timer_manager_1acb07fdba9de8bb58b64b607a097460e7" prot="public" virt="virtual"><scope>ArduinoTimerManager</scope><name>start</name></member>
+      <member refid="d0/dc3/class_arduino_timer_manager_1a1dab93a086caf564e5da4b4ad57fb69d" prot="public" virt="virtual"><scope>ArduinoTimerManager</scope><name>stop</name></member>
+      <member refid="d0/dc3/class_arduino_timer_manager_1a1915e1cf2eab43fecee684b4d71eef50" prot="public" virt="virtual"><scope>ArduinoTimerManager</scope><name>testAll</name></member>
+      <member refid="d0/dc3/class_arduino_timer_manager_1a25603a66957b6d189f5180cec5579c88" prot="public" virt="virtual"><scope>ArduinoTimerManager</scope><name>watchdogReset</name></member>
+      <member refid="da/dbb/class_i_timer_manager_1a78a4d2a06c5f44aefcbbe25cb8f3037b" prot="public" virt="virtual"><scope>ArduinoTimerManager</scope><name>~ITimerManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

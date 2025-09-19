@@ -1,0 +1,601 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d5/dea/sonicator__modbus__bridge_8cpp" kind="file" language="C++">
+    <compoundname>sonicator_modbus_bridge.cpp</compoundname>
+    <includes local="yes">modules/communication/modbus_register_manager.h</includes>
+    <includes local="yes">modules/communication/modbus_registers.h</includes>
+    <includes refid="dc/d4d/sonicator__modbus__bridge_8h" local="yes">sonicator_modbus_bridge.h</includes>
+    <includes refid="d8/d4b/hal_8h" local="yes">modules/hal/hal.h</includes>
+    <includes refid="d6/d4f/register__map_8h" local="yes">register_map.h</includes>
+    <includes local="no">Arduino.h</includes>
+    <incdepgraph>
+      <node id="17">
+        <label>register_map.h</label>
+        <link refid="d6/d4f/register__map_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>sonicator_modbus_bridge.h</label>
+        <link refid="dc/d4d/sonicator__modbus__bridge_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/modules/control/sonicator_modbus_bridge.cpp</label>
+        <link refid="d5/dea/sonicator__modbus__bridge_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>adc.h</label>
+        <link refid="d7/d19/adc_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>atmega_hal_impl.h</label>
+        <link refid="d2/d92/atmega__hal__impl_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>gpio.h</label>
+        <link refid="d6/d7c/gpio_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>modules/hal/hal.h</label>
+        <link refid="d8/d4b/hal_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>hal_template_interfaces.h</label>
+        <link refid="de/d2b/hal__template__interfaces_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>mock_hal_impl.h</label>
+        <link refid="de/d8d/mock__hal__impl_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>pwm.h</label>
+        <link refid="d6/db9/pwm_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>timer.h</label>
+        <link refid="d5/dd0/timer_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>uart.h</label>
+        <link refid="d2/d86/uart_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>Arduino.h</label>
+      </node>
+      <node id="2">
+        <label>modules/communication/modbus_register_manager.h</label>
+      </node>
+      <node id="3">
+        <label>modules/communication/modbus_registers.h</label>
+      </node>
+      <node id="6">
+        <label>stdbool.h</label>
+      </node>
+      <node id="5">
+        <label>stdint.h</label>
+      </node>
+      <node id="16">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="d5/dea/sonicator__modbus__bridge_8cpp_1a6bcc2c7e65618cc2e5a63fc73fa61285" prot="public" static="no">
+        <name>MODBUS_RESPONSE_TIME_TARGET_MS</name>
+        <initializer>100u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/sonicator_modbus_bridge.cpp" line="28" column="9" bodyfile="src/modules/control/sonicator_modbus_bridge.cpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d5/dea/sonicator__modbus__bridge_8cpp_1a4514332eb51a224ef17061d950d9d5b1" prot="public" static="no">
+        <name>REGISTER_PUBLISH_INTERVAL_MS</name>
+        <initializer>100u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/sonicator_modbus_bridge.cpp" line="29" column="9" bodyfile="src/modules/control/sonicator_modbus_bridge.cpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d5/dea/sonicator__modbus__bridge_8cpp_1a7ce1992228143126aa0845bb923210b5" prot="public" static="no">
+        <name>CONTROL_TIMEOUT_MS</name>
+        <initializer>1000u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/sonicator_modbus_bridge.cpp" line="30" column="9" bodyfile="src/modules/control/sonicator_modbus_bridge.cpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="d5/dea/sonicator__modbus__bridge_8cpp_1a3fae530b3d1a20d1edf7ce4de6b98788" prot="public" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t last_register_update</definition>
+        <argsstring></argsstring>
+        <name>last_register_update</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/sonicator_modbus_bridge.cpp" line="36" column="17" bodyfile="src/modules/control/sonicator_modbus_bridge.cpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dea/sonicator__modbus__bridge_8cpp_1a49036f90399dec4d9d76399b5a905bcc" prot="public" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t last_control_update</definition>
+        <argsstring></argsstring>
+        <name>last_control_update</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/sonicator_modbus_bridge.cpp" line="37" column="17" bodyfile="src/modules/control/sonicator_modbus_bridge.cpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/dea/sonicator__modbus__bridge_8cpp_1a7003d3953d6d43b5ef66f78d2068c91f" prot="public" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t last_control_update_per_unit[MODBUS_MAX_SONICATORS]</definition>
+        <argsstring>[MODBUS_MAX_SONICATORS]</argsstring>
+        <name>last_control_update_per_unit</name>
+        <initializer>= {0, 0, 0, 0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/sonicator_modbus_bridge.cpp" line="38" column="17" bodyfile="src/modules/control/sonicator_modbus_bridge.cpp" bodystart="38" bodyend="38"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="d5/dea/sonicator__modbus__bridge_8cpp_1a991ca85b1b294a9e86a829af74cbecd5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>static uint16_t clamp_amplitude_sp</definition>
+        <argsstring>(uint16_t sp)</argsstring>
+        <name>clamp_amplitude_sp</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>sp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/sonicator_modbus_bridge.cpp" line="44" column="24" bodyfile="src/modules/control/sonicator_modbus_bridge.cpp" bodystart="44" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dea/sonicator__modbus__bridge_8cpp_1ae138de112a8a0d76cc6d07c679bff497" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool apply_control_from_registers</definition>
+        <argsstring>(uint8_t unit_id)</argsstring>
+        <name>apply_control_from_registers</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>unit_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/sonicator_modbus_bridge.cpp" line="54" column="13" bodyfile="src/modules/control/sonicator_modbus_bridge.cpp" bodystart="54" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dea/sonicator__modbus__bridge_8cpp_1abac078fe08745cf4ca6f2d443fb5aeec" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void publish_status_to_registers</definition>
+        <argsstring>(uint8_t unit_id)</argsstring>
+        <name>publish_status_to_registers</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>unit_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/sonicator_modbus_bridge.cpp" line="80" column="13" bodyfile="src/modules/control/sonicator_modbus_bridge.cpp" bodystart="80" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dea/sonicator__modbus__bridge_8cpp_1a025ee107dd733f26d18247c93a57fe9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool sonicator_modbus_bridge_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>sonicator_modbus_bridge_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize sonicator MODBUS bridge. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets up the bridge between sonicator control functions and MODBUS register management. Must be called after both sonicator control and MODBUS systems are initialized.</para>
+<para><simplesect kind="return"><para>true on success, false on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/sonicator_modbus_bridge.cpp" line="121" column="6" bodyfile="src/modules/control/sonicator_modbus_bridge.cpp" bodystart="121" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dea/sonicator__modbus__bridge_8cpp_1a21eb64fd76d39367ac8ead8fd7141350" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool sonicator_modbus_bridge_update</definition>
+        <argsstring>(void)</argsstring>
+        <name>sonicator_modbus_bridge_update</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Update sonicator-MODBUS bridge (call from main loop) </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Handles bidirectional communication between sonicator control and MODBUS registers. Must be called regularly to maintain &lt;100ms response time requirement.</para>
+<para>This function:<itemizedlist>
+<listitem><para>Reads MODBUS control registers and executes sonicator commands</para>
+</listitem><listitem><para>Updates MODBUS status registers with current sonicator state</para>
+</listitem><listitem><para>Maintains response time tracking for compliance monitoring</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="return"><para>true if any control action was taken, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/sonicator_modbus_bridge.cpp" line="143" column="6" bodyfile="src/modules/control/sonicator_modbus_bridge.cpp" bodystart="143" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dea/sonicator__modbus__bridge_8cpp_1a25d0d4028ca77add08f24d50d2a6978e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sonicator_modbus_bridge_get_status</definition>
+        <argsstring>(uint32_t *last_register_update_time, uint32_t *last_control_update_time, uint32_t *response_time_ms)</argsstring>
+        <name>sonicator_modbus_bridge_get_status</name>
+        <param>
+          <type>uint32_t *</type>
+          <declname>last_register_update_time</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>last_control_update_time</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>response_time_ms</declname>
+        </param>
+        <briefdescription>
+<para>Get bridge status and timing information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Provides timing information for monitoring bridge performance and compliance with response time requirements.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>last_register_update_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store last register update time </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>last_control_update_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store last control update time <linebreak/>
+ </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>response_time_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store last response time in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/sonicator_modbus_bridge.cpp" line="160" column="6" bodyfile="src/modules/control/sonicator_modbus_bridge.cpp" bodystart="160" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dea/sonicator__modbus__bridge_8cpp_1a219a7d60c31b3c06b103ddefa1c86c9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool sonicator_modbus_bridge_is_responsive</definition>
+        <argsstring>(void)</argsstring>
+        <name>sonicator_modbus_bridge_is_responsive</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Check if bridge is meeting response time requirements. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Verifies that the bridge is responding to MODBUS control commands within the required &lt;100ms response time per Story 1.4 acceptance criteria.</para>
+<para><simplesect kind="return"><para>true if response time &lt;100ms, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/sonicator_modbus_bridge.cpp" line="175" column="6" bodyfile="src/modules/control/sonicator_modbus_bridge.cpp" bodystart="175" bodyend="179"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Bridge between sonicator control and MODBUS registers (generalized for 4 units) </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Cannasol Technologies </para>
+</simplesect>
+<simplesect kind="date"><para>2025-09-16 </para>
+</simplesect>
+<simplesect kind="version"><para>1.1.0</para>
+</simplesect>
+Generalized bridge that synchronizes MODBUS registers with the hardware for all four sonicators. It:<itemizedlist>
+<listitem><para>Reads per-unit control registers and drives HAL outputs deterministically</para>
+</listitem><listitem><para>Applies write-and-clear overload reset semantics</para>
+</listitem><listitem><para>Publishes per-unit telemetry to the register map at a rate-limited cadence</para>
+</listitem><listitem><para>Maintains a &lt;100ms responsiveness target for control path </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;modules/communication/modbus_register_manager.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;modules/communication/modbus_registers.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dc/d4d/sonicator__modbus__bridge_8h" kindref="compound">sonicator_modbus_bridge.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d8/d4b/hal_8h" kindref="compound">modules/hal/hal.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d6/d4f/register__map_8h" kindref="compound">register_map.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Arduino.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CONSTANTS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MODBUS_RESPONSE_TIME_TARGET_MS<sp/><sp/><sp/>100u</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REGISTER_PUBLISH_INTERVAL_MS<sp/><sp/><sp/><sp/><sp/>100u</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONTROL_TIMEOUT_MS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1000u</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PRIVATE<sp/>STATE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a3fae530b3d1a20d1edf7ce4de6b98788" kindref="member">last_register_update</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a49036f90399dec4d9d76399b5a905bcc" kindref="member">last_control_update</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a7003d3953d6d43b5ef66f78d2068c91f" kindref="member">last_control_update_per_unit</ref>[<ref refid="d4/d9a/modbus__registers_8h_1a82619b7f1a537ff2798d4f5658318761" kindref="member">MODBUS_MAX_SONICATORS</ref>]<sp/>=<sp/>{0,<sp/>0,<sp/>0,<sp/>0};</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>UTILITIES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>uint16_t<sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a991ca85b1b294a9e86a829af74cbecd5" kindref="member">clamp_amplitude_sp</ref>(uint16_t<sp/>sp)<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sp<sp/>&lt;<sp/>20u)<sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>20u;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sp<sp/>&gt;<sp/>100u)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>100u;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sp;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PER-UNIT<sp/>OPERATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1ae138de112a8a0d76cc6d07c679bff497" kindref="member">apply_control_from_registers</ref>(uint8_t<sp/>unit_id)<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>start_stop<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>amplitude_sp<sp/>=<sp/>50;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d0f/modbus__register__manager_8cpp_1a709b2e60133ad61693f7320436aee775" kindref="member">register_manager_get_sonicator_control</ref>(unit_id,<sp/>&amp;start_stop,<sp/>&amp;amplitude_sp))<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>reset_req<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)<ref refid="db/d0f/modbus__register__manager_8cpp_1a450e4689797a876f706e6e3c8de80534" kindref="member">register_manager_consume_overload_reset</ref>(unit_id,<sp/>&amp;reset_req);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1af132973e9c955228c4f718796bec3640" kindref="member">sonicator_control_t</ref><sp/>ctrl;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>ctrl.start<sp/>=<sp/>(start_stop<sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>ctrl.amplitude_percent<sp/>=<sp/>(uint8_t)<ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a991ca85b1b294a9e86a829af74cbecd5" kindref="member">clamp_amplitude_sp</ref>(amplitude_sp);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>ctrl.reset_overload<sp/>=<sp/>reset_req;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>hal_id<sp/>=<sp/>(uint8_t)(unit_id<sp/>+<sp/>1);<sp/></highlight><highlight class="comment">//<sp/>HAL<sp/>is<sp/>1-based</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>action_taken<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="dc/db6/hal_8cpp_1a25dd966a4c5c3b9737da5b65dee9c3b0" kindref="member">hal_control_sonicator</ref>(hal_id,<sp/>&amp;ctrl)<sp/>==<sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/>millis();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a7003d3953d6d43b5ef66f78d2068c91f" kindref="member">last_control_update_per_unit</ref>[unit_id]<sp/>=<sp/>now;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a49036f90399dec4d9d76399b5a905bcc" kindref="member">last_control_update</ref><sp/>=<sp/>now;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>action_taken<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>action_taken;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1abac078fe08745cf4ca6f2d443fb5aeec" kindref="member">publish_status_to_registers</ref>(uint8_t<sp/>unit_id)<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>hal_id<sp/>=<sp/>(uint8_t)(unit_id<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1afeb77d5a88e0115b4344d7f6ed578ec8" kindref="member">sonicator_status_t</ref><sp/>st<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="dc/db6/hal_8cpp_1a79df73bca16a4d09f8820b3af83f1c44" kindref="member">hal_read_sonicator_status</ref>(hal_id,<sp/>&amp;st)<sp/>!=<sp/><ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6a6eb724a07061d89a4a2052744e5a3632" kindref="member">HAL_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/d1a/structmodbus__register__map__t" kindref="compound">modbus_register_map_t</ref>*<sp/>map<sp/>=<sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab07eb4458680115587cf910a7532e6d3" kindref="member">register_manager_get_map</ref>();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>start_stop_cmd<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>amplitude_sp<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(map)<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>start_stop_cmd<sp/>=<sp/>map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" kindref="member">sonicators</ref>[unit_id].<ref refid="d4/d97/structsonicator__registers__t_1a3e0e2424d50debfad86a72d557dbdd6a" kindref="member">start_stop</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>amplitude_sp<sp/><sp/><sp/>=<sp/>map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" kindref="member">sonicators</ref>[unit_id].<ref refid="d4/d97/structsonicator__registers__t_1a93efadf71cb1059be8f8b2927bc04f67" kindref="member">amplitude_setpoint</ref>;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>flags<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(start_stop_cmd)<sp/><sp/><sp/><sp/><sp/><sp/>flags<sp/>|=<sp/><ref refid="d4/d9a/modbus__registers_8h_1aee1bf5e1be326c7918d8c78d21020a0e" kindref="member">SON_STATUS_RUNNING</ref>;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(st.overload)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>flags<sp/>|=<sp/>(uint16_t)(<ref refid="d4/d9a/modbus__registers_8h_1a1c51c18601c9c7713fccf9f5739ff584" kindref="member">SON_STATUS_OVERLOAD</ref><sp/>|<sp/><ref refid="d4/d9a/modbus__registers_8h_1a3f73c0cef3963e662bff7bc8c95bc7e6" kindref="member">SON_STATUS_FAULT</ref>);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(st.<ref refid="db/dd3/structsonicator__status__s_1a214092cd4433bf303f3c7ce8203c002a" kindref="member">frequency_locked</ref>)<sp/>flags<sp/>|=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a31bc5afc0053e70eba740bac819e7c06" kindref="member">SON_STATUS_FREQ_LOCK</ref>;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Optional<sp/>comm<sp/>fault<sp/>synthesis<sp/>(disabled<sp/>unless<sp/>required)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>((millis()<sp/>-<sp/>last_control_update_per_unit[unit_id])<sp/>&gt;<sp/>CONTROL_TIMEOUT_MS)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>flags<sp/>|=<sp/>SON_STATUS_COMM_FAULT;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t<sp/>power_w<sp/>=<sp/>(st.power_watts<sp/>&lt;<sp/>0.0f)<sp/>?<sp/>0u<sp/>:<sp/>(uint16_t)st.power_watts;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t<sp/>freq_hz<sp/>=<sp/>st.<ref refid="db/dd3/structsonicator__status__s_1a87a12fbd9ac9337f747889b712f4fc07" kindref="member">frequency_hz</ref>;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t<sp/>amp_act<sp/>=<sp/>(amplitude_sp<sp/>&gt;=<sp/>20u<sp/>&amp;&amp;<sp/>amplitude_sp<sp/>&lt;=<sp/>100u)<sp/>?<sp/>amplitude_sp<sp/>:<sp/>0u;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1a0a9d7d9107de9f0576725cdbeceb21ec" kindref="member">register_manager_update_sonicator_status</ref>(</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unit_id,</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>power_w,</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>freq_hz,</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>amp_act,</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>flags</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PUBLIC<sp/>API</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a025ee107dd733f26d18247c93a57fe9b" kindref="member">sonicator_modbus_bridge_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a3fae530b3d1a20d1edf7ce4de6b98788" kindref="member">last_register_update</ref><sp/>=<sp/>millis();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a49036f90399dec4d9d76399b5a905bcc" kindref="member">last_control_update</ref><sp/>=<sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a3fae530b3d1a20d1edf7ce4de6b98788" kindref="member">last_register_update</ref>;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="d4/d9a/modbus__registers_8h_1a82619b7f1a537ff2798d4f5658318761" kindref="member">MODBUS_MAX_SONICATORS</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a7003d3953d6d43b5ef66f78d2068c91f" kindref="member">last_control_update_per_unit</ref>[i]<sp/>=<sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a49036f90399dec4d9d76399b5a905bcc" kindref="member">last_control_update</ref>;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/d1a/structmodbus__register__map__t" kindref="compound">modbus_register_map_t</ref>*<sp/>map<sp/>=<sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab07eb4458680115587cf910a7532e6d3" kindref="member">register_manager_get_map</ref>();</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(map)<sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="d4/d9a/modbus__registers_8h_1a82619b7f1a537ff2798d4f5658318761" kindref="member">MODBUS_MAX_SONICATORS</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" kindref="member">sonicators</ref>[i].<ref refid="d4/d97/structsonicator__registers__t_1a3e0e2424d50debfad86a72d557dbdd6a" kindref="member">start_stop</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" kindref="member">sonicators</ref>[i].<ref refid="d4/d97/structsonicator__registers__t_1a93efadf71cb1059be8f8b2927bc04f67" kindref="member">amplitude_setpoint</ref><sp/>=<sp/>50;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" kindref="member">sonicators</ref>[i].<ref refid="d4/d97/structsonicator__registers__t_1a1272f5c84e823d8a0fc64ee6ead65f45" kindref="member">overload_reset</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" kindref="member">sonicators</ref>[i].<ref refid="d4/d97/structsonicator__registers__t_1a147a2fb453612d64ac43d310f93474db" kindref="member">power_watts</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" kindref="member">sonicators</ref>[i].<ref refid="d4/d97/structsonicator__registers__t_1aea500acd0c3fd52141f5ba8c03ee9c7f" kindref="member">frequency_hz</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" kindref="member">sonicators</ref>[i].<ref refid="d4/d97/structsonicator__registers__t_1a508b8326b9499f811ac08dbcc91771a4" kindref="member">status_flags</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" kindref="member">sonicators</ref>[i].<ref refid="d4/d97/structsonicator__registers__t_1a87e1602268c284fc3f6a06def9c67e01" kindref="member">amplitude_actual</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a21eb64fd76d39367ac8ead8fd7141350" kindref="member">sonicator_modbus_bridge_update</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/>millis();</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>any_action<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="d4/d9a/modbus__registers_8h_1a82619b7f1a537ff2798d4f5658318761" kindref="member">MODBUS_MAX_SONICATORS</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1ae138de112a8a0d76cc6d07c679bff497" kindref="member">apply_control_from_registers</ref>(i))<sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>any_action<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((now<sp/>-<sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a3fae530b3d1a20d1edf7ce4de6b98788" kindref="member">last_register_update</ref>)<sp/>&gt;=<sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a4514332eb51a224ef17061d950d9d5b1" kindref="member">REGISTER_PUBLISH_INTERVAL_MS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="d4/d9a/modbus__registers_8h_1a82619b7f1a537ff2798d4f5658318761" kindref="member">MODBUS_MAX_SONICATORS</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1abac078fe08745cf4ca6f2d443fb5aeec" kindref="member">publish_status_to_registers</ref>(i);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a3fae530b3d1a20d1edf7ce4de6b98788" kindref="member">last_register_update</ref><sp/>=<sp/>now;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>any_action;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a25d0d4028ca77add08f24d50d2a6978e" kindref="member">sonicator_modbus_bridge_get_status</ref>(uint32_t*<sp/>last_register_update_time,</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t*<sp/>last_control_update_time,</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t*<sp/>response_time_ms)<sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(last_register_update_time)<sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*last_register_update_time<sp/>=<sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a3fae530b3d1a20d1edf7ce4de6b98788" kindref="member">last_register_update</ref>;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(last_control_update_time)<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*last_control_update_time<sp/>=<sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a49036f90399dec4d9d76399b5a905bcc" kindref="member">last_control_update</ref>;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(response_time_ms)<sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/>millis();</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*response_time_ms<sp/>=<sp/>(now<sp/>&gt;=<sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a49036f90399dec4d9d76399b5a905bcc" kindref="member">last_control_update</ref>)<sp/>?<sp/>(now<sp/>-<sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a49036f90399dec4d9d76399b5a905bcc" kindref="member">last_control_update</ref>)<sp/>:<sp/>0u;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a219a7d60c31b3c06b103ddefa1c86c9a" kindref="member">sonicator_modbus_bridge_is_responsive</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/>millis();</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>response_time<sp/>=<sp/>(now<sp/>&gt;=<sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a49036f90399dec4d9d76399b5a905bcc" kindref="member">last_control_update</ref>)<sp/>?<sp/>(now<sp/>-<sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a49036f90399dec4d9d76399b5a905bcc" kindref="member">last_control_update</ref>)<sp/>:<sp/>0u;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(response_time<sp/>&lt;<sp/><ref refid="d5/dea/sonicator__modbus__bridge_8cpp_1a6bcc2c7e65618cc2e5a63fc73fa61285" kindref="member">MODBUS_RESPONSE_TIME_TARGET_MS</ref>);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/modules/control/sonicator_modbus_bridge.cpp"/>
+  </compounddef>
+</doxygen>

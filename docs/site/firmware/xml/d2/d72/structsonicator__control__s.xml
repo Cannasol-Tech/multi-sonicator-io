@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d2/d72/structsonicator__control__s" kind="struct" language="C++" prot="public">
+    <compoundname>sonicator_control_s</compoundname>
+    <includes refid="db/d3b/state_8h" local="no">state.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d2/d72/structsonicator__control__s_1a65fc6b08b1d958cc78bdf37f2ae4826f" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool sonicator_control_s::start_control</definition>
+        <argsstring></argsstring>
+        <name>start_control</name>
+        <qualifiedname>sonicator_control_s::start_control</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="36" column="10" bodyfile="include/sonicator/types/state.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d72/structsonicator__control__s_1ad57208e60499ba330c7bccc0be4e4206" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool sonicator_control_s::reset_control</definition>
+        <argsstring></argsstring>
+        <name>reset_control</name>
+        <qualifiedname>sonicator_control_s::reset_control</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="37" column="10" bodyfile="include/sonicator/types/state.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d72/structsonicator__control__s_1abf1d62b73aa56b570b243f3c3d2508d8" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t sonicator_control_s::amplitude_control</definition>
+        <argsstring></argsstring>
+        <name>amplitude_control</name>
+        <qualifiedname>sonicator_control_s::amplitude_control</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="38" column="13" bodyfile="include/sonicator/types/state.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Sonicator control structure. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This structure contains the control inputs for the sonicator. These are the values that are written to the sonicator by the controller. <simplesect kind="note"><para>The control values are not the same as the status values. The control values are the commands that are sent to the sonicator to change it&apos;s state. The status values are the actual state of the sonicator.&apos; </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>start_control</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator Start Control (true/false) Read from REG_SON#_CTRL_START </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reset_control</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator Reset Control (true/false) Read from REG_SON#_CTRL_RESET </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>safety_override</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator Safety Override (true/false) Read from REG_SON#_CTRL_SAFETY_OVERRIDE </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>amplitude_control</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator Amplitude Control (0-100) Read from REG_SON#_CTRL_AMPLITUDE </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The amplitude_control value is not the same as the amplitude_actual value. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="include/sonicator/types/state.h" line="35" column="1" bodyfile="include/sonicator/types/state.h" bodystart="35" bodyend="39"/>
+    <listofallmembers>
+      <member refid="d2/d72/structsonicator__control__s_1abf1d62b73aa56b570b243f3c3d2508d8" prot="public" virt="non-virtual"><scope>sonicator_control_s</scope><name>amplitude_control</name></member>
+      <member refid="d2/d72/structsonicator__control__s_1ad57208e60499ba330c7bccc0be4e4206" prot="public" virt="non-virtual"><scope>sonicator_control_s</scope><name>reset_control</name></member>
+      <member refid="d2/d72/structsonicator__control__s_1a65fc6b08b1d958cc78bdf37f2ae4826f" prot="public" virt="non-virtual"><scope>sonicator_control_s</scope><name>start_control</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

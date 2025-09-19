@@ -1,0 +1,349 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="dc/dc2/_multiplexer_8h" kind="file" language="C++">
+    <compoundname>Multiplexer.h</compoundname>
+    <includes refid="dc/d16/sonicator_8h" local="yes">sonicator/sonicator.h</includes>
+    <includes refid="d4/d7e/system__config_8h" local="yes">system_config.h</includes>
+    <includedby refid="df/d0a/main_8cpp" local="yes">src/main.cpp</includedby>
+    <includedby refid="d8/d25/_multiplexer_8cpp" local="yes">src/modules/control/Multiplexer.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/multiplexer/Multiplexer.h</label>
+        <link refid="dc/dc2/_multiplexer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sonicator/sonicator.h</label>
+        <link refid="dc/d16/sonicator_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>sonicator/types/control.h</label>
+        <link refid="d9/d02/control_8h"/>
+      </node>
+      <node id="16">
+        <label>errors.h</label>
+        <link refid="de/d45/errors_8h"/>
+      </node>
+      <node id="15">
+        <label>sonicator/types/state.h</label>
+        <link refid="db/d3b/state_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>system_config.h</label>
+        <link refid="d4/d7e/system__config_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>adc.h</label>
+        <link refid="d7/d19/adc_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>atmega_hal_impl.h</label>
+        <link refid="d2/d92/atmega__hal__impl_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>gpio.h</label>
+        <link refid="d6/d7c/gpio_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>modules/hal/hal.h</label>
+        <link refid="d8/d4b/hal_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>hal_template_interfaces.h</label>
+        <link refid="de/d2b/hal__template__interfaces_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>mock_hal_impl.h</label>
+        <link refid="de/d8d/mock__hal__impl_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>pwm.h</label>
+        <link refid="d6/db9/pwm_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>timer.h</label>
+        <link refid="d5/dd0/timer_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>uart.h</label>
+        <link refid="d2/d86/uart_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>Arduino.h</label>
+      </node>
+      <node id="4">
+        <label>stdbool.h</label>
+      </node>
+      <node id="3">
+        <label>stdint.h</label>
+      </node>
+      <node id="14">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>include/multiplexer/Multiplexer.h</label>
+        <link refid="dc/dc2/_multiplexer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/main.cpp</label>
+        <link refid="df/d0a/main_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/modules/control/Multiplexer.cpp</label>
+        <link refid="d8/d25/_multiplexer_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d3/d00/class_sonic_multiplexer" prot="public">SonicMultiplexer</innerclass>
+    <briefdescription>
+<para>@title <ref refid="d3/d00/class_sonic_multiplexer" kindref="compound">SonicMultiplexer</ref> Class for Multi-Sonicator Control @company Axovia AI </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>2025-09-16</para>
+</simplesect>
+Object-oriented interface for managing multiple CT2000 sonicator units <simplesect kind="version"><para>1.2.0</para>
+</simplesect>
+This header file defines the <ref refid="d3/d00/class_sonic_multiplexer" kindref="compound">SonicMultiplexer</ref> class, which provides a clean, object-oriented interface for controlling and monitoring multiple CT2000 ultrasonic transducer units. The multiplexer encapsulates the complexity of managing shared resources and individual sonicator states, providing a unified API for the Multi-Sonicator-IO controller system.</para>
+<para>The implementation supports up to 4 concurrent sonicator units with shared amplitude control and individual start/stop/reset operations. It follows SOLID principles and clean architecture patterns suitable for embedded systems development.</para>
+<sect1 id="dc/dc2/_multiplexer_8h_1overview">
+<title>Overview</title><para>The <ref refid="d3/d00/class_sonic_multiplexer" kindref="compound">SonicMultiplexer</ref> serves as the central controller for the Multi-Sonicator-IO system, managing the coordination between multiple ultrasonic transducers. Key responsibilities include:</para>
+<para><itemizedlist>
+<listitem><para><bold>Resource Management</bold>: Shared amplitude PWM control across all units</para>
+</listitem><listitem><para><bold>State Coordination</bold>: Synchronized operation and status monitoring</para>
+</listitem><listitem><para><bold>Fault Handling</bold>: Individual and system-wide error recovery</para>
+</listitem><listitem><para><bold>Configuration</bold>: Runtime parameter adjustment and validation</para>
+</listitem></itemizedlist>
+</para>
+<para>The class is designed as a singleton pattern for global system management while providing thread-safe operations suitable for interrupt-driven embedded environments.</para>
+</sect1>
+<sect1 id="dc/dc2/_multiplexer_8h_1architecture">
+<title>Architecture</title><para>The multiplexer architecture consists of:</para>
+<para><bold>Core Components:</bold><itemizedlist>
+<listitem><para>Individual sonicator interfaces (sonicator_interface_t)</para>
+</listitem><listitem><para>Shared amplitude control system</para>
+</listitem><listitem><para>State management and coordination logic</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Design Patterns:</bold><itemizedlist>
+<listitem><para>Singleton pattern for global access</para>
+</listitem><listitem><para>Facade pattern for simplified interface</para>
+</listitem><listitem><para>State pattern for operational modes</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="dc/dc2/_multiplexer_8h_1usage">
+<title>Usage</title><para>To use the <ref refid="d3/d00/class_sonic_multiplexer" kindref="compound">SonicMultiplexer</ref> in your application:</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="comment">//<sp/>Include<sp/>the<sp/>multiplexer<sp/>header</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dc/dc2/_multiplexer_8h" kindref="compound">include/multiplexer/Multiplexer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Create<sp/>global<sp/>multiplexer<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="d3/d00/class_sonic_multiplexer" kindref="compound">SonicMultiplexer</ref><sp/><ref refid="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" kindref="member">multiplexer</ref>(4);<sp/></highlight><highlight class="comment">//<sp/>For<sp/>4<sp/>sonicators</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>In<sp/>setup()</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" kindref="member">multiplexer</ref>.begin();<sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>all<sp/>units</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>In<sp/>main<sp/>loop</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" kindref="member">multiplexer</ref>.update();<sp/></highlight><highlight class="comment">//<sp/>Update<sp/>all<sp/>units</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Control<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" kindref="member">multiplexer</ref>.start(0);<sp/></highlight><highlight class="comment">//<sp/>Start<sp/>sonicator<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" kindref="member">multiplexer</ref>.setAmplitude(75);<sp/></highlight><highlight class="comment">//<sp/>Set<sp/>shared<sp/>amplitude<sp/>to<sp/>75%</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Monitor<sp/>status</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="db/d3b/state_8h_1afeb77d5a88e0115b4344d7f6ed578ec8" kindref="member">sonicator_status_t</ref>*<sp/>status<sp/>=<sp/><ref refid="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" kindref="member">multiplexer</ref>.getStatus(0);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>&amp;&amp;<sp/>status-&gt;isRunning)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>running<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+</sect1>
+<sect1 id="dc/dc2/_multiplexer_8h_1performance_considerations">
+<title>Performance Considerations</title><para>The multiplexer is optimized for embedded systems:<itemizedlist>
+<listitem><para><bold>Memory Footprint</bold>: Minimal overhead for shared resources</para>
+</listitem><listitem><para><bold>Execution Time</bold>: Fast operations suitable for real-time control</para>
+</listitem><listitem><para><bold>Interrupt Safety</bold>: Thread-safe for interrupt-driven updates</para>
+</listitem><listitem><para><bold>Resource Sharing</bold>: Efficient use of PWM and I/O resources</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="dc/dc2/_multiplexer_8h_1safety_features">
+<title>Safety Features</title><para>Built-in safety mechanisms include:<itemizedlist>
+<listitem><para><bold>Parameter Validation</bold>: Amplitude limits (20-100%) enforced</para>
+</listitem><listitem><para><bold>Index Bounds Checking</bold>: Sonicator index validation</para>
+</listitem><listitem><para><bold>Fault Isolation</bold>: Individual unit fault containment</para>
+</listitem><listitem><para><bold>Graceful Degradation</bold>: System stability during faults</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="dc/dc2/_multiplexer_8h_1error_handling">
+<title>Error Handling and Diagnostics</title><para>The multiplexer provides comprehensive error handling:<itemizedlist>
+<listitem><para><bold>Invalid Parameters</bold>: Rejected with appropriate return codes</para>
+</listitem><listitem><para><bold>Resource Failures</bold>: Graceful degradation and error reporting</para>
+</listitem><listitem><para><bold>Communication Faults</bold>: Automatic retry and fault recovery</para>
+</listitem><listitem><para><bold>Overload Conditions</bold>: Reset mechanisms and status monitoring</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="warning"><para>This class manages hardware resources and should be used carefully in production </para>
+</simplesect>
+<simplesect kind="warning"><para>Amplitude values outside 20-100% range will be rejected </para>
+</simplesect>
+<simplesect kind="warning"><para>Sonicator indices must be within valid range (0 to count-1)</para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="dc/d16/sonicator_8h" kindref="compound">sonicator.h</ref> Individual sonicator interface definition </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="d4/d7e/system__config_8h" kindref="compound">system_config.h</ref> System configuration parameters </para>
+</simplesect>
+<simplesect kind="see"><para>docs/multiplexer-architecture.md Detailed architecture documentation</para>
+</simplesect>
+<simplesect kind="note"><para>The multiplexer is designed for the Multi-Sonicator-IO controller </para>
+</simplesect>
+<simplesect kind="note"><para>Shared amplitude control affects all active sonicators simultaneously </para>
+</simplesect>
+<simplesect kind="note"><para>begin() must be called before any other operations </para>
+</simplesect>
+<simplesect kind="note"><para>update() should be called regularly in the main application loop </para>
+</simplesect>
+</para>
+</sect1>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MULTIPLEXER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MULTIPLEXER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dc/d16/sonicator_8h" kindref="compound">sonicator/sonicator.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d4/d7e/system__config_8h" kindref="compound">system_config.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240" refid="d3/d00/class_sonic_multiplexer" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="d3/d00/class_sonic_multiplexer_1a10cce18264d6e52d28b5e6f9fd708ed0" kindref="member">SonicMultiplexer</ref><sp/>{</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>sonicator_count_m;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>amplitude_ctrl_duty_m;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dd/dce/class_sonicator_interface" kindref="compound">SonicatorInterface</ref>*<sp/>sonicators_m[<ref refid="d4/d7e/system__config_8h_1a39f376f71f4405d96e515fbc21fb5fc5" kindref="member">MAX_SONICATORS</ref>]<sp/>=<sp/>{</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="255" refid="d3/d00/class_sonic_multiplexer_1a10cce18264d6e52d28b5e6f9fd708ed0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d3/d00/class_sonic_multiplexer_1a10cce18264d6e52d28b5e6f9fd708ed0" kindref="member">SonicMultiplexer</ref>(uint8_t<sp/>count_)<sp/>{</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sonicator_count_m<sp/>=<sp/>count_;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>initSonicators_();</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265" refid="d3/d00/class_sonic_multiplexer_1a355c82d39b9ac7d1f466e8dcc155fe29" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d3/d00/class_sonic_multiplexer_1a355c82d39b9ac7d1f466e8dcc155fe29" kindref="member">~SonicMultiplexer</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>sonicator_count_m<sp/>&amp;&amp;<sp/>i<sp/>&lt;<sp/><ref refid="d4/d7e/system__config_8h_1a39f376f71f4405d96e515fbc21fb5fc5" kindref="member">MAX_SONICATORS</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>sonicators_m[i];</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sonicators_m[i]<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280" refid="d3/d00/class_sonic_multiplexer_1a0491dfe76449ae9a9b2cdd73a9c86af4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d3/d00/class_sonic_multiplexer_1a0491dfe76449ae9a9b2cdd73a9c86af4" kindref="member">begin</ref>();</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289" refid="d3/d00/class_sonic_multiplexer_1a3b5d36789802ae0f7b310710d6bdf9c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="d3/d00/class_sonic_multiplexer_1a3b5d36789802ae0f7b310710d6bdf9c2" kindref="member">update</ref>();</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299" refid="d3/d00/class_sonic_multiplexer_1a7bd54b7f9c5ecde9cb0b43f8b9899559" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d00/class_sonic_multiplexer_1a7bd54b7f9c5ecde9cb0b43f8b9899559" kindref="member">start</ref>(uint8_t<sp/>index);</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309" refid="d3/d00/class_sonic_multiplexer_1a167199a863bbf5cc93eb280298f79621" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d00/class_sonic_multiplexer_1a167199a863bbf5cc93eb280298f79621" kindref="member">stop</ref>(uint8_t<sp/>index);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319" refid="d3/d00/class_sonic_multiplexer_1a596760891dda39b8235afe9b708a531d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d00/class_sonic_multiplexer_1a596760891dda39b8235afe9b708a531d" kindref="member">setAmplitude</ref>(uint8_t<sp/>amplitude_percent);</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329" refid="d3/d00/class_sonic_multiplexer_1a6f44d834f83c19ab9ca4d65e3811435a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d3/d00/class_sonic_multiplexer_1a6f44d834f83c19ab9ca4d65e3811435a" kindref="member">resetOverload</ref>(uint8_t<sp/>index);</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339" refid="d3/d00/class_sonic_multiplexer_1abd1acc3f50cf65b7ad55edd66e278b7c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="db/d3b/state_8h_1afeb77d5a88e0115b4344d7f6ed578ec8" kindref="member">sonicator_status_t</ref>*<sp/><ref refid="d3/d00/class_sonic_multiplexer_1abd1acc3f50cf65b7ad55edd66e278b7c" kindref="member">getStatus</ref>(uint8_t<sp/>index)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>initSonicators_();</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>updateSharedAmplitude_();</highlight></codeline>
+<codeline lineno="353"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>MULTIPLEXER_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/multiplexer/Multiplexer.h"/>
+  </compounddef>
+</doxygen>

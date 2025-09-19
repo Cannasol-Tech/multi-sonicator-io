@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="da/de7/structsonicator__state__" kind="struct" language="C++" prot="public">
+    <compoundname>sonicator_state_</compoundname>
+    <includes refid="db/d3b/state_8h" local="no">state.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="da/de7/structsonicator__state___1a4ba454e6b4ef6aa9334e6f5e2f0967dd" prot="public" static="no" mutable="no">
+        <type><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref></type>
+        <definition>sonicator_state_t sonicator_state_::state</definition>
+        <argsstring></argsstring>
+        <name>state</name>
+        <qualifiedname>sonicator_state_::state</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="50" column="23" bodyfile="include/sonicator/types/state.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/de7/structsonicator__state___1ac04a6b1166d26bb8427000102b8a3486" prot="public" static="no" mutable="no">
+        <type><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref></type>
+        <definition>sonicator_state_t sonicator_state_::previous_state</definition>
+        <argsstring></argsstring>
+        <name>previous_state</name>
+        <qualifiedname>sonicator_state_::previous_state</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="51" column="23" bodyfile="include/sonicator/types/state.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/de7/structsonicator__state___1ad62ae131f16844a3f2f240e92efeca68" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t sonicator_state_::state_entry_time</definition>
+        <argsstring></argsstring>
+        <name>state_entry_time</name>
+        <qualifiedname>sonicator_state_::state_entry_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="52" column="14" bodyfile="include/sonicator/types/state.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Sonicator state machine structure. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This structure contains the state machine for the sonicator. This is used to track the state of the sonicator and the time it spent in each state. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current state of the sonicator </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>previous_state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Previous state of the sonicator </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>state_entry_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time the sonicator entered the current state </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <location file="include/sonicator/types/state.h" line="49" column="1" bodyfile="include/sonicator/types/state.h" bodystart="49" bodyend="53"/>
+    <listofallmembers>
+      <member refid="da/de7/structsonicator__state___1ac04a6b1166d26bb8427000102b8a3486" prot="public" virt="non-virtual"><scope>sonicator_state_</scope><name>previous_state</name></member>
+      <member refid="da/de7/structsonicator__state___1a4ba454e6b4ef6aa9334e6f5e2f0967dd" prot="public" virt="non-virtual"><scope>sonicator_state_</scope><name>state</name></member>
+      <member refid="da/de7/structsonicator__state___1ad62ae131f16844a3f2f240e92efeca68" prot="public" virt="non-virtual"><scope>sonicator_state_</scope><name>state_entry_time</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

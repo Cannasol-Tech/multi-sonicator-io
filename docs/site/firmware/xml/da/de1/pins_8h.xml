@@ -1,0 +1,1117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="da/de1/pins_8h" kind="file" language="C++">
+    <compoundname>pins.h</compoundname>
+    <innerclass refid="de/d5a/struct_sonicator_pins" prot="public">SonicatorPins</innerclass>
+    <briefdescription>
+<para>Sonicator Pinout Definitions. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Cannasol Technologies </para>
+</simplesect>
+<simplesect kind="date"><para>2025-09-16 </para>
+</simplesect>
+<simplesect kind="version"><para>2.0.0</para>
+</simplesect>
+This file defines the ATmega32A Pins used to control and monitor The CT2000 Sonciator devices being interfaced with via DB9 Connectors to our Multi Sonicator I/O Controller ( Sonicator Multiplexer ). <linebreak/>
+ THe pin definitions are confirmed and based on the sole source of truth for the hardware configuration in <computeroutput>config/hardware-config.yaml</computeroutput>.</para>
+<sect1 id="da/de1/pins_8h_1pin_matrix">
+<title>Pin Matrix</title><para><simplesect kind="note"><para>Pin = Hardware Pin number on ATMega32a </para>
+</simplesect>
+<simplesect kind="note"><para>Signal = Signal name as defined in <computeroutput>config/hardware-config.yaml</computeroutput> </para>
+</simplesect>
+<simplesect kind="note"><para>Dir = Direction from DUT (ATMega32a) Perspective (IN/OUT) </para>
+</simplesect>
+<simplesect kind="note"><para>IN is a MONITORED signal output from the CT2000 Sonicator to our ATmega32a </para>
+</simplesect>
+<simplesect kind="note"><para>OUT is a CONTROL signal output by our Multi-Sonicator I/O device to control/configure the CT2000 Sonicator</para>
+</simplesect>
+for MONITORED signals, we should pass the value to it&apos;s correct MODBUS register for handling by the Main Automation System. ( Sonicator -&gt; <bold>ATMega32a</bold> -&gt; MODBUS )</para>
+<para>for CONTROL signals, we should set the signal based on the value in the respective MODBUS register which is being set by the main Automation Box. ( MODBUS -&gt; <bold>ATMega32a</bold> -&gt; Sonicator )</para>
+<para>The Sonicator Multiplexer I/O Controller is a MODBUS RTU slave device with four sonicator channels.</para>
+<para>The ATmega32a is the the microcontroller brain of the Multi Sonicator I/O Controller; The Multi Sonicator I/O Controller&apos;s Main purpose is to act as the bridge between the Main Automation Control Box ( Which which has a Human Interface ) and the Sonicators. For monitored signals, we are simply exposing them to the Main Automation Controol Box. <linebreak/>
+ For control signals, we are simply passing the Configuration from the Main Automation Control Box to the correct sonicator based on the MODBUS Register map.</para>
+<sect2 id="da/de1/pins_8h_1sonicator1_pins">
+<title>Sonicator 1 ATMega32a Pin-to-MODBUS Register Mapping</title><para><table rows="8" cols="6"><row>
+<entry thead="yes"><para>Pin  </para>
+</entry><entry thead="yes"><para>Signal  </para>
+</entry><entry thead="yes"><para>Direction  </para>
+</entry><entry thead="yes"><para>MODBUS Register  </para>
+</entry><entry thead="yes"><para>Address  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>4  </para>
+</entry><entry thead="no"><para>FREQ_DIV10_1  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>REG_SON1_FREQ_DIV10_HZ  </para>
+</entry><entry thead="no"><para>0x0111  </para>
+</entry><entry thead="no"><para>Frequency ÷10 input → stored as Hz÷10 (efficient)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>8  </para>
+</entry><entry thead="no"><para>FREQ_LOCK_1  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>REG_SON1_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>0x0112  </para>
+</entry><entry thead="no"><para>Frequency lock status → bit 2 (SON_STATUS_FREQ_LOCK)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>20  </para>
+</entry><entry thead="no"><para>OVERLOAD_1  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>REG_SON1_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>0x0112  </para>
+</entry><entry thead="no"><para>Overload detection → bit 1 (SON_STATUS_OVERLOAD)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>28  </para>
+</entry><entry thead="no"><para>START_1  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>REG_SON1_START_STOP  </para>
+</entry><entry thead="no"><para>0x0100  </para>
+</entry><entry thead="no"><para>Start/enable control ← MODBUS command  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>29  </para>
+</entry><entry thead="no"><para>RESET_1  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>REG_SON1_OVERLOAD_RESET  </para>
+</entry><entry thead="no"><para>0x0102  </para>
+</entry><entry thead="no"><para>Reset control ← MODBUS pulse command  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>36  </para>
+</entry><entry thead="no"><para>POWER_SENSE_1  </para>
+</entry><entry thead="no"><para>IN (ADC)  </para>
+</entry><entry thead="no"><para>REG_SON1_POWER_RAW_ADC  </para>
+</entry><entry thead="no"><para>0x0110  </para>
+</entry><entry thead="no"><para>Power level analog → raw ADC (0-1023, cloud converts)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>21  </para>
+</entry><entry thead="no"><para>AMPLITUDE_ALL  </para>
+</entry><entry thead="no"><para>OUT (PWM)  </para>
+</entry><entry thead="no"><para>REG_SON1_AMPLITUDE_SP  </para>
+</entry><entry thead="no"><para>0x0101  </para>
+</entry><entry thead="no"><para>Amplitude control ← MODBUS setpoint (20-100%)  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="da/de1/pins_8h_1sonicator2_pins">
+<title>Sonicator 2 ATMega32a Pin-to-MODBUS Register Mapping</title><para><table rows="8" cols="6"><row>
+<entry thead="yes"><para>Pin  </para>
+</entry><entry thead="yes"><para>Signal  </para>
+</entry><entry thead="yes"><para>Direction  </para>
+</entry><entry thead="yes"><para>MODBUS Register  </para>
+</entry><entry thead="yes"><para>Address  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>3  </para>
+</entry><entry thead="no"><para>FREQ_DIV10_2  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>REG_SON2_FREQ_DIV10_HZ  </para>
+</entry><entry thead="no"><para>0x0131  </para>
+</entry><entry thead="no"><para>Frequency ÷10 input → stored as Hz÷10 (efficient)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>7  </para>
+</entry><entry thead="no"><para>FREQ_LOCK_2  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>REG_SON2_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>0x0132  </para>
+</entry><entry thead="no"><para>Frequency lock status → bit 2 (SON_STATUS_FREQ_LOCK)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>19  </para>
+</entry><entry thead="no"><para>OVERLOAD_2  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>REG_SON2_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>0x0132  </para>
+</entry><entry thead="no"><para>Overload detection → bit 1 (SON_STATUS_OVERLOAD)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>26  </para>
+</entry><entry thead="no"><para>START_2  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>REG_SON2_START_STOP  </para>
+</entry><entry thead="no"><para>0x0120  </para>
+</entry><entry thead="no"><para>Start/enable control ← MODBUS command  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>27  </para>
+</entry><entry thead="no"><para>RESET_2  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>REG_SON2_OVERLOAD_RESET  </para>
+</entry><entry thead="no"><para>0x0122  </para>
+</entry><entry thead="no"><para>Reset control ← MODBUS pulse command  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>35  </para>
+</entry><entry thead="no"><para>POWER_SENSE_2  </para>
+</entry><entry thead="no"><para>IN (ADC)  </para>
+</entry><entry thead="no"><para>REG_SON2_POWER_RAW_ADC  </para>
+</entry><entry thead="no"><para>0x0130  </para>
+</entry><entry thead="no"><para>Power level analog → raw ADC (0-1023, cloud converts)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>21  </para>
+</entry><entry thead="no"><para>AMPLITUDE_ALL  </para>
+</entry><entry thead="no"><para>OUT (PWM)  </para>
+</entry><entry thead="no"><para>REG_SON2_AMPLITUDE_SP  </para>
+</entry><entry thead="no"><para>0x0121  </para>
+</entry><entry thead="no"><para>Amplitude control ← MODBUS setpoint (20-100%)  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="da/de1/pins_8h_1sonicator3_pins">
+<title>Sonicator 3 ATMega32a Pin-to-MODBUS Register Mapping</title><para><table rows="8" cols="6"><row>
+<entry thead="yes"><para>Pin  </para>
+</entry><entry thead="yes"><para>Signal  </para>
+</entry><entry thead="yes"><para>Direction  </para>
+</entry><entry thead="yes"><para>MODBUS Register  </para>
+</entry><entry thead="yes"><para>Address  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>2  </para>
+</entry><entry thead="no"><para>FREQ_DIV10_3  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>REG_SON3_FREQ_DIV10_HZ  </para>
+</entry><entry thead="no"><para>0x0151  </para>
+</entry><entry thead="no"><para>Frequency ÷10 input → stored as Hz÷10 (efficient)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>6  </para>
+</entry><entry thead="no"><para>FREQ_LOCK_3  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>REG_SON3_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>0x0152  </para>
+</entry><entry thead="no"><para>Frequency lock status → bit 2 (SON_STATUS_FREQ_LOCK)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>18  </para>
+</entry><entry thead="no"><para>OVERLOAD_3  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>REG_SON3_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>0x0152  </para>
+</entry><entry thead="no"><para>Overload detection → bit 1 (SON_STATUS_OVERLOAD)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>24  </para>
+</entry><entry thead="no"><para>START_3  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>REG_SON3_START_STOP  </para>
+</entry><entry thead="no"><para>0x0140  </para>
+</entry><entry thead="no"><para>Start/enable control ← MODBUS command  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>25  </para>
+</entry><entry thead="no"><para>RESET_3  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>REG_SON3_OVERLOAD_RESET  </para>
+</entry><entry thead="no"><para>0x0142  </para>
+</entry><entry thead="no"><para>Reset control ← MODBUS pulse command  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>34  </para>
+</entry><entry thead="no"><para>POWER_SENSE_3  </para>
+</entry><entry thead="no"><para>IN (ADC)  </para>
+</entry><entry thead="no"><para>REG_SON3_POWER_RAW_ADC  </para>
+</entry><entry thead="no"><para>0x0150  </para>
+</entry><entry thead="no"><para>Power level analog → raw ADC (0-1023, cloud converts)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>21  </para>
+</entry><entry thead="no"><para>AMPLITUDE_ALL  </para>
+</entry><entry thead="no"><para>OUT (PWM)  </para>
+</entry><entry thead="no"><para>REG_SON3_AMPLITUDE_SP  </para>
+</entry><entry thead="no"><para>0x0141  </para>
+</entry><entry thead="no"><para>Amplitude control ← MODBUS setpoint (20-100%)  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="da/de1/pins_8h_1sonicator4_pins">
+<title>Sonicator 4 ATMega32a Pin-to-MODBUS Register Mapping</title><para><table rows="8" cols="6"><row>
+<entry thead="yes"><para>Pin  </para>
+</entry><entry thead="yes"><para>Signal  </para>
+</entry><entry thead="yes"><para>Direction  </para>
+</entry><entry thead="yes"><para>MODBUS Register  </para>
+</entry><entry thead="yes"><para>Address  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>1  </para>
+</entry><entry thead="no"><para>FREQ_DIV10_4  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>REG_SON4_FREQ_DIV10_HZ  </para>
+</entry><entry thead="no"><para>0x0171  </para>
+</entry><entry thead="no"><para>Frequency ÷10 input → stored as Hz÷10 (efficient)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>5  </para>
+</entry><entry thead="no"><para>FREQ_LOCK_4  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>REG_SON4_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>0x0172  </para>
+</entry><entry thead="no"><para>Frequency lock status → bit 2 (SON_STATUS_FREQ_LOCK)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>17  </para>
+</entry><entry thead="no"><para>OVERLOAD_4  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>REG_SON4_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>0x0172  </para>
+</entry><entry thead="no"><para>Overload detection → bit 1 (SON_STATUS_OVERLOAD)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>22  </para>
+</entry><entry thead="no"><para>START_4  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>REG_SON4_START_STOP  </para>
+</entry><entry thead="no"><para>0x0160  </para>
+</entry><entry thead="no"><para>Start/enable control ← MODBUS command  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>23  </para>
+</entry><entry thead="no"><para>RESET_4  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>REG_SON4_OVERLOAD_RESET  </para>
+</entry><entry thead="no"><para>0x0162  </para>
+</entry><entry thead="no"><para>Reset control ← MODBUS pulse command  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>33  </para>
+</entry><entry thead="no"><para>POWER_SENSE_4  </para>
+</entry><entry thead="no"><para>IN (ADC)  </para>
+</entry><entry thead="no"><para>REG_SON4_POWER_RAW_ADC  </para>
+</entry><entry thead="no"><para>0x0170  </para>
+</entry><entry thead="no"><para>Power level analog → raw ADC (0-1023, cloud converts)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>21  </para>
+</entry><entry thead="no"><para>AMPLITUDE_ALL  </para>
+</entry><entry thead="no"><para>OUT (PWM)  </para>
+</entry><entry thead="no"><para>REG_SON4_AMPLITUDE_SP  </para>
+</entry><entry thead="no"><para>0x0161  </para>
+</entry><entry thead="no"><para>Amplitude control ← MODBUS setpoint (20-100%)  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="da/de1/pins_8h_1system_pins">
+<title>System/Communication Pin-to-MODBUS Register Mapping</title><para><table rows="4" cols="6"><row>
+<entry thead="yes"><para>ATMega32A Pin  </para>
+</entry><entry thead="yes"><para>Signal  </para>
+</entry><entry thead="yes"><para>Direction  </para>
+</entry><entry thead="yes"><para>MODBUS Register  </para>
+</entry><entry thead="yes"><para>Address  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>14  </para>
+</entry><entry thead="no"><para>UART_RXD  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>ALL_REGISTERS  </para>
+</entry><entry thead="no"><para>ALL  </para>
+</entry><entry thead="no"><para>MODBUS RTU receive data (115200 baud, 8N1)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>15  </para>
+</entry><entry thead="no"><para>UART_TXD  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>ALL_REGISTERS  </para>
+</entry><entry thead="no"><para>ALL  </para>
+</entry><entry thead="no"><para>MODBUS RTU transmit data (115200 baud, 8N1)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>16  </para>
+</entry><entry thead="no"><para>STATUS_LED  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>REG_SYSTEM_STATUS  </para>
+</entry><entry thead="no"><para>0x0000  </para>
+</entry><entry thead="no"><para>System status LED ← system status bits  </para>
+</entry></row>
+</table>
+</para>
+<para><simplesect kind="note"><para>DB9-0 is the communications connector for MODBUS RTU network </para>
+</simplesect>
+<simplesect kind="note"><para>All sonicator channels share the AMPLITUDE_ALL signal on pin 21</para>
+</simplesect>
+</para>
+</sect2>
+<sect2 id="da/de1/pins_8h_1pin_register_mapping_summary">
+<title>Pin-to-Register Mapping Summary</title><para>This section shows the complete mapping between ATmega32A physical pins and MODBUS registers</para>
+<para><bold>Data Flow Direction:</bold><itemizedlist>
+<listitem><para><bold>IN (Monitor)</bold>: Physical pin → ATmega32A → MODBUS register (Sonicator status to PLC)</para>
+</listitem><listitem><para><bold>OUT (Control)</bold>: MODBUS register → ATmega32A → Physical pin (PLC commands to Sonicator)</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Complete Pin-to-Register Mapping Table:</bold> <table rows="29" cols="7"><row>
+<entry thead="yes"><para>ATmega32A Pin  </para>
+</entry><entry thead="yes"><para>Signal  </para>
+</entry><entry thead="yes"><para>Dir  </para>
+</entry><entry thead="yes"><para>Sonicator  </para>
+</entry><entry thead="yes"><para>MODBUS Register  </para>
+</entry><entry thead="yes"><para>Address  </para>
+</entry><entry thead="yes"><para>Data Flow  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>1  </para>
+</entry><entry thead="no"><para>FREQ_DIV10_4  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>4  </para>
+</entry><entry thead="no"><para>REG_SON4_FREQ_DIV10_HZ  </para>
+</entry><entry thead="no"><para>0x0171  </para>
+</entry><entry thead="no"><para>CT2000 freq÷10 → stored as Hz÷10  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>2  </para>
+</entry><entry thead="no"><para>FREQ_DIV10_3  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>3  </para>
+</entry><entry thead="no"><para>REG_SON3_FREQ_DIV10_HZ  </para>
+</entry><entry thead="no"><para>0x0151  </para>
+</entry><entry thead="no"><para>CT2000 freq÷10 → stored as Hz÷10  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>3  </para>
+</entry><entry thead="no"><para>FREQ_DIV10_2  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>2  </para>
+</entry><entry thead="no"><para>REG_SON2_FREQ_DIV10_HZ  </para>
+</entry><entry thead="no"><para>0x0131  </para>
+</entry><entry thead="no"><para>CT2000 freq÷10 → stored as Hz÷10  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>4  </para>
+</entry><entry thead="no"><para>FREQ_DIV10_1  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>1  </para>
+</entry><entry thead="no"><para>REG_SON1_FREQ_DIV10_HZ  </para>
+</entry><entry thead="no"><para>0x0111  </para>
+</entry><entry thead="no"><para>CT2000 freq÷10 → stored as Hz÷10  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>5  </para>
+</entry><entry thead="no"><para>FREQ_LOCK_4  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>4  </para>
+</entry><entry thead="no"><para>REG_SON4_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>0x0172  </para>
+</entry><entry thead="no"><para>CT2000 freq lock → status bit 2  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>6  </para>
+</entry><entry thead="no"><para>FREQ_LOCK_3  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>3  </para>
+</entry><entry thead="no"><para>REG_SON3_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>0x0152  </para>
+</entry><entry thead="no"><para>CT2000 freq lock → status bit 2  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>7  </para>
+</entry><entry thead="no"><para>FREQ_LOCK_2  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>2  </para>
+</entry><entry thead="no"><para>REG_SON2_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>0x0132  </para>
+</entry><entry thead="no"><para>CT2000 freq lock → status bit 2  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>8  </para>
+</entry><entry thead="no"><para>FREQ_LOCK_1  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>1  </para>
+</entry><entry thead="no"><para>REG_SON1_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>0x0112  </para>
+</entry><entry thead="no"><para>CT2000 freq lock → status bit 2  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>14  </para>
+</entry><entry thead="no"><para>UART_RXD  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>-  </para>
+</entry><entry thead="no"><para>ALL_REGISTERS  </para>
+</entry><entry thead="no"><para>ALL  </para>
+</entry><entry thead="no"><para>MODBUS RTU receive (115200 8N1)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>15  </para>
+</entry><entry thead="no"><para>UART_TXD  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>-  </para>
+</entry><entry thead="no"><para>ALL_REGISTERS  </para>
+</entry><entry thead="no"><para>ALL  </para>
+</entry><entry thead="no"><para>MODBUS RTU transmit (115200 8N1)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>16  </para>
+</entry><entry thead="no"><para>STATUS_LED  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>-  </para>
+</entry><entry thead="no"><para>REG_SYSTEM_STATUS  </para>
+</entry><entry thead="no"><para>0x0000  </para>
+</entry><entry thead="no"><para>System status → LED indicator  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>17  </para>
+</entry><entry thead="no"><para>OVERLOAD_4  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>4  </para>
+</entry><entry thead="no"><para>REG_SON4_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>0x0172  </para>
+</entry><entry thead="no"><para>CT2000 overload → status bit 1  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>18  </para>
+</entry><entry thead="no"><para>OVERLOAD_3  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>3  </para>
+</entry><entry thead="no"><para>REG_SON3_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>0x0152  </para>
+</entry><entry thead="no"><para>CT2000 overload → status bit 1  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>19  </para>
+</entry><entry thead="no"><para>OVERLOAD_2  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>2  </para>
+</entry><entry thead="no"><para>REG_SON2_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>0x0132  </para>
+</entry><entry thead="no"><para>CT2000 overload → status bit 1  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>20  </para>
+</entry><entry thead="no"><para>OVERLOAD_1  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>1  </para>
+</entry><entry thead="no"><para>REG_SON1_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>0x0112  </para>
+</entry><entry thead="no"><para>CT2000 overload → status bit 1  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>21  </para>
+</entry><entry thead="no"><para>AMPLITUDE_ALL  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>ALL  </para>
+</entry><entry thead="no"><para>REG_SONx_AMPLITUDE_SP  </para>
+</entry><entry thead="no"><para>0x01x1  </para>
+</entry><entry thead="no"><para>MODBUS setpoint → PWM amplitude  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>22  </para>
+</entry><entry thead="no"><para>START_4  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>4  </para>
+</entry><entry thead="no"><para>REG_SON4_START_STOP  </para>
+</entry><entry thead="no"><para>0x0160  </para>
+</entry><entry thead="no"><para>MODBUS command → CT2000 start  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>23  </para>
+</entry><entry thead="no"><para>RESET_4  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>4  </para>
+</entry><entry thead="no"><para>REG_SON4_OVERLOAD_RESET  </para>
+</entry><entry thead="no"><para>0x0162  </para>
+</entry><entry thead="no"><para>MODBUS pulse → CT2000 reset  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>24  </para>
+</entry><entry thead="no"><para>START_3  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>3  </para>
+</entry><entry thead="no"><para>REG_SON3_START_STOP  </para>
+</entry><entry thead="no"><para>0x0140  </para>
+</entry><entry thead="no"><para>MODBUS command → CT2000 start  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>25  </para>
+</entry><entry thead="no"><para>RESET_3  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>3  </para>
+</entry><entry thead="no"><para>REG_SON3_OVERLOAD_RESET  </para>
+</entry><entry thead="no"><para>0x0142  </para>
+</entry><entry thead="no"><para>MODBUS pulse → CT2000 reset  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>26  </para>
+</entry><entry thead="no"><para>START_2  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>2  </para>
+</entry><entry thead="no"><para>REG_SON2_START_STOP  </para>
+</entry><entry thead="no"><para>0x0120  </para>
+</entry><entry thead="no"><para>MODBUS command → CT2000 start  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>27  </para>
+</entry><entry thead="no"><para>RESET_2  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>2  </para>
+</entry><entry thead="no"><para>REG_SON2_OVERLOAD_RESET  </para>
+</entry><entry thead="no"><para>0x0122  </para>
+</entry><entry thead="no"><para>MODBUS pulse → CT2000 reset  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>28  </para>
+</entry><entry thead="no"><para>START_1  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>1  </para>
+</entry><entry thead="no"><para>REG_SON1_START_STOP  </para>
+</entry><entry thead="no"><para>0x0100  </para>
+</entry><entry thead="no"><para>MODBUS command → CT2000 start  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>29  </para>
+</entry><entry thead="no"><para>RESET_1  </para>
+</entry><entry thead="no"><para>OUT  </para>
+</entry><entry thead="no"><para>1  </para>
+</entry><entry thead="no"><para>REG_SON1_OVERLOAD_RESET  </para>
+</entry><entry thead="no"><para>0x0102  </para>
+</entry><entry thead="no"><para>MODBUS pulse → CT2000 reset  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>33  </para>
+</entry><entry thead="no"><para>POWER_SENSE_4  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>4  </para>
+</entry><entry thead="no"><para>REG_SON4_POWER_RAW_ADC  </para>
+</entry><entry thead="no"><para>0x0170  </para>
+</entry><entry thead="no"><para>CT2000 power → raw ADC (0-1023)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>34  </para>
+</entry><entry thead="no"><para>POWER_SENSE_3  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>3  </para>
+</entry><entry thead="no"><para>REG_SON3_POWER_RAW_ADC  </para>
+</entry><entry thead="no"><para>0x0150  </para>
+</entry><entry thead="no"><para>CT2000 power → raw ADC (0-1023)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>35  </para>
+</entry><entry thead="no"><para>POWER_SENSE_2  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>2  </para>
+</entry><entry thead="no"><para>REG_SON2_POWER_RAW_ADC  </para>
+</entry><entry thead="no"><para>0x0130  </para>
+</entry><entry thead="no"><para>CT2000 power → raw ADC (0-1023)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>36  </para>
+</entry><entry thead="no"><para>POWER_SENSE_1  </para>
+</entry><entry thead="no"><para>IN  </para>
+</entry><entry thead="no"><para>1  </para>
+</entry><entry thead="no"><para>REG_SON1_POWER_RAW_ADC  </para>
+</entry><entry thead="no"><para>0x0110  </para>
+</entry><entry thead="no"><para>CT2000 power → raw ADC (0-1023)  </para>
+</entry></row>
+</table>
+</para>
+<para><bold>Pin Usage Summary:</bold><itemizedlist>
+<listitem><para><bold>Total Pins Used</bold>: 25 of 32 available ATmega32A pins</para>
+</listitem><listitem><para><bold>Digital Inputs</bold>: 16 pins (frequency, freq_lock, overload monitoring)</para>
+</listitem><listitem><para><bold>Digital Outputs</bold>: 9 pins (start, reset control + status LED)</para>
+</listitem><listitem><para><bold>Analog Inputs</bold>: 4 pins (power sensing via ADC)</para>
+</listitem><listitem><para><bold>UART Communication</bold>: 2 pins (MODBUS RTU)</para>
+</listitem><listitem><para><bold>Shared Signals</bold>: 1 pin (AMPLITUDE_ALL controls all 4 sonicators)</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+</sect1>
+<sect1 id="da/de1/pins_8h_1modbus_registers">
+<title>MODBUS Register Map</title><para>Complete MODBUS RTU register map for Multi-Sonicator I/O Controller</para>
+<para>Slave ID: 2, Baud Rate: 115200, Format: 8N1</para>
+<para>Response Time: &lt;100ms per NFR2 requirements</para>
+<sect2 id="da/de1/pins_8h_1system_status_registers">
+<title>System Status Registers (0x0000-0x000F) - Read Only</title><para><table rows="10" cols="4"><row>
+<entry thead="yes"><para>Address  </para>
+</entry><entry thead="yes"><para>Register Name  </para>
+</entry><entry thead="yes"><para>Access  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0000  </para>
+</entry><entry thead="no"><para>REG_SYSTEM_STATUS  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Overall system status bits  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0001  </para>
+</entry><entry thead="no"><para>REG_ACTIVE_COUNT  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Number of active sonicators  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0002  </para>
+</entry><entry thead="no"><para>REG_ACTIVE_MASK  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Bitmask of running units (b0-b3)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0003  </para>
+</entry><entry thead="no"><para>REG_WATCHDOG_STATUS  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Watchdog timer status  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0004  </para>
+</entry><entry thead="no"><para>REG_COMM_ERRORS  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Communication error count  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0005  </para>
+</entry><entry thead="no"><para>REG_PREV_ACTIVE_MASK  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Previous active units mask  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0006  </para>
+</entry><entry thead="no"><para>REG_LAST_SHUTDOWN_REASON  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Last shutdown reason code  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0007  </para>
+</entry><entry thead="no"><para>REG_SYSTEM_UPTIME_LO  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>System uptime low 16 bits  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0008  </para>
+</entry><entry thead="no"><para>REG_SYSTEM_UPTIME_HI  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>System uptime high 16 bits  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="da/de1/pins_8h_1global_control_registers">
+<title>Global Control Registers (0x0010-0x001F) - Read/Write</title><para><table rows="6" cols="4"><row>
+<entry thead="yes"><para>Address  </para>
+</entry><entry thead="yes"><para>Register Name  </para>
+</entry><entry thead="yes"><para>Access  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0010  </para>
+</entry><entry thead="no"><para>REG_GLOBAL_ENABLE  </para>
+</entry><entry thead="no"><para>R/W  </para>
+</entry><entry thead="no"><para>Global system enable (0=disabled, 1=enabled)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0011  </para>
+</entry><entry thead="no"><para>REG_EMERGENCY_STOP  </para>
+</entry><entry thead="no"><para>R/W  </para>
+</entry><entry thead="no"><para>Emergency stop command (1=activate)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0012  </para>
+</entry><entry thead="no"><para>REG_SYSTEM_RESET  </para>
+</entry><entry thead="no"><para>R/W  </para>
+</entry><entry thead="no"><para>System reset command (special code)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0013  </para>
+</entry><entry thead="no"><para>REG_TEST_START_INHIBIT  </para>
+</entry><entry thead="no"><para>R/W  </para>
+</entry><entry thead="no"><para>Per-unit start inhibit mask (b0-b3)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0014  </para>
+</entry><entry thead="no"><para>REG_GLOBAL_AMPLITUDE  </para>
+</entry><entry thead="no"><para>R/W  </para>
+</entry><entry thead="no"><para>Global amplitude setpoint (20-100%)  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="da/de1/pins_8h_1sonicator1_registers">
+<title>Sonicator 1 Registers (ID=0, 0x0100-0x011F)</title><para><table rows="12" cols="4"><row>
+<entry thead="yes"><para>Address  </para>
+</entry><entry thead="yes"><para>Register Name  </para>
+</entry><entry thead="yes"><para>Access  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0100  </para>
+</entry><entry thead="no"><para>REG_SON1_START_STOP  </para>
+</entry><entry thead="no"><para>R/W  </para>
+</entry><entry thead="no"><para>Start/Stop control (0=stop, 1=start)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0101  </para>
+</entry><entry thead="no"><para>REG_SON1_AMPLITUDE_SP  </para>
+</entry><entry thead="no"><para>R/W  </para>
+</entry><entry thead="no"><para>Amplitude setpoint (20-100%)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0102  </para>
+</entry><entry thead="no"><para>REG_SON1_OVERLOAD_RESET  </para>
+</entry><entry thead="no"><para>W  </para>
+</entry><entry thead="no"><para>Overload reset command (pulse 1→0)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0110  </para>
+</entry><entry thead="no"><para>REG_SON1_POWER_RAW_ADC  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Raw ADC power reading (0-1023)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0111  </para>
+</entry><entry thead="no"><para>REG_SON1_FREQ_DIV10_HZ  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Operating frequency ÷10 (Hz÷10)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0112  </para>
+</entry><entry thead="no"><para>REG_SON1_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Status flags bitfield  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0113  </para>
+</entry><entry thead="no"><para>REG_SON1_AMPLITUDE_ACT  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Actual amplitude reading  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0114  </para>
+</entry><entry thead="no"><para>REG_SON1_PREV_STATE  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Previous state enum  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0115  </para>
+</entry><entry thead="no"><para>REG_SON1_PERSISTED_AMPLITUDE  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Last setpoint before shutdown  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0116  </para>
+</entry><entry thead="no"><para>REG_SON1_LAST_FAULT_CODE  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Last fault code  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0117  </para>
+</entry><entry thead="no"><para>REG_SON1_LAST_STATE_TIMESTAMP_LO  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Low 16 bits of timestamp  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="da/de1/pins_8h_1sonicator2_registers">
+<title>Sonicator 2 Registers (ID=1, 0x0120-0x013F)</title><para><table rows="12" cols="4"><row>
+<entry thead="yes"><para>Address  </para>
+</entry><entry thead="yes"><para>Register Name  </para>
+</entry><entry thead="yes"><para>Access  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0120  </para>
+</entry><entry thead="no"><para>REG_SON2_START_STOP  </para>
+</entry><entry thead="no"><para>R/W  </para>
+</entry><entry thead="no"><para>Start/Stop control (0=stop, 1=start)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0121  </para>
+</entry><entry thead="no"><para>REG_SON2_AMPLITUDE_SP  </para>
+</entry><entry thead="no"><para>R/W  </para>
+</entry><entry thead="no"><para>Amplitude setpoint (20-100%)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0122  </para>
+</entry><entry thead="no"><para>REG_SON2_OVERLOAD_RESET  </para>
+</entry><entry thead="no"><para>W  </para>
+</entry><entry thead="no"><para>Overload reset command (pulse 1→0)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0130  </para>
+</entry><entry thead="no"><para>REG_SON2_POWER_RAW_ADC  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Raw ADC power reading (0-1023)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0131  </para>
+</entry><entry thead="no"><para>REG_SON2_FREQ_DIV10_HZ  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Operating frequency ÷10 (Hz÷10)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0132  </para>
+</entry><entry thead="no"><para>REG_SON2_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Status flags bitfield  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0133  </para>
+</entry><entry thead="no"><para>REG_SON2_AMPLITUDE_ACT  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Actual amplitude reading  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0134  </para>
+</entry><entry thead="no"><para>REG_SON2_PREV_STATE  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Previous state enum  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0135  </para>
+</entry><entry thead="no"><para>REG_SON2_PERSISTED_AMPLITUDE  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Last setpoint before shutdown  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0136  </para>
+</entry><entry thead="no"><para>REG_SON2_LAST_FAULT_CODE  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Last fault code  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0137  </para>
+</entry><entry thead="no"><para>REG_SON2_LAST_STATE_TIMESTAMP_LO  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Low 16 bits of timestamp  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="da/de1/pins_8h_1sonicator3_registers">
+<title>Sonicator 3 Registers (ID=2, 0x0140-0x015F)</title><para><table rows="12" cols="4"><row>
+<entry thead="yes"><para>Address  </para>
+</entry><entry thead="yes"><para>Register Name  </para>
+</entry><entry thead="yes"><para>Access  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0140  </para>
+</entry><entry thead="no"><para>REG_SON3_START_STOP  </para>
+</entry><entry thead="no"><para>R/W  </para>
+</entry><entry thead="no"><para>Start/Stop control (0=stop, 1=start)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0141  </para>
+</entry><entry thead="no"><para>REG_SON3_AMPLITUDE_SP  </para>
+</entry><entry thead="no"><para>R/W  </para>
+</entry><entry thead="no"><para>Amplitude setpoint (20-100%)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0142  </para>
+</entry><entry thead="no"><para>REG_SON3_OVERLOAD_RESET  </para>
+</entry><entry thead="no"><para>W  </para>
+</entry><entry thead="no"><para>Overload reset command (pulse 1→0)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0150  </para>
+</entry><entry thead="no"><para>REG_SON3_POWER_RAW_ADC  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Raw ADC power reading (0-1023)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0151  </para>
+</entry><entry thead="no"><para>REG_SON3_FREQ_DIV10_HZ  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Operating frequency ÷10 (Hz÷10)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0152  </para>
+</entry><entry thead="no"><para>REG_SON3_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Status flags bitfield  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0153  </para>
+</entry><entry thead="no"><para>REG_SON3_AMPLITUDE_ACT  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Actual amplitude reading  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0154  </para>
+</entry><entry thead="no"><para>REG_SON3_PREV_STATE  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Previous state enum  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0155  </para>
+</entry><entry thead="no"><para>REG_SON3_PERSISTED_AMPLITUDE  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Last setpoint before shutdown  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0156  </para>
+</entry><entry thead="no"><para>REG_SON3_LAST_FAULT_CODE  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Last fault code  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0157  </para>
+</entry><entry thead="no"><para>REG_SON3_LAST_STATE_TIMESTAMP_LO  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Low 16 bits of timestamp  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="da/de1/pins_8h_1sonicator4_registers">
+<title>Sonicator 4 Registers (ID=3, 0x0160-0x017F)</title><para><table rows="12" cols="4"><row>
+<entry thead="yes"><para>Address  </para>
+</entry><entry thead="yes"><para>Register Name  </para>
+</entry><entry thead="yes"><para>Access  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0160  </para>
+</entry><entry thead="no"><para>REG_SON4_START_STOP  </para>
+</entry><entry thead="no"><para>R/W  </para>
+</entry><entry thead="no"><para>Start/Stop control (0=stop, 1=start)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0161  </para>
+</entry><entry thead="no"><para>REG_SON4_AMPLITUDE_SP  </para>
+</entry><entry thead="no"><para>R/W  </para>
+</entry><entry thead="no"><para>Amplitude setpoint (20-100%)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0162  </para>
+</entry><entry thead="no"><para>REG_SON4_OVERLOAD_RESET  </para>
+</entry><entry thead="no"><para>W  </para>
+</entry><entry thead="no"><para>Overload reset command (pulse 1→0)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0170  </para>
+</entry><entry thead="no"><para>REG_SON4_POWER_RAW_ADC  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Raw ADC power reading (0-1023)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0171  </para>
+</entry><entry thead="no"><para>REG_SON4_FREQ_DIV10_HZ  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Operating frequency ÷10 (Hz÷10)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0172  </para>
+</entry><entry thead="no"><para>REG_SON4_STATUS_FLAGS  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Status flags bitfield  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0173  </para>
+</entry><entry thead="no"><para>REG_SON4_AMPLITUDE_ACT  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Actual amplitude reading  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0174  </para>
+</entry><entry thead="no"><para>REG_SON4_PREV_STATE  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Previous state enum  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0175  </para>
+</entry><entry thead="no"><para>REG_SON4_PERSISTED_AMPLITUDE  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Last setpoint before shutdown  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0176  </para>
+</entry><entry thead="no"><para>REG_SON4_LAST_FAULT_CODE  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Last fault code  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>0x0177  </para>
+</entry><entry thead="no"><para>REG_SON4_LAST_STATE_TIMESTAMP_LO  </para>
+</entry><entry thead="no"><para>R  </para>
+</entry><entry thead="no"><para>Low 16 bits of timestamp  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="da/de1/pins_8h_1register_usage_notes">
+<title>Register Usage Notes</title><para><bold>Control Registers (Write Operations):</bold><itemizedlist>
+<listitem><para>Start/Stop: Write 1 to start, 0 to stop sonicator</para>
+</listitem><listitem><para>Amplitude Setpoint: Valid range 20-100% (values outside range are clamped)</para>
+</listitem><listitem><para>Overload Reset: Write 1 then 0 to pulse reset (write-and-clear semantics)</para>
+</listitem><listitem><para>Emergency Stop: Write 1 to activate emergency stop for all units</para>
+</listitem><listitem><para>Global Enable: Must be 1 for any sonicator to operate</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Status Registers (Read Operations):</bold><itemizedlist>
+<listitem><para>Power Raw ADC: Raw 10-bit ADC reading (0-1023) from CT2000 power output</para>
+</listitem><listitem><para>Frequency ÷10 Hz: CT2000 freq÷10 signal stored directly (multiply by 10 for actual Hz)</para>
+</listitem><listitem><para>Status Flags: Bitfield with running, overload, freq_lock, comm_fault, fault bits</para>
+</listitem><listitem><para>Active Count/Mask: System-wide count and bitmask of currently running units</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Raw Data Efficiency Benefits:</bold><itemizedlist>
+<listitem><para>Power registers store raw ADC values (0-1023) without conversion</para>
+</listitem><listitem><para>Frequency registers store Hz÷10 values directly from CT2000 pin 4</para>
+</listitem><listitem><para>No floating-point math in ATmega32A, maximizing real-time performance</para>
+</listitem><listitem><para>Cloud/PLC performs all scaling and unit conversions for flexibility</para>
+</listitem><listitem><para>Raw data preserves full precision and allows calibration adjustments</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Cloud Conversion Formulas:</bold><itemizedlist>
+<listitem><para><bold>Power (Watts)</bold>: <computeroutput>Power = (ADC_Raw * 5.0V / 1023) / 0.00544V/W</computeroutput></para>
+</listitem><listitem><para><bold>Frequency (Hz)</bold>: <computeroutput>Frequency = Freq_Div10_Raw * 10</computeroutput></para>
+</listitem><listitem><para><bold>Voltage</bold>: <computeroutput>Voltage = ADC_Raw * 5.0V / 1023</computeroutput></para>
+</listitem><listitem><para><bold>Typical ADC Values</bold>: 0-1023 (0-5V), 0-919 for max measurable power</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Status Flag Bits:</bold><itemizedlist>
+<listitem><para>Bit 0 (0x0001): SON_STATUS_RUNNING - Sonicator is running</para>
+</listitem><listitem><para>Bit 1 (0x0002): SON_STATUS_OVERLOAD - Overload detected</para>
+</listitem><listitem><para>Bit 2 (0x0004): SON_STATUS_FREQ_LOCK - Frequency lock achieved</para>
+</listitem><listitem><para>Bit 3 (0x0008): SON_STATUS_COMM_FAULT - Communication fault</para>
+</listitem><listitem><para>Bit 4 (0x0010): SON_STATUS_OVER_TEMP - Over temperature</para>
+</listitem><listitem><para>Bit 5 (0x0020): SON_STATUS_FAULT - General fault</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>System Status Bits:</bold><itemizedlist>
+<listitem><para>Bit 0 (0x0001): SYSTEM_STATUS_OK - System operating normally</para>
+</listitem><listitem><para>Bit 1 (0x0002): SYSTEM_STATUS_FAULT - System fault detected</para>
+</listitem><listitem><para>Bit 2 (0x0004): SYSTEM_STATUS_EMERGENCY_STOP - Emergency stop active</para>
+</listitem><listitem><para>Bit 3 (0x0008): SYSTEM_STATUS_COMM_FAULT - Communication fault</para>
+</listitem><listitem><para>Bit 4 (0x0010): SYSTEM_STATUS_OVERTEMP - Over temperature detected</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Performance Requirements:</bold><itemizedlist>
+<listitem><para>Register updates: ≤100ms response time (NFR2)</para>
+</listitem><listitem><para>Telemetry refresh: ≥10Hz update rate (NFR9)</para>
+</listitem><listitem><para>Command latency: ≤200ms end-to-end (NFR1)</para>
+</listitem><listitem><para>MODBUS RTU: 115200 baud, 8N1, Slave ID=2 </para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+</sect1>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>SONICATOR_PINS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_PINS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279" refid="de/d5a/struct_sonicator_pins" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="de/d5a/struct_sonicator_pins" kindref="compound">SonicatorPins</ref><sp/>{</highlight></codeline>
+<codeline lineno="280" refid="de/d5a/struct_sonicator_pins_1aade86cc331059ac42b918d5c4601cfba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="de/d5a/struct_sonicator_pins_1aade86cc331059ac42b918d5c4601cfba" kindref="member">start_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="281" refid="de/d5a/struct_sonicator_pins_1adb56b7285e08ae5590664013aea0dc5b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="de/d5a/struct_sonicator_pins_1adb56b7285e08ae5590664013aea0dc5b" kindref="member">reset_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="282" refid="de/d5a/struct_sonicator_pins_1a9f2610ad98a5973f58cc32c714f7bfc9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="de/d5a/struct_sonicator_pins_1a9f2610ad98a5973f58cc32c714f7bfc9" kindref="member">overload_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="283" refid="de/d5a/struct_sonicator_pins_1a8572c5252876bfb33ae862600951ce83" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="de/d5a/struct_sonicator_pins_1a8572c5252876bfb33ae862600951ce83" kindref="member">freq_lock_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="284" refid="de/d5a/struct_sonicator_pins_1ac081e0e9cc64b41ad1f5716d202c1cb3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="de/d5a/struct_sonicator_pins_1ac081e0e9cc64b41ad1f5716d202c1cb3" kindref="member">operating_freq_div10</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="285" refid="de/d5a/struct_sonicator_pins_1a3523cd65a350ce8ff85b9166bb46f73c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref><sp/><ref refid="de/d5a/struct_sonicator_pins_1a3523cd65a350ce8ff85b9166bb46f73c" kindref="member">power_sense_channel</ref>;<sp/></highlight></codeline>
+<codeline lineno="286"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>SONICATOR_PINS_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/sonicator/types/pins.h"/>
+  </compounddef>
+</doxygen>

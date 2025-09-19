@@ -1,0 +1,1513 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d5/dd0/timer_8h" kind="file" language="C++">
+    <compoundname>timer.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includedby refid="da/d18/arduino__hal__impl_8h" local="yes">src/modules/hal/arduino/arduino_hal_impl.h</includedby>
+    <includedby refid="d2/d92/atmega__hal__impl_8h" local="yes">src/modules/hal/atmega_hal_impl.h</includedby>
+    <includedby refid="d8/d4b/hal_8h" local="yes">src/modules/hal/hal.h</includedby>
+    <includedby refid="dc/de5/timer_8cpp" local="yes">src/modules/hal/timer.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/modules/hal/timer.h</label>
+        <link refid="d5/dd0/timer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="10">
+        <label>include/multiplexer/Multiplexer.h</label>
+        <link refid="dc/dc2/_multiplexer_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/sonicator/sonicator.h</label>
+        <link refid="dc/d16/sonicator_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>include/types.h</label>
+        <link refid="d9/d49/types_8h"/>
+      </node>
+      <node id="11">
+        <label>src/main.cpp</label>
+        <link refid="df/d0a/main_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/modules/control/Multiplexer.cpp</label>
+        <link refid="d8/d25/_multiplexer_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/modules/control/sonicator.cpp</label>
+        <link refid="d2/db9/sonicator_8cpp"/>
+      </node>
+      <node id="14">
+        <label>src/modules/control/sonicator_modbus_bridge.cpp</label>
+        <link refid="d5/dea/sonicator__modbus__bridge_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/modules/hal/arduino/arduino_hal_factory.h</label>
+        <link refid="d8/d61/arduino__hal__factory_8h"/>
+      </node>
+      <node id="2">
+        <label>src/modules/hal/arduino/arduino_hal_impl.h</label>
+        <link refid="da/d18/arduino__hal__impl_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/modules/hal/atmega_hal_impl.h</label>
+        <link refid="d2/d92/atmega__hal__impl_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/modules/hal/gpio.cpp</label>
+        <link refid="de/d31/gpio_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/modules/hal/gpio.h</label>
+        <link refid="d6/d7c/gpio_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>src/modules/hal/hal.cpp</label>
+        <link refid="dc/db6/hal_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/modules/hal/hal.h</label>
+        <link refid="d8/d4b/hal_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>src/modules/hal/timer.cpp</label>
+        <link refid="dc/de5/timer_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/modules/hal/timer.h</label>
+        <link refid="d5/dd0/timer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d4/de4/structtimer__config__t" prot="public">timer_config_t</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="d5/dd0/timer_8h_1a0770f3d3924bef9d267887eb7e25fec3" prot="public" static="no">
+        <name>TIMER_RESOLUTION_US</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="90" column="9" bodyfile="src/modules/hal/timer.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d5/dd0/timer_8h_1aa1c7d4a89844bea99ff34f27f46498fc" prot="public" static="no">
+        <name>TIMER_MAX_PERIOD_MS</name>
+        <initializer>65535</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="91" column="9" bodyfile="src/modules/hal/timer.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d5/dd0/timer_8h_1aa1c225f9e96739525fd3c44150a22d08" prot="public" static="no">
+        <name>TIMER_SCHEDULER_PERIOD</name>
+        <initializer>10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="92" column="9" bodyfile="src/modules/hal/timer.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d5/dd0/timer_8h_1a5f28efad24c6697e7988aa1988f986ab" prot="public" static="no">
+        <name>TIMER_WATCHDOG_PERIOD</name>
+        <initializer>1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="93" column="9" bodyfile="src/modules/hal/timer.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d5/dd0/timer_8h_1aff87cd300e49df1a8f3597dd8fd92473" prot="public" static="no">
+        <name>TIMER_EMERGENCY_RESPONSE_US</name>
+        <initializer>50</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="96" column="9" bodyfile="src/modules/hal/timer.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d5/dd0/timer_8h_1a0e0abc3d8ba95dd0a756f38aff949f36" prot="public" static="no">
+        <name>TIMER_MODBUS_CHAR_TIMEOUT</name>
+        <initializer>104</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="97" column="9" bodyfile="src/modules/hal/timer.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" prot="public" static="no" strong="no">
+        <type></type>
+        <name>timer_id_t</name>
+        <enumvalue id="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392a0bf7b10c9d661b40238b84e75d479192" prot="public">
+          <name>TIMER_ID_0</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392a21ea510bcc985ca4ddb2f587cab93eaa" prot="public">
+          <name>TIMER_ID_1</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392aa351fc7baa8b8fff979faa9a9909afee" prot="public">
+          <name>TIMER_ID_SCHEDULER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392ade1a856836ea910ec79b9154f9d41bd7" prot="public">
+          <name>TIMER_ID_WATCHDOG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392aacb7163f3ddbcdee2a162c6a6872dce3" prot="public">
+          <name>TIMER_ID_MAX</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Timer identifiers. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="34" column="1" bodyfile="src/modules/hal/timer.h" bodystart="34" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="enum" id="d5/dd0/timer_8h_1a6d4cd64aed5c0009ac26803efc9c13b2" prot="public" static="no" strong="no">
+        <type></type>
+        <name>timer_mode_t</name>
+        <enumvalue id="d5/dd0/timer_8h_1a6d4cd64aed5c0009ac26803efc9c13b2a6a1047d7d57a907cc491fc1efeaeb7d1" prot="public">
+          <name>TIMER_MODE_NORMAL</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dd0/timer_8h_1a6d4cd64aed5c0009ac26803efc9c13b2ae51c2b259e0b5da6909ed955d7527c10" prot="public">
+          <name>TIMER_MODE_CTC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dd0/timer_8h_1a6d4cd64aed5c0009ac26803efc9c13b2ae08e38c7f9c5f9e96b6ba555105663b4" prot="public">
+          <name>TIMER_MODE_PWM_FAST</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dd0/timer_8h_1a6d4cd64aed5c0009ac26803efc9c13b2a22e561d04cfe0e7d04ce8df0f8504285" prot="public">
+          <name>TIMER_MODE_PWM_PHASE_CORRECT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Timer modes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="45" column="1" bodyfile="src/modules/hal/timer.h" bodystart="45" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="enum" id="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5" prot="public" static="no" strong="no">
+        <type></type>
+        <name>timer_prescaler_t</name>
+        <enumvalue id="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5a1ec6299e655a2c66b52e3b66e25e325f" prot="public">
+          <name>TIMER_PRESCALER_1</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5a9b3628a81a43f086a561c2c29653a7aa" prot="public">
+          <name>TIMER_PRESCALER_8</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5aae816965a1b2d96c77a50c4aa9078e2b" prot="public">
+          <name>TIMER_PRESCALER_64</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5ae875fb53e0b6a6a93793449b8b44eece" prot="public">
+          <name>TIMER_PRESCALER_256</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5a7929d9e16a8ad961303b1a4c029a13fe" prot="public">
+          <name>TIMER_PRESCALER_1024</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5af8bf26f8a9c35cf10719aac922e02417" prot="public">
+          <name>TIMER_PRESCALER_EXT_FALL</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5a21e1b1b3647aa69cd64b41d51e8c42d5" prot="public">
+          <name>TIMER_PRESCALER_EXT_RISE</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Timer prescaler values. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="55" column="1" bodyfile="src/modules/hal/timer.h" bodystart="55" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="enum" id="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" prot="public" static="no" strong="no">
+        <type></type>
+        <name>timer_result_t</name>
+        <enumvalue id="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" prot="public">
+          <name>TIMER_OK</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a52d98ea1047cbd1544ff69efa0257ec2" prot="public">
+          <name>TIMER_ERROR_INVALID_ID</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a7492cb4023624d3823cdc0936c53792f" prot="public">
+          <name>TIMER_ERROR_INVALID_PERIOD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a4276a650072a3f49c6d48f926f572dc6" prot="public">
+          <name>TIMER_ERROR_INVALID_CONFIG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a1eb567cf4b8241838896c6c0ab94d23a" prot="public">
+          <name>TIMER_ERROR_NOT_INITIALIZED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>HAL function return codes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="78" column="1" bodyfile="src/modules/hal/timer.h" bodystart="78" bodyend="84"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="d5/dd0/timer_8h_1aa96c2aa1b5dac819fd12d27e0a93e714" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>timer_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize timer hardware abstraction layer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Configures system timers for scheduler and watchdog operations. Sets up Timer0 for microsecond timing and Timer1 for millisecond timing.</para>
+<para><simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="111" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="72" bodyend="92" declfile="src/modules/hal/timer.h" declline="111" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1aceb5c83a1e22ed3c35e72e46f29a9240" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_configure</definition>
+        <argsstring>(timer_id_t timer_id, const timer_config_t *config)</argsstring>
+        <name>timer_configure</name>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="d4/de4/structtimer__config__t" kindref="compound">timer_config_t</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Configure specific timer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timer_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timer identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to timer configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="120" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="94" bodyend="111" declfile="src/modules/hal/timer.h" declline="120" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1a90c5006cae243490aeb6008629bbd5b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_start</definition>
+        <argsstring>(timer_id_t timer_id, uint32_t period_ms)</argsstring>
+        <name>timer_start</name>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>period_ms</declname>
+        </param>
+        <briefdescription>
+<para>Start timer with specified period. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timer_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timer identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>period_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Period in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="129" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="113" bodyend="133" declfile="src/modules/hal/timer.h" declline="129" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1ad4bf06f4fb7fd08f1abae77d6026b360" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_stop</definition>
+        <argsstring>(timer_id_t timer_id)</argsstring>
+        <name>timer_stop</name>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <briefdescription>
+<para>Stop specified timer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timer_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timer identifier </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="137" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="135" bodyend="146" declfile="src/modules/hal/timer.h" declline="137" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1a0692af780938348e930a6f5118393414" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_expired</definition>
+        <argsstring>(timer_id_t timer_id, bool *expired)</argsstring>
+        <name>timer_expired</name>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>expired</declname>
+        </param>
+        <briefdescription>
+<para>Check if timer has expired. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timer_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timer identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>expired</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store expiration status </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="146" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="148" bodyend="167" declfile="src/modules/hal/timer.h" declline="146" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1a5d7150b3258ca1ef33ce96b80b0a722c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_reset</definition>
+        <argsstring>(timer_id_t timer_id)</argsstring>
+        <name>timer_reset</name>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <briefdescription>
+<para>Reset timer to initial state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timer_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timer identifier </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="154" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="169" bodyend="180" declfile="src/modules/hal/timer.h" declline="154" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1a350de4e0a608bbdbb12d24c95efc18c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_get_value</definition>
+        <argsstring>(timer_id_t timer_id, uint16_t *value)</argsstring>
+        <name>timer_get_value</name>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Get current timer value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timer_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timer identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store current timer value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="163" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="182" bodyend="204" declfile="src/modules/hal/timer.h" declline="163" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1a662a2219dd12663dda5e4deae0b3f898" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_get_elapsed</definition>
+        <argsstring>(timer_id_t timer_id, uint32_t *elapsed_ms)</argsstring>
+        <name>timer_get_elapsed</name>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>elapsed_ms</declname>
+        </param>
+        <briefdescription>
+<para>Get elapsed time since timer start. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timer_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timer identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>elapsed_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store elapsed time in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="172" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="206" bodyend="224" declfile="src/modules/hal/timer.h" declline="172" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1aba3463e356a0a943870c1d60e3d26346" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_get_millis</definition>
+        <argsstring>(uint32_t *uptime_ms)</argsstring>
+        <name>timer_get_millis</name>
+        <param>
+          <type>uint32_t *</type>
+          <declname>uptime_ms</declname>
+        </param>
+        <briefdescription>
+<para>Get system uptime in milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>uptime_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store uptime value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="184" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="230" bodyend="241" declfile="src/modules/hal/timer.h" declline="184" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1adbe1084cdeac7575543a2d60a3fdb7fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_get_micros</definition>
+        <argsstring>(uint32_t *uptime_us)</argsstring>
+        <name>timer_get_micros</name>
+        <param>
+          <type>uint32_t *</type>
+          <declname>uptime_us</declname>
+        </param>
+        <briefdescription>
+<para>Get system uptime in microseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>uptime_us</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store uptime value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="192" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="243" bodyend="254" declfile="src/modules/hal/timer.h" declline="192" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1a94053756b1b19e59b33e0047a21e0181" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_delay_ms</definition>
+        <argsstring>(uint32_t delay_ms)</argsstring>
+        <name>timer_delay_ms</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>delay_ms</declname>
+        </param>
+        <briefdescription>
+<para>Blocking delay in milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>delay_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Delay duration in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="200" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="256" bodyend="263" declfile="src/modules/hal/timer.h" declline="200" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1af0e90cfa10e966b16b3e1bf74adc4468" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_delay_us</definition>
+        <argsstring>(uint32_t delay_us)</argsstring>
+        <name>timer_delay_us</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>delay_us</declname>
+        </param>
+        <briefdescription>
+<para>Blocking delay in microseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>delay_us</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Delay duration in microseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="208" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="265" bodyend="272" declfile="src/modules/hal/timer.h" declline="208" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1a33943f43701d2041844bd4b2fe183c6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_delay_complete</definition>
+        <argsstring>(uint32_t start_time_ms, uint32_t delay_ms, bool *complete)</argsstring>
+        <name>timer_delay_complete</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>start_time_ms</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>delay_ms</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>complete</declname>
+        </param>
+        <briefdescription>
+<para>Non-blocking delay check. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>start_time_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Start time reference </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Desired delay duration </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>complete</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store completion status </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="218" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="274" bodyend="288" declfile="src/modules/hal/timer.h" declline="218" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1aaa036d4b72bc7579d55b44e173be55e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_scheduler_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>timer_scheduler_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize scheduler timer (10ms intervals) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="229" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="294" bodyend="307" declfile="src/modules/hal/timer.h" declline="229" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1a3ab50c6fc894ce0ea342f2926db79749" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_scheduler_tick</definition>
+        <argsstring>(bool *tick_available)</argsstring>
+        <name>timer_scheduler_tick</name>
+        <param>
+          <type>bool *</type>
+          <declname>tick_available</declname>
+        </param>
+        <briefdescription>
+<para>Check if scheduler tick is available. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tick_available</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store tick status </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="237" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="309" bodyend="334" declfile="src/modules/hal/timer.h" declline="237" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1a3518d203c8a849e7ddc23b9910fb9a81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_scheduler_get_ticks</definition>
+        <argsstring>(uint32_t *tick_count)</argsstring>
+        <name>timer_scheduler_get_ticks</name>
+        <param>
+          <type>uint32_t *</type>
+          <declname>tick_count</declname>
+        </param>
+        <briefdescription>
+<para>Get scheduler tick count. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tick_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store tick count </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="245" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="336" bodyend="350" declfile="src/modules/hal/timer.h" declline="245" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1a97b08f38f7ecba3857a96dc76311f228" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_scheduler_reset</definition>
+        <argsstring>(void)</argsstring>
+        <name>timer_scheduler_reset</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Reset scheduler tick counter. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="252" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="352" bodyend="363" declfile="src/modules/hal/timer.h" declline="252" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1afcbd0393e3d16c062afa2b65130631b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_watchdog_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>timer_watchdog_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize watchdog timer (1 second timeout) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="263" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="369" bodyend="372" declfile="src/modules/hal/timer.h" declline="263" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1a04b069063b643153cadec91ea37722c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_watchdog_reset</definition>
+        <argsstring>(void)</argsstring>
+        <name>timer_watchdog_reset</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Reset watchdog timer (feed the dog) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="270" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="374" bodyend="381" declfile="src/modules/hal/timer.h" declline="270" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1ab832e0d5932906b8379c6c6e9765e2d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_watchdog_expired</definition>
+        <argsstring>(bool *expired)</argsstring>
+        <name>timer_watchdog_expired</name>
+        <param>
+          <type>bool *</type>
+          <declname>expired</declname>
+        </param>
+        <briefdescription>
+<para>Check if watchdog has expired. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>expired</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store expiration status </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="278" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="383" bodyend="397" declfile="src/modules/hal/timer.h" declline="278" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1a614857f7bd75988ce4e212a7afc4b1ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_watchdog_time_remaining</definition>
+        <argsstring>(uint32_t *time_remaining_ms)</argsstring>
+        <name>timer_watchdog_time_remaining</name>
+        <param>
+          <type>uint32_t *</type>
+          <declname>time_remaining_ms</declname>
+        </param>
+        <briefdescription>
+<para>Get time until watchdog expiration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>time_remaining_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store remaining time </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="286" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="399" bodyend="418" declfile="src/modules/hal/timer.h" declline="286" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1adc0904d7e2c3f1748fae55e33202b4ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_modbus_char_start</definition>
+        <argsstring>(void)</argsstring>
+        <name>timer_modbus_char_start</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Start MODBUS character timeout timer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="297" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="424" bodyend="431" declfile="src/modules/hal/timer.h" declline="297" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1a0dd3cb6aafc62b202b10dd140caf02d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_modbus_char_expired</definition>
+        <argsstring>(bool *expired)</argsstring>
+        <name>timer_modbus_char_expired</name>
+        <param>
+          <type>bool *</type>
+          <declname>expired</declname>
+        </param>
+        <briefdescription>
+<para>Check if MODBUS character timeout expired. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>expired</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store expiration status </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="305" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="433" bodyend="447" declfile="src/modules/hal/timer.h" declline="305" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1aa3c17b3b7e9622faddd8d713fd940d67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_modbus_frame_gap_start</definition>
+        <argsstring>(void)</argsstring>
+        <name>timer_modbus_frame_gap_start</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Start MODBUS frame gap timer (3.5 character times) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="312" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="449" bodyend="456" declfile="src/modules/hal/timer.h" declline="312" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1a599c5586513bf99a00e71deb4cddd85c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_modbus_frame_gap_complete</definition>
+        <argsstring>(bool *complete)</argsstring>
+        <name>timer_modbus_frame_gap_complete</name>
+        <param>
+          <type>bool *</type>
+          <declname>complete</declname>
+        </param>
+        <briefdescription>
+<para>Check if MODBUS frame gap completed. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>complete</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store completion status </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="320" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="458" bodyend="472" declfile="src/modules/hal/timer.h" declline="320" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1a730772c63605aa55ecf366a22ce038aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_measure_accuracy</definition>
+        <argsstring>(timer_id_t timer_id, uint32_t expected_ms, uint32_t *actual_ms, float *accuracy_percent)</argsstring>
+        <name>timer_measure_accuracy</name>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>expected_ms</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>actual_ms</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>accuracy_percent</declname>
+        </param>
+        <briefdescription>
+<para>Measure timer accuracy. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timer_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timer identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>expected_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Expected period in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>actual_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store actual measured period </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>accuracy_percent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store accuracy percentage </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="335" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="478" bodyend="510" declfile="src/modules/hal/timer.h" declline="335" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1ac9ebab3446580b033e692f4a1dfa1fb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_test_all</definition>
+        <argsstring>(bool *success)</argsstring>
+        <name>timer_test_all</name>
+        <param>
+          <type>bool *</type>
+          <declname>success</declname>
+        </param>
+        <briefdescription>
+<para>Test all timer functions. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>success</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store test result </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="344" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="512" bodyend="552" declfile="src/modules/hal/timer.h" declline="344" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/dd0/timer_8h_1a533e970c6e33a59957fa323a08e22c49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref></type>
+        <definition>timer_result_t timer_get_stats</definition>
+        <argsstring>(timer_id_t timer_id, uint32_t *start_count, uint32_t *overflow_count, uint32_t *interrupt_count)</argsstring>
+        <name>timer_get_stats</name>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>start_count</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>overflow_count</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>interrupt_count</declname>
+        </param>
+        <briefdescription>
+<para>Get timer statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timer_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timer identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>start_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store start count </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>overflow_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store overflow count </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>interrupt_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store interrupt count </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TIMER_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/timer.h" line="355" column="16" bodyfile="src/modules/hal/timer.cpp" bodystart="554" bodyend="569" declfile="src/modules/hal/timer.h" declline="355" declcolumn="16"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Timer Hardware Abstraction Layer for ATmega32A. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Cannasol Technologies </para>
+</simplesect>
+<simplesect kind="date"><para>2025-09-02 </para>
+</simplesect>
+<simplesect kind="version"><para>1.0.0</para>
+</simplesect>
+Provides hardware-agnostic timer interface for cooperative scheduler, watchdog timing, and precise delay functions. Uses Timer0 and Timer1 for multiple concurrent timing operations.</para>
+<para>Supports millisecond timing resolution for scheduler intervals and microsecond precision for MODBUS timing requirements. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HAL_TIMER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HAL_TIMER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TYPE<sp/>DEFINITIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="35" refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392a0bf7b10c9d661b40238b84e75d479192" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392a0bf7b10c9d661b40238b84e75d479192" kindref="member">TIMER_ID_0</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Timer<sp/>0<sp/>(8-bit)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392a21ea510bcc985ca4ddb2f587cab93eaa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392a21ea510bcc985ca4ddb2f587cab93eaa" kindref="member">TIMER_ID_1</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Timer<sp/>1<sp/>(16-bit)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392aa351fc7baa8b8fff979faa9a9909afee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392aa351fc7baa8b8fff979faa9a9909afee" kindref="member">TIMER_ID_SCHEDULER</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Dedicated<sp/>scheduler<sp/>timer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392ade1a856836ea910ec79b9154f9d41bd7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392ade1a856836ea910ec79b9154f9d41bd7" kindref="member">TIMER_ID_WATCHDOG</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Dedicated<sp/>watchdog<sp/>timer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392aacb7163f3ddbcdee2a162c6a6872dce3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392aacb7163f3ddbcdee2a162c6a6872dce3" kindref="member">TIMER_ID_MAX</ref><sp/>=<sp/>4</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}<sp/><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref>;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="d5/dd0/timer_8h_1a6d4cd64aed5c0009ac26803efc9c13b2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="46" refid="d5/dd0/timer_8h_1a6d4cd64aed5c0009ac26803efc9c13b2a6a1047d7d57a907cc491fc1efeaeb7d1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1a6d4cd64aed5c0009ac26803efc9c13b2a6a1047d7d57a907cc491fc1efeaeb7d1" kindref="member">TIMER_MODE_NORMAL</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Normal<sp/>mode<sp/>(overflow)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="d5/dd0/timer_8h_1a6d4cd64aed5c0009ac26803efc9c13b2ae51c2b259e0b5da6909ed955d7527c10" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1a6d4cd64aed5c0009ac26803efc9c13b2ae51c2b259e0b5da6909ed955d7527c10" kindref="member">TIMER_MODE_CTC</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Clear<sp/>Timer<sp/>on<sp/>Compare<sp/>match</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="d5/dd0/timer_8h_1a6d4cd64aed5c0009ac26803efc9c13b2ae08e38c7f9c5f9e96b6ba555105663b4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1a6d4cd64aed5c0009ac26803efc9c13b2ae08e38c7f9c5f9e96b6ba555105663b4" kindref="member">TIMER_MODE_PWM_FAST</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Fast<sp/>PWM<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="d5/dd0/timer_8h_1a6d4cd64aed5c0009ac26803efc9c13b2a22e561d04cfe0e7d04ce8df0f8504285" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1a6d4cd64aed5c0009ac26803efc9c13b2a22e561d04cfe0e7d04ce8df0f8504285" kindref="member">TIMER_MODE_PWM_PHASE_CORRECT</ref><sp/></highlight><highlight class="comment">//&lt;<sp/>Phase<sp/>correct<sp/>PWM<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}<sp/><ref refid="d5/dd0/timer_8h_1a6d4cd64aed5c0009ac26803efc9c13b2" kindref="member">timer_mode_t</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="56" refid="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5a1ec6299e655a2c66b52e3b66e25e325f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5a1ec6299e655a2c66b52e3b66e25e325f" kindref="member">TIMER_PRESCALER_1</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>No<sp/>prescaling</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5a9b3628a81a43f086a561c2c29653a7aa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5a9b3628a81a43f086a561c2c29653a7aa" kindref="member">TIMER_PRESCALER_8</ref><sp/>=<sp/>2,<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Divide<sp/>by<sp/>8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5aae816965a1b2d96c77a50c4aa9078e2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5aae816965a1b2d96c77a50c4aa9078e2b" kindref="member">TIMER_PRESCALER_64</ref><sp/>=<sp/>3,<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Divide<sp/>by<sp/>64</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5ae875fb53e0b6a6a93793449b8b44eece" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5ae875fb53e0b6a6a93793449b8b44eece" kindref="member">TIMER_PRESCALER_256</ref><sp/>=<sp/>4,<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Divide<sp/>by<sp/>256</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5a7929d9e16a8ad961303b1a4c029a13fe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5a7929d9e16a8ad961303b1a4c029a13fe" kindref="member">TIMER_PRESCALER_1024</ref><sp/>=<sp/>5,<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Divide<sp/>by<sp/>1024</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5af8bf26f8a9c35cf10719aac922e02417" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5af8bf26f8a9c35cf10719aac922e02417" kindref="member">TIMER_PRESCALER_EXT_FALL</ref><sp/>=<sp/>6,<sp/></highlight><highlight class="comment">//&lt;<sp/>External<sp/>clock<sp/>on<sp/>falling<sp/>edge</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5a21e1b1b3647aa69cd64b41d51e8c42d5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5a21e1b1b3647aa69cd64b41d51e8c42d5" kindref="member">TIMER_PRESCALER_EXT_RISE</ref><sp/>=<sp/>7<sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>External<sp/>clock<sp/>on<sp/>rising<sp/>edge</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}<sp/><ref refid="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5" kindref="member">timer_prescaler_t</ref>;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="d4/de4/structtimer__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="69" refid="d4/de4/structtimer__config__t_1a39d568114a16b0eb358c3facef8a0ed5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1a6d4cd64aed5c0009ac26803efc9c13b2" kindref="member">timer_mode_t</ref><sp/><ref refid="d4/de4/structtimer__config__t_1a39d568114a16b0eb358c3facef8a0ed5" kindref="member">mode</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Timer<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="d4/de4/structtimer__config__t_1ab86b8a9a0a36960738d97b745c99ce81" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1a7dd1acef7009c71eaee56eae613fe6d5" kindref="member">timer_prescaler_t</ref><sp/><ref refid="d4/de4/structtimer__config__t_1ab86b8a9a0a36960738d97b745c99ce81" kindref="member">prescaler</ref>;</highlight><highlight class="comment">//&lt;<sp/>Clock<sp/>prescaler</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="d4/de4/structtimer__config__t_1ac532e6a3aa928cc0f08c9c226af64ee5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="d4/de4/structtimer__config__t_1ac532e6a3aa928cc0f08c9c226af64ee5" kindref="member">period</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Timer<sp/>period<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="d4/de4/structtimer__config__t_1a35cd482793a229acc0bbe4e0f5821a99" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d4/de4/structtimer__config__t_1a35cd482793a229acc0bbe4e0f5821a99" kindref="member">enable_interrupt</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Enable<sp/>timer<sp/>interrupt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}<sp/><ref refid="d4/de4/structtimer__config__t" kindref="compound">timer_config_t</ref>;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="79" refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a" kindref="member">TIMER_OK</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Operation<sp/>successful</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a52d98ea1047cbd1544ff69efa0257ec2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a52d98ea1047cbd1544ff69efa0257ec2" kindref="member">TIMER_ERROR_INVALID_ID</ref>,<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Invalid<sp/>timer<sp/>ID</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a7492cb4023624d3823cdc0936c53792f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a7492cb4023624d3823cdc0936c53792f" kindref="member">TIMER_ERROR_INVALID_PERIOD</ref>,<sp/></highlight><highlight class="comment">//&lt;<sp/>Invalid<sp/>period<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a4276a650072a3f49c6d48f926f572dc6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a4276a650072a3f49c6d48f926f572dc6" kindref="member">TIMER_ERROR_INVALID_CONFIG</ref>,<sp/></highlight><highlight class="comment">//&lt;<sp/>Invalid<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a1eb567cf4b8241838896c6c0ab94d23a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703a1eb567cf4b8241838896c6c0ab94d23a" kindref="member">TIMER_ERROR_NOT_INITIALIZED</ref><sp/></highlight><highlight class="comment">//&lt;<sp/>Timer<sp/>not<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}<sp/><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref>;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CONFIGURATION<sp/>CONSTANTS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="d5/dd0/timer_8h_1a0770f3d3924bef9d267887eb7e25fec3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TIMER_RESOLUTION_US<sp/><sp/><sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Timer<sp/>resolution<sp/>(1<sp/>μs)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="d5/dd0/timer_8h_1aa1c7d4a89844bea99ff34f27f46498fc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TIMER_MAX_PERIOD_MS<sp/><sp/><sp/><sp/><sp/>65535<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Maximum<sp/>period<sp/>(65.535<sp/>seconds)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="d5/dd0/timer_8h_1aa1c225f9e96739525fd3c44150a22d08" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TIMER_SCHEDULER_PERIOD<sp/><sp/>10<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Scheduler<sp/>period<sp/>(10ms)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="d5/dd0/timer_8h_1a5f28efad24c6697e7988aa1988f986ab" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TIMER_WATCHDOG_PERIOD<sp/><sp/><sp/>1000<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Watchdog<sp/>period<sp/>(1<sp/>second)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Safety<sp/>timing<sp/>requirements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="d5/dd0/timer_8h_1aff87cd300e49df1a8f3597dd8fd92473" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TIMER_EMERGENCY_RESPONSE_US<sp/>50<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Emergency<sp/>response<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="d5/dd0/timer_8h_1a0e0abc3d8ba95dd0a756f38aff949f36" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TIMER_MODBUS_CHAR_TIMEOUT<sp/><sp/><sp/>104<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>MODBUS<sp/>character<sp/>timeout</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PUBLIC<sp/>INTERFACE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1aa96c2aa1b5dac819fd12d27e0a93e714" kindref="member">timer_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1aceb5c83a1e22ed3c35e72e46f29a9240" kindref="member">timer_configure</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d4/de4/structtimer__config__t" kindref="compound">timer_config_t</ref>*<sp/>config);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1a90c5006cae243490aeb6008629bbd5b4" kindref="member">timer_start</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id,<sp/>uint32_t<sp/>period_ms);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1ad4bf06f4fb7fd08f1abae77d6026b360" kindref="member">timer_stop</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1a0692af780938348e930a6f5118393414" kindref="member">timer_expired</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>expired);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1a5d7150b3258ca1ef33ce96b80b0a722c" kindref="member">timer_reset</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1a350de4e0a608bbdbb12d24c95efc18c4" kindref="member">timer_get_value</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id,<sp/>uint16_t*<sp/>value);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1a662a2219dd12663dda5e4deae0b3f898" kindref="member">timer_get_elapsed</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id,<sp/>uint32_t*<sp/>elapsed_ms);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SYSTEM<sp/>TIMING<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1aba3463e356a0a943870c1d60e3d26346" kindref="member">timer_get_millis</ref>(uint32_t*<sp/>uptime_ms);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1adbe1084cdeac7575543a2d60a3fdb7fa" kindref="member">timer_get_micros</ref>(uint32_t*<sp/>uptime_us);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1a94053756b1b19e59b33e0047a21e0181" kindref="member">timer_delay_ms</ref>(uint32_t<sp/>delay_ms);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1af0e90cfa10e966b16b3e1bf74adc4468" kindref="member">timer_delay_us</ref>(uint32_t<sp/>delay_us);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1a33943f43701d2041844bd4b2fe183c6f" kindref="member">timer_delay_complete</ref>(uint32_t<sp/>start_time_ms,<sp/>uint32_t<sp/>delay_ms,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>complete);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SCHEDULER<sp/>SUPPORT<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1aaa036d4b72bc7579d55b44e173be55e3" kindref="member">timer_scheduler_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1a3ab50c6fc894ce0ea342f2926db79749" kindref="member">timer_scheduler_tick</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>tick_available);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1a3518d203c8a849e7ddc23b9910fb9a81" kindref="member">timer_scheduler_get_ticks</ref>(uint32_t*<sp/>tick_count);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1a97b08f38f7ecba3857a96dc76311f228" kindref="member">timer_scheduler_reset</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight><highlight class="comment">//<sp/>WATCHDOG<sp/>SUPPORT<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1afcbd0393e3d16c062afa2b65130631b7" kindref="member">timer_watchdog_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1a04b069063b643153cadec91ea37722c8" kindref="member">timer_watchdog_reset</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1ab832e0d5932906b8379c6c6e9765e2d5" kindref="member">timer_watchdog_expired</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>expired);</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1a614857f7bd75988ce4e212a7afc4b1ce" kindref="member">timer_watchdog_time_remaining</ref>(uint32_t*<sp/>time_remaining_ms);</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MODBUS<sp/>TIMING<sp/>SUPPORT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1adc0904d7e2c3f1748fae55e33202b4ab" kindref="member">timer_modbus_char_start</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1a0dd3cb6aafc62b202b10dd140caf02d7" kindref="member">timer_modbus_char_expired</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>expired);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1aa3c17b3b7e9622faddd8d713fd940d67" kindref="member">timer_modbus_frame_gap_start</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1a599c5586513bf99a00e71deb4cddd85c" kindref="member">timer_modbus_frame_gap_complete</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>complete);</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight><highlight class="comment">//<sp/>DIAGNOSTIC<sp/>AND<sp/>TESTING<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1a730772c63605aa55ecf366a22ce038aa" kindref="member">timer_measure_accuracy</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id,<sp/>uint32_t<sp/>expected_ms,<sp/></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t*<sp/>actual_ms,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>accuracy_percent);</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1ac9ebab3446580b033e692f4a1dfa1fb6" kindref="member">timer_test_all</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>success);</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><ref refid="d5/dd0/timer_8h_1abd2eb978c8ddee87061348bcb2fe9703" kindref="member">timer_result_t</ref><sp/><ref refid="d5/dd0/timer_8h_1a533e970c6e33a59957fa323a08e22c49" kindref="member">timer_get_stats</ref>(<ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref><sp/>timer_id,<sp/>uint32_t*<sp/>start_count,</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t*<sp/>overflow_count,<sp/>uint32_t*<sp/>interrupt_count);</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"></highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>HAL_TIMER_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/modules/hal/timer.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,354 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d3/d35/class_multi_sonicator_system" kind="class" language="C++" prot="public">
+    <compoundname>MultiSonicatorSystem</compoundname>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d3/d35/class_multi_sonicator_system_1aacc34118ca53320ecc9bc64265d435e3" prot="private" static="no" mutable="no">
+        <type>multi_status_t</type>
+        <definition>multi_status_t MultiSonicatorSystem::g_multi</definition>
+        <argsstring></argsstring>
+        <name>g_multi</name>
+        <qualifiedname>MultiSonicatorSystem::g_multi</qualifiedname>
+        <initializer>= {
+        <ref refid="d4/d5a/master__state_8h_1a5883b01d55edd95a7af1598a35f6a398a4f77d0a956ce1cd48e8213f7202979e4" kindref="member">MASTER_STATE_IDLE</ref>,
+        0u,
+        { <ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a8aaaacd92fec828be10c02ef2696f0b7" kindref="member">SONICATOR_STATE_IDLE</ref>, <ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a8aaaacd92fec828be10c02ef2696f0b7" kindref="member">SONICATOR_STATE_IDLE</ref>, <ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a8aaaacd92fec828be10c02ef2696f0b7" kindref="member">SONICATOR_STATE_IDLE</ref>, <ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a8aaaacd92fec828be10c02ef2696f0b7" kindref="member">SONICATOR_STATE_IDLE</ref> },
+        0u,
+        0u
+    }</initializer>
+        <briefdescription>
+<para>Global multi-sonicator status structure. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="19" column="20" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="19" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/d35/class_multi_sonicator_system_1a308b47cfca019d4e186c2a6074e9c656" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t MultiSonicatorSystem::g_start_inhibit_mask</definition>
+        <argsstring></argsstring>
+        <name>g_start_inhibit_mask</name>
+        <qualifiedname>MultiSonicatorSystem::g_start_inhibit_mask</qualifiedname>
+        <initializer>= 0u</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="27" column="13" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/d35/class_multi_sonicator_system_1ab1155bff233354291bf8d2138e43a48d" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t MultiSonicatorSystem::g_start_timeout_ticks[4]</definition>
+        <argsstring>[4]</argsstring>
+        <name>g_start_timeout_ticks</name>
+        <qualifiedname>MultiSonicatorSystem::g_start_timeout_ticks</qualifiedname>
+        <initializer>= {0, 0, 0, 0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="28" column="13" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="28" bodyend="28"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d3/d35/class_multi_sonicator_system_1ab95c2b714b709226864eb81c5865aa85" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool MultiSonicatorSystem::begin</definition>
+        <argsstring>(void)</argsstring>
+        <name>begin</name>
+        <qualifiedname>MultiSonicatorSystem::begin</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize the multi-sonicator coordination system. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true on successful initialization </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="35" column="10" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="35" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d35/class_multi_sonicator_system_1adcc1464995d4d2083ed5dce4135e1496" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool MultiSonicatorSystem::request_coordinated_start</definition>
+        <argsstring>(uint8_t unit_mask)</argsstring>
+        <name>request_coordinated_start</name>
+        <qualifiedname>MultiSonicatorSystem::request_coordinated_start</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>unit_mask</declname>
+        </param>
+        <briefdescription>
+<para>Request coordinated start of specified sonicator units. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unit_mask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bitmask of units to start (bits 0-3 for units 0-3) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if request was accepted, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="55" column="10" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="55" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d35/class_multi_sonicator_system_1a1da3ff039c8192accadcd78bfd5b6088" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool MultiSonicatorSystem::emergency_stop</definition>
+        <argsstring>(void)</argsstring>
+        <name>emergency_stop</name>
+        <qualifiedname>MultiSonicatorSystem::emergency_stop</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initiate emergency stop of all sonicator units. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true on successful emergency stop initiation </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="76" column="10" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="76" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d35/class_multi_sonicator_system_1a34e491a09145e4a805d4f08f0ac513cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool MultiSonicatorSystem::request_coordinated_stop</definition>
+        <argsstring>(uint8_t unit_mask)</argsstring>
+        <name>request_coordinated_stop</name>
+        <qualifiedname>MultiSonicatorSystem::request_coordinated_stop</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>unit_mask</declname>
+        </param>
+        <briefdescription>
+<para>Request coordinated stop of specified sonicator units. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unit_mask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bitmask of units to stop (bits 0-3 for units 0-3) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if request was accepted, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="90" column="10" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="90" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d35/class_multi_sonicator_system_1abdacd9d35fcfe303d576a3584cbb6f2c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool MultiSonicatorSystem::request_unit_start</definition>
+        <argsstring>(uint8_t unit_index)</argsstring>
+        <name>request_unit_start</name>
+        <qualifiedname>MultiSonicatorSystem::request_unit_start</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>unit_index</declname>
+        </param>
+        <briefdescription>
+<para>Request START for a single unit (index 0..3). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Aborts STOP for that unit. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unit_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Zero-based unit index (0..3) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if accepted; false if invalid index or not allowed (e.g., fault) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="114" column="10" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="114" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d35/class_multi_sonicator_system_1afe378113324a6f413f472c5dfee9f86d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool MultiSonicatorSystem::request_unit_stop</definition>
+        <argsstring>(uint8_t unit_index)</argsstring>
+        <name>request_unit_stop</name>
+        <qualifiedname>MultiSonicatorSystem::request_unit_stop</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>unit_index</declname>
+        </param>
+        <briefdescription>
+<para>Request STOP for a single unit (index 0..3). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Aborts START for that unit. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unit_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Zero-based unit index (0..3) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if accepted; false if invalid index </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="143" column="10" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="143" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d35/class_multi_sonicator_system_1aa9c7f534bf7b6361fb86638bbdbeaa09" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool MultiSonicatorSystem::report_unit_fault</definition>
+        <argsstring>(uint8_t unit_index, bool overload)</argsstring>
+        <name>report_unit_fault</name>
+        <qualifiedname>MultiSonicatorSystem::report_unit_fault</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>unit_index</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>overload</declname>
+        </param>
+        <briefdescription>
+<para>Report a unit fault/overload and remove it from the active set. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="167" column="10" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="167" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d35/class_multi_sonicator_system_1ac63a49f54469654ff864ac4559a90b62" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void MultiSonicatorSystem::set_start_inhibit</definition>
+        <argsstring>(uint8_t unit_index, bool inhibit)</argsstring>
+        <name>set_start_inhibit</name>
+        <qualifiedname>MultiSonicatorSystem::set_start_inhibit</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>unit_index</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>inhibit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="176" column="10" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="176" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d35/class_multi_sonicator_system_1a21ce9e0543c0a803f166ff2cc1c6c760" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool MultiSonicatorSystem::confirm_unit_started</definition>
+        <argsstring>(uint8_t unit_index)</argsstring>
+        <name>confirm_unit_started</name>
+        <qualifiedname>MultiSonicatorSystem::confirm_unit_started</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>unit_index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="189" column="10" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="189" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d35/class_multi_sonicator_system_1ae09e4c7f77d2fb324362a7edac49a45b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d4/d5a/master__state_8h_1a5883b01d55edd95a7af1598a35f6a398" kindref="member">master_state_t</ref></type>
+        <definition>master_state_t MultiSonicatorSystem::update</definition>
+        <argsstring>(void)</argsstring>
+        <name>update</name>
+        <qualifiedname>MultiSonicatorSystem::update</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Update the multi-sonicator state machine. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current master state after update </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="204" column="20" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="204" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="function" id="d3/d35/class_multi_sonicator_system_1ab25349a3a223c72bcec301216cc114c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const multi_status_t *</type>
+        <definition>const multi_status_t * MultiSonicatorSystem::get_status</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_status</name>
+        <qualifiedname>MultiSonicatorSystem::get_status</qualifiedname>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Get current multi-sonicator status. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Pointer to current status structure (read-only) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/control/multi_sonicator.cpp" line="263" column="26" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="263" bodyend="265"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/modules/control/multi_sonicator.cpp" line="14" column="1" bodyfile="src/modules/control/multi_sonicator.cpp" bodystart="14" bodyend="266"/>
+    <listofallmembers>
+      <member refid="d3/d35/class_multi_sonicator_system_1ab95c2b714b709226864eb81c5865aa85" prot="public" virt="non-virtual"><scope>MultiSonicatorSystem</scope><name>begin</name></member>
+      <member refid="d3/d35/class_multi_sonicator_system_1a21ce9e0543c0a803f166ff2cc1c6c760" prot="public" virt="non-virtual"><scope>MultiSonicatorSystem</scope><name>confirm_unit_started</name></member>
+      <member refid="d3/d35/class_multi_sonicator_system_1a1da3ff039c8192accadcd78bfd5b6088" prot="public" virt="non-virtual"><scope>MultiSonicatorSystem</scope><name>emergency_stop</name></member>
+      <member refid="d3/d35/class_multi_sonicator_system_1aacc34118ca53320ecc9bc64265d435e3" prot="private" virt="non-virtual"><scope>MultiSonicatorSystem</scope><name>g_multi</name></member>
+      <member refid="d3/d35/class_multi_sonicator_system_1a308b47cfca019d4e186c2a6074e9c656" prot="private" virt="non-virtual"><scope>MultiSonicatorSystem</scope><name>g_start_inhibit_mask</name></member>
+      <member refid="d3/d35/class_multi_sonicator_system_1ab1155bff233354291bf8d2138e43a48d" prot="private" virt="non-virtual"><scope>MultiSonicatorSystem</scope><name>g_start_timeout_ticks</name></member>
+      <member refid="d3/d35/class_multi_sonicator_system_1ab25349a3a223c72bcec301216cc114c8" prot="public" virt="non-virtual"><scope>MultiSonicatorSystem</scope><name>get_status</name></member>
+      <member refid="d3/d35/class_multi_sonicator_system_1aa9c7f534bf7b6361fb86638bbdbeaa09" prot="public" virt="non-virtual"><scope>MultiSonicatorSystem</scope><name>report_unit_fault</name></member>
+      <member refid="d3/d35/class_multi_sonicator_system_1adcc1464995d4d2083ed5dce4135e1496" prot="public" virt="non-virtual"><scope>MultiSonicatorSystem</scope><name>request_coordinated_start</name></member>
+      <member refid="d3/d35/class_multi_sonicator_system_1a34e491a09145e4a805d4f08f0ac513cb" prot="public" virt="non-virtual"><scope>MultiSonicatorSystem</scope><name>request_coordinated_stop</name></member>
+      <member refid="d3/d35/class_multi_sonicator_system_1abdacd9d35fcfe303d576a3584cbb6f2c" prot="public" virt="non-virtual"><scope>MultiSonicatorSystem</scope><name>request_unit_start</name></member>
+      <member refid="d3/d35/class_multi_sonicator_system_1afe378113324a6f413f472c5dfee9f86d" prot="public" virt="non-virtual"><scope>MultiSonicatorSystem</scope><name>request_unit_stop</name></member>
+      <member refid="d3/d35/class_multi_sonicator_system_1ac63a49f54469654ff864ac4559a90b62" prot="public" virt="non-virtual"><scope>MultiSonicatorSystem</scope><name>set_start_inhibit</name></member>
+      <member refid="d3/d35/class_multi_sonicator_system_1ae09e4c7f77d2fb324362a7edac49a45b" prot="public" virt="non-virtual"><scope>MultiSonicatorSystem</scope><name>update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

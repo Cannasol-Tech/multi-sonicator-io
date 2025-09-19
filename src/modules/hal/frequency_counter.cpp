@@ -50,6 +50,7 @@ static uint16_t custom_windows[FREQ_CHANNELS] = {0, 0, 0, 0};
  * - Applies noise filtering to reject spurious edges
  * - Updates measurement window completion flags
  */
+#if defined(PCICR) && defined(PCMSK1)
 ISR(PCINT1_vect) {
     // Capture timestamp as early as possible for precision
     uint32_t current_time = micros();
@@ -91,6 +92,7 @@ ISR(PCINT1_vect) {
     
     prev_portb_state = current_portb;
 }
+#endif
 
 // ============================================================================
 // PUBLIC FUNCTION IMPLEMENTATIONS
@@ -130,9 +132,11 @@ bool frequency_counter_init(void) {
     total_isr_executions = 0;
     last_isr_timestamp = now;
     
-    // Enable Pin Change Interrupt for Port B
+    // Enable Pin Change Interrupt for Port B (if available on this MCU)
+#if defined(PCICR) && defined(PCMSK1)
     PCICR |= (1 << PCIE1);    // Enable PCINT1 group
-    PCMSK1 |= 0x0F;          // Enable PCINT8-PCINT11 (PB0-PB3)
+    PCMSK1 |= 0x0F;           // Enable PCINT8-PCINT11 (PB0-PB3)
+#endif
     
     // Read initial port state
     prev_portb_state = PINB;

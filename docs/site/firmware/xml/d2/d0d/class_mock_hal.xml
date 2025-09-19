@@ -1,0 +1,1809 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d2/d0d/class_mock_hal" kind="class" language="C++" prot="public">
+    <compoundname>MockHal</compoundname>
+    <includes refid="da/dd9/hal__template__example_8h" local="no">hal_template_example.h</includes>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1aa5851d32dbf5cc61901ac349d81ef92b" prot="private" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool MockHal::mock_gpio_initialized</definition>
+        <argsstring></argsstring>
+        <name>mock_gpio_initialized</name>
+        <qualifiedname>MockHal::mock_gpio_initialized</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="184" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1ac5d522118a51c3c52df6ba01f318de47" prot="private" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool MockHal::mock_adc_initialized</definition>
+        <argsstring></argsstring>
+        <name>mock_adc_initialized</name>
+        <qualifiedname>MockHal::mock_adc_initialized</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="185" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1afdb900a7f5e1263d4a9a99c37692c167" prot="private" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool MockHal::mock_pwm_initialized</definition>
+        <argsstring></argsstring>
+        <name>mock_pwm_initialized</name>
+        <qualifiedname>MockHal::mock_pwm_initialized</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="186" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1acae59b10508e739618170368fa4236a3" prot="private" static="yes" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t MockHal::mock_pin_states</definition>
+        <argsstring>[32]</argsstring>
+        <name>mock_pin_states</name>
+        <qualifiedname>MockHal::mock_pin_states</qualifiedname>
+        <initializer>= {0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="187" column="20" bodyfile="src/modules/hal/hal_template_example.h" bodystart="253" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1aaa7312797e9b12c3636f04536ee986d5" prot="private" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool MockHal::gpio_initialized</definition>
+        <argsstring></argsstring>
+        <name>gpio_initialized</name>
+        <qualifiedname>MockHal::gpio_initialized</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="22" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1a8fff72b72e6f8d39fc06b7f6ddfa9734" prot="private" static="yes" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t MockHal::pin_states</definition>
+        <argsstring>[32]</argsstring>
+        <name>pin_states</name>
+        <qualifiedname>MockHal::pin_states</qualifiedname>
+        <initializer>= {0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="23" column="20" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="384" bodyend="384"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1ae5cdd10a1d92ecd97b49cd2734fa880d" prot="private" static="yes" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t MockHal::pin_modes</definition>
+        <argsstring>[32]</argsstring>
+        <name>pin_modes</name>
+        <qualifiedname>MockHal::pin_modes</qualifiedname>
+        <initializer>= {0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="24" column="20" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="385" bodyend="385"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1a8958631ecc5a7f6a670ae1d74f4721a8" prot="private" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool MockHal::adc_initialized</definition>
+        <argsstring></argsstring>
+        <name>adc_initialized</name>
+        <qualifiedname>MockHal::adc_initialized</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="27" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1aee8100f9afc16f2b62afa425b81f8d34" prot="private" static="yes" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t MockHal::adc_channel_values</definition>
+        <argsstring>[8]</argsstring>
+        <name>adc_channel_values</name>
+        <qualifiedname>MockHal::adc_channel_values</qualifiedname>
+        <initializer>= {512, 256, 768, 384, 640, 128, 896, 0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="28" column="21" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="388" bodyend="388"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1a2c23020addf42f7b21b8e8418f204025" prot="private" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool MockHal::adc_conversion_started</definition>
+        <argsstring></argsstring>
+        <name>adc_conversion_started</name>
+        <qualifiedname>MockHal::adc_conversion_started</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="29" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1a327f2d605bd4b116ed6f5cd6de014e14" prot="private" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool MockHal::adc_conversion_complete</definition>
+        <argsstring></argsstring>
+        <name>adc_conversion_complete</name>
+        <qualifiedname>MockHal::adc_conversion_complete</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="30" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1a471829882669c6f5c452b33d4a361800" prot="private" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool MockHal::pwm_initialized</definition>
+        <argsstring></argsstring>
+        <name>pwm_initialized</name>
+        <qualifiedname>MockHal::pwm_initialized</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="33" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1ad123fdeb8f59587469fd2938a11355fb" prot="private" static="yes" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t MockHal::pwm_duty_cycles</definition>
+        <argsstring>[4]</argsstring>
+        <name>pwm_duty_cycles</name>
+        <qualifiedname>MockHal::pwm_duty_cycles</qualifiedname>
+        <initializer>= {0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="34" column="20" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="393" bodyend="393"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1a51f569bcc9cf2a2404234788e48e0111" prot="private" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t MockHal::pwm_frequencies</definition>
+        <argsstring>[4]</argsstring>
+        <name>pwm_frequencies</name>
+        <qualifiedname>MockHal::pwm_frequencies</qualifiedname>
+        <initializer>= {0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="35" column="21" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="394" bodyend="394"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1a222130abd673e5d268971ffdf56de577" prot="private" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool MockHal::pwm_channels_enabled</definition>
+        <argsstring>[4]</argsstring>
+        <name>pwm_channels_enabled</name>
+        <qualifiedname>MockHal::pwm_channels_enabled</qualifiedname>
+        <initializer>= {false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="36" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="395" bodyend="395"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1a43c3be770133f8dc817245ddec073a68" prot="private" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool MockHal::timer_initialized</definition>
+        <argsstring></argsstring>
+        <name>timer_initialized</name>
+        <qualifiedname>MockHal::timer_initialized</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="39" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1ab01de5abf532e8945f3b01fbd659af1b" prot="private" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool MockHal::timer_expired_flags</definition>
+        <argsstring>[4]</argsstring>
+        <name>timer_expired_flags</name>
+        <qualifiedname>MockHal::timer_expired_flags</qualifiedname>
+        <initializer>= {false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="40" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="398" bodyend="398"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1a9a14985a003a1ae59535f9a0e680a999" prot="private" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t MockHal::timer_start_times</definition>
+        <argsstring>[4]</argsstring>
+        <name>timer_start_times</name>
+        <qualifiedname>MockHal::timer_start_times</qualifiedname>
+        <initializer>= {0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="41" column="21" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="399" bodyend="399"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1ac2b60bad4e0f0868277f054af1b5f3ae" prot="private" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t MockHal::timer_periods</definition>
+        <argsstring>[4]</argsstring>
+        <name>timer_periods</name>
+        <qualifiedname>MockHal::timer_periods</qualifiedname>
+        <initializer>= {0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="42" column="21" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="400" bodyend="400"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1a5bcb83c0fe546c5e1a7a1483e8147d24" prot="private" static="yes" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t MockHal::timer_values</definition>
+        <argsstring>[4]</argsstring>
+        <name>timer_values</name>
+        <qualifiedname>MockHal::timer_values</qualifiedname>
+        <initializer>= {0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="43" column="21" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="401" bodyend="401"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1ab1d52f877e5fb6275e3da91aa6b399e1" prot="private" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t MockHal::mock_millis</definition>
+        <argsstring></argsstring>
+        <name>mock_millis</name>
+        <qualifiedname>MockHal::mock_millis</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="44" column="21" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1a7a450597f6aa8ecbc123deb2cf4ea247" prot="private" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t MockHal::mock_micros</definition>
+        <argsstring></argsstring>
+        <name>mock_micros</name>
+        <qualifiedname>MockHal::mock_micros</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="45" column="21" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1ad1b798295e480f703abe26acaf47ae30" prot="private" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool MockHal::uart_initialized</definition>
+        <argsstring></argsstring>
+        <name>uart_initialized</name>
+        <qualifiedname>MockHal::uart_initialized</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="48" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1a2aba039aac7493712b0f4c897be62391" prot="private" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t MockHal::uart_baud_rate</definition>
+        <argsstring></argsstring>
+        <name>uart_baud_rate</name>
+        <qualifiedname>MockHal::uart_baud_rate</qualifiedname>
+        <initializer>= 9600</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="49" column="21" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1aead1915f0c5e54641f0a06228785f3df" prot="private" static="yes" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t MockHal::uart_tx_buffer</definition>
+        <argsstring>[256]</argsstring>
+        <name>uart_tx_buffer</name>
+        <qualifiedname>MockHal::uart_tx_buffer</qualifiedname>
+        <initializer>= {0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="50" column="20" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="407" bodyend="407"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1a24e9b6d0b934422a987517212545339b" prot="private" static="yes" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t MockHal::uart_rx_buffer</definition>
+        <argsstring>[256]</argsstring>
+        <name>uart_rx_buffer</name>
+        <qualifiedname>MockHal::uart_rx_buffer</qualifiedname>
+        <initializer>= {0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="51" column="20" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="408" bodyend="408"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1a06a64da616356d7363bb13315b330b81" prot="private" static="yes" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t MockHal::uart_tx_head</definition>
+        <argsstring></argsstring>
+        <name>uart_tx_head</name>
+        <qualifiedname>MockHal::uart_tx_head</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="52" column="21" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1abd4fb69e955dfdff58203fad4924264b" prot="private" static="yes" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t MockHal::uart_rx_head</definition>
+        <argsstring></argsstring>
+        <name>uart_rx_head</name>
+        <qualifiedname>MockHal::uart_rx_head</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="53" column="21" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1a0774add05f51c35d0bbe7e862f09480f" prot="private" static="yes" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t MockHal::uart_tx_tail</definition>
+        <argsstring></argsstring>
+        <name>uart_tx_tail</name>
+        <qualifiedname>MockHal::uart_tx_tail</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="54" column="21" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d0d/class_mock_hal_1ad88a6db53fe63d514782d90fb6e3a8d8" prot="private" static="yes" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t MockHal::uart_rx_tail</definition>
+        <argsstring></argsstring>
+        <name>uart_rx_tail</name>
+        <qualifiedname>MockHal::uart_rx_tail</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="55" column="21" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a78ae34eec4fe43bbde6726250a687de3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioInit</definition>
+        <argsstring>()</argsstring>
+        <name>gpioInit</name>
+        <qualifiedname>MockHal::gpioInit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="191" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="191" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a0239f12123835113d15c00fdf79c43e7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioSetPinMode</definition>
+        <argsstring>(uint8_t pin, uint8_t mode)</argsstring>
+        <name>gpioSetPinMode</name>
+        <qualifiedname>MockHal::gpioSetPinMode</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="192" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="192" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a0b1a8a781257caa68acf226154182d05" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioDigitalWrite</definition>
+        <argsstring>(uint8_t pin, uint8_t value)</argsstring>
+        <name>gpioDigitalWrite</name>
+        <qualifiedname>MockHal::gpioDigitalWrite</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="197" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="197" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1ae5f5c033d5956b817987286edacf5f79" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>static uint8_t MockHal::gpioDigitalRead</definition>
+        <argsstring>(uint8_t pin)</argsstring>
+        <name>gpioDigitalRead</name>
+        <qualifiedname>MockHal::gpioDigitalRead</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="202" column="20" bodyfile="src/modules/hal/hal_template_example.h" bodystart="202" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a18c43402e24956fed88656082a0fedd9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioTogglePin</definition>
+        <argsstring>(uint8_t pin)</argsstring>
+        <name>gpioTogglePin</name>
+        <qualifiedname>MockHal::gpioTogglePin</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="206" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="206" bodyend="210"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a44f1c18fca396af55bec3c315b9c009c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioSonicatorStart</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>gpioSonicatorStart</name>
+        <qualifiedname>MockHal::gpioSonicatorStart</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="213" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="213" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1ae4b02fdf0b8e1c4d2cfa9c0adebb1045" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioSonicatorStop</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>gpioSonicatorStop</name>
+        <qualifiedname>MockHal::gpioSonicatorStop</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="214" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="214" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1acf7099fa13bb352f4e9e3461bc355ed3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioSonicatorReset</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>gpioSonicatorReset</name>
+        <qualifiedname>MockHal::gpioSonicatorReset</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="215" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="215" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1acceb7f6aca6366ad3dd623ac6e2f5013" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioSonicatorReadOverload</definition>
+        <argsstring>(uint8_t id, bool *state)</argsstring>
+        <name>gpioSonicatorReadOverload</name>
+        <qualifiedname>MockHal::gpioSonicatorReadOverload</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="216" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="216" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1af095b6ca872fda8d39a60b5bae1e70e5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioSonicatorReadFreqLock</definition>
+        <argsstring>(uint8_t id, bool *state)</argsstring>
+        <name>gpioSonicatorReadFreqLock</name>
+        <qualifiedname>MockHal::gpioSonicatorReadFreqLock</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="221" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="221" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a9dc0a813cf7fd5e56afedf3c118320ca" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioStatusLed</definition>
+        <argsstring>(bool state)</argsstring>
+        <name>gpioStatusLed</name>
+        <qualifiedname>MockHal::gpioStatusLed</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="226" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="226" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1aee05dab2558b220a9886934730a605fb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::adcInit</definition>
+        <argsstring>()</argsstring>
+        <name>adcInit</name>
+        <qualifiedname>MockHal::adcInit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="229" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="229" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a4dbebac56f72dc31d2763527e5a49bbb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::adcReadChannel</definition>
+        <argsstring>(uint8_t channel, uint16_t *value)</argsstring>
+        <name>adcReadChannel</name>
+        <qualifiedname>MockHal::adcReadChannel</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="230" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="230" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1ae4f8a8718a5e93b170521cbc70ad834a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float MockHal::adcRawToVoltage</definition>
+        <argsstring>(uint16_t raw)</argsstring>
+        <name>adcRawToVoltage</name>
+        <qualifiedname>MockHal::adcRawToVoltage</qualifiedname>
+        <param>
+          <type>uint16_t</type>
+          <declname>raw</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="235" column="18" bodyfile="src/modules/hal/hal_template_example.h" bodystart="235" bodyend="235"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1affa021fd5c0058d8e7467821900ff8d9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::adcReadSonicatorPower</definition>
+        <argsstring>(uint8_t id, float *power)</argsstring>
+        <name>adcReadSonicatorPower</name>
+        <qualifiedname>MockHal::adcReadSonicatorPower</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>power</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="236" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="236" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a025d4d4b158e5c11cdd8c3e98ccd7820" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::pwmInit</definition>
+        <argsstring>()</argsstring>
+        <name>pwmInit</name>
+        <qualifiedname>MockHal::pwmInit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="243" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="243" bodyend="243"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1acd554e15bceff498fa134bae804aa2c2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::pwmSetDutyCycle</definition>
+        <argsstring>(uint8_t channel, uint8_t duty)</argsstring>
+        <name>pwmSetDutyCycle</name>
+        <qualifiedname>MockHal::pwmSetDutyCycle</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>duty</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="244" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="244" bodyend="244"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a935b2b5faee9d2b36df4e7c57b6bac1e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::pwmSetAmplitude</definition>
+        <argsstring>(uint8_t amplitude)</argsstring>
+        <name>pwmSetAmplitude</name>
+        <qualifiedname>MockHal::pwmSetAmplitude</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>amplitude</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="245" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="245" bodyend="245"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a1c5aadc38e3e6ff0b1e7b727f9aba6e7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::pwmEmergencyStop</definition>
+        <argsstring>()</argsstring>
+        <name>pwmEmergencyStop</name>
+        <qualifiedname>MockHal::pwmEmergencyStop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="246" column="17" bodyfile="src/modules/hal/hal_template_example.h" bodystart="246" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a78ae34eec4fe43bbde6726250a687de3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioInit</definition>
+        <argsstring>()</argsstring>
+        <name>gpioInit</name>
+        <qualifiedname>MockHal::gpioInit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="62" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="62" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a0239f12123835113d15c00fdf79c43e7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioSetPinMode</definition>
+        <argsstring>(uint8_t pin, uint8_t mode)</argsstring>
+        <name>gpioSetPinMode</name>
+        <qualifiedname>MockHal::gpioSetPinMode</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="69" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="69" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a0b1a8a781257caa68acf226154182d05" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioDigitalWrite</definition>
+        <argsstring>(uint8_t pin, uint8_t value)</argsstring>
+        <name>gpioDigitalWrite</name>
+        <qualifiedname>MockHal::gpioDigitalWrite</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="75" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="75" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1ae5f5c033d5956b817987286edacf5f79" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>static uint8_t MockHal::gpioDigitalRead</definition>
+        <argsstring>(uint8_t pin)</argsstring>
+        <name>gpioDigitalRead</name>
+        <qualifiedname>MockHal::gpioDigitalRead</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="81" column="20" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="81" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a18c43402e24956fed88656082a0fedd9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioTogglePin</definition>
+        <argsstring>(uint8_t pin)</argsstring>
+        <name>gpioTogglePin</name>
+        <qualifiedname>MockHal::gpioTogglePin</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="86" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="86" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a187b6399e198a091b3375ef8aefae61e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioSonicatorStart</definition>
+        <argsstring>(uint8_t sonicator_id)</argsstring>
+        <name>gpioSonicatorStart</name>
+        <qualifiedname>MockHal::gpioSonicatorStart</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="93" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="93" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1afea97794a28a30c5dde2651ed48a4ac7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioSonicatorStop</definition>
+        <argsstring>(uint8_t sonicator_id)</argsstring>
+        <name>gpioSonicatorStop</name>
+        <qualifiedname>MockHal::gpioSonicatorStop</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="100" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="100" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a575fbe87c0bdb16179e02ce6a656872f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioSonicatorReset</definition>
+        <argsstring>(uint8_t sonicator_id)</argsstring>
+        <name>gpioSonicatorReset</name>
+        <qualifiedname>MockHal::gpioSonicatorReset</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="106" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="106" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1afbeb206828e2de90d5ab8b5e1eaf1d43" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioSonicatorReadOverload</definition>
+        <argsstring>(uint8_t sonicator_id, bool *state)</argsstring>
+        <name>gpioSonicatorReadOverload</name>
+        <qualifiedname>MockHal::gpioSonicatorReadOverload</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="112" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="112" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1af1b860aa0fe5bf1fb44a02c390f555ac" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioSonicatorReadFreqLock</definition>
+        <argsstring>(uint8_t sonicator_id, bool *state)</argsstring>
+        <name>gpioSonicatorReadFreqLock</name>
+        <qualifiedname>MockHal::gpioSonicatorReadFreqLock</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="119" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="119" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a9dc0a813cf7fd5e56afedf3c118320ca" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::gpioStatusLed</definition>
+        <argsstring>(bool state)</argsstring>
+        <name>gpioStatusLed</name>
+        <qualifiedname>MockHal::gpioStatusLed</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="126" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="126" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1aee05dab2558b220a9886934730a605fb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::adcInit</definition>
+        <argsstring>()</argsstring>
+        <name>adcInit</name>
+        <qualifiedname>MockHal::adcInit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="135" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="135" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a4dbebac56f72dc31d2763527e5a49bbb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::adcReadChannel</definition>
+        <argsstring>(uint8_t channel, uint16_t *value)</argsstring>
+        <name>adcReadChannel</name>
+        <qualifiedname>MockHal::adcReadChannel</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="143" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="143" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a736c6811f6d6687af39edd1fc973e356" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::adcStartConversion</definition>
+        <argsstring>(uint8_t channel)</argsstring>
+        <name>adcStartConversion</name>
+        <qualifiedname>MockHal::adcStartConversion</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="149" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="149" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1aa16e422825e0a71cb60f416f630749c1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::adcIsConversionComplete</definition>
+        <argsstring>()</argsstring>
+        <name>adcIsConversionComplete</name>
+        <qualifiedname>MockHal::adcIsConversionComplete</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="156" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="156" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1ae5aa9f6ac1757b2cad17fc6f1cbcac5d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float MockHal::adcRawToVoltage</definition>
+        <argsstring>(uint16_t raw_value)</argsstring>
+        <name>adcRawToVoltage</name>
+        <qualifiedname>MockHal::adcRawToVoltage</qualifiedname>
+        <param>
+          <type>uint16_t</type>
+          <declname>raw_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="164" column="18" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="164" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1aacd6075a288ba079072edabd42fb45cd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::adcReadSonicatorPower</definition>
+        <argsstring>(uint8_t sonicator_id, float *power_watts)</argsstring>
+        <name>adcReadSonicatorPower</name>
+        <qualifiedname>MockHal::adcReadSonicatorPower</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>power_watts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="170" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="170" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a356f37588aa6f4948497d2ea61f7b303" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::adcReadFrequency</definition>
+        <argsstring>(float *frequency_hz)</argsstring>
+        <name>adcReadFrequency</name>
+        <qualifiedname>MockHal::adcReadFrequency</qualifiedname>
+        <param>
+          <type>float *</type>
+          <declname>frequency_hz</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="177" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="177" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1ab73ca09cdc54de321858b196469fa74a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::adcCalibrate</definition>
+        <argsstring>(float reference_voltage)</argsstring>
+        <name>adcCalibrate</name>
+        <qualifiedname>MockHal::adcCalibrate</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>reference_voltage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="183" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="183" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a025d4d4b158e5c11cdd8c3e98ccd7820" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::pwmInit</definition>
+        <argsstring>()</argsstring>
+        <name>pwmInit</name>
+        <qualifiedname>MockHal::pwmInit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="193" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="193" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a175a4fea79e7474114ebb6814c50dbf0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::pwmSetFrequency</definition>
+        <argsstring>(uint8_t channel, uint32_t frequency)</argsstring>
+        <name>pwmSetFrequency</name>
+        <qualifiedname>MockHal::pwmSetFrequency</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>frequency</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="201" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="201" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a4dd176132166bed272509979db306be7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::pwmSetDutyCycle</definition>
+        <argsstring>(uint8_t channel, uint8_t duty_percent)</argsstring>
+        <name>pwmSetDutyCycle</name>
+        <qualifiedname>MockHal::pwmSetDutyCycle</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>duty_percent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="207" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="207" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a2557d11731324dcaf4c793bf5a98fc26" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::pwmEnableChannel</definition>
+        <argsstring>(uint8_t channel)</argsstring>
+        <name>pwmEnableChannel</name>
+        <qualifiedname>MockHal::pwmEnableChannel</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="213" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="213" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a3666a005e81f5d8ca0196cb359bc2e9c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::pwmDisableChannel</definition>
+        <argsstring>(uint8_t channel)</argsstring>
+        <name>pwmDisableChannel</name>
+        <qualifiedname>MockHal::pwmDisableChannel</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="219" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="219" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a034d488032e7fd0ffc042481369fd3b2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::pwmSetAmplitude</definition>
+        <argsstring>(uint8_t amplitude_percent)</argsstring>
+        <name>pwmSetAmplitude</name>
+        <qualifiedname>MockHal::pwmSetAmplitude</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>amplitude_percent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="227" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="227" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1ad9346ad7a2495840e8cc8edaf6e1818c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::pwmGetAmplitude</definition>
+        <argsstring>(uint8_t *amplitude_percent)</argsstring>
+        <name>pwmGetAmplitude</name>
+        <qualifiedname>MockHal::pwmGetAmplitude</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>amplitude_percent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="232" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="232" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a39133df6cdc650c640d171e83233a6d2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::pwmAmplitudeRamp</definition>
+        <argsstring>(uint8_t target_percent, uint16_t ramp_time_ms)</argsstring>
+        <name>pwmAmplitudeRamp</name>
+        <qualifiedname>MockHal::pwmAmplitudeRamp</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>target_percent</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>ramp_time_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="238" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="238" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a303e55385e0d8a1cc013861d594573d6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::pwmRampComplete</definition>
+        <argsstring>(bool *complete)</argsstring>
+        <name>pwmRampComplete</name>
+        <qualifiedname>MockHal::pwmRampComplete</qualifiedname>
+        <param>
+          <type>bool *</type>
+          <declname>complete</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="244" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="244" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a1c5aadc38e3e6ff0b1e7b727f9aba6e7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::pwmEmergencyStop</definition>
+        <argsstring>()</argsstring>
+        <name>pwmEmergencyStop</name>
+        <qualifiedname>MockHal::pwmEmergencyStop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="250" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="250" bodyend="255"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a48f3211ea2077b12d21de1b89343f9a0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::pwmDutyToVoltage</definition>
+        <argsstring>(uint8_t duty_percent, float *output_voltage)</argsstring>
+        <name>pwmDutyToVoltage</name>
+        <qualifiedname>MockHal::pwmDutyToVoltage</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>duty_percent</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>output_voltage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="258" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="258" bodyend="262"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a29c940543f90f94f1eec5b41547da7b1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::pwmAmplitudeToVoltage</definition>
+        <argsstring>(uint8_t amplitude_percent, float *output_voltage)</argsstring>
+        <name>pwmAmplitudeToVoltage</name>
+        <qualifiedname>MockHal::pwmAmplitudeToVoltage</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>amplitude_percent</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>output_voltage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="264" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="264" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a1758566e2e20973f67c5fddd05f04af3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::pwmTestPattern</definition>
+        <argsstring>()</argsstring>
+        <name>pwmTestPattern</name>
+        <qualifiedname>MockHal::pwmTestPattern</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="271" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="271" bodyend="275"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a9979e140fba8ab7c0c2285aec0dcad53" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::timerInit</definition>
+        <argsstring>()</argsstring>
+        <name>timerInit</name>
+        <qualifiedname>MockHal::timerInit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="281" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="281" bodyend="290"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a25f1eba606ced2fa66474a9e56592821" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::timerConfigure</definition>
+        <argsstring>(timer_id_t timer_id, const timer_config_t *config)</argsstring>
+        <name>timerConfigure</name>
+        <qualifiedname>MockHal::timerConfigure</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="d4/de4/structtimer__config__t" kindref="compound">timer_config_t</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="292" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="292" bodyend="296"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a7d58c9d62a3cac470571d5424b587bf9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::timerStart</definition>
+        <argsstring>(timer_id_t timer_id, uint32_t period_ms)</argsstring>
+        <name>timerStart</name>
+        <qualifiedname>MockHal::timerStart</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>period_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="298" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="298" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a21407607d57a272a3985033edeefd48f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::timerStop</definition>
+        <argsstring>(timer_id_t timer_id)</argsstring>
+        <name>timerStop</name>
+        <qualifiedname>MockHal::timerStop</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="306" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="306" bodyend="310"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1ae2f9f991358436ca1379eef332ae3975" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::timerExpired</definition>
+        <argsstring>(timer_id_t timer_id, bool *expired)</argsstring>
+        <name>timerExpired</name>
+        <qualifiedname>MockHal::timerExpired</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>expired</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="312" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="312" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1af70a3ff3f2a14c5fbc4bd51715692dec" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::timerReset</definition>
+        <argsstring>(timer_id_t timer_id)</argsstring>
+        <name>timerReset</name>
+        <qualifiedname>MockHal::timerReset</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="320" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="320" bodyend="325"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1ad350e516ec9b46eca9634bed243699a1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::timerGetValue</definition>
+        <argsstring>(timer_id_t timer_id, uint16_t *value)</argsstring>
+        <name>timerGetValue</name>
+        <qualifiedname>MockHal::timerGetValue</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="327" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="327" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a9507f943477190139acdffa39fc316a9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::timerGetElapsed</definition>
+        <argsstring>(timer_id_t timer_id, uint32_t *elapsed_ms)</argsstring>
+        <name>timerGetElapsed</name>
+        <qualifiedname>MockHal::timerGetElapsed</qualifiedname>
+        <param>
+          <type><ref refid="d5/dd0/timer_8h_1ab46c323c4f73f2150385fead53055392" kindref="member">timer_id_t</ref></type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>elapsed_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="333" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="333" bodyend="337"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1aa2dfc54ca678bbef9fa6ab53bd4bbfde" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::timerGetMillis</definition>
+        <argsstring>(uint32_t *uptime_ms)</argsstring>
+        <name>timerGetMillis</name>
+        <qualifiedname>MockHal::timerGetMillis</qualifiedname>
+        <param>
+          <type>uint32_t *</type>
+          <declname>uptime_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="340" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="340" bodyend="344"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1afe5d7b5e12c541a8f339a4be26a12c1f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::timerGetMicros</definition>
+        <argsstring>(uint32_t *uptime_us)</argsstring>
+        <name>timerGetMicros</name>
+        <qualifiedname>MockHal::timerGetMicros</qualifiedname>
+        <param>
+          <type>uint32_t *</type>
+          <declname>uptime_us</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="346" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="346" bodyend="350"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a3b45445a128b7bda85baeecc6c558890" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::timerDelayMs</definition>
+        <argsstring>(uint32_t delay_ms)</argsstring>
+        <name>timerDelayMs</name>
+        <qualifiedname>MockHal::timerDelayMs</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>delay_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="352" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="352" bodyend="356"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a0c9e73f7e3142ebaf02adbd0d94db2b3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::timerDelayUs</definition>
+        <argsstring>(uint32_t delay_us)</argsstring>
+        <name>timerDelayUs</name>
+        <qualifiedname>MockHal::timerDelayUs</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>delay_us</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="358" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="358" bodyend="362"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1ae84e156e8101b17d990d97c500beae44" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool MockHal::timerDelayComplete</definition>
+        <argsstring>(uint32_t start_time_ms, uint32_t delay_ms, bool *complete)</argsstring>
+        <name>timerDelayComplete</name>
+        <qualifiedname>MockHal::timerDelayComplete</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>start_time_ms</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>delay_ms</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>complete</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="364" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="364" bodyend="368"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1a49210da8721ec17604df8a963daa48de" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void MockHal::advanceTimeMs</definition>
+        <argsstring>(uint32_t ms)</argsstring>
+        <name>advanceTimeMs</name>
+        <qualifiedname>MockHal::advanceTimeMs</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="371" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="371" bodyend="374"/>
+      </memberdef>
+      <memberdef kind="function" id="d2/d0d/class_mock_hal_1ab93e76b38cd90b4807e9bac524f5bdcd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void MockHal::advanceTimeUs</definition>
+        <argsstring>(uint32_t us)</argsstring>
+        <name>advanceTimeUs</name>
+        <qualifiedname>MockHal::advanceTimeUs</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>us</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/mock_hal_impl.h" line="376" column="17" bodyfile="src/modules/hal/mock_hal_impl.h" bodystart="376" bodyend="379"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Mock HAL Implementation for Unit Testing. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/modules/hal/hal_template_example.h" line="182" column="1" bodyfile="src/modules/hal/hal_template_example.h" bodystart="182" bodyend="247"/>
+    <listofallmembers>
+      <member refid="d2/d0d/class_mock_hal_1aee8100f9afc16f2b62afa425b81f8d34" prot="private" virt="non-virtual"><scope>MockHal</scope><name>adc_channel_values</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a327f2d605bd4b116ed6f5cd6de014e14" prot="private" virt="non-virtual"><scope>MockHal</scope><name>adc_conversion_complete</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a2c23020addf42f7b21b8e8418f204025" prot="private" virt="non-virtual"><scope>MockHal</scope><name>adc_conversion_started</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a8958631ecc5a7f6a670ae1d74f4721a8" prot="private" virt="non-virtual"><scope>MockHal</scope><name>adc_initialized</name></member>
+      <member refid="d2/d0d/class_mock_hal_1ab73ca09cdc54de321858b196469fa74a" prot="public" virt="non-virtual"><scope>MockHal</scope><name>adcCalibrate</name></member>
+      <member refid="d2/d0d/class_mock_hal_1aee05dab2558b220a9886934730a605fb" prot="public" virt="non-virtual"><scope>MockHal</scope><name>adcInit</name></member>
+      <member refid="d2/d0d/class_mock_hal_1aee05dab2558b220a9886934730a605fb" prot="public" virt="non-virtual"><scope>MockHal</scope><name>adcInit</name></member>
+      <member refid="d2/d0d/class_mock_hal_1aa16e422825e0a71cb60f416f630749c1" prot="public" virt="non-virtual"><scope>MockHal</scope><name>adcIsConversionComplete</name></member>
+      <member refid="d2/d0d/class_mock_hal_1ae4f8a8718a5e93b170521cbc70ad834a" prot="public" virt="non-virtual"><scope>MockHal</scope><name>adcRawToVoltage</name></member>
+      <member refid="d2/d0d/class_mock_hal_1ae5aa9f6ac1757b2cad17fc6f1cbcac5d" prot="public" virt="non-virtual"><scope>MockHal</scope><name>adcRawToVoltage</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a4dbebac56f72dc31d2763527e5a49bbb" prot="public" virt="non-virtual"><scope>MockHal</scope><name>adcReadChannel</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a4dbebac56f72dc31d2763527e5a49bbb" prot="public" virt="non-virtual"><scope>MockHal</scope><name>adcReadChannel</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a356f37588aa6f4948497d2ea61f7b303" prot="public" virt="non-virtual"><scope>MockHal</scope><name>adcReadFrequency</name></member>
+      <member refid="d2/d0d/class_mock_hal_1affa021fd5c0058d8e7467821900ff8d9" prot="public" virt="non-virtual"><scope>MockHal</scope><name>adcReadSonicatorPower</name></member>
+      <member refid="d2/d0d/class_mock_hal_1aacd6075a288ba079072edabd42fb45cd" prot="public" virt="non-virtual"><scope>MockHal</scope><name>adcReadSonicatorPower</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a736c6811f6d6687af39edd1fc973e356" prot="public" virt="non-virtual"><scope>MockHal</scope><name>adcStartConversion</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a49210da8721ec17604df8a963daa48de" prot="public" virt="non-virtual"><scope>MockHal</scope><name>advanceTimeMs</name></member>
+      <member refid="d2/d0d/class_mock_hal_1ab93e76b38cd90b4807e9bac524f5bdcd" prot="public" virt="non-virtual"><scope>MockHal</scope><name>advanceTimeUs</name></member>
+      <member refid="d2/d0d/class_mock_hal_1aaa7312797e9b12c3636f04536ee986d5" prot="private" virt="non-virtual"><scope>MockHal</scope><name>gpio_initialized</name></member>
+      <member refid="d2/d0d/class_mock_hal_1ae5f5c033d5956b817987286edacf5f79" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioDigitalRead</name></member>
+      <member refid="d2/d0d/class_mock_hal_1ae5f5c033d5956b817987286edacf5f79" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioDigitalRead</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a0b1a8a781257caa68acf226154182d05" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioDigitalWrite</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a0b1a8a781257caa68acf226154182d05" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioDigitalWrite</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a78ae34eec4fe43bbde6726250a687de3" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioInit</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a78ae34eec4fe43bbde6726250a687de3" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioInit</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a0239f12123835113d15c00fdf79c43e7" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioSetPinMode</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a0239f12123835113d15c00fdf79c43e7" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioSetPinMode</name></member>
+      <member refid="d2/d0d/class_mock_hal_1af095b6ca872fda8d39a60b5bae1e70e5" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioSonicatorReadFreqLock</name></member>
+      <member refid="d2/d0d/class_mock_hal_1af1b860aa0fe5bf1fb44a02c390f555ac" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioSonicatorReadFreqLock</name></member>
+      <member refid="d2/d0d/class_mock_hal_1acceb7f6aca6366ad3dd623ac6e2f5013" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioSonicatorReadOverload</name></member>
+      <member refid="d2/d0d/class_mock_hal_1afbeb206828e2de90d5ab8b5e1eaf1d43" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioSonicatorReadOverload</name></member>
+      <member refid="d2/d0d/class_mock_hal_1acf7099fa13bb352f4e9e3461bc355ed3" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioSonicatorReset</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a575fbe87c0bdb16179e02ce6a656872f" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioSonicatorReset</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a44f1c18fca396af55bec3c315b9c009c" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioSonicatorStart</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a187b6399e198a091b3375ef8aefae61e" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioSonicatorStart</name></member>
+      <member refid="d2/d0d/class_mock_hal_1ae4b02fdf0b8e1c4d2cfa9c0adebb1045" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioSonicatorStop</name></member>
+      <member refid="d2/d0d/class_mock_hal_1afea97794a28a30c5dde2651ed48a4ac7" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioSonicatorStop</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a9dc0a813cf7fd5e56afedf3c118320ca" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioStatusLed</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a9dc0a813cf7fd5e56afedf3c118320ca" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioStatusLed</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a18c43402e24956fed88656082a0fedd9" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioTogglePin</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a18c43402e24956fed88656082a0fedd9" prot="public" virt="non-virtual"><scope>MockHal</scope><name>gpioTogglePin</name></member>
+      <member refid="d2/d0d/class_mock_hal_1ac5d522118a51c3c52df6ba01f318de47" prot="private" virt="non-virtual"><scope>MockHal</scope><name>mock_adc_initialized</name></member>
+      <member refid="d2/d0d/class_mock_hal_1aa5851d32dbf5cc61901ac349d81ef92b" prot="private" virt="non-virtual"><scope>MockHal</scope><name>mock_gpio_initialized</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a7a450597f6aa8ecbc123deb2cf4ea247" prot="private" virt="non-virtual"><scope>MockHal</scope><name>mock_micros</name></member>
+      <member refid="d2/d0d/class_mock_hal_1ab1d52f877e5fb6275e3da91aa6b399e1" prot="private" virt="non-virtual"><scope>MockHal</scope><name>mock_millis</name></member>
+      <member refid="d2/d0d/class_mock_hal_1acae59b10508e739618170368fa4236a3" prot="private" virt="non-virtual"><scope>MockHal</scope><name>mock_pin_states</name></member>
+      <member refid="d2/d0d/class_mock_hal_1afdb900a7f5e1263d4a9a99c37692c167" prot="private" virt="non-virtual"><scope>MockHal</scope><name>mock_pwm_initialized</name></member>
+      <member refid="d2/d0d/class_mock_hal_1ae5cdd10a1d92ecd97b49cd2734fa880d" prot="private" virt="non-virtual"><scope>MockHal</scope><name>pin_modes</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a8fff72b72e6f8d39fc06b7f6ddfa9734" prot="private" virt="non-virtual"><scope>MockHal</scope><name>pin_states</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a222130abd673e5d268971ffdf56de577" prot="private" virt="non-virtual"><scope>MockHal</scope><name>pwm_channels_enabled</name></member>
+      <member refid="d2/d0d/class_mock_hal_1ad123fdeb8f59587469fd2938a11355fb" prot="private" virt="non-virtual"><scope>MockHal</scope><name>pwm_duty_cycles</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a51f569bcc9cf2a2404234788e48e0111" prot="private" virt="non-virtual"><scope>MockHal</scope><name>pwm_frequencies</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a471829882669c6f5c452b33d4a361800" prot="private" virt="non-virtual"><scope>MockHal</scope><name>pwm_initialized</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a39133df6cdc650c640d171e83233a6d2" prot="public" virt="non-virtual"><scope>MockHal</scope><name>pwmAmplitudeRamp</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a29c940543f90f94f1eec5b41547da7b1" prot="public" virt="non-virtual"><scope>MockHal</scope><name>pwmAmplitudeToVoltage</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a3666a005e81f5d8ca0196cb359bc2e9c" prot="public" virt="non-virtual"><scope>MockHal</scope><name>pwmDisableChannel</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a48f3211ea2077b12d21de1b89343f9a0" prot="public" virt="non-virtual"><scope>MockHal</scope><name>pwmDutyToVoltage</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a1c5aadc38e3e6ff0b1e7b727f9aba6e7" prot="public" virt="non-virtual"><scope>MockHal</scope><name>pwmEmergencyStop</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a1c5aadc38e3e6ff0b1e7b727f9aba6e7" prot="public" virt="non-virtual"><scope>MockHal</scope><name>pwmEmergencyStop</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a2557d11731324dcaf4c793bf5a98fc26" prot="public" virt="non-virtual"><scope>MockHal</scope><name>pwmEnableChannel</name></member>
+      <member refid="d2/d0d/class_mock_hal_1ad9346ad7a2495840e8cc8edaf6e1818c" prot="public" virt="non-virtual"><scope>MockHal</scope><name>pwmGetAmplitude</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a025d4d4b158e5c11cdd8c3e98ccd7820" prot="public" virt="non-virtual"><scope>MockHal</scope><name>pwmInit</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a025d4d4b158e5c11cdd8c3e98ccd7820" prot="public" virt="non-virtual"><scope>MockHal</scope><name>pwmInit</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a303e55385e0d8a1cc013861d594573d6" prot="public" virt="non-virtual"><scope>MockHal</scope><name>pwmRampComplete</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a935b2b5faee9d2b36df4e7c57b6bac1e" prot="public" virt="non-virtual"><scope>MockHal</scope><name>pwmSetAmplitude</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a034d488032e7fd0ffc042481369fd3b2" prot="public" virt="non-virtual"><scope>MockHal</scope><name>pwmSetAmplitude</name></member>
+      <member refid="d2/d0d/class_mock_hal_1acd554e15bceff498fa134bae804aa2c2" prot="public" virt="non-virtual"><scope>MockHal</scope><name>pwmSetDutyCycle</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a4dd176132166bed272509979db306be7" prot="public" virt="non-virtual"><scope>MockHal</scope><name>pwmSetDutyCycle</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a175a4fea79e7474114ebb6814c50dbf0" prot="public" virt="non-virtual"><scope>MockHal</scope><name>pwmSetFrequency</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a1758566e2e20973f67c5fddd05f04af3" prot="public" virt="non-virtual"><scope>MockHal</scope><name>pwmTestPattern</name></member>
+      <member refid="d2/d0d/class_mock_hal_1ab01de5abf532e8945f3b01fbd659af1b" prot="private" virt="non-virtual"><scope>MockHal</scope><name>timer_expired_flags</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a43c3be770133f8dc817245ddec073a68" prot="private" virt="non-virtual"><scope>MockHal</scope><name>timer_initialized</name></member>
+      <member refid="d2/d0d/class_mock_hal_1ac2b60bad4e0f0868277f054af1b5f3ae" prot="private" virt="non-virtual"><scope>MockHal</scope><name>timer_periods</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a9a14985a003a1ae59535f9a0e680a999" prot="private" virt="non-virtual"><scope>MockHal</scope><name>timer_start_times</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a5bcb83c0fe546c5e1a7a1483e8147d24" prot="private" virt="non-virtual"><scope>MockHal</scope><name>timer_values</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a25f1eba606ced2fa66474a9e56592821" prot="public" virt="non-virtual"><scope>MockHal</scope><name>timerConfigure</name></member>
+      <member refid="d2/d0d/class_mock_hal_1ae84e156e8101b17d990d97c500beae44" prot="public" virt="non-virtual"><scope>MockHal</scope><name>timerDelayComplete</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a3b45445a128b7bda85baeecc6c558890" prot="public" virt="non-virtual"><scope>MockHal</scope><name>timerDelayMs</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a0c9e73f7e3142ebaf02adbd0d94db2b3" prot="public" virt="non-virtual"><scope>MockHal</scope><name>timerDelayUs</name></member>
+      <member refid="d2/d0d/class_mock_hal_1ae2f9f991358436ca1379eef332ae3975" prot="public" virt="non-virtual"><scope>MockHal</scope><name>timerExpired</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a9507f943477190139acdffa39fc316a9" prot="public" virt="non-virtual"><scope>MockHal</scope><name>timerGetElapsed</name></member>
+      <member refid="d2/d0d/class_mock_hal_1afe5d7b5e12c541a8f339a4be26a12c1f" prot="public" virt="non-virtual"><scope>MockHal</scope><name>timerGetMicros</name></member>
+      <member refid="d2/d0d/class_mock_hal_1aa2dfc54ca678bbef9fa6ab53bd4bbfde" prot="public" virt="non-virtual"><scope>MockHal</scope><name>timerGetMillis</name></member>
+      <member refid="d2/d0d/class_mock_hal_1ad350e516ec9b46eca9634bed243699a1" prot="public" virt="non-virtual"><scope>MockHal</scope><name>timerGetValue</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a9979e140fba8ab7c0c2285aec0dcad53" prot="public" virt="non-virtual"><scope>MockHal</scope><name>timerInit</name></member>
+      <member refid="d2/d0d/class_mock_hal_1af70a3ff3f2a14c5fbc4bd51715692dec" prot="public" virt="non-virtual"><scope>MockHal</scope><name>timerReset</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a7d58c9d62a3cac470571d5424b587bf9" prot="public" virt="non-virtual"><scope>MockHal</scope><name>timerStart</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a21407607d57a272a3985033edeefd48f" prot="public" virt="non-virtual"><scope>MockHal</scope><name>timerStop</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a2aba039aac7493712b0f4c897be62391" prot="private" virt="non-virtual"><scope>MockHal</scope><name>uart_baud_rate</name></member>
+      <member refid="d2/d0d/class_mock_hal_1ad1b798295e480f703abe26acaf47ae30" prot="private" virt="non-virtual"><scope>MockHal</scope><name>uart_initialized</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a24e9b6d0b934422a987517212545339b" prot="private" virt="non-virtual"><scope>MockHal</scope><name>uart_rx_buffer</name></member>
+      <member refid="d2/d0d/class_mock_hal_1abd4fb69e955dfdff58203fad4924264b" prot="private" virt="non-virtual"><scope>MockHal</scope><name>uart_rx_head</name></member>
+      <member refid="d2/d0d/class_mock_hal_1ad88a6db53fe63d514782d90fb6e3a8d8" prot="private" virt="non-virtual"><scope>MockHal</scope><name>uart_rx_tail</name></member>
+      <member refid="d2/d0d/class_mock_hal_1aead1915f0c5e54641f0a06228785f3df" prot="private" virt="non-virtual"><scope>MockHal</scope><name>uart_tx_buffer</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a06a64da616356d7363bb13315b330b81" prot="private" virt="non-virtual"><scope>MockHal</scope><name>uart_tx_head</name></member>
+      <member refid="d2/d0d/class_mock_hal_1a0774add05f51c35d0bbe7e862f09480f" prot="private" virt="non-virtual"><scope>MockHal</scope><name>uart_tx_tail</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

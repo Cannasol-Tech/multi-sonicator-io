@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d5/d74/structsonicator__history__s" kind="struct" language="C++" prot="public">
+    <compoundname>sonicator_history_s</compoundname>
+    <includes refid="db/d3b/state_8h" local="no">state.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d5/d74/structsonicator__history__s_1ab4b4152e395d07217d6393b879e0be01" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t sonicator_history_s::start_count</definition>
+        <argsstring></argsstring>
+        <name>start_count</name>
+        <qualifiedname>sonicator_history_s::start_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="66" column="14" bodyfile="include/sonicator/types/state.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d74/structsonicator__history__s_1aa8ddc34853d83965bdefe35d4ca33ad6" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t sonicator_history_s::last_start_time</definition>
+        <argsstring></argsstring>
+        <name>last_start_time</name>
+        <qualifiedname>sonicator_history_s::last_start_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="67" column="14" bodyfile="include/sonicator/types/state.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d74/structsonicator__history__s_1a16fad17866b4e159b9e464fbd0cb4bad" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t sonicator_history_s::total_runtime_ms</definition>
+        <argsstring></argsstring>
+        <name>total_runtime_ms</name>
+        <qualifiedname>sonicator_history_s::total_runtime_ms</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="68" column="14" bodyfile="include/sonicator/types/state.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Sonicator historical status structure. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This structure contains the historical status of the sonicator. This is used to track the history of the sonicator state changes. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>start_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Start count </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>last_start_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Last start time </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>total_runtime_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Total runtime in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>THIS IS A BACKLOG ITEM TO BE IMPLEMENTED AFTER MVP </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="db/d3b/state_8h_1ad79c7a5f11697f6cf8e33fb09fb826db" kindref="member">sonicator_state_machine_t</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="include/sonicator/types/state.h" line="65" column="1" bodyfile="include/sonicator/types/state.h" bodystart="65" bodyend="69"/>
+    <listofallmembers>
+      <member refid="d5/d74/structsonicator__history__s_1aa8ddc34853d83965bdefe35d4ca33ad6" prot="public" virt="non-virtual"><scope>sonicator_history_s</scope><name>last_start_time</name></member>
+      <member refid="d5/d74/structsonicator__history__s_1ab4b4152e395d07217d6393b879e0be01" prot="public" virt="non-virtual"><scope>sonicator_history_s</scope><name>start_count</name></member>
+      <member refid="d5/d74/structsonicator__history__s_1a16fad17866b4e159b9e464fbd0cb4bad" prot="public" virt="non-virtual"><scope>sonicator_history_s</scope><name>total_runtime_ms</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

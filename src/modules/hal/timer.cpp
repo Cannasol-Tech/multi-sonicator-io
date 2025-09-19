@@ -572,7 +572,7 @@ timer_result_t timer_get_stats(timer_id_t timer_id, uint32_t* start_count,
 // PRIVATE FUNCTION IMPLEMENTATIONS
 // ============================================================================
 
-static inline constexpr bool is_valid_timer_id(timer_id_t timer_id) {
+static inline bool is_valid_timer_id(timer_id_t timer_id) {
     return (timer_id < TIMER_ID_MAX);
 }
 

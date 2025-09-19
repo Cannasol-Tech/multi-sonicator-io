@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['safety_0',['Safety',['../d8/d57/group___h_a_l___s_y_s_t_e_m.html#hal_sys_safety',1,'Safety'],['../d3/d00/class_sonic_multiplexer.html#thread_safety',1,'Thread Safety']]],
+  ['safety_20features_1',['Safety Features',['../dc/dc2/_multiplexer_8h.html#safety_features',1,'']]],
+  ['safety_20model_2',['Safety Model',['../d1/dcb/group___h_a_l___g_p_i_o.html#hal_gpio_safety',1,'']]],
+  ['safety_20performance_3',['Safety &amp;amp; Performance',['../dc/d0f/group___h_a_l___a_d_c.html#hal_adc_safety',1,'']]],
+  ['scale_20notes_20wrapper_20pin_20test_20point_4',['Scale Notes Wrapper Pin Test Point',['..//Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/src/modules/control/Multiplexer.cpp#autotoc_md0',1,'DUT Pin (Port/Pad) Header Ref Signal Dir Scale/Notes Wrapper Pin Test Point'],['..//Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/src/modules/control/Multiplexer.cpp#autotoc_md1',1,'DUT Pin (Port/Pad) Header Ref Signal Dir Scale/Notes Wrapper Pin Test Point'],['..//Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/src/modules/control/Multiplexer.cpp#autotoc_md2',1,'DUT Pin (Port/Pad) Header Ref Signal Dir Scale/Notes Wrapper Pin Test Point'],['..//Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/src/modules/control/Multiplexer.cpp#autotoc_md3',1,'DUT Pin (Port/Pad) Header Ref Signal Dir Scale/Notes Wrapper Pin Test Point']]],
+  ['shared_20resources_5',['Shared Resources',['../d3/d00/class_sonic_multiplexer.html#shared_resources',1,'']]],
+  ['signal_20dir_20scale_20notes_20wrapper_20pin_20test_20point_6',['Signal Dir Scale Notes Wrapper Pin Test Point',['..//Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/src/modules/control/Multiplexer.cpp#autotoc_md0',1,'DUT Pin (Port/Pad) Header Ref Signal Dir Scale/Notes Wrapper Pin Test Point'],['..//Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/src/modules/control/Multiplexer.cpp#autotoc_md1',1,'DUT Pin (Port/Pad) Header Ref Signal Dir Scale/Notes Wrapper Pin Test Point'],['..//Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/src/modules/control/Multiplexer.cpp#autotoc_md2',1,'DUT Pin (Port/Pad) Header Ref Signal Dir Scale/Notes Wrapper Pin Test Point'],['..//Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/src/modules/control/Multiplexer.cpp#autotoc_md3',1,'DUT Pin (Port/Pad) Header Ref Signal Dir Scale/Notes Wrapper Pin Test Point']]],
+  ['simulation_7',['Open‑Drain Simulation',['../d1/dcb/group___h_a_l___g_p_i_o.html#hal_gpio_open_drain',1,'']]],
+  ['sonicator_201_20atmega32a_20pin_20to_20modbus_20register_20mapping_8',['Sonicator 1 ATMega32a Pin-to-MODBUS Register Mapping',['../da/de1/pins_8h.html#sonicator1_pins',1,'']]],
+  ['sonicator_201_20registers_20id_200_200x0100_200x011f_9',['Sonicator 1 Registers (ID=0, 0x0100-0x011F)',['../da/de1/pins_8h.html#sonicator1_registers',1,'']]],
+  ['sonicator_202_20atmega32a_20pin_20to_20modbus_20register_20mapping_10',['Sonicator 2 ATMega32a Pin-to-MODBUS Register Mapping',['../da/de1/pins_8h.html#sonicator2_pins',1,'']]],
+  ['sonicator_202_20registers_20id_201_200x0120_200x013f_11',['Sonicator 2 Registers (ID=1, 0x0120-0x013F)',['../da/de1/pins_8h.html#sonicator2_registers',1,'']]],
+  ['sonicator_203_20atmega32a_20pin_20to_20modbus_20register_20mapping_12',['Sonicator 3 ATMega32a Pin-to-MODBUS Register Mapping',['../da/de1/pins_8h.html#sonicator3_pins',1,'']]],
+  ['sonicator_203_20registers_20id_202_200x0140_200x015f_13',['Sonicator 3 Registers (ID=2, 0x0140-0x015F)',['../da/de1/pins_8h.html#sonicator3_registers',1,'']]],
+  ['sonicator_204_20atmega32a_20pin_20to_20modbus_20register_20mapping_14',['Sonicator 4 ATMega32a Pin-to-MODBUS Register Mapping',['../da/de1/pins_8h.html#sonicator4_pins',1,'']]],
+  ['sonicator_204_20registers_20id_203_200x0160_200x017f_15',['Sonicator 4 Registers (ID=3, 0x0160-0x017F)',['../da/de1/pins_8h.html#sonicator4_registers',1,'']]],
+  ['sonicator_20id_20mapping_16',['Sonicator ID Mapping',['../d6/d4f/register__map_8h.html#sonicator_id_mapping',1,'']]],
+  ['status_20registers_200x0000_200x000f_20read_20only_17',['System Status Registers (0x0000-0x000F) - Read Only',['../da/de1/pins_8h.html#system_status_registers',1,'']]],
+  ['stride_20architecture_18',['Register Stride Architecture',['../d6/d4f/register__map_8h.html#register_stride',1,'']]],
+  ['summary_19',['Pin-to-Register Mapping Summary',['../da/de1/pins_8h.html#pin_register_mapping_summary',1,'']]],
+  ['supported_20modbus_20function_20codes_20',['Supported MODBUS Function Codes',['..//Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/include/modbus.h#supported_functions',1,'']]],
+  ['system_20communication_20pin_20to_20modbus_20register_20mapping_21',['System/Communication Pin-to-MODBUS Register Mapping',['../da/de1/pins_8h.html#system_pins',1,'']]],
+  ['system_20status_20registers_200x0000_200x000f_20read_20only_22',['System Status Registers (0x0000-0x000F) - Read Only',['../da/de1/pins_8h.html#system_status_registers',1,'']]]
+];

@@ -1,0 +1,606 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="db/d0f/modbus__register__manager_8cpp" kind="file" language="C++">
+    <compoundname>modbus_register_manager.cpp</compoundname>
+    <includes refid="dd/df5/modbus__register__manager_8h" local="yes">modbus_register_manager.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>modbus_register_manager.h</label>
+        <link refid="dd/df5/modbus__register__manager_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>modbus_registers.h</label>
+        <link refid="d4/d9a/modbus__registers_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/modules/communication/modbus_register_manager.cpp</label>
+        <link refid="db/d0f/modbus__register__manager_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>stdbool.h</label>
+      </node>
+      <node id="3">
+        <label>stdint.h</label>
+      </node>
+      <node id="6">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" prot="public" static="yes" mutable="no">
+        <type><ref refid="d5/d1a/structmodbus__register__map__t" kindref="compound">modbus_register_map_t</ref></type>
+        <definition>modbus_register_map_t register_map</definition>
+        <argsstring></argsstring>
+        <name>register_map</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_register_manager.cpp" line="16" column="30" bodyfile="src/modules/communication/modbus_register_manager.cpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/d0f/modbus__register__manager_8cpp_1a056b36df10f165cd5a6b993fc63fa152" prot="public" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool manager_initialized</definition>
+        <argsstring></argsstring>
+        <name>manager_initialized</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_register_manager.cpp" line="17" column="13" bodyfile="src/modules/communication/modbus_register_manager.cpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="db/d0f/modbus__register__manager_8cpp_1a87e393a356f5b647a98e8decf5574601" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool register_manager_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>register_manager_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize the register manager. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true on success, false on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_register_manager.cpp" line="23" column="6" bodyfile="src/modules/communication/modbus_register_manager.cpp" bodystart="23" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0f/modbus__register__manager_8cpp_1ab07eb4458680115587cf910a7532e6d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d5/d1a/structmodbus__register__map__t" kindref="compound">modbus_register_map_t</ref> *</type>
+        <definition>modbus_register_map_t * register_manager_get_map</definition>
+        <argsstring>(void)</argsstring>
+        <name>register_manager_get_map</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Get pointer to the register map. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Pointer to the complete register map </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_register_manager.cpp" line="55" column="23" bodyfile="src/modules/communication/modbus_register_manager.cpp" bodystart="55" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0f/modbus__register__manager_8cpp_1aad5c57b8dbf817632bd779b04202eb5d" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static constexpr void register_manager_update_system_status</definition>
+        <argsstring>(uint16_t status_bits, bool set)</argsstring>
+        <name>register_manager_update_system_status</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>status_bits</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>set</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_register_manager.cpp" line="62" column="30" bodyfile="src/modules/communication/modbus_register_manager.cpp" bodystart="62" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0f/modbus__register__manager_8cpp_1a0a9d7d9107de9f0576725cdbeceb21ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void register_manager_update_sonicator_status</definition>
+        <argsstring>(uint8_t sonicator_id, uint16_t power_watts, uint16_t frequency_hz, uint16_t amplitude_actual, uint16_t status_flags)</argsstring>
+        <name>register_manager_update_sonicator_status</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>power_watts</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>frequency_hz</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>amplitude_actual</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>status_flags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_register_manager.cpp" line="72" column="6" bodyfile="src/modules/communication/modbus_register_manager.cpp" bodystart="72" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0f/modbus__register__manager_8cpp_1a709b2e60133ad61693f7320436aee775" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool register_manager_get_sonicator_control</definition>
+        <argsstring>(uint8_t sonicator_id, uint16_t *start_stop, uint16_t *amplitude_sp)</argsstring>
+        <name>register_manager_get_sonicator_control</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>start_stop</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>amplitude_sp</declname>
+        </param>
+        <briefdescription>
+<para>Get sonicator control settings. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sonicator_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator ID (0-31) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>start_stop</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store start/stop command </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>amplitude_sp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store amplitude setpoint </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if valid sonicator ID, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_register_manager.cpp" line="101" column="6" bodyfile="src/modules/communication/modbus_register_manager.cpp" bodystart="101" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0f/modbus__register__manager_8cpp_1a2b383d8aebef164afa19c0a0e20990dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool register_manager_is_global_enabled</definition>
+        <argsstring>(void)</argsstring>
+        <name>register_manager_is_global_enabled</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Check if global enable is active. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if globally enabled, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_register_manager.cpp" line="115" column="6" bodyfile="src/modules/communication/modbus_register_manager.cpp" bodystart="115" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0f/modbus__register__manager_8cpp_1ac2f186865e2f446d349f113c0b3803a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool register_manager_is_emergency_stop_active</definition>
+        <argsstring>(void)</argsstring>
+        <name>register_manager_is_emergency_stop_active</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Check if emergency stop is active. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if emergency stop active, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_register_manager.cpp" line="120" column="6" bodyfile="src/modules/communication/modbus_register_manager.cpp" bodystart="120" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0f/modbus__register__manager_8cpp_1ae04cbacc67c2afc90df4d0372f52cb02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void register_manager_clear_emergency_stop</definition>
+        <argsstring>(void)</argsstring>
+        <name>register_manager_clear_emergency_stop</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Clear emergency stop condition. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_register_manager.cpp" line="126" column="6" bodyfile="src/modules/communication/modbus_register_manager.cpp" bodystart="126" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0f/modbus__register__manager_8cpp_1a60cf8ef1e58e2d51fb12006450a2ed4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void register_manager_increment_comm_errors</definition>
+        <argsstring>(void)</argsstring>
+        <name>register_manager_increment_comm_errors</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Increment communication error count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_register_manager.cpp" line="133" column="6" bodyfile="src/modules/communication/modbus_register_manager.cpp" bodystart="133" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0f/modbus__register__manager_8cpp_1aab108d99c4b064a1a7c60ec755b36faf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void register_manager_reset_comm_errors</definition>
+        <argsstring>(void)</argsstring>
+        <name>register_manager_reset_comm_errors</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Reset communication error count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_register_manager.cpp" line="138" column="6" bodyfile="src/modules/communication/modbus_register_manager.cpp" bodystart="138" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0f/modbus__register__manager_8cpp_1af7c26893e897c5b073ee4b8c977a6a4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool register_manager_validate_value</definition>
+        <argsstring>(uint16_t address, uint16_t value)</argsstring>
+        <name>register_manager_validate_value</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Validate register value for specific address. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Register address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to validate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if value is valid for the register, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_register_manager.cpp" line="143" column="6" bodyfile="src/modules/communication/modbus_register_manager.cpp" bodystart="143" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d0f/modbus__register__manager_8cpp_1a450e4689797a876f706e6e3c8de80534" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool register_manager_consume_overload_reset</definition>
+        <argsstring>(uint8_t sonicator_id, bool *requested)</argsstring>
+        <name>register_manager_consume_overload_reset</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>requested</declname>
+        </param>
+        <briefdescription>
+<para>Consume (read-and-clear) the overload reset command for a sonicator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sonicator_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator ID (0-31) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>requested</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store whether a reset was requested (true/false) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true on success, false on invalid id or not initialized </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/communication/modbus_register_manager.cpp" line="190" column="6" bodyfile="src/modules/communication/modbus_register_manager.cpp" bodystart="190" bodyend="200"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>MODBUS Register Map Management Implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Cannasol Technologies </para>
+</simplesect>
+<simplesect kind="date"><para>2025-09-02 </para>
+</simplesect>
+<simplesect kind="version"><para>1.0.0 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dd/df5/modbus__register__manager_8h" kindref="compound">modbus_register_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>GLOBAL<sp/>VARIABLES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="d5/d1a/structmodbus__register__map__t" kindref="compound">modbus_register_map_t</ref><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1a056b36df10f165cd5a6b993fc63fa152" kindref="member">manager_initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PUBLIC<sp/>FUNCTION<sp/>IMPLEMENTATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1a87e393a356f5b647a98e8decf5574601" kindref="member">register_manager_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>register<sp/>map<sp/>to<sp/>default<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(&amp;<ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>));</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>default<sp/>system<sp/>status</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.system_status.system_status<sp/>=<sp/><ref refid="d4/d9a/modbus__registers_8h_1ad524cda9b661253eee2af59560c51fb7" kindref="member">SYSTEM_STATUS_OK</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.system_status.active_count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.system_status.active_mask<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.system_status.watchdog_status<sp/>=<sp/>1;<sp/></highlight><highlight class="comment">//<sp/>Watchdog<sp/>OK</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.system_status.comm_errors<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.system_status.prev_active_mask<sp/>=<sp/>0;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>None<sp/>active<sp/>before<sp/>boot<sp/>(default)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.system_status.last_shutdown_reason<sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//<sp/>0=normal<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>all<sp/>sonicators<sp/>to<sp/>safe<sp/>defaults</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="d4/d9a/modbus__registers_8h_1a82619b7f1a537ff2798d4f5658318761" kindref="member">MODBUS_MAX_SONICATORS</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[i].start_stop<sp/>=<sp/>0;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Stopped</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[i].amplitude_setpoint<sp/>=<sp/>50;<sp/><sp/></highlight><highlight class="comment">//<sp/>50%<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[i].overload_reset<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[i].power_watts<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[i].frequency_hz<sp/>=<sp/>20000;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>20kHz<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[i].status_flags<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[i].amplitude_actual<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[i].prev_state<sp/>=<sp/>0;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>STOPPED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[i].persisted_amplitude<sp/>=<sp/>50;<sp/><sp/></highlight><highlight class="comment">//<sp/>Persist<sp/>default<sp/>setpoint</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[i].last_fault_code<sp/>=<sp/>0;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>fault</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[i].last_state_timestamp_lo<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1a056b36df10f165cd5a6b993fc63fa152" kindref="member">manager_initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><ref refid="d5/d1a/structmodbus__register__map__t" kindref="compound">modbus_register_map_t</ref>*<sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab07eb4458680115587cf910a7532e6d3" kindref="member">register_manager_get_map</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d0f/modbus__register__manager_8cpp_1a056b36df10f165cd5a6b993fc63fa152" kindref="member">manager_initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1a87e393a356f5b647a98e8decf5574601" kindref="member">register_manager_init</ref>();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1aad5c57b8dbf817632bd779b04202eb5d" kindref="member">register_manager_update_system_status</ref>(uint16_t<sp/>status_bits,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>set)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d0f/modbus__register__manager_8cpp_1a056b36df10f165cd5a6b993fc63fa152" kindref="member">manager_initialized</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(set)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.system_status.system_status<sp/>|=<sp/>status_bits;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.system_status.system_status<sp/>&amp;=<sp/>~status_bits;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1a0a9d7d9107de9f0576725cdbeceb21ec" kindref="member">register_manager_update_sonicator_status</ref>(uint8_t<sp/>sonicator_id,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>power_watts,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>frequency_hz,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>amplitude_actual,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>status_flags)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d0f/modbus__register__manager_8cpp_1a056b36df10f165cd5a6b993fc63fa152" kindref="member">manager_initialized</ref><sp/>||<sp/>sonicator_id<sp/>&gt;=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a82619b7f1a537ff2798d4f5658318761" kindref="member">MODBUS_MAX_SONICATORS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[sonicator_id].power_watts<sp/>=<sp/>power_watts;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[sonicator_id].frequency_hz<sp/>=<sp/>frequency_hz;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[sonicator_id].amplitude_actual<sp/>=<sp/>amplitude_actual;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[sonicator_id].status_flags<sp/>=<sp/>status_flags;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>system<sp/>active<sp/>count<sp/>and<sp/>mask</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>active_count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>active_mask<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="d4/d9a/modbus__registers_8h_1a82619b7f1a537ff2798d4f5658318761" kindref="member">MODBUS_MAX_SONICATORS</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[i].status_flags<sp/>&amp;<sp/><ref refid="d4/d9a/modbus__registers_8h_1aee1bf5e1be326c7918d8c78d21020a0e" kindref="member">SON_STATUS_RUNNING</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>active_count++;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>active_mask<sp/>|=<sp/>(1<sp/>&lt;&lt;<sp/>i);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.system_status.active_count<sp/>=<sp/>active_count;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.system_status.active_mask<sp/>=<sp/>active_mask;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1a709b2e60133ad61693f7320436aee775" kindref="member">register_manager_get_sonicator_control</ref>(uint8_t<sp/>sonicator_id,</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t*<sp/>start_stop,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t*<sp/>amplitude_sp)<sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d0f/modbus__register__manager_8cpp_1a056b36df10f165cd5a6b993fc63fa152" kindref="member">manager_initialized</ref><sp/>||<sp/>sonicator_id<sp/>&gt;=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a82619b7f1a537ff2798d4f5658318761" kindref="member">MODBUS_MAX_SONICATORS</ref><sp/>||</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>!start_stop<sp/>||<sp/>!amplitude_sp)<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>*start_stop<sp/>=<sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[sonicator_id].start_stop;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>*amplitude_sp<sp/>=<sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[sonicator_id].amplitude_setpoint;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1a2b383d8aebef164afa19c0a0e20990dd" kindref="member">register_manager_is_global_enabled</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d0f/modbus__register__manager_8cpp_1a056b36df10f165cd5a6b993fc63fa152" kindref="member">manager_initialized</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.global_control.global_enable<sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ac2f186865e2f446d349f113c0b3803a3" kindref="member">register_manager_is_emergency_stop_active</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d0f/modbus__register__manager_8cpp_1a056b36df10f165cd5a6b993fc63fa152" kindref="member">manager_initialized</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.global_control.emergency_stop<sp/>!=<sp/>0)<sp/>||</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.system_status.system_status<sp/>&amp;<sp/><ref refid="d4/d9a/modbus__registers_8h_1a45bea6277e05c6ef5b746c7244cf6ee0" kindref="member">SYSTEM_STATUS_EMERGENCY_STOP</ref>);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ae04cbacc67c2afc90df4d0372f52cb02" kindref="member">register_manager_clear_emergency_stop</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d0f/modbus__register__manager_8cpp_1a056b36df10f165cd5a6b993fc63fa152" kindref="member">manager_initialized</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.global_control.emergency_stop<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1aad5c57b8dbf817632bd779b04202eb5d" kindref="member">register_manager_update_system_status</ref>(<ref refid="d4/d9a/modbus__registers_8h_1a45bea6277e05c6ef5b746c7244cf6ee0" kindref="member">SYSTEM_STATUS_EMERGENCY_STOP</ref>,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1a60cf8ef1e58e2d51fb12006450a2ed4b" kindref="member">register_manager_increment_comm_errors</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d0f/modbus__register__manager_8cpp_1a056b36df10f165cd5a6b993fc63fa152" kindref="member">manager_initialized</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.system_status.comm_errors++;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1aab108d99c4b064a1a7c60ec755b36faf" kindref="member">register_manager_reset_comm_errors</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d0f/modbus__register__manager_8cpp_1a056b36df10f165cd5a6b993fc63fa152" kindref="member">manager_initialized</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.system_status.comm_errors<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1af7c26893e897c5b073ee4b8c977a6a4c" kindref="member">register_manager_validate_value</ref>(uint16_t<sp/>address,<sp/>uint16_t<sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d0f/modbus__register__manager_8cpp_1a056b36df10f165cd5a6b993fc63fa152" kindref="member">manager_initialized</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Validate<sp/>based<sp/>on<sp/>register<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(address<sp/>&gt;=<sp/>0x0100<sp/>&amp;&amp;<sp/>address<sp/>&lt;=<sp/>0x041F)<sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>reg_offset<sp/>=<sp/>(address<sp/>-<sp/>0x0100)<sp/>%<sp/><ref refid="d4/d9a/modbus__registers_8h_1a49b04e457218d872167de9d4cb98eca6" kindref="member">MODBUS_REG_SONICATOR_STRIDE</ref>;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(reg_offset)<sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d4/d9a/modbus__registers_8h_1a7c0241be1c209f82af3c322fc38a3e7d" kindref="member">MODBUS_REG_SON_START_STOP</ref>:</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Start/stop<sp/>must<sp/>be<sp/>0<sp/>or<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(value<sp/>&lt;=<sp/>1);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d4/d9a/modbus__registers_8h_1ad8a4a9a42107369ac7cf03b200161313" kindref="member">MODBUS_REG_SON_AMPLITUDE_SP</ref>:</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Amplitude<sp/>must<sp/>be<sp/>20-100%</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(value<sp/>&gt;=<sp/>20<sp/>&amp;&amp;<sp/>value<sp/>&lt;=<sp/>100);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d4/d9a/modbus__registers_8h_1a38632a2131745a67e303c3f41e22109d" kindref="member">MODBUS_REG_SON_OVERLOAD_RESET</ref>:</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>command<sp/>must<sp/>be<sp/>0<sp/>or<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(value<sp/>&lt;=<sp/>1);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Other<sp/>registers<sp/>accept<sp/>any<sp/>16-bit<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Global<sp/>control<sp/>registers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(address<sp/>&gt;=<sp/>0x0010<sp/>&amp;&amp;<sp/>address<sp/>&lt;=<sp/>0x001F)<sp/>{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(address)<sp/>{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d5/d0f/group__global__control__registers_1gaa7bc9f873d93d522cb31d1ab66400555" kindref="member">MODBUS_REG_GLOBAL_ENABLE</ref>:</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d5/d0f/group__global__control__registers_1ga5f7977d9e3f6247551f1eae1b0c6abab" kindref="member">MODBUS_REG_EMERGENCY_STOP</ref>:</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d5/d0f/group__global__control__registers_1ga46b469407a45b72338274b8f7d532728" kindref="member">MODBUS_REG_SYSTEM_RESET</ref>:</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Control<sp/>commands<sp/>must<sp/>be<sp/>0<sp/>or<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(value<sp/>&lt;=<sp/>1);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d5/d0f/group__global__control__registers_1ga28130f05fa4a0281529738c0e7956487" kindref="member">MODBUS_REG_TEST_START_INHIBIT</ref>:</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bitmask<sp/>b0..b3<sp/>only</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(value<sp/>&lt;=<sp/>0x000F);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>System<sp/>status<sp/>registers<sp/>are<sp/>read-only,<sp/>but<sp/>value<sp/>validation<sp/>not<sp/>needed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1a450e4689797a876f706e6e3c8de80534" kindref="member">register_manager_consume_overload_reset</ref>(uint8_t<sp/>sonicator_id,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>requested)<sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d0f/modbus__register__manager_8cpp_1a056b36df10f165cd5a6b993fc63fa152" kindref="member">manager_initialized</ref><sp/>||<sp/>sonicator_id<sp/>&gt;=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a82619b7f1a537ff2798d4f5658318761" kindref="member">MODBUS_MAX_SONICATORS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(requested)<sp/>{<sp/>*requested<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>was_requested<sp/>=<sp/>(<ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[sonicator_id].overload_reset<sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>the<sp/>write-only<sp/>command<sp/>after<sp/>consumption</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab704923b41c873dce4dce6bae32a386d" kindref="member">register_map</ref>.sonicators[sonicator_id].overload_reset<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(requested)<sp/>{<sp/>*requested<sp/>=<sp/>was_requested;<sp/>}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/modules/communication/modbus_register_manager.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d4/d34/class_hardware_adc_reader" kind="class" language="C++" prot="public">
+    <compoundname>HardwareAdcReader</compoundname>
+    <basecompoundref refid="d8/da7/class_i_adc_reader" prot="public" virt="non-virtual">IAdcReader</basecompoundref>
+    <includes refid="d2/db1/hal__hardware__factory_8h" local="no">hal_hardware_factory.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d4/d34/class_hardware_adc_reader_1af44d1ce6d315537bd9b748f22e8ff8b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareAdcReader::init</definition>
+        <argsstring>(void) override</argsstring>
+        <name>init</name>
+        <qualifiedname>HardwareAdcReader::init</qualifiedname>
+        <reimplements refid="d8/da7/class_i_adc_reader_1afbd8113a17827edecfd5bbd5a6292f8d">init</reimplements>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="47" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d34/class_hardware_adc_reader_1a1cb1545c592b1135cf4db58680359912" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareAdcReader::readChannel</definition>
+        <argsstring>(uint8_t channel, uint16_t *raw_value) override</argsstring>
+        <name>readChannel</name>
+        <qualifiedname>HardwareAdcReader::readChannel</qualifiedname>
+        <reimplements refid="d8/da7/class_i_adc_reader_1a1a387a16254804b4e4a4f0fa85c51d64">readChannel</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>raw_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="48" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d34/class_hardware_adc_reader_1ab78ca4d71190ccd48e2a92ec649567a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareAdcReader::startConversion</definition>
+        <argsstring>(uint8_t channel) override</argsstring>
+        <name>startConversion</name>
+        <qualifiedname>HardwareAdcReader::startConversion</qualifiedname>
+        <reimplements refid="d8/da7/class_i_adc_reader_1afd137500c9b5fca06d098e4c9af017e9">startConversion</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="49" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d34/class_hardware_adc_reader_1a7c9a358aed2394b13ea223ffe2c9668c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareAdcReader::isConversionComplete</definition>
+        <argsstring>(void) override</argsstring>
+        <name>isConversionComplete</name>
+        <qualifiedname>HardwareAdcReader::isConversionComplete</qualifiedname>
+        <reimplements refid="d8/da7/class_i_adc_reader_1a66627b5c891a7a89fd0aa2f8692d0a8a">isConversionComplete</reimplements>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="50" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d34/class_hardware_adc_reader_1a1c3f2acd5e7efdfaab51927c331cc49d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>float</type>
+        <definition>float HardwareAdcReader::rawToVoltage</definition>
+        <argsstring>(uint16_t raw_value) override</argsstring>
+        <name>rawToVoltage</name>
+        <qualifiedname>HardwareAdcReader::rawToVoltage</qualifiedname>
+        <reimplements refid="d8/da7/class_i_adc_reader_1a34acb022909bce00c2489c35cf9dc256">rawToVoltage</reimplements>
+        <param>
+          <type>uint16_t</type>
+          <declname>raw_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="51" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d34/class_hardware_adc_reader_1a6c1dc3416637b72526a57bea68f48e4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareAdcReader::readSonicatorPower</definition>
+        <argsstring>(uint8_t sonicator_id, float *power_watts) override</argsstring>
+        <name>readSonicatorPower</name>
+        <qualifiedname>HardwareAdcReader::readSonicatorPower</qualifiedname>
+        <reimplements refid="d8/da7/class_i_adc_reader_1a2c20086a3a0973d31c5486ea740f9214">readSonicatorPower</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>power_watts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="53" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d34/class_hardware_adc_reader_1a7ac461c837f4966bc4adba5c41459ac2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareAdcReader::readFrequency</definition>
+        <argsstring>(float *frequency_hz) override</argsstring>
+        <name>readFrequency</name>
+        <qualifiedname>HardwareAdcReader::readFrequency</qualifiedname>
+        <reimplements refid="d8/da7/class_i_adc_reader_1a52f51557ade2cb566d3aad3ea9b6fa30">readFrequency</reimplements>
+        <param>
+          <type>float *</type>
+          <declname>frequency_hz</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="54" column="10"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Real ATmega32A ADC implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>HardwareAdcReader</label>
+        <link refid="d4/d34/class_hardware_adc_reader"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>IAdcReader</label>
+        <link refid="d8/da7/class_i_adc_reader"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>HardwareAdcReader</label>
+        <link refid="d4/d34/class_hardware_adc_reader"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>IAdcReader</label>
+        <link refid="d8/da7/class_i_adc_reader"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/modules/hal/hal_hardware_factory.h" line="45" column="1" bodyfile="src/modules/hal/hal_hardware_factory.h" bodystart="45" bodyend="55"/>
+    <listofallmembers>
+      <member refid="d4/d34/class_hardware_adc_reader_1af44d1ce6d315537bd9b748f22e8ff8b3" prot="public" virt="virtual"><scope>HardwareAdcReader</scope><name>init</name></member>
+      <member refid="d4/d34/class_hardware_adc_reader_1a7c9a358aed2394b13ea223ffe2c9668c" prot="public" virt="virtual"><scope>HardwareAdcReader</scope><name>isConversionComplete</name></member>
+      <member refid="d4/d34/class_hardware_adc_reader_1a1c3f2acd5e7efdfaab51927c331cc49d" prot="public" virt="virtual"><scope>HardwareAdcReader</scope><name>rawToVoltage</name></member>
+      <member refid="d4/d34/class_hardware_adc_reader_1a1cb1545c592b1135cf4db58680359912" prot="public" virt="virtual"><scope>HardwareAdcReader</scope><name>readChannel</name></member>
+      <member refid="d4/d34/class_hardware_adc_reader_1a7ac461c837f4966bc4adba5c41459ac2" prot="public" virt="virtual"><scope>HardwareAdcReader</scope><name>readFrequency</name></member>
+      <member refid="d4/d34/class_hardware_adc_reader_1a6c1dc3416637b72526a57bea68f48e4c" prot="public" virt="virtual"><scope>HardwareAdcReader</scope><name>readSonicatorPower</name></member>
+      <member refid="d4/d34/class_hardware_adc_reader_1ab78ca4d71190ccd48e2a92ec649567a1" prot="public" virt="virtual"><scope>HardwareAdcReader</scope><name>startConversion</name></member>
+      <member refid="d8/da7/class_i_adc_reader_1a71f5fd7f6e3ab0db37e58e8ac9a7b07a" prot="public" virt="virtual"><scope>HardwareAdcReader</scope><name>~IAdcReader</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="de/d6c/group___frequency_measurement" kind="group">
+    <compoundname>FrequencyMeasurement</compoundname>
+    <title>Frequency Input Pin Configuration</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="de/d6c/group___frequency_measurement_1ga88d61ae2de8ec62f68587d62868393ed" prot="public" static="no">
+        <name>FREQ_COUNT_PIN_1</name>
+        <initializer>4</initializer>
+        <briefdescription>
+<para>Frequency measurement pin assignments. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="176" column="9" bodyfile="include/system_config.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="de/d6c/group___frequency_measurement_1ga942a67a2de86f2f57c7079308698ed59" prot="public" static="no">
+        <name>FREQ_COUNT_PIN_2</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="177" column="9" bodyfile="include/system_config.h" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="de/d6c/group___frequency_measurement_1gaf2b485e304fdc3de234248ae9e2bfe72" prot="public" static="no">
+        <name>FREQ_COUNT_PIN_3</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="178" column="9" bodyfile="include/system_config.h" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="de/d6c/group___frequency_measurement_1ga61d6ea30be8e7074225d9e471162c496" prot="public" static="no">
+        <name>FREQ_COUNT_PIN_4</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="179" column="9" bodyfile="include/system_config.h" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="de/d6c/group___frequency_measurement_1gaa39447aef1f0147886b06d99082d9762" prot="public" static="no">
+        <name>FREQ_MEASUREMENT_WINDOW_MS</name>
+        <initializer>1000</initializer>
+        <briefdescription>
+<para>Frequency Measurement Configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>Input: 1.9-2.1 kHz (CT2000 frequency ÷ 10)</para>
+</listitem><listitem><para>Method: Pin Change Interrupt edge counting</para>
+</listitem><listitem><para>Measurement Window: 1 second typical</para>
+</listitem><listitem><para>Output: Calculated frequency * 10 = actual sonicator frequency</para>
+</listitem><listitem><para>Expected Range: 19-21 kHz actual frequency </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="189" column="9" bodyfile="include/system_config.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="de/d6c/group___frequency_measurement_1ga4c68a1a1970f0a1b56a0049a439506e7" prot="public" static="no">
+        <name>FREQ_MIN_EDGES</name>
+        <initializer>10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="190" column="9" bodyfile="include/system_config.h" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="de/d6c/group___frequency_measurement_1gaaa9f4d9bf6fdc3b3f026e51a0cf0e363" prot="public" static="no">
+        <name>FREQ_EXPECTED_MIN</name>
+        <initializer>1900</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="191" column="9" bodyfile="include/system_config.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="de/d6c/group___frequency_measurement_1gaef2def439b38dad9a13bdaf0672f92c4" prot="public" static="no">
+        <name>FREQ_EXPECTED_MAX</name>
+        <initializer>2100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="192" column="9" bodyfile="include/system_config.h" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="de/d6c/group___frequency_measurement_1ga4bdb28c1ddcc0c6911d0d95116e46776" prot="public" static="no">
+        <name>FREQ_HARDWARE_DIVIDER</name>
+        <initializer>10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="193" column="9" bodyfile="include/system_config.h" bodystart="193" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ADC Configuration (per channel) </para>
+    </briefdescription>
+    <detaileddescription>
+<para><itemizedlist>
+<listitem><para>10kΩ voltage divider for input protection</para>
+</listitem><listitem><para>0-10.88V input range (2000W × 5.44mV/W)</para>
+</listitem><listitem><para>0-5.44V after divider, 0-1024 ADC counts</para>
+</listitem><listitem><para>Resolution: ~2 watts per count</para>
+</listitem></itemizedlist>
+</para>
+<para>Configuration for direct frequency counting on FREQ_DIV10_# pins</para>
+<para>Counts rising edges on CT2000 frequency output (÷10) to measure actual frequency </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

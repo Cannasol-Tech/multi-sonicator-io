@@ -1,0 +1,37 @@
+var frequency__counter_8h =
+[
+    [ "frequency_counter_t", "d5/d29/structfrequency__counter__t.html", "d5/d29/structfrequency__counter__t" ],
+    [ "frequency_stats_t", "d7/da4/structfrequency__stats__t.html", "d7/da4/structfrequency__stats__t" ],
+    [ "FREQ_CHANNELS", "de/d01/frequency__counter_8h.html#aa55dd8ea7d026ed6d7d6502c3c7c319d", null ],
+    [ "FREQ_INPUT_MAX_HZ", "de/d01/frequency__counter_8h.html#ac8e9f975d0c29745f120ccf7cbb58efa", null ],
+    [ "FREQ_INPUT_MIN_HZ", "de/d01/frequency__counter_8h.html#a93437b133cb8ca993413998f55c1ef0f", null ],
+    [ "FREQ_MAX_EXPECTED", "de/d01/frequency__counter_8h.html#ad15fc6e93cef4486f69e9b32ec222e9c", null ],
+    [ "FREQ_MIN_EDGES", "de/d01/frequency__counter_8h.html#a4c68a1a1970f0a1b56a0049a439506e7", null ],
+    [ "FREQ_MULTIPLIER", "de/d01/frequency__counter_8h.html#a67f44a4ec4d5d5640d6b66b96e557a18", null ],
+    [ "FREQ_NOISE_THRESHOLD_US", "de/d01/frequency__counter_8h.html#aa901e4895ef2a8c808e4a7e95d33e88a", null ],
+    [ "FREQ_OUTPUT_MAX_HZ", "de/d01/frequency__counter_8h.html#a4d2701f727c3ada07e38c1e5dd967ab8", null ],
+    [ "FREQ_OUTPUT_MIN_HZ", "de/d01/frequency__counter_8h.html#adfcb70e034efc90d1d3c8cb1d71367ea", null ],
+    [ "FREQ_SAMPLE_WINDOW_MS", "de/d01/frequency__counter_8h.html#ab614cd2d53c453a37a253b15e49239be", null ],
+    [ "frequency_change_callback_t", "de/d01/frequency__counter_8h.html#a906d15795a7af4def1cb52871b5a603c", null ],
+    [ "frequency_error_t", "de/d01/frequency__counter_8h.html#a0beee35bce0f7922746b76e88e682560", [
+      [ "FREQ_ERROR_NONE", "de/d01/frequency__counter_8h.html#a0beee35bce0f7922746b76e88e682560a17415ef26f093257875d10a50893b48d", null ],
+      [ "FREQ_ERROR_NO_SIGNAL", "de/d01/frequency__counter_8h.html#a0beee35bce0f7922746b76e88e682560a68b9ff2ab9abe0c28b7f43659d11d462", null ],
+      [ "FREQ_ERROR_OUT_OF_RANGE", "de/d01/frequency__counter_8h.html#a0beee35bce0f7922746b76e88e682560a536fc0611d10d36c7bc45b6b4af68a51", null ],
+      [ "FREQ_ERROR_NOISE", "de/d01/frequency__counter_8h.html#a0beee35bce0f7922746b76e88e682560a946cc4e91ecd33b895fd8a6d4d6f6e45", null ],
+      [ "FREQ_ERROR_HARDWARE", "de/d01/frequency__counter_8h.html#a0beee35bce0f7922746b76e88e682560ad8a1b298de16aa90c9ced12e7795c369", null ],
+      [ "FREQ_ERROR_INVALID_CHANNEL", "de/d01/frequency__counter_8h.html#a0beee35bce0f7922746b76e88e682560a7815b630bbfcafaedab7caae1cd9883c", null ]
+    ] ],
+    [ "frequency_calculate", "de/d01/frequency__counter_8h.html#a04851abee44a28fb5f885b7418f915d4", null ],
+    [ "frequency_counter_init", "de/d01/frequency__counter_8h.html#a32db71b05f686868ba23198a67d4c3cd", null ],
+    [ "frequency_get_current", "de/d01/frequency__counter_8h.html#a6275d3d673d15714777f3f9de2b6d638", null ],
+    [ "frequency_get_error", "de/d01/frequency__counter_8h.html#a87adb92382104661d9c6f069d8060a56", null ],
+    [ "frequency_get_instantaneous", "de/d01/frequency__counter_8h.html#a36519859f92bb1168f619d453d91e920", null ],
+    [ "frequency_get_isr_stats", "de/d01/frequency__counter_8h.html#a2fe922c0ba91e88d90cb10d9751ed8ce", null ],
+    [ "frequency_get_stats", "de/d01/frequency__counter_8h.html#a78324a942c9ab1188d1025eef62bdf30", null ],
+    [ "frequency_isr_health_check", "de/d01/frequency__counter_8h.html#a6c72007a92de1bcc5635aa102d93c549", null ],
+    [ "frequency_reset_stats", "de/d01/frequency__counter_8h.html#ad403235b359f53e21865ae2f572f9957", null ],
+    [ "frequency_set_change_callback", "de/d01/frequency__counter_8h.html#a31968d97b5454f1c0aabe5f7df4093d8", null ],
+    [ "frequency_set_noise_filter", "de/d01/frequency__counter_8h.html#a3d6110339a7085a38f9fe1f0083b1dab", null ],
+    [ "frequency_set_window", "de/d01/frequency__counter_8h.html#a1770280d6beb9fd8e76c824f750074a4", null ],
+    [ "freq_counters", "de/d01/frequency__counter_8h.html#a853f9ac2214946dd2f65fb8dff4d95be", null ]
+];

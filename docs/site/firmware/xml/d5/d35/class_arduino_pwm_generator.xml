@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d5/d35/class_arduino_pwm_generator" kind="class" language="C++" prot="public">
+    <compoundname>ArduinoPwmGenerator</compoundname>
+    <basecompoundref refid="d3/d56/class_i_pwm_generator" prot="public" virt="non-virtual">IPwmGenerator</basecompoundref>
+    <includes refid="d8/d61/arduino__hal__factory_8h" local="no">arduino_hal_factory.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/d35/class_arduino_pwm_generator_1aa4d9336023be8c1fa19896869b669e77" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoPwmGenerator::init</definition>
+        <argsstring>(void) override</argsstring>
+        <name>init</name>
+        <qualifiedname>ArduinoPwmGenerator::init</qualifiedname>
+        <reimplements refid="d3/d56/class_i_pwm_generator_1a38acf604b647789966b99cf3e3bfb749">init</reimplements>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="111" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="111" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d35/class_arduino_pwm_generator_1a456e161d5215a09c49d5b31f7965e8f6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoPwmGenerator::setFrequency</definition>
+        <argsstring>(uint8_t channel, uint32_t frequency) override</argsstring>
+        <name>setFrequency</name>
+        <qualifiedname>ArduinoPwmGenerator::setFrequency</qualifiedname>
+        <reimplements refid="d3/d56/class_i_pwm_generator_1a7805b61fe91158281e214a20f773eb85">setFrequency</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>frequency</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="115" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="115" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d35/class_arduino_pwm_generator_1af246a37d6c166b2152d788c38117fbac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoPwmGenerator::setDutyCycle</definition>
+        <argsstring>(uint8_t channel, uint8_t duty_percent) override</argsstring>
+        <name>setDutyCycle</name>
+        <qualifiedname>ArduinoPwmGenerator::setDutyCycle</qualifiedname>
+        <reimplements refid="d3/d56/class_i_pwm_generator_1a966b66b2213a5e55de8a3cd726f1d6ec">setDutyCycle</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>duty_percent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="119" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="119" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d35/class_arduino_pwm_generator_1ada1c8e0614dbbe9698061e466f6415db" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoPwmGenerator::enableChannel</definition>
+        <argsstring>(uint8_t channel) override</argsstring>
+        <name>enableChannel</name>
+        <qualifiedname>ArduinoPwmGenerator::enableChannel</qualifiedname>
+        <reimplements refid="d3/d56/class_i_pwm_generator_1a3151d26a8c8a9ff2c1e9f29fc847dde3">enableChannel</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="123" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="123" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d35/class_arduino_pwm_generator_1a49659cb7b9c46fbdc2486e7efae7d512" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoPwmGenerator::disableChannel</definition>
+        <argsstring>(uint8_t channel) override</argsstring>
+        <name>disableChannel</name>
+        <qualifiedname>ArduinoPwmGenerator::disableChannel</qualifiedname>
+        <reimplements refid="d3/d56/class_i_pwm_generator_1a20812ca3553b9b7bbfa753b62e396834">disableChannel</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="127" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="127" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d35/class_arduino_pwm_generator_1a14f5034cc0f0e856c4ba9dc5d2161024" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoPwmGenerator::setAmplitude</definition>
+        <argsstring>(uint8_t amplitude_percent) override</argsstring>
+        <name>setAmplitude</name>
+        <qualifiedname>ArduinoPwmGenerator::setAmplitude</qualifiedname>
+        <reimplements refid="d3/d56/class_i_pwm_generator_1a94f8be474f12adaa53a75675eef9bc29">setAmplitude</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>amplitude_percent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="131" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="131" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d35/class_arduino_pwm_generator_1aa8db7f59d475aec21ad37b39213fe0cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoPwmGenerator::emergencyStop</definition>
+        <argsstring>(void) override</argsstring>
+        <name>emergencyStop</name>
+        <qualifiedname>ArduinoPwmGenerator::emergencyStop</qualifiedname>
+        <reimplements refid="d3/d56/class_i_pwm_generator_1a31aceffa580e9c95ba1a3e4988725d5f">emergencyStop</reimplements>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="135" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="135" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d35/class_arduino_pwm_generator_1ae05af9d0d6906c9be40bd8b38ce06a8d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoPwmGenerator::testPattern</definition>
+        <argsstring>(void) override</argsstring>
+        <name>testPattern</name>
+        <qualifiedname>ArduinoPwmGenerator::testPattern</qualifiedname>
+        <reimplements refid="d3/d56/class_i_pwm_generator_1a650304aab283911f751c26c34230106d">testPattern</reimplements>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="139" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="139" bodyend="141"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Arduino PWM implementation using Arduino framework. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ArduinoPwmGenerator</label>
+        <link refid="d5/d35/class_arduino_pwm_generator"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>IPwmGenerator</label>
+        <link refid="d3/d56/class_i_pwm_generator"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ArduinoPwmGenerator</label>
+        <link refid="d5/d35/class_arduino_pwm_generator"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>IPwmGenerator</label>
+        <link refid="d3/d56/class_i_pwm_generator"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="109" column="1" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="109" bodyend="142"/>
+    <listofallmembers>
+      <member refid="d5/d35/class_arduino_pwm_generator_1a49659cb7b9c46fbdc2486e7efae7d512" prot="public" virt="virtual"><scope>ArduinoPwmGenerator</scope><name>disableChannel</name></member>
+      <member refid="d5/d35/class_arduino_pwm_generator_1aa8db7f59d475aec21ad37b39213fe0cc" prot="public" virt="virtual"><scope>ArduinoPwmGenerator</scope><name>emergencyStop</name></member>
+      <member refid="d5/d35/class_arduino_pwm_generator_1ada1c8e0614dbbe9698061e466f6415db" prot="public" virt="virtual"><scope>ArduinoPwmGenerator</scope><name>enableChannel</name></member>
+      <member refid="d5/d35/class_arduino_pwm_generator_1aa4d9336023be8c1fa19896869b669e77" prot="public" virt="virtual"><scope>ArduinoPwmGenerator</scope><name>init</name></member>
+      <member refid="d5/d35/class_arduino_pwm_generator_1a14f5034cc0f0e856c4ba9dc5d2161024" prot="public" virt="virtual"><scope>ArduinoPwmGenerator</scope><name>setAmplitude</name></member>
+      <member refid="d5/d35/class_arduino_pwm_generator_1af246a37d6c166b2152d788c38117fbac" prot="public" virt="virtual"><scope>ArduinoPwmGenerator</scope><name>setDutyCycle</name></member>
+      <member refid="d5/d35/class_arduino_pwm_generator_1a456e161d5215a09c49d5b31f7965e8f6" prot="public" virt="virtual"><scope>ArduinoPwmGenerator</scope><name>setFrequency</name></member>
+      <member refid="d5/d35/class_arduino_pwm_generator_1ae05af9d0d6906c9be40bd8b38ce06a8d" prot="public" virt="virtual"><scope>ArduinoPwmGenerator</scope><name>testPattern</name></member>
+      <member refid="d3/d56/class_i_pwm_generator_1ab0271bc4a8f6a070667e267c3a564526" prot="public" virt="virtual"><scope>ArduinoPwmGenerator</scope><name>~IPwmGenerator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

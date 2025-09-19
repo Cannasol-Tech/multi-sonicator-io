@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="de/dac/class_arduino_hal_factory" kind="class" language="C++" prot="public">
+    <compoundname>ArduinoHalFactory</compoundname>
+    <basecompoundref refid="de/de7/class_i_hal_factory" prot="public" virt="non-virtual">IHalFactory</basecompoundref>
+    <includes refid="d8/d61/arduino__hal__factory_8h" local="no">arduino_hal_factory.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="de/dac/class_arduino_hal_factory_1a87f86fb59d40126b463f8a3bfce5fe1d" prot="private" static="no" mutable="no">
+        <type><ref refid="df/db4/class_arduino_gpio_port" kindref="compound">ArduinoGpioPort</ref></type>
+        <definition>ArduinoGpioPort ArduinoHalFactory::gpio_port</definition>
+        <argsstring></argsstring>
+        <name>gpio_port</name>
+        <qualifiedname>ArduinoHalFactory::gpio_port</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="239" column="21" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="239" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/dac/class_arduino_hal_factory_1a294a6d5ae9bcf44cbf2aeac3c21f744e" prot="private" static="no" mutable="no">
+        <type><ref refid="d4/d3b/class_arduino_adc_reader" kindref="compound">ArduinoAdcReader</ref></type>
+        <definition>ArduinoAdcReader ArduinoHalFactory::adc_reader</definition>
+        <argsstring></argsstring>
+        <name>adc_reader</name>
+        <qualifiedname>ArduinoHalFactory::adc_reader</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="240" column="22" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/dac/class_arduino_hal_factory_1ab5c22e9f7244c5d5f5d6007b8c8c6283" prot="private" static="no" mutable="no">
+        <type><ref refid="d5/d35/class_arduino_pwm_generator" kindref="compound">ArduinoPwmGenerator</ref></type>
+        <definition>ArduinoPwmGenerator ArduinoHalFactory::pwm_generator</definition>
+        <argsstring></argsstring>
+        <name>pwm_generator</name>
+        <qualifiedname>ArduinoHalFactory::pwm_generator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="241" column="25" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="241" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/dac/class_arduino_hal_factory_1a6918358583d038f17246596272e1ff2f" prot="private" static="no" mutable="no">
+        <type><ref refid="d4/d36/class_arduino_uart_port" kindref="compound">ArduinoUartPort</ref></type>
+        <definition>ArduinoUartPort ArduinoHalFactory::uart_port</definition>
+        <argsstring></argsstring>
+        <name>uart_port</name>
+        <qualifiedname>ArduinoHalFactory::uart_port</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="242" column="21" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/dac/class_arduino_hal_factory_1a988d70c261ea5a7293bceadd4f49a12a" prot="private" static="no" mutable="no">
+        <type><ref refid="d0/dc3/class_arduino_timer_manager" kindref="compound">ArduinoTimerManager</ref></type>
+        <definition>ArduinoTimerManager ArduinoHalFactory::timer_manager</definition>
+        <argsstring></argsstring>
+        <name>timer_manager</name>
+        <qualifiedname>ArduinoHalFactory::timer_manager</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="243" column="25" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="243" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/dac/class_arduino_hal_factory_1abb6589987a23f7d5f5d15b6227ffed9d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref> *</type>
+        <definition>IGpioPort * ArduinoHalFactory::createGpioPort</definition>
+        <argsstring>() override</argsstring>
+        <name>createGpioPort</name>
+        <qualifiedname>ArduinoHalFactory::createGpioPort</qualifiedname>
+        <reimplements refid="de/de7/class_i_hal_factory_1a603ce483699c0eaf8fc64556acd830f9">createGpioPort</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="246" column="15" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="246" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="de/dac/class_arduino_hal_factory_1a632ca84cfd62be958c7532454d5678c7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d8/da7/class_i_adc_reader" kindref="compound">IAdcReader</ref> *</type>
+        <definition>IAdcReader * ArduinoHalFactory::createAdcReader</definition>
+        <argsstring>() override</argsstring>
+        <name>createAdcReader</name>
+        <qualifiedname>ArduinoHalFactory::createAdcReader</qualifiedname>
+        <reimplements refid="de/de7/class_i_hal_factory_1ab4eb70cf1e570beb4807c56e5be14243">createAdcReader</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="250" column="16" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="250" bodyend="252"/>
+      </memberdef>
+      <memberdef kind="function" id="de/dac/class_arduino_hal_factory_1a9e154056bf0f009eac2e128e394b5c19" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d3/d56/class_i_pwm_generator" kindref="compound">IPwmGenerator</ref> *</type>
+        <definition>IPwmGenerator * ArduinoHalFactory::createPwmGenerator</definition>
+        <argsstring>() override</argsstring>
+        <name>createPwmGenerator</name>
+        <qualifiedname>ArduinoHalFactory::createPwmGenerator</qualifiedname>
+        <reimplements refid="de/de7/class_i_hal_factory_1ac572bad86e2779eb959704bb1c100ce6">createPwmGenerator</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="254" column="19" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="254" bodyend="256"/>
+      </memberdef>
+      <memberdef kind="function" id="de/dac/class_arduino_hal_factory_1a8f24db7e72914095203affa10b246a58" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d2/d2d/class_i_uart_port" kindref="compound">IUartPort</ref> *</type>
+        <definition>IUartPort * ArduinoHalFactory::createUartPort</definition>
+        <argsstring>() override</argsstring>
+        <name>createUartPort</name>
+        <qualifiedname>ArduinoHalFactory::createUartPort</qualifiedname>
+        <reimplements refid="de/de7/class_i_hal_factory_1a13cdcbe76af7a5c64e58549bf2b80388">createUartPort</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="258" column="15" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="258" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="de/dac/class_arduino_hal_factory_1a511fd032a6e7346dcd83de0514e6ebaa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="da/dbb/class_i_timer_manager" kindref="compound">ITimerManager</ref> *</type>
+        <definition>ITimerManager * ArduinoHalFactory::createTimerManager</definition>
+        <argsstring>() override</argsstring>
+        <name>createTimerManager</name>
+        <qualifiedname>ArduinoHalFactory::createTimerManager</qualifiedname>
+        <reimplements refid="de/de7/class_i_hal_factory_1a1a0bc6e4da355f549756aa9f35353807">createTimerManager</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="262" column="19" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="262" bodyend="264"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Factory for creating Arduino-based HAL instances. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Implements the factory pattern for dependency injection of Arduino HAL implementations. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ArduinoHalFactory</label>
+        <link refid="de/dac/class_arduino_hal_factory"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>IHalFactory</label>
+        <link refid="de/de7/class_i_hal_factory"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ArduinoHalFactory</label>
+        <link refid="de/dac/class_arduino_hal_factory"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>IHalFactory</label>
+        <link refid="de/de7/class_i_hal_factory"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="237" column="1" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="237" bodyend="265"/>
+    <listofallmembers>
+      <member refid="de/dac/class_arduino_hal_factory_1a294a6d5ae9bcf44cbf2aeac3c21f744e" prot="private" virt="non-virtual"><scope>ArduinoHalFactory</scope><name>adc_reader</name></member>
+      <member refid="de/dac/class_arduino_hal_factory_1a632ca84cfd62be958c7532454d5678c7" prot="public" virt="virtual"><scope>ArduinoHalFactory</scope><name>createAdcReader</name></member>
+      <member refid="de/dac/class_arduino_hal_factory_1abb6589987a23f7d5f5d15b6227ffed9d" prot="public" virt="virtual"><scope>ArduinoHalFactory</scope><name>createGpioPort</name></member>
+      <member refid="de/dac/class_arduino_hal_factory_1a9e154056bf0f009eac2e128e394b5c19" prot="public" virt="virtual"><scope>ArduinoHalFactory</scope><name>createPwmGenerator</name></member>
+      <member refid="de/dac/class_arduino_hal_factory_1a511fd032a6e7346dcd83de0514e6ebaa" prot="public" virt="virtual"><scope>ArduinoHalFactory</scope><name>createTimerManager</name></member>
+      <member refid="de/dac/class_arduino_hal_factory_1a8f24db7e72914095203affa10b246a58" prot="public" virt="virtual"><scope>ArduinoHalFactory</scope><name>createUartPort</name></member>
+      <member refid="de/dac/class_arduino_hal_factory_1a87f86fb59d40126b463f8a3bfce5fe1d" prot="private" virt="non-virtual"><scope>ArduinoHalFactory</scope><name>gpio_port</name></member>
+      <member refid="de/dac/class_arduino_hal_factory_1ab5c22e9f7244c5d5f5d6007b8c8c6283" prot="private" virt="non-virtual"><scope>ArduinoHalFactory</scope><name>pwm_generator</name></member>
+      <member refid="de/dac/class_arduino_hal_factory_1a988d70c261ea5a7293bceadd4f49a12a" prot="private" virt="non-virtual"><scope>ArduinoHalFactory</scope><name>timer_manager</name></member>
+      <member refid="de/dac/class_arduino_hal_factory_1a6918358583d038f17246596272e1ff2f" prot="private" virt="non-virtual"><scope>ArduinoHalFactory</scope><name>uart_port</name></member>
+      <member refid="de/de7/class_i_hal_factory_1a65144b2ffce2bc09d7dfa807852f7086" prot="public" virt="virtual"><scope>ArduinoHalFactory</scope><name>~IHalFactory</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

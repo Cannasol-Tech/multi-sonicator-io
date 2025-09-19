@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d6/de8/group___h_a_l___p_w_m" kind="group">
+    <compoundname>HAL_PWM</compoundname>
+    <title>PWM HAL (ATmega32A)</title>
+    <briefdescription>
+<para>Implementation notes for amplitude PWM generation on PD7. </para>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="d6/de8/group___h_a_l___p_w_m_1hal_pwm_overview">
+<title>Overview</title><para><itemizedlist>
+<listitem><para>Uses Timer2 Fast PWM to produce a duty cycle proportional to amplitude.</para>
+</listitem><listitem><para>Downstream RC filter (1kΩ/10µF) and LM358 gain of 2 produce 0–10 V output.</para>
+</listitem><listitem><para>Channel multiplexing: a single PWM drives all four sonicators&apos; amplitude.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="d6/de8/group___h_a_l___p_w_m_1hal_pwm_limits">
+<title>Limits</title><para><itemizedlist>
+<listitem><para>Frequency defaults to 1 kHz; see PWM_MIN/MAX_FREQUENCY.</para>
+</listitem><listitem><para>Enforces amplitude 20–100% (stable op-amp region; see <ref refid="d4/d7e/system__config_8h" kindref="compound">system_config.h</ref>).</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="d6/de8/group___h_a_l___p_w_m_1hal_pwm_concurrency">
+<title>Concurrency</title><para><itemizedlist>
+<listitem><para>Non‑blocking API; ramping performed cooperatively in <ref refid="d5/d84/pwm_8cpp_1a0e026d312f0f6db227c824f778077262" kindref="member">pwm_ramp_complete()</ref>.</para>
+</listitem><listitem><para>No dynamic allocation; minimal static state for embedded safety.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="d6/de8/group___h_a_l___p_w_m_1hal_pwm_errors">
+<title>Error Handling</title><para><itemizedlist>
+<listitem><para>Returns PWM_OK or PWM_ERROR_* codes for invalid params or state.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="d6/de8/group___h_a_l___p_w_m_1hal_pwm_related">
+<title>Related</title><para><itemizedlist>
+<listitem><para><simplesect kind="see"><para><ref refid="d6/db9/pwm_8h" kindref="compound">pwm.h</ref> Public API and constants</para>
+</simplesect>
+</para>
+</listitem><listitem><para><simplesect kind="see"><para><ref refid="d4/d7e/system__config_8h" kindref="compound">system_config.h</ref> <ref refid="da/d6a/group___p_w_m_control_1ga0aa83389edb245f5b1ae129e07f474f7" kindref="member">PWM_AMPLITUDE_CONTROL_PIN</ref>, analog front‑end notes </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

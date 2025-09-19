@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="dc/d0f/group___h_a_l___a_d_c" kind="group">
+    <compoundname>HAL_ADC</compoundname>
+    <title>ADC HAL (ATmega32A)</title>
+    <briefdescription>
+<para>Implementation notes for analog sampling and conversions. </para>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="dc/d0f/group___h_a_l___a_d_c_1hal_adc_overview">
+<title>Overview</title><para><itemizedlist>
+<listitem><para>10-bit ADC with VCC reference (default) and prescaler for 125 kHz clock.</para>
+</listitem><listitem><para>Provides blocking and non-blocking conversions and utility conversions (raw→voltage, raw→power, raw→frequency) aligned to <ref refid="d4/d7e/system__config_8h" kindref="compound">system_config.h</ref> constants.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="dc/d0f/group___h_a_l___a_d_c_1hal_adc_cal">
+<title>Calibration</title><para><itemizedlist>
+<listitem><para>Supports calibration factor to correct for reference/component tolerances.</para>
+</listitem><listitem><para>Allow 2 ms settling after reference changes.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="dc/d0f/group___h_a_l___a_d_c_1hal_adc_safety">
+<title>Safety &amp; Performance</title><para><itemizedlist>
+<listitem><para>Validate channels and pointers; time out if conversion exceeds 1 ms.</para>
+</listitem><listitem><para>Avoids floating point in ISR paths; uses integer math where practical.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="dc/d0f/group___h_a_l___a_d_c_1hal_adc_related">
+<title>Related</title><para><itemizedlist>
+<listitem><para><simplesect kind="see"><para><ref refid="d7/d19/adc_8h" kindref="compound">adc.h</ref> Public API and constants</para>
+</simplesect>
+</para>
+</listitem><listitem><para><simplesect kind="see"><para><ref refid="d4/d7e/system__config_8h" kindref="compound">system_config.h</ref> Analog scaling and channel assignments </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

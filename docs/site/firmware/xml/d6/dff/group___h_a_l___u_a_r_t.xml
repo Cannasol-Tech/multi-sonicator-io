@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d6/dff/group___h_a_l___u_a_r_t" kind="group">
+    <compoundname>HAL_UART</compoundname>
+    <title>UART HAL (ATmega32A)</title>
+    <briefdescription>
+<para>Implementation notes for MODBUS‑friendly UART operations. </para>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="d6/dff/group___h_a_l___u_a_r_t_1hal_uart_overview">
+<title>Overview</title><para><itemizedlist>
+<listitem><para>Default 115200 8N1; integrates with Arduino Serial for footprint and stability.</para>
+</listitem><listitem><para>Provides helpers for MODBUS frame timing (T1.5/T3.5) and gap detection.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="d6/dff/group___h_a_l___u_a_r_t_1hal_uart_buffers">
+<title>Buffers &amp; Flow</title><para><itemizedlist>
+<listitem><para>TX uses Serial.write() in Arduino build; RX is polled with non‑blocking reads.</para>
+</listitem><listitem><para>Optional circular buffers are kept minimal to preserve SRAM.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="d6/dff/group___h_a_l___u_a_r_t_1hal_uart_timing">
+<title>Timing</title><para><itemizedlist>
+<listitem><para>Character time derived from baud for gap/timeout computations.</para>
+</listitem><listitem><para>Frame receive honors 3.5 char gaps to detect frame boundaries.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="d6/dff/group___h_a_l___u_a_r_t_1hal_uart_errors">
+<title>Error Handling</title><para><itemizedlist>
+<listitem><para>Returns UART_OK or UART_ERROR_* for invalid params/timeouts.</para>
+</listitem><listitem><para>Status helpers expose frame/parity/overflow flags if maintained.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="d6/dff/group___h_a_l___u_a_r_t_1hal_uart_related">
+<title>Related</title><para><itemizedlist>
+<listitem><para><simplesect kind="see"><para><ref refid="d2/d86/uart_8h" kindref="compound">uart.h</ref> Public API and MODBUS helpers</para>
+</simplesect>
+</para>
+</listitem><listitem><para><simplesect kind="see"><para><ref refid="d5/dd0/timer_8h" kindref="compound">timer.h</ref> <ref refid="d8/d25/_multiplexer_8cpp_1a3dfcc3ae027703a8472e799a42a22d9f" kindref="member">for</ref> microsecond timing used by gaps/timeouts </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d5/d81/group__system__status__registers" kind="group">
+    <compoundname>system_status_registers</compoundname>
+    <title>System Status Registers (0x0000-0x000F)</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="d5/d81/group__system__status__registers_1ga3d519f60d2e7f2d390a0bd88d101ef37" prot="public" static="no">
+        <name>MODBUS_REG_SYSTEM_STATUS</name>
+        <initializer>0x0000</initializer>
+        <briefdescription>
+<para>Overall system status register address (0x0000) </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Bitfield register containing system-wide status indicators</para>
+<para>This register provides a consolidated view of system health and operational state. Each bit represents a specific system condition that can be monitored by PLC/HMI systems for automated fault detection and response.</para>
+<para><simplesect kind="note"><para>Updated every 10ms by system monitor task </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="d5/d00/structsystem__status__registers__t_1a5084aa8d25ce6115458436531f96c1cd" kindref="member">system_status_registers_t.system_status</ref> <ref refid="d8/d25/_multiplexer_8cpp_1a3dfcc3ae027703a8472e799a42a22d9f" kindref="member">for</ref> bit definitions </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus_registers.h" line="102" column="9" bodyfile="include/modbus_registers.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d5/d81/group__system__status__registers_1ga2115aee3113810de73e72a058650a448" prot="public" static="no">
+        <name>MODBUS_REG_ACTIVE_COUNT</name>
+        <initializer>0x0001</initializer>
+        <briefdescription>
+<para>Active sonicator count register address (0x0001) </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Contains the current number of sonicators in running state (0-4)</para>
+<para>This register provides a quick way to determine system loading without having to decode the active mask bitfield. Useful for load balancing and power management calculations.</para>
+<para><simplesect kind="note"><para>Automatically calculated from individual sonicator states </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="d5/d81/group__system__status__registers_1ga5c8c455a1b2ee4d7473a97f28d93b35a" kindref="member">MODBUS_REG_ACTIVE_MASK</ref> <ref refid="d8/d25/_multiplexer_8cpp_1a3dfcc3ae027703a8472e799a42a22d9f" kindref="member">for</ref> individual sonicator status </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus_registers.h" line="115" column="9" bodyfile="include/modbus_registers.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d5/d81/group__system__status__registers_1ga5c8c455a1b2ee4d7473a97f28d93b35a" prot="public" static="no">
+        <name>MODBUS_REG_ACTIVE_MASK</name>
+        <initializer>0x0002</initializer>
+        <briefdescription>
+<para>Active sonicator bitmask register address (0x0002) </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Bitfield indicating which sonicators are currently running</para>
+<para>Bit mapping:<itemizedlist>
+<listitem><para>Bit 0 (0x0001): Sonicator 1 running status</para>
+</listitem><listitem><para>Bit 1 (0x0002): Sonicator 2 running status</para>
+</listitem><listitem><para>Bit 2 (0x0004): Sonicator 3 running status</para>
+</listitem><listitem><para>Bit 3 (0x0008): Sonicator 4 running status</para>
+</listitem><listitem><para>Bits 4-15: Reserved for future expansion</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="note"><para>Synchronized with individual sonicator status flags </para>
+</simplesect>
+<simplesect kind="note"><para>Updated in real-time as sonicators start/stop </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus_registers.h" line="131" column="9" bodyfile="include/modbus_registers.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d5/d81/group__system__status__registers_1ga5d98f6211954dace5b619cc5e7456f29" prot="public" static="no">
+        <name>MODBUS_REG_WATCHDOG_STATUS</name>
+        <initializer>0x0003</initializer>
+        <briefdescription>
+<para>Watchdog timer status register address (0x0003) </para>
+        </briefdescription>
+        <detaileddescription>
+<para>System watchdog timer status and health monitoring</para>
+<para>This register provides information about the system watchdog timer state, including timeout status, reset causes, and health monitoring data. Critical for system reliability and fault detection.</para>
+<para><simplesect kind="warning"><para>Watchdog timeout triggers automatic system reset </para>
+</simplesect>
+<simplesect kind="note"><para>Used by external monitoring systems for health checks </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus_registers.h" line="144" column="9" bodyfile="include/modbus_registers.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d5/d81/group__system__status__registers_1gaa21406ad744f6687fee12a0879e4cc53" prot="public" static="no">
+        <name>MODBUS_REG_COMM_ERRORS</name>
+        <initializer>0x0004</initializer>
+        <briefdescription>
+<para>Communication error counter register address (0x0004) </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Cumulative count of MODBUS communication errors since system start</para>
+<para>Error types included:<itemizedlist>
+<listitem><para>CRC validation failures</para>
+</listitem><listitem><para>Communication timeouts</para>
+</listitem><listitem><para>Frame format errors</para>
+</listitem><listitem><para>Invalid register access attempts</para>
+</listitem><listitem><para>Protocol violations</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="note"><para>Counter resets to zero on system restart </para>
+</simplesect>
+<simplesect kind="note"><para>High error counts may indicate communication line issues </para>
+</simplesect>
+<simplesect kind="note"><para>Used for communication quality monitoring and diagnostics </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus_registers.h" line="161" column="9" bodyfile="include/modbus_registers.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Read-only system-wide status and diagnostic registers. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>These registers provide real-time system health monitoring and diagnostic information. All registers in this group are read-only and updated by the system monitor task every 10ms. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

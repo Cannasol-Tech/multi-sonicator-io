@@ -1,0 +1,290 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="db/daf/class_adc_hal" kind="class" language="C++" prot="public">
+    <compoundname>AdcHal</compoundname>
+    <derivedcompoundref refid="d1/d54/class_hal_template" prot="public" virt="non-virtual">HalTemplate&lt; AtmegaHal &gt;</derivedcompoundref>
+    <derivedcompoundref refid="d1/d54/class_hal_template" prot="public" virt="non-virtual">HalTemplate&lt; MockHal &gt;</derivedcompoundref>
+    <derivedcompoundref refid="d1/d54/class_hal_template" prot="public" virt="non-virtual">HalTemplate&lt; AtmegaHal &gt;</derivedcompoundref>
+    <derivedcompoundref refid="d1/d54/class_hal_template" prot="public" virt="non-virtual">HalTemplate&lt; MockHal &gt;</derivedcompoundref>
+    <derivedcompoundref refid="d1/d54/class_hal_template" prot="public" virt="non-virtual">HalTemplate&lt; HalImpl &gt;</derivedcompoundref>
+    <derivedcompoundref refid="d1/d54/class_hal_template" prot="public" virt="non-virtual">HalTemplate&lt; HalImpl &gt;</derivedcompoundref>
+    <includes refid="da/dd9/hal__template__example_8h" local="no">hal_template_example.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename HalImpl</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="db/daf/class_adc_hal_1a76fcb8d9943bff509c94fb7813be6dcc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool AdcHal&lt; HalImpl &gt;::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <qualifiedname>AdcHal::init</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="57" column="10" bodyfile="src/modules/hal/hal_template_example.h" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="db/daf/class_adc_hal_1ae2010f52b72ee230a65c5bdaa6465b0a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool AdcHal&lt; HalImpl &gt;::readChannel</definition>
+        <argsstring>(uint8_t channel, uint16_t *value)</argsstring>
+        <name>readChannel</name>
+        <qualifiedname>AdcHal::readChannel</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="58" column="10" bodyfile="src/modules/hal/hal_template_example.h" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="db/daf/class_adc_hal_1a98088769b06fb8037a99c5f410a09aca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float AdcHal&lt; HalImpl &gt;::rawToVoltage</definition>
+        <argsstring>(uint16_t raw)</argsstring>
+        <name>rawToVoltage</name>
+        <qualifiedname>AdcHal::rawToVoltage</qualifiedname>
+        <param>
+          <type>uint16_t</type>
+          <declname>raw</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="59" column="11" bodyfile="src/modules/hal/hal_template_example.h" bodystart="59" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="db/daf/class_adc_hal_1a7bed6fd2679c7e1d713ee3e2895719a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool AdcHal&lt; HalImpl &gt;::readSonicatorPower</definition>
+        <argsstring>(uint8_t id, float *power)</argsstring>
+        <name>readSonicatorPower</name>
+        <qualifiedname>AdcHal::readSonicatorPower</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>power</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="60" column="10" bodyfile="src/modules/hal/hal_template_example.h" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="db/daf/class_adc_hal_1a76fcb8d9943bff509c94fb7813be6dcc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool AdcHal&lt; HalImpl &gt;::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <qualifiedname>AdcHal::init</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="59" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="59" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="db/daf/class_adc_hal_1ae2010f52b72ee230a65c5bdaa6465b0a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool AdcHal&lt; HalImpl &gt;::readChannel</definition>
+        <argsstring>(uint8_t channel, uint16_t *value)</argsstring>
+        <name>readChannel</name>
+        <qualifiedname>AdcHal::readChannel</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="60" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="db/daf/class_adc_hal_1a7b0ca7d195cfd337bb64673786df7218" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool AdcHal&lt; HalImpl &gt;::startConversion</definition>
+        <argsstring>(uint8_t channel)</argsstring>
+        <name>startConversion</name>
+        <qualifiedname>AdcHal::startConversion</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="61" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="db/daf/class_adc_hal_1a642394dc0b99649881e91b42aaa54ae3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool AdcHal&lt; HalImpl &gt;::isConversionComplete</definition>
+        <argsstring>()</argsstring>
+        <name>isConversionComplete</name>
+        <qualifiedname>AdcHal::isConversionComplete</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="62" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="db/daf/class_adc_hal_1a98088769b06fb8037a99c5f410a09aca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float AdcHal&lt; HalImpl &gt;::rawToVoltage</definition>
+        <argsstring>(uint16_t raw)</argsstring>
+        <name>rawToVoltage</name>
+        <qualifiedname>AdcHal::rawToVoltage</qualifiedname>
+        <param>
+          <type>uint16_t</type>
+          <declname>raw</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="63" column="11" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="db/daf/class_adc_hal_1a7bed6fd2679c7e1d713ee3e2895719a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool AdcHal&lt; HalImpl &gt;::readSonicatorPower</definition>
+        <argsstring>(uint8_t id, float *power)</argsstring>
+        <name>readSonicatorPower</name>
+        <qualifiedname>AdcHal::readSonicatorPower</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>power</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="66" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="66" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="db/daf/class_adc_hal_1a306ac912f51cc52ea808efff3827b4ab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool AdcHal&lt; HalImpl &gt;::readFrequency</definition>
+        <argsstring>(float *frequency)</argsstring>
+        <name>readFrequency</name>
+        <qualifiedname>AdcHal::readFrequency</qualifiedname>
+        <param>
+          <type>float *</type>
+          <declname>frequency</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="67" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="67" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="db/daf/class_adc_hal_1a6d231736402ed4d7b2aeda3404054ec1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool AdcHal&lt; HalImpl &gt;::calibrate</definition>
+        <argsstring>(float reference_voltage)</argsstring>
+        <name>calibrate</name>
+        <qualifiedname>AdcHal::calibrate</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>reference_voltage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="68" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ADC HAL Interface (Template-based) </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>AdcHal&lt; HalImpl &gt;</label>
+        <link refid="db/daf/class_adc_hal"/>
+      </node>
+      <node id="2">
+        <label>HalTemplate&lt; AtmegaHal &gt;</label>
+        <link refid="d1/d54/class_hal_template"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>HalTemplate&lt; HalImpl &gt;</label>
+        <link refid="d1/d54/class_hal_template"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HalTemplate&lt; MockHal &gt;</label>
+        <link refid="d1/d54/class_hal_template"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/modules/hal/hal_template_example.h" line="55" column="1" bodyfile="src/modules/hal/hal_template_example.h" bodystart="55" bodyend="61"/>
+    <listofallmembers>
+      <member refid="db/daf/class_adc_hal_1a6d231736402ed4d7b2aeda3404054ec1" prot="public" virt="non-virtual"><scope>AdcHal</scope><name>calibrate</name></member>
+      <member refid="db/daf/class_adc_hal_1a76fcb8d9943bff509c94fb7813be6dcc" prot="public" virt="non-virtual"><scope>AdcHal</scope><name>init</name></member>
+      <member refid="db/daf/class_adc_hal_1a76fcb8d9943bff509c94fb7813be6dcc" prot="public" virt="non-virtual"><scope>AdcHal</scope><name>init</name></member>
+      <member refid="db/daf/class_adc_hal_1a642394dc0b99649881e91b42aaa54ae3" prot="public" virt="non-virtual"><scope>AdcHal</scope><name>isConversionComplete</name></member>
+      <member refid="db/daf/class_adc_hal_1a98088769b06fb8037a99c5f410a09aca" prot="public" virt="non-virtual"><scope>AdcHal</scope><name>rawToVoltage</name></member>
+      <member refid="db/daf/class_adc_hal_1a98088769b06fb8037a99c5f410a09aca" prot="public" virt="non-virtual"><scope>AdcHal</scope><name>rawToVoltage</name></member>
+      <member refid="db/daf/class_adc_hal_1ae2010f52b72ee230a65c5bdaa6465b0a" prot="public" virt="non-virtual"><scope>AdcHal</scope><name>readChannel</name></member>
+      <member refid="db/daf/class_adc_hal_1ae2010f52b72ee230a65c5bdaa6465b0a" prot="public" virt="non-virtual"><scope>AdcHal</scope><name>readChannel</name></member>
+      <member refid="db/daf/class_adc_hal_1a306ac912f51cc52ea808efff3827b4ab" prot="public" virt="non-virtual"><scope>AdcHal</scope><name>readFrequency</name></member>
+      <member refid="db/daf/class_adc_hal_1a7bed6fd2679c7e1d713ee3e2895719a3" prot="public" virt="non-virtual"><scope>AdcHal</scope><name>readSonicatorPower</name></member>
+      <member refid="db/daf/class_adc_hal_1a7bed6fd2679c7e1d713ee3e2895719a3" prot="public" virt="non-virtual"><scope>AdcHal</scope><name>readSonicatorPower</name></member>
+      <member refid="db/daf/class_adc_hal_1a7b0ca7d195cfd337bb64673786df7218" prot="public" virt="non-virtual"><scope>AdcHal</scope><name>startConversion</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

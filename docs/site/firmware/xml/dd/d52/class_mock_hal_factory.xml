@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="dd/d52/class_mock_hal_factory" kind="class" language="C++" prot="public">
+    <compoundname>MockHalFactory</compoundname>
+    <basecompoundref refid="de/de7/class_i_hal_factory" prot="public" virt="non-virtual">IHalFactory</basecompoundref>
+    <includes refid="d6/d83/hal__mock__factory_8h" local="no">hal_mock_factory.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="dd/d52/class_mock_hal_factory_1ab67d43279aec73f7f6d7b2d600d8ed29" prot="private" static="no" mutable="no">
+        <type><ref refid="d7/d07/class_mock_gpio_port" kindref="compound">MockGpioPort</ref></type>
+        <definition>MockGpioPort MockHalFactory::gpio_port</definition>
+        <argsstring></argsstring>
+        <name>gpio_port</name>
+        <qualifiedname>MockHalFactory::gpio_port</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="342" column="18" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="342" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d52/class_mock_hal_factory_1a0b3b9b66c1a89f2039f72539a69d0a67" prot="private" static="no" mutable="no">
+        <type><ref refid="d9/df6/class_mock_adc_reader" kindref="compound">MockAdcReader</ref></type>
+        <definition>MockAdcReader MockHalFactory::adc_reader</definition>
+        <argsstring></argsstring>
+        <name>adc_reader</name>
+        <qualifiedname>MockHalFactory::adc_reader</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="343" column="19" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="343" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dd/d52/class_mock_hal_factory_1a5b7a84fed1a3c798a8c8d85460b06f66" prot="private" static="no" mutable="no">
+        <type><ref refid="df/de4/class_mock_pwm_generator" kindref="compound">MockPwmGenerator</ref></type>
+        <definition>MockPwmGenerator MockHalFactory::pwm_generator</definition>
+        <argsstring></argsstring>
+        <name>pwm_generator</name>
+        <qualifiedname>MockHalFactory::pwm_generator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="344" column="22" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="344" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="dd/d52/class_mock_hal_factory_1abef40ff58223dfb69b5e303aa5142a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref> *</type>
+        <definition>IGpioPort * MockHalFactory::createGpioPort</definition>
+        <argsstring>() override</argsstring>
+        <name>createGpioPort</name>
+        <qualifiedname>MockHalFactory::createGpioPort</qualifiedname>
+        <reimplements refid="de/de7/class_i_hal_factory_1a603ce483699c0eaf8fc64556acd830f9">createGpioPort</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="348" column="15" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="348" bodyend="350"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d52/class_mock_hal_factory_1ac1d5e234ebefd71c223aecbd046e64e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d8/da7/class_i_adc_reader" kindref="compound">IAdcReader</ref> *</type>
+        <definition>IAdcReader * MockHalFactory::createAdcReader</definition>
+        <argsstring>() override</argsstring>
+        <name>createAdcReader</name>
+        <qualifiedname>MockHalFactory::createAdcReader</qualifiedname>
+        <reimplements refid="de/de7/class_i_hal_factory_1ab4eb70cf1e570beb4807c56e5be14243">createAdcReader</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="352" column="16" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="352" bodyend="354"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d52/class_mock_hal_factory_1a1aa0f8d819f2c2ecdf83fe2255105929" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d3/d56/class_i_pwm_generator" kindref="compound">IPwmGenerator</ref> *</type>
+        <definition>IPwmGenerator * MockHalFactory::createPwmGenerator</definition>
+        <argsstring>() override</argsstring>
+        <name>createPwmGenerator</name>
+        <qualifiedname>MockHalFactory::createPwmGenerator</qualifiedname>
+        <reimplements refid="de/de7/class_i_hal_factory_1ac572bad86e2779eb959704bb1c100ce6">createPwmGenerator</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="356" column="19" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="356" bodyend="358"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d52/class_mock_hal_factory_1adb93e3dbd631025758006d6da5606add" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d2/d2d/class_i_uart_port" kindref="compound">IUartPort</ref> *</type>
+        <definition>IUartPort * MockHalFactory::createUartPort</definition>
+        <argsstring>() override</argsstring>
+        <name>createUartPort</name>
+        <qualifiedname>MockHalFactory::createUartPort</qualifiedname>
+        <reimplements refid="de/de7/class_i_hal_factory_1a13cdcbe76af7a5c64e58549bf2b80388">createUartPort</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="360" column="15" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="360" bodyend="363"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d52/class_mock_hal_factory_1ae219d3fa2faeb9257bc89cc49759bce3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="da/dbb/class_i_timer_manager" kindref="compound">ITimerManager</ref> *</type>
+        <definition>ITimerManager * MockHalFactory::createTimerManager</definition>
+        <argsstring>() override</argsstring>
+        <name>createTimerManager</name>
+        <qualifiedname>MockHalFactory::createTimerManager</qualifiedname>
+        <reimplements refid="de/de7/class_i_hal_factory_1a1a0bc6e4da355f549756aa9f35353807">createTimerManager</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="365" column="19" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="365" bodyend="368"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d52/class_mock_hal_factory_1af2c70adf771ccf43cf5f4b4b9efa94a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d7/d07/class_mock_gpio_port" kindref="compound">MockGpioPort</ref> *</type>
+        <definition>MockGpioPort * MockHalFactory::getMockGpio</definition>
+        <argsstring>()</argsstring>
+        <name>getMockGpio</name>
+        <qualifiedname>MockHalFactory::getMockGpio</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="371" column="18" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="371" bodyend="371"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d52/class_mock_hal_factory_1a40b1605965b605c468306c009a8f62c2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d9/df6/class_mock_adc_reader" kindref="compound">MockAdcReader</ref> *</type>
+        <definition>MockAdcReader * MockHalFactory::getMockAdc</definition>
+        <argsstring>()</argsstring>
+        <name>getMockAdc</name>
+        <qualifiedname>MockHalFactory::getMockAdc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="372" column="19" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="372" bodyend="372"/>
+      </memberdef>
+      <memberdef kind="function" id="dd/d52/class_mock_hal_factory_1a968bde358c0731bffae26c0ec0c22811" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="df/de4/class_mock_pwm_generator" kindref="compound">MockPwmGenerator</ref> *</type>
+        <definition>MockPwmGenerator * MockHalFactory::getMockPwm</definition>
+        <argsstring>()</argsstring>
+        <name>getMockPwm</name>
+        <qualifiedname>MockHalFactory::getMockPwm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_mock_factory.h" line="373" column="22" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="373" bodyend="373"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Factory for creating mock HAL instances for testing. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>IHalFactory</label>
+        <link refid="de/de7/class_i_hal_factory"/>
+      </node>
+      <node id="1">
+        <label>MockHalFactory</label>
+        <link refid="dd/d52/class_mock_hal_factory"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>IHalFactory</label>
+        <link refid="de/de7/class_i_hal_factory"/>
+      </node>
+      <node id="1">
+        <label>MockHalFactory</label>
+        <link refid="dd/d52/class_mock_hal_factory"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/modules/hal/hal_mock_factory.h" line="340" column="1" bodyfile="src/modules/hal/hal_mock_factory.h" bodystart="340" bodyend="374"/>
+    <listofallmembers>
+      <member refid="dd/d52/class_mock_hal_factory_1a0b3b9b66c1a89f2039f72539a69d0a67" prot="private" virt="non-virtual"><scope>MockHalFactory</scope><name>adc_reader</name></member>
+      <member refid="dd/d52/class_mock_hal_factory_1ac1d5e234ebefd71c223aecbd046e64e2" prot="public" virt="virtual"><scope>MockHalFactory</scope><name>createAdcReader</name></member>
+      <member refid="dd/d52/class_mock_hal_factory_1abef40ff58223dfb69b5e303aa5142a07" prot="public" virt="virtual"><scope>MockHalFactory</scope><name>createGpioPort</name></member>
+      <member refid="dd/d52/class_mock_hal_factory_1a1aa0f8d819f2c2ecdf83fe2255105929" prot="public" virt="virtual"><scope>MockHalFactory</scope><name>createPwmGenerator</name></member>
+      <member refid="dd/d52/class_mock_hal_factory_1ae219d3fa2faeb9257bc89cc49759bce3" prot="public" virt="virtual"><scope>MockHalFactory</scope><name>createTimerManager</name></member>
+      <member refid="dd/d52/class_mock_hal_factory_1adb93e3dbd631025758006d6da5606add" prot="public" virt="virtual"><scope>MockHalFactory</scope><name>createUartPort</name></member>
+      <member refid="dd/d52/class_mock_hal_factory_1a40b1605965b605c468306c009a8f62c2" prot="public" virt="non-virtual"><scope>MockHalFactory</scope><name>getMockAdc</name></member>
+      <member refid="dd/d52/class_mock_hal_factory_1af2c70adf771ccf43cf5f4b4b9efa94a1" prot="public" virt="non-virtual"><scope>MockHalFactory</scope><name>getMockGpio</name></member>
+      <member refid="dd/d52/class_mock_hal_factory_1a968bde358c0731bffae26c0ec0c22811" prot="public" virt="non-virtual"><scope>MockHalFactory</scope><name>getMockPwm</name></member>
+      <member refid="dd/d52/class_mock_hal_factory_1ab67d43279aec73f7f6d7b2d600d8ed29" prot="private" virt="non-virtual"><scope>MockHalFactory</scope><name>gpio_port</name></member>
+      <member refid="dd/d52/class_mock_hal_factory_1a5b7a84fed1a3c798a8c8d85460b06f66" prot="private" virt="non-virtual"><scope>MockHalFactory</scope><name>pwm_generator</name></member>
+      <member refid="de/de7/class_i_hal_factory_1a65144b2ffce2bc09d7dfa807852f7086" prot="public" virt="virtual"><scope>MockHalFactory</scope><name>~IHalFactory</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

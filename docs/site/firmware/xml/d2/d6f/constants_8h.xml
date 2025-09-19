@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d2/d6f/constants_8h" kind="file" language="C++">
+    <compoundname>constants.h</compoundname>
+    <includedby refid="df/d0a/main_8cpp" local="yes">src/main.cpp</includedby>
+    <invincdepgraph>
+      <node id="1">
+        <label>include/constants.h</label>
+        <link refid="d2/d6f/constants_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/main.cpp</label>
+        <link refid="df/d0a/main_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="d2/d6f/constants_8h_1a6447914312ce385e9965b346b52e6e33" prot="public" static="no" mutable="no">
+        <type>const unsigned long</type>
+        <definition>const unsigned long MODBUS_PROCESS_INTERVAL_MS</definition>
+        <argsstring></argsstring>
+        <name>MODBUS_PROCESS_INTERVAL_MS</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+<para>Main Loop Interval for MODBUS processing. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/constants.h" line="22" column="21" bodyfile="include/constants.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d6f/constants_8h_1a4fd22f18c40849944f16959b80457b49" prot="public" static="no" mutable="no">
+        <type>const unsigned long</type>
+        <definition>const unsigned long MULTIPLEXER_UPDATE_INTERVAL_MS</definition>
+        <argsstring></argsstring>
+        <name>MULTIPLEXER_UPDATE_INTERVAL_MS</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+<para>Main Loop Interval for multiplexer updates. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/constants.h" line="27" column="21" bodyfile="include/constants.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d2/d6f/constants_8h_1a41200ee403f5eab60d98f68fef18e068" prot="public" static="no" mutable="no">
+        <type>const unsigned long</type>
+        <definition>const unsigned long MODBUS_SYNC_INTERVAL_MS</definition>
+        <argsstring></argsstring>
+        <name>MODBUS_SYNC_INTERVAL_MS</name>
+        <initializer>= 50</initializer>
+        <briefdescription>
+<para>Main Loop Interval for MODBUS register sync. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/constants.h" line="32" column="21" bodyfile="include/constants.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Constants for timing intervals in the main loop. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Stephen Boyett </para>
+</simplesect>
+<simplesect kind="date"><para>2025-09-16 </para>
+</simplesect>
+<simplesect kind="version"><para>1.0.0 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>CONSTANTS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONSTANTS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TIMING<sp/>CONSTANTS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="d2/d6f/constants_8h_1a6447914312ce385e9965b346b52e6e33" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="d2/d6f/constants_8h_1a6447914312ce385e9965b346b52e6e33" kindref="member">MODBUS_PROCESS_INTERVAL_MS</ref><sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="27" refid="d2/d6f/constants_8h_1a4fd22f18c40849944f16959b80457b49" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="d2/d6f/constants_8h_1a4fd22f18c40849944f16959b80457b49" kindref="member">MULTIPLEXER_UPDATE_INTERVAL_MS</ref><sp/>=<sp/>10;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="d2/d6f/constants_8h_1a41200ee403f5eab60d98f68fef18e068" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="d2/d6f/constants_8h_1a41200ee403f5eab60d98f68fef18e068" kindref="member">MODBUS_SYNC_INTERVAL_MS</ref><sp/>=<sp/>50;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>CONSTANTS_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/constants.h"/>
+  </compounddef>
+</doxygen>

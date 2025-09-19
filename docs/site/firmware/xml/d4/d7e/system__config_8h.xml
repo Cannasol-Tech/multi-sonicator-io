@@ -1,0 +1,1524 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d4/d7e/system__config_8h" kind="file" language="C++">
+    <compoundname>system_config.h</compoundname>
+    <includes local="no">Arduino.h</includes>
+    <includedby refid="dc/dc2/_multiplexer_8h" local="yes">include/multiplexer/Multiplexer.h</includedby>
+    <includedby refid="d9/d49/types_8h" local="yes">include/types.h</includedby>
+    <includedby refid="d8/d25/_multiplexer_8cpp" local="yes">src/modules/control/Multiplexer.cpp</includedby>
+    <includedby refid="d2/db9/sonicator_8cpp" local="yes">src/modules/control/sonicator.cpp</includedby>
+    <includedby refid="db/d33/adc_8cpp" local="no">src/modules/hal/adc.cpp</includedby>
+    <includedby refid="de/d31/gpio_8cpp" local="no">src/modules/hal/gpio.cpp</includedby>
+    <includedby refid="dc/db6/hal_8cpp" local="no">src/modules/hal/hal.cpp</includedby>
+    <includedby refid="d5/d84/pwm_8cpp" local="no">src/modules/hal/pwm.cpp</includedby>
+    <includedby refid="dc/de5/timer_8cpp" local="yes">src/modules/hal/timer.cpp</includedby>
+    <includedby refid="db/d23/uart_8cpp" local="yes">src/modules/hal/uart.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/system_config.h</label>
+        <link refid="d4/d7e/system__config_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/multiplexer/Multiplexer.h</label>
+        <link refid="dc/dc2/_multiplexer_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/system_config.h</label>
+        <link refid="d4/d7e/system__config_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/types.h</label>
+        <link refid="d9/d49/types_8h"/>
+      </node>
+      <node id="3">
+        <label>src/main.cpp</label>
+        <link refid="df/d0a/main_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/modules/control/Multiplexer.cpp</label>
+        <link refid="d8/d25/_multiplexer_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/modules/control/sonicator.cpp</label>
+        <link refid="d2/db9/sonicator_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/modules/hal/adc.cpp</label>
+        <link refid="db/d33/adc_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/modules/hal/gpio.cpp</label>
+        <link refid="de/d31/gpio_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/modules/hal/hal.cpp</label>
+        <link refid="dc/db6/hal_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/modules/hal/pwm.cpp</label>
+        <link refid="d5/d84/pwm_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/modules/hal/timer.cpp</label>
+        <link refid="dc/de5/timer_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/modules/hal/uart.cpp</label>
+        <link refid="db/d23/uart_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="user-defined">
+      <header>Active Sonicator Summary Registers</header>
+      <description><para>System-level summary of currently running sonicators</para>
+<para><itemizedlist>
+<listitem><para>REG_ACTIVE_SONICATOR_COUNT: Number of sonicators actively running (0-4)</para>
+</listitem><listitem><para>REG_ACTIVE_SONICATOR_MASK: Bitmask of running units (bit0=S1 .. bit3=S4)</para>
+</listitem><listitem><para>Both are Read-Only holding registers and should reflect changes within 100 ms of any start/stop or reset event. </para>
+</listitem></itemizedlist>
+</para>
+</description>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1aa777c43cd2f9be6e7da25ad29bce1488" prot="public" static="no">
+        <name>REG_ACTIVE_SONICATOR_COUNT</name>
+        <initializer>40035</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="276" column="9" bodyfile="include/system_config.h" bodystart="276" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a05d63210d9b31a045004cfd3d5aac20d" prot="public" static="no">
+        <name>REG_ACTIVE_SONICATOR_MASK</name>
+        <initializer>40036</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="277" column="9" bodyfile="include/system_config.h" bodystart="277" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a73cf87b724a08c55e4ddb98f9d186b9c" prot="public" static="no">
+        <name>MAIN_LOOP_INTERVAL_MS</name>
+        <initializer>10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="283" column="9" bodyfile="include/system_config.h" bodystart="283" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a346d42f6cda5022fb4c334d6d97216d6" prot="public" static="no">
+        <name>MODBUS_TIMEOUT_MS</name>
+        <initializer>500</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="284" column="9" bodyfile="include/system_config.h" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a0c93bbfd49737a08f413579d2ffc291a" prot="public" static="no">
+        <name>STATUS_UPDATE_INTERVAL_MS</name>
+        <initializer>100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="285" column="9" bodyfile="include/system_config.h" bodystart="285" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a589038d914fec9d1e7a2a00c3fdd423f" prot="public" static="no">
+        <name>POWER_MONITOR_INTERVAL_MS</name>
+        <initializer>50</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="286" column="9" bodyfile="include/system_config.h" bodystart="286" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1ad47d2e62c28790bd6b5608a28ecbf455" prot="public" static="no">
+        <name>FREQUENCY_MEASURE_WINDOW_MS</name>
+        <initializer>100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="287" column="9" bodyfile="include/system_config.h" bodystart="287" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a3f4b1cf82f86eb9027e425c1203ad481" prot="public" static="no">
+        <name>DEBUG_ENABLE_WATCHDOG</name>
+        <initializer>true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="299" column="14" bodyfile="include/system_config.h" bodystart="299" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1ad3eb0d3219ab69726103b67c3d81e2d5" prot="public" static="no">
+        <name>DEBUG_VERBOSE_MODBUS</name>
+        <initializer>false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="300" column="13" bodyfile="include/system_config.h" bodystart="300" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a874795f9a502bd10b855fd67a2e34083" prot="public" static="no">
+        <name>DEBUG_LOG_LEVEL</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="301" column="13" bodyfile="include/system_config.h" bodystart="301" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a141ed9e2399376c81ddeef7db5e4c318" prot="public" static="no">
+        <name>STATUS_SYSTEM_OK</name>
+        <initializer>0x0001</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="309" column="9" bodyfile="include/system_config.h" bodystart="309" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a5d0fbb1462631dc591c37e80af28cc23" prot="public" static="no">
+        <name>STATUS_EMERGENCY_STOP</name>
+        <initializer>0x0002</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="310" column="9" bodyfile="include/system_config.h" bodystart="310" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1aac0952ed02b24713603d44266594bebb" prot="public" static="no">
+        <name>STATUS_COMMUNICATION_ERROR</name>
+        <initializer>0x0004</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="311" column="9" bodyfile="include/system_config.h" bodystart="311" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a2344eac35e8302848f3964a2634b60c4" prot="public" static="no">
+        <name>STATUS_POWER_FAULT</name>
+        <initializer>0x0008</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="312" column="9" bodyfile="include/system_config.h" bodystart="312" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a4e6c491398ea159adabf912d247f63fa" prot="public" static="no">
+        <name>STATUS_OVERLOAD_ACTIVE</name>
+        <initializer>0x0010</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="313" column="9" bodyfile="include/system_config.h" bodystart="313" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1ac297828362973f42883bed2a48732bf9" prot="public" static="no">
+        <name>STATUS_WATCHDOG_RESET</name>
+        <initializer>0x0020</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="314" column="9" bodyfile="include/system_config.h" bodystart="314" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a7e9113487cf448e2ae394a557f520637" prot="public" static="no">
+        <name>STATUS_SONICATOR_RUNNING</name>
+        <initializer>0x0001</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="317" column="9" bodyfile="include/system_config.h" bodystart="317" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1aeffa21d7773b106a8c22a8dbfd2fd339" prot="public" static="no">
+        <name>STATUS_SONICATOR_OVERLOAD</name>
+        <initializer>0x0002</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="318" column="9" bodyfile="include/system_config.h" bodystart="318" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1af36b7d02fa41c36a42710666ef29b64c" prot="public" static="no">
+        <name>STATUS_SONICATOR_FREQ_LOCK</name>
+        <initializer>0x0004</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="319" column="9" bodyfile="include/system_config.h" bodystart="319" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a4d41934636c9de9cd6cd653d7ab03e65" prot="public" static="no">
+        <name>STATUS_SONICATOR_COMM_ERROR</name>
+        <initializer>0x0008</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="320" column="9" bodyfile="include/system_config.h" bodystart="320" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="enum" id="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92" prot="public" static="no" strong="no">
+        <type></type>
+        <name>error_code_t</name>
+        <enumvalue id="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a4edc8aade11e1de7bbbdc04704baae5f" prot="public">
+          <name>ERROR_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a3fb2c7ed36a1e56392d80bbfb815acba" prot="public">
+          <name>ERROR_MODBUS_TIMEOUT</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a5f3e3d78cab4cf983464f963dc9957ba" prot="public">
+          <name>ERROR_MODBUS_CRC</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92ab93e7ee2254628713bb387c3cb6346dc" prot="public">
+          <name>ERROR_SONICATOR_OVERLOAD</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a2798e7b43c79c1a5135989223e3be229" prot="public">
+          <name>ERROR_FREQUENCY_LOCK_LOST</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92af8f7858f229659e267d4dd12a4c7697f" prot="public">
+          <name>ERROR_POWER_OUT_OF_RANGE</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a124c7e1f536cc667d69471f0989dcff8" prot="public">
+          <name>ERROR_PWM_AMPLITUDE_FAILURE</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92aeb3d51523d7f54b10fe466f98dc4501a" prot="public">
+          <name>ERROR_ADC_POWER_FAILURE</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a15cffd517a3340c5048c58f07e7975ee" prot="public">
+          <name>ERROR_WATCHDOG_TIMEOUT</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a583e790a8b83852d6cf1c5505f682acd" prot="public">
+          <name>ERROR_EMERGENCY_STOP</name>
+          <initializer>= 9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a4f4d68e0b143ee73752c8f65f8d0c756" prot="public">
+          <name>ERROR_SYSTEM_FAULT</name>
+          <initializer>= 10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="323" column="1" bodyfile="include/system_config.h" bodystart="323" bodyend="335"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1ae73053051efbb45c3a39751f5ce9fb36" prot="public" static="no">
+        <name>PROJECT_NAME</name>
+        <initializer>&quot;Multi Sonicator I/O Controller&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="23" column="9" bodyfile="include/system_config.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a2262256d100ac30c73425265d10c30e5" prot="public" static="no">
+        <name>PROJECT_MODEL</name>
+        <initializer>&quot;CT2000-4-MSIO-v1&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="24" column="9" bodyfile="include/system_config.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a4a776fa6ea8b7bdf8dfa04ad42b46407" prot="public" static="no">
+        <name>PROJECT_VERSION</name>
+        <initializer>&quot;1.0.0&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="25" column="9" bodyfile="include/system_config.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a26af6976dcc8612f42fc20bb88a2e713" prot="public" static="no">
+        <name>PROJECT_BUILD_DATE</name>
+        <initializer>__DATE__ &quot; &quot; __TIME__</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="26" column="9" bodyfile="include/system_config.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1af742fbcc4371d835e9765ee04a5950fa" prot="public" static="no">
+        <name>MANUFACTURER</name>
+        <initializer>&quot;Cannasol Technologies&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="27" column="9" bodyfile="include/system_config.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a6058531504a8da37ab1cf9fd4464793d" prot="public" static="no">
+        <name>MCU_TYPE</name>
+        <initializer>&quot;ATmega32A-PU&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="34" column="9" bodyfile="include/system_config.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1aab528fed480df8124410c0fae55ce83e" prot="public" static="no">
+        <name>MCU_FREQUENCY</name>
+        <initializer>16000000L</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="35" column="9" bodyfile="include/system_config.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a52d23a0012e552692191e35222e42ef4" prot="public" static="no">
+        <name>MCU_VOLTAGE</name>
+        <initializer>5.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="36" column="9" bodyfile="include/system_config.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a39f376f71f4405d96e515fbc21fb5fc5" prot="public" static="no">
+        <name>MAX_SONICATORS</name>
+        <initializer>4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="39" column="9" bodyfile="include/system_config.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a1aef92ccc58f5b6eb11f9a32c8f1e3d6" prot="public" static="no">
+        <name>MODBUS_SLAVE_ID</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="40" column="9" bodyfile="include/system_config.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a60bd280b8778414fe9cd7546d4a24e1b" prot="public" static="no">
+        <name>MODBUS_BAUD_RATE</name>
+        <initializer>115200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="41" column="9" bodyfile="include/system_config.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a71b23a7ad1ea1e1adbda7452761f0d66" prot="public" static="no">
+        <name>EMERGENCY_STOP_RESPONSE_US</name>
+        <initializer>50</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="44" column="9" bodyfile="include/system_config.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a7806944d3d2580d7208d9f051a19f310" prot="public" static="no">
+        <name>WATCHDOG_TIMEOUT_MS</name>
+        <initializer>1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="45" column="9" bodyfile="include/system_config.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1aad1816d531d80fd388a888b24cf6ff61" prot="public" static="no">
+        <name>SAFETY_MONITOR_INTERVAL_MS</name>
+        <initializer>10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="46" column="9" bodyfile="include/system_config.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1aa37eca6fe61f6938d925975dff27c8fd" prot="public" static="no">
+        <name>UART_RX_PIN</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="52" column="9" bodyfile="include/system_config.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a6c82a6844388a551e8f06d249598989e" prot="public" static="no">
+        <name>UART_TX_PIN</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="53" column="9" bodyfile="include/system_config.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a2cade698267beb86ccaa38c14d35ab0f" prot="public" static="no">
+        <name>I2C_SDA_PIN</name>
+        <initializer>22</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="56" column="9" bodyfile="include/system_config.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a0e4e08bab2fb484136d18b067bef372c" prot="public" static="no">
+        <name>I2C_SCL_PIN</name>
+        <initializer>21</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="57" column="9" bodyfile="include/system_config.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1afa2d8905735c5ed93d5ed58d0a6d1ebc" prot="public" static="no">
+        <name>XTAL1_PIN</name>
+        <initializer>13</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="60" column="9" bodyfile="include/system_config.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a452546431e285f80a0c8ea0e5d405273" prot="public" static="no">
+        <name>XTAL2_PIN</name>
+        <initializer>12</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="61" column="9" bodyfile="include/system_config.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a089a71f836911c71b3f73fdd3b4b890b" prot="public" static="no">
+        <name>STATUS_LED_PIN</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="64" column="9" bodyfile="include/system_config.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1ad89976cc0b5340110179f6ce40df3028" prot="public" static="no">
+        <name>SERIAL_BAUD_RATE</name>
+        <initializer>115200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="67" column="9" bodyfile="include/system_config.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <member refid="d8/daa/group___sonicator1_1ga7f0be9975baddeff02c6056ffe6d636c" kind="define"><name>SON1_OVERLOAD_PIN</name></member>
+      <member refid="d8/daa/group___sonicator1_1ga3483eecb5fe0bcadc5368c691ef83672" kind="define"><name>SON1_FREQ_OUTPUT_PIN</name></member>
+      <member refid="d8/daa/group___sonicator1_1gad06198bc2ba85e227f39e226f18920ab" kind="define"><name>SON1_FREQ_LOCK_PIN</name></member>
+      <member refid="d8/daa/group___sonicator1_1gaae4fd2379cc5fbdc73e55d3c3ba60295" kind="define"><name>SON1_START_PIN</name></member>
+      <member refid="d8/daa/group___sonicator1_1gabc7bc420dadb6a321ca215951cec19ca" kind="define"><name>SON1_RESET_PIN</name></member>
+      <member refid="d2/d37/group___sonicator2_1gaf3ec0a2a5f64f58fa6203b1724cf6f87" kind="define"><name>SON2_OVERLOAD_PIN</name></member>
+      <member refid="d2/d37/group___sonicator2_1ga226d95a3ba3447f88950486816c16063" kind="define"><name>SON2_FREQ_OUTPUT_PIN</name></member>
+      <member refid="d2/d37/group___sonicator2_1ga720ab8aa137d5232b080de2d589beb4a" kind="define"><name>SON2_FREQ_LOCK_PIN</name></member>
+      <member refid="d2/d37/group___sonicator2_1gab33ac39513191b46f1e56efe3b903f90" kind="define"><name>SON2_START_PIN</name></member>
+      <member refid="d2/d37/group___sonicator2_1ga8cf17babe13b3877fb67d2dadaaa622e" kind="define"><name>SON2_RESET_PIN</name></member>
+      <member refid="d6/dd5/group___sonicator3_1ga6c7f25996ac91220ca3948c24df60d8e" kind="define"><name>SON3_OVERLOAD_PIN</name></member>
+      <member refid="d6/dd5/group___sonicator3_1gaa22ccdea51a4a8e2b4ab4d11b2064ec7" kind="define"><name>SON3_FREQ_OUTPUT_PIN</name></member>
+      <member refid="d6/dd5/group___sonicator3_1ga25c84b644eac031310445f8ceed65ec2" kind="define"><name>SON3_FREQ_LOCK_PIN</name></member>
+      <member refid="d6/dd5/group___sonicator3_1gadf3d1736d4bbe2a9877a400912b3878e" kind="define"><name>SON3_START_PIN</name></member>
+      <member refid="d6/dd5/group___sonicator3_1gac6cece380c77920cabc81a8c6bbb085c" kind="define"><name>SON3_RESET_PIN</name></member>
+      <member refid="dd/d28/group___sonicator4_1ga786fd798d58acee8c64231ceee026427" kind="define"><name>SON4_OVERLOAD_PIN</name></member>
+      <member refid="dd/d28/group___sonicator4_1ga58406eeef975e8051c51b905addff44b" kind="define"><name>SON4_FREQ_OUTPUT_PIN</name></member>
+      <member refid="dd/d28/group___sonicator4_1gacd39ea816c2641f2f23d9df198bf018d" kind="define"><name>SON4_FREQ_LOCK_PIN</name></member>
+      <member refid="dd/d28/group___sonicator4_1ga984840f9d3a5e89fbaedc95dbb27d454" kind="define"><name>SON4_START_PIN</name></member>
+      <member refid="dd/d28/group___sonicator4_1gaffd40dfb916a5b6133e06da57654bd0a" kind="define"><name>SON4_RESET_PIN</name></member>
+      <member refid="da/d6a/group___p_w_m_control_1ga0aa83389edb245f5b1ae129e07f474f7" kind="define"><name>PWM_AMPLITUDE_CONTROL_PIN</name></member>
+      <member refid="d6/d77/group___a_d_c_power_monitoring_1ga3c0164f11e49bbc1f308471bc872d919" kind="define"><name>ADC_SONICATOR_1_PIN</name></member>
+      <member refid="d6/d77/group___a_d_c_power_monitoring_1gad0ec60ee4c0ba0fcd61f3ab60c9094ca" kind="define"><name>ADC_SONICATOR_2_PIN</name></member>
+      <member refid="d6/d77/group___a_d_c_power_monitoring_1ga6aa03e96ec1e18fae4a9f215efba52e8" kind="define"><name>ADC_SONICATOR_3_PIN</name></member>
+      <member refid="d6/d77/group___a_d_c_power_monitoring_1gaae18663a7f4d1e42463608fd512db5f4" kind="define"><name>ADC_SONICATOR_4_PIN</name></member>
+      <member refid="de/d6c/group___frequency_measurement_1ga88d61ae2de8ec62f68587d62868393ed" kind="define"><name>FREQ_COUNT_PIN_1</name></member>
+      <member refid="de/d6c/group___frequency_measurement_1ga942a67a2de86f2f57c7079308698ed59" kind="define"><name>FREQ_COUNT_PIN_2</name></member>
+      <member refid="de/d6c/group___frequency_measurement_1gaf2b485e304fdc3de234248ae9e2bfe72" kind="define"><name>FREQ_COUNT_PIN_3</name></member>
+      <member refid="de/d6c/group___frequency_measurement_1ga61d6ea30be8e7074225d9e471162c496" kind="define"><name>FREQ_COUNT_PIN_4</name></member>
+      <member refid="de/d6c/group___frequency_measurement_1gaa39447aef1f0147886b06d99082d9762" kind="define"><name>FREQ_MEASUREMENT_WINDOW_MS</name></member>
+      <member refid="de/d6c/group___frequency_measurement_1ga4c68a1a1970f0a1b56a0049a439506e7" kind="define"><name>FREQ_MIN_EDGES</name></member>
+      <member refid="de/d6c/group___frequency_measurement_1gaaa9f4d9bf6fdc3b3f026e51a0cf0e363" kind="define"><name>FREQ_EXPECTED_MIN</name></member>
+      <member refid="de/d6c/group___frequency_measurement_1gaef2def439b38dad9a13bdaf0672f92c4" kind="define"><name>FREQ_EXPECTED_MAX</name></member>
+      <member refid="de/d6c/group___frequency_measurement_1ga4bdb28c1ddcc0c6911d0d95116e46776" kind="define"><name>FREQ_HARDWARE_DIVIDER</name></member>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a6986741160d0de7511be7f52521162a5" prot="public" static="no">
+        <name>SONICATOR_FREQ_NOMINAL</name>
+        <initializer>20000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="201" column="9" bodyfile="include/system_config.h" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a7bd6c9e2021eaf75e5d3c7ce764b45b6" prot="public" static="no">
+        <name>SONICATOR_FREQ_TOLERANCE</name>
+        <initializer>20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="202" column="9" bodyfile="include/system_config.h" bodystart="202" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a8cfb6f309dbc7ed2bf9cc0d198a732db" prot="public" static="no">
+        <name>SONICATOR_MAX_POWER</name>
+        <initializer>2000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="203" column="9" bodyfile="include/system_config.h" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a8d322243967729e9f88bf1731c441f85" prot="public" static="no">
+        <name>SONICATOR_MIN_AMPLITUDE</name>
+        <initializer>20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="204" column="9" bodyfile="include/system_config.h" bodystart="204" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a0122d2383c5045b00c5c60eb3572286b" prot="public" static="no">
+        <name>SONICATOR_MAX_AMPLITUDE</name>
+        <initializer>100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="205" column="9" bodyfile="include/system_config.h" bodystart="205" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1ab7a7eb8807d3c1ff72a31aad003250e2" prot="public" static="no">
+        <name>POWER_SCALING_MV_PER_WATT</name>
+        <initializer>5.44</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="208" column="9" bodyfile="include/system_config.h" bodystart="208" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a3ac85f60be77afe91d18ba5ec71b05d7" prot="public" static="no">
+        <name>AMPLITUDE_SCALE_V_PER_PCT</name>
+        <initializer>0.1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="209" column="9" bodyfile="include/system_config.h" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1accf5542e9b42962ca8c56811609b56d0" prot="public" static="no">
+        <name>FREQUENCY_DIVIDER</name>
+        <initializer>10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="210" column="9" bodyfile="include/system_config.h" bodystart="210" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1ab31d2a3651a7680b157e854cc5c0f3e5" prot="public" static="no">
+        <name>DB9_OVERLOAD_INDICATION</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="213" column="9" bodyfile="include/system_config.h" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1ae6ba17d7de6f95b5a62671ed848f931a" prot="public" static="no">
+        <name>DB9_OVERLOAD_RESET</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="214" column="9" bodyfile="include/system_config.h" bodystart="214" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a9c3954509a356b504074712241c3d80c" prot="public" static="no">
+        <name>DB9_FREQUENCY_LOCK</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="215" column="9" bodyfile="include/system_config.h" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1ac5a6a01aee8accaf739e4262fe6719d7" prot="public" static="no">
+        <name>DB9_FREQUENCY_OUTPUT</name>
+        <initializer>4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="216" column="9" bodyfile="include/system_config.h" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1aca93993417075056430abd0489227f9f" prot="public" static="no">
+        <name>DB9_POWER_OUTPUT</name>
+        <initializer>5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="217" column="9" bodyfile="include/system_config.h" bodystart="217" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a747ab812e6efcb05a0a50d963f861f36" prot="public" static="no">
+        <name>DB9_SIGNAL_GROUND</name>
+        <initializer>6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="218" column="9" bodyfile="include/system_config.h" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a9b32ffbc80ef77ba0bfb0f78a6097899" prot="public" static="no">
+        <name>DB9_SONICS_START</name>
+        <initializer>7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="219" column="9" bodyfile="include/system_config.h" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a597dbb3b1443ed41ea283a5b7838c0a7" prot="public" static="no">
+        <name>DB9_AMPLITUDE_CONTROL</name>
+        <initializer>8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="220" column="9" bodyfile="include/system_config.h" bodystart="220" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1af2e04fd6bfcb716691dcfe550f8ad5ba" prot="public" static="no">
+        <name>DB9_EMITTER_COMMON</name>
+        <initializer>9</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="221" column="9" bodyfile="include/system_config.h" bodystart="221" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1ad868403896e27f844c7978863700476c" prot="public" static="no">
+        <name>REG_SONICATOR_1_AMPLITUDE</name>
+        <initializer>40001</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="228" column="9" bodyfile="include/system_config.h" bodystart="228" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a73e8f2f56515b847d5618d6429baf23e" prot="public" static="no">
+        <name>REG_SONICATOR_2_AMPLITUDE</name>
+        <initializer>40002</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="229" column="9" bodyfile="include/system_config.h" bodystart="229" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a2d60b6e64fc0f15d3d6df147d286f7ed" prot="public" static="no">
+        <name>REG_SONICATOR_3_AMPLITUDE</name>
+        <initializer>40003</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="230" column="9" bodyfile="include/system_config.h" bodystart="230" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1af7bba970ff02aa4f6b314a26861ab5b0" prot="public" static="no">
+        <name>REG_SONICATOR_4_AMPLITUDE</name>
+        <initializer>40004</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="231" column="9" bodyfile="include/system_config.h" bodystart="231" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a105f965f177db95cab09c39259313eb5" prot="public" static="no">
+        <name>REG_SONICATOR_1_START_STOP</name>
+        <initializer>40005</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="232" column="9" bodyfile="include/system_config.h" bodystart="232" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1af39b13f7fad827067660ade26fc17836" prot="public" static="no">
+        <name>REG_SONICATOR_2_START_STOP</name>
+        <initializer>40006</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="233" column="9" bodyfile="include/system_config.h" bodystart="233" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1aca4fb78a9d5fe9a839110db126e98b44" prot="public" static="no">
+        <name>REG_SONICATOR_3_START_STOP</name>
+        <initializer>40007</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="234" column="9" bodyfile="include/system_config.h" bodystart="234" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a25fa141a84ba1aa7cfb13829e8fbc07e" prot="public" static="no">
+        <name>REG_SONICATOR_4_START_STOP</name>
+        <initializer>40008</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="235" column="9" bodyfile="include/system_config.h" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a42d2893489c79955d88f15cf691b873b" prot="public" static="no">
+        <name>REG_SONICATOR_1_RESET</name>
+        <initializer>40009</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="236" column="9" bodyfile="include/system_config.h" bodystart="236" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a72e84149c231b47b04b84d1ee8f2630d" prot="public" static="no">
+        <name>REG_SONICATOR_2_RESET</name>
+        <initializer>40010</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="237" column="9" bodyfile="include/system_config.h" bodystart="237" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a13e41f0a1968a86a7f27c38d7f3e7be8" prot="public" static="no">
+        <name>REG_SONICATOR_3_RESET</name>
+        <initializer>40011</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="238" column="9" bodyfile="include/system_config.h" bodystart="238" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1af373c4785edd54427e68c2a2695f6f13" prot="public" static="no">
+        <name>REG_SONICATOR_4_RESET</name>
+        <initializer>40012</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="239" column="9" bodyfile="include/system_config.h" bodystart="239" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a959714f7fd4c69ec418194ef6395bf50" prot="public" static="no">
+        <name>REG_SONICATOR_1_POWER</name>
+        <initializer>40013</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="242" column="9" bodyfile="include/system_config.h" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a4768473ff91bd78910913ba9baf04fbe" prot="public" static="no">
+        <name>REG_SONICATOR_2_POWER</name>
+        <initializer>40014</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="243" column="9" bodyfile="include/system_config.h" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a20ec1038993f13a47e2a51001b064117" prot="public" static="no">
+        <name>REG_SONICATOR_3_POWER</name>
+        <initializer>40015</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="244" column="9" bodyfile="include/system_config.h" bodystart="244" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a71a6f47079ebb5d8fcb85921c2f4824c" prot="public" static="no">
+        <name>REG_SONICATOR_4_POWER</name>
+        <initializer>40016</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="245" column="9" bodyfile="include/system_config.h" bodystart="245" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a61402e049ab88af1e9f2029f037197cc" prot="public" static="no">
+        <name>REG_SONICATOR_1_FREQUENCY</name>
+        <initializer>40017</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="246" column="9" bodyfile="include/system_config.h" bodystart="246" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1aadd077c2171febc866f3f3f9092cb4b7" prot="public" static="no">
+        <name>REG_SONICATOR_2_FREQUENCY</name>
+        <initializer>40018</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="247" column="9" bodyfile="include/system_config.h" bodystart="247" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a44ea7f4bdf57d7dcbbfe845ef12e9f1c" prot="public" static="no">
+        <name>REG_SONICATOR_3_FREQUENCY</name>
+        <initializer>40019</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="248" column="9" bodyfile="include/system_config.h" bodystart="248" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a5f68607c20c72e89bee215da8b1d23be" prot="public" static="no">
+        <name>REG_SONICATOR_4_FREQUENCY</name>
+        <initializer>40020</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="249" column="9" bodyfile="include/system_config.h" bodystart="249" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1aef59e582da4a97fa0e65f3d69ec5d1ad" prot="public" static="no">
+        <name>REG_SONICATOR_1_STATUS</name>
+        <initializer>40021</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="250" column="9" bodyfile="include/system_config.h" bodystart="250" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a5a4a7bb13b4f468e86657a56b8a44263" prot="public" static="no">
+        <name>REG_SONICATOR_2_STATUS</name>
+        <initializer>40022</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="251" column="9" bodyfile="include/system_config.h" bodystart="251" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1aa028597d05db4f3c7217251a5648946b" prot="public" static="no">
+        <name>REG_SONICATOR_3_STATUS</name>
+        <initializer>40023</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="252" column="9" bodyfile="include/system_config.h" bodystart="252" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a4247b41949648451ace3a6f281f1557b" prot="public" static="no">
+        <name>REG_SONICATOR_4_STATUS</name>
+        <initializer>40024</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="253" column="9" bodyfile="include/system_config.h" bodystart="253" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1ae36580ffdad83a0e90856c127cc1a825" prot="public" static="no">
+        <name>REG_SYSTEM_STATUS</name>
+        <initializer>40025</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="256" column="9" bodyfile="include/system_config.h" bodystart="256" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a50cb00113c414208697557330319e0db" prot="public" static="no">
+        <name>REG_EMERGENCY_STOP</name>
+        <initializer>40026</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="257" column="9" bodyfile="include/system_config.h" bodystart="257" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a93a656da3dc9f99d8d074684aebcb437" prot="public" static="no">
+        <name>REG_SONICATOR_1_RUNTIME</name>
+        <initializer>40027</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="258" column="9" bodyfile="include/system_config.h" bodystart="258" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1ab60e08eb1420580af2e44d29f95a0ca9" prot="public" static="no">
+        <name>REG_SONICATOR_2_RUNTIME</name>
+        <initializer>40028</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="259" column="9" bodyfile="include/system_config.h" bodystart="259" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1abe777abebce840215ad712db447ce7ad" prot="public" static="no">
+        <name>REG_SONICATOR_3_RUNTIME</name>
+        <initializer>40029</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="260" column="9" bodyfile="include/system_config.h" bodystart="260" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a0f831468c6eeefe654898fbd90feb7ed" prot="public" static="no">
+        <name>REG_SONICATOR_4_RUNTIME</name>
+        <initializer>40030</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="261" column="9" bodyfile="include/system_config.h" bodystart="261" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a5ec469472a215485cdc18dbb5b1db816" prot="public" static="no">
+        <name>REG_SONICATOR_1_OVERLOAD_COUNT</name>
+        <initializer>40031</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="262" column="9" bodyfile="include/system_config.h" bodystart="262" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a2e68aa736ee9944105460b18499d531c" prot="public" static="no">
+        <name>REG_SONICATOR_2_OVERLOAD_COUNT</name>
+        <initializer>40032</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="263" column="9" bodyfile="include/system_config.h" bodystart="263" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1ae202ba5dbb32afeac215b4c3556b25fb" prot="public" static="no">
+        <name>REG_SONICATOR_3_OVERLOAD_COUNT</name>
+        <initializer>40033</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="264" column="9" bodyfile="include/system_config.h" bodystart="264" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d4/d7e/system__config_8h_1a8a15671af4eeaeb8258d32ed08d95d49" prot="public" static="no">
+        <name>REG_SONICATOR_4_OVERLOAD_COUNT</name>
+        <initializer>40034</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="265" column="9" bodyfile="include/system_config.h" bodystart="265" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Multi Sonicator I/O Controller configuration. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Cannasol Technologies </para>
+</simplesect>
+<simplesect kind="date"><para>2025-06-27 </para>
+</simplesect>
+<simplesect kind="version"><para>1.0.0 @framework Arduino Framework (chosen for rapid development and proven libraries)</para>
+</simplesect>
+Configuration constants and compile-time settings for the Multi Sonicator I/O Controller (Model: CAN-SON-CTRL-4). Uses Arduino Framework for UART, I2C, PWM, and ADC operations. See config/hardware-config.yaml — SOLE SOURCE OF TRUTH for hardware pin assignments. This file mirrors the configuration; do not modify mappings here without updating the configuration first. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>CONFIG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONFIG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Arduino.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PROJECT<sp/>INFORMATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="d4/d7e/system__config_8h_1ae73053051efbb45c3a39751f5ce9fb36" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PROJECT_NAME<sp/>&quot;Multi<sp/>Sonicator<sp/>I/O<sp/>Controller&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="d4/d7e/system__config_8h_1a2262256d100ac30c73425265d10c30e5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PROJECT_MODEL<sp/>&quot;CT2000-4-MSIO-v1&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="d4/d7e/system__config_8h_1a4a776fa6ea8b7bdf8dfa04ad42b46407" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PROJECT_VERSION<sp/>&quot;1.0.0&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="d4/d7e/system__config_8h_1a26af6976dcc8612f42fc20bb88a2e713" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PROJECT_BUILD_DATE<sp/>__DATE__<sp/>&quot;<sp/>&quot;<sp/>__TIME__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="d4/d7e/system__config_8h_1af742fbcc4371d835e9765ee04a5950fa" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MANUFACTURER<sp/>&quot;Cannasol<sp/>Technologies&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>HARDWARE<sp/>CONFIGURATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Microcontroller<sp/>specifications</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="d4/d7e/system__config_8h_1a6058531504a8da37ab1cf9fd4464793d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MCU_TYPE<sp/>&quot;ATmega32A-PU&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="d4/d7e/system__config_8h_1aab528fed480df8124410c0fae55ce83e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MCU_FREQUENCY<sp/>16000000L</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="d4/d7e/system__config_8h_1a52d23a0012e552692191e35222e42ef4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MCU_VOLTAGE<sp/>5.0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>5V<sp/>power<sp/>to<sp/>the<sp/>ATMEGA32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>System<sp/>limitations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="d4/d7e/system__config_8h_1a39f376f71f4405d96e515fbc21fb5fc5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_SONICATORS<sp/>4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Maximum<sp/>number<sp/>of<sp/>sonicators<sp/>supported</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="d4/d7e/system__config_8h_1a1aef92ccc58f5b6eb11f9a32c8f1e3d6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MODBUS_SLAVE_ID<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>MODBUS<sp/>RTU<sp/>slave<sp/>address</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="d4/d7e/system__config_8h_1a60bd280b8778414fe9cd7546d4a24e1b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MODBUS_BAUD_RATE<sp/>115200</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Safety<sp/>timing<sp/>requirements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="d4/d7e/system__config_8h_1a71b23a7ad1ea1e1adbda7452761f0d66" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EMERGENCY_STOP_RESPONSE_US<sp/>50</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="d4/d7e/system__config_8h_1a7806944d3d2580d7208d9f051a19f310" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WATCHDOG_TIMEOUT_MS<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="d4/d7e/system__config_8h_1aad1816d531d80fd388a888b24cf6ff61" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SAFETY_MONITOR_INTERVAL_MS<sp/>10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PIN<sp/>DEFINITIONS<sp/>-<sp/>ATmega32A<sp/>(DIP-40)<sp/>-<sp/>Arduino<sp/>Framework<sp/>Compatible</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>UART<sp/>Communication<sp/>(MODBUS<sp/>RTU)<sp/>-<sp/>Arduino<sp/>Serial<sp/>uses<sp/>these<sp/>automatically</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="d4/d7e/system__config_8h_1aa37eca6fe61f6938d925975dff27c8fd" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_RX_PIN<sp/>0<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PD0<sp/>(Physical<sp/>pin<sp/>14)<sp/>-<sp/>DB9-0<sp/>Pin<sp/>8<sp/>(MODBUS<sp/>RTU<sp/>RX)<sp/>-<sp/>See<sp/>hardware-config.yaml</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="d4/d7e/system__config_8h_1a6c82a6844388a551e8f06d249598989e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_TX_PIN<sp/>1<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PD1<sp/>(Physical<sp/>pin<sp/>15)<sp/>-<sp/>DB9-0<sp/>Pin<sp/>9<sp/>(MODBUS<sp/>RTU<sp/>TX)<sp/>-<sp/>See<sp/>hardware-config.yaml</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>I2C<sp/>Interface<sp/>(Available<sp/>for<sp/>Future<sp/>Expansion)<sp/>-<sp/>Arduino<sp/>Wire<sp/>library<sp/>compatible</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="d4/d7e/system__config_8h_1a2cade698267beb86ccaa38c14d35ab0f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>I2C_SDA_PIN<sp/>22<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PC1<sp/>(Physical<sp/>pin<sp/>22)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="d4/d7e/system__config_8h_1a0e4e08bab2fb484136d18b067bef372c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>I2C_SCL_PIN<sp/>21<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PC0<sp/>(Physical<sp/>pin<sp/>21)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Crystal<sp/>Oscillator<sp/>(16MHz<sp/>external<sp/>-<sp/>handled<sp/>by<sp/>Arduino<sp/>framework)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="d4/d7e/system__config_8h_1afa2d8905735c5ed93d5ed58d0a6d1ebc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>XTAL1_PIN<sp/>13<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>XTAL1<sp/>(Physical<sp/>pin<sp/>13)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="d4/d7e/system__config_8h_1a452546431e285f80a0c8ea0e5d405273" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>XTAL2_PIN<sp/>12<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>XTAL2<sp/>(Physical<sp/>pin<sp/>12)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Status<sp/>LED<sp/>(single<sp/>LED<sp/>terminal)<sp/>-<sp/>Direct<sp/>register<sp/>access</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="d4/d7e/system__config_8h_1a089a71f836911c71b3f73fdd3b4b890b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STATUS_LED_PIN<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PD2<sp/>(Physical<sp/>pin<sp/>16)<sp/>-<sp/>LED-TERM<sp/>(DB9-0<sp/>Pin)<sp/>-<sp/>See<sp/>hardware-config.yaml</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Serial<sp/>Communication<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="d4/d7e/system__config_8h_1ad89976cc0b5340110179f6ce40df3028" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SERIAL_BAUD_RATE<sp/>115200<sp/><sp/></highlight><highlight class="comment">//<sp/>Debug<sp/>serial<sp/>communication<sp/>speed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="d8/daa/group___sonicator1_1ga7f0be9975baddeff02c6056ffe6d636c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON1_OVERLOAD_PIN<sp/><sp/><sp/><sp/><sp/>20<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PD6<sp/>(Physical<sp/>pin<sp/>20)<sp/>-<sp/>Input<sp/>via<sp/>6N137</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="d8/daa/group___sonicator1_1ga3483eecb5fe0bcadc5368c691ef83672" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON1_FREQ_OUTPUT_PIN<sp/><sp/>4<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PB3<sp/>(Physical<sp/>pin<sp/>4)<sp/><sp/>-<sp/>FREQ<sp/>÷10<sp/>input</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="d8/daa/group___sonicator1_1gad06198bc2ba85e227f39e226f18920ab" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON1_FREQ_LOCK_PIN<sp/><sp/><sp/><sp/>8<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PB7<sp/>(Physical<sp/>pin<sp/>8)<sp/><sp/>-<sp/>Input<sp/>via<sp/>6N137</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="d8/daa/group___sonicator1_1gaae4fd2379cc5fbdc73e55d3c3ba60295" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON1_START_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>28<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PC6<sp/>(Physical<sp/>pin<sp/>28)<sp/>-<sp/>Output<sp/>via<sp/>ULN2003A<sp/>(aligned<sp/>to<sp/>pin-matrix)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="d8/daa/group___sonicator1_1gabc7bc420dadb6a321ca215951cec19ca" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON1_RESET_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>29<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PC7<sp/>(Physical<sp/>pin<sp/>29)<sp/>-<sp/>Output<sp/>via<sp/>ULN2003A<sp/>(aligned<sp/>to<sp/>pin-matrix)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="d2/d37/group___sonicator2_1gaf3ec0a2a5f64f58fa6203b1724cf6f87" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON2_OVERLOAD_PIN<sp/><sp/><sp/><sp/><sp/>19<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PD5<sp/>(Physical<sp/>pin<sp/>19)<sp/>-<sp/>Input<sp/>via<sp/>6N137</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="d2/d37/group___sonicator2_1ga226d95a3ba3447f88950486816c16063" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON2_FREQ_OUTPUT_PIN<sp/><sp/>3<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PB2<sp/>(Physical<sp/>pin<sp/>3)<sp/><sp/>-<sp/>FREQ<sp/>÷10<sp/>input</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="d2/d37/group___sonicator2_1ga720ab8aa137d5232b080de2d589beb4a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON2_FREQ_LOCK_PIN<sp/><sp/><sp/><sp/>7<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PB6<sp/>(Physical<sp/>pin<sp/>7)<sp/><sp/>-<sp/>Input<sp/>via<sp/>6N137</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="d2/d37/group___sonicator2_1gab33ac39513191b46f1e56efe3b903f90" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON2_START_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>26<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PC4<sp/>(Physical<sp/>pin<sp/>26)<sp/>-<sp/>Output<sp/>via<sp/>ULN2003A<sp/>(aligned<sp/>to<sp/>pin-matrix)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="d2/d37/group___sonicator2_1ga8cf17babe13b3877fb67d2dadaaa622e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON2_RESET_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>27<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PC5<sp/>(Physical<sp/>pin<sp/>27)<sp/>-<sp/>Output<sp/>via<sp/>ULN2003A<sp/>(aligned<sp/>to<sp/>pin-matrix)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="d6/dd5/group___sonicator3_1ga6c7f25996ac91220ca3948c24df60d8e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON3_OVERLOAD_PIN<sp/><sp/><sp/><sp/><sp/>18<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PD4<sp/>(Physical<sp/>pin<sp/>18)<sp/>-<sp/>Input<sp/>via<sp/>6N137</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="d6/dd5/group___sonicator3_1gaa22ccdea51a4a8e2b4ab4d11b2064ec7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON3_FREQ_OUTPUT_PIN<sp/><sp/>2<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PB1<sp/>(Physical<sp/>pin<sp/>2)<sp/><sp/>-<sp/>FREQ<sp/>÷10<sp/>input</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="d6/dd5/group___sonicator3_1ga25c84b644eac031310445f8ceed65ec2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON3_FREQ_LOCK_PIN<sp/><sp/><sp/><sp/>6<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PB5<sp/>(Physical<sp/>pin<sp/>6)<sp/><sp/>-<sp/>Input<sp/>via<sp/>6N137</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="d6/dd5/group___sonicator3_1gadf3d1736d4bbe2a9877a400912b3878e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON3_START_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>24<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PC2<sp/>(Physical<sp/>pin<sp/>24)<sp/>-<sp/>Output<sp/>via<sp/>ULN2003A<sp/>(aligned<sp/>to<sp/>pin-matrix)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="d6/dd5/group___sonicator3_1gac6cece380c77920cabc81a8c6bbb085c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON3_RESET_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>25<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PC3<sp/>(Physical<sp/>pin<sp/>25)<sp/>-<sp/>Output<sp/>via<sp/>ULN2003A<sp/>(aligned<sp/>to<sp/>pin-matrix)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="dd/d28/group___sonicator4_1ga786fd798d58acee8c64231ceee026427" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON4_OVERLOAD_PIN<sp/><sp/><sp/><sp/><sp/>17<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PD3<sp/>(Physical<sp/>pin<sp/>17)<sp/>-<sp/>Input<sp/>via<sp/>6N137<sp/>(A2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="dd/d28/group___sonicator4_1ga58406eeef975e8051c51b905addff44b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON4_FREQ_OUTPUT_PIN<sp/><sp/>1<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PB0<sp/>(Physical<sp/>pin<sp/>1)<sp/><sp/>-<sp/>FREQ<sp/>÷10<sp/>input<sp/>(D7)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120" refid="dd/d28/group___sonicator4_1gacd39ea816c2641f2f23d9df198bf018d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON4_FREQ_LOCK_PIN<sp/><sp/><sp/><sp/>5<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PB4<sp/>(Physical<sp/>pin<sp/>5)<sp/><sp/>-<sp/>Input<sp/>via<sp/>6N137<sp/>(D8)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="dd/d28/group___sonicator4_1ga984840f9d3a5e89fbaedc95dbb27d454" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON4_START_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>22<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PC0<sp/>(Physical<sp/>pin<sp/>22)<sp/>-<sp/>Output<sp/>via<sp/>ULN2003A<sp/>(A3)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="dd/d28/group___sonicator4_1gaffd40dfb916a5b6133e06da57654bd0a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SON4_RESET_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>23<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PC1<sp/>(Physical<sp/>pin<sp/>23)<sp/>-<sp/>Output<sp/>via<sp/>ULN2003A<sp/>(A4)</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="da/d6a/group___p_w_m_control_1ga0aa83389edb245f5b1ae129e07f474f7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PWM_AMPLITUDE_CONTROL_PIN<sp/><sp/><sp/>21<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PD7<sp/>(Physical<sp/>pin<sp/>21)<sp/>-<sp/>AMP_C<sp/>per<sp/>schematic</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="d6/d77/group___a_d_c_power_monitoring_1ga3c0164f11e49bbc1f308471bc872d919" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_SONICATOR_1_PIN<sp/><sp/><sp/>A4<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PA4<sp/>(Physical<sp/>pin<sp/>36)<sp/>-<sp/>ADC4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155" refid="d6/d77/group___a_d_c_power_monitoring_1gad0ec60ee4c0ba0fcd61f3ab60c9094ca" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_SONICATOR_2_PIN<sp/><sp/><sp/>A5<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PA5<sp/>(Physical<sp/>pin<sp/>35)<sp/>-<sp/>ADC5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156" refid="d6/d77/group___a_d_c_power_monitoring_1ga6aa03e96ec1e18fae4a9f215efba52e8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_SONICATOR_3_PIN<sp/><sp/><sp/>A6<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PA6<sp/>(Physical<sp/>pin<sp/>34)<sp/>-<sp/>ADC6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="d6/d77/group___a_d_c_power_monitoring_1gaae18663a7f4d1e42463608fd512db5f4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_SONICATOR_4_PIN<sp/><sp/><sp/>A7<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PA7<sp/>(Physical<sp/>pin<sp/>33)<sp/>-<sp/>ADC7</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176" refid="de/d6c/group___frequency_measurement_1ga88d61ae2de8ec62f68587d62868393ed" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQ_COUNT_PIN_1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>4<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PB3<sp/>(Physical<sp/>pin<sp/>4)<sp/><sp/>-<sp/>FREQ_DIV10_1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177" refid="de/d6c/group___frequency_measurement_1ga942a67a2de86f2f57c7079308698ed59" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQ_COUNT_PIN_2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>3<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PB2<sp/>(Physical<sp/>pin<sp/>3)<sp/><sp/>-<sp/>FREQ_DIV10_2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178" refid="de/d6c/group___frequency_measurement_1gaf2b485e304fdc3de234248ae9e2bfe72" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQ_COUNT_PIN_3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PB1<sp/>(Physical<sp/>pin<sp/>2)<sp/><sp/>-<sp/>FREQ_DIV10_3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179" refid="de/d6c/group___frequency_measurement_1ga61d6ea30be8e7074225d9e471162c496" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQ_COUNT_PIN_4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>PB0<sp/>(Physical<sp/>pin<sp/>1)<sp/><sp/>-<sp/>FREQ_DIV10_4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189" refid="de/d6c/group___frequency_measurement_1gaa39447aef1f0147886b06d99082d9762" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQ_MEASUREMENT_WINDOW_MS<sp/><sp/><sp/><sp/>1000<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>1<sp/>second<sp/>measurement<sp/>window</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="de/d6c/group___frequency_measurement_1ga4c68a1a1970f0a1b56a0049a439506e7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQ_MIN_EDGES<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>10<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Minimum<sp/>edges<sp/>for<sp/>valid<sp/>measurement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191" refid="de/d6c/group___frequency_measurement_1gaaa9f4d9bf6fdc3b3f026e51a0cf0e363" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQ_EXPECTED_MIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1900<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Minimum<sp/>expected<sp/>input<sp/>frequency<sp/>(Hz)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192" refid="de/d6c/group___frequency_measurement_1gaef2def439b38dad9a13bdaf0672f92c4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQ_EXPECTED_MAX<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2100<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Maximum<sp/>expected<sp/>input<sp/>frequency<sp/>(Hz)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193" refid="de/d6c/group___frequency_measurement_1ga4bdb28c1ddcc0c6911d0d95116e46776" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQ_HARDWARE_DIVIDER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>10<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>CT2000<sp/>hardware<sp/>divides<sp/>by<sp/>10</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CT2000<sp/>SONICATOR<sp/>SPECIFICATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Operating<sp/>parameters</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201" refid="d4/d7e/system__config_8h_1a6986741160d0de7511be7f52521162a5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_FREQ_NOMINAL<sp/><sp/><sp/><sp/>20000<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>20<sp/>kHz<sp/>nominal<sp/>frequency</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202" refid="d4/d7e/system__config_8h_1a7bd6c9e2021eaf75e5d3c7ce764b45b6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_FREQ_TOLERANCE<sp/><sp/>20<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>±20<sp/>Hz<sp/>tolerance<sp/>(±0.1%)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203" refid="d4/d7e/system__config_8h_1a8cfb6f309dbc7ed2bf9cc0d198a732db" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_MAX_POWER<sp/><sp/><sp/><sp/><sp/><sp/><sp/>2000<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>2000W<sp/>maximum<sp/>power<sp/>output</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204" refid="d4/d7e/system__config_8h_1a8d322243967729e9f88bf1731c441f85" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_MIN_AMPLITUDE<sp/><sp/><sp/>20<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>20%<sp/>minimum<sp/>amplitude</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205" refid="d4/d7e/system__config_8h_1a0122d2383c5045b00c5c60eb3572286b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_MAX_AMPLITUDE<sp/><sp/><sp/>100<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>100%<sp/>maximum<sp/>amplitude</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Analog<sp/>scaling<sp/>factors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208" refid="d4/d7e/system__config_8h_1ab7a7eb8807d3c1ff72a31aad003250e2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POWER_SCALING_MV_PER_WATT<sp/>5.44<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>5.44mV<sp/>per<sp/>watt<sp/>(Pin<sp/>5)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209" refid="d4/d7e/system__config_8h_1a3ac85f60be77afe91d18ba5ec71b05d7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>AMPLITUDE_SCALE_V_PER_PCT<sp/>0.1<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>0.1V<sp/>per<sp/>percent<sp/>(0-10V<sp/>for<sp/>20-100%)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210" refid="d4/d7e/system__config_8h_1accf5542e9b42962ca8c56811609b56d0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQUENCY_DIVIDER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>10<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pin<sp/>4<sp/>outputs<sp/>frequency<sp/>÷<sp/>10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight><highlight class="comment">//<sp/>DB9<sp/>Pin<sp/>Mapping<sp/>(CT2000<sp/>Interface)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213" refid="d4/d7e/system__config_8h_1ab31d2a3651a7680b157e854cc5c0f3e5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DB9_OVERLOAD_INDICATION<sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pin<sp/>1:<sp/>Overload<sp/>status<sp/>(input)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214" refid="d4/d7e/system__config_8h_1ae6ba17d7de6f95b5a62671ed848f931a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DB9_OVERLOAD_RESET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pin<sp/>2:<sp/>Reset<sp/>overload<sp/>(output)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215" refid="d4/d7e/system__config_8h_1a9c3954509a356b504074712241c3d80c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DB9_FREQUENCY_LOCK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>3<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pin<sp/>3:<sp/>Frequency<sp/>lock<sp/>(input)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216" refid="d4/d7e/system__config_8h_1ac5a6a01aee8accaf739e4262fe6719d7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DB9_FREQUENCY_OUTPUT<sp/><sp/><sp/><sp/><sp/><sp/>4<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pin<sp/>4:<sp/>Frequency<sp/>out<sp/>÷10<sp/>(input)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217" refid="d4/d7e/system__config_8h_1aca93993417075056430abd0489227f9f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DB9_POWER_OUTPUT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>5<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pin<sp/>5:<sp/>Power<sp/>level<sp/>(input)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="d4/d7e/system__config_8h_1a747ab812e6efcb05a0a50d963f861f36" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DB9_SIGNAL_GROUND<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>6<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pin<sp/>6:<sp/>Signal<sp/>ground</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219" refid="d4/d7e/system__config_8h_1a9b32ffbc80ef77ba0bfb0f78a6097899" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DB9_SONICS_START<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>7<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pin<sp/>7:<sp/>Start<sp/>control<sp/>(output)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220" refid="d4/d7e/system__config_8h_1a597dbb3b1443ed41ea283a5b7838c0a7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DB9_AMPLITUDE_CONTROL<sp/><sp/><sp/><sp/><sp/>8<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pin<sp/>8:<sp/>Amplitude<sp/>0-10V<sp/>(output)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221" refid="d4/d7e/system__config_8h_1af2e04fd6bfcb716691dcfe550f8ad5ba" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DB9_EMITTER_COMMON<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>9<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pin<sp/>9:<sp/>Open<sp/>collector<sp/>common</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MODBUS<sp/>REGISTER<sp/>MAPPING</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Control<sp/>Registers<sp/>(Read/Write)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228" refid="d4/d7e/system__config_8h_1ad868403896e27f844c7978863700476c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_1_AMPLITUDE<sp/><sp/><sp/><sp/>40001</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229" refid="d4/d7e/system__config_8h_1a73e8f2f56515b847d5618d6429baf23e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_2_AMPLITUDE<sp/><sp/><sp/><sp/>40002<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230" refid="d4/d7e/system__config_8h_1a2d60b6e64fc0f15d3d6df147d286f7ed" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_3_AMPLITUDE<sp/><sp/><sp/><sp/>40003</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231" refid="d4/d7e/system__config_8h_1af7bba970ff02aa4f6b314a26861ab5b0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_4_AMPLITUDE<sp/><sp/><sp/><sp/>40004</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232" refid="d4/d7e/system__config_8h_1a105f965f177db95cab09c39259313eb5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_1_START_STOP<sp/><sp/><sp/>40005</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233" refid="d4/d7e/system__config_8h_1af39b13f7fad827067660ade26fc17836" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_2_START_STOP<sp/><sp/><sp/>40006</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234" refid="d4/d7e/system__config_8h_1aca4fb78a9d5fe9a839110db126e98b44" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_3_START_STOP<sp/><sp/><sp/>40007</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235" refid="d4/d7e/system__config_8h_1a25fa141a84ba1aa7cfb13829e8fbc07e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_4_START_STOP<sp/><sp/><sp/>40008</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236" refid="d4/d7e/system__config_8h_1a42d2893489c79955d88f15cf691b873b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_1_RESET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>40009</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237" refid="d4/d7e/system__config_8h_1a72e84149c231b47b04b84d1ee8f2630d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_2_RESET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>40010</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238" refid="d4/d7e/system__config_8h_1a13e41f0a1968a86a7f27c38d7f3e7be8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_3_RESET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>40011</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239" refid="d4/d7e/system__config_8h_1af373c4785edd54427e68c2a2695f6f13" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_4_RESET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>40012</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Monitoring<sp/>Registers<sp/>(Read<sp/>Only)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242" refid="d4/d7e/system__config_8h_1a959714f7fd4c69ec418194ef6395bf50" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_1_POWER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>40013</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="243" refid="d4/d7e/system__config_8h_1a4768473ff91bd78910913ba9baf04fbe" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_2_POWER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>40014</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244" refid="d4/d7e/system__config_8h_1a20ec1038993f13a47e2a51001b064117" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_3_POWER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>40015</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245" refid="d4/d7e/system__config_8h_1a71a6f47079ebb5d8fcb85921c2f4824c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_4_POWER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>40016</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246" refid="d4/d7e/system__config_8h_1a61402e049ab88af1e9f2029f037197cc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_1_FREQUENCY<sp/><sp/><sp/><sp/>40017</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247" refid="d4/d7e/system__config_8h_1aadd077c2171febc866f3f3f9092cb4b7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_2_FREQUENCY<sp/><sp/><sp/><sp/>40018</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248" refid="d4/d7e/system__config_8h_1a44ea7f4bdf57d7dcbbfe845ef12e9f1c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_3_FREQUENCY<sp/><sp/><sp/><sp/>40019</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249" refid="d4/d7e/system__config_8h_1a5f68607c20c72e89bee215da8b1d23be" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_4_FREQUENCY<sp/><sp/><sp/><sp/>40020</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250" refid="d4/d7e/system__config_8h_1aef59e582da4a97fa0e65f3d69ec5d1ad" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_1_STATUS<sp/><sp/><sp/><sp/><sp/><sp/><sp/>40021</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251" refid="d4/d7e/system__config_8h_1a5a4a7bb13b4f468e86657a56b8a44263" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_2_STATUS<sp/><sp/><sp/><sp/><sp/><sp/><sp/>40022</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252" refid="d4/d7e/system__config_8h_1aa028597d05db4f3c7217251a5648946b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_3_STATUS<sp/><sp/><sp/><sp/><sp/><sp/><sp/>40023</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253" refid="d4/d7e/system__config_8h_1a4247b41949648451ace3a6f281f1557b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_4_STATUS<sp/><sp/><sp/><sp/><sp/><sp/><sp/>40024</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight><highlight class="comment">//<sp/>System<sp/>Registers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256" refid="d4/d7e/system__config_8h_1ae36580ffdad83a0e90856c127cc1a825" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SYSTEM_STATUS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>40025</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257" refid="d4/d7e/system__config_8h_1a50cb00113c414208697557330319e0db" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_EMERGENCY_STOP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>40026</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="258" refid="d4/d7e/system__config_8h_1a93a656da3dc9f99d8d074684aebcb437" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_1_RUNTIME<sp/><sp/><sp/><sp/><sp/><sp/>40027</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259" refid="d4/d7e/system__config_8h_1ab60e08eb1420580af2e44d29f95a0ca9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_2_RUNTIME<sp/><sp/><sp/><sp/><sp/><sp/>40028</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260" refid="d4/d7e/system__config_8h_1abe777abebce840215ad712db447ce7ad" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_3_RUNTIME<sp/><sp/><sp/><sp/><sp/><sp/>40029</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261" refid="d4/d7e/system__config_8h_1a0f831468c6eeefe654898fbd90feb7ed" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_4_RUNTIME<sp/><sp/><sp/><sp/><sp/><sp/>40030</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="262" refid="d4/d7e/system__config_8h_1a5ec469472a215485cdc18dbb5b1db816" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_1_OVERLOAD_COUNT<sp/>40031</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263" refid="d4/d7e/system__config_8h_1a2e68aa736ee9944105460b18499d531c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_2_OVERLOAD_COUNT<sp/>40032</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="264" refid="d4/d7e/system__config_8h_1ae202ba5dbb32afeac215b4c3556b25fb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_3_OVERLOAD_COUNT<sp/>40033</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265" refid="d4/d7e/system__config_8h_1a8a15671af4eeaeb8258d32ed08d95d49" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_SONICATOR_4_OVERLOAD_COUNT<sp/>40034</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276" refid="d4/d7e/system__config_8h_1aa777c43cd2f9be6e7da25ad29bce1488" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_ACTIVE_SONICATOR_COUNT<sp/><sp/><sp/><sp/>40035<sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>RO:<sp/>0-4<sp/>currently<sp/>running</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277" refid="d4/d7e/system__config_8h_1a05d63210d9b31a045004cfd3d5aac20d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REG_ACTIVE_SONICATOR_MASK<sp/><sp/><sp/><sp/><sp/>40036<sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>RO:<sp/>bitmask<sp/>of<sp/>running<sp/>units</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TIMING<sp/>AND<sp/>PERFORMANCE<sp/>CONSTANTS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283" refid="d4/d7e/system__config_8h_1a73cf87b724a08c55e4ddb98f9d186b9c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAIN_LOOP_INTERVAL_MS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>10<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>10ms<sp/>main<sp/>loop<sp/>(100<sp/>Hz)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284" refid="d4/d7e/system__config_8h_1a346d42f6cda5022fb4c334d6d97216d6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MODBUS_TIMEOUT_MS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>500<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>500ms<sp/>MODBUS<sp/>timeout</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="285" refid="d4/d7e/system__config_8h_1a0c93bbfd49737a08f413579d2ffc291a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STATUS_UPDATE_INTERVAL_MS<sp/><sp/><sp/><sp/>100<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Status<sp/>LED<sp/>update<sp/>rate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286" refid="d4/d7e/system__config_8h_1a589038d914fec9d1e7a2a00c3fdd423f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POWER_MONITOR_INTERVAL_MS<sp/><sp/><sp/><sp/>50<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Power<sp/>monitoring<sp/>rate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="287" refid="d4/d7e/system__config_8h_1ad47d2e62c28790bd6b5608a28ecbf455" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQUENCY_MEASURE_WINDOW_MS<sp/><sp/>100<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Frequency<sp/>measurement<sp/>window</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight><highlight class="comment">//<sp/>DEBUG<sp/>AND<sp/>DEVELOPMENT<sp/>SETTINGS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>DEBUG_MODE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>DEBUG_SERIAL_SPEED<sp/><sp/><sp/><sp/><sp/><sp/><sp/>115200</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>DEBUG_ENABLE_WATCHDOG<sp/><sp/><sp/><sp/>false</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>DEBUG_VERBOSE_MODBUS<sp/><sp/><sp/><sp/><sp/>true</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>DEBUG_LOG_LEVEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>3<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>0=none,<sp/>1=error,<sp/>2=warn,<sp/>3=info,<sp/>4=debug</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="299" refid="d4/d7e/system__config_8h_1a3f4b1cf82f86eb9027e425c1203ad481" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>DEBUG_ENABLE_WATCHDOG<sp/><sp/><sp/><sp/>true</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="300" refid="d4/d7e/system__config_8h_1ad3eb0d3219ab69726103b67c3d81e2d5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>DEBUG_VERBOSE_MODBUS<sp/><sp/><sp/><sp/><sp/>false</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="301" refid="d4/d7e/system__config_8h_1a874795f9a502bd10b855fd67a2e34083" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>DEBUG_LOG_LEVEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ERROR<sp/>CODES<sp/>AND<sp/>STATUS<sp/>FLAGS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight><highlight class="comment">//<sp/>System<sp/>Status<sp/>Bits<sp/>(REG_SYSTEM_STATUS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="309" refid="d4/d7e/system__config_8h_1a141ed9e2399376c81ddeef7db5e4c318" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STATUS_SYSTEM_OK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x0001</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="310" refid="d4/d7e/system__config_8h_1a5d0fbb1462631dc591c37e80af28cc23" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STATUS_EMERGENCY_STOP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x0002</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="311" refid="d4/d7e/system__config_8h_1aac0952ed02b24713603d44266594bebb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STATUS_COMMUNICATION_ERROR<sp/><sp/><sp/>0x0004</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="312" refid="d4/d7e/system__config_8h_1a2344eac35e8302848f3964a2634b60c4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STATUS_POWER_FAULT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x0008</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="313" refid="d4/d7e/system__config_8h_1a4e6c491398ea159adabf912d247f63fa" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STATUS_OVERLOAD_ACTIVE<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x0010</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="314" refid="d4/d7e/system__config_8h_1ac297828362973f42883bed2a48732bf9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STATUS_WATCHDOG_RESET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x0020</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Individual<sp/>Sonicator<sp/>Status<sp/>Bits<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="317" refid="d4/d7e/system__config_8h_1a7e9113487cf448e2ae394a557f520637" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STATUS_SONICATOR_RUNNING<sp/><sp/><sp/><sp/><sp/>0x0001</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318" refid="d4/d7e/system__config_8h_1aeffa21d7773b106a8c22a8dbfd2fd339" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STATUS_SONICATOR_OVERLOAD<sp/><sp/><sp/><sp/>0x0002</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="319" refid="d4/d7e/system__config_8h_1af36b7d02fa41c36a42710666ef29b64c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STATUS_SONICATOR_FREQ_LOCK<sp/><sp/><sp/>0x0004</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320" refid="d4/d7e/system__config_8h_1a4d41934636c9de9cd6cd653d7ab03e65" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STATUS_SONICATOR_COMM_ERROR<sp/><sp/>0x0008</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Error<sp/>Codes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="323" refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="324" refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a4edc8aade11e1de7bbbdc04704baae5f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a4edc8aade11e1de7bbbdc04704baae5f" kindref="member">ERROR_NONE</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="325" refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a3fb2c7ed36a1e56392d80bbfb815acba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a3fb2c7ed36a1e56392d80bbfb815acba" kindref="member">ERROR_MODBUS_TIMEOUT</ref><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="326" refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a5f3e3d78cab4cf983464f963dc9957ba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a5f3e3d78cab4cf983464f963dc9957ba" kindref="member">ERROR_MODBUS_CRC</ref><sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="327" refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92ab93e7ee2254628713bb387c3cb6346dc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92ab93e7ee2254628713bb387c3cb6346dc" kindref="member">ERROR_SONICATOR_OVERLOAD</ref><sp/>=<sp/>3,</highlight></codeline>
+<codeline lineno="328" refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a2798e7b43c79c1a5135989223e3be229" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a2798e7b43c79c1a5135989223e3be229" kindref="member">ERROR_FREQUENCY_LOCK_LOST</ref><sp/>=<sp/>4,</highlight></codeline>
+<codeline lineno="329" refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92af8f7858f229659e267d4dd12a4c7697f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92af8f7858f229659e267d4dd12a4c7697f" kindref="member">ERROR_POWER_OUT_OF_RANGE</ref><sp/>=<sp/>5,</highlight></codeline>
+<codeline lineno="330" refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a124c7e1f536cc667d69471f0989dcff8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a124c7e1f536cc667d69471f0989dcff8" kindref="member">ERROR_PWM_AMPLITUDE_FAILURE</ref><sp/>=<sp/>6,</highlight></codeline>
+<codeline lineno="331" refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92aeb3d51523d7f54b10fe466f98dc4501a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92aeb3d51523d7f54b10fe466f98dc4501a" kindref="member">ERROR_ADC_POWER_FAILURE</ref><sp/>=<sp/>7,</highlight></codeline>
+<codeline lineno="332" refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a15cffd517a3340c5048c58f07e7975ee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a15cffd517a3340c5048c58f07e7975ee" kindref="member">ERROR_WATCHDOG_TIMEOUT</ref><sp/>=<sp/>8,</highlight></codeline>
+<codeline lineno="333" refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a583e790a8b83852d6cf1c5505f682acd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a583e790a8b83852d6cf1c5505f682acd" kindref="member">ERROR_EMERGENCY_STOP</ref><sp/>=<sp/>9,</highlight></codeline>
+<codeline lineno="334" refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a4f4d68e0b143ee73752c8f65f8d0c756" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92a4f4d68e0b143ee73752c8f65f8d0c756" kindref="member">ERROR_SYSTEM_FAULT</ref><sp/>=<sp/>10</highlight></codeline>
+<codeline lineno="335"><highlight class="normal">}<sp/><ref refid="d4/d7e/system__config_8h_1a7d80c3b410035aed9cd8484552186f92" kindref="member">error_code_t</ref>;</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>CONFIG_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/system_config.h"/>
+  </compounddef>
+</doxygen>

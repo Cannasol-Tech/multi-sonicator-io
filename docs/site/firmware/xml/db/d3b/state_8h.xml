@@ -1,0 +1,469 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="db/d3b/state_8h" kind="file" language="C++">
+    <compoundname>state.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includes refid="de/d45/errors_8h" local="yes">errors.h</includes>
+    <includedby refid="dc/d16/sonicator_8h" local="yes">include/sonicator/sonicator.h</includedby>
+    <includedby refid="d2/db9/sonicator_8cpp" local="yes">src/modules/control/sonicator.cpp</includedby>
+    <incdepgraph>
+      <node id="4">
+        <label>errors.h</label>
+        <link refid="de/d45/errors_8h"/>
+      </node>
+      <node id="1">
+        <label>include/sonicator/types/state.h</label>
+        <link refid="db/d3b/state_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>include/multiplexer/Multiplexer.h</label>
+        <link refid="dc/dc2/_multiplexer_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/sonicator/sonicator.h</label>
+        <link refid="dc/d16/sonicator_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/sonicator/types/state.h</label>
+        <link refid="db/d3b/state_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/main.cpp</label>
+        <link refid="df/d0a/main_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/modules/control/Multiplexer.cpp</label>
+        <link refid="d8/d25/_multiplexer_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/modules/control/sonicator.cpp</label>
+        <link refid="d2/db9/sonicator_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d2/d72/structsonicator__control__s" prot="public">sonicator_control_s</innerclass>
+    <innerclass refid="da/de7/structsonicator__state__" prot="public">sonicator_state_</innerclass>
+    <innerclass refid="d5/d74/structsonicator__history__s" prot="public">sonicator_history_s</innerclass>
+    <innerclass refid="db/dd3/structsonicator__status__s" prot="public">sonicator_status_s</innerclass>
+    <innerclass refid="db/dd6/structsonicator__s" prot="public">sonicator_s</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" prot="public" static="no" strong="no">
+        <type></type>
+        <name>sonicator_state_t</name>
+        <enumvalue id="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a8aaaacd92fec828be10c02ef2696f0b7" prot="public">
+          <name>SONICATOR_STATE_IDLE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a34a68840cf8e7502193a12370a443e01" prot="public">
+          <name>SONICATOR_STATE_STARTING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315aefd4187011c854e789baa073995f0def" prot="public">
+          <name>SONICATOR_STATE_RUNNING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a68fc7fb7e15c844aa2c6cda43bcc8d09" prot="public">
+          <name>SONICATOR_STATE_STOPPING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a7ef335199557a3658616b70275094a47" prot="public">
+          <name>SONICATOR_STATE_FAULT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a02f13d1f0ad8e9fc52f93cf9c25ad0cf" prot="public">
+          <name>SONICATOR_STATE_UNKNOWN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Sonicator control states. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="12" column="1" bodyfile="include/sonicator/types/state.h" bodystart="12" bodyend="19"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="db/d3b/state_8h_1af132973e9c955228c4f718796bec3640" prot="public" static="no">
+        <type>struct <ref refid="d2/d72/structsonicator__control__s" kindref="compound">sonicator_control_s</ref></type>
+        <definition>typedef struct sonicator_control_s sonicator_control_t</definition>
+        <argsstring></argsstring>
+        <name>sonicator_control_t</name>
+        <briefdescription>
+<para>Sonicator control structure. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This structure contains the control inputs for the sonicator. These are the values that are written to the sonicator by the controller. <simplesect kind="note"><para>The control values are not the same as the status values. The control values are the commands that are sent to the sonicator to change it&apos;s state. The status values are the actual state of the sonicator.&apos; </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>start_control</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator Start Control (true/false) Read from REG_SON#_CTRL_START </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reset_control</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator Reset Control (true/false) Read from REG_SON#_CTRL_RESET </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>safety_override</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator Safety Override (true/false) Read from REG_SON#_CTRL_SAFETY_OVERRIDE </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>amplitude_control</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator Amplitude Control (0-100) Read from REG_SON#_CTRL_AMPLITUDE </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The amplitude_control value is not the same as the amplitude_actual value. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="39" column="21"/>
+      </memberdef>
+      <memberdef kind="typedef" id="db/d3b/state_8h_1ad79c7a5f11697f6cf8e33fb09fb826db" prot="public" static="no">
+        <type>struct <ref refid="da/de7/structsonicator__state__" kindref="compound">sonicator_state_</ref></type>
+        <definition>typedef struct sonicator_state_ sonicator_state_machine_t</definition>
+        <argsstring></argsstring>
+        <name>sonicator_state_machine_t</name>
+        <briefdescription>
+<para>Sonicator state machine structure. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This structure contains the state machine for the sonicator. This is used to track the state of the sonicator and the time it spent in each state. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current state of the sonicator </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>previous_state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Previous state of the sonicator </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>state_entry_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time the sonicator entered the current state </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="53" column="27"/>
+      </memberdef>
+      <memberdef kind="typedef" id="db/d3b/state_8h_1ae52416e960a3854a53dd3140a7a2bbbc" prot="public" static="no">
+        <type>struct <ref refid="d5/d74/structsonicator__history__s" kindref="compound">sonicator_history_s</ref></type>
+        <definition>typedef struct sonicator_history_s sonicator_history_t</definition>
+        <argsstring></argsstring>
+        <name>sonicator_history_t</name>
+        <briefdescription>
+<para>Sonicator historical status structure. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This structure contains the historical status of the sonicator. This is used to track the history of the sonicator state changes. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>start_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Start count </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>last_start_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Last start time </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>total_runtime_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Total runtime in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>THIS IS A BACKLOG ITEM TO BE IMPLEMENTED AFTER MVP </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="db/d3b/state_8h_1ad79c7a5f11697f6cf8e33fb09fb826db" kindref="member">sonicator_state_machine_t</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="69" column="21"/>
+      </memberdef>
+      <memberdef kind="typedef" id="db/d3b/state_8h_1afeb77d5a88e0115b4344d7f6ed578ec8" prot="public" static="no">
+        <type>struct <ref refid="db/dd3/structsonicator__status__s" kindref="compound">sonicator_status_s</ref></type>
+        <definition>typedef struct sonicator_status_s sonicator_status_t</definition>
+        <argsstring></argsstring>
+        <name>sonicator_status_t</name>
+        <briefdescription>
+<para>Sonicator status structure. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This structure contains the status of the sonicator. These are the values that are read from the sonicator by the controller. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>state_machine</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator state machine structure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>power_raw_adc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw power reading from the sonicator </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>overload_active</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Overload active flag </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>frequency_locked</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Frequency locked flag </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="91" column="20"/>
+      </memberdef>
+      <memberdef kind="typedef" id="db/d3b/state_8h_1a8605042214aa8fa47c4683df5fa03d37" prot="public" static="no">
+        <type>struct <ref refid="db/dd6/structsonicator__s" kindref="compound">sonicator_s</ref></type>
+        <definition>typedef struct sonicator_s sonicator_t</definition>
+        <argsstring></argsstring>
+        <name>sonicator_t</name>
+        <briefdescription>
+<para>Complete sonicator control and status structure. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This structure contains the control and status of the sonicator. These are the values that are read from the sonicator by the controller. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator status structure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>control</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator control structure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>history</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator historical status structure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>active_faults</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Active faults </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>safety_override</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Safety override flag </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>last_start_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Last start time </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>last_update_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Last update time </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>watchdog_last_reset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Last watchdog reset time </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="118" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SONICATOR_TYPES_STATE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SONICATOR_TYPES_STATE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/d45/errors_8h" kindref="compound">errors.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="13" refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a8aaaacd92fec828be10c02ef2696f0b7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a8aaaacd92fec828be10c02ef2696f0b7" kindref="member">SONICATOR_STATE_IDLE</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="14" refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a34a68840cf8e7502193a12370a443e01" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a34a68840cf8e7502193a12370a443e01" kindref="member">SONICATOR_STATE_STARTING</ref>,</highlight></codeline>
+<codeline lineno="15" refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315aefd4187011c854e789baa073995f0def" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315aefd4187011c854e789baa073995f0def" kindref="member">SONICATOR_STATE_RUNNING</ref>,</highlight></codeline>
+<codeline lineno="16" refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a68fc7fb7e15c844aa2c6cda43bcc8d09" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a68fc7fb7e15c844aa2c6cda43bcc8d09" kindref="member">SONICATOR_STATE_STOPPING</ref>,</highlight></codeline>
+<codeline lineno="17" refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a7ef335199557a3658616b70275094a47" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a7ef335199557a3658616b70275094a47" kindref="member">SONICATOR_STATE_FAULT</ref>,</highlight></codeline>
+<codeline lineno="18" refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a02f13d1f0ad8e9fc52f93cf9c25ad0cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a02f13d1f0ad8e9fc52f93cf9c25ad0cf" kindref="member">SONICATOR_STATE_UNKNOWN</ref></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}<sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="d2/d72/structsonicator__control__s" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d2/d72/structsonicator__control__s" kindref="compound">sonicator_control_s</ref><sp/>{</highlight></codeline>
+<codeline lineno="36" refid="d2/d72/structsonicator__control__s_1a65fc6b08b1d958cc78bdf37f2ae4826f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d2/d72/structsonicator__control__s_1a65fc6b08b1d958cc78bdf37f2ae4826f" kindref="member">start_control</ref>;</highlight></codeline>
+<codeline lineno="37" refid="d2/d72/structsonicator__control__s_1ad57208e60499ba330c7bccc0be4e4206" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="d2/d72/structsonicator__control__s_1ad57208e60499ba330c7bccc0be4e4206" kindref="member">reset_control</ref>;</highlight></codeline>
+<codeline lineno="38" refid="d2/d72/structsonicator__control__s_1abf1d62b73aa56b570b243f3c3d2508d8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="d2/d72/structsonicator__control__s_1abf1d62b73aa56b570b243f3c3d2508d8" kindref="member">amplitude_control</ref>;</highlight></codeline>
+<codeline lineno="39" refid="db/d3b/state_8h_1af132973e9c955228c4f718796bec3640" refkind="member"><highlight class="normal">}<sp/><ref refid="db/d3b/state_8h_1af132973e9c955228c4f718796bec3640" kindref="member">sonicator_control_t</ref>;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="da/de7/structsonicator__state__" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="da/de7/structsonicator__state__" kindref="compound">sonicator_state_</ref><sp/>{</highlight></codeline>
+<codeline lineno="50" refid="da/de7/structsonicator__state___1a4ba454e6b4ef6aa9334e6f5e2f0967dd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref><sp/><ref refid="da/de7/structsonicator__state___1a4ba454e6b4ef6aa9334e6f5e2f0967dd" kindref="member">state</ref>;</highlight></codeline>
+<codeline lineno="51" refid="da/de7/structsonicator__state___1ac04a6b1166d26bb8427000102b8a3486" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315" kindref="member">sonicator_state_t</ref><sp/><ref refid="da/de7/structsonicator__state___1ac04a6b1166d26bb8427000102b8a3486" kindref="member">previous_state</ref>;</highlight></codeline>
+<codeline lineno="52" refid="da/de7/structsonicator__state___1ad62ae131f16844a3f2f240e92efeca68" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="da/de7/structsonicator__state___1ad62ae131f16844a3f2f240e92efeca68" kindref="member">state_entry_time</ref>;</highlight></codeline>
+<codeline lineno="53" refid="db/d3b/state_8h_1ad79c7a5f11697f6cf8e33fb09fb826db" refkind="member"><highlight class="normal">}<sp/><ref refid="db/d3b/state_8h_1ad79c7a5f11697f6cf8e33fb09fb826db" kindref="member">sonicator_state_machine_t</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="d5/d74/structsonicator__history__s" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="d5/d74/structsonicator__history__s" kindref="compound">sonicator_history_s</ref><sp/>{</highlight></codeline>
+<codeline lineno="66" refid="d5/d74/structsonicator__history__s_1ab4b4152e395d07217d6393b879e0be01" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d5/d74/structsonicator__history__s_1ab4b4152e395d07217d6393b879e0be01" kindref="member">start_count</ref>;</highlight></codeline>
+<codeline lineno="67" refid="d5/d74/structsonicator__history__s_1aa8ddc34853d83965bdefe35d4ca33ad6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d5/d74/structsonicator__history__s_1aa8ddc34853d83965bdefe35d4ca33ad6" kindref="member">last_start_time</ref>;</highlight></codeline>
+<codeline lineno="68" refid="d5/d74/structsonicator__history__s_1a16fad17866b4e159b9e464fbd0cb4bad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d5/d74/structsonicator__history__s_1a16fad17866b4e159b9e464fbd0cb4bad" kindref="member">total_runtime_ms</ref>;</highlight></codeline>
+<codeline lineno="69" refid="db/d3b/state_8h_1ae52416e960a3854a53dd3140a7a2bbbc" refkind="member"><highlight class="normal">}<sp/><ref refid="db/d3b/state_8h_1ae52416e960a3854a53dd3140a7a2bbbc" kindref="member">sonicator_history_t</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="db/dd3/structsonicator__status__s" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/dd3/structsonicator__status__s" kindref="compound">sonicator_status_s</ref><sp/>{</highlight></codeline>
+<codeline lineno="82" refid="db/dd3/structsonicator__status__s_1a6c69779fdbac271d4d3669b2ee2bc197" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="db/dd3/structsonicator__status__s_1a6c69779fdbac271d4d3669b2ee2bc197" kindref="member">is_running</ref>;</highlight></codeline>
+<codeline lineno="83" refid="db/dd3/structsonicator__status__s_1a87a12fbd9ac9337f747889b712f4fc07" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="db/dd3/structsonicator__status__s_1a87a12fbd9ac9337f747889b712f4fc07" kindref="member">frequency_hz</ref>;</highlight></codeline>
+<codeline lineno="84" refid="db/dd3/structsonicator__status__s_1a8a654dda1c8479aa7b0603d9f189a392" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="db/dd3/structsonicator__status__s_1a8a654dda1c8479aa7b0603d9f189a392" kindref="member">overload_active</ref>;</highlight></codeline>
+<codeline lineno="85" refid="db/dd3/structsonicator__status__s_1a214092cd4433bf303f3c7ce8203c002a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="db/dd3/structsonicator__status__s_1a214092cd4433bf303f3c7ce8203c002a" kindref="member">frequency_locked</ref>;</highlight></codeline>
+<codeline lineno="86" refid="db/dd3/structsonicator__status__s_1adfe1d97f256e4098d131e344e199e332" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="db/dd3/structsonicator__status__s_1adfe1d97f256e4098d131e344e199e332" kindref="member">fault_count</ref>;</highlight></codeline>
+<codeline lineno="87" refid="db/dd3/structsonicator__status__s_1ab8933db45e8370241297c7392ba04df9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="db/dd3/structsonicator__status__s_1ab8933db45e8370241297c7392ba04df9" kindref="member">power_raw_adc</ref>;</highlight></codeline>
+<codeline lineno="88" refid="db/dd3/structsonicator__status__s_1a7442b939f52416d426627993ea025c75" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="db/dd3/structsonicator__status__s_1a7442b939f52416d426627993ea025c75" kindref="member">last_fault_time</ref>;</highlight></codeline>
+<codeline lineno="89" refid="db/dd3/structsonicator__status__s_1a4d599b0ce8559c6b2056dffbc2c27a07" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="db/dd3/structsonicator__status__s_1a4d599b0ce8559c6b2056dffbc2c27a07" kindref="member">amplitude_actual</ref>;</highlight></codeline>
+<codeline lineno="90" refid="db/dd3/structsonicator__status__s_1ab652937187e9332b1aff148bdb25259c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ad79c7a5f11697f6cf8e33fb09fb826db" kindref="member">sonicator_state_machine_t</ref><sp/><ref refid="db/dd3/structsonicator__status__s_1ab652937187e9332b1aff148bdb25259c" kindref="member">state_machine</ref>;</highlight></codeline>
+<codeline lineno="91" refid="db/d3b/state_8h_1afeb77d5a88e0115b4344d7f6ed578ec8" refkind="member"><highlight class="normal">}<sp/><ref refid="db/d3b/state_8h_1afeb77d5a88e0115b4344d7f6ed578ec8" kindref="member">sonicator_status_t</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="db/dd6/structsonicator__s" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="db/dd6/structsonicator__s" kindref="compound">sonicator_s</ref><sp/>{</highlight></codeline>
+<codeline lineno="108" refid="db/dd6/structsonicator__s_1a56ca9894176690dfc6c484a00e08e6c9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1afeb77d5a88e0115b4344d7f6ed578ec8" kindref="member">sonicator_status_t</ref><sp/><ref refid="db/dd6/structsonicator__s_1a56ca9894176690dfc6c484a00e08e6c9" kindref="member">status</ref>;</highlight></codeline>
+<codeline lineno="109" refid="db/dd6/structsonicator__s_1aed9c3f751e97b806920411c2ebcc1dfc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1af132973e9c955228c4f718796bec3640" kindref="member">sonicator_control_t</ref><sp/><ref refid="db/dd6/structsonicator__s_1aed9c3f751e97b806920411c2ebcc1dfc" kindref="member">control</ref>;</highlight></codeline>
+<codeline lineno="110" refid="db/dd6/structsonicator__s_1a05b9bc246e731665e67db0c1aca5190e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d3b/state_8h_1ae52416e960a3854a53dd3140a7a2bbbc" kindref="member">sonicator_history_t</ref><sp/><ref refid="db/dd6/structsonicator__s_1a05b9bc246e731665e67db0c1aca5190e" kindref="member">history</ref>;</highlight></codeline>
+<codeline lineno="111" refid="db/dd6/structsonicator__s_1a590593bf088e2a5c4e4954ded7d7e953" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="de/d45/errors_8h_1a361c37dbeedf89f2fe09845eab7f0a99" kindref="member">sonicator_fault_t</ref><sp/><ref refid="db/dd6/structsonicator__s_1a590593bf088e2a5c4e4954ded7d7e953" kindref="member">active_faults</ref>;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="113" refid="db/dd6/structsonicator__s_1a6ad6bf687f2089f9f63a58636b7426d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="db/dd6/structsonicator__s_1a6ad6bf687f2089f9f63a58636b7426d0" kindref="member">safety_override</ref>;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="db/dd6/structsonicator__s_1aa071275060b7e1d3b6be69a6a5f68bd8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="db/dd6/structsonicator__s_1aa071275060b7e1d3b6be69a6a5f68bd8" kindref="member">last_start_time</ref>;</highlight></codeline>
+<codeline lineno="116" refid="db/dd6/structsonicator__s_1a78e03cfc2c026ec27d7ade65cc2ffea7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="db/dd6/structsonicator__s_1a78e03cfc2c026ec27d7ade65cc2ffea7" kindref="member">last_update_time</ref>;</highlight></codeline>
+<codeline lineno="117" refid="db/dd6/structsonicator__s_1a9b92bfa0fdc96a736e93d7f7bb854d0a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="db/dd6/structsonicator__s_1a9b92bfa0fdc96a736e93d7f7bb854d0a" kindref="member">watchdog_last_reset</ref>;</highlight></codeline>
+<codeline lineno="118" refid="db/d3b/state_8h_1a8605042214aa8fa47c4683df5fa03d37" refkind="member"><highlight class="normal">}<sp/><ref refid="db/d3b/state_8h_1a8605042214aa8fa47c4683df5fa03d37" kindref="member">sonicator_t</ref>;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>SONICATOR_TYPES_STATE_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/sonicator/types/state.h"/>
+  </compounddef>
+</doxygen>

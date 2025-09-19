@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d6/dc3/class_hardware_timer_manager" kind="class" language="C++" prot="public">
+    <compoundname>HardwareTimerManager</compoundname>
+    <basecompoundref refid="da/dbb/class_i_timer_manager" prot="public" virt="non-virtual">ITimerManager</basecompoundref>
+    <includes refid="d2/db1/hal__hardware__factory_8h" local="no">hal_hardware_factory.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d6/dc3/class_hardware_timer_manager_1a4fc0359342ba27ad3493658d09f345c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareTimerManager::init</definition>
+        <argsstring>(void) override</argsstring>
+        <name>init</name>
+        <qualifiedname>HardwareTimerManager::init</qualifiedname>
+        <reimplements refid="da/dbb/class_i_timer_manager_1ad17d858816447f8a289d5158006ae5c9">init</reimplements>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="96" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/dc3/class_hardware_timer_manager_1adbc7569dc67023aaee28804b28b680bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareTimerManager::start</definition>
+        <argsstring>(uint8_t timer_id, uint32_t period_ms) override</argsstring>
+        <name>start</name>
+        <qualifiedname>HardwareTimerManager::start</qualifiedname>
+        <reimplements refid="da/dbb/class_i_timer_manager_1ad16497ee88e75e72292c0b9d32b0d029">start</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>timer_id</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>period_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="97" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/dc3/class_hardware_timer_manager_1a0ffcacdf9b0c2a563209eaa0ddc21baf" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareTimerManager::stop</definition>
+        <argsstring>(uint8_t timer_id) override</argsstring>
+        <name>stop</name>
+        <qualifiedname>HardwareTimerManager::stop</qualifiedname>
+        <reimplements refid="da/dbb/class_i_timer_manager_1a2698f312d8cb5b917306539572698fdf">stop</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>timer_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="98" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/dc3/class_hardware_timer_manager_1a7e99726a1e62d042b6dcb5100dd04203" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareTimerManager::isExpired</definition>
+        <argsstring>(uint8_t timer_id) override</argsstring>
+        <name>isExpired</name>
+        <qualifiedname>HardwareTimerManager::isExpired</qualifiedname>
+        <reimplements refid="da/dbb/class_i_timer_manager_1a7d78578449fd90a14a45ad40d0d8db16">isExpired</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>timer_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="99" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/dc3/class_hardware_timer_manager_1ae2a1d9de5b5f4e261e9bf7278512d892" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareTimerManager::getMillis</definition>
+        <argsstring>(uint32_t *millis) override</argsstring>
+        <name>getMillis</name>
+        <qualifiedname>HardwareTimerManager::getMillis</qualifiedname>
+        <reimplements refid="da/dbb/class_i_timer_manager_1a342aff91bd8f6daa9a254669479a746d">getMillis</reimplements>
+        <param>
+          <type>uint32_t *</type>
+          <declname>millis</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="100" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/dc3/class_hardware_timer_manager_1a5928ac3a992f493defc8836eaa6e535c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareTimerManager::delayMs</definition>
+        <argsstring>(uint32_t delay_ms) override</argsstring>
+        <name>delayMs</name>
+        <qualifiedname>HardwareTimerManager::delayMs</qualifiedname>
+        <reimplements refid="da/dbb/class_i_timer_manager_1ae4236adfc90847c3de8a682629a9a502">delayMs</reimplements>
+        <param>
+          <type>uint32_t</type>
+          <declname>delay_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="101" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/dc3/class_hardware_timer_manager_1a59c7532b12309e87838db8cbb241ffdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareTimerManager::watchdogReset</definition>
+        <argsstring>(void) override</argsstring>
+        <name>watchdogReset</name>
+        <qualifiedname>HardwareTimerManager::watchdogReset</qualifiedname>
+        <reimplements refid="da/dbb/class_i_timer_manager_1a75fbc7e3b6a45065864425cac3ff1508">watchdogReset</reimplements>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="103" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="d6/dc3/class_hardware_timer_manager_1aa74a71f4427246e941669d031fab9fda" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool HardwareTimerManager::testAll</definition>
+        <argsstring>(bool *success) override</argsstring>
+        <name>testAll</name>
+        <qualifiedname>HardwareTimerManager::testAll</qualifiedname>
+        <reimplements refid="da/dbb/class_i_timer_manager_1a4a75c2386d08f646723aeb4cc1895f09">testAll</reimplements>
+        <param>
+          <type>bool *</type>
+          <declname>success</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="104" column="10"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Real ATmega32A Timer implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>HardwareTimerManager</label>
+        <link refid="d6/dc3/class_hardware_timer_manager"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ITimerManager</label>
+        <link refid="da/dbb/class_i_timer_manager"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>HardwareTimerManager</label>
+        <link refid="d6/dc3/class_hardware_timer_manager"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ITimerManager</label>
+        <link refid="da/dbb/class_i_timer_manager"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/modules/hal/hal_hardware_factory.h" line="94" column="1" bodyfile="src/modules/hal/hal_hardware_factory.h" bodystart="94" bodyend="105"/>
+    <listofallmembers>
+      <member refid="d6/dc3/class_hardware_timer_manager_1a5928ac3a992f493defc8836eaa6e535c" prot="public" virt="virtual"><scope>HardwareTimerManager</scope><name>delayMs</name></member>
+      <member refid="d6/dc3/class_hardware_timer_manager_1ae2a1d9de5b5f4e261e9bf7278512d892" prot="public" virt="virtual"><scope>HardwareTimerManager</scope><name>getMillis</name></member>
+      <member refid="d6/dc3/class_hardware_timer_manager_1a4fc0359342ba27ad3493658d09f345c6" prot="public" virt="virtual"><scope>HardwareTimerManager</scope><name>init</name></member>
+      <member refid="d6/dc3/class_hardware_timer_manager_1a7e99726a1e62d042b6dcb5100dd04203" prot="public" virt="virtual"><scope>HardwareTimerManager</scope><name>isExpired</name></member>
+      <member refid="d6/dc3/class_hardware_timer_manager_1adbc7569dc67023aaee28804b28b680bf" prot="public" virt="virtual"><scope>HardwareTimerManager</scope><name>start</name></member>
+      <member refid="d6/dc3/class_hardware_timer_manager_1a0ffcacdf9b0c2a563209eaa0ddc21baf" prot="public" virt="virtual"><scope>HardwareTimerManager</scope><name>stop</name></member>
+      <member refid="d6/dc3/class_hardware_timer_manager_1aa74a71f4427246e941669d031fab9fda" prot="public" virt="virtual"><scope>HardwareTimerManager</scope><name>testAll</name></member>
+      <member refid="d6/dc3/class_hardware_timer_manager_1a59c7532b12309e87838db8cbb241ffdc" prot="public" virt="virtual"><scope>HardwareTimerManager</scope><name>watchdogReset</name></member>
+      <member refid="da/dbb/class_i_timer_manager_1a78a4d2a06c5f44aefcbbe25cb8f3037b" prot="public" virt="virtual"><scope>HardwareTimerManager</scope><name>~ITimerManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

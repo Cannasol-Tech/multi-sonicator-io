@@ -1,0 +1,828 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="db/d33/adc_8cpp" kind="file" language="C++">
+    <compoundname>adc.cpp</compoundname>
+    <includes refid="d7/d19/adc_8h" local="yes">adc.h</includes>
+    <includes refid="d4/d7e/system__config_8h" local="no">system_config.h</includes>
+    <includes local="no">Arduino.h</includes>
+    <incdepgraph>
+      <node id="5">
+        <label>system_config.h</label>
+        <link refid="d4/d7e/system__config_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/modules/hal/adc.cpp</label>
+        <link refid="db/d33/adc_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>adc.h</label>
+        <link refid="d7/d19/adc_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Arduino.h</label>
+      </node>
+      <node id="4">
+        <label>stdbool.h</label>
+      </node>
+      <node id="3">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="db/d33/adc_8cpp_1aefb9e062d3bcd3530600975babe278ef" prot="public" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool adc_initialized</definition>
+        <argsstring></argsstring>
+        <name>adc_initialized</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Tracks whether the ADC subsystem has been properly initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This flag prevents ADC operations from being performed before the hardware has been configured. Set to true after successful completion of <ref refid="db/d33/adc_8cpp_1aa540e6dad1cfb7b5a1a70ac688003aee" kindref="member">adc_init()</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/adc.cpp" line="47" column="13" bodyfile="src/modules/hal/adc.cpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/d33/adc_8cpp_1aec6ccbe812dac6a07495a0a4cdd6ee81" prot="public" static="yes" mutable="no">
+        <type><ref refid="d7/d19/adc_8h_1ab0d58a8b58b229a1ef66fd3ba5d848b9" kindref="member">adc_reference_t</ref></type>
+        <definition>adc_reference_t current_reference</definition>
+        <argsstring></argsstring>
+        <name>current_reference</name>
+        <initializer>= <ref refid="d7/d19/adc_8h_1ab0d58a8b58b229a1ef66fd3ba5d848b9a981e046382f20706a40b28d9e07917d4" kindref="member">ADC_REF_VCC</ref></initializer>
+        <briefdescription>
+<para>Current ADC voltage reference selection. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Stores the currently configured voltage reference source:<itemizedlist>
+<listitem><para>ADC_REF_VCC: Uses VCC (typically 5V) as reference</para>
+</listitem><listitem><para>ADC_REF_INTERNAL: Uses internal 2.56V reference</para>
+</listitem><listitem><para>ADC_REF_EXTERNAL: Uses external AREF pin voltage </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/adc.cpp" line="56" column="24" bodyfile="src/modules/hal/adc.cpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/d33/adc_8cpp_1abb5f645be8cb92e62b8aab8d9ce23b96" prot="public" static="yes" mutable="no">
+        <type>float</type>
+        <definition>float calibration_factor</definition>
+        <argsstring></argsstring>
+        <name>calibration_factor</name>
+        <initializer>= 1.0f</initializer>
+        <briefdescription>
+<para>ADC calibration factor for voltage accuracy correction. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Multiplicative factor applied to raw voltage calculations to compensate for reference voltage variations and component tolerances. Default value of 1.0 assumes perfect accuracy. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/adc.cpp" line="64" column="14" bodyfile="src/modules/hal/adc.cpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="db/d33/adc_8cpp_1aaf0c64b2cc30ae3bf3d38cd01f910819" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool is_valid_channel</definition>
+        <argsstring>(adc_channel_t channel)</argsstring>
+        <name>is_valid_channel</name>
+        <param>
+          <type><ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref></type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+<para>Validates that an ADC channel number is within acceptable range. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC channel to validate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if channel is valid, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/adc.cpp" line="75" column="13" declfile="src/modules/hal/adc.cpp" declline="75" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d33/adc_8cpp_1a4b0617b93ab926cd6acb0523bfc379d1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref></type>
+        <definition>static adc_channel_t sonicator_to_adc_channel</definition>
+        <argsstring>(uint8_t sonicator_id)</argsstring>
+        <name>sonicator_to_adc_channel</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+<para>Maps sonicator ID to corresponding ADC channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sonicator_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator identifier (1-4) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>ADC channel for power sensing, or ADC_CHANNEL_MAX if invalid </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/adc.cpp" line="82" column="22" declfile="src/modules/hal/adc.cpp" declline="82" declcolumn="22"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d33/adc_8cpp_1aa540e6dad1cfb7b5a1a70ac688003aee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref></type>
+        <definition>adc_result_t adc_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>adc_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initializes the ADC subsystem with default configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Initialize ADC hardware abstraction layer.</para>
+<para>Configures ADC with:<itemizedlist>
+<listitem><para>VCC reference voltage (5V)</para>
+</listitem><listitem><para>128 prescaler (16MHz/128 = 125kHz ADC clock)</para>
+</listitem><listitem><para>Enables ADC hardware</para>
+</listitem><listitem><para>Performs stabilization dummy conversion <simplesect kind="return"><para>ADC_OK on success, error code on failure </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/adc.cpp" line="97" column="14" bodyfile="src/modules/hal/adc.cpp" bodystart="97" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d33/adc_8cpp_1aed5a363f6b2bd62dc96e66ae7e85048e" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref></type>
+        <definition>adc_result_t adc_set_reference</definition>
+        <argsstring>(adc_reference_t reference)</argsstring>
+        <name>adc_set_reference</name>
+        <param>
+          <type><ref refid="d7/d19/adc_8h_1ab0d58a8b58b229a1ef66fd3ba5d848b9" kindref="member">adc_reference_t</ref></type>
+          <declname>reference</declname>
+        </param>
+        <briefdescription>
+<para>Configures ADC voltage reference source. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Configure ADC reference voltage.</para>
+<para>Sets ADMUX register REFS1:0 bits to select reference:<itemizedlist>
+<listitem><para>External: REFS1=0, REFS0=0 (uses AREF pin)</para>
+</listitem><listitem><para>VCC: REFS1=0, REFS0=1 (uses VCC as reference)</para>
+</listitem><listitem><para>Internal: REFS1=1, REFS0=1 (uses internal 2.56V) <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>reference</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Desired reference voltage source </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>ADC_OK on success, ADC_ERROR_INVALID_REF for invalid reference </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para>ADMUX register manipulation for external reference</para>
+<para>Clears both REFS1 (bit 7) and REFS0 (bit 6) in ADMUX to select external AREF pin as voltage reference</para>
+<para>ADMUX register manipulation for VCC reference</para>
+<para>Clears REFS1 (bit 7) and sets REFS0 (bit 6) in ADMUX to select VCC as voltage reference</para>
+<para>ADMUX register manipulation for internal reference</para>
+<para>Sets both REFS1 (bit 7) and REFS0 (bit 6) in ADMUX to select internal 2.56V reference</para>
+<para>Updates current reference tracking variable</para>
+<para>Stores the newly configured reference for use in voltage conversion calculations</para>
+<para>Reference settling delay</para>
+<para>2ms delay allows internal reference circuits to stabilize after configuration change</para>
+        </inbodydescription>
+        <location file="src/modules/hal/adc.cpp" line="130" column="31" bodyfile="src/modules/hal/adc.cpp" bodystart="130" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d33/adc_8cpp_1a0ac73f1ed6dc07bb1f08beb4628a81d4" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref></type>
+        <definition>adc_result_t adc_set_prescaler</definition>
+        <argsstring>(adc_prescaler_t prescaler)</argsstring>
+        <name>adc_set_prescaler</name>
+        <param>
+          <type><ref refid="d7/d19/adc_8h_1a4111b7f88d7ec4a4752800a672fdb425" kindref="member">adc_prescaler_t</ref></type>
+          <declname>prescaler</declname>
+        </param>
+        <briefdescription>
+<para>Configures ADC clock prescaler for optimal conversion timing. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Configure ADC clock prescaler.</para>
+<para>Sets ADCSRA register ADPS2:0 bits to control ADC clock frequency. ADC clock should be between 50kHz-200kHz for maximum resolution. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>prescaler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Desired clock division factor </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>ADC_OK on success, ADC_ERROR_INVALID_REF for invalid prescaler </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para>ADCSRA prescaler bits manipulation</para>
+<para>Clears ADPS2 (bit 2), ADPS1 (bit 1), and ADPS0 (bit 0) then sets the new prescaler value in these bits</para>
+        </inbodydescription>
+        <location file="src/modules/hal/adc.cpp" line="189" column="31" bodyfile="src/modules/hal/adc.cpp" bodystart="189" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d33/adc_8cpp_1a9b6db774acc8d6f9333606ef726b2e19" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref></type>
+        <definition>adc_result_t adc_read_channel</definition>
+        <argsstring>(adc_channel_t channel, uint16_t *value)</argsstring>
+        <name>adc_read_channel</name>
+        <param>
+          <type><ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref></type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Performs complete ADC conversion on specified channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Perform single ADC conversion.</para>
+<para>Selects channel, starts conversion, waits for completion with timeout protection, and returns 10-bit result <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC input channel (0-7 for ATmega32A) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store 10-bit conversion result (0-1023) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>ADC_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para>ADMUX channel selection</para>
+<para>Preserves upper 3 bits (reference and result adjustment) while setting lower 5 bits (MUX4:0) to select input channel</para>
+<para>Conversion start trigger</para>
+<para>Sets ADSC (ADC Start Conversion) bit in ADCSRA register to begin analog-to-digital conversion</para>
+<para>Conversion timeout counter</para>
+<para>Prevents infinite loop if ADC hardware fails to complete conversion within reasonable time (1000 microseconds)</para>
+<para>Microsecond delay during polling</para>
+<para>1μs delay between ADSC bit checks to prevent excessive CPU usage while waiting for conversion completion</para>
+<para>ADC result register reading sequence</para>
+<para>ADCL (low byte) must be read first to trigger register locking, preventing corruption during 16-bit read operation</para>
+<para>&lt; ADC Data Register Low byte (bits 7:0)</para>
+<para>&lt; ADC Data Register High byte (bits 9:8)</para>
+<para>10-bit result reconstruction</para>
+<para>Combines high and low bytes into complete 10-bit value with proper bit positioning</para>
+        </inbodydescription>
+        <location file="src/modules/hal/adc.cpp" line="214" column="31" bodyfile="src/modules/hal/adc.cpp" bodystart="214" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d33/adc_8cpp_1a4fb418ca663a4feb4922a02f2f4f98da" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref></type>
+        <definition>adc_result_t adc_start_conversion</definition>
+        <argsstring>(adc_channel_t channel)</argsstring>
+        <name>adc_start_conversion</name>
+        <param>
+          <type><ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref></type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+<para>Initiates ADC conversion without waiting for completion. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Start ADC conversion (non-blocking)</para>
+<para>Non-blocking function that selects channel and starts conversion. Use <ref refid="d7/d19/adc_8h_1ac092476d046800c923017c8a44f3bf0a" kindref="member">adc_conversion_complete()</ref> and <ref refid="d7/d19/adc_8h_1a9deec53ff9391b6faa57b3167d61fff7" kindref="member">adc_get_result()</ref> to retrieve result. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC input channel to convert </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>ADC_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para>Non-blocking channel selection</para>
+<para>Same ADMUX manipulation as blocking version but without waiting for conversion completion</para>
+<para>Non-blocking conversion start</para>
+<para>Triggers conversion start but returns immediately, allowing other code to execute during conversion time</para>
+        </inbodydescription>
+        <location file="src/modules/hal/adc.cpp" line="286" column="31" bodyfile="src/modules/hal/adc.cpp" bodystart="286" bodyend="312"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d33/adc_8cpp_1a8fec558ec28116e82584e76a36254598" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref></type>
+        <definition>adc_result_t adc_conversion_complete</definition>
+        <argsstring>(bool *complete)</argsstring>
+        <name>adc_conversion_complete</name>
+        <param>
+          <type>bool *</type>
+          <declname>complete</declname>
+        </param>
+        <briefdescription>
+<para>Checks if ADC conversion has completed. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Check if ADC conversion is complete.</para>
+<para>Non-blocking function to poll conversion status without consuming CPU cycles in busy-wait loop <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>complete</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store completion status (true if done) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>ADC_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para>ADSC bit status check</para>
+<para>ADSC (ADC Start Conversion) bit is automatically cleared by hardware when conversion completes. Invert logic since cleared bit indicates completion.</para>
+        </inbodydescription>
+        <location file="src/modules/hal/adc.cpp" line="321" column="31" bodyfile="src/modules/hal/adc.cpp" bodystart="321" bodyend="338"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d33/adc_8cpp_1a9b8d042910a2b4d5e4442955fe79d301" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref></type>
+        <definition>adc_result_t adc_get_result</definition>
+        <argsstring>(uint16_t *value)</argsstring>
+        <name>adc_get_result</name>
+        <param>
+          <type>uint16_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Retrieves completed ADC conversion result. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Get result of completed conversion.</para>
+<para>Reads ADC data registers after conversion completion. Should only be called after <ref refid="d7/d19/adc_8h_1ac092476d046800c923017c8a44f3bf0a" kindref="member">adc_conversion_complete()</ref> returns true. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store 10-bit conversion result </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>ADC_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para>Conversion status verification</para>
+<para>Ensures conversion has completed before attempting to read result registers to prevent invalid data</para>
+<para>Atomic result register reading</para>
+<para>Same sequence as blocking read - ADCL first to lock registers and prevent corruption</para>
+<para>&lt; ADC Data Register Low byte</para>
+<para>&lt; ADC Data Register High byte</para>
+<para>Result value reconstruction</para>
+<para>Combines register bytes into complete 10-bit ADC result</para>
+        </inbodydescription>
+        <location file="src/modules/hal/adc.cpp" line="347" column="31" bodyfile="src/modules/hal/adc.cpp" bodystart="347" bodyend="382"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d33/adc_8cpp_1a9a3589be2e6a1f230b71db35c5a4aed0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref></type>
+        <definition>adc_result_t adc_to_voltage</definition>
+        <argsstring>(uint16_t raw_value, float *voltage)</argsstring>
+        <name>adc_to_voltage</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>raw_value</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>voltage</declname>
+        </param>
+        <briefdescription>
+<para>Converts raw ADC value to actual voltage measurement. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert raw ADC value to voltage.</para>
+<para>Applies reference voltage scaling and calibration factor to convert 10-bit ADC reading to real-world voltage value <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>raw_value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw ADC reading (0-1023) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>voltage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store calculated voltage in volts </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>ADC_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para>Reference voltage determination</para>
+<para>Selects appropriate reference voltage based on current ADC configuration for accurate voltage calculation</para>
+<para>VCC reference voltage</para>
+<para>Uses system-defined VCC voltage (typically 5.0V) from ADC_REFERENCE_VOLTAGE constant</para>
+<para>Internal reference voltage</para>
+<para>ATmega32A internal reference is precisely 2.56V as specified in datasheet</para>
+<para>External reference voltage</para>
+<para>Assumes external AREF matches system VCC</para>
+<para>Voltage calculation</para>
+<para>Applies linear scaling based on ADC resolution and reference</para>
+        </inbodydescription>
+        <location file="src/modules/hal/adc.cpp" line="392" column="21" bodyfile="src/modules/hal/adc.cpp" bodystart="392" bodyend="438"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d33/adc_8cpp_1a6eff5ebe7332c348d75634c1e327533c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref></type>
+        <definition>adc_result_t adc_read_sonicator_power_raw</definition>
+        <argsstring>(uint8_t sonicator_id, uint16_t *raw_adc)</argsstring>
+        <name>adc_read_sonicator_power_raw</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>raw_adc</declname>
+        </param>
+        <briefdescription>
+<para>Read sonicator power level as raw ADC value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Read sonicator power level (raw ADC value)</para>
+<para>Returns raw 10-bit ADC reading without conversion for maximum efficiency. Cloud/PLC performs scaling using 5.44mV/W factor. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sonicator_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator number (1-4) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>raw_adc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store raw ADC reading (0-1023) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>ADC_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/adc.cpp" line="452" column="14" bodyfile="src/modules/hal/adc.cpp" bodystart="452" bodyend="461"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d33/adc_8cpp_1a9f0fae67bdf3bebce28e5f22dbc6c324" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref></type>
+        <definition>adc_result_t adc_read_sonicator_power</definition>
+        <argsstring>(uint8_t sonicator_id, float *power_watts)</argsstring>
+        <name>adc_read_sonicator_power</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>power_watts</declname>
+        </param>
+        <briefdescription>
+<para>Read sonicator power level converted to watts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Read sonicator power level (converted to watts)</para>
+<para><xrefsect id="da/d58/deprecated_1_deprecated000001"><xreftitle>Deprecated</xreftitle><xrefdescription><para>Use <ref refid="d7/d19/adc_8h_1a6eff5ebe7332c348d75634c1e327533c" kindref="member">adc_read_sonicator_power_raw()</ref> for efficiency </para>
+</xrefdescription></xrefsect></para>
+<para>Converts raw ADC reading to power using 5.44mV/W scaling. Provided for backward compatibility but raw ADC is preferred. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sonicator_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator number (1-4) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>power_watts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store power in watts </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>ADC_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/adc.cpp" line="472" column="14" bodyfile="src/modules/hal/adc.cpp" bodystart="472" bodyend="490"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ADC Hardware Abstraction Layer Implementation for ATmega32A. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Cannasol Technologies </para>
+</simplesect>
+<simplesect kind="date"><para>2025-09-02 </para>
+</simplesect>
+<simplesect kind="version"><para>1.0.0 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d7/d19/adc_8h" kindref="compound">adc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="d4/d7e/system__config_8h" kindref="compound">system_config.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Arduino.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PRIVATE<sp/>VARIABLES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="db/d33/adc_8cpp_1aefb9e062d3bcd3530600975babe278ef" kindref="member">adc_initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1ab0d58a8b58b229a1ef66fd3ba5d848b9" kindref="member">adc_reference_t</ref><sp/><ref refid="db/d33/adc_8cpp_1aec6ccbe812dac6a07495a0a4cdd6ee81" kindref="member">current_reference</ref><sp/>=<sp/><ref refid="d7/d19/adc_8h_1ab0d58a8b58b229a1ef66fd3ba5d848b9a981e046382f20706a40b28d9e07917d4" kindref="member">ADC_REF_VCC</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="db/d33/adc_8cpp_1abb5f645be8cb92e62b8aab8d9ce23b96" kindref="member">calibration_factor</ref><sp/>=<sp/>1.0f;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PRIVATE<sp/>FUNCTION<sp/>DECLARATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="db/d33/adc_8cpp_1aaf0c64b2cc30ae3bf3d38cd01f910819" kindref="member">is_valid_channel</ref>(<ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref><sp/>channel);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref><sp/><ref refid="db/d33/adc_8cpp_1a4b0617b93ab926cd6acb0523bfc379d1" kindref="member">sonicator_to_adc_channel</ref>(uint8_t<sp/>sonicator_id);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PUBLIC<sp/>FUNCTION<sp/>IMPLEMENTATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref><sp/><ref refid="db/d33/adc_8cpp_1aa540e6dad1cfb7b5a1a70ac688003aee" kindref="member">adc_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>ADC<sp/>with<sp/>VCC<sp/>reference<sp/>(5V)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref><sp/>result<sp/>=<sp/><ref refid="db/d33/adc_8cpp_1aed5a363f6b2bd62dc96e66ae7e85048e" kindref="member">adc_set_reference</ref>(<ref refid="d7/d19/adc_8h_1ab0d58a8b58b229a1ef66fd3ba5d848b9a981e046382f20706a40b28d9e07917d4" kindref="member">ADC_REF_VCC</ref>);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>!=<sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>prescaler<sp/>for<sp/>125kHz<sp/>ADC<sp/>clock<sp/>(16MHz<sp/>/<sp/>128<sp/>=<sp/>125kHz)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>=<sp/><ref refid="db/d33/adc_8cpp_1a0ac73f1ed6dc07bb1f08beb4628a81d4" kindref="member">adc_set_prescaler</ref>(<ref refid="d7/d19/adc_8h_1a4111b7f88d7ec4a4752800a672fdb425a69cfa0fc0ce969c362d2846a1ec38913" kindref="member">ADC_PRESCALER_128</ref>);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>!=<sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>ADC<sp/>subsystem</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>ADCSRA<sp/>|=<sp/>(1<sp/>&lt;&lt;<sp/>ADEN);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Perform<sp/>dummy<sp/>conversion<sp/>to<sp/>stabilize<sp/>ADC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>dummy_value;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d33/adc_8cpp_1a9b6db774acc8d6f9333606ef726b2e19" kindref="member">adc_read_channel</ref>(<ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814a69dddf5b6edfe54ac25b653d8f62d104" kindref="member">ADC_CHANNEL_0</ref>,<sp/>&amp;dummy_value);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d33/adc_8cpp_1aefb9e062d3bcd3530600975babe278ef" kindref="member">adc_initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref><sp/><ref refid="db/d33/adc_8cpp_1aed5a363f6b2bd62dc96e66ae7e85048e" kindref="member">adc_set_reference</ref>(<ref refid="d7/d19/adc_8h_1ab0d58a8b58b229a1ef66fd3ba5d848b9" kindref="member">adc_reference_t</ref><sp/>reference)<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(reference)<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1ab0d58a8b58b229a1ef66fd3ba5d848b9a2a42b5274ff05f6886c1737eb964b6f4" kindref="member">ADC_REF_EXTERNAL</ref>:</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>REFS1=0,<sp/>REFS0=0:<sp/>External<sp/>AREF</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ADMUX<sp/>&amp;=<sp/>~((1<sp/>&lt;&lt;<sp/>REFS1)<sp/>|<sp/>(1<sp/>&lt;&lt;<sp/>REFS0));</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1ab0d58a8b58b229a1ef66fd3ba5d848b9a981e046382f20706a40b28d9e07917d4" kindref="member">ADC_REF_VCC</ref>:</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>REFS1=0,<sp/>REFS0=1:<sp/>VCC<sp/>as<sp/>reference</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ADMUX<sp/>&amp;=<sp/>~(1<sp/>&lt;&lt;<sp/>REFS1);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ADMUX<sp/>|=<sp/>(1<sp/>&lt;&lt;<sp/>REFS0);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1ab0d58a8b58b229a1ef66fd3ba5d848b9a239921743b35d32a558a43deee2ce709" kindref="member">ADC_REF_INTERNAL</ref>:</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>REFS1=1,<sp/>REFS0=1:<sp/>Internal<sp/>2.56V<sp/>reference</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ADMUX<sp/>|=<sp/>(1<sp/>&lt;&lt;<sp/>REFS1)<sp/>|<sp/>(1<sp/>&lt;&lt;<sp/>REFS0);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a0ce4b40b5fee5aeacd3eee8c1753fc01" kindref="member">ADC_ERROR_INVALID_REF</ref>;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d33/adc_8cpp_1aec6ccbe812dac6a07495a0a4cdd6ee81" kindref="member">current_reference</ref><sp/>=<sp/>reference;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Allow<sp/>reference<sp/>to<sp/>settle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref><sp/><ref refid="db/d33/adc_8cpp_1a0ac73f1ed6dc07bb1f08beb4628a81d4" kindref="member">adc_set_prescaler</ref>(<ref refid="d7/d19/adc_8h_1a4111b7f88d7ec4a4752800a672fdb425" kindref="member">adc_prescaler_t</ref><sp/>prescaler)<sp/>{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(prescaler<sp/>&gt;<sp/><ref refid="d7/d19/adc_8h_1a4111b7f88d7ec4a4752800a672fdb425a69cfa0fc0ce969c362d2846a1ec38913" kindref="member">ADC_PRESCALER_128</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a0ce4b40b5fee5aeacd3eee8c1753fc01" kindref="member">ADC_ERROR_INVALID_REF</ref>;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>prescaler<sp/>bits<sp/>and<sp/>set<sp/>new<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>ADCSRA<sp/>&amp;=<sp/>~((1<sp/>&lt;&lt;<sp/>ADPS2)<sp/>|<sp/>(1<sp/>&lt;&lt;<sp/>ADPS1)<sp/>|<sp/>(1<sp/>&lt;&lt;<sp/>ADPS0));</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>ADCSRA<sp/>|=<sp/>prescaler;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref><sp/><ref refid="db/d33/adc_8cpp_1a9b6db774acc8d6f9333606ef726b2e19" kindref="member">adc_read_channel</ref>(<ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref><sp/>channel,<sp/>uint16_t*<sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d33/adc_8cpp_1aefb9e062d3bcd3530600975babe278ef" kindref="member">adc_initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52acbcdfd37daa1fe58b8f3fce53b69d413" kindref="member">ADC_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d33/adc_8cpp_1aaf0c64b2cc30ae3bf3d38cd01f910819" kindref="member">is_valid_channel</ref>(channel)<sp/>||<sp/>value<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52addc822439768573192679d60eb730b92" kindref="member">ADC_ERROR_INVALID_CHANNEL</ref>;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Select<sp/>ADC<sp/>channel<sp/>(MUX4:0<sp/>bits)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>ADMUX<sp/>=<sp/>(ADMUX<sp/>&amp;<sp/>0xE0)<sp/>|<sp/>(channel<sp/>&amp;<sp/>0x1F);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>conversion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>ADCSRA<sp/>|=<sp/>(1<sp/>&lt;&lt;<sp/>ADSC);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Wait<sp/>for<sp/>conversion<sp/>to<sp/>complete<sp/>(timeout<sp/>after<sp/>1ms)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>timeout<sp/>=<sp/>1000;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>((ADCSRA<sp/>&amp;<sp/>(1<sp/>&lt;&lt;<sp/>ADSC))<sp/>&amp;&amp;<sp/>timeout<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>delayMicroseconds(1);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>timeout--;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(timeout<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52aa56551eb2e083d45d100ce9e82e0294d" kindref="member">ADC_ERROR_TIMEOUT</ref>;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>result<sp/>(ADCL<sp/>must<sp/>be<sp/>read<sp/>first)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>low<sp/>=<sp/>ADCL;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>high<sp/>=<sp/>ADCH;<sp/><sp/></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>*value<sp/>=<sp/>(high<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/>low;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref><sp/><ref refid="db/d33/adc_8cpp_1a4fb418ca663a4feb4922a02f2f4f98da" kindref="member">adc_start_conversion</ref>(<ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref><sp/>channel)<sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d33/adc_8cpp_1aefb9e062d3bcd3530600975babe278ef" kindref="member">adc_initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52acbcdfd37daa1fe58b8f3fce53b69d413" kindref="member">ADC_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d33/adc_8cpp_1aaf0c64b2cc30ae3bf3d38cd01f910819" kindref="member">is_valid_channel</ref>(channel))<sp/>{</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52addc822439768573192679d60eb730b92" kindref="member">ADC_ERROR_INVALID_CHANNEL</ref>;</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Select<sp/>ADC<sp/>channel</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/>ADMUX<sp/>=<sp/>(ADMUX<sp/>&amp;<sp/>0xE0)<sp/>|<sp/>(channel<sp/>&amp;<sp/>0x1F);</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>conversion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/>ADCSRA<sp/>|=<sp/>(1<sp/>&lt;&lt;<sp/>ADSC);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref><sp/><ref refid="db/d33/adc_8cpp_1a8fec558ec28116e82584e76a36254598" kindref="member">adc_conversion_complete</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*<sp/>complete)<sp/>{</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d33/adc_8cpp_1aefb9e062d3bcd3530600975babe278ef" kindref="member">adc_initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52acbcdfd37daa1fe58b8f3fce53b69d413" kindref="member">ADC_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(complete<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52addc822439768573192679d60eb730b92" kindref="member">ADC_ERROR_INVALID_CHANNEL</ref>;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>*complete<sp/>=<sp/>!(ADCSRA<sp/>&amp;<sp/>(1<sp/>&lt;&lt;<sp/>ADSC));</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>;</highlight></codeline>
+<codeline lineno="338"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref><sp/><ref refid="db/d33/adc_8cpp_1a9b8d042910a2b4d5e4442955fe79d301" kindref="member">adc_get_result</ref>(uint16_t*<sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db/d33/adc_8cpp_1aefb9e062d3bcd3530600975babe278ef" kindref="member">adc_initialized</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52acbcdfd37daa1fe58b8f3fce53b69d413" kindref="member">ADC_ERROR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(value<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52addc822439768573192679d60eb730b92" kindref="member">ADC_ERROR_INVALID_CHANNEL</ref>;</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>conversion<sp/>is<sp/>still<sp/>running</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ADCSRA<sp/>&amp;<sp/>(1<sp/>&lt;&lt;<sp/>ADSC))<sp/>{</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52aa56551eb2e083d45d100ce9e82e0294d" kindref="member">ADC_ERROR_TIMEOUT</ref>;</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>result<sp/>(ADCL<sp/>must<sp/>be<sp/>read<sp/>first)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>low<sp/>=<sp/>ADCL;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>high<sp/>=<sp/>ADCH;<sp/><sp/></highlight></codeline>
+<codeline lineno="374"><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/>*value<sp/>=<sp/>(high<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/>low;</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>;</highlight></codeline>
+<codeline lineno="382"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"></highlight></codeline>
+<codeline lineno="392"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref><sp/><ref refid="db/d33/adc_8cpp_1a9a3589be2e6a1f230b71db35c5a4aed0" kindref="member">adc_to_voltage</ref>(uint16_t<sp/>raw_value,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>voltage)<sp/>{</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(voltage<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52addc822439768573192679d60eb730b92" kindref="member">ADC_ERROR_INVALID_CHANNEL</ref>;</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"></highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>reference_voltage;</highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<ref refid="db/d33/adc_8cpp_1aec6ccbe812dac6a07495a0a4cdd6ee81" kindref="member">current_reference</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1ab0d58a8b58b229a1ef66fd3ba5d848b9a981e046382f20706a40b28d9e07917d4" kindref="member">ADC_REF_VCC</ref>:</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reference_voltage<sp/>=<sp/><ref refid="d7/d19/adc_8h_1af557fa4300a3539ea54f1db1773e699f" kindref="member">ADC_REFERENCE_VOLTAGE</ref>;</highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1ab0d58a8b58b229a1ef66fd3ba5d848b9a239921743b35d32a558a43deee2ce709" kindref="member">ADC_REF_INTERNAL</ref>:</highlight></codeline>
+<codeline lineno="418"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reference_voltage<sp/>=<sp/>2.56f;</highlight></codeline>
+<codeline lineno="419"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1ab0d58a8b58b229a1ef66fd3ba5d848b9a2a42b5274ff05f6886c1737eb964b6f4" kindref="member">ADC_REF_EXTERNAL</ref>:</highlight></codeline>
+<codeline lineno="425"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reference_voltage<sp/>=<sp/><ref refid="d7/d19/adc_8h_1af557fa4300a3539ea54f1db1773e699f" kindref="member">ADC_REFERENCE_VOLTAGE</ref>;</highlight></codeline>
+<codeline lineno="426"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52addc822439768573192679d60eb730b92" kindref="member">ADC_ERROR_INVALID_CHANNEL</ref>;</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"></highlight></codeline>
+<codeline lineno="435"><highlight class="normal"><sp/><sp/><sp/><sp/>*voltage<sp/>=<sp/>(raw_value<sp/>*<sp/>reference_voltage)<sp/>/<sp/><ref refid="d7/d19/adc_8h_1a8e965b09ba8c46425032e6dd576f9bce" kindref="member">ADC_MAX_VALUE</ref>;</highlight></codeline>
+<codeline lineno="436"><highlight class="normal"></highlight></codeline>
+<codeline lineno="437"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>;</highlight></codeline>
+<codeline lineno="438"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="439"><highlight class="normal"></highlight></codeline>
+<codeline lineno="440"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="441"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SONICATOR<sp/>POWER<sp/>MONITORING<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="442"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="443"><highlight class="normal"></highlight></codeline>
+<codeline lineno="452"><highlight class="normal"><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref><sp/><ref refid="db/d33/adc_8cpp_1a6eff5ebe7332c348d75634c1e327533c" kindref="member">adc_read_sonicator_power_raw</ref>(uint8_t<sp/>sonicator_id,<sp/>uint16_t*<sp/>raw_adc)<sp/>{</highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(raw_adc<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>||<sp/>sonicator_id<sp/>&lt;<sp/>1<sp/>||<sp/>sonicator_id<sp/>&gt;<sp/>4)<sp/>{</highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52addc822439768573192679d60eb730b92" kindref="member">ADC_ERROR_INVALID_CHANNEL</ref>;</highlight></codeline>
+<codeline lineno="455"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="456"><highlight class="normal"></highlight></codeline>
+<codeline lineno="457"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Map<sp/>sonicator<sp/>ID<sp/>to<sp/>ADC<sp/>channel<sp/>(sonicators<sp/>1-4<sp/>use<sp/>ADC<sp/>channels<sp/>4-7)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="458"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref><sp/>channel<sp/>=<sp/>(<ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref>)(sonicator_id<sp/>+<sp/>3);</highlight></codeline>
+<codeline lineno="459"><highlight class="normal"></highlight></codeline>
+<codeline lineno="460"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db/d33/adc_8cpp_1a9b6db774acc8d6f9333606ef726b2e19" kindref="member">adc_read_channel</ref>(channel,<sp/>raw_adc);</highlight></codeline>
+<codeline lineno="461"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="462"><highlight class="normal"></highlight></codeline>
+<codeline lineno="472"><highlight class="normal"><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref><sp/><ref refid="db/d33/adc_8cpp_1a9f0fae67bdf3bebce28e5f22dbc6c324" kindref="member">adc_read_sonicator_power</ref>(uint8_t<sp/>sonicator_id,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>power_watts)<sp/>{</highlight></codeline>
+<codeline lineno="473"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(power_watts<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="474"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52addc822439768573192679d60eb730b92" kindref="member">ADC_ERROR_INVALID_CHANNEL</ref>;</highlight></codeline>
+<codeline lineno="475"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="476"><highlight class="normal"></highlight></codeline>
+<codeline lineno="477"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>raw_adc;</highlight></codeline>
+<codeline lineno="478"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52" kindref="member">adc_result_t</ref><sp/>result<sp/>=<sp/><ref refid="db/d33/adc_8cpp_1a6eff5ebe7332c348d75634c1e327533c" kindref="member">adc_read_sonicator_power_raw</ref>(sonicator_id,<sp/>&amp;raw_adc);</highlight></codeline>
+<codeline lineno="479"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>!=<sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="480"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="481"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="482"><highlight class="normal"></highlight></codeline>
+<codeline lineno="483"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>raw<sp/>ADC<sp/>to<sp/>voltage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="484"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>voltage<sp/>=<sp/>(raw_adc<sp/>*<sp/><ref refid="d7/d19/adc_8h_1af557fa4300a3539ea54f1db1773e699f" kindref="member">ADC_REFERENCE_VOLTAGE</ref>)<sp/>/<sp/><ref refid="d7/d19/adc_8h_1a8e965b09ba8c46425032e6dd576f9bce" kindref="member">ADC_MAX_VALUE</ref>;</highlight></codeline>
+<codeline lineno="485"><highlight class="normal"></highlight></codeline>
+<codeline lineno="486"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Apply<sp/>5.44mV/W<sp/>scaling</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="487"><highlight class="normal"><sp/><sp/><sp/><sp/>*power_watts<sp/>=<sp/>voltage<sp/>/<sp/><ref refid="d7/d19/adc_8h_1ac53c0e95f5cf5ba60707194645a8378f" kindref="member">ADC_POWER_SCALING_MV_PER_W</ref><sp/>*<sp/>1000.0f;<sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>mV<sp/>to<sp/>V</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="488"><highlight class="normal"></highlight></codeline>
+<codeline lineno="489"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="d7/d19/adc_8h_1a2e870a0e6f5efcac7b66ad2ede52ee52a58c6c49250945a68ba73bfe0428bc8b9" kindref="member">ADC_OK</ref>;</highlight></codeline>
+<codeline lineno="490"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/modules/hal/adc.cpp"/>
+  </compounddef>
+</doxygen>

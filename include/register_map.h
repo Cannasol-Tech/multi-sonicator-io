@@ -80,7 +80,7 @@
 #define REGISTER_MAP_H
 
 #include <stdint.h>
-#include "modules/communication/modbus_registers.h"
+#include "modbus_registers.h"
 
 #ifdef __cplusplus
 extern "C" {

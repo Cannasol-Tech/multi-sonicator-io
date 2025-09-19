@@ -46,10 +46,18 @@ modbus_register_map_t* register_manager_get_map(void);
 void register_manager_update_system_status(uint16_t status_bits, bool set);
 
 /**
- * @brief Update sonicator status
- * @param sonicator_status Pointer to sonicator status structure
+ * @brief Update per-sonicator status into the MODBUS map
+ * @param sonicator_id 0-based sonicator index (0..MODBUS_MAX_SONICATORS-1)
+ * @param power_watts Power reading (raw ADC or scaled watts depending on system usage)
+ * @param frequency_hz Frequency value (Hz÷10 per register map)
+ * @param amplitude_actual Amplitude actually applied (0-100%)
+ * @param status_flags Bitfield composed of SON_STATUS_* bits
  */
-void register_manager_update_sonicator_status(sonicator_status_t * sonicator_status);
+void register_manager_update_sonicator_status(uint8_t sonicator_id,
+                                              uint16_t power_watts,
+                                              uint16_t frequency_hz,
+                                              uint16_t amplitude_actual,
+                                              uint16_t status_flags);
 
 /**
  * @brief Get sonicator control settings

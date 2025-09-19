@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="de/d5a/struct_sonicator_pins" kind="struct" language="C++" prot="public">
+    <compoundname>SonicatorPins</compoundname>
+    <includes refid="da/de1/pins_8h" local="no">pins.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="de/d5a/struct_sonicator_pins_1aade86cc331059ac42b918d5c4601cfba" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t SonicatorPins::start_pin</definition>
+        <argsstring></argsstring>
+        <name>start_pin</name>
+        <qualifiedname>SonicatorPins::start_pin</qualifiedname>
+        <briefdescription>
+<para>Output: start/enable control line. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/pins.h" line="280" column="13" bodyfile="include/sonicator/types/pins.h" bodystart="280" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d5a/struct_sonicator_pins_1adb56b7285e08ae5590664013aea0dc5b" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t SonicatorPins::reset_pin</definition>
+        <argsstring></argsstring>
+        <name>reset_pin</name>
+        <qualifiedname>SonicatorPins::reset_pin</qualifiedname>
+        <briefdescription>
+<para>Output: reset/clear overload (pulse for SONICATOR_RESET_PULSE_MS) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/pins.h" line="281" column="13" bodyfile="include/sonicator/types/pins.h" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d5a/struct_sonicator_pins_1a9f2610ad98a5973f58cc32c714f7bfc9" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t SonicatorPins::overload_pin</definition>
+        <argsstring></argsstring>
+        <name>overload_pin</name>
+        <qualifiedname>SonicatorPins::overload_pin</qualifiedname>
+        <briefdescription>
+<para>Input: overload status from sonicator. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/pins.h" line="282" column="13" bodyfile="include/sonicator/types/pins.h" bodystart="282" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d5a/struct_sonicator_pins_1a8572c5252876bfb33ae862600951ce83" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t SonicatorPins::freq_lock_pin</definition>
+        <argsstring></argsstring>
+        <name>freq_lock_pin</name>
+        <qualifiedname>SonicatorPins::freq_lock_pin</qualifiedname>
+        <briefdescription>
+<para>Input: frequency-lock indicator. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/pins.h" line="283" column="13" bodyfile="include/sonicator/types/pins.h" bodystart="283" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d5a/struct_sonicator_pins_1ac081e0e9cc64b41ad1f5716d202c1cb3" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t SonicatorPins::operating_freq_div10</definition>
+        <argsstring></argsstring>
+        <name>operating_freq_div10</name>
+        <qualifiedname>SonicatorPins::operating_freq_div10</qualifiedname>
+        <briefdescription>
+<para>Input: frequency/10 measurement source. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/pins.h" line="284" column="13" bodyfile="include/sonicator/types/pins.h" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d5a/struct_sonicator_pins_1a3523cd65a350ce8ff85b9166bb46f73c" prot="public" static="no" mutable="no">
+        <type><ref refid="d7/d19/adc_8h_1aafc4060027875f8fe46242b0656d7814" kindref="member">adc_channel_t</ref></type>
+        <definition>adc_channel_t SonicatorPins::power_sense_channel</definition>
+        <argsstring></argsstring>
+        <name>power_sense_channel</name>
+        <qualifiedname>SonicatorPins::power_sense_channel</qualifiedname>
+        <briefdescription>
+<para>Analog input channel for power sensing. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/pins.h" line="285" column="19" bodyfile="include/sonicator/types/pins.h" bodystart="285" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Defines the hardware pins for a single sonicator channel. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>All outputs are assumed active-high. If your hardware differs, normalize polarity in the HAL layer or handle it explicitly here. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="include/sonicator/types/pins.h" line="279" column="1" bodyfile="include/sonicator/types/pins.h" bodystart="279" bodyend="286"/>
+    <listofallmembers>
+      <member refid="de/d5a/struct_sonicator_pins_1a8572c5252876bfb33ae862600951ce83" prot="public" virt="non-virtual"><scope>SonicatorPins</scope><name>freq_lock_pin</name></member>
+      <member refid="de/d5a/struct_sonicator_pins_1ac081e0e9cc64b41ad1f5716d202c1cb3" prot="public" virt="non-virtual"><scope>SonicatorPins</scope><name>operating_freq_div10</name></member>
+      <member refid="de/d5a/struct_sonicator_pins_1a9f2610ad98a5973f58cc32c714f7bfc9" prot="public" virt="non-virtual"><scope>SonicatorPins</scope><name>overload_pin</name></member>
+      <member refid="de/d5a/struct_sonicator_pins_1a3523cd65a350ce8ff85b9166bb46f73c" prot="public" virt="non-virtual"><scope>SonicatorPins</scope><name>power_sense_channel</name></member>
+      <member refid="de/d5a/struct_sonicator_pins_1adb56b7285e08ae5590664013aea0dc5b" prot="public" virt="non-virtual"><scope>SonicatorPins</scope><name>reset_pin</name></member>
+      <member refid="de/d5a/struct_sonicator_pins_1aade86cc331059ac42b918d5c4601cfba" prot="public" virt="non-virtual"><scope>SonicatorPins</scope><name>start_pin</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

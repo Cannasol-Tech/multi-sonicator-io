@@ -13,7 +13,6 @@
 
 #include "modbus.h"
 #include "modbus_registers.h"
-#include "multi_sonicator.h"
 #ifdef UNIT_TEST
 #include <iostream>
 #include <cstring>
@@ -318,12 +317,9 @@ static bool modbus_write_register_internal(uint16_t address, uint16_t value) {
                 }
                 break;
             case MODBUS_REG_TEST_START_INHIBIT: {
-                // Apply per-unit start inhibit based on bitmask b0..b3
-                uint16_t mask = value & 0x000F;
-                for (uint8_t i = 0; i < 4; ++i) {
-                    bool inhibit = ((mask >> i) & 0x1u) != 0u;
-                    multi_sonicator_set_start_inhibit(i, inhibit);
-                }
+                // Mask is already stored via control_regs assignment above.
+                // Unit-level logic may consult global_control.test_start_inhibit_mask if implemented.
+                (void)value;
                 break;
             }
         }
@@ -340,14 +336,8 @@ static bool modbus_write_register_internal(uint16_t address, uint16_t value) {
             modbus_register_map_t* register_map = REGMAP();
             uint16_t* son_regs = (uint16_t*)&register_map->sonicators[sonicator_id];
             son_regs[reg_offset] = value;
-            // Map per-unit start/stop control to multi-unit controller
-            if (reg_offset == MODBUS_REG_SON_START_STOP) {
-                if (value) {
-                    (void)multi_sonicator_request_unit_start((uint8_t)sonicator_id);
-                } else {
-                    (void)multi_sonicator_request_unit_stop((uint8_t)sonicator_id);
-                }
-            }
+            // Unit start/stop and amplitude are consumed by SonicatorInterface::update()
+            // which reads the register map and applies hardware actions.
             return true;
         }
     }

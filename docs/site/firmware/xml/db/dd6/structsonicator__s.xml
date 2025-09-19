@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="db/dd6/structsonicator__s" kind="struct" language="C++" prot="public">
+    <compoundname>sonicator_s</compoundname>
+    <includes refid="db/d3b/state_8h" local="no">state.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="db/dd6/structsonicator__s_1a56ca9894176690dfc6c484a00e08e6c9" prot="public" static="no" mutable="no">
+        <type><ref refid="db/d3b/state_8h_1afeb77d5a88e0115b4344d7f6ed578ec8" kindref="member">sonicator_status_t</ref></type>
+        <definition>sonicator_status_t sonicator_s::status</definition>
+        <argsstring></argsstring>
+        <name>status</name>
+        <qualifiedname>sonicator_s::status</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="108" column="24" bodyfile="include/sonicator/types/state.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/dd6/structsonicator__s_1aed9c3f751e97b806920411c2ebcc1dfc" prot="public" static="no" mutable="no">
+        <type><ref refid="db/d3b/state_8h_1af132973e9c955228c4f718796bec3640" kindref="member">sonicator_control_t</ref></type>
+        <definition>sonicator_control_t sonicator_s::control</definition>
+        <argsstring></argsstring>
+        <name>control</name>
+        <qualifiedname>sonicator_s::control</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="109" column="25" bodyfile="include/sonicator/types/state.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/dd6/structsonicator__s_1a05b9bc246e731665e67db0c1aca5190e" prot="public" static="no" mutable="no">
+        <type><ref refid="db/d3b/state_8h_1ae52416e960a3854a53dd3140a7a2bbbc" kindref="member">sonicator_history_t</ref></type>
+        <definition>sonicator_history_t sonicator_s::history</definition>
+        <argsstring></argsstring>
+        <name>history</name>
+        <qualifiedname>sonicator_s::history</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="110" column="25" bodyfile="include/sonicator/types/state.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/dd6/structsonicator__s_1a590593bf088e2a5c4e4954ded7d7e953" prot="public" static="no" mutable="no">
+        <type><ref refid="de/d45/errors_8h_1a361c37dbeedf89f2fe09845eab7f0a99" kindref="member">sonicator_fault_t</ref></type>
+        <definition>sonicator_fault_t sonicator_s::active_faults</definition>
+        <argsstring></argsstring>
+        <name>active_faults</name>
+        <qualifiedname>sonicator_s::active_faults</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="111" column="23" bodyfile="include/sonicator/types/state.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/dd6/structsonicator__s_1a6ad6bf687f2089f9f63a58636b7426d0" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool sonicator_s::safety_override</definition>
+        <argsstring></argsstring>
+        <name>safety_override</name>
+        <qualifiedname>sonicator_s::safety_override</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="113" column="10" bodyfile="include/sonicator/types/state.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/dd6/structsonicator__s_1aa071275060b7e1d3b6be69a6a5f68bd8" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t sonicator_s::last_start_time</definition>
+        <argsstring></argsstring>
+        <name>last_start_time</name>
+        <qualifiedname>sonicator_s::last_start_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="115" column="14" bodyfile="include/sonicator/types/state.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/dd6/structsonicator__s_1a78e03cfc2c026ec27d7ade65cc2ffea7" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t sonicator_s::last_update_time</definition>
+        <argsstring></argsstring>
+        <name>last_update_time</name>
+        <qualifiedname>sonicator_s::last_update_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="116" column="14" bodyfile="include/sonicator/types/state.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/dd6/structsonicator__s_1a9b92bfa0fdc96a736e93d7f7bb854d0a" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t sonicator_s::watchdog_last_reset</definition>
+        <argsstring></argsstring>
+        <name>watchdog_last_reset</name>
+        <qualifiedname>sonicator_s::watchdog_last_reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/sonicator/types/state.h" line="117" column="14" bodyfile="include/sonicator/types/state.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Complete sonicator control and status structure. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This structure contains the control and status of the sonicator. These are the values that are read from the sonicator by the controller. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator status structure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>control</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator control structure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>history</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sonicator historical status structure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>active_faults</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Active faults </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>safety_override</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Safety override flag </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>last_start_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Last start time </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>last_update_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Last update time </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>watchdog_last_reset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Last watchdog reset time </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>sonicator_control_s</label>
+        <link refid="d2/d72/structsonicator__control__s"/>
+      </node>
+      <node id="5">
+        <label>sonicator_history_s</label>
+        <link refid="d5/d74/structsonicator__history__s"/>
+      </node>
+      <node id="1">
+        <label>sonicator_s</label>
+        <link refid="db/dd6/structsonicator__s"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>status</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>control</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>history</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>sonicator_state_</label>
+        <link refid="da/de7/structsonicator__state__"/>
+      </node>
+      <node id="2">
+        <label>sonicator_status_s</label>
+        <link refid="db/dd3/structsonicator__status__s"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>state_machine</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/sonicator/types/state.h" line="107" column="1" bodyfile="include/sonicator/types/state.h" bodystart="107" bodyend="118"/>
+    <listofallmembers>
+      <member refid="db/dd6/structsonicator__s_1a590593bf088e2a5c4e4954ded7d7e953" prot="public" virt="non-virtual"><scope>sonicator_s</scope><name>active_faults</name></member>
+      <member refid="db/dd6/structsonicator__s_1aed9c3f751e97b806920411c2ebcc1dfc" prot="public" virt="non-virtual"><scope>sonicator_s</scope><name>control</name></member>
+      <member refid="db/dd6/structsonicator__s_1a05b9bc246e731665e67db0c1aca5190e" prot="public" virt="non-virtual"><scope>sonicator_s</scope><name>history</name></member>
+      <member refid="db/dd6/structsonicator__s_1aa071275060b7e1d3b6be69a6a5f68bd8" prot="public" virt="non-virtual"><scope>sonicator_s</scope><name>last_start_time</name></member>
+      <member refid="db/dd6/structsonicator__s_1a78e03cfc2c026ec27d7ade65cc2ffea7" prot="public" virt="non-virtual"><scope>sonicator_s</scope><name>last_update_time</name></member>
+      <member refid="db/dd6/structsonicator__s_1a6ad6bf687f2089f9f63a58636b7426d0" prot="public" virt="non-virtual"><scope>sonicator_s</scope><name>safety_override</name></member>
+      <member refid="db/dd6/structsonicator__s_1a56ca9894176690dfc6c484a00e08e6c9" prot="public" virt="non-virtual"><scope>sonicator_s</scope><name>status</name></member>
+      <member refid="db/dd6/structsonicator__s_1a9b92bfa0fdc96a736e93d7f7bb854d0a" prot="public" virt="non-virtual"><scope>sonicator_s</scope><name>watchdog_last_reset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

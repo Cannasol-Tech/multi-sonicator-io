@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d7/da4/structfrequency__stats__t" kind="struct" language="C++" prot="public">
+    <compoundname>frequency_stats_t</compoundname>
+    <includes refid="de/d01/frequency__counter_8h" local="no">frequency_counter.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d7/da4/structfrequency__stats__t_1aace5d26813d5ea00f9b75d65bc4ee385" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t frequency_stats_t::current_frequency</definition>
+        <argsstring></argsstring>
+        <name>current_frequency</name>
+        <qualifiedname>frequency_stats_t::current_frequency</qualifiedname>
+        <briefdescription>
+<para>Current frequency (Hz) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="89" column="14" bodyfile="include/frequency_counter.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/da4/structfrequency__stats__t_1a9601311cdf0d8fc51e100db4faa5bc6a" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t frequency_stats_t::total_measurements</definition>
+        <argsstring></argsstring>
+        <name>total_measurements</name>
+        <qualifiedname>frequency_stats_t::total_measurements</qualifiedname>
+        <briefdescription>
+<para>Total measurements taken. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="90" column="14" bodyfile="include/frequency_counter.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/da4/structfrequency__stats__t_1a6f20a877d3f86ed67924bb9ec3152469" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t frequency_stats_t::error_count</definition>
+        <argsstring></argsstring>
+        <name>error_count</name>
+        <qualifiedname>frequency_stats_t::error_count</qualifiedname>
+        <briefdescription>
+<para>Number of errors. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="91" column="14" bodyfile="include/frequency_counter.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/da4/structfrequency__stats__t_1a2c4f4ba91dbcbd6764d1cb99cadd18bb" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t frequency_stats_t::noise_filter_count</definition>
+        <argsstring></argsstring>
+        <name>noise_filter_count</name>
+        <qualifiedname>frequency_stats_t::noise_filter_count</qualifiedname>
+        <briefdescription>
+<para>Noise events filtered. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="92" column="14" bodyfile="include/frequency_counter.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/da4/structfrequency__stats__t_1af68d150f61d1323c0f6615a20ece5577" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t frequency_stats_t::last_edge_timestamp</definition>
+        <argsstring></argsstring>
+        <name>last_edge_timestamp</name>
+        <qualifiedname>frequency_stats_t::last_edge_timestamp</qualifiedname>
+        <briefdescription>
+<para>Last edge time (µs) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="93" column="14" bodyfile="include/frequency_counter.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/da4/structfrequency__stats__t_1ace0c84c38598242e46f2a288c5754bb0" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t frequency_stats_t::min_frequency</definition>
+        <argsstring></argsstring>
+        <name>min_frequency</name>
+        <qualifiedname>frequency_stats_t::min_frequency</qualifiedname>
+        <briefdescription>
+<para>Minimum recorded (Hz) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="94" column="14" bodyfile="include/frequency_counter.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/da4/structfrequency__stats__t_1a3a0b123f41bb2057ac14c337a18085f1" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t frequency_stats_t::max_frequency</definition>
+        <argsstring></argsstring>
+        <name>max_frequency</name>
+        <qualifiedname>frequency_stats_t::max_frequency</qualifiedname>
+        <briefdescription>
+<para>Maximum recorded (Hz) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="95" column="14" bodyfile="include/frequency_counter.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/da4/structfrequency__stats__t_1a7b6e74cf90b96f854f6f7ce7437427aa" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t frequency_stats_t::total_edges</definition>
+        <argsstring></argsstring>
+        <name>total_edges</name>
+        <qualifiedname>frequency_stats_t::total_edges</qualifiedname>
+        <briefdescription>
+<para>Total edge count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="96" column="14" bodyfile="include/frequency_counter.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/da4/structfrequency__stats__t_1aa95cf532abf4e3c76e1d0051f822f928" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool frequency_stats_t::measurement_active</definition>
+        <argsstring></argsstring>
+        <name>measurement_active</name>
+        <qualifiedname>frequency_stats_t::measurement_active</qualifiedname>
+        <briefdescription>
+<para>Currently measuring. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="97" column="14" bodyfile="include/frequency_counter.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Frequency measurement statistics. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/frequency_counter.h" line="88" column="1" bodyfile="include/frequency_counter.h" bodystart="88" bodyend="98"/>
+    <listofallmembers>
+      <member refid="d7/da4/structfrequency__stats__t_1aace5d26813d5ea00f9b75d65bc4ee385" prot="public" virt="non-virtual"><scope>frequency_stats_t</scope><name>current_frequency</name></member>
+      <member refid="d7/da4/structfrequency__stats__t_1a6f20a877d3f86ed67924bb9ec3152469" prot="public" virt="non-virtual"><scope>frequency_stats_t</scope><name>error_count</name></member>
+      <member refid="d7/da4/structfrequency__stats__t_1af68d150f61d1323c0f6615a20ece5577" prot="public" virt="non-virtual"><scope>frequency_stats_t</scope><name>last_edge_timestamp</name></member>
+      <member refid="d7/da4/structfrequency__stats__t_1a3a0b123f41bb2057ac14c337a18085f1" prot="public" virt="non-virtual"><scope>frequency_stats_t</scope><name>max_frequency</name></member>
+      <member refid="d7/da4/structfrequency__stats__t_1aa95cf532abf4e3c76e1d0051f822f928" prot="public" virt="non-virtual"><scope>frequency_stats_t</scope><name>measurement_active</name></member>
+      <member refid="d7/da4/structfrequency__stats__t_1ace0c84c38598242e46f2a288c5754bb0" prot="public" virt="non-virtual"><scope>frequency_stats_t</scope><name>min_frequency</name></member>
+      <member refid="d7/da4/structfrequency__stats__t_1a2c4f4ba91dbcbd6764d1cb99cadd18bb" prot="public" virt="non-virtual"><scope>frequency_stats_t</scope><name>noise_filter_count</name></member>
+      <member refid="d7/da4/structfrequency__stats__t_1a7b6e74cf90b96f854f6f7ce7437427aa" prot="public" virt="non-virtual"><scope>frequency_stats_t</scope><name>total_edges</name></member>
+      <member refid="d7/da4/structfrequency__stats__t_1a9601311cdf0d8fc51e100db4faa5bc6a" prot="public" virt="non-virtual"><scope>frequency_stats_t</scope><name>total_measurements</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

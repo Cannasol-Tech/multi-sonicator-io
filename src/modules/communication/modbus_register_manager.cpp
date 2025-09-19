@@ -59,13 +59,15 @@ modbus_register_map_t* register_manager_get_map(void) {
     return &register_map;
 }
 
-static inline constexpr void register_manager_update_system_status(uint16_t status_bits, bool set) {
-    if (!manager_initialized) return;
-    
+void register_manager_update_system_status(uint16_t status_bits, bool set) {
+    if (!manager_initialized) {
+        return;
+    }
+
     if (set) {
         register_map.system_status.system_status |= status_bits;
     } else {
-        register_map.system_status.system_status &= ~status_bits;
+        register_map.system_status.system_status &= static_cast<uint16_t>(~status_bits);
     }
 }
 

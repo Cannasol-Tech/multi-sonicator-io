@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="db/dc0/structmodbus__frame__t" kind="struct" language="C++" prot="public">
+    <compoundname>modbus_frame_t</compoundname>
+    <includes refid="d9/d49/types_8h" local="no">types.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="db/dc0/structmodbus__frame__t_1a206d80ab395705fff6914f00d4e115f6" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t modbus_frame_t::slave_address</definition>
+        <argsstring></argsstring>
+        <name>slave_address</name>
+        <qualifiedname>modbus_frame_t::slave_address</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="110" column="13" bodyfile="include/types.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/dc0/structmodbus__frame__t_1a93ddd225747dd6bb811ebfbac92fa9c9" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t modbus_frame_t::function_code</definition>
+        <argsstring></argsstring>
+        <name>function_code</name>
+        <qualifiedname>modbus_frame_t::function_code</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="111" column="13" bodyfile="include/types.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/dc0/structmodbus__frame__t_1a075bba6391512db9bf7455a4cdf8b367" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t modbus_frame_t::starting_address</definition>
+        <argsstring></argsstring>
+        <name>starting_address</name>
+        <qualifiedname>modbus_frame_t::starting_address</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="112" column="14" bodyfile="include/types.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/dc0/structmodbus__frame__t_1a808bbabaa08deb2d8ffe0262b7854c18" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t modbus_frame_t::quantity</definition>
+        <argsstring></argsstring>
+        <name>quantity</name>
+        <qualifiedname>modbus_frame_t::quantity</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="113" column="14" bodyfile="include/types.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/dc0/structmodbus__frame__t_1a3a4c30bcce376287e8a2059af9fcad6b" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t modbus_frame_t::byte_count</definition>
+        <argsstring></argsstring>
+        <name>byte_count</name>
+        <qualifiedname>modbus_frame_t::byte_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="114" column="13" bodyfile="include/types.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/dc0/structmodbus__frame__t_1ac005e43a4f5de3dd5d255db41d1c839e" prot="public" static="no" mutable="no">
+        <type>uint8_t *</type>
+        <definition>uint8_t* modbus_frame_t::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <qualifiedname>modbus_frame_t::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="115" column="13" bodyfile="include/types.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/dc0/structmodbus__frame__t_1a3532c75e04e4d9e07a3ca606a97dc286" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t modbus_frame_t::crc</definition>
+        <argsstring></argsstring>
+        <name>crc</name>
+        <qualifiedname>modbus_frame_t::crc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="116" column="14" bodyfile="include/types.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/dc0/structmodbus__frame__t_1a073bc157920a302e18c8fdeb86c9e2ef" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t modbus_frame_t::frame_length</definition>
+        <argsstring></argsstring>
+        <name>frame_length</name>
+        <qualifiedname>modbus_frame_t::frame_length</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/types.h" line="117" column="13" bodyfile="include/types.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>MODBUS RTU frame structure for parsing. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/types.h" line="109" column="1" bodyfile="include/types.h" bodystart="109" bodyend="118"/>
+    <listofallmembers>
+      <member refid="db/dc0/structmodbus__frame__t_1a3a4c30bcce376287e8a2059af9fcad6b" prot="public" virt="non-virtual"><scope>modbus_frame_t</scope><name>byte_count</name></member>
+      <member refid="db/dc0/structmodbus__frame__t_1a3532c75e04e4d9e07a3ca606a97dc286" prot="public" virt="non-virtual"><scope>modbus_frame_t</scope><name>crc</name></member>
+      <member refid="db/dc0/structmodbus__frame__t_1ac005e43a4f5de3dd5d255db41d1c839e" prot="public" virt="non-virtual"><scope>modbus_frame_t</scope><name>data</name></member>
+      <member refid="db/dc0/structmodbus__frame__t_1a073bc157920a302e18c8fdeb86c9e2ef" prot="public" virt="non-virtual"><scope>modbus_frame_t</scope><name>frame_length</name></member>
+      <member refid="db/dc0/structmodbus__frame__t_1a93ddd225747dd6bb811ebfbac92fa9c9" prot="public" virt="non-virtual"><scope>modbus_frame_t</scope><name>function_code</name></member>
+      <member refid="db/dc0/structmodbus__frame__t_1a808bbabaa08deb2d8ffe0262b7854c18" prot="public" virt="non-virtual"><scope>modbus_frame_t</scope><name>quantity</name></member>
+      <member refid="db/dc0/structmodbus__frame__t_1a206d80ab395705fff6914f00d4e115f6" prot="public" virt="non-virtual"><scope>modbus_frame_t</scope><name>slave_address</name></member>
+      <member refid="db/dc0/structmodbus__frame__t_1a075bba6391512db9bf7455a4cdf8b367" prot="public" virt="non-virtual"><scope>modbus_frame_t</scope><name>starting_address</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

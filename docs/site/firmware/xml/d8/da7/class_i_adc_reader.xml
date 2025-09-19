@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d8/da7/class_i_adc_reader" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>IAdcReader</compoundname>
+    <derivedcompoundref refid="d4/d3b/class_arduino_adc_reader" prot="public" virt="non-virtual">ArduinoAdcReader</derivedcompoundref>
+    <derivedcompoundref refid="d4/d34/class_hardware_adc_reader" prot="public" virt="non-virtual">HardwareAdcReader</derivedcompoundref>
+    <derivedcompoundref refid="d9/df6/class_mock_adc_reader" prot="public" virt="non-virtual">MockAdcReader</derivedcompoundref>
+    <includes refid="de/dca/hal__interfaces_8h" local="no">hal_interfaces.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d8/da7/class_i_adc_reader_1a71f5fd7f6e3ab0db37e58e8ac9a7b07a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual IAdcReader::~IAdcReader</definition>
+        <argsstring>()=default</argsstring>
+        <name>~IAdcReader</name>
+        <qualifiedname>IAdcReader::~IAdcReader</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="57" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/da7/class_i_adc_reader_1afbd8113a17827edecfd5bbd5a6292f8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IAdcReader::init</definition>
+        <argsstring>(void)=0</argsstring>
+        <name>init</name>
+        <qualifiedname>IAdcReader::init</qualifiedname>
+        <reimplementedby refid="d4/d3b/class_arduino_adc_reader_1a1e479690a9959f48b51f97a3ae15bb80">init</reimplementedby>
+        <reimplementedby refid="d4/d34/class_hardware_adc_reader_1af44d1ce6d315537bd9b748f22e8ff8b3">init</reimplementedby>
+        <reimplementedby refid="d9/df6/class_mock_adc_reader_1ac8313f8568c8185d4871b2ec7b70bdfd">init</reimplementedby>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="60" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/da7/class_i_adc_reader_1a1a387a16254804b4e4a4f0fa85c51d64" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IAdcReader::readChannel</definition>
+        <argsstring>(uint8_t channel, uint16_t *raw_value)=0</argsstring>
+        <name>readChannel</name>
+        <qualifiedname>IAdcReader::readChannel</qualifiedname>
+        <reimplementedby refid="d4/d3b/class_arduino_adc_reader_1a246989520d0e3538295184cf7c41c97e">readChannel</reimplementedby>
+        <reimplementedby refid="d4/d34/class_hardware_adc_reader_1a1cb1545c592b1135cf4db58680359912">readChannel</reimplementedby>
+        <reimplementedby refid="d9/df6/class_mock_adc_reader_1a1961232fd463fe10dd2c6a5f5b3f54a9">readChannel</reimplementedby>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>raw_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="61" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/da7/class_i_adc_reader_1afd137500c9b5fca06d098e4c9af017e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IAdcReader::startConversion</definition>
+        <argsstring>(uint8_t channel)=0</argsstring>
+        <name>startConversion</name>
+        <qualifiedname>IAdcReader::startConversion</qualifiedname>
+        <reimplementedby refid="d4/d3b/class_arduino_adc_reader_1ab6efe5cb8539b0765ecaaa234e577940">startConversion</reimplementedby>
+        <reimplementedby refid="d4/d34/class_hardware_adc_reader_1ab78ca4d71190ccd48e2a92ec649567a1">startConversion</reimplementedby>
+        <reimplementedby refid="d9/df6/class_mock_adc_reader_1aaf5efb9b714250d1efb79481357a766b">startConversion</reimplementedby>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="62" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/da7/class_i_adc_reader_1a66627b5c891a7a89fd0aa2f8692d0a8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IAdcReader::isConversionComplete</definition>
+        <argsstring>(void)=0</argsstring>
+        <name>isConversionComplete</name>
+        <qualifiedname>IAdcReader::isConversionComplete</qualifiedname>
+        <reimplementedby refid="d4/d3b/class_arduino_adc_reader_1a76792c387a8745ac4d01e272117fdfa2">isConversionComplete</reimplementedby>
+        <reimplementedby refid="d4/d34/class_hardware_adc_reader_1a7c9a358aed2394b13ea223ffe2c9668c">isConversionComplete</reimplementedby>
+        <reimplementedby refid="d9/df6/class_mock_adc_reader_1a2614a9e00b57e156019965f24d5d87fe">isConversionComplete</reimplementedby>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="63" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/da7/class_i_adc_reader_1a34acb022909bce00c2489c35cf9dc256" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>float</type>
+        <definition>virtual float IAdcReader::rawToVoltage</definition>
+        <argsstring>(uint16_t raw_value)=0</argsstring>
+        <name>rawToVoltage</name>
+        <qualifiedname>IAdcReader::rawToVoltage</qualifiedname>
+        <reimplementedby refid="d4/d3b/class_arduino_adc_reader_1aa37bcc4b819f4f0e1a3c91a87ae80793">rawToVoltage</reimplementedby>
+        <reimplementedby refid="d4/d34/class_hardware_adc_reader_1a1c3f2acd5e7efdfaab51927c331cc49d">rawToVoltage</reimplementedby>
+        <reimplementedby refid="d9/df6/class_mock_adc_reader_1a8ab301cc8d1814c55e4a2b880dcf1538">rawToVoltage</reimplementedby>
+        <param>
+          <type>uint16_t</type>
+          <declname>raw_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="64" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/da7/class_i_adc_reader_1a2c20086a3a0973d31c5486ea740f9214" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IAdcReader::readSonicatorPower</definition>
+        <argsstring>(uint8_t sonicator_id, float *power_watts)=0</argsstring>
+        <name>readSonicatorPower</name>
+        <qualifiedname>IAdcReader::readSonicatorPower</qualifiedname>
+        <reimplementedby refid="d4/d3b/class_arduino_adc_reader_1acd60f1c49fee0fc789dff76bfb630f65">readSonicatorPower</reimplementedby>
+        <reimplementedby refid="d4/d34/class_hardware_adc_reader_1a6c1dc3416637b72526a57bea68f48e4c">readSonicatorPower</reimplementedby>
+        <reimplementedby refid="d9/df6/class_mock_adc_reader_1acf29260f047142fb06aae2ccdabc8e61">readSonicatorPower</reimplementedby>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>power_watts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="67" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="d8/da7/class_i_adc_reader_1a52f51557ade2cb566d3aad3ea9b6fa30" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool IAdcReader::readFrequency</definition>
+        <argsstring>(float *frequency_hz)=0</argsstring>
+        <name>readFrequency</name>
+        <qualifiedname>IAdcReader::readFrequency</qualifiedname>
+        <reimplementedby refid="d4/d3b/class_arduino_adc_reader_1afbb4414a98aff34d83544079ced0a84c">readFrequency</reimplementedby>
+        <reimplementedby refid="d4/d34/class_hardware_adc_reader_1a7ac461c837f4966bc4adba5c41459ac2">readFrequency</reimplementedby>
+        <reimplementedby refid="d9/df6/class_mock_adc_reader_1a39f47c8e89f4e9a84700f37f98003e1b">readFrequency</reimplementedby>
+        <param>
+          <type>float *</type>
+          <declname>frequency_hz</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_interfaces.h" line="68" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ADC abstraction interface for testability. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ArduinoAdcReader</label>
+        <link refid="d4/d3b/class_arduino_adc_reader"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HardwareAdcReader</label>
+        <link refid="d4/d34/class_hardware_adc_reader"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>IAdcReader</label>
+        <link refid="d8/da7/class_i_adc_reader"/>
+      </node>
+      <node id="4">
+        <label>MockAdcReader</label>
+        <link refid="d9/df6/class_mock_adc_reader"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/modules/hal/hal_interfaces.h" line="55" column="1" bodyfile="src/modules/hal/hal_interfaces.h" bodystart="55" bodyend="69"/>
+    <listofallmembers>
+      <member refid="d8/da7/class_i_adc_reader_1afbd8113a17827edecfd5bbd5a6292f8d" prot="public" virt="pure-virtual"><scope>IAdcReader</scope><name>init</name></member>
+      <member refid="d8/da7/class_i_adc_reader_1a66627b5c891a7a89fd0aa2f8692d0a8a" prot="public" virt="pure-virtual"><scope>IAdcReader</scope><name>isConversionComplete</name></member>
+      <member refid="d8/da7/class_i_adc_reader_1a34acb022909bce00c2489c35cf9dc256" prot="public" virt="pure-virtual"><scope>IAdcReader</scope><name>rawToVoltage</name></member>
+      <member refid="d8/da7/class_i_adc_reader_1a1a387a16254804b4e4a4f0fa85c51d64" prot="public" virt="pure-virtual"><scope>IAdcReader</scope><name>readChannel</name></member>
+      <member refid="d8/da7/class_i_adc_reader_1a52f51557ade2cb566d3aad3ea9b6fa30" prot="public" virt="pure-virtual"><scope>IAdcReader</scope><name>readFrequency</name></member>
+      <member refid="d8/da7/class_i_adc_reader_1a2c20086a3a0973d31c5486ea740f9214" prot="public" virt="pure-virtual"><scope>IAdcReader</scope><name>readSonicatorPower</name></member>
+      <member refid="d8/da7/class_i_adc_reader_1afd137500c9b5fca06d098e4c9af017e9" prot="public" virt="pure-virtual"><scope>IAdcReader</scope><name>startConversion</name></member>
+      <member refid="d8/da7/class_i_adc_reader_1a71f5fd7f6e3ab0db37e58e8ac9a7b07a" prot="public" virt="virtual"><scope>IAdcReader</scope><name>~IAdcReader</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

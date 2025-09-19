@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d1/dcb/group___h_a_l___g_p_i_o" kind="group">
+    <compoundname>HAL_GPIO</compoundname>
+    <title>GPIO HAL (ATmega32A)</title>
+    <briefdescription>
+<para>Implementation notes and design rationale for the GPIO HAL. </para>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="d1/dcb/group___h_a_l___g_p_i_o_1hal_gpio_overview">
+<title>Overview</title><para><itemizedlist>
+<listitem><para>Provides safe, hardware‑aware digital I/O for sonicator interfaces and system LED.</para>
+</listitem><listitem><para>Mirrors canonical pin roles from config/hardware-config.yaml via <ref refid="d4/d7e/system__config_8h" kindref="compound">include/system_config.h</ref>.</para>
+</listitem><listitem><para>Initializes inputs with pull‑ups for noise immunity; initializes outputs LOW for safety.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="d1/dcb/group___h_a_l___g_p_i_o_1hal_gpio_safety">
+<title>Safety Model</title><para><itemizedlist>
+<listitem><para>On init, all control outputs (START/RESET) are driven LOW to ensure sonicators remain off.</para>
+</listitem><listitem><para>Overload and frequency‑lock inputs are configured as INPUT_PULLUP to reject floating states.</para>
+</listitem><listitem><para>Status LED defaults to OFF; higher layers define patterns (see Operating State policy).</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="d1/dcb/group___h_a_l___g_p_i_o_1hal_gpio_open_drain">
+<title>Open‑Drain Simulation</title><para><itemizedlist>
+<listitem><para>ATmega32A lacks native open‑drain mode; where open‑collector semantics are desired (ULN2003A drivers), outputs are driven LOW for active and otherwise left HIGH.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="d1/dcb/group___h_a_l___g_p_i_o_1hal_gpio_timing">
+<title>Timing &amp; Concurrency</title><para><itemizedlist>
+<listitem><para>All functions are non‑blocking and suitable for cooperative schedulers.</para>
+</listitem><listitem><para>Reset is pulsed using a short delay (50 ms one‑shot) compliant with CT2000 requirements.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="d1/dcb/group___h_a_l___g_p_i_o_1hal_gpio_errors">
+<title>Error Handling</title><para><itemizedlist>
+<listitem><para>Returns GPIO_OK on success; otherwise GPIO_ERROR_* codes mapping invalid pins/modes/state.</para>
+</listitem><listitem><para>Higher layers should map to <ref refid="d8/d4b/hal_8h_1ace8e76cd091b757cacd51778764dd9a6" kindref="member">hal_result_t</ref> for unified error reporting.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="d1/dcb/group___h_a_l___g_p_i_o_1hal_gpio_related">
+<title>Related</title><para><itemizedlist>
+<listitem><para><simplesect kind="see"><para><ref refid="d6/d7c/gpio_8h" kindref="compound">gpio.h</ref> Public C API and enums</para>
+</simplesect>
+</para>
+</listitem><listitem><para><simplesect kind="see"><para><ref refid="d4/d7e/system__config_8h" kindref="compound">system_config.h</ref> Pin mapping mirror of hardware-config.yaml (SOLE SOURCE OF TRUTH) </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

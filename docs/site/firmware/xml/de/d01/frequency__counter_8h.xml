@@ -1,0 +1,832 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="de/d01/frequency__counter_8h" kind="file" language="C++">
+    <compoundname>frequency_counter.h</compoundname>
+    <includes local="no">Arduino.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includedby refid="df/d0a/main_8cpp" local="yes">src/main.cpp</includedby>
+    <includedby refid="d4/d18/frequency__counter_8cpp" local="yes">src/modules/hal/frequency_counter.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/frequency_counter.h</label>
+        <link refid="de/d01/frequency__counter_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+      <node id="4">
+        <label>stdbool.h</label>
+      </node>
+      <node id="3">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>include/frequency_counter.h</label>
+        <link refid="de/d01/frequency__counter_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/main.cpp</label>
+        <link refid="df/d0a/main_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/modules/hal/frequency_counter.cpp</label>
+        <link refid="d4/d18/frequency__counter_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d5/d29/structfrequency__counter__t" prot="public">frequency_counter_t</innerclass>
+    <innerclass refid="d7/da4/structfrequency__stats__t" prot="public">frequency_stats_t</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" prot="public" static="no">
+        <name>FREQ_CHANNELS</name>
+        <initializer>4</initializer>
+        <briefdescription>
+<para>Number of frequency input channels. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="35" column="9" bodyfile="include/frequency_counter.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="de/d01/frequency__counter_8h_1ab614cd2d53c453a37a253b15e49239be" prot="public" static="no">
+        <name>FREQ_SAMPLE_WINDOW_MS</name>
+        <initializer>1000</initializer>
+        <briefdescription>
+<para>Measurement window in milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="38" column="9" bodyfile="include/frequency_counter.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="de/d01/frequency__counter_8h_1a4c68a1a1970f0a1b56a0049a439506e7" prot="public" static="no">
+        <name>FREQ_MIN_EDGES</name>
+        <initializer>10</initializer>
+        <briefdescription>
+<para>Minimum edges required for valid measurement. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="41" column="9" bodyfile="include/frequency_counter.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="de/d01/frequency__counter_8h_1ad15fc6e93cef4486f69e9b32ec222e9c" prot="public" static="no">
+        <name>FREQ_MAX_EXPECTED</name>
+        <initializer>2500</initializer>
+        <briefdescription>
+<para>Maximum expected input frequency (Hz) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="44" column="9" bodyfile="include/frequency_counter.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="de/d01/frequency__counter_8h_1a67f44a4ec4d5d5640d6b66b96e557a18" prot="public" static="no">
+        <name>FREQ_MULTIPLIER</name>
+        <initializer>10</initializer>
+        <briefdescription>
+<para>Hardware frequency divider (CT2000 outputs freq ÷ 10) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="47" column="9" bodyfile="include/frequency_counter.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="de/d01/frequency__counter_8h_1aa901e4895ef2a8c808e4a7e95d33e88a" prot="public" static="no">
+        <name>FREQ_NOISE_THRESHOLD_US</name>
+        <initializer>50</initializer>
+        <briefdescription>
+<para>Minimum time between edges to filter noise (microseconds) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="50" column="9" bodyfile="include/frequency_counter.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="de/d01/frequency__counter_8h_1a93437b133cb8ca993413998f55c1ef0f" prot="public" static="no">
+        <name>FREQ_INPUT_MIN_HZ</name>
+        <initializer>1800</initializer>
+        <briefdescription>
+<para>Expected frequency range (input, before multiplier) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="53" column="9" bodyfile="include/frequency_counter.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="de/d01/frequency__counter_8h_1ac8e9f975d0c29745f120ccf7cbb58efa" prot="public" static="no">
+        <name>FREQ_INPUT_MAX_HZ</name>
+        <initializer>2200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="54" column="9" bodyfile="include/frequency_counter.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="de/d01/frequency__counter_8h_1adfcb70e034efc90d1d3c8cb1d71367ea" prot="public" static="no">
+        <name>FREQ_OUTPUT_MIN_HZ</name>
+        <initializer>18000</initializer>
+        <briefdescription>
+<para>Expected frequency range (output, after multiplier) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="57" column="9" bodyfile="include/frequency_counter.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="de/d01/frequency__counter_8h_1a4d2701f727c3ada07e38c1e5dd967ab8" prot="public" static="no">
+        <name>FREQ_OUTPUT_MAX_HZ</name>
+        <initializer>22000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="58" column="9" bodyfile="include/frequency_counter.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560" prot="public" static="no" strong="no">
+        <type></type>
+        <name>frequency_error_t</name>
+        <enumvalue id="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a17415ef26f093257875d10a50893b48d" prot="public">
+          <name>FREQ_ERROR_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>No error. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a68b9ff2ab9abe0c28b7f43659d11d462" prot="public">
+          <name>FREQ_ERROR_NO_SIGNAL</name>
+          <briefdescription>
+<para>No edges detected. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a536fc0611d10d36c7bc45b6b4af68a51" prot="public">
+          <name>FREQ_ERROR_OUT_OF_RANGE</name>
+          <briefdescription>
+<para>Frequency outside expected range. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a946cc4e91ecd33b895fd8a6d4d6f6e45" prot="public">
+          <name>FREQ_ERROR_NOISE</name>
+          <briefdescription>
+<para>Too much noise detected. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560ad8a1b298de16aa90c9ced12e7795c369" prot="public">
+          <name>FREQ_ERROR_HARDWARE</name>
+          <briefdescription>
+<para>Hardware/ISR not functioning. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a7815b630bbfcafaedab7caae1cd9883c" prot="public">
+          <name>FREQ_ERROR_INVALID_CHANNEL</name>
+          <briefdescription>
+<para>Invalid channel ID specified. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Frequency measurement error codes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="103" column="1" bodyfile="include/frequency_counter.h" bodystart="103" bodyend="110"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="de/d01/frequency__counter_8h_1a906d15795a7af4def1cb52871b5a603c" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* frequency_change_callback_t) (uint8_t channel, uint16_t old_freq, uint16_t new_freq)</definition>
+        <argsstring>)(uint8_t channel, uint16_t old_freq, uint16_t new_freq)</argsstring>
+        <name>frequency_change_callback_t</name>
+        <briefdescription>
+<para>Set callback for frequency change notifications. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID (0-3) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Function to call when frequency changes significantly </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>threshold</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Minimum frequency change to trigger callback (Hz) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if callback registered successfully </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="235" column="9" bodyfile="include/frequency_counter.h" bodystart="235" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="de/d01/frequency__counter_8h_1a853f9ac2214946dd2f65fb8dff4d95be" prot="public" static="no" extern="yes" mutable="no">
+        <type>volatile <ref refid="d5/d29/structfrequency__counter__t" kindref="compound">frequency_counter_t</ref></type>
+        <definition>volatile frequency_counter_t freq_counters[FREQ_CHANNELS]</definition>
+        <argsstring>[FREQ_CHANNELS]</argsstring>
+        <name>freq_counters</name>
+        <briefdescription>
+<para>Frequency counter states for all 4 channels. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="117" column="37" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="23" bodyend="-1" declfile="include/frequency_counter.h" declline="117" declcolumn="37"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="de/d01/frequency__counter_8h_1a32db71b05f686868ba23198a67d4c3cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool frequency_counter_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>frequency_counter_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialize frequency counting system. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialization successful</para>
+</simplesect>
+<itemizedlist>
+<listitem><para>Configures PB0-PB3 as inputs with pull-ups</para>
+</listitem><listitem><para>Sets up Pin Change Interrupt for Port B</para>
+</listitem><listitem><para>Initializes all frequency counter structures</para>
+</listitem><listitem><para>Enables global interrupts </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="133" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="99" bodyend="144" declfile="include/frequency_counter.h" declline="133" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d01/frequency__counter_8h_1a04851abee44a28fb5f885b7418f915d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t frequency_calculate</definition>
+        <argsstring>(uint8_t channel)</argsstring>
+        <name>frequency_calculate</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+<para>Calculate frequency for specified channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID (0-3 for sonicators 1-4) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Calculated frequency in Hz, 0 if invalid/no signal</para>
+</simplesect>
+<itemizedlist>
+<listitem><para>Returns immediately if no new measurement ready</para>
+</listitem><listitem><para>Calculates frequency from edge count and time window</para>
+</listitem><listitem><para>Applies hardware multiplier (×10) to get actual frequency</para>
+</listitem><listitem><para>Validates result is within expected range</para>
+</listitem><listitem><para>Updates statistics and error counters </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="147" column="10" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="146" bodyend="206" declfile="include/frequency_counter.h" declline="147" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d01/frequency__counter_8h_1a6275d3d673d15714777f3f9de2b6d638" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t frequency_get_current</definition>
+        <argsstring>(uint8_t channel)</argsstring>
+        <name>frequency_get_current</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+<para>Get current frequency without triggering new calculation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID (0-3) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Last calculated frequency in Hz </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="154" column="10" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="208" bodyend="214" declfile="include/frequency_counter.h" declline="154" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d01/frequency__counter_8h_1a78324a942c9ab1188d1025eef62bdf30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool frequency_get_stats</definition>
+        <argsstring>(uint8_t channel, frequency_stats_t *stats)</argsstring>
+        <name>frequency_get_stats</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type><ref refid="d7/da4/structfrequency__stats__t" kindref="compound">frequency_stats_t</ref> *</type>
+          <declname>stats</declname>
+        </param>
+        <briefdescription>
+<para>Get detailed frequency measurement statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID (0-3) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>stats</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to output statistics structure </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if statistics retrieved successfully </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="162" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="216" bodyend="235" declfile="include/frequency_counter.h" declline="162" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d01/frequency__counter_8h_1a87adb92382104661d9c6f069d8060a56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560" kindref="member">frequency_error_t</ref></type>
+        <definition>frequency_error_t frequency_get_error</definition>
+        <argsstring>(uint8_t channel)</argsstring>
+        <name>frequency_get_error</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+<para>Check for frequency measurement errors. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID (0-3) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code (FREQ_ERROR_NONE if no errors) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="169" column="19" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="237" bodyend="262" declfile="include/frequency_counter.h" declline="169" declcolumn="19"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d01/frequency__counter_8h_1ad403235b359f53e21865ae2f572f9957" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool frequency_reset_stats</definition>
+        <argsstring>(uint8_t channel)</argsstring>
+        <name>frequency_reset_stats</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+<para>Reset statistics and counters for specified channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID (0-3), or 0xFF for all channels </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if reset successful </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="176" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="264" bodyend="290" declfile="include/frequency_counter.h" declline="176" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d01/frequency__counter_8h_1a6c72007a92de1bcc5635aa102d93c549" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool frequency_isr_health_check</definition>
+        <argsstring>(void)</argsstring>
+        <name>frequency_isr_health_check</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Check if ISR is functioning correctly. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if ISR has executed recently</para>
+</simplesect>
+Verifies that the Pin Change Interrupt is working by checking if any edges have been detected recently across all channels. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="186" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="292" bodyend="308" declfile="include/frequency_counter.h" declline="186" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d01/frequency__counter_8h_1a2fe922c0ba91e88d90cb10d9751ed8ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool frequency_get_isr_stats</definition>
+        <argsstring>(uint32_t *total_interrupts, uint32_t *last_isr_time)</argsstring>
+        <name>frequency_get_isr_stats</name>
+        <param>
+          <type>uint32_t *</type>
+          <declname>total_interrupts</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>last_isr_time</declname>
+        </param>
+        <briefdescription>
+<para>Get ISR execution statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>total_interrupts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output: total ISR executions </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>last_isr_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output: timestamp of last ISR (µs) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if statistics available </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="194" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="310" bodyend="319" declfile="include/frequency_counter.h" declline="194" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d01/frequency__counter_8h_1a1770280d6beb9fd8e76c824f750074a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool frequency_set_window</definition>
+        <argsstring>(uint8_t channel, uint16_t window_ms)</argsstring>
+        <name>frequency_set_window</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>window_ms</declname>
+        </param>
+        <briefdescription>
+<para>Set measurement window for specified channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID (0-3) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>window_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Measurement window in milliseconds (100-5000) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if parameter set successfully </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="202" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="321" bodyend="328" declfile="include/frequency_counter.h" declline="202" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d01/frequency__counter_8h_1a3d6110339a7085a38f9fe1f0083b1dab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool frequency_set_noise_filter</definition>
+        <argsstring>(uint8_t channel, bool enable)</argsstring>
+        <name>frequency_set_noise_filter</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>enable</declname>
+        </param>
+        <briefdescription>
+<para>Enable or disable noise filtering. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID (0-3), or 0xFF for all channels </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true to enable noise filtering </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if setting applied successfully </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="210" column="6" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="330" bodyend="345" declfile="include/frequency_counter.h" declline="210" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d01/frequency__counter_8h_1a36519859f92bb1168f619d453d91e920" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t frequency_get_instantaneous</definition>
+        <argsstring>(uint8_t channel)</argsstring>
+        <name>frequency_get_instantaneous</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+<para>Get instantaneous frequency (last period measurement) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID (0-3) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Frequency based on last two edges, 0 if unavailable</para>
+</simplesect>
+Provides faster frequency updates by measuring time between consecutive edges rather than counting over full window. Less accurate but more responsive to frequency changes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="226" column="10" bodyfile="src/modules/hal/frequency_counter.cpp" bodystart="351" bodyend="375" declfile="include/frequency_counter.h" declline="226" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d01/frequency__counter_8h_1a31968d97b5454f1c0aabe5f7df4093d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool frequency_set_change_callback</definition>
+        <argsstring>(uint8_t channel, frequency_change_callback_t callback, uint16_t threshold)</argsstring>
+        <name>frequency_set_change_callback</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type><ref refid="de/d01/frequency__counter_8h_1a906d15795a7af4def1cb52871b5a603c" kindref="member">frequency_change_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>threshold</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/frequency_counter.h" line="236" column="6" declfile="include/frequency_counter.h" declline="236" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Hardware frequency counter using Pin Change Interrupts. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Cannasol Technologies <linebreak/>
+ </para>
+</simplesect>
+<simplesect kind="date"><para>2025-01-10 </para>
+</simplesect>
+<simplesect kind="version"><para>1.0.0</para>
+</simplesect>
+Provides real-time frequency measurement for FREQ_DIV10_# pins (PB0-PB3) using Pin Change Interrupts. Measures CT2000 sonicator frequencies via edge counting with hardware precision and minimal CPU overhead.</para>
+<para>Hardware Configuration:<itemizedlist>
+<listitem><para>FREQ_DIV10_1: PB3 (pin 4) - Sonicator 1</para>
+</listitem><listitem><para>FREQ_DIV10_2: PB2 (pin 3) - Sonicator 2 <linebreak/>
+</para>
+</listitem><listitem><para>FREQ_DIV10_3: PB1 (pin 2) - Sonicator 3</para>
+</listitem><listitem><para>FREQ_DIV10_4: PB0 (pin 1) - Sonicator 4</para>
+</listitem></itemizedlist>
+</para>
+<para>Expected Input: 1900-2100 Hz (CT2000 frequency ÷ 10) Calculated Output: 19000-21000 Hz (actual sonicator frequency) </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>FREQUENCY_COUNTER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQUENCY_COUNTER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Arduino.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CONFIGURATION<sp/>CONSTANTS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQ_CHANNELS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="de/d01/frequency__counter_8h_1ab614cd2d53c453a37a253b15e49239be" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQ_SAMPLE_WINDOW_MS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="de/d01/frequency__counter_8h_1a4c68a1a1970f0a1b56a0049a439506e7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQ_MIN_EDGES<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="de/d01/frequency__counter_8h_1ad15fc6e93cef4486f69e9b32ec222e9c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQ_MAX_EXPECTED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2500</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="de/d01/frequency__counter_8h_1a67f44a4ec4d5d5640d6b66b96e557a18" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQ_MULTIPLIER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="de/d01/frequency__counter_8h_1aa901e4895ef2a8c808e4a7e95d33e88a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQ_NOISE_THRESHOLD_US<sp/><sp/><sp/><sp/><sp/><sp/><sp/>50</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="de/d01/frequency__counter_8h_1a93437b133cb8ca993413998f55c1ef0f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQ_INPUT_MIN_HZ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1800</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="de/d01/frequency__counter_8h_1ac8e9f975d0c29745f120ccf7cbb58efa" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQ_INPUT_MAX_HZ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2200</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="de/d01/frequency__counter_8h_1adfcb70e034efc90d1d3c8cb1d71367ea" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQ_OUTPUT_MIN_HZ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>18000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="de/d01/frequency__counter_8h_1a4d2701f727c3ada07e38c1e5dd967ab8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FREQ_OUTPUT_MAX_HZ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>22000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>DATA<sp/>STRUCTURES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="d5/d29/structfrequency__counter__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68" refid="d5/d29/structfrequency__counter__t_1a4a590aeff3ba50ea731a442e3a685ec7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="d5/d29/structfrequency__counter__t_1a4a590aeff3ba50ea731a442e3a685ec7" kindref="member">edge_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="69" refid="d5/d29/structfrequency__counter__t_1afad7a71a2d4032e5a9720d56f83f92fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="d5/d29/structfrequency__counter__t_1afad7a71a2d4032e5a9720d56f83f92fd" kindref="member">last_edge_timestamp</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="70" refid="d5/d29/structfrequency__counter__t_1a1b37db7c3ff2e1db2017fb87f86bba22" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="d5/d29/structfrequency__counter__t_1a1b37db7c3ff2e1db2017fb87f86bba22" kindref="member">window_start_time</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="71" refid="d5/d29/structfrequency__counter__t_1a884e59e4d8c68c1dd60083afd13fdbc1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d5/d29/structfrequency__counter__t_1a884e59e4d8c68c1dd60083afd13fdbc1" kindref="member">measurement_ready</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="73" refid="d5/d29/structfrequency__counter__t_1a8e24a856728835fd91511845132ae866" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/d29/structfrequency__counter__t_1a8e24a856728835fd91511845132ae866" kindref="member">calculated_frequency</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="74" refid="d5/d29/structfrequency__counter__t_1a040de51c9d1083ef321de5875a4fb1e1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/d29/structfrequency__counter__t_1a040de51c9d1083ef321de5875a4fb1e1" kindref="member">total_measurements</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="75" refid="d5/d29/structfrequency__counter__t_1ade80daab29211faabc706d7be47ae8f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/d29/structfrequency__counter__t_1ade80daab29211faabc706d7be47ae8f2" kindref="member">error_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="76" refid="d5/d29/structfrequency__counter__t_1ac5eb0f8b55423751597a91826158dc26" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/d29/structfrequency__counter__t_1ac5eb0f8b55423751597a91826158dc26" kindref="member">noise_filter_count</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Advanced<sp/>statistics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="d5/d29/structfrequency__counter__t_1acc7abfe168e61a0c97013433c4ba0543" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/d29/structfrequency__counter__t_1acc7abfe168e61a0c97013433c4ba0543" kindref="member">min_frequency</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="80" refid="d5/d29/structfrequency__counter__t_1a6af755d960a12acb09af33877efcd84f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/d29/structfrequency__counter__t_1a6af755d960a12acb09af33877efcd84f" kindref="member">max_frequency</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="81" refid="d5/d29/structfrequency__counter__t_1a40b17164d0dc2868d05fc54f28f9a6a4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/d29/structfrequency__counter__t_1a40b17164d0dc2868d05fc54f28f9a6a4" kindref="member">total_edges</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="82" refid="d5/d29/structfrequency__counter__t_1ae803968ce093443c8a59649c40f5d5c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/d29/structfrequency__counter__t_1ae803968ce093443c8a59649c40f5d5c6" kindref="member">last_calculation_time</ref>;<sp/></highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}<sp/><ref refid="d5/d29/structfrequency__counter__t" kindref="compound">frequency_counter_t</ref>;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="d7/da4/structfrequency__stats__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="89" refid="d7/da4/structfrequency__stats__t_1aace5d26813d5ea00f9b75d65bc4ee385" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="d7/da4/structfrequency__stats__t_1aace5d26813d5ea00f9b75d65bc4ee385" kindref="member">current_frequency</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="90" refid="d7/da4/structfrequency__stats__t_1a9601311cdf0d8fc51e100db4faa5bc6a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d7/da4/structfrequency__stats__t_1a9601311cdf0d8fc51e100db4faa5bc6a" kindref="member">total_measurements</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="91" refid="d7/da4/structfrequency__stats__t_1a6f20a877d3f86ed67924bb9ec3152469" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d7/da4/structfrequency__stats__t_1a6f20a877d3f86ed67924bb9ec3152469" kindref="member">error_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="92" refid="d7/da4/structfrequency__stats__t_1a2c4f4ba91dbcbd6764d1cb99cadd18bb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d7/da4/structfrequency__stats__t_1a2c4f4ba91dbcbd6764d1cb99cadd18bb" kindref="member">noise_filter_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="93" refid="d7/da4/structfrequency__stats__t_1af68d150f61d1323c0f6615a20ece5577" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d7/da4/structfrequency__stats__t_1af68d150f61d1323c0f6615a20ece5577" kindref="member">last_edge_timestamp</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="94" refid="d7/da4/structfrequency__stats__t_1ace0c84c38598242e46f2a288c5754bb0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="d7/da4/structfrequency__stats__t_1ace0c84c38598242e46f2a288c5754bb0" kindref="member">min_frequency</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="95" refid="d7/da4/structfrequency__stats__t_1a3a0b123f41bb2057ac14c337a18085f1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="d7/da4/structfrequency__stats__t_1a3a0b123f41bb2057ac14c337a18085f1" kindref="member">max_frequency</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="96" refid="d7/da4/structfrequency__stats__t_1a7b6e74cf90b96f854f6f7ce7437427aa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d7/da4/structfrequency__stats__t_1a7b6e74cf90b96f854f6f7ce7437427aa" kindref="member">total_edges</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="97" refid="d7/da4/structfrequency__stats__t_1aa95cf532abf4e3c76e1d0051f822f928" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="d7/da4/structfrequency__stats__t_1aa95cf532abf4e3c76e1d0051f822f928" kindref="member">measurement_active</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}<sp/><ref refid="d7/da4/structfrequency__stats__t" kindref="compound">frequency_stats_t</ref>;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="104" refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a17415ef26f093257875d10a50893b48d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a17415ef26f093257875d10a50893b48d" kindref="member">FREQ_ERROR_NONE</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="105" refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a68b9ff2ab9abe0c28b7f43659d11d462" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a68b9ff2ab9abe0c28b7f43659d11d462" kindref="member">FREQ_ERROR_NO_SIGNAL</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="106" refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a536fc0611d10d36c7bc45b6b4af68a51" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a536fc0611d10d36c7bc45b6b4af68a51" kindref="member">FREQ_ERROR_OUT_OF_RANGE</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="107" refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a946cc4e91ecd33b895fd8a6d4d6f6e45" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a946cc4e91ecd33b895fd8a6d4d6f6e45" kindref="member">FREQ_ERROR_NOISE</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="108" refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560ad8a1b298de16aa90c9ced12e7795c369" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560ad8a1b298de16aa90c9ced12e7795c369" kindref="member">FREQ_ERROR_HARDWARE</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="109" refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a7815b630bbfcafaedab7caae1cd9883c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560a7815b630bbfcafaedab7caae1cd9883c" kindref="member">FREQ_ERROR_INVALID_CHANNEL</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}<sp/><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560" kindref="member">frequency_error_t</ref>;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="comment">//<sp/>GLOBAL<sp/>VARIABLES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/><ref refid="d5/d29/structfrequency__counter__t" kindref="compound">frequency_counter_t</ref><sp/><ref refid="d4/d18/frequency__counter_8cpp_1a853f9ac2214946dd2f65fb8dff4d95be" kindref="member">freq_counters</ref>[<ref refid="de/d01/frequency__counter_8h_1aa55dd8ea7d026ed6d7d6502c3c7c319d" kindref="member">FREQ_CHANNELS</ref>];</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PUBLIC<sp/>FUNCTION<sp/>DECLARATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d01/frequency__counter_8h_1a32db71b05f686868ba23198a67d4c3cd" kindref="member">frequency_counter_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal">uint16_t<sp/><ref refid="de/d01/frequency__counter_8h_1a04851abee44a28fb5f885b7418f915d4" kindref="member">frequency_calculate</ref>(uint8_t<sp/>channel);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal">uint16_t<sp/><ref refid="de/d01/frequency__counter_8h_1a6275d3d673d15714777f3f9de2b6d638" kindref="member">frequency_get_current</ref>(uint8_t<sp/>channel);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d01/frequency__counter_8h_1a78324a942c9ab1188d1025eef62bdf30" kindref="member">frequency_get_stats</ref>(uint8_t<sp/>channel,<sp/><ref refid="d7/da4/structfrequency__stats__t" kindref="compound">frequency_stats_t</ref>*<sp/>stats);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><ref refid="de/d01/frequency__counter_8h_1a0beee35bce0f7922746b76e88e682560" kindref="member">frequency_error_t</ref><sp/><ref refid="de/d01/frequency__counter_8h_1a87adb92382104661d9c6f069d8060a56" kindref="member">frequency_get_error</ref>(uint8_t<sp/>channel);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d01/frequency__counter_8h_1ad403235b359f53e21865ae2f572f9957" kindref="member">frequency_reset_stats</ref>(uint8_t<sp/>channel);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d01/frequency__counter_8h_1a6c72007a92de1bcc5635aa102d93c549" kindref="member">frequency_isr_health_check</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d01/frequency__counter_8h_1a2fe922c0ba91e88d90cb10d9751ed8ce" kindref="member">frequency_get_isr_stats</ref>(uint32_t*<sp/>total_interrupts,<sp/>uint32_t*<sp/>last_isr_time);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d01/frequency__counter_8h_1a1770280d6beb9fd8e76c824f750074a4" kindref="member">frequency_set_window</ref>(uint8_t<sp/>channel,<sp/>uint16_t<sp/>window_ms);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d01/frequency__counter_8h_1a3d6110339a7085a38f9fe1f0083b1dab" kindref="member">frequency_set_noise_filter</ref>(uint8_t<sp/>channel,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ADVANCED<sp/>FEATURES<sp/>(OPTIONAL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal">uint16_t<sp/><ref refid="de/d01/frequency__counter_8h_1a36519859f92bb1168f619d453d91e920" kindref="member">frequency_get_instantaneous</ref>(uint8_t<sp/>channel);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235" refid="de/d01/frequency__counter_8h_1a906d15795a7af4def1cb52871b5a603c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*<ref refid="de/d01/frequency__counter_8h_1a906d15795a7af4def1cb52871b5a603c" kindref="member">frequency_change_callback_t</ref>)(uint8_t<sp/>channel,<sp/>uint16_t<sp/>old_freq,<sp/>uint16_t<sp/>new_freq);</highlight></codeline>
+<codeline lineno="236" refid="de/d01/frequency__counter_8h_1a31968d97b5454f1c0aabe5f7df4093d8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="de/d01/frequency__counter_8h_1a31968d97b5454f1c0aabe5f7df4093d8" kindref="member">frequency_set_change_callback</ref>(uint8_t<sp/>channel,<sp/><ref refid="de/d01/frequency__counter_8h_1a906d15795a7af4def1cb52871b5a603c" kindref="member">frequency_change_callback_t</ref><sp/>callback,<sp/>uint16_t<sp/>threshold);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>FREQUENCY_COUNTER_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/frequency_counter.h"/>
+  </compounddef>
+</doxygen>

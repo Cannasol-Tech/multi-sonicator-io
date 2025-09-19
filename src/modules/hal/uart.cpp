@@ -581,15 +581,15 @@ static uart_result_t calculate_baud_settings(uint32_t baud_rate, uint16_t* ubrr_
     return UART_OK;
 }
 
-static inline constexpr uint16_t next_buffer_index(uint16_t index, uint16_t size) {
+static inline uint16_t next_buffer_index(uint16_t index, uint16_t size) {
     return (index + 1) % size;
 }
 
-static inline constexpr bool is_tx_buffer_full(void) {
+static inline bool is_tx_buffer_full(void) {
     return next_buffer_index(tx_head, UART_TX_BUFFER_SIZE) == tx_tail;
 }
 
-static inline constexpr bool is_rx_buffer_empty(void) {
+static inline bool is_rx_buffer_empty(void) {
     return rx_head == rx_tail;
 }
 

@@ -1,0 +1,481 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d9/d2e/class_gpio_hal" kind="class" language="C++" prot="public">
+    <compoundname>GpioHal</compoundname>
+    <derivedcompoundref refid="d1/d54/class_hal_template" prot="public" virt="non-virtual">HalTemplate&lt; HalImpl &gt;</derivedcompoundref>
+    <derivedcompoundref refid="d1/d54/class_hal_template" prot="public" virt="non-virtual">HalTemplate&lt; HalImpl &gt;</derivedcompoundref>
+    <includes refid="da/dd9/hal__template__example_8h" local="no">hal_template_example.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename HalImpl</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1a8ebef7395cb2e0c7482ee16a0feb3512" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <qualifiedname>GpioHal::init</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="36" column="10" bodyfile="src/modules/hal/hal_template_example.h" bodystart="36" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1a5e3d7e61c5793c90d9aa3b87a9992985" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::setPinMode</definition>
+        <argsstring>(uint8_t pin, uint8_t mode)</argsstring>
+        <name>setPinMode</name>
+        <qualifiedname>GpioHal::setPinMode</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="37" column="10" bodyfile="src/modules/hal/hal_template_example.h" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1aeb35f4b7481fbce73967fdd512139bca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::digitalWrite</definition>
+        <argsstring>(uint8_t pin, uint8_t value)</argsstring>
+        <name>digitalWrite</name>
+        <qualifiedname>GpioHal::digitalWrite</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="38" column="10" bodyfile="src/modules/hal/hal_template_example.h" bodystart="38" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1aa672e7d9f4bb045c5a4f1144dd7a28e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t GpioHal&lt; HalImpl &gt;::digitalRead</definition>
+        <argsstring>(uint8_t pin)</argsstring>
+        <name>digitalRead</name>
+        <qualifiedname>GpioHal::digitalRead</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="39" column="13" bodyfile="src/modules/hal/hal_template_example.h" bodystart="39" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1a09ee6eb7e616a25b7a6e938c0b7c05f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::togglePin</definition>
+        <argsstring>(uint8_t pin)</argsstring>
+        <name>togglePin</name>
+        <qualifiedname>GpioHal::togglePin</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="40" column="10" bodyfile="src/modules/hal/hal_template_example.h" bodystart="40" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1a5d443f61902c789d4b7bf540687f705c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::sonicatorStart</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>sonicatorStart</name>
+        <qualifiedname>GpioHal::sonicatorStart</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="43" column="10" bodyfile="src/modules/hal/hal_template_example.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1adfcbf6e7d087b84b12d8e7f8ee11e070" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::sonicatorStop</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>sonicatorStop</name>
+        <qualifiedname>GpioHal::sonicatorStop</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="44" column="10" bodyfile="src/modules/hal/hal_template_example.h" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1ae4798364bf9d2baf7de59a051055282f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::sonicatorReset</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>sonicatorReset</name>
+        <qualifiedname>GpioHal::sonicatorReset</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="45" column="10" bodyfile="src/modules/hal/hal_template_example.h" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1ab37d3298282f5cba60e59b580b8d5f1a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::sonicatorReadOverload</definition>
+        <argsstring>(uint8_t id, bool *state)</argsstring>
+        <name>sonicatorReadOverload</name>
+        <qualifiedname>GpioHal::sonicatorReadOverload</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="46" column="10" bodyfile="src/modules/hal/hal_template_example.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1a1d0058bccc765afffb3a86406100b083" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::sonicatorReadFreqLock</definition>
+        <argsstring>(uint8_t id, bool *state)</argsstring>
+        <name>sonicatorReadFreqLock</name>
+        <qualifiedname>GpioHal::sonicatorReadFreqLock</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="47" column="10" bodyfile="src/modules/hal/hal_template_example.h" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1a46f64cd8d60d323de47eabefe7b40d4e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::statusLed</definition>
+        <argsstring>(bool state)</argsstring>
+        <name>statusLed</name>
+        <qualifiedname>GpioHal::statusLed</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_example.h" line="48" column="10" bodyfile="src/modules/hal/hal_template_example.h" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1a8ebef7395cb2e0c7482ee16a0feb3512" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <qualifiedname>GpioHal::init</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="33" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="33" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1a5e3d7e61c5793c90d9aa3b87a9992985" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::setPinMode</definition>
+        <argsstring>(uint8_t pin, uint8_t mode)</argsstring>
+        <name>setPinMode</name>
+        <qualifiedname>GpioHal::setPinMode</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="34" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1aeb35f4b7481fbce73967fdd512139bca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::digitalWrite</definition>
+        <argsstring>(uint8_t pin, uint8_t value)</argsstring>
+        <name>digitalWrite</name>
+        <qualifiedname>GpioHal::digitalWrite</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="35" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1aa672e7d9f4bb045c5a4f1144dd7a28e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t GpioHal&lt; HalImpl &gt;::digitalRead</definition>
+        <argsstring>(uint8_t pin)</argsstring>
+        <name>digitalRead</name>
+        <qualifiedname>GpioHal::digitalRead</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="36" column="13" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="36" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1a09ee6eb7e616a25b7a6e938c0b7c05f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::togglePin</definition>
+        <argsstring>(uint8_t pin)</argsstring>
+        <name>togglePin</name>
+        <qualifiedname>GpioHal::togglePin</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="37" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1a5d443f61902c789d4b7bf540687f705c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::sonicatorStart</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>sonicatorStart</name>
+        <qualifiedname>GpioHal::sonicatorStart</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="40" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="40" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1adfcbf6e7d087b84b12d8e7f8ee11e070" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::sonicatorStop</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>sonicatorStop</name>
+        <qualifiedname>GpioHal::sonicatorStop</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="41" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="41" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1ae4798364bf9d2baf7de59a051055282f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::sonicatorReset</definition>
+        <argsstring>(uint8_t id)</argsstring>
+        <name>sonicatorReset</name>
+        <qualifiedname>GpioHal::sonicatorReset</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="42" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="42" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1ab37d3298282f5cba60e59b580b8d5f1a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::sonicatorReadOverload</definition>
+        <argsstring>(uint8_t id, bool *state)</argsstring>
+        <name>sonicatorReadOverload</name>
+        <qualifiedname>GpioHal::sonicatorReadOverload</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="43" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1a1d0058bccc765afffb3a86406100b083" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::sonicatorReadFreqLock</definition>
+        <argsstring>(uint8_t id, bool *state)</argsstring>
+        <name>sonicatorReadFreqLock</name>
+        <qualifiedname>GpioHal::sonicatorReadFreqLock</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="44" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="d9/d2e/class_gpio_hal_1a46f64cd8d60d323de47eabefe7b40d4e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GpioHal&lt; HalImpl &gt;::statusLed</definition>
+        <argsstring>(bool state)</argsstring>
+        <name>statusLed</name>
+        <qualifiedname>GpioHal::statusLed</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_template_interfaces.h" line="45" column="10" bodyfile="src/modules/hal/hal_template_interfaces.h" bodystart="45" bodyend="45"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>GPIO HAL Interface (Template-based) </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Template parameter allows different implementations at compile time with zero runtime overhead. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>GpioHal&lt; HalImpl &gt;</label>
+        <link refid="d9/d2e/class_gpio_hal"/>
+      </node>
+      <node id="2">
+        <label>HalTemplate&lt; HalImpl &gt;</label>
+        <link refid="d1/d54/class_hal_template"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/modules/hal/hal_template_example.h" line="33" column="1" bodyfile="src/modules/hal/hal_template_example.h" bodystart="33" bodyend="49"/>
+    <listofallmembers>
+      <member refid="d9/d2e/class_gpio_hal_1aa672e7d9f4bb045c5a4f1144dd7a28e7" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>digitalRead</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1aa672e7d9f4bb045c5a4f1144dd7a28e7" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>digitalRead</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1aeb35f4b7481fbce73967fdd512139bca" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>digitalWrite</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1aeb35f4b7481fbce73967fdd512139bca" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>digitalWrite</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1a8ebef7395cb2e0c7482ee16a0feb3512" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>init</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1a8ebef7395cb2e0c7482ee16a0feb3512" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>init</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1a5e3d7e61c5793c90d9aa3b87a9992985" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>setPinMode</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1a5e3d7e61c5793c90d9aa3b87a9992985" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>setPinMode</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1a1d0058bccc765afffb3a86406100b083" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>sonicatorReadFreqLock</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1a1d0058bccc765afffb3a86406100b083" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>sonicatorReadFreqLock</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1ab37d3298282f5cba60e59b580b8d5f1a" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>sonicatorReadOverload</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1ab37d3298282f5cba60e59b580b8d5f1a" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>sonicatorReadOverload</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1ae4798364bf9d2baf7de59a051055282f" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>sonicatorReset</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1ae4798364bf9d2baf7de59a051055282f" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>sonicatorReset</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1a5d443f61902c789d4b7bf540687f705c" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>sonicatorStart</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1a5d443f61902c789d4b7bf540687f705c" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>sonicatorStart</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1adfcbf6e7d087b84b12d8e7f8ee11e070" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>sonicatorStop</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1adfcbf6e7d087b84b12d8e7f8ee11e070" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>sonicatorStop</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1a46f64cd8d60d323de47eabefe7b40d4e" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>statusLed</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1a46f64cd8d60d323de47eabefe7b40d4e" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>statusLed</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1a09ee6eb7e616a25b7a6e938c0b7c05f2" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>togglePin</name></member>
+      <member refid="d9/d2e/class_gpio_hal_1a09ee6eb7e616a25b7a6e938c0b7c05f2" prot="public" virt="non-virtual"><scope>GpioHal</scope><name>togglePin</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

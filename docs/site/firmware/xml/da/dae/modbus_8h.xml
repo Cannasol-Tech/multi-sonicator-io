@@ -1,0 +1,841 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="da/dae/modbus_8h" kind="file" language="C++">
+    <compoundname>modbus.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includes refid="d4/d9a/modbus__registers_8h" local="yes">modbus_registers.h</includes>
+    <includedby refid="d8/d00/modbus_8cpp" local="yes">src/modules/communication/modbus.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/modbus.h</label>
+        <link refid="da/dae/modbus_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>modbus_registers.h</label>
+        <link refid="d4/d9a/modbus__registers_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="2">
+        <label>stdint.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>include/modbus.h</label>
+        <link refid="da/dae/modbus_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/modules/communication/modbus.cpp</label>
+        <link refid="d8/d00/modbus_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="d5/dea/structmodbus__config__t" prot="public">modbus_config_t</innerclass>
+    <innerclass refid="d3/d0c/structmodbus__statistics__t" prot="public">modbus_statistics_t</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="da/dae/modbus_8h_1a1aef92ccc58f5b6eb11f9a32c8f1e3d6" prot="public" static="no">
+        <name>MODBUS_SLAVE_ID</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="116" column="9" bodyfile="include/modbus.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="da/dae/modbus_8h_1a60bd280b8778414fe9cd7546d4a24e1b" prot="public" static="no">
+        <name>MODBUS_BAUD_RATE</name>
+        <initializer>115200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="117" column="9" bodyfile="include/modbus.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="da/dae/modbus_8h_1a346d42f6cda5022fb4c334d6d97216d6" prot="public" static="no">
+        <name>MODBUS_TIMEOUT_MS</name>
+        <initializer>1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="118" column="9" bodyfile="include/modbus.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="da/dae/modbus_8h_1af1fdceaf71c39c207005e6a331fe7111" prot="public" static="no">
+        <name>MODBUS_RESPONSE_TIMEOUT_MS</name>
+        <initializer>100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="119" column="9" bodyfile="include/modbus.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="da/dae/modbus_8h_1acd8df4bf20e3cb7820977f5615c437b7" prot="public" static="no">
+        <name>MODBUS_FC_READ_HOLDING</name>
+        <initializer>0x03</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="122" column="9" bodyfile="include/modbus.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="da/dae/modbus_8h_1aa4f55f8699ff87400fbcdc849d9c7721" prot="public" static="no">
+        <name>MODBUS_FC_WRITE_SINGLE</name>
+        <initializer>0x06</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="123" column="9" bodyfile="include/modbus.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="da/dae/modbus_8h_1a70a5f0a4a6a6c487962b4b8b39f5aeaf" prot="public" static="no">
+        <name>MODBUS_FC_WRITE_MULTIPLE</name>
+        <initializer>0x10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="124" column="9" bodyfile="include/modbus.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977e" prot="public" static="no" strong="no">
+        <type></type>
+        <name>modbus_error_t</name>
+        <enumvalue id="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eafbb178df49063323a6dcbf03dd0d88d2" prot="public">
+          <name>MODBUS_OK</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea5170c8fd52bca089584396b5afecea31" prot="public">
+          <name>MODBUS_ERROR_ILLEGAL_FUNCTION</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea0f4d5543accf517df02f9ace9bba8472" prot="public">
+          <name>MODBUS_ERROR_ILLEGAL_ADDRESS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eac6009826490fee81b3373ca8142ae9d3" prot="public">
+          <name>MODBUS_ERROR_ILLEGAL_VALUE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea6004e8d1493f3ffab63af86f76b3d072" prot="public">
+          <name>MODBUS_ERROR_SLAVE_FAILURE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eabe47a513086c1b00acf3b4e5128e57ed" prot="public">
+          <name>MODBUS_ERROR_ACKNOWLEDGE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea21487fd20f34a129faf98508ae5c4084" prot="public">
+          <name>MODBUS_ERROR_SLAVE_BUSY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eaa04fa475a456ccbc93e6bcb7e58f02eb" prot="public">
+          <name>MODBUS_ERROR_MEMORY_PARITY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea249e12026e5e6b422dca62461a196eb6" prot="public">
+          <name>MODBUS_ERROR_GATEWAY_PATH</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eae7b3566ecdd07795c5aa58d7aa4cd484" prot="public">
+          <name>MODBUS_ERROR_GATEWAY_TARGET</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eabac8c226f41c07c5659ffb9f0dd55e82" prot="public">
+          <name>MODBUS_ERROR_TIMEOUT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea30e0fa05d0cd54528b75d0b1a217ca99" prot="public">
+          <name>MODBUS_ERROR_CRC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea00d0aa97c9b2e9dae729cf2a35649461" prot="public">
+          <name>MODBUS_ERROR_INVALID_LENGTH</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="130" column="1" bodyfile="include/modbus.h" bodystart="130" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="enum" id="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450" prot="public" static="no" strong="no">
+        <type></type>
+        <name>modbus_state_t</name>
+        <enumvalue id="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450a5549ed95eb5fccae99b5ba7d3ef55d88" prot="public">
+          <name>MODBUS_STATE_IDLE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450aaec8fed787da2875e9d52a57fdc6dd4c" prot="public">
+          <name>MODBUS_STATE_RECEIVING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450a645eda5ec22879da61838ebfe6cd2d60" prot="public">
+          <name>MODBUS_STATE_PROCESSING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450a03ac19e85d12e7c90b074e3c6db491c7" prot="public">
+          <name>MODBUS_STATE_RESPONDING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450a2556f398ffc8e2d0b8a59a881ff0051c" prot="public">
+          <name>MODBUS_STATE_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450a33f1a1b3e94766200bc586cbfab5c909" prot="public">
+          <name>MODBUS_STATE_TIMEOUT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="150" column="1" bodyfile="include/modbus.h" bodystart="150" bodyend="157"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="da/dae/modbus_8h_1a4bc72f739fe1ba838717bd3667b9f5d5" prot="public" static="no">
+        <type><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977e" kindref="member">modbus_error_t</ref>(*</type>
+        <definition>typedef modbus_error_t(* modbus_read_callback_t) (uint16_t address, uint16_t *value)</definition>
+        <argsstring>)(uint16_t address, uint16_t *value)</argsstring>
+        <name>modbus_read_callback_t</name>
+        <briefdescription>
+<para>Callback for register read operations. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Register address being read </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store the read value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>MODBUS_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="169" column="9" bodyfile="include/modbus.h" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="da/dae/modbus_8h_1aef49dfb53a67420942f19e17b2c136fc" prot="public" static="no">
+        <type><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977e" kindref="member">modbus_error_t</ref>(*</type>
+        <definition>typedef modbus_error_t(* modbus_write_callback_t) (uint16_t address, uint16_t value)</definition>
+        <argsstring>)(uint16_t address, uint16_t value)</argsstring>
+        <name>modbus_write_callback_t</name>
+        <briefdescription>
+<para>Callback for register write operations. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Register address being written </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to write to the register </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>MODBUS_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="177" column="9" bodyfile="include/modbus.h" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="da/dae/modbus_8h_1a7beb9c1359192ca91929db8f99512b9f" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* modbus_timeout_callback_t) (void)</definition>
+        <argsstring>)(void)</argsstring>
+        <name>modbus_timeout_callback_t</name>
+        <briefdescription>
+<para>Callback for communication timeout events. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="182" column="9" bodyfile="include/modbus.h" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="da/dae/modbus_8h_1a09252102a3a13352e3bba459729e7f47" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* modbus_error_callback_t) (modbus_error_t error_code)</definition>
+        <argsstring>)(modbus_error_t error_code)</argsstring>
+        <name>modbus_error_callback_t</name>
+        <briefdescription>
+<para>Callback for communication error events. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>error_code</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error code that occurred </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="188" column="9" bodyfile="include/modbus.h" bodystart="188" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="da/dae/modbus_8h_1a9713277eaf362fb046bac801cee5a529" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977e" kindref="member">modbus_error_t</ref></type>
+        <definition>modbus_error_t modbus_init</definition>
+        <argsstring>(const modbus_config_t *config)</argsstring>
+        <name>modbus_init</name>
+        <param>
+          <type>const <ref refid="d5/dea/structmodbus__config__t" kindref="compound">modbus_config_t</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Initialize MODBUS RTU communication. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MODBUS configuration structure </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>MODBUS_OK on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="229" column="16" bodyfile="src/modules/communication/modbus.cpp" bodystart="79" bodyend="108" declfile="include/modbus.h" declline="229" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dae/modbus_8h_1a5fd500ab836fc4f5f8704d8c709163c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450" kindref="member">modbus_state_t</ref></type>
+        <definition>modbus_state_t modbus_process</definition>
+        <argsstring>(void)</argsstring>
+        <name>modbus_process</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Process MODBUS communication (call from main loop) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current MODBUS state </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="235" column="16" bodyfile="src/modules/communication/modbus.cpp" bodystart="110" bodyend="159" declfile="include/modbus.h" declline="235" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dae/modbus_8h_1a8a7d7933723cdf4d7d2663a479acc18e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool modbus_is_timeout</definition>
+        <argsstring>(void)</argsstring>
+        <name>modbus_is_timeout</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Check if communication timeout occurred. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if timeout detected, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="241" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="161" bodyend="164" declfile="include/modbus.h" declline="241" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dae/modbus_8h_1aac1e55025fc39022813c3301193475f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void modbus_reset_timeout</definition>
+        <argsstring>(void)</argsstring>
+        <name>modbus_reset_timeout</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Reset communication timeout timer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="246" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="166" bodyend="168" declfile="include/modbus.h" declline="246" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dae/modbus_8h_1a6448441f6c9c07a5f0aa9fd9cfd3df04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="d3/d0c/structmodbus__statistics__t" kindref="compound">modbus_statistics_t</ref> *</type>
+        <definition>const modbus_statistics_t * modbus_get_statistics</definition>
+        <argsstring>(void)</argsstring>
+        <name>modbus_get_statistics</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Get MODBUS communication statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Pointer to statistics structure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="252" column="27" bodyfile="src/modules/communication/modbus.cpp" bodystart="170" bodyend="172" declfile="include/modbus.h" declline="252" declcolumn="27"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dae/modbus_8h_1ab2b0c68a0945f77de7365473d0556004" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void modbus_reset_statistics</definition>
+        <argsstring>(void)</argsstring>
+        <name>modbus_reset_statistics</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Reset MODBUS communication statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="257" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="174" bodyend="176" declfile="include/modbus.h" declline="257" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dae/modbus_8h_1ab54e698995237d7cbd3e499e7bc90c98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450" kindref="member">modbus_state_t</ref></type>
+        <definition>modbus_state_t modbus_get_state</definition>
+        <argsstring>(void)</argsstring>
+        <name>modbus_get_state</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Get current MODBUS state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current communication state </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="263" column="16" bodyfile="src/modules/communication/modbus.cpp" bodystart="178" bodyend="180" declfile="include/modbus.h" declline="263" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dae/modbus_8h_1a018a8ad71c133ab6479c7482e20978a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void modbus_force_error</definition>
+        <argsstring>(modbus_error_t error_code)</argsstring>
+        <name>modbus_force_error</name>
+        <param>
+          <type><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977e" kindref="member">modbus_error_t</ref></type>
+          <declname>error_code</declname>
+        </param>
+        <briefdescription>
+<para>Force MODBUS into error state for testing. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>error_code</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error code to simulate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="269" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="182" bodyend="184" declfile="include/modbus.h" declline="269" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dae/modbus_8h_1a6c74499e6c161114e88e278d87fd3462" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool modbus_validate_address</definition>
+        <argsstring>(uint16_t address, uint8_t function_code)</argsstring>
+        <name>modbus_validate_address</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>function_code</declname>
+        </param>
+        <briefdescription>
+<para>Validate MODBUS register address. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Register address to validate </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>function_code</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MODBUS function code </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if address is valid for the function, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="277" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="186" bodyend="200" declfile="include/modbus.h" declline="277" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dae/modbus_8h_1a7fd85103f18a4fd1c2e58d69470088e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t modbus_calculate_crc</definition>
+        <argsstring>(const uint8_t *data, uint16_t length)</argsstring>
+        <name>modbus_calculate_crc</name>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+<para>Calculate CRC-16 for MODBUS frame. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to data buffer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Length of data in bytes </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Calculated CRC-16 value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="285" column="10" bodyfile="src/modules/communication/modbus.cpp" bodystart="202" bodyend="223" declfile="include/modbus.h" declline="285" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dae/modbus_8h_1a61c9b77bd9ac121e66f4689104ca9520" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void modbus_set_enabled</definition>
+        <argsstring>(bool enabled)</argsstring>
+        <name>modbus_set_enabled</name>
+        <param>
+          <type>bool</type>
+          <declname>enabled</declname>
+        </param>
+        <briefdescription>
+<para>Enable/disable MODBUS communication. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enabled</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true to enable, false to disable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="291" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="225" bodyend="233" declfile="include/modbus.h" declline="291" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dae/modbus_8h_1a597eaa69c6f1718adc29b91dcd4cddbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool modbus_is_enabled</definition>
+        <argsstring>(void)</argsstring>
+        <name>modbus_is_enabled</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Check if MODBUS communication is enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if enabled, false if disabled </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus.h" line="297" column="6" bodyfile="src/modules/communication/modbus.cpp" bodystart="235" bodyend="237" declfile="include/modbus.h" declline="297" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MODBUS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MODBUS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d4/d9a/modbus__registers_8h" kindref="compound">modbus_registers.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MODBUS<sp/>CONFIGURATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="da/dae/modbus_8h_1a1aef92ccc58f5b6eb11f9a32c8f1e3d6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MODBUS_SLAVE_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>MODBUS<sp/>slave<sp/>ID<sp/>per<sp/>system<sp/>requirements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="da/dae/modbus_8h_1a60bd280b8778414fe9cd7546d4a24e1b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MODBUS_BAUD_RATE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>115200<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Communication<sp/>baud<sp/>rate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="da/dae/modbus_8h_1a346d42f6cda5022fb4c334d6d97216d6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MODBUS_TIMEOUT_MS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1000<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Communication<sp/>timeout<sp/>(1<sp/>second)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="da/dae/modbus_8h_1af1fdceaf71c39c207005e6a331fe7111" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MODBUS_RESPONSE_TIMEOUT_MS<sp/><sp/>100<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Maximum<sp/>response<sp/>time<sp/>per<sp/>NFR2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Supported<sp/>MODBUS<sp/>function<sp/>codes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="da/dae/modbus_8h_1acd8df4bf20e3cb7820977f5615c437b7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MODBUS_FC_READ_HOLDING<sp/><sp/><sp/><sp/><sp/><sp/>0x03<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Read<sp/>Holding<sp/>Registers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="da/dae/modbus_8h_1aa4f55f8699ff87400fbcdc849d9c7721" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MODBUS_FC_WRITE_SINGLE<sp/><sp/><sp/><sp/><sp/><sp/>0x06<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Write<sp/>Single<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="da/dae/modbus_8h_1a70a5f0a4a6a6c487962b4b8b39f5aeaf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MODBUS_FC_WRITE_MULTIPLE<sp/><sp/><sp/><sp/>0x10<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Write<sp/>Multiple<sp/>Registers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ERROR<sp/>CODES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="131" refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eafbb178df49063323a6dcbf03dd0d88d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eafbb178df49063323a6dcbf03dd0d88d2" kindref="member">MODBUS_OK</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Operation<sp/>successful</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea5170c8fd52bca089584396b5afecea31" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea5170c8fd52bca089584396b5afecea31" kindref="member">MODBUS_ERROR_ILLEGAL_FUNCTION</ref>,<sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Unsupported<sp/>function<sp/>code</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea0f4d5543accf517df02f9ace9bba8472" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea0f4d5543accf517df02f9ace9bba8472" kindref="member">MODBUS_ERROR_ILLEGAL_ADDRESS</ref>,<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Invalid<sp/>register<sp/>address</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eac6009826490fee81b3373ca8142ae9d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eac6009826490fee81b3373ca8142ae9d3" kindref="member">MODBUS_ERROR_ILLEGAL_VALUE</ref>,<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Invalid<sp/>register<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea6004e8d1493f3ffab63af86f76b3d072" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea6004e8d1493f3ffab63af86f76b3d072" kindref="member">MODBUS_ERROR_SLAVE_FAILURE</ref>,<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Slave<sp/>device<sp/>failure</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eabe47a513086c1b00acf3b4e5128e57ed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eabe47a513086c1b00acf3b4e5128e57ed" kindref="member">MODBUS_ERROR_ACKNOWLEDGE</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Acknowledge<sp/>error</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea21487fd20f34a129faf98508ae5c4084" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea21487fd20f34a129faf98508ae5c4084" kindref="member">MODBUS_ERROR_SLAVE_BUSY</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Slave<sp/>device<sp/>busy</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138" refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eaa04fa475a456ccbc93e6bcb7e58f02eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eaa04fa475a456ccbc93e6bcb7e58f02eb" kindref="member">MODBUS_ERROR_MEMORY_PARITY</ref>,<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Memory<sp/>parity<sp/>error</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea249e12026e5e6b422dca62461a196eb6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea249e12026e5e6b422dca62461a196eb6" kindref="member">MODBUS_ERROR_GATEWAY_PATH</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Gateway<sp/>path<sp/>unavailable</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eae7b3566ecdd07795c5aa58d7aa4cd484" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eae7b3566ecdd07795c5aa58d7aa4cd484" kindref="member">MODBUS_ERROR_GATEWAY_TARGET</ref>,<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Gateway<sp/>target<sp/>failed<sp/>to<sp/>respond</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eabac8c226f41c07c5659ffb9f0dd55e82" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977eabac8c226f41c07c5659ffb9f0dd55e82" kindref="member">MODBUS_ERROR_TIMEOUT</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Communication<sp/>timeout</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea30e0fa05d0cd54528b75d0b1a217ca99" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea30e0fa05d0cd54528b75d0b1a217ca99" kindref="member">MODBUS_ERROR_CRC</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>CRC<sp/>validation<sp/>failed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea00d0aa97c9b2e9dae729cf2a35649461" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977ea00d0aa97c9b2e9dae729cf2a35649461" kindref="member">MODBUS_ERROR_INVALID_LENGTH</ref><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Invalid<sp/>frame<sp/>length</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal">}<sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977e" kindref="member">modbus_error_t</ref>;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="comment">//<sp/>COMMUNICATION<sp/>STATE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="151" refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450a5549ed95eb5fccae99b5ba7d3ef55d88" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450a5549ed95eb5fccae99b5ba7d3ef55d88" kindref="member">MODBUS_STATE_IDLE</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Waiting<sp/>for<sp/>request</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152" refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450aaec8fed787da2875e9d52a57fdc6dd4c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450aaec8fed787da2875e9d52a57fdc6dd4c" kindref="member">MODBUS_STATE_RECEIVING</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Processing<sp/>incoming<sp/>frame</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153" refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450a645eda5ec22879da61838ebfe6cd2d60" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450a645eda5ec22879da61838ebfe6cd2d60" kindref="member">MODBUS_STATE_PROCESSING</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Executing<sp/>MODBUS<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450a03ac19e85d12e7c90b074e3c6db491c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450a03ac19e85d12e7c90b074e3c6db491c7" kindref="member">MODBUS_STATE_RESPONDING</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Sending<sp/>response<sp/>frame</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155" refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450a2556f398ffc8e2d0b8a59a881ff0051c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450a2556f398ffc8e2d0b8a59a881ff0051c" kindref="member">MODBUS_STATE_ERROR</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Handling<sp/>communication<sp/>errors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156" refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450a33f1a1b3e94766200bc586cbfab5c909" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450a33f1a1b3e94766200bc586cbfab5c909" kindref="member">MODBUS_STATE_TIMEOUT</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Communication<sp/>timeout<sp/>detected</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal">}<sp/><ref refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450" kindref="member">modbus_state_t</ref>;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CALLBACK<sp/>FUNCTION<sp/>TYPES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="da/dae/modbus_8h_1a4bc72f739fe1ba838717bd3667b9f5d5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977e" kindref="member">modbus_error_t</ref><sp/>(*<ref refid="da/dae/modbus_8h_1a4bc72f739fe1ba838717bd3667b9f5d5" kindref="member">modbus_read_callback_t</ref>)(uint16_t<sp/>address,<sp/>uint16_t*<sp/>value);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177" refid="da/dae/modbus_8h_1aef49dfb53a67420942f19e17b2c136fc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977e" kindref="member">modbus_error_t</ref><sp/>(*<ref refid="da/dae/modbus_8h_1aef49dfb53a67420942f19e17b2c136fc" kindref="member">modbus_write_callback_t</ref>)(uint16_t<sp/>address,<sp/>uint16_t<sp/>value);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182" refid="da/dae/modbus_8h_1a7beb9c1359192ca91929db8f99512b9f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*<ref refid="da/dae/modbus_8h_1a7beb9c1359192ca91929db8f99512b9f" kindref="member">modbus_timeout_callback_t</ref>)(void);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188" refid="da/dae/modbus_8h_1a09252102a3a13352e3bba459729e7f47" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*<ref refid="da/dae/modbus_8h_1a09252102a3a13352e3bba459729e7f47" kindref="member">modbus_error_callback_t</ref>)(<ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977e" kindref="member">modbus_error_t</ref><sp/>error_code);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MODBUS<sp/>CONFIGURATION<sp/>STRUCTURE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194" refid="d5/dea/structmodbus__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="195" refid="d5/dea/structmodbus__config__t_1abfd4559d5083fd78a34dd9364df5c0c4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="d5/dea/structmodbus__config__t_1abfd4559d5083fd78a34dd9364df5c0c4" kindref="member">slave_id</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>MODBUS<sp/>slave<sp/>ID</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196" refid="d5/dea/structmodbus__config__t_1a0657f618b7298a2d04c31dd2d1469409" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d5/dea/structmodbus__config__t_1a0657f618b7298a2d04c31dd2d1469409" kindref="member">baud_rate</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Communication<sp/>baud<sp/>rate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197" refid="d5/dea/structmodbus__config__t_1a60457aa22ba8273dc67ea526f0d69f97" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="d5/dea/structmodbus__config__t_1a60457aa22ba8273dc67ea526f0d69f97" kindref="member">timeout_ms</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Communication<sp/>timeout</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="d5/dea/structmodbus__config__t_1af56c9413102d41866cbe63b7c175336d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1a4bc72f739fe1ba838717bd3667b9f5d5" kindref="member">modbus_read_callback_t</ref><sp/><ref refid="d5/dea/structmodbus__config__t_1af56c9413102d41866cbe63b7c175336d" kindref="member">read_callback</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Register<sp/>read<sp/>callback</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199" refid="d5/dea/structmodbus__config__t_1a02cdef2f270caf7cd6f9c3a45f629279" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1aef49dfb53a67420942f19e17b2c136fc" kindref="member">modbus_write_callback_t</ref><sp/><ref refid="d5/dea/structmodbus__config__t_1a02cdef2f270caf7cd6f9c3a45f629279" kindref="member">write_callback</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Register<sp/>write<sp/>callback</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200" refid="d5/dea/structmodbus__config__t_1a6fea6caf7ea1ed7187efb0bcdc785feb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1a7beb9c1359192ca91929db8f99512b9f" kindref="member">modbus_timeout_callback_t</ref><sp/><ref refid="d5/dea/structmodbus__config__t_1a6fea6caf7ea1ed7187efb0bcdc785feb" kindref="member">timeout_callback</ref>;<sp/></highlight><highlight class="comment">//&lt;<sp/>Timeout<sp/>event<sp/>callback</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201" refid="d5/dea/structmodbus__config__t_1a8dc179a89b19610e2028b829592116a7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="da/dae/modbus_8h_1a09252102a3a13352e3bba459729e7f47" kindref="member">modbus_error_callback_t</ref><sp/><ref refid="d5/dea/structmodbus__config__t_1a8dc179a89b19610e2028b829592116a7" kindref="member">error_callback</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Error<sp/>event<sp/>callback</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal">}<sp/><ref refid="d5/dea/structmodbus__config__t" kindref="compound">modbus_config_t</ref>;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MODBUS<sp/>STATISTICS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208" refid="d3/d0c/structmodbus__statistics__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="209" refid="d3/d0c/structmodbus__statistics__t_1a8bcc89ffd15afd0b0421459c98968edd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d3/d0c/structmodbus__statistics__t_1a8bcc89ffd15afd0b0421459c98968edd" kindref="member">requests_received</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Total<sp/>requests<sp/>received</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210" refid="d3/d0c/structmodbus__statistics__t_1a132330248df798b4f07a412af9498bb7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d3/d0c/structmodbus__statistics__t_1a132330248df798b4f07a412af9498bb7" kindref="member">responses_sent</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Total<sp/>responses<sp/>sent</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211" refid="d3/d0c/structmodbus__statistics__t_1a3ebfb787bbd9733268f0f0533638421c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d3/d0c/structmodbus__statistics__t_1a3ebfb787bbd9733268f0f0533638421c" kindref="member">crc_errors</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>CRC<sp/>validation<sp/>errors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212" refid="d3/d0c/structmodbus__statistics__t_1a01fab7947c19a51fc0092ec62160b211" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d3/d0c/structmodbus__statistics__t_1a01fab7947c19a51fc0092ec62160b211" kindref="member">timeout_errors</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Communication<sp/>timeouts</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213" refid="d3/d0c/structmodbus__statistics__t_1a27e5b779860a3104dec2d9eb65b250a4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d3/d0c/structmodbus__statistics__t_1a27e5b779860a3104dec2d9eb65b250a4" kindref="member">illegal_function_errors</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Illegal<sp/>function<sp/>code<sp/>errors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214" refid="d3/d0c/structmodbus__statistics__t_1aa4972a0e9193d8bdfd76eac834e4a269" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d3/d0c/structmodbus__statistics__t_1aa4972a0e9193d8bdfd76eac834e4a269" kindref="member">illegal_address_errors</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Illegal<sp/>address<sp/>errors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215" refid="d3/d0c/structmodbus__statistics__t_1af55f8f223d845bd5782dad0e1a90fa98" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d3/d0c/structmodbus__statistics__t_1af55f8f223d845bd5782dad0e1a90fa98" kindref="member">slave_failure_errors</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Slave<sp/>failure<sp/>errors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216" refid="d3/d0c/structmodbus__statistics__t_1a4ef350ec6bde9dce159bb2ca62a78cfd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d3/d0c/structmodbus__statistics__t_1a4ef350ec6bde9dce159bb2ca62a78cfd" kindref="member">last_request_time</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Timestamp<sp/>of<sp/>last<sp/>request</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217" refid="d3/d0c/structmodbus__statistics__t_1a8847fbfaef8f4d8940128cbc9f9b8d5b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="d3/d0c/structmodbus__statistics__t_1a8847fbfaef8f4d8940128cbc9f9b8d5b" kindref="member">max_response_time</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//&lt;<sp/>Maximum<sp/>response<sp/>time<sp/>recorded</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal">}<sp/><ref refid="d3/d0c/structmodbus__statistics__t" kindref="compound">modbus_statistics_t</ref>;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PUBLIC<sp/>FUNCTION<sp/>DECLARATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight><highlight class="comment">//<sp/>============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977e" kindref="member">modbus_error_t</ref><sp/><ref refid="da/dae/modbus_8h_1a9713277eaf362fb046bac801cee5a529" kindref="member">modbus_init</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d5/dea/structmodbus__config__t" kindref="compound">modbus_config_t</ref>*<sp/>config);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><ref refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450" kindref="member">modbus_state_t</ref><sp/><ref refid="da/dae/modbus_8h_1a5fd500ab836fc4f5f8704d8c709163c1" kindref="member">modbus_process</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="da/dae/modbus_8h_1a8a7d7933723cdf4d7d2663a479acc18e" kindref="member">modbus_is_timeout</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/dae/modbus_8h_1aac1e55025fc39022813c3301193475f4" kindref="member">modbus_reset_timeout</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="d3/d0c/structmodbus__statistics__t" kindref="compound">modbus_statistics_t</ref>*<sp/><ref refid="da/dae/modbus_8h_1a6448441f6c9c07a5f0aa9fd9cfd3df04" kindref="member">modbus_get_statistics</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/dae/modbus_8h_1ab2b0c68a0945f77de7365473d0556004" kindref="member">modbus_reset_statistics</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><ref refid="da/dae/modbus_8h_1afec312b4c8bf1dd2b9b68c21bbfd7450" kindref="member">modbus_state_t</ref><sp/><ref refid="da/dae/modbus_8h_1ab54e698995237d7cbd3e499e7bc90c98" kindref="member">modbus_get_state</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/dae/modbus_8h_1a018a8ad71c133ab6479c7482e20978a8" kindref="member">modbus_force_error</ref>(<ref refid="da/dae/modbus_8h_1a2e498f171730dc5b51e62483fe2f977e" kindref="member">modbus_error_t</ref><sp/>error_code);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="da/dae/modbus_8h_1a6c74499e6c161114e88e278d87fd3462" kindref="member">modbus_validate_address</ref>(uint16_t<sp/>address,<sp/>uint8_t<sp/>function_code);</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal">uint16_t<sp/><ref refid="da/dae/modbus_8h_1a7fd85103f18a4fd1c2e58d69470088e3" kindref="member">modbus_calculate_crc</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t*<sp/>data,<sp/>uint16_t<sp/>length);</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="da/dae/modbus_8h_1a61c9b77bd9ac121e66f4689104ca9520" kindref="member">modbus_set_enabled</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enabled);</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="da/dae/modbus_8h_1a597eaa69c6f1718adc29b91dcd4cddbc" kindref="member">modbus_is_enabled</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>MODBUS_H</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/modbus.h"/>
+  </compounddef>
+</doxygen>

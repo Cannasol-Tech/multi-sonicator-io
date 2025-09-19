@@ -102,7 +102,8 @@ public:
     }
 
     static bool adcIsConversionComplete() {
-        return adc_conversion_complete();
+        bool complete = false;
+        return (adc_conversion_complete(&complete) == ADC_OK) && complete;
     }
 
     static float adcRawToVoltage(uint16_t raw_value) {
@@ -286,7 +287,7 @@ public:
             .parity = UART_PARITY_NONE,
             .stop_bits = UART_STOP_1BIT
         };
-        return uart_init(&config) == UART_OK;
+        return uart_init_config(&config) == UART_OK;
     }
 
     static bool uartSetBaudRate(uint32_t baud_rate) {

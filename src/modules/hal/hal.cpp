@@ -222,7 +222,7 @@ hal_result_t hal_emergency_shutdown(void) {
 // SONICATOR CONTROL FUNCTIONS
 // ============================================================================
 
-hal_result_t hal_control_sonicator(uint8_t sonicator_id, const sonicator_control_t* control) {
+hal_result_t hal_control_sonicator(uint8_t sonicator_id, const hal_sonicator_control_t* control) {
     if (!hal_initialized) {
         return HAL_ERROR_NOT_INITIALIZED;
     }
@@ -266,7 +266,7 @@ hal_result_t hal_control_sonicator(uint8_t sonicator_id, const sonicator_control
     return HAL_OK;
 }
 
-hal_result_t hal_read_sonicator_status(uint8_t sonicator_id, sonicator_status_t* status) {
+hal_result_t hal_read_sonicator_status(uint8_t sonicator_id, hal_sonicator_status_t* status) {
     if (!hal_initialized) {
         return HAL_ERROR_NOT_INITIALIZED;
     }
@@ -314,7 +314,7 @@ hal_result_t hal_read_sonicator_status(uint8_t sonicator_id, sonicator_status_t*
     return HAL_OK;
 }
 
-hal_result_t hal_control_all_sonicators(const sonicator_control_t control_array[4]) {
+hal_result_t hal_control_all_sonicators(const hal_sonicator_control_t control_array[4]) {
     if (!hal_initialized) {
         return HAL_ERROR_NOT_INITIALIZED;
     }
@@ -336,7 +336,7 @@ hal_result_t hal_control_all_sonicators(const sonicator_control_t control_array[
     return result;
 }
 
-hal_result_t hal_read_all_sonicator_status(sonicator_status_t status_array[4]) {
+hal_result_t hal_read_all_sonicator_status(hal_sonicator_status_t status_array[4]) {
     if (!hal_initialized) {
         return HAL_ERROR_NOT_INITIALIZED;
     }

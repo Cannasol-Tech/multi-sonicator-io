@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d6/d77/group___a_d_c_power_monitoring" kind="group">
+    <compoundname>ADCPowerMonitoring</compoundname>
+    <title>ADC Power Monitoring Configuration</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="d6/d77/group___a_d_c_power_monitoring_1ga3c0164f11e49bbc1f308471bc872d919" prot="public" static="no">
+        <name>ADC_SONICATOR_1_PIN</name>
+        <initializer>A4</initializer>
+        <briefdescription>
+<para>ADC pin assignments for power monitoring. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="154" column="9" bodyfile="include/system_config.h" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d6/d77/group___a_d_c_power_monitoring_1gad0ec60ee4c0ba0fcd61f3ab60c9094ca" prot="public" static="no">
+        <name>ADC_SONICATOR_2_PIN</name>
+        <initializer>A5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="155" column="9" bodyfile="include/system_config.h" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d6/d77/group___a_d_c_power_monitoring_1ga6aa03e96ec1e18fae4a9f215efba52e8" prot="public" static="no">
+        <name>ADC_SONICATOR_3_PIN</name>
+        <initializer>A6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="156" column="9" bodyfile="include/system_config.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d6/d77/group___a_d_c_power_monitoring_1gaae18663a7f4d1e42463608fd512db5f4" prot="public" static="no">
+        <name>ADC_SONICATOR_4_PIN</name>
+        <initializer>A7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/system_config.h" line="157" column="9" bodyfile="include/system_config.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>PWM Filter Configuration. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><itemizedlist>
+<listitem><para>1kΩ resistor + 10µF ceramic capacitor</para>
+</listitem><listitem><para>Cutoff frequency: fc = 1/(2πRC) = 16Hz</para>
+</listitem><listitem><para>LM358N op-amp provides 2x gain (0-5V PWM → 0-10V output)</para>
+</listitem><listitem><para>Controls all 4 sonicator amplitudes simultaneously to limit current draw</para>
+</listitem></itemizedlist>
+</para>
+<para>Built-in ADC pin assignments for sonicator power monitoring</para>
+<para>10kΩ voltage divider with input protection for 0-10.88V range </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

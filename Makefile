@@ -18,6 +18,26 @@
 
 #  Make Targets
 
+.PHONY: help
+
+help:
+	@echo "Available make targets:"
+	@echo "  build               - Build firmware (PlatformIO env atmega32a)"
+	@echo "  build-debug         - Build debug firmware"
+	@echo "  clean               - Clean build artifacts"
+	@echo "  upload              - Upload firmware to DUT via Arduino as ISP"
+	@echo "  test                - Run full test suite (unit + acceptance + integration)"
+	@echo "  test-unit           - Run unit tests with coverage (>=85%)"
+	@echo "  test-acceptance     - Run acceptance BDD tests (HIL)"
+	@echo "  test-integration    - Run HIL integration tests"
+	@echo "  ci                  - CI pipeline (unit only) with reports"
+	@echo "  ci-test             - Full CI (unit + acceptance)"
+	@echo "  coverage            - Run unit tests and generate coverage summary"
+	@echo "  docs-all            - Build all documentation"
+	@echo "  web-ui-dev          - Start Web UI dev servers"
+	@echo "  web-ui-sandbox      - Build/upload firmware and start Web UI"
+	@echo "  web-ui-stop         - Stop Web UI dev servers"
+	@echo "For details, open the Makefile."
 .PHONY: traceability
 
 # Lightweight BDD traceability scan (ensures every @TODO has a matching @trace)
@@ -1347,6 +1367,7 @@ check-doxygen:
 # Build firmware docs with Doxygen
 docs-firmware: check-doxygen
 	@echo "📚 Building firmware documentation (Doxygen)..."
+	@mkdir -p docs/site
 	@doxygen docs/doxygen/Doxyfile
 	@echo "✅ Firmware docs built in docs/site/firmware"
 

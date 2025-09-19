@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d8/d57/group___h_a_l___s_y_s_t_e_m" kind="group">
+    <compoundname>HAL_SYSTEM</compoundname>
+    <title>HAL System (ATmega32A)</title>
+    <briefdescription>
+<para>Master initialization, self-test, and emergency shutdown orchestration. </para>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="d8/d57/group___h_a_l___s_y_s_t_e_m_1hal_sys_overview">
+<title>Overview</title><para><itemizedlist>
+<listitem><para>Central entry points for bringing up all hardware subsystems in safe order.</para>
+</listitem><listitem><para>Provides unified self-test routine and emergency shutdown capability.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="d8/d57/group___h_a_l___s_y_s_t_e_m_1hal_sys_init">
+<title>Init Order &amp; Rationale</title><para>1) <ref refid="dc/de5/timer_8cpp_1aa96c2aa1b5dac819fd12d27e0a93e714" kindref="member">timer_init()</ref> → provides timing for subsequent subsystems 2) <ref refid="de/d31/gpio_8cpp_1a33d278bd8510192b4fdadf20fa22fe61" kindref="member">gpio_init()</ref> → ensures outputs low, inputs pull-up 3) <ref refid="db/d33/adc_8cpp_1aa540e6dad1cfb7b5a1a70ac688003aee" kindref="member">adc_init()</ref> → analog ready before PWM enables any drive 4) <ref refid="d5/d84/pwm_8cpp_1a335d3354861ef1af786744e1d00cf559" kindref="member">pwm_init()</ref> → amplitude path configured but disabled by default 5) <ref refid="db/d23/uart_8cpp_1a291c562f366dda51665637a2d8cc8447" kindref="member">uart_init()</ref> → MODBUS/Serial available last to report status</para>
+</sect1>
+<sect1 id="d8/d57/group___h_a_l___s_y_s_t_e_m_1hal_sys_safety">
+<title>Safety</title><para><itemizedlist>
+<listitem><para>On failure of any stage, initialization stops and maps to HAL error code.</para>
+</listitem><listitem><para>Emergency shutdown disables PWM, drives START low, clears UART, and kicks watchdog.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="d8/d57/group___h_a_l___s_y_s_t_e_m_1hal_sys_related">
+<title>Related</title><para><itemizedlist>
+<listitem><para><simplesect kind="see"><para><ref refid="d8/d4b/hal_8h" kindref="compound">hal.h</ref> Public HAL API</para>
+</simplesect>
+</para>
+</listitem><listitem><para><simplesect kind="see"><para><ref refid="de/d31/gpio_8cpp" kindref="compound">gpio.cpp</ref> <ref refid="d5/d84/pwm_8cpp" kindref="compound">pwm.cpp</ref> <ref refid="db/d33/adc_8cpp" kindref="compound">adc.cpp</ref> <ref refid="db/d23/uart_8cpp" kindref="compound">uart.cpp</ref> <ref refid="dc/de5/timer_8cpp" kindref="compound">timer.cpp</ref> subsystem details </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

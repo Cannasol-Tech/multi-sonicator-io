@@ -289,6 +289,7 @@ gpio_result_t gpio_status_led(gpio_state_t state) {
 /**
  * @brief ATmega32A GPIO Implementation Class
  */
+#if 0
 class AtmegaGpio : public IGpioPort {
 private:
     bool initialized_;
@@ -438,15 +439,15 @@ bool gpio_oop_status_led(IGpioPort* instance, bool state) {
     if (!instance) return false;
     return instance->statusLed(state);
 }
-
 } // extern "C"
+#endif
 
-static inline constexpr bool is_valid_pin(uint8_t pin) {
+static inline bool is_valid_pin(uint8_t pin) {
     // ATmega32A has 32 GPIO pins (4 ports × 8 pins)
     return (pin <= 31);
 }
 
-static inline constexpr uint8_t get_sonicator_start_pin(uint8_t sonicator_id) {
+static inline uint8_t get_sonicator_start_pin(uint8_t sonicator_id) {
     switch (sonicator_id) {
         case 1: return SON1_START_PIN;
         case 2: return SON2_START_PIN;
@@ -456,7 +457,7 @@ static inline constexpr uint8_t get_sonicator_start_pin(uint8_t sonicator_id) {
     }
 }
 
-static inline constexpr uint8_t get_sonicator_reset_pin(uint8_t sonicator_id) {
+static inline uint8_t get_sonicator_reset_pin(uint8_t sonicator_id) {
     switch (sonicator_id) {
         case 1: return SON1_RESET_PIN;
         case 2: return SON2_RESET_PIN;
@@ -466,7 +467,7 @@ static inline constexpr uint8_t get_sonicator_reset_pin(uint8_t sonicator_id) {
     }
 }
 
-static inline constexpr uint8_t get_sonicator_overload_pin(uint8_t sonicator_id) {
+static inline uint8_t get_sonicator_overload_pin(uint8_t sonicator_id) {
     switch (sonicator_id) {
         case 1: return SON1_OVERLOAD_PIN;
         case 2: return SON2_OVERLOAD_PIN;
@@ -476,7 +477,7 @@ static inline constexpr uint8_t get_sonicator_overload_pin(uint8_t sonicator_id)
     }
 }
 
-static inline constexpr uint8_t get_sonicator_freq_lock_pin(uint8_t sonicator_id) {
+static inline uint8_t get_sonicator_freq_lock_pin(uint8_t sonicator_id) {
     switch (sonicator_id) {
         case 1: return SON1_FREQ_LOCK_PIN;
         case 2: return SON2_FREQ_LOCK_PIN;

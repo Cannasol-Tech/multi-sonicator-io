@@ -1,0 +1,67 @@
+var timer_8h =
+[
+    [ "timer_config_t", "d4/de4/structtimer__config__t.html", "d4/de4/structtimer__config__t" ],
+    [ "TIMER_EMERGENCY_RESPONSE_US", "d5/dd0/timer_8h.html#aff87cd300e49df1a8f3597dd8fd92473", null ],
+    [ "TIMER_MAX_PERIOD_MS", "d5/dd0/timer_8h.html#aa1c7d4a89844bea99ff34f27f46498fc", null ],
+    [ "TIMER_MODBUS_CHAR_TIMEOUT", "d5/dd0/timer_8h.html#a0e0abc3d8ba95dd0a756f38aff949f36", null ],
+    [ "TIMER_RESOLUTION_US", "d5/dd0/timer_8h.html#a0770f3d3924bef9d267887eb7e25fec3", null ],
+    [ "TIMER_SCHEDULER_PERIOD", "d5/dd0/timer_8h.html#aa1c225f9e96739525fd3c44150a22d08", null ],
+    [ "TIMER_WATCHDOG_PERIOD", "d5/dd0/timer_8h.html#a5f28efad24c6697e7988aa1988f986ab", null ],
+    [ "timer_id_t", "d5/dd0/timer_8h.html#ab46c323c4f73f2150385fead53055392", [
+      [ "TIMER_ID_0", "d5/dd0/timer_8h.html#ab46c323c4f73f2150385fead53055392a0bf7b10c9d661b40238b84e75d479192", null ],
+      [ "TIMER_ID_1", "d5/dd0/timer_8h.html#ab46c323c4f73f2150385fead53055392a21ea510bcc985ca4ddb2f587cab93eaa", null ],
+      [ "TIMER_ID_SCHEDULER", "d5/dd0/timer_8h.html#ab46c323c4f73f2150385fead53055392aa351fc7baa8b8fff979faa9a9909afee", null ],
+      [ "TIMER_ID_WATCHDOG", "d5/dd0/timer_8h.html#ab46c323c4f73f2150385fead53055392ade1a856836ea910ec79b9154f9d41bd7", null ],
+      [ "TIMER_ID_MAX", "d5/dd0/timer_8h.html#ab46c323c4f73f2150385fead53055392aacb7163f3ddbcdee2a162c6a6872dce3", null ]
+    ] ],
+    [ "timer_mode_t", "d5/dd0/timer_8h.html#a6d4cd64aed5c0009ac26803efc9c13b2", [
+      [ "TIMER_MODE_NORMAL", "d5/dd0/timer_8h.html#a6d4cd64aed5c0009ac26803efc9c13b2a6a1047d7d57a907cc491fc1efeaeb7d1", null ],
+      [ "TIMER_MODE_CTC", "d5/dd0/timer_8h.html#a6d4cd64aed5c0009ac26803efc9c13b2ae51c2b259e0b5da6909ed955d7527c10", null ],
+      [ "TIMER_MODE_PWM_FAST", "d5/dd0/timer_8h.html#a6d4cd64aed5c0009ac26803efc9c13b2ae08e38c7f9c5f9e96b6ba555105663b4", null ],
+      [ "TIMER_MODE_PWM_PHASE_CORRECT", "d5/dd0/timer_8h.html#a6d4cd64aed5c0009ac26803efc9c13b2a22e561d04cfe0e7d04ce8df0f8504285", null ]
+    ] ],
+    [ "timer_prescaler_t", "d5/dd0/timer_8h.html#a7dd1acef7009c71eaee56eae613fe6d5", [
+      [ "TIMER_PRESCALER_1", "d5/dd0/timer_8h.html#a7dd1acef7009c71eaee56eae613fe6d5a1ec6299e655a2c66b52e3b66e25e325f", null ],
+      [ "TIMER_PRESCALER_8", "d5/dd0/timer_8h.html#a7dd1acef7009c71eaee56eae613fe6d5a9b3628a81a43f086a561c2c29653a7aa", null ],
+      [ "TIMER_PRESCALER_64", "d5/dd0/timer_8h.html#a7dd1acef7009c71eaee56eae613fe6d5aae816965a1b2d96c77a50c4aa9078e2b", null ],
+      [ "TIMER_PRESCALER_256", "d5/dd0/timer_8h.html#a7dd1acef7009c71eaee56eae613fe6d5ae875fb53e0b6a6a93793449b8b44eece", null ],
+      [ "TIMER_PRESCALER_1024", "d5/dd0/timer_8h.html#a7dd1acef7009c71eaee56eae613fe6d5a7929d9e16a8ad961303b1a4c029a13fe", null ],
+      [ "TIMER_PRESCALER_EXT_FALL", "d5/dd0/timer_8h.html#a7dd1acef7009c71eaee56eae613fe6d5af8bf26f8a9c35cf10719aac922e02417", null ],
+      [ "TIMER_PRESCALER_EXT_RISE", "d5/dd0/timer_8h.html#a7dd1acef7009c71eaee56eae613fe6d5a21e1b1b3647aa69cd64b41d51e8c42d5", null ]
+    ] ],
+    [ "timer_result_t", "d5/dd0/timer_8h.html#abd2eb978c8ddee87061348bcb2fe9703", [
+      [ "TIMER_OK", "d5/dd0/timer_8h.html#abd2eb978c8ddee87061348bcb2fe9703aab800cdf243e9f5ffde4620f8d22be8a", null ],
+      [ "TIMER_ERROR_INVALID_ID", "d5/dd0/timer_8h.html#abd2eb978c8ddee87061348bcb2fe9703a52d98ea1047cbd1544ff69efa0257ec2", null ],
+      [ "TIMER_ERROR_INVALID_PERIOD", "d5/dd0/timer_8h.html#abd2eb978c8ddee87061348bcb2fe9703a7492cb4023624d3823cdc0936c53792f", null ],
+      [ "TIMER_ERROR_INVALID_CONFIG", "d5/dd0/timer_8h.html#abd2eb978c8ddee87061348bcb2fe9703a4276a650072a3f49c6d48f926f572dc6", null ],
+      [ "TIMER_ERROR_NOT_INITIALIZED", "d5/dd0/timer_8h.html#abd2eb978c8ddee87061348bcb2fe9703a1eb567cf4b8241838896c6c0ab94d23a", null ]
+    ] ],
+    [ "timer_configure", "d5/dd0/timer_8h.html#aceb5c83a1e22ed3c35e72e46f29a9240", null ],
+    [ "timer_delay_complete", "d5/dd0/timer_8h.html#a33943f43701d2041844bd4b2fe183c6f", null ],
+    [ "timer_delay_ms", "d5/dd0/timer_8h.html#a94053756b1b19e59b33e0047a21e0181", null ],
+    [ "timer_delay_us", "d5/dd0/timer_8h.html#af0e90cfa10e966b16b3e1bf74adc4468", null ],
+    [ "timer_expired", "d5/dd0/timer_8h.html#a0692af780938348e930a6f5118393414", null ],
+    [ "timer_get_elapsed", "d5/dd0/timer_8h.html#a662a2219dd12663dda5e4deae0b3f898", null ],
+    [ "timer_get_micros", "d5/dd0/timer_8h.html#adbe1084cdeac7575543a2d60a3fdb7fa", null ],
+    [ "timer_get_millis", "d5/dd0/timer_8h.html#aba3463e356a0a943870c1d60e3d26346", null ],
+    [ "timer_get_stats", "d5/dd0/timer_8h.html#a533e970c6e33a59957fa323a08e22c49", null ],
+    [ "timer_get_value", "d5/dd0/timer_8h.html#a350de4e0a608bbdbb12d24c95efc18c4", null ],
+    [ "timer_init", "d5/dd0/timer_8h.html#aa96c2aa1b5dac819fd12d27e0a93e714", null ],
+    [ "timer_measure_accuracy", "d5/dd0/timer_8h.html#a730772c63605aa55ecf366a22ce038aa", null ],
+    [ "timer_modbus_char_expired", "d5/dd0/timer_8h.html#a0dd3cb6aafc62b202b10dd140caf02d7", null ],
+    [ "timer_modbus_char_start", "d5/dd0/timer_8h.html#adc0904d7e2c3f1748fae55e33202b4ab", null ],
+    [ "timer_modbus_frame_gap_complete", "d5/dd0/timer_8h.html#a599c5586513bf99a00e71deb4cddd85c", null ],
+    [ "timer_modbus_frame_gap_start", "d5/dd0/timer_8h.html#aa3c17b3b7e9622faddd8d713fd940d67", null ],
+    [ "timer_reset", "d5/dd0/timer_8h.html#a5d7150b3258ca1ef33ce96b80b0a722c", null ],
+    [ "timer_scheduler_get_ticks", "d5/dd0/timer_8h.html#a3518d203c8a849e7ddc23b9910fb9a81", null ],
+    [ "timer_scheduler_init", "d5/dd0/timer_8h.html#aaa036d4b72bc7579d55b44e173be55e3", null ],
+    [ "timer_scheduler_reset", "d5/dd0/timer_8h.html#a97b08f38f7ecba3857a96dc76311f228", null ],
+    [ "timer_scheduler_tick", "d5/dd0/timer_8h.html#a3ab50c6fc894ce0ea342f2926db79749", null ],
+    [ "timer_start", "d5/dd0/timer_8h.html#a90c5006cae243490aeb6008629bbd5b4", null ],
+    [ "timer_stop", "d5/dd0/timer_8h.html#ad4bf06f4fb7fd08f1abae77d6026b360", null ],
+    [ "timer_test_all", "d5/dd0/timer_8h.html#ac9ebab3446580b033e692f4a1dfa1fb6", null ],
+    [ "timer_watchdog_expired", "d5/dd0/timer_8h.html#ab832e0d5932906b8379c6c6e9765e2d5", null ],
+    [ "timer_watchdog_init", "d5/dd0/timer_8h.html#afcbd0393e3d16c062afa2b65130631b7", null ],
+    [ "timer_watchdog_reset", "d5/dd0/timer_8h.html#a04b069063b643153cadec91ea37722c8", null ],
+    [ "timer_watchdog_time_remaining", "d5/dd0/timer_8h.html#a614857f7bd75988ce4e212a7afc4b1ce", null ]
+];

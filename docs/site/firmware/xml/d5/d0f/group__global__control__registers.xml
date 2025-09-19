@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d5/d0f/group__global__control__registers" kind="group">
+    <compoundname>global_control_registers</compoundname>
+    <title>Global Control Registers (0x0010-0x001F)</title>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="d5/d0f/group__global__control__registers_1gaa7bc9f873d93d522cb31d1ab66400555" prot="public" static="no">
+        <name>MODBUS_REG_GLOBAL_ENABLE</name>
+        <initializer>0x0010</initializer>
+        <briefdescription>
+<para>Global system enable register address (0x0010) </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Master enable/disable control for the entire sonicator system</para>
+<para>Values:<itemizedlist>
+<listitem><para>0: System disabled - All sonicators stopped, no new starts allowed</para>
+</listitem><listitem><para>1: System enabled - Normal operation, sonicators can be started</para>
+</listitem><listitem><para>Other values: Reserved, treated as disabled</para>
+</listitem></itemizedlist>
+</para>
+<para>When disabled, all running sonicators are immediately stopped and the system enters a safe state. Individual sonicator start commands are ignored while the global enable is disabled.</para>
+<para><simplesect kind="note"><para>This is the master safety control for the entire system </para>
+</simplesect>
+<simplesect kind="warning"><para>Disabling this register immediately stops all sonicators </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="d4/d7e/system__config_8h_1a50cb00113c414208697557330319e0db" kindref="member">REG_EMERGENCY_STOP</ref> <ref refid="d8/d25/_multiplexer_8cpp_1a3dfcc3ae027703a8472e799a42a22d9f" kindref="member">for</ref> emergency shutdown functionality </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus_registers.h" line="191" column="9" bodyfile="include/modbus_registers.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d5/d0f/group__global__control__registers_1ga5f7977d9e3f6247551f1eae1b0c6abab" prot="public" static="no">
+        <name>MODBUS_REG_EMERGENCY_STOP</name>
+        <initializer>0x0011</initializer>
+        <briefdescription>
+<para>Emergency stop command register address (0x0011) </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Emergency stop activation for immediate system shutdown</para>
+<para>Values:<itemizedlist>
+<listitem><para>0: Normal operation</para>
+</listitem><listitem><para>1: Emergency stop activated - Immediate shutdown of all sonicators</para>
+</listitem><listitem><para>Other values: Reserved, treated as emergency stop</para>
+</listitem></itemizedlist>
+</para>
+<para>When activated, this register:<itemizedlist>
+<listitem><para>Immediately stops all running sonicators</para>
+</listitem><listitem><para>Captures current system state for diagnostics</para>
+</listitem><listitem><para>Sets system status to emergency stop condition</para>
+</listitem><listitem><para>Requires manual reset to resume operation</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="warning"><para>This is a safety-critical function - activates immediate shutdown </para>
+</simplesect>
+<simplesect kind="note"><para>System state is preserved for diagnostic purposes </para>
+</simplesect>
+<simplesect kind="note"><para>Requires system reset or manual clearance to resume operation </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="d5/d0f/group__global__control__registers_1ga46b469407a45b72338274b8f7d532728" kindref="member">MODBUS_REG_SYSTEM_RESET</ref> <ref refid="d8/d25/_multiplexer_8cpp_1a3dfcc3ae027703a8472e799a42a22d9f" kindref="member">for</ref> system reset functionality </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus_registers.h" line="213" column="9" bodyfile="include/modbus_registers.h" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d5/d0f/group__global__control__registers_1ga46b469407a45b72338274b8f7d532728" prot="public" static="no">
+        <name>MODBUS_REG_SYSTEM_RESET</name>
+        <initializer>0x0012</initializer>
+        <briefdescription>
+<para>System reset command register address (0x0012) </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Software reset command for system restart and fault clearance</para>
+<para>Values:<itemizedlist>
+<listitem><para>0: Normal operation</para>
+</listitem><listitem><para>0xA5C3: System reset activation code</para>
+</listitem><listitem><para>Other values: Ignored for safety</para>
+</listitem></itemizedlist>
+</para>
+<para>When the correct activation code is written, the system performs:<itemizedlist>
+<listitem><para>Graceful shutdown of all sonicators</para>
+</listitem><listitem><para>Fault condition clearance</para>
+</listitem><listitem><para>System state reset to initial conditions</para>
+</listitem><listitem><para>Communication error counter reset</para>
+</listitem><listitem><para>Watchdog timer reset</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="warning"><para>Use with caution - causes complete system restart </para>
+</simplesect>
+<simplesect kind="note"><para>Requires specific activation code (0xA5C3) for safety </para>
+</simplesect>
+<simplesect kind="note"><para>All running operations are terminated during reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus_registers.h" line="235" column="9" bodyfile="include/modbus_registers.h" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="d5/d0f/group__global__control__registers_1ga28130f05fa4a0281529738c0e7956487" prot="public" static="no">
+        <name>MODBUS_REG_TEST_START_INHIBIT</name>
+        <initializer>0x0013</initializer>
+        <briefdescription>
+<para>Per-unit start inhibit mask register address (0x0013) </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Bitmask to prevent individual sonicators from starting</para>
+<para>Bit mapping:<itemizedlist>
+<listitem><para>Bit 0 (0x0001): Inhibit Sonicator 1 start commands</para>
+</listitem><listitem><para>Bit 1 (0x0002): Inhibit Sonicator 2 start commands</para>
+</listitem><listitem><para>Bit 2 (0x0004): Inhibit Sonicator 3 start commands</para>
+</listitem><listitem><para>Bit 3 (0x0008): Inhibit Sonicator 4 start commands</para>
+</listitem><listitem><para>Bits 4-15: Reserved for future expansion</para>
+</listitem></itemizedlist>
+</para>
+<para>When a bit is set, the corresponding sonicator will ignore start commands but can still be stopped. This is useful for:<itemizedlist>
+<listitem><para>Maintenance operations</para>
+</listitem><listitem><para>Fault isolation</para>
+</listitem><listitem><para>Load management</para>
+</listitem><listitem><para>Testing individual units</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="note"><para>Does not affect currently running sonicators </para>
+</simplesect>
+<simplesect kind="note"><para>Only prevents new start commands from being processed </para>
+</simplesect>
+<simplesect kind="see"><para>Individual sonicator start/stop registers <ref refid="d8/d25/_multiplexer_8cpp_1a3dfcc3ae027703a8472e799a42a22d9f" kindref="member">for</ref> direct control </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus_registers.h" line="259" column="9" bodyfile="include/modbus_registers.h" bodystart="259" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Read/write system-wide control and configuration registers. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>These registers provide global control over the entire Multi-Sonicator system. All registers in this group are read/write and processed by the command handler task within 20ms of write operations. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

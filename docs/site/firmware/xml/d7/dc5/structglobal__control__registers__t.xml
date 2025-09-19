@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d7/dc5/structglobal__control__registers__t" kind="struct" language="C++" prot="public">
+    <compoundname>global_control_registers_t</compoundname>
+    <includes refid="d4/d9a/modbus__registers_8h" local="no">modbus_registers.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d7/dc5/structglobal__control__registers__t_1a6c8fb57be99fefda34e75835d6838026" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t global_control_registers_t::global_enable</definition>
+        <argsstring></argsstring>
+        <name>global_enable</name>
+        <qualifiedname>global_control_registers_t::global_enable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus_registers.h" line="322" column="14" bodyfile="include/modbus_registers.h" bodystart="322" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/dc5/structglobal__control__registers__t_1ad0fdb895b35ce4b20688e93e61feb2db" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t global_control_registers_t::emergency_stop</definition>
+        <argsstring></argsstring>
+        <name>emergency_stop</name>
+        <qualifiedname>global_control_registers_t::emergency_stop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus_registers.h" line="323" column="14" bodyfile="include/modbus_registers.h" bodystart="323" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/dc5/structglobal__control__registers__t_1a8fbd7c4d0e6597e37335859d33425b04" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t global_control_registers_t::system_reset</definition>
+        <argsstring></argsstring>
+        <name>system_reset</name>
+        <qualifiedname>global_control_registers_t::system_reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus_registers.h" line="324" column="14" bodyfile="include/modbus_registers.h" bodystart="324" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/dc5/structglobal__control__registers__t_1aa1133cc885981471bd9a5d9a7afbf59d" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t global_control_registers_t::test_start_inhibit_mask</definition>
+        <argsstring></argsstring>
+        <name>test_start_inhibit_mask</name>
+        <qualifiedname>global_control_registers_t::test_start_inhibit_mask</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus_registers.h" line="325" column="14" bodyfile="include/modbus_registers.h" bodystart="325" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/dc5/structglobal__control__registers__t_1a01d0e9e986fb2a086bb9b5e805112bc4" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t global_control_registers_t::reserved[13]</definition>
+        <argsstring>[13]</argsstring>
+        <name>reserved</name>
+        <qualifiedname>global_control_registers_t::reserved</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/modbus_registers.h" line="326" column="14" bodyfile="include/modbus_registers.h" bodystart="326" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Global Control Registers (0x0010-0x001F) - Read/Write. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/modbus_registers.h" line="321" column="1" bodyfile="include/modbus_registers.h" bodystart="321" bodyend="327"/>
+    <listofallmembers>
+      <member refid="d7/dc5/structglobal__control__registers__t_1ad0fdb895b35ce4b20688e93e61feb2db" prot="public" virt="non-virtual"><scope>global_control_registers_t</scope><name>emergency_stop</name></member>
+      <member refid="d7/dc5/structglobal__control__registers__t_1a6c8fb57be99fefda34e75835d6838026" prot="public" virt="non-virtual"><scope>global_control_registers_t</scope><name>global_enable</name></member>
+      <member refid="d7/dc5/structglobal__control__registers__t_1a01d0e9e986fb2a086bb9b5e805112bc4" prot="public" virt="non-virtual"><scope>global_control_registers_t</scope><name>reserved</name></member>
+      <member refid="d7/dc5/structglobal__control__registers__t_1a8fbd7c4d0e6597e37335859d33425b04" prot="public" virt="non-virtual"><scope>global_control_registers_t</scope><name>system_reset</name></member>
+      <member refid="d7/dc5/structglobal__control__registers__t_1aa1133cc885981471bd9a5d9a7afbf59d" prot="public" virt="non-virtual"><scope>global_control_registers_t</scope><name>test_start_inhibit_mask</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

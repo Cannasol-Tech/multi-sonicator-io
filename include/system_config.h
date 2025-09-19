@@ -281,7 +281,9 @@
 // ============================================================================
 
 #define MAIN_LOOP_INTERVAL_MS        10    // 10ms main loop (100 Hz)
+#ifndef MODBUS_TIMEOUT_MS
 #define MODBUS_TIMEOUT_MS            500   // 500ms MODBUS timeout
+#endif
 #define STATUS_UPDATE_INTERVAL_MS    100   // Status LED update rate
 #define POWER_MONITOR_INTERVAL_MS    50    // Power monitoring rate
 #define FREQUENCY_MEASURE_WINDOW_MS  100   // Frequency measurement window

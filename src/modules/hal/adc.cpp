@@ -72,17 +72,27 @@ static float calibration_factor = 1.0f;
  * @param channel ADC channel to validate
  * @return true if channel is valid, false otherwise
  */
-static bool is_valid_channel(adc_channel_t channel);
+static bool is_valid_channel(adc_channel_t channel) {
+    return (channel >= ADC_CHANNEL_0) && (channel < ADC_CHANNEL_MAX);
+}
 
 /**
  * @brief Maps sonicator ID to corresponding ADC channel
  * @param sonicator_id Sonicator identifier (1-4)
  * @return ADC channel for power sensing, or ADC_CHANNEL_MAX if invalid
  */
-static adc_channel_t sonicator_to_adc_channel(uint8_t sonicator_id);
+static adc_channel_t sonicator_to_adc_channel(uint8_t sonicator_id) {
+    switch (sonicator_id) {
+        case 1: return ADC_CHANNEL_4;
+        case 2: return ADC_CHANNEL_5;
+        case 3: return ADC_CHANNEL_6;
+        case 4: return ADC_CHANNEL_7;
+        default: return (adc_channel_t)ADC_CHANNEL_MAX;
+    }
+}
 
-// ============================================================================
-// PUBLIC FUNCTION IMPLEMENTATIONS
+ // ============================================================================
+ // PUBLIC FUNCTION IMPLEMENTATIONS
 // ============================================================================
 
 /**
@@ -127,7 +137,7 @@ adc_result_t adc_init(void) {
  * @param reference Desired reference voltage source
  * @return ADC_OK on success, ADC_ERROR_INVALID_REF for invalid reference
  */
-inline constexpr adc_result_t adc_set_reference(adc_reference_t reference) {
+adc_result_t adc_set_reference(adc_reference_t reference) {
     switch (reference) {
         case ADC_REF_EXTERNAL:
             // REFS1=0, REFS0=0: External AREF
@@ -186,7 +196,7 @@ inline constexpr adc_result_t adc_set_reference(adc_reference_t reference) {
  * @param prescaler Desired clock division factor
  * @return ADC_OK on success, ADC_ERROR_INVALID_REF for invalid prescaler
  */
-inline constexpr adc_result_t adc_set_prescaler(adc_prescaler_t prescaler) {
+adc_result_t adc_set_prescaler(adc_prescaler_t prescaler) {
     if (prescaler > ADC_PRESCALER_128) {
         return ADC_ERROR_INVALID_REF;
     }
@@ -211,7 +221,7 @@ inline constexpr adc_result_t adc_set_prescaler(adc_prescaler_t prescaler) {
  * @param value Pointer to store 10-bit conversion result (0-1023)
  * @return ADC_OK on success, error code on failure
  */
-inline constexpr adc_result_t adc_read_channel(adc_channel_t channel, uint16_t* value) {
+adc_result_t adc_read_channel(adc_channel_t channel, uint16_t* value) {
     if (!adc_initialized) {
         return ADC_ERROR_NOT_INITIALIZED;
     }
@@ -283,7 +293,7 @@ inline constexpr adc_result_t adc_read_channel(adc_channel_t channel, uint16_t* 
  * @param channel ADC input channel to convert
  * @return ADC_OK on success, error code on failure
  */
-inline constexpr adc_result_t adc_start_conversion(adc_channel_t channel) {
+adc_result_t adc_start_conversion(adc_channel_t channel) {
     if (!adc_initialized) {
         return ADC_ERROR_NOT_INITIALIZED;
     }
@@ -318,7 +328,7 @@ inline constexpr adc_result_t adc_start_conversion(adc_channel_t channel) {
  * @param complete Pointer to store completion status (true if done)
  * @return ADC_OK on success, error code on failure
  */
-inline constexpr adc_result_t adc_conversion_complete(bool* complete) {
+adc_result_t adc_conversion_complete(bool* complete) {
     if (!adc_initialized) {
         return ADC_ERROR_NOT_INITIALIZED;
     }
@@ -344,7 +354,7 @@ inline constexpr adc_result_t adc_conversion_complete(bool* complete) {
  * @param value Pointer to store 10-bit conversion result
  * @return ADC_OK on success, error code on failure
  */
-inline constexpr adc_result_t adc_get_result(uint16_t* value) {
+adc_result_t adc_get_result(uint16_t* value) {
     if (!adc_initialized) {
         return ADC_ERROR_NOT_INITIALIZED;
     }

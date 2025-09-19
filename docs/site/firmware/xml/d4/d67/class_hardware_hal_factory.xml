@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="d4/d67/class_hardware_hal_factory" kind="class" language="C++" prot="public">
+    <compoundname>HardwareHalFactory</compoundname>
+    <basecompoundref refid="de/de7/class_i_hal_factory" prot="public" virt="non-virtual">IHalFactory</basecompoundref>
+    <includes refid="d2/db1/hal__hardware__factory_8h" local="no">hal_hardware_factory.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d4/d67/class_hardware_hal_factory_1a47faabb65ecd7c035ccfb1f5b3afb4c3" prot="private" static="no" mutable="no">
+        <type><ref refid="d3/d93/class_hardware_gpio_port" kindref="compound">HardwareGpioPort</ref></type>
+        <definition>HardwareGpioPort HardwareHalFactory::gpio_port</definition>
+        <argsstring></argsstring>
+        <name>gpio_port</name>
+        <qualifiedname>HardwareHalFactory::gpio_port</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="119" column="22" bodyfile="src/modules/hal/hal_hardware_factory.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d67/class_hardware_hal_factory_1a28e337dca4eb8171a57d1c7051bb27d9" prot="private" static="no" mutable="no">
+        <type><ref refid="d4/d34/class_hardware_adc_reader" kindref="compound">HardwareAdcReader</ref></type>
+        <definition>HardwareAdcReader HardwareHalFactory::adc_reader</definition>
+        <argsstring></argsstring>
+        <name>adc_reader</name>
+        <qualifiedname>HardwareHalFactory::adc_reader</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="120" column="23" bodyfile="src/modules/hal/hal_hardware_factory.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d67/class_hardware_hal_factory_1a0a64796cddf7843c9bd85fd4a323f1f7" prot="private" static="no" mutable="no">
+        <type><ref refid="d2/db1/class_hardware_pwm_generator" kindref="compound">HardwarePwmGenerator</ref></type>
+        <definition>HardwarePwmGenerator HardwareHalFactory::pwm_generator</definition>
+        <argsstring></argsstring>
+        <name>pwm_generator</name>
+        <qualifiedname>HardwareHalFactory::pwm_generator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="121" column="26" bodyfile="src/modules/hal/hal_hardware_factory.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d67/class_hardware_hal_factory_1a4e83a10f7536d2308b6196065ce52a62" prot="private" static="no" mutable="no">
+        <type><ref refid="dd/d9b/class_hardware_uart_port" kindref="compound">HardwareUartPort</ref></type>
+        <definition>HardwareUartPort HardwareHalFactory::uart_port</definition>
+        <argsstring></argsstring>
+        <name>uart_port</name>
+        <qualifiedname>HardwareHalFactory::uart_port</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="122" column="22" bodyfile="src/modules/hal/hal_hardware_factory.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d4/d67/class_hardware_hal_factory_1ae2b8c2170736a8bdfc7231efc9906150" prot="private" static="no" mutable="no">
+        <type><ref refid="d6/dc3/class_hardware_timer_manager" kindref="compound">HardwareTimerManager</ref></type>
+        <definition>HardwareTimerManager HardwareHalFactory::timer_manager</definition>
+        <argsstring></argsstring>
+        <name>timer_manager</name>
+        <qualifiedname>HardwareHalFactory::timer_manager</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="123" column="26" bodyfile="src/modules/hal/hal_hardware_factory.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="d4/d67/class_hardware_hal_factory_1aba364e2fa865915051bf101423e2cfc2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d4/d45/class_i_gpio_port" kindref="compound">IGpioPort</ref> *</type>
+        <definition>IGpioPort * HardwareHalFactory::createGpioPort</definition>
+        <argsstring>() override</argsstring>
+        <name>createGpioPort</name>
+        <qualifiedname>HardwareHalFactory::createGpioPort</qualifiedname>
+        <reimplements refid="de/de7/class_i_hal_factory_1a603ce483699c0eaf8fc64556acd830f9">createGpioPort</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="126" column="15" bodyfile="src/modules/hal/hal_hardware_factory.h" bodystart="126" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d67/class_hardware_hal_factory_1a4e8f0531dfac6603246873082077f7a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d8/da7/class_i_adc_reader" kindref="compound">IAdcReader</ref> *</type>
+        <definition>IAdcReader * HardwareHalFactory::createAdcReader</definition>
+        <argsstring>() override</argsstring>
+        <name>createAdcReader</name>
+        <qualifiedname>HardwareHalFactory::createAdcReader</qualifiedname>
+        <reimplements refid="de/de7/class_i_hal_factory_1ab4eb70cf1e570beb4807c56e5be14243">createAdcReader</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="130" column="16" bodyfile="src/modules/hal/hal_hardware_factory.h" bodystart="130" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d67/class_hardware_hal_factory_1a5afab9815b0fce862bce4f906db09b9f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d3/d56/class_i_pwm_generator" kindref="compound">IPwmGenerator</ref> *</type>
+        <definition>IPwmGenerator * HardwareHalFactory::createPwmGenerator</definition>
+        <argsstring>() override</argsstring>
+        <name>createPwmGenerator</name>
+        <qualifiedname>HardwareHalFactory::createPwmGenerator</qualifiedname>
+        <reimplements refid="de/de7/class_i_hal_factory_1ac572bad86e2779eb959704bb1c100ce6">createPwmGenerator</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="134" column="19" bodyfile="src/modules/hal/hal_hardware_factory.h" bodystart="134" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d67/class_hardware_hal_factory_1a0e11319a7262a80275e11aa20b0c0c60" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="d2/d2d/class_i_uart_port" kindref="compound">IUartPort</ref> *</type>
+        <definition>IUartPort * HardwareHalFactory::createUartPort</definition>
+        <argsstring>() override</argsstring>
+        <name>createUartPort</name>
+        <qualifiedname>HardwareHalFactory::createUartPort</qualifiedname>
+        <reimplements refid="de/de7/class_i_hal_factory_1a13cdcbe76af7a5c64e58549bf2b80388">createUartPort</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="138" column="15" bodyfile="src/modules/hal/hal_hardware_factory.h" bodystart="138" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="d4/d67/class_hardware_hal_factory_1a0e0cc97bd97d4d3ec448d6c66045d396" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="da/dbb/class_i_timer_manager" kindref="compound">ITimerManager</ref> *</type>
+        <definition>ITimerManager * HardwareHalFactory::createTimerManager</definition>
+        <argsstring>() override</argsstring>
+        <name>createTimerManager</name>
+        <qualifiedname>HardwareHalFactory::createTimerManager</qualifiedname>
+        <reimplements refid="de/de7/class_i_hal_factory_1a1a0bc6e4da355f549756aa9f35353807">createTimerManager</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/hal_hardware_factory.h" line="142" column="19" bodyfile="src/modules/hal/hal_hardware_factory.h" bodystart="142" bodyend="144"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Factory for creating real hardware HAL instances. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Implements the factory pattern from unity-testing-guide.md for dependency injection of real hardware implementations. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>HardwareHalFactory</label>
+        <link refid="d4/d67/class_hardware_hal_factory"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>IHalFactory</label>
+        <link refid="de/de7/class_i_hal_factory"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>HardwareHalFactory</label>
+        <link refid="d4/d67/class_hardware_hal_factory"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>IHalFactory</label>
+        <link refid="de/de7/class_i_hal_factory"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/modules/hal/hal_hardware_factory.h" line="117" column="1" bodyfile="src/modules/hal/hal_hardware_factory.h" bodystart="117" bodyend="145"/>
+    <listofallmembers>
+      <member refid="d4/d67/class_hardware_hal_factory_1a28e337dca4eb8171a57d1c7051bb27d9" prot="private" virt="non-virtual"><scope>HardwareHalFactory</scope><name>adc_reader</name></member>
+      <member refid="d4/d67/class_hardware_hal_factory_1a4e8f0531dfac6603246873082077f7a1" prot="public" virt="virtual"><scope>HardwareHalFactory</scope><name>createAdcReader</name></member>
+      <member refid="d4/d67/class_hardware_hal_factory_1aba364e2fa865915051bf101423e2cfc2" prot="public" virt="virtual"><scope>HardwareHalFactory</scope><name>createGpioPort</name></member>
+      <member refid="d4/d67/class_hardware_hal_factory_1a5afab9815b0fce862bce4f906db09b9f" prot="public" virt="virtual"><scope>HardwareHalFactory</scope><name>createPwmGenerator</name></member>
+      <member refid="d4/d67/class_hardware_hal_factory_1a0e0cc97bd97d4d3ec448d6c66045d396" prot="public" virt="virtual"><scope>HardwareHalFactory</scope><name>createTimerManager</name></member>
+      <member refid="d4/d67/class_hardware_hal_factory_1a0e11319a7262a80275e11aa20b0c0c60" prot="public" virt="virtual"><scope>HardwareHalFactory</scope><name>createUartPort</name></member>
+      <member refid="d4/d67/class_hardware_hal_factory_1a47faabb65ecd7c035ccfb1f5b3afb4c3" prot="private" virt="non-virtual"><scope>HardwareHalFactory</scope><name>gpio_port</name></member>
+      <member refid="d4/d67/class_hardware_hal_factory_1a0a64796cddf7843c9bd85fd4a323f1f7" prot="private" virt="non-virtual"><scope>HardwareHalFactory</scope><name>pwm_generator</name></member>
+      <member refid="d4/d67/class_hardware_hal_factory_1ae2b8c2170736a8bdfc7231efc9906150" prot="private" virt="non-virtual"><scope>HardwareHalFactory</scope><name>timer_manager</name></member>
+      <member refid="d4/d67/class_hardware_hal_factory_1a4e83a10f7536d2308b6196065ce52a62" prot="private" virt="non-virtual"><scope>HardwareHalFactory</scope><name>uart_port</name></member>
+      <member refid="de/de7/class_i_hal_factory_1a65144b2ffce2bc09d7dfa807852f7086" prot="public" virt="virtual"><scope>HardwareHalFactory</scope><name>~IHalFactory</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

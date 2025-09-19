@@ -1,0 +1,454 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="df/d0a/main_8cpp" kind="file" language="C++">
+    <compoundname>main.cpp</compoundname>
+    <includes local="no">Arduino.h</includes>
+    <includes refid="d8/d4b/hal_8h" local="yes">modules/hal/hal.h</includes>
+    <includes local="yes">modules/communication/modbus.h</includes>
+    <includes local="yes">modules/communication/modbus_register_manager.h</includes>
+    <includes refid="d6/d4f/register__map_8h" local="yes">register_map.h</includes>
+    <includes refid="dc/dc2/_multiplexer_8h" local="yes">multiplexer/Multiplexer.h</includes>
+    <includes refid="de/d01/frequency__counter_8h" local="yes">frequency_counter.h</includes>
+    <includes refid="d2/d6f/constants_8h" local="yes">constants.h</includes>
+    <incdepgraph>
+      <node id="26">
+        <label>constants.h</label>
+        <link refid="d2/d6f/constants_8h"/>
+      </node>
+      <node id="25">
+        <label>frequency_counter.h</label>
+        <link refid="de/d01/frequency__counter_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>multiplexer/Multiplexer.h</label>
+        <link refid="dc/dc2/_multiplexer_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>register_map.h</label>
+        <link refid="d6/d4f/register__map_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>sonicator/sonicator.h</label>
+        <link refid="dc/d16/sonicator_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>sonicator/types/control.h</label>
+        <link refid="d9/d02/control_8h"/>
+      </node>
+      <node id="22">
+        <label>errors.h</label>
+        <link refid="de/d45/errors_8h"/>
+      </node>
+      <node id="21">
+        <label>sonicator/types/state.h</label>
+        <link refid="db/d3b/state_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>system_config.h</label>
+        <link refid="d4/d7e/system__config_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/main.cpp</label>
+        <link refid="df/d0a/main_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>adc.h</label>
+        <link refid="d7/d19/adc_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>atmega_hal_impl.h</label>
+        <link refid="d2/d92/atmega__hal__impl_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>gpio.h</label>
+        <link refid="d6/d7c/gpio_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>modules/hal/hal.h</label>
+        <link refid="d8/d4b/hal_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>hal_template_interfaces.h</label>
+        <link refid="de/d2b/hal__template__interfaces_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>mock_hal_impl.h</label>
+        <link refid="de/d8d/mock__hal__impl_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>pwm.h</label>
+        <link refid="d6/db9/pwm_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>timer.h</label>
+        <link refid="d5/dd0/timer_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>uart.h</label>
+        <link refid="d2/d86/uart_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Arduino.h</label>
+      </node>
+      <node id="15">
+        <label>modules/communication/modbus.h</label>
+      </node>
+      <node id="16">
+        <label>modules/communication/modbus_register_manager.h</label>
+      </node>
+      <node id="18">
+        <label>modules/communication/modbus_registers.h</label>
+      </node>
+      <node id="6">
+        <label>stdbool.h</label>
+      </node>
+      <node id="5">
+        <label>stdint.h</label>
+      </node>
+      <node id="14">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="df/d0a/main_8cpp_1a6b7777028a98e39d215b22a4306773e7" prot="public" static="no">
+        <name>DEFAULT_SONICATOR_AMPLITUDE</name>
+        <initializer>80</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/main.cpp" line="22" column="9" bodyfile="src/main.cpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" prot="public" static="no" mutable="no">
+        <type><ref refid="d3/d00/class_sonic_multiplexer" kindref="compound">SonicMultiplexer</ref></type>
+        <definition>SonicMultiplexer multiplexer(4)</definition>
+        <argsstring>(4)</argsstring>
+        <name>multiplexer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/main.cpp" line="25" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="df/d0a/main_8cpp_1a9cc8156acfaa6e057945f6df5708310d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void update_modbus_registers</definition>
+        <argsstring>()</argsstring>
+        <name>update_modbus_registers</name>
+        <briefdescription>
+<para>Synchronizes the Multiplexer state with the MODBUS register map. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Reads control values from MODBUS and applies them to the multiplexer. Reads status values from the multiplexer and writes them to MODBUS. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/main.cpp" line="100" column="13" bodyfile="src/main.cpp" bodystart="100" bodyend="145" declfile="src/main.cpp" declline="28" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d0a/main_8cpp_1a488409a11fd01b25bd3302f3e4315483" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void setup_modbus</definition>
+        <argsstring>(void)</argsstring>
+        <name>setup_modbus</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/main.cpp" line="30" column="13" bodyfile="src/main.cpp" bodystart="30" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d0a/main_8cpp_1a4fc01d736fe50cf5b977f755b675f11d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setup</definition>
+        <argsstring>()</argsstring>
+        <name>setup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/main.cpp" line="42" column="6" bodyfile="src/main.cpp" bodystart="42" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="df/d0a/main_8cpp_1afe461d27b9c48d5921c00d521181f12f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void loop</definition>
+        <argsstring>()</argsstring>
+        <name>loop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/main.cpp" line="68" column="6" bodyfile="src/main.cpp" bodystart="68" bodyend="92"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Unified main for MODBUS and Multiplexer control. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>James (AI Developer) </para>
+</simplesect>
+<simplesect kind="date"><para>2025-09-16 </para>
+</simplesect>
+<simplesect kind="version"><para>2.0.0</para>
+</simplesect>
+Main application entry point that uses the Multiplexer class to manage all sonicator units and synchronizes their state with the MODBUS register map. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Arduino.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d8/d4b/hal_8h" kindref="compound">modules/hal/hal.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;modules/communication/modbus.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;modules/communication/modbus_register_manager.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d6/d4f/register__map_8h" kindref="compound">register_map.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dc/dc2/_multiplexer_8h" kindref="compound">multiplexer/Multiplexer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="de/d01/frequency__counter_8h" kindref="compound">frequency_counter.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="d2/d6f/constants_8h" kindref="compound">constants.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFAULT_SONICATOR_AMPLITUDE<sp/>80</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Global<sp/>Multiplexer<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><ref refid="d3/d00/class_sonic_multiplexer" kindref="compound">SonicMultiplexer</ref><sp/><ref refid="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" kindref="member">multiplexer</ref>(4);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Forward<sp/>declaration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/d0a/main_8cpp_1a9cc8156acfaa6e057945f6df5708310d" kindref="member">update_modbus_registers</ref>();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/d0a/main_8cpp_1a488409a11fd01b25bd3302f3e4315483" kindref="member">setup_modbus</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/dea/structmodbus__config__t" kindref="compound">modbus_config_t</ref><sp/>cfg{};</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>cfg.<ref refid="d5/dea/structmodbus__config__t_1abfd4559d5083fd78a34dd9364df5c0c4" kindref="member">slave_id</ref><sp/>=<sp/><ref refid="da/dae/modbus_8h_1a1aef92ccc58f5b6eb11f9a32c8f1e3d6" kindref="member">MODBUS_SLAVE_ID</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>cfg.<ref refid="d5/dea/structmodbus__config__t_1a0657f618b7298a2d04c31dd2d1469409" kindref="member">baud_rate</ref><sp/>=<sp/><ref refid="da/dae/modbus_8h_1a60bd280b8778414fe9cd7546d4a24e1b" kindref="member">MODBUS_BAUD_RATE</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>cfg.<ref refid="d5/dea/structmodbus__config__t_1a60457aa22ba8273dc67ea526f0d69f97" kindref="member">timeout_ms</ref><sp/>=<sp/><ref refid="da/dae/modbus_8h_1a346d42f6cda5022fb4c334d6d97216d6" kindref="member">MODBUS_TIMEOUT_MS</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>cfg.<ref refid="d5/dea/structmodbus__config__t_1af56c9413102d41866cbe63b7c175336d" kindref="member">read_callback</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>cfg.<ref refid="d5/dea/structmodbus__config__t_1a02cdef2f270caf7cd6f9c3a45f629279" kindref="member">write_callback</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>cfg.<ref refid="d5/dea/structmodbus__config__t_1a6fea6caf7ea1ed7187efb0bcdc785feb" kindref="member">timeout_callback</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>cfg.<ref refid="d5/dea/structmodbus__config__t_1a8dc179a89b19610e2028b829592116a7" kindref="member">error_callback</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)<ref refid="d8/d00/modbus_8cpp_1a9713277eaf362fb046bac801cee5a529" kindref="member">modbus_init</ref>(&amp;cfg);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/d0a/main_8cpp_1a4fc01d736fe50cf5b977f755b675f11d" kindref="member">setup</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)<ref refid="dc/db6/hal_8cpp_1aa09745b395496b11ba076700d91d8e21" kindref="member">hal_init</ref>();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>frequency<sp/>counting<sp/>system</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="d4/d18/frequency__counter_8cpp_1a32db71b05f686868ba23198a67d4c3cd" kindref="member">frequency_counter_init</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>frequency<sp/>counter<sp/>initialization<sp/>failure</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Could<sp/>set<sp/>error<sp/>LED<sp/>or<sp/>enter<sp/>safe<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1a87e393a356f5b647a98e8decf5574601" kindref="member">register_manager_init</ref>();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="df/d0a/main_8cpp_1a488409a11fd01b25bd3302f3e4315483" kindref="member">setup_modbus</ref>();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>Multiplexer<sp/>constructor<sp/>handles<sp/>sonicator<sp/>initialization.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>call<sp/>begin()<sp/>here<sp/>for<sp/>consistency,<sp/>though<sp/>it&apos;s<sp/>a<sp/>no-op.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" kindref="member">multiplexer</ref>.begin();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>default<sp/>values<sp/>from<sp/>register<sp/>map</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">*<sp/>map<sp/>=<sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab07eb4458680115587cf910a7532e6d3" kindref="member">register_manager_get_map</ref>();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>map-&gt;global_control.global_enable<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>4;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map-&gt;sonicators[i].amplitude_setpoint<sp/>=<sp/><ref refid="df/d0a/main_8cpp_1a6b7777028a98e39d215b22a4306773e7" kindref="member">DEFAULT_SONICATOR_AMPLITUDE</ref>;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" kindref="member">multiplexer</ref>.setAmplitude(map-&gt;sonicators[0].amplitude_setpoint);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/d0a/main_8cpp_1afe461d27b9c48d5921c00d521181f12f" kindref="member">loop</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>last_modbus_process_time<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>last_multiplexer_update_time<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>last_modbus_sync_time<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>current_time<sp/>=<sp/>millis();</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_time<sp/>-<sp/>last_modbus_process_time<sp/>&gt;=<sp/><ref refid="d2/d6f/constants_8h_1a6447914312ce385e9965b346b52e6e33" kindref="member">MODBUS_PROCESS_INTERVAL_MS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(void)<ref refid="d8/d00/modbus_8cpp_1a5fd500ab836fc4f5f8704d8c709163c1" kindref="member">modbus_process</ref>();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>last_modbus_process_time<sp/>=<sp/>current_time;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_time<sp/>-<sp/>last_multiplexer_update_time<sp/>&gt;=<sp/><ref refid="d2/d6f/constants_8h_1a4fd22f18c40849944f16959b80457b49" kindref="member">MULTIPLEXER_UPDATE_INTERVAL_MS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" kindref="member">multiplexer</ref>.update();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>last_multiplexer_update_time<sp/>=<sp/>current_time;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_time<sp/>-<sp/>last_modbus_sync_time<sp/>&gt;=<sp/><ref refid="d2/d6f/constants_8h_1a41200ee403f5eab60d98f68fef18e068" kindref="member">MODBUS_SYNC_INTERVAL_MS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/d0a/main_8cpp_1a9cc8156acfaa6e057945f6df5708310d" kindref="member">update_modbus_registers</ref>();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>last_modbus_sync_time<sp/>=<sp/>current_time;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>delay(1);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="df/d0a/main_8cpp_1a9cc8156acfaa6e057945f6df5708310d" kindref="member">update_modbus_registers</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="d5/d1a/structmodbus__register__map__t" kindref="compound">modbus_register_map_t</ref>*<sp/>map<sp/>=<sp/><ref refid="db/d0f/modbus__register__manager_8cpp_1ab07eb4458680115587cf910a7532e6d3" kindref="member">register_manager_get_map</ref>();</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!map)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>active_mask<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>active_count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Sync<sp/>each<sp/>sonicator</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>NUM_SONICATORS;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>From<sp/>MODBUS<sp/>to<sp/>Multiplexer<sp/>(Control)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" kindref="member">sonicators</ref>[i].<ref refid="d4/d97/structsonicator__registers__t_1a3e0e2424d50debfad86a72d557dbdd6a" kindref="member">start_stop</ref><sp/>==<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" kindref="member">multiplexer</ref>.start(i);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" kindref="member">sonicators</ref>[i].<ref refid="d4/d97/structsonicator__registers__t_1a3e0e2424d50debfad86a72d557dbdd6a" kindref="member">start_stop</ref><sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>command</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" kindref="member">sonicators</ref>[i].<ref refid="d4/d97/structsonicator__registers__t_1a3e0e2424d50debfad86a72d557dbdd6a" kindref="member">start_stop</ref><sp/>==<sp/>2)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>Using<sp/>2<sp/>for<sp/>stop</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" kindref="member">multiplexer</ref>.stop(i);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" kindref="member">sonicators</ref>[i].<ref refid="d4/d97/structsonicator__registers__t_1a3e0e2424d50debfad86a72d557dbdd6a" kindref="member">start_stop</ref><sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>command</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" kindref="member">sonicators</ref>[i].<ref refid="d4/d97/structsonicator__registers__t_1a1272f5c84e823d8a0fc64ee6ead65f45" kindref="member">overload_reset</ref><sp/>==<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" kindref="member">multiplexer</ref>.resetOverload(i);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" kindref="member">sonicators</ref>[i].<ref refid="d4/d97/structsonicator__registers__t_1a1272f5c84e823d8a0fc64ee6ead65f45" kindref="member">overload_reset</ref><sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>command</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" kindref="member">multiplexer</ref>.setAmplitude(map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" kindref="member">sonicators</ref>[i].<ref refid="d4/d97/structsonicator__registers__t_1a93efadf71cb1059be8f8b2927bc04f67" kindref="member">amplitude_setpoint</ref>);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>From<sp/>Multiplexer<sp/>to<sp/>MODBUS<sp/>(Status)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="db/d3b/state_8h_1afeb77d5a88e0115b4344d7f6ed578ec8" kindref="member">sonicator_status_t</ref>*<sp/>status<sp/>=<sp/><ref refid="df/d0a/main_8cpp_1af2b1ff52c196635d82e94796fed76a77" kindref="member">multiplexer</ref>.getStatus(i);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status)<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>flags<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status-&gt;state<sp/>==<sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315aefd4187011c854e789baa073995f0def" kindref="member">SONICATOR_STATE_RUNNING</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>flags<sp/>|=<sp/><ref refid="d4/d9a/modbus__registers_8h_1aee1bf5e1be326c7918d8c78d21020a0e" kindref="member">SON_STATUS_RUNNING</ref>;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>active_mask<sp/>|=<sp/>(1<sp/>&lt;&lt;<sp/>i);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>active_count++;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status-&gt;state<sp/>==<sp/><ref refid="db/d3b/state_8h_1ad0aeab8703f3a1439806186cba759315a7ef335199557a3658616b70275094a47" kindref="member">SONICATOR_STATE_FAULT</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>flags<sp/>|=<sp/><ref refid="d4/d9a/modbus__registers_8h_1a3f73c0cef3963e662bff7bc8c95bc7e6" kindref="member">SON_STATUS_FAULT</ref>;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" kindref="member">sonicators</ref>[i].<ref refid="d4/d97/structsonicator__registers__t_1a508b8326b9499f811ac08dbcc91771a4" kindref="member">status_flags</ref><sp/>=<sp/>flags;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" kindref="member">sonicators</ref>[i].<ref refid="d4/d97/structsonicator__registers__t_1a147a2fb453612d64ac43d310f93474db" kindref="member">power_watts</ref><sp/>=<sp/>(uint16_t)status-&gt;power_watts;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ac196ee6c9822e58150632a4a910f9e28" kindref="member">sonicators</ref>[i].<ref refid="d4/d97/structsonicator__registers__t_1aea500acd0c3fd52141f5ba8c03ee9c7f" kindref="member">frequency_hz</ref><sp/>=<sp/>status-&gt;<ref refid="db/dd3/structsonicator__status__s_1a87a12fbd9ac9337f747889b712f4fc07" kindref="member">frequency_hz</ref>;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>global<sp/>system<sp/>status</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ad03c2c350a3c56687d3b08af4f0ac395" kindref="member">system_status</ref>.<ref refid="d5/d00/structsystem__status__registers__t_1ae3298392dc37ca6fcb2d5cfc18db6dbc" kindref="member">active_mask</ref><sp/>=<sp/>active_mask;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>map-&gt;<ref refid="d5/d1a/structmodbus__register__map__t_1ad03c2c350a3c56687d3b08af4f0ac395" kindref="member">system_status</ref>.<ref refid="d5/d00/structsystem__status__registers__t_1a442342a3a37e41de612176d9a200769a" kindref="member">active_count</ref><sp/>=<sp/>active_count;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/main.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,278 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="df/db4/class_arduino_gpio_port" kind="class" language="C++" prot="public">
+    <compoundname>ArduinoGpioPort</compoundname>
+    <basecompoundref refid="d4/d45/class_i_gpio_port" prot="public" virt="non-virtual">IGpioPort</basecompoundref>
+    <includes refid="d8/d61/arduino__hal__factory_8h" local="no">arduino_hal_factory.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="df/db4/class_arduino_gpio_port_1a01e379e5158fa903e4f328f3da566bea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoGpioPort::init</definition>
+        <argsstring>(void) override</argsstring>
+        <name>init</name>
+        <qualifiedname>ArduinoGpioPort::init</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a60c1a7430f3e5bae47f5c62130ab989a">init</reimplements>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="27" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="27" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="df/db4/class_arduino_gpio_port_1aa3298d10dad3c5e494145f7b4592c7dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoGpioPort::setPinMode</definition>
+        <argsstring>(uint8_t pin, uint8_t mode) override</argsstring>
+        <name>setPinMode</name>
+        <qualifiedname>ArduinoGpioPort::setPinMode</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1ac9d71023f4ce28da95f68c4c9df4dab0">setPinMode</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="31" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="31" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="df/db4/class_arduino_gpio_port_1a1878c348f3b3f780e54a77c66604f45f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoGpioPort::digitalWrite</definition>
+        <argsstring>(uint8_t pin, uint8_t value) override</argsstring>
+        <name>digitalWrite</name>
+        <qualifiedname>ArduinoGpioPort::digitalWrite</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1add58b07a6da42c6bcbd986f4507da15a">digitalWrite</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="35" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="35" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="df/db4/class_arduino_gpio_port_1a65d8fb652e143817800204dbfb361a97" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t ArduinoGpioPort::digitalRead</definition>
+        <argsstring>(uint8_t pin) override</argsstring>
+        <name>digitalRead</name>
+        <qualifiedname>ArduinoGpioPort::digitalRead</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a1f9e986f6414805bc3ad867e251af024">digitalRead</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="39" column="13" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="39" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="df/db4/class_arduino_gpio_port_1a196e9f3740ccdae19f32874261989f4e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoGpioPort::togglePin</definition>
+        <argsstring>(uint8_t pin) override</argsstring>
+        <name>togglePin</name>
+        <qualifiedname>ArduinoGpioPort::togglePin</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a23039e24be8f75e22b60cfe17d91b1cc">togglePin</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="43" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="43" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="df/db4/class_arduino_gpio_port_1a9e3f3f0c67c3911c04c034be0a7803f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoGpioPort::sonicatorStart</definition>
+        <argsstring>(uint8_t sonicator_id) override</argsstring>
+        <name>sonicatorStart</name>
+        <qualifiedname>ArduinoGpioPort::sonicatorStart</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a2d1b5a7f40485ffbce7eaf966e5068eb">sonicatorStart</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="47" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="47" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="df/db4/class_arduino_gpio_port_1a1241581e5fc7358f206df556179c6287" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoGpioPort::sonicatorStop</definition>
+        <argsstring>(uint8_t sonicator_id) override</argsstring>
+        <name>sonicatorStop</name>
+        <qualifiedname>ArduinoGpioPort::sonicatorStop</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a01cc2219c0d670eded2410efcc41eb73">sonicatorStop</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="51" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="51" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="df/db4/class_arduino_gpio_port_1a1d71b3013ee284f337ff2b1f8a17907e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoGpioPort::sonicatorReset</definition>
+        <argsstring>(uint8_t sonicator_id) override</argsstring>
+        <name>sonicatorReset</name>
+        <qualifiedname>ArduinoGpioPort::sonicatorReset</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a6b753a07382868258b938d839dddaaeb">sonicatorReset</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="55" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="55" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="df/db4/class_arduino_gpio_port_1ab17c7516207f01424ef1fb197f01e297" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoGpioPort::sonicatorReadOverload</definition>
+        <argsstring>(uint8_t sonicator_id, bool *state) override</argsstring>
+        <name>sonicatorReadOverload</name>
+        <qualifiedname>ArduinoGpioPort::sonicatorReadOverload</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1ac449ea85a3924a8aa7a7a03afe092a76">sonicatorReadOverload</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="59" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="59" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="df/db4/class_arduino_gpio_port_1a39c9be3bc1fd0262a16754830ccd5e2c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoGpioPort::sonicatorReadFreqLock</definition>
+        <argsstring>(uint8_t sonicator_id, bool *state) override</argsstring>
+        <name>sonicatorReadFreqLock</name>
+        <qualifiedname>ArduinoGpioPort::sonicatorReadFreqLock</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1ac98cefcacbe7cfd43bf5cf28d8dee833">sonicatorReadFreqLock</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>sonicator_id</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="63" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="63" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="df/db4/class_arduino_gpio_port_1a85fe977547e7e2a6d5963b4a91b24f01" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool ArduinoGpioPort::statusLed</definition>
+        <argsstring>(bool state) override</argsstring>
+        <name>statusLed</name>
+        <qualifiedname>ArduinoGpioPort::statusLed</qualifiedname>
+        <reimplements refid="d4/d45/class_i_gpio_port_1a77a29641b3e8f4e58d5741483a1bfc89">statusLed</reimplements>
+        <param>
+          <type>bool</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="67" column="10" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="67" bodyend="69"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Arduino GPIO implementation using Arduino framework. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ArduinoGpioPort</label>
+        <link refid="df/db4/class_arduino_gpio_port"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>IGpioPort</label>
+        <link refid="d4/d45/class_i_gpio_port"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ArduinoGpioPort</label>
+        <link refid="df/db4/class_arduino_gpio_port"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>IGpioPort</label>
+        <link refid="d4/d45/class_i_gpio_port"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/modules/hal/arduino/arduino_hal_factory.h" line="25" column="1" bodyfile="src/modules/hal/arduino/arduino_hal_factory.h" bodystart="25" bodyend="70"/>
+    <listofallmembers>
+      <member refid="df/db4/class_arduino_gpio_port_1a65d8fb652e143817800204dbfb361a97" prot="public" virt="virtual"><scope>ArduinoGpioPort</scope><name>digitalRead</name></member>
+      <member refid="df/db4/class_arduino_gpio_port_1a1878c348f3b3f780e54a77c66604f45f" prot="public" virt="virtual"><scope>ArduinoGpioPort</scope><name>digitalWrite</name></member>
+      <member refid="df/db4/class_arduino_gpio_port_1a01e379e5158fa903e4f328f3da566bea" prot="public" virt="virtual"><scope>ArduinoGpioPort</scope><name>init</name></member>
+      <member refid="df/db4/class_arduino_gpio_port_1aa3298d10dad3c5e494145f7b4592c7dc" prot="public" virt="virtual"><scope>ArduinoGpioPort</scope><name>setPinMode</name></member>
+      <member refid="df/db4/class_arduino_gpio_port_1a39c9be3bc1fd0262a16754830ccd5e2c" prot="public" virt="virtual"><scope>ArduinoGpioPort</scope><name>sonicatorReadFreqLock</name></member>
+      <member refid="df/db4/class_arduino_gpio_port_1ab17c7516207f01424ef1fb197f01e297" prot="public" virt="virtual"><scope>ArduinoGpioPort</scope><name>sonicatorReadOverload</name></member>
+      <member refid="df/db4/class_arduino_gpio_port_1a1d71b3013ee284f337ff2b1f8a17907e" prot="public" virt="virtual"><scope>ArduinoGpioPort</scope><name>sonicatorReset</name></member>
+      <member refid="df/db4/class_arduino_gpio_port_1a9e3f3f0c67c3911c04c034be0a7803f0" prot="public" virt="virtual"><scope>ArduinoGpioPort</scope><name>sonicatorStart</name></member>
+      <member refid="df/db4/class_arduino_gpio_port_1a1241581e5fc7358f206df556179c6287" prot="public" virt="virtual"><scope>ArduinoGpioPort</scope><name>sonicatorStop</name></member>
+      <member refid="df/db4/class_arduino_gpio_port_1a85fe977547e7e2a6d5963b4a91b24f01" prot="public" virt="virtual"><scope>ArduinoGpioPort</scope><name>statusLed</name></member>
+      <member refid="df/db4/class_arduino_gpio_port_1a196e9f3740ccdae19f32874261989f4e" prot="public" virt="virtual"><scope>ArduinoGpioPort</scope><name>togglePin</name></member>
+      <member refid="d4/d45/class_i_gpio_port_1ae486ebd5281bd9ab60879c24300112b5" prot="public" virt="virtual"><scope>ArduinoGpioPort</scope><name>~IGpioPort</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -289,26 +289,6 @@ public:
     void update();
 
     /**
-     * @brief Starts a specific sonicator unit
-     * @param index The index of the sonicator to start (0 to count-1)
-     * @return true if the start command was accepted, false otherwise
-     * @details Initiates operation of the specified sonicator unit.
-     * The unit will begin ultrasonic generation at the current amplitude setting.
-     * @warning index must be within valid range
-     */
-    bool start(uint8_t index);
-
-    /**
-     * @brief Stops a specific sonicator unit
-     * @param index The index of the sonicator to stop (0 to count-1)
-     * @return true if the stop command was accepted, false otherwise
-     * @details Terminates operation of the specified sonicator unit.
-     * The unit will cease ultrasonic generation immediately.
-     * @warning index must be within valid range
-     */
-    bool stop(uint8_t index);
-
-    /**
      * @brief Sets the shared amplitude for all sonicators
      * @param amplitude_percent The desired amplitude percentage (20-100)
      * @return true if the amplitude was set successfully, false if out of range
@@ -319,18 +299,7 @@ public:
     bool setAmplitude(uint8_t amplitude_percent);
 
     /**
-     * @brief Resets overload condition on a specific sonicator
-     * @param index The index of the sonicator to reset (0 to count-1)
-     * @return true if the reset was successful, false otherwise
-     * @details Clears overload fault conditions and attempts to restart the unit.
-     * Useful for recovering from temporary fault conditions.
-     * @warning index must be within valid range
-     */
-    bool resetOverload(uint8_t index);
-
-    /**
-     * @brief Retrieves the status of a specific sonicator
-     * @param index The index of the sonicator to query (0 to count-1)
+     * @brief Retrieves the status of the Multiplexer System
      * @return Pointer to the status structure, or nullptr if invalid index
      * @details Returns current operational status of the specified sonicator unit.
      * The returned pointer is valid until the next multiplexer operation.
