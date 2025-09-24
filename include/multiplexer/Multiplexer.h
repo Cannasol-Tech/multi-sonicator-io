@@ -243,6 +243,7 @@ private:
     static uint8_t amplitude_ctrl_duty_m;    ///< Shared amplitude percentage (20-100)
 
     SonicatorInterface* sonicators_m[MAX_SONICATORS] = {nullptr};
+    modbus_register_map_t* register_map_m = nullptr;
 
 public:
     /**
@@ -291,7 +292,7 @@ public:
     /**
      * @brief Updates the status LED based on sonicator states
      */
-    void set_led_state(led_mode_t mode);
+    void update_led_state();
 
     /**
      * @brief Sets the shared amplitude for all sonicators

@@ -30,12 +30,12 @@ export interface HardwareResponse {
 export declare class HardwareInterface extends EventEmitter {
     private pythonProcess;
     private connected;
+    constructor();
     private serialPort;
     private pinStates;
     private commandQueue;
     private processingCommand;
     private configuration;
-    constructor();
     private initializePinStates;
     private resolvePythonInterpreter;
     initialize(): Promise<boolean>;

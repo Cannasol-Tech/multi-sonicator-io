@@ -1,76 +1,39 @@
-<testsuite name="features.safety.Safety" tests="3" errors="3" failures="0" skipped="0" time="1.001317" timestamp="2025-09-16T18:33:04.324390" hostname="Corbans-Mini.home"><testcase classname="features.safety.Safety" name="SC-012 Watchdog policy is documented" status="cleanup_error" time="0.000507"><error type="UnknownError" message="">
-<![CDATA[Traceback:
-]]>
-</error><system-out>
+<testsuite name="features.safety.Safety" tests="3" errors="0" failures="0" skipped="3" time="0.0" timestamp="2025-09-24T14:26:42.855346" hostname="Corbans-Mini.home"><testcase classname="features.safety.Safety" name="SC-012 Watchdog policy is documented" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @req-watchdog-docs @requirement_FR11
   Scenario: SC-012 Watchdog policy is documented
-    Given the system is initialized ... passed in 0.000s
-    Then the watchdog policy documentation is present ... passed in 0.000s
+    Given the system is initialized ... untested in 0.000s
+    Then the watchdog policy documentation is present ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-✅ Watchdog policy documentation found
-
 ]]>
-</system-out></testcase><testcase classname="features.safety.Safety" name="SC-014 Emergency stop register behavior" status="cleanup_error" time="0.000171"><error type="UnknownError" message="">
-<![CDATA[Traceback:
-]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.safety.Safety" name="SC-014 Emergency stop register behavior" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @req-estop @hil @requirement_FR11
   Scenario: SC-014 Emergency stop register behavior
-    Given the system is initialized ... passed in 0.000s
-    When I trigger emergency stop ... skipped in 0.000s
-    Then holding register 40026 should equal 1 within 50 ms ... skipped in 0.000s
+    Given the system is initialized ... untested in 0.000s
+    When I trigger emergency stop ... untested in 0.000s
+    Then holding register 40026 should equal 1 within 50 ms ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-🔧 HIL scenario setup: SC-014 Emergency stop register behavior
-
-
 ]]>
-</system-out><system-err>
-<![CDATA[
-Captured stderr:
-
-SKIP Scenario SC-014 Emergency stop register behavior: pending: pymodbus not available
-SKIP Scenario SC-014 Emergency stop register behavior: no MODBUS client available to set emergency stop state
-
-]]>
-</system-err></testcase><testcase classname="features.safety.Safety" name="SC-021 Loss of communication triggers safe state" status="cleanup_error" time="1.000639"><error type="UnknownError" message="">
-<![CDATA[Traceback:
-]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.safety.Safety" name="SC-021 Loss of communication triggers safe state" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @requirement_FR11
   Scenario: SC-021 Loss of communication triggers safe state
-    Given the system is initialized ... passed in 0.000s
-    When communication with the PLC/HMI is lost for more than 1 second ... passed in 1.000s
-    Then all sonicators enter a safe non-operational state within 200 ms ... skipped in 0.000s
+    Given the system is initialized ... untested in 0.000s
+    When communication with the PLC/HMI is lost for more than 1 second ... untested in 0.000s
+    Then all sonicators enter a safe non-operational state within 200 ms ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-⏱️  Simulated comms loss for 1 seconds
-✅ Safe state assumed (no MODBUS client)
-
 ]]>
-</system-out><system-err>
-<![CDATA[
-Captured stderr:
-SKIP Scenario SC-021 Loss of communication triggers safe state: pending: pymodbus not available
-
-]]>
-</system-err></testcase></testsuite>
+</system-out></testcase></testsuite>

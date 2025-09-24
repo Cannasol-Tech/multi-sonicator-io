@@ -43,6 +43,7 @@ export class HardwareInterface extends EventEmitter {
   constructor() {
     super()
     this.setMaxListeners(50) // Increase max listeners to prevent memory leak warnings
+    this.initializePinStates()
   }
   private serialPort: string | null = null
 
@@ -72,10 +73,6 @@ export class HardwareInterface extends EventEmitter {
     }
   }
 
-  constructor() {
-    super()
-    this.initializePinStates()
-  }
 
   private initializePinStates() {
     // Initialize pin states based on pin-matrix.md (SOLE SOURCE OF TRUTH)
@@ -302,53 +299,30 @@ import json
 import time
 import threading
 
-# Initialize HIL hardware interface
-use_mock = False
-# Highest-precedence override: HARDWARE_MOCK
-if os.environ.get('HARDWARE_MOCK', '0').lower() in ('1', 'true', 'yes'):
-    use_mock = True
-# Next: HARDWARE_PRESENT hint
+# Enforce real hardware only; disable when HARDWARE_PRESENT=false
 hardware_present = os.environ.get('HARDWARE_PRESENT')
-if hardware_present is not None:
-    if hardware_present.lower() in ('0', 'false', 'no'):
-        use_mock = True
-    elif hardware_present.lower() in ('1', 'true', 'yes'):
-        # Explicitly request real hardware; do not set use_mock here, but enforce below
-        pass
+if hardware_present is not None and hardware_present.lower() in ('0', 'false', 'no'):
+    print(json.dumps({"type": "connection", "status": "disabled", "error": "HARDWARE_PRESENT=false"}))
+    sys.stdout.flush()
+    sys.exit(1)
 
 hil = None
-if not use_mock and RealHardwareInterface is not None:
-    try:
-        hil = RealHardwareInterface()
-        if not hil.verify_connection():
-            # If in CI/pipeline, do not fallback; otherwise use mock
-            if os.environ.get('CI') or os.environ.get('GITHUB_ACTIONS') or (hardware_present and hardware_present.lower() in ('1','true','yes')):
-                print(json.dumps({"type": "connection", "status": "failed", "error": "Could not connect to hardware"}))
-                sys.stdout.flush()
-                sys.exit(1)
-            else:
-                use_mock = True
-    except Exception as e:
-        # Any runtime error: fallback to mock when not CI
-        if os.environ.get('CI') or os.environ.get('GITHUB_ACTIONS') or (hardware_present and hardware_present.lower() in ('1','true','yes')):
-            print(json.dumps({"type": "connection", "status": "failed", "error": str(e)}))
-            sys.stdout.flush()
-            sys.exit(1)
-        else:
-            use_mock = True
+# Require real hardware interface to be available
+if RealHardwareInterface is None:
+    print(json.dumps({"type": "connection", "status": "failed", "error": "HIL interface not available (import failed)"}))
+    sys.stdout.flush()
+    sys.exit(1)
 
-# If the real interface is unavailable and we're not explicitly in mock mode yet,
-# decide based on CI context to avoid None dereferences.
-if hil is None and not use_mock and RealHardwareInterface is None:
-    if os.environ.get('CI') or os.environ.get('GITHUB_ACTIONS'):
-        print(json.dumps({"type": "connection", "status": "failed", "error": "HIL interface not available (import failed)"}))
+try:
+    hil = RealHardwareInterface()
+    if not hil.verify_connection():
+        print(json.dumps({"type": "connection", "status": "failed", "error": "Could not connect to hardware"}))
         sys.stdout.flush()
         sys.exit(1)
-    else:
-        use_mock = True
-
-if use_mock:
-    hil = MockHardwareInterface()
+except Exception as e:
+    print(json.dumps({"type": "connection", "status": "failed", "error": str(e)}))
+    sys.stdout.flush()
+    sys.exit(1)
 
 # At this point, hil is initialized and ready
 try:

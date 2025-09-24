@@ -1,45 +1,27 @@
-<testsuite name="features.timing.Timing" tests="2" errors="2" failures="0" skipped="0" time="0.000174" timestamp="2025-09-16T18:33:09.404110" hostname="Corbans-Mini.home"><testcase classname="features.timing.Timing" name="SC-009 Latency ≤100 ms (representative)" status="cleanup_error" time="0"><error type="UnknownError" message="">
-<![CDATA[Traceback:
-]]>
-</error><system-out>
+<testsuite name="features.timing.Timing" tests="2" errors="0" failures="0" skipped="2" time="0.0" timestamp="2025-09-24T14:26:42.863684" hostname="Corbans-Mini.home"><testcase classname="features.timing.Timing" name="SC-009 Latency ≤100 ms (representative)" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @pending @req-latency @hil
   Scenario: SC-009 Latency ≤100 ms (representative)
-    Given the system is initialized ... skipped in 0.000s
-    When I simulate starting sonicator 1 ... skipped in 0.000s
-    Then holding register 40021 should equal 1 within 100 ms ... skipped in 0.000s
+    Given the system is initialized ... untested in 0.000s
+    When I simulate starting sonicator 1 ... untested in 0.000s
+    Then holding register 40021 should equal 1 within 100 ms ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.timing.Timing" name="SC-009B Latency matrix (overload reset, frequency)" status="cleanup_error" time="0.000174"><error type="UnknownError" message="">
-<![CDATA[Traceback:
-]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.timing.Timing" name="SC-009B Latency matrix (overload reset, frequency)" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @req-latency @hil
   Scenario: SC-009B Latency matrix (overload reset, frequency)
-    Given the system is initialized ... passed in 0.000s
-    When I write holding register 40009 with value 1 ... skipped in 0.000s
-    Then holding register 40009 should equal 0 within 100 ms ... skipped in 0.000s
+    Given the system is initialized ... untested in 0.000s
+    When I write holding register 40009 with value 1 ... untested in 0.000s
+    Then holding register 40009 should equal 0 within 100 ms ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
-
-Captured stdout:
-🔧 HIL scenario setup: SC-009B Latency matrix (overload reset, frequency)
-
-
 ]]>
-</system-out><system-err>
-<![CDATA[
-Captured stderr:
-
-SKIP Scenario SC-009B Latency matrix (overload reset, frequency): pending: pymodbus not available
-
-]]>
-</system-err></testcase></testsuite>
+</system-out></testcase></testsuite>

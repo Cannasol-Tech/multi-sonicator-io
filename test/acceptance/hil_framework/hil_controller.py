@@ -229,6 +229,11 @@ class HILController:
                 self.logger.info("Firmware programming completed successfully")
                 # Wait for target to boot
                 time.sleep(2)
+                # Restore Arduino to Test Harness firmware so PING/INFO are available
+                try:
+                    self.upload_test_harness()
+                except Exception as _e:
+                    self.logger.warning(f"Failed to restore Test Harness after programming: {_e}")
                 return True
             else:
                 self.logger.error("Firmware programming failed")
@@ -236,6 +241,35 @@ class HILController:
 
         except Exception as e:
             self.logger.error(f"Firmware programming error: {e}")
+            return False
+
+
+    def upload_test_harness(self) -> bool:
+        """Upload the Arduino Test Harness firmware so PING/INFO work after programming.
+        This ensures that after using the Arduino as ISP (which temporarily runs the ISP sketch),
+        the Arduino is restored to the Test Harness firmware used by Behave steps.
+        """
+        try:
+            from subprocess import run
+            harness_dir = Path(__file__).parent / 'arduino_harness'
+            if not harness_dir.exists():
+                self.logger.error(f"Arduino Test Harness dir not found: {harness_dir}")
+                return False
+            self.logger.info("Uploading Arduino Test Harness firmware...")
+            result = run(['pio', 'run', '-d', str(harness_dir), '-e', 'arduino_test_harness', '-t', 'upload'],
+                         capture_output=True, text=True, timeout=180)
+            if result.returncode != 0:
+                self.logger.error(f"Test Harness upload failed: {result.stderr}")
+                return False
+            # Give Arduino time to reboot into harness
+            time.sleep(2.0)
+            # Re-verify serial connection for harness
+            if self.hardware_interface:
+                _ = self.hardware_interface.verify_connection()
+            self.logger.info("Arduino Test Harness upload completed")
+            return True
+        except Exception as e:
+            self.logger.error(f"Test Harness upload error: {e}")
             return False
 
     def verify_firmware_version(self) -> Optional[str]:

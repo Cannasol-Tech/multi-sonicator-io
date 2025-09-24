@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WebSocketHandler = void 0;
 const ws_1 = require("ws");
+const ModularConfigService_1 = require("../config/ModularConfigService");
 class WebSocketHandler {
     constructor(hardwareInterface, testAutomationService) {
         this.clients = new Set();
@@ -10,6 +11,7 @@ class WebSocketHandler {
         this.testAutomationService = testAutomationService;
         this.setupHardwareListeners();
         this.setupTestAutomationListeners();
+        this.setupConfigurationListeners();
     }
     setupHardwareListeners() {
         // Listen for hardware events and broadcast to all connected clients
@@ -139,6 +141,37 @@ class WebSocketHandler {
             this.broadcast({
                 type: 'test_stopped',
                 data: execution,
+                timestamp: Date.now()
+            });
+        });
+    }
+    setupConfigurationListeners() {
+        // Listen for configuration events and broadcast to all connected clients
+        ModularConfigService_1.modularConfigService.on('configurationLoaded', (data) => {
+            this.broadcast({
+                type: 'configuration_loaded',
+                data,
+                timestamp: Date.now()
+            });
+        });
+        ModularConfigService_1.modularConfigService.on('configurationError', (error) => {
+            this.broadcast({
+                type: 'configuration_error',
+                data: { error: error.message },
+                timestamp: Date.now()
+            });
+        });
+        ModularConfigService_1.modularConfigService.on('moduleUpdated', (data) => {
+            this.broadcast({
+                type: 'module_updated',
+                data,
+                timestamp: Date.now()
+            });
+        });
+        ModularConfigService_1.modularConfigService.on('moduleUpdateError', (data) => {
+            this.broadcast({
+                type: 'module_update_error',
+                data,
                 timestamp: Date.now()
             });
         });

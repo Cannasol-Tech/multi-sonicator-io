@@ -47,12 +47,12 @@
 // ... (rest of the file is the same until getStatus)
 /**
  * @brief Retrieves the current status of the sonicator interface
- * 
+ *
  * This method provides access to the complete status information of the sonicator,
  * including operational state, hardware readings, fault conditions, and state machine
  * information. The status is built from the current internal state and returned as
  * a read-only structure.
- * 
+ *
  * @return const sonicator_status_t* Pointer to the current status structure containing:
  *         - is_running: Current operational state
  *         - frequency_hz: Measured operating frequency
@@ -63,7 +63,7 @@
  *         - last_fault_time: Timestamp of most recent fault
  *         - amplitude_actual: Current amplitude percentage
  *         - state_machine: Complete state machine information
- * 
+ *
  * @note The returned pointer is valid until the next call to getStatus() or object destruction
  * @note This method is thread-safe and can be called from interrupt contexts
  * @see buildStatusView_() Internal method that constructs the status view
@@ -75,14 +75,14 @@ const sonicator_status_t* SonicatorInterface::getStatus() const {
 }
 /**
  * @brief Converts a sonicator state enumeration to its string representation
- * 
+ *
  * This utility function provides human-readable string representations of the
  * sonicator state machine states for debugging, logging, and status reporting.
- * 
+ *
  * @param state The sonicator state enumeration value to convert
  * @return const char* Pointer to a static string containing the state name.
  *         Returns "UNKNOWN" for invalid or unrecognized state values.
- * 
+ *
  * @note The returned string is statically allocated and does not need to be freed
  * @see sonicator_state_t for available state values
  */
@@ -190,22 +190,6 @@ bool SonicatorInterface::isTimeout(uint32_t start_time, uint32_t timeout_ms) con
     return (getTimestampMs() - start_time) >= timeout_ms;
 }
 
-/** @copydoc SonicatorInterface::clampAmplitude */
-uint8_t SonicatorInterface::clampAmplitude(uint8_t amplitude) const {
-    if (amplitude < SONICATOR_MIN_AMPLITUDE_PERCENT) return SONICATOR_MIN_AMPLITUDE_PERCENT;
-    if (amplitude > SONICATOR_MAX_AMPLITUDE_PERCENT) return SONICATOR_MAX_AMPLITUDE_PERCENT;
-    return amplitude;
-}
-
-/** @copydoc SonicatorInterface::amplitudeToPwm */
-uint8_t SonicatorInterface::amplitudeToPwm(uint8_t amplitude_percent) const {
-    if (amplitude_percent < SONICATOR_MIN_AMPLITUDE_PERCENT) {
-        return 0;
-    }
-    return ((uint32_t)(amplitude_percent - SONICATOR_MIN_AMPLITUDE_PERCENT) * 255) /
-           (SONICATOR_MAX_AMPLITUDE_PERCENT - SONICATOR_MIN_AMPLITUDE_PERCENT);
-}
-
 // ============================================================================
 // PRIVATE HAL INTERFACE METHODS
 // ============================================================================
@@ -214,6 +198,7 @@ uint8_t SonicatorInterface::amplitudeToPwm(uint8_t amplitude_percent) const {
 void SonicatorInterface::halGpioWriteSafe(uint8_t pin, bool state) {
     if (!simulation_mode_) {
         gpio_write_pin(pin, state ? GPIO_HIGH : GPIO_LOW);
+
     }
     SONICATOR_LOG(state ? "GPIO HIGH" : "GPIO LOW");
 }
@@ -236,6 +221,20 @@ void SonicatorInterface::halPwmSetSafe(uint8_t duty_cycle) {
         pwm_set_duty_cycle(PWM_CHANNEL_AMPLITUDE, duty_cycle);
     }
     SONICATOR_LOG("PWM SET");
+}
+
+/** @copydoc SonicatorInterface::amplitudeToPwm */
+uint8_t SonicatorInterface::amplitudeToPwm(uint8_t amplitude_percent) const {
+    // Map 20-100% linearly into 0-255 PWM range; below 20% treated as 0
+    if (amplitude_percent < SONICATOR_MIN_AMPLITUDE_PERCENT) return 0;
+    if (amplitude_percent > 100) amplitude_percent = 100;
+    const uint8_t min_pct = SONICATOR_MIN_AMPLITUDE_PERCENT;
+    const uint8_t span_pct = 100 - min_pct; // 80
+    const uint8_t adj_pct = amplitude_percent - min_pct;
+    // Scale adj_pct/span_pct to 0..255
+    uint16_t pwm = (uint16_t)adj_pct * 255u / span_pct;
+    if (pwm > 255) pwm = 255;
+    return (uint8_t)pwm;
 }
 
 /** @copydoc SonicatorInterface::halAdcReadSafe */
@@ -274,6 +273,8 @@ void SonicatorInterface::updateHardwareOutputs() {
     }
 
     if (reset_pulse_active && isTimeout(reset_pulse_start, SONICATOR_RESET_PULSE_MS)) {
+
+
         halGpioWriteSafe(pins_.reset_pin, false);
         reset_pulse_active = false;
         SONICATOR_LOG("Reset pulse ended");
@@ -292,7 +293,7 @@ void SonicatorInterface::readHardwareInputs() {
     // Read frequency using ISR-based edge counting
     uint8_t freq_channel = pins_.sonicator_id - 1; // Convert to 0-3 range
     state_.frequency_hz = frequency_calculate(freq_channel);
-    
+
     // Update frequency lock status based on measured frequency
     if (state_.frequency_hz >= 18000 && state_.frequency_hz <= 22000) {
         // Frequency is within CT2000 operating range
@@ -426,6 +427,19 @@ bool SonicatorInterface::start() {
     return false;
 }
 
+
+/** @copydoc SonicatorInterface::setAmplitude */
+bool SonicatorInterface::setAmplitude(uint8_t amplitude_percent) {
+    // Enforce allowed range per specification
+    if (amplitude_percent < SONICATOR_MIN_AMPLITUDE_PERCENT || amplitude_percent > SONICATOR_MAX_AMPLITUDE_PERCENT) {
+        SONICATOR_LOG("Amplitude out of range");
+        return false;
+    }
+    state_.amplitude_percent = amplitude_percent;
+    SONICATOR_LOG("Amplitude set");
+    return true;
+}
+
 /** @copydoc SonicatorInterface::stop */
 bool SonicatorInterface::stop() {
     if (state_.state == SONICATOR_STATE_RUNNING || state_.state == SONICATOR_STATE_STARTING) {
@@ -434,13 +448,6 @@ bool SonicatorInterface::stop() {
         return true;
     }
     return false;
-}
-
-/** @copydoc SonicatorInterface::setAmplitude */
-bool SonicatorInterface::setAmplitude(uint8_t amplitude_percent) {
-    state_.amplitude_percent = clampAmplitude(amplitude_percent);
-    SONICATOR_LOG("Amplitude set");
-    return true;
 }
 
 /** @copydoc SonicatorInterface::resetOverload */
@@ -463,15 +470,25 @@ bool SonicatorInterface::resetOverload() {
 bool SonicatorInterface::emergencyStop() {
     halGpioWriteSafe(pins_.start_pin, false);
     halPwmSetSafe(0);
-    
+
     state_.state = SONICATOR_STATE_IDLE;
     state_.state_entry_time = getTimestampMs();
     state_.is_running = false;
     state_.start_requested = false;
     state_.stop_requested = false;
-    
+
     SONICATOR_LOG("Emergency stop activated");
     return true;
+}
+
+/** @copydoc SonicatorInterface::setStartStop */
+bool SonicatorInterface::setStartStop(uint8_t start_stop) {
+    if (start_stop == 1) {
+        return start();
+    } else if (start_stop == 2) {
+        return stop();
+    }
+    return false;
 }
 
 /** @copydoc SonicatorInterface::update */
@@ -483,16 +500,8 @@ sonicator_state_t SonicatorInterface::update() {
         sonicator_registers_t& reg = map->sonicators[idx];
 
         // Start/Stop command: 1=start, 2=stop (then clear command)
-        if (reg.start_stop == 1) {
-            (void)start();
-            reg.start_stop = 0;
-        } else if (reg.start_stop == 2) {
-            (void)stop();
-            reg.start_stop = 0;
-        }
-
-        // Amplitude setpoint (20-100%)
-        (void)setAmplitude(static_cast<uint8_t>(reg.amplitude_setpoint));
+        (void)setStartStop(reg.start_stop);
+        reg.start_stop = 0;
 
         // Overload reset pulse (write-one-to-consume)
         if (reg.overload_reset == 1) {

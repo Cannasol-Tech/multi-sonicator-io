@@ -3,10 +3,15 @@ import { HardwareInterface } from '../adapters/HardwareInterface.js'
 import { TestAutomationService } from '../services/TestAutomationService.js'
 import configRoutes from './config'
 import testRoutes from './tests'
+import modbusRoutes from './modbus'
+
 
 export function setupRoutes(app: Express, hardwareInterface: HardwareInterface, testAutomationService?: TestAutomationService) {
   // Hardware configuration management routes - make sure this is the first route
   app.use('/api/config', configRoutes)
+
+  // Modbus control routes
+  app.use('/api/modbus', modbusRoutes)
 
   // Hardware test execution routes
   app.use('/api/tests', testRoutes)
@@ -117,7 +122,7 @@ export function setupRoutes(app: Express, hardwareInterface: HardwareInterface, 
   app.post('/api/command', async (req: Request, res: Response) => {
     try {
       const { command, args } = req.body
-      
+
       if (!command) {
         return res.status(400).json({
           error: 'Command is required'
@@ -472,13 +477,13 @@ export function setupRoutes(app: Express, hardwareInterface: HardwareInterface, 
 
     try {
       const { name, tags } = req.body
-      
+
       if (!name || typeof name !== 'string' || name.trim().length === 0) {
         return res.status(400).json({
           error: 'Preset name is required and must be a non-empty string'
         })
       }
-      
+
       if (!tags || !Array.isArray(tags)) {
         return res.status(400).json({
           error: 'Tags must be provided as an array'
@@ -685,7 +690,7 @@ export function setupRoutes(app: Express, hardwareInterface: HardwareInterface, 
     try {
       const { executionId } = req.params
       const format = (req.query.format as string) || 'json'
-      
+
       if (!['json', 'csv', 'html'].includes(format)) {
         return res.status(400).json({
           error: 'Invalid format. Supported formats: json, csv, html'
@@ -693,7 +698,7 @@ export function setupRoutes(app: Express, hardwareInterface: HardwareInterface, 
       }
 
       const exportData = await testAutomationService.exportExecutionResults(executionId, format as any)
-      
+
       // Set appropriate content type and headers
       switch (format) {
         case 'json':
@@ -709,7 +714,7 @@ export function setupRoutes(app: Express, hardwareInterface: HardwareInterface, 
           res.setHeader('Content-Disposition', `attachment; filename="execution_${executionId}.html"`)
           break
       }
-      
+
       res.send(exportData)
     } catch (error) {
       res.status(500).json({
@@ -764,14 +769,14 @@ export function setupRoutes(app: Express, hardwareInterface: HardwareInterface, 
         'POST /api/ping': 'Ping hardware to test communication',
         'GET /api/config': 'Get current hardware configuration',
         'POST /api/config': 'Update hardware configuration',
-        
+
         // Hardware Tests
         'POST /api/tests/configuration': 'Run hardware configuration tests',
         'POST /api/tests/sonicator/:id': 'Run tests for specific sonicator channel',
         'POST /api/tests/modbus': 'Run MODBUS communication tests',
         'POST /api/tests/all': 'Run all hardware tests',
         'GET /api/tests/status': 'Get test capabilities and status',
-        
+
         // BDD Test Scenarios
         'GET /api/test/scenarios': 'Get available BDD test scenarios',
         'GET /api/test/scenarios/search?q=query': 'Search scenarios by text query',
@@ -779,16 +784,16 @@ export function setupRoutes(app: Express, hardwareInterface: HardwareInterface, 
         'POST /api/test/execute': 'Execute selected test scenarios',
         'GET /api/test/execution': 'Get current test execution status',
         'POST /api/test/stop': 'Stop current test execution',
-        
+
         // Tags and Categorization
         'GET /api/test/tags': 'Get all available test tags',
         'GET /api/test/tags/categorized': 'Get tags organized by category',
         'GET /api/test/tags/presets': 'Get predefined tag combinations',
         'POST /api/test/tags/presets': 'Save custom tag combination',
-        
+
         // Features and Files
         'GET /api/test/features': 'Get available feature files',
-        
+
         // Execution History and Analytics
         'GET /api/test/history': 'Get execution history',
         'DELETE /api/test/history': 'Clear execution history',

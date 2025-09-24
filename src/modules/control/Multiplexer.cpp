@@ -7,6 +7,11 @@
 #include "system_config.h"
 #include "modules/hal/pwm.h"
 
+
+// Define static members
+uint8_t SonicMultiplexer::sonicator_count_m = 0;
+uint8_t SonicMultiplexer::amplitude_ctrl_duty_m = SONICATOR_MIN_AMPLITUDE_PERCENT;
+
 /**
  * @brief Clamps a percentage value to valid sonicator amplitude range
  * @param pct Percentage value to clamp
@@ -33,15 +38,18 @@ static inline uint8_t amplitude_to_duty(uint8_t amplitude_percent) {
     );
 }
 
-void SonicMultiplexer::update_led_state() {
+void SonicMultiplexer::update_led_state() noexcept {
     bool any_running = false;
     for (uint8_t i = 0; i < sonicator_count_m && i < MAX_SONICATORS; ++i) {
-        if (sonicators_m[i] && sonicators_m[i]->isRunning()) {
-            any_running = true;
-            break;
+        if (sonicators_m[i]) {
+            const sonicator_status_t* st = sonicators_m[i]->getStatus();
+            if (st && st->is_running) {
+                any_running = true;
+                break;
+            }
         }
     }
-    halGpioWriteSafe(STATUS_LED_PIN, any_running);
+    (void)gpio_status_led(any_running ? GPIO_HIGH : GPIO_LOW);
 }
 
 /**
@@ -51,23 +59,9 @@ void SonicMultiplexer::update_led_state() {
  */
 void SonicMultiplexer::begin() {
     // No-op: HAL/PWM are initialized by hal_init(). Ensure shared amplitude reflects current value.
+    register_map_m = register_manager_get_map();
     updateSharedAmplitude_();
-}
-
-/**
- * @brief Updates all sonicators and shared amplitude control
- * @details Calls update() on each active sonicator and synchronizes the shared amplitude PWM
- */
-void SonicMultiplexer::update() {
-    // Update each sonicator (includes its own MODBUS sync once integrated at unit level)
-    for (uint8_t i = 0; i < sonicator_count_m && i < MAX_SONICATORS; ++i) {
-        if (sonicators_m[i]) {
-            (void)sonicators_m[i]->update();
-        }
-    }
-
-    // Keep shared amplitude PWM in sync
-    updateSharedAmplitude_();
+    update_led_state();
 }
 
 /**
@@ -173,14 +167,38 @@ void SonicMultiplexer::initSonicators_() {
     }
     updateSharedAmplitude_();
 }
-
 /**
  * @brief Updates the shared amplitude PWM output
- * @details Converts the current amplitude control duty cycle to PWM duty and
- *          drives the hardware PWM channel for amplitude control
+ * @details Reads the current amplitude control value from the MODBUS control register,
+ *          converts it to a PWM duty cycle and drives the hardware PWM channel for amplitude control
  */
 void SonicMultiplexer::updateSharedAmplitude_() {
+    // Shared amplitude PWM: read value from MODBUS control register
+    uint16_t amplitude_control_duty = ModbusInterface::readRegister(MODBUS_CONTROL_REGISTER_AMPLITUDE);
+    amplitude_ctrl_duty_m = amplitude_control_duty;
+
     // Shared amplitude PWM: drive HAL channel for amplitude output.
     const uint8_t duty = amplitude_to_duty(amplitude_ctrl_duty_m);
     (void)pwm_set_duty_cycle(PWM_CHANNEL_AMPLITUDE, duty);
 }
+
+/**
+* @brief Updates all sonicators and shared amplitude control
+* @details Calls update() on each active sonicator and synchronizes the shared amplitude PWM
+*/
+void SonicMultiplexer::update() {
+
+   // Update each sonicator (includes its own MODBUS sync once integrated at unit level)
+   for (uint8_t i = 0; i < sonicator_count_m && i < MAX_SONICATORS; ++i) {
+       if (sonicators_m[i]) {
+           (void)sonicators_m[i]->update();
+       }
+   }
+
+   // Keep shared amplitude PWM in sync
+   updateSharedAmplitude_();
+
+   // Keep Global LED Status Accurate
+   update_led_state();
+}
+

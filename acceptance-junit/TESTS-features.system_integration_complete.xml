@@ -1,352 +1,293 @@
-<testsuite name="features.system_integration_complete.Complete System Integration Testing" tests="13" errors="13" failures="0" skipped="0" time="0.0" timestamp="2025-09-16T18:33:09.399687" hostname="Corbans-Mini.home"><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Complete system startup and initialization" status="cleanup_error" time="0"><error type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-Location: test/acceptance/features/system_integration_complete.feature:7
-None]]>
-</error><system-out>
+<testsuite name="features.system_integration_complete.Complete System Integration Testing" tests="13" errors="0" failures="0" skipped="13" time="0.0" timestamp="2025-09-24T14:26:42.861415" hostname="Corbans-Mini.home"><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Complete system startup and initialization" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @system @integration @critical
   Scenario: Complete system startup and initialization
-    Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-    And all 4 sonicator units are connected and ready ... undefined in 0.000s
-    And the MODBUS RTU communication is established at 115200 baud ... undefined in 0.000s
-    And the system is in a safe default state ... undefined in 0.000s
-    Given the system has been powered off ... undefined in 0.000s
-    When I power on the Multi-Sonicator I/O Controller ... undefined in 0.000s
-    Then within 2 seconds the system status register should indicate "READY" ... undefined in 0.000s
-    And all sonicator units should be in "STOPPED" state ... skipped in 0.000s
-    And the active sonicator count should be 0 ... skipped in 0.000s
-    And the active sonicator mask should be 0x0000 ... skipped in 0.000s
-    And the watchdog status should indicate "HEALTHY" ... skipped in 0.000s
-    And all amplitude setpoints should default to 50% ... skipped in 0.000s
+    Given the Multi-Sonicator I/O Controller is powered and initialized ... untested in 0.000s
+    And all 4 sonicator units are connected and ready ... untested in 0.000s
+    And the MODBUS RTU communication is established at 115200 baud ... untested in 0.000s
+    And the system is in a safe default state ... untested in 0.000s
+    Given the system has been powered off ... untested in 0.000s
+    When I power on the Multi-Sonicator I/O Controller ... untested in 0.000s
+    Then within 2 seconds the system status register should indicate "READY" ... untested in 0.000s
+    And all sonicator units should be in "STOPPED" state ... untested in 0.000s
+    And the active sonicator count should be 0 ... untested in 0.000s
+    And the active sonicator mask should be 0x0000 ... untested in 0.000s
+    And the watchdog status should indicate "HEALTHY" ... untested in 0.000s
+    And all amplitude setpoints should default to 50% ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Four-sonicator simultaneous operation" status="cleanup_error" time="0"><error type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-Location: test/acceptance/features/system_integration_complete.feature:7
-None]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Four-sonicator simultaneous operation" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @system @integration @critical
   Scenario: Four-sonicator simultaneous operation
-    Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-    And all 4 sonicator units are connected and ready ... undefined in 0.000s
-    And the MODBUS RTU communication is established at 115200 baud ... undefined in 0.000s
-    And the system is in a safe default state ... undefined in 0.000s
-    Given all sonicator units are connected and ready ... undefined in 0.000s
-    When I start all 4 sonicators simultaneously ... undefined in 0.000s
-    And I set sonicator 1 amplitude to 25% ... undefined in 0.000s
-    And I set sonicator 2 amplitude to 50% ... undefined in 0.000s
-    And I set sonicator 3 amplitude to 75% ... undefined in 0.000s
-    And I set sonicator 4 amplitude to 100% ... undefined in 0.000s
-    Then within 200ms all sonicators should be running ... undefined in 0.000s
-    And the active sonicator count should be 4 ... skipped in 0.000s
-    And the active sonicator mask should be 0x000F ... skipped in 0.000s
-    And each sonicator should report its correct amplitude ... undefined in 0.000s
-    And each sonicator should report power consumption > 0 watts ... undefined in 0.000s
-    And each sonicator should report frequency within operational range ... undefined in 0.000s
+    Given the Multi-Sonicator I/O Controller is powered and initialized ... untested in 0.000s
+    And all 4 sonicator units are connected and ready ... untested in 0.000s
+    And the MODBUS RTU communication is established at 115200 baud ... untested in 0.000s
+    And the system is in a safe default state ... untested in 0.000s
+    Given all sonicator units are connected and ready ... untested in 0.000s
+    When I start all 4 sonicators simultaneously ... untested in 0.000s
+    And I set sonicator 1 amplitude to 25% ... untested in 0.000s
+    And I set sonicator 2 amplitude to 50% ... untested in 0.000s
+    And I set sonicator 3 amplitude to 75% ... untested in 0.000s
+    And I set sonicator 4 amplitude to 100% ... untested in 0.000s
+    Then within 200ms all sonicators should be running ... untested in 0.000s
+    And the active sonicator count should be 4 ... untested in 0.000s
+    And the active sonicator mask should be 0x000F ... untested in 0.000s
+    And each sonicator should report its correct amplitude ... untested in 0.000s
+    And each sonicator should report power consumption > 0 watts ... untested in 0.000s
+    And each sonicator should report frequency within operational range ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Sequential sonicator control with monitoring" status="cleanup_error" time="0"><error type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-Location: test/acceptance/features/system_integration_complete.feature:7
-None]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Sequential sonicator control with monitoring" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @system @integration @critical
   Scenario: Sequential sonicator control with monitoring
-    Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-    And all 4 sonicator units are connected and ready ... undefined in 0.000s
-    And the MODBUS RTU communication is established at 115200 baud ... undefined in 0.000s
-    And the system is in a safe default state ... undefined in 0.000s
-    Given the system is initialized and ready ... undefined in 0.000s
-    When I start sonicator 1 with 30% amplitude ... undefined in 0.000s
-    Then within 100ms sonicator 1 should be running at 30% amplitude ... undefined in 0.000s
-    And the active count should be 1 and mask should be 0x0001 ... undefined in 0.000s
-    When I start sonicator 2 with 60% amplitude ... undefined in 0.000s
-    Then within 100ms sonicator 2 should be running at 60% amplitude ... undefined in 0.000s
-    And the active count should be 2 and mask should be 0x0003 ... undefined in 0.000s
-    When I start sonicator 3 with 90% amplitude ... undefined in 0.000s
-    Then within 100ms sonicator 3 should be running at 90% amplitude ... undefined in 0.000s
-    And the active count should be 3 and mask should be 0x0007 ... undefined in 0.000s
-    When I stop sonicator 2 ... undefined in 0.000s
-    Then within 100ms sonicator 2 should be stopped ... undefined in 0.000s
-    And the active count should be 2 and mask should be 0x0005 ... undefined in 0.000s
+    Given the Multi-Sonicator I/O Controller is powered and initialized ... untested in 0.000s
+    And all 4 sonicator units are connected and ready ... untested in 0.000s
+    And the MODBUS RTU communication is established at 115200 baud ... untested in 0.000s
+    And the system is in a safe default state ... untested in 0.000s
+    Given the system is initialized and ready ... untested in 0.000s
+    When I start sonicator 1 with 30% amplitude ... untested in 0.000s
+    Then within 100ms sonicator 1 should be running at 30% amplitude ... untested in 0.000s
+    And the active count should be 1 and mask should be 0x0001 ... untested in 0.000s
+    When I start sonicator 2 with 60% amplitude ... untested in 0.000s
+    Then within 100ms sonicator 2 should be running at 60% amplitude ... untested in 0.000s
+    And the active count should be 2 and mask should be 0x0003 ... untested in 0.000s
+    When I start sonicator 3 with 90% amplitude ... untested in 0.000s
+    Then within 100ms sonicator 3 should be running at 90% amplitude ... untested in 0.000s
+    And the active count should be 3 and mask should be 0x0007 ... untested in 0.000s
+    When I stop sonicator 2 ... untested in 0.000s
+    Then within 100ms sonicator 2 should be stopped ... untested in 0.000s
+    And the active count should be 2 and mask should be 0x0005 ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Emergency stop functionality" status="cleanup_error" time="0"><error type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-Location: test/acceptance/features/system_integration_complete.feature:7
-None]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Emergency stop functionality" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @system @integration @safety
   Scenario: Emergency stop functionality
-    Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-    And all 4 sonicator units are connected and ready ... undefined in 0.000s
-    And the MODBUS RTU communication is established at 115200 baud ... undefined in 0.000s
-    And the system is in a safe default state ... undefined in 0.000s
-    Given all 4 sonicators are running at various amplitudes ... undefined in 0.000s
-    When I trigger the emergency stop command ... undefined in 0.000s
-    Then within 50ms all sonicators should be stopped ... undefined in 0.000s
-    And the emergency stop flag should be set in system status ... undefined in 0.000s
-    And the active sonicator count should be 0 ... skipped in 0.000s
-    And the active sonicator mask should be 0x0000 ... skipped in 0.000s
-    And no sonicator should accept start commands until emergency stop is cleared ... undefined in 0.000s
-    When I clear the emergency stop condition ... undefined in 0.000s
-    Then the system should return to normal operation mode ... undefined in 0.000s
-    And sonicators should accept start commands again ... undefined in 0.000s
+    Given the Multi-Sonicator I/O Controller is powered and initialized ... untested in 0.000s
+    And all 4 sonicator units are connected and ready ... untested in 0.000s
+    And the MODBUS RTU communication is established at 115200 baud ... untested in 0.000s
+    And the system is in a safe default state ... untested in 0.000s
+    Given all 4 sonicators are running at various amplitudes ... untested in 0.000s
+    When I trigger the emergency stop command ... untested in 0.000s
+    Then within 50ms all sonicators should be stopped ... untested in 0.000s
+    And the emergency stop flag should be set in system status ... untested in 0.000s
+    And the active sonicator count should be 0 ... untested in 0.000s
+    And the active sonicator mask should be 0x0000 ... untested in 0.000s
+    And no sonicator should accept start commands until emergency stop is cleared ... untested in 0.000s
+    When I clear the emergency stop condition ... untested in 0.000s
+    Then the system should return to normal operation mode ... untested in 0.000s
+    And sonicators should accept start commands again ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Overload detection and recovery" status="cleanup_error" time="0"><error type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-Location: test/acceptance/features/system_integration_complete.feature:7
-None]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Overload detection and recovery" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @system @integration @fault-handling
   Scenario: Overload detection and recovery
-    Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-    And all 4 sonicator units are connected and ready ... undefined in 0.000s
-    And the MODBUS RTU communication is established at 115200 baud ... undefined in 0.000s
-    And the system is in a safe default state ... undefined in 0.000s
-    Given sonicator 1 is running at 75% amplitude ... undefined in 0.000s
-    When sonicator 1 experiences an overload condition ... undefined in 0.000s
-    Then within 100ms the overload flag should be set for sonicator 1 ... undefined in 0.000s
-    And sonicator 1 should automatically stop ... undefined in 0.000s
-    And the active count should decrease by 1 ... undefined in 0.000s
-    And the system should log the overload event ... undefined in 0.000s
-    When I send an overload reset command for sonicator 1 ... undefined in 0.000s
-    Then the overload flag should be cleared ... undefined in 0.000s
-    And sonicator 1 should be ready to start again ... undefined in 0.000s
-    When I restart sonicator 1 ... undefined in 0.000s
-    Then sonicator 1 should operate normally ... undefined in 0.000s
+    Given the Multi-Sonicator I/O Controller is powered and initialized ... untested in 0.000s
+    And all 4 sonicator units are connected and ready ... untested in 0.000s
+    And the MODBUS RTU communication is established at 115200 baud ... untested in 0.000s
+    And the system is in a safe default state ... untested in 0.000s
+    Given sonicator 1 is running at 75% amplitude ... untested in 0.000s
+    When sonicator 1 experiences an overload condition ... untested in 0.000s
+    Then within 100ms the overload flag should be set for sonicator 1 ... untested in 0.000s
+    And sonicator 1 should automatically stop ... untested in 0.000s
+    And the active count should decrease by 1 ... untested in 0.000s
+    And the system should log the overload event ... untested in 0.000s
+    When I send an overload reset command for sonicator 1 ... untested in 0.000s
+    Then the overload flag should be cleared ... untested in 0.000s
+    And sonicator 1 should be ready to start again ... untested in 0.000s
+    When I restart sonicator 1 ... untested in 0.000s
+    Then sonicator 1 should operate normally ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="MODBUS communication reliability under load" status="cleanup_error" time="0"><error type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-Location: test/acceptance/features/system_integration_complete.feature:7
-None]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="MODBUS communication reliability under load" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @system @integration @communication
   Scenario: MODBUS communication reliability under load
-    Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-    And all 4 sonicator units are connected and ready ... undefined in 0.000s
-    And the MODBUS RTU communication is established at 115200 baud ... undefined in 0.000s
-    And the system is in a safe default state ... undefined in 0.000s
-    Given all 4 sonicators are running ... undefined in 0.000s
-    When I perform 100 consecutive MODBUS read operations ... undefined in 0.000s
-    Then all reads should complete successfully within 100ms each ... undefined in 0.000s
-    And the CRC should be correct for all responses ... undefined in 0.000s
-    And no communication errors should be logged ... undefined in 0.000s
-    When I perform 50 consecutive MODBUS write operations ... undefined in 0.000s
-    Then all writes should complete successfully within 100ms each ... undefined in 0.000s
-    And all register values should be updated correctly ... undefined in 0.000s
-    And the system should maintain stable operation throughout ... skipped in 0.000s
+    Given the Multi-Sonicator I/O Controller is powered and initialized ... untested in 0.000s
+    And all 4 sonicator units are connected and ready ... untested in 0.000s
+    And the MODBUS RTU communication is established at 115200 baud ... untested in 0.000s
+    And the system is in a safe default state ... untested in 0.000s
+    Given all 4 sonicators are running ... untested in 0.000s
+    When I perform 100 consecutive MODBUS read operations ... untested in 0.000s
+    Then all reads should complete successfully within 100ms each ... untested in 0.000s
+    And the CRC should be correct for all responses ... untested in 0.000s
+    And no communication errors should be logged ... untested in 0.000s
+    When I perform 50 consecutive MODBUS write operations ... untested in 0.000s
+    Then all writes should complete successfully within 100ms each ... untested in 0.000s
+    And all register values should be updated correctly ... untested in 0.000s
+    And the system should maintain stable operation throughout ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="System performance under maximum load" status="cleanup_error" time="0"><error type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-Location: test/acceptance/features/system_integration_complete.feature:7
-None]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="System performance under maximum load" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @system @integration @performance
   Scenario: System performance under maximum load
-    Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-    And all 4 sonicator units are connected and ready ... undefined in 0.000s
-    And the MODBUS RTU communication is established at 115200 baud ... undefined in 0.000s
-    And the system is in a safe default state ... undefined in 0.000s
-    Given all 4 sonicators are connected ... undefined in 0.000s
-    When I start all sonicators at maximum amplitude (100%) ... undefined in 0.000s
-    Then each sonicator should reach full power within 500ms ... undefined in 0.000s
-    And the total system power consumption should be within specifications ... undefined in 0.000s
-    And all telemetry data should update at minimum 10Hz ... undefined in 0.000s
-    And the system temperature should remain within safe limits ... undefined in 0.000s
-    And no performance degradation should occur over 10 minutes of operation ... undefined in 0.000s
+    Given the Multi-Sonicator I/O Controller is powered and initialized ... untested in 0.000s
+    And all 4 sonicator units are connected and ready ... untested in 0.000s
+    And the MODBUS RTU communication is established at 115200 baud ... untested in 0.000s
+    And the system is in a safe default state ... untested in 0.000s
+    Given all 4 sonicators are connected ... untested in 0.000s
+    When I start all sonicators at maximum amplitude (100%) ... untested in 0.000s
+    Then each sonicator should reach full power within 500ms ... untested in 0.000s
+    And the total system power consumption should be within specifications ... untested in 0.000s
+    And all telemetry data should update at minimum 10Hz ... untested in 0.000s
+    And the system temperature should remain within safe limits ... untested in 0.000s
+    And no performance degradation should occur over 10 minutes of operation ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Response time requirements validation" status="cleanup_error" time="0"><error type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-Location: test/acceptance/features/system_integration_complete.feature:7
-None]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Response time requirements validation" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @system @integration @timing
   Scenario: Response time requirements validation
-    Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-    And all 4 sonicator units are connected and ready ... undefined in 0.000s
-    And the MODBUS RTU communication is established at 115200 baud ... undefined in 0.000s
-    And the system is in a safe default state ... undefined in 0.000s
-    Given the system is in normal operation ... undefined in 0.000s
-    When I send a start command to any sonicator ... undefined in 0.000s
-    Then the command should be acknowledged within 50ms ... undefined in 0.000s
-    And the sonicator should begin operation within 200ms ... undefined in 0.000s
-    And the status should be reflected in MODBUS registers within 100ms ... undefined in 0.000s
-    When I send a stop command to any running sonicator ... undefined in 0.000s
-    Then the sonicator should stop within 200ms ... undefined in 0.000s
-    And the status change should be reflected within 100ms ... undefined in 0.000s
+    Given the Multi-Sonicator I/O Controller is powered and initialized ... untested in 0.000s
+    And all 4 sonicator units are connected and ready ... untested in 0.000s
+    And the MODBUS RTU communication is established at 115200 baud ... untested in 0.000s
+    And the system is in a safe default state ... untested in 0.000s
+    Given the system is in normal operation ... untested in 0.000s
+    When I send a start command to any sonicator ... untested in 0.000s
+    Then the command should be acknowledged within 50ms ... untested in 0.000s
+    And the sonicator should begin operation within 200ms ... untested in 0.000s
+    And the status should be reflected in MODBUS registers within 100ms ... untested in 0.000s
+    When I send a stop command to any running sonicator ... untested in 0.000s
+    Then the sonicator should stop within 200ms ... untested in 0.000s
+    And the status change should be reflected within 100ms ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Telemetry data accuracy and consistency" status="cleanup_error" time="0"><error type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-Location: test/acceptance/features/system_integration_complete.feature:7
-None]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Telemetry data accuracy and consistency" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @system @integration @data-integrity
   Scenario: Telemetry data accuracy and consistency
-    Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-    And all 4 sonicator units are connected and ready ... undefined in 0.000s
-    And the MODBUS RTU communication is established at 115200 baud ... undefined in 0.000s
-    And the system is in a safe default state ... undefined in 0.000s
-    Given sonicator 1 is running at a stable 60% amplitude ... undefined in 0.000s
-    When I monitor telemetry data for 30 seconds ... undefined in 0.000s
-    Then the power readings should be consistent within ±5% ... undefined in 0.000s
-    And the frequency readings should be stable within ±1% ... undefined in 0.000s
-    And the amplitude readings should match the setpoint within ±2% ... undefined in 0.000s
-    And no data corruption or invalid values should occur ... undefined in 0.000s
-    And the timestamp accuracy should be maintained ... undefined in 0.000s
+    Given the Multi-Sonicator I/O Controller is powered and initialized ... untested in 0.000s
+    And all 4 sonicator units are connected and ready ... untested in 0.000s
+    And the MODBUS RTU communication is established at 115200 baud ... untested in 0.000s
+    And the system is in a safe default state ... untested in 0.000s
+    Given sonicator 1 is running at a stable 60% amplitude ... untested in 0.000s
+    When I monitor telemetry data for 30 seconds ... untested in 0.000s
+    Then the power readings should be consistent within ±5% ... untested in 0.000s
+    And the frequency readings should be stable within ±1% ... untested in 0.000s
+    And the amplitude readings should match the setpoint within ±2% ... untested in 0.000s
+    And no data corruption or invalid values should occur ... untested in 0.000s
+    And the timestamp accuracy should be maintained ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="System configuration persistence" status="cleanup_error" time="0"><error type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-Location: test/acceptance/features/system_integration_complete.feature:7
-None]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="System configuration persistence" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @system @integration @configuration
   Scenario: System configuration persistence
-    Given the Multi-Sonicator I/O Controller is powered and initialized ... undefined in 0.000s
-    And all 4 sonicator units are connected and ready ... undefined in 0.000s
-    And the MODBUS RTU communication is established at 115200 baud ... undefined in 0.000s
-    And the system is in a safe default state ... undefined in 0.000s
-    Given the system is configured with specific settings ... undefined in 0.000s
-    When I set custom amplitude values for all sonicators ... undefined in 0.000s
-    And I configure system parameters ... undefined in 0.000s
-    And I power cycle the system ... undefined in 0.000s
-    Then the system should retain all configuration settings ... undefined in 0.000s
-    And sonicators should return to their configured default states ... undefined in 0.000s
-    And no configuration drift should occur ... undefined in 0.000s
+    Given the Multi-Sonicator I/O Controller is powered and initialized ... untested in 0.000s
+    And all 4 sonicator units are connected and ready ... untested in 0.000s
+    And the MODBUS RTU communication is established at 115200 baud ... untested in 0.000s
+    And the system is in a safe default state ... untested in 0.000s
+    Given the system is configured with specific settings ... untested in 0.000s
+    When I set custom amplitude values for all sonicators ... untested in 0.000s
+    And I configure system parameters ... untested in 0.000s
+    And I power cycle the system ... untested in 0.000s
+    Then the system should retain all configuration settings ... untested in 0.000s
+    And sonicators should return to their configured default states ... untested in 0.000s
+    And no configuration drift should occur ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Advanced diagnostics and health monitoring" status="cleanup_error" time="0"><error type="UnknownError" message="">
-<![CDATA[Traceback:
-]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Advanced diagnostics and health monitoring" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @pending @system @integration @advanced
   Scenario: Advanced diagnostics and health monitoring
-    Given the Multi-Sonicator I/O Controller is powered and initialized ... skipped in 0.000s
-    And all 4 sonicator units are connected and ready ... skipped in 0.000s
-    And the MODBUS RTU communication is established at 115200 baud ... skipped in 0.000s
-    And the system is in a safe default state ... skipped in 0.000s
-    Given the system has been running for extended periods ... skipped in 0.000s
-    When I request system diagnostics ... skipped in 0.000s
-    Then the system should report component health status ... skipped in 0.000s
-    And provide runtime statistics for each sonicator ... skipped in 0.000s
-    And report any maintenance recommendations ... skipped in 0.000s
-    And log historical performance data ... skipped in 0.000s
-    And identify any potential issues before they become critical ... skipped in 0.000s
+    Given the Multi-Sonicator I/O Controller is powered and initialized ... untested in 0.000s
+    And all 4 sonicator units are connected and ready ... untested in 0.000s
+    And the MODBUS RTU communication is established at 115200 baud ... untested in 0.000s
+    And the system is in a safe default state ... untested in 0.000s
+    Given the system has been running for extended periods ... untested in 0.000s
+    When I request system diagnostics ... untested in 0.000s
+    Then the system should report component health status ... untested in 0.000s
+    And provide runtime statistics for each sonicator ... untested in 0.000s
+    And report any maintenance recommendations ... untested in 0.000s
+    And log historical performance data ... untested in 0.000s
+    And identify any potential issues before they become critical ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Multi-controller network operation" status="cleanup_error" time="0"><error type="UnknownError" message="">
-<![CDATA[Traceback:
-]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Multi-controller network operation" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @pending @system @integration @networking
   Scenario: Multi-controller network operation
-    Given the Multi-Sonicator I/O Controller is powered and initialized ... skipped in 0.000s
-    And all 4 sonicator units are connected and ready ... skipped in 0.000s
-    And the MODBUS RTU communication is established at 115200 baud ... skipped in 0.000s
-    And the system is in a safe default state ... skipped in 0.000s
-    Given multiple Multi-Sonicator I/O Controllers are networked ... skipped in 0.000s
-    When I configure unique MODBUS slave IDs for each controller ... skipped in 0.000s
-    Then each controller should respond only to its assigned ID ... skipped in 0.000s
-    And network communication should remain stable ... skipped in 0.000s
-    And no address conflicts should occur ... skipped in 0.000s
-    And centralized monitoring should work correctly ... skipped in 0.000s
+    Given the Multi-Sonicator I/O Controller is powered and initialized ... untested in 0.000s
+    And all 4 sonicator units are connected and ready ... untested in 0.000s
+    And the MODBUS RTU communication is established at 115200 baud ... untested in 0.000s
+    And the system is in a safe default state ... untested in 0.000s
+    Given multiple Multi-Sonicator I/O Controllers are networked ... untested in 0.000s
+    When I configure unique MODBUS slave IDs for each controller ... untested in 0.000s
+    Then each controller should respond only to its assigned ID ... untested in 0.000s
+    And network communication should remain stable ... untested in 0.000s
+    And no address conflicts should occur ... untested in 0.000s
+    And centralized monitoring should work correctly ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Automated system calibration" status="cleanup_error" time="0"><error type="UnknownError" message="">
-<![CDATA[Traceback:
-]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.system_integration_complete.Complete System Integration Testing" name="Automated system calibration" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @pending @system @integration @calibration
   Scenario: Automated system calibration
-    Given the Multi-Sonicator I/O Controller is powered and initialized ... skipped in 0.000s
-    And all 4 sonicator units are connected and ready ... skipped in 0.000s
-    And the MODBUS RTU communication is established at 115200 baud ... skipped in 0.000s
-    And the system is in a safe default state ... skipped in 0.000s
-    Given the system requires calibration ... skipped in 0.000s
-    When I initiate the automated calibration sequence ... skipped in 0.000s
-    Then the system should calibrate all measurement channels ... skipped in 0.000s
-    And verify amplitude control accuracy ... skipped in 0.000s
-    And adjust power measurement scaling ... skipped in 0.000s
-    And validate frequency measurement precision ... skipped in 0.000s
-    And store calibration data persistently ... skipped in 0.000s
+    Given the Multi-Sonicator I/O Controller is powered and initialized ... untested in 0.000s
+    And all 4 sonicator units are connected and ready ... untested in 0.000s
+    And the MODBUS RTU communication is established at 115200 baud ... untested in 0.000s
+    And the system is in a safe default state ... untested in 0.000s
+    Given the system requires calibration ... untested in 0.000s
+    When I initiate the automated calibration sequence ... untested in 0.000s
+    Then the system should calibrate all measurement channels ... untested in 0.000s
+    And verify amplitude control accuracy ... untested in 0.000s
+    And adjust power measurement scaling ... untested in 0.000s
+    And validate frequency measurement precision ... untested in 0.000s
+    And store calibration data persistently ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------

@@ -1,31 +1,25 @@
-<testsuite name="features.hmi_integration.HMI/PLC integration" tests="2" errors="2" failures="0" skipped="0" time="0.0" timestamp="2025-09-16T18:32:58.195941" hostname="Corbans-Mini.home"><testcase classname="features.hmi_integration.HMI/PLC integration" name="SC-010 HMI contract adherence (4xxxx convention)" status="cleanup_error" time="0"><error type="UnknownError" message="">
-<![CDATA[Traceback:
-]]>
-</error><system-out>
+<testsuite name="features.hmi_integration.HMI/PLC integration" tests="2" errors="0" failures="0" skipped="2" time="0.0" timestamp="2025-09-24T14:26:42.828209" hostname="Corbans-Mini.home"><testcase classname="features.hmi_integration.HMI/PLC integration" name="SC-010 HMI contract adherence (4xxxx convention)" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @pending @req-hmi @hil
   Scenario: SC-010 HMI contract adherence (4xxxx convention)
-    Given the system is initialized ... skipped in 0.000s
-    When I write holding register 40001 with value 80 ... skipped in 0.000s
-    Then holding register 40001 should equal 80 within 100 ms ... skipped in 0.000s
+    Given the system is initialized ... untested in 0.000s
+    When I write holding register 40001 with value 80 ... untested in 0.000s
+    Then holding register 40001 should equal 80 within 100 ms ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.hmi_integration.HMI/PLC integration" name="SC-024 HMI addressing examples" status="cleanup_error" time="0"><error type="UnknownError" message="">
-<![CDATA[Traceback:
-]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.hmi_integration.HMI/PLC integration" name="SC-024 HMI addressing examples" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @pending @req-hmi-addressing @hil
   Scenario: SC-024 HMI addressing examples
-    Given the system is initialized ... skipped in 0.000s
-    When I write holding register 40005 with value 1 ... skipped in 0.000s
-    Then holding register 40021 should equal 1 within 100 ms ... skipped in 0.000s
+    Given the system is initialized ... untested in 0.000s
+    When I write holding register 40005 with value 1 ... untested in 0.000s
+    Then holding register 40021 should equal 1 within 100 ms ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------

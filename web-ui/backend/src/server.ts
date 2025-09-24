@@ -1,4 +1,6 @@
-import 'dotenv/config'
+import fs from 'fs'
+import path from 'path'
+import dotenv from 'dotenv'
 import express from 'express'
 import { createServer } from 'http'
 import { WebSocketServer } from 'ws'
@@ -8,6 +10,15 @@ import { WebSocketHandler } from './websocket/WebSocketHandler'
 import { TestAutomationService } from './services/TestAutomationService'
 import { setupRoutes } from './routes/index'
 import { configService } from './config/ConfigService'
+
+// Load .env from backend and repository root (root overrides backend)
+// Works for both ts-node (src) and compiled (dist) because we resolve from __dirname
+const rootEnvPath = path.resolve(__dirname, '../../../.env')
+const backendEnvPath = path.resolve(__dirname, '../.env')
+// Precedence: runtime env > root .env > backend .env
+// Load root first (fills missing), then backend (fills remaining); neither overrides runtime env
+dotenv.config({ path: rootEnvPath })
+dotenv.config({ path: backendEnvPath })
 
 const app = express()
 const server = createServer(app)
@@ -19,6 +30,12 @@ app.use(cors({
   credentials: true
 }))
 app.use(express.json())
+
+// If HARDWARE_PRESENT=false, do not start the server/UI
+if (process.env.HARDWARE_PRESENT && process.env.HARDWARE_PRESENT.toLowerCase() === 'false') {
+  console.error('❌ HARDWARE_PRESENT=false: Web UI backend disabled by configuration')
+  process.exit(1)
+}
 
 // Initialize configuration service
 console.log('🔧 Loading hardware configuration...')

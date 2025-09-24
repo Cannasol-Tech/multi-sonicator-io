@@ -46,6 +46,7 @@ class HardwareInterface extends events_1.EventEmitter {
         this.lastLogTime = 0;
         this.logThrottleMs = 5000; // Only log once every 5 seconds per pin (reduced frequency)
         this.lastPinLogTimes = new Map();
+        this.setMaxListeners(50); // Increase max listeners to prevent memory leak warnings
         this.initializePinStates();
     }
     initializePinStates() {
@@ -349,6 +350,7 @@ try:
                     if command == "ping":
                         response = hil.send_command("PING")
                         print(json.dumps({"type": "response", "data": response, "command_type": "ping"}))
+                        sys.stdout.flush()
 
                     elif command == "set_frequency" and len(args) >= 2:
                         signal = args[0]
@@ -574,15 +576,32 @@ except Exception as e:
             }
             try {
                 const commandStr = JSON.stringify(command);
-                // Emit command being sent for logging (reduced verbosity)
+                const timeout = 5000; // 5 second timeout
+                // Set up response handler
+                const responseHandler = (data) => {
+                    clearTimeout(timeoutHandle);
+                    resolve(data);
+                };
+                const errorHandler = (error) => {
+                    clearTimeout(timeoutHandle);
+                    reject(new Error(`Hardware error: ${error}`));
+                };
+                // Set up timeout
+                const timeoutHandle = setTimeout(() => {
+                    reject(new Error(`Command timeout after ${timeout}ms`));
+                }, timeout);
+                // Listen for response (using once to avoid memory leaks)
+                this.once('command_response', responseHandler);
+                this.once('error', errorHandler);
+                // Emit command being sent for logging
                 this.emit('arduino_command', {
                     direction: 'sent',
                     data: commandStr,
                     timestamp: Date.now(),
                     type: command.type || 'unknown'
                 });
+                // Send command to Python process
                 this.pythonProcess.stdin?.write(commandStr + '\n');
-                resolve(true);
             }
             catch (error) {
                 reject(error);
@@ -598,13 +617,14 @@ except Exception as e:
             };
         }
         try {
-            await this.sendPythonCommand({
+            const response = await this.sendPythonCommand({
                 type: 'command',
                 command: command.command,
                 args: command.args
             });
             return {
                 success: true,
+                data: response,
                 timestamp: Date.now()
             };
         }

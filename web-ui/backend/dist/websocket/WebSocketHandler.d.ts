@@ -14,6 +14,7 @@ export declare class WebSocketHandler {
     constructor(hardwareInterface: HardwareInterface, testAutomationService?: TestAutomationService);
     private setupHardwareListeners;
     private setupTestAutomationListeners;
+    private setupConfigurationListeners;
     handleConnection(ws: WebSocket): void;
     private sendInitialState;
     private handleMessage;

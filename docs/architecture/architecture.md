@@ -282,7 +282,7 @@ Class relationships (conceptual)
   - If a split must be crossed, add a nearby ground stitching via to provide a local return.
 
 - **Analog/Digital ground strategy**
-  - Keep analog front‑end (LM358, ADC dividers, LM2907) over an analog ground region.
+  - Keep analog front‑end (LM358, ADC dividers) over an analog ground region.
   - Tie AGND↔DGND at a single point near MCU AGND/AREF. Prefer 0 Ω link; a ferrite bead (FB) is acceptable if HF isolation helps.
   - Filter AVCC with FB + 100 nF + 1 µF close to the pin; route AREF cleanly with its cap (e.g., 100 nF) to AGND.
 

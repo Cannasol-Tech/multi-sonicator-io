@@ -1,13 +1,10 @@
-<testsuite name="features.hil_smoke.HIL Smoke Test" tests="1" errors="1" failures="0" skipped="0" time="1.000989" timestamp="2025-09-16T18:32:58.194920" hostname="Corbans-Mini.home"><testcase classname="features.hil_smoke.HIL Smoke Test" name="HIL-001 Wrapper responds to PING" status="cleanup_error" time="1.000989"><error type="UnknownError" message="">
-<![CDATA[Traceback:
-]]>
-</error><system-out>
+<testsuite name="features.hil_smoke.HIL Smoke Test" tests="1" errors="0" failures="0" skipped="1" time="0.0" timestamp="2025-09-24T14:26:42.827561" hostname="Corbans-Mini.home"><testcase classname="features.hil_smoke.HIL Smoke Test" name="HIL-001 Wrapper responds to PING" status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
   Scenario: HIL-001 Wrapper responds to PING
-    Given the HIL wrapper is connected and ready ... failed in 1.001s
-    Then the harness sanity check passes ... skipped in 0.000s
-    And the serial device is available for the harness ... skipped in 0.000s
+    Given the HIL wrapper is connected and ready ... untested in 0.000s
+    Then the harness sanity check passes ... untested in 0.000s
+    And the serial device is available for the harness ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------

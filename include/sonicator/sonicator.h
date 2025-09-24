@@ -52,7 +52,7 @@
 
 /**
  * @brief Pin bundle describing a single sonicator channel
- * 
+ *
  * This structure contains all the hardware pin assignments needed to control
  * and monitor a single CT2000 sonicator channel.
  */
@@ -76,7 +76,7 @@ typedef struct {
  *
  * @par Usage Example:
  * @code
- * SonicatorPins p{1, SON1_START_PIN, SON1_RESET_PIN, SON1_OVERLOAD_PIN, 
+ * SonicatorPins p{1, SON1_START_PIN, SON1_RESET_PIN, SON1_OVERLOAD_PIN,
  *                 SON1_FREQ_LOCK_PIN, SON1_FREQ_OUTPUT_PIN, ADC_SONICATOR_1_PIN};
  * SonicatorInterface s1(p);
  * s1.update(); // reads control from MODBUS, applies to HAL, writes status to MODBUS
@@ -89,102 +89,119 @@ public:
      * @param pins Pin configuration for this sonicator channel
      */
     explicit SonicatorInterface(const SonicatorPins& pins);
-    
+
     /**
      * @brief Destroy the SonicatorInterface object
      */
     ~SonicatorInterface();
 
     // Control API (logical)
-    
+
     /**
      * @brief Start the sonicator
      * @return true if start command was accepted, false otherwise
      */
     bool start(void);
-    
+
     /**
      * @brief Stop the sonicator
      * @return true if stop command was accepted, false otherwise
      */
     bool stop(void);
-    
+
     /**
      * @brief Set the amplitude percentage
      * @param amplitude_percent Desired amplitude (20-100%)
      * @return true if amplitude was set successfully, false otherwise
      */
     bool setAmplitude(uint8_t amplitude_percent);
-    
+
     /**
      * @brief Reset overload condition
      * @return true if reset command was accepted, false otherwise
      */
     bool resetOverload(void);
-    
+
     /**
      * @brief Emergency stop - immediately halt operation
      * @return true if emergency stop was executed, false otherwise
      */
     bool emergencyStop(void);
 
+
+    /**
+     * @brief Apply a start/stop command from control register
+     *
+     * Accepts a compact command encoding commonly used in MODBUS/control registers:
+     * - 1 = start request (edge-triggered)
+     * - 2 = stop request (edge-triggered)
+     * - other/0 = no-op
+     *
+     * This helper routes the command through the SonicatorInterface safety layer
+     * (start()/stop()) so simulation, logging, and policy are consistently applied.
+     *
+     * @param start_stop Command value (1=start, 2=stop, 0/other=no-op)
+     * @return true if a command was consumed and accepted; false otherwise
+     */
+    bool setStartStop(uint8_t start_stop);
+
     // Main periodic update (called by multiplexer)
-    
+
     /**
      * @brief Main periodic update function
-     * 
+     *
      * This function should be called regularly to:
      * - Read MODBUS control commands
      * - Update state machine
      * - Process hardware I/O
      * - Detect and handle faults
      * - Publish status to MODBUS
-     * 
+     *
      * @return Current sonicator state
      */
     sonicator_state_t update(void);
 
     // Status / diagnostics
-    
+
     /**
      * @brief Get current status
      * @return Pointer to current status structure
      */
     const sonicator_status_t* getStatus(void) const;
-    
+
     /**
      * @brief Convert state enum to human-readable string
      * @param state State to convert
      * @return String representation of the state
      */
     static const char* stateToString(sonicator_state_t state);
-    
+
     /**
      * @brief Check if sonicator is in a safe operating condition
      * @return true if safe, false if faults are present
      */
     bool isSafe(void) const;
-    
+
     /**
      * @brief Reset runtime statistics counters
      */
     void resetStatistics(void);
 
     // Test hooks
-    
+
     /**
      * @brief Enable or disable simulation mode for testing
      * @param enable true to enable simulation mode, false for normal operation
      */
     void setSimulationMode(bool enable);
-    
+
     /**
      * @brief Force sonicator to a specific state (for testing)
      * @param newState Desired state to force
      * @return true if state was forced successfully, false otherwise
      */
     bool forceState(const sonicator_status_t& newState);
-    
+
     /**
      * @brief Inject a fault condition (for testing)
      * @param faultMask Fault condition(s) to inject
@@ -198,13 +215,13 @@ private:
 
     /**
      * @brief Internal runtime state structure
-     * 
+     *
      * This structure contains all the internal state variables needed
      * for sonicator operation, including control state, monitoring data,
      * fault tracking, and statistics.
      */
     struct RuntimeState {
-        
+
         // Control/state machine
         sonicator_state_t   state{SONICATOR_STATE_UNKNOWN};          /**< Current state machine state */
         sonicator_state_t   previous_state{SONICATOR_STATE_UNKNOWN}; /**< Previous state for transition tracking */
@@ -242,57 +259,50 @@ private:
     mutable sonicator_status_t status_view_{};       /**< Public status view built on demand */
 
     // Utilities
-    
+
     /**
      * @brief Get current timestamp in milliseconds
      * @return Current timestamp
      */
     uint32_t getTimestampMs() const;
-    
+
     /**
      * @brief Check if a timeout has occurred
      * @param start_time Starting timestamp
      * @param timeout_ms Timeout duration in milliseconds
      * @return true if timeout has occurred, false otherwise
      */
-    bool     isTimeout(uint32_t start_time, uint32_t timeout_ms) const;
-    
-    /**
-     * @brief Clamp amplitude to valid range
-     * @param amplitude Input amplitude value
-     * @return Clamped amplitude value
-     */
-    uint8_t  clampAmplitude(uint8_t amplitude) const;
-    
+    bool isTimeout(uint32_t start_time, uint32_t timeout_ms) const;
+
     /**
      * @brief Convert amplitude percentage to PWM duty cycle
      * @param amplitude_percent Amplitude percentage (20-100%)
      * @return PWM duty cycle value (0-255)
      */
-    uint8_t  amplitudeToPwm(uint8_t amplitude_percent) const;
+    uint8_t amplitudeToPwm(uint8_t amplitude_percent) const;
 
     // HAL adapters (safe wrappers)
-    
+
     /**
      * @brief Safe GPIO write operation
      * @param pin GPIO pin number
      * @param state Desired pin state
      */
-    void     halGpioWriteSafe(uint8_t pin, bool state);
-    
+    void halGpioWriteSafe(uint8_t pin, bool state);
+
     /**
      * @brief Safe GPIO read operation
      * @param pin GPIO pin number
      * @return Current pin state
      */
-    bool     halGpioReadSafe(uint8_t pin);
-    
+    bool halGpioReadSafe(uint8_t pin);
+
     /**
      * @brief Safe PWM set operation
      * @param duty_cycle PWM duty cycle (0-255)
      */
-    void     halPwmSetSafe(uint8_t duty_cycle);
-    
+    void halPwmSetSafe(uint8_t duty_cycle);
+
     /**
      * @brief Safe ADC read operation
      * @param channel ADC channel to read
@@ -301,25 +311,25 @@ private:
     uint16_t halAdcReadSafe(adc_channel_t channel);
 
     // Hardware interaction
-    
+
     /**
      * @brief Update all hardware outputs based on current state
      */
-    void    updateHardwareOutputs();
-    
+    void updateHardwareOutputs();
+
     /**
      * @brief Read all hardware inputs and update state
      */
-    void    readHardwareInputs();
+    void readHardwareInputs();
 
     // Fault management
-    
+
     /**
      * @brief Check for fault conditions
      * @return Bitmask of detected fault conditions
      */
     sonicator_fault_t checkFaultConditions();
-    
+
     /**
      * @brief Handle detected fault conditions
      * @param faults Bitmask of fault conditions to handle
@@ -327,7 +337,7 @@ private:
     void    handleFaultConditions(sonicator_fault_t faults);
 
     // State machine
-    
+
     /**
      * @brief Process state machine transitions
      */

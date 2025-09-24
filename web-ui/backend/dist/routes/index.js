@@ -6,9 +6,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.setupRoutes = setupRoutes;
 const config_1 = __importDefault(require("./config"));
 const tests_1 = __importDefault(require("./tests"));
+const modbus_1 = __importDefault(require("./modbus"));
 function setupRoutes(app, hardwareInterface, testAutomationService) {
     // Hardware configuration management routes - make sure this is the first route
     app.use('/api/config', config_1.default);
+    // Modbus control routes
+    app.use('/api/modbus', modbus_1.default);
     // Hardware test execution routes
     app.use('/api/tests', tests_1.default);
     // Health check endpoint

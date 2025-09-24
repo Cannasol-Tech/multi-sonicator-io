@@ -24,7 +24,6 @@
 // Global Multiplexer instance
 SonicMultiplexer multiplexer(4);
 
-
 static void setup_modbus(void) {
     modbus_config_t cfg{};
     cfg.slave_id = MODBUS_SLAVE_ID;

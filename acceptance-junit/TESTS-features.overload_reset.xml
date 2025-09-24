@@ -1,37 +1,31 @@
-<testsuite name="features.overload_reset.Overload detection and reset per unit" tests="2" errors="2" failures="0" skipped="0" time="2.011346" timestamp="2025-09-16T18:33:03.293924" hostname="Corbans-Mini.home"><testcase classname="features.overload_reset.Overload detection and reset per unit" name="Overload flag reflects and reset behavior is correct -- @1.1 " status="cleanup_error" time="1.009928"><error type="UnknownError" message="">
-<![CDATA[Traceback:
-]]>
-</error><system-out>
+<testsuite name="features.overload_reset.Overload detection and reset per unit" tests="2" errors="0" failures="0" skipped="2" time="0.0" timestamp="2025-09-24T14:26:42.850010" hostname="Corbans-Mini.home"><testcase classname="features.overload_reset.Overload detection and reset per unit" name="Overload flag reflects and reset behavior is correct -- @1.1 " status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @us-002 @requirement_FR4
   Scenario Outline: Overload flag reflects and reset behavior is correct -- @1.1 
-    Given the HIL wrapper is connected and ready ... failed in 1.010s
-    And the DUT is powered and at safe defaults ... skipped in 0.000s
-    Given unit 1 overload input is set to 1 ... skipped in 0.000s
-    When I write 1 to holding register 40009 to request overload reset ... skipped in 0.000s
-    Then within 100 ms the overload flag bit1 for unit 1 equals 1 ... skipped in 0.000s
-    And starting the unit via register 40005 yields behavior per spec when overload=1 ... skipped in 0.000s
+    Given the HIL wrapper is connected and ready ... untested in 0.000s
+    And the DUT is powered and at safe defaults ... untested in 0.000s
+    Given unit 1 overload input is set to 1 ... untested in 0.000s
+    When I write 1 to holding register 40009 to request overload reset ... untested in 0.000s
+    Then within 100 ms the overload flag bit1 for unit 1 equals 1 ... untested in 0.000s
+    And starting the unit via register 40005 yields behavior per spec when overload=1 ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.overload_reset.Overload detection and reset per unit" name="Overload flag reflects and reset behavior is correct -- @1.2 " status="cleanup_error" time="1.001418"><error type="UnknownError" message="">
-<![CDATA[Traceback:
-]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.overload_reset.Overload detection and reset per unit" name="Overload flag reflects and reset behavior is correct -- @1.2 " status="untested" time="0"><skipped /><system-out>
 <![CDATA[
 @scenario.begin
 
   @us-002 @requirement_FR4
   Scenario Outline: Overload flag reflects and reset behavior is correct -- @1.2 
-    Given the HIL wrapper is connected and ready ... failed in 1.001s
-    And the DUT is powered and at safe defaults ... skipped in 0.000s
-    Given unit 1 overload input is set to 0 ... skipped in 0.000s
-    When I write 1 to holding register 40009 to request overload reset ... skipped in 0.000s
-    Then within 100 ms the overload flag bit1 for unit 1 equals 0 ... skipped in 0.000s
-    And starting the unit via register 40005 yields behavior per spec when overload=0 ... skipped in 0.000s
+    Given the HIL wrapper is connected and ready ... untested in 0.000s
+    And the DUT is powered and at safe defaults ... untested in 0.000s
+    Given unit 1 overload input is set to 0 ... untested in 0.000s
+    When I write 1 to holding register 40009 to request overload reset ... untested in 0.000s
+    Then within 100 ms the overload flag bit1 for unit 1 equals 0 ... untested in 0.000s
+    And starting the unit via register 40005 yields behavior per spec when overload=0 ... untested in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
