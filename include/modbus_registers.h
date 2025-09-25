@@ -293,26 +293,28 @@ typedef struct {
  * @brief Global Control Registers (0x0010-0x001F) - Read/Write
  */
 typedef struct {
-    uint16_t global_enable;        //< 0x0010: Global system enable
-    uint16_t global_amplitude_sp;  //< 0x0011: Global amplitude setpoint (20-100%)
-    uint16_t emergency_stop;       //< 0x0012: Emergency stop command
-    uint16_t system_reset;         //< 0x0013: System reset command
-    uint16_t test_start_inhibit_mask; //< 0x0014: Per-unit start inhibit mask (test-only)
-    uint16_t reserved[12];         //< 0x0015-0x001F: Reserved for future use
+    uint16_t global_enable;             //< 0x0010: Global system enable
+    uint16_t global_amplitude_sp;       //< 0x0011: Global amplitude setpoint (20-100%)
+    uint16_t emergency_stop;            //< 0x0012: Emergency stop command
+    uint16_t system_reset;              //< 0x0013: System reset command
+    uint16_t test_start_inhibit_mask;   //< 0x0014: Per-unit start inhibit mask (test-only)
+    uint16_t reserved[12];              //< 0x0015-0x001F: Reserved for future use
 } global_control_registers_t;
 
 /**
- * @brief Per-Sonicator Registers (0xN00-0xN1F)
- * Each sonicator has control (0xN00-0xN0F) and status (0xN10-0xN1F) blocks
+ * @brief Per Sonicator Control Registers (0xN00-0xN0F) - Read/Write
  */
 typedef struct {
-    // Control Registers (0xN00-0xN0F) - Read/Write
-    uint16_t start_stop;           //< 0xN00: Start/Stop control
-    uint16_t amplitude_setpoint;   //< 0xN01: Amplitude setpoint (20-100%)
-    uint16_t overload_reset;       //< 0xN02: Overload reset command
-    uint16_t reserved_ctrl[13];    //< 0xN03-0xN0F: Reserved for future use
-    
-    // Status Registers (0xN10-0xN1F) - Read Only
+    // 0xN00: Start/Stop control (1=run, 0=stop, persistent state)
+    uint16_t start_stop;           //< 0xN00: Start/Stop control (1=run, 0=stop, persistent state)
+    uint16_t overload_reset;       //< 0xN01: Overload reset command
+    uint16_t reserved_ctrl[13];    //< 0xN02-0xN0F: Reserved for future use
+} sonicator_control_registers_t;
+
+/**
+ * @brief Per Sonicator Status Registers (0xN10-0xN1F) - Read Only
+ */
+typedef struct {
     uint16_t power_watts;          //< 0xN10: Raw ADC power reading (0-1023, cloud converts)
     uint16_t frequency_hz;         //< 0xN11: Operating frequency ÷10 (Hz÷10 for efficiency)
     uint16_t status_flags;         //< 0xN12: Status flags
@@ -321,7 +323,27 @@ typedef struct {
     uint16_t persisted_amplitude;  //< 0xN15: Last setpoint before shutdown (read-only)
     uint16_t last_fault_code;      //< 0xN16: Last fault code (read-only)
     uint16_t last_state_timestamp_lo; //< 0xN17: Low 16 bits of timestamp (read-only)
-    uint16_t reserved_status[8];   //< 0xN18-0xN1F: Reserved for future use
+    uint16_t reserved_status[7];   //< 0xN18-0xN1F: Reserved for future use
+} sonicator_status_registers_t;
+
+/**
+ * @brief Per-Sonicator Registers (0xN00-0xN1F)
+ * Each sonicator has control (0xN00-0xN0F) and status (0xN10-0xN1F) blocks
+ */
+typedef struct {
+    sonicator_control_registers_t control; //< Control registers (0xN00-0xN0F)
+    sonicator_status_registers_t status;   //< Status registers (0xN10-0xN1F)
+
+    // Direct access aliases for backward compatibility
+    uint16_t start_stop;           //< Alias for control.start_stop
+    uint16_t amplitude_setpoint;   //< Alias for control.amplitude_setpoint
+    uint16_t overload_reset;       //< Alias for control.overload_reset
+    uint16_t power_watts;          //< Alias for status.power_watts
+    uint16_t frequency_hz;         //< Alias for status.frequency_hz
+    uint16_t status_flags;         //< Alias for status.status_flags
+    uint16_t amplitude_actual;     //< Alias for status.amplitude_actual
+    uint16_t prev_state;           //< Alias for status.prev_state
+    uint16_t persisted_amplitude;  //< Alias for status.persisted_amplitude
 } sonicator_registers_t;
 
 /**

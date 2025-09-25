@@ -26,17 +26,13 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
     setFilterTags,
     getFilteredScenarios,
     getExecutionProgress,
-    getCurrentStepProgress,
-    formatDuration,
     getStatusColor,
     getStatusIcon,
     clearError
   } = useTestAutomation()
 
   const [showResultsModal, setShowResultsModal] = useState(false)
-  const [tagSearchQuery, setTagSearchQuery] = useState('')
   const [selectedTags, setSelectedTags] = useState<string[]>([])
-  const [activeSection, setActiveSection] = useState<'scenarios' | 'tags'>('scenarios')
   const [showDetailsModal, setShowDetailsModal] = useState(false)
   const [selectedScenarioForDetails, setSelectedScenarioForDetails] = useState<TestScenario | null>(null)
 
@@ -176,8 +172,8 @@ export default function TestAutomationPanel({ onPinHighlight, onTestProgress }: 
                 <div className="execution-progress">
                   <IridescentProgressBar
                     progress={executionProgress.percentage}
-                    isActive={true}
-                    showPercentage={true}
+                    isRunning={true}
+                    isComplete={false}
                   />
                   <div className="progress-actions">
                     <button

@@ -109,7 +109,6 @@ export function useArduinoCommandLog(
   }, [commands])
 
   const getRecentPairs = useCallback((count: number = 5) => {
-    const pairs: Array<{sent: ArduinoCommand, received?: ArduinoCommand}> = []
     const commandMap = new Map<string, {sent?: ArduinoCommand, received?: ArduinoCommand}>()
 
     // Group commands by ID

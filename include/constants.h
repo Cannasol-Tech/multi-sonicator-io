@@ -17,6 +17,11 @@
 // ============================================================================
 
 /**
+ * @brief Default amplitude for sonicators
+*/
+#define DEFAULT_SONICATOR_AMPLITUDE 80
+
+/**
  * @brief Main Loop Interval for MODBUS processing
 */
 const unsigned long MODBUS_PROCESS_INTERVAL_MS = 5;

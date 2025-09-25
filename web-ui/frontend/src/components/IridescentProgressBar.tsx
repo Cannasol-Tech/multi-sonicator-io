@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 
 interface IridescentProgressBarProps {
   progress: number // 0-100

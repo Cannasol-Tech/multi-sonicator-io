@@ -8,7 +8,7 @@ interface ArduinoCommandDialogProps {
   onClose: () => void
 }
 
-const WS_URL = 'ws://localhost:3102/ws'
+const WS_URL = 'ws://localhost:3001/ws'
 
 const COMMON_COMMANDS = [
   'PING',

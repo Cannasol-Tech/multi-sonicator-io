@@ -331,6 +331,13 @@ export class WebSocketHandler {
           }
           break
 
+        case 'set_amplitude':
+          hardwareCommand = {
+            command: `SET_AMPLITUDE ${value}`,
+            expectResponse: true
+          }
+          break
+
         default:
           throw new Error(`Unknown hardware command: ${command}`)
       }

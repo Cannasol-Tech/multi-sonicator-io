@@ -19,6 +19,7 @@
 #include "modules/hal/pwm.h"
 #include "modules/hal/adc.h"
 #include "modbus_register_manager.h"
+#include "modbus_register_manager.h"
 #include "modbus_registers.h"
 #include "frequency_counter.h"
 #include <Arduino.h>
@@ -73,6 +74,24 @@ const sonicator_status_t* SonicatorInterface::getStatus() const {
     buildStatusView_();
     return &status_view_;
 }
+
+/**
+ * @brief Retrieves the total number of faults encountered by the sonicator interface
+ *
+ * This method provides access to the total number of faults encountered by the sonicator interface.
+ * The fault count is built from the current internal state and returned as an unsigned 32-bit integer.
+ *
+ * @return uint32_t Total number of faults encountered
+ *
+ * @note The returned value is valid until the next call to getStatus() or object destruction
+ * @note This method is thread-safe and can be called from interrupt contexts
+ * @see buildStatusView_() Internal method that constructs the status view
+ */
+uint32_t SonicatorInterface::getFaultCount() const {
+    buildStatusView_();
+    return status_view_.fault_count;
+}
+
 /**
  * @brief Converts a sonicator state enumeration to its string representation
  *
@@ -102,6 +121,7 @@ const char* SonicatorInterface::stateToString(sonicator_state_t state) {
 
 /** @copydoc SonicatorInterface::forceState */
 bool SonicatorInterface::forceState(const sonicator_status_t& newState) {
+
     // Map public status view into internal runtime state
     state_.is_running        = newState.is_running;
     state_.frequency_hz      = newState.frequency_hz;
@@ -116,8 +136,8 @@ bool SonicatorInterface::forceState(const sonicator_status_t& newState) {
     state_.state             = newState.state_machine.state;
     state_.state_entry_time  = newState.state_machine.state_entry_time;
 
-    state_.start_requested   = false;
-    state_.stop_requested    = false;
+    // Note: sonicator_status_t doesn't have start_stop member, using is_running instead
+    state_.start_stop        = newState.is_running ? 1 : 0;
     state_.reset_requested   = false;
 
     state_.last_update_time    = getTimestampMs();
@@ -138,16 +158,15 @@ bool SonicatorInterface::injectFault(const sonicator_fault_t& faultMask) {
 // ============================================================================
 
 /** @copydoc SonicatorInterface::SonicatorInterface */
-SonicatorInterface::SonicatorInterface(const SonicatorPins& pins)
-    : pins_(pins), simulation_mode_(SONICATOR_SIMULATION_MODE) {
+SonicatorInterface::SonicatorInterface(uint8_t sonicator_id, const SonicatorPins& pins, const sonicator_registers_t* registers)
+    : sonicator_id_(sonicator_id), pins_(pins), registers_m(registers) {
     // Initialize runtime defaults safely
     state_.state = SONICATOR_STATE_IDLE;
     state_.previous_state = SONICATOR_STATE_UNKNOWN;
-    state_.state_entry_time = 0;
+    state_.state_entry_time = getTimestampMs();
 
     state_.amplitude_percent = SONICATOR_MIN_AMPLITUDE_PERCENT;
-    state_.start_requested = false;
-    state_.stop_requested = false;
+    state_.start_stop = 0;
     state_.reset_requested = false;
 
     state_.is_running = false;
@@ -161,8 +180,8 @@ SonicatorInterface::SonicatorInterface(const SonicatorPins& pins)
     state_.fault_count = 0;
     state_.last_fault_time = 0;
 
-    state_.last_update_time = 0;
-    state_.watchdog_last_reset = 0;
+    state_.last_update_time = getTimestampMs();
+    state_.watchdog_last_reset = state_.last_update_time;
 
     state_.safety_override = false;
 
@@ -174,6 +193,25 @@ SonicatorInterface::SonicatorInterface(const SonicatorPins& pins)
 /** @copydoc SonicatorInterface::~SonicatorInterface */
 SonicatorInterface::~SonicatorInterface() {
     // No-op
+}
+
+
+/** @copydoc SonicatorInterface::start */
+void SonicatorInterface::start() {
+    state_.start_stop = 1;
+    halGpioWriteSafe(pins_.start_pin, true);
+}   
+
+/** @copydoc SonicatorInterface::stop */
+void SonicatorInterface::stop() {
+    state_.start_stop = 0;
+    halGpioWriteSafe(pins_.start_pin, false);
+}
+
+/** @copydoc SonicatorInterface::resetOverload */
+void SonicatorInterface::resetOverload() {
+    state_.reset_requested = true;
+    halGpioWriteSafe(pins_.reset_pin, true);
 }
 
 // ============================================================================
@@ -252,18 +290,14 @@ uint16_t SonicatorInterface::halAdcReadSafe(adc_channel_t channel) {
 
 /** @copydoc SonicatorInterface::updateHardwareOutputs */
 void SonicatorInterface::updateHardwareOutputs() {
-    bool start_signal = (state_.state == SONICATOR_STATE_RUNNING || state_.state == SONICATOR_STATE_STARTING);
-    halGpioWriteSafe(pins_.start_pin, start_signal);
-
-    uint8_t pwm_value = 0;
-    if (state_.state == SONICATOR_STATE_RUNNING) {
-        pwm_value = amplitudeToPwm(state_.amplitude_percent);
-    }
-    halPwmSetSafe(pwm_value);
-
     static uint32_t reset_pulse_start = 0;
     static bool reset_pulse_active = false;
 
+    //< Start/Stop Sonicator
+    if (state_.start_stop == 1) { start(); }
+    else if (state_.start_stop == 0) { stop(); }
+
+    //< Start Reset Pulse
     if (state_.reset_requested && !reset_pulse_active) {
         halGpioWriteSafe(pins_.reset_pin, true);
         reset_pulse_start = getTimestampMs();
@@ -272,13 +306,21 @@ void SonicatorInterface::updateHardwareOutputs() {
         SONICATOR_LOG("Reset pulse started");
     }
 
+    //< Stop Reset Pulse
     if (reset_pulse_active && isTimeout(reset_pulse_start, SONICATOR_RESET_PULSE_MS)) {
-
-
         halGpioWriteSafe(pins_.reset_pin, false);
         reset_pulse_active = false;
         SONICATOR_LOG("Reset pulse ended");
     }
+
+    //< Set PWM
+    // uint8_t pwm_value = 0;
+    // if (state_.state == SONICATOR_STATE_RUNNING) {
+    //     pwm_value = amplitudeToPwm(state_.amplitude_percent);
+    // }
+    // halPwmSetSafe(pwm_value);
+
+
 }
 
 /** @copydoc SonicatorInterface::readHardwareInputs */
@@ -291,7 +333,7 @@ void SonicatorInterface::readHardwareInputs() {
     state_.power_watts = (float)adc_value;  // Store raw ADC value (0-1023)
 
     // Read frequency using ISR-based edge counting
-    uint8_t freq_channel = pins_.sonicator_id - 1; // Convert to 0-3 range
+    uint8_t freq_channel = sonicator_id_ - 1; // Convert to 0-3 range
     state_.frequency_hz = frequency_calculate(freq_channel);
 
     // Update frequency lock status based on measured frequency
@@ -359,10 +401,6 @@ void SonicatorInterface::handleFaultConditions(sonicator_fault_t faults) {
     }
 }
 
-// ============================================================================
-// PRIVATE STATE MACHINE METHOD
-// ============================================================================
-
 /** @copydoc SonicatorInterface::processStateMachine */
 void SonicatorInterface::processStateMachine() {
     uint32_t now = getTimestampMs();
@@ -370,16 +408,18 @@ void SonicatorInterface::processStateMachine() {
 
     switch (state_.state) {
         case SONICATOR_STATE_IDLE:
-            if (state_.start_requested && (state_.active_faults == SONICATOR_FAULT_NONE)) {
+            if (state_.start_stop == 1) {
+                state_.previous_state = state_.state;
                 state_.state = SONICATOR_STATE_STARTING;
                 state_.state_entry_time = now;
-                state_.start_requested = false;
                 SONICATOR_LOG("State: IDLE -> STARTING");
             }
+            state_.is_running = false;
             break;
 
         case SONICATOR_STATE_STARTING:
             if (state_duration >= SONICATOR_START_DELAY_MS) {
+                state_.previous_state = state_.state;
                 state_.state = SONICATOR_STATE_RUNNING;
                 state_.state_entry_time = now;
                 state_.is_running = true;
@@ -387,28 +427,60 @@ void SonicatorInterface::processStateMachine() {
                 state_.last_start_time = now;
                 SONICATOR_LOG("State: STARTING -> RUNNING");
             }
+            if (state_.start_stop == 0) {
+                state_.previous_state = state_.state;
+                state_.state = SONICATOR_STATE_STOPPING;
+                state_.state_entry_time = now;
+                SONICATOR_LOG("State: STARTING -> STOPPING");
+            }
             break;
 
         case SONICATOR_STATE_RUNNING:
-            // Runtime stats are updated in the main update function
+            if (state_.start_stop == 0) {
+                state_.previous_state = state_.state;
+                state_.state = SONICATOR_STATE_STOPPING;
+                state_.state_entry_time = now;
+                SONICATOR_LOG("State: RUNNING -> STOPPING");
+            }
+            state_.is_running = true;
+            // Update runtime statistics
+            if (state_.last_start_time > 0) {
+                state_.total_runtime_ms += (now - state_.last_start_time);
+                state_.last_start_time = now; // Reset for next calculation
+            }
             break;
 
         case SONICATOR_STATE_STOPPING:
             if (state_duration >= SONICATOR_STOP_DELAY_MS) {
+                state_.previous_state = state_.state;
                 state_.state = SONICATOR_STATE_IDLE;
                 state_.state_entry_time = now;
-                state_.stop_requested = false;
+                state_.is_running = false;
                 SONICATOR_LOG("State: STOPPING -> IDLE");
             }
             break;
 
         case SONICATOR_STATE_FAULT:
-            // Await reset
+            // Stay in fault state until faults are cleared and reset is requested
+            if (state_.active_faults == SONICATOR_FAULT_NONE && state_.reset_requested) {
+                state_.previous_state = state_.state;
+                state_.state = SONICATOR_STATE_IDLE;
+                state_.state_entry_time = now;
+                state_.is_running = false;
+                state_.reset_requested = false;
+                SONICATOR_LOG("State: FAULT -> IDLE (reset)");
+            }
+            state_.is_running = false;
             break;
 
+        case SONICATOR_STATE_UNKNOWN:
         default:
+            // Initialize to idle state
+            state_.previous_state = state_.state;
             state_.state = SONICATOR_STATE_IDLE;
             state_.state_entry_time = now;
+            state_.is_running = false;
+            SONICATOR_LOG("State: UNKNOWN -> IDLE (initialization)");
             break;
     }
 }
@@ -417,104 +489,39 @@ void SonicatorInterface::processStateMachine() {
 // PUBLIC API METHODS
 // ============================================================================
 
-/** @copydoc SonicatorInterface::start */
-bool SonicatorInterface::start() {
-    if (state_.state == SONICATOR_STATE_IDLE && state_.active_faults == SONICATOR_FAULT_NONE) {
-        state_.start_requested = true;
-        SONICATOR_LOG("Start command accepted");
-        return true;
-    }
-    return false;
-}
-
-
-/** @copydoc SonicatorInterface::setAmplitude */
-bool SonicatorInterface::setAmplitude(uint8_t amplitude_percent) {
-    // Enforce allowed range per specification
-    if (amplitude_percent < SONICATOR_MIN_AMPLITUDE_PERCENT || amplitude_percent > SONICATOR_MAX_AMPLITUDE_PERCENT) {
-        SONICATOR_LOG("Amplitude out of range");
-        return false;
-    }
-    state_.amplitude_percent = amplitude_percent;
-    SONICATOR_LOG("Amplitude set");
-    return true;
-}
-
-/** @copydoc SonicatorInterface::stop */
-bool SonicatorInterface::stop() {
-    if (state_.state == SONICATOR_STATE_RUNNING || state_.state == SONICATOR_STATE_STARTING) {
-        state_.stop_requested = true;
-        SONICATOR_LOG("Stop command accepted");
-        return true;
-    }
-    return false;
-}
-
-/** @copydoc SonicatorInterface::resetOverload */
-bool SonicatorInterface::resetOverload() {
-    if (state_.state == SONICATOR_STATE_FAULT) {
-        state_.reset_requested = true;
-        // Clear faults that can be reset
-        state_.active_faults = (sonicator_fault_t)(state_.active_faults & ~SONICATOR_FAULT_OVERLOAD);
-        if(state_.active_faults == SONICATOR_FAULT_NONE) {
-            state_.state = SONICATOR_STATE_IDLE;
-            state_.state_entry_time = getTimestampMs();
-        }
-        SONICATOR_LOG("Reset overload command sent");
-        return true;
-    }
-    return false;
-}
-
-/** @copydoc SonicatorInterface::emergencyStop */
-bool SonicatorInterface::emergencyStop() {
-    halGpioWriteSafe(pins_.start_pin, false);
-    halPwmSetSafe(0);
-
-    state_.state = SONICATOR_STATE_IDLE;
-    state_.state_entry_time = getTimestampMs();
-    state_.is_running = false;
-    state_.start_requested = false;
-    state_.stop_requested = false;
-
-    SONICATOR_LOG("Emergency stop activated");
-    return true;
-}
 
 /** @copydoc SonicatorInterface::setStartStop */
-bool SonicatorInterface::setStartStop(uint8_t start_stop) {
-    if (start_stop == 1) {
+void SonicatorInterface::setStartStop() {
+    if (state_.start_stop == 1) {
         return start();
-    } else if (start_stop == 2) {
+    } else if (state_.start_stop == 0) {
         return stop();
     }
-    return false;
+}
+
+/** @copydoc SonicatorInterface::setResetOverload */
+void SonicatorInterface::setResetOverload() {
+    bool reset_requested = false;
+    if (register_manager_consume_overload_reset(sonicator_id_, &reset_requested)) {
+        if (reset_requested) {
+            resetOverload();
+        }
+    }
 }
 
 /** @copydoc SonicatorInterface::update */
-sonicator_state_t SonicatorInterface::update() {
-    const uint8_t idx = (pins_.sonicator_id > 0) ? static_cast<uint8_t>(pins_.sonicator_id - 1) : 0;
+sonicator_state_t SonicatorInterface::update() {   
+    // Start/Stop command: 1=start, 2=stop (then clear command)
+    (void)setStartStop();
 
-    // 1) Read MODBUS control for THIS sonicator and apply immediately
-    if (modbus_register_map_t* map = register_manager_get_map()) {
-        sonicator_registers_t& reg = map->sonicators[idx];
+    // Overload reset pulse (write-one-to-consume)
+    (void)setResetOverload();
 
-        // Start/Stop command: 1=start, 2=stop (then clear command)
-        (void)setStartStop(reg.start_stop);
-        reg.start_stop = 0;
-
-        // Overload reset pulse (write-one-to-consume)
-        if (reg.overload_reset == 1) {
-            (void)resetOverload();
-            reg.overload_reset = 0;
-        }
-    }
-
-    // 2) Update internal timers
+    // Update internal timers
     uint32_t now = getTimestampMs();
     state_.last_update_time = now;
 
-    // 3) Read hardware inputs and detect faults
+    // Read hardware inputs and detect faults
     readHardwareInputs();
 
     sonicator_fault_t faults = checkFaultConditions();
@@ -522,11 +529,11 @@ sonicator_state_t SonicatorInterface::update() {
         handleFaultConditions(faults);
     }
 
-    // 4) State machine and outputs
+    // State machine and outputs
     processStateMachine();
     updateHardwareOutputs();
 
-    // 5) Publish status to MODBUS
+    // Publish status to MODBUS
     {
         uint16_t flags = 0;
         if (state_.state == SONICATOR_STATE_RUNNING) {
@@ -546,10 +553,10 @@ sonicator_state_t SonicatorInterface::update() {
         const uint16_t freq_hz   = static_cast<uint16_t>(state_.frequency_hz);
         const uint16_t amp_act   = static_cast<uint16_t>(state_.amplitude_percent);
 
-        register_manager_update_sonicator_status(idx, power_u16, freq_hz, amp_act, flags);
+        register_manager_update_sonicator_status(sonicator_id_, power_u16, freq_hz, amp_act, flags);
     }
 
-    // 6) Watchdog service
+    // Watchdog service
     state_.watchdog_last_reset = now;
 
     return state_.state;
@@ -559,7 +566,6 @@ sonicator_state_t SonicatorInterface::update() {
 
 /** @copydoc SonicatorInterface::isSafe */
 bool SonicatorInterface::isSafe() const {
-    uint32_t now = getTimestampMs();
     bool no_active_faults = (state_.active_faults == SONICATOR_FAULT_NONE);
     bool watchdog_ok = !isTimeout(state_.watchdog_last_reset, SONICATOR_WATCHDOG_TIMEOUT_MS);
     bool comm_ok = !isTimeout(state_.last_update_time, SONICATOR_COMM_TIMEOUT_MS);

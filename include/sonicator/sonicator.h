@@ -26,6 +26,8 @@
 #include "sonicator/types/errors.h"
 #include "sonicator/types/control.h"
 
+#include "modbus_registers.h"
+
 /** @brief Delay after stop command before transitioning to idle state (ms) */
 #define SONICATOR_STOP_DELAY_MS         100
 
@@ -57,7 +59,7 @@
  * and monitor a single CT2000 sonicator channel.
  */
 typedef struct {
-    uint8_t       sonicator_id;        /**< Logical ID (1..4) used for MODBUS index and frequency channel select */
+    // Pin assignments
     uint8_t       start_pin;           /**< Digital output pin to start sonics (ULN2003A -> CT2000) */
     uint8_t       reset_pin;           /**< Digital output pin to reset overload (ULN2003A -> CT2000) */
     uint8_t       overload_pin;        /**< Digital input (6N137 -> CT2000 overload) */
@@ -88,7 +90,7 @@ public:
      * @brief Construct a new SonicatorInterface object
      * @param pins Pin configuration for this sonicator channel
      */
-    explicit SonicatorInterface(const SonicatorPins& pins);
+    explicit SonicatorInterface(uint8_t sonicator_id, const SonicatorPins& pins, const sonicator_registers_t* registers);
 
     /**
      * @brief Destroy the SonicatorInterface object
@@ -99,51 +101,52 @@ public:
 
     /**
      * @brief Start the sonicator
-     * @return true if start command was accepted, false otherwise
+     * @note this sets the gpio value of pins_.start_pin to true
      */
-    bool start(void);
+    void start(void);
 
     /**
      * @brief Stop the sonicator
-     * @return true if stop command was accepted, false otherwise
+     * @note this sets the gpio value of pins_.start_pin to false
      */
-    bool stop(void);
-
-    /**
-     * @brief Set the amplitude percentage
-     * @param amplitude_percent Desired amplitude (20-100%)
-     * @return true if amplitude was set successfully, false otherwise
-     */
-    bool setAmplitude(uint8_t amplitude_percent);
+     void stop(void);
 
     /**
      * @brief Reset overload condition
-     * @return true if reset command was accepted, false otherwise
+     * @note this sets the gpio value of pins_.reset_pin to true for 20ms
      */
-    bool resetOverload(void);
+    void resetOverload(void);
 
     /**
      * @brief Emergency stop - immediately halt operation
-     * @return true if emergency stop was executed, false otherwise
+     * @note this sets the gpio value of pins_.start_pin to false
      */
-    bool emergencyStop(void);
+    void emergencyStop(void);
 
 
     /**
-     * @brief Apply a start/stop command from control register
+      * @brief Apply a start/stop command from control register
+      *
+      * Reads the persistent state from the MODBUS control register:
+      * - 1 = sonicator should be running (state-based)
+      * - 0 = sonicator should be stopped (state-based)
+      * - other values = no change
+      *
+      * This helper routes the command through the SonicatorInterface safety layer
+      * (start()/stop()) so simulation, logging, and policy are consistently applied.
+      * The register value persists and directly controls the operating state
+      * @note this uses the current state_.start_stop value to determine if a change is needed
+      */
+    void setStartStop();
+
+    /**
+     * @brief Apply an overload reset command from control register
      *
-     * Accepts a compact command encoding commonly used in MODBUS/control registers:
-     * - 1 = start request (edge-triggered)
-     * - 2 = stop request (edge-triggered)
-     * - other/0 = no-op
-     *
-     * This helper routes the command through the SonicatorInterface safety layer
-     * (start()/stop()) so simulation, logging, and policy are consistently applied.
-     *
-     * @param start_stop Command value (1=start, 2=stop, 0/other=no-op)
-     * @return true if a command was consumed and accepted; false otherwise
+     * Reads the overload reset command from the MODBUS control register and
+     * consumes it (write-one-to-consume pattern). If a reset was requested,
+     * triggers the resetOverload() function to pulse the reset pin.
      */
-    bool setStartStop(uint8_t start_stop);
+    void setResetOverload();
 
     // Main periodic update (called by multiplexer)
 
@@ -211,14 +214,16 @@ public:
 
 private:
     /** @brief Pin configuration for this sonicator channel */
+    uint8_t sonicator_id_;
     const SonicatorPins pins_;
+    const sonicator_registers_t* registers_m;
 
     /**
      * @brief Internal runtime state structure
      *
      * This structure contains all the internal state variables needed
      * for sonicator operation, including control state, monitoring data,
-     * fault tracking, and statistics.
+     * fault tracking, and statistics
      */
     struct RuntimeState {
 
@@ -229,8 +234,7 @@ private:
 
         // Control inputs and setpoints
         uint8_t             amplitude_percent{SONICATOR_MIN_AMPLITUDE_PERCENT}; /**< Current amplitude setpoint (%) */
-        bool                start_requested{false};                  /**< Start command pending */
-        bool                stop_requested{false};                   /**< Stop command pending */
+        bool                start_stop{0};                           /**< Start/stop command (1=start, 0=stop) */
         bool                reset_requested{false};                  /**< Reset command pending */
 
         // Derived/monitoring
@@ -347,6 +351,12 @@ private:
      * @brief Build public status view from internal runtime state
      */
     void    buildStatusView_() const;
+    
+    /**
+     * @brief Get the fault count
+     * @return The total number of faults encountered
+     */
+    uint32_t getFaultCount() const;
 };
 
 #endif // SONICATOR_H

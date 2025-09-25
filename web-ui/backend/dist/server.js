@@ -3,7 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-require("dotenv/config");
+const path_1 = __importDefault(require("path"));
+const dotenv_1 = __importDefault(require("dotenv"));
 const express_1 = __importDefault(require("express"));
 const http_1 = require("http");
 const ws_1 = require("ws");
@@ -13,6 +14,14 @@ const WebSocketHandler_1 = require("./websocket/WebSocketHandler");
 const TestAutomationService_1 = require("./services/TestAutomationService");
 const index_1 = require("./routes/index");
 const ConfigService_1 = require("./config/ConfigService");
+// Load .env from backend and repository root (root overrides backend)
+// Works for both ts-node (src) and compiled (dist) because we resolve from __dirname
+const rootEnvPath = path_1.default.resolve(__dirname, '../../../.env');
+const backendEnvPath = path_1.default.resolve(__dirname, '../.env');
+// Precedence: runtime env > root .env > backend .env
+// Load root first (fills missing), then backend (fills remaining); neither overrides runtime env
+dotenv_1.default.config({ path: rootEnvPath });
+dotenv_1.default.config({ path: backendEnvPath });
 const app = (0, express_1.default)();
 const server = (0, http_1.createServer)(app);
 const wss = new ws_1.WebSocketServer({ server, path: '/ws' });
@@ -22,6 +31,11 @@ app.use((0, cors_1.default)({
     credentials: true
 }));
 app.use(express_1.default.json());
+// If HARDWARE_PRESENT=false, do not start the server/UI
+if (process.env.HARDWARE_PRESENT && process.env.HARDWARE_PRESENT.toLowerCase() === 'false') {
+    console.error('❌ HARDWARE_PRESENT=false: Web UI backend disabled by configuration');
+    process.exit(1);
+}
 // Initialize configuration service
 console.log('🔧 Loading hardware configuration...');
 try {

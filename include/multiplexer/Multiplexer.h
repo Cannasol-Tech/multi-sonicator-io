@@ -114,6 +114,7 @@
 
 #include "sonicator/sonicator.h"
 #include "system_config.h"
+#include "modbus_registers.h"
 
 /**
  * @class SonicMultiplexer
@@ -290,6 +291,16 @@ public:
     void update();
 
     /**
+     * @brief Checks if any sonicator is running
+     */
+    bool anySonicatorRunning_();
+
+    /**
+     * @brief Checks if any sonicator is in a fault state
+     */
+    bool anySonicatorFaulted_();
+
+    /**
      * @brief Updates the status LED based on sonicator states
      */
     void update_led_state();
@@ -312,6 +323,12 @@ public:
      * @warning index must be within valid range
      */
     const sonicator_status_t* getStatus(uint8_t index) const;
+
+    /**
+     * @brief Reads the Global Amplitude SP Control MODBUS Register
+     * @return The current amplitude setpoint percentage (20-100)
+     */
+    uint8_t readGlobalAmplitudeSP_() const;
 
 private:
     /**

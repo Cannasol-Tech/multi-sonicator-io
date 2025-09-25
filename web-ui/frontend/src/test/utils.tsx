@@ -1,10 +1,14 @@
 import React, { ReactElement } from 'react'
 import { render, RenderOptions } from '@testing-library/react'
+import { vi, expect } from 'vitest'
 import { HardwareState, PinState } from '../types'
 
 // Mock hardware state for testing
 export const createMockHardwareState = (overrides?: Partial<HardwareState>): HardwareState => ({
-  connected: true,
+  connection: {
+    connected: true,
+    lastSeen: Date.now()
+  },
   lastUpdate: Date.now(),
   pins: {
     'START_STOP_4': {

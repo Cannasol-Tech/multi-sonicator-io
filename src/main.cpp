@@ -19,12 +19,14 @@
 #include "frequency_counter.h"
 #include "constants.h"
 
-#define DEFAULT_SONICATOR_AMPLITUDE 80
 
 // Global Multiplexer instance
 SonicMultiplexer multiplexer(4);
 
 static void setup_modbus(void) {
+
+    register_manager_init();
+
     modbus_config_t cfg{};
     cfg.slave_id = MODBUS_SLAVE_ID;
     cfg.baud_rate = MODBUS_BAUD_RATE;
@@ -34,6 +36,7 @@ static void setup_modbus(void) {
     cfg.timeout_callback = nullptr;
     cfg.error_callback = nullptr;
     (void)modbus_init(&cfg);
+
 }
 
 void setup() {
@@ -44,8 +47,8 @@ void setup() {
         // Handle frequency counter initialization failure
         // Could set error LED or enter safe mode
     }
-    
-    register_manager_init();
+
+    // Initialize MODBUS interface
     setup_modbus();
     
     // The Multiplexer constructor handles sonicator initialization.
@@ -54,12 +57,12 @@ void setup() {
     
     // Set default values from register map
     auto* map = register_manager_get_map();
-    
+
+    // Enable global control
    map->global_control.global_enable = 1;
-   for (int i = 0; i < MAX_SONICATORS; ++i) {
-       map->sonicators[i].amplitude_setpoint = DEFAULT_SONICATOR_AMPLITUDE;
-   }
-   multiplexer.setAmplitude(map->sonicators[0].amplitude_setpoint);
+
+   // Set initial amplitude
+   multiplexer.setAmplitude(map->global_control.global_amplitude_sp);
 }
 
 void loop() {

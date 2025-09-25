@@ -27,37 +27,6 @@ interface ConfigSummary {
   lastLoadTime: string | null;
 }
 
-interface PinConfig {
-  pin: number;
-  signal: string;
-  direction: string;
-  sonicator?: number;
-  function: string;
-  modbus_register?: string;
-  modbus_address?: string;
-  adc_channel?: number;
-}
-
-interface SonicatorConfig {
-  id: number;
-  name: string;
-  description: string;
-  hardware: {
-    db9_connector: string;
-    modbus_base_address: number;
-  };
-  specifications: {
-    model: string;
-    power_rating_watts: number;
-    frequency_range_hz: number[];
-  };
-  status: {
-    connection_status: string;
-    test_harness_support: boolean;
-    production_ready: boolean;
-  };
-}
-
 const ModularConfigPanel: React.FC = () => {
   const [configSummary, setConfigSummary] = useState<ConfigSummary | null>(null);
   const [selectedModule, setSelectedModule] = useState<string>('');

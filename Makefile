@@ -3,18 +3,22 @@
 # Unity Tests for Unit Testing, Behave for Acceptance Testing
 
 # Declare phony targets (targets that don't create files)
-.PHONY: build clean upload install-deps check-deps check-pio check-arduino-cli test-unit test-acceptance test-all ci ci-test
+.PHONY: build clean upload install-deps check-deps check-pio check-arduino-cli test-unit test-acceptance test-all ci ci-test ci-local
 .PHONY: monitor-device upload-to-device upload-harness setup-arduino-isp check-arduino-isp
 .PHONY: hardware-sandbox acceptance-setup acceptance-clean acceptance-test-basic acceptance-test-gpio acceptance-test-adc
 .PHONY: acceptance-test-pwm acceptance-test-modbus acceptance-test-power generate-release-artifacts test-integration
 .PHONY: test-unit-communication test-unit-hal test-unit-control test-unit-sonicator validate-config generate-traceability-report manage-pending-scenarios update-pending-scenarios ci-local
-.PHONY: web-ui-install web-ui-dev web-ui-build web-ui-sandbox web-ui-test web-ui-clean web-ui-stop web-ui-frontend-only
+.PHONY: web-ui-install web-ui-dev web-ui-build web-ui-sandbox web-ui-sandbox-sim web-ui-test web-ui-clean web-ui-stop web-ui-frontend-only
 .PHONY: web-ui-docker-build web-ui-docker-dev web-ui-docker-prod web-ui-docker-stop web-ui-docker-clean
 .PHONY: hardware-present hardware-absent detect-hardware
 .PHONY: validate-traceability check-compliance update-standards sync-standards check-standards generate-executive-report generate-coverage-report generate-complete-executive-report coverage update-tools install-tools check-tools run-tool
 .PHONY: validate-dod check-dod-compliance enforce-dod-gate validate-story-completion
 .PHONY: hardware-verify
 .PHONY: hardware-db9-verify
+
+# Default to hardware mode, but allow override
+HARDWARE_PRESENT ?= "true"
+export HARDWARE_PRESENT
 
 #  Make Targets
 
@@ -34,8 +38,10 @@ help:
 	@echo "  ci-test             - Full CI (unit + acceptance)"
 	@echo "  coverage            - Run unit tests and generate coverage summary"
 	@echo "  docs-all            - Build all documentation"
+	@echo "  detect-hardware     - Detect connected Arduino hardware"
 	@echo "  web-ui-dev          - Start Web UI dev servers"
-	@echo "  web-ui-sandbox      - Build/upload firmware and start Web UI"
+	@echo "  web-ui-sandbox      - Build/upload firmware and start Web UI (HARDWARE REQUIRED)"
+	@echo "  web-ui-sandbox-sim  - Start Web UI in simulation mode (no hardware)"
 	@echo "  web-ui-stop         - Stop Web UI dev servers"
 	@echo "For details, open the Makefile."
 .PHONY: traceability
@@ -47,10 +53,9 @@ traceability: check-deps
 	@echo "✅ BDD traceability scan complete"
 
 # Python virtual environment wrapper for consistency
-PYTHON_VENV := . web-ui/venv/bin/activate && python
-PYTHON_VENV_PIP := . web-ui/venv/bin/activate && pip
-# Prefer a stable interpreter inside venv (python3.13 if present, else python)
-VENV_PY := $(shell [ -x web-ui/venv/bin/python3.13 ] && echo web-ui/venv/bin/python3.13 || echo web-ui/venv/bin/python)
+PYTHON_VENV := . web-ui/venv/bin/activate &&
+VENV_PYTHON := web-ui/venv/bin/python
+VENV_PIP := web-ui/venv/bin/pip
 
 # Verbosity control for acceptance auto-setup (1 = silent redirects)
 ACCEPT_SILENT ?= 1
@@ -79,12 +84,15 @@ check-deps:
 		echo "⚠️  Python venv missing; creating local virtualenv at web-ui/venv"; \
 		python3 -m venv web-ui/venv >/dev/null 2>&1 || true; \
 	fi
-	@$(PYTHON_VENV) -c "import behave, serial, pytest, yaml" 2>/dev/null && echo "✅ All Python dependencies available" || \
-		( echo "⚠️  Python test deps missing; installing all dependencies in virtualenv"; \
-		  $(PYTHON_VENV_PIP) install --upgrade pip >/dev/null 2>&1 || true; \
-		  $(PYTHON_VENV_PIP) install -r config/requirements-testing.txt >/dev/null 2>&1 || true; \
-		  $(PYTHON_VENV_PIP) install -r config/tools-requirements.txt >/dev/null 2>&1 || true; \
-		  echo "ℹ️  All dependencies installed in virtual environment (PEP 668 safe)." )
+	@if ! $(PYTHON_VENV) $(VENV_PYTHON) -c "import behave, serial, pytest, yaml" 2>/dev/null; then \
+		echo "⚠️  Python test deps missing; installing all dependencies in virtualenv"; \
+		$(PYTHON_VENV) $(VENV_PIP) install --upgrade pip >/dev/null 2>&1 || true; \
+		$(PYTHON_VENV) $(VENV_PIP) install -r config/requirements-testing.txt >/dev/null 2>&1 || true; \
+		$(PYTHON_VENV) $(VENV_PIP) install -r config/tools-requirements.txt >/dev/null 2>&1 || true; \
+		echo "ℹ️  All dependencies installed in virtual environment (PEP 668 safe)."; \
+	else \
+		echo "✅ All Python dependencies available"; \
+	fi
 
 
 # Check and install PlatformIO if needed
@@ -137,7 +145,11 @@ upload: check-pio
 	@python3 scripts/setup_arduino_isp.py || (echo "❌ Failed to setup Arduino as ISP" && exit 1)
 	@echo "✅ Arduino as ISP is ready"
 	@echo "📤 Uploading firmware to ATmega32A..."
-	pio run -e atmega32a --target upload
+	@if [ -z "$$ARDUINO_PORT" ]; then \
+		ARDUINO_PORT=$$(python3 scripts/detect_hardware.py --check-arduino 2>&1 | grep "Found Arduino programmer:" | sed 's/.*Found Arduino programmer: //' || echo ""); \
+		export ARDUINO_PORT=$$ARDUINO_PORT; \
+	fi; \
+	ARDUINO_PORT=$$ARDUINO_PORT pio run -e atmega32a --target upload
 
 monitor-device: check-deps
 	# Monitor serial output from Arduino Test Harness
@@ -151,32 +163,23 @@ upload-to-device:
 	@echo "📤 Uploading firmware via HIL CLI..."
 	python3 scripts/hil_cli.py upload
 
-upload-harness: check-pio
+upload-harness: check-arduino-cli
 	# Upload Arduino Test Harness firmware to Arduino
-	cd test/acceptance/arduino_harness && pio run --target upload
+	@if [ -z "$$ARDUINO_PORT" ]; then \
+		ARDUINO_PORT=$$(python3 scripts/detect_hardware.py --check-arduino 2>&1 | grep "Found Arduino programmer:" | sed 's/.*Found Arduino programmer: //' || echo ""); \
+		export ARDUINO_PORT=$$ARDUINO_PORT; \
+	fi; \
+	arduino-cli upload -p $$ARDUINO_PORT --fqbn arduino:avr:uno test/acceptance/hil_framework/arduino_harness/arduino_test_wrapper/arduino_test_wrapper.ino
 
 setup-arduino-isp: check-deps
 	# Setup Arduino as ISP (auto-upload ArduinoISP sketch if needed)
-	$(PYTHON_VENV) scripts/setup_arduino_isp.py
+	$(PYTHON_VENV) $(VENV_PYTHON) scripts/setup_arduino_isp.py
 
 check-arduino-isp: check-deps
 	# Check if Arduino as ISP is ready (no upload)
 	$(PYTHON_VENV) scripts/setup_arduino_isp.py --check-only
 
-hardware-sandbox: check-deps check-pio check-arduino-cli
-	@echo "🔧 Setting up HIL Hardware Sandbox Environment..."
-	@echo "Step 1: Setting up Arduino as ISP (auto-upload if needed)..."
-	@$(PYTHON_VENV) scripts/setup_arduino_isp.py || (echo "❌ Failed to setup Arduino as ISP" && exit 1)
-	@echo "✅ Arduino as ISP is ready"
-
-	@echo "Step 2: Building latest ATmega32A firmware..."
-	@pio run -e atmega32a || (echo "❌ Firmware build failed" && exit 1)
-	@echo "✅ ATmega32A firmware build successful"
-
-	@echo "Step 3: Programming ATmega32A target via Arduino as ISP..."
-	@pio run -e atmega32a -t upload || (echo "❌ ATmega32A programming failed" && exit 1)
-	@echo "✅ ATmega32A programmed successfully"
-
+hardware-sandbox: check-deps check-pio check-arduino-cli hardware-setup
 	@echo "Step 4: Switching from Arduino ISP to Test Harness..."
 	@echo "📋 Please perform the following hardware changes:"
 	@echo "   1. Remove the capacitor from Arduino RESET line"
@@ -198,6 +201,25 @@ hardware-sandbox: check-deps check-pio check-arduino-cli
 	@echo "   - HIL framework connected"
 	@echo ""
 	python3 test/acceptance/hil_framework/sandbox_cli.py
+
+# Common hardware setup target used by multiple targets
+hardware-setup: check-deps check-pio check-arduino-cli
+	@echo "🔧 Setting up HIL Hardware Environment..."
+	@echo "Step 1: Setting up Arduino as ISP (auto-upload if needed)..."
+	@$(PYTHON_VENV) scripts/setup_arduino_isp.py || (echo "❌ Failed to setup Arduino as ISP" && exit 1)
+	@echo "✅ Arduino as ISP is ready"
+
+	@echo "Step 2: Building latest ATmega32A firmware..."
+	@pio run -e atmega32a || (echo "❌ Firmware build failed" && exit 1)
+	@echo "✅ ATmega32A firmware build successful"
+
+	@echo "Step 3: Programming ATmega32A target via Arduino as ISP..."
+	@pio run -e atmega32a -t upload || (echo "❌ ATmega32A programming failed" && exit 1)
+	@echo "✅ ATmega32A programmed successfully"
+
+	@echo "Step 4: Uploading Arduino Test Harness for HIL testing..."
+	@arduino-cli upload -p $$ARDUINO_PORT --fqbn arduino:avr:uno test/acceptance/hil_framework/arduino_harness/arduino_test_wrapper/arduino_test_wrapper.ino || (echo "❌ Test Harness upload failed" && exit 1)
+	@echo "✅ Arduino Test Harness uploaded successfully"
 
 
 ## Testing Make Targets - Aligned with Software Testing Standard
@@ -305,10 +327,10 @@ test-acceptance: check-deps check-pio check-arduino-cli
 	@echo "Stage 2: Acceptance Testing (BDD scenarios via Behave framework)..."
 	@echo "🔎 Probing HIL hardware (soft-fail permitted)..."
 	@HIL_OK=0; \
-	PYTHONPATH=. $(VENV_PY) -m test.acceptance.hil_framework.hil_controller --setup >/dev/null 2>&1 && HIL_OK=1 || HIL_OK=0; \
+	PYTHONPATH=. $(PYTHON_VENV) $(VENV_PYTHON) -m test.acceptance.hil_framework.hil_controller --setup >/dev/null 2>&1 && HIL_OK=1 || HIL_OK=0; \
 	if [ $$HIL_OK -eq 1 ]; then \
 		echo "✅ HIL available - running acceptance tests in HIL mode"; \
-		PYTHONPATH=. $(VENV_PY) -m behave test/acceptance \
+		PYTHONPATH=. $(PYTHON_VENV) $(VENV_PYTHON) -m behave test/acceptance \
 			--junit \
 			--junit-directory=acceptance-junit \
 			-D profile=hil \
@@ -320,10 +342,10 @@ test-acceptance: check-deps check-pio check-arduino-cli
 		pio run -e atmega32a -t upload >/dev/null 2>&1 || true; \
 		( cd test/acceptance/arduino_harness && pio run --target upload ) >/dev/null 2>&1 || true; \
 		sleep 3; \
-		HIL_OK=0; PYTHONPATH=. $(VENV_PY) -m test.acceptance.hil_framework.hil_controller --setup >/dev/null 2>&1 && HIL_OK=1 || HIL_OK=0; \
+		HIL_OK=0; PYTHONPATH=. $(PYTHON_VENV) $(VENV_PYTHON) -m test.acceptance.hil_framework.hil_controller --setup >/dev/null 2>&1 && HIL_OK=1 || HIL_OK=0; \
 		if [ $$HIL_OK -eq 1 ]; then \
 			echo "✅ HIL available after auto-setup - running acceptance tests in HIL mode"; \
-			PYTHONPATH=. $(VENV_PY) -m behave test/acceptance \
+			PYTHONPATH=. $(PYTHON_VENV) $(VENV_PYTHON) -m behave test/acceptance \
 				--junit \
 				--junit-directory=acceptance-junit \
 				-D profile=hil \
@@ -348,19 +370,29 @@ test-integration: check-deps check-arduino-cli
 test-acceptance-hil: check-deps check-arduino-cli
 	@echo "🧪 Running BDD acceptance tests with HIL hardware validation..."
 	@$(PYTHON_VENV) scripts/detect_hardware.py --check-arduino || (echo "❌ Hardware required for HIL testing" && exit 1)
-	PYTHONPATH=. $(VENV_PY) -m behave test/acceptance --junit --junit-directory=acceptance-junit --tags=hil -D profile=hil
+	PYTHONPATH=. $(PYTHON_VENV) $(VENV_PYTHON) -m behave test/acceptance --junit --junit-directory=acceptance-junit --tags=hil -D profile=hil
 
 acceptance-setup: check-deps
 	@echo "🔧 Setting up acceptance test framework..."
-	PYTHONPATH=. $(VENV_PY) -m test.acceptance.hil_framework.hil_controller --setup
+	PYTHONPATH=. $(PYTHON_VENV) $(VENV_PYTHON) -m test.acceptance.hil_framework.hil_controller --setup
 
 acceptance-clean: check-deps
 	@echo "🧹 Cleaning acceptance test framework..."
-	PYTHONPATH=. $(VENV_PY) -m test.acceptance.hil_framework.hil_controller --cleanup
+	PYTHONPATH=. $(PYTHON_VENV) $(VENV_PYTHON) -m test.acceptance.hil_framework.hil_controller --cleanup
 
+# Generic acceptance test runner - consolidates similar patterns
+acceptance-test-feature: check-deps check-arduino-cli
+	@if [ -z "$(FEATURE)" ]; then \
+		echo "❌ ERROR: FEATURE parameter required. Usage: make acceptance-test-feature FEATURE=hil_basic_connectivity"; \
+		exit 1; \
+	fi
+	@echo "🧪 Running acceptance test for feature: $(FEATURE)..."
+	PYTHONPATH=. $(PYTHON_VENV) -m behave test/acceptance/features/$(FEATURE).feature -D profile=hil
+
+# Specific acceptance test targets (now use the generic target)
 acceptance-test-basic: check-deps check-arduino-cli
 	@echo "🔌 Running basic acceptance connectivity tests..."
-	PYTHONPATH=. $(PYTHON_VENV) -m behave test/acceptance/features/hil_basic_connectivity.feature -D profile=hil
+	$(MAKE) acceptance-test-feature FEATURE=hil_basic_connectivity
 
 acceptance-test-gpio: check-deps check-arduino-cli
 	@echo "🔧 Running acceptance GPIO functionality tests..."
@@ -368,19 +400,19 @@ acceptance-test-gpio: check-deps check-arduino-cli
 
 acceptance-test-adc: check-deps check-arduino-cli
 	@echo "📊 Running acceptance ADC verification tests..."
-	PYTHONPATH=. $(PYTHON_VENV) -m behave test/acceptance/features/hil_adc_verification.feature -D profile=hil
+	$(MAKE) acceptance-test-feature FEATURE=hil_adc_verification
 
 acceptance-test-pwm: check-deps check-arduino-cli
 	@echo "📡 Running acceptance PWM generation tests..."
-	PYTHONPATH=. $(PYTHON_VENV) -m behave test/acceptance/features/hil_pwm_generation.feature -D profile=hil
+	$(MAKE) acceptance-test-feature FEATURE=hil_pwm_generation
 
 acceptance-test-modbus: check-deps check-arduino-cli
 	@echo "🔗 Running acceptance MODBUS communication tests..."
-	PYTHONPATH=. $(PYTHON_VENV) -m behave test/acceptance/features/hil_modbus_communication.feature -D profile=hil
+	$(MAKE) acceptance-test-feature FEATURE=hil_modbus_communication
 
 acceptance-test-power: check-deps check-arduino-cli
 	@echo "⚡ Running acceptance power verification tests..."
-	PYTHONPATH=. $(PYTHON_VENV) -m behave test/acceptance/features/hil_power_verification.feature -D profile=hil
+	$(MAKE) acceptance-test-feature FEATURE=hil_power_verification
 
 # Soft acceptance run: do not hard-fail when hardware is absent; hil-tagged scenarios auto-skip
 .PHONY: test-acceptance-soft
@@ -482,15 +514,19 @@ web-ui-install:
 	@web-ui/venv/bin/python -m pip install pytest pytest-asyncio pytest-mock requests websocket-client pytest-cov || (echo "❌ Python test dependencies installation failed" && exit 1)
 	@echo "✅ Web UI dependencies installed successfully"
 
+# Common Web UI setup and build (used by sandbox targets)
+web-ui-setup: web-ui-install web-ui-build
+	@echo "✅ Web UI setup and build complete"
+
 # Development mode - start both frontend and backend
-web-ui-dev: web-ui-install web-ui-build
+web-ui-dev: web-ui-setup
 	@echo "🚀 Starting Web UI in development mode..."
 	@echo "🔧 Checking HARDWARE_PRESENT environment variable..."
 	@if [ -z "$(HARDWARE_PRESENT)" ]; then \
-		echo "⚠️  HARDWARE_PRESENT not set, defaulting to simulation mode (HARDWARE_PRESENT=false)"; \
-		HARDWARE_PRESENT=false; \
+		echo "⚠️  HARDWARE_PRESENT not set, defaulting to hardware mode (HARDWARE_PRESENT=true)"; \
+		HARDWARE_PRESENT=true; \
+		export HARDWARE_PRESENT; \
 	fi; \
-	echo "🔧 HARDWARE_PRESENT=$$HARDWARE_PRESENT -> $$( [ "$$HARDWARE_PRESENT" = "true" ] && echo "Hardware Mode" || echo "Simulation Mode" )"
 	@echo "🔧 Cleaning up any processes on ports 3001 and 3101..."
 	@lsof -ti:3001 | xargs -r kill -9 2>/dev/null || true
 	@lsof -ti:3101 | xargs -r kill -9 2>/dev/null || true
@@ -556,61 +592,36 @@ web-ui-build:
 #    8. Open the web interface in the default browser
 #    9. Verify that the web interface is running and that the HIL framework is integrated
 web-ui-sandbox: check-deps check-pio check-arduino-cli check-npm
-	@echo "🔧 Checking HARDWARE_PRESENT environment variable..."
-	@if [ -z "$(HARDWARE_PRESENT)" ]; then \
-		echo "⚠️  HARDWARE_PRESENT not set, defaulting to simulation mode (HARDWARE_PRESENT=false)"; \
-		HARDWARE_PRESENT=false; \
-	fi; \
-	echo "🔧 HARDWARE_PRESENT=$$HARDWARE_PRESENT -> $$( [ "$$HARDWARE_PRESENT" = "true" ] && echo "Hardware Mode" || echo "Simulation Mode" )"
-
+	@echo "🔧 Detecting and setting up hardware connection..."
 	@echo ""
-	@echo "🧪 Starting Web UI in sandbox mode..."
-
-	@echo "Step 1: Detecting hardware..."
-	@ARDUINO_PORT=$$(python3 scripts/detect_hardware.py --check-arduino 2>&1 | grep -oP '(?<=Found Arduino programmer: )\S+' || echo ""); \
+	@echo "Step 1: Hardware detection..."
+	@ARDUINO_PORT=$$(python3 scripts/detect_hardware.py --check-arduino 2>&1 | grep "Found Arduino programmer:" | sed 's/.*Found Arduino programmer: //' || echo ""); \
 	if [ -n "$$ARDUINO_PORT" ]; then \
 		echo "✅ Arduino detected on port: $$ARDUINO_PORT"; \
-		export ARDUINO_PORT=$$ARDUINO_PORT; \
-		echo "🔧 Setting up Arduino as ISP..."; \
-		if python3 scripts/setup_arduino_isp.py; then \
-			echo "✅ ArduinoISP setup successful"; \
-		else \
-			echo "⚠️  ArduinoISP setup failed - continuing anyway"; \
-		fi; \
+		echo "🔧 HARDWARE_PRESENT=true -> Hardware Mode (Arduino at $$ARDUINO_PORT)"; \
+		echo "export ARDUINO_PORT=$$ARDUINO_PORT" > /tmp/arduino_port.env; \
+		echo "export HARDWARE_PRESENT=true" >> /tmp/arduino_port.env; \
 	else \
-		echo "⚠️  No Arduino detected - running in simulation mode"; \
+		echo "❌ No Arduino hardware detected!"; \
+		echo "🔧 Please ensure:"; \
+		echo "   1. Arduino is connected via USB"; \
+		echo "   2. Arduino has the Test Harness sketch loaded"; \
+		echo "   3. USB drivers are installed"; \
+		echo ""; \
+		echo "❌ Cannot start web-ui-sandbox without hardware!"; \
+		echo "💡 Use 'make web-ui-dev HARDWARE_PRESENT=false' for simulation mode"; \
+		exit 1; \
 	fi
 
-	@if [ "$$HARDWARE_PRESENT" = "true" ] && [ -n "$$ARDUINO_PORT" ]; then \
-		echo ""; \
-		echo "Step 2: Building and uploading firmware..."; \
-		echo "🏗️ Building ATmega32A firmware..."; \
-		if pio run -e atmega32a; then \
-			echo "✅ Firmware build successful"; \
-			echo "📤 Programming ATmega32A..."; \
-			if pio run -e atmega32a -t upload; then \
-				echo "✅ ATmega32A programmed successfully"; \
-			else \
-				echo "⚠️  ATmega32A programming failed - continuing anyway"; \
-			fi; \
-		else \
-			echo "❌ Firmware build failed"; \
-			exit 1; \
-		fi; \
-		echo ""; \
-		echo "Step 3: Setting up test harness..."; \
-		echo "📤 Uploading Arduino Test Harness..."; \
-		if cd test/acceptance/arduino_harness && pio run --target upload 2>/dev/null; then \
-			echo "✅ Test harness uploaded successfully"; \
-		else \
-			echo "⚠️  Test harness upload failed - this is often OK if already uploaded"; \
-		fi; \
-		echo "⏳ Waiting for hardware initialization..."; \
-		sleep 5; \
-	else \
-		echo ""; \
-		echo "Step 2: Skipping hardware setup (simulation mode)..."; \
-	fi
+	@echo ""
+	@echo "🧪 Starting Web UI in hardware sandbox mode..."
+
+	@echo "Step 2: Hardware setup..."
+	@. /tmp/arduino_port.env && $(MAKE) hardware-setup || (echo "❌ Hardware setup failed" && exit 1)
+
+	@echo ""
+	@echo "Step 3: Setting up Web UI..."
+	@$(MAKE) web-ui-setup
 
 	@echo ""
 	@echo "Step 4: Installing Web UI dependencies..."
@@ -641,8 +652,8 @@ web-ui-sandbox: check-deps check-pio check-arduino-cli check-npm
 	@echo "🔧 Cleaning up any existing processes..."; \
 	lsof -ti:3001,3101 | xargs -r kill -9 2>/dev/null || true; \
 	sleep 2; \
-	echo "🔧 Starting backend server..."; \
-	cd web-ui/backend && HARDWARE_PRESENT=$$HARDWARE_PRESENT PORT=3001 npm run dev > /tmp/web-ui-backend.log 2>&1 & \
+	echo "🔧 Starting backend server with hardware connection..."; \
+	. /tmp/arduino_port.env && cd web-ui/backend && HARDWARE_PRESENT=true ARDUINO_PORT=$$ARDUINO_PORT PORT=3001 npm run dev > /tmp/web-ui-backend.log 2>&1 & \
 	echo "🔧 Starting frontend server..."; \
 	cd web-ui/frontend && PORT=3101 npm run dev > /tmp/web-ui-frontend.log 2>&1 & \
 	echo "⏳ Waiting for servers to start..."; \
@@ -678,11 +689,8 @@ web-ui-sandbox: check-deps check-pio check-arduino-cli check-npm
 	@echo "📱 Web Interface: http://localhost:3101"
 	@echo "🔌 Backend API: http://localhost:3001/api"
 	@echo "🔗 WebSocket: ws://localhost:3001/ws"
-	@if [ "$$HARDWARE_PRESENT" = "true" ] && [ -n "$$ARDUINO_PORT" ]; then \
-		echo "🎯 Hardware: Arduino Test Harness ↔ ATmega32A DUT"; \
-	else \
-		echo "🎯 Mode: Simulation Mode"; \
-	fi
+	@. /tmp/arduino_port.env && echo "🎯 Hardware: Arduino Test Harness ($$ARDUINO_PORT) ↔ ATmega32A DUT"
+	@echo "🔧 Mode: REAL HARDWARE (No Simulation)"
 	@echo ""
 	@echo "🚀 Opening web interface in default browser..."
 	@sleep 2
@@ -691,13 +699,99 @@ web-ui-sandbox: check-deps check-pio check-arduino-cli check-npm
 	@echo "💡 Sandbox is now running! Check logs if issues occur:"
 	@echo "   - Backend: tail -f /tmp/web-ui-backend.log"
 	@echo "   - Frontend: tail -f /tmp/web-ui-frontend.log"
+
+# Web UI sandbox mode with simulation (no hardware required)
+web-ui-sandbox-sim: check-deps check-npm
+	@echo "🧪 Starting Web UI in simulation sandbox mode..."
+	@echo "⚠️  SIMULATION MODE: No hardware required"
+	@echo ""
+
+	@echo "Step 1: Setting up Web UI..."
+	@$(MAKE) web-ui-setup
+
+	@echo ""
+	@echo "Step 2: Installing Web UI dependencies..."
+	@if ! cd web-ui/frontend && npm install --legacy-peer-deps; then \
+		echo "❌ Frontend dependency installation failed"; \
+		exit 1; \
+	fi
+	@if ! cd web-ui/backend && npm install --legacy-peer-deps; then \
+		echo "❌ Backend dependency installation failed"; \
+		exit 1; \
+	fi
+	@echo "✅ Web UI dependencies installed"
+
+	@echo ""
+	@echo "Step 3: Building Web UI..."
+	@if ! cd web-ui/frontend && npm run build; then \
+		echo "❌ Frontend build failed"; \
+		exit 1; \
+	fi
+	@if ! cd web-ui/backend && npm run build; then \
+		echo "❌ Backend build failed"; \
+		exit 1; \
+	fi
+	@echo "✅ Web UI build complete"
+
+	@echo ""
+	@echo "Step 4: Starting Web UI servers in simulation mode..."
+	@echo "🔧 Cleaning up any existing processes..."; \
+	lsof -ti:3001,3101 | xargs -r kill -9 2>/dev/null || true; \
+	sleep 2; \
+	echo "🔧 Starting backend server in simulation mode..."; \
+	cd web-ui/backend && HARDWARE_PRESENT=false PORT=3001 npm run dev > /tmp/web-ui-backend.log 2>&1 & \
+	echo "🔧 Starting frontend server..."; \
+	cd web-ui/frontend && PORT=3101 npm run dev > /tmp/web-ui-frontend.log 2>&1 & \
+	echo "⏳ Waiting for servers to start..."; \
+	sleep 10; \
+	echo "🔍 Checking server status..."; \
+	BACKEND_READY=0; FRONTEND_READY=0; \
+	for i in 1 2 3; do \
+		if [ $$BACKEND_READY -eq 0 ] && curl -s http://localhost:3001/api/health > /dev/null 2>&1; then \
+			echo "✅ Backend server ready"; \
+			BACKEND_READY=1; \
+		fi; \
+		if [ $$FRONTEND_READY -eq 0 ] && curl -s http://localhost:3101 > /dev/null 2>&1; then \
+			echo "✅ Frontend server ready"; \
+			FRONTEND_READY=1; \
+		fi; \
+		if [ $$BACKEND_READY -eq 1 ] && [ $$FRONTEND_READY -eq 1 ]; then \
+			break; \
+		fi; \
+		if [ $$i -lt 3 ]; then \
+			echo "   Waiting (attempt $$i/3)..."; \
+			sleep 2; \
+		fi; \
+	done; \
+	if [ $$BACKEND_READY -eq 0 ]; then \
+		echo "⚠️ Backend server may not be ready yet"; \
+	fi; \
+	if [ $$FRONTEND_READY -eq 0 ]; then \
+		echo "⚠️ Frontend server may not be ready yet"; \
+	fi
+
+	@echo ""
+	@echo "✅ Web UI simulation sandbox mode active"
+	@echo "📱 Web Interface: http://localhost:3101"
+	@echo "🔌 Backend API: http://localhost:3001/api"
+	@echo "🔗 WebSocket: ws://localhost:3001/ws"
+	@echo "🎯 Mode: SIMULATION (No Hardware Required)"
+	@echo ""
+	@echo "🚀 Opening web interface in default browser..."
+	@sleep 2
+	@open http://localhost:3101 2>/dev/null || xdg-open http://localhost:3101 2>/dev/null || echo "Please open http://localhost:3101 in your browser"
+	@echo ""
+	@echo "💡 Simulation sandbox is now running! Check logs if issues occur:"
+	@echo "   - Backend: tail -f /tmp/web-ui-backend.log"
+	@echo "   - Frontend: tail -f /tmp/web-ui-frontend.log"
 	@echo "💡 To stop: make web-ui-stop"
 # Automated sandbox mode - skips hardware setup prompt (for CI/CD)
 web-ui-sandbox-auto: check-deps check-pio check-arduino-cli check-npm
 	@echo "🔧 Checking HARDWARE_PRESENT environment variable..."
 	@if [ -z "$(HARDWARE_PRESENT)" ]; then \
-		echo "⚠️  HARDWARE_PRESENT not set, defaulting to simulation mode (HARDWARE_PRESENT=false)"; \
-		HARDWARE_PRESENT=false; \
+		echo "⚠️  HARDWARE_PRESENT not set, defaulting to hardware mode (HARDWARE_PRESENT=true)"; \
+		HARDWARE_PRESENT=true; \
+		export HARDWARE_PRESENT; \
 	fi; \
 	echo "🔧 HARDWARE_PRESENT=$$HARDWARE_PRESENT -> $$( [ "$$HARDWARE_PRESENT" = "true" ] && echo "Hardware Mode" || echo "Simulation Mode" )"
 
@@ -705,9 +799,9 @@ web-ui-sandbox-auto: check-deps check-pio check-arduino-cli check-npm
 	@echo "🧪 Starting Web UI in automated sandbox mode..."
 
 	@echo "Step 1: Detecting hardware..."
-	@ARDUINO_PORT=$$(python3 scripts/detect_hardware.py --check-arduino 2>&1 | grep -oP '(?<=Found Arduino programmer: )\S+' || echo ""); \
+	@$(MAKE) detect-hardware
+	@ARDUINO_PORT=$$(python3 scripts/detect_hardware.py --check-arduino 2>&1 | grep "Found Arduino programmer:" | sed 's/.*Found Arduino programmer: //' || echo ""); \
 	if [ -n "$$ARDUINO_PORT" ]; then \
-		echo "✅ Arduino detected on port: $$ARDUINO_PORT"; \
 		export ARDUINO_PORT=$$ARDUINO_PORT; \
 		echo "🔧 Setting up Arduino as ISP..."; \
 		if python3 scripts/setup_arduino_isp.py; then \
@@ -715,9 +809,11 @@ web-ui-sandbox-auto: check-deps check-pio check-arduino-cli check-npm
 		else \
 			echo "⚠️  ArduinoISP setup failed - continuing anyway"; \
 		fi; \
-	else \
-		echo "⚠️  No Arduino detected - running in simulation mode"; \
 	fi
+
+	@echo ""
+	@echo "Step 2: Setting up Web UI..."
+	@$(MAKE) web-ui-setup
 
 	@if [ "$$HARDWARE_PRESENT" = "true" ] && [ -n "$$ARDUINO_PORT" ]; then \
 		echo ""; \
@@ -830,7 +926,7 @@ web-ui-sandbox-auto: check-deps check-pio check-arduino-cli check-npm
 # Run Web UI tests
 web-ui-test:
 	@echo "🧪 Running Web UI tests..."
-	$(VENV_PY) -m pytest web-ui/tests/ -v --cov=web-ui/backend/src --cov-report=term-missing --cov-report=html:web-ui/htmlcov --cov-fail-under=90
+	$(PYTHON_VENV) $(VENV_PYTHON) -m pytest web-ui/tests/ -v --cov=web-ui/backend/src --cov-report=term-missing --cov-report=html:web-ui/htmlcov --cov-fail-under=90
 	@echo "✅ Web UI tests completed"
 
 # Stop Web UI development servers
@@ -943,6 +1039,17 @@ hardware-absent:
 	@echo "   make hardware-absent && make web-ui-dev"
 	@echo "   make web-ui-dev HARDWARE_PRESENT=false"
 	@echo "   make web-ui-sandbox HARDWARE_PRESENT=false"
+
+# Detect Arduino hardware and set ARDUINO_PORT variable
+detect-hardware:
+	@echo "🔍 Detecting Arduino hardware..."
+	@ARDUINO_PORT=$$(python3 scripts/detect_hardware.py --check-arduino 2>&1 | grep "Found Arduino programmer:" | sed 's/.*Found Arduino programmer: //' || echo ""); \
+	if [ -n "$$ARDUINO_PORT" ]; then \
+		echo "✅ Arduino detected on port: $$ARDUINO_PORT"; \
+		echo "ARDUINO_PORT=$$ARDUINO_PORT"; \
+	else \
+		echo "⚠️  No Arduino detected - simulation mode only"; \
+	fi
 
 ## Company Standards Management
 

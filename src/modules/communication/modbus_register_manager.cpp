@@ -23,6 +23,10 @@ static bool manager_initialized = false;
 bool register_manager_init(void) {
     // Initialize register map to default values
     memset(&register_map, 0, sizeof(register_map));
+
+    // Initialize global amplitude to default value
+    register_map.global_control.global_amplitude_sp = DEFAULT_SONICATOR_AMPLITUDE;
+
     // Set default system status
     register_map.system_status.system_status = SYSTEM_STATUS_OK;
     register_map.system_status.active_count = 0;
@@ -34,17 +38,14 @@ bool register_manager_init(void) {
     
     // Initialize all sonicators to safe defaults
     for (int i = 0; i < MODBUS_MAX_SONICATORS; i++) {
-        register_map.sonicators[i].start_stop = 0;          // Stopped
-        register_map.sonicators[i].amplitude_setpoint = 50;  // 50% default
-        register_map.sonicators[i].overload_reset = 0;
-        register_map.sonicators[i].power_watts = 0;
-        register_map.sonicators[i].frequency_hz = 20000;    // 20kHz default
-        register_map.sonicators[i].status_flags = 0;
-        register_map.sonicators[i].amplitude_actual = 0;
-        register_map.sonicators[i].prev_state = 0;            // STOPPED
-        register_map.sonicators[i].persisted_amplitude = 50;  // Persist default setpoint
-        register_map.sonicators[i].last_fault_code = 0;       // No fault
-        register_map.sonicators[i].last_state_timestamp_lo = 0;
+        register_map.sonicators[i].control.start_stop = 0;          // Stopped
+        register_map.sonicators[i].control.overload_reset = 0;
+        register_map.sonicators[i].status.power_watts = 0;
+        register_map.sonicators[i].status.frequency_hz = 20000;    // 20kHz default
+        register_map.sonicators[i].status.status_flags = 0;
+        register_map.sonicators[i].status.prev_state = 0;            // STOPPED
+        register_map.sonicators[i].status.last_fault_code = 0;       // No fault
+        register_map.sonicators[i].status.last_state_timestamp_lo = 0;
     }
     
     manager_initialized = true;
@@ -79,17 +80,17 @@ void register_manager_update_sonicator_status(uint8_t sonicator_id,
         return;
     }
     
-    register_map.sonicators[sonicator_id].power_watts = power_watts;
-    register_map.sonicators[sonicator_id].frequency_hz = frequency_hz;
-    register_map.sonicators[sonicator_id].amplitude_actual = amplitude_actual;
-    register_map.sonicators[sonicator_id].status_flags = status_flags;
+    register_map.sonicators[sonicator_id].status.power_watts = power_watts;
+    register_map.sonicators[sonicator_id].status.frequency_hz = frequency_hz;
+    register_map.sonicators[sonicator_id].status.amplitude_actual = amplitude_actual;
+    register_map.sonicators[sonicator_id].status.status_flags = status_flags;
     
     // Update system active count and mask
     uint16_t active_count = 0;
     uint16_t active_mask = 0;
     
     for (int i = 0; i < MODBUS_MAX_SONICATORS; i++) {
-        if (register_map.sonicators[i].status_flags & SON_STATUS_RUNNING) {
+        if (register_map.sonicators[i].status.status_flags & SON_STATUS_RUNNING) {
             active_count++;
             active_mask |= (1 << i);
         }
@@ -107,8 +108,8 @@ bool register_manager_get_sonicator_control(uint8_t sonicator_id,
         return false;
     }
     
-    *start_stop = register_map.sonicators[sonicator_id].start_stop;
-    *amplitude_sp = register_map.sonicators[sonicator_id].amplitude_setpoint;
+    *start_stop = register_map.sonicators[sonicator_id].control.start_stop;
+    *amplitude_sp = register_map.global_control.global_amplitude_sp;
     
     return true;
 }

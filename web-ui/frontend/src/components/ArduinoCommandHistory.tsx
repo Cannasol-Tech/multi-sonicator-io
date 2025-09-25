@@ -1,4 +1,3 @@
-import React from 'react'
 import { ArduinoCommand } from '../hooks/useArduinoCommandLog'
 
 interface ArduinoCommandHistoryProps {

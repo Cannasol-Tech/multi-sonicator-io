@@ -157,6 +157,13 @@ export class ModbusRegisterService {
     await this.writeRegister(addr, value)
     return { address: addr, value }
   }
+
+  async setGlobalAmplitude(percent: number): Promise<{ address: number, value: number }> {
+    const addr = 0x0011 // MODBUS_REG_GLOBAL_AMPLITUDE_SP
+    const value = this.clampAmplitude(percent)
+    await this.writeRegister(addr, value)
+    return { address: addr, value }
+  }
 }
 
 export const modbusRegisterService = new ModbusRegisterService()

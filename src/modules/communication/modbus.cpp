@@ -311,7 +311,6 @@ static bool modbus_write_register_internal(uint16_t address, uint16_t value) {
                         const uint16_t flags = register_map->sonicators[i].status_flags;
                         const bool running = (flags & SON_STATUS_RUNNING) != 0;
                         register_map->sonicators[i].prev_state = running ? 2 /*RUNNING*/ : 0 /*STOPPED*/;
-                        register_map->sonicators[i].persisted_amplitude = register_map->sonicators[i].amplitude_setpoint;
                         // Leave last_fault_code/timestamp as-is for now
                     }
                 }

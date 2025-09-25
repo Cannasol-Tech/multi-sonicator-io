@@ -151,7 +151,7 @@ export function TestResultsSection({ execution, isLive = false, className = '' }
                 {TestAutomationAPI.formatDuration(
                   execution.end_time && execution.start_time
                     ? execution.end_time - execution.start_time
-                    : undefined
+                    : 0
                 )}
               </div>
               <div className="stat-label">Duration</div>
@@ -374,7 +374,7 @@ export default function TestResultsModal({ execution, visible, onClose, isLive =
                   {TestAutomationAPI.formatDuration(
                     execution.end_time && execution.start_time
                       ? execution.end_time - execution.start_time // Both should now be in milliseconds
-                      : undefined
+                      : 0
                   )}
                 </div>
                 <div className="stat-label">Duration</div>

@@ -164,44 +164,36 @@
  * | Address | Register Name | Access | Description |
  * |---------|---------------|--------|-------------|
  * | 0x0100 | REG_SON1_START_STOP | R/W | Start/Stop control (0=stop, 1=start) |
- * | 0x0101 | REG_SON1_AMPLITUDE_SP | R/W | Amplitude setpoint (20-100%) |
- * | 0x0102 | REG_SON1_OVERLOAD_RESET | W | Overload reset command (pulse 1→0) |
+ * | 0x0101 | REG_SON1_OVERLOAD_RESET | W | Overload reset command (pulse 1→0) |
  * | 0x0110 | REG_SON1_POWER_RAW_ADC | R | Raw ADC power reading (0-1023) |
  * | 0x0111 | REG_SON1_FREQ_DIV10_HZ | R | Operating frequency ÷10 (Hz÷10) |
  * | 0x0112 | REG_SON1_STATUS_FLAGS | R | Status flags bitfield |
- * | 0x0113 | REG_SON1_AMPLITUDE_ACT | R | Actual amplitude reading |
- * | 0x0114 | REG_SON1_PREV_STATE | R | Previous state enum |
- * | 0x0115 | REG_SON1_PERSISTED_AMPLITUDE | R | Last setpoint before shutdown |
- * | 0x0116 | REG_SON1_LAST_FAULT_CODE | R | Last fault code |
- * | 0x0117 | REG_SON1_LAST_STATE_TIMESTAMP_LO | R | Low 16 bits of timestamp |
+ * | 0x0113 | REG_SON1_PREV_STATE | R | Previous state enum |
+ * | 0x0114 | REG_SON1_PERSISTED_AMPLITUDE | R | Last setpoint before shutdown |
+ * | 0x0115 | REG_SON1_LAST_FAULT_CODE | R | Last fault code |
  *
  * @subsection sonicator2_registers Sonicator 2 Registers (ID=1, 0x0120-0x013F)
  * | Address | Register Name | Access | Description |
  * |---------|---------------|--------|-------------|
  * | 0x0120 | REG_SON2_START_STOP | R/W | Start/Stop control (0=stop, 1=start) |
- * | 0x0121 | REG_SON2_AMPLITUDE_SP | R/W | Amplitude setpoint (20-100%) |
- * | 0x0122 | REG_SON2_OVERLOAD_RESET | W | Overload reset command (pulse 1→0) |
- * | 0x0130 | REG_SON2_POWER_RAW_ADC | R | Raw ADC power reading (0-1023) |
- * | 0x0131 | REG_SON2_FREQ_DIV10_HZ | R | Operating frequency ÷10 (Hz÷10) |
- * | 0x0132 | REG_SON2_STATUS_FLAGS | R | Status flags bitfield |
- * | 0x0133 | REG_SON2_AMPLITUDE_ACT | R | Actual amplitude reading |
- * | 0x0134 | REG_SON2_PREV_STATE | R | Previous state enum |
- * | 0x0135 | REG_SON2_PERSISTED_AMPLITUDE | R | Last setpoint before shutdown |
- * | 0x0136 | REG_SON2_LAST_FAULT_CODE | R | Last fault code |
- * | 0x0137 | REG_SON2_LAST_STATE_TIMESTAMP_LO | R | Low 16 bits of timestamp |
+ * | 0x0121 | REG_SON2_OVERLOAD_RESET | W | Overload reset command (pulse 1→0) |
+ * | 0x0122 | REG_SON2_POWER_RAW_ADC | R | Raw ADC power reading (0-1023) |
+ * | 0x0123 | REG_SON2_FREQ_DIV10_HZ | R | Operating frequency ÷10 (Hz÷10) |
+ * | 0x0124 | REG_SON2_STATUS_FLAGS | R | Status flags bitfield |
+ * | 0x0125 | REG_SON2_PREV_STATE | R | Previous state enum |
+ * | 0x0126 | REG_SON2_PERSISTED_AMPLITUDE | R | Last setpoint before shutdown |
+ * | 0x0135 | REG_SON2_LAST_FAULT_CODE | R | Last fault code |
  *
  * @subsection sonicator3_registers Sonicator 3 Registers (ID=2, 0x0140-0x015F)
  * | Address | Register Name | Access | Description |
  * |---------|---------------|--------|-------------|
  * | 0x0140 | REG_SON3_START_STOP | R/W | Start/Stop control (0=stop, 1=start) |
- * | 0x0141 | REG_SON3_AMPLITUDE_SP | R/W | Amplitude setpoint (20-100%) |
- * | 0x0142 | REG_SON3_OVERLOAD_RESET | W | Overload reset command (pulse 1→0) |
- * | 0x0150 | REG_SON3_POWER_RAW_ADC | R | Raw ADC power reading (0-1023) |
- * | 0x0151 | REG_SON3_FREQ_DIV10_HZ | R | Operating frequency ÷10 (Hz÷10) |
- * | 0x0152 | REG_SON3_STATUS_FLAGS | R | Status flags bitfield |
- * | 0x0153 | REG_SON3_AMPLITUDE_ACT | R | Actual amplitude reading |
- * | 0x0154 | REG_SON3_PREV_STATE | R | Previous state enum |
- * | 0x0155 | REG_SON3_PERSISTED_AMPLITUDE | R | Last setpoint before shutdown |
+ * | 0x0141 | REG_SON3_OVERLOAD_RESET | W | Overload reset command (pulse 1→0) |
+ * | 0x0142 | REG_SON3_POWER_RAW_ADC | R | Raw ADC power reading (0-1023) |
+ * | 0x0143 | REG_SON3_FREQ_DIV10_HZ | R | Operating frequency ÷10 (Hz÷10) |
+ * | 0x0144 | REG_SON3_STATUS_FLAGS | R | Status flags bitfield |
+ * | 0x0145 | REG_SON3_PREV_STATE | R | Previous state enum |
+ * | 0x0146 | REG_SON3_PERSISTED_AMPLITUDE | R | Last setpoint before shutdown |
  * | 0x0156 | REG_SON3_LAST_FAULT_CODE | R | Last fault code |
  * | 0x0157 | REG_SON3_LAST_STATE_TIMESTAMP_LO | R | Low 16 bits of timestamp |
  *
@@ -209,16 +201,13 @@
  * | Address | Register Name | Access | Description |
  * |---------|---------------|--------|-------------|
  * | 0x0160 | REG_SON4_START_STOP | R/W | Start/Stop control (0=stop, 1=start) |
- * | 0x0161 | REG_SON4_AMPLITUDE_SP | R/W | Amplitude setpoint (20-100%) |
- * | 0x0162 | REG_SON4_OVERLOAD_RESET | W | Overload reset command (pulse 1→0) |
- * | 0x0170 | REG_SON4_POWER_RAW_ADC | R | Raw ADC power reading (0-1023) |
- * | 0x0171 | REG_SON4_FREQ_DIV10_HZ | R | Operating frequency ÷10 (Hz÷10) |
- * | 0x0172 | REG_SON4_STATUS_FLAGS | R | Status flags bitfield |
- * | 0x0173 | REG_SON4_AMPLITUDE_ACT | R | Actual amplitude reading |
- * | 0x0174 | REG_SON4_PREV_STATE | R | Previous state enum |
- * | 0x0175 | REG_SON4_PERSISTED_AMPLITUDE | R | Last setpoint before shutdown |
- * | 0x0176 | REG_SON4_LAST_FAULT_CODE | R | Last fault code |
- * | 0x0177 | REG_SON4_LAST_STATE_TIMESTAMP_LO | R | Low 16 bits of timestamp |
+ * | 0x0161 | REG_SON4_OVERLOAD_RESET | W | Overload reset command (pulse 1→0) |
+ * | 0x0162 | REG_SON4_POWER_RAW_ADC | R | Raw ADC power reading (0-1023) |
+ * | 0x0163 | REG_SON4_FREQ_DIV10_HZ | R | Operating frequency ÷10 (Hz÷10) |
+ * | 0x0164 | REG_SON4_STATUS_FLAGS | R | Status flags bitfield |
+ * | 0x0165 | REG_SON4_PREV_STATE | R | Previous state enum |
+ * | 0x0166 | REG_SON4_PERSISTED_AMPLITUDE | R | Last setpoint before shutdown |
+ * | 0x0167 | REG_SON4_LAST_FAULT_CODE | R | Last fault code |
  *
  * @subsection register_usage_notes Register Usage Notes
  * @details **Control Registers (Write Operations):**
@@ -281,9 +270,13 @@ struct SonicatorPins {
     uint8_t reset_pin;                 ///< Output: reset/clear overload (pulse for SONICATOR_RESET_PULSE_MS)
     uint8_t overload_pin;              ///< Input: overload status from sonicator
     uint8_t freq_lock_pin;             ///< Input: frequency-lock indicator
-    uint8_t operating_freq_div10;            ///< Input: frequency/10 measurement source
-    adc_channel_t power_sense_channel; ///< Analog input channel for power sensing
+    uint8_t operating_freq_div10;       ///< Input: frequency/10 measurement source
+    adc_channel_t power_sense_channel;  ///< Analog input channel for power sensing
 };
 
+
+struct GlobalPins {
+    uint8_t amplitude_control_pin = 21;  ///< Output: global enable for all sonicators
+};
 
 #endif // SONICATOR_PINS_H

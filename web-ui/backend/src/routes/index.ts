@@ -166,7 +166,20 @@ export function setupRoutes(app: Express, hardwareInterface: HardwareInterface, 
       console.log('API: PING command requested')
       const startTime = Date.now()
 
+      console.log('API: Checking hardware connection...')
+
+      // Wait up to 3 seconds for hardware connection if not immediately available
+      let connectionAttempts = 0
+      const maxAttempts = 6 // 6 attempts * 500ms = 3 seconds
+
+      while (!hardwareInterface.isConnected() && connectionAttempts < maxAttempts) {
+        console.log(`API: Hardware not connected yet, waiting... (attempt ${connectionAttempts + 1}/${maxAttempts})`)
+        await new Promise(resolve => setTimeout(resolve, 500)) // Wait 500ms
+        connectionAttempts++
+      }
+
       if (!hardwareInterface.isConnected()) {
+        console.log('API: Hardware not connected after waiting, returning 503')
         return res.status(503).json({
           success: false,
           error: 'Hardware not connected',
@@ -174,24 +187,29 @@ export function setupRoutes(app: Express, hardwareInterface: HardwareInterface, 
         })
       }
 
+      console.log('API: Hardware is connected, preparing command...')
       const command = {
         command: 'ping',
         args: [],
         expectResponse: true
       }
 
-      console.log('API: Sending PING command to hardware')
+      console.log('API: Sending PING command to hardware:', command)
       const result = await hardwareInterface.sendCommand(command)
       const responseTime = Date.now() - startTime
 
       console.log(`API: PING response received in ${responseTime}ms:`, result)
 
-      res.json({
+      const responseData = {
         success: result.success,
         responseTime,
         result,
         timestamp: Date.now()
-      })
+      }
+
+      console.log('API: Sending PING response:', responseData)
+      res.json(responseData)
+      console.log('API: PING response sent successfully')
     } catch (error) {
       console.error('Error sending PING command:', error)
       res.status(500).json({

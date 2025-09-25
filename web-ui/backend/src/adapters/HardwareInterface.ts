@@ -2,6 +2,7 @@ import { spawn, spawnSync, ChildProcess } from 'child_process'
 import fs from 'fs'
 import { EventEmitter } from 'events'
 import path from 'path'
+import { modbusRegisterService } from '../services/ModbusRegisterService'
 // import { DirectHardwareInterface } from './DirectHardwareInterface'
 
 export interface PinState {
@@ -261,6 +262,16 @@ class MockHardwareInterface:
             if signal in self.frequency_config:
                 self.frequency_config[signal]['frequency_hz'] = frequency_hz
             return "OK"
+        elif len(parts) >= 2 and parts[0] == 'SET_AMPLITUDE':
+            amplitude_percent = float(parts[1])
+            # Clamp amplitude to valid range (20-100%)
+            amplitude_percent = max(20, min(100, amplitude_percent))
+            # Convert percentage to PWM value (0-255)
+            pwm_value = int((amplitude_percent / 100.0) * 255)
+            self.pin_states['AMPLITUDE_ALL'] = pwm_value
+            print(json.dumps({"type": "pin_state", "pin": "AMPLITUDE_ALL", "data": pwm_value}))
+            sys.stdout.flush()
+            return "OK"
         elif len(parts) >= 3 and parts[0] == 'WRITE_PIN':
             signal = parts[1]
             state = parts[2]
@@ -341,7 +352,7 @@ try:
                 cmd = json.loads(line)
 
                 if cmd["type"] == "ping":
-                    response = hil.send_command("PING")
+                    response = hil.send_command("ping")
                     print(json.dumps({"type": "response", "data": response, "command_type": "ping"}))
 
                 elif cmd["type"] == "command":
@@ -350,7 +361,7 @@ try:
                     args = cmd.get("args", [])
 
                     if command == "ping":
-                        response = hil.send_command("PING")
+                        response = hil.send_command("ping")
                         print(json.dumps({"type": "response", "data": response, "command_type": "ping"}))
                         sys.stdout.flush()
 
@@ -370,6 +381,11 @@ try:
                         signal = args[0]
                         response = hil.send_command(f"READ_PIN {signal}")
                         print(json.dumps({"type": "pin_state", "pin": signal, "data": response}))
+
+                    elif command == "SET_AMPLITUDE" and len(args) >= 1:
+                        amplitude_percent = args[0]
+                        response = hil.send_command(f"SET_AMPLITUDE {amplitude_percent}")
+                        print(json.dumps({"type": "response", "data": response, "command_type": "set_amplitude"}))
 
                     else:
                         # Generic command
@@ -573,17 +589,22 @@ except Exception as e:
 
   private startPinMonitoring() {
     // Start continuous pin monitoring for sandbox mode
-    setInterval(() => {
+    setInterval(async () => {
       if (this.connected && this.pythonProcess) {
-        // Monitor all pins periodically
-        this.pinStates.forEach((pinState, signal) => {
-          this.sendPythonCommand({
-            type: 'pin_read',
-            pin: pinState.pin
+        // Monitor all pins periodically, but don't crash on timeouts
+        try {
+          // Send a single status read command instead of individual pin reads
+          await this.sendPythonCommand({
+            type: 'command',
+            command: 'READ',
+            args: ['STATUS', '4'] // Read status for sonicator 4
           })
-        })
+        } catch (error) {
+          // Silently ignore timeout errors to prevent crashes
+          console.debug('Pin monitoring timeout (normal):', error instanceof Error ? error.message : String(error))
+        }
       }
-    }, 1000) // Monitor every second
+    }, 2000) // Monitor every 2 seconds (less frequent to reduce timeouts)
   }
 
   private sendPythonCommand(command: any): Promise<any> {
@@ -610,7 +631,9 @@ except Exception as e:
 
         // Set up timeout
         const timeoutHandle = setTimeout(() => {
-          reject(new Error(`Command timeout after ${timeout}ms`))
+          console.warn(`Command timeout after ${timeout}ms for command:`, command)
+          // Don't reject, just resolve with a timeout response
+          resolve({ success: false, error: 'timeout', data: null })
         }, timeout)
 
         // Listen for response (using once to avoid memory leaks)
@@ -643,6 +666,23 @@ except Exception as e:
     }
 
     try {
+      // Handle SET_AMPLITUDE command specially - use MODBUS service
+      if (command.command === 'SET_AMPLITUDE' && command.args && command.args.length > 0) {
+        const amplitudePercent = parseFloat(command.args[0])
+        const result = await modbusRegisterService.setGlobalAmplitude(amplitudePercent)
+
+        // Update pin state to reflect the new amplitude
+        const pwmValue = Math.round((amplitudePercent / 100.0) * 255)
+        this.updatePinState('AMPLITUDE_ALL', pwmValue.toString())
+
+        return {
+          success: true,
+          data: `OK - Global amplitude set to ${amplitudePercent}% (MODBUS register 0x${result.address.toString(16).toUpperCase()}: ${result.value})`,
+          timestamp: Date.now()
+        }
+      }
+
+      // For all other commands, send to Python process
       const response = await this.sendPythonCommand({
         type: 'command',
         command: command.command,

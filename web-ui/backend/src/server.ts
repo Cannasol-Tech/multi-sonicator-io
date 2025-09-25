@@ -55,7 +55,7 @@ try {
 const hardwareInterface = new HardwareInterface()
 
 // Initialize test automation service
-const testAutomationService = new TestAutomationService()
+const testAutomationService = new TestAutomationService(hardwareInterface)
 
 // Setup routes
 setupRoutes(app, hardwareInterface, testAutomationService)

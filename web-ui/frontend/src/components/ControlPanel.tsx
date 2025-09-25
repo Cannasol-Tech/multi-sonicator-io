@@ -72,71 +72,73 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
     sonicator4: {
       operatingFrequencyKHz: 20.0,
       outputFrequencyKHz: 2.0,
+      amplitudePercent: 50.0,
       enabled: true,
       manualMode: false,
-      manualFrequencyKHz: 2.0
+      manualAmplitudePercent: 50.0
     }
   })
   const [configLoading, setConfigLoading] = useState(false)
   const [activeSubTab, setActiveSubTab] = useState<'parameters' | 'monitoring'>('parameters')
 
   // Control signals that can be manipulated in "Configurable Parameters" tab
-  // These are inputs TO the DUT that we can control from the harness
-  const controlPins = Object.entries(hardwareState.pins).filter(([signal, pin]) => 
-    signal === 'FREQ_DIV10_4' || signal === 'FREQ_LOCK_4' || signal === 'OVERLOAD_4'
+  // These are outputs FROM the DUT that we can control (configurable parameters)
+  const controlPins = Object.entries(hardwareState.pins).filter(([signal]) =>
+    signal === 'AMPLITUDE_ALL' || signal === 'START_4' || signal === 'RESET_4'
   )
-  
+
   // Monitoring signals that are read-only in "Live DUT Monitoring" tab
-  // These are outputs FROM the DUT that we can only monitor
-  const monitoringPins = Object.entries(hardwareState.pins).filter(([signal, pin]) => 
-    signal === 'START_4' || signal === 'RESET_4' || signal === 'AMPLITUDE_ALL' || 
+  // These are inputs TO the DUT that we can only monitor (monitored signals)
+  const monitoringPins = Object.entries(hardwareState.pins).filter(([signal]) =>
+    signal === 'FREQ_DIV10_4' || signal === 'FREQ_LOCK_4' || signal === 'OVERLOAD_4' ||
     signal === 'STATUS_LED' || signal === 'POWER_SENSE_4'
   )
 
   const handlePinToggle = (signal: string, currentState: any) => {
-    // Only allow toggling control signals (inputs to the DUT)
-    // Don't allow toggling frequency pins as they have their own controls
-    if (signal === 'FREQ_DIV10_4') {
-      return // Frequency controlled via input field
+    // Only allow toggling control signals (outputs from the DUT)
+    // Don't allow toggling amplitude pins as they have their own controls
+    if (signal === 'AMPLITUDE_ALL') {
+      return // Amplitude controlled via input field
     }
-    
+
     // Toggle the digital control signals
     const newState = currentState === 'HIGH' ? 'LOW' : 'HIGH'
     onPinControl(signal, 'write_pin', newState)
   }
 
-  const handleFrequencyChange = async (newFrequencyKHz: number) => {
+  const handleAmplitudeChange = async (newAmplitudePercent: number) => {
     try {
       setConfigLoading(true)
-      // Clamp to 18–22 kHz range for CT2000 sonicators
-      const clamped = Math.min(22, Math.max(18, newFrequencyKHz))
+      // Clamp to 0–100% range for amplitude control
+      const clamped = Math.min(100, Math.max(0, newAmplitudePercent))
       const updatedConfig = {
         ...configuration,
         sonicator4: {
           ...configuration.sonicator4,
-          operatingFrequencyKHz: clamped,
-          outputFrequencyKHz: clamped / 10 // FREQ_DIV10 is frequency divided by 10
+          amplitudePercent: clamped,
+          manualAmplitudePercent: clamped
         }
       }
-      
+
       // Update local state immediately for UI responsiveness
       setConfiguration(updatedConfig)
-      
-      // Send to backend
-      onPinControl('FREQ_DIV10_4', 'set_frequency', clamped)
-      
+
+      // Send to backend - convert percentage to PWM value (0-255)
+      const pwmValue = Math.round((clamped / 100) * 255)
+      onPinControl('AMPLITUDE_ALL', 'set_amplitude', pwmValue)
+
       // Also save configuration
       const response = await fetch('/api/config', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ config: updatedConfig })
       })
-      
+
       if (!response.ok) {
         throw new Error('Failed to save configuration')
       }
     } catch (error) {
-      console.error('Failed to update frequency:', error)
+      console.error('Failed to update amplitude:', error)
       // Reload configuration on error
       loadConfiguration()
     } finally {
@@ -144,11 +146,15 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
     }
   }
 
-  const handleFrequencyInputChange = (newFrequency: number) => {
-    if (!isNaN(newFrequency)) {
+  const handleAmplitudeInputChange = (newAmplitude: number) => {
+    if (!isNaN(newAmplitude)) {
       // Allow immediate input but clamp in handler
-      handleFrequencyChange(newFrequency)
+      handleAmplitudeChange(newAmplitude)
     }
+  }
+
+  const isAmplitudePin = (signal: string) => {
+    return signal === 'AMPLITUDE_ALL'
   }
 
   const isFrequencyPin = (signal: string) => {
@@ -157,6 +163,7 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
 
   const renderPinState = (signal: string, pinState: any, isMonitoringMode: boolean = false) => {
     if (isFrequencyPin(signal)) {
+      // Frequency is always monitored (read-only) - it comes FROM the sonicator
       return (
         <div className="enhanced-pin-display">
           <div className="pin-state enhanced analog">
@@ -182,30 +189,62 @@ export default function ControlPanel({ hardwareState, onPinControl, connected }:
             <div className="pin-controls">
               <div className="pin-indicator">
                 <div className="status-dot analog"></div>
-                <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>Frequency</span>
+                <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>Frequency (Monitored)</span>
               </div>
             </div>
 
-            {/* Frequency control - only show in control mode */}
+            <div className="text-xs mt-2" style={{ color: 'var(--text-tertiary)' }}>
+              {formatTimestamp(pinState.timestamp)}
+            </div>
+          </div>
+        </div>
+      )
+    }
+
+    if (isAmplitudePin(signal)) {
+      // Amplitude is configurable - it goes TO the sonicators
+      return (
+        <div className="enhanced-pin-display">
+          <div className="pin-state enhanced analog">
+            <div className="pin-value">
+              {(() => {
+                if (!pinState.state) return '0%';
+                const stateStr = pinState.state.toString();
+                // Convert PWM value (0-255) to percentage
+                const pwmValue = parseFloat(stateStr) || 0;
+                const percentage = Math.round((pwmValue / 255) * 100);
+                return `${percentage}%`;
+              })()
+              }
+            </div>
+
+            <div className="pin-controls">
+              <div className="pin-indicator">
+                <div className="status-dot analog"></div>
+                <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>Amplitude</span>
+              </div>
+            </div>
+
+            {/* Amplitude control - only show in control mode */}
             {!isMonitoringMode && (
               <div className="pin-controls">
                 <input
                   type="number"
-                  min="18"
-                  max="22"
-                  step="0.1"
-                  value={configuration.sonicator4.operatingFrequencyKHz}
-                  onChange={(e) => handleFrequencyInputChange(parseFloat(e.target.value))}
+                  min="0"
+                  max="100"
+                  step="1"
+                  value={configuration.sonicator4.amplitudePercent}
+                  onChange={(e) => handleAmplitudeInputChange(parseFloat(e.target.value))}
                   disabled={!connected || configLoading}
                   className="btn-mini"
-                  style={{ 
+                  style={{
                     width: '80px',
                     textAlign: 'center',
                     fontFamily: 'monospace'
                   }}
-                  title="Frequency (kHz)"
+                  title="Amplitude (%)"
                 />
-                <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>kHz</span>
+                <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>%</span>
               </div>
             )}
 

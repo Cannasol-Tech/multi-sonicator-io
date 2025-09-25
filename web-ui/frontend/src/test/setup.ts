@@ -40,7 +40,7 @@ class MockWebSocket {
     }, 0)
   }
 
-  send(data: string | ArrayBufferLike | Blob | ArrayBufferView): void {
+  send(_data: string | ArrayBufferLike | Blob | ArrayBufferView): void {
     // Mock send - do nothing
   }
 
@@ -51,15 +51,15 @@ class MockWebSocket {
     }
   }
 
-  addEventListener(type: string, listener: EventListener): void {
+  addEventListener(_type: string, _listener: EventListener): void {
     // Mock implementation - simplified
   }
 
-  removeEventListener(type: string, listener: EventListener): void {
+  removeEventListener(_type: string, _listener: EventListener): void {
     // Mock implementation - simplified
   }
 
-  dispatchEvent(event: Event): boolean {
+  dispatchEvent(_event: Event): boolean {
     return true
   }
 }
@@ -153,7 +153,7 @@ global.URL = class MockURL {
   search: string
   hash: string
 
-  constructor(url: string, base?: string) {
+  constructor(url: string, _base?: string) {
     // Simple URL validation for test purposes
     const validProtocols = ['http:', 'https:', 'ws:', 'wss:', 'ftp:', 'file:']
     const hasValidProtocol = validProtocols.some(protocol => url.startsWith(protocol))

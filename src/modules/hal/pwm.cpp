@@ -36,6 +36,7 @@
 #include "pwm.h"
 #include <system_config.h>
 #include <Arduino.h>
+#include <constants.h>
 
 // ============================================================================
 // PRIVATE VARIABLES
