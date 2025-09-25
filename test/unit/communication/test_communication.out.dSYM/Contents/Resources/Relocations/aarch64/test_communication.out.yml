@@ -1,275 +1,161 @@
 ---
 triple:          'arm64-apple-darwin'
-binary-path:     '/Users/Stephen/Documents/GitHub/cannasol-technologies/multi-sonicator-io/test/unit/communication/test_communication.out'
+binary-path:     '/Users/stephenboyett/Desktop/Github/cannasol-technologies/multi-sonicator-io/test/unit/communication/test_communication.out'
 relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _test_modbus_validate_address_boundaries, symObjAddr: 0x0, symBinAddr: 0x1000047FC, symSize: 0x184 }
-  - { offsetInCU: 0x4D, offset: 0x4D, size: 0x8, addend: 0x0, symName: _test_config, symObjAddr: 0x8D30, symBinAddr: 0x1000274D0, symSize: 0x0 }
-  - { offsetInCU: 0x1CB, offset: 0x1CB, size: 0x8, addend: 0x0, symName: _test_read_value, symObjAddr: 0x8D28, symBinAddr: 0x1000274C8, symSize: 0x0 }
-  - { offsetInCU: 0x1E0, offset: 0x1E0, size: 0x8, addend: 0x0, symName: _test_write_address, symObjAddr: 0x8D2A, symBinAddr: 0x1000274CA, symSize: 0x0 }
-  - { offsetInCU: 0x1F5, offset: 0x1F5, size: 0x8, addend: 0x0, symName: _test_write_value, symObjAddr: 0x8D2C, symBinAddr: 0x1000274CC, symSize: 0x0 }
-  - { offsetInCU: 0x20A, offset: 0x20A, size: 0x8, addend: 0x0, symName: _test_timeout_called, symObjAddr: 0x8D2E, symBinAddr: 0x1000274CE, symSize: 0x0 }
-  - { offsetInCU: 0x226, offset: 0x226, size: 0x8, addend: 0x0, symName: _test_error_called, symObjAddr: 0x8D2F, symBinAddr: 0x1000274CF, symSize: 0x0 }
-  - { offsetInCU: 0x23B, offset: 0x23B, size: 0x8, addend: 0x0, symName: _test_last_error, symObjAddr: 0x8D60, symBinAddr: 0x100027500, symSize: 0x0 }
-  - { offsetInCU: 0x27F, offset: 0x27F, size: 0x8, addend: 0x0, symName: _test_modbus_validate_address_boundaries, symObjAddr: 0x0, symBinAddr: 0x1000047FC, symSize: 0x184 }
-  - { offsetInCU: 0x2B1, offset: 0x2B1, size: 0x8, addend: 0x0, symName: _test_emergency_stop_alternate_path, symObjAddr: 0x184, symBinAddr: 0x100004980, symSize: 0x1B8 }
-  - { offsetInCU: 0x2D5, offset: 0x2D5, size: 0x8, addend: 0x0, symName: _test_modbus_callback_helpers_execution, symObjAddr: 0x33C, symBinAddr: 0x100004B38, symSize: 0x200 }
-  - { offsetInCU: 0x2F9, offset: 0x2F9, size: 0x8, addend: 0x0, symName: _test_read_callback, symObjAddr: 0x53C, symBinAddr: 0x100004D38, symSize: 0x38 }
-  - { offsetInCU: 0x32F, offset: 0x32F, size: 0x8, addend: 0x0, symName: _test_write_callback, symObjAddr: 0x574, symBinAddr: 0x100004D70, symSize: 0x40 }
-  - { offsetInCU: 0x368, offset: 0x368, size: 0x8, addend: 0x0, symName: _test_timeout_callback, symObjAddr: 0x5B4, symBinAddr: 0x100004DB0, symSize: 0x20 }
-  - { offsetInCU: 0x37E, offset: 0x37E, size: 0x8, addend: 0x0, symName: _test_error_callback, symObjAddr: 0x5D4, symBinAddr: 0x100004DD0, symSize: 0x38 }
-  - { offsetInCU: 0x3A4, offset: 0x3A4, size: 0x8, addend: 0x0, symName: _test_communication_coverage_booster, symObjAddr: 0x60C, symBinAddr: 0x100004E08, symSize: 0xCC }
-  - { offsetInCU: 0x3E7, offset: 0x3E7, size: 0x8, addend: 0x0, symName: _test_modbus_register_manager_global_controls, symObjAddr: 0x6D8, symBinAddr: 0x100004ED4, symSize: 0x23C }
-  - { offsetInCU: 0x40D, offset: 0x40D, size: 0x8, addend: 0x0, symName: _test_modbus_register_manager_value_validation, symObjAddr: 0x914, symBinAddr: 0x100005110, symSize: 0x2FC }
-  - { offsetInCU: 0x442, offset: 0x442, size: 0x8, addend: 0x0, symName: _test_modbus_comm_error_counters, symObjAddr: 0xC10, symBinAddr: 0x10000540C, symSize: 0x128 }
-  - { offsetInCU: 0x468, offset: 0x468, size: 0x8, addend: 0x0, symName: _setUp, symObjAddr: 0xD38, symBinAddr: 0x100005534, symSize: 0xAC }
-  - { offsetInCU: 0x47E, offset: 0x47E, size: 0x8, addend: 0x0, symName: _tearDown, symObjAddr: 0xDE4, symBinAddr: 0x1000055E0, symSize: 0x30 }
-  - { offsetInCU: 0x494, offset: 0x494, size: 0x8, addend: 0x0, symName: _test_modbus_init_valid_config, symObjAddr: 0xE14, symBinAddr: 0x100005610, symSize: 0xD4 }
-  - { offsetInCU: 0x4BA, offset: 0x4BA, size: 0x8, addend: 0x0, symName: _test_modbus_init_null_config, symObjAddr: 0xEE8, symBinAddr: 0x1000056E4, symSize: 0x74 }
-  - { offsetInCU: 0x4E0, offset: 0x4E0, size: 0x8, addend: 0x0, symName: _test_modbus_init_invalid_slave_id, symObjAddr: 0xF5C, symBinAddr: 0x100005758, symSize: 0xA8 }
-  - { offsetInCU: 0x506, offset: 0x506, size: 0x8, addend: 0x0, symName: _test_modbus_validate_address_system_status, symObjAddr: 0x1004, symBinAddr: 0x100005800, symSize: 0x150 }
-  - { offsetInCU: 0x51C, offset: 0x51C, size: 0x8, addend: 0x0, symName: _test_modbus_validate_address_global_control, symObjAddr: 0x1154, symBinAddr: 0x100005950, symSize: 0x14C }
-  - { offsetInCU: 0x532, offset: 0x532, size: 0x8, addend: 0x0, symName: _test_modbus_validate_address_invalid_range, symObjAddr: 0x12A0, symBinAddr: 0x100005A9C, symSize: 0xCC }
-  - { offsetInCU: 0x548, offset: 0x548, size: 0x8, addend: 0x0, symName: _test_modbus_calculate_crc_known_values, symObjAddr: 0x136C, symBinAddr: 0x100005B68, symSize: 0xFC }
-  - { offsetInCU: 0x57D, offset: 0x57D, size: 0x8, addend: 0x0, symName: _test_modbus_calculate_crc_empty_data, symObjAddr: 0x1468, symBinAddr: 0x100005C64, symSize: 0x70 }
-  - { offsetInCU: 0x5A3, offset: 0x5A3, size: 0x8, addend: 0x0, symName: _test_modbus_calculate_crc_consistency, symObjAddr: 0x14D8, symBinAddr: 0x100005CD4, symSize: 0xA4 }
-  - { offsetInCU: 0x5E7, offset: 0x5E7, size: 0x8, addend: 0x0, symName: _test_modbus_enable_disable, symObjAddr: 0x157C, symBinAddr: 0x100005D78, symSize: 0x104 }
-  - { offsetInCU: 0x5FD, offset: 0x5FD, size: 0x8, addend: 0x0, symName: _test_modbus_statistics_tracking, symObjAddr: 0x1680, symBinAddr: 0x100005E7C, symSize: 0x134 }
-  - { offsetInCU: 0x623, offset: 0x623, size: 0x8, addend: 0x0, symName: _test_modbus_additional_address_ranges, symObjAddr: 0x17B4, symBinAddr: 0x100005FB0, symSize: 0x110 }
-  - { offsetInCU: 0x639, offset: 0x639, size: 0x8, addend: 0x0, symName: _test_modbus_state_management, symObjAddr: 0x18C4, symBinAddr: 0x1000060C0, symSize: 0x74 }
-  - { offsetInCU: 0x65F, offset: 0x65F, size: 0x8, addend: 0x0, symName: _test_modbus_register_manager_operations, symObjAddr: 0x1938, symBinAddr: 0x100006134, symSize: 0x10C }
-  - { offsetInCU: 0x694, offset: 0x694, size: 0x8, addend: 0x0, symName: _test_modbus_extended_crc_scenarios, symObjAddr: 0x1A44, symBinAddr: 0x100006240, symSize: 0x18C }
-  - { offsetInCU: 0x705, offset: 0x705, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x1BD0, symBinAddr: 0x1000063CC, symSize: 0x24C }
-  - { offsetInCU: 0x26, offset: 0xAB0, size: 0x8, addend: 0x0, symName: _UnityPrint, symObjAddr: 0x0, symBinAddr: 0x100006624, symSize: 0xAC }
-  - { offsetInCU: 0x3F, offset: 0xAC9, size: 0x8, addend: 0x0, symName: _UnityStrOk, symObjAddr: 0x6540, symBinAddr: 0x100013B70, symSize: 0x0 }
-  - { offsetInCU: 0x73, offset: 0xAFD, size: 0x8, addend: 0x0, symName: _UnityStrPass, symObjAddr: 0x6543, symBinAddr: 0x100013B73, symSize: 0x0 }
-  - { offsetInCU: 0x94, offset: 0xB1E, size: 0x8, addend: 0x0, symName: _UnityStrFail, symObjAddr: 0x6548, symBinAddr: 0x100013B78, symSize: 0x0 }
-  - { offsetInCU: 0xA9, offset: 0xB33, size: 0x8, addend: 0x0, symName: _UnityStrIgnore, symObjAddr: 0x654D, symBinAddr: 0x100013B7D, symSize: 0x0 }
-  - { offsetInCU: 0xCA, offset: 0xB54, size: 0x8, addend: 0x0, symName: _UnityStrErrShorthand, symObjAddr: 0x6554, symBinAddr: 0x100013B84, symSize: 0x0 }
-  - { offsetInCU: 0xEB, offset: 0xB75, size: 0x8, addend: 0x0, symName: _UnityStrErrFloat, symObjAddr: 0x6575, symBinAddr: 0x100013BA5, symSize: 0x0 }
-  - { offsetInCU: 0x10C, offset: 0xB96, size: 0x8, addend: 0x0, symName: _UnityStrErrDouble, symObjAddr: 0x6593, symBinAddr: 0x100013BC3, symSize: 0x0 }
-  - { offsetInCU: 0x12D, offset: 0xBB7, size: 0x8, addend: 0x0, symName: _UnityStrErr64, symObjAddr: 0x65B3, symBinAddr: 0x100013BE3, symSize: 0x0 }
-  - { offsetInCU: 0x136, offset: 0xBC0, size: 0x8, addend: 0x0, symName: _UnityPrintFloat, symObjAddr: 0x9D0, symBinAddr: 0x100006FF4, symSize: 0xADC }
-  - { offsetInCU: 0x159, offset: 0xBE3, size: 0x8, addend: 0x0, symName: _UnityPrintFloat.sig_digits, symObjAddr: 0x65D4, symBinAddr: 0x100013C04, symSize: 0x0 }
-  - { offsetInCU: 0x16F, offset: 0xBF9, size: 0x8, addend: 0x0, symName: _UnityPrintFloat.min_scaled, symObjAddr: 0x65D8, symBinAddr: 0x100013C08, symSize: 0x0 }
-  - { offsetInCU: 0x185, offset: 0xC0F, size: 0x8, addend: 0x0, symName: _UnityPrintFloat.max_scaled, symObjAddr: 0x65DC, symBinAddr: 0x100013C0C, symSize: 0x0 }
-  - { offsetInCU: 0x350, offset: 0xDDA, size: 0x8, addend: 0x0, symName: _Unity, symBinAddr: 0x1000298F0, symSize: 0x0 }
-  - { offsetInCU: 0x439, offset: 0xEC3, size: 0x8, addend: 0x0, symName: _UnityQuickCompare, symObjAddr: 0x137D0, symBinAddr: 0x100027508, symSize: 0x0 }
-  - { offsetInCU: 0x4D2, offset: 0xF5C, size: 0x8, addend: 0x0, symName: _UnityStrExpected, symObjAddr: 0x65E0, symBinAddr: 0x100013C10, symSize: 0x0 }
-  - { offsetInCU: 0x4F3, offset: 0xF7D, size: 0x8, addend: 0x0, symName: _UnityStrWas, symObjAddr: 0x65EB, symBinAddr: 0x100013C1B, symSize: 0x0 }
-  - { offsetInCU: 0x514, offset: 0xF9E, size: 0x8, addend: 0x0, symName: _UnityStrGt, symObjAddr: 0x65F1, symBinAddr: 0x100013C21, symSize: 0x0 }
-  - { offsetInCU: 0x535, offset: 0xFBF, size: 0x8, addend: 0x0, symName: _UnityStrLt, symObjAddr: 0x6606, symBinAddr: 0x100013C36, symSize: 0x0 }
-  - { offsetInCU: 0x556, offset: 0xFE0, size: 0x8, addend: 0x0, symName: _UnityStrOrEqual, symObjAddr: 0x6618, symBinAddr: 0x100013C48, symSize: 0x0 }
-  - { offsetInCU: 0x577, offset: 0x1001, size: 0x8, addend: 0x0, symName: _UnityStrNotEqual, symObjAddr: 0x6625, symBinAddr: 0x100013C55, symSize: 0x0 }
-  - { offsetInCU: 0x58C, offset: 0x1016, size: 0x8, addend: 0x0, symName: _UnityStrPointless, symObjAddr: 0x663A, symBinAddr: 0x100013C6A, symSize: 0x0 }
-  - { offsetInCU: 0x5AD, offset: 0x1037, size: 0x8, addend: 0x0, symName: _UnityStrNullPointerForExpected, symObjAddr: 0x673F, symBinAddr: 0x100013D6F, symSize: 0x0 }
-  - { offsetInCU: 0x5CE, offset: 0x1058, size: 0x8, addend: 0x0, symName: _UnityStrNullPointerForActual, symObjAddr: 0x675C, symBinAddr: 0x100013D8C, symSize: 0x0 }
-  - { offsetInCU: 0x5EF, offset: 0x1079, size: 0x8, addend: 0x0, symName: _UnityStrElement, symObjAddr: 0x6671, symBinAddr: 0x100013CA1, symSize: 0x0 }
-  - { offsetInCU: 0x610, offset: 0x109A, size: 0x8, addend: 0x0, symName: _UnityStrInf, symObjAddr: 0x667B, symBinAddr: 0x100013CAB, symSize: 0x0 }
-  - { offsetInCU: 0x631, offset: 0x10BB, size: 0x8, addend: 0x0, symName: _UnityStrNegInf, symObjAddr: 0x6684, symBinAddr: 0x100013CB4, symSize: 0x0 }
-  - { offsetInCU: 0x646, offset: 0x10D0, size: 0x8, addend: 0x0, symName: _UnityStrNaN, symObjAddr: 0x6696, symBinAddr: 0x100013CC6, symSize: 0x0 }
-  - { offsetInCU: 0x667, offset: 0x10F1, size: 0x8, addend: 0x0, symName: _UnityStrDet, symObjAddr: 0x669A, symBinAddr: 0x100013CCA, symSize: 0x0 }
-  - { offsetInCU: 0x688, offset: 0x1112, size: 0x8, addend: 0x0, symName: _UnityStrInvalidFloatTrait, symObjAddr: 0x66A6, symBinAddr: 0x100013CD6, symSize: 0x0 }
-  - { offsetInCU: 0x6A9, offset: 0x1133, size: 0x8, addend: 0x0, symName: _UnityStrNot, symObjAddr: 0x66BA, symBinAddr: 0x100013CEA, symSize: 0x0 }
-  - { offsetInCU: 0x6BE, offset: 0x1148, size: 0x8, addend: 0x0, symName: _UnityStrDelta, symObjAddr: 0x66BF, symBinAddr: 0x100013CEF, symSize: 0x0 }
-  - { offsetInCU: 0x6DF, offset: 0x1169, size: 0x8, addend: 0x0, symName: _UnityStrNull, symObjAddr: 0x6775, symBinAddr: 0x100013DA5, symSize: 0x0 }
-  - { offsetInCU: 0x6F4, offset: 0x117E, size: 0x8, addend: 0x0, symName: _UnityStrMemory, symObjAddr: 0x66D9, symBinAddr: 0x100013D09, symSize: 0x0 }
-  - { offsetInCU: 0x709, offset: 0x1193, size: 0x8, addend: 0x0, symName: _UnityStrByte, symObjAddr: 0x66EB, symBinAddr: 0x100013D1B, symSize: 0x0 }
-  - { offsetInCU: 0x71E, offset: 0x11A8, size: 0x8, addend: 0x0, symName: _UnityStrDetail1Name, symObjAddr: 0x66F2, symBinAddr: 0x100013D22, symSize: 0x0 }
-  - { offsetInCU: 0x733, offset: 0x11BD, size: 0x8, addend: 0x0, symName: _UnityStrDetail2Name, symObjAddr: 0x66FC, symBinAddr: 0x100013D2C, symSize: 0x0 }
-  - { offsetInCU: 0x748, offset: 0x11D2, size: 0x8, addend: 0x0, symName: _UnityStrSpacer, symObjAddr: 0x6707, symBinAddr: 0x100013D37, symSize: 0x0 }
-  - { offsetInCU: 0x75D, offset: 0x11E7, size: 0x8, addend: 0x0, symName: _UnityStrBreaker, symObjAddr: 0x670A, symBinAddr: 0x100013D3A, symSize: 0x0 }
-  - { offsetInCU: 0x77E, offset: 0x1208, size: 0x8, addend: 0x0, symName: _UnityStrResultsTests, symObjAddr: 0x6722, symBinAddr: 0x100013D52, symSize: 0x0 }
-  - { offsetInCU: 0x79F, offset: 0x1229, size: 0x8, addend: 0x0, symName: _UnityStrResultsFailures, symObjAddr: 0x672A, symBinAddr: 0x100013D5A, symSize: 0x0 }
-  - { offsetInCU: 0x7B4, offset: 0x123E, size: 0x8, addend: 0x0, symName: _UnityStrResultsIgnored, symObjAddr: 0x6735, symBinAddr: 0x100013D65, symSize: 0x0 }
-  - { offsetInCU: 0x938, offset: 0x13C2, size: 0x8, addend: 0x0, symName: _UnityPrint, symObjAddr: 0x0, symBinAddr: 0x100006624, symSize: 0xAC }
-  - { offsetInCU: 0x96A, offset: 0x13F4, size: 0x8, addend: 0x0, symName: _UnityPrintChar, symObjAddr: 0xAC, symBinAddr: 0x1000066D0, symSize: 0x150 }
-  - { offsetInCU: 0x98E, offset: 0x1418, size: 0x8, addend: 0x0, symName: _UnityPrintLen, symObjAddr: 0x1FC, symBinAddr: 0x100006820, symSize: 0x22C }
-  - { offsetInCU: 0x9CE, offset: 0x1458, size: 0x8, addend: 0x0, symName: _UnityPrintNumberHex, symObjAddr: 0x428, symBinAddr: 0x100006A4C, symSize: 0x114 }
-  - { offsetInCU: 0xA21, offset: 0x14AB, size: 0x8, addend: 0x0, symName: _UnityPrintNumberByStyle, symObjAddr: 0x53C, symBinAddr: 0x100006B60, symSize: 0x214 }
-  - { offsetInCU: 0xA53, offset: 0x14DD, size: 0x8, addend: 0x0, symName: _UnityPrintNumber, symObjAddr: 0x750, symBinAddr: 0x100006D74, symSize: 0x88 }
-  - { offsetInCU: 0xA85, offset: 0x150F, size: 0x8, addend: 0x0, symName: _UnityPrintNumberUnsigned, symObjAddr: 0x7D8, symBinAddr: 0x100006DFC, symSize: 0xF0 }
-  - { offsetInCU: 0xAB7, offset: 0x1541, size: 0x8, addend: 0x0, symName: _UnityPrintMask, symObjAddr: 0x8C8, symBinAddr: 0x100006EEC, symSize: 0x108 }
-  - { offsetInCU: 0xB9A, offset: 0x1624, size: 0x8, addend: 0x0, symName: _UnityConcludeTest, symObjAddr: 0x14AC, symBinAddr: 0x100007AD0, symSize: 0xF4 }
-  - { offsetInCU: 0xBB0, offset: 0x163A, size: 0x8, addend: 0x0, symName: _UnityTestResultsBegin, symObjAddr: 0x15A0, symBinAddr: 0x100007BC4, symSize: 0x74 }
-  - { offsetInCU: 0xBE5, offset: 0x166F, size: 0x8, addend: 0x0, symName: _UnityAssertBits, symObjAddr: 0x1614, symBinAddr: 0x100007C38, symSize: 0x168 }
-  - { offsetInCU: 0xC47, offset: 0x16D1, size: 0x8, addend: 0x0, symName: _UnityTestResultsFailBegin, symObjAddr: 0x177C, symBinAddr: 0x100007DA0, symSize: 0x54 }
-  - { offsetInCU: 0xC6D, offset: 0x16F7, size: 0x8, addend: 0x0, symName: _UnityAddMsgIfSpecified, symObjAddr: 0x17D0, symBinAddr: 0x100007DF4, symSize: 0x110 }
-  - { offsetInCU: 0xC93, offset: 0x171D, size: 0x8, addend: 0x0, symName: _UnityAssertEqualNumber, symObjAddr: 0x18E0, symBinAddr: 0x100007F04, symSize: 0x158 }
-  - { offsetInCU: 0xCF5, offset: 0x177F, size: 0x8, addend: 0x0, symName: _UnityAssertGreaterOrLessOrEqualNumber, symObjAddr: 0x1A38, symBinAddr: 0x10000805C, symSize: 0x498 }
-  - { offsetInCU: 0xD75, offset: 0x17FF, size: 0x8, addend: 0x0, symName: _UnityAssertEqualIntArray, symObjAddr: 0x1ED0, symBinAddr: 0x1000084F4, symSize: 0x5D0 }
-  - { offsetInCU: 0xE6B, offset: 0x18F5, size: 0x8, addend: 0x0, symName: _UnityIsOneArrayNull, symObjAddr: 0x24C0, symBinAddr: 0x100008AE4, symSize: 0x118 }
-  - { offsetInCU: 0xEC2, offset: 0x194C, size: 0x8, addend: 0x0, symName: _UnityAssertWithinFloatArray, symObjAddr: 0x25D8, symBinAddr: 0x100008BFC, symSize: 0x5E8 }
-  - { offsetInCU: 0x1043, offset: 0x1ACD, size: 0x8, addend: 0x0, symName: _UnityFloatsWithin, symObjAddr: 0x2BC0, symBinAddr: 0x1000091E4, symSize: 0x7F4 }
-  - { offsetInCU: 0x12C3, offset: 0x1D4D, size: 0x8, addend: 0x0, symName: _UnityAssertFloatsWithin, symObjAddr: 0x33B4, symBinAddr: 0x1000099D8, symSize: 0x160 }
-  - { offsetInCU: 0x1325, offset: 0x1DAF, size: 0x8, addend: 0x0, symName: _UnityAssertFloatsNotWithin, symObjAddr: 0x3514, symBinAddr: 0x100009B38, symSize: 0x158 }
-  - { offsetInCU: 0x1387, offset: 0x1E11, size: 0x8, addend: 0x0, symName: _UnityAssertGreaterOrLessFloat, symObjAddr: 0x366C, symBinAddr: 0x100009C90, symSize: 0x338 }
-  - { offsetInCU: 0x13F8, offset: 0x1E82, size: 0x8, addend: 0x0, symName: _UnityAssertFloatSpecial, symObjAddr: 0x39A4, symBinAddr: 0x100009FC8, symSize: 0x824 }
-  - { offsetInCU: 0x15E0, offset: 0x206A, size: 0x8, addend: 0x0, symName: _UnityAssertNumbersWithin, symObjAddr: 0x41EC, symBinAddr: 0x10000A810, symSize: 0x2A4 }
-  - { offsetInCU: 0x1651, offset: 0x20DB, size: 0x8, addend: 0x0, symName: _UnityAssertNumbersArrayWithin, symObjAddr: 0x4490, symBinAddr: 0x10000AAB4, symSize: 0x7B8 }
-  - { offsetInCU: 0x1758, offset: 0x21E2, size: 0x8, addend: 0x0, symName: _UnityAssertEqualString, symObjAddr: 0x4C68, symBinAddr: 0x10000B28C, symSize: 0x2F8 }
-  - { offsetInCU: 0x17BA, offset: 0x2244, size: 0x8, addend: 0x0, symName: _UnityPrintExpectedAndActualStrings, symObjAddr: 0x4F60, symBinAddr: 0x10000B584, symSize: 0xFC }
-  - { offsetInCU: 0x17EF, offset: 0x2279, size: 0x8, addend: 0x0, symName: _UnityAssertEqualStringLen, symObjAddr: 0x505C, symBinAddr: 0x10000B680, symSize: 0x33C }
-  - { offsetInCU: 0x1860, offset: 0x22EA, size: 0x8, addend: 0x0, symName: _UnityPrintExpectedAndActualStringsLen, symObjAddr: 0x5398, symBinAddr: 0x10000B9BC, symSize: 0x108 }
-  - { offsetInCU: 0x18A4, offset: 0x232E, size: 0x8, addend: 0x0, symName: _UnityAssertEqualStringArray, symObjAddr: 0x54A0, symBinAddr: 0x10000BAC4, symSize: 0x4AC }
-  - { offsetInCU: 0x1951, offset: 0x23DB, size: 0x8, addend: 0x0, symName: _UnityAssertEqualMemory, symObjAddr: 0x594C, symBinAddr: 0x10000BF70, symSize: 0x404 }
-  - { offsetInCU: 0x1A0D, offset: 0x2497, size: 0x8, addend: 0x0, symName: _UnityNumToPtr, symObjAddr: 0x5D50, symBinAddr: 0x10000C374, symSize: 0x124 }
-  - { offsetInCU: 0x1A46, offset: 0x24D0, size: 0x8, addend: 0x0, symName: _UnityFloatToPtr, symObjAddr: 0x5E74, symBinAddr: 0x10000C498, symSize: 0x34 }
-  - { offsetInCU: 0x1A70, offset: 0x24FA, size: 0x8, addend: 0x0, symName: _UnityFail, symObjAddr: 0x5EA8, symBinAddr: 0x10000C4CC, symSize: 0x1F4 }
-  - { offsetInCU: 0x1AA5, offset: 0x252F, size: 0x8, addend: 0x0, symName: _UnityIgnore, symObjAddr: 0x609C, symBinAddr: 0x10000C6C0, symSize: 0x134 }
-  - { offsetInCU: 0x1ADA, offset: 0x2564, size: 0x8, addend: 0x0, symName: _UnityMessage, symObjAddr: 0x61D0, symBinAddr: 0x10000C7F4, symSize: 0xA4 }
-  - { offsetInCU: 0x1B0F, offset: 0x2599, size: 0x8, addend: 0x0, symName: _UnityDefaultTestRun, symObjAddr: 0x6274, symBinAddr: 0x10000C898, symSize: 0x100 }
-  - { offsetInCU: 0x1B53, offset: 0x25DD, size: 0x8, addend: 0x0, symName: _UnitySetTestFile, symObjAddr: 0x6374, symBinAddr: 0x10000C998, symSize: 0x30 }
-  - { offsetInCU: 0x1B79, offset: 0x2603, size: 0x8, addend: 0x0, symName: _UnityBegin, symObjAddr: 0x63A4, symBinAddr: 0x10000C9C8, symSize: 0x64 }
-  - { offsetInCU: 0x1B9F, offset: 0x2629, size: 0x8, addend: 0x0, symName: _UnityEnd, symObjAddr: 0x6408, symBinAddr: 0x10000CA2C, symSize: 0x10C }
-  - { offsetInCU: 0x26, offset: 0x26FA, size: 0x8, addend: 0x0, symName: _modbus_init, symObjAddr: 0x0, symBinAddr: 0x10000CB38, symSize: 0xB0 }
-  - { offsetInCU: 0x3F, offset: 0x2713, size: 0x8, addend: 0x0, symName: _mock_register_map, symObjAddr: 0x3BB0, symBinAddr: 0x100027528, symSize: 0x0 }
-  - { offsetInCU: 0x31E, offset: 0x29F2, size: 0x8, addend: 0x0, symName: _mock_enabled, symObjAddr: 0x3B98, symBinAddr: 0x100027510, symSize: 0x0 }
-  - { offsetInCU: 0x33A, offset: 0x2A0E, size: 0x8, addend: 0x0, symName: _mock_state, symObjAddr: 0x3B9C, symBinAddr: 0x100027514, symSize: 0x0 }
-  - { offsetInCU: 0x361, offset: 0x2A35, size: 0x8, addend: 0x0, symName: _mock_stats, symObjAddr: 0x3BA0, symBinAddr: 0x100027518, symSize: 0x0 }
-  - { offsetInCU: 0x3C8, offset: 0x2A9C, size: 0x8, addend: 0x0, symName: _mock_registers_initialized, symObjAddr: 0x3D2A, symBinAddr: 0x1000276A2, symSize: 0x0 }
-  - { offsetInCU: 0x3D2, offset: 0x2AA6, size: 0x8, addend: 0x0, symName: _modbus_init, symObjAddr: 0x0, symBinAddr: 0x10000CB38, symSize: 0xB0 }
-  - { offsetInCU: 0x3FA, offset: 0x2ACE, size: 0x8, addend: 0x0, symName: _modbus_is_enabled, symObjAddr: 0xB0, symBinAddr: 0x10000CBE8, symSize: 0x20 }
-  - { offsetInCU: 0x413, offset: 0x2AE7, size: 0x8, addend: 0x0, symName: _modbus_get_state, symObjAddr: 0xD0, symBinAddr: 0x10000CC08, symSize: 0x1C }
-  - { offsetInCU: 0x42C, offset: 0x2B00, size: 0x8, addend: 0x0, symName: _modbus_set_enabled, symObjAddr: 0xEC, symBinAddr: 0x10000CC24, symSize: 0x7C }
-  - { offsetInCU: 0x452, offset: 0x2B26, size: 0x8, addend: 0x0, symName: _modbus_validate_address, symObjAddr: 0x168, symBinAddr: 0x10000CCA0, symSize: 0x1A4 }
-  - { offsetInCU: 0x48B, offset: 0x2B5F, size: 0x8, addend: 0x0, symName: _modbus_calculate_crc, symObjAddr: 0x30C, symBinAddr: 0x10000CE44, symSize: 0x194 }
-  - { offsetInCU: 0x50D, offset: 0x2BE1, size: 0x8, addend: 0x0, symName: _modbus_get_statistics, symObjAddr: 0x4A0, symBinAddr: 0x10000CFD8, symSize: 0x1C }
-  - { offsetInCU: 0x527, offset: 0x2BFB, size: 0x8, addend: 0x0, symName: _modbus_reset_statistics, symObjAddr: 0x4BC, symBinAddr: 0x10000CFF4, symSize: 0x24 }
-  - { offsetInCU: 0x53D, offset: 0x2C11, size: 0x8, addend: 0x0, symName: _register_manager_init, symObjAddr: 0x4E0, symBinAddr: 0x10000D018, symSize: 0x174 }
-  - { offsetInCU: 0x575, offset: 0x2C49, size: 0x8, addend: 0x0, symName: _register_manager_get_map, symObjAddr: 0x654, symBinAddr: 0x10000D18C, symSize: 0x64 }
-  - { offsetInCU: 0x58F, offset: 0x2C63, size: 0x8, addend: 0x0, symName: _register_manager_update_system_status, symObjAddr: 0x6B8, symBinAddr: 0x10000D1F0, symSize: 0xA8 }
-  - { offsetInCU: 0x5C4, offset: 0x2C98, size: 0x8, addend: 0x0, symName: _register_manager_is_global_enabled, symObjAddr: 0x760, symBinAddr: 0x10000D298, symSize: 0x90 }
-  - { offsetInCU: 0x5DE, offset: 0x2CB2, size: 0x8, addend: 0x0, symName: _register_manager_is_emergency_stop_active, symObjAddr: 0x7F0, symBinAddr: 0x10000D328, symSize: 0xF4 }
-  - { offsetInCU: 0x5F8, offset: 0x2CCC, size: 0x8, addend: 0x0, symName: _register_manager_clear_emergency_stop, symObjAddr: 0x8E4, symBinAddr: 0x10000D41C, symSize: 0x74 }
-  - { offsetInCU: 0x60E, offset: 0x2CE2, size: 0x8, addend: 0x0, symName: _register_manager_increment_comm_errors, symObjAddr: 0x958, symBinAddr: 0x10000D490, symSize: 0x6C }
-  - { offsetInCU: 0x624, offset: 0x2CF8, size: 0x8, addend: 0x0, symName: _register_manager_reset_comm_errors, symObjAddr: 0x9C4, symBinAddr: 0x10000D4FC, symSize: 0x64 }
-  - { offsetInCU: 0x63A, offset: 0x2D0E, size: 0x8, addend: 0x0, symName: _register_manager_validate_value, symObjAddr: 0xA28, symBinAddr: 0x10000D560, symSize: 0x35C }
-  - { offsetInCU: 0x2A, offset: 0x2E32, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_magic, symObjAddr: 0x0, symBinAddr: 0x10000D8BC, symSize: 0x14 }
-  - { offsetInCU: 0x37, offset: 0x2E3F, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_magic, symObjAddr: 0x0, symBinAddr: 0x10000D8BC, symSize: 0x14 }
-  - { offsetInCU: 0x48, offset: 0x2E50, size: 0x8, addend: 0x0, symName: ___llvm_profile_set_dumped, symObjAddr: 0x14, symBinAddr: 0x10000D8D0, symSize: 0x8 }
-  - { offsetInCU: 0x6E, offset: 0x2E76, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_padding_bytes, symObjAddr: 0x1C, symBinAddr: 0x10000D8D8, symSize: 0xC }
-  - { offsetInCU: 0x7F, offset: 0x2E87, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_version, symObjAddr: 0x28, symBinAddr: 0x10000D8E4, symSize: 0x10 }
-  - { offsetInCU: 0x96, offset: 0x2E9E, size: 0x8, addend: 0x0, symName: ___llvm_profile_reset_counters, symObjAddr: 0x38, symBinAddr: 0x10000D8F4, symSize: 0xA8 }
-  - { offsetInCU: 0x2A, offset: 0x2EFB, size: 0x8, addend: 0x0, symName: _lprofProfileDumped, symObjAddr: 0x0, symBinAddr: 0x10000D99C, symSize: 0xC }
-  - { offsetInCU: 0x37, offset: 0x2F08, size: 0x8, addend: 0x0, symName: _lprofProfileDumped, symObjAddr: 0x0, symBinAddr: 0x10000D99C, symSize: 0xC }
-  - { offsetInCU: 0x48, offset: 0x2F19, size: 0x8, addend: 0x0, symName: _lprofSetProfileDumped, symObjAddr: 0xC, symBinAddr: 0x10000D9A8, symSize: 0xC }
-  - { offsetInCU: 0x2A, offset: 0x2F54, size: 0x8, addend: 0x0, symName: _getValueProfRecordHeaderSize, symObjAddr: 0x0, symBinAddr: 0x10000D9B4, symSize: 0xC }
-  - { offsetInCU: 0x37, offset: 0x2F61, size: 0x8, addend: 0x0, symName: _getValueProfRecordHeaderSize, symObjAddr: 0x0, symBinAddr: 0x10000D9B4, symSize: 0xC }
-  - { offsetInCU: 0x4E, offset: 0x2F78, size: 0x8, addend: 0x0, symName: _getValueProfRecordSize, symObjAddr: 0xC, symBinAddr: 0x10000D9C0, symSize: 0x10 }
-  - { offsetInCU: 0x63, offset: 0x2F8D, size: 0x8, addend: 0x0, symName: _getValueProfRecordSize, symObjAddr: 0xC, symBinAddr: 0x10000D9C0, symSize: 0x10 }
-  - { offsetInCU: 0x75, offset: 0x2F9F, size: 0x8, addend: 0x0, symName: _getValueProfRecordValueData, symObjAddr: 0x1C, symBinAddr: 0x10000D9D0, symSize: 0x14 }
-  - { offsetInCU: 0x9C, offset: 0x2FC6, size: 0x8, addend: 0x0, symName: _getValueProfRecordNumValueData, symObjAddr: 0x30, symBinAddr: 0x10000D9E4, symSize: 0x184 }
-  - { offsetInCU: 0xB9, offset: 0x2FE3, size: 0x8, addend: 0x0, symName: _getValueProfRecordNext, symObjAddr: 0x1B4, symBinAddr: 0x10000DB68, symSize: 0x1A4 }
-  - { offsetInCU: 0xF3, offset: 0x301D, size: 0x8, addend: 0x0, symName: _getFirstValueProfRecord, symObjAddr: 0x358, symBinAddr: 0x10000DD0C, symSize: 0x8 }
-  - { offsetInCU: 0x104, offset: 0x302E, size: 0x8, addend: 0x0, symName: _getValueProfDataSize, symObjAddr: 0x360, symBinAddr: 0x10000DD14, symSize: 0xB8 }
-  - { offsetInCU: 0x16E, offset: 0x3098, size: 0x8, addend: 0x0, symName: _serializeValueProfRecordFrom, symObjAddr: 0x418, symBinAddr: 0x10000DDCC, symSize: 0xA0 }
-  - { offsetInCU: 0x1D9, offset: 0x3103, size: 0x8, addend: 0x0, symName: _serializeValueProfDataFrom, symObjAddr: 0x4B8, symBinAddr: 0x10000DE6C, symSize: 0x384 }
-  - { offsetInCU: 0x327, offset: 0x3251, size: 0x8, addend: 0x0, symName: _InstProfClzll, symObjAddr: 0x83C, symBinAddr: 0x10000E1F0, symSize: 0x8 }
-  - { offsetInCU: 0x338, offset: 0x3262, size: 0x8, addend: 0x0, symName: _InstProfPopcountll, symObjAddr: 0x844, symBinAddr: 0x10000E1F8, symSize: 0x14 }
-  - { offsetInCU: 0x355, offset: 0x327F, size: 0x8, addend: 0x0, symName: _InstrProfGetRangeRepValue, symObjAddr: 0x858, symBinAddr: 0x10000E20C, symSize: 0x48 }
-  - { offsetInCU: 0x391, offset: 0x32BB, size: 0x8, addend: 0x0, symName: _InstrProfIsSingleValRange, symObjAddr: 0x8A0, symBinAddr: 0x10000E254, symSize: 0x20 }
-  - { offsetInCU: 0x3A2, offset: 0x32CC, size: 0x8, addend: 0x0, symName: _lprofSetupValueProfiler, symObjAddr: 0x8C0, symBinAddr: 0x10000E274, symSize: 0x68 }
-  - { offsetInCU: 0x3DC, offset: 0x3306, size: 0x8, addend: 0x0, symName: _lprofSetMaxValsPerSite, symObjAddr: 0x928, symBinAddr: 0x10000E2DC, symSize: 0x18 }
-  - { offsetInCU: 0x3ED, offset: 0x3317, size: 0x8, addend: 0x0, symName: ___llvm_profile_set_num_value_sites, symObjAddr: 0x940, symBinAddr: 0x10000E2F4, symSize: 0xC }
-  - { offsetInCU: 0x3FE, offset: 0x3328, size: 0x8, addend: 0x0, symName: ___llvm_profile_iterate_data, symObjAddr: 0x94C, symBinAddr: 0x10000E300, symSize: 0x8 }
-  - { offsetInCU: 0x40F, offset: 0x3339, size: 0x8, addend: 0x0, symName: ___llvm_get_function_addr, symObjAddr: 0x954, symBinAddr: 0x10000E308, symSize: 0x8 }
-  - { offsetInCU: 0x432, offset: 0x335C, size: 0x8, addend: 0x0, symName: ___llvm_profile_instrument_target, symObjAddr: 0x95C, symBinAddr: 0x10000E310, symSize: 0x254 }
-  - { offsetInCU: 0x471, offset: 0x339B, size: 0x8, addend: 0x0, symName: ___llvm_profile_instrument_target_value, symObjAddr: 0xBB0, symBinAddr: 0x10000E564, symSize: 0x284 }
-  - { offsetInCU: 0x4B7, offset: 0x33E1, size: 0x8, addend: 0x0, symName: ___llvm_profile_instrument_memop, symObjAddr: 0xE34, symBinAddr: 0x10000E7E8, symSize: 0x48 }
-  - { offsetInCU: 0x51B, offset: 0x3445, size: 0x8, addend: 0x0, symName: _lprofGetVPDataReader, symObjAddr: 0xE7C, symBinAddr: 0x10000E830, symSize: 0xC }
-  - { offsetInCU: 0x52C, offset: 0x3456, size: 0x8, addend: 0x0, symName: _initializeValueProfRuntimeRecord, symObjAddr: 0xE88, symBinAddr: 0x10000E83C, symSize: 0x178 }
-  - { offsetInCU: 0x543, offset: 0x346D, size: 0x8, addend: 0x0, symName: _getNumValueDataForSiteWrapper, symObjAddr: 0x1000, symBinAddr: 0x10000E9B4, symSize: 0x14 }
-  - { offsetInCU: 0x558, offset: 0x3482, size: 0x8, addend: 0x0, symName: _getNumValueDataForSiteWrapper, symObjAddr: 0x1000, symBinAddr: 0x10000E9B4, symSize: 0x14 }
-  - { offsetInCU: 0x56A, offset: 0x3494, size: 0x8, addend: 0x0, symName: _getValueProfDataSizeWrapper, symObjAddr: 0x1014, symBinAddr: 0x10000E9C8, symSize: 0xA8 }
-  - { offsetInCU: 0x5E6, offset: 0x3510, size: 0x8, addend: 0x0, symName: _getNumValueSitesRT, symObjAddr: 0x1100, symBinAddr: 0x10000EAB4, symSize: 0x10 }
-  - { offsetInCU: 0x5F7, offset: 0x3521, size: 0x8, addend: 0x0, symName: _getNumValueDataRT, symObjAddr: 0x1110, symBinAddr: 0x10000EAC4, symSize: 0x190 }
-  - { offsetInCU: 0x608, offset: 0x3532, size: 0x8, addend: 0x0, symName: _getNextNValueData, symObjAddr: 0x10BC, symBinAddr: 0x10000EA70, symSize: 0x44 }
-  - { offsetInCU: 0x2A, offset: 0x356D, size: 0x8, addend: 0x0, symName: ___llvm_profile_is_continuous_mode_enabled, symObjAddr: 0x0, symBinAddr: 0x10000EC54, symSize: 0x20 }
-  - { offsetInCU: 0x37, offset: 0x357A, size: 0x8, addend: 0x0, symName: ___llvm_profile_is_continuous_mode_enabled, symObjAddr: 0x0, symBinAddr: 0x10000EC54, symSize: 0x20 }
-  - { offsetInCU: 0x48, offset: 0x358B, size: 0x8, addend: 0x0, symName: ___llvm_profile_enable_continuous_mode, symObjAddr: 0x20, symBinAddr: 0x10000EC74, symSize: 0x10 }
-  - { offsetInCU: 0x59, offset: 0x359C, size: 0x8, addend: 0x0, symName: ___llvm_profile_set_page_size, symObjAddr: 0x30, symBinAddr: 0x10000EC84, symSize: 0xC }
-  - { offsetInCU: 0x6A, offset: 0x35AD, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_size_for_buffer, symObjAddr: 0x3C, symBinAddr: 0x10000EC90, symSize: 0x6C }
-  - { offsetInCU: 0x89, offset: 0x35CC, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_size_for_buffer_internal, symObjAddr: 0xA8, symBinAddr: 0x10000ECFC, symSize: 0x134 }
-  - { offsetInCU: 0x1DA, offset: 0x371D, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_data, symObjAddr: 0x1DC, symBinAddr: 0x10000EE30, symSize: 0x1C }
-  - { offsetInCU: 0x1EB, offset: 0x372E, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_data_size, symObjAddr: 0x1F8, symBinAddr: 0x10000EE4C, symSize: 0x24 }
-  - { offsetInCU: 0x200, offset: 0x3743, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_data_size, symObjAddr: 0x1F8, symBinAddr: 0x10000EE4C, symSize: 0x24 }
-  - { offsetInCU: 0x211, offset: 0x3754, size: 0x8, addend: 0x0, symName: ___llvm_profile_counter_entry_size, symObjAddr: 0x21C, symBinAddr: 0x10000EE70, symSize: 0x20 }
-  - { offsetInCU: 0x222, offset: 0x3765, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_counters, symObjAddr: 0x23C, symBinAddr: 0x10000EE90, symSize: 0x4C }
-  - { offsetInCU: 0x25C, offset: 0x379F, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_counters_size, symObjAddr: 0x288, symBinAddr: 0x10000EEDC, symSize: 0x60 }
-  - { offsetInCU: 0x2BF, offset: 0x3802, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_padding_sizes_for_counters, symObjAddr: 0x2E8, symBinAddr: 0x10000EF3C, symSize: 0xA8 }
-  - { offsetInCU: 0x336, offset: 0x3879, size: 0x8, addend: 0x0, symName: _initBufferWriter, symObjAddr: 0x390, symBinAddr: 0x10000EFE4, symSize: 0x10 }
-  - { offsetInCU: 0x34D, offset: 0x3890, size: 0x8, addend: 0x0, symName: ___llvm_profile_write_buffer, symObjAddr: 0x3A0, symBinAddr: 0x10000EFF4, symSize: 0x34 }
-  - { offsetInCU: 0x387, offset: 0x38CA, size: 0x8, addend: 0x0, symName: ___llvm_profile_write_buffer_internal, symObjAddr: 0x3D4, symBinAddr: 0x10000F028, symSize: 0x3C }
-  - { offsetInCU: 0x2A, offset: 0x392E, size: 0x8, addend: 0x0, symName: _lprofCreateBufferIOInternal, symObjAddr: 0x0, symBinAddr: 0x10000F064, symSize: 0x78 }
-  - { offsetInCU: 0x3D, offset: 0x3941, size: 0x8, addend: 0x0, symName: _lprofCreateBufferIOInternal, symObjAddr: 0x0, symBinAddr: 0x10000F064, symSize: 0x78 }
-  - { offsetInCU: 0x78, offset: 0x397C, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_path_prefix, symObjAddr: 0x78, symBinAddr: 0x10000F0DC, symSize: 0x154 }
-  - { offsetInCU: 0xBC, offset: 0x39C0, size: 0x8, addend: 0x0, symName: _getCurFilenameLength, symObjAddr: 0x1CC, symBinAddr: 0x10000F230, symSize: 0x324 }
-  - { offsetInCU: 0xCD, offset: 0x39D1, size: 0x8, addend: 0x0, symName: _getCurFilename, symObjAddr: 0x4F0, symBinAddr: 0x10000F554, symSize: 0x338 }
-  - { offsetInCU: 0x160, offset: 0x3A64, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_filename, symObjAddr: 0x828, symBinAddr: 0x10000F88C, symSize: 0x8C }
-  - { offsetInCU: 0x192, offset: 0x3A96, size: 0x8, addend: 0x0, symName: ___llvm_profile_initialize_file, symObjAddr: 0x8B4, symBinAddr: 0x10000F918, symSize: 0x7C }
-  - { offsetInCU: 0x1F4, offset: 0x3AF8, size: 0x8, addend: 0x0, symName: _parseAndSetFilename, symObjAddr: 0x930, symBinAddr: 0x10000F994, symSize: 0x578 }
-  - { offsetInCU: 0x366, offset: 0x3C6A, size: 0x8, addend: 0x0, symName: _truncateCurrentFile, symObjAddr: 0x1D28, symBinAddr: 0x100010D8C, symSize: 0xD8 }
-  - { offsetInCU: 0x3D1, offset: 0x3CD5, size: 0x8, addend: 0x0, symName: _initializeProfileForContinuousMode, symObjAddr: 0x1E00, symBinAddr: 0x100010E64, symSize: 0x25C }
-  - { offsetInCU: 0x534, offset: 0x3E38, size: 0x8, addend: 0x0, symName: ___llvm_profile_initialize, symObjAddr: 0xEA8, symBinAddr: 0x10000FF0C, symSize: 0xBC }
-  - { offsetInCU: 0x5BE, offset: 0x3EC2, size: 0x8, addend: 0x0, symName: ___llvm_profile_register_write_file_atexit, symObjAddr: 0xF64, symBinAddr: 0x10000FFC8, symSize: 0x48 }
-  - { offsetInCU: 0x5DD, offset: 0x3EE1, size: 0x8, addend: 0x0, symName: ___llvm_profile_set_filename, symObjAddr: 0xFAC, symBinAddr: 0x100010010, symSize: 0x3C }
-  - { offsetInCU: 0x5FC, offset: 0x3F00, size: 0x8, addend: 0x0, symName: ___llvm_profile_write_file, symObjAddr: 0xFE8, symBinAddr: 0x10001004C, symSize: 0x190 }
-  - { offsetInCU: 0x654, offset: 0x3F58, size: 0x8, addend: 0x0, symName: _writeFile, symObjAddr: 0x1178, symBinAddr: 0x1000101DC, symSize: 0x288 }
-  - { offsetInCU: 0x83B, offset: 0x413F, size: 0x8, addend: 0x0, symName: _createProfileDir, symObjAddr: 0x205C, symBinAddr: 0x1000110C0, symSize: 0x98 }
-  - { offsetInCU: 0x86C, offset: 0x4170, size: 0x8, addend: 0x0, symName: _getProfileFileSizeForMerging, symObjAddr: 0x188C, symBinAddr: 0x1000108F0, symSize: 0x114 }
-  - { offsetInCU: 0x8A5, offset: 0x41A9, size: 0x8, addend: 0x0, symName: _mmapProfileForMerging, symObjAddr: 0x19A0, symBinAddr: 0x100010A04, symSize: 0xC0 }
-  - { offsetInCU: 0x909, offset: 0x420D, size: 0x8, addend: 0x0, symName: ___llvm_profile_dump, symObjAddr: 0x1400, symBinAddr: 0x100010464, symSize: 0x70 }
-  - { offsetInCU: 0x95D, offset: 0x4261, size: 0x8, addend: 0x0, symName: ___llvm_orderfile_write_file, symObjAddr: 0x1470, symBinAddr: 0x1000104D4, symSize: 0x22C }
-  - { offsetInCU: 0x9F3, offset: 0x42F7, size: 0x8, addend: 0x0, symName: ___llvm_orderfile_dump, symObjAddr: 0x169C, symBinAddr: 0x100010700, symSize: 0x4 }
-  - { offsetInCU: 0xA08, offset: 0x430C, size: 0x8, addend: 0x0, symName: ___llvm_orderfile_dump, symObjAddr: 0x169C, symBinAddr: 0x100010700, symSize: 0x4 }
-  - { offsetInCU: 0xA12, offset: 0x4316, size: 0x8, addend: 0x0, symName: _writeFileWithoutReturn, symObjAddr: 0x16A0, symBinAddr: 0x100010704, symSize: 0x4 }
-  - { offsetInCU: 0xA27, offset: 0x432B, size: 0x8, addend: 0x0, symName: _writeFileWithoutReturn, symObjAddr: 0x16A0, symBinAddr: 0x100010704, symSize: 0x4 }
-  - { offsetInCU: 0xA3D, offset: 0x4341, size: 0x8, addend: 0x0, symName: ___llvm_profile_set_file_object, symObjAddr: 0x16A4, symBinAddr: 0x100010708, symSize: 0x1E8 }
-  - { offsetInCU: 0xB59, offset: 0x445D, size: 0x8, addend: 0x0, symName: _mmapForContinuousMode, symObjAddr: 0x1A60, symBinAddr: 0x100010AC4, symSize: 0x184 }
-  - { offsetInCU: 0xBA0, offset: 0x44A4, size: 0x8, addend: 0x0, symName: _fileWriter, symObjAddr: 0x1BE4, symBinAddr: 0x100010C48, symSize: 0x144 }
-  - { offsetInCU: 0xBD3, offset: 0x44D7, size: 0x8, addend: 0x0, symName: _exitSignalHandler, symObjAddr: 0x20F4, symBinAddr: 0x100011158, symSize: 0x10 }
-  - { offsetInCU: 0x2A, offset: 0x4512, size: 0x8, addend: 0x0, symName: _lprofGetLoadModuleSignature, symObjAddr: 0x0, symBinAddr: 0x100011168, symSize: 0xD4 }
-  - { offsetInCU: 0x37, offset: 0x451F, size: 0x8, addend: 0x0, symName: _lprofGetLoadModuleSignature, symObjAddr: 0x0, symBinAddr: 0x100011168, symSize: 0xD4 }
-  - { offsetInCU: 0x48, offset: 0x4530, size: 0x8, addend: 0x0, symName: ___llvm_profile_check_compatibility, symObjAddr: 0xD4, symBinAddr: 0x10001123C, symSize: 0x194 }
-  - { offsetInCU: 0x59, offset: 0x4541, size: 0x8, addend: 0x0, symName: ___llvm_profile_merge_from_buffer, symObjAddr: 0x268, symBinAddr: 0x1000113D0, symSize: 0x1FC }
-  - { offsetInCU: 0x2A, offset: 0x4588, size: 0x8, addend: 0x0, symName: _lprofMergeValueProfData, symObjAddr: 0x0, symBinAddr: 0x1000115CC, symSize: 0xF4 }
-  - { offsetInCU: 0x37, offset: 0x4595, size: 0x8, addend: 0x0, symName: _lprofMergeValueProfData, symObjAddr: 0x0, symBinAddr: 0x1000115CC, symSize: 0xF4 }
-  - { offsetInCU: 0x2A, offset: 0x4610, size: 0x8, addend: 0x0, symName: _lprofBufferWriter, symObjAddr: 0x0, symBinAddr: 0x1000116C0, symSize: 0x70 }
-  - { offsetInCU: 0x37, offset: 0x461D, size: 0x8, addend: 0x0, symName: _lprofBufferWriter, symObjAddr: 0x0, symBinAddr: 0x1000116C0, symSize: 0x70 }
-  - { offsetInCU: 0x4E, offset: 0x4634, size: 0x8, addend: 0x0, symName: _lprofCreateBufferIO, symObjAddr: 0x70, symBinAddr: 0x100011730, symSize: 0x48 }
-  - { offsetInCU: 0x6C, offset: 0x4652, size: 0x8, addend: 0x0, symName: _lprofDeleteBufferIO, symObjAddr: 0xB8, symBinAddr: 0x100011778, symSize: 0x50 }
-  - { offsetInCU: 0xA0, offset: 0x4686, size: 0x8, addend: 0x0, symName: _lprofBufferIOWrite, symObjAddr: 0x108, symBinAddr: 0x1000117C8, symSize: 0x138 }
-  - { offsetInCU: 0xFC, offset: 0x46E2, size: 0x8, addend: 0x0, symName: _lprofBufferIOFlush, symObjAddr: 0x240, symBinAddr: 0x100011900, symSize: 0xC4 }
-  - { offsetInCU: 0x119, offset: 0x46FF, size: 0x8, addend: 0x0, symName: _lprofWriteData, symObjAddr: 0x304, symBinAddr: 0x1000119C4, symSize: 0x98 }
-  - { offsetInCU: 0x138, offset: 0x471E, size: 0x8, addend: 0x0, symName: _lprofWriteDataImpl, symObjAddr: 0x39C, symBinAddr: 0x100011A5C, symSize: 0x334 }
-  - { offsetInCU: 0x1FF, offset: 0x47E5, size: 0x8, addend: 0x0, symName: _writeOneValueProfData, symObjAddr: 0x6D0, symBinAddr: 0x100011D90, symSize: 0x388 }
-  - { offsetInCU: 0x2A, offset: 0x4916, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_data, symObjAddr: 0x0, symBinAddr: 0x100012118, symSize: 0xC }
-  - { offsetInCU: 0x37, offset: 0x4923, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_data, symObjAddr: 0x0, symBinAddr: 0x100012118, symSize: 0xC }
-  - { offsetInCU: 0x48, offset: 0x4934, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_data, symObjAddr: 0xC, symBinAddr: 0x100012124, symSize: 0xC }
-  - { offsetInCU: 0x59, offset: 0x4945, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_names, symObjAddr: 0x18, symBinAddr: 0x100012130, symSize: 0xC }
-  - { offsetInCU: 0x6A, offset: 0x4956, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_names, symObjAddr: 0x24, symBinAddr: 0x10001213C, symSize: 0xC }
-  - { offsetInCU: 0x7B, offset: 0x4967, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_counters, symObjAddr: 0x30, symBinAddr: 0x100012148, symSize: 0xC }
-  - { offsetInCU: 0x8C, offset: 0x4978, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_counters, symObjAddr: 0x3C, symBinAddr: 0x100012154, symSize: 0xC }
-  - { offsetInCU: 0x9D, offset: 0x4989, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_orderfile, symObjAddr: 0x48, symBinAddr: 0x100012160, symSize: 0xC }
-  - { offsetInCU: 0xAE, offset: 0x499A, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_vnodes, symObjAddr: 0x54, symBinAddr: 0x10001216C, symSize: 0xC }
-  - { offsetInCU: 0xBF, offset: 0x49AB, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_vnodes, symObjAddr: 0x60, symBinAddr: 0x100012178, symSize: 0xC }
-  - { offsetInCU: 0xD0, offset: 0x49BC, size: 0x8, addend: 0x0, symName: ___llvm_write_binary_ids, symObjAddr: 0x6C, symBinAddr: 0x100012184, symSize: 0x8 }
-  - { offsetInCU: 0x2A, offset: 0x49F7, size: 0x8, addend: 0x0, symName: ___llvm_profile_recursive_mkdir, symObjAddr: 0x0, symBinAddr: 0x100012190, symSize: 0x5C }
-  - { offsetInCU: 0x3D, offset: 0x4A0A, size: 0x8, addend: 0x0, symName: ___llvm_profile_recursive_mkdir, symObjAddr: 0x0, symBinAddr: 0x100012190, symSize: 0x5C }
-  - { offsetInCU: 0x78, offset: 0x4A45, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_dir_mode, symObjAddr: 0x5C, symBinAddr: 0x1000121EC, symSize: 0xC }
-  - { offsetInCU: 0x89, offset: 0x4A56, size: 0x8, addend: 0x0, symName: ___llvm_profile_set_dir_mode, symObjAddr: 0x68, symBinAddr: 0x1000121F8, symSize: 0xC }
-  - { offsetInCU: 0x9A, offset: 0x4A67, size: 0x8, addend: 0x0, symName: _lprofGetHostName, symObjAddr: 0x74, symBinAddr: 0x100012204, symSize: 0x80 }
-  - { offsetInCU: 0xC0, offset: 0x4A8D, size: 0x8, addend: 0x0, symName: _lprofLockFd, symObjAddr: 0xF4, symBinAddr: 0x100012284, symSize: 0x90 }
-  - { offsetInCU: 0xFC, offset: 0x4AC9, size: 0x8, addend: 0x0, symName: _lprofUnlockFd, symObjAddr: 0x184, symBinAddr: 0x100012314, symSize: 0x90 }
-  - { offsetInCU: 0x12E, offset: 0x4AFB, size: 0x8, addend: 0x0, symName: _lprofLockFileHandle, symObjAddr: 0x214, symBinAddr: 0x1000123A4, symSize: 0x94 }
-  - { offsetInCU: 0x188, offset: 0x4B55, size: 0x8, addend: 0x0, symName: _lprofUnlockFileHandle, symObjAddr: 0x2A8, symBinAddr: 0x100012438, symSize: 0x94 }
-  - { offsetInCU: 0x1D5, offset: 0x4BA2, size: 0x8, addend: 0x0, symName: _lprofOpenFileEx, symObjAddr: 0x33C, symBinAddr: 0x1000124CC, symSize: 0xD4 }
-  - { offsetInCU: 0x23E, offset: 0x4C0B, size: 0x8, addend: 0x0, symName: _lprofGetPathPrefix, symObjAddr: 0x410, symBinAddr: 0x1000125A0, symSize: 0x9C }
-  - { offsetInCU: 0x285, offset: 0x4C52, size: 0x8, addend: 0x0, symName: _lprofApplyPathPrefix, symObjAddr: 0x4AC, symBinAddr: 0x10001263C, symSize: 0xAC }
-  - { offsetInCU: 0x296, offset: 0x4C63, size: 0x8, addend: 0x0, symName: _lprofFindFirstDirSeparator, symObjAddr: 0x558, symBinAddr: 0x1000126E8, symSize: 0x8 }
-  - { offsetInCU: 0x2A7, offset: 0x4C74, size: 0x8, addend: 0x0, symName: _lprofFindLastDirSeparator, symObjAddr: 0x560, symBinAddr: 0x1000126F0, symSize: 0x8 }
-  - { offsetInCU: 0x2B8, offset: 0x4C85, size: 0x8, addend: 0x0, symName: _lprofInstallSignalHandler, symObjAddr: 0x568, symBinAddr: 0x1000126F8, symSize: 0x58 }
-  - { offsetInCU: 0x2DE, offset: 0x4CAB, size: 0x8, addend: 0x0, symName: _lprofSuspendSigKill, symObjAddr: 0x5C0, symBinAddr: 0x100012750, symSize: 0x8 }
-  - { offsetInCU: 0x2EF, offset: 0x4CBC, size: 0x8, addend: 0x0, symName: _lprofRestoreSigKill, symObjAddr: 0x5C8, symBinAddr: 0x100012758, symSize: 0x4 }
-  - { offsetInCU: 0x30C, offset: 0x4CD9, size: 0x8, addend: 0x0, symName: _lprofReleaseMemoryPagesToOS, symObjAddr: 0x5CC, symBinAddr: 0x10001275C, symSize: 0x58 }
+  - { offset: 0x246D, size: 0x8, addend: 0x0, symName: ___llvm_profile_set_timestamp, symObjAddr: 0x0, symBinAddr: 0x100009510, symSize: 0x28 }
+  - { offset: 0x247A, size: 0x8, addend: 0x0, symName: ___llvm_profile_set_timestamp, symObjAddr: 0x0, symBinAddr: 0x100009510, symSize: 0x28 }
+  - { offset: 0x248B, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_magic, symObjAddr: 0x28, symBinAddr: 0x100009538, symSize: 0x14 }
+  - { offset: 0x249C, size: 0x8, addend: 0x0, symName: ___llvm_profile_set_dumped, symObjAddr: 0x3C, symBinAddr: 0x10000954C, symSize: 0x8 }
+  - { offset: 0x24C2, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_padding_bytes, symObjAddr: 0x44, symBinAddr: 0x100009554, symSize: 0xC }
+  - { offset: 0x24D3, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_version, symObjAddr: 0x50, symBinAddr: 0x100009560, symSize: 0xC }
+  - { offset: 0x24EA, size: 0x8, addend: 0x0, symName: ___llvm_profile_reset_counters, symObjAddr: 0x5C, symBinAddr: 0x10000956C, symSize: 0xD4 }
+  - { offset: 0x25D3, size: 0x8, addend: 0x0, symName: _lprofProfileDumped, symObjAddr: 0x0, symBinAddr: 0x100009640, symSize: 0xC }
+  - { offset: 0x25E0, size: 0x8, addend: 0x0, symName: _lprofProfileDumped, symObjAddr: 0x0, symBinAddr: 0x100009640, symSize: 0xC }
+  - { offset: 0x25F1, size: 0x8, addend: 0x0, symName: _lprofSetProfileDumped, symObjAddr: 0xC, symBinAddr: 0x10000964C, symSize: 0xC }
+  - { offset: 0x262C, size: 0x8, addend: 0x0, symName: _getValueProfRecordHeaderSize, symObjAddr: 0x0, symBinAddr: 0x100009658, symSize: 0xC }
+  - { offset: 0x2639, size: 0x8, addend: 0x0, symName: _getValueProfRecordHeaderSize, symObjAddr: 0x0, symBinAddr: 0x100009658, symSize: 0xC }
+  - { offset: 0x2650, size: 0x8, addend: 0x0, symName: _getValueProfRecordSize, symObjAddr: 0xC, symBinAddr: 0x100009664, symSize: 0x10 }
+  - { offset: 0x2665, size: 0x8, addend: 0x0, symName: _getValueProfRecordSize, symObjAddr: 0xC, symBinAddr: 0x100009664, symSize: 0x10 }
+  - { offset: 0x2677, size: 0x8, addend: 0x0, symName: _getValueProfRecordValueData, symObjAddr: 0x1C, symBinAddr: 0x100009674, symSize: 0x14 }
+  - { offset: 0x269E, size: 0x8, addend: 0x0, symName: _getValueProfRecordNumValueData, symObjAddr: 0x30, symBinAddr: 0x100009688, symSize: 0x1BC }
+  - { offset: 0x26BB, size: 0x8, addend: 0x0, symName: _getValueProfRecordNext, symObjAddr: 0x1EC, symBinAddr: 0x100009844, symSize: 0x1D8 }
+  - { offset: 0x26F5, size: 0x8, addend: 0x0, symName: _getFirstValueProfRecord, symObjAddr: 0x3C4, symBinAddr: 0x100009A1C, symSize: 0x8 }
+  - { offset: 0x2706, size: 0x8, addend: 0x0, symName: _getValueProfDataSize, symObjAddr: 0x3CC, symBinAddr: 0x100009A24, symSize: 0xF0 }
+  - { offset: 0x2786, size: 0x8, addend: 0x0, symName: _serializeValueProfRecordFrom, symObjAddr: 0x4BC, symBinAddr: 0x100009B14, symSize: 0xA0 }
+  - { offset: 0x27F1, size: 0x8, addend: 0x0, symName: _serializeValueProfDataFrom, symObjAddr: 0x55C, symBinAddr: 0x100009BB4, symSize: 0x634 }
+  - { offset: 0x2966, size: 0x8, addend: 0x0, symName: _InstProfClzll, symObjAddr: 0xB90, symBinAddr: 0x10000A1E8, symSize: 0x8 }
+  - { offset: 0x2977, size: 0x8, addend: 0x0, symName: _InstProfPopcountll, symObjAddr: 0xB98, symBinAddr: 0x10000A1F0, symSize: 0x14 }
+  - { offset: 0x298E, size: 0x8, addend: 0x0, symName: _InstrProfGetRangeRepValue, symObjAddr: 0xBAC, symBinAddr: 0x10000A204, symSize: 0x38 }
+  - { offset: 0x29B5, size: 0x8, addend: 0x0, symName: _InstrProfIsSingleValRange, symObjAddr: 0xBE4, symBinAddr: 0x10000A23C, symSize: 0x20 }
+  - { offset: 0x29C6, size: 0x8, addend: 0x0, symName: _lprofSetupValueProfiler, symObjAddr: 0xC04, symBinAddr: 0x10000A25C, symSize: 0x68 }
+  - { offset: 0x2A00, size: 0x8, addend: 0x0, symName: _lprofSetMaxValsPerSite, symObjAddr: 0xC6C, symBinAddr: 0x10000A2C4, symSize: 0x18 }
+  - { offset: 0x2A11, size: 0x8, addend: 0x0, symName: ___llvm_profile_set_num_value_sites, symObjAddr: 0xC84, symBinAddr: 0x10000A2DC, symSize: 0xC }
+  - { offset: 0x2A22, size: 0x8, addend: 0x0, symName: ___llvm_profile_iterate_data, symObjAddr: 0xC90, symBinAddr: 0x10000A2E8, symSize: 0x8 }
+  - { offset: 0x2A33, size: 0x8, addend: 0x0, symName: ___llvm_get_function_addr, symObjAddr: 0xC98, symBinAddr: 0x10000A2F0, symSize: 0x8 }
+  - { offset: 0x2A56, size: 0x8, addend: 0x0, symName: ___llvm_profile_instrument_target, symObjAddr: 0xCA0, symBinAddr: 0x10000A2F8, symSize: 0x288 }
+  - { offset: 0x2AE4, size: 0x8, addend: 0x0, symName: ___llvm_profile_instrument_target_value, symObjAddr: 0xF28, symBinAddr: 0x10000A580, symSize: 0x2C8 }
+  - { offset: 0x2B63, size: 0x8, addend: 0x0, symName: ___llvm_profile_instrument_memop, symObjAddr: 0x11F0, symBinAddr: 0x10000A848, symSize: 0x38 }
+  - { offset: 0x2BAD, size: 0x8, addend: 0x0, symName: _lprofGetVPDataReader, symObjAddr: 0x1228, symBinAddr: 0x10000A880, symSize: 0xC }
+  - { offset: 0x2BBE, size: 0x8, addend: 0x0, symName: _initializeValueProfRuntimeRecord, symObjAddr: 0x1234, symBinAddr: 0x10000A88C, symSize: 0x210 }
+  - { offset: 0x2BD5, size: 0x8, addend: 0x0, symName: _getNumValueDataForSiteWrapper, symObjAddr: 0x1444, symBinAddr: 0x10000AA9C, symSize: 0x14 }
+  - { offset: 0x2BEA, size: 0x8, addend: 0x0, symName: _getNumValueDataForSiteWrapper, symObjAddr: 0x1444, symBinAddr: 0x10000AA9C, symSize: 0x14 }
+  - { offset: 0x2BFC, size: 0x8, addend: 0x0, symName: _getValueProfDataSizeWrapper, symObjAddr: 0x1458, symBinAddr: 0x10000AAB0, symSize: 0xE0 }
+  - { offset: 0x2C92, size: 0x8, addend: 0x0, symName: _getNumValueSitesRT, symObjAddr: 0x1574, symBinAddr: 0x10000ABCC, symSize: 0x10 }
+  - { offset: 0x2CA3, size: 0x8, addend: 0x0, symName: _getNumValueDataRT, symObjAddr: 0x1584, symBinAddr: 0x10000ABDC, symSize: 0x1C4 }
+  - { offset: 0x2CB4, size: 0x8, addend: 0x0, symName: _getNextNValueData, symObjAddr: 0x1538, symBinAddr: 0x10000AB90, symSize: 0x3C }
+  - { offset: 0x2CEF, size: 0x8, addend: 0x0, symName: ___llvm_profile_is_continuous_mode_enabled, symObjAddr: 0x0, symBinAddr: 0x10000ADA0, symSize: 0x1C }
+  - { offset: 0x2CFC, size: 0x8, addend: 0x0, symName: ___llvm_profile_is_continuous_mode_enabled, symObjAddr: 0x0, symBinAddr: 0x10000ADA0, symSize: 0x1C }
+  - { offset: 0x2D0D, size: 0x8, addend: 0x0, symName: ___llvm_profile_enable_continuous_mode, symObjAddr: 0x1C, symBinAddr: 0x10000ADBC, symSize: 0x10 }
+  - { offset: 0x2D1E, size: 0x8, addend: 0x0, symName: ___llvm_profile_disable_continuous_mode, symObjAddr: 0x2C, symBinAddr: 0x10000ADCC, symSize: 0xC }
+  - { offset: 0x2D2F, size: 0x8, addend: 0x0, symName: ___llvm_profile_set_page_size, symObjAddr: 0x38, symBinAddr: 0x10000ADD8, symSize: 0xC }
+  - { offset: 0x2D40, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_size_for_buffer, symObjAddr: 0x44, symBinAddr: 0x10000ADE4, symSize: 0xC8 }
+  - { offset: 0x2E27, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_size_for_buffer_internal, symObjAddr: 0x10C, symBinAddr: 0x10000AEAC, symSize: 0x1C8 }
+  - { offset: 0x3064, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_data, symObjAddr: 0x2D4, symBinAddr: 0x10000B074, symSize: 0x10 }
+  - { offset: 0x3075, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_data_size, symObjAddr: 0x2E4, symBinAddr: 0x10000B084, symSize: 0x10 }
+  - { offset: 0x308A, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_data_size, symObjAddr: 0x2E4, symBinAddr: 0x10000B084, symSize: 0x10 }
+  - { offset: 0x309B, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_vtable, symObjAddr: 0x2F4, symBinAddr: 0x10000B094, symSize: 0x18 }
+  - { offset: 0x30AC, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_vtable_section_size, symObjAddr: 0x30C, symBinAddr: 0x10000B0AC, symSize: 0x8 }
+  - { offset: 0x30BD, size: 0x8, addend: 0x0, symName: ___llvm_profile_counter_entry_size, symObjAddr: 0x314, symBinAddr: 0x10000B0B4, symSize: 0x20 }
+  - { offset: 0x30DC, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_counters, symObjAddr: 0x334, symBinAddr: 0x10000B0D4, symSize: 0x4C }
+  - { offset: 0x3130, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_counters_size, symObjAddr: 0x380, symBinAddr: 0x10000B120, symSize: 0x5C }
+  - { offset: 0x31BA, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_num_bitmap_bytes, symObjAddr: 0x3DC, symBinAddr: 0x10000B17C, symSize: 0x8 }
+  - { offset: 0x31CB, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_name_size, symObjAddr: 0x3E4, symBinAddr: 0x10000B184, symSize: 0x8 }
+  - { offset: 0x31DC, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_padding_sizes_for_counters, symObjAddr: 0x3EC, symBinAddr: 0x10000B18C, symSize: 0x160 }
+  - { offset: 0x32A8, size: 0x8, addend: 0x0, symName: _initBufferWriter, symObjAddr: 0x54C, symBinAddr: 0x10000B2EC, symSize: 0x10 }
+  - { offset: 0x32BF, size: 0x8, addend: 0x0, symName: ___llvm_profile_write_buffer, symObjAddr: 0x55C, symBinAddr: 0x10000B2FC, symSize: 0x34 }
+  - { offset: 0x32F9, size: 0x8, addend: 0x0, symName: ___llvm_profile_write_buffer_internal, symObjAddr: 0x590, symBinAddr: 0x10000B330, symSize: 0x44 }
+  - { offset: 0x3334, size: 0x8, addend: 0x0, symName: _doneCopyingAllEltsFromSrcBufferAtIdx, symObjAddr: 0x5D4, symBinAddr: 0x10000B374, symSize: 0x1C }
+  - { offset: 0x3345, size: 0x8, addend: 0x0, symName: _isIncrementalProfileWriterDone, symObjAddr: 0x5F0, symBinAddr: 0x10000B390, symSize: 0x10 }
+  - { offset: 0x3362, size: 0x8, addend: 0x0, symName: _tryWriteOneChunkAndUpdateWriterState, symObjAddr: 0x600, symBinAddr: 0x10000B3A0, symSize: 0x110 }
+  - { offset: 0x33A4, size: 0x8, addend: 0x0, symName: _writeProfileDataInChunks, symObjAddr: 0x710, symBinAddr: 0x10000B4B0, symSize: 0x158 }
+  - { offset: 0x33F4, size: 0x8, addend: 0x0, symName: ___llvm_profile_write_buffer_incremental, symObjAddr: 0x868, symBinAddr: 0x10000B608, symSize: 0x1C8 }
+  - { offset: 0x3468, size: 0x8, addend: 0x0, symName: ___llvm_profile_init_incremental_writer_state, symObjAddr: 0xA30, symBinAddr: 0x10000B7D0, symSize: 0x68 }
+  - { offset: 0x349C, size: 0x8, addend: 0x0, symName: ___llvm_profile_incremental_writer_done, symObjAddr: 0xA98, symBinAddr: 0x10000B838, symSize: 0x74 }
+  - { offset: 0x34E5, size: 0x8, addend: 0x0, symName: _lprofCreateBufferIOInternal, symObjAddr: 0x0, symBinAddr: 0x10000B8AC, symSize: 0x78 }
+  - { offset: 0x34F8, size: 0x8, addend: 0x0, symName: _lprofCreateBufferIOInternal, symObjAddr: 0x0, symBinAddr: 0x10000B8AC, symSize: 0x78 }
+  - { offset: 0x3554, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_path_prefix, symObjAddr: 0x78, symBinAddr: 0x10000B924, symSize: 0x154 }
+  - { offset: 0x35A7, size: 0x8, addend: 0x0, symName: _getCurFilenameLength, symObjAddr: 0x1CC, symBinAddr: 0x10000BA78, symSize: 0x338 }
+  - { offset: 0x35ED, size: 0x8, addend: 0x0, symName: _getCurFilename, symObjAddr: 0x504, symBinAddr: 0x10000BDB0, symSize: 0x338 }
+  - { offset: 0x36DD, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_filename, symObjAddr: 0x83C, symBinAddr: 0x10000C0E8, symSize: 0x8C }
+  - { offset: 0x3729, size: 0x8, addend: 0x0, symName: ___llvm_profile_initialize_file, symObjAddr: 0x8C8, symBinAddr: 0x10000C174, symSize: 0x7C }
+  - { offset: 0x378B, size: 0x8, addend: 0x0, symName: _parseAndSetFilename, symObjAddr: 0x944, symBinAddr: 0x10000C1F0, symSize: 0x580 }
+  - { offset: 0x39CD, size: 0x8, addend: 0x0, symName: _truncateCurrentFile, symObjAddr: 0x1E70, symBinAddr: 0x10000D71C, symSize: 0xD8 }
+  - { offset: 0x3A3A, size: 0x8, addend: 0x0, symName: _initializeProfileForContinuousMode, symObjAddr: 0x1F48, symBinAddr: 0x10000D7F4, symSize: 0x25C }
+  - { offset: 0x3C2E, size: 0x8, addend: 0x0, symName: ___llvm_profile_initialize, symObjAddr: 0xEC4, symBinAddr: 0x10000C770, symSize: 0xBC }
+  - { offset: 0x3CDF, size: 0x8, addend: 0x0, symName: ___llvm_profile_register_write_file_atexit, symObjAddr: 0xF80, symBinAddr: 0x10000C82C, symSize: 0x48 }
+  - { offset: 0x3CFE, size: 0x8, addend: 0x0, symName: ___llvm_profile_set_filename, symObjAddr: 0xFC8, symBinAddr: 0x10000C874, symSize: 0x3C }
+  - { offset: 0x3D2A, size: 0x8, addend: 0x0, symName: ___llvm_profile_write_file, symObjAddr: 0x1004, symBinAddr: 0x10000C8B0, symSize: 0x1BC }
+  - { offset: 0x3DF3, size: 0x8, addend: 0x0, symName: _writeFile, symObjAddr: 0x11C0, symBinAddr: 0x10000CA6C, symSize: 0x29C }
+  - { offset: 0x4071, size: 0x8, addend: 0x0, symName: _createProfileDir, symObjAddr: 0x21A4, symBinAddr: 0x10000DA50, symSize: 0x98 }
+  - { offset: 0x40B1, size: 0x8, addend: 0x0, symName: _getProfileFileSizeForMerging, symObjAddr: 0x1900, symBinAddr: 0x10000D1AC, symSize: 0x114 }
+  - { offset: 0x4138, size: 0x8, addend: 0x0, symName: _mmapProfileForMerging, symObjAddr: 0x1A14, symBinAddr: 0x10000D2C0, symSize: 0xC0 }
+  - { offset: 0x41E0, size: 0x8, addend: 0x0, symName: ___llvm_profile_dump, symObjAddr: 0x145C, symBinAddr: 0x10000CD08, symSize: 0x70 }
+  - { offset: 0x4241, size: 0x8, addend: 0x0, symName: ___llvm_orderfile_write_file, symObjAddr: 0x14CC, symBinAddr: 0x10000CD78, symSize: 0x244 }
+  - { offset: 0x436F, size: 0x8, addend: 0x0, symName: ___llvm_orderfile_dump, symObjAddr: 0x1710, symBinAddr: 0x10000CFBC, symSize: 0x4 }
+  - { offset: 0x4384, size: 0x8, addend: 0x0, symName: ___llvm_orderfile_dump, symObjAddr: 0x1710, symBinAddr: 0x10000CFBC, symSize: 0x4 }
+  - { offset: 0x438E, size: 0x8, addend: 0x0, symName: _writeFileWithoutReturn, symObjAddr: 0x1714, symBinAddr: 0x10000CFC0, symSize: 0x4 }
+  - { offset: 0x43A3, size: 0x8, addend: 0x0, symName: _writeFileWithoutReturn, symObjAddr: 0x1714, symBinAddr: 0x10000CFC0, symSize: 0x4 }
+  - { offset: 0x43B9, size: 0x8, addend: 0x0, symName: ___llvm_profile_set_file_object, symObjAddr: 0x1718, symBinAddr: 0x10000CFC4, symSize: 0x1E8 }
+  - { offset: 0x4523, size: 0x8, addend: 0x0, symName: _mmapForContinuousMode, symObjAddr: 0x1AD4, symBinAddr: 0x10000D380, symSize: 0x260 }
+  - { offset: 0x46B3, size: 0x8, addend: 0x0, symName: _fileWriter, symObjAddr: 0x1D34, symBinAddr: 0x10000D5E0, symSize: 0x13C }
+  - { offset: 0x4707, size: 0x8, addend: 0x0, symName: _exitSignalHandler, symObjAddr: 0x223C, symBinAddr: 0x10000DAE8, symSize: 0x10 }
+  - { offset: 0x4757, size: 0x8, addend: 0x0, symName: _lprofGetLoadModuleSignature, symObjAddr: 0x0, symBinAddr: 0x10000DAF8, symSize: 0xD4 }
+  - { offset: 0x4764, size: 0x8, addend: 0x0, symName: _lprofGetLoadModuleSignature, symObjAddr: 0x0, symBinAddr: 0x10000DAF8, symSize: 0xD4 }
+  - { offset: 0x484D, size: 0x8, addend: 0x0, symName: ___llvm_profile_check_compatibility, symObjAddr: 0xD4, symBinAddr: 0x10000DBCC, symSize: 0x1D8 }
+  - { offset: 0x495B, size: 0x8, addend: 0x0, symName: ___llvm_profile_merge_from_buffer, symObjAddr: 0x2AC, symBinAddr: 0x10000DDA4, symSize: 0x4B4 }
+  - { offset: 0x4A87, size: 0x8, addend: 0x0, symName: _lprofMergeValueProfData, symObjAddr: 0x0, symBinAddr: 0x10000E258, symSize: 0xF4 }
+  - { offset: 0x4A94, size: 0x8, addend: 0x0, symName: _lprofMergeValueProfData, symObjAddr: 0x0, symBinAddr: 0x10000E258, symSize: 0xF4 }
+  - { offset: 0x4B23, size: 0x8, addend: 0x0, symName: _lprofBufferWriter, symObjAddr: 0x0, symBinAddr: 0x10000E34C, symSize: 0x70 }
+  - { offset: 0x4B30, size: 0x8, addend: 0x0, symName: _lprofBufferWriter, symObjAddr: 0x0, symBinAddr: 0x10000E34C, symSize: 0x70 }
+  - { offset: 0x4B47, size: 0x8, addend: 0x0, symName: _lprofCreateBufferIO, symObjAddr: 0x70, symBinAddr: 0x10000E3BC, symSize: 0x48 }
+  - { offset: 0x4B65, size: 0x8, addend: 0x0, symName: _lprofDeleteBufferIO, symObjAddr: 0xB8, symBinAddr: 0x10000E404, symSize: 0x50 }
+  - { offset: 0x4B99, size: 0x8, addend: 0x0, symName: _lprofBufferIOWrite, symObjAddr: 0x108, symBinAddr: 0x10000E454, symSize: 0x13C }
+  - { offset: 0x4BFD, size: 0x8, addend: 0x0, symName: _lprofBufferIOFlush, symObjAddr: 0x244, symBinAddr: 0x10000E590, symSize: 0xC4 }
+  - { offset: 0x4C1A, size: 0x8, addend: 0x0, symName: _lprofWriteData, symObjAddr: 0x308, symBinAddr: 0x10000E654, symSize: 0xD8 }
+  - { offset: 0x4D01, size: 0x8, addend: 0x0, symName: _lprofWriteDataImpl, symObjAddr: 0x3E0, symBinAddr: 0x10000E72C, symSize: 0x320 }
+  - { offset: 0x4DF5, size: 0x8, addend: 0x0, symName: _createHeader, symObjAddr: 0x700, symBinAddr: 0x10000EA4C, symSize: 0x1A4 }
+  - { offset: 0x4EC6, size: 0x8, addend: 0x0, symName: _writeValueProfData, symObjAddr: 0x8A4, symBinAddr: 0x10000EBF0, symSize: 0x15C }
+  - { offset: 0x4F71, size: 0x8, addend: 0x0, symName: _writeOneValueProfData, symObjAddr: 0x105C, symBinAddr: 0x10000F3A8, symSize: 0x4AC }
+  - { offset: 0x50B5, size: 0x8, addend: 0x0, symName: _lprofWriteOneBinaryId, symObjAddr: 0xA00, symBinAddr: 0x10000ED4C, symSize: 0x90 }
+  - { offset: 0x50D2, size: 0x8, addend: 0x0, symName: _addProfDataIOVecToWriterState, symObjAddr: 0xA90, symBinAddr: 0x10000EDDC, symSize: 0xB4 }
+  - { offset: 0x50FE, size: 0x8, addend: 0x0, symName: _addPaddingBytesToWriterState, symObjAddr: 0xB44, symBinAddr: 0x10000EE90, symSize: 0x84 }
+  - { offset: 0x512A, size: 0x8, addend: 0x0, symName: _addDataBytesToWriterState, symObjAddr: 0xBC8, symBinAddr: 0x10000EF14, symSize: 0xB0 }
+  - { offset: 0x5162, size: 0x8, addend: 0x0, symName: _initIncrementalProfileWriterState, symObjAddr: 0xC78, symBinAddr: 0x10000EFC4, symSize: 0x3E4 }
+  - { offset: 0x5388, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_data, symObjAddr: 0x0, symBinAddr: 0x10000F854, symSize: 0xC }
+  - { offset: 0x5395, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_data, symObjAddr: 0x0, symBinAddr: 0x10000F854, symSize: 0xC }
+  - { offset: 0x53A6, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_data, symObjAddr: 0xC, symBinAddr: 0x10000F860, symSize: 0xC }
+  - { offset: 0x53B7, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_names, symObjAddr: 0x18, symBinAddr: 0x10000F86C, symSize: 0xC }
+  - { offset: 0x53C8, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_names, symObjAddr: 0x24, symBinAddr: 0x10000F878, symSize: 0xC }
+  - { offset: 0x53D9, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_counters, symObjAddr: 0x30, symBinAddr: 0x10000F884, symSize: 0xC }
+  - { offset: 0x53EA, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_counters, symObjAddr: 0x3C, symBinAddr: 0x10000F890, symSize: 0xC }
+  - { offset: 0x53FB, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_bitmap, symObjAddr: 0x48, symBinAddr: 0x10000F89C, symSize: 0xC }
+  - { offset: 0x540C, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_bitmap, symObjAddr: 0x54, symBinAddr: 0x10000F8A8, symSize: 0xC }
+  - { offset: 0x541D, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_vtables, symObjAddr: 0x60, symBinAddr: 0x10000F8B4, symSize: 0xC }
+  - { offset: 0x542E, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_vtables, symObjAddr: 0x6C, symBinAddr: 0x10000F8C0, symSize: 0xC }
+  - { offset: 0x543F, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_vtabnames, symObjAddr: 0x78, symBinAddr: 0x10000F8CC, symSize: 0xC }
+  - { offset: 0x5450, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_vtabnames, symObjAddr: 0x84, symBinAddr: 0x10000F8D8, symSize: 0xC }
+  - { offset: 0x5461, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_orderfile, symObjAddr: 0x90, symBinAddr: 0x10000F8E4, symSize: 0xC }
+  - { offset: 0x5472, size: 0x8, addend: 0x0, symName: ___llvm_profile_begin_vnodes, symObjAddr: 0x9C, symBinAddr: 0x10000F8F0, symSize: 0xC }
+  - { offset: 0x5483, size: 0x8, addend: 0x0, symName: ___llvm_profile_end_vnodes, symObjAddr: 0xA8, symBinAddr: 0x10000F8FC, symSize: 0xC }
+  - { offset: 0x5494, size: 0x8, addend: 0x0, symName: ___llvm_write_binary_ids, symObjAddr: 0xB4, symBinAddr: 0x10000F908, symSize: 0x8 }
+  - { offset: 0x54CF, size: 0x8, addend: 0x0, symName: __GLOBAL__sub_I_InstrProfilingRuntime.cpp, symObjAddr: 0x0, symBinAddr: 0x10000F910, symSize: 0x1C }
+  - { offset: 0x54E8, size: 0x8, addend: 0x0, symName: __GLOBAL__sub_I_InstrProfilingRuntime.cpp, symObjAddr: 0x0, symBinAddr: 0x10000F910, symSize: 0x1C }
+  - { offset: 0x555C, size: 0x8, addend: 0x0, symName: ___llvm_profile_recursive_mkdir, symObjAddr: 0x0, symBinAddr: 0x10000F92C, symSize: 0x5C }
+  - { offset: 0x556F, size: 0x8, addend: 0x0, symName: ___llvm_profile_recursive_mkdir, symObjAddr: 0x0, symBinAddr: 0x10000F92C, symSize: 0x5C }
+  - { offset: 0x55AA, size: 0x8, addend: 0x0, symName: ___llvm_profile_get_dir_mode, symObjAddr: 0x5C, symBinAddr: 0x10000F988, symSize: 0xC }
+  - { offset: 0x55BB, size: 0x8, addend: 0x0, symName: ___llvm_profile_set_dir_mode, symObjAddr: 0x68, symBinAddr: 0x10000F994, symSize: 0xC }
+  - { offset: 0x55CC, size: 0x8, addend: 0x0, symName: _lprofGetHostName, symObjAddr: 0x74, symBinAddr: 0x10000F9A0, symSize: 0x80 }
+  - { offset: 0x55F2, size: 0x8, addend: 0x0, symName: _lprofLockFd, symObjAddr: 0xF4, symBinAddr: 0x10000FA20, symSize: 0x90 }
+  - { offset: 0x564F, size: 0x8, addend: 0x0, symName: _lprofUnlockFd, symObjAddr: 0x184, symBinAddr: 0x10000FAB0, symSize: 0x90 }
+  - { offset: 0x569B, size: 0x8, addend: 0x0, symName: _lprofLockFileHandle, symObjAddr: 0x214, symBinAddr: 0x10000FB40, symSize: 0x94 }
+  - { offset: 0x5710, size: 0x8, addend: 0x0, symName: _lprofUnlockFileHandle, symObjAddr: 0x2A8, symBinAddr: 0x10000FBD4, symSize: 0x94 }
+  - { offset: 0x5777, size: 0x8, addend: 0x0, symName: _lprofOpenFileEx, symObjAddr: 0x33C, symBinAddr: 0x10000FC68, symSize: 0xD4 }
+  - { offset: 0x5810, size: 0x8, addend: 0x0, symName: _lprofGetPathPrefix, symObjAddr: 0x410, symBinAddr: 0x10000FD3C, symSize: 0x98 }
+  - { offset: 0x586B, size: 0x8, addend: 0x0, symName: _lprofApplyPathPrefix, symObjAddr: 0x4A8, symBinAddr: 0x10000FDD4, symSize: 0xAC }
+  - { offset: 0x588A, size: 0x8, addend: 0x0, symName: _lprofFindFirstDirSeparator, symObjAddr: 0x554, symBinAddr: 0x10000FE80, symSize: 0x8 }
+  - { offset: 0x58B0, size: 0x8, addend: 0x0, symName: _lprofFindLastDirSeparator, symObjAddr: 0x55C, symBinAddr: 0x10000FE88, symSize: 0x8 }
+  - { offset: 0x58D6, size: 0x8, addend: 0x0, symName: _lprofInstallSignalHandler, symObjAddr: 0x564, symBinAddr: 0x10000FE90, symSize: 0x58 }
+  - { offset: 0x5909, size: 0x8, addend: 0x0, symName: _lprofSuspendSigKill, symObjAddr: 0x5BC, symBinAddr: 0x10000FEE8, symSize: 0x8 }
+  - { offset: 0x591A, size: 0x8, addend: 0x0, symName: _lprofRestoreSigKill, symObjAddr: 0x5C4, symBinAddr: 0x10000FEF0, symSize: 0x4 }
+  - { offset: 0x5937, size: 0x8, addend: 0x0, symName: _lprofReleaseMemoryPagesToOS, symObjAddr: 0x5C8, symBinAddr: 0x10000FEF4, symSize: 0x58 }
 ...
