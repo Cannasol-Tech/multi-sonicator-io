@@ -10,6 +10,7 @@ import { WebSocketHandler } from './websocket/WebSocketHandler'
 import { TestAutomationService } from './services/TestAutomationService'
 import { setupRoutes } from './routes/index'
 import { configService } from './config/ConfigService'
+import { BACKEND_PORT, getEnvironmentConfig, validatePorts } from '../../shared/constants'
 
 // Load .env from backend and repository root (root overrides backend)
 // Works for both ts-node (src) and compiled (dist) because we resolve from __dirname
@@ -76,12 +77,22 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
   })
 })
 
+// Validate port configuration
+try {
+  validatePorts()
+} catch (error) {
+  console.error('❌ Port validation failed:', error)
+  process.exit(1)
+}
+
 // Start server
-const PORT = process.env.PORT || 3001
+const config = getEnvironmentConfig()
+const PORT = config.backendPort
 server.listen(PORT, () => {
   console.log(`Multi-Sonicator-IO Backend Server running on port ${PORT}`)
   console.log(`WebSocket endpoint: ws://localhost:${PORT}/ws`)
   console.log(`HTTP API endpoint: http://localhost:${PORT}/api`)
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`)
   
   // Initialize hardware connection
   hardwareInterface.initialize().catch(err => {

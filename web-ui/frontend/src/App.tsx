@@ -18,6 +18,7 @@ import { usePinHistory } from './hooks/usePinHistory'
 import { useTestAutomation } from './hooks/useTestAutomation'
 import { useArduinoCommandLog } from './hooks/useArduinoCommandLog'
 import { useKeyboardShortcuts, createAppShortcuts } from './hooks/useKeyboardShortcuts'
+import { WEBSOCKET_URL } from '../../shared/constants'
 
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
   const [currentTestExecution, setCurrentTestExecution] = useState<any>(null)
   const [keyboardShortcutsEnabled, setKeyboardShortcutsEnabled] = useState(true)
 
-  const { connected, sendMessage, lastMessage } = useWebSocket('ws://localhost:3001/ws')
+  const { connected, sendMessage, lastMessage } = useWebSocket(WEBSOCKET_URL)
   const { hardwareState, updatePinState, updateMultiplePins, setConnectionStatus } = useHardwareState()
   const { addHistoryEntry } = usePinHistory()
   const { addCommandPair } = useArduinoCommandLog({ maxEntries: 100 })

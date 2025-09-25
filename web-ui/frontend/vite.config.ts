@@ -1,24 +1,20 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { FRONTEND_DEV_PORT, BACKEND_PORT, getEnvironmentConfig } from '../shared/constants'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: ['./src/test/setup.ts'],
-  },
   server: {
-    port: parseInt(process.env.PORT || '3102'),
+    port: FRONTEND_DEV_PORT,
     host: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:3001',
+        target: `http://localhost:${BACKEND_PORT}`,
         changeOrigin: true,
       },
       '/ws': {
-        target: 'ws://localhost:3001',
+        target: `ws://localhost:${BACKEND_PORT}`,
         ws: true,
       },
     },

@@ -283,78 +283,112 @@ export class WebSocketHandler {
   }
 
   private async handleHardwareCommand(ws: WebSocket, commandData: any) {
-    const { command, pin, value } = commandData
-
     try {
       let hardwareCommand
-      
-      switch (command) {
-        case 'write_pin':
-          hardwareCommand = {
-            command: `WRITE_PIN ${pin} ${value}`,
-            expectResponse: true
-          }
-          break
 
-        case 'read_pin':
-          hardwareCommand = {
-            command: `READ_PIN ${pin}`,
-            expectResponse: true
-          }
-          break
+      // Handle raw command strings (from command dialog)
+      if (typeof commandData.command === 'string' && !commandData.pin && !commandData.value) {
+        const rawCommand = commandData.command.trim().toUpperCase()
 
-        case 'read_adc':
-          hardwareCommand = {
-            command: `READ_ADC ${pin}`,
-            expectResponse: true
-          }
-          break
+        // Handle raw command strings directly
+        hardwareCommand = {
+          command: rawCommand,
+          expectResponse: true
+        }
+      } else {
+        // Handle structured commands (from hardware control panel)
+        const { command, pin, value } = commandData
 
-        case 'read_pwm':
-          hardwareCommand = {
-            command: `READ_PWM ${pin}`,
-            expectResponse: true
-          }
-          break
+        switch (command) {
+          case 'write_pin':
+            hardwareCommand = {
+              command: `WRITE_PIN ${pin} ${value}`,
+              expectResponse: true
+            }
+            break
 
-        case 'set_pwm':
-          hardwareCommand = {
-            command: `SET_PWM ${pin} ${value.frequency} ${value.dutyCycle}`,
-            expectResponse: true
-          }
-          break
+          case 'read_pin':
+            hardwareCommand = {
+              command: `READ_PIN ${pin}`,
+              expectResponse: true
+            }
+            break
 
-        case 'ping':
-          hardwareCommand = {
-            command: 'PING',
-            expectResponse: true
-          }
-          break
+          case 'read_adc':
+            hardwareCommand = {
+              command: `READ_ADC ${pin}`,
+              expectResponse: true
+            }
+            break
 
-        case 'set_amplitude':
-          hardwareCommand = {
-            command: `SET_AMPLITUDE ${value}`,
-            expectResponse: true
-          }
-          break
+          case 'read_pwm':
+            hardwareCommand = {
+              command: `READ_PWM ${pin}`,
+              expectResponse: true
+            }
+            break
 
-        default:
-          throw new Error(`Unknown hardware command: ${command}`)
+          case 'set_pwm':
+            hardwareCommand = {
+              command: `SET_PWM ${pin} ${value.frequency} ${value.dutyCycle}`,
+              expectResponse: true
+            }
+            break
+
+          case 'ping':
+            hardwareCommand = {
+              command: 'PING',
+              expectResponse: true
+            }
+            break
+
+          case 'set_amplitude':
+            hardwareCommand = {
+              command: `SET_AMPLITUDE ${value}`,
+              expectResponse: true
+            }
+            break
+
+          default:
+            throw new Error(`Unknown hardware command: ${command}`)
+        }
       }
 
       const response = await this.hardwareInterface.sendCommand(hardwareCommand)
-      
-      this.sendToClient(ws, {
-        type: 'command_response',
-        data: {
-          command,
-          pin,
-          value,
-          response,
-          success: response.success
-        },
-        timestamp: Date.now()
-      })
+
+      // Handle response for both raw commands and structured commands
+      if (typeof commandData.command === 'string' && !commandData.pin && !commandData.value) {
+        // Raw command response (for command dialog)
+        // Calculate response time if not provided
+        const responseTime = (response as any).responseTime || 0
+
+        this.sendToClient(ws, {
+          type: 'arduino_command_response',
+          data: {
+            command: commandData.command,
+            response: response.data,
+            responseTime,
+            success: response.success,
+            error: response.success ? undefined : response.error,
+            timestamp: response.timestamp || Date.now()
+          },
+          timestamp: Date.now()
+        })
+      } else {
+        // Structured command response (for hardware control panel)
+        const { command, pin, value } = commandData
+        this.sendToClient(ws, {
+          type: 'command_response',
+          data: {
+            command,
+            pin,
+            value,
+            response,
+            success: response.success
+          },
+          timestamp: Date.now()
+        })
+      }
 
     } catch (error) {
       this.sendError(ws, `Hardware command failed: ${error instanceof Error ? error.message : 'Unknown error'}`)

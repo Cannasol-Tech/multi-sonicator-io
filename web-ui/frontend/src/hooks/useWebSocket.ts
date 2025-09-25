@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { WebSocketMessage } from '../types'
+import { WEBSOCKET_CONFIG } from '../../../shared/constants'
 
 export function useWebSocket(url: string) {
   const [connected, setConnected] = useState(false)
@@ -8,7 +9,7 @@ export function useWebSocket(url: string) {
   const ws = useRef<WebSocket | null>(null)
   const reconnectTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
   const reconnectAttempts = useRef(0)
-  const maxReconnectAttempts = 10
+  const maxReconnectAttempts = WEBSOCKET_CONFIG.MAX_RECONNECT_ATTEMPTS
 
   const connect = useCallback(() => {
     try {
@@ -36,7 +37,10 @@ export function useWebSocket(url: string) {
         
         // Attempt to reconnect if not a clean close
         if (event.code !== 1000 && reconnectAttempts.current < maxReconnectAttempts) {
-          const delay = Math.min(1000 * Math.pow(2, reconnectAttempts.current), 30000)
+          const delay = Math.min(
+            WEBSOCKET_CONFIG.RECONNECT_DELAY * Math.pow(WEBSOCKET_CONFIG.RECONNECT_BACKOFF_MULTIPLIER, reconnectAttempts.current),
+            WEBSOCKET_CONFIG.MAX_RECONNECT_DELAY
+          )
           console.log(`Attempting to reconnect in ${delay}ms (attempt ${reconnectAttempts.current + 1})`)
           
           reconnectTimeoutRef.current = setTimeout(() => {
