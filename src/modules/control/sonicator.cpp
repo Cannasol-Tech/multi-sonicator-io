@@ -138,7 +138,7 @@ bool SonicatorInterface::forceState(const sonicator_status_t& newState) {
 
     // Note: sonicator_status_t doesn't have start_stop member, using is_running instead
     state_.start_stop        = newState.is_running ? 1 : 0;
-    state_.reset_requested   = false;
+    state_.reset_overload    = false;
 
     state_.last_update_time    = getTimestampMs();
     state_.watchdog_last_reset = state_.last_update_time;
@@ -492,6 +492,7 @@ void SonicatorInterface::processStateMachine() {
 
 /** @copydoc SonicatorInterface::setStartStop */
 void SonicatorInterface::setStartStop() {
+    state_.start_stop = register_manager_consume_start_stop(sonicator_id_);
     if (state_.start_stop == 1) {
         return start();
     } else if (state_.start_stop == 0) {
@@ -501,25 +502,21 @@ void SonicatorInterface::setStartStop() {
 
 /** @copydoc SonicatorInterface::setResetOverload */
 void SonicatorInterface::setResetOverload() {
-    bool reset_requested = false;
-    if (register_manager_consume_overload_reset(sonicator_id_, &reset_requested)) {
-        if (reset_requested) {
-            resetOverload();
-        }
+    state_.reset_overload = register_manager_consume_overload_reset(sonicator_id_);
+    if (state_.reset_overload) {
+        resetOverload();
     }
 }
 
 /** @copydoc SonicatorInterface::update */
-sonicator_state_t SonicatorInterface::update() {   
-    // Start/Stop command: 1=start, 2=stop (then clear command)
-    (void)setStartStop();
+sonicator_state_t SonicatorInterface::update() {
+     // Update internal timers
+     uint32_t now = getTimestampMs();
+     state_.last_update_time = now;
 
-    // Overload reset pulse (write-one-to-consume)
-    (void)setResetOverload();
-
-    // Update internal timers
-    uint32_t now = getTimestampMs();
-    state_.last_update_time = now;
+    // Read control inputs
+    setStartStop();
+    setResetOverload();
 
     // Read hardware inputs and detect faults
     readHardwareInputs();
