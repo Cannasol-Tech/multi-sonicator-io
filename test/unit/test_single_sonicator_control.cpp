@@ -138,7 +138,7 @@ void test_overload_reset_command(void) {
     // Verify reset was processed
     const sonicator_state_t* status = sonicator_get_status();
     TEST_ASSERT_NOT_NULL(status);
-    TEST_ASSERT_TRUE(status->reset_requested);
+    TEST_ASSERT_TRUE(status->reset_overload);
 }
 
 /**

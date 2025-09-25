@@ -235,7 +235,7 @@ private:
         // Control inputs and setpoints
         uint8_t             amplitude_percent{SONICATOR_MIN_AMPLITUDE_PERCENT}; /**< Current amplitude setpoint (%) */
         bool                start_stop{0};                           /**< Start/stop command (1=start, 0=stop) */
-        bool                reset_requested{false};                  /**< Reset command pending */
+        bool                reset_overload{false};                   /**< Reset overload command pending */
 
         // Derived/monitoring
         bool                is_running{false};                       /**< True when sonicator is actively running */

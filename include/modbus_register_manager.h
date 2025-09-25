@@ -60,15 +60,22 @@ void register_manager_update_sonicator_status(uint8_t sonicator_id,
                                               uint16_t status_flags);
 
 /**
+ * @brief Get Global Control Settings
+ * @param global_control Pointer to store global control settings
+ * @return true if valid sonicator ID, false otherwise
+ */
+bool register_manager_get_global_control(global_control_registers_t* global_control);
+
+/**
  * @brief Get sonicator control settings
  * @param sonicator_id Sonicator ID (0-31)
  * @param start_stop Pointer to store start/stop command
- * @param amplitude_sp Pointer to store amplitude setpoint
+ * @param reset_overload Pointer to store reset overload command
  * @return true if valid sonicator ID, false otherwise
  */
 bool register_manager_get_sonicator_control(uint8_t sonicator_id,
                                            uint16_t* start_stop,
-                                           uint16_t* amplitude_sp);
+                                           uint16_t* reset_overload);
 
 /**
  * @brief Check if global enable is active
@@ -106,12 +113,18 @@ void register_manager_reset_comm_errors(void);
 bool register_manager_validate_value(uint16_t address, uint16_t value);
 
 /**
- * @brief Consume (read-and-clear) the overload reset command for a sonicator.
+* @brief Consume Start Stop command for a sonicator.
+* @param sonicator_id Sonicator ID (0-31)
+* @return true on success, false on invalid id or not initialized
+*/
+bool register_manager_consume_start_stop(uint8_t sonicator_id);
+
+/**
+ * @brief Consume (read-and-clear) the reset overload command for a sonicator.
  * @param sonicator_id Sonicator ID (0-31)
- * @param requested Pointer to store whether a reset was requested (true/false)
  * @return true on success, false on invalid id or not initialized
  */
-bool register_manager_consume_overload_reset(uint8_t sonicator_id, bool* requested);
+bool register_manager_consume_overload_reset(uint8_t sonicator_id);
 
 #ifdef __cplusplus
 }

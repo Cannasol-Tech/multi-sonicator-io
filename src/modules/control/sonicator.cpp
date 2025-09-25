@@ -19,7 +19,6 @@
 #include "modules/hal/pwm.h"
 #include "modules/hal/adc.h"
 #include "modbus_register_manager.h"
-#include "modbus_register_manager.h"
 #include "modbus_registers.h"
 #include "frequency_counter.h"
 #include <Arduino.h>
@@ -28,10 +27,6 @@
 // ============================================================================
 // COMPILE-TIME CONFIGURATION
 // ============================================================================
-
-#ifndef SONICATOR_SIMULATION_MODE
-#define SONICATOR_SIMULATION_MODE 0
-#endif
 
 #ifdef DEBUG_MODE
 #define SONICATOR_LOG(msg) Serial.println(msg)
@@ -117,35 +112,6 @@ const char* SonicatorInterface::stateToString(sonicator_state_t state) {
     }
 }
 
-// ... (rest of the file is the same until forceState)
-
-/** @copydoc SonicatorInterface::forceState */
-bool SonicatorInterface::forceState(const sonicator_status_t& newState) {
-
-    // Map public status view into internal runtime state
-    state_.is_running        = newState.is_running;
-    state_.frequency_hz      = newState.frequency_hz;
-    state_.overload_active   = newState.overload_active;
-    state_.frequency_locked  = newState.frequency_locked;
-    state_.fault_count       = newState.fault_count;
-    state_.power_watts       = static_cast<float>(newState.power_raw_adc);
-    state_.last_fault_time   = newState.last_fault_time;
-    state_.amplitude_percent = newState.amplitude_actual;
-
-    state_.previous_state    = newState.state_machine.previous_state;
-    state_.state             = newState.state_machine.state;
-    state_.state_entry_time  = newState.state_machine.state_entry_time;
-
-    // Note: sonicator_status_t doesn't have start_stop member, using is_running instead
-    state_.start_stop        = newState.is_running ? 1 : 0;
-    state_.reset_overload    = false;
-
-    state_.last_update_time    = getTimestampMs();
-    state_.watchdog_last_reset = state_.last_update_time;
-
-    return true;
-}
-
 /** @copydoc SonicatorInterface::injectFault */
 bool SonicatorInterface::injectFault(const sonicator_fault_t& faultMask) {
     handleFaultConditions(faultMask);
@@ -167,7 +133,7 @@ SonicatorInterface::SonicatorInterface(uint8_t sonicator_id, const SonicatorPins
 
     state_.amplitude_percent = SONICATOR_MIN_AMPLITUDE_PERCENT;
     state_.start_stop = 0;
-    state_.reset_requested = false;
+    state_.reset_overload = false;
 
     state_.is_running = false;
     state_.overload_active = false;
@@ -210,7 +176,7 @@ void SonicatorInterface::stop() {
 
 /** @copydoc SonicatorInterface::resetOverload */
 void SonicatorInterface::resetOverload() {
-    state_.reset_requested = true;
+    state_.reset_overload = true;
     halGpioWriteSafe(pins_.reset_pin, true);
 }
 
@@ -298,11 +264,11 @@ void SonicatorInterface::updateHardwareOutputs() {
     else if (state_.start_stop == 0) { stop(); }
 
     //< Start Reset Pulse
-    if (state_.reset_requested && !reset_pulse_active) {
+    if (state_.reset_overload && !reset_pulse_active) {
         halGpioWriteSafe(pins_.reset_pin, true);
         reset_pulse_start = getTimestampMs();
         reset_pulse_active = true;
-        state_.reset_requested = false;
+        state_.reset_overload = false;
         SONICATOR_LOG("Reset pulse started");
     }
 
@@ -462,12 +428,12 @@ void SonicatorInterface::processStateMachine() {
 
         case SONICATOR_STATE_FAULT:
             // Stay in fault state until faults are cleared and reset is requested
-            if (state_.active_faults == SONICATOR_FAULT_NONE && state_.reset_requested) {
+            if (state_.active_faults == SONICATOR_FAULT_NONE && state_.reset_overload) {
                 state_.previous_state = state_.state;
                 state_.state = SONICATOR_STATE_IDLE;
                 state_.state_entry_time = now;
                 state_.is_running = false;
-                state_.reset_requested = false;
+                state_.reset_overload = false;
                 SONICATOR_LOG("State: FAULT -> IDLE (reset)");
             }
             state_.is_running = false;
@@ -592,10 +558,4 @@ void SonicatorInterface::buildStatusView_() const {
     status_view_.state_machine.state            = state_.state;
     status_view_.state_machine.previous_state   = state_.previous_state;
     status_view_.state_machine.state_entry_time = state_.state_entry_time;
-}
-
-/** @copydoc SonicatorInterface::setSimulationMode */
-void SonicatorInterface::setSimulationMode(bool enable) {
-    simulation_mode_ = enable;
-    SONICATOR_LOG(enable ? "Simulation mode enabled" : "Simulation mode disabled");
 }

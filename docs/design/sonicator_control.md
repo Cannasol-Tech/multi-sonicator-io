@@ -127,7 +127,7 @@ if (overload) {
 }
 
 // Reset sequence (FAULT → IDLE)
-if (reset_requested && overload_cleared) {
+if (reset_overload && overload_cleared) {
     // Pulse RESET signal (PC1) for 20ms
     hal_gpio_write_pin(SON4_RESET_PIN, true);
     // ... 20ms delay ...
